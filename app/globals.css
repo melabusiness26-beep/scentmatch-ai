@@ -1,0 +1,39 @@
+:root {
+  --cream: #fbf6ee;
+  --beige: #eadfce;
+  --brown: #4b3528;
+  --gold: #b99863;
+  --rose: #d8b7aa;
+  --text: #261d18;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: radial-gradient(circle at top, #fffaf3 0%, var(--cream) 45%, #efe3d4 100%); color: var(--text); font-family: Georgia, 'Times New Roman', serif; }
+main { min-height: 100vh; }
+.container { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
+.nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 54px; }
+.logo { font-size: 28px; font-weight: 700; letter-spacing: -0.04em; }
+.badge { border: 1px solid rgba(75,53,40,.2); padding: 10px 14px; border-radius: 999px; background: rgba(255,255,255,.5); font-size: 14px; }
+.hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 36px; align-items: center; }
+h1 { font-size: clamp(44px, 7vw, 92px); line-height: .92; margin: 0 0 22px; letter-spacing: -0.06em; color: var(--brown); }
+p.lead { font-family: Arial, sans-serif; font-size: 20px; line-height: 1.55; max-width: 650px; color: #5d4b40; }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+button, .button { border: 0; border-radius: 999px; padding: 14px 22px; background: var(--brown); color: white; font-weight: 700; cursor: pointer; text-decoration: none; font-family: Arial, sans-serif; }
+.secondary { background: transparent; color: var(--brown); border: 1px solid rgba(75,53,40,.25); }
+.card { background: rgba(255,255,255,.62); border: 1px solid rgba(75,53,40,.12); box-shadow: 0 24px 80px rgba(75,53,40,.12); border-radius: 34px; padding: 28px; }
+.perfume-card { min-height: 420px; display:flex; flex-direction:column; justify-content:space-between; }
+.bottle { height: 240px; border-radius: 28px; background: linear-gradient(135deg, #f6eadb, #d5b98d); display: grid; place-items:center; font-size: 72px; }
+.section { margin-top: 70px; }
+.grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.tile { padding: 22px; border-radius: 24px; background: rgba(255,255,255,.55); border: 1px solid rgba(75,53,40,.1); }
+.tile h3 { margin: 0 0 8px; color: var(--brown); }
+.quiz { margin-top: 28px; }
+.question { font-size: 28px; color: var(--brown); margin-bottom: 20px; }
+.answers { display:grid; gap: 12px; }
+.answer { width:100%; text-align:left; background:rgba(255,255,255,.7); color:var(--text); border:1px solid rgba(75,53,40,.12); border-radius:20px; padding:18px; }
+.result { margin-top:20px; }
+.scorebar { height:10px; background:#eadfce; border-radius:99px; overflow:hidden; margin-top:7px; }
+.scorebar span { display:block; height:100%; background:var(--gold); }
+.search { width:100%; padding:16px 18px; border-radius:18px; border:1px solid rgba(75,53,40,.2); font-size:16px; background:white; }
+.perfume-list { display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; margin-top:16px; }
+.small { font-family:Arial,sans-serif; color:#6d5a4d; font-size:14px; line-height:1.45; }
+@media (max-width: 800px) { .hero,.grid,.perfume-list { grid-template-columns: 1fr; } .nav { align-items:flex-start; gap:12px; flex-direction:column; } }

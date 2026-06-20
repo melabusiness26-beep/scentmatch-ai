@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { supabase } from '@/lib/supabase';
+import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 
 type Perfume = {
   id: string;
@@ -69,6 +69,7 @@ export default function Home() {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
+    if (!isSupabaseConfigured) return;
     async function loadPerfumes() {
       const { data } = await supabase
         .from('perfumes')

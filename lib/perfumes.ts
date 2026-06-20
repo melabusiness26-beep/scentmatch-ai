@@ -77,6 +77,7 @@ export type QuizAnswers = {
   budgetMax: number | null; // null = Budget egal
   lovedNote: string; // Theme-Code aus NOTE_THEMES, '' = egal
   dislikedNote: string; // Theme-Code aus NOTE_THEMES, '' = keine
+  anchorId: string; // ID eines bereits geliebten Dufts, '' = keiner
 };
 
 export type RankedPerfume = { perfume: Perfume; score: number };
@@ -108,9 +109,14 @@ function perfumeHasTheme(p: Perfume, code: string): boolean {
 // Gewichte (Summe 100): Duftrichtung 30, Lieblingsnote 20, Budget 15, Anlass 13, Saison 12, Intensität 10.
 // Eine No-Go-Note zieht zusätzlich bis zu 25 Punkte ab.
 function familyComponent(p: Perfume, a: QuizAnswers): number {
-  const max = Math.max(1, ...Object.values(a.family));
+  // Anteil der Stimmen, die auf die Familie dieses Dufts entfallen.
+  // Durch die GESAMTSTIMMEN teilen sorgt fuer Trennschaerfe: eine klare
+  // Entscheidung (3x dieselbe Familie) gibt volle 30, eine gestreute
+  // Auswahl (1/1/1) verteilt die Punkte fair auf die gewaehlten Familien.
+  const total = Object.values(a.family).reduce((sum, v) => sum + v, 0);
+  if (total === 0) return 15;
   const got = a.family[p.fragrance_family || ''] || 0;
-  return 30 * (got / max);
+  return 30 * (got / total);
 }
 
 function lovedNoteComponent(p: Perfume, a: QuizAnswers): number {
@@ -174,10 +180,31 @@ export function matchesGender(p: Perfume, gender: QuizAnswers['gender']): boolea
   return true;
 }
 
+// Ähnlichkeit zu einem bereits geliebten Duft (0–100): gleiche Duftfamilie,
+// geteilte Noten, gleiches Geschlecht und ähnliche Intensität.
+function noteSimilarity(anchor: Perfume, p: Perfume): number {
+  if (anchor.id === p.id) return 100;
+  let s = 0;
+  if (anchor.fragrance_family && anchor.fragrance_family === p.fragrance_family) s += 35;
+  const anchorNotes = new Set(perfumeNotes(anchor));
+  const shared = perfumeNotes(p).filter((n) => anchorNotes.has(n)).length;
+  s += Math.min(45, shared * 12);
+  if (anchor.gender && anchor.gender === p.gender) s += 10;
+  const diff = Math.abs((anchor.sillage ?? 6) - (p.sillage ?? 6));
+  s += 10 * (1 - diff / 9);
+  return Math.round(Math.min(100, Math.max(0, s)));
+}
+
 export function rankPerfumes(perfumes: Perfume[], a: QuizAnswers): RankedPerfume[] {
+  const anchor = a.anchorId ? perfumes.find((p) => p.id === a.anchorId) || null : null;
   return perfumes
     .filter((p) => matchesGender(p, a.gender))
-    .map((p) => ({ perfume: p, score: matchScore(p, a) }))
+    .filter((p) => !anchor || p.id !== anchor.id)
+    .map((p) => {
+      const base = matchScore(p, a);
+      const score = anchor ? Math.round(0.55 * noteSimilarity(anchor, p) + 0.45 * base) : base;
+      return { perfume: p, score };
+    })
     .sort((x, y) =>
       y.score !== x.score
         ? y.score - x.score

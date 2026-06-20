@@ -11,7 +11,7 @@ import {
   type RankedPerfume
 } from '@/lib/perfumes';
 
-type QuestionKind = 'gender' | 'family' | 'occasion' | 'season' | 'sillage' | 'budget' | 'lovedNote' | 'dislikedNote';
+type QuestionKind = 'gender' | 'anchor' | 'family' | 'occasion' | 'season' | 'sillage' | 'budget' | 'lovedNote' | 'dislikedNote';
 type QuizQuestion = { q: string; kind: QuestionKind; a: [string, string][] };
 
 const questions: QuizQuestion[] = [
@@ -23,6 +23,11 @@ const questions: QuizQuestion[] = [
       ['Für Herren', 'men'],
       ['Egal / Unisex', 'unisex']
     ]
+  },
+  {
+    q: 'Kennst du schon einen Duft, den du liebst? (optional)',
+    kind: 'anchor',
+    a: []
   },
   {
     q: 'Welcher Moment fühlt sich am meisten nach dir an?',
@@ -156,6 +161,7 @@ export default function Home() {
   const [budgetMax, setBudgetMax] = useState<number | null>(null);
   const [lovedNote, setLovedNote] = useState('');
   const [dislikedNote, setDislikedNote] = useState('');
+  const [anchorId, setAnchorId] = useState('');
   const [showResult, setShowResult] = useState(false);
   const [perfumes, setPerfumes] = useState<Perfume[]>(starterPerfumes);
   const [query, setQuery] = useState('');
@@ -168,7 +174,7 @@ export default function Home() {
     loadPerfumes();
   }, []);
 
-  const answers: QuizAnswers = { gender: genderPref, family, occasion, season, sillage, budgetMax, lovedNote, dislikedNote };
+  const answers: QuizAnswers = { gender: genderPref, family, occasion, season, sillage, budgetMax, lovedNote, dislikedNote, anchorId };
   const winner = Object.entries(family).sort((a, b) => b[1] - a[1])[0]?.[0] || 'clean';
 
   const ranked: RankedPerfume[] = showResult
@@ -193,6 +199,10 @@ export default function Home() {
     else if (kind === 'lovedNote') setLovedNote(code);
     else if (kind === 'dislikedNote') setDislikedNote(code);
 
+    advance();
+  }
+
+  function advance() {
     if (step + 1 >= questions.length) setShowResult(true);
     else setStep(step + 1);
   }
@@ -207,6 +217,7 @@ export default function Home() {
     setBudgetMax(null);
     setLovedNote('');
     setDislikedNote('');
+    setAnchorId('');
     setShowResult(false);
   }
 
@@ -249,15 +260,29 @@ export default function Home() {
               <p className="small">Frage {step + 1} von {questions.length}</p>
               <div className="scorebar quiz-progress"><span style={{ width: `${(step / questions.length) * 100}%` }} /></div>
               <div className="question">{questions[step].q}</div>
-              <div className="answers">
-                {questions[step].a.map(([label, code]) => (
-                  <button className="answer" key={label} onClick={() => answer(questions[step].kind, code)}>{label}</button>
-                ))}
-              </div>
+              {questions[step].kind === 'anchor' ? (
+                <div className="answers">
+                  <select className="search" value={anchorId} onChange={e => setAnchorId(e.target.value)}>
+                    <option value="">Ich kenne noch keinen – überspringen</option>
+                    {perfumes.map(p => (
+                      <option value={p.id} key={p.id}>
+                        {p.perfume_name}{p.brands?.name ? ` – ${p.brands.name}` : ''}
+                      </option>
+                    ))}
+                  </select>
+                  <button className="answer" onClick={advance}>Weiter</button>
+                </div>
+              ) : (
+                <div className="answers">
+                  {questions[step].a.map(([label, code]) => (
+                    <button className="answer" key={label} onClick={() => answer(questions[step].kind, code)}>{label}</button>
+                  ))}
+                </div>
+              )}
             </>
           ) : (
             <div className="result">
-              <p className="small">Dein Duftprofil{genderPref ? ` · ${genderLabels[genderPref]}` : ''}</p>
+              <p className="small">Dein Duftprofil{genderPref ? ` · ${genderLabels[genderPref]}` : ''}{anchorId ? ` · ähnlich zu ${perfumes.find(p => p.id === anchorId)?.perfume_name || ''}` : ''}</p>
               <h2>{profileText[winner].title}</h2>
               <p className="lead">{profileText[winner].text}</p>
 

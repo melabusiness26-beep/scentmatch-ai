@@ -1,14 +1,17 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { getPerfumes, type Perfume } from '@/lib/perfumes';
+import {
+  getPerfumes,
+  rankPerfumes,
+  type Perfume,
+  type QuizAnswers,
+  type RankedPerfume
+} from '@/lib/perfumes';
 
-type QuizQuestion = {
-  q: string;
-  kind: 'gender' | 'family';
-  a: [string, string][];
-};
+type QuestionKind = 'gender' | 'family' | 'occasion' | 'season' | 'sillage' | 'budget';
+type QuizQuestion = { q: string; kind: QuestionKind; a: [string, string][] };
 
 const questions: QuizQuestion[] = [
   {
@@ -31,16 +34,6 @@ const questions: QuizQuestion[] = [
     ]
   },
   {
-    q: 'Wie möchtest du wirken?',
-    kind: 'family',
-    a: [
-      ['Klar, frisch und gepflegt', 'clean'],
-      ['Warm, weich und nahbar', 'gourmand'],
-      ['Elegant, teuer und selbstbewusst', 'woody'],
-      ['Romantisch, feminin und charmant', 'floral']
-    ]
-  },
-  {
     q: 'Welche Duftnote zieht dich an?',
     kind: 'family',
     a: [
@@ -51,13 +44,52 @@ const questions: QuizQuestion[] = [
     ]
   },
   {
-    q: 'Wann trägst du deinen Duft am liebsten?',
+    q: 'Wie möchtest du wirken?',
     kind: 'family',
     a: [
-      ['Tagsüber, im Alltag & Büro', 'clean'],
-      ['Gemütlich zu Hause & zum Kuscheln', 'gourmand'],
-      ['Abends beim Ausgehen', 'woody'],
-      ['Bei einem romantischen Date', 'floral']
+      ['Klar, frisch und gepflegt', 'clean'],
+      ['Warm, weich und nahbar', 'gourmand'],
+      ['Elegant, teuer und selbstbewusst', 'woody'],
+      ['Romantisch, feminin und charmant', 'floral']
+    ]
+  },
+  {
+    q: 'Wofür suchst du den Duft hauptsächlich?',
+    kind: 'occasion',
+    a: [
+      ['Alltag & Büro', 'daily'],
+      ['Für Dates', 'date'],
+      ['Abends & zum Ausgehen', 'evening'],
+      ['Für alles – ich bin flexibel', 'any']
+    ]
+  },
+  {
+    q: 'Für welche Jahreszeit suchst du ihn?',
+    kind: 'season',
+    a: [
+      ['Frühling', 'Frühling'],
+      ['Sommer', 'Sommer'],
+      ['Herbst & Winter', 'Herbst/Winter'],
+      ['Das ganze Jahr', 'Ganzjährig']
+    ]
+  },
+  {
+    q: 'Wie präsent darf dein Duft sein?',
+    kind: 'sillage',
+    a: [
+      ['Dezent – nah an der Haut', 'low'],
+      ['Ausgewogen', 'medium'],
+      ['Sehr präsent – man riecht mich', 'high']
+    ]
+  },
+  {
+    q: 'Was ist dein Budget?',
+    kind: 'budget',
+    a: [
+      ['Bis CHF 80', '80'],
+      ['CHF 80–150', '150'],
+      ['Premium – über CHF 150', 'premium'],
+      ['Budget egal', 'any']
     ]
   }
 ];
@@ -73,6 +105,8 @@ const profileText: Record<string, { title: string; text: string }> = {
 
 const genderLabels: Record<string, string> = { women: 'Damen', men: 'Herren', unisex: 'Unisex' };
 
+const emptyFamily = { clean: 0, gourmand: 0, woody: 0, floral: 0 };
+
 // Fallback, falls die Datenbank (noch) nicht erreichbar ist. Ohne slug -> kein Link.
 const starterPerfumes: Perfume[] = [
   { id: '1', perfume_name: 'Beach Walk Style', slug: null, gender: 'Unisex', fragrance_family: 'clean', price_chf: 95, longevity: 6, sillage: 5, scentmatch_score: 91, season: 'Sommer', occasion: 'Alltag', description: null, image_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } },
@@ -81,9 +115,10 @@ const starterPerfumes: Perfume[] = [
   { id: '4', perfume_name: 'Blooming Rose Style', slug: null, gender: 'Women', fragrance_family: 'floral', price_chf: 68, longevity: 7, sillage: 6, scentmatch_score: 90, season: 'Frühling', occasion: 'Alltag', description: null, image_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } }
 ];
 
-function PerfumeTile({ perfume }: { perfume: Perfume }) {
+function PerfumeTile({ perfume, matchPercent }: { perfume: Perfume; matchPercent?: number }) {
   const content = (
     <>
+      {matchPercent != null && <div className="match-badge">{matchPercent}% Match</div>}
       <h3>{perfume.perfume_name}</h3>
       <p className="small">{perfume.brands?.name || 'Marke offen'} · {perfume.fragrance_family || 'Duftfamilie offen'}</p>
       <p className="small">Saison: {perfume.season || 'offen'}<br />Anlass: {perfume.occasion || 'offen'}<br />Score: {perfume.scentmatch_score || 80}/100</p>
@@ -102,8 +137,12 @@ function PerfumeTile({ perfume }: { perfume: Perfume }) {
 
 export default function Home() {
   const [step, setStep] = useState(0);
-  const [scores, setScores] = useState<Record<string, number>>({ clean: 0, gourmand: 0, woody: 0, floral: 0 });
-  const [genderPref, setGenderPref] = useState('');
+  const [family, setFamily] = useState<Record<string, number>>({ ...emptyFamily });
+  const [genderPref, setGenderPref] = useState<QuizAnswers['gender']>('');
+  const [occasion, setOccasion] = useState<QuizAnswers['occasion']>('');
+  const [season, setSeason] = useState<QuizAnswers['season']>('');
+  const [sillage, setSillage] = useState<QuizAnswers['sillage']>('');
+  const [budgetMax, setBudgetMax] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [perfumes, setPerfumes] = useState<Perfume[]>(starterPerfumes);
   const [query, setQuery] = useState('');
@@ -116,39 +155,28 @@ export default function Home() {
     loadPerfumes();
   }, []);
 
-  const winner = useMemo(
-    () => Object.entries(scores).sort((a, b) => b[1] - a[1])[0]?.[0] || 'clean',
-    [scores]
+  const answers: QuizAnswers = { gender: genderPref, family, occasion, season, sillage, budgetMax };
+  const winner = Object.entries(family).sort((a, b) => b[1] - a[1])[0]?.[0] || 'clean';
+
+  const ranked: RankedPerfume[] = showResult
+    ? rankPerfumes(perfumes, answers)
+    : [...perfumes]
+        .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
+        .map(p => ({ perfume: p, score: 0 }));
+
+  const visible = ranked.filter(({ perfume: p }) =>
+    !query || `${p.perfume_name} ${p.fragrance_family} ${p.brands?.name}`.toLowerCase().includes(query.toLowerCase())
   );
 
-  // Ergebnisse: nach Geschlecht filtern und (nach dem Quiz) das Sieger-Profil nach oben holen.
-  const recommended = useMemo(() => {
-    const matchesGender = (p: Perfume) => {
-      if (genderPref === 'women') return p.gender === 'Women' || p.gender === 'Unisex';
-      if (genderPref === 'men') return p.gender === 'Men' || p.gender === 'Unisex';
-      return true;
-    };
-    const matchesQuery = (p: Perfume) =>
-      !query ||
-      `${p.perfume_name} ${p.fragrance_family} ${p.brands?.name}`.toLowerCase().includes(query.toLowerCase());
+  const topPick = showResult ? visible[0] : undefined;
 
-    return perfumes
-      .filter(p => matchesGender(p) && matchesQuery(p))
-      .sort((a, b) => {
-        if (showResult) {
-          const aw = a.fragrance_family === winner ? 1 : 0;
-          const bw = b.fragrance_family === winner ? 1 : 0;
-          if (aw !== bw) return bw - aw;
-        }
-        return (b.scentmatch_score || 0) - (a.scentmatch_score || 0);
-      });
-  }, [perfumes, genderPref, query, showResult, winner]);
-
-  const topPick = showResult ? recommended[0] : undefined;
-
-  function answer(kind: QuizQuestion['kind'], code: string) {
-    if (kind === 'gender') setGenderPref(code);
-    else setScores(prev => ({ ...prev, [code]: (prev[code] || 0) + 1 }));
+  function answer(kind: QuestionKind, code: string) {
+    if (kind === 'gender') setGenderPref(code as QuizAnswers['gender']);
+    else if (kind === 'family') setFamily(prev => ({ ...prev, [code]: (prev[code] || 0) + 1 }));
+    else if (kind === 'occasion') setOccasion(code as QuizAnswers['occasion']);
+    else if (kind === 'season') setSeason(code as QuizAnswers['season']);
+    else if (kind === 'sillage') setSillage(code as QuizAnswers['sillage']);
+    else if (kind === 'budget') setBudgetMax(code === '80' ? 80 : code === '150' ? 150 : null);
 
     if (step + 1 >= questions.length) setShowResult(true);
     else setStep(step + 1);
@@ -156,8 +184,12 @@ export default function Home() {
 
   function restartQuiz() {
     setStep(0);
-    setScores({ clean: 0, gourmand: 0, woody: 0, floral: 0 });
+    setFamily({ ...emptyFamily });
     setGenderPref('');
+    setOccasion('');
+    setSeason('');
+    setSillage('');
+    setBudgetMax(null);
     setShowResult(false);
   }
 
@@ -172,7 +204,7 @@ export default function Home() {
         <section className="hero">
           <div>
             <h1>Finde deinen Signature-Duft in 3 Minuten.</h1>
-            <p className="lead">ScentMatch verbindet ein elegantes Duft-Quiz mit einer intelligenten Empfehlungslogik. Noch ohne bezahlte KI-API, aber bereits mit echter Duftlogik und Supabase-Anbindung.</p>
+            <p className="lead">ScentMatch verbindet ein elegantes Duft-Quiz mit einer intelligenten Match-Engine: Jeder Duft wird gegen deine Antworten zu Geschlecht, Duftrichtung, Anlass, Saison, Intensität und Budget bewertet.</p>
             <div className="cta">
               <a className="button" href="#quiz">Quiz starten</a>
               <a className="button secondary" href="#database">Düfte ansehen</a>
@@ -182,7 +214,7 @@ export default function Home() {
             <div className="bottle">✦</div>
             <div>
               <h2>Premium statt Zufall</h2>
-              <p className="small">Keine blinde TikTok-Empfehlung. ScentMatch prüft Geschlecht, Duftfamilie, Anlass, Saison, Haltbarkeit und Stil.</p>
+              <p className="small">Keine blinde TikTok-Empfehlung. ScentMatch errechnet pro Duft einen echten Match-Score in Prozent.</p>
             </div>
           </div>
         </section>
@@ -198,6 +230,7 @@ export default function Home() {
           {!showResult ? (
             <>
               <p className="small">Frage {step + 1} von {questions.length}</p>
+              <div className="scorebar quiz-progress"><span style={{ width: `${(step / questions.length) * 100}%` }} /></div>
               <div className="question">{questions[step].q}</div>
               <div className="answers">
                 {questions[step].a.map(([label, code]) => (
@@ -213,15 +246,15 @@ export default function Home() {
 
               {topPick && (
                 <div className="top-pick">
-                  <p className="small">Dein Top-Match</p>
-                  <h3>{topPick.perfume_name} · {topPick.brands?.name || 'Marke offen'}</h3>
-                  {topPick.slug && (
-                    <Link className="button" href={`/duft/${topPick.slug}`}>Duftprofil ansehen</Link>
+                  <p className="small">Dein Top-Match · {topPick.score}% passend</p>
+                  <h3>{topPick.perfume.perfume_name} · {topPick.perfume.brands?.name || 'Marke offen'}</h3>
+                  {topPick.perfume.slug && (
+                    <Link className="button" href={`/duft/${topPick.perfume.slug}`}>Duftprofil ansehen</Link>
                   )}
                 </div>
               )}
 
-              {Object.entries(scores).map(([key, value]) => (
+              {Object.entries(family).map(([key, value]) => (
                 <div key={key} style={{ marginBottom: 12 }}>
                   <div className="small">{profileText[key].title}: {value}</div>
                   <div className="scorebar"><span style={{ width: `${(value / familyQuestionCount) * 100}%` }} /></div>
@@ -236,13 +269,13 @@ export default function Home() {
           <h2>Duftdatenbank</h2>
           <p className="small">
             {showResult
-              ? `Passend zu deinem Profil${genderPref ? ` (${genderLabels[genderPref]})` : ''} – beste Treffer zuerst. Klicke einen Duft für das volle Profil.`
-              : 'Klicke auf einen Duft, um sein vollständiges Profil zu sehen. Mach das Quiz oben, um passende Empfehlungen zu erhalten.'}
+              ? `Sortiert nach Match-Score für dein Profil${genderPref ? ` (${genderLabels[genderPref]})` : ''}. Klicke einen Duft für das volle Profil.`
+              : 'Klicke auf einen Duft, um sein vollständiges Profil zu sehen. Mach das Quiz oben für deinen persönlichen Match-Score.'}
           </p>
           <input className="search" placeholder="Suche nach Duft, Marke oder Duftfamilie…" value={query} onChange={e => setQuery(e.target.value)} />
           <div className="perfume-list">
-            {recommended.map(p => (
-              <PerfumeTile perfume={p} key={p.id} />
+            {visible.map(({ perfume: p, score }) => (
+              <PerfumeTile perfume={p} matchPercent={showResult ? score : undefined} key={p.id} />
             ))}
           </div>
         </section>

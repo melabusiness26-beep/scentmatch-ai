@@ -1,21 +1,8 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { supabase, isSupabaseConfigured } from '@/lib/supabase';
-
-type Perfume = {
-  id: string;
-  perfume_name: string;
-  gender: string | null;
-  fragrance_family: string | null;
-  price_chf: number | null;
-  longevity: number | null;
-  sillage: number | null;
-  scentmatch_score: number | null;
-  season: string | null;
-  occasion: string | null;
-  brands?: { name: string | null } | null;
-};
+import Link from 'next/link';
+import { getPerfumes, type Perfume } from '@/lib/perfumes';
 
 const questions = [
   {
@@ -54,12 +41,33 @@ const profileText: Record<string, { title: string; text: string }> = {
   floral: { title: 'The Blooming Romance', text: 'Du passt zu blumigen, fruchtigen und femininen Düften. Deine Signatur wirkt charmant und weich.' }
 };
 
+// Fallback, falls die Datenbank (noch) nicht erreichbar ist. Diese Beispiele haben
+// keinen slug und verlinken daher nicht auf eine Detailseite.
 const starterPerfumes: Perfume[] = [
-  { id: '1', perfume_name: 'Beach Walk Style', gender: 'Unisex', fragrance_family: 'clean', price_chf: 95, longevity: 6, sillage: 5, scentmatch_score: 91, season: 'Sommer', occasion: 'Alltag', brands: { name: 'ScentMatch Pick' } },
-  { id: '2', perfume_name: 'Vanilla Cashmere Style', gender: 'Women', fragrance_family: 'gourmand', price_chf: 79, longevity: 8, sillage: 7, scentmatch_score: 94, season: 'Herbst/Winter', occasion: 'Date', brands: { name: 'ScentMatch Pick' } },
-  { id: '3', perfume_name: 'Dark Wood Style', gender: 'Unisex', fragrance_family: 'woody', price_chf: 120, longevity: 9, sillage: 8, scentmatch_score: 92, season: 'Winter', occasion: 'Abend', brands: { name: 'ScentMatch Pick' } },
-  { id: '4', perfume_name: 'Blooming Rose Style', gender: 'Women', fragrance_family: 'floral', price_chf: 68, longevity: 7, sillage: 6, scentmatch_score: 90, season: 'Frühling', occasion: 'Alltag', brands: { name: 'ScentMatch Pick' } }
+  { id: '1', perfume_name: 'Beach Walk Style', slug: null, gender: 'Unisex', fragrance_family: 'clean', price_chf: 95, longevity: 6, sillage: 5, scentmatch_score: 91, season: 'Sommer', occasion: 'Alltag', description: null, image_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } },
+  { id: '2', perfume_name: 'Vanilla Cashmere Style', slug: null, gender: 'Women', fragrance_family: 'gourmand', price_chf: 79, longevity: 8, sillage: 7, scentmatch_score: 94, season: 'Herbst/Winter', occasion: 'Date', description: null, image_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } },
+  { id: '3', perfume_name: 'Dark Wood Style', slug: null, gender: 'Unisex', fragrance_family: 'woody', price_chf: 120, longevity: 9, sillage: 8, scentmatch_score: 92, season: 'Winter', occasion: 'Abend', description: null, image_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } },
+  { id: '4', perfume_name: 'Blooming Rose Style', slug: null, gender: 'Women', fragrance_family: 'floral', price_chf: 68, longevity: 7, sillage: 6, scentmatch_score: 90, season: 'Frühling', occasion: 'Alltag', description: null, image_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } }
 ];
+
+function PerfumeTile({ perfume }: { perfume: Perfume }) {
+  const content = (
+    <>
+      <h3>{perfume.perfume_name}</h3>
+      <p className="small">{perfume.brands?.name || 'Marke offen'} · {perfume.fragrance_family || 'Duftfamilie offen'}</p>
+      <p className="small">Saison: {perfume.season || 'offen'}<br />Anlass: {perfume.occasion || 'offen'}<br />Score: {perfume.scentmatch_score || 80}/100</p>
+    </>
+  );
+
+  if (perfume.slug) {
+    return (
+      <Link className="tile tile-link" href={`/duft/${perfume.slug}`}>
+        {content}
+      </Link>
+    );
+  }
+  return <div className="tile">{content}</div>;
+}
 
 export default function Home() {
   const [step, setStep] = useState(0);
@@ -69,13 +77,9 @@ export default function Home() {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
-    if (!isSupabaseConfigured) return;
     async function loadPerfumes() {
-      const { data } = await supabase
-        .from('perfumes')
-        .select('id, perfume_name, gender, fragrance_family, price_chf, longevity, sillage, scentmatch_score, season, occasion, brands(name)')
-        .limit(12);
-      if (data && data.length > 0) setPerfumes(data as any[]);
+      const data = await getPerfumes(12);
+      if (data.length > 0) setPerfumes(data);
     }
     loadPerfumes();
   }, []);
@@ -153,15 +157,11 @@ export default function Home() {
 
         <section id="database" className="section">
           <h2>Duftdatenbank</h2>
-          <p className="small">Wenn deine Supabase-Tabelle noch leer ist, zeigt ScentMatch Starter-Düfte an. Sobald du echte Düfte importierst, erscheinen sie automatisch hier.</p>
+          <p className="small">Klicke auf einen Duft, um sein vollständiges Profil zu sehen. Sobald deine Supabase-Tabelle Düfte enthält, erscheinen sie hier automatisch.</p>
           <input className="search" placeholder="Suche nach Duft, Marke oder Duftfamilie…" value={query} onChange={e => setQuery(e.target.value)} />
           <div className="perfume-list">
             {recommended.map(p => (
-              <div className="tile" key={p.id}>
-                <h3>{p.perfume_name}</h3>
-                <p className="small">{p.brands?.name || 'Marke offen'} · {p.fragrance_family || 'Duftfamilie offen'}</p>
-                <p className="small">Saison: {p.season || 'offen'}<br />Anlass: {p.occasion || 'offen'}<br />Score: {p.scentmatch_score || 80}/100</p>
-              </div>
+              <PerfumeTile perfume={p} key={p.id} />
             ))}
           </div>
         </section>

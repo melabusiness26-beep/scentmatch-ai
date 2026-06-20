@@ -74,7 +74,7 @@ export default function Home() {
         .from('perfumes')
         .select('id, perfume_name, gender, fragrance_family, price_chf, longevity, sillage, scentmatch_score, season, occasion, brands(name)')
         .limit(12);
-      if (data && data.length > 0) setPerfumes(data as Perfume[]);
+      if (data && data.length > 0) setPerfumes(data as any[]);
     }
     loadPerfumes();
   }, []);

@@ -37,6 +37,8 @@ button, .button { border: 0; border-radius: 999px; padding: 14px 22px; backgroun
 .perfume-list { display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; margin-top:16px; }
 .small { font-family:Arial,sans-serif; color:#6d5a4d; font-size:14px; line-height:1.45; }
 a.logo { text-decoration:none; color:inherit; }
+.top-pick { background:rgba(185,152,99,.14); border:1px solid rgba(185,152,99,.4); border-radius:24px; padding:20px 22px; margin:18px 0 24px; }
+.top-pick h3 { margin:4px 0 14px; color:var(--brown); }
 .tile-link { display:block; text-decoration:none; color:inherit; transition: transform .15s ease, box-shadow .15s ease; }
 .tile-link:hover { transform: translateY(-3px); box-shadow: 0 18px 50px rgba(75,53,40,.16); }
 .detail-hero { display:grid; grid-template-columns: 1.3fr .7fr; gap:36px; align-items:start; margin-top:24px; }

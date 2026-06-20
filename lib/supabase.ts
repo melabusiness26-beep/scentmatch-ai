@@ -1,15 +1,26 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+const supabaseUrl = (process.env.NEXT_PUBLIC_SUPABASE_URL || '').trim();
+const supabaseAnonKey = (process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '').trim();
 
-// True, sobald in Vercel/Supabase echte Werte hinterlegt sind.
-// Solange das nicht der Fall ist, läuft die App im Demo-Modus mit Starter-Düften.
-export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
+// Prüft, ob der Wert wirklich eine gültige http(s)-URL ist.
+function isValidHttpUrl(value: string): boolean {
+  try {
+    const url = new URL(value);
+    return url.protocol === 'http:' || url.protocol === 'https:';
+  } catch {
+    return false;
+  }
+}
+
+// Nur als "konfiguriert" behandeln, wenn die URL wirklich gültig ist UND ein Key vorhanden ist.
+// So bringt ein Tippfehler in den Umgebungsvariablen weder den Build noch die Live-Seite zum Absturz –
+// die App fällt dann automatisch in den Demo-Modus mit Starter-Düften zurück.
+export const isSupabaseConfigured = isValidHttpUrl(supabaseUrl) && supabaseAnonKey.length > 0;
 
 // Fallback-Werte verhindern, dass createClient beim Build crasht,
-// wenn die Umgebungsvariablen noch nicht gesetzt sind.
+// wenn die Umgebungsvariablen fehlen oder ungültig sind.
 export const supabase = createClient(
-  supabaseUrl || 'https://placeholder.supabase.co',
-  supabaseAnonKey || 'public-anon-placeholder-key'
+  isSupabaseConfigured ? supabaseUrl : 'https://placeholder.supabase.co',
+  isSupabaseConfigured ? supabaseAnonKey : 'public-anon-placeholder-key'
 );

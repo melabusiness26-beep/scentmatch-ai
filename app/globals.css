@@ -46,6 +46,7 @@ a.logo { text-decoration:none; color:inherit; }
 .field label { display:block; font-family:Arial,sans-serif; font-size:14px; color:#5d4b40; margin-bottom:6px; }
 .field input, .field select { width:100%; padding:12px 14px; border-radius:14px; border:1px solid rgba(75,53,40,.2); font-size:15px; background:white; font-family:Arial,sans-serif; }
 .admin-msg { font-family:Arial,sans-serif; font-size:15px; margin:14px 0; }
+.link-button { background:none; border:0; color:var(--brown); text-decoration:underline; cursor:pointer; font-family:Arial,sans-serif; font-size:14px; padding:14px 0 0; }
 @media (max-width: 800px) { .admin-grid { grid-template-columns:1fr; } }
 .tile-link { display:block; text-decoration:none; color:inherit; transition: transform .15s ease, box-shadow .15s ease; }
 .tile-link:hover { transform: translateY(-3px); box-shadow: 0 18px 50px rgba(75,53,40,.16); }

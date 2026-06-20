@@ -4,9 +4,25 @@ import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { getPerfumes, type Perfume } from '@/lib/perfumes';
 
-const questions = [
+type QuizQuestion = {
+  q: string;
+  kind: 'gender' | 'family';
+  a: [string, string][];
+};
+
+const questions: QuizQuestion[] = [
+  {
+    q: 'Für wen suchst du einen Duft?',
+    kind: 'gender',
+    a: [
+      ['Für Damen', 'women'],
+      ['Für Herren', 'men'],
+      ['Egal / Unisex', 'unisex']
+    ]
+  },
   {
     q: 'Welcher Moment fühlt sich am meisten nach dir an?',
+    kind: 'family',
     a: [
       ['Frisch geduscht, weißes Hemd, offene Fenster', 'clean'],
       ['Kerzenlicht, Vanille, warme Decke', 'gourmand'],
@@ -16,6 +32,7 @@ const questions = [
   },
   {
     q: 'Wie möchtest du wirken?',
+    kind: 'family',
     a: [
       ['Klar, frisch und gepflegt', 'clean'],
       ['Warm, weich und nahbar', 'gourmand'],
@@ -25,14 +42,27 @@ const questions = [
   },
   {
     q: 'Welche Duftnote zieht dich an?',
+    kind: 'family',
     a: [
       ['Moschus, Tee, Zitrus', 'clean'],
       ['Vanille, Amber, Karamell', 'gourmand'],
       ['Sandelholz, Pfeffer, Oud', 'woody'],
       ['Rose, Jasmin, Pfirsich', 'floral']
     ]
+  },
+  {
+    q: 'Wann trägst du deinen Duft am liebsten?',
+    kind: 'family',
+    a: [
+      ['Tagsüber, im Alltag & Büro', 'clean'],
+      ['Gemütlich zu Hause & zum Kuscheln', 'gourmand'],
+      ['Abends beim Ausgehen', 'woody'],
+      ['Bei einem romantischen Date', 'floral']
+    ]
   }
 ];
+
+const familyQuestionCount = questions.filter(q => q.kind === 'family').length;
 
 const profileText: Record<string, { title: string; text: string }> = {
   clean: { title: 'The Clean Slate', text: 'Du liebst frische, saubere Düfte. Deine Signatur wirkt gepflegt, leicht und modern.' },
@@ -41,8 +71,9 @@ const profileText: Record<string, { title: string; text: string }> = {
   floral: { title: 'The Blooming Romance', text: 'Du passt zu blumigen, fruchtigen und femininen Düften. Deine Signatur wirkt charmant und weich.' }
 };
 
-// Fallback, falls die Datenbank (noch) nicht erreichbar ist. Diese Beispiele haben
-// keinen slug und verlinken daher nicht auf eine Detailseite.
+const genderLabels: Record<string, string> = { women: 'Damen', men: 'Herren', unisex: 'Unisex' };
+
+// Fallback, falls die Datenbank (noch) nicht erreichbar ist. Ohne slug -> kein Link.
 const starterPerfumes: Perfume[] = [
   { id: '1', perfume_name: 'Beach Walk Style', slug: null, gender: 'Unisex', fragrance_family: 'clean', price_chf: 95, longevity: 6, sillage: 5, scentmatch_score: 91, season: 'Sommer', occasion: 'Alltag', description: null, image_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } },
   { id: '2', perfume_name: 'Vanilla Cashmere Style', slug: null, gender: 'Women', fragrance_family: 'gourmand', price_chf: 79, longevity: 8, sillage: 7, scentmatch_score: 94, season: 'Herbst/Winter', occasion: 'Date', description: null, image_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } },
@@ -72,27 +103,62 @@ function PerfumeTile({ perfume }: { perfume: Perfume }) {
 export default function Home() {
   const [step, setStep] = useState(0);
   const [scores, setScores] = useState<Record<string, number>>({ clean: 0, gourmand: 0, woody: 0, floral: 0 });
+  const [genderPref, setGenderPref] = useState('');
   const [showResult, setShowResult] = useState(false);
   const [perfumes, setPerfumes] = useState<Perfume[]>(starterPerfumes);
   const [query, setQuery] = useState('');
 
   useEffect(() => {
     async function loadPerfumes() {
-      const data = await getPerfumes(12);
+      const data = await getPerfumes(60);
       if (data.length > 0) setPerfumes(data);
     }
     loadPerfumes();
   }, []);
 
-  const winner = useMemo(() => Object.entries(scores).sort((a, b) => b[1] - a[1])[0]?.[0] || 'clean', [scores]);
-  const recommended = perfumes
-    .filter(p => !query || `${p.perfume_name} ${p.fragrance_family} ${p.brands?.name}`.toLowerCase().includes(query.toLowerCase()))
-    .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0));
+  const winner = useMemo(
+    () => Object.entries(scores).sort((a, b) => b[1] - a[1])[0]?.[0] || 'clean',
+    [scores]
+  );
 
-  function answer(type: string) {
-    setScores(prev => ({ ...prev, [type]: (prev[type] || 0) + 1 }));
+  // Ergebnisse: nach Geschlecht filtern und (nach dem Quiz) das Sieger-Profil nach oben holen.
+  const recommended = useMemo(() => {
+    const matchesGender = (p: Perfume) => {
+      if (genderPref === 'women') return p.gender === 'Women' || p.gender === 'Unisex';
+      if (genderPref === 'men') return p.gender === 'Men' || p.gender === 'Unisex';
+      return true;
+    };
+    const matchesQuery = (p: Perfume) =>
+      !query ||
+      `${p.perfume_name} ${p.fragrance_family} ${p.brands?.name}`.toLowerCase().includes(query.toLowerCase());
+
+    return perfumes
+      .filter(p => matchesGender(p) && matchesQuery(p))
+      .sort((a, b) => {
+        if (showResult) {
+          const aw = a.fragrance_family === winner ? 1 : 0;
+          const bw = b.fragrance_family === winner ? 1 : 0;
+          if (aw !== bw) return bw - aw;
+        }
+        return (b.scentmatch_score || 0) - (a.scentmatch_score || 0);
+      });
+  }, [perfumes, genderPref, query, showResult, winner]);
+
+  const topPick = showResult ? recommended[0] : undefined;
+
+  function answer(kind: QuizQuestion['kind'], code: string) {
+    if (kind === 'gender') setGenderPref(code);
+    else setScores(prev => ({ ...prev, [code]: (prev[code] || 0) + 1 }));
+
     if (step + 1 >= questions.length) setShowResult(true);
     else setStep(step + 1);
+  }
+
+  function restartQuiz() {
+    setStep(0);
+    setScores({ clean: 0, gourmand: 0, woody: 0, floral: 0 });
+    setGenderPref('');
+    setShowResult(false);
   }
 
   return (
@@ -116,7 +182,7 @@ export default function Home() {
             <div className="bottle">✦</div>
             <div>
               <h2>Premium statt Zufall</h2>
-              <p className="small">Keine blinde TikTok-Empfehlung. ScentMatch prüft Duftfamilie, Anlass, Saison, Haltbarkeit und Stil.</p>
+              <p className="small">Keine blinde TikTok-Empfehlung. ScentMatch prüft Geschlecht, Duftfamilie, Anlass, Saison, Haltbarkeit und Stil.</p>
             </div>
           </div>
         </section>
@@ -134,30 +200,45 @@ export default function Home() {
               <p className="small">Frage {step + 1} von {questions.length}</p>
               <div className="question">{questions[step].q}</div>
               <div className="answers">
-                {questions[step].a.map(([text, type]) => (
-                  <button className="answer" key={text} onClick={() => answer(type)}>{text}</button>
+                {questions[step].a.map(([label, code]) => (
+                  <button className="answer" key={label} onClick={() => answer(questions[step].kind, code)}>{label}</button>
                 ))}
               </div>
             </>
           ) : (
             <div className="result">
-              <p className="small">Dein Duftprofil</p>
+              <p className="small">Dein Duftprofil{genderPref ? ` · ${genderLabels[genderPref]}` : ''}</p>
               <h2>{profileText[winner].title}</h2>
               <p className="lead">{profileText[winner].text}</p>
+
+              {topPick && (
+                <div className="top-pick">
+                  <p className="small">Dein Top-Match</p>
+                  <h3>{topPick.perfume_name} · {topPick.brands?.name || 'Marke offen'}</h3>
+                  {topPick.slug && (
+                    <Link className="button" href={`/duft/${topPick.slug}`}>Duftprofil ansehen</Link>
+                  )}
+                </div>
+              )}
+
               {Object.entries(scores).map(([key, value]) => (
                 <div key={key} style={{ marginBottom: 12 }}>
                   <div className="small">{profileText[key].title}: {value}</div>
-                  <div className="scorebar"><span style={{ width: `${(value / questions.length) * 100}%` }} /></div>
+                  <div className="scorebar"><span style={{ width: `${(value / familyQuestionCount) * 100}%` }} /></div>
                 </div>
               ))}
-              <button onClick={() => { setStep(0); setScores({ clean:0, gourmand:0, woody:0, floral:0 }); setShowResult(false); }}>Quiz neu starten</button>
+              <button onClick={restartQuiz}>Quiz neu starten</button>
             </div>
           )}
         </section>
 
         <section id="database" className="section">
           <h2>Duftdatenbank</h2>
-          <p className="small">Klicke auf einen Duft, um sein vollständiges Profil zu sehen. Sobald deine Supabase-Tabelle Düfte enthält, erscheinen sie hier automatisch.</p>
+          <p className="small">
+            {showResult
+              ? `Passend zu deinem Profil${genderPref ? ` (${genderLabels[genderPref]})` : ''} – beste Treffer zuerst. Klicke einen Duft für das volle Profil.`
+              : 'Klicke auf einen Duft, um sein vollständiges Profil zu sehen. Mach das Quiz oben, um passende Empfehlungen zu erhalten.'}
+          </p>
           <input className="search" placeholder="Suche nach Duft, Marke oder Duftfamilie…" value={query} onChange={e => setQuery(e.target.value)} />
           <div className="perfume-list">
             {recommended.map(p => (

@@ -48,6 +48,7 @@ export default function AdminPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [authError, setAuthError] = useState('');
+  const [resetSent, setResetSent] = useState(false);
 
   const [brands, setBrands] = useState<{ id: string; name: string }[]>([]);
   const [form, setForm] = useState({ ...emptyForm });
@@ -89,6 +90,20 @@ export default function AdminPage() {
 
   async function logout() {
     await supabase.auth.signOut();
+  }
+
+  async function resetPassword() {
+    setAuthError('');
+    setResetSent(false);
+    if (!email) {
+      setAuthError('Bitte zuerst deine E-Mail oben eingeben.');
+      return;
+    }
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/admin/reset`
+    });
+    if (error) setAuthError(error.message);
+    else setResetSent(true);
   }
 
   async function save(e: React.FormEvent) {
@@ -194,8 +209,10 @@ export default function AdminPage() {
                 <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
               </div>
               {authError && <p className="admin-msg" style={{ color: '#b3261e' }}>{authError}</p>}
+              {resetSent && <p className="admin-msg" style={{ color: '#1b7a3d' }}>E-Mail zum Zurücksetzen wurde gesendet. Schau in dein Postfach (auch im Spam-Ordner).</p>}
               <button className="button" type="submit">Anmelden</button>
             </form>
+            <button type="button" onClick={resetPassword} className="link-button">Passwort vergessen?</button>
           </section>
         </div>
       </main>

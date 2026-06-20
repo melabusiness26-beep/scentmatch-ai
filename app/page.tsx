@@ -5,12 +5,13 @@ import Link from 'next/link';
 import {
   getPerfumes,
   rankPerfumes,
+  NOTE_THEMES,
   type Perfume,
   type QuizAnswers,
   type RankedPerfume
 } from '@/lib/perfumes';
 
-type QuestionKind = 'gender' | 'family' | 'occasion' | 'season' | 'sillage' | 'budget';
+type QuestionKind = 'gender' | 'family' | 'occasion' | 'season' | 'sillage' | 'budget' | 'lovedNote' | 'dislikedNote';
 type QuizQuestion = { q: string; kind: QuestionKind; a: [string, string][] };
 
 const questions: QuizQuestion[] = [
@@ -52,6 +53,16 @@ const questions: QuizQuestion[] = [
       ['Elegant, teuer und selbstbewusst', 'woody'],
       ['Romantisch, feminin und charmant', 'floral']
     ]
+  },
+  {
+    q: 'Welche Duftnote liebst du besonders?',
+    kind: 'lovedNote',
+    a: NOTE_THEMES.map(t => [t.label, t.code] as [string, string])
+  },
+  {
+    q: 'Gibt es eine Note, die gar nicht geht?',
+    kind: 'dislikedNote',
+    a: [['Keine – ich bin offen', ''], ...NOTE_THEMES.map(t => [t.label, t.code] as [string, string])]
   },
   {
     q: 'Wofür suchst du den Duft hauptsächlich?',
@@ -143,6 +154,8 @@ export default function Home() {
   const [season, setSeason] = useState<QuizAnswers['season']>('');
   const [sillage, setSillage] = useState<QuizAnswers['sillage']>('');
   const [budgetMax, setBudgetMax] = useState<number | null>(null);
+  const [lovedNote, setLovedNote] = useState('');
+  const [dislikedNote, setDislikedNote] = useState('');
   const [showResult, setShowResult] = useState(false);
   const [perfumes, setPerfumes] = useState<Perfume[]>(starterPerfumes);
   const [query, setQuery] = useState('');
@@ -155,7 +168,7 @@ export default function Home() {
     loadPerfumes();
   }, []);
 
-  const answers: QuizAnswers = { gender: genderPref, family, occasion, season, sillage, budgetMax };
+  const answers: QuizAnswers = { gender: genderPref, family, occasion, season, sillage, budgetMax, lovedNote, dislikedNote };
   const winner = Object.entries(family).sort((a, b) => b[1] - a[1])[0]?.[0] || 'clean';
 
   const ranked: RankedPerfume[] = showResult
@@ -177,6 +190,8 @@ export default function Home() {
     else if (kind === 'season') setSeason(code as QuizAnswers['season']);
     else if (kind === 'sillage') setSillage(code as QuizAnswers['sillage']);
     else if (kind === 'budget') setBudgetMax(code === '80' ? 80 : code === '150' ? 150 : null);
+    else if (kind === 'lovedNote') setLovedNote(code);
+    else if (kind === 'dislikedNote') setDislikedNote(code);
 
     if (step + 1 >= questions.length) setShowResult(true);
     else setStep(step + 1);
@@ -190,6 +205,8 @@ export default function Home() {
     setSeason('');
     setSillage('');
     setBudgetMax(null);
+    setLovedNote('');
+    setDislikedNote('');
     setShowResult(false);
   }
 

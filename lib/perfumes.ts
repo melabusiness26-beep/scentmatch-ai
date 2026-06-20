@@ -109,9 +109,14 @@ function perfumeHasTheme(p: Perfume, code: string): boolean {
 // Gewichte (Summe 100): Duftrichtung 30, Lieblingsnote 20, Budget 15, Anlass 13, Saison 12, Intensität 10.
 // Eine No-Go-Note zieht zusätzlich bis zu 25 Punkte ab.
 function familyComponent(p: Perfume, a: QuizAnswers): number {
-  const max = Math.max(1, ...Object.values(a.family));
+  // Anteil der Stimmen, die auf die Familie dieses Dufts entfallen.
+  // Durch die GESAMTSTIMMEN teilen sorgt fuer Trennschaerfe: eine klare
+  // Entscheidung (3x dieselbe Familie) gibt volle 30, eine gestreute
+  // Auswahl (1/1/1) verteilt die Punkte fair auf die gewaehlten Familien.
+  const total = Object.values(a.family).reduce((sum, v) => sum + v, 0);
+  if (total === 0) return 15;
   const got = a.family[p.fragrance_family || ''] || 0;
-  return 30 * (got / max);
+  return 30 * (got / total);
 }
 
 function lovedNoteComponent(p: Perfume, a: QuizAnswers): number {

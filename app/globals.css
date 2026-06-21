@@ -77,4 +77,28 @@ a.logo { text-decoration:none; color:inherit; }
 .notes-block { margin-bottom:18px; }
 .note-pills { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
 .note-pill { background:rgba(185,152,99,.18); border:1px solid rgba(185,152,99,.4); color:var(--brown); border-radius:999px; padding:7px 14px; font-family:Arial,sans-serif; font-size:14px; }
+/* Anklickbare Familien-Kacheln (filtern die Datenbank) */
+.tile-family { cursor:pointer; text-align:left; background:rgba(255,255,255,.55); color:var(--text); border:1px solid rgba(75,53,40,.1); border-radius:24px; padding:22px; font-family:Georgia,'Times New Roman',serif; font-weight:400; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+.tile-family:hover { transform: translateY(-3px); box-shadow:0 18px 50px rgba(75,53,40,.16); border-color: rgba(185,152,99,.6); }
+.tile-family.tile-active { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold) inset, 0 18px 50px rgba(75,53,40,.16); }
+.tile-family h3 { margin:0 0 8px; color:var(--brown); font-size:22px; }
+
+/* Filter-Hinweis */
+.filter-chip-row { display:flex; align-items:center; gap:6px; margin:14px 0 0; }
+.filter-chip { display:inline-block; background:var(--brown); color:#fff; border-radius:999px; padding:4px 12px; font-family:Arial,sans-serif; font-size:13px; font-weight:700; }
+.filter-reset { padding:0 0 0 6px !important; }
+
+/* Premium-Politur: sanfte Bewegungen & Fokus */
+.button { transition: transform .15s ease, box-shadow .15s ease, filter .15s ease, border-color .15s ease; }
+.button:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(75,53,40,.18); }
+.secondary:hover { border-color: var(--gold); color: var(--brown); }
+.answer { transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease; }
+.answer:hover { transform: translateY(-1px); border-color: rgba(185,152,99,.6); box-shadow: 0 8px 22px rgba(75,53,40,.10); }
+.search { transition: border-color .15s ease, box-shadow .15s ease; }
+.search:focus { outline:none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(185,152,99,.18); }
+.badge { transition: background .15s ease, border-color .15s ease; }
+a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99,.5); }
+.cover { transition: transform .2s ease; }
+.tile-link:hover .cover { transform: scale(1.02); }
+
 @media (max-width: 800px) { .hero,.grid,.perfume-list,.detail-hero { grid-template-columns: 1fr; } .nav { align-items:flex-start; gap:12px; flex-direction:column; } }

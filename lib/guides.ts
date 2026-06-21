@@ -113,6 +113,78 @@ export const guides: Guide[] = [
         perfumes: ['creed-aventus', 'tobacco-vanille', 'mugler-angel', 'oud-wood', 'baccarat-rouge-540']
       }
     ]
+  },
+  {
+    slug: 'suesse-duefte-vanille-schokolade-karamell',
+    title: 'Süße Düfte: Vanille, Schokolade & Karamell',
+    description:
+      'Warme, süße Gourmand-Düfte mit Vanille, Schokolade, Karamell und Tonkabohne – kuschelig, sinnlich und perfekt für kühle Tage.',
+    intro: [
+      'Süße Düfte – auch Gourmands genannt – riechen nach guten Dingen: Vanille, Schokolade, Karamell, Praline oder Kaffee. Sie wirken warm, einladend und bleiben angenehm in Erinnerung.',
+      'Hier unsere süßesten Empfehlungen aus dem Katalog – von günstig bis edel.'
+    ],
+    sections: [
+      {
+        perfumes: [
+          'tobacco-vanille',
+          'kayali-vanilla-28',
+          'montale-intense-cafe',
+          'khamrah',
+          'mugler-angel',
+          'burberry-goddess',
+          'kilian-angels-share',
+          'lattafa-yara'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'die-besten-winterduefte',
+    title: 'Die besten Winterdüfte: warm, intensiv & einhüllend',
+    description:
+      'Wärmende Düfte für Herbst und Winter: Oud, Amber, Vanille und Gewürze, die bei Kälte besonders schön zur Geltung kommen.',
+    intro: [
+      'Im Winter darf ein Duft schwerer und wärmer sein. Holz, Amber, Oud, Gewürze und süße Noten entfalten sich bei Kälte besonders gut und hüllen dich angenehm ein.',
+      'Diese Düfte sind wie gemacht für die kalte Jahreszeit.'
+    ],
+    sections: [
+      {
+        perfumes: [
+          'tobacco-vanille',
+          'oud-wood',
+          'baccarat-rouge-540',
+          'mugler-angel',
+          'nasomatto-black-afgano',
+          'initio-oud-greatness',
+          'xerjoff-naxos',
+          'lattafa-asad'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'die-besten-unisex-duefte',
+    title: 'Die besten Unisex-Düfte: für alle gemacht',
+    description:
+      'Düfte ohne Geschlecht: vielseitige Unisex-Parfüms, die an jedem gut riechen – von frisch bis warm-holzig.',
+    intro: [
+      'Unisex-Düfte sind nicht auf Damen oder Herren festgelegt – sie passen einfach zu dir, egal wer du bist. Oft sind es vielseitige, ausgewogene Kompositionen.',
+      'Hier unsere Lieblinge zum Teilen oder einfach für jeden Geschmack.'
+    ],
+    sections: [
+      {
+        perfumes: [
+          'baccarat-rouge-540',
+          'le-labo-santal-33',
+          'byredo-gypsy-water',
+          'tobacco-vanille',
+          'kilian-angels-share',
+          'orto-megamare',
+          'mancera-cedrat-boise',
+          'nishane-ani'
+        ]
+      }
+    ]
   }
 ];
 

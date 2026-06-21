@@ -140,6 +140,15 @@ const genderSearchTerms: Record<string, string> = {
   Unisex: 'unisex'
 };
 
+// Anklickbare Familien-Kacheln (filtern die Duftdatenbank).
+const FAMILY_TILES: { code: string; label: string; desc: string }[] = [
+  { code: 'clean', label: 'Clean', desc: 'Frisch, sauber, weißer Moschus.' },
+  { code: 'gourmand', label: 'Gourmand', desc: 'Vanille, Amber, weiche Süße.' },
+  { code: 'woody', label: 'Woody', desc: 'Holz, Leder, edle Tiefe.' },
+  { code: 'floral', label: 'Floral', desc: 'Rose, Jasmin, feminine Eleganz.' }
+];
+const familyDisplay: Record<string, string> = { clean: 'Clean', gourmand: 'Gourmand', woody: 'Woody', floral: 'Floral' };
+
 const emptyFamily = { clean: 0, gourmand: 0, woody: 0, floral: 0 };
 
 // Momentaufnahme des Quiz-Zustands – ermöglicht den „Zurück"-Knopf.
@@ -209,6 +218,7 @@ export default function Home() {
   const [lovedNote, setLovedNote] = useState('');
   const [dislikedNote, setDislikedNote] = useState('');
   const [anchorId, setAnchorId] = useState('');
+  const [familyFilter, setFamilyFilter] = useState('');
   const [history, setHistory] = useState<QuizSnapshot[]>([]);
   const [showResult, setShowResult] = useState(false);
   const [perfumes, setPerfumes] = useState<Perfume[]>(starterPerfumes);
@@ -232,12 +242,22 @@ export default function Home() {
         .map(p => ({ perfume: p, score: 0 }));
 
   const visible = ranked.filter(({ perfume: p }) => {
+    if (familyFilter && p.fragrance_family !== familyFilter) return false;
     if (!query) return true;
     const notes = [...(p.top_notes || []), ...(p.heart_notes || []), ...(p.base_notes || [])].join(' ');
     const genderTerms = p.gender ? genderSearchTerms[p.gender] || p.gender : '';
-    const haystack = `${p.perfume_name} ${p.fragrance_family} ${p.brands?.name || ''} ${genderTerms} ${p.season || ''} ${p.occasion || ''} ${notes}`.toLowerCase();
+    // Synonyme: "Schokolade" findet auch Kakao/Praline.
+    const synonyms = /kakao|schokolade|praline/i.test(notes) ? ' schokolade kakao praline' : '';
+    const haystack = `${p.perfume_name} ${p.fragrance_family} ${p.brands?.name || ''} ${genderTerms} ${p.season || ''} ${p.occasion || ''} ${notes}${synonyms}`.toLowerCase();
     return haystack.includes(query.toLowerCase());
   });
+
+  function selectFamily(code: string) {
+    setFamilyFilter(prev => (prev === code ? '' : code));
+    if (typeof document !== 'undefined') {
+      document.getElementById('database')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 
   const topPick = showResult ? visible[0] : undefined;
 
@@ -335,10 +355,17 @@ export default function Home() {
         </section>
 
         <section className="section grid">
-          <div className="tile"><h3>Clean</h3><p className="small">Frisch, sauber, weißer Moschus.</p></div>
-          <div className="tile"><h3>Gourmand</h3><p className="small">Vanille, Amber, weiche Süße.</p></div>
-          <div className="tile"><h3>Woody</h3><p className="small">Holz, Leder, edle Tiefe.</p></div>
-          <div className="tile"><h3>Floral</h3><p className="small">Rose, Jasmin, feminine Eleganz.</p></div>
+          {FAMILY_TILES.map(t => (
+            <button
+              key={t.code}
+              type="button"
+              className={`tile tile-family${familyFilter === t.code ? ' tile-active' : ''}`}
+              onClick={() => selectFamily(t.code)}
+            >
+              <h3>{t.label}</h3>
+              <p className="small">{t.desc}</p>
+            </button>
+          ))}
         </section>
 
         <section id="quiz" className="section card quiz">
@@ -409,11 +436,21 @@ export default function Home() {
               ? `Sortiert nach Match-Score für dein Profil${genderPref ? ` (${genderLabels[genderPref]})` : ''}. Klicke einen Duft für das volle Profil.`
               : 'Klicke auf einen Duft, um sein vollständiges Profil zu sehen. Mach das Quiz oben für deinen persönlichen Match-Score.'}
           </p>
-          <input className="search" placeholder="Suche nach Duft, Marke, Note, Geschlecht (z. B. Damen) oder Anlass…" value={query} onChange={e => setQuery(e.target.value)} />
+          <input className="search" placeholder="Suche nach Duft, Marke, Note (z. B. Schokolade), Geschlecht oder Anlass…" value={query} onChange={e => setQuery(e.target.value)} />
+          {familyFilter && (
+            <p className="small filter-chip-row">
+              Gefiltert nach <span className="filter-chip">{familyDisplay[familyFilter]}</span>
+              <button type="button" className="link-button filter-reset" onClick={() => setFamilyFilter('')}>Filter entfernen</button>
+            </p>
+          )}
           <div className="perfume-list">
-            {visible.map(({ perfume: p, score }) => (
-              <PerfumeTile perfume={p} matchPercent={showResult ? score : undefined} key={p.id} />
-            ))}
+            {visible.length === 0 ? (
+              <p className="small">Keine Düfte gefunden. Versuch einen anderen Suchbegriff oder entferne den Filter.</p>
+            ) : (
+              visible.map(({ perfume: p, score }) => (
+                <PerfumeTile perfume={p} matchPercent={showResult ? score : undefined} key={p.id} />
+              ))
+            )}
           </div>
         </section>
       </div>

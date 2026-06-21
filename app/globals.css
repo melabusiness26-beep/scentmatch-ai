@@ -112,7 +112,9 @@ button, .button { border: 0; border-radius: 999px; padding: 14px 24px; backgroun
 a.logo { text-decoration:none; color:inherit; }
 .top-pick { background:rgba(185,152,99,.14); border:1px solid rgba(185,152,99,.4); border-radius:24px; padding:20px 22px; margin:18px 0 24px; }
 .top-pick h3 { margin:4px 0 14px; color:var(--brown); }
-.quiz-progress { margin:6px 0 18px; }
+.quiz-progress { height:6px; margin:6px 0 18px; }
+.quiz .eyebrow { margin-bottom: 18px; }
+.footer-kicker { font-family: var(--font-sans), Arial, sans-serif; text-transform: uppercase; letter-spacing: .26em; font-size: 11px; font-weight: 600; color: var(--gold); margin: 10px 0 4px; }
 .quiz-hint { margin:-6px 0 14px; font-style:italic; }
 .quiz-back { margin-top:14px; background:none; border:0; color:var(--brown); cursor:pointer; font-family:var(--font-sans), Arial, sans-serif; font-size:14px; padding:6px 0; }
 .quiz-back:hover { text-decoration:underline; }
@@ -149,7 +151,8 @@ a.logo { text-decoration:none; color:inherit; }
 .tile-family { cursor:pointer; text-align:left; background:rgba(255,255,255,.55); color:var(--text); border:1px solid rgba(75,53,40,.1); border-radius:24px; padding:22px; font-family:var(--font-sans), Arial, sans-serif; font-weight:400; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
 .tile-family:hover { transform: translateY(-3px); box-shadow:0 18px 50px rgba(75,53,40,.16); border-color: rgba(185,152,99,.6); }
 .tile-family.tile-active { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold) inset, 0 18px 50px rgba(75,53,40,.16); }
-.tile-family h3 { margin:0 0 8px; color:var(--brown); font-size:22px; }
+.tile-family h3 { display:flex; align-items:center; gap:9px; margin:0 0 8px; color:var(--brown); font-size:22px; }
+.tile-family h3::before { content:''; width:8px; height:8px; border-radius:50%; background: var(--gold); flex:none; }
 
 /* Filter-Hinweis */
 .filter-chip-row { display:flex; align-items:center; gap:6px; margin:14px 0 0; }
@@ -170,7 +173,8 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 .tile-link:hover .cover { transform: scale(1.02); }
 
 /* Startmenü (Navigationsleiste, scrollt mit) */
-.site-header { position: sticky; top: 0; z-index: 50; background: rgba(251,246,238,.82); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(185,152,99,.22); }
+.site-header { position: sticky; top: 0; z-index: 50; background: rgba(251,246,238,.82); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(185,152,99,.22); transition: box-shadow .25s ease, background .25s ease; }
+.site-header.scrolled { background: rgba(251,246,238,.94); box-shadow: 0 10px 30px rgba(75,53,40,.10); }
 .header-inner { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .header-inner .logo { font-size: 24px; }
 .main-nav { display: flex; align-items: center; gap: 24px; }

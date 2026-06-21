@@ -63,6 +63,18 @@ export async function generateMetadata({
   };
 }
 
+function Cover({ perfume, large }: { perfume: Perfume; large?: boolean }) {
+  const className = `cover${large ? ' cover-large' : ''} cover-${perfume.fragrance_family || ''}`;
+  if (perfume.image_url) {
+    return <div className={className} style={{ backgroundImage: `url(${perfume.image_url})` }} />;
+  }
+  return (
+    <div className={className}>
+      <span className="cover-glyph">✦</span>
+    </div>
+  );
+}
+
 function StatRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="stat-row">
@@ -155,6 +167,7 @@ export default async function PerfumeDetailPage({
 
         <section className="detail-hero">
           <div>
+            <Cover perfume={perfume} large />
             <p className="small">{brandName}</p>
             <h1 className="detail-title">{perfume.perfume_name}</h1>
             <p className="lead">
@@ -206,6 +219,7 @@ export default async function PerfumeDetailPage({
             <div className="perfume-list">
               {similar.map(({ perfume: s, similarity }) => (
                 <Link className="tile tile-link" href={`/duft/${s.slug}`} key={s.id}>
+                  <Cover perfume={s} />
                   <div className="match-badge">{similarity}% ähnlich</div>
                   <h3>{s.perfume_name}</h3>
                   <p className="small">

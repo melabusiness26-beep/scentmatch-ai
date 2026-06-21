@@ -44,6 +44,15 @@ a.logo { text-decoration:none; color:inherit; }
 .quiz-back { margin-top:14px; background:none; border:0; color:var(--brown); cursor:pointer; font-family:Arial,sans-serif; font-size:14px; padding:6px 0; }
 .quiz-back:hover { text-decoration:underline; }
 .match-badge { display:inline-block; background:var(--brown); color:#fff; font-family:Arial,sans-serif; font-size:13px; font-weight:700; padding:5px 12px; border-radius:999px; margin-bottom:10px; }
+
+/* Duft-Bilder & elegante Platzhalter (nach Duftfamilie eingefärbt) */
+.cover { height:130px; border-radius:16px; margin-bottom:12px; background-color:#eadfce; background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; }
+.cover-large { height:230px; margin-bottom:18px; }
+.cover-glyph { font-size:38px; color:rgba(75,53,40,.5); }
+.cover-clean { background:linear-gradient(135deg,#bcd4d6,#eef4f3); }
+.cover-gourmand { background:linear-gradient(135deg,#dcbf95,#f3e6d6); }
+.cover-woody { background:linear-gradient(135deg,#9a7a5c,#d0b594); }
+.cover-floral { background:linear-gradient(135deg,#e6bccb,#f8e8ee); }
 .admin-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
 .field { margin-bottom:14px; }
 .field label { display:block; font-family:Arial,sans-serif; font-size:14px; color:#5d4b40; margin-bottom:6px; }

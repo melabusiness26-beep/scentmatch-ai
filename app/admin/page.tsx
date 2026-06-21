@@ -27,7 +27,8 @@ const emptyForm = {
   occasion: 'Alltag',
   top_notes: '',
   heart_notes: '',
-  base_notes: ''
+  base_notes: '',
+  image_url: ''
 };
 
 function slugify(value: string): string {
@@ -152,7 +153,8 @@ export default function AdminPage() {
         occasion: form.occasion,
         top_notes: toArray(form.top_notes),
         heart_notes: toArray(form.heart_notes),
-        base_notes: toArray(form.base_notes)
+        base_notes: toArray(form.base_notes),
+        image_url: form.image_url.trim() || null
       });
       if (error) throw error;
 
@@ -297,6 +299,10 @@ export default function AdminPage() {
             <div className="field">
               <label>Basisnoten (mit Komma getrennt)</label>
               <input value={form.base_notes} onChange={e => setField('base_notes', e.target.value)} />
+            </div>
+            <div className="field">
+              <label>Bild-Link (URL, optional)</label>
+              <input value={form.image_url} onChange={e => setField('image_url', e.target.value)} placeholder="https://… (nur Bilder, die du verwenden darfst)" />
             </div>
 
             {message && <p className="admin-msg" style={{ color: message.startsWith('Fehler') ? '#b3261e' : '#1b7a3d' }}>{message}</p>}

@@ -39,9 +39,26 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const year = new Date().getFullYear();
   return (
     <html lang="de" className={`${playfair.variable} ${inter.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <footer className="site-footer">
+          <div className="container footer-inner">
+            <div>
+              <div className="logo">ScentMatch<span className="logo-accent"> AI</span></div>
+              <p className="small footer-tag">Die moderne Duft-Findung – kuratiert in der Schweiz. Finde mit Quiz und intelligenter Match-Engine deinen Signature-Duft.</p>
+            </div>
+            <nav className="footer-links">
+              <a href="/#quiz">Quiz</a>
+              <a href="/#database">Düfte</a>
+              <a href="/ratgeber">Ratgeber</a>
+            </nav>
+          </div>
+          <div className="container footer-bottom small">© {year} ScentMatch AI · Preise &amp; Angaben ohne Gewähr.</div>
+        </footer>
+      </body>
     </html>
   );
 }

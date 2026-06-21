@@ -57,7 +57,23 @@ button, .button { border: 0; border-radius: 999px; padding: 14px 24px; backgroun
 .card { background: rgba(255,255,255,.66); border: 1px solid rgba(185,152,99,.28); box-shadow: 0 30px 80px rgba(75,53,40,.10); border-radius: 28px; padding: 30px; backdrop-filter: blur(2px); }
 .perfume-card { min-height: 420px; display:flex; flex-direction:column; justify-content:space-between; }
 .bottle { height: 240px; border-radius: 28px; background: linear-gradient(135deg, #f6eadb, #d5b98d); display: grid; place-items:center; font-size: 72px; }
-.section { margin-top: 70px; }
+.section { margin-top: 78px; }
+.section h2 { font-size: clamp(26px, 3.2vw, 38px); letter-spacing: -0.01em; margin: 0 0 8px; color: var(--brown); }
+
+/* Verfeinerte Duft-Karten */
+.tile-meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 14px; }
+.score-pill { background: rgba(185,152,99,.16); border: 1px solid rgba(185,152,99,.45); color: var(--brown); border-radius: 999px; padding: 4px 11px; font-family: var(--font-sans), Arial, sans-serif; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.tile h3 { font-size: 20px; }
+
+/* Edler Fußbereich */
+.site-footer { margin-top: 100px; background: radial-gradient(120% 130% at 100% 0%, #5a4131 0%, #3a2a20 50%, #241912 100%); color: #f3e9da; padding: 52px 0 28px; border-top: 1px solid rgba(185,152,99,.3); }
+.footer-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 28px; flex-wrap: wrap; }
+.site-footer .logo { color: #fbf3e6; }
+.footer-tag { color: rgba(243,233,218,.82); margin-top: 10px; max-width: 360px; }
+.footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
+.footer-links a { color: #f3e9da; text-decoration: none; font-family: var(--font-sans), Arial, sans-serif; font-size: 15px; transition: color .15s ease; }
+.footer-links a:hover { color: var(--gold); }
+.footer-bottom { margin-top: 30px; color: rgba(243,233,218,.6); border-top: 1px solid rgba(243,233,218,.15); padding-top: 18px; }
 .grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .tile { padding: 22px; border-radius: 24px; background: rgba(255,255,255,.55); border: 1px solid rgba(75,53,40,.1); }
 .tile h3 { margin: 0 0 8px; color: var(--brown); }

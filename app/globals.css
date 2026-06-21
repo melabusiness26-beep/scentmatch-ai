@@ -12,10 +12,11 @@ body {
   color: var(--text);
   font-family: var(--font-sans), Arial, sans-serif;
   background:
-    radial-gradient(1100px 600px at 50% -8%, #fffaf0 0%, rgba(255,250,240,0) 60%),
-    radial-gradient(820px 460px at 100% 0%, rgba(185,152,99,.12) 0%, rgba(185,152,99,0) 55%),
-    radial-gradient(700px 500px at 0% 12%, rgba(216,183,170,.10) 0%, rgba(216,183,170,0) 55%),
-    linear-gradient(180deg, #fbf6ee 0%, #f1e6d6 100%);
+    radial-gradient(1100px 620px at 50% -10%, #fffdf7 0%, rgba(255,253,247,0) 60%),
+    radial-gradient(900px 500px at 100% 2%, rgba(185,152,99,.16) 0%, rgba(185,152,99,0) 55%),
+    radial-gradient(760px 540px at -5% 14%, rgba(216,183,170,.14) 0%, rgba(216,183,170,0) 55%),
+    radial-gradient(900px 700px at 50% 110%, rgba(185,152,99,.10) 0%, rgba(185,152,99,0) 55%),
+    linear-gradient(180deg, #fbf6ee 0%, #efe2d0 100%);
   background-attachment: fixed;
 }
 main { min-height: 100vh; }
@@ -147,4 +148,35 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 .cover { transition: transform .2s ease; }
 .tile-link:hover .cover { transform: scale(1.02); }
 
-@media (max-width: 800px) { .hero,.grid,.perfume-list,.detail-hero { grid-template-columns: 1fr; } .nav { align-items:flex-start; gap:12px; flex-direction:column; } }
+/* Startmenü (Navigationsleiste, scrollt mit) */
+.site-header { position: sticky; top: 0; z-index: 50; background: rgba(251,246,238,.82); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(185,152,99,.22); }
+.header-inner { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.header-inner .logo { font-size: 24px; }
+.main-nav { display: flex; align-items: center; gap: 24px; }
+.main-nav a { color: var(--brown); text-decoration: none; font-family: var(--font-sans), Arial, sans-serif; font-size: 15px; transition: color .15s ease; }
+.main-nav a:hover { color: var(--gold); }
+.nav-cta { color: #2a1d12 !important; background: linear-gradient(180deg, #d8b277, #b1894f); padding: 10px 18px; }
+.nav-cta:hover { color: #2a1d12 !important; }
+
+/* „Warum"-Bereich */
+.why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 22px; }
+.why-card { background: rgba(255,255,255,.6); border: 1px solid rgba(185,152,99,.25); border-radius: 22px; padding: 24px; transition: transform .15s ease, box-shadow .15s ease; }
+.why-card:hover { transform: translateY(-3px); box-shadow: 0 18px 50px rgba(75,53,40,.12); }
+.why-icon { width: 46px; height: 46px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--brown); background: rgba(185,152,99,.16); border: 1px solid rgba(185,152,99,.4); margin-bottom: 14px; }
+.why-card h3 { margin: 0 0 8px; color: var(--brown); font-size: 19px; }
+
+/* Responsive Raster: passt sich automatisch an die Bildschirmbreite an */
+.perfume-list { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
+.grid { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+
+@media (max-width: 900px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 800px) { .hero, .detail-hero { grid-template-columns: 1fr; } }
+@media (max-width: 720px) {
+  .main-nav a:not(.nav-cta) { display: none; }
+  .main-nav { gap: 12px; }
+  .container { padding: 18px 16px 50px; }
+  .section { margin-top: 52px; }
+  .hero-stage { padding: 36px 22px; }
+  .card { padding: 22px; border-radius: 22px; }
+}
+@media (max-width: 560px) { .why-grid { grid-template-columns: 1fr; } .perfume-list { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } }

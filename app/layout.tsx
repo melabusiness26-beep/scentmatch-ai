@@ -1,6 +1,12 @@
 import './globals.css';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Playfair_Display, Inter } from 'next/font/google';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#241912'
+};
 
 // Edle Schriftarten: Playfair Display (Serife) für Überschriften,
 // Inter (klar, modern) für Texte.

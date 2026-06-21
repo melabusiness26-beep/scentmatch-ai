@@ -46,12 +46,19 @@ const GENDER_DESC: Record<string, string> = {
   Men: ' für Herren',
   Unisex: ', unisex tragbar'
 };
-// Geschmackvolle Stimmungssätze – emotional, aber bewusst nicht kitschig.
+// Geschmackvolle, bildhafte Stimmungssätze – emotional, aber nicht kitschig.
 const FAMILY_MOOD: Record<string, string> = {
-  clean: 'Er hinterlässt einen gepflegten, unangestrengt frischen Eindruck.',
-  gourmand: 'Er wirkt warm, nahbar und angenehm einladend.',
-  woody: 'Er strahlt ruhige Eleganz und Selbstbewusstsein aus.',
-  floral: 'Er wirkt charmant, weich und feminin.'
+  clean: 'Er fühlt sich an wie ein frisch gelüfteter Morgen – klar, leicht und unbeschwert.',
+  gourmand: 'Er legt sich warm und weich um dich, süß und vertraut wie ein gemütlicher Abend.',
+  woody: 'Er umgibt dich mit ruhiger, selbstbewusster Eleganz – tief, edel und souverän.',
+  floral: 'Er blüht zart auf der Haut auf – romantisch, weich und voller Charme.'
+};
+// Kleine „Szene" je Anlass – macht die Beschreibung greifbarer.
+const OCCASION_MOOD: Record<string, string> = {
+  Date: 'Wie geschaffen für Momente, in denen du in Erinnerung bleiben möchtest.',
+  Abend: 'Gemacht für besondere Abende, an denen du auffallen darfst.',
+  Alltag: 'Ein verlässlicher Begleiter, der dich unaufdringlich durch den Tag trägt.',
+  'Büro': 'Dezent genug fürs Büro – und gepflegt genug, um Eindruck zu hinterlassen.'
 };
 
 function notesList(notes: string[] | null): string {
@@ -94,9 +101,16 @@ export function describePerfume(p: Perfume): string {
     sentences.push(`${joined.charAt(0).toUpperCase()}${joined.slice(1)}.`);
   }
 
-  if (p.occasion && p.season) sentences.push(`Ideal für ${p.occasion} und die Saison ${p.season}.`);
+  if (p.occasion && OCCASION_MOOD[p.occasion]) sentences.push(OCCASION_MOOD[p.occasion]);
   else if (p.occasion) sentences.push(`Ideal für ${p.occasion}.`);
-  else if (p.season) sentences.push(`Ideal für die Saison ${p.season}.`);
+
+  if (p.season) {
+    sentences.push(
+      p.season === 'Ganzjährig'
+        ? 'Am schönsten trägt er sich das ganze Jahr über.'
+        : `Am schönsten in der Saison ${p.season}.`
+    );
+  }
 
   if (p.price_chf != null) sentences.push(`Richtpreis: ca. CHF ${p.price_chf}.`);
 

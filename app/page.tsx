@@ -263,14 +263,15 @@ export default function Home() {
               {questions[step].kind === 'anchor' ? (
                 <div className="answers">
                   <select className="search" value={anchorId} onChange={e => setAnchorId(e.target.value)}>
-                    <option value="">Ich kenne noch keinen – überspringen</option>
+                    <option value="">– Duft auswählen –</option>
                     {perfumes.map(p => (
                       <option value={p.id} key={p.id}>
                         {p.perfume_name}{p.brands?.name ? ` – ${p.brands.name}` : ''}
                       </option>
                     ))}
                   </select>
-                  <button className="answer" onClick={advance}>Weiter</button>
+                  <p className="small">Optional – du kannst diese Frage auch einfach überspringen.</p>
+                  <button className="answer" onClick={advance}>{anchorId ? 'Weiter' : 'Überspringen'}</button>
                 </div>
               ) : (
                 <div className="answers">

@@ -46,6 +46,13 @@ const GENDER_DESC: Record<string, string> = {
   Men: ' für Herren',
   Unisex: ', unisex tragbar'
 };
+// Geschmackvolle Stimmungssätze – emotional, aber bewusst nicht kitschig.
+const FAMILY_MOOD: Record<string, string> = {
+  clean: 'Er hinterlässt einen gepflegten, unangestrengt frischen Eindruck.',
+  gourmand: 'Er wirkt warm, nahbar und angenehm einladend.',
+  woody: 'Er strahlt ruhige Eleganz und Selbstbewusstsein aus.',
+  floral: 'Er wirkt charmant, weich und feminin.'
+};
 
 function notesList(notes: string[] | null): string {
   return notes && notes.length ? notes.join(', ') : '';
@@ -59,13 +66,17 @@ export function describePerfume(p: Perfume): string {
 
   sentences.push(`${p.perfume_name}${brand} ist ein ${fam ? `${fam} ` : ''}Duft${gender}.`);
 
+  if (p.fragrance_family && FAMILY_MOOD[p.fragrance_family]) {
+    sentences.push(FAMILY_MOOD[p.fragrance_family]);
+  }
+
   const top = notesList(p.top_notes);
   const heart = notesList(p.heart_notes);
   const base = notesList(p.base_notes);
   const bits: string[] = [];
   if (top) bits.push(`öffnet mit ${top}`);
   if (heart) bits.push(`entfaltet im Herzen ${heart}`);
-  if (base) bits.push(`ruht auf ${base}`);
+  if (base) bits.push(`klingt mit ${base} aus`);
   if (bits.length === 1) sentences.push(`Er ${bits[0]}.`);
   else if (bits.length > 1) sentences.push(`Er ${bits.slice(0, -1).join(', ')} und ${bits[bits.length - 1]}.`);
 

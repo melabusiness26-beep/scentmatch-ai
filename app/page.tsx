@@ -133,6 +133,13 @@ const profileText: Record<string, { title: string; text: string }> = {
 
 const genderLabels: Record<string, string> = { women: 'Damen', men: 'Herren', unisex: 'Unisex' };
 
+// Deutsche Suchbegriffe je gespeichertem Geschlecht (Werte sind englisch gespeichert).
+const genderSearchTerms: Record<string, string> = {
+  Women: 'damen frauen women weiblich',
+  Men: 'herren männer men männlich',
+  Unisex: 'unisex'
+};
+
 const emptyFamily = { clean: 0, gourmand: 0, woody: 0, floral: 0 };
 
 // Momentaufnahme des Quiz-Zustands – ermöglicht den „Zurück"-Knopf.
@@ -227,7 +234,8 @@ export default function Home() {
   const visible = ranked.filter(({ perfume: p }) => {
     if (!query) return true;
     const notes = [...(p.top_notes || []), ...(p.heart_notes || []), ...(p.base_notes || [])].join(' ');
-    const haystack = `${p.perfume_name} ${p.fragrance_family} ${p.brands?.name || ''} ${p.season || ''} ${p.occasion || ''} ${notes}`.toLowerCase();
+    const genderTerms = p.gender ? genderSearchTerms[p.gender] || p.gender : '';
+    const haystack = `${p.perfume_name} ${p.fragrance_family} ${p.brands?.name || ''} ${genderTerms} ${p.season || ''} ${p.occasion || ''} ${notes}`.toLowerCase();
     return haystack.includes(query.toLowerCase());
   });
 
@@ -401,7 +409,7 @@ export default function Home() {
               ? `Sortiert nach Match-Score für dein Profil${genderPref ? ` (${genderLabels[genderPref]})` : ''}. Klicke einen Duft für das volle Profil.`
               : 'Klicke auf einen Duft, um sein vollständiges Profil zu sehen. Mach das Quiz oben für deinen persönlichen Match-Score.'}
           </p>
-          <input className="search" placeholder="Suche nach Duft, Marke, Note (z. B. Bergamotte) oder Anlass…" value={query} onChange={e => setQuery(e.target.value)} />
+          <input className="search" placeholder="Suche nach Duft, Marke, Note, Geschlecht (z. B. Damen) oder Anlass…" value={query} onChange={e => setQuery(e.target.value)} />
           <div className="perfume-list">
             {visible.map(({ perfume: p, score }) => (
               <PerfumeTile perfume={p} matchPercent={showResult ? score : undefined} key={p.id} />

@@ -332,7 +332,7 @@ export default function Home() {
           {!showResult ? (
             <>
               <p className="small">Frage {step + 1} von {questions.length}</p>
-              <div className="scorebar quiz-progress"><span style={{ width: `${((step + 1) / questions.length) * 100}%` }} /></div>
+              <div className="scorebar quiz-progress"><span style={{ width: `${(step / questions.length) * 100}%` }} /></div>
               <div className="question">{questions[step].q}</div>
               {questions[step].hint && <p className="small quiz-hint">{questions[step].hint}</p>}
               {questions[step].kind === 'anchor' ? (

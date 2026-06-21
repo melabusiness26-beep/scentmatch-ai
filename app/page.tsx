@@ -353,25 +353,28 @@ export default function Home() {
     <main>
       <div className="container">
         <nav className="nav">
-          <div className="logo">ScentMatch AI</div>
+          <div className="logo">ScentMatch<span className="logo-accent"> AI</span></div>
           <Link className="badge" href="/ratgeber">Duft-Ratgeber</Link>
         </nav>
 
-        <section className="hero">
-          <div>
-            <h1>Finde deinen Signature-Duft in 3 Minuten.</h1>
-            <p className="lead">ScentMatch verbindet ein elegantes Duft-Quiz mit einer intelligenten Match-Engine: Jeder Duft wird gegen deine Antworten zu Geschlecht, Duftrichtung, Anlass, Saison, Intensität und Budget bewertet.</p>
-            <div className="cta">
-              <a className="button" href="#quiz">Quiz starten</a>
-              <a className="button secondary" href="#database">Düfte ansehen</a>
-              <Link className="button secondary" href="/ratgeber">Ratgeber lesen</Link>
-            </div>
-          </div>
-          <div className="card perfume-card">
-            <div className="bottle">✦</div>
+        <section className="hero-stage">
+          <div className="hero">
             <div>
-              <h2>Premium statt Zufall</h2>
-              <p className="small">Keine blinde TikTok-Empfehlung. ScentMatch errechnet pro Duft einen echten Match-Score in Prozent.</p>
+              <p className="eyebrow">Dein Signature-Duft · kuratiert in der Schweiz</p>
+              <h1>Finde deinen Signature-Duft in 3 Minuten.</h1>
+              <p className="lead">ScentMatch verbindet ein elegantes Duft-Quiz mit einer intelligenten Match-Engine: Jeder Duft wird gegen deine Antworten zu Geschlecht, Duftrichtung, Anlass, Saison, Intensität und Budget bewertet.</p>
+              <div className="cta">
+                <a className="button" href="#quiz">Quiz starten</a>
+                <a className="button secondary" href="#database">Düfte ansehen</a>
+                <Link className="button secondary" href="/ratgeber">Ratgeber lesen</Link>
+              </div>
+            </div>
+            <div className="card perfume-card">
+              <div className="bottle">✦</div>
+              <div>
+                <h2>Premium statt Zufall</h2>
+                <p className="small">Keine blinde TikTok-Empfehlung. ScentMatch errechnet pro Duft einen echten Match-Score in Prozent.</p>
+              </div>
             </div>
           </div>
         </section>

@@ -354,12 +354,19 @@ export default function Home() {
 
   return (
     <main>
-      <div className="container">
-        <nav className="nav">
+      <header className="site-header">
+        <div className="header-inner">
           <div className="logo">ScentMatch<span className="logo-accent"> AI</span></div>
-          <Link className="badge" href="/ratgeber">Duft-Ratgeber</Link>
-        </nav>
-
+          <nav className="main-nav">
+            <a href="#quiz">Quiz</a>
+            <a href="#warum">Warum wir?</a>
+            <a href="#database">Düfte</a>
+            <Link href="/ratgeber">Ratgeber</Link>
+            <a className="button nav-cta" href="#quiz">Duft finden</a>
+          </nav>
+        </div>
+      </header>
+      <div className="container">
         <section className="hero-stage">
           <div className="hero">
             <div>
@@ -378,6 +385,33 @@ export default function Home() {
                 <h2>Premium statt Zufall</h2>
                 <p className="small">Keine blinde TikTok-Empfehlung. ScentMatch errechnet pro Duft einen echten Match-Score in Prozent.</p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="warum" className="section">
+          <p className="eyebrow">Warum ScentMatch AI?</p>
+          <h2>Duft finden, das sich nicht nach Glücksspiel anfühlt</h2>
+          <div className="why-grid">
+            <div className="why-card">
+              <div className="why-icon">✦</div>
+              <h3>Echter Match-Score</h3>
+              <p className="small">Jeder Duft wird gegen deine Antworten berechnet – kein Zufall, keine blinde TikTok-Empfehlung.</p>
+            </div>
+            <div className="why-card">
+              <div className="why-icon">❖</div>
+              <h3>Günstige Alternativen</h3>
+              <p className="small">Zu teuren Düften zeigen wir automatisch ähnlich riechende, günstigere Varianten.</p>
+            </div>
+            <div className="why-card">
+              <div className="why-icon">✿</div>
+              <h3>Kuratiert & ehrlich</h3>
+              <p className="small">Sorgfältig ausgewählte Düfte – von Bestsellern bis zu seltenen Nischenperlen.</p>
+            </div>
+            <div className="why-card">
+              <div className="why-icon">♡</div>
+              <h3>Kostenlos & ohne Anmeldung</h3>
+              <p className="small">Sofort loslegen: Quiz machen, Duft finden, fertig – in unter 3 Minuten.</p>
             </div>
           </div>
         </section>

@@ -229,6 +229,7 @@ export default function Home() {
   const [familyFilter, setFamilyFilter] = useState('');
   const [currentSeason, setCurrentSeason] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [history, setHistory] = useState<QuizSnapshot[]>([]);
   const [showResult, setShowResult] = useState(false);
   const [perfumes, setPerfumes] = useState<Perfume[]>(starterPerfumes);
@@ -246,6 +247,12 @@ export default function Home() {
     if (m >= 5 && m <= 7) setCurrentSeason('Sommer');
     else if (m >= 2 && m <= 4) setCurrentSeason('Frühling');
     else setCurrentSeason('Herbst/Winter');
+
+    // Feiner Schatten am Menü, sobald man scrollt.
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const answers: QuizAnswers = { gender: genderPref, family, occasion, season, sillage, budgetMax, lovedNote, dislikedNote, anchorId };
@@ -355,7 +362,7 @@ export default function Home() {
 
   return (
     <main>
-      <header className="site-header">
+      <header className={`site-header${scrolled ? ' scrolled' : ''}`}>
         <div className="header-inner">
           <div className="logo">ScentMatch</div>
           <button
@@ -446,21 +453,26 @@ export default function Home() {
           </section>
         )}
 
-        <section className="section grid">
-          {FAMILY_TILES.map(t => (
-            <button
-              key={t.code}
-              type="button"
-              className={`tile tile-family${familyFilter === t.code ? ' tile-active' : ''}`}
-              onClick={() => selectFamily(t.code)}
-            >
-              <h3>{t.label}</h3>
-              <p className="small">{t.desc}</p>
-            </button>
-          ))}
+        <section className="section">
+          <p className="eyebrow">Duftrichtungen</p>
+          <h2>Entdecke nach Stil</h2>
+          <div className="grid">
+            {FAMILY_TILES.map(t => (
+              <button
+                key={t.code}
+                type="button"
+                className={`tile tile-family${familyFilter === t.code ? ' tile-active' : ''}`}
+                onClick={() => selectFamily(t.code)}
+              >
+                <h3>{t.label}</h3>
+                <p className="small">{t.desc}</p>
+              </button>
+            ))}
+          </div>
         </section>
 
         <section id="quiz" className="section card quiz">
+          <p className="eyebrow">Duft-Quiz</p>
           {!showResult ? (
             <>
               <p className="small">Frage {step + 1} von {questions.length}</p>

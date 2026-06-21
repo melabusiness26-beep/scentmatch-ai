@@ -54,6 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="container footer-inner">
             <div>
               <div className="logo">ScentMatch</div>
+              <p className="footer-kicker">Discovery · Fragrance · Boutique</p>
               <p className="small footer-tag">Die moderne Duft-Findung – kuratiert in der Schweiz. Finde mit Quiz und intelligenter Match-Engine deinen Signature-Duft.</p>
             </div>
             <nav className="footer-links">

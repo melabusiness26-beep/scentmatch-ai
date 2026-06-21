@@ -43,6 +43,28 @@ function slugify(value: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
+type AdminPerfume = {
+  id: string;
+  perfume_name: string;
+  brand_id: string | null;
+  fragrance_family: string | null;
+  gender: string | null;
+  price_chf: number | null;
+  longevity: number | null;
+  sillage: number | null;
+  scentmatch_score: number | null;
+  season: string | null;
+  occasion: string | null;
+  top_notes: string[] | null;
+  heart_notes: string[] | null;
+  base_notes: string[] | null;
+  image_url: string | null;
+  affiliate_url: string | null;
+};
+
+const PERFUME_EDIT_FIELDS =
+  'id, perfume_name, brand_id, fragrance_family, gender, price_chf, longevity, sillage, scentmatch_score, season, occasion, top_notes, heart_notes, base_notes, image_url, affiliate_url';
+
 export default function AdminPage() {
   const [checking, setChecking] = useState(true);
   const [session, setSession] = useState<any>(null);
@@ -53,6 +75,8 @@ export default function AdminPage() {
   const [resetSent, setResetSent] = useState(false);
 
   const [brands, setBrands] = useState<{ id: string; name: string }[]>([]);
+  const [perfumes, setPerfumes] = useState<AdminPerfume[]>([]);
+  const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState({ ...emptyForm });
   const [message, setMessage] = useState('');
   const [saving, setSaving] = useState(false);
@@ -70,17 +94,55 @@ export default function AdminPage() {
     return () => sub.subscription.unsubscribe();
   }, []);
 
+  async function loadBrands() {
+    const { data } = await supabase.from('brands').select('id, name').order('name');
+    setBrands((data as { id: string; name: string }[]) || []);
+  }
+
+  async function loadPerfumes() {
+    const { data } = await supabase.from('perfumes').select(PERFUME_EDIT_FIELDS).order('perfume_name');
+    setPerfumes((data as AdminPerfume[]) || []);
+  }
+
   useEffect(() => {
     if (!session) return;
-    supabase
-      .from('brands')
-      .select('id, name')
-      .order('name')
-      .then(({ data }) => setBrands((data as { id: string; name: string }[]) || []));
+    loadBrands();
+    loadPerfumes();
   }, [session]);
 
   function setField(key: keyof typeof emptyForm, value: string) {
     setForm(prev => ({ ...prev, [key]: value }));
+  }
+
+  function startEdit(id: string) {
+    const p = perfumes.find(x => x.id === id);
+    if (!p) return;
+    setEditingId(p.id);
+    setForm({
+      perfume_name: p.perfume_name || '',
+      brand: brands.find(b => b.id === p.brand_id)?.name || '',
+      fragrance_family: p.fragrance_family || 'clean',
+      gender: p.gender || 'Unisex',
+      price_chf: p.price_chf?.toString() ?? '',
+      longevity: p.longevity?.toString() ?? '',
+      sillage: p.sillage?.toString() ?? '',
+      scentmatch_score: p.scentmatch_score?.toString() ?? '',
+      season: p.season || 'Ganzjährig',
+      occasion: p.occasion || 'Alltag',
+      top_notes: (p.top_notes || []).join(', '),
+      heart_notes: (p.heart_notes || []).join(', '),
+      base_notes: (p.base_notes || []).join(', '),
+      image_url: p.image_url || '',
+      affiliate_url: p.affiliate_url || ''
+    });
+    setMessage('');
+    if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function cancelEdit() {
+    setEditingId(null);
+    setForm({ ...emptyForm });
+    setMessage('');
   }
 
   async function login(e: React.FormEvent) {
@@ -140,9 +202,10 @@ export default function AdminPage() {
       const toArray = (s: string) => s.split(',').map(x => x.trim()).filter(Boolean);
       const toNumber = (s: string) => (s === '' ? null : Number(s));
 
-      const { error } = await supabase.from('perfumes').insert({
+      // Gemeinsame Felder. Beim Bearbeiten lassen wir slug und description
+      // bewusst unangetastet (Links bleiben gleich, manuelle Texte erhalten).
+      const fields = {
         perfume_name: name,
-        slug: slugify(name),
         brand_id: brandId,
         fragrance_family: form.fragrance_family,
         gender: form.gender,
@@ -157,13 +220,22 @@ export default function AdminPage() {
         base_notes: toArray(form.base_notes),
         image_url: form.image_url.trim() || null,
         affiliate_url: form.affiliate_url.trim() || null
-      });
-      if (error) throw error;
+      };
 
-      setMessage(`✓ Duft gespeichert: ${name}`);
+      if (editingId) {
+        const { error } = await supabase.from('perfumes').update(fields).eq('id', editingId);
+        if (error) throw error;
+        setMessage(`✓ Duft aktualisiert: ${name}`);
+      } else {
+        const { error } = await supabase.from('perfumes').insert({ ...fields, slug: slugify(name) });
+        if (error) throw error;
+        setMessage(`✓ Duft gespeichert: ${name}`);
+      }
+
+      setEditingId(null);
       setForm({ ...emptyForm });
-      const { data: refreshed } = await supabase.from('brands').select('id, name').order('name');
-      setBrands((refreshed as { id: string; name: string }[]) || []);
+      await loadBrands();
+      await loadPerfumes();
     } catch (err: any) {
       setMessage(`Fehler: ${err?.message || 'unbekannt'}`);
     }
@@ -232,8 +304,31 @@ export default function AdminPage() {
         </nav>
 
         <section className="section card">
-          <h2>Neuen Duft hinzufügen</h2>
-          <p className="small">Mehrere Noten mit Komma trennen (z. B. „Bergamotte, Zitrone, Neroli"). Pflichtfeld ist nur der Name.</p>
+          <h2>Bestehenden Duft bearbeiten</h2>
+          <p className="small">
+            Wähle einen Duft aus, um seine Daten zu prüfen und zu korrigieren. Der Link (slug) und
+            eine eventuell vorhandene eigene Beschreibung bleiben dabei erhalten.
+          </p>
+          <select
+            className="search"
+            value={editingId || ''}
+            onChange={e => (e.target.value ? startEdit(e.target.value) : cancelEdit())}
+          >
+            <option value="">– Duft zum Bearbeiten wählen ({perfumes.length}) –</option>
+            {perfumes.map(p => (
+              <option value={p.id} key={p.id}>
+                {p.perfume_name}
+              </option>
+            ))}
+          </select>
+        </section>
+
+        <section className="section card">
+          <h2>{editingId ? 'Duft bearbeiten' : 'Neuen Duft hinzufügen'}</h2>
+          <p className="small">
+            Mehrere Noten mit Komma trennen (z. B. „Bergamotte, Zitrone, Neroli"). Pflichtfeld ist nur der Name.
+            {editingId && ' Du bearbeitest gerade einen bestehenden Duft.'}
+          </p>
 
           <form onSubmit={save}>
             <div className="admin-grid">
@@ -313,7 +408,16 @@ export default function AdminPage() {
 
             {message && <p className="admin-msg" style={{ color: message.startsWith('Fehler') ? '#b3261e' : '#1b7a3d' }}>{message}</p>}
 
-            <button className="button" type="submit" disabled={saving}>{saving ? 'Speichert…' : 'Duft speichern'}</button>
+            <div className="cta">
+              <button className="button" type="submit" disabled={saving}>
+                {saving ? 'Speichert…' : editingId ? 'Änderungen speichern' : 'Duft speichern'}
+              </button>
+              {editingId && (
+                <button className="button secondary" type="button" onClick={cancelEdit} disabled={saving}>
+                  Abbrechen / neuer Duft
+                </button>
+              )}
+            </div>
           </form>
         </section>
       </div>

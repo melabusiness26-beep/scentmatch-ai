@@ -21,6 +21,24 @@ body {
 main { min-height: 100vh; }
 /* Edle Serifen-Überschriften */
 h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-display), Georgia, 'Times New Roman', serif; font-weight: 600; }
+.logo-accent { color: var(--gold); }
+
+/* Dramatischer, dunkler Startbereich mit Gold-Akzenten */
+.eyebrow { font-family: var(--font-sans), Arial, sans-serif; text-transform: uppercase; letter-spacing: .26em; font-size: 12px; font-weight: 600; color: var(--gold); margin: 0 0 16px; }
+.hero-stage { position: relative; overflow: hidden; margin-top: 8px; padding: 64px 56px; border-radius: 36px; color: #f3e9da; background: radial-gradient(130% 130% at 0% 0%, #5a4131 0%, #3a2a20 48%, #241912 100%); border: 1px solid rgba(185,152,99,.35); box-shadow: 0 44px 110px rgba(36,25,18,.38); }
+.hero-stage::before { content: ''; position: absolute; top: -28%; right: -8%; width: 540px; height: 540px; background: radial-gradient(circle, rgba(185,152,99,.40), rgba(185,152,99,0) 62%); pointer-events: none; }
+.hero-stage .hero { position: relative; z-index: 1; }
+.hero-stage h1 { color: #fbf3e6; }
+.hero-stage p.lead { color: rgba(243,233,218,.86); }
+.hero-stage .button { background: linear-gradient(180deg, #d8b277, #b1894f); color: #2a1d12; }
+.hero-stage .button:hover { box-shadow: 0 12px 28px rgba(185,152,99,.45); }
+.hero-stage .secondary { background: rgba(255,255,255,.05); color: #f3e9da; border: 1px solid rgba(243,233,218,.45); }
+.hero-stage .secondary:hover { border-color: var(--gold); color: #fff; }
+.hero-stage .perfume-card { background: rgba(255,255,255,.07); border: 1px solid rgba(185,152,99,.45); color: #f3e9da; box-shadow: none; }
+.hero-stage .perfume-card h2 { color: #fbf3e6; }
+.hero-stage .perfume-card p.small { color: rgba(243,233,218,.82); }
+.hero-stage .bottle { background: linear-gradient(135deg, rgba(216,183,170,.4), rgba(185,152,99,.16)); color: #fbf3e6; }
+@media (max-width: 800px) { .hero-stage { padding: 40px 24px; } }
 .container { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
 .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 54px; }
 .logo { font-size: 28px; font-weight: 700; letter-spacing: -0.04em; }

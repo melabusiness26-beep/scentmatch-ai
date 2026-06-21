@@ -1,7 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getPerfumeBySlug, getAllPerfumeSlugs, type Perfume } from '@/lib/perfumes';
+import {
+  getPerfumeBySlug,
+  getAllPerfumeSlugs,
+  getPerfumes,
+  findSimilarPerfumes,
+  type Perfume
+} from '@/lib/perfumes';
 
 // Detailseiten werden stündlich neu generiert (frische Daten, schnelle Auslieferung).
 export const revalidate = 3600;
@@ -130,6 +136,11 @@ export default async function PerfumeDetailPage({
     (perfume.heart_notes && perfume.heart_notes.length > 0) ||
     (perfume.base_notes && perfume.base_notes.length > 0);
 
+  // Ähnliche Düfte aus dem gesamten Katalog ermitteln (gleiche Familie,
+  // geteilte Noten, ähnliche Intensität). Nur Treffer mit echter Ähnlichkeit zeigen.
+  const pool = (await getPerfumes(500)).filter((p) => p.slug);
+  const similar = findSimilarPerfumes(perfume, pool, 4).filter((s) => s.similarity >= 30);
+
   return (
     <main>
       <div className="container">
@@ -183,6 +194,31 @@ export default async function PerfumeDetailPage({
             <Notes title="Kopfnoten" notes={perfume.top_notes} />
             <Notes title="Herznoten" notes={perfume.heart_notes} />
             <Notes title="Basisnoten" notes={perfume.base_notes} />
+          </section>
+        )}
+
+        {similar.length > 0 && (
+          <section className="section">
+            <h2>Riecht ähnlich wie …</h2>
+            <p className="small">
+              Düfte aus unserem Katalog, die {perfume.perfume_name} im Charakter am nächsten kommen.
+            </p>
+            <div className="perfume-list">
+              {similar.map(({ perfume: s, similarity }) => (
+                <Link className="tile tile-link" href={`/duft/${s.slug}`} key={s.id}>
+                  <div className="match-badge">{similarity}% ähnlich</div>
+                  <h3>{s.perfume_name}</h3>
+                  <p className="small">
+                    {s.brands?.name || 'Marke offen'} · {familyLabel(s.fragrance_family)}
+                  </p>
+                  <p className="small">
+                    Saison: {s.season || 'offen'}
+                    <br />
+                    Anlass: {s.occasion || 'offen'}
+                  </p>
+                </Link>
+              ))}
+            </div>
           </section>
         )}
 

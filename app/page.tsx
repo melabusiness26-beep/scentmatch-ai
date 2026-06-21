@@ -197,8 +197,11 @@ function PerfumeTile({ perfume, matchPercent }: { perfume: Perfume; matchPercent
       <PerfumeCover perfume={perfume} />
       {matchPercent != null && <div className="match-badge">{matchPercent}% Match</div>}
       <h3>{perfume.perfume_name}</h3>
-      <p className="small">{perfume.brands?.name || 'Marke offen'} · {perfume.fragrance_family || 'Duftfamilie offen'}</p>
-      <p className="small">Saison: {perfume.season || 'offen'}<br />Anlass: {perfume.occasion || 'offen'}<br />Score: {perfume.scentmatch_score || 80}/100</p>
+      <p className="small">{perfume.brands?.name || 'Marke offen'} · {familyDisplay[perfume.fragrance_family || ''] || 'Duftfamilie offen'}</p>
+      <div className="tile-meta">
+        <span className="score-pill">Score {perfume.scentmatch_score ?? 80}</span>
+        <span className="small">{perfume.season || 'Ganzjährig'} · {perfume.occasion || 'flexibel'}</span>
+      </div>
     </>
   );
 

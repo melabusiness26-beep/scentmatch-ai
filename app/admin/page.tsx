@@ -28,7 +28,8 @@ const emptyForm = {
   top_notes: '',
   heart_notes: '',
   base_notes: '',
-  image_url: ''
+  image_url: '',
+  affiliate_url: ''
 };
 
 function slugify(value: string): string {
@@ -154,7 +155,8 @@ export default function AdminPage() {
         top_notes: toArray(form.top_notes),
         heart_notes: toArray(form.heart_notes),
         base_notes: toArray(form.base_notes),
-        image_url: form.image_url.trim() || null
+        image_url: form.image_url.trim() || null,
+        affiliate_url: form.affiliate_url.trim() || null
       });
       if (error) throw error;
 
@@ -303,6 +305,10 @@ export default function AdminPage() {
             <div className="field">
               <label>Bild-Link (URL, optional)</label>
               <input value={form.image_url} onChange={e => setField('image_url', e.target.value)} placeholder="https://… (nur Bilder, die du verwenden darfst)" />
+            </div>
+            <div className="field">
+              <label>Affiliate-Link / Shop-URL (optional)</label>
+              <input value={form.affiliate_url} onChange={e => setField('affiliate_url', e.target.value)} placeholder="https://… (dein persönlicher Partner-Link zum Shop)" />
             </div>
 
             {message && <p className="admin-msg" style={{ color: message.startsWith('Fehler') ? '#b3261e' : '#1b7a3d' }}>{message}</p>}

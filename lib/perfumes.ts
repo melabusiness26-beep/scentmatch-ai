@@ -20,6 +20,7 @@ export type Perfume = {
   occasion: string | null;
   description: string | null;
   image_url: string | null;
+  affiliate_url: string | null;
   top_notes: string[] | null;
   heart_notes: string[] | null;
   base_notes: string[] | null;
@@ -29,7 +30,15 @@ export type Perfume = {
 // Felder, die wir aus Supabase laden. Zentral definiert, damit Startseite und
 // Detailseite garantiert dieselbe Struktur verwenden.
 const PERFUME_FIELDS =
-  'id, perfume_name, slug, gender, fragrance_family, price_chf, longevity, sillage, scentmatch_score, season, occasion, description, image_url, top_notes, heart_notes, base_notes, brands(name, slug, country)';
+  'id, perfume_name, slug, gender, fragrance_family, price_chf, longevity, sillage, scentmatch_score, season, occasion, description, image_url, affiliate_url, top_notes, heart_notes, base_notes, brands(name, slug, country)';
+
+// Ziel-Link für den „Jetzt ansehen"-Button. Liegt ein Affiliate-Link vor,
+// wird dieser genutzt; sonst eine neutrale Such-Verlinkung (nie ein toter Button).
+export function buyUrl(p: Perfume): string {
+  if (p.affiliate_url) return p.affiliate_url;
+  const query = encodeURIComponent(`${p.perfume_name} ${p.brands?.name || ''} Parfum`.trim());
+  return `https://www.google.com/search?q=${query}`;
+}
 
 // Liste der Düfte, nach ScentMatch-Score sortiert (beste zuerst).
 export async function getPerfumes(limit = 60): Promise<Perfume[]> {

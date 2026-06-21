@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {
   getPerfumes,
   rankPerfumes,
+  buyUrl,
   NOTE_THEMES,
   type Perfume,
   type QuizAnswers,
@@ -150,10 +151,10 @@ type QuizSnapshot = {
 
 // Fallback, falls die Datenbank (noch) nicht erreichbar ist. Ohne slug -> kein Link.
 const starterPerfumes: Perfume[] = [
-  { id: '1', perfume_name: 'Beach Walk Style', slug: null, gender: 'Unisex', fragrance_family: 'clean', price_chf: 95, longevity: 6, sillage: 5, scentmatch_score: 91, season: 'Sommer', occasion: 'Alltag', description: null, image_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } },
-  { id: '2', perfume_name: 'Vanilla Cashmere Style', slug: null, gender: 'Women', fragrance_family: 'gourmand', price_chf: 79, longevity: 8, sillage: 7, scentmatch_score: 94, season: 'Herbst/Winter', occasion: 'Date', description: null, image_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } },
-  { id: '3', perfume_name: 'Dark Wood Style', slug: null, gender: 'Unisex', fragrance_family: 'woody', price_chf: 120, longevity: 9, sillage: 8, scentmatch_score: 92, season: 'Winter', occasion: 'Abend', description: null, image_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } },
-  { id: '4', perfume_name: 'Blooming Rose Style', slug: null, gender: 'Women', fragrance_family: 'floral', price_chf: 68, longevity: 7, sillage: 6, scentmatch_score: 90, season: 'Frühling', occasion: 'Alltag', description: null, image_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } }
+  { id: '1', perfume_name: 'Beach Walk Style', slug: null, gender: 'Unisex', fragrance_family: 'clean', price_chf: 95, longevity: 6, sillage: 5, scentmatch_score: 91, season: 'Sommer', occasion: 'Alltag', description: null, image_url: null, affiliate_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } },
+  { id: '2', perfume_name: 'Vanilla Cashmere Style', slug: null, gender: 'Women', fragrance_family: 'gourmand', price_chf: 79, longevity: 8, sillage: 7, scentmatch_score: 94, season: 'Herbst/Winter', occasion: 'Date', description: null, image_url: null, affiliate_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } },
+  { id: '3', perfume_name: 'Dark Wood Style', slug: null, gender: 'Unisex', fragrance_family: 'woody', price_chf: 120, longevity: 9, sillage: 8, scentmatch_score: 92, season: 'Winter', occasion: 'Abend', description: null, image_url: null, affiliate_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } },
+  { id: '4', perfume_name: 'Blooming Rose Style', slug: null, gender: 'Women', fragrance_family: 'floral', price_chf: 68, longevity: 7, sillage: 6, scentmatch_score: 90, season: 'Frühling', occasion: 'Alltag', description: null, image_url: null, affiliate_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } }
 ];
 
 function PerfumeCover({ perfume, large }: { perfume: Perfume; large?: boolean }) {
@@ -369,9 +370,12 @@ export default function Home() {
                 <div className="top-pick">
                   <p className="small">Dein Top-Match · {topPick.score}% passend</p>
                   <h3>{topPick.perfume.perfume_name} · {topPick.perfume.brands?.name || 'Marke offen'}</h3>
-                  {topPick.perfume.slug && (
-                    <Link className="button" href={`/duft/${topPick.perfume.slug}`}>Duftprofil ansehen</Link>
-                  )}
+                  <div className="cta">
+                    {topPick.perfume.slug && (
+                      <Link className="button secondary" href={`/duft/${topPick.perfume.slug}`}>Duftprofil ansehen</Link>
+                    )}
+                    <a className="button buy-button" href={buyUrl(topPick.perfume)} target="_blank" rel="sponsored nofollow noopener noreferrer">Jetzt ansehen →</a>
+                  </div>
                 </div>
               )}
 

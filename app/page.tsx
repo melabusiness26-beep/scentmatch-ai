@@ -430,6 +430,7 @@ export default function Home() {
 
         {seasonalPerfumes.length > 0 && (
           <section className="section">
+            <p className="eyebrow">Saison-Empfehlung</p>
             <h2>Passend zur Jahreszeit · {seasonLabel}</h2>
             <p className="small">Gerade ist {seasonLabel} – diese Düfte passen jetzt besonders gut.</p>
             <div className="perfume-list">
@@ -521,6 +522,7 @@ export default function Home() {
         </section>
 
         <section id="database" className="section">
+          <p className="eyebrow">Die Kollektion</p>
           <h2>Duftdatenbank</h2>
           <p className="small">
             {showResult

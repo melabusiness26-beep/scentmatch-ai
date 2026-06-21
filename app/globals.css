@@ -19,6 +19,9 @@ p.lead { font-family: Arial, sans-serif; font-size: 20px; line-height: 1.55; max
 .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
 button, .button { border: 0; border-radius: 999px; padding: 14px 22px; background: var(--brown); color: white; font-weight: 700; cursor: pointer; text-decoration: none; font-family: Arial, sans-serif; }
 .secondary { background: transparent; color: var(--brown); border: 1px solid rgba(75,53,40,.25); }
+.buy-button { display:inline-block; text-align:center; background: var(--gold); color: #2a1d12; margin-top: 16px; }
+.buy-button:hover { filter: brightness(1.05); }
+.buy-note { margin-top: 8px; font-style: italic; }
 .card { background: rgba(255,255,255,.62); border: 1px solid rgba(75,53,40,.12); box-shadow: 0 24px 80px rgba(75,53,40,.12); border-radius: 34px; padding: 28px; }
 .perfume-card { min-height: 420px; display:flex; flex-direction:column; justify-content:space-between; }
 .bottle { height: 240px; border-radius: 28px; background: linear-gradient(135deg, #f6eadb, #d5b98d); display: grid; place-items:center; font-size: 72px; }

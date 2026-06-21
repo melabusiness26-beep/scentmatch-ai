@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import SiteHeader from '@/app/SiteHeader';
 import {
   getPerfumeBySlug,
   getAllPerfumeSlugs,
@@ -162,15 +163,9 @@ export default async function PerfumeDetailPage({
 
   return (
     <main>
+      <SiteHeader />
       <div className="container">
-        <nav className="nav">
-          <Link className="logo" href="/">
-            ScentMatch
-          </Link>
-          <Link className="badge" href="/#database">
-            ← Alle Düfte
-          </Link>
-        </nav>
+        <div className="backlink"><Link className="badge" href="/#database">← Alle Düfte</Link></div>
 
         <section className="detail-hero">
           <div>

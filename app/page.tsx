@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import SiteHeader from '@/app/SiteHeader';
 import {
   getPerfumes,
   rankPerfumes,
@@ -228,8 +229,6 @@ export default function Home() {
   const [anchorId, setAnchorId] = useState('');
   const [familyFilter, setFamilyFilter] = useState('');
   const [currentSeason, setCurrentSeason] = useState('');
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [history, setHistory] = useState<QuizSnapshot[]>([]);
   const [showResult, setShowResult] = useState(false);
   const [perfumes, setPerfumes] = useState<Perfume[]>(starterPerfumes);
@@ -247,12 +246,6 @@ export default function Home() {
     if (m >= 5 && m <= 7) setCurrentSeason('Sommer');
     else if (m >= 2 && m <= 4) setCurrentSeason('Frühling');
     else setCurrentSeason('Herbst/Winter');
-
-    // Feiner Schatten am Menü, sobald man scrollt.
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const answers: QuizAnswers = { gender: genderPref, family, occasion, season, sillage, budgetMax, lovedNote, dislikedNote, anchorId };
@@ -362,27 +355,7 @@ export default function Home() {
 
   return (
     <main>
-      <header className={`site-header${scrolled ? ' scrolled' : ''}`}>
-        <div className="header-inner">
-          <div className="logo">ScentMatch</div>
-          <button
-            type="button"
-            className="nav-toggle"
-            aria-label="Menü öffnen oder schließen"
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen(o => !o)}
-          >
-            {menuOpen ? '✕' : '☰'}
-          </button>
-          <nav className={`main-nav${menuOpen ? ' open' : ''}`}>
-            <a href="#quiz" onClick={() => setMenuOpen(false)}>Quiz</a>
-            <a href="#warum" onClick={() => setMenuOpen(false)}>Warum wir?</a>
-            <a href="#database" onClick={() => setMenuOpen(false)}>Düfte</a>
-            <Link href="/ratgeber" onClick={() => setMenuOpen(false)}>Ratgeber</Link>
-            <a className="button nav-cta" href="#quiz" onClick={() => setMenuOpen(false)}>Duft finden</a>
-          </nav>
-        </div>
-      </header>
+      <SiteHeader />
       <div className="container">
         <section className="hero-stage">
           <div className="hero">

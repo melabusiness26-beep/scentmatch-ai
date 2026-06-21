@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import SiteHeader from '@/app/SiteHeader';
 import { getGuide, guides, type Guide } from '@/lib/guides';
 import { getPerfumes, buyUrl, type Perfume } from '@/lib/perfumes';
 
@@ -87,17 +88,12 @@ export default async function GuidePage({
 
   return (
     <main>
+      <SiteHeader />
       <div className="container">
-        <nav className="nav">
-          <Link className="logo" href="/">
-            ScentMatch
-          </Link>
-          <Link className="badge" href="/ratgeber">
-            ← Alle Ratgeber
-          </Link>
-        </nav>
+        <div className="backlink"><Link className="badge" href="/ratgeber">← Alle Ratgeber</Link></div>
 
         <article>
+          <p className="eyebrow">Ratgeber</p>
           <h1 className="detail-title">{guide.title}</h1>
           {guide.intro.map((p, i) => (
             <p className="lead" key={i}>

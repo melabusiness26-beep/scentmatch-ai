@@ -149,6 +149,11 @@ const FAMILY_TILES: { code: string; label: string; desc: string }[] = [
 ];
 const familyDisplay: Record<string, string> = { clean: 'Clean', gourmand: 'Gourmand', woody: 'Woody', floral: 'Floral' };
 
+// Aktuelle Jahreszeit -> Anzeige, passende Saison-Werte und Ratgeber-Link.
+const SEASON_LABEL: Record<string, string> = { Sommer: 'Sommer', Frühling: 'Frühling', 'Herbst/Winter': 'Herbst & Winter' };
+const SEASON_MATCH: Record<string, string[]> = { Sommer: ['Sommer'], Frühling: ['Frühling'], 'Herbst/Winter': ['Herbst/Winter', 'Winter'] };
+const SEASON_GUIDE: Record<string, string> = { Sommer: '/ratgeber/die-besten-sommerduefte', 'Herbst/Winter': '/ratgeber/die-besten-winterduefte' };
+
 const emptyFamily = { clean: 0, gourmand: 0, woody: 0, floral: 0 };
 
 // Momentaufnahme des Quiz-Zustands – ermöglicht den „Zurück"-Knopf.
@@ -219,6 +224,7 @@ export default function Home() {
   const [dislikedNote, setDislikedNote] = useState('');
   const [anchorId, setAnchorId] = useState('');
   const [familyFilter, setFamilyFilter] = useState('');
+  const [currentSeason, setCurrentSeason] = useState('');
   const [history, setHistory] = useState<QuizSnapshot[]>([]);
   const [showResult, setShowResult] = useState(false);
   const [perfumes, setPerfumes] = useState<Perfume[]>(starterPerfumes);
@@ -230,6 +236,12 @@ export default function Home() {
       if (data.length > 0) setPerfumes(data);
     }
     loadPerfumes();
+
+    // Aktuelle Jahreszeit bestimmen (im Browser, damit es immer aktuell ist).
+    const m = new Date().getMonth();
+    if (m >= 5 && m <= 7) setCurrentSeason('Sommer');
+    else if (m >= 2 && m <= 4) setCurrentSeason('Frühling');
+    else setCurrentSeason('Herbst/Winter');
   }, []);
 
   const answers: QuizAnswers = { gender: genderPref, family, occasion, season, sillage, budgetMax, lovedNote, dislikedNote, anchorId };
@@ -258,6 +270,16 @@ export default function Home() {
       document.getElementById('database')?.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
+  const seasonLabel = SEASON_LABEL[currentSeason] || '';
+  const seasonMatch = SEASON_MATCH[currentSeason] || [];
+  const seasonGuide = SEASON_GUIDE[currentSeason];
+  const seasonalPerfumes = currentSeason
+    ? [...perfumes]
+        .filter(p => p.season && seasonMatch.includes(p.season))
+        .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
+        .slice(0, 4)
+    : [];
 
   const topPick = showResult ? visible[0] : undefined;
 
@@ -353,6 +375,23 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {seasonalPerfumes.length > 0 && (
+          <section className="section">
+            <h2>Passend zur Jahreszeit · {seasonLabel}</h2>
+            <p className="small">Gerade ist {seasonLabel} – diese Düfte passen jetzt besonders gut.</p>
+            <div className="perfume-list">
+              {seasonalPerfumes.map(p => (
+                <PerfumeTile perfume={p} key={p.id} />
+              ))}
+            </div>
+            {seasonGuide && (
+              <div className="cta">
+                <Link className="button secondary" href={seasonGuide}>Mehr {seasonLabel}-Düfte im Ratgeber</Link>
+              </div>
+            )}
+          </section>
+        )}
 
         <section className="section grid">
           {FAMILY_TILES.map(t => (

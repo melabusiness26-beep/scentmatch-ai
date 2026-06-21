@@ -228,6 +228,7 @@ export default function Home() {
   const [anchorId, setAnchorId] = useState('');
   const [familyFilter, setFamilyFilter] = useState('');
   const [currentSeason, setCurrentSeason] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
   const [history, setHistory] = useState<QuizSnapshot[]>([]);
   const [showResult, setShowResult] = useState(false);
   const [perfumes, setPerfumes] = useState<Perfume[]>(starterPerfumes);
@@ -357,12 +358,21 @@ export default function Home() {
       <header className="site-header">
         <div className="header-inner">
           <div className="logo">ScentMatch<span className="logo-accent"> AI</span></div>
-          <nav className="main-nav">
-            <a href="#quiz">Quiz</a>
-            <a href="#warum">Warum wir?</a>
-            <a href="#database">Düfte</a>
-            <Link href="/ratgeber">Ratgeber</Link>
-            <a className="button nav-cta" href="#quiz">Duft finden</a>
+          <button
+            type="button"
+            className="nav-toggle"
+            aria-label="Menü öffnen oder schließen"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(o => !o)}
+          >
+            {menuOpen ? '✕' : '☰'}
+          </button>
+          <nav className={`main-nav${menuOpen ? ' open' : ''}`}>
+            <a href="#quiz" onClick={() => setMenuOpen(false)}>Quiz</a>
+            <a href="#warum" onClick={() => setMenuOpen(false)}>Warum wir?</a>
+            <a href="#database" onClick={() => setMenuOpen(false)}>Düfte</a>
+            <Link href="/ratgeber" onClick={() => setMenuOpen(false)}>Ratgeber</Link>
+            <a className="button nav-cta" href="#quiz" onClick={() => setMenuOpen(false)}>Duft finden</a>
           </nav>
         </div>
       </header>
@@ -378,6 +388,7 @@ export default function Home() {
                 <a className="button secondary" href="#database">Düfte ansehen</a>
                 <Link className="button secondary" href="/ratgeber">Ratgeber lesen</Link>
               </div>
+              <p className="hero-trust"><span className="stars">★★★★★</span> Über 160 kuratierte Düfte · kostenlos · keine Anmeldung</p>
             </div>
             <div className="card perfume-card">
               <div className="bottle">✦</div>

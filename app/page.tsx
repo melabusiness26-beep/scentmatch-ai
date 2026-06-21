@@ -278,7 +278,7 @@ export default function Home() {
     ? [...perfumes]
         .filter(p => p.season && seasonMatch.includes(p.season))
         .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
-        .slice(0, 4)
+        .slice(0, 9)
     : [];
 
   const topPick = showResult ? visible[0] : undefined;

@@ -44,11 +44,11 @@ export async function generateMetadata({
   const perfume = await getPerfumeBySlug(slug);
 
   if (!perfume) {
-    return { title: 'Duft nicht gefunden – ScentMatch AI' };
+    return { title: 'Duft nicht gefunden – ScentMatch' };
   }
 
   const brand = perfume.brands?.name ? ` von ${perfume.brands.name}` : '';
-  const title = `${perfume.perfume_name}${brand} – Duftprofil & Bewertung | ScentMatch AI`;
+  const title = `${perfume.perfume_name}${brand} – Duftprofil & Bewertung | ScentMatch`;
   const description =
     perfume.description ||
     `${perfume.perfume_name}${brand}: Duftfamilie ${familyLabel(perfume.fragrance_family)}, ideal für ${perfume.occasion || 'jeden Anlass'} und die Saison ${perfume.season || 'ganzjährig'}. ScentMatch-Score ${perfume.scentmatch_score ?? '–'}/100.`;
@@ -114,7 +114,7 @@ function jsonLd(perfume: Perfume) {
     category: familyLabel(perfume.fragrance_family),
     description:
       perfume.description ||
-      `${perfume.perfume_name} – Duftprofil auf ScentMatch AI.`,
+      `${perfume.perfume_name} – Duftprofil auf ScentMatch.`,
     image: perfume.image_url || undefined,
     aggregateRating: perfume.scentmatch_score
       ? {
@@ -165,7 +165,7 @@ export default async function PerfumeDetailPage({
       <div className="container">
         <nav className="nav">
           <Link className="logo" href="/">
-            ScentMatch AI
+            ScentMatch
           </Link>
           <Link className="badge" href="/#database">
             ← Alle Düfte

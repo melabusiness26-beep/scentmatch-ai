@@ -5,12 +5,12 @@ import { guides } from '@/lib/guides';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
 
 export const metadata: Metadata = {
-  title: 'Duft-Ratgeber: Tipps, Dupes & Empfehlungen | ScentMatch AI',
+  title: 'Duft-Ratgeber: Tipps, Dupes & Empfehlungen | ScentMatch',
   description:
     'Praktische Duft-Ratgeber: günstige Alternativen zu teuren Parfüms, die besten Sommerdüfte und welcher Duft zu welchem Anlass passt.',
   alternates: { canonical: '/ratgeber' },
   openGraph: {
-    title: 'Duft-Ratgeber | ScentMatch AI',
+    title: 'Duft-Ratgeber | ScentMatch',
     description: 'Günstige Dupes, Sommerdüfte und Duft-Tipps für jeden Anlass.',
     type: 'website',
     url: `${SITE_URL}/ratgeber`
@@ -23,7 +23,7 @@ export default function RatgeberIndex() {
       <div className="container">
         <nav className="nav">
           <Link className="logo" href="/">
-            ScentMatch AI
+            ScentMatch
           </Link>
           <Link className="badge" href="/#quiz">
             Quiz starten

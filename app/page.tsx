@@ -357,7 +357,7 @@ export default function Home() {
     <main>
       <header className="site-header">
         <div className="header-inner">
-          <div className="logo">ScentMatch<span className="logo-accent"> AI</span></div>
+          <div className="logo">ScentMatch</div>
           <button
             type="button"
             className="nav-toggle"
@@ -402,7 +402,7 @@ export default function Home() {
         </section>
 
         <section id="warum" className="section">
-          <p className="eyebrow">Warum ScentMatch AI?</p>
+          <p className="eyebrow">Warum ScentMatch?</p>
           <h2>Duft finden, das sich nicht nach Glücksspiel anfühlt</h2>
           <div className="why-grid">
             <div className="why-card">

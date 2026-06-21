@@ -9,14 +9,27 @@ import AffiliateButton from "@/components/AffiliateButton";
 import {
   formatReleaseDate,
   getAllSlugs,
-  getGameBySlug,
   getSimilarGames,
   getYear,
 } from "@/lib/games";
 import { SITE } from "@/lib/site";
 import { getCatalog } from "@/services/catalog";
+import { rawgProvider } from "@/services/providers/rawgProvider";
 
 export const revalidate = 3600;
+
+/** Findet ein Spiel im Katalog; lädt bei RAWG-Spielen die vollen Details nach. */
+async function resolveGame(slug: string, catalog: Awaited<ReturnType<typeof getCatalog>>) {
+  let game = catalog.find((g) => g.slug === slug);
+  if (game?.source === "rawg") {
+    const detailed = await rawgProvider.fetchGameDetails(slug);
+    if (detailed) game = detailed;
+  } else if (!game) {
+    const detailed = await rawgProvider.fetchGameDetails(slug);
+    if (detailed) game = detailed;
+  }
+  return game;
+}
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -28,7 +41,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const game = getGameBySlug(slug);
+  const catalog = await getCatalog();
+  const game = await resolveGame(slug, catalog);
   if (!game) return { title: "Spiel nicht gefunden" };
 
   return {
@@ -51,7 +65,7 @@ export default async function GameDetailPage({
 }) {
   const { slug } = await params;
   const catalog = await getCatalog();
-  const game = getGameBySlug(slug, catalog);
+  const game = await resolveGame(slug, catalog);
   if (!game) notFound();
 
   const similar = getSimilarGames(game, 5, catalog);
@@ -153,9 +167,9 @@ export default async function GameDetailPage({
       {/* Inhalt + Specs */}
       <div className="container-page mt-10 grid gap-8 lg:grid-cols-[1fr_320px]">
         <div className="space-y-8">
-          <Prose title="Beschreibung" text={game.descriptionLong} />
-          <Prose title="Story" text={game.story} />
-          <Prose title="Gameplay" text={game.gameplay} />
+          {game.descriptionLong && <Prose title="Beschreibung" text={game.descriptionLong} />}
+          {game.story && <Prose title="Story" text={game.story} />}
+          {game.gameplay && <Prose title="Gameplay" text={game.gameplay} />}
 
           {/* Für wen geeignet */}
           <section>

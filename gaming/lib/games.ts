@@ -190,65 +190,80 @@ export function getSimilarGames(game: Game, limit = 4, games: Game[] = GAMES): G
  *  - Plattform 25, Genre 25, Mood 20, Spieleranzahl (solo/friends) 15,
  *    Schwierigkeit 10, Spielzeit 10. Plattform ist außerdem ein weicher Filter.
  */
-export function runFinder(answers: FinderAnswers, limit = 6): FinderResult[] {
-  const results: FinderResult[] = GAMES.map((game) => {
+export function runFinder(
+  answers: FinderAnswers,
+  limit = 6,
+  games: Game[] = GAMES,
+): FinderResult[] {
+  const has = <T>(arr: T[] | undefined) => Array.isArray(arr) && arr.length > 0;
+  const wantPlatforms = has(answers.platforms);
+
+  const results: FinderResult[] = games.map((game) => {
     let score = 0;
     const reasons: string[] = [];
 
-    if (answers.platform) {
-      if (game.platforms.includes(answers.platform)) {
+    // Plattform (25)
+    if (wantPlatforms) {
+      const hit = answers.platforms!.filter((p) => game.platforms.includes(p));
+      if (hit.length) {
         score += 25;
-        reasons.push(`Verfügbar auf ${answers.platform}`);
-      }
-    } else {
-      score += 12; // keine Angabe → neutral
-    }
-
-    if (answers.genre) {
-      if (game.genres.includes(answers.genre)) {
-        score += 25;
-        reasons.push(`Passt zum Genre ${answers.genre}`);
+        reasons.push(`Verfügbar auf ${hit.join(", ")}`);
       }
     } else {
       score += 12;
     }
 
-    if (answers.mood) {
-      if (game.moods.includes(answers.mood)) {
+    // Genre (25)
+    if (has(answers.genres)) {
+      const hit = answers.genres!.filter((g) => game.genres.includes(g));
+      if (hit.length) {
+        score += 25;
+        reasons.push(`Genre: ${hit.join(", ")}`);
+      }
+    } else {
+      score += 12;
+    }
+
+    // Mood (20)
+    if (has(answers.moods)) {
+      const hit = answers.moods!.filter((m) => game.moods.includes(m));
+      if (hit.length) {
         score += 20;
-        reasons.push(`Stimmung: ${answers.mood}`);
+        reasons.push(`Stimmung: ${hit.join(", ")}`);
       }
     } else {
       score += 10;
     }
 
-    if (answers.players) {
-      const wantsFriends = answers.players === "friends";
+    // Spieleranzahl (15)
+    if (has(answers.players)) {
+      const wantsFriends = answers.players!.includes("friends");
+      const wantsSolo = answers.players!.includes("solo");
       const social = game.multiplayer || game.coop;
-      if (wantsFriends && social) {
+      const solo = game.modes.includes("Single-player");
+      if ((wantsFriends && social) || (wantsSolo && solo)) {
         score += 15;
-        reasons.push("Gut mit Freunden spielbar");
-      } else if (!wantsFriends && game.modes.includes("Single-player")) {
-        score += 15;
-        reasons.push("Starkes Solo-Erlebnis");
+        reasons.push(wantsFriends && social ? "Gut mit Freunden" : "Starkes Solo-Erlebnis");
       }
     } else {
       score += 7;
     }
 
-    if (answers.difficulty) {
-      if (game.difficulty === answers.difficulty) {
+    // Schwierigkeit (10)
+    if (has(answers.difficulties)) {
+      if (answers.difficulties!.includes(game.difficulty)) {
         score += 10;
-        reasons.push(`Schwierigkeit: ${answers.difficulty}`);
+        reasons.push(`Schwierigkeit: ${game.difficulty}`);
       } else {
-        score += 3; // grobe Toleranz
+        score += 3;
       }
     } else {
       score += 5;
     }
 
-    if (answers.playtime) {
-      if (game.playtime.category === answers.playtime) {
+    // Spielzeit (10)
+    if (has(answers.playtimes)) {
+      if (answers.playtimes!.includes(game.playtime.category)) {
         score += 10;
         reasons.push(`Spielzeit passt (${game.playtime.category})`);
       } else {
@@ -261,13 +276,11 @@ export function runFinder(answers: FinderAnswers, limit = 6): FinderResult[] {
     return { game, score: Math.min(100, Math.round(score)), reasons };
   });
 
-  // Wenn eine Plattform gewählt wurde, bevorzugen wir passende Titel klar:
-  // nicht-passende werden ans Ende sortiert (weicher Filter).
   return results
     .sort((a, b) => {
-      if (answers.platform) {
-        const aHas = a.game.platforms.includes(answers.platform);
-        const bHas = b.game.platforms.includes(answers.platform);
+      if (wantPlatforms) {
+        const aHas = answers.platforms!.some((p) => a.game.platforms.includes(p));
+        const bHas = answers.platforms!.some((p) => b.game.platforms.includes(p));
         if (aHas !== bHas) return aHas ? -1 : 1;
       }
       return b.score - a.score;

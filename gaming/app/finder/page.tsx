@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import GameFinder from "@/components/GameFinder";
+import { getCatalog } from "@/services/catalog";
 
 export const metadata: Metadata = {
   title: "Game Finder – Spiele-Empfehlung in 6 Fragen",
@@ -8,7 +9,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/finder" },
 };
 
-export default function FinderPage() {
+export default async function FinderPage() {
+  const catalog = await getCatalog();
   return (
     <div className="container-page py-10">
       <div className="mb-8 text-center">
@@ -22,7 +24,7 @@ export default function FinderPage() {
         </p>
       </div>
 
-      <GameFinder />
+      <GameFinder games={catalog} />
     </div>
   );
 }

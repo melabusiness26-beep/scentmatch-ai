@@ -176,6 +176,8 @@ export interface Game {
   updates: GameUpdate[];
   officialWebsite?: string;
   trailerUrl?: string;
+  /** Herkunft der Daten: handkuratiert oder automatisch von einer API. */
+  source?: "curated" | "rawg";
 
   // --- Redaktionelle / abgeleitete Felder (helfen bei Sortierung & UI) ---
   /** Beliebtheit 0–100 (für "Popular"-Sortierung der Startseite). */
@@ -212,14 +214,14 @@ export type GameSort =
   | "rating"
   | "title-asc";
 
-/** Antworten aus dem Game Finder. */
+/** Antworten aus dem Game Finder. Jede Frage erlaubt Mehrfachauswahl. */
 export interface FinderAnswers {
-  platform?: Platform;
-  genre?: Genre;
-  players?: "solo" | "friends";
-  difficulty?: Difficulty;
-  playtime?: PlaytimeCategory;
-  mood?: Mood;
+  platforms?: Platform[];
+  genres?: Genre[];
+  players?: ("solo" | "friends")[];
+  difficulties?: Difficulty[];
+  playtimes?: PlaytimeCategory[];
+  moods?: Mood[];
 }
 
 export interface FinderResult {

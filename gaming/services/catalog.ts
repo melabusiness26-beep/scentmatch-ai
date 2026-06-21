@@ -7,7 +7,6 @@
  *
  * Nur in Server-Komponenten/Seiten verwenden (async + externe API).
  */
-import "server-only";
 import { GAMES } from "@/data/games";
 import { fetchCoverFromRawg } from "./covers";
 import { rawgProvider } from "./providers/rawgProvider";

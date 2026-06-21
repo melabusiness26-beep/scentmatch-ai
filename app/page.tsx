@@ -156,9 +156,23 @@ const starterPerfumes: Perfume[] = [
   { id: '4', perfume_name: 'Blooming Rose Style', slug: null, gender: 'Women', fragrance_family: 'floral', price_chf: 68, longevity: 7, sillage: 6, scentmatch_score: 90, season: 'Frühling', occasion: 'Alltag', description: null, image_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } }
 ];
 
+function PerfumeCover({ perfume, large }: { perfume: Perfume; large?: boolean }) {
+  const fam = perfume.fragrance_family || '';
+  const className = `cover${large ? ' cover-large' : ''} cover-${fam}`;
+  if (perfume.image_url) {
+    return <div className={className} style={{ backgroundImage: `url(${perfume.image_url})` }} />;
+  }
+  return (
+    <div className={className}>
+      <span className="cover-glyph">✦</span>
+    </div>
+  );
+}
+
 function PerfumeTile({ perfume, matchPercent }: { perfume: Perfume; matchPercent?: number }) {
   const content = (
     <>
+      <PerfumeCover perfume={perfume} />
       {matchPercent != null && <div className="match-badge">{matchPercent}% Match</div>}
       <h3>{perfume.perfume_name}</h3>
       <p className="small">{perfume.brands?.name || 'Marke offen'} · {perfume.fragrance_family || 'Duftfamilie offen'}</p>
@@ -194,7 +208,7 @@ export default function Home() {
 
   useEffect(() => {
     async function loadPerfumes() {
-      const data = await getPerfumes(60);
+      const data = await getPerfumes(500);
       if (data.length > 0) setPerfumes(data);
     }
     loadPerfumes();

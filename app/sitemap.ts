@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getAllPerfumeSlugs } from '@/lib/perfumes';
+import { guides } from '@/lib/guides';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
 
@@ -15,6 +16,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8
   }));
 
+  const guideUrls: MetadataRoute.Sitemap = guides.map((guide) => ({
+    url: `${SITE_URL}/ratgeber/${guide.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.7
+  }));
+
   return [
     {
       url: SITE_URL,
@@ -22,6 +30,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily',
       priority: 1
     },
+    {
+      url: `${SITE_URL}/ratgeber`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7
+    },
+    ...guideUrls,
     ...perfumeUrls
   ];
 }

@@ -8,6 +8,7 @@ import {
   findSimilarPerfumes,
   findCheaperAlternatives,
   buyUrl,
+  describePerfume,
   type Perfume
 } from '@/lib/perfumes';
 
@@ -176,14 +177,7 @@ export default async function PerfumeDetailPage({
             <Cover perfume={perfume} large />
             <p className="small">{brandName}</p>
             <h1 className="detail-title">{perfume.perfume_name}</h1>
-            <p className="lead">
-              {perfume.description ||
-                `${perfume.perfume_name} von ${brandName} ist ein Duft aus der Familie ${familyLabel(
-                  perfume.fragrance_family
-                )}. Ideal für ${perfume.occasion || 'jeden Anlass'} und die Saison ${
-                  perfume.season || 'ganzjährig'
-                }.`}
-            </p>
+            <p className="lead">{perfume.description || describePerfume(perfume)}</p>
             <div className="badge-row">
               <span className="badge">{familyLabel(perfume.fragrance_family)}</span>
               {perfume.gender && <span className="badge">{perfume.gender}</span>}

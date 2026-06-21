@@ -53,7 +53,15 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 .container { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
 .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 54px; }
 .logo { display: inline-flex; align-items: center; gap: 11px; font-size: 27px; font-weight: 700; letter-spacing: -0.02em; }
-.logo::before { content: '✦'; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 11px; background: linear-gradient(180deg, #d8b277, #b1894f); color: #2a1d12; font-size: 19px; box-shadow: 0 8px 18px rgba(185,152,99,.32); flex: none; }
+.logo::before {
+  content: '';
+  display: inline-flex;
+  width: 38px; height: 38px; border-radius: 12px; flex: none;
+  background:
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%232a1d12' d='M10 2h4a1 1 0 0 1 1 1v1.6H9V3a1 1 0 0 1 1-1z'/><rect x='10.4' y='4.6' width='3.2' height='2' fill='%232a1d12'/><rect x='6.8' y='6.4' width='10.4' height='14.2' rx='3.2' fill='%232a1d12'/><path d='M12 10.2l1.05 1.55L12 13.3l-1.05-1.55z' fill='%23f3e9da'/></svg>") center / 23px 23px no-repeat,
+    linear-gradient(180deg, #d8b277, #b1894f);
+  box-shadow: 0 8px 18px rgba(185,152,99,.32);
+}
 .badge { border: 1px solid rgba(75,53,40,.2); padding: 10px 14px; border-radius: 999px; background: rgba(255,255,255,.5); font-size: 14px; }
 .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 36px; align-items: center; }
 h1 { font-size: clamp(44px, 7vw, 88px); line-height: 1.0; margin: 0 0 22px; letter-spacing: -0.01em; color: var(--brown); }

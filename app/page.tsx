@@ -388,13 +388,14 @@ export default function Home() {
                 <a className="button secondary" href="#database">Düfte ansehen</a>
                 <Link className="button secondary" href="/ratgeber">Ratgeber lesen</Link>
               </div>
-              <p className="hero-trust"><span className="stars">★★★★★</span> Über 160 kuratierte Düfte · kostenlos · keine Anmeldung</p>
+              <p className="hero-trust"><span className="stars">★★★★★</span> Über 160 kuratierte Düfte · von Bestsellern bis zu seltenen Nischenperlen</p>
             </div>
             <div className="card perfume-card">
               <div className="bottle">✦</div>
-              <div>
-                <h2>Premium statt Zufall</h2>
-                <p className="small">Keine blinde TikTok-Empfehlung. ScentMatch errechnet pro Duft einen echten Match-Score in Prozent.</p>
+              <div className="hero-stats">
+                <div className="hero-stat"><strong>160+</strong><span>kuratierte Düfte</span></div>
+                <div className="hero-stat"><strong>30+</strong><span>Marken weltweit</span></div>
+                <div className="hero-stat"><strong>%</strong><span>echter Match-Score statt Zufall</span></div>
               </div>
             </div>
           </div>
@@ -421,8 +422,8 @@ export default function Home() {
             </div>
             <div className="why-card">
               <div className="why-icon">♡</div>
-              <h3>Kostenlos & ohne Anmeldung</h3>
-              <p className="small">Sofort loslegen: Quiz machen, Duft finden, fertig – in unter 3 Minuten.</p>
+              <h3>Schnell & persönlich</h3>
+              <p className="small">Dein Ergebnis in unter 3 Minuten – abgestimmt auf deinen Geschmack, Anlass und Budget.</p>
             </div>
           </div>
         </section>

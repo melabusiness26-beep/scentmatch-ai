@@ -19,10 +19,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const guide = getGuide(slug);
-  if (!guide) return { title: 'Ratgeber nicht gefunden – ScentMatch AI' };
+  if (!guide) return { title: 'Ratgeber nicht gefunden – ScentMatch' };
 
   return {
-    title: `${guide.title} | ScentMatch AI`,
+    title: `${guide.title} | ScentMatch`,
     description: guide.description,
     alternates: { canonical: `/ratgeber/${slug}` },
     openGraph: {
@@ -68,7 +68,7 @@ function jsonLd(guide: Guide) {
     headline: guide.title,
     description: guide.description,
     mainEntityOfPage: `${SITE_URL}/ratgeber/${guide.slug}`,
-    publisher: { '@type': 'Organization', name: 'ScentMatch AI' }
+    publisher: { '@type': 'Organization', name: 'ScentMatch' }
   };
 }
 
@@ -90,7 +90,7 @@ export default async function GuidePage({
       <div className="container">
         <nav className="nav">
           <Link className="logo" href="/">
-            ScentMatch AI
+            ScentMatch
           </Link>
           <Link className="badge" href="/ratgeber">
             ← Alle Ratgeber

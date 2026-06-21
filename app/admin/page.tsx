@@ -269,7 +269,7 @@ export default function AdminPage() {
       <main>
         <div className="container">
           <nav className="nav">
-            <Link className="logo" href="/">ScentMatch AI</Link>
+            <Link className="logo" href="/">ScentMatch</Link>
             <div className="badge">Admin-Login</div>
           </nav>
           <section className="section card" style={{ maxWidth: 460 }}>
@@ -299,7 +299,7 @@ export default function AdminPage() {
     <main>
       <div className="container">
         <nav className="nav">
-          <Link className="logo" href="/">ScentMatch AI</Link>
+          <Link className="logo" href="/">ScentMatch</Link>
           <button className="button secondary" onClick={logout}>Abmelden</button>
         </nav>
 

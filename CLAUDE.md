@@ -89,3 +89,76 @@ gender → anchor (optional, Dropdown) → 3× family → lovedNote → disliked
 ## 9. So macht ein neuer Chat weiter
 - Auf demselben Repo (`melabusiness26-beep/scentmatch-ai`) eine neue Claude-Code-Session starten – diese Datei wird automatisch gelesen.
 - Entwicklung weiterhin auf einem Feature-Branch → PR nach `main`.
+
+## 10. Aktueller Stand & Übergabe (Stand: Juni 2026)
+
+> Diese Sektion ist der wichtigste Einstieg für einen neuen Chat – sie hält den
+> aktuellen Stand fest. Gründerin hat KEINE Programmierkenntnisse → alles einfach
+> und Schritt für Schritt erklären (Deutsch), Code-Arbeit übernimmt der Assistent.
+
+### Marke
+- Heißt jetzt nur noch **„ScentMatch"** – das „AI" wurde **überall** entfernt
+  (Logo, Footer, Seitentitel, Metadaten). Logo = Schriftzug + goldenes
+  **Parfüm-Flakon-Emblem** (als SVG in `.logo::before` in `app/globals.css`).
+- Offizielles Bild-Logo (mit „Discovery · Fragrance · Boutique") hat die Gründerin
+  separat generiert – für Social Media gedacht; auf der Seite läuft die SVG-Variante.
+
+### Aktueller Entwicklungs-Branch
+- Bisher: `claude/ecstatic-mayer-spbfc3` → PR nach `main` → Vercel deployt.
+
+### Was seit der Erstfassung gebaut wurde (alles live)
+- **Katalog ~160 Düfte**: SQL-Chargen in `/supabase` bis `09_summer_perfumes.sql`
+  (inkl. Nischen/Geheimtipps, günstige Klone wie Armaf/Lattafa, Damen-Sommerdüfte).
+  `08_data_fixes.sql` korrigierte 2 Familien-Grenzfälle.
+- **Admin** (`app/admin/page.tsx`): kann Düfte **anlegen UND bearbeiten**
+  (Auswahl bestehender Duft → Formular). Neue Felder: `image_url`, `affiliate_url`.
+  Beim Bearbeiten bleiben `slug` und `description` unangetastet.
+- **Suche** (Startseite): durchsucht Name, Marke, **Noten** (z. B. „Bergamotte",
+  „Schokolade"→Synonyme Kakao/Praline), **Geschlecht** (Damen/Herren/Unisex),
+  Saison, Anlass. Anklickbare **Familien-Filter** (Clean/Gourmand/Woody/Floral).
+- **Detailseite** (`app/duft/[slug]/page.tsx`): „Riecht ähnlich wie…",
+  **„Günstige Alternativen zu…"** (≥20 % billiger), automatische ausführliche
+  **Beschreibung** (`describePerfume` in `lib/perfumes.ts`), **„Jetzt ansehen"**-
+  Affiliate-Button (`buyUrl`: nutzt `affiliate_url`, sonst Google-Suche-Fallback).
+- **Quiz**: Hilfstexte je Frage, „Zurück"-Knopf, leerer Fortschrittsbalken bei Frage 1,
+  Affiliate-Button beim Top-Match.
+- **Ratgeber** (`/ratgeber`, Daten in `lib/guides.ts`): 6 SEO-Artikel
+  (Dupes, Sommer, Winter, Unisex, süße Düfte, Anlass). In Sitemap eingetragen.
+- **„Passend zur Jahreszeit"**: erkennt im Browser die Saison und zeigt passende Düfte.
+- **Premium-Design** (`app/globals.css`, `app/SiteHeader.tsx`, `app/layout.tsx`):
+  edler dunkler Hero mit Gold/Eyebrow/Zahlen-Panel, Web-Fonts (Playfair Display +
+  Inter via `next/font`), goldene Kicker-Labels, Footer (dunkel, „Discovery ·
+  Fragrance · Boutique"), gemeinsames **sticky Menü** `SiteHeader` (Logo, Links,
+  Scroll-Schatten, Handy-Hamburger) auf allen Seiten, **„Warum ScentMatch?"**-Bereich,
+  mobil optimiert (auto-fit Raster, viewport).
+
+### Affiliate-Stand (CJ / Notino)
+- Gewählt: **Notino** (notino.ch) über das Netzwerk **CJ Affiliate (Commission
+  Junction)** – gratis, Schweiz-tauglich, CHF, bis ~10–14 % Provision.
+  (Amazon wurde verworfen: kein Amazon.ch, Zoll, niedrige Provision.)
+- **Erledigt im CJ-Konto**: Konto + E-Mail bestätigt, Netzwerkprofil, Werbeplattform
+  („ScentMatch", Website, Content/Blog/Medien, primär), Kontoinformationen
+  (Adresse Neuenhof/AG, Währung EUR), **Steuerformular W-8BEN** abgeschickt
+  (Gründerin ist **Spanierin, wohnhaft in der Schweiz** – kein US-Bezug; Teil II
+  „keine Abkommensvergünstigungen" übersprungen).
+- **OFFEN**: **Bankdaten** in CJ („Zahlungsinformationen"). Fehler „Routing/Account
+  number not formatted correctly". Bank = **Raiffeisen** (BIC `RAIFCH22`). Nicht
+  dringend (Auszahlung erst ab 50 € → braucht erst Besucher/Verkäufe). Tipp:
+  CJ-Support („?"-Symbol) nach exaktem CH-IBAN/BIC-Format fragen.
+- **Sobald echte Affiliate-Links da sind**: pro Duft im Admin ins Feld
+  „Affiliate-Link / Shop-URL" eintragen → `buyUrl` nutzt ihn automatisch.
+
+### Nächste sinnvolle Schritte (Priorität)
+1. **BESUCHER GEWINNEN** (wichtigster Hebel – ohne Besucher keine Einnahmen):
+   - **Google Search Console** einrichten (Schritt für Schritt, sitemap.xml einreichen).
+   - Plan **TikTok/Instagram** (+ evtl. Pinterest) mit Duft-Content → Link zur Seite.
+2. **Bankdaten** bei CJ fertig eintragen (mit CJ-Support), wenn Einnahmen nahen.
+3. Optional: echte **Duftbilder** (statt Platzhalter), weitere Düfte/Ratgeber,
+   Quiz DB-gesteuert, Werbung/Premium erst mit Reichweite.
+
+### Wichtige Konventionen (Erinnerung)
+- UI-Texte Deutsch. Düfte: keine „kostenlos/ohne Anmeldung"-Aussagen (Premium/Bezahl-
+  Option offen halten). Affiliate-Links sind als `rel="sponsored"` gekennzeichnet +
+  Transparenz-Hinweis. Steuern/AHV erst Thema, wenn echtes Geld fließt (Gründerin gibt
+  Einnahmen selbst in der Steuererklärung an; keine Firma nötig unter 100k Umsatz).
+

@@ -301,7 +301,7 @@ export default function Home() {
       <div className="container">
         <nav className="nav">
           <div className="logo">ScentMatch AI</div>
-          <div className="badge">Signature-Duft finden · kostenloser Prototyp</div>
+          <Link className="badge" href="/ratgeber">Duft-Ratgeber</Link>
         </nav>
 
         <section className="hero">
@@ -311,6 +311,7 @@ export default function Home() {
             <div className="cta">
               <a className="button" href="#quiz">Quiz starten</a>
               <a className="button secondary" href="#database">Düfte ansehen</a>
+              <Link className="button secondary" href="/ratgeber">Ratgeber lesen</Link>
             </div>
           </div>
           <div className="card perfume-card">

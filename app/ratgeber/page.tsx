@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import SiteHeader from '@/app/SiteHeader';
 import { guides } from '@/lib/guides';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
@@ -20,18 +21,11 @@ export const metadata: Metadata = {
 export default function RatgeberIndex() {
   return (
     <main>
+      <SiteHeader />
       <div className="container">
-        <nav className="nav">
-          <Link className="logo" href="/">
-            ScentMatch
-          </Link>
-          <Link className="badge" href="/#quiz">
-            Quiz starten
-          </Link>
-        </nav>
-
         <section className="detail-hero">
           <div>
+            <p className="eyebrow">Magazin</p>
             <h1 className="detail-title">Duft-Ratgeber</h1>
             <p className="lead">
               Praktische Tipps rund um Parfüm: günstige Alternativen zu teuren Düften, die besten

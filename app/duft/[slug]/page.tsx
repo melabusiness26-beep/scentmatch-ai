@@ -6,6 +6,7 @@ import {
   getAllPerfumeSlugs,
   getPerfumes,
   findSimilarPerfumes,
+  findCheaperAlternatives,
   buyUrl,
   type Perfume
 } from '@/lib/perfumes';
@@ -152,7 +153,11 @@ export default async function PerfumeDetailPage({
   // Ähnliche Düfte aus dem gesamten Katalog ermitteln (gleiche Familie,
   // geteilte Noten, ähnliche Intensität). Nur Treffer mit echter Ähnlichkeit zeigen.
   const pool = (await getPerfumes(500)).filter((p) => p.slug);
-  const similar = findSimilarPerfumes(perfume, pool, 4).filter((s) => s.similarity >= 30);
+  const cheaper = findCheaperAlternatives(perfume, pool, 3);
+  const cheaperIds = new Set(cheaper.map((c) => c.perfume.id));
+  // In den allgemeinen "ähnlich"-Vorschlägen die guenstigen Alternativen nicht doppelt zeigen.
+  const similar = findSimilarPerfumes(perfume, pool, 4)
+    .filter((s) => s.similarity >= 30 && !cheaperIds.has(s.perfume.id));
 
   return (
     <main>
@@ -221,6 +226,38 @@ export default async function PerfumeDetailPage({
             <Notes title="Kopfnoten" notes={perfume.top_notes} />
             <Notes title="Herznoten" notes={perfume.heart_notes} />
             <Notes title="Basisnoten" notes={perfume.base_notes} />
+          </section>
+        )}
+
+        {cheaper.length > 0 && (
+          <section className="section">
+            <h2>Günstige Alternativen zu {perfume.perfume_name}</h2>
+            <p className="small">
+              Ähnlich riechende Düfte, die deutlich weniger kosten – ideal, wenn du den Stil magst,
+              aber sparen möchtest.
+            </p>
+            <div className="perfume-list">
+              {cheaper.map(({ perfume: c, similarity }) => {
+                const saving =
+                  perfume.price_chf != null && c.price_chf != null
+                    ? perfume.price_chf - c.price_chf
+                    : null;
+                return (
+                  <Link className="tile tile-link" href={`/duft/${c.slug}`} key={c.id}>
+                    <Cover perfume={c} />
+                    <div className="match-badge">{c.price_chf != null ? `ca. CHF ${c.price_chf}` : 'Preis offen'}</div>
+                    <h3>{c.perfume_name}</h3>
+                    <p className="small">
+                      {c.brands?.name || 'Marke offen'} · {familyLabel(c.fragrance_family)}
+                    </p>
+                    <p className="small">
+                      {similarity}% ähnlich
+                      {saving != null && saving > 0 ? ` · spart ~CHF ${saving}` : ''}
+                    </p>
+                  </Link>
+                );
+              })}
+            </div>
           </section>
         )}
 

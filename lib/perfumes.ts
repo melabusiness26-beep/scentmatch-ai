@@ -216,6 +216,20 @@ export function findSimilarPerfumes(target: Perfume, pool: Perfume[], limit = 4)
     .slice(0, limit);
 }
 
+// Günstige Alternativen: ähnlich riechende Düfte, die spürbar weniger kosten
+// (mindestens 20 % günstiger). Ideal für preisbewusste Käufer ("Dupes").
+export function findCheaperAlternatives(target: Perfume, pool: Perfume[], limit = 3): SimilarPerfume[] {
+  const targetPrice = target.price_chf;
+  if (targetPrice == null) return [];
+  return pool
+    .filter((p) => p.id !== target.id)
+    .filter((p) => p.price_chf != null && p.price_chf <= targetPrice * 0.8)
+    .map((p) => ({ perfume: p, similarity: noteSimilarity(target, p) }))
+    .filter((s) => s.similarity >= 25)
+    .sort((a, b) => b.similarity - a.similarity)
+    .slice(0, limit);
+}
+
 export function rankPerfumes(perfumes: Perfume[], a: QuizAnswers): RankedPerfume[] {
   const anchor = a.anchorId ? perfumes.find((p) => p.id === a.anchorId) || null : null;
   return perfumes

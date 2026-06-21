@@ -16,9 +16,9 @@ import { GENRES, PLATFORMS } from "@/data/taxonomy";
 export const revalidate = 3600;
 
 export default function HomePage() {
-  const popular = getPopularGames(10);
-  const newUpcoming = getNewAndUpcoming(5);
-  const retro = getRetroClassics(5);
+  const popular = getPopularGames(12);
+  const newUpcoming = getNewAndUpcoming(6);
+  const retro = getRetroClassics(6);
   const total = getAllGames().length;
 
   return (
@@ -74,6 +74,21 @@ export default function HomePage() {
               ideal, um schnell das Richtige zu finden.
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------- Stöbern nach Genre */}
+      <section className="container-page py-4">
+        <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
+          {GENRES.map((genre) => (
+            <Link
+              key={genre}
+              href={`/games?genre=${encodeURIComponent(genre)}`}
+              className="chip shrink-0"
+            >
+              {genre}
+            </Link>
+          ))}
         </div>
       </section>
 

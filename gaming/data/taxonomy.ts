@@ -9,6 +9,7 @@ import type {
   Mood,
   Platform,
   PlaytimeCategory,
+  PriceTier,
   Tag,
 } from "@/lib/types";
 
@@ -28,6 +29,7 @@ export const GENRES: Genre[] = [
   "Action",
   "Adventure",
   "RPG",
+  "MMORPG",
   "Shooter",
   "Strategy",
   "Simulation",
@@ -40,6 +42,10 @@ export const GENRES: Genre[] = [
   "Roguelike",
   "Metroidvania",
   "Sandbox",
+  "Survival",
+  "Battle Royale",
+  "Card Game",
+  "Rhythm",
 ];
 
 export const MODES: GameMode[] = [
@@ -84,6 +90,24 @@ export const TAGS: Tag[] = [
   "roguelike",
   "puzzle",
   "couch co-op",
+  "crafting",
+  "base-building",
+  "survival",
+  "competitive",
+  "casual",
+  "anime",
+  "post-apocalyptic",
+  "deckbuilder",
+  "stealth",
+  "western",
+  "space",
+  "free-to-play",
+  "party",
+  "battle royale",
+  "time-loop",
+  "narrative",
+  "funny",
+  "social",
 ];
 
 /** Moods mit Label + kurzem Untertitel + Emoji für die "by mood"-Kacheln. */
@@ -96,6 +120,25 @@ export const MOODS: { value: Mood; label: string; blurb: string; emoji: string }
   { value: "Story-rich", label: "Story-rich", blurb: "Erzählung im Mittelpunkt", emoji: "📖" },
   { value: "Mind-bending", label: "Mind-bending", blurb: "Rätsel & clevere Twists", emoji: "🧩" },
   { value: "Adrenaline", label: "Adrenaline", blurb: "Tempo, Action, Puls hoch", emoji: "⚡" },
+  { value: "Funny", label: "Funny", blurb: "Lachen & gute Laune", emoji: "😄" },
+  { value: "Nostalgic", label: "Nostalgic", blurb: "Erinnerungen & Klassiker", emoji: "📼" },
+  { value: "Social", label: "Social", blurb: "Mit Freunden zusammen", emoji: "🎉" },
+];
+
+/** Preis-Stufen für den Preis-Filter. */
+export const PRICE_TIERS: { value: PriceTier; label: string }[] = [
+  { value: "Free", label: "Gratis" },
+  { value: "Budget", label: "Günstig (bis €25)" },
+  { value: "Standard", label: "Standard (€25–60)" },
+  { value: "Premium", label: "Premium (€60+)" },
+];
+
+/** Erscheinungs-Ären für den Zeit-Filter. */
+export const ERAS: { value: string; label: string; from?: number; to?: number }[] = [
+  { value: "2020s", label: "Neu (2020+)", from: 2020 },
+  { value: "2010s", label: "2010er", from: 2010, to: 2019 },
+  { value: "2000s", label: "2000er", from: 2000, to: 2009 },
+  { value: "retro", label: "Retro (vor 2000)", to: 1999 },
 ];
 
 /** Kurz-Glyphen für Plattformen (kompakt für Karten). */

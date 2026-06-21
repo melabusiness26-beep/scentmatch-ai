@@ -22,6 +22,7 @@ export type Genre =
   | "Action"
   | "Adventure"
   | "RPG"
+  | "MMORPG"
   | "Shooter"
   | "Strategy"
   | "Simulation"
@@ -33,7 +34,11 @@ export type Genre =
   | "Fighting"
   | "Roguelike"
   | "Metroidvania"
-  | "Sandbox";
+  | "Sandbox"
+  | "Survival"
+  | "Battle Royale"
+  | "Card Game"
+  | "Rhythm";
 
 export type GameMode =
   | "Single-player"
@@ -79,7 +84,10 @@ export type Mood =
   | "Competitive"
   | "Story-rich"
   | "Mind-bending"
-  | "Adrenaline";
+  | "Adrenaline"
+  | "Funny"
+  | "Nostalgic"
+  | "Social";
 
 /** Frei wählbare Schlagworte für Filter/Discovery. */
 export type Tag =
@@ -99,7 +107,25 @@ export type Tag =
   | "exploration"
   | "roguelike"
   | "puzzle"
-  | "couch co-op";
+  | "couch co-op"
+  | "crafting"
+  | "base-building"
+  | "survival"
+  | "competitive"
+  | "casual"
+  | "anime"
+  | "post-apocalyptic"
+  | "deckbuilder"
+  | "stealth"
+  | "western"
+  | "space"
+  | "free-to-play"
+  | "party"
+  | "battle royale"
+  | "time-loop"
+  | "narrative"
+  | "funny"
+  | "social";
 
 export interface Dlc {
   title: string;

@@ -15,6 +15,7 @@ import {
 } from "@/data/taxonomy";
 import type {
   Difficulty,
+  Game,
   GameMode,
   GameSort,
   Genre,
@@ -50,12 +51,14 @@ function inEra(year: number, eraValue: string): boolean {
 }
 
 export default function GamesExplorer({
+  games,
   initialQuery = "",
   initialGenre,
   initialPlatform,
   initialMood,
   initialSection,
 }: {
+  games: Game[];
   initialQuery?: string;
   initialGenre?: Genre;
   initialPlatform?: Platform;
@@ -83,16 +86,19 @@ export default function GamesExplorer({
   const [filtersOpen, setFiltersOpen] = useState(false);
 
   const results = useMemo(() => {
-    let list = filterGames({
-      query,
-      genres,
-      platforms,
-      modes,
-      difficulty: difficulties,
-      playtime: playtimes,
-      tags,
-      sort,
-    });
+    let list = filterGames(
+      {
+        query,
+        genres,
+        platforms,
+        modes,
+        difficulty: difficulties,
+        playtime: playtimes,
+        tags,
+        sort,
+      },
+      games,
+    );
     if (mood) list = list.filter((g) => g.moods.includes(mood));
     if (section === "retro") list = list.filter(isRetro);
     if (eras.length) list = list.filter((g) => eras.some((e) => inEra(getYear(g), e)));
@@ -101,7 +107,7 @@ export default function GamesExplorer({
     if (coopOnly) list = list.filter((g) => g.coop);
     return list;
   }, [
-    query, genres, platforms, modes, difficulties, playtimes, tags, sort,
+    games, query, genres, platforms, modes, difficulties, playtimes, tags, sort,
     mood, section, eras, priceTiers, multiplayerOnly, coopOnly,
   ]);
 
@@ -155,6 +161,11 @@ export default function GamesExplorer({
               </button>
             )}
           </div>
+
+          <p className="rounded-lg bg-panel-2 px-3 py-2 text-xs text-muted">
+            💡 Tipp: Du kannst <span className="text-fg">mehrere</span> Werte gleichzeitig
+            auswählen (z. B. mehrere Genres und Plattformen).
+          </p>
 
           {/* Schnell-Schalter */}
           <div className="flex flex-wrap gap-2">

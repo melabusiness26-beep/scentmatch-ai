@@ -14,6 +14,7 @@ import {
   getYear,
 } from "@/lib/games";
 import { SITE } from "@/lib/site";
+import { getCatalog } from "@/services/catalog";
 
 export const revalidate = 3600;
 
@@ -49,10 +50,11 @@ export default async function GameDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const game = getGameBySlug(slug);
+  const catalog = await getCatalog();
+  const game = getGameBySlug(slug, catalog);
   if (!game) notFound();
 
-  const similar = getSimilarGames(game, 5);
+  const similar = getSimilarGames(game, 5, catalog);
 
   const jsonLd = {
     "@context": "https://schema.org",

@@ -5,21 +5,22 @@ import SectionHeading from "@/components/SectionHeading";
 import MoodGrid from "@/components/MoodGrid";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import {
-  getAllGames,
   getNewAndUpcoming,
   getPopularGames,
   getRetroClassics,
 } from "@/lib/games";
+import { getCatalog } from "@/services/catalog";
 import { GENRES, PLATFORMS } from "@/data/taxonomy";
 
 // Statische Startseite, stündlich neu validiert (ISR) – schnell & SEO-freundlich.
 export const revalidate = 3600;
 
-export default function HomePage() {
-  const popular = getPopularGames(12);
-  const newUpcoming = getNewAndUpcoming(6);
-  const retro = getRetroClassics(6);
-  const total = getAllGames().length;
+export default async function HomePage() {
+  const catalog = await getCatalog();
+  const popular = getPopularGames(12, catalog);
+  const newUpcoming = getNewAndUpcoming(6, catalog);
+  const retro = getRetroClassics(6, catalog);
+  const total = catalog.length;
 
   return (
     <>

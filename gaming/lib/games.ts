@@ -23,13 +23,13 @@ export function getAllSlugs(): string[] {
   return GAMES.map((g) => g.slug);
 }
 
-export function getGameBySlug(slug: string): Game | undefined {
-  return GAMES.find((g) => g.slug === slug);
+export function getGameBySlug(slug: string, games: Game[] = GAMES): Game | undefined {
+  return games.find((g) => g.slug === slug);
 }
 
-export function getGamesBySlugs(slugs: string[]): Game[] {
+export function getGamesBySlugs(slugs: string[], games: Game[] = GAMES): Game[] {
   return slugs
-    .map((slug) => getGameBySlug(slug))
+    .map((slug) => getGameBySlug(slug, games))
     .filter((g): g is Game => Boolean(g));
 }
 
@@ -57,29 +57,31 @@ export function formatReleaseDate(game: Game): string {
 
 /* ---------------------------------------------------------------- Sektionen */
 
-export function getPopularGames(limit = 6): Game[] {
-  return [...GAMES].sort((a, b) => b.popularity - a.popularity).slice(0, limit);
+export function getPopularGames(limit = 6, games: Game[] = GAMES): Game[] {
+  return [...games].sort((a, b) => b.popularity - a.popularity).slice(0, limit);
 }
 
-export function getNewAndUpcoming(limit = 6): Game[] {
+export function getNewAndUpcoming(limit = 6, games: Game[] = GAMES): Game[] {
   // Upcoming zuerst (näheste Releases), danach die neuesten erschienenen Spiele.
-  const upcoming = GAMES.filter(isUpcoming).sort(
+  const upcoming = games.filter(isUpcoming).sort(
     (a, b) => new Date(a.releaseDate).getTime() - new Date(b.releaseDate).getTime(),
   );
-  const released = GAMES.filter((g) => !isUpcoming(g)).sort(
+  const released = games.filter((g) => !isUpcoming(g)).sort(
     (a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime(),
   );
   return [...upcoming, ...released].slice(0, limit);
 }
 
-export function getRetroClassics(limit = 6): Game[] {
-  return GAMES.filter(isRetro)
+export function getRetroClassics(limit = 6, games: Game[] = GAMES): Game[] {
+  return games
+    .filter(isRetro)
     .sort((a, b) => b.rating - a.rating)
     .slice(0, limit);
 }
 
-export function getGamesByMood(mood: Mood, limit = 6): Game[] {
-  return GAMES.filter((g) => g.moods.includes(mood))
+export function getGamesByMood(mood: Mood, limit = 6, games: Game[] = GAMES): Game[] {
+  return games
+    .filter((g) => g.moods.includes(mood))
     .sort((a, b) => b.popularity - a.popularity)
     .slice(0, limit);
 }
@@ -129,8 +131,8 @@ export function sortGames(games: Game[], sort: GameSort = "popular"): Game[] {
   }
 }
 
-export function filterGames(filters: GameFilters): Game[] {
-  let result = GAMES.filter((game) => {
+export function filterGames(filters: GameFilters, games: Game[] = GAMES): Game[] {
+  let result = games.filter((game) => {
     if (filters.query && !matchesQuery(game, filters.query)) return false;
     if (filters.genres?.length && !filters.genres.some((g) => game.genres.includes(g)))
       return false;
@@ -155,13 +157,13 @@ export function filterGames(filters: GameFilters): Game[] {
 
 /* -------------------------------------------------------- Ähnliche Spiele */
 
-export function getSimilarGames(game: Game, limit = 4): Game[] {
+export function getSimilarGames(game: Game, limit = 4, games: Game[] = GAMES): Game[] {
   // 1) Explizit gepflegte ähnliche Spiele zuerst.
-  const explicit = getGamesBySlugs(game.similarGames);
+  const explicit = getGamesBySlugs(game.similarGames, games);
   if (explicit.length >= limit) return explicit.slice(0, limit);
 
   // 2) Auffüllen über geteilte Genres/Tags/Moods.
-  const scored = GAMES.filter(
+  const scored = games.filter(
     (g) => g.slug !== game.slug && !game.similarGames.includes(g.slug),
   )
     .map((g) => {

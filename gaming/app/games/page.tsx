@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import GamesExplorer from "@/components/GamesExplorer";
+import { getCatalog } from "@/services/catalog";
 import type { Genre, Mood, Platform } from "@/lib/types";
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export default async function GamesPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const sp = await searchParams;
+  const catalog = await getCatalog();
   const first = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
 
   return (
@@ -30,6 +32,7 @@ export default async function GamesPage({
       </div>
 
       <GamesExplorer
+        games={catalog}
         initialQuery={first(sp.q) ?? ""}
         initialGenre={first(sp.genre) as Genre | undefined}
         initialPlatform={first(sp.platform) as Platform | undefined}

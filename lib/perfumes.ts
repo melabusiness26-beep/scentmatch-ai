@@ -195,6 +195,18 @@ function noteSimilarity(anchor: Perfume, p: Perfume): number {
   return Math.round(Math.min(100, Math.max(0, s)));
 }
 
+// Findet die Düfte, die einem gegebenen Duft am ähnlichsten riechen.
+// Nutzt dieselbe Ähnlichkeits-Logik wie der Anker-Duft im Quiz.
+export type SimilarPerfume = { perfume: Perfume; similarity: number };
+
+export function findSimilarPerfumes(target: Perfume, pool: Perfume[], limit = 4): SimilarPerfume[] {
+  return pool
+    .filter((p) => p.id !== target.id)
+    .map((p) => ({ perfume: p, similarity: noteSimilarity(target, p) }))
+    .sort((a, b) => b.similarity - a.similarity)
+    .slice(0, limit);
+}
+
 export function rankPerfumes(perfumes: Perfume[], a: QuizAnswers): RankedPerfume[] {
   const anchor = a.anchorId ? perfumes.find((p) => p.id === a.anchorId) || null : null;
   return perfumes

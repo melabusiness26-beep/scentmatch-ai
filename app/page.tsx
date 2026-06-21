@@ -12,11 +12,12 @@ import {
 } from '@/lib/perfumes';
 
 type QuestionKind = 'gender' | 'anchor' | 'family' | 'occasion' | 'season' | 'sillage' | 'budget' | 'lovedNote' | 'dislikedNote';
-type QuizQuestion = { q: string; kind: QuestionKind; a: [string, string][] };
+type QuizQuestion = { q: string; hint?: string; kind: QuestionKind; a: [string, string][] };
 
 const questions: QuizQuestion[] = [
   {
     q: 'Für wen suchst du einen Duft?',
+    hint: 'So zeigen wir dir nur Düfte, die wirklich passen.',
     kind: 'gender',
     a: [
       ['Für Damen', 'women'],
@@ -26,11 +27,13 @@ const questions: QuizQuestion[] = [
   },
   {
     q: 'Kennst du schon einen Duft, den du liebst? (optional)',
+    hint: 'Verrätst du uns einen Lieblingsduft, finden wir gezielt ähnlich riechende Düfte für dich.',
     kind: 'anchor',
     a: []
   },
   {
     q: 'Welcher Moment fühlt sich am meisten nach dir an?',
+    hint: 'Wähl aus dem Bauch heraus – es gibt kein richtig oder falsch.',
     kind: 'family',
     a: [
       ['Frisch geduscht, weißes Hemd, offene Fenster', 'clean'],
@@ -41,6 +44,7 @@ const questions: QuizQuestion[] = [
   },
   {
     q: 'Welche Duftnote zieht dich an?',
+    hint: 'Stell dir vor, du riechst kurz daran – was gefällt dir am meisten?',
     kind: 'family',
     a: [
       ['Moschus, Tee, Zitrus', 'clean'],
@@ -51,6 +55,7 @@ const questions: QuizQuestion[] = [
   },
   {
     q: 'Wie möchtest du wirken?',
+    hint: 'Dein Duft ist ein erster Eindruck – welcher soll es sein?',
     kind: 'family',
     a: [
       ['Klar, frisch und gepflegt', 'clean'],
@@ -61,16 +66,19 @@ const questions: QuizQuestion[] = [
   },
   {
     q: 'Welche Duftnote liebst du besonders?',
+    hint: 'Diese Note gewichten wir bei deinem Match besonders stark.',
     kind: 'lovedNote',
     a: NOTE_THEMES.map(t => [t.label, t.code] as [string, string])
   },
   {
     q: 'Gibt es eine Note, die gar nicht geht?',
+    hint: 'Düfte mit dieser Note rutschen in deinem Ranking nach unten.',
     kind: 'dislikedNote',
     a: [['Keine – ich bin offen', ''], ...NOTE_THEMES.map(t => [t.label, t.code] as [string, string])]
   },
   {
     q: 'Wofür suchst du den Duft hauptsächlich?',
+    hint: 'So treffen wir den Charakter und die Intensität besser.',
     kind: 'occasion',
     a: [
       ['Alltag & Büro', 'daily'],
@@ -81,6 +89,7 @@ const questions: QuizQuestion[] = [
   },
   {
     q: 'Für welche Jahreszeit suchst du ihn?',
+    hint: 'Viele Düfte entfalten sich je nach Wetter ganz anders.',
     kind: 'season',
     a: [
       ['Frühling', 'Frühling'],
@@ -91,6 +100,7 @@ const questions: QuizQuestion[] = [
   },
   {
     q: 'Wie präsent darf dein Duft sein?',
+    hint: 'Sillage = wie weit dein Duft im Raum wahrnehmbar ist.',
     kind: 'sillage',
     a: [
       ['Dezent – nah an der Haut', 'low'],
@@ -100,6 +110,7 @@ const questions: QuizQuestion[] = [
   },
   {
     q: 'Was ist dein Budget?',
+    hint: 'Wir zeigen dir die besten Treffer in deinem Rahmen – ohne dich einzuschränken.',
     kind: 'budget',
     a: [
       ['Bis CHF 80', '80'],
@@ -122,6 +133,20 @@ const profileText: Record<string, { title: string; text: string }> = {
 const genderLabels: Record<string, string> = { women: 'Damen', men: 'Herren', unisex: 'Unisex' };
 
 const emptyFamily = { clean: 0, gourmand: 0, woody: 0, floral: 0 };
+
+// Momentaufnahme des Quiz-Zustands – ermöglicht den „Zurück"-Knopf.
+type QuizSnapshot = {
+  step: number;
+  family: Record<string, number>;
+  genderPref: QuizAnswers['gender'];
+  occasion: QuizAnswers['occasion'];
+  season: QuizAnswers['season'];
+  sillage: QuizAnswers['sillage'];
+  budgetMax: number | null;
+  lovedNote: string;
+  dislikedNote: string;
+  anchorId: string;
+};
 
 // Fallback, falls die Datenbank (noch) nicht erreichbar ist. Ohne slug -> kein Link.
 const starterPerfumes: Perfume[] = [
@@ -162,6 +187,7 @@ export default function Home() {
   const [lovedNote, setLovedNote] = useState('');
   const [dislikedNote, setDislikedNote] = useState('');
   const [anchorId, setAnchorId] = useState('');
+  const [history, setHistory] = useState<QuizSnapshot[]>([]);
   const [showResult, setShowResult] = useState(false);
   const [perfumes, setPerfumes] = useState<Perfume[]>(starterPerfumes);
   const [query, setQuery] = useState('');
@@ -189,7 +215,16 @@ export default function Home() {
 
   const topPick = showResult ? visible[0] : undefined;
 
+  // Aktuellen Zustand sichern, bevor wir eine Frage weitergehen (für „Zurück").
+  function pushHistory() {
+    setHistory(h => [
+      ...h,
+      { step, family: { ...family }, genderPref, occasion, season, sillage, budgetMax, lovedNote, dislikedNote, anchorId }
+    ]);
+  }
+
   function answer(kind: QuestionKind, code: string) {
+    pushHistory();
     if (kind === 'gender') setGenderPref(code as QuizAnswers['gender']);
     else if (kind === 'family') setFamily(prev => ({ ...prev, [code]: (prev[code] || 0) + 1 }));
     else if (kind === 'occasion') setOccasion(code as QuizAnswers['occasion']);
@@ -199,12 +234,36 @@ export default function Home() {
     else if (kind === 'lovedNote') setLovedNote(code);
     else if (kind === 'dislikedNote') setDislikedNote(code);
 
-    advance();
+    advanceStep();
   }
 
-  function advance() {
+  // Anker-Frage (Dropdown) per Knopf weitergehen – Auswahl ist bereits gesetzt.
+  function advanceAnchor() {
+    pushHistory();
+    advanceStep();
+  }
+
+  function advanceStep() {
     if (step + 1 >= questions.length) setShowResult(true);
     else setStep(step + 1);
+  }
+
+  // Einen Schritt zurück und die letzte Antwort wiederherstellen.
+  function goBack() {
+    if (history.length === 0) return;
+    const prev = history[history.length - 1];
+    setStep(prev.step);
+    setFamily(prev.family);
+    setGenderPref(prev.genderPref);
+    setOccasion(prev.occasion);
+    setSeason(prev.season);
+    setSillage(prev.sillage);
+    setBudgetMax(prev.budgetMax);
+    setLovedNote(prev.lovedNote);
+    setDislikedNote(prev.dislikedNote);
+    setAnchorId(prev.anchorId);
+    setShowResult(false);
+    setHistory(history.slice(0, -1));
   }
 
   function restartQuiz() {
@@ -218,6 +277,7 @@ export default function Home() {
     setLovedNote('');
     setDislikedNote('');
     setAnchorId('');
+    setHistory([]);
     setShowResult(false);
   }
 
@@ -258,8 +318,9 @@ export default function Home() {
           {!showResult ? (
             <>
               <p className="small">Frage {step + 1} von {questions.length}</p>
-              <div className="scorebar quiz-progress"><span style={{ width: `${(step / questions.length) * 100}%` }} /></div>
+              <div className="scorebar quiz-progress"><span style={{ width: `${((step + 1) / questions.length) * 100}%` }} /></div>
               <div className="question">{questions[step].q}</div>
+              {questions[step].hint && <p className="small quiz-hint">{questions[step].hint}</p>}
               {questions[step].kind === 'anchor' ? (
                 <div className="answers">
                   <select className="search" value={anchorId} onChange={e => setAnchorId(e.target.value)}>
@@ -271,7 +332,7 @@ export default function Home() {
                     ))}
                   </select>
                   <p className="small">Optional – du kannst diese Frage auch einfach überspringen.</p>
-                  <button className="answer" onClick={advance}>{anchorId ? 'Weiter' : 'Überspringen'}</button>
+                  <button className="answer" onClick={advanceAnchor}>{anchorId ? 'Weiter' : 'Überspringen'}</button>
                 </div>
               ) : (
                 <div className="answers">
@@ -279,6 +340,9 @@ export default function Home() {
                     <button className="answer" key={label} onClick={() => answer(questions[step].kind, code)}>{label}</button>
                   ))}
                 </div>
+              )}
+              {history.length > 0 && (
+                <button className="quiz-back" onClick={goBack}>← Zurück</button>
               )}
             </>
           ) : (

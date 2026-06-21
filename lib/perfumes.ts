@@ -32,6 +32,66 @@ export type Perfume = {
 const PERFUME_FIELDS =
   'id, perfume_name, slug, gender, fragrance_family, price_chf, longevity, sillage, scentmatch_score, season, occasion, description, image_url, affiliate_url, top_notes, heart_notes, base_notes, brands(name, slug, country)';
 
+// Erzeugt eine ausführliche, natürlich klingende Beschreibung aus den
+// vorhandenen Daten eines Dufts. Wird genutzt, wenn keine manuelle
+// Beschreibung hinterlegt ist – so wirkt jede Duftseite vollständig.
+const FAMILY_DESC: Record<string, string> = {
+  clean: 'frischer, sauberer',
+  gourmand: 'warmer, süßlicher',
+  woody: 'holziger, eleganter',
+  floral: 'blumiger, femininer'
+};
+const GENDER_DESC: Record<string, string> = {
+  Women: ' für Damen',
+  Men: ' für Herren',
+  Unisex: ', unisex tragbar'
+};
+
+function notesList(notes: string[] | null): string {
+  return notes && notes.length ? notes.join(', ') : '';
+}
+
+export function describePerfume(p: Perfume): string {
+  const brand = p.brands?.name ? ` von ${p.brands.name}` : '';
+  const fam = p.fragrance_family ? FAMILY_DESC[p.fragrance_family] || '' : '';
+  const gender = p.gender ? GENDER_DESC[p.gender] || '' : '';
+  const sentences: string[] = [];
+
+  sentences.push(`${p.perfume_name}${brand} ist ein ${fam ? `${fam} ` : ''}Duft${gender}.`);
+
+  const top = notesList(p.top_notes);
+  const heart = notesList(p.heart_notes);
+  const base = notesList(p.base_notes);
+  const bits: string[] = [];
+  if (top) bits.push(`öffnet mit ${top}`);
+  if (heart) bits.push(`entfaltet im Herzen ${heart}`);
+  if (base) bits.push(`ruht auf ${base}`);
+  if (bits.length === 1) sentences.push(`Er ${bits[0]}.`);
+  else if (bits.length > 1) sentences.push(`Er ${bits.slice(0, -1).join(', ')} und ${bits[bits.length - 1]}.`);
+
+  const perf: string[] = [];
+  if (p.longevity != null) {
+    const word = p.longevity >= 8 ? 'sehr gut' : p.longevity >= 6 ? 'solide' : 'eher dezent';
+    perf.push(`die Haltbarkeit ist ${word} (${p.longevity}/10)`);
+  }
+  if (p.sillage != null) {
+    const word = p.sillage >= 8 ? 'kräftig' : p.sillage >= 6 ? 'ausgewogen' : 'nah an der Haut';
+    perf.push(`die Sillage ${word} (${p.sillage}/10)`);
+  }
+  if (perf.length) {
+    const joined = perf.join(' und ');
+    sentences.push(`${joined.charAt(0).toUpperCase()}${joined.slice(1)}.`);
+  }
+
+  if (p.occasion && p.season) sentences.push(`Ideal für ${p.occasion} und die Saison ${p.season}.`);
+  else if (p.occasion) sentences.push(`Ideal für ${p.occasion}.`);
+  else if (p.season) sentences.push(`Ideal für die Saison ${p.season}.`);
+
+  if (p.price_chf != null) sentences.push(`Richtpreis: ca. CHF ${p.price_chf}.`);
+
+  return sentences.join(' ');
+}
+
 // Ziel-Link für den „Jetzt ansehen"-Button. Liegt ein Affiliate-Link vor,
 // wird dieser genutzt; sonst eine neutrale Such-Verlinkung (nie ein toter Button).
 export function buyUrl(p: Perfume): string {

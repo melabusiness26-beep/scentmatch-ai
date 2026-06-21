@@ -224,9 +224,12 @@ export default function Home() {
         .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
         .map(p => ({ perfume: p, score: 0 }));
 
-  const visible = ranked.filter(({ perfume: p }) =>
-    !query || `${p.perfume_name} ${p.fragrance_family} ${p.brands?.name}`.toLowerCase().includes(query.toLowerCase())
-  );
+  const visible = ranked.filter(({ perfume: p }) => {
+    if (!query) return true;
+    const notes = [...(p.top_notes || []), ...(p.heart_notes || []), ...(p.base_notes || [])].join(' ');
+    const haystack = `${p.perfume_name} ${p.fragrance_family} ${p.brands?.name || ''} ${p.season || ''} ${p.occasion || ''} ${notes}`.toLowerCase();
+    return haystack.includes(query.toLowerCase());
+  });
 
   const topPick = showResult ? visible[0] : undefined;
 
@@ -398,7 +401,7 @@ export default function Home() {
               ? `Sortiert nach Match-Score für dein Profil${genderPref ? ` (${genderLabels[genderPref]})` : ''}. Klicke einen Duft für das volle Profil.`
               : 'Klicke auf einen Duft, um sein vollständiges Profil zu sehen. Mach das Quiz oben für deinen persönlichen Match-Score.'}
           </p>
-          <input className="search" placeholder="Suche nach Duft, Marke oder Duftfamilie…" value={query} onChange={e => setQuery(e.target.value)} />
+          <input className="search" placeholder="Suche nach Duft, Marke, Note (z. B. Bergamotte) oder Anlass…" value={query} onChange={e => setQuery(e.target.value)} />
           <div className="perfume-list">
             {visible.map(({ perfume: p, score }) => (
               <PerfumeTile perfume={p} matchPercent={showResult ? score : undefined} key={p.id} />

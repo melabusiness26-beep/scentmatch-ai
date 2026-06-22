@@ -26,12 +26,10 @@ export function PerfumeCover({ perfume, large }: { perfume: Perfume; large?: boo
   }
   return (
     <div className={className}>
-      <svg className="cover-bottle" viewBox="0 0 48 64" aria-hidden="true">
-        <rect x="19" y="4" width="10" height="6" rx="1.5" />
-        <rect x="21.5" y="10" width="5" height="4" />
-        <rect x="11" y="14" width="26" height="44" rx="8" />
-        <rect className="cover-bottle-label" x="17" y="33" width="14" height="11" rx="2" />
-      </svg>
+      <div className="cover-label">
+        {perfume.brands?.name && <span className="cover-label-brand">{perfume.brands.name}</span>}
+        <span className="cover-label-name">{perfume.perfume_name}</span>
+      </div>
     </div>
   );
 }

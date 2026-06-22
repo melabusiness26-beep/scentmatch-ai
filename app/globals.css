@@ -161,11 +161,13 @@ a.logo { text-decoration:none; color:inherit; }
 .cover { position:relative; height:130px; border-radius:16px; margin-bottom:12px; background-color:#eadfce; background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,.45), inset 0 -30px 50px rgba(75,53,40,.12); }
 .cover-large { height:230px; margin-bottom:18px; }
 .cover-glyph { font-size:38px; color:rgba(75,53,40,.5); }
-/* Eleganter Flakon-Umriss als Platzhalter, solange kein echtes Foto da ist */
-.cover-bottle { width:46px; height:62px; }
-.cover-large .cover-bottle { width:70px; height:94px; }
-.cover-bottle rect { fill:none; stroke:rgba(75,53,40,.42); stroke-width:2; vector-effect:non-scaling-stroke; }
-.cover-bottle .cover-bottle-label { stroke-width:1.5; stroke:rgba(75,53,40,.3); }
+/* Edle „Etiketten-Karte" als Platzhalter, solange kein echtes Foto da ist */
+.cover-label { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:4px; max-width:84%; padding:10px 14px; background:rgba(255,255,255,.5); border:1px solid rgba(255,255,255,.55); border-radius:14px; box-shadow:0 6px 18px rgba(75,53,40,.10); backdrop-filter:saturate(1.1); }
+.cover-label-brand { font-family:var(--font-sans), Arial, sans-serif; text-transform:uppercase; letter-spacing:.16em; font-size:9px; font-weight:700; color:#6b5443; }
+.cover-label-name { font-family:var(--font-display), Georgia, serif; font-size:17px; line-height:1.15; color:var(--brown); }
+.cover-large .cover-label { padding:16px 22px; gap:6px; max-width:78%; }
+.cover-large .cover-label-brand { font-size:12px; }
+.cover-large .cover-label-name { font-size:26px; }
 .cover-clean { background:linear-gradient(140deg,#aecdd0,#eef4f3); }
 .cover-gourmand { background:linear-gradient(140deg,#d6b98a,#f4e7d6); }
 .cover-woody { background:linear-gradient(140deg,#8a6a4e,#d0b594); }

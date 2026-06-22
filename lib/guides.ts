@@ -431,6 +431,35 @@ export const guides: Guide[] = [
         ]
       }
     ]
+  },
+  {
+    slug: 'damenduefte-die-maenner-lieben',
+    title: 'Damendüfte, die Männer lieben',
+    description:
+      'Welche Frauendüfte kommen bei Männern besonders gut an? Unsere Liste der beliebtesten „Komplimente-Düfte" für Frauen – von süss-warm bis verführerisch.',
+    intro: [
+      'Manche Damendüfte ziehen einfach magisch an und ernten besonders oft Komplimente – gerade von Männern. Meist sind es warme, süsse oder sinnlich-verführerische Kompositionen, die angenehm in Erinnerung bleiben.',
+      'Hier die Düfte, die als echte „Anziehungs-Klassiker" gelten.'
+    ],
+    sections: [
+      {
+        perfumes: [
+          'black-opium',
+          'la-vie-est-belle',
+          'good-girl',
+          'lancome-la-nuit-tresor',
+          'coco-mademoiselle',
+          'lattafa-yara',
+          'ysl-mon-paris',
+          'gisada-ambassadora'
+        ]
+      },
+      {
+        body: [
+          'Ehrlich gesagt: „Was Männer mögen" ist Geschmackssache und sehr individuell. Der schönste Duft ist der, in dem du dich selbstbewusst fühlst. Mach unser Quiz, um deine eigene Lieblingsrichtung zu finden.'
+        ]
+      }
+    ]
   }
 ];
 

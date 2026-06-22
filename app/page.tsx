@@ -212,6 +212,7 @@ export default function Home() {
   const [showResult, setShowResult] = useState(false);
   const [perfumes, setPerfumes] = useState<Perfume[]>(starterPerfumes);
   const [shareMsg, setShareMsg] = useState('');
+  const [revealScore, setRevealScore] = useState(0);
 
   useEffect(() => {
     async function loadPerfumes() {
@@ -253,6 +254,32 @@ export default function Home() {
   const ranked: RankedPerfume[] = showResult ? rankPerfumes(perfumes, answers) : [];
   const topPick = showResult ? ranked[0] : undefined;
   const topMatches = ranked.slice(0, 9);
+
+  // Wow-Moment: der Match-Score zählt beim Ergebnis von 0 hoch.
+  useEffect(() => {
+    if (!showResult || !topPick) {
+      setRevealScore(0);
+      return;
+    }
+    const target = topPick.score;
+    const reduce = typeof window !== 'undefined'
+      && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      setRevealScore(target);
+      return;
+    }
+    let raf = 0;
+    const start = performance.now();
+    const duration = 1100;
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
+      setRevealScore(Math.round(target * eased));
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [showResult, topPick?.perfume.id, topPick?.score]);
 
   // Ausgewogene Highlight-Auswahl für die Startseite (vor dem Quiz).
   const highlights = pickHighlights(perfumes, 6);
@@ -528,7 +555,11 @@ export default function Home() {
 
               {topPick && (
                 <div className="top-pick">
-                  <p className="small">Dein Top-Match · {topPick.score}% passend</p>
+                  <p className="small">Dein Top-Match</p>
+                  <div className="match-score-big">
+                    <span className="match-score-num">{revealScore}</span>
+                    <span className="match-score-pct">% passend</span>
+                  </div>
                   <h3>{topPick.perfume.perfume_name} · {topPick.perfume.brands?.name || 'Marke offen'}</h3>
                   <div className="cta">
                     {topPick.perfume.slug && (
@@ -542,7 +573,7 @@ export default function Home() {
               {Object.entries(family).map(([key, value]) => (
                 <div key={key} style={{ marginBottom: 12 }}>
                   <div className="small">{profileText[key].title}: {value}</div>
-                  <div className="scorebar"><span style={{ width: `${(value / familyQuestionCount) * 100}%` }} /></div>
+                  <div className="scorebar bar-reveal"><span style={{ width: `${(value / familyQuestionCount) * 100}%` }} /></div>
                 </div>
               ))}
 

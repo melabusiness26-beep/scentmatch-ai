@@ -2,12 +2,12 @@
 // >>> Bitte die Platzhalter in [eckigen Klammern] durch deine echten Daten ersetzen. <<<
 // (Diese Angaben erscheinen ÖFFENTLICH auf der Website – Impressum ist Pflicht.)
 export const OPERATOR = {
-  name: '[DEIN VOLLER NAME]',
-  street: '[STRASSE UND HAUSNUMMER]',
-  zip: '[PLZ]',
+  name: 'Melanie Viele',
+  street: 'Hardstrasse 90',
+  zip: '5432',
   city: 'Neuenhof',
   country: 'Schweiz',
-  email: '[KONTAKT-E-MAIL]',
+  email: 'mela.business26@gmail.com',
   // Stand der Rechtstexte (bei Änderungen aktualisieren):
   lastUpdated: 'Juni 2026'
 };

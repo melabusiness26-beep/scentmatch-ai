@@ -125,6 +125,9 @@ const questions: QuizQuestion[] = [
 
 const familyQuestionCount = questions.filter(q => q.kind === 'family').length;
 
+// Reihenfolge der Duftfamilien für das kompakte Kodieren im Teilen-Link.
+const FAMILY_ORDER = ['clean', 'gourmand', 'woody', 'floral'] as const;
+
 const profileText: Record<string, { title: string; text: string }> = {
   clean: { title: 'The Clean Slate', text: 'Du liebst frische, saubere Düfte. Deine Signatur wirkt gepflegt, leicht und modern.' },
   gourmand: { title: 'The Soft Cashmere Vibe', text: 'Du passt zu warmen, weichen und leicht süßen Düften. Deine Duftsignatur wirkt gemütlich und sinnlich.' },
@@ -233,6 +236,7 @@ export default function Home() {
   const [showResult, setShowResult] = useState(false);
   const [perfumes, setPerfumes] = useState<Perfume[]>(starterPerfumes);
   const [query, setQuery] = useState('');
+  const [shareMsg, setShareMsg] = useState('');
 
   useEffect(() => {
     async function loadPerfumes() {
@@ -246,6 +250,25 @@ export default function Home() {
     if (m >= 5 && m <= 7) setCurrentSeason('Sommer');
     else if (m >= 2 && m <= 4) setCurrentSeason('Frühling');
     else setCurrentSeason('Herbst/Winter');
+
+    // Geteilten Ergebnis-Link auslesen: Liegen Quiz-Antworten in der URL,
+    // stellen wir das Ergebnis direkt wieder her (ohne erneutes Quiz).
+    const sp = new URLSearchParams(window.location.search);
+    if (sp.has('f')) {
+      setGenderPref((sp.get('g') || '') as QuizAnswers['gender']);
+      const fam = (sp.get('f') || '').split('-').map(n => parseInt(n, 10) || 0);
+      setFamily({ clean: fam[0] || 0, gourmand: fam[1] || 0, woody: fam[2] || 0, floral: fam[3] || 0 });
+      setOccasion((sp.get('o') || '') as QuizAnswers['occasion']);
+      setSeason((sp.get('s') || '') as QuizAnswers['season']);
+      setSillage((sp.get('si') || '') as QuizAnswers['sillage']);
+      const b = sp.get('b');
+      setBudgetMax(b ? parseInt(b, 10) : null);
+      setLovedNote(sp.get('l') || '');
+      setDislikedNote(sp.get('d') || '');
+      setAnchorId(sp.get('a') || '');
+      setStep(questions.length - 1);
+      setShowResult(true);
+    }
   }, []);
 
   const answers: QuizAnswers = { gender: genderPref, family, occasion, season, sillage, budgetMax, lovedNote, dislikedNote, anchorId };
@@ -351,6 +374,50 @@ export default function Home() {
     setAnchorId('');
     setHistory([]);
     setShowResult(false);
+    setShareMsg('');
+    // Geteilte Antworten aus der URL entfernen, damit ein Neustart sauber ist.
+    if (typeof window !== 'undefined' && window.location.search) {
+      window.history.replaceState(null, '', window.location.pathname + '#quiz');
+    }
+  }
+
+  // Baut den teilbaren Link aus den aktuellen Quiz-Antworten.
+  function buildShareUrl(): string {
+    const p = new URLSearchParams();
+    if (genderPref) p.set('g', genderPref);
+    p.set('f', FAMILY_ORDER.map(k => family[k] || 0).join('-'));
+    if (occasion) p.set('o', occasion);
+    if (season) p.set('s', season);
+    if (sillage) p.set('si', sillage);
+    if (budgetMax != null) p.set('b', String(budgetMax));
+    if (lovedNote) p.set('l', lovedNote);
+    if (dislikedNote) p.set('d', dislikedNote);
+    if (anchorId) p.set('a', anchorId);
+    return `${window.location.origin}${window.location.pathname}?${p.toString()}#quiz`;
+  }
+
+  // Ergebnis teilen: nutzt das native Teilen-Menü (Handy) oder kopiert den Link.
+  async function shareResult() {
+    const url = buildShareUrl();
+    const title = `Mein ScentMatch-Duftprofil: ${profileText[winner].title}`;
+    const text = topPick
+      ? `Mein Top-Match ist ${topPick.perfume.perfume_name}. Finde mit dem kostenlosen ScentMatch-Quiz deinen:`
+      : 'Finde mit dem kostenlosen ScentMatch-Quiz deinen Signature-Duft:';
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({ title, text, url });
+      } catch {
+        // Teilen abgebrochen – kein Fehler nötig.
+      }
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      setShareMsg('Link kopiert! 📋 Du kannst ihn jetzt einfügen.');
+    } catch {
+      setShareMsg(url);
+    }
+    setTimeout(() => setShareMsg(''), 5000);
   }
 
   return (
@@ -501,7 +568,15 @@ export default function Home() {
                   <div className="scorebar"><span style={{ width: `${(value / familyQuestionCount) * 100}%` }} /></div>
                 </div>
               ))}
-              <button onClick={restartQuiz}>Quiz neu starten</button>
+
+              <div className="share-box">
+                <p className="small">Möchtest du dein Ergebnis speichern oder einer Freundin schicken?</p>
+                <div className="cta">
+                  <button type="button" className="button" onClick={shareResult}>🔗 Ergebnis teilen / speichern</button>
+                  <button type="button" className="secondary" onClick={restartQuiz}>Quiz neu starten</button>
+                </div>
+                {shareMsg && <p className="small share-msg">{shareMsg}</p>}
+              </div>
             </div>
           )}
         </section>

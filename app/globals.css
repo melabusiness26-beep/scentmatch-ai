@@ -28,8 +28,21 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 .eyebrow { display: inline-flex; align-items: center; gap: 11px; font-family: var(--font-sans), Arial, sans-serif; text-transform: uppercase; letter-spacing: .24em; font-size: 12px; font-weight: 600; color: #a07c43; margin: 0 0 14px; }
 .eyebrow::before { content: ''; width: 26px; height: 1px; background: var(--gold); display: inline-block; }
 .hero-stage .eyebrow { color: var(--gold); }
-.hero-stage { position: relative; overflow: hidden; margin-top: 8px; padding: 64px 56px; border-radius: 36px; color: #f3e9da; background: radial-gradient(130% 130% at 0% 0%, #5a4131 0%, #3a2a20 48%, #241912 100%); border: 1px solid rgba(185,152,99,.35); box-shadow: 0 44px 110px rgba(36,25,18,.38); }
-.hero-stage::before { content: ''; position: absolute; top: -28%; right: -8%; width: 540px; height: 540px; background: radial-gradient(circle, rgba(185,152,99,.40), rgba(185,152,99,0) 62%); pointer-events: none; }
+.hero-stage { position: relative; overflow: hidden; margin-top: 8px; padding: 84px 60px; border-radius: 36px; color: #f3e9da; background: radial-gradient(130% 130% at 0% 0%, #5a4131 0%, #3a2a20 48%, #241912 100%); border: 1px solid rgba(185,152,99,.35); box-shadow: 0 44px 110px rgba(36,25,18,.38); }
+.hero-stage::before { content: ''; position: absolute; top: -28%; right: -8%; width: 540px; height: 540px; background: radial-gradient(circle, rgba(185,152,99,.40), rgba(185,152,99,0) 62%); pointer-events: none; z-index: 0; }
+.hero-stage::after { content: ''; position: absolute; bottom: -32%; left: -12%; width: 480px; height: 480px; background: radial-gradient(circle, rgba(216,178,119,.26), rgba(216,178,119,0) 64%); pointer-events: none; z-index: 0; }
+/* Editorial-Flakon im Hero: edler Gold-Umriss mit weichem Schein */
+.hero-flacon { width: 100px; height: 134px; filter: drop-shadow(0 10px 30px rgba(216,178,119,.45)); }
+.hero-flacon rect { fill: none; stroke: rgba(235,214,172,.9); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.hero-flacon .hero-flacon-label { stroke: rgba(235,214,172,.5); }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-stage::before { animation: heroGlow 13s ease-in-out infinite alternate; }
+  .hero-stage::after { animation: heroGlow2 17s ease-in-out infinite alternate; }
+  .hero-flacon { animation: heroFloat 5.5s ease-in-out infinite alternate; }
+  @keyframes heroGlow { from { transform: translate(0,0) scale(1); opacity: .8; } to { transform: translate(-46px, 34px) scale(1.16); opacity: 1; } }
+  @keyframes heroGlow2 { from { transform: translate(0,0) scale(1); opacity: .65; } to { transform: translate(40px, -28px) scale(1.12); opacity: .95; } }
+  @keyframes heroFloat { from { transform: translateY(-5px); } to { transform: translateY(7px); } }
+}
 .hero-stage .hero { position: relative; z-index: 1; }
 .hero-stage h1 { color: #fbf3e6; }
 .hero-stage p.lead { color: rgba(243,233,218,.86); }

@@ -1,12 +1,15 @@
+"use client";
+
+import { useState } from "react";
 import type { Game } from "@/lib/types";
 
 /**
  * Cover-Darstellung für ein Spiel.
  *
- * Solange keine echten Bilder vorhanden sind (Mock-Daten), wird ein elegantes,
- * pro Spiel einzigartiges Gradient-Cover gerendert – sieht hochwertig aus und
- * vermeidet kaputte Bilder. Sobald `coverImage` gesetzt ist (echte API), wird
- * automatisch das Bild verwendet.
+ * - Ist `coverImage` gesetzt (z. B. echtes Steam-/RAWG-Cover), wird das Bild
+ *   gezeigt. Schlägt das Laden fehl, wird automatisch auf das generierte
+ *   Farb-Cover zurückgefallen – es gibt also nie ein kaputtes Bild.
+ * - Ohne Bild rendert ein elegantes, pro Spiel einzigartiges Gradient-Cover.
  */
 export default function CoverArt({
   game,
@@ -17,18 +20,30 @@ export default function CoverArt({
   className?: string;
   rounded?: boolean;
 }) {
+  const [idx, setIdx] = useState(0);
   const [c1, c2] = game.accent;
   const radius = rounded ? "0.75rem" : "0";
 
+  // Kandidaten-Kette: Hochformat-Cover → Steam-Header → (sonst Farb-Cover).
+  const candidates: string[] = [];
   if (game.coverImage) {
+    candidates.push(game.coverImage);
+    if (game.coverImage.includes("library_600x900.jpg")) {
+      candidates.push(game.coverImage.replace("library_600x900.jpg", "header.jpg"));
+    }
+  }
+  const src = candidates[idx];
+
+  if (src) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img
-        src={game.coverImage}
+        src={src}
         alt={`${game.title} Cover`}
         className={className}
         style={{ objectFit: "cover", width: "100%", height: "100%", borderRadius: radius }}
         loading="lazy"
+        onError={() => setIdx((i) => i + 1)}
       />
     );
   }
@@ -55,7 +70,6 @@ export default function CoverArt({
       }}
       aria-hidden="true"
     >
-      {/* Lichtschein oben rechts */}
       <div
         style={{
           position: "absolute",
@@ -64,7 +78,6 @@ export default function CoverArt({
             "radial-gradient(60% 50% at 78% 12%, rgba(255,255,255,0.25), transparent 60%)",
         }}
       />
-      {/* Subtiles Raster für Tiefe */}
       <div
         style={{
           position: "absolute",
@@ -76,7 +89,6 @@ export default function CoverArt({
           maskImage: "radial-gradient(80% 80% at 50% 30%, black, transparent)",
         }}
       />
-      {/* Großes Monogramm */}
       <span
         style={{
           position: "absolute",
@@ -92,7 +104,6 @@ export default function CoverArt({
       >
         {initials}
       </span>
-      {/* Genre-Label unten links */}
       <span
         style={{
           position: "absolute",

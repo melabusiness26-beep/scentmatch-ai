@@ -2202,3 +2202,59 @@ export const GAMES: Game[] = [
     highlights: ["Meisterwartetes Spiel", "Rückkehr nach Vice City", "Neue Generation"],
   },
 ];
+
+/**
+ * Öffentliche Steam-Cover (Hochformat) für bekannte Titel – keine API nötig.
+ * Spiele ohne Eintrag (z. B. Nintendo-/PlayStation-Exklusive) behalten das
+ * schöne generierte Farb-Cover. Schlägt ein Bild fehl, fällt CoverArt
+ * automatisch auf das Farb-Cover zurück.
+ */
+const STEAM_APP_IDS: Record<string, number> = {
+  "elden-ring": 1245620,
+  "stardew-valley": 413150,
+  hades: 1145360,
+  "hollow-knight": 367520,
+  "baldurs-gate-3": 1086940,
+  "resident-evil-4-remake": 2050650,
+  celeste: 504230,
+  "it-takes-two": 1426210,
+  "cyberpunk-2077": 1091500,
+  silksong: 1030300,
+  "witcher-3": 292030,
+  "god-of-war-2018": 1593500,
+  "red-dead-redemption-2": 1174180,
+  "portal-2": 620,
+  terraria: 105600,
+  "the-last-of-us": 1888930,
+  "dark-souls": 570940,
+  sekiro: 814380,
+  "counter-strike-2": 730,
+  cuphead: 268910,
+  "vampire-survivors": 1794680,
+  "doom-eternal": 782330,
+  "disco-elysium": 632470,
+  "civilization-6": 289070,
+  "black-myth-wukong": 2358720,
+  "helldivers-2": 553850,
+  balatro: 2379780,
+  "monster-hunter-wilds": 2246340,
+  "kingdom-come-deliverance-2": 1771300,
+  "slay-the-spire": 646570,
+  "street-fighter-6": 1364780,
+  "hi-fi-rush": 1817230,
+  "final-fantasy-7-remake": 1462040,
+  "among-us": 945360,
+  "gta-5": 271590,
+  "forza-horizon-5": 1551360,
+  "chrono-trigger": 613830,
+  "silent-hill-2-remake": 2124490,
+};
+
+function steamCover(appId: number): string {
+  return `https://cdn.cloudflare.steamstatic.com/steam/apps/${appId}/library_600x900.jpg`;
+}
+
+for (const game of GAMES) {
+  const appId = STEAM_APP_IDS[game.slug];
+  if (appId && !game.coverImage) game.coverImage = steamCover(appId);
+}

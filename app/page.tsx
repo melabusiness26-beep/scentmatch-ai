@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import SiteHeader from '@/app/SiteHeader';
 import {
   getPerfumes,
@@ -213,6 +214,15 @@ export default function Home() {
   const [perfumes, setPerfumes] = useState<Perfume[]>(starterPerfumes);
   const [shareMsg, setShareMsg] = useState('');
   const [revealScore, setRevealScore] = useState(0);
+  const [heroSearch, setHeroSearch] = useState('');
+  const router = useRouter();
+
+  // Suchleiste auf der Startseite -> öffnet die Duftdatenbank mit dem Suchbegriff.
+  function submitHeroSearch(e: React.FormEvent) {
+    e.preventDefault();
+    const q = heroSearch.trim();
+    router.push(q ? `/duefte?q=${encodeURIComponent(q)}` : '/duefte');
+  }
 
   useEffect(() => {
     async function loadPerfumes() {
@@ -437,6 +447,21 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </section>
+
+        <section className="section home-search-section">
+          <form className="home-search" onSubmit={submitHeroSearch}>
+            <input
+              className="search"
+              type="search"
+              placeholder="Duft suchen … (z. B. Sauvage, Dior, Vanille)"
+              value={heroSearch}
+              onChange={e => setHeroSearch(e.target.value)}
+              aria-label="Duft suchen"
+            />
+            <button className="button" type="submit">Suchen</button>
+          </form>
+          <p className="small home-search-hint">Tippe einen Duft, eine Marke oder eine Note ein – oder <Link href="/duefte">stöbere durch alle Düfte</Link>.</p>
         </section>
 
         <section id="warum" className="section">

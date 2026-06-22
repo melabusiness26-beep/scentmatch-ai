@@ -57,14 +57,14 @@ const questions: QuizQuestion[] = [
     ]
   },
   {
-    q: 'Wenn dein Duft etwas über dich verraten dürfte – was?',
-    hint: 'Dein Duft ist oft der erste Eindruck. Welcher soll es sein?',
+    q: 'Wie würden gute Freunde deinen Stil beschreiben?',
+    hint: 'Dein Stil verrät oft, welcher Duft sich richtig „nach dir" anfühlt.',
     kind: 'family',
     a: [
-      ['„Wirkt frisch & gepflegt"', 'clean'],
-      ['„Wirkt warm & zum Verlieben nah"', 'gourmand'],
-      ['„Wirkt teuer & selbstbewusst"', 'woody'],
-      ['„Wirkt romantisch & charmant"', 'floral']
+      ['Natürlich, frisch und unkompliziert', 'clean'],
+      ['Warmherzig, gemütlich und verspielt', 'gourmand'],
+      ['Elegant, edel und zurückhaltend', 'woody'],
+      ['Romantisch, lebhaft und feminin', 'floral']
     ]
   },
   {
@@ -103,7 +103,7 @@ const questions: QuizQuestion[] = [
   },
   {
     q: 'Wie sehr darf man dich riechen?',
-    hint: 'Sillage = wie weit dein Duft im Raum wahrnehmbar ist.',
+    hint: 'Also: wie weit dein Duft im Raum wahrnehmbar sein soll.',
     kind: 'sillage',
     a: [
       ['Dezent – nur wer mir nah kommt', 'low'],

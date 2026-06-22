@@ -185,6 +185,252 @@ export const guides: Guide[] = [
         ]
       }
     ]
+  },
+  {
+    slug: 'parfum-inhaltsstoffe-allergene',
+    title: 'Parfum-Inhaltsstoffe & Allergene einfach erklärt',
+    description:
+      'Was steckt eigentlich in einem Parfum? Alkohol, Duftöl und die 26 EU-Allergene wie Limonene und Linalool – einfach und verständlich erklärt.',
+    intro: [
+      'Auf jeder Parfumverpackung steht eine Liste mit Inhaltsstoffen – oft mit lateinischen Namen, die etwas einschüchternd wirken. Dabei steckt dahinter kein Hexenwerk. Hier erklären wir dir einfach, was wirklich drin ist und worauf empfindliche Haut achten sollte.',
+      'Wichtig vorweg: Die genaue Zusammensetzung ist von Duft zu Duft unterschiedlich und kann sich ändern. Die vollständige, gültige Liste findest du immer auf der Verpackung bzw. beim Hersteller. Dieser Artikel erklärt das Allgemeine.'
+    ],
+    sections: [
+      {
+        heading: 'Woraus besteht ein Parfum grundsätzlich?',
+        body: [
+          'Ein Parfum besteht im Kern aus nur drei Hauptbestandteilen:',
+          '1. Alkohol (auf der Liste „Alcohol Denat." oder „Alcohol"): Das Trägermittel, das den Duft verteilt und schnell verdunsten lässt. Er macht meist den grössten Anteil aus.',
+          '2. Wasser (Aqua): Sorgt für die richtige Konsistenz.',
+          '3. Duftöl (Parfum / Fragrance): Die eigentliche Duftmischung aus vielen einzelnen Riechstoffen – das Herzstück, das den Charakter ausmacht.'
+        ]
+      },
+      {
+        heading: 'Warum steht da nur „Parfum" und keine genaue Mischung?',
+        body: [
+          'Die genaue Duftformel ist ein gut gehütetes Betriebsgeheimnis der Hersteller. Deshalb darf die Mischung der Riechstoffe gesammelt als „Parfum" oder „Fragrance" angegeben werden – sonst könnte jeder den Duft einfach nachbauen.',
+          'Genau deshalb arbeiten wir auf ScentMatch mit Duftnoten (z. B. Bergamotte, Vanille, Sandelholz): Sie beschreiben, wie ein Duft riecht und wirkt – das ist für dich viel hilfreicher als eine Chemie-Liste.'
+        ]
+      },
+      {
+        heading: 'Die 26 Allergene: Limonene, Linalool & Co.',
+        body: [
+          'Bestimmte natürliche Duftbestandteile können bei empfindlichen Menschen Hautreaktionen auslösen. In der EU (und in der Schweiz angelehnt) müssen 26 solcher Stoffe ab einer gewissen Menge einzeln genannt werden – deshalb tauchen sie auf der Liste auf.',
+          'Die häufigsten sind: Limonene (zitrusartig), Linalool (blumig, in Lavendel), Citronellol und Geraniol (rosig), Eugenol (würzig, Nelke), Coumarin (heuartig, süsslich) und Citral.',
+          'Wichtig: Diese Stoffe sind nicht „schlecht" – sie stecken auch in vielen natürlichen Ölen und Blüten. Sie werden nur aufgelistet, damit Allergikerinnen und Allergiker sie erkennen können.'
+        ]
+      },
+      {
+        heading: 'Tipps bei empfindlicher Haut',
+        body: [
+          'Sprüh den Duft auf Kleidung statt direkt auf gereizte Hautstellen.',
+          'Teste neue Düfte zuerst an einer kleinen Stelle (z. B. Armbeuge) und warte einen Tag.',
+          'Achte bei bekannter Allergie gezielt auf den entsprechenden Stoff in der Inhaltsliste auf der Verpackung.',
+          'Weniger ist mehr: 1–2 Sprühstösse reichen meist völlig.'
+        ]
+      },
+      {
+        heading: 'Bonus: EdT, EdP oder Parfum – was ist der Unterschied?',
+        body: [
+          'Der Unterschied liegt in der Konzentration des Duftöls:',
+          'Eau de Toilette (EdT): leichter, frischer, hält kürzer – ideal für den Sommer und tagsüber.',
+          'Eau de Parfum (EdP): höhere Konzentration, intensiver und langanhaltender – der häufigste Typ.',
+          'Parfum / Extrait: am intensivsten und teuersten, hält am längsten – schon wenig genügt.'
+        ]
+      },
+      {
+        body: [
+          'Mein Tipp: Wenn du wissen willst, welche Duftrichtung zu dir passt, mach unser kostenloses Duft-Quiz – danach zeigen wir dir die passenden Düfte samt Noten, Saison und Anlass.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'die-besten-duefte-unter-50-franken',
+    title: 'Die besten Düfte unter 50 Franken',
+    description:
+      'Gut riechen muss nicht teuer sein: Unsere Lieblingsdüfte für unter CHF 50 – von frisch bis süss, für Damen, Herren und Unisex.',
+    intro: [
+      'Ein toller Duft muss nicht 150 Franken kosten. Gerade von Marken wie Lattafa, Armaf oder Davidoff gibt es erstaunlich gute Parfüms für kleines Geld.',
+      'Hier unsere Favoriten unter CHF 50 – perfekt zum Ausprobieren, Verschenken oder für jeden Tag.'
+    ],
+    sections: [
+      {
+        perfumes: [
+          'lattafa-khamrah',
+          'lattafa-asad',
+          'armaf-cdnim',
+          'davidoff-cool-water',
+          'lattafa-yara',
+          'joop-homme',
+          'sdj-cheirosa-62',
+          'tabac-original'
+        ]
+      },
+      {
+        body: [
+          'Tipp: Viele dieser günstigen Düfte sind auch starke „Dupes" für teure Originale – schau dazu in unseren Ratgeber „Günstige Alternativen zu teuren Parfüms".'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'wie-lange-haelt-parfum-haltbarkeit',
+    title: 'Wie lange hält ein Parfum? Haltbarkeit & richtig auftragen',
+    description:
+      'Warum verfliegt dein Parfum so schnell – und wie hält es länger? Tipps zum richtigen Auftragen plus die langlebigsten Düfte aus unserem Katalog.',
+    intro: [
+      'Kennst du das? Morgens aufgesprüht, mittags weg. Wie lange ein Duft hält, hängt von der Konzentration, deiner Haut und vom richtigen Auftragen ab.',
+      'Hier die wichtigsten Tipps – und am Ende die langlebigsten Düfte aus unserem Katalog.'
+    ],
+    sections: [
+      {
+        heading: 'So hält dein Duft länger',
+        body: [
+          'Auf gepflegte, leicht eingecremte Haut sprühen – auf trockener Haut verfliegt der Duft schneller.',
+          'Auf die „Pulspunkte" auftragen: Handgelenke, Hals, hinter den Ohren, Ellenbeugen. Dort ist es warm und der Duft entfaltet sich.',
+          'Nicht verreiben! Das Aneinanderreiben der Handgelenke „bricht" die Duftmoleküle und verkürzt die Haltbarkeit.',
+          'Auch in Haare und auf Kleidung (vorsichtig) sprühen – dort hält Duft besonders lange.',
+          'Eau de Parfum (EdP) hält länger als Eau de Toilette (EdT). Mehr dazu in unserem Ratgeber zu Inhaltsstoffen.'
+        ]
+      },
+      {
+        heading: 'Die langlebigsten Düfte aus unserem Katalog',
+        perfumes: [
+          'tobacco-vanille',
+          'baccarat-rouge-540',
+          'lattafa-khamrah',
+          'montale-intense-cafe',
+          'mugler-angel',
+          'armaf-cdnim'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'parfum-geschenk-die-besten-duefte-zum-verschenken',
+    title: 'Parfum verschenken: die besten Düfte als Geschenk',
+    description:
+      'Parfum ist ein wunderschönes Geschenk – wenn es passt. Unsere sicheren Favoriten zum Verschenken für Frauen und Männer, plus Tipps zur Auswahl.',
+    intro: [
+      'Ein Duft ist ein persönliches, edles Geschenk. Die Kunst ist, etwas zu wählen, das fast jeder mag – nicht zu speziell, aber trotzdem besonders.',
+      'Hier unsere „sicheren" Geschenk-Tipps, die erfahrungsgemäss sehr gut ankommen.'
+    ],
+    sections: [
+      {
+        heading: 'Für Frauen',
+        perfumes: ['coco-mademoiselle', 'la-vie-est-belle', 'black-opium', 'good-girl']
+      },
+      {
+        heading: 'Für Männer',
+        perfumes: ['bleu-de-chanel', 'jpg-le-male', 'ea-stronger-with-you', 'boss-bottled']
+      },
+      {
+        body: [
+          'Unsicher, was die Person mag? Verschenk einen Gutschein oder mach unser Duft-Quiz gemeinsam – so triffst du den Geschmack viel sicherer.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'maennerduefte-die-frauen-moegen',
+    title: 'Männerdüfte, die Frauen mögen',
+    description:
+      'Welche Herrendüfte kommen besonders gut an? Unsere Liste der beliebtesten „Komplimente-Düfte" für Männer – von frisch bis süss-würzig.',
+    intro: [
+      'Manche Männerdüfte ernten einfach besonders oft Komplimente. Meist sind es warme, einladende oder sauber-frische Düfte, die angenehm in Erinnerung bleiben.',
+      'Hier die Klassiker, die erfahrungsgemäss sehr gut ankommen.'
+    ],
+    sections: [
+      {
+        perfumes: [
+          'sauvage',
+          'jpg-le-male',
+          'ea-stronger-with-you',
+          'versace-eros',
+          'ch-bad-boy',
+          'pr-1-million',
+          'boss-the-scent',
+          'dior-fahrenheit'
+        ]
+      },
+      {
+        body: [
+          'Wichtig: „Kommt gut an" ist kein Garant – am Ende zählt, dass der Duft zu dir passt. Mach das Quiz, um deine eigene Richtung zu finden.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'die-besten-vanille-duefte',
+    title: 'Die besten Vanille-Düfte',
+    description:
+      'Warme, süsse Vanille-Düfte zum Verlieben: kuschelig, sinnlich und perfekt für kühle Tage. Unsere Vanille-Favoriten für Damen, Herren und Unisex.',
+    intro: [
+      'Vanille ist die wohl beliebteste süsse Note: warm, cremig und einladend. Mal pur und kuschelig, mal kombiniert mit Gewürzen, Tabak oder Karamell.',
+      'Hier unsere schönsten Vanille-Düfte aus dem Katalog.'
+    ],
+    sections: [
+      {
+        perfumes: [
+          'tobacco-vanille',
+          'kayali-vanilla-28',
+          'lattafa-khamrah',
+          'guerlain-mon',
+          'ariana-cloud',
+          'burberry-goddess',
+          'lattafa-yara',
+          'jpg-la-belle'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'die-besten-oud-duefte',
+    title: 'Die besten Oud-Düfte',
+    description:
+      'Oud – das „flüssige Gold" der Parfümerie: orientalisch, edel und intensiv. Unsere besten Oud-Düfte von günstig bis luxuriös.',
+    intro: [
+      'Oud (auch Agarholz) ist eine der edelsten und intensivsten Duftnoten überhaupt: warm, holzig, leicht rauchig und sehr langanhaltend. Besonders schön im Herbst und Winter.',
+      'Hier unsere Empfehlungen – von erschwinglich bis exklusiv.'
+    ],
+    sections: [
+      {
+        perfumes: [
+          'oud-wood',
+          'initio-oud-greatness',
+          'lattafa-badee-amethyst',
+          'mancera-red-tobacco',
+          'montale-arabians-tonka',
+          'sa-shaghaf-oud',
+          'penhaligons-halfeti'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'die-besten-zitrus-duefte',
+    title: 'Die besten Zitrus-Düfte',
+    description:
+      'Spritzig, frisch und gute Laune pur: Die besten Zitrus-Düfte mit Bergamotte, Zitrone und Grapefruit – ideal für Sommer, Büro und heisse Tage.',
+    intro: [
+      'Zitrus-Düfte sind frisch, leicht und sofort gute Laune: Zitrone, Bergamotte, Grapefruit und Orange wirken sauber und unbeschwert – perfekt für warme Tage und fürs Büro.',
+      'Hier unsere spritzigsten Empfehlungen.'
+    ],
+    sections: [
+      {
+        perfumes: [
+          'acqua-di-gio',
+          'davidoff-cool-water',
+          'adp-colonia',
+          'armani-acqua-di-gioia',
+          'hermes-jardin-nil',
+          'mancera-cedrat-boise',
+          'light-blue',
+          'creed-silver-mountain-water'
+        ]
+      }
+    ]
   }
 ];
 

@@ -7,6 +7,10 @@
   --text: #261d18;
 }
 * { box-sizing: border-box; }
+/* Verhindert horizontales Verschieben auf dem Handy, falls ein Element zu breit ist.
+   "clip" (statt "hidden") schneidet sauber ab, ohne das sticky Menü zu stören. */
+html, body { overflow-x: clip; }
+img, svg, video { max-width: 100%; }
 body {
   margin: 0;
   color: var(--text);

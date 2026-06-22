@@ -142,6 +142,12 @@ a.logo { text-decoration:none; color:inherit; }
   @keyframes barGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 }
 
+/* Rechtstexte (Impressum / Datenschutz) */
+.legal { max-width: 800px; }
+.legal h2 { font-size: 22px; margin: 30px 0 8px; color: var(--brown); }
+.legal p { line-height: 1.65; color: #4b3a2e; margin: 0 0 12px; }
+.legal-note { margin-top: 26px; opacity: .7; }
+
 .share-box { margin-top:26px; padding-top:22px; border-top:1px solid rgba(185,152,99,.35); }
 .share-msg { margin-top:12px; color:var(--gold); font-weight:600; word-break:break-all; }
 .match-badge { display:inline-block; background:var(--brown); color:#fff; font-family:var(--font-sans), Arial, sans-serif; font-size:13px; font-weight:700; padding:5px 12px; border-radius:999px; margin-bottom:10px; }

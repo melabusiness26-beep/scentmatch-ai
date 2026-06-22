@@ -399,7 +399,7 @@ export default function Home() {
               <div className="hero-stats">
                 <div className="hero-stat"><strong>160+</strong><span>kuratierte Düfte</span></div>
                 <div className="hero-stat"><strong>30+</strong><span>Marken weltweit</span></div>
-                <div className="hero-stat"><strong>%</strong><span>echter Match-Score statt Zufall</span></div>
+                <div className="hero-stat"><strong>0–100</strong><span>echter Match-Score statt Zufall</span></div>
               </div>
             </div>
           </div>

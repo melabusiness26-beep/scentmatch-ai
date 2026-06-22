@@ -19,75 +19,75 @@ type QuizQuestion = { q: string; hint?: string; kind: QuestionKind; a: [string, 
 
 const questions: QuizQuestion[] = [
   {
-    q: 'Für wen suchst du einen Duft?',
-    hint: 'So zeigen wir dir nur Düfte, die wirklich passen.',
+    q: 'Für wen suchen wir den perfekten Duft?',
+    hint: 'So zeigen wir dir nur, was wirklich passt – kein Suchen im Heuhaufen.',
     kind: 'gender',
     a: [
       ['Für Damen', 'women'],
       ['Für Herren', 'men'],
-      ['Egal / Unisex', 'unisex']
+      ['Egal – zeig mir alles', 'unisex']
     ]
   },
   {
-    q: 'Kennst du schon einen Duft, den du liebst? (optional)',
-    hint: 'Verrätst du uns einen Lieblingsduft, finden wir gezielt ähnlich riechende Düfte für dich.',
+    q: 'Gibt es einen Duft, den du jetzt schon liebst? (optional)',
+    hint: 'Verrätst du uns deinen Liebling, finden wir gezielt Düfte, die ähnlich riechen – wie ein „mehr davon".',
     kind: 'anchor',
     a: []
   },
   {
-    q: 'Welcher Moment fühlt sich am meisten nach dir an?',
-    hint: 'Wähl aus dem Bauch heraus – es gibt kein richtig oder falsch.',
+    q: 'Stell dir deinen Lieblingsmoment vor – welcher ist es?',
+    hint: 'Geh ganz nach Bauchgefühl. Es gibt kein Richtig oder Falsch.',
     kind: 'family',
     a: [
-      ['Frisch geduscht, weißes Hemd, offene Fenster', 'clean'],
-      ['Kerzenlicht, Vanille, warme Decke', 'gourmand'],
-      ['Dunkle Bar, Holz, Leder, ruhiger Luxus', 'woody'],
-      ['Blumenmarkt, Rosé, weiches Kleid', 'floral']
+      ['Frisch geduscht, weißes Hemd, Fenster weit auf', 'clean'],
+      ['Kerzenlicht, Vanille und eine warme Decke', 'gourmand'],
+      ['Dunkle Bar, edles Holz, ein Hauch Leder', 'woody'],
+      ['Blumenmarkt im Frühling, leichtes Kleid', 'floral']
     ]
   },
   {
-    q: 'Welche Duftnote zieht dich an?',
-    hint: 'Stell dir vor, du riechst kurz daran – was gefällt dir am meisten?',
+    q: 'Woran würdest du am liebsten gerade schnuppern?',
+    hint: 'Augen kurz zu – was zieht dich sofort an?',
     kind: 'family',
     a: [
-      ['Moschus, Tee, Zitrus', 'clean'],
-      ['Vanille, Amber, Karamell', 'gourmand'],
-      ['Sandelholz, Pfeffer, Oud', 'woody'],
-      ['Rose, Jasmin, Pfirsich', 'floral']
+      ['Etwas Frisches: Zitrus, Tee, sauberer Moschus', 'clean'],
+      ['Etwas Süßes: Vanille, Karamell, Amber', 'gourmand'],
+      ['Etwas Tiefes: Sandelholz, Pfeffer, Oud', 'woody'],
+      ['Etwas Blumiges: Rose, Jasmin, Pfirsich', 'floral']
     ]
   },
   {
-    q: 'Wie möchtest du wirken?',
-    hint: 'Dein Duft ist ein erster Eindruck – welcher soll es sein?',
+    q: 'Wenn dein Duft etwas über dich verraten dürfte – was?',
+    hint: 'Dein Duft ist oft der erste Eindruck. Welcher soll es sein?',
     kind: 'family',
     a: [
-      ['Klar, frisch und gepflegt', 'clean'],
-      ['Warm, weich und nahbar', 'gourmand'],
-      ['Elegant, teuer und selbstbewusst', 'woody'],
-      ['Romantisch, feminin und charmant', 'floral']
+      ['„Wirkt frisch & gepflegt"', 'clean'],
+      ['„Wirkt warm & zum Verlieben nah"', 'gourmand'],
+      ['„Wirkt teuer & selbstbewusst"', 'woody'],
+      ['„Wirkt romantisch & charmant"', 'floral']
     ]
   },
   {
-    q: 'Welche Duftnote liebst du besonders?',
+    q: 'Eine Note, die dein Herz höher schlagen lässt?',
     hint: 'Diese Note gewichten wir bei deinem Match besonders stark.',
     kind: 'lovedNote',
     a: NOTE_THEMES.map(t => [t.label, t.code] as [string, string])
   },
   {
-    q: 'Gibt es eine Note, die gar nicht geht?',
+    q: 'Und etwas, das für dich gar nicht geht?',
     hint: 'Düfte mit dieser Note rutschen in deinem Ranking nach unten.',
     kind: 'dislikedNote',
-    a: [['Keine – ich bin offen', ''], ...NOTE_THEMES.map(t => [t.label, t.code] as [string, string])]
+    a: [['Keine – ich bin offen für alles', ''], ...NOTE_THEMES.map(t => [t.label, t.code] as [string, string])]
   },
   {
-    q: 'Wofür suchst du den Duft hauptsächlich?',
-    hint: 'So treffen wir den Charakter und die Intensität besser.',
+    q: 'Wann soll dein Duft am meisten glänzen?',
+    hint: 'So treffen wir Charakter und Intensität noch besser.',
     kind: 'occasion',
     a: [
-      ['Alltag & Büro', 'daily'],
-      ['Für Dates', 'date'],
+      ['Im Alltag & Büro', 'daily'],
+      ['Bei Dates & zum Verlieben', 'date'],
       ['Abends & zum Ausgehen', 'evening'],
-      ['Für alles – ich bin flexibel', 'any']
+      ['Eigentlich überall', 'any']
     ]
   },
   {
@@ -102,24 +102,24 @@ const questions: QuizQuestion[] = [
     ]
   },
   {
-    q: 'Wie präsent darf dein Duft sein?',
+    q: 'Wie sehr darf man dich riechen?',
     hint: 'Sillage = wie weit dein Duft im Raum wahrnehmbar ist.',
     kind: 'sillage',
     a: [
-      ['Dezent – nah an der Haut', 'low'],
-      ['Ausgewogen', 'medium'],
-      ['Sehr präsent – man riecht mich', 'high']
+      ['Dezent – nur wer mir nah kommt', 'low'],
+      ['Ausgewogen – angenehm präsent', 'medium'],
+      ['Auffällig – ich hinterlasse Eindruck', 'high']
     ]
   },
   {
-    q: 'Was ist dein Budget?',
-    hint: 'Wir zeigen dir die besten Treffer in deinem Rahmen – ohne dich einzuschränken.',
+    q: 'Was darf dein neuer Liebling kosten?',
+    hint: 'Wir zeigen dir die besten Treffer in deinem Rahmen – ohne dich einzuengen.',
     kind: 'budget',
     a: [
       ['Bis CHF 80', '80'],
       ['CHF 80–150', '150'],
       ['Premium – über CHF 150', 'premium'],
-      ['Budget egal', 'any']
+      ['Budget ist mir egal', 'any']
     ]
   }
 ];

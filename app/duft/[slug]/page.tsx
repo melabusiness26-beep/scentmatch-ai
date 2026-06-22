@@ -74,7 +74,12 @@ function Cover({ perfume, large }: { perfume: Perfume; large?: boolean }) {
   }
   return (
     <div className={className}>
-      <span className="cover-glyph">✦</span>
+      <svg className="cover-bottle" viewBox="0 0 48 64" aria-hidden="true">
+        <rect x="19" y="4" width="10" height="6" rx="1.5" />
+        <rect x="21.5" y="10" width="5" height="4" />
+        <rect x="11" y="14" width="26" height="44" rx="8" />
+        <rect className="cover-bottle-label" x="17" y="33" width="14" height="11" rx="2" />
+      </svg>
     </div>
   );
 }
@@ -165,7 +170,7 @@ export default async function PerfumeDetailPage({
     <main>
       <SiteHeader />
       <div className="container">
-        <div className="backlink"><Link className="badge" href="/#database">← Alle Düfte</Link></div>
+        <div className="backlink"><Link className="badge" href="/duefte">← Alle Düfte</Link></div>
 
         <section className="detail-hero">
           <div>

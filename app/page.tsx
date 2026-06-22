@@ -395,7 +395,14 @@ export default function Home() {
               <p className="hero-trust"><span className="stars">★★★★★</span> Über 160 kuratierte Düfte · von Bestsellern bis zu seltenen Nischenperlen</p>
             </div>
             <div className="card perfume-card">
-              <div className="bottle">✦</div>
+              <div className="bottle">
+                <svg className="hero-flacon" viewBox="0 0 48 64" aria-hidden="true">
+                  <rect x="19" y="4" width="10" height="6" rx="1.5" />
+                  <rect x="21.5" y="10" width="5" height="4" />
+                  <rect x="10" y="14" width="28" height="44" rx="9" />
+                  <rect className="hero-flacon-label" x="16" y="32" width="16" height="12" rx="2" />
+                </svg>
+              </div>
               <div className="hero-stats">
                 <div className="hero-stat"><strong>160+</strong><span>kuratierte Düfte</span></div>
                 <div className="hero-stat"><strong>30+</strong><span>Marken weltweit</span></div>

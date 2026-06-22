@@ -33,7 +33,7 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 .eyebrow { display: inline-flex; align-items: center; gap: 11px; font-family: var(--font-sans), Arial, sans-serif; text-transform: uppercase; letter-spacing: .24em; font-size: 12px; font-weight: 600; color: #a07c43; margin: 0 0 14px; }
 .eyebrow::before { content: ''; width: 26px; height: 1px; background: var(--gold); display: inline-block; }
 .hero-stage .eyebrow { color: var(--gold); }
-.hero-stage { position: relative; overflow: hidden; margin-top: 8px; padding: 84px 60px; border-radius: 36px; color: #f3e9da; background: radial-gradient(130% 130% at 0% 0%, #5a4131 0%, #3a2a20 48%, #241912 100%); border: 1px solid rgba(185,152,99,.35); box-shadow: 0 44px 110px rgba(36,25,18,.38); }
+.hero-stage { position: relative; overflow: hidden; margin-top: 8px; padding: 84px 60px; border-radius: 36px; color: #f3e9da; background-color: #241912; background-image: linear-gradient(100deg, rgba(20,12,8,.94) 0%, rgba(30,20,14,.80) 48%, rgba(36,25,18,.55) 100%), url('https://i.ibb.co/276d44dy/1782145368735.png'); background-size: cover; background-position: center; border: 1px solid rgba(185,152,99,.35); box-shadow: 0 44px 110px rgba(36,25,18,.38); }
 .hero-stage::before { content: ''; position: absolute; top: -28%; right: -8%; width: 540px; height: 540px; background: radial-gradient(circle, rgba(185,152,99,.40), rgba(185,152,99,0) 62%); pointer-events: none; z-index: 0; }
 .hero-stage::after { content: ''; position: absolute; bottom: -32%; left: -12%; width: 480px; height: 480px; background: radial-gradient(circle, rgba(216,178,119,.26), rgba(216,178,119,0) 64%); pointer-events: none; z-index: 0; }
 /* Editorial-Flakon im Hero: edler Gold-Umriss mit weichem Schein */

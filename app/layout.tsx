@@ -59,8 +59,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
             <nav className="footer-links">
               <a href="/#quiz">Quiz</a>
-              <a href="/#database">Düfte</a>
+              <a href="/duefte">Düfte</a>
               <a href="/ratgeber">Ratgeber</a>
+              <a href="/impressum">Impressum</a>
+              <a href="/datenschutz">Datenschutz</a>
             </nav>
           </div>
           <div className="container footer-bottom small">© {year} ScentMatch · Preise &amp; Angaben ohne Gewähr.</div>

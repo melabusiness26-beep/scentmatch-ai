@@ -12,6 +12,7 @@ import {
   type QuizAnswers,
   type RankedPerfume
 } from '@/lib/perfumes';
+import { PerfumeTile } from '@/app/PerfumeTile';
 
 type QuestionKind = 'gender' | 'anchor' | 'family' | 'occasion' | 'season' | 'sillage' | 'budget' | 'lovedNote' | 'dislikedNote';
 type QuizQuestion = { q: string; hint?: string; kind: QuestionKind; a: [string, string][] };
@@ -137,21 +138,34 @@ const profileText: Record<string, { title: string; text: string }> = {
 
 const genderLabels: Record<string, string> = { women: 'Damen', men: 'Herren', unisex: 'Unisex' };
 
-// Deutsche Suchbegriffe je gespeichertem Geschlecht (Werte sind englisch gespeichert).
-const genderSearchTerms: Record<string, string> = {
-  Women: 'damen frauen women weiblich',
-  Men: 'herren männer men männlich',
-  Unisex: 'unisex'
-};
-
-// Anklickbare Familien-Kacheln (filtern die Duftdatenbank).
+// Anklickbare Familien-Kacheln (führen zur gefilterten Duftdatenbank).
 const FAMILY_TILES: { code: string; label: string; desc: string }[] = [
   { code: 'clean', label: 'Clean', desc: 'Frisch, sauber, weißer Moschus.' },
   { code: 'gourmand', label: 'Gourmand', desc: 'Vanille, Amber, weiche Süße.' },
   { code: 'woody', label: 'Woody', desc: 'Holz, Leder, edle Tiefe.' },
   { code: 'floral', label: 'Floral', desc: 'Rose, Jasmin, feminine Eleganz.' }
 ];
-const familyDisplay: Record<string, string> = { clean: 'Clean', gourmand: 'Gourmand', woody: 'Woody', floral: 'Floral' };
+
+// Wählt eine ausgewogene Highlight-Auswahl: erst der bestbewertete Duft je
+// Duftfamilie (für Abwechslung), dann mit den nächstbesten auffüllen.
+function pickHighlights(list: Perfume[], count: number): Perfume[] {
+  const sorted = [...list].sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0));
+  const result: Perfume[] = [];
+  const usedFamilies = new Set<string>();
+  for (const p of sorted) {
+    const fam = p.fragrance_family || '';
+    if (!usedFamilies.has(fam)) {
+      result.push(p);
+      usedFamilies.add(fam);
+    }
+    if (result.length >= count) return result;
+  }
+  for (const p of sorted) {
+    if (result.length >= count) break;
+    if (!result.includes(p)) result.push(p);
+  }
+  return result.slice(0, count);
+}
 
 // Aktuelle Jahreszeit -> Anzeige, passende Saison-Werte und Ratgeber-Link.
 const SEASON_LABEL: Record<string, string> = { Sommer: 'Sommer', Frühling: 'Frühling', 'Herbst/Winter': 'Herbst & Winter' };
@@ -182,43 +196,6 @@ const starterPerfumes: Perfume[] = [
   { id: '4', perfume_name: 'Blooming Rose Style', slug: null, gender: 'Women', fragrance_family: 'floral', price_chf: 68, longevity: 7, sillage: 6, scentmatch_score: 90, season: 'Frühling', occasion: 'Alltag', description: null, image_url: null, affiliate_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } }
 ];
 
-function PerfumeCover({ perfume, large }: { perfume: Perfume; large?: boolean }) {
-  const fam = perfume.fragrance_family || '';
-  const className = `cover${large ? ' cover-large' : ''} cover-${fam}`;
-  if (perfume.image_url) {
-    return <div className={className} style={{ backgroundImage: `url(${perfume.image_url})` }} />;
-  }
-  return (
-    <div className={className}>
-      <span className="cover-glyph">✦</span>
-    </div>
-  );
-}
-
-function PerfumeTile({ perfume, matchPercent }: { perfume: Perfume; matchPercent?: number }) {
-  const content = (
-    <>
-      <PerfumeCover perfume={perfume} />
-      {matchPercent != null && <div className="match-badge">{matchPercent}% Match</div>}
-      <h3>{perfume.perfume_name}</h3>
-      <p className="small">{perfume.brands?.name || 'Marke offen'} · {familyDisplay[perfume.fragrance_family || ''] || 'Duftfamilie offen'}</p>
-      <div className="tile-meta">
-        <span className="score-pill">Score {perfume.scentmatch_score ?? 80}</span>
-        <span className="small">{perfume.season || 'Ganzjährig'} · {perfume.occasion || 'flexibel'}</span>
-      </div>
-    </>
-  );
-
-  if (perfume.slug) {
-    return (
-      <Link className="tile tile-link" href={`/duft/${perfume.slug}`}>
-        {content}
-      </Link>
-    );
-  }
-  return <div className="tile">{content}</div>;
-}
-
 export default function Home() {
   const [step, setStep] = useState(0);
   const [family, setFamily] = useState<Record<string, number>>({ ...emptyFamily });
@@ -230,12 +207,10 @@ export default function Home() {
   const [lovedNote, setLovedNote] = useState('');
   const [dislikedNote, setDislikedNote] = useState('');
   const [anchorId, setAnchorId] = useState('');
-  const [familyFilter, setFamilyFilter] = useState('');
   const [currentSeason, setCurrentSeason] = useState('');
   const [history, setHistory] = useState<QuizSnapshot[]>([]);
   const [showResult, setShowResult] = useState(false);
   const [perfumes, setPerfumes] = useState<Perfume[]>(starterPerfumes);
-  const [query, setQuery] = useState('');
   const [shareMsg, setShareMsg] = useState('');
 
   useEffect(() => {
@@ -274,29 +249,13 @@ export default function Home() {
   const answers: QuizAnswers = { gender: genderPref, family, occasion, season, sillage, budgetMax, lovedNote, dislikedNote, anchorId };
   const winner = Object.entries(family).sort((a, b) => b[1] - a[1])[0]?.[0] || 'clean';
 
-  const ranked: RankedPerfume[] = showResult
-    ? rankPerfumes(perfumes, answers)
-    : [...perfumes]
-        .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
-        .map(p => ({ perfume: p, score: 0 }));
+  // Personalisierte Rangliste – nur nach dem Quiz.
+  const ranked: RankedPerfume[] = showResult ? rankPerfumes(perfumes, answers) : [];
+  const topPick = showResult ? ranked[0] : undefined;
+  const topMatches = ranked.slice(0, 9);
 
-  const visible = ranked.filter(({ perfume: p }) => {
-    if (familyFilter && p.fragrance_family !== familyFilter) return false;
-    if (!query) return true;
-    const notes = [...(p.top_notes || []), ...(p.heart_notes || []), ...(p.base_notes || [])].join(' ');
-    const genderTerms = p.gender ? genderSearchTerms[p.gender] || p.gender : '';
-    // Synonyme: "Schokolade" findet auch Kakao/Praline.
-    const synonyms = /kakao|schokolade|praline/i.test(notes) ? ' schokolade kakao praline' : '';
-    const haystack = `${p.perfume_name} ${p.fragrance_family} ${p.brands?.name || ''} ${genderTerms} ${p.season || ''} ${p.occasion || ''} ${notes}${synonyms}`.toLowerCase();
-    return haystack.includes(query.toLowerCase());
-  });
-
-  function selectFamily(code: string) {
-    setFamilyFilter(prev => (prev === code ? '' : code));
-    if (typeof document !== 'undefined') {
-      document.getElementById('database')?.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
+  // Ausgewogene Highlight-Auswahl für die Startseite (vor dem Quiz).
+  const highlights = pickHighlights(perfumes, 6);
 
   const seasonLabel = SEASON_LABEL[currentSeason] || '';
   const seasonMatch = SEASON_MATCH[currentSeason] || [];
@@ -305,10 +264,8 @@ export default function Home() {
     ? [...perfumes]
         .filter(p => p.season && seasonMatch.includes(p.season))
         .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
-        .slice(0, 9)
+        .slice(0, 6)
     : [];
-
-  const topPick = showResult ? visible[0] : undefined;
 
   // Aktuellen Zustand sichern, bevor wir eine Frage weitergehen (für „Zurück").
   function pushHistory() {
@@ -432,7 +389,7 @@ export default function Home() {
               <p className="lead">ScentMatch verbindet ein elegantes Duft-Quiz mit einer intelligenten Match-Engine: Jeder Duft wird gegen deine Antworten zu Geschlecht, Duftrichtung, Anlass, Saison, Intensität und Budget bewertet.</p>
               <div className="cta">
                 <a className="button" href="#quiz">Quiz starten</a>
-                <a className="button secondary" href="#database">Düfte ansehen</a>
+                <Link className="button secondary" href="/duefte">Alle Düfte ansehen</Link>
                 <Link className="button secondary" href="/ratgeber">Ratgeber lesen</Link>
               </div>
               <p className="hero-trust"><span className="stars">★★★★★</span> Über 160 kuratierte Düfte · von Bestsellern bis zu seltenen Nischenperlen</p>
@@ -498,16 +455,29 @@ export default function Home() {
           <h2>Entdecke nach Stil</h2>
           <div className="grid">
             {FAMILY_TILES.map(t => (
-              <button
+              <Link
                 key={t.code}
-                type="button"
-                className={`tile tile-family${familyFilter === t.code ? ' tile-active' : ''}`}
-                onClick={() => selectFamily(t.code)}
+                className="tile tile-family"
+                href={`/duefte?family=${t.code}`}
               >
                 <h3>{t.label}</h3>
                 <p className="small">{t.desc}</p>
-              </button>
+              </Link>
             ))}
+          </div>
+        </section>
+
+        <section className="section">
+          <p className="eyebrow">Highlights</p>
+          <h2>Unsere bestbewerteten Düfte</h2>
+          <p className="small">Eine handverlesene Auswahl quer durch alle Duftrichtungen – sortiert nach ScentMatch-Score.</p>
+          <div className="perfume-list">
+            {highlights.map(p => (
+              <PerfumeTile perfume={p} key={p.id} />
+            ))}
+          </div>
+          <div className="cta">
+            <Link className="button secondary" href="/duefte">Alle Düfte ansehen</Link>
           </div>
         </section>
 
@@ -581,31 +551,21 @@ export default function Home() {
           )}
         </section>
 
-        <section id="database" className="section">
-          <p className="eyebrow">Die Kollektion</p>
-          <h2>Duftdatenbank</h2>
-          <p className="small">
-            {showResult
-              ? `Sortiert nach Match-Score für dein Profil${genderPref ? ` (${genderLabels[genderPref]})` : ''}. Klicke einen Duft für das volle Profil.`
-              : 'Klicke auf einen Duft, um sein vollständiges Profil zu sehen. Mach das Quiz oben für deinen persönlichen Match-Score.'}
-          </p>
-          <input className="search" placeholder="Suche nach Duft, Marke, Note (z. B. Schokolade), Geschlecht oder Anlass…" value={query} onChange={e => setQuery(e.target.value)} />
-          {familyFilter && (
-            <p className="small filter-chip-row">
-              Gefiltert nach <span className="filter-chip">{familyDisplay[familyFilter]}</span>
-              <button type="button" className="link-button filter-reset" onClick={() => setFamilyFilter('')}>Filter entfernen</button>
-            </p>
-          )}
-          <div className="perfume-list">
-            {visible.length === 0 ? (
-              <p className="small">Keine Düfte gefunden. Versuch einen anderen Suchbegriff oder entferne den Filter.</p>
-            ) : (
-              visible.map(({ perfume: p, score }) => (
-                <PerfumeTile perfume={p} matchPercent={showResult ? score : undefined} key={p.id} />
-              ))
-            )}
-          </div>
-        </section>
+        {showResult && topMatches.length > 0 && (
+          <section id="ergebnisse" className="section">
+            <p className="eyebrow">Deine Treffer</p>
+            <h2>Deine besten Matches{genderPref ? ` · ${genderLabels[genderPref]}` : ''}</h2>
+            <p className="small">Sortiert nach Match-Score für dein Profil. Klicke einen Duft für sein volles Profil.</p>
+            <div className="perfume-list">
+              {topMatches.map(({ perfume: p, score }) => (
+                <PerfumeTile perfume={p} matchPercent={score} key={p.id} />
+              ))}
+            </div>
+            <div className="cta">
+              <Link className="button secondary" href="/duefte">Alle Düfte durchstöbern</Link>
+            </div>
+          </section>
+        )}
       </div>
     </main>
   );

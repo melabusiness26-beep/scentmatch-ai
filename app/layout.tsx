@@ -33,6 +33,9 @@ export const metadata: Metadata = {
   description:
     'ScentMatch hilft dir, mit einem eleganten Duft-Quiz und einer intelligenten Empfehlungslogik den perfekten Parfum zu finden – Duftfamilie, Anlass, Saison und Stil inklusive.',
   keywords: ['Parfum finden', 'Duft Quiz', 'Signature Duft', 'Duftberatung', 'ScentMatch'],
+  verification: {
+    google: 'hTy76EREclc_v_vWftD88u4tZ8VhsT630KvxJRRLdaw'
+  },
   openGraph: {
     type: 'website',
     locale: 'de_DE',

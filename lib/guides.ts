@@ -185,6 +185,65 @@ export const guides: Guide[] = [
         ]
       }
     ]
+  },
+  {
+    slug: 'parfum-inhaltsstoffe-allergene',
+    title: 'Parfum-Inhaltsstoffe & Allergene einfach erklärt',
+    description:
+      'Was steckt eigentlich in einem Parfum? Alkohol, Duftöl und die 26 EU-Allergene wie Limonene und Linalool – einfach und verständlich erklärt.',
+    intro: [
+      'Auf jeder Parfumverpackung steht eine Liste mit Inhaltsstoffen – oft mit lateinischen Namen, die etwas einschüchternd wirken. Dabei steckt dahinter kein Hexenwerk. Hier erklären wir dir einfach, was wirklich drin ist und worauf empfindliche Haut achten sollte.',
+      'Wichtig vorweg: Die genaue Zusammensetzung ist von Duft zu Duft unterschiedlich und kann sich ändern. Die vollständige, gültige Liste findest du immer auf der Verpackung bzw. beim Hersteller. Dieser Artikel erklärt das Allgemeine.'
+    ],
+    sections: [
+      {
+        heading: 'Woraus besteht ein Parfum grundsätzlich?',
+        body: [
+          'Ein Parfum besteht im Kern aus nur drei Hauptbestandteilen:',
+          '1. Alkohol (auf der Liste „Alcohol Denat." oder „Alcohol"): Das Trägermittel, das den Duft verteilt und schnell verdunsten lässt. Er macht meist den grössten Anteil aus.',
+          '2. Wasser (Aqua): Sorgt für die richtige Konsistenz.',
+          '3. Duftöl (Parfum / Fragrance): Die eigentliche Duftmischung aus vielen einzelnen Riechstoffen – das Herzstück, das den Charakter ausmacht.'
+        ]
+      },
+      {
+        heading: 'Warum steht da nur „Parfum" und keine genaue Mischung?',
+        body: [
+          'Die genaue Duftformel ist ein gut gehütetes Betriebsgeheimnis der Hersteller. Deshalb darf die Mischung der Riechstoffe gesammelt als „Parfum" oder „Fragrance" angegeben werden – sonst könnte jeder den Duft einfach nachbauen.',
+          'Genau deshalb arbeiten wir auf ScentMatch mit Duftnoten (z. B. Bergamotte, Vanille, Sandelholz): Sie beschreiben, wie ein Duft riecht und wirkt – das ist für dich viel hilfreicher als eine Chemie-Liste.'
+        ]
+      },
+      {
+        heading: 'Die 26 Allergene: Limonene, Linalool & Co.',
+        body: [
+          'Bestimmte natürliche Duftbestandteile können bei empfindlichen Menschen Hautreaktionen auslösen. In der EU (und in der Schweiz angelehnt) müssen 26 solcher Stoffe ab einer gewissen Menge einzeln genannt werden – deshalb tauchen sie auf der Liste auf.',
+          'Die häufigsten sind: Limonene (zitrusartig), Linalool (blumig, in Lavendel), Citronellol und Geraniol (rosig), Eugenol (würzig, Nelke), Coumarin (heuartig, süsslich) und Citral.',
+          'Wichtig: Diese Stoffe sind nicht „schlecht" – sie stecken auch in vielen natürlichen Ölen und Blüten. Sie werden nur aufgelistet, damit Allergikerinnen und Allergiker sie erkennen können.'
+        ]
+      },
+      {
+        heading: 'Tipps bei empfindlicher Haut',
+        body: [
+          'Sprüh den Duft auf Kleidung statt direkt auf gereizte Hautstellen.',
+          'Teste neue Düfte zuerst an einer kleinen Stelle (z. B. Armbeuge) und warte einen Tag.',
+          'Achte bei bekannter Allergie gezielt auf den entsprechenden Stoff in der Inhaltsliste auf der Verpackung.',
+          'Weniger ist mehr: 1–2 Sprühstösse reichen meist völlig.'
+        ]
+      },
+      {
+        heading: 'Bonus: EdT, EdP oder Parfum – was ist der Unterschied?',
+        body: [
+          'Der Unterschied liegt in der Konzentration des Duftöls:',
+          'Eau de Toilette (EdT): leichter, frischer, hält kürzer – ideal für den Sommer und tagsüber.',
+          'Eau de Parfum (EdP): höhere Konzentration, intensiver und langanhaltender – der häufigste Typ.',
+          'Parfum / Extrait: am intensivsten und teuersten, hält am längsten – schon wenig genügt.'
+        ]
+      },
+      {
+        body: [
+          'Mein Tipp: Wenn du wissen willst, welche Duftrichtung zu dir passt, mach unser kostenloses Duft-Quiz – danach zeigen wir dir die passenden Düfte samt Noten, Saison und Anlass.'
+        ]
+      }
+    ]
   }
 ];
 

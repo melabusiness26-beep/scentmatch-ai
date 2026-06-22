@@ -180,12 +180,12 @@ const DAILY_OCCASIONS = ['Alltag', 'Büro'];
 
 // Duft-Themen für das Noten-Matching. Jede Auswahl deckt per Stichwort mehrere konkrete Noten ab.
 export const NOTE_THEMES: { code: string; label: string; keywords: string[] }[] = [
-  { code: 'vanille', label: 'Vanille & Süßes', keywords: ['Vanille', 'Karamell', 'Praline', 'Schokolade', 'Kakao', 'Honig', 'Tonkabohne'] },
-  { code: 'zitrus', label: 'Zitrus & Frische', keywords: ['Zitrone', 'Bergamotte', 'Grapefruit', 'Mandarine', 'Orange', 'Neroli', 'Minze', 'Apfel'] },
-  { code: 'holz', label: 'Holz & Erdiges', keywords: ['Holz', 'Vetiver', 'Patchouli', 'Sandel', 'Zedern'] },
-  { code: 'blumig', label: 'Blumiges (Rose, Jasmin …)', keywords: ['Rose', 'Jasmin', 'Tuberose', 'Veilchen', 'Orangenblüte', 'Maiglöckchen', 'Freesie', 'Pfingstrose', 'Magnolie', 'Gardenie', 'Ylang', 'Iris'] },
-  { code: 'orient', label: 'Oud, Amber & Gewürze', keywords: ['Oud', 'Amber', 'Labdanum', 'Benzoe', 'Safran', 'Pfeffer', 'Zimt', 'Kardamom', 'Leder'] },
-  { code: 'moschus', label: 'Moschus & Pudriges', keywords: ['Moschus', 'Puder', 'Ambrette', 'Cashmeran'] }
+  { code: 'vanille', label: 'Süß & gemütlich – Vanille, Karamell, Schokolade', keywords: ['Vanille', 'Karamell', 'Praline', 'Schokolade', 'Kakao', 'Honig', 'Tonkabohne'] },
+  { code: 'zitrus', label: 'Frisch & spritzig – Zitrone, Bergamotte, Minze', keywords: ['Zitrone', 'Bergamotte', 'Grapefruit', 'Mandarine', 'Orange', 'Neroli', 'Minze', 'Apfel'] },
+  { code: 'holz', label: 'Holzig & erdig – Sandelholz, Vetiver, Patchouli', keywords: ['Holz', 'Vetiver', 'Patchouli', 'Sandel', 'Zedern'] },
+  { code: 'blumig', label: 'Blumig & zart – Rose, Jasmin, Veilchen', keywords: ['Rose', 'Jasmin', 'Tuberose', 'Veilchen', 'Orangenblüte', 'Maiglöckchen', 'Freesie', 'Pfingstrose', 'Magnolie', 'Gardenie', 'Ylang', 'Iris'] },
+  { code: 'orient', label: 'Warm & würzig – Oud, Amber, Gewürze', keywords: ['Oud', 'Amber', 'Labdanum', 'Benzoe', 'Safran', 'Pfeffer', 'Zimt', 'Kardamom', 'Leder'] },
+  { code: 'moschus', label: 'Weich & sauber – Moschus, Puder', keywords: ['Moschus', 'Puder', 'Ambrette', 'Cashmeran'] }
 ];
 
 function perfumeNotes(p: Perfume): string[] {

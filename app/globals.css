@@ -10,6 +10,7 @@
 /* Verhindert horizontales Verschieben auf dem Handy, falls ein Element zu breit ist.
    "clip" (statt "hidden") schneidet sauber ab, ohne das sticky Menü zu stören. */
 html, body { overflow-x: clip; }
+html { color-scheme: light; }
 img, svg, video { max-width: 100%; }
 body {
   margin: 0;
@@ -86,7 +87,7 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 h1 { font-size: clamp(44px, 7vw, 88px); line-height: 1.0; margin: 0 0 22px; letter-spacing: -0.01em; color: var(--brown); }
 p.lead { font-family: var(--font-sans), Arial, sans-serif; font-size: 20px; line-height: 1.55; max-width: 650px; color: #5d4b40; }
 .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
-button, .button { border: 0; border-radius: 999px; padding: 14px 24px; background: linear-gradient(180deg, #56402f, #3d2b20); color: #fff; font-weight: 600; letter-spacing: .02em; cursor: pointer; text-decoration: none; font-family: var(--font-sans), Arial, sans-serif; }
+button, .button { display: inline-block; max-width: 100%; white-space: normal; text-align: center; border: 0; border-radius: 999px; padding: 14px 24px; background: linear-gradient(180deg, #56402f, #3d2b20); color: #fff; font-weight: 600; letter-spacing: .02em; cursor: pointer; text-decoration: none; font-family: var(--font-sans), Arial, sans-serif; }
 .secondary { background: transparent; color: var(--brown); border: 1px solid rgba(75,53,40,.25); }
 .buy-button { display:inline-block; text-align:center; background: var(--gold); color: #2a1d12; margin-top: 16px; }
 .buy-button:hover { filter: brightness(1.05); }

@@ -476,10 +476,9 @@ export const guides: Guide[] = [
         heading: '♈ Widder (21. März – 20. April)',
         body: [
           'Widder sind energiegeladen, mutig und lieben den großen Auftritt. Dazu passt ein Duft mit Feuer: würzig, warm und durchsetzungsstark.',
-          // TODO: Viktor&Rolf Spicebomb im Katalog ergänzen und verlinken
           'Luxus-Pick: Viktor&Rolf Spicebomb. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Asad. Beide setzen auf würzig-rauchige Wärme, die die Energie des Widders unterstreicht.'
         ],
-        perfumes: ['lattafa-asad']
+        perfumes: ['viktor-rolf-spicebomb', 'lattafa-asad']
       },
       {
         heading: '♉ Stier (21. April – 20. Mai)',
@@ -493,46 +492,41 @@ export const guides: Guide[] = [
         heading: '♊ Zwillinge (21. Mai – 21. Juni)',
         body: [
           'Zwillinge sind neugierig, leicht und kommunikativ. Ein verspielter, frischer Duft mit einem Hauch Süße passt zu ihrer Wandelbarkeit.',
-          // TODO: Dolce & Gabbana Light Blue (Damen) im Katalog ergänzen und verlinken
           'Luxus-Pick: Dolce & Gabbana Light Blue. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Yara. Leicht, fröhlich und unkompliziert – ideal für spontane Tage.'
         ],
-        perfumes: ['lattafa-yara']
+        perfumes: ['dolce-gabbana-light-blue', 'lattafa-yara']
       },
       {
         heading: '♋ Krebs (22. Juni – 22. Juli)',
         body: [
           'Krebse sind gefühlvoll, sanft und lieben Geborgenheit. Weiche, pudrige Moschus-Noten spiegeln ihre warme, nahbare Art.',
-          // TODO: Armaf Club de Nuit Woman im Katalog ergänzen und verlinken
           'Luxus-Pick: Narciso Rodriguez For Her. Günstigere Alternative in ähnlicher Duftrichtung: Armaf Club de Nuit Woman. Weicher Moschus und Amber sorgen für ein Gefühl von Wärme und Nähe.'
         ],
-        perfumes: ['narciso-for-her']
+        perfumes: ['narciso-for-her', 'armaf-club-de-nuit-woman']
       },
       {
         heading: '♌ Löwe (23. Juli – 23. August)',
         body: [
           'Löwen strahlen, sind großzügig und wollen gesehen werden. Ein opulenter Signature-Duft mit guter Strahlkraft ist ihre Bühne.',
-          // TODO: Lattafa Yara Tous im Katalog ergänzen und verlinken
           'Luxus-Pick: Maison Francis Kurkdjian Baccarat Rouge 540. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Yara Tous. Edel, strahlend und unverwechselbar – ganz wie der Löwe.'
         ],
-        perfumes: ['baccarat-rouge-540']
+        perfumes: ['baccarat-rouge-540', 'lattafa-yara-tous']
       },
       {
         heading: '♍ Jungfrau (24. August – 23. September)',
         body: [
           'Jungfrauen lieben Klarheit, Pflege und Natürlichkeit. Ein cleaner, frisch-mineralischer Duft wirkt an ihnen mühelos elegant.',
-          // TODO: Lattafa Mayar im Katalog ergänzen und verlinken
           'Luxus-Pick: Jo Malone Wood Sage & Sea Salt. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Mayar. Saubere, unaufdringliche Noten unterstreichen ihre natürliche Eleganz.'
         ],
-        perfumes: ['jo-malone-wood-sage-sea-salt']
+        perfumes: ['jo-malone-wood-sage-sea-salt', 'lattafa-mayar']
       },
       {
         heading: '♎ Waage (24. September – 23. Oktober)',
         body: [
           'Waagen suchen Harmonie, Charme und Ästhetik. Ein ausgewogener, blumiger Duft passt zu ihrem Sinn für Schönheit.',
-          // TODO: Armaf Vanity Femme im Katalog ergänzen und verlinken
           'Luxus-Pick: Chloé Eau de Parfum. Günstigere Alternative in ähnlicher Duftrichtung: Armaf Vanity Femme. Weiche florale Eleganz bringt ihre Balance und ihren Charme zum Ausdruck.'
         ],
-        perfumes: ['chloe-edp']
+        perfumes: ['chloe-edp', 'armaf-vanity-femme']
       },
       {
         heading: '♏ Skorpion (24. Oktober – 22. November)',

@@ -20,7 +20,7 @@ export default function SiteHeader() {
   return (
     <header className={`site-header${scrolled ? ' scrolled' : ''}`}>
       <div className="header-inner">
-        <Link className="logo" href="/" onClick={close}>ScentMatch</Link>
+        <Link className="logo" href="/" onClick={close}>Vaelo</Link>
         <button
           type="button"
           className="nav-toggle"

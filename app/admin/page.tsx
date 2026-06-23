@@ -269,7 +269,7 @@ export default function AdminPage() {
       <main>
         <div className="container">
           <nav className="nav">
-            <Link className="logo" href="/">ScentMatch</Link>
+            <Link className="logo" href="/">Vaelo</Link>
             <div className="badge">Admin-Login</div>
           </nav>
           <section className="section card" style={{ maxWidth: 460 }}>
@@ -299,7 +299,7 @@ export default function AdminPage() {
     <main>
       <div className="container">
         <nav className="nav">
-          <Link className="logo" href="/">ScentMatch</Link>
+          <Link className="logo" href="/">Vaelo</Link>
           <button className="button secondary" onClick={logout}>Abmelden</button>
         </nav>
 
@@ -360,7 +360,7 @@ export default function AdminPage() {
                 <input type="number" value={form.price_chf} onChange={e => setField('price_chf', e.target.value)} />
               </div>
               <div className="field">
-                <label>ScentMatch-Score (0–100)</label>
+                <label>Vaelo-Score (0–100)</label>
                 <input type="number" value={form.scentmatch_score} onChange={e => setField('scentmatch_score', e.target.value)} />
               </div>
               <div className="field">

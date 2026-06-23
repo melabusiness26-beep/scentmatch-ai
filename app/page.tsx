@@ -191,10 +191,10 @@ type QuizSnapshot = {
 
 // Fallback, falls die Datenbank (noch) nicht erreichbar ist. Ohne slug -> kein Link.
 const starterPerfumes: Perfume[] = [
-  { id: '1', perfume_name: 'Beach Walk Style', slug: null, gender: 'Unisex', fragrance_family: 'clean', price_chf: 95, longevity: 6, sillage: 5, scentmatch_score: 91, season: 'Sommer', occasion: 'Alltag', description: null, image_url: null, affiliate_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } },
-  { id: '2', perfume_name: 'Vanilla Cashmere Style', slug: null, gender: 'Women', fragrance_family: 'gourmand', price_chf: 79, longevity: 8, sillage: 7, scentmatch_score: 94, season: 'Herbst/Winter', occasion: 'Date', description: null, image_url: null, affiliate_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } },
-  { id: '3', perfume_name: 'Dark Wood Style', slug: null, gender: 'Unisex', fragrance_family: 'woody', price_chf: 120, longevity: 9, sillage: 8, scentmatch_score: 92, season: 'Winter', occasion: 'Abend', description: null, image_url: null, affiliate_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } },
-  { id: '4', perfume_name: 'Blooming Rose Style', slug: null, gender: 'Women', fragrance_family: 'floral', price_chf: 68, longevity: 7, sillage: 6, scentmatch_score: 90, season: 'Frühling', occasion: 'Alltag', description: null, image_url: null, affiliate_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'ScentMatch Pick' } }
+  { id: '1', perfume_name: 'Beach Walk Style', slug: null, gender: 'Unisex', fragrance_family: 'clean', price_chf: 95, longevity: 6, sillage: 5, scentmatch_score: 91, season: 'Sommer', occasion: 'Alltag', description: null, image_url: null, affiliate_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'Vaelo Pick' } },
+  { id: '2', perfume_name: 'Vanilla Cashmere Style', slug: null, gender: 'Women', fragrance_family: 'gourmand', price_chf: 79, longevity: 8, sillage: 7, scentmatch_score: 94, season: 'Herbst/Winter', occasion: 'Date', description: null, image_url: null, affiliate_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'Vaelo Pick' } },
+  { id: '3', perfume_name: 'Dark Wood Style', slug: null, gender: 'Unisex', fragrance_family: 'woody', price_chf: 120, longevity: 9, sillage: 8, scentmatch_score: 92, season: 'Winter', occasion: 'Abend', description: null, image_url: null, affiliate_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'Vaelo Pick' } },
+  { id: '4', perfume_name: 'Blooming Rose Style', slug: null, gender: 'Women', fragrance_family: 'floral', price_chf: 68, longevity: 7, sillage: 6, scentmatch_score: 90, season: 'Frühling', occasion: 'Alltag', description: null, image_url: null, affiliate_url: null, top_notes: null, heart_notes: null, base_notes: null, brands: { name: 'Vaelo Pick' } }
 ];
 
 export default function Home() {
@@ -393,10 +393,10 @@ export default function Home() {
   // Ergebnis teilen: nutzt das native Teilen-Menü (Handy) oder kopiert den Link.
   async function shareResult() {
     const url = buildShareUrl();
-    const title = `Mein ScentMatch-Duftprofil: ${profileText[winner].title}`;
+    const title = `Mein Vaelo-Duftprofil: ${profileText[winner].title}`;
     const text = topPick
-      ? `Mein Top-Match ist ${topPick.perfume.perfume_name}. Finde mit dem kostenlosen ScentMatch-Quiz deinen:`
-      : 'Finde mit dem kostenlosen ScentMatch-Quiz deinen Signature-Duft:';
+      ? `Mein Top-Match ist ${topPick.perfume.perfume_name}. Finde mit dem kostenlosen Vaelo-Quiz deinen:`
+      : 'Finde mit dem kostenlosen Vaelo-Quiz deinen Signature-Duft:';
     if (typeof navigator !== 'undefined' && navigator.share) {
       try {
         await navigator.share({ title, text, url });
@@ -423,7 +423,7 @@ export default function Home() {
             <div>
               <p className="eyebrow">Dein Signature-Duft · kuratiert in der Schweiz</p>
               <h1>Finde deinen Signature-Duft in 3 Minuten.</h1>
-              <p className="lead">ScentMatch verbindet ein elegantes Duft-Quiz mit einer intelligenten Match-Engine: Jeder Duft wird gegen deine Antworten zu Geschlecht, Duftrichtung, Anlass, Saison, Intensität und Budget bewertet.</p>
+              <p className="lead">Vaelo verbindet ein elegantes Duft-Quiz mit einer intelligenten Match-Engine: Jeder Duft wird gegen deine Antworten zu Geschlecht, Duftrichtung, Anlass, Saison, Intensität und Budget bewertet.</p>
               <div className="cta">
                 <a className="button" href="#quiz">Quiz starten</a>
                 <Link className="button secondary" href="/duefte">Alle Düfte ansehen</Link>
@@ -465,7 +465,7 @@ export default function Home() {
         </section>
 
         <section id="warum" className="section">
-          <p className="eyebrow">Warum ScentMatch?</p>
+          <p className="eyebrow">Warum Vaelo?</p>
           <h2>Duft finden, das sich nicht nach Glücksspiel anfühlt</h2>
           <div className="why-grid">
             <div className="why-card">
@@ -529,7 +529,7 @@ export default function Home() {
         <section className="section">
           <p className="eyebrow">Highlights</p>
           <h2>Unsere bestbewerteten Düfte</h2>
-          <p className="small">Eine handverlesene Auswahl quer durch alle Duftrichtungen – sortiert nach ScentMatch-Score.</p>
+          <p className="small">Eine handverlesene Auswahl quer durch alle Duftrichtungen – sortiert nach Vaelo-Score.</p>
           <div className="perfume-list">
             {highlights.map(p => (
               <PerfumeTile perfume={p} key={p.id} />

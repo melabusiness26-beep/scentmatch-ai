@@ -209,7 +209,7 @@ export const guides: Guide[] = [
         heading: 'Warum steht da nur „Parfum" und keine genaue Mischung?',
         body: [
           'Die genaue Duftformel ist ein gut gehütetes Betriebsgeheimnis der Hersteller. Deshalb darf die Mischung der Riechstoffe gesammelt als „Parfum" oder „Fragrance" angegeben werden – sonst könnte jeder den Duft einfach nachbauen.',
-          'Genau deshalb arbeiten wir auf ScentMatch mit Duftnoten (z. B. Bergamotte, Vanille, Sandelholz): Sie beschreiben, wie ein Duft riecht und wirkt – das ist für dich viel hilfreicher als eine Chemie-Liste.'
+          'Genau deshalb arbeiten wir auf Vaelo mit Duftnoten (z. B. Bergamotte, Vanille, Sandelholz): Sie beschreiben, wie ein Duft riecht und wirkt – das ist für dich viel hilfreicher als eine Chemie-Liste.'
         ]
       },
       {

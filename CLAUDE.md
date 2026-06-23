@@ -1,4 +1,9 @@
-# ScentMatch AI – Projekt-Kontext & Übergabe
+# Vaelo (früher „ScentMatch") – Projekt-Kontext & Übergabe
+
+> ⚠️ **NAMENSWECHSEL (Juni 2026):** Die Marke heißt jetzt **„Vaelo"** (vorher „ScentMatch").
+> Im Code/UI wurde „ScentMatch" → „Vaelo" ersetzt. Das Datenbank-Feld `scentmatch_score`
+> und die bisherige Web-Adresse `scentmatch-ai.vercel.app` bleiben (technisch) erhalten.
+> Ältere Erwähnungen von „ScentMatch" weiter unten in diesem Dokument sind historisch.
 
 > Dieses Dokument fasst alle bisherigen Entscheidungen und den Stand zusammen,
 > damit ein neuer Chat nahtlos weitermachen kann. Bitte vor der Arbeit lesen.

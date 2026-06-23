@@ -27,23 +27,23 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.verc
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'ScentMatch – Finde deinen Signature-Duft',
-    template: '%s | ScentMatch'
+    default: 'Vaelo – Finde deinen Signature-Duft',
+    template: '%s | Vaelo'
   },
   description:
-    'ScentMatch hilft dir, mit einem eleganten Duft-Quiz und einer intelligenten Empfehlungslogik den perfekten Parfum zu finden – Duftfamilie, Anlass, Saison und Stil inklusive.',
-  keywords: ['Parfum finden', 'Duft Quiz', 'Signature Duft', 'Duftberatung', 'ScentMatch'],
+    'Vaelo hilft dir, mit einem eleganten Duft-Quiz und einer intelligenten Empfehlungslogik den perfekten Parfum zu finden – Duftfamilie, Anlass, Saison und Stil inklusive.',
+  keywords: ['Parfum finden', 'Duft Quiz', 'Signature Duft', 'Duftberatung', 'Vaelo'],
   verification: {
     google: 'hTy76EREclc_v_vWftD88u4tZ8VhsT630KvxJRRLdaw'
   },
   openGraph: {
     type: 'website',
     locale: 'de_DE',
-    siteName: 'ScentMatch',
+    siteName: 'Vaelo',
     url: SITE_URL,
-    title: 'ScentMatch – Finde deinen Signature-Duft',
+    title: 'Vaelo – Finde deinen Signature-Duft',
     description:
-      'Finde mit ScentMatch deinen perfekten Duft – per Quiz und intelligenter Empfehlungslogik.'
+      'Finde mit Vaelo deinen perfekten Duft – per Quiz und intelligenter Empfehlungslogik.'
   }
 };
 
@@ -56,7 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="site-footer">
           <div className="container footer-inner">
             <div>
-              <div className="logo">ScentMatch</div>
+              <div className="logo">Vaelo</div>
               <p className="footer-kicker">Discovery · Fragrance · Boutique</p>
               <p className="small footer-tag">Die moderne Duft-Findung – kuratiert in der Schweiz. Finde mit Quiz und intelligenter Match-Engine deinen Signature-Duft.</p>
             </div>
@@ -68,7 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="/datenschutz">Datenschutz</a>
             </nav>
           </div>
-          <div className="container footer-bottom small">© {year} ScentMatch · Preise &amp; Angaben ohne Gewähr.</div>
+          <div className="container footer-bottom small">© {year} Vaelo · Preise &amp; Angaben ohne Gewähr.</div>
         </footer>
       </body>
     </html>

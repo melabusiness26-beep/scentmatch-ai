@@ -44,7 +44,7 @@ export default function ResetPasswordPage() {
     <main>
       <div className="container">
         <nav className="nav">
-          <Link className="logo" href="/">ScentMatch</Link>
+          <Link className="logo" href="/">Vaelo</Link>
           <div className="badge">Passwort zurücksetzen</div>
         </nav>
 

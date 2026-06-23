@@ -45,14 +45,14 @@ export async function generateMetadata({
   const perfume = await getPerfumeBySlug(slug);
 
   if (!perfume) {
-    return { title: 'Duft nicht gefunden – ScentMatch' };
+    return { title: 'Duft nicht gefunden – Vaelo' };
   }
 
   const brand = perfume.brands?.name ? ` von ${perfume.brands.name}` : '';
-  const title = `${perfume.perfume_name}${brand} – Duftprofil & Bewertung | ScentMatch`;
+  const title = `${perfume.perfume_name}${brand} – Duftprofil & Bewertung | Vaelo`;
   const description =
     perfume.description ||
-    `${perfume.perfume_name}${brand}: Duftfamilie ${familyLabel(perfume.fragrance_family)}, ideal für ${perfume.occasion || 'jeden Anlass'} und die Saison ${perfume.season || 'ganzjährig'}. ScentMatch-Score ${perfume.scentmatch_score ?? '–'}/100.`;
+    `${perfume.perfume_name}${brand}: Duftfamilie ${familyLabel(perfume.fragrance_family)}, ideal für ${perfume.occasion || 'jeden Anlass'} und die Saison ${perfume.season || 'ganzjährig'}. Vaelo-Score ${perfume.scentmatch_score ?? '–'}/100.`;
 
   return {
     title,
@@ -118,7 +118,7 @@ function jsonLd(perfume: Perfume) {
     category: familyLabel(perfume.fragrance_family),
     description:
       perfume.description ||
-      `${perfume.perfume_name} – Duftprofil auf ScentMatch.`,
+      `${perfume.perfume_name} – Duftprofil auf Vaelo.`,
     image: perfume.image_url || undefined,
     aggregateRating: perfume.scentmatch_score
       ? {
@@ -180,14 +180,14 @@ export default async function PerfumeDetailPage({
               <span className="badge">{familyLabel(perfume.fragrance_family)}</span>
               {perfume.gender && <span className="badge">{perfume.gender}</span>}
               {perfume.scentmatch_score != null && (
-                <span className="badge">ScentMatch {perfume.scentmatch_score}/100</span>
+                <span className="badge">Vaelo {perfume.scentmatch_score}/100</span>
               )}
             </div>
           </div>
 
           <div className="card detail-stats">
             <h2>Auf einen Blick</h2>
-            <StatRow label="ScentMatch-Score" value={`${perfume.scentmatch_score ?? '–'}/100`} />
+            <StatRow label="Vaelo-Score" value={`${perfume.scentmatch_score ?? '–'}/100`} />
             <StatRow label="Haltbarkeit" value={`${perfume.longevity ?? '–'}/10`} />
             <StatRow label="Sillage (Projektion)" value={`${perfume.sillage ?? '–'}/10`} />
             <StatRow label="Saison" value={perfume.season || 'ganzjährig'} />

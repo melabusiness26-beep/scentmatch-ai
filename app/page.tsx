@@ -429,19 +429,43 @@ export default function Home() {
               <p className="hero-trust">{catalogCount ? `${catalogCount} kuratierte Düfte` : 'Kuratierte Düfte'} – von Bestsellern bis zu besonderen Nischenperlen.</p>
             </div>
             <div className="card perfume-card">
-              <div className="bottle">
-                <svg className="hero-flacon" viewBox="0 0 48 64" aria-hidden="true">
-                  <rect x="19" y="4" width="10" height="6" rx="1.5" />
-                  <rect x="21.5" y="10" width="5" height="4" />
-                  <rect x="10" y="14" width="28" height="44" rx="9" />
-                  <rect className="hero-flacon-label" x="16" y="32" width="16" height="12" rx="2" />
-                </svg>
-              </div>
+              {/* TODO: echtes Hero-Bild einsetzen – /public/hero-placeholder.svg gegen ein echtes Foto austauschen */}
+              <figure className="hero-media">
+                <img
+                  className="hero-media-img"
+                  src="/hero-placeholder.svg"
+                  alt="Auressa – elegante Duft-Findung mit Quiz und Match-Score"
+                  width={600}
+                  height={440}
+                />
+              </figure>
               <div className="hero-stats">
                 <div className="hero-stat"><strong>{catalogCount ?? '…'}</strong><span>kuratierte Düfte</span></div>
                 <div className="hero-stat"><strong>{brandCount ?? '…'}</strong><span>Marken weltweit</span></div>
                 <div className="hero-stat"><strong>0–100</strong><span>echter Match-Score statt Zufall</span></div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <p className="eyebrow">Schritt für Schritt</p>
+          <h2>So funktioniert es</h2>
+          <div className="steps-grid">
+            <div className="why-card">
+              <div className="why-icon">1</div>
+              <h3>Quiz beantworten</h3>
+              <p className="small">Ein paar Fragen zu Geschlecht, Duftrichtung, Anlass, Saison, Intensität und Budget.</p>
+            </div>
+            <div className="why-card">
+              <div className="why-icon">2</div>
+              <h3>Match-Score berechnen</h3>
+              <p className="small">Unsere Match-Engine bewertet jeden Duft gegen deine Antworten – von 0 bis 100, kein Zufall.</p>
+            </div>
+            <div className="why-card">
+              <div className="why-icon">3</div>
+              <h3>Düfte &amp; günstige Alternativen entdecken</h3>
+              <p className="small">Du bekommst deine Top-Treffer – inklusive günstigerer Alternativen zu teuren Düften.</p>
             </div>
           </div>
         </section>

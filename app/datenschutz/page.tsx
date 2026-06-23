@@ -69,7 +69,17 @@ export default function DatenschutzPage() {
             und werden nicht ausgewertet.
           </p>
 
-          <h2>6. Affiliate-Links</h2>
+          <h2>6. Cookie-Einwilligung</h2>
+          <p>
+            Beim ersten Besuch zeigen wir dir einen kurzen Hinweis zu Cookies. Wir speichern deine
+            Cookie-Auswahl lokal in deinem Browser, damit der Hinweis nicht bei jedem Besuch erneut
+            erscheint. Optionale Cookies – etwa für anonyme Statistik – werden nur gesetzt, wenn du
+            zustimmst. Technisch notwendige Cookies, die für den sicheren Betrieb der Seite nötig sind,
+            kommen unabhängig davon zum Einsatz. Du kannst deine Auswahl jederzeit zurücksetzen, indem
+            du die gespeicherten Website-Daten in deinem Browser löschst.
+          </p>
+
+          <h2>7. Affiliate-Links</h2>
           <p>
             Auf den Duftseiten findest du Links zu Partner-Shops („Jetzt ansehen"). Klickst du darauf,
             kann das jeweilige Partnernetzwerk (z. B. Commission Junction / Notino) ein Cookie setzen, um
@@ -77,7 +87,7 @@ export default function DatenschutzPage() {
             Anbieter gemäss dessen Datenschutzbestimmungen. Für dich entstehen keine Mehrkosten.
           </p>
 
-          <h2>7. Deine Rechte</h2>
+          <h2>8. Deine Rechte</h2>
           <p>
             Du hast im Rahmen der geltenden Datenschutzgesetze (insb. des Schweizer Datenschutzgesetzes,
             revDSG) das Recht auf Auskunft über die zu deiner Person bearbeiteten Daten sowie auf
@@ -85,7 +95,7 @@ export default function DatenschutzPage() {
             genannte E-Mail-Adresse.
           </p>
 
-          <h2>8. Änderungen</h2>
+          <h2>9. Änderungen</h2>
           <p>
             Wir passen diese Datenschutzerklärung an, wenn sich Funktionen der Website ändern (z. B. falls
             künftig ein Newsletter oder ein Login hinzukommt).

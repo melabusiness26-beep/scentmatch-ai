@@ -460,6 +460,128 @@ export const guides: Guide[] = [
         ]
       }
     ]
+  },
+  {
+    slug: 'parfum-nach-sternzeichen',
+    title: 'Parfum nach Sternzeichen: Welcher Duft passt zu deinem Zeichen?',
+    description:
+      'Welcher Duft passt zu deinem Sternzeichen? Vom Widder bis zu den Fischen – pro Zeichen ein Luxus-Duft und eine günstigere Alternative in ähnlicher Duftrichtung.',
+    intro: [
+      'Astrologie ist keine Wissenschaft – aber eine schöne, spielerische Inspiration. Dein Sternzeichen sagt nichts Verbindliches über deinen perfekten Duft, kann aber ein charmanter Startpunkt sein, um deinen Stil zu finden.',
+      'Ein Hinweis zur Ehrlichkeit: Die genannten Spar-Picks sind eigenständige Düfte in ähnlicher Duftrichtung – keine identischen Kopien der Luxus-Düfte. Sie gehen in eine verwandte Richtung, riechen aber nicht exakt gleich.',
+      'Noch genauer als jedes Sternzeichen ist übrigens unser Duft-Quiz – ganz unten findest du den Link.'
+    ],
+    sections: [
+      {
+        heading: '♈ Widder (21. März – 20. April)',
+        body: [
+          'Widder sind energiegeladen, mutig und lieben den großen Auftritt. Dazu passt ein Duft mit Feuer: würzig, warm und durchsetzungsstark.',
+          // TODO: Viktor&Rolf Spicebomb im Katalog ergänzen und verlinken
+          'Luxus-Pick: Viktor&Rolf Spicebomb. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Asad. Beide setzen auf würzig-rauchige Wärme, die die Energie des Widders unterstreicht.'
+        ],
+        perfumes: ['lattafa-asad']
+      },
+      {
+        heading: '♉ Stier (21. April – 20. Mai)',
+        body: [
+          'Stiere genießen mit allen Sinnen: Beständigkeit, Wärme und etwas Süße. Ein gourmandiger, behaglicher Duft trifft ihren Geschmack perfekt.',
+          'Luxus-Pick: Tom Ford Tobacco Vanille. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Khamrah. Warme Vanille, Tabak und Dattel wirken sinnlich und genussvoll.'
+        ],
+        perfumes: ['tobacco-vanille', 'khamrah']
+      },
+      {
+        heading: '♊ Zwillinge (21. Mai – 21. Juni)',
+        body: [
+          'Zwillinge sind neugierig, leicht und kommunikativ. Ein verspielter, frischer Duft mit einem Hauch Süße passt zu ihrer Wandelbarkeit.',
+          // TODO: Dolce & Gabbana Light Blue (Damen) im Katalog ergänzen und verlinken
+          'Luxus-Pick: Dolce & Gabbana Light Blue. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Yara. Leicht, fröhlich und unkompliziert – ideal für spontane Tage.'
+        ],
+        perfumes: ['lattafa-yara']
+      },
+      {
+        heading: '♋ Krebs (22. Juni – 22. Juli)',
+        body: [
+          'Krebse sind gefühlvoll, sanft und lieben Geborgenheit. Weiche, pudrige Moschus-Noten spiegeln ihre warme, nahbare Art.',
+          // TODO: Armaf Club de Nuit Woman im Katalog ergänzen und verlinken
+          'Luxus-Pick: Narciso Rodriguez For Her. Günstigere Alternative in ähnlicher Duftrichtung: Armaf Club de Nuit Woman. Weicher Moschus und Amber sorgen für ein Gefühl von Wärme und Nähe.'
+        ],
+        perfumes: ['narciso-for-her']
+      },
+      {
+        heading: '♌ Löwe (23. Juli – 23. August)',
+        body: [
+          'Löwen strahlen, sind großzügig und wollen gesehen werden. Ein opulenter Signature-Duft mit guter Strahlkraft ist ihre Bühne.',
+          // TODO: Lattafa Yara Tous im Katalog ergänzen und verlinken
+          'Luxus-Pick: Maison Francis Kurkdjian Baccarat Rouge 540. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Yara Tous. Edel, strahlend und unverwechselbar – ganz wie der Löwe.'
+        ],
+        perfumes: ['baccarat-rouge-540']
+      },
+      {
+        heading: '♍ Jungfrau (24. August – 23. September)',
+        body: [
+          'Jungfrauen lieben Klarheit, Pflege und Natürlichkeit. Ein cleaner, frisch-mineralischer Duft wirkt an ihnen mühelos elegant.',
+          // TODO: Lattafa Mayar im Katalog ergänzen und verlinken
+          'Luxus-Pick: Jo Malone Wood Sage & Sea Salt. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Mayar. Saubere, unaufdringliche Noten unterstreichen ihre natürliche Eleganz.'
+        ],
+        perfumes: ['jo-malone-wood-sage-sea-salt']
+      },
+      {
+        heading: '♎ Waage (24. September – 23. Oktober)',
+        body: [
+          'Waagen suchen Harmonie, Charme und Ästhetik. Ein ausgewogener, blumiger Duft passt zu ihrem Sinn für Schönheit.',
+          // TODO: Armaf Vanity Femme im Katalog ergänzen und verlinken
+          'Luxus-Pick: Chloé Eau de Parfum. Günstigere Alternative in ähnlicher Duftrichtung: Armaf Vanity Femme. Weiche florale Eleganz bringt ihre Balance und ihren Charme zum Ausdruck.'
+        ],
+        perfumes: ['chloe-edp']
+      },
+      {
+        heading: '♏ Skorpion (24. Oktober – 22. November)',
+        body: [
+          'Skorpione sind intensiv, geheimnisvoll und tiefgründig. Ein dunkler, holzig-orientalischer Duft mit Oud verstärkt ihre magnetische Ausstrahlung.',
+          // TODO: Tom Ford Oud Wood im Katalog ergänzen und verlinken
+          // TODO: Lattafa Oud for Glory im Katalog ergänzen und verlinken
+          'Luxus-Pick: Tom Ford Oud Wood. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Oud for Glory. Tiefe Oud- und Holznoten wirken geheimnisvoll und anziehend. (Beide Düfte ergänzen wir in Kürze im Katalog.)'
+        ]
+      },
+      {
+        heading: '♐ Schütze (23. November – 21. Dezember)',
+        body: [
+          'Schützen sind abenteuerlustig, warmherzig und freiheitsliebend. Ein gemütlicher, warm-holziger Duft weckt ihr Fernweh.',
+          'Luxus-Pick: Maison Margiela Replica By the Fireplace. Günstigere Alternative in ähnlicher, warm-holziger Richtung: Lattafa Fakhar (Men). Warme, einhüllende Noten passen zu ihrer optimistischen Wärme.'
+        ],
+        perfumes: ['replica-fireplace', 'lattafa-fakhar-men']
+      },
+      {
+        heading: '♑ Steinbock (22. Dezember – 20. Januar)',
+        body: [
+          'Steinböcke sind ehrgeizig, klassisch und souverän. Ein edler, zeitlos-holziger Duft unterstreicht ihre seriöse Präsenz.',
+          'Luxus-Pick: Creed Aventus. Günstigere Alternative in ähnlicher Duftrichtung: Armaf Club de Nuit Intense Man. Fruchtig-rauchiges Holz wirkt souverän und hochwertig.'
+        ],
+        perfumes: ['creed-aventus', 'club-de-nuit-intense']
+      },
+      {
+        heading: '♒ Wassermann (21. Januar – 19. Februar)',
+        body: [
+          'Wassermänner sind eigenständig, modern und unkonventionell. Ein minimalistischer, holzig-cleaner Duft passt zu ihrem individuellen Stil.',
+          'Luxus-Pick: Le Labo Santal 33. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Ana Abiyedh. Cremiges Holz und klare Noten wirken modern und eigenständig.'
+        ],
+        perfumes: ['le-labo-santal-33', 'lattafa-ana-abiyedh']
+      },
+      {
+        heading: '♓ Fische (20. Februar – 20. März)',
+        body: [
+          'Fische sind träumerisch, sensibel und romantisch. Ein aquatisch-frischer, weicher Duft spiegelt ihre sanfte, verträumte Art.',
+          // TODO: passenden konkreten aquatisch-frischen Spar-Pick auswählen (nur wenn bereits im Katalog vorhanden) und ergänzen
+          'Luxus-Pick: Giorgio Armani Acqua di Gioia. Eine passende günstigere Alternative in ähnlicher, aquatisch-frischer Richtung ergänzen wir in Kürze.'
+        ],
+        perfumes: ['armani-acqua-di-gioia']
+      },
+      {
+        body: [
+          'Sternzeichen sind ein schöner, spielerischer Einstieg – aber dein echter Lieblingsduft hängt von deinem persönlichen Geschmack ab, nicht vom Kalender. Unser Duft-Quiz findet ihn in unter 3 Minuten, abgestimmt auf Duftrichtung, Anlass, Saison und Budget.'
+        ]
+      }
+    ]
   }
 ];
 

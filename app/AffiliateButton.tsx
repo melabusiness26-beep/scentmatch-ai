@@ -3,15 +3,19 @@ import { buyUrl, type Perfume } from '@/lib/perfumes';
 /**
  * Reusable affiliate / shop link button.
  *
- * Renders a single, consistent outbound "buy" button with the correct
- * affiliate attributes. The commission disclosure is only shown when a real
- * partner link (`affiliate_url`) is set, because the fallback link points to a
- * neutral product search and earns no commission – showing the note there
- * would be misleading.
+ * Honest by design:
+ * - When a real partner link (`affiliate_url`) exists, the button points to the
+ *   partner shop, is labelled "Bei Notino ansehen" and carries
+ *   rel="sponsored nofollow" plus a short commission disclosure.
+ * - Without a real link the button falls back to a neutral product search and is
+ *   labelled "Produkt suchen" – it must never claim to be a Notino/partner link
+ *   or that we earn a commission.
+ *
+ * Uses the existing `affiliate_url` field – no `notino_url` or schema changes.
  */
 export function AffiliateButton({
   perfume,
-  label = 'Jetzt ansehen →',
+  label,
   showNote = true
 }: {
   perfume: Perfume;
@@ -19,20 +23,22 @@ export function AffiliateButton({
   showNote?: boolean;
 }) {
   const isPartnerLink = Boolean(perfume.affiliate_url);
+  const text = label ?? (isPartnerLink ? 'Bei Notino ansehen →' : 'Produkt suchen →');
+  // "sponsored" only applies to genuine affiliate links; the search fallback
+  // is just a neutral outbound link.
+  const rel = isPartnerLink
+    ? 'sponsored nofollow noopener noreferrer'
+    : 'nofollow noopener noreferrer';
+
   return (
     <>
-      <a
-        className="button buy-button"
-        href={buyUrl(perfume)}
-        target="_blank"
-        rel="sponsored nofollow noopener noreferrer"
-      >
-        {label}
+      <a className="button buy-button" href={buyUrl(perfume)} target="_blank" rel={rel}>
+        {text}
       </a>
       {showNote && isPartnerLink && (
         <p className="small buy-note affiliate-note">
           <span className="affiliate-note-icon" aria-hidden="true">ⓘ</span>
-          Partner-Link. Bei einem Kauf erhalten wir eine Provision – für dich ohne Mehrkosten.
+          Partner-Link – für dich ohne Mehrkosten.
         </p>
       )}
     </>

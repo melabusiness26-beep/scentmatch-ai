@@ -12,6 +12,7 @@ import {
   type Perfume
 } from '@/lib/perfumes';
 import { noteHref } from '@/lib/notes-glossary';
+import { getCuratedLink } from '@/lib/curated-links';
 import { AffiliateButton } from '@/app/AffiliateButton';
 
 const genderLabels: Record<string, string> = {
@@ -216,11 +217,20 @@ export default async function PerfumeDetailPage({
   // Ähnliche Düfte aus dem gesamten Katalog ermitteln (gleiche Familie,
   // geteilte Noten, ähnliche Intensität). Nur Treffer mit echter Ähnlichkeit zeigen.
   const pool = (await getPerfumes(500)).filter((p) => p.slug);
-  const cheaper = findCheaperAlternatives(perfume, pool, 3);
+
+  // Kuratierter Querverweis (z. B. Luxus <-> günstigere Alternative) mit eigenem Wortlaut.
+  const curated = getCuratedLink(slug);
+  const curatedPartner = curated ? pool.find((p) => p.slug === curated.partnerSlug) : undefined;
+  const curatedSlug = curatedPartner?.slug;
+
+  const cheaper = findCheaperAlternatives(perfume, pool, 3).filter(
+    (c) => c.perfume.slug !== curatedSlug
+  );
   const cheaperIds = new Set(cheaper.map((c) => c.perfume.id));
   // In den allgemeinen "ähnlich"-Vorschlägen die guenstigen Alternativen nicht doppelt zeigen.
-  const similar = findSimilarPerfumes(perfume, pool, 4)
-    .filter((s) => s.similarity >= 30 && !cheaperIds.has(s.perfume.id));
+  const similar = findSimilarPerfumes(perfume, pool, 4).filter(
+    (s) => s.similarity >= 30 && !cheaperIds.has(s.perfume.id) && s.perfume.slug !== curatedSlug
+  );
 
   const faqs = buildFaqs(perfume);
   const whenText = [
@@ -287,6 +297,25 @@ export default async function PerfumeDetailPage({
             {whenText && (
               <p className="lead">Besonders gut passt der Duft {whenText}.</p>
             )}
+          </section>
+        )}
+
+        {curated && curatedPartner && (
+          <section className="section">
+            <h2>{curated.heading}</h2>
+            <p className="small">{curated.text}</p>
+            <div className="perfume-list">
+              <Link className="tile tile-link" href={`/duft/${curatedPartner.slug}`}>
+                <Cover perfume={curatedPartner} />
+                <div className="match-badge">
+                  {curatedPartner.price_chf != null ? `ca. CHF ${curatedPartner.price_chf}` : 'Preis offen'}
+                </div>
+                <h3>{curatedPartner.perfume_name}</h3>
+                <p className="small">
+                  {curatedPartner.brands?.name || 'Marke offen'} · {familyLabel(curatedPartner.fragrance_family)}
+                </p>
+              </Link>
+            </div>
           </section>
         )}
 

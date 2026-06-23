@@ -6,7 +6,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.verc
 
 export const metadata: Metadata = {
   title: 'Impressum',
-  description: 'Rechtliche Angaben und Kontakt zum Betreiber von ScentMatch.',
+  description: 'Rechtliche Angaben und Kontakt zum Betreiber von Auressa.',
   alternates: { canonical: '/impressum' }
 };
 
@@ -55,7 +55,7 @@ export default function ImpressumPage() {
 
           <h2>Affiliate-Hinweis</h2>
           <p>
-            ScentMatch finanziert sich teilweise über Affiliate-Links. Klickst du auf einen mit
+            Auressa finanziert sich teilweise über Affiliate-Links. Klickst du auf einen mit
             „Affiliate" gekennzeichneten Link und kaufst beim Partner-Shop ein, erhalten wir ggf. eine
             kleine Provision. Für dich entstehen dadurch keine Mehrkosten – der Preis bleibt gleich.
           </p>

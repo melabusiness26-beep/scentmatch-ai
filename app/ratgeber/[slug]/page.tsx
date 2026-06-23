@@ -20,10 +20,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const guide = getGuide(slug);
-  if (!guide) return { title: 'Ratgeber nicht gefunden – ScentMatch' };
+  if (!guide) return { title: 'Ratgeber nicht gefunden – Auressa' };
 
   return {
-    title: `${guide.title} | ScentMatch`,
+    title: `${guide.title} | Auressa`,
     description: guide.description,
     alternates: { canonical: `/ratgeber/${slug}` },
     openGraph: {
@@ -69,7 +69,7 @@ function jsonLd(guide: Guide) {
     headline: guide.title,
     description: guide.description,
     mainEntityOfPage: `${SITE_URL}/ratgeber/${guide.slug}`,
-    publisher: { '@type': 'Organization', name: 'ScentMatch' }
+    publisher: { '@type': 'Organization', name: 'Auressa' }
   };
 }
 

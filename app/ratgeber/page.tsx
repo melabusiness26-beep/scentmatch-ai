@@ -6,12 +6,12 @@ import { guides } from '@/lib/guides';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
 
 export const metadata: Metadata = {
-  title: 'Duft-Ratgeber: Tipps, Dupes & Empfehlungen | ScentMatch',
+  title: 'Duft-Ratgeber: Tipps, Dupes & Empfehlungen | Auressa',
   description:
     'Praktische Duft-Ratgeber: günstige Alternativen zu teuren Parfüms, die besten Sommerdüfte und welcher Duft zu welchem Anlass passt.',
   alternates: { canonical: '/ratgeber' },
   openGraph: {
-    title: 'Duft-Ratgeber | ScentMatch',
+    title: 'Duft-Ratgeber | Auressa',
     description: 'Günstige Dupes, Sommerdüfte und Duft-Tipps für jeden Anlass.',
     type: 'website',
     url: `${SITE_URL}/ratgeber`

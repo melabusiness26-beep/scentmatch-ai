@@ -1,11 +1,11 @@
-# ScentMatch AI – Projekt-Kontext & Übergabe
+# Auressa AI – Projekt-Kontext & Übergabe
 
 > Dieses Dokument fasst alle bisherigen Entscheidungen und den Stand zusammen,
 > damit ein neuer Chat nahtlos weitermachen kann. Bitte vor der Arbeit lesen.
 
 ## 1. Vision & Rahmen (von der Gründerin)
 - Gründerin lebt in der **Schweiz**, **kein/kaum Startkapital**, **keine Programmierkenntnisse**.
-- Ziel: **ScentMatch AI = modernste Duft-Findungs-Plattform Europas**. Start kostenlos.
+- Ziel: **Auressa AI = modernste Duft-Findungs-Plattform Europas**. Start kostenlos.
 - Spätere Einnahmen: **Affiliate**, Premium-Mitgliedschaft, Kooperationen, Werbung, Geschenkberater, Preisvergleich, personalisierte Empfehlungen.
 - Arbeitsweise: **Schritt für Schritt, einfach erklären, keine Programmierkenntnisse voraussetzen.** Kommunikation auf **Deutsch**. Immer klare Empfehlung geben. Bei wirtschaftlich/technisch problematischen Ideen ehrlich sein.
 - Code-Anspruch: vollständige Dateien, keine Platzhalter/TODOs, keine Build-/TypeScript-Fehler, Vercel- & Supabase-kompatibel, skalierbar.
@@ -97,9 +97,19 @@ gender → anchor (optional, Dropdown) → 3× family → lovedNote → disliked
 > und Schritt für Schritt erklären (Deutsch), Code-Arbeit übernimmt der Assistent.
 
 ### Marke
-- Heißt jetzt nur noch **„ScentMatch"** – das „AI" wurde **überall** entfernt
-  (Logo, Footer, Seitentitel, Metadaten). Logo = Schriftzug + goldenes
-  **Parfüm-Flakon-Emblem** (als SVG in `.logo::before` in `app/globals.css`).
+- Heißt jetzt **„Auressa"**. Namens-Historie: „ScentMatch AI" → „ScentMatch"
+  → kurzzeitig „Vaelo" (nur im offenen, NICHT gemergten PR #51) → final **„Auressa"**.
+  Der sichtbare Markenname wurde überall in `app/` und `lib/` von `ScentMatch`/`SCENTMATCH`
+  auf `Auressa`/`AURESSA` umgestellt (Logo, Footer, Seitentitel, Metadaten, OpenGraph-Texte,
+  „Auressa-Score"-Label). Logo = Schriftzug + goldenes **Parfüm-Flakon-Emblem**
+  (als SVG in `.logo::before` in `app/globals.css`).
+- **NIEMALS umbenennen (technisch, sonst bricht etwas):** das DB-Feld `scentmatch_score`,
+  alle Supabase-Felder/Tabellen/SQL-Struktur und die technische URL
+  `scentmatch-ai.vercel.app` (inkl. `NEXT_PUBLIC_SITE_URL`-Defaults, Paketname `scentmatch-ai`).
+  Die SQL-Kommentare in `/supabase` (z. B. `-- ScentMatch AI: …`) bleiben als Historie stehen.
+- **Domain-Plan:** Später eigene Domain **`auressa.ch`** – die technische URL
+  `scentmatch-ai.vercel.app` erst ändern, NACHDEM die Domain gekauft und in Vercel
+  verbunden ist (vorher nicht anfassen).
 - Offizielles Bild-Logo (mit „Discovery · Fragrance · Boutique") hat die Gründerin
   separat generiert – für Social Media gedacht; auf der Seite läuft die SVG-Variante.
 
@@ -129,7 +139,7 @@ gender → anchor (optional, Dropdown) → 3× family → lovedNote → disliked
   edler dunkler Hero mit Gold/Eyebrow/Zahlen-Panel, Web-Fonts (Playfair Display +
   Inter via `next/font`), goldene Kicker-Labels, Footer (dunkel, „Discovery ·
   Fragrance · Boutique"), gemeinsames **sticky Menü** `SiteHeader` (Logo, Links,
-  Scroll-Schatten, Handy-Hamburger) auf allen Seiten, **„Warum ScentMatch?"**-Bereich,
+  Scroll-Schatten, Handy-Hamburger) auf allen Seiten, **„Warum Auressa?"**-Bereich,
   mobil optimiert (auto-fit Raster, viewport).
 
 ### Affiliate-Stand (CJ / Notino)
@@ -137,7 +147,7 @@ gender → anchor (optional, Dropdown) → 3× family → lovedNote → disliked
   Junction)** – gratis, Schweiz-tauglich, CHF, bis ~10–14 % Provision.
   (Amazon wurde verworfen: kein Amazon.ch, Zoll, niedrige Provision.)
 - **Erledigt im CJ-Konto**: Konto + E-Mail bestätigt, Netzwerkprofil, Werbeplattform
-  („ScentMatch", Website, Content/Blog/Medien, primär), Kontoinformationen
+  („Auressa", Website, Content/Blog/Medien, primär), Kontoinformationen
   (Adresse Neuenhof/AG, Währung EUR), **Steuerformular W-8BEN** abgeschickt
   (Gründerin ist **Spanierin, wohnhaft in der Schweiz** – kein US-Bezug; Teil II
   „keine Abkommensvergünstigungen" übersprungen).

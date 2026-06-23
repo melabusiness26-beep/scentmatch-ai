@@ -100,8 +100,9 @@ button, .button { display: inline-block; max-width: 100%; white-space: normal; t
 .section { margin-top: 78px; }
 .section h2 { font-size: clamp(26px, 3.2vw, 38px); letter-spacing: -0.01em; margin: 0 0 8px; color: var(--brown); }
 
-/* Verfeinerte Duft-Karten */
-.tile-meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 14px; }
+/* Verfeinerte Duft-Karten – Meta-Infos untereinander, damit nichts quetscht */
+.tile-meta { display: flex; flex-direction: column; align-items: flex-start; gap: 7px; margin-top: 14px; }
+.tile-meta .small { white-space: normal; overflow-wrap: anywhere; }
 .score-pill { background: rgba(185,152,99,.16); border: 1px solid rgba(185,152,99,.45); color: var(--brown); border-radius: 999px; padding: 4px 11px; font-family: var(--font-sans), Arial, sans-serif; font-size: 13px; font-weight: 600; white-space: nowrap; }
 .tile h3 { font-size: 20px; }
 
@@ -279,6 +280,8 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
   .card { padding: 22px; border-radius: 22px; }
 }
 @media (max-width: 560px) { .why-grid { grid-template-columns: 1fr; } .perfume-list { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } }
+/* Auf dem Handy eine saubere einspaltige Karten-Darstellung (geprüft bei 375px) */
+@media (max-width: 480px) { .perfume-list { grid-template-columns: 1fr; } }
 
 /* Affiliate transparency note (shown near buy buttons / in footer) */
 .affiliate-note { display: flex; align-items: flex-start; gap: 6px; }

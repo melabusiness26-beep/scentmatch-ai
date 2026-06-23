@@ -211,6 +211,7 @@ export default function Home() {
   const [history, setHistory] = useState<QuizSnapshot[]>([]);
   const [showResult, setShowResult] = useState(false);
   const [perfumes, setPerfumes] = useState<Perfume[]>(starterPerfumes);
+  const [loaded, setLoaded] = useState(false);
   const [shareMsg, setShareMsg] = useState('');
   const [revealScore, setRevealScore] = useState(0);
 
@@ -218,6 +219,7 @@ export default function Home() {
     async function loadPerfumes() {
       const data = await getPerfumes(500);
       if (data.length > 0) setPerfumes(data);
+      setLoaded(true);
     }
     loadPerfumes();
 
@@ -283,6 +285,11 @@ export default function Home() {
 
   // Ausgewogene Highlight-Auswahl für die Startseite (vor dem Quiz).
   const highlights = pickHighlights(perfumes, 6);
+  // Echte Katalog-Kennzahlen aus den geladenen Düften – keine erfundenen Werte.
+  const catalogCount = loaded ? perfumes.length : null;
+  const brandCount = loaded
+    ? new Set(perfumes.map((p) => p.brands?.name).filter(Boolean)).size
+    : null;
 
   const seasonLabel = SEASON_LABEL[currentSeason] || '';
   const seasonMatch = SEASON_MATCH[currentSeason] || [];
@@ -419,7 +426,7 @@ export default function Home() {
                 <Link className="button secondary" href="/duefte">Alle Düfte ansehen</Link>
                 <Link className="button secondary" href="/ratgeber">Ratgeber lesen</Link>
               </div>
-              <p className="hero-trust"><span className="stars">★★★★★</span> Über 160 kuratierte Düfte · von Bestsellern bis zu seltenen Nischenperlen</p>
+              <p className="hero-trust">{catalogCount ? `${catalogCount} kuratierte Düfte` : 'Kuratierte Düfte'} – von Bestsellern bis zu besonderen Nischenperlen.</p>
             </div>
             <div className="card perfume-card">
               <div className="bottle">
@@ -431,8 +438,8 @@ export default function Home() {
                 </svg>
               </div>
               <div className="hero-stats">
-                <div className="hero-stat"><strong>160+</strong><span>kuratierte Düfte</span></div>
-                <div className="hero-stat"><strong>30+</strong><span>Marken weltweit</span></div>
+                <div className="hero-stat"><strong>{catalogCount ?? '…'}</strong><span>kuratierte Düfte</span></div>
+                <div className="hero-stat"><strong>{brandCount ?? '…'}</strong><span>Marken weltweit</span></div>
                 <div className="hero-stat"><strong>0–100</strong><span>echter Match-Score statt Zufall</span></div>
               </div>
             </div>

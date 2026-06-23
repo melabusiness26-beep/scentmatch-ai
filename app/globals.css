@@ -279,3 +279,20 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
   .card { padding: 22px; border-radius: 22px; }
 }
 @media (max-width: 560px) { .why-grid { grid-template-columns: 1fr; } .perfume-list { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } }
+
+/* Affiliate transparency note (shown near buy buttons / in footer) */
+.affiliate-note { display: flex; align-items: flex-start; gap: 6px; }
+.affiliate-note-icon { color: var(--gold); font-style: normal; line-height: 1.4; }
+.footer-affiliate { color: rgba(243,233,218,.66); max-width: 760px; margin-top: 26px; line-height: 1.55; }
+
+/* Cookie consent banner (opt-in) */
+.cookie-banner { position: fixed; left: 0; right: 0; bottom: 0; z-index: 100; padding: 16px; display: flex; justify-content: center; pointer-events: none; }
+.cookie-inner { pointer-events: auto; width: 100%; max-width: 1040px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; background: rgba(36,25,18,.96); color: #f3e9da; border: 1px solid rgba(185,152,99,.4); border-radius: 20px; padding: 18px 22px; box-shadow: 0 24px 60px rgba(36,25,18,.45); backdrop-filter: blur(6px); }
+.cookie-text { margin: 0; font-family: var(--font-sans), Arial, sans-serif; font-size: 14px; line-height: 1.5; color: rgba(243,233,218,.9); flex: 1 1 320px; }
+.cookie-text a { color: var(--gold); text-decoration: underline; }
+.cookie-actions { display: flex; gap: 10px; flex-wrap: wrap; flex: none; }
+.cookie-btn { padding: 11px 20px; font-size: 14px; }
+.cookie-banner .button.secondary { color: #f3e9da; border: 1px solid rgba(243,233,218,.4); background: rgba(255,255,255,.05); }
+.cookie-banner .button.secondary:hover { border-color: var(--gold); color: #fff; }
+.cookie-banner .button:not(.secondary) { background: linear-gradient(180deg, #d8b277, #b1894f); color: #2a1d12; }
+@media (max-width: 560px) { .cookie-inner { flex-direction: column; align-items: stretch; } .cookie-actions { justify-content: stretch; } .cookie-btn { flex: 1; } }

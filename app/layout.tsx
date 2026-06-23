@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Playfair_Display, Inter } from 'next/font/google';
+import CookieBanner from '@/app/CookieBanner';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -68,8 +69,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="/datenschutz">Datenschutz</a>
             </nav>
           </div>
+          <p className="container footer-affiliate small">
+            Auressa enthält Partner-Links (z. B. zu Notino). Wenn du über einen solchen Link
+            kaufst, erhalten wir ggf. eine Provision – für dich ohne Mehrkosten. Preise können
+            abweichen; es gilt der jeweils aktuelle Preis im Shop.
+          </p>
           <div className="container footer-bottom small">© {year} Auressa · Preise &amp; Angaben ohne Gewähr.</div>
         </footer>
+        <CookieBanner />
       </body>
     </html>
   );

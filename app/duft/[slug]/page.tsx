@@ -8,10 +8,10 @@ import {
   getPerfumes,
   findSimilarPerfumes,
   findCheaperAlternatives,
-  buyUrl,
   describePerfume,
   type Perfume
 } from '@/lib/perfumes';
+import { AffiliateButton } from '@/app/AffiliateButton';
 
 // Detailseiten werden stündlich neu generiert (frische Daten, schnelle Auslieferung).
 export const revalidate = 3600;
@@ -196,19 +196,7 @@ export default async function PerfumeDetailPage({
               label="Richtpreis"
               value={perfume.price_chf != null ? `ca. CHF ${perfume.price_chf}` : '–'}
             />
-            <a
-              className="button buy-button"
-              href={buyUrl(perfume)}
-              target="_blank"
-              rel="sponsored nofollow noopener noreferrer"
-            >
-              Jetzt ansehen →
-            </a>
-            {perfume.affiliate_url && (
-              <p className="small buy-note">
-                Affiliate-Link – beim Kauf erhalten wir ggf. eine kleine Provision. Für dich ändert sich der Preis nicht.
-              </p>
-            )}
+            <AffiliateButton perfume={perfume} />
           </div>
         </section>
 

@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SiteHeader from '@/app/SiteHeader';
 import { getGuide, guides, type Guide } from '@/lib/guides';
-import { getPerfumes, buyUrl, type Perfume } from '@/lib/perfumes';
+import { getPerfumes, type Perfume } from '@/lib/perfumes';
+import { AffiliateButton } from '@/app/AffiliateButton';
 
 export const revalidate = 3600;
 
@@ -49,14 +50,7 @@ function PerfumeCard({ perfume }: { perfume: Perfume }) {
             Duftprofil
           </Link>
         )}
-        <a
-          className="button buy-button"
-          href={buyUrl(perfume)}
-          target="_blank"
-          rel="sponsored nofollow noopener noreferrer"
-        >
-          Jetzt ansehen →
-        </a>
+        <AffiliateButton perfume={perfume} showNote={false} />
       </div>
     </div>
   );

@@ -429,14 +429,14 @@ export default function Home() {
               <p className="hero-trust">{catalogCount ? `${catalogCount} kuratierte Düfte` : 'Kuratierte Düfte'} – von Bestsellern bis zu besonderen Nischenperlen.</p>
             </div>
             <div className="card perfume-card">
-              {/* TODO: echtes Hero-Bild einsetzen – /public/hero-placeholder.svg gegen ein echtes Foto austauschen */}
+              {/* Echtes Hero-Foto (lokal in /public). Zum Austauschen: public/hero-auressa.jpg ersetzen. */}
               <figure className="hero-media">
                 <img
                   className="hero-media-img"
-                  src="/hero-placeholder.svg"
-                  alt="Auressa – elegante Duft-Findung mit Quiz und Match-Score"
-                  width={600}
-                  height={440}
+                  src="/hero-auressa.jpg"
+                  alt="Goldener Parfum-Flakon in warmer Boutique-Atmosphäre – Auressa"
+                  width={1600}
+                  height={864}
                 />
               </figure>
               <div className="hero-stats">

@@ -193,6 +193,13 @@ a.logo { text-decoration:none; color:inherit; }
 .notes-block { margin-bottom:18px; }
 .note-pills { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
 .note-pill { background:rgba(185,152,99,.18); border:1px solid rgba(185,152,99,.4); color:var(--brown); border-radius:999px; padding:7px 14px; font-family:var(--font-sans), Arial, sans-serif; font-size:14px; }
+a.note-pill { text-decoration:none; cursor:pointer; transition: background .15s ease, border-color .15s ease, transform .12s ease; }
+a.note-pill:hover { background:rgba(185,152,99,.3); border-color:var(--gold); transform: translateY(-1px); }
+
+/* FAQ-Block auf der Duftseite */
+.faq-item { padding:14px 0; border-bottom:1px solid rgba(75,53,40,.1); }
+.faq-item:last-child { border-bottom:0; padding-bottom:0; }
+.faq-item h3 { margin:0 0 6px; color:var(--brown); font-size:18px; }
 /* Anklickbare Familien-Kacheln (filtern die Datenbank) */
 .tile-family { display:block; text-decoration:none; cursor:pointer; text-align:left; background:rgba(255,255,255,.55); color:var(--text); border:1px solid rgba(75,53,40,.1); border-radius:24px; padding:22px; font-family:var(--font-sans), Arial, sans-serif; font-weight:400; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
 .tile-family:hover { transform: translateY(-3px); box-shadow:0 18px 50px rgba(75,53,40,.16); border-color: rgba(185,152,99,.6); }

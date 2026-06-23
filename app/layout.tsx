@@ -64,6 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <nav className="footer-links">
               <a href="/#quiz">Quiz</a>
               <a href="/duefte">Düfte</a>
+              <a href="/duftnoten">Duftnoten</a>
               <a href="/ratgeber">Ratgeber</a>
               <a href="/impressum">Impressum</a>
               <a href="/datenschutz">Datenschutz</a>

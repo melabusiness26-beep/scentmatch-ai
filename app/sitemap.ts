@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { getAllPerfumeSlugs } from '@/lib/perfumes';
 import { guides } from '@/lib/guides';
+import { scentNotes } from '@/lib/notes-glossary';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
 
@@ -23,6 +24,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7
   }));
 
+  const noteUrls: MetadataRoute.Sitemap = scentNotes.map((note) => ({
+    url: `${SITE_URL}/duftnoten/${note.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.6
+  }));
+
   return [
     {
       url: SITE_URL,
@@ -43,6 +51,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7
     },
     {
+      url: `${SITE_URL}/duftnoten`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6
+    },
+    {
       url: `${SITE_URL}/impressum`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
@@ -55,6 +69,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.2
     },
     ...guideUrls,
+    ...noteUrls,
     ...perfumeUrls
   ];
 }

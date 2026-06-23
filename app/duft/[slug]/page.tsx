@@ -11,7 +11,14 @@ import {
   describePerfume,
   type Perfume
 } from '@/lib/perfumes';
+import { noteHref } from '@/lib/notes-glossary';
 import { AffiliateButton } from '@/app/AffiliateButton';
+
+const genderLabels: Record<string, string> = {
+  Women: 'Damenduft',
+  Men: 'Herrenduft',
+  Unisex: 'Unisex-Duft'
+};
 
 // Detailseiten werden stündlich neu generiert (frische Daten, schnelle Auslieferung).
 export const revalidate = 3600;
@@ -98,9 +105,9 @@ function Notes({ title, notes }: { title: string; notes: string[] | null }) {
       <div className="small">{title}</div>
       <div className="note-pills">
         {notes.map((note) => (
-          <span className="note-pill" key={note}>
+          <Link className="note-pill note-pill-link" href={noteHref(note)} key={note}>
             {note}
-          </span>
+          </Link>
         ))}
       </div>
     </div>
@@ -139,6 +146,57 @@ function jsonLd(perfume: Perfume) {
   };
 }
 
+type Faq = { q: string; a: string };
+
+// Baut FAQ-Einträge ausschließlich aus echten, vorhandenen Feldern – keine erfundenen Werte.
+function buildFaqs(perfume: Perfume): Faq[] {
+  const name = perfume.perfume_name;
+  const faqs: Faq[] = [];
+  if (perfume.longevity != null) {
+    faqs.push({
+      q: `Wie lange hält ${name}?`,
+      a: `In unserer Einschätzung erreicht ${name} eine Haltbarkeit von ${perfume.longevity}/10.`
+    });
+  }
+  if (perfume.sillage != null) {
+    faqs.push({
+      q: `Wie stark ist die Sillage von ${name}?`,
+      a: `Die Sillage (Projektion) von ${name} liegt bei ${perfume.sillage}/10.`
+    });
+  }
+  if (perfume.season) {
+    faqs.push({
+      q: `Für welche Jahreszeit eignet sich ${name}?`,
+      a: `${name} passt besonders gut in die Saison ${perfume.season}.`
+    });
+  }
+  if (perfume.occasion) {
+    faqs.push({
+      q: `Zu welchem Anlass passt ${name}?`,
+      a: `${name} eignet sich besonders für Anlässe wie ${perfume.occasion}.`
+    });
+  }
+  if (perfume.price_chf != null) {
+    faqs.push({
+      q: `Was kostet ${name}?`,
+      a: `Der Richtpreis liegt bei ca. CHF ${perfume.price_chf}. Preise können je nach Shop abweichen.`
+    });
+  }
+  return faqs;
+}
+
+function faqJsonLd(faqs: Faq[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a }
+    }))
+  };
+}
+
 export default async function PerfumeDetailPage({
   params
 }: {
@@ -163,6 +221,14 @@ export default async function PerfumeDetailPage({
   // In den allgemeinen "ähnlich"-Vorschlägen die guenstigen Alternativen nicht doppelt zeigen.
   const similar = findSimilarPerfumes(perfume, pool, 4)
     .filter((s) => s.similarity >= 30 && !cheaperIds.has(s.perfume.id));
+
+  const faqs = buildFaqs(perfume);
+  const whenText = [
+    perfume.season ? `in der Saison ${perfume.season}` : '',
+    perfume.occasion ? `zu Anlässen wie ${perfume.occasion}` : ''
+  ]
+    .filter(Boolean)
+    .join(' und ');
 
   return (
     <main>
@@ -206,6 +272,21 @@ export default async function PerfumeDetailPage({
             <Notes title="Kopfnoten" notes={perfume.top_notes} />
             <Notes title="Herznoten" notes={perfume.heart_notes} />
             <Notes title="Basisnoten" notes={perfume.base_notes} />
+          </section>
+        )}
+
+        {(perfume.gender || whenText) && (
+          <section className="section card">
+            <h2>Für wen &amp; wann passt {perfume.perfume_name}?</h2>
+            {perfume.gender && (
+              <p className="lead">
+                {perfume.perfume_name} ist als {genderLabels[perfume.gender] || perfume.gender}{' '}
+                eingeordnet und gehört zur Duftfamilie {familyLabel(perfume.fragrance_family)}.
+              </p>
+            )}
+            {whenText && (
+              <p className="lead">Besonders gut passt der Duft {whenText}.</p>
+            )}
           </section>
         )}
 
@@ -267,6 +348,18 @@ export default async function PerfumeDetailPage({
           </section>
         )}
 
+        {faqs.length > 0 && (
+          <section className="section card">
+            <h2>Häufige Fragen zu {perfume.perfume_name}</h2>
+            {faqs.map((f, i) => (
+              <div className="faq-item" key={i}>
+                <h3>{f.q}</h3>
+                <p className="small">{f.a}</p>
+              </div>
+            ))}
+          </section>
+        )}
+
         <section className="section">
           <Link className="button" href="/#quiz">
             Passt dieser Duft zu dir? Mach das Quiz
@@ -278,6 +371,12 @@ export default async function PerfumeDetailPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(perfume)) }}
       />
+      {faqs.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(faqs)) }}
+        />
+      )}
     </main>
   );
 }

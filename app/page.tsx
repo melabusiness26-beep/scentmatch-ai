@@ -6,13 +6,13 @@ import SiteHeader from '@/app/SiteHeader';
 import {
   getPerfumes,
   rankPerfumes,
-  buyUrl,
   NOTE_THEMES,
   type Perfume,
   type QuizAnswers,
   type RankedPerfume
 } from '@/lib/perfumes';
 import { PerfumeTile } from '@/app/PerfumeTile';
+import { AffiliateButton } from '@/app/AffiliateButton';
 
 type QuestionKind = 'gender' | 'anchor' | 'family' | 'occasion' | 'season' | 'sillage' | 'budget' | 'lovedNote' | 'dislikedNote';
 type QuizQuestion = { q: string; hint?: string; kind: QuestionKind; a: [string, string][] };
@@ -565,7 +565,7 @@ export default function Home() {
                     {topPick.perfume.slug && (
                       <Link className="button secondary" href={`/duft/${topPick.perfume.slug}`}>Duftprofil ansehen</Link>
                     )}
-                    <a className="button buy-button" href={buyUrl(topPick.perfume)} target="_blank" rel="sponsored nofollow noopener noreferrer">Jetzt ansehen →</a>
+                    <AffiliateButton perfume={topPick.perfume} showNote={false} />
                   </div>
                 </div>
               )}

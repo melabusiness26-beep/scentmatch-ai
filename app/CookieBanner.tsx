@@ -1,0 +1,61 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+
+const STORAGE_KEY = 'auressa-cookie-consent';
+
+type Consent = { choice: 'all' | 'necessary'; ts: number };
+
+/**
+ * Opt-in cookie consent banner (revDSG / GDPR friendly).
+ *
+ * No optional/marketing cookies are loaded until the visitor explicitly
+ * accepts. The choice is stored in localStorage so the banner does not
+ * reappear on every visit. Other components can read `auressa-cookie-consent`
+ * later to conditionally enable analytics once it is added.
+ */
+export default function CookieBanner() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    try {
+      if (!localStorage.getItem(STORAGE_KEY)) setVisible(true);
+    } catch {
+      // localStorage blocked (e.g. private mode) – show banner, store nothing.
+      setVisible(true);
+    }
+  }, []);
+
+  function decide(choice: Consent['choice']) {
+    try {
+      const value: Consent = { choice, ts: Date.now() };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(value));
+    } catch {
+      // Ignore storage errors – the dialog still closes for this session.
+    }
+    setVisible(false);
+  }
+
+  if (!visible) return null;
+
+  return (
+    <div className="cookie-banner" role="dialog" aria-modal="false" aria-label="Cookie-Hinweis">
+      <div className="cookie-inner">
+        <p className="cookie-text">
+          Wir verwenden nur technisch notwendige Cookies. Optionale Cookies – etwa für
+          anonyme Statistik – setzen wir ausschliesslich mit deiner Einwilligung. Mehr dazu
+          in der <Link href="/datenschutz">Datenschutzerklärung</Link>.
+        </p>
+        <div className="cookie-actions">
+          <button type="button" className="button secondary cookie-btn" onClick={() => decide('necessary')}>
+            Nur notwendige
+          </button>
+          <button type="button" className="button cookie-btn" onClick={() => decide('all')}>
+            Alle akzeptieren
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}

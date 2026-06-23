@@ -6,7 +6,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.verc
 
 export const metadata: Metadata = {
   title: 'Datenschutzerklärung',
-  description: 'Wie ScentMatch mit deinen Daten umgeht – transparent und einfach erklärt.',
+  description: 'Wie Auressa mit deinen Daten umgeht – transparent und einfach erklärt.',
   alternates: { canonical: '/datenschutz' }
 };
 
@@ -21,7 +21,7 @@ export default function DatenschutzPage() {
             <h1 className="detail-title">Datenschutzerklärung</h1>
             <p className="lead">
               Der Schutz deiner Daten ist uns wichtig. Hier erklären wir einfach und transparent, welche
-              Daten beim Besuch von ScentMatch anfallen.
+              Daten beim Besuch von Auressa anfallen.
             </p>
           </div>
         </section>
@@ -40,7 +40,7 @@ export default function DatenschutzPage() {
 
           <h2>2. Grundsatz</h2>
           <p>
-            ScentMatch ist eine reine Informations- und Empfehlungsplattform. Du kannst die Website nutzen,
+            Auressa ist eine reine Informations- und Empfehlungsplattform. Du kannst die Website nutzen,
             ohne ein Konto anzulegen oder persönliche Daten anzugeben. Wir sammeln <strong>keine</strong>{' '}
             Namen, Adressen oder Zahlungsdaten und betreiben <strong>kein</strong> Werbe-Tracking und keine
             Analyse-Cookies.

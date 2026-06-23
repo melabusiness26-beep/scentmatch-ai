@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 
 // Vorschaubild fürs Teilen auf Social Media (WhatsApp, Instagram, Facebook …).
 // Next.js nutzt diese Datei automatisch als OpenGraph- und Twitter-Bild.
-export const alt = 'ScentMatch – Finde deinen Signature-Duft';
+export const alt = 'Auressa – Finde deinen Signature-Duft';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -31,7 +31,7 @@ export default function OgImage() {
             marginBottom: 8
           }}
         >
-          SCENTMATCH
+          AURESSA
         </div>
         <div
           style={{

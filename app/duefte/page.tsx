@@ -5,12 +5,12 @@ import PerfumeCatalog from './PerfumeCatalog';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
 
 export const metadata: Metadata = {
-  title: 'Alle Düfte – die ScentMatch-Duftdatenbank',
+  title: 'Alle Düfte – die Auressa-Duftdatenbank',
   description:
-    'Stöbere durch die kuratierte ScentMatch-Duftdatenbank: über 160 Düfte von Bestsellern bis zu seltenen Nischenperlen – suchbar nach Name, Marke, Note, Geschlecht und Anlass.',
+    'Stöbere durch die kuratierte Auressa-Duftdatenbank: über 160 Düfte von Bestsellern bis zu seltenen Nischenperlen – suchbar nach Name, Marke, Note, Geschlecht und Anlass.',
   alternates: { canonical: '/duefte' },
   openGraph: {
-    title: 'Alle Düfte | ScentMatch',
+    title: 'Alle Düfte | Auressa',
     description: 'Die kuratierte Duftdatenbank – über 160 Düfte, suchbar und filterbar.',
     type: 'website',
     url: `${SITE_URL}/duefte`

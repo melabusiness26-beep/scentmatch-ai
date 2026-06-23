@@ -125,7 +125,7 @@ export function buyUrl(p: Perfume): string {
   return `https://www.google.com/search?q=${query}`;
 }
 
-// Liste der Düfte, nach ScentMatch-Score sortiert (beste zuerst).
+// Liste der Düfte, nach Auressa-Score sortiert (beste zuerst).
 export async function getPerfumes(limit = 60): Promise<Perfume[]> {
   if (!isSupabaseConfigured) return [];
   const { data, error } = await supabase

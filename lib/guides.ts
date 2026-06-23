@@ -538,10 +538,9 @@ export const guides: Guide[] = [
         heading: '♏ Skorpion (24. Oktober – 22. November)',
         body: [
           'Skorpione sind intensiv, geheimnisvoll und tiefgründig. Ein dunkler, holzig-orientalischer Duft mit Oud verstärkt ihre magnetische Ausstrahlung.',
-          // TODO: Tom Ford Oud Wood im Katalog ergänzen und verlinken
-          // TODO: Lattafa Oud for Glory im Katalog ergänzen und verlinken
-          'Luxus-Pick: Tom Ford Oud Wood. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Oud for Glory. Tiefe Oud- und Holznoten wirken geheimnisvoll und anziehend. (Beide Düfte ergänzen wir in Kürze im Katalog.)'
-        ]
+          'Luxus-Pick: Tom Ford Oud Wood. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Oud for Glory. Tiefe Oud- und Holznoten wirken geheimnisvoll und anziehend.'
+        ],
+        perfumes: ['tom-ford-oud-wood', 'lattafa-oud-for-glory']
       },
       {
         heading: '♐ Schütze (23. November – 21. Dezember)',

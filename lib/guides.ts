@@ -571,7 +571,7 @@ export const guides: Guide[] = [
       },
       {
         body: [
-          'Sternzeichen sind ein schöner, spielerischer Einstieg – aber dein echter Lieblingsduft hängt von deinem persönlichen Geschmack ab, nicht vom Kalender. Unser Duft-Quiz findet ihn in unter 3 Minuten, abgestimmt auf Duftrichtung, Anlass, Saison und Budget.'
+          'Sternzeichen sind ein schöner, spielerischer Einstieg – aber dein echter Lieblingsduft hängt von deinem persönlichen Geschmack ab, nicht vom Kalender. Unser Duft-Quiz findet ihn in unter 1 Minute, abgestimmt auf Duftrichtung, Anlass, Saison und Budget.'
         ]
       }
     ]

@@ -30,7 +30,9 @@ export default function PerfumeCatalog() {
     if (q) setQuery(q);
   }, []);
 
-  const sorted = [...perfumes].sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0));
+  const sorted = [...perfumes].sort((a, b) =>
+    (a.perfume_name || '').localeCompare(b.perfume_name || '', 'de', { sensitivity: 'base' })
+  );
   const visible = sorted.filter(
     (p) => (!familyFilter || p.fragrance_family === familyFilter) && matchesQuery(p, query)
   );

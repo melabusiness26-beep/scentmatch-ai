@@ -446,7 +446,7 @@ export default function Home() {
           <div className="hero">
             <div>
               <p className="eyebrow">Dein Signature-Duft · kuratiert in der Schweiz</p>
-              <h1>Finde deinen Signature-Duft in 3 Minuten.</h1>
+              <h1>Finde deinen Signature-Duft in 1 Minute.</h1>
               <p className="lead">Auressa verbindet ein elegantes Duft-Quiz mit einer intelligenten Match-Engine: Jeder Duft wird gegen deine Antworten zu Geschlecht, Duftrichtung, Anlass, Saison, Intensität und Budget bewertet.</p>
               <div className="cta">
                 <a className="button" href="#quiz">Quiz starten</a>
@@ -519,7 +519,7 @@ export default function Home() {
             <div className="why-card">
               <div className="why-icon">♡</div>
               <h3>Schnell & persönlich</h3>
-              <p className="small">Dein Ergebnis in unter 3 Minuten – abgestimmt auf deinen Geschmack, Anlass und Budget.</p>
+              <p className="small">Dein Ergebnis in unter 1 Minute – abgestimmt auf deinen Geschmack, Anlass und Budget.</p>
             </div>
           </div>
         </section>

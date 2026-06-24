@@ -144,6 +144,14 @@ export const guides: Guide[] = [
           'kilian-angels-share',
           'lattafa-yara'
         ]
+      },
+      {
+        heading: 'Worauf du bei süssen Düften achten solltest',
+        body: [
+          'Süsse Gourmand-Düfte sind oft sehr präsent – ein bis zwei Sprühstösse reichen, sonst wirken sie schnell zu schwer.',
+          'Am schönsten kommen sie in der kühlen Jahreszeit und am Abend zur Geltung; bei grosser Hitze können sie aufdringlich werden.',
+          'Tipp: Wer es süss, aber alltagstauglich mag, greift zu Varianten mit etwas Frische oder Holz – sie wirken weniger „dessertartig".'
+        ]
       }
     ]
   },
@@ -200,6 +208,14 @@ export const guides: Guide[] = [
           'orto-megamare',
           'mancera-cedrat-boise',
           'nishane-ani'
+        ]
+      },
+      {
+        heading: 'Was macht einen Unisex-Duft aus?',
+        body: [
+          'Unisex-Düfte verzichten auf typisch „weibliche" oder „männliche" Klischees und setzen auf ausgewogene, vielseitige Kompositionen – oft holzig, frisch oder leicht orientalisch.',
+          'Sie eignen sich perfekt zum Teilen im Haushalt und für alle, die sich nicht festlegen wollen.',
+          'Tipp: Ignorier beim Testen ruhig die „Damen-" und „Herren-"Schilder – entscheidend ist allein, ob der Duft auf deiner Haut schön riecht.'
         ]
       }
     ]
@@ -436,6 +452,14 @@ export const guides: Guide[] = [
           'lattafa-yara',
           'jpg-la-belle'
         ]
+      },
+      {
+        heading: 'Worauf du bei Vanille-Düften achten solltest',
+        body: [
+          'Vanille kann ganz unterschiedlich wirken: pudrig-elegant, dessertartig-süss oder warm-rauchig in Kombination mit Tabak und Gewürzen.',
+          'Sehr süsse, reine Vanille kann schnell schwer werden – wer es alltagstauglich mag, wählt Vanille mit Holz, Moschus oder einem Hauch Frische.',
+          'Vanille gehört zur Basis und hält von Natur aus lange – ideal für Herbst, Winter und gemütliche Abende.'
+        ]
       }
     ]
   },
@@ -458,6 +482,14 @@ export const guides: Guide[] = [
           'montale-arabians-tonka',
           'sa-shaghaf-oud',
           'penhaligons-halfeti'
+        ]
+      },
+      {
+        heading: 'Worauf du bei Oud-Düften achten solltest',
+        body: [
+          'Echtes Oud ist sehr teuer, deshalb arbeiten die meisten Düfte mit hochwertigen Oud-Akkorden – das ist völlig normal und riecht trotzdem edel.',
+          'Oud ist intensiv und langlebig: Hier reicht wirklich ein Sprühstoss. Lieber dezent starten und bei Bedarf nachlegen.',
+          'Am schönsten kommt Oud in der kühlen Jahreszeit und am Abend zur Geltung. Wunderbar harmoniert es mit Rose, Safran und süssen Noten wie Vanille und Dattel.'
         ]
       }
     ]
@@ -482,6 +514,14 @@ export const guides: Guide[] = [
           'mancera-cedrat-boise',
           'light-blue',
           'creed-silver-mountain-water'
+        ]
+      },
+      {
+        heading: 'Worauf du bei Zitrus-Düften achten solltest',
+        body: [
+          'Zitrus-Noten sind herrlich frisch, aber von Natur aus flüchtig – viele Zitrus-Düfte halten kürzer. Ein zweiter Sprühstoss am Mittag wirkt Wunder.',
+          'Achte auf eine holzige oder moschusartige Basis (z. B. Zedernholz, Vetiver, weisser Moschus): Sie verankert die Frische und macht den Duft langlebiger.',
+          'Zitrus ist die perfekte Wahl für Sommer, heisse Tage und das Büro – sauber, leicht und nie aufdringlich.'
         ]
       }
     ]

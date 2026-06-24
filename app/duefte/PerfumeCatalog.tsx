@@ -18,7 +18,7 @@ export default function PerfumeCatalog() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    getPerfumes(500).then((data) => {
+    getPerfumes(2000).then((data) => {
       setPerfumes(data);
       setLoaded(true);
     });

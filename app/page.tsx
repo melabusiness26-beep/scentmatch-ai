@@ -243,7 +243,9 @@ export default function Home() {
 
   useEffect(() => {
     async function loadPerfumes() {
-      const data = await getPerfumes(500);
+      // Hoch genug, damit das Quiz immer den GANZEN Katalog beruecksichtigt,
+      // auch wenn er weiter waechst (vorher 500 – wir naehern uns dem Limit).
+      const data = await getPerfumes(2000);
       if (data.length > 0) setPerfumes(data);
       setLoaded(true);
     }

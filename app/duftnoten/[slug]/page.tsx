@@ -68,7 +68,7 @@ export default async function ScentNotePage({
   const note = getScentNote(slug);
   if (!note) notFound();
 
-  const pool = (await getPerfumes(500)).filter((p) => p.slug);
+  const pool = (await getPerfumes(2000)).filter((p) => p.slug);
   const matches = perfumesWithNote(note, pool).slice(0, 8);
   const catalogHref = `/duefte?q=${encodeURIComponent(note.name)}`;
 

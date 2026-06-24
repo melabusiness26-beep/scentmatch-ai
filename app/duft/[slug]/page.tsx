@@ -216,7 +216,7 @@ export default async function PerfumeDetailPage({
 
   // Ähnliche Düfte aus dem gesamten Katalog ermitteln (gleiche Familie,
   // geteilte Noten, ähnliche Intensität). Nur Treffer mit echter Ähnlichkeit zeigen.
-  const pool = (await getPerfumes(500)).filter((p) => p.slug);
+  const pool = (await getPerfumes(2000)).filter((p) => p.slug);
 
   // Kuratierter Querverweis (z. B. Luxus <-> günstigere Alternative) mit eigenem Wortlaut.
   const curated = getCuratedLink(slug);

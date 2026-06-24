@@ -77,7 +77,7 @@ export default async function GuidePage({
   if (!guide) notFound();
 
   // Alle Düfte einmal laden und nach slug nachschlagbar machen.
-  const all = await getPerfumes(500);
+  const all = await getPerfumes(2000);
   const bySlug = new Map(all.filter((p) => p.slug).map((p) => [p.slug as string, p]));
 
   return (

@@ -13,6 +13,7 @@ import {
 } from '@/lib/perfumes';
 import { PerfumeTile, familyDisplay } from '@/app/PerfumeTile';
 import { AffiliateButton } from '@/app/AffiliateButton';
+import NewsletterForm from '@/app/NewsletterForm';
 
 type QuestionKind = 'gender' | 'anchor' | 'family' | 'occasion' | 'season' | 'sillage' | 'budget' | 'lovedNote' | 'dislikedNote';
 type QuizQuestion = { q: string; hint?: string; kind: QuestionKind; a: [string, string][] };
@@ -659,6 +660,14 @@ export default function Home() {
                   <button type="button" className="secondary" onClick={restartQuiz}>Quiz neu starten</button>
                 </div>
                 {shareMsg && <p className="small share-msg">{shareMsg}</p>}
+              </div>
+
+              <div className="share-box">
+                <NewsletterForm
+                  source="quiz"
+                  title="Verpass keine Duft-Tipps"
+                  text="Lass dir neue Empfehlungen, Spar-Tipps und passende Düfte per E-Mail schicken – ab und zu, nie Spam."
+                />
               </div>
             </div>
           )}

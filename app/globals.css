@@ -315,3 +315,19 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 .cookie-banner .button.secondary:hover { border-color: var(--gold); color: #fff; }
 .cookie-banner .button:not(.secondary) { background: linear-gradient(180deg, #d8b277, #b1894f); color: #2a1d12; }
 @media (max-width: 560px) { .cookie-inner { flex-direction: column; align-items: stretch; } .cookie-actions { justify-content: stretch; } .cookie-btn { flex: 1; } }
+
+/* Newsletter-Anmeldefeld (Quiz-Ende + Footer) */
+.newsletter { margin: 0; }
+.newsletter-title { margin: 0 0 6px; color: var(--brown); font-size: 20px; }
+.newsletter-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+.newsletter-input { flex: 1 1 220px; min-width: 0; }
+.newsletter .button { background: linear-gradient(180deg, #d8b277, #b1894f); color: #2a1d12; }
+.newsletter-consent { display: flex; gap: 8px; align-items: flex-start; margin-top: 10px; cursor: pointer; line-height: 1.4; }
+.newsletter-consent input { margin-top: 3px; flex: none; width: 16px; height: 16px; }
+.newsletter-consent a { color: var(--gold); }
+.newsletter-error { color: #b3402f; margin-top: 8px; }
+/* Im dunklen Footer hell darstellen */
+.footer-newsletter { margin-bottom: 30px; padding-bottom: 28px; border-bottom: 1px solid rgba(243,233,218,.15); }
+.footer-newsletter .newsletter-row { max-width: 560px; }
+.site-footer .newsletter-title { color: #fbf3e6; }
+.site-footer .newsletter .small, .site-footer .newsletter-consent { color: rgba(243,233,218,.85); }

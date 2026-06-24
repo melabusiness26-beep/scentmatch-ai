@@ -1068,6 +1068,84 @@ export const guides: Guide[] = [
         ]
       }
     ]
+  },
+  {
+    slug: 'die-besten-herbstduefte',
+    title: 'Die besten Herbstdüfte: warm, würzig & gemütlich',
+    description:
+      'Wärmende Düfte für den Herbst: würzig, holzig und leicht süss – ideal für kühle, goldene Tage. Unsere Herbst-Favoriten für Damen, Herren und Unisex.',
+    intro: [
+      'Der Herbst ist die schönste Zeit für etwas wärmere Düfte: Wenn die Tage kühler und die Blätter golden werden, dürfen würzige, holzige und leicht süsse Noten ran. Sie wirken gemütlich und einhüllend, ohne schon so schwer zu sein wie ein tiefer Winterduft.',
+      'Hier unsere liebsten Herbstdüfte aus dem Katalog – von erschwinglich bis edel, für jeden Geschmack.'
+    ],
+    sections: [
+      {
+        perfumes: [
+          'lattafa-asad',
+          'tobacco-vanille',
+          'ysl-la-nuit-de-lhomme',
+          'club-de-nuit-intense',
+          'guerlain-lhomme-ideal',
+          'mancera-red-tobacco',
+          'boss-bottled-night',
+          'pdm-herod'
+        ]
+      },
+      {
+        heading: 'Worauf du bei Herbstdüften achten solltest',
+        body: [
+          'Der Herbst ist der ideale Übergang: etwas wärmer als im Sommer, aber noch nicht so wuchtig wie im tiefen Winter. Würzige, holzige und sanft süsse Noten passen jetzt am besten.',
+          'Typische Herbst-Noten sind Tabak, Zimt, Kardamom, Tonkabohne, Leder und warmes Holz – sie wirken auf kühler Luft besonders rund und gemütlich.',
+          'Eau de Parfum lohnt sich jetzt wieder mehr: Es hält länger und entfaltet bei kühleren Temperaturen schön Tiefe. Ein bis zwei Sprühstösse genügen meist.',
+          'Tipp: Viele Herbstdüfte funktionieren auch im Winter – wer flexibel bleiben will, wählt eine würzig-holzige Komposition, die sich über beide Jahreszeiten tragen lässt.'
+        ]
+      },
+      {
+        body: [
+          'Du bist unsicher, welche Richtung dir steht? Mach unser kostenloses Duft-Quiz – es findet deine Lieblingsrichtung in unter einer Minute, abgestimmt auf Duftrichtung, Anlass, Saison und Budget.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'die-besten-nischenduefte',
+    title: 'Die besten Nischendüfte: besonders & aussergewöhnlich',
+    description:
+      'Nischendüfte heben sich vom Mainstream ab: eigenständig, hochwertig und aussergewöhnlich. Was Nischenparfums ausmacht – und unsere Favoriten aus dem Katalog.',
+    intro: [
+      'Nischendüfte sind die Gegenwelt zu den grossen Mainstream-Parfums: Statt für den Massengeschmack gemacht, setzen sie auf Eigenständigkeit, hochwertige Rohstoffe und einen unverwechselbaren Charakter. Wer etwas Besonderes sucht, das nicht jeder trägt, wird hier fündig.',
+      'Hier unsere schönsten Nischendüfte aus dem Katalog – von strahlend bis dunkel-holzig.'
+    ],
+    sections: [
+      {
+        perfumes: [
+          'baccarat-rouge-540',
+          'le-labo-santal-33',
+          'nishane-hacivat',
+          'xerjoff-naxos',
+          'initio-oud-greatness',
+          'orto-megamare',
+          'byredo-gypsy-water',
+          'kilian-angels-share'
+        ]
+      },
+      {
+        heading: 'Was macht einen Nischenduft aus?',
+        body: [
+          'Nischendüfte stammen meist von kleineren, spezialisierten Häusern, die sich auf Duftkunst statt auf Massenproduktion konzentrieren. Oft stecken hochwertigere oder ungewöhnlichere Rohstoffe drin.',
+          'Sie sind in der Regel eigenständiger und „mutiger" als Designer-Düfte – dafür manchmal polarisierender. Genau das macht ihren Reiz aus: Du riechst nach dir, nicht nach dem Mainstream.',
+          'Nischendüfte sind häufig teurer, halten dafür aber oft sehr lange und überzeugen mit Tiefe und Charakter. Schon ein Sprühstoss genügt meist.'
+        ]
+      },
+      {
+        heading: 'Lohnt sich der höhere Preis?',
+        body: [
+          'Nicht jeder Nischenduft ist automatisch besser als ein guter Designer-Duft – am Ende zählt, ob er dir gefällt und zu dir passt.',
+          'Mein Tipp: Teste Nischendüfte zuerst über eine kleine Abfüllung oder Probe, bevor du den grossen Flakon kaufst. So vermeidest du teure Fehlkäufe.',
+          'Übrigens: Auch unter günstigen Marken gibt es Düfte, die in eine ähnlich edle Richtung gehen – schau dazu in unseren Ratgeber „Günstige Alternativen zu teuren Parfüms".'
+        ]
+      }
+    ]
   }
 ];
 

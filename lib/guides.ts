@@ -721,6 +721,353 @@ export const guides: Guide[] = [
         ]
       }
     ]
+  },
+  {
+    slug: 'die-besten-fruehlingsduefte',
+    title: 'Die besten Frühlingsdüfte: frisch, blumig & leicht',
+    description:
+      'Leichte, blumig-frische Düfte für den Frühling – grüne Noten, Blüten und Zitrus. Unsere Frühlings-Favoriten für Damen und Herren.',
+    intro: [
+      'Der Frühling ruft nach leichten, lebendigen Düften: zarte Blüten, grüne Noten und ein Hauch Zitrus passen perfekt zu den ersten warmen Tagen.',
+      'Hier unsere schönsten Frühlingsdüfte aus dem Katalog – frisch, fröhlich und nicht zu schwer.'
+    ],
+    sections: [
+      {
+        perfumes: ['marc-jacobs-daisy', 'chloe-edp', 'gucci-bloom', 'dior-miss-dior', 'montblanc-legend', 'pdm-greenley', 'creed-green-irish-tweed', 'dkny-be-delicious']
+      },
+      {
+        heading: 'Worauf du bei Frühlingsdüften achten solltest',
+        body: [
+          'Setz auf leichte, frische Kompositionen – blumig, grün oder zitrisch. Schwere, süsse Winterdüfte wirken jetzt schnell zu wuchtig.',
+          'Eau de Toilette und leichte Eau de Parfum sind ideal: präsent, aber luftig.',
+          'Tipp: Frühlingsdüfte eignen sich wunderbar für den Alltag, das Büro und entspannte Treffen im Freien.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'die-besten-bueroduefte',
+    title: 'Die besten Büro-Düfte: dezent & angenehm',
+    description:
+      'Bürotaugliche Düfte, die angenehm dezent bleiben und niemanden stören – frisch, sauber und gepflegt. Unsere Empfehlungen für Damen und Herren.',
+    intro: [
+      'Im Büro gilt: Ein Duft soll dich begleiten, nicht den ganzen Raum füllen. Dezent, sauber und gepflegt ist hier die beste Wahl.',
+      'Diese Düfte gelten als angenehm bürotauglich – present genug, um wahrgenommen zu werden, aber nie aufdringlich.'
+    ],
+    sections: [
+      {
+        perfumes: ['chanel-bleu-de-chanel', 'ysl-y-edp', 'boss-bottled', 'le-labo-santal-33', 'jo-malone-wood-sage-sea-salt', 'coco-mademoiselle', 'narciso-for-her', 'dior-homme']
+      },
+      {
+        heading: 'So liegst du im Büro immer richtig',
+        body: [
+          'Weniger ist mehr: Ein bis zwei Sprühstösse reichen. Im geschlossenen Raum wirkt ein Duft stärker als draussen.',
+          'Frische, holzige und sauber-moschusartige Düfte sind angenehmer als schwere, süsse oder sehr intensive Kompositionen.',
+          'Trag den Duft eher auf die Kleidung als grossflächig auf die Haut – so bleibt er dezenter.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'parfum-das-lange-haelt-beast-mode',
+    title: 'Düfte, die extrem lange halten („Beast-Mode")',
+    description:
+      'Parfums mit enormer Haltbarkeit und Projektion: Diese Düfte halten oft den ganzen Tag – von süss-warm bis dunkel-holzig.',
+    intro: [
+      'Manche Düfte sind echte Ausdauer-Wunder: Einmal aufgesprüht, begleiten sie dich oft den ganzen Tag und sind auch für andere deutlich wahrnehmbar.',
+      'Hier unsere langlebigsten, projektionsstärksten Düfte – sparsam dosieren ist hier Pflicht.'
+    ],
+    sections: [
+      {
+        perfumes: ['baccarat-rouge-540', 'tobacco-vanille', 'khamrah', 'mugler-angel', 'ysl-black-opium', 'nasomatto-black-afgano', 'jpg-ultra-male', 'lattafa-asad']
+      },
+      {
+        heading: 'Wichtig bei sehr starken Düften',
+        body: [
+          'Hier reicht wirklich ein Sprühstoss – zu viel wirkt schnell erdrückend, gerade in Innenräumen.',
+          'Diese Düfte kommen in der kühlen Jahreszeit und am Abend am besten zur Geltung.',
+          'Wenn du es dezenter magst: einmal in die Luft sprühen und hindurchgehen – so wird der Duft sanfter.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'die-besten-hochzeitsduefte-braut',
+    title: 'Hochzeitsdüfte: die schönsten Parfums für die Braut',
+    description:
+      'Der Duft zum schönsten Tag: elegante, romantische Parfums für die Braut – zeitlos, fein und voller guter Erinnerungen.',
+    intro: [
+      'Ein Duft wird zum Souvenir deines grossen Tages: Jahre später erinnert dich ein Hauch davon sofort an die Hochzeit. Deshalb darf er besonders sein.',
+      'Hier elegante, romantische Düfte, die zu einer Braut wunderbar passen – zeitlos statt trendig.'
+    ],
+    sections: [
+      {
+        perfumes: ['coco-mademoiselle', 'chanel-no-5', 'chloe-edp', 'ysl-libre', 'pdm-delina', 'viktor-rolf-flowerbomb', 'dior-miss-dior', 'jo-malone-pear-freesia']
+      },
+      {
+        heading: 'Tipps für den Hochzeitsduft',
+        body: [
+          'Wähle etwas Zeitloses, das du auch in Jahren noch schön findest – nicht den lautesten Trend.',
+          'Trag den Duft schon ein paar Mal vorher, damit du sicher bist, dass er sich auf deiner Haut richtig anfühlt.',
+          'Ein dezenter, eleganter Duft passt meist besser als ein sehr schwerer – du möchtest umarmt werden, ohne andere zu überduften.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'die-besten-holzigen-duefte',
+    title: 'Die besten holzigen Düfte: edel, warm & zeitlos',
+    description:
+      'Holzige Düfte mit Sandelholz, Zedernholz, Oud und Vetiver – edel, warm und sehr tragefreundlich. Unsere Favoriten für Damen, Herren und Unisex.',
+    intro: [
+      'Holzige Düfte wirken edel, warm und erwachsen. Sandelholz, Zedernholz, Vetiver und Oud geben ihnen Tiefe und machen sie angenehm tragefreundlich.',
+      'Hier unsere schönsten holzigen Düfte – von frisch-holzig bis dunkel und cremig.'
+    ],
+    sections: [
+      {
+        perfumes: ['le-labo-santal-33', 'creed-aventus', 'chanel-bleu-de-chanel', 'tom-ford-oud-wood', 'byredo-gypsy-water', 'club-de-nuit-intense', 'dior-homme', 'armaf-cdnim']
+      },
+      {
+        heading: 'Worauf du bei holzigen Düften achten solltest',
+        body: [
+          'Holzige Noten gehören zur Basis und halten von Natur aus lange – ideal für den ganzen Tag.',
+          'Frisch-holzige Düfte (mit Zitrus oder Vetiver) passen gut in den Alltag; dunkle, cremige Hölzer wie Sandelholz oder Oud wirken abends am schönsten.',
+          'Holz harmoniert wunderbar mit Gewürzen, Leder und süssen Noten wie Vanille.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'die-besten-blumigen-duefte',
+    title: 'Die besten blumigen Düfte: feminin & elegant',
+    description:
+      'Blumige Düfte mit Rose, Jasmin, Pfingstrose und Orangenblüte – romantisch, elegant und vielseitig. Unsere floralen Favoriten.',
+    intro: [
+      'Blumige Düfte sind der Inbegriff von Eleganz: Rose, Jasmin, Pfingstrose oder Orangenblüte wirken feminin, romantisch und zeitlos.',
+      'Hier unsere schönsten floralen Düfte – von zart und frisch bis opulent.'
+    ],
+    sections: [
+      {
+        perfumes: ['coco-mademoiselle', 'chloe-edp', 'gucci-bloom', 'ysl-libre', 'dior-miss-dior', 'chanel-no-5', 'lancome-idole', 'pdm-delina']
+      },
+      {
+        heading: 'Worauf du bei blumigen Düften achten solltest',
+        body: [
+          'Blumig heisst nicht „altmodisch": Moderne Florals kombinieren Blüten mit Frucht, Moschus oder Holz und wirken sehr aktuell.',
+          'Zarte, frische Florals passen perfekt in Frühling und Alltag; opulente, süsse Blütendüfte kommen abends und in der kühlen Jahreszeit schön zur Geltung.',
+          'Tipp: Wenn dir reine Blüten zu klassisch sind, achte auf florale Düfte mit einer fruchtigen oder holzigen Note.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'die-besten-frischen-aquatischen-duefte',
+    title: 'Die besten frischen & aquatischen Düfte',
+    description:
+      'Aquatische Düfte wie eine Meeresbrise: sauber, frisch und unbeschwert. Unsere Favoriten für Sommer, Sport und heisse Tage.',
+    intro: [
+      'Aquatische Düfte riechen nach frischer Luft, Wasser und Sauberkeit – wie eine Meeresbrise an einem klaren Tag. Perfekt für alle, die es leicht und unaufdringlich mögen.',
+      'Hier unsere frischsten Empfehlungen für Sommer, Sport und den Alltag.'
+    ],
+    sections: [
+      {
+        perfumes: ['dior-sauvage', 'davidoff-cool-water', 'jo-malone-wood-sage-sea-salt', 'prada-luna-rossa-ocean', 'light-blue-homme', 'armani-acqua-di-gioia', 'creed-silver-mountain-water', 'adp-colonia']
+      },
+      {
+        heading: 'Worauf du bei frischen Düften achten solltest',
+        body: [
+          'Aquatische und zitrische Noten sind herrlich leicht, verfliegen aber schneller – ein zweiter Sprühstoss am Mittag hält die Frische.',
+          'Ideal für heisse Tage, Sport und das Büro, weil sie nie schwer oder aufdringlich wirken.',
+          'Eine holzige oder moschusartige Basis macht frische Düfte langlebiger.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'die-besten-moschus-pudrigen-duefte',
+    title: 'Pudrige & Moschus-Düfte: weich und sinnlich',
+    description:
+      'Weiche, pudrige Düfte mit Moschus, Iris und Veilchen – elegant, hautnah und sinnlich. Unsere Favoriten für jeden Tag.',
+    intro: [
+      'Pudrige und moschusartige Düfte wirken weich, gepflegt und angenehm hautnah – wie ein Duft, der dich sanft umhüllt.',
+      'Hier unsere Empfehlungen für alle, die es elegant, dezent und sinnlich mögen.'
+    ],
+    sections: [
+      {
+        perfumes: ['narciso-for-her', 'coco-mademoiselle', 'chanel-no-5', 'lancome-idole', 'ysl-libre', 'prada-paradoxe']
+      },
+      {
+        heading: 'Worauf du bei pudrigen & Moschus-Düften achten solltest',
+        body: [
+          'Diese Düfte bleiben oft nah an der Haut – das ist gewollt und wirkt sehr elegant statt aufdringlich.',
+          'Sie sind herrlich vielseitig und passen zu fast jedem Anlass, vom Büro bis zum Date.',
+          'Iris- und Veilchennoten geben den pudrigen Charakter; weisser Moschus sorgt für das saubere, weiche Gefühl.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'parfum-layering-duefte-kombinieren',
+    title: 'Parfum-Layering: zwei Düfte richtig kombinieren',
+    description:
+      'Layering bedeutet, zwei Düfte zu schichten und so deine eigene Duftkreation zu erschaffen. So gelingt das Kombinieren – einfach erklärt.',
+    intro: [
+      'Beim Layering trägst du zwei Düfte übereinander und erschaffst so eine ganz persönliche Note, die niemand sonst genau so hat.',
+      'Klingt kompliziert, ist es aber nicht – mit ein paar einfachen Regeln gelingt es dir sofort.'
+    ],
+    sections: [
+      {
+        heading: 'Die Grundregeln',
+        body: [
+          'Kombiniere einen einfachen, „glatten" Duft mit einem charaktervollen – zum Beispiel eine Vanille- oder Moschus-Basis mit etwas Würzigem oder Holzigem.',
+          'Trag den schwereren Duft zuerst auf, dann den leichteren darüber.',
+          'Weniger ist mehr: ein Sprühstoss pro Duft genügt zum Ausprobieren.'
+        ]
+      },
+      {
+        heading: 'Was gut zusammenpasst',
+        body: [
+          'Vanille und Holz: warm und gemütlich.',
+          'Rose und Oud: edel und orientalisch.',
+          'Zitrus und Vanille: frisch startend, warm endend.',
+          'Moschus passt fast immer und macht jeden Duft weicher.'
+        ]
+      },
+      {
+        heading: 'Gut zum Kombinieren',
+        body: ['Diese vielseitigen Düfte eignen sich besonders als Basis zum Schichten:'],
+        perfumes: ['le-labo-santal-33', 'tobacco-vanille', 'khamrah', 'baccarat-rouge-540']
+      }
+    ]
+  },
+  {
+    slug: 'edt-edp-parfum-unterschied',
+    title: 'EdT, EdP oder Parfum? Die Unterschiede einfach erklärt',
+    description:
+      'Eau de Toilette, Eau de Parfum oder Extrait – was ist der Unterschied? So erkennst du, welche Konzentration für dich die richtige ist.',
+    intro: [
+      'Auf Flakons steht „EdT", „EdP" oder „Parfum" – diese Kürzel sagen, wie stark ein Duft ist. Der Unterschied liegt in der Konzentration des Duftöls.',
+      'Hier erklären wir dir einfach, was die Begriffe bedeuten und welche Variante wann sinnvoll ist.'
+    ],
+    sections: [
+      {
+        heading: 'Die wichtigsten Konzentrationen',
+        body: [
+          'Eau de Cologne (EdC): sehr leicht und frisch, hält nur wenige Stunden.',
+          'Eau de Toilette (EdT): leicht und frisch, ideal für Sommer und Tag – hält meist 3 bis 5 Stunden.',
+          'Eau de Parfum (EdP): höhere Konzentration, intensiver und langlebiger – der häufigste Typ, hält oft 6 bis 8 Stunden.',
+          'Parfum / Extrait: die intensivste und teuerste Variante, hält am längsten – schon wenig genügt.'
+        ]
+      },
+      {
+        heading: 'Welche Variante ist die richtige für mich?',
+        body: [
+          'Für den Sommer, das Büro und tagsüber: eher EdT – leicht und frisch.',
+          'Für Herbst, Winter, Abende und mehr Haltbarkeit: EdP oder Parfum.',
+          'Tipp: Die gleiche Duftlinie riecht als EdT oft etwas frischer und als EdP etwas wärmer – es lohnt sich, beide zu testen.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'haeufige-parfum-fehler',
+    title: '5 häufige Parfum-Fehler – und wie du sie vermeidest',
+    description:
+      'Verreiben, falsch lagern, zu viel sprühen: Die häufigsten Parfum-Fehler und wie du sie ganz einfach vermeidest.',
+    intro: [
+      'Beim Umgang mit Parfum schleichen sich schnell kleine Fehler ein, die Haltbarkeit und Duftbild verschlechtern.',
+      'Hier die fünf häufigsten – und wie du sie ganz einfach vermeidest.'
+    ],
+    sections: [
+      {
+        heading: '1. Die Handgelenke aneinander reiben',
+        body: ['Das „bricht" die Duftmoleküle und lässt den Duft schneller verfliegen. Einfach aufsprühen und trocknen lassen.']
+      },
+      {
+        heading: '2. Parfum im Badezimmer lagern',
+        body: ['Hitze, Licht und Feuchtigkeit lassen den Duft schneller kippen. Besser kühl, dunkel und in der Originalverpackung aufbewahren.']
+      },
+      {
+        heading: '3. Zu viel sprühen',
+        body: ['Mehr Duft heisst nicht besser. Ein bis zwei Sprühstösse reichen meist – zu viel wirkt aufdringlich, und die eigene Nase gewöhnt sich daran.']
+      },
+      {
+        heading: '4. Auf trockene Haut sprühen',
+        body: ['Auf gepflegter, leicht eingecremter Haut hält ein Duft deutlich länger als auf trockener.']
+      },
+      {
+        heading: '5. Einen Duft in der ersten Minute beurteilen',
+        body: ['Die Kopfnoten verfliegen schnell. Gib einem Duft 15 bis 30 Minuten auf der Haut, bevor du urteilst.']
+      }
+    ]
+  },
+  {
+    slug: 'parfums-mit-schweizer-bezug',
+    title: 'Düfte mit Schweizer Bezug',
+    description:
+      'Parfums von Marken mit Schweizer Wurzeln wie Chopard und Gisada – elegant und hochwertig. Kuratiert von Auressa, deiner Schweizer Duft-Plattform.',
+    intro: [
+      'Auressa wird in der Schweiz kuratiert – und auch in der Duftwelt gibt es Marken mit Schweizer Wurzeln. Chopard (Genf) und Gisada sind zwei davon.',
+      'Hier ein kleiner, feiner Blick auf Düfte mit Schweizer Bezug.'
+    ],
+    sections: [
+      {
+        perfumes: ['gisada-ambassador', 'gisada-ambassadora', 'chopard-happy']
+      },
+      {
+        heading: 'Warum lokal Sinn macht',
+        body: [
+          'Wir achten bewusst auf Schweizer Preise (CHF) und Verfügbarkeit – damit du weisst, was wirklich relevant ist.',
+          'Du suchst nicht nach einer bestimmten Marke, sondern nach deinem Duft? Dann mach unser Quiz – es findet deine Richtung in unter einer Minute.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'die-besten-lattafa-duefte',
+    title: 'Die besten Lattafa-Düfte',
+    description:
+      'Lattafa bietet erstaunlich gute Düfte für kleines Geld – warm, langlebig und oft eine günstige Alternative zu teuren Originalen. Unsere Favoriten.',
+    intro: [
+      'Die Marke Lattafa hat in kurzer Zeit viele Fans gewonnen: tolle Haltbarkeit, warme Kompositionen und das alles zu erstaunlich kleinen Preisen.',
+      'Hier unsere liebsten Lattafa-Düfte aus dem Katalog.'
+    ],
+    sections: [
+      {
+        perfumes: ['khamrah', 'lattafa-asad', 'lattafa-yara', 'lattafa-fakhar-men', 'lattafa-oud-for-glory', 'lattafa-ana-abiyedh', 'lattafa-yara-tous', 'lattafa-mayar']
+      },
+      {
+        heading: 'Gut zu wissen',
+        body: [
+          'Viele Lattafa-Düfte gelten als günstige Alternativen zu teuren Originalen – ähnliche Richtung, viel kleinerer Preis.',
+          'Die Düfte sind oft sehr langlebig und projektionsstark: ein bis zwei Sprühstösse genügen.',
+          'Mehr Spar-Tipps findest du in unserem Ratgeber „Günstige Alternativen zu teuren Parfüms".'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'die-besten-armaf-duefte',
+    title: 'Die besten Armaf-Düfte',
+    description:
+      'Armaf ist bekannt für preiswerte Düfte mit toller Haltbarkeit – allen voran Club de Nuit. Unsere Armaf-Favoriten für Damen und Herren.',
+    intro: [
+      'Armaf hat sich mit der Club-de-Nuit-Reihe einen Namen gemacht: charaktervolle Düfte mit toller Haltbarkeit zu kleinen Preisen.',
+      'Hier unsere liebsten Armaf-Düfte aus dem Katalog.'
+    ],
+    sections: [
+      {
+        perfumes: ['club-de-nuit-intense', 'armaf-cdn-sillage', 'armaf-club-de-nuit-woman', 'armaf-vanity-femme']
+      },
+      {
+        heading: 'Gut zu wissen',
+        body: [
+          'Club de Nuit Intense Man gilt als eine der bekanntesten günstigen Alternativen zu Creed Aventus.',
+          'Armaf-Düfte sind oft kräftig und langlebig – sparsam dosieren lohnt sich.',
+          'Du suchst gezielt nach günstigen Alternativen? Schau in unseren Dupe-Ratgeber.'
+        ]
+      }
+    ]
   }
 ];
 

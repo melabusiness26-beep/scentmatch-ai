@@ -87,7 +87,17 @@ export default function DatenschutzPage() {
             Anbieter gemäss dessen Datenschutzbestimmungen. Für dich entstehen keine Mehrkosten.
           </p>
 
-          <h2>8. Deine Rechte</h2>
+          <h2>8. Newsletter</h2>
+          <p>
+            Wenn du dich für unseren Newsletter anmeldest, speichern wir deine E-Mail-Adresse
+            ausschliesslich zu dem Zweck, dir Duft-Tipps und Empfehlungen zu senden. Die Anmeldung
+            erfolgt nur mit deiner ausdrücklichen Einwilligung (Häkchen im Formular). Deine Adresse
+            wird in unserer Datenbank beim Anbieter <strong>Supabase</strong> gespeichert und nicht an
+            Dritte verkauft. Du kannst dich jederzeit wieder abmelden – eine kurze Nachricht an die
+            oben genannte E-Mail-Adresse genügt, und wir löschen deine Daten.
+          </p>
+
+          <h2>9. Deine Rechte</h2>
           <p>
             Du hast im Rahmen der geltenden Datenschutzgesetze (insb. des Schweizer Datenschutzgesetzes,
             revDSG) das Recht auf Auskunft über die zu deiner Person bearbeiteten Daten sowie auf
@@ -95,10 +105,10 @@ export default function DatenschutzPage() {
             genannte E-Mail-Adresse.
           </p>
 
-          <h2>9. Änderungen</h2>
+          <h2>10. Änderungen</h2>
           <p>
             Wir passen diese Datenschutzerklärung an, wenn sich Funktionen der Website ändern (z. B. falls
-            künftig ein Newsletter oder ein Login hinzukommt).
+            künftig ein Login oder weitere Dienste hinzukommen).
           </p>
 
           <p className="small legal-note">Stand: {OPERATOR.lastUpdated}</p>

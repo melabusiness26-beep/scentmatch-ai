@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Playfair_Display, Inter } from 'next/font/google';
 import CookieBanner from '@/app/CookieBanner';
+import NewsletterForm from '@/app/NewsletterForm';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -55,6 +56,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         <footer className="site-footer">
+          <div className="container footer-newsletter">
+            <NewsletterForm source="footer" />
+          </div>
           <div className="container footer-inner">
             <div>
               <div className="logo">Auressa</div>

@@ -84,6 +84,15 @@ export const guides: Guide[] = [
           'allure-homme-sport',
           'invictus'
         ]
+      },
+      {
+        heading: 'Worauf du bei Sommerdüften achten solltest',
+        body: [
+          'Bei Hitze wirkt ein Duft viel intensiver als im Winter – weniger ist also mehr. Ein bis zwei Sprühstösse reichen meist völlig.',
+          'Leichte Konzentrationen (Eau de Toilette) und frische Familien (Zitrus, aquatisch, grüner Tee) sind angenehmer als schwere, süsse Düfte.',
+          'Frische Düfte verfliegen schneller – ein kleiner Reisezerstäuber für die Tasche hilft, am Nachmittag kurz nachzulegen.',
+          'Tagsüber und im Büro gilt: lieber dezent. Schwere Abenddüfte können bei Hitze schnell aufdringlich wirken.'
+        ]
       }
     ]
   },
@@ -158,6 +167,15 @@ export const guides: Guide[] = [
           'initio-oud-greatness',
           'xerjoff-naxos',
           'lattafa-asad'
+        ]
+      },
+      {
+        heading: 'Worauf du bei Winterdüften achten solltest',
+        body: [
+          'In der Kälte darf ein Duft kräftiger sein – warme Noten wie Vanille, Amber, Oud und Gewürze entfalten sich bei niedrigen Temperaturen besonders schön.',
+          'Höhere Konzentrationen (Eau de Parfum oder Extrait) lohnen sich, weil sie länger halten und mehr Tiefe haben.',
+          'Auf der Haut hält ein Duft im Winter oft länger als im Sommer – an kalter Luft braucht er aber einen kurzen Moment, um sich zu entfalten.',
+          'Tipp: Eincremen vor dem Sprühen hilft gerade im Winter gegen trockene Heizungsluft, die den Duft schneller verfliegen lässt.'
         ]
       }
     ]
@@ -292,6 +310,42 @@ export const guides: Guide[] = [
           'Nicht verreiben! Das Aneinanderreiben der Handgelenke „bricht" die Duftmoleküle und verkürzt die Haltbarkeit.',
           'Auch in Haare und auf Kleidung (vorsichtig) sprühen – dort hält Duft besonders lange.',
           'Eau de Parfum (EdP) hält länger als Eau de Toilette (EdT). Mehr dazu in unserem Ratgeber zu Inhaltsstoffen.'
+        ]
+      },
+      {
+        heading: 'Warum verfliegt mein Parfum so schnell?',
+        body: [
+          'Wenn ein Duft kaum hält, liegt es selten am Parfum allein. Häufige Gründe: sehr trockene Haut (der Duft hat nichts, woran er „haften" kann), eine leichte Konzentration wie Eau de Toilette, oder schlicht zu wenig aufgetragen.',
+          'Auch die Duftrichtung spielt mit: frische, zitrische Düfte sind von Natur aus flüchtiger als warme, süsse oder holzige Kompositionen.',
+          'Und manchmal riechst du deinen eigenen Duft nur selbst nicht mehr, obwohl andere ihn noch deutlich wahrnehmen – die Nase gewöhnt sich daran (man nennt das Geruchsadaption).'
+        ]
+      },
+      {
+        heading: 'Welche Düfte halten von Natur aus am längsten?',
+        body: [
+          'Als Faustregel halten warme, schwere Duftfamilien länger als leichte, frische:',
+          'Gourmand (Vanille, Karamell, Tonkabohne) und orientalische Düfte: sehr langlebig, oft 8–12 Stunden.',
+          'Holzige Düfte (Sandelholz, Oud, Patchouli): ebenfalls sehr ausdauernd.',
+          'Florale Düfte: mittlere Haltbarkeit, je nach Aufbau.',
+          'Frische und zitrische Düfte (Clean): am flüchtigsten – dafür herrlich leicht im Sommer. Hier lohnt sich ein zweiter Sprühstoss am Mittag.'
+        ]
+      },
+      {
+        heading: 'Parfum richtig lagern',
+        body: [
+          'Hitze, Licht und Luft sind die grössten Feinde eines Dufts. So bleibt er länger frisch:',
+          'Kühl und dunkel lagern – ein geschlossener Schrank ist besser als das Fensterbrett.',
+          'Nicht im Badezimmer aufbewahren: die ständigen Temperatur- und Feuchtigkeitswechsel lassen den Duft schneller „kippen".',
+          'In der Originalverpackung lassen – der Karton schützt zuverlässig vor Licht.',
+          'Den Flakon nicht schütteln und gut verschlossen halten, damit möglichst wenig Luft hineingelangt.'
+        ]
+      },
+      {
+        heading: 'Wie lange ist ein Parfum haltbar?',
+        body: [
+          'Ungeöffnet und kühl gelagert hält ein Parfum oft viele Jahre. Nach dem Öffnen entfaltet es sich am schönsten innerhalb der ersten ein bis drei Jahre.',
+          'Woran du erkennst, dass ein Duft „umgekippt" ist: Die Farbe wird deutlich dunkler, er riecht oben säuerlich oder metallisch, oder der Charakter wirkt flach und alkoholisch.',
+          'Ein kleiner Hinweis auf der Verpackung – das Tiegel-Symbol mit „12M" oder „24M" – gibt an, wie viele Monate der Duft nach dem Öffnen optimal ist.'
         ]
       },
       {
@@ -572,6 +626,58 @@ export const guides: Guide[] = [
       {
         body: [
           'Sternzeichen sind ein schöner, spielerischer Einstieg – aber dein echter Lieblingsduft hängt von deinem persönlichen Geschmack ab, nicht vom Kalender. Unser Duft-Quiz findet ihn in unter 1 Minute, abgestimmt auf Duftrichtung, Anlass, Saison und Budget.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'parfum-fuer-einsteiger-erster-signature-duft',
+    title: 'Parfum für Einsteiger: so findest du deinen ersten Signature-Duft',
+    description:
+      'Neu in der Welt der Düfte? So findest du Schritt für Schritt deinen ersten Signature-Duft – ohne teure Fehlkäufe. Mit einfachen Tipps und sicheren Einsteiger-Empfehlungen.',
+    intro: [
+      'Vor dem Parfumregal zu stehen kann überfordern: hunderte Flakons, fremde Begriffe und stolze Preise. Dabei ist es gar nicht so schwer, deinen Lieblingsduft zu finden – wenn du weisst, worauf du achten musst.',
+      'Hier bekommst du eine einfache Anleitung für deinen ersten eigenen Duft – ganz ohne Fachchinesisch.'
+    ],
+    sections: [
+      {
+        heading: 'Schritt 1: Finde deine Duftrichtung',
+        body: [
+          'Düfte teilen sich grob in vier Familien: frisch/clean (Zitrus, Meer, sauberer Moschus), süss/gourmand (Vanille, Karamell, Amber), holzig/woody (Sandelholz, Leder, Oud) und blumig/floral (Rose, Jasmin, Pfirsich).',
+          'Überleg dir, welche dieser Beschreibungen dich sofort anspricht – das ist deine Startrichtung. Unser kostenloses Duft-Quiz nimmt dir diese Einordnung in unter einer Minute ab.'
+        ]
+      },
+      {
+        heading: 'Schritt 2: Verstehe die Duftpyramide',
+        body: [
+          'Ein Parfum verändert sich über die Zeit. Das beschreibt die sogenannte Duftpyramide:',
+          'Kopfnoten: der erste Eindruck beim Aufsprühen – verfliegt schon nach Minuten.',
+          'Herznoten: der Kern des Dufts, der nach kurzer Zeit hervorkommt.',
+          'Basisnoten: das, was nach Stunden auf der Haut übrig bleibt.',
+          'Wichtig: Beurteile einen Duft nie nur in der ersten Minute – gib ihm 15 bis 30 Minuten auf der Haut.'
+        ]
+      },
+      {
+        heading: 'Schritt 3: Richtig testen – und teure Fehlkäufe vermeiden',
+        body: [
+          'Teste höchstens zwei bis drei Düfte gleichzeitig – sonst überfordert sich die Nase.',
+          'Sprüh auf die Haut, nicht nur auf einen Papierstreifen: Auf der Haut riecht jeder Duft individuell.',
+          'Trag ihn einen halben Tag und beobachte, ob du ihn noch magst – und wie andere reagieren.',
+          'Günstiger Trick: Bestell zuerst eine kleine Abfüllung oder Probe, bevor du den grossen Flakon kaufst.'
+        ]
+      },
+      {
+        heading: 'Sichere Einsteiger-Empfehlungen',
+        body: [
+          'Diese Düfte gelten als vielseitig und leicht zu mögen – ein guter Startpunkt für deinen ersten Signature-Duft.'
+        ],
+        perfumes: [
+          'dior-sauvage',
+          'chanel-bleu-de-chanel',
+          'lattafa-yara',
+          'armani-acqua-di-gioia',
+          'jo-malone-wood-sage-sea-salt',
+          'khamrah'
         ]
       }
     ]

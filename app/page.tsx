@@ -584,11 +584,15 @@ export default function Home() {
                 <div className="answers">
                   <select className="search" value={anchorId} onChange={e => setAnchorId(e.target.value)}>
                     <option value="">– Duft auswählen –</option>
-                    {perfumes.map(p => (
-                      <option value={p.id} key={p.id}>
-                        {p.perfume_name}{p.brands?.name ? ` – ${p.brands.name}` : ''}
-                      </option>
-                    ))}
+                    {[...perfumes]
+                      .sort((a, b) =>
+                        (a.perfume_name || '').localeCompare(b.perfume_name || '', 'de', { sensitivity: 'base' })
+                      )
+                      .map(p => (
+                        <option value={p.id} key={p.id}>
+                          {p.perfume_name}{p.brands?.name ? ` – ${p.brands.name}` : ''}
+                        </option>
+                      ))}
                   </select>
                   <p className="small">Optional – du kannst diese Frage auch einfach überspringen.</p>
                   <button className="answer" onClick={advanceAnchor}>{anchorId ? 'Weiter' : 'Überspringen'}</button>

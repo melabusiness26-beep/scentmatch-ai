@@ -137,6 +137,16 @@ export async function getPerfumes(limit = 60): Promise<Perfume[]> {
   return (data as unknown as Perfume[]) || [];
 }
 
+// Anzahl der Düfte im Katalog – für dynamische Texte wie „über X Düfte".
+export async function getPerfumeCount(): Promise<number> {
+  if (!isSupabaseConfigured) return 0;
+  const { count, error } = await supabase
+    .from('perfumes')
+    .select('id', { count: 'exact', head: true });
+  if (error || count == null) return 0;
+  return count;
+}
+
 // Einzelnen Duft anhand seines slug laden (für die Detailseite).
 export async function getPerfumeBySlug(slug: string): Promise<Perfume | null> {
   if (!isSupabaseConfigured) return null;

@@ -421,8 +421,8 @@ export default function Home() {
     const url = buildShareUrl();
     const title = `Mein Auressa-Duftprofil: ${profileText[winner].title}`;
     const text = topPick
-      ? `Mein Top-Match ist ${topPick.perfume.perfume_name}. Finde mit dem kostenlosen Auressa-Quiz deinen:`
-      : 'Finde mit dem kostenlosen Auressa-Quiz deinen Signature-Duft:';
+      ? `Mein Top-Match ist ${topPick.perfume.perfume_name}. Finde mit dem Auressa-Quiz deinen:`
+      : 'Finde mit dem Auressa-Quiz deinen Signature-Duft:';
     if (typeof navigator !== 'undefined' && navigator.share) {
       try {
         await navigator.share({ title, text, url });

@@ -274,7 +274,7 @@ export const guides: Guide[] = [
       },
       {
         body: [
-          'Mein Tipp: Wenn du wissen willst, welche Duftrichtung zu dir passt, mach unser kostenloses Duft-Quiz – danach zeigen wir dir die passenden Düfte samt Noten, Saison und Anlass.'
+          'Mein Tipp: Wenn du wissen willst, welche Duftrichtung zu dir passt, mach unser Duft-Quiz – danach zeigen wir dir die passenden Düfte samt Noten, Saison und Anlass.'
         ]
       }
     ]
@@ -684,7 +684,7 @@ export const guides: Guide[] = [
         heading: 'Schritt 1: Finde deine Duftrichtung',
         body: [
           'Düfte teilen sich grob in vier Familien: frisch/clean (Zitrus, Meer, sauberer Moschus), süss/gourmand (Vanille, Karamell, Amber), holzig/woody (Sandelholz, Leder, Oud) und blumig/floral (Rose, Jasmin, Pfirsich).',
-          'Überleg dir, welche dieser Beschreibungen dich sofort anspricht – das ist deine Startrichtung. Unser kostenloses Duft-Quiz nimmt dir diese Einordnung in unter einer Minute ab.'
+          'Überleg dir, welche dieser Beschreibungen dich sofort anspricht – das ist deine Startrichtung. Unser Duft-Quiz nimmt dir diese Einordnung in unter einer Minute ab.'
         ]
       },
       {

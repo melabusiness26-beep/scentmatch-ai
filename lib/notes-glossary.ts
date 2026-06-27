@@ -22,6 +22,12 @@ export type ScentNote = {
   pairsWith: string;
   /** Zusätzliche Schreibweisen, um Katalog-Düfte zu dieser Note zu finden. */
   synonyms?: string[];
+  /**
+   * Optionales echtes Foto der Zutat (z. B. "/noten/oud.jpg" im public-Ordner
+   * oder eine erlaubte, lizenzfreie Bild-URL). Ist kein Foto gesetzt, zeigt die
+   * Seite automatisch die hauseigene Illustration – es bricht also nie etwas.
+   */
+  photo?: string;
 };
 
 export const scentNotes: ScentNote[] = [

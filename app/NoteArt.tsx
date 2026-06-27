@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { getScentNote } from '@/lib/notes-glossary';
 
 // Hauseigene Duftnoten-Illustrationen im Stil edler botanischer Apotheker-Tafeln
 // ("Variante A": rechtssicher, selbst erstellt, laden lokal – keine Fremdfotos).
@@ -178,6 +179,18 @@ function detail(slug: string): ReactNode {
 }
 
 export default function NoteArt({ slug, className }: { slug: string; className?: string }) {
+  // Ist für die Note ein echtes Foto hinterlegt, zeigen wir es (im gleichen
+  // Etiketten-Rahmen). Sonst greift automatisch die Illustration.
+  const photo = getScentNote(slug)?.photo;
+  if (photo) {
+    return (
+      <div className={`note-art note-art--photo${className ? ` ${className}` : ''}`} aria-hidden="true">
+        <img className="note-art-img" src={photo} alt="" loading="lazy" decoding="async" />
+        <span className="note-art-frame" />
+      </div>
+    );
+  }
+
   const glow = NOTE_GLOW[slug] || DEFAULT_GLOW;
   const bg = `na-bg-${slug}`;
   const halo = `na-halo-${slug}`;

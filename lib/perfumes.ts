@@ -94,7 +94,7 @@ export function describePerfume(p: Perfume): string {
   }
   if (p.sillage != null) {
     const word = p.sillage >= 8 ? 'kräftig' : p.sillage >= 6 ? 'ausgewogen' : 'nah an der Haut';
-    perf.push(`die Sillage ${word} (${p.sillage}/10)`);
+    perf.push(`die Sillage ist ${word} (${p.sillage}/10)`);
   }
   if (perf.length) {
     const joined = perf.join(' und ');

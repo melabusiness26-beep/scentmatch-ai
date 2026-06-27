@@ -198,10 +198,19 @@ gender → anchor (optional, Dropdown) → 3× family → lovedNote → disliked
   Lösung vermutlich **Payoneer** (CJ Internationale Zahlungen) oder via Support. Es ging
   eine Mail an **affiliate@notino.com** raus (Antwort abwarten). Nicht dringend
   (Auszahlung erst ab 60 EUR).
-- **Awin**: angemeldet, um Partner bei **Flaconi** zu werden. Bewerbung beim
-  Flaconi-Programm im Awin-Dashboard noch abzuschließen. Vorteil Awin: Auszahlung per
-  IBAN (kein US-Routing-Problem). Hinweis: Awin erhebt ~5 € Verifizierungsgebühr
-  (wird gutgeschrieben).
+- **Awin / Flaconi**: Konto „Auressa (2954969)" eingerichtet, **Profil zu 100 %**
+  (Profilbild = goldener AURESSA-Flakon, ausführliche Beschreibung mit Kanälen/
+  Zielgruppe), **2FA aktiviert** (Authenticator-App; Backup-Code sicher verwahrt).
+  **Flaconi-CH-Programm BEWORBEN** (Werbeart „Content" + Vorstellungs-Nachricht) →
+  **wartet auf Freigabe** (ein paar Tage; Benachrichtigung in Awin „Activity"/E-Mail).
+  Wichtige Flaconi-Regel: kein Brand-Bidding auf „flaconi" (SEA), nur Direktverlinkung.
+- **OFFEN – Payoneer für BEIDE Netzwerke**: Sowohl CJ als auch Awin zahlen Schweizer
+  Publisher über **Payoneer** aus (Awin-Zahlungsmethode = internationale Überweisung,
+  Anbieter Payoneer). EIN Payoneer-Konto löst also CJ **und** Awin gleichzeitig. Noch
+  NICHT eingerichtet (eigene Anmeldung inkl. Ausweis-Verifizierung, ~15–20 Min.). Nicht
+  dringend (Auszahlung erst bei Guthaben). Bei Awin sind die Steuerdetails (Wohnsitz
+  Schweiz, Einzelunternehmer, Firmenname = „Melanie Viele") bereits eingegeben; es fehlt
+  nur die Payoneer-Verknüpfung.
 
 ### Heute behobene Website-Fehler (alle live auf `main`)
 - **PR #74**: feste „über 160 Düfte" auf `/duefte` → **dynamische** Zahl via neue
@@ -218,10 +227,19 @@ gender → anchor (optional, Dropdown) → 3× family → lovedNote → disliked
 - **Pinterest**: 1 Pin (Sommerdüfte) online, Ziel-Link `auressa.ch`.
 - KI-Bilder werden per Prompt erzeugt (Flakon mit „AURESSA"-Label + Themen-Elemente).
 
+### Google Search Console (eingerichtet)
+- Property-Typ **„Domain"** für `auressa.ch`, per **DNS-TXT** bei Hostpoint bestätigt
+  („Inhaberschaft bestätigt"). Den TXT-Eintrag bei Hostpoint NIEMALS löschen.
+- **Sitemap `https://auressa.ch/sitemap.xml` eingereicht** (volle URL nötig, nicht nur
+  „sitemap.xml"). Status zeigt evtl. erst nach 1–2 Tagen „Erfolgreich" – normal.
+
 ### Nächste sinnvolle Schritte (Priorität)
-1. **Google Search Console** einrichten (Sitemap einreichen) – am Computer.
-2. **Regelmäßig posten** (Instagram-Reels + Pinterest-Pins) → Besucher gewinnen.
-3. Affiliate fertig: Notino/CJ-Bankdaten lösen (Payoneer) + Flaconi-Bewerbung bei Awin.
-4. Sobald echte Affiliate-Links da sind → pro Duft im **Admin** ins Feld
-   „Affiliate-Link / Shop-URL" eintragen (Button nutzt ihn automatisch).
+1. **Payoneer einrichten** (löst CJ + Awin Auszahlung gleichzeitig) → danach Bankdaten
+   bei CJ und Awin verknüpfen. In Ruhe am Computer (Ausweis bereithalten).
+2. **Auf Flaconi-Freigabe warten** (Awin „Activity"/E-Mail). Sobald frei → Werbemittel/
+   Links in Awin holen.
+3. **Regelmäßig posten** (Instagram-Reels + Pinterest-Pins) → Besucher gewinnen.
+   In Search Console nach 1–2 Tagen prüfen, ob Sitemap „Erfolgreich" ist.
+4. Sobald echte Affiliate-Links da sind (Notino/CJ oder Flaconi/Awin) → pro Duft im
+   **Admin** ins Feld „Affiliate-Link / Shop-URL" eintragen (Button nutzt ihn automatisch).
 

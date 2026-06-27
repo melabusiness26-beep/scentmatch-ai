@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import SiteHeader from '@/app/SiteHeader';
+import NoteArt from '@/app/NoteArt';
 import { scentNotes } from '@/lib/notes-glossary';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
@@ -40,6 +41,7 @@ export default function DuftnotenPage() {
           <div className="grid">
             {scentNotes.map((note) => (
               <Link className="tile tile-link" href={`/duftnoten/${note.slug}`} key={note.slug}>
+                <NoteArt slug={note.slug} />
                 <h3>{note.name}</h3>
                 <p className="small">{note.short}</p>
               </Link>

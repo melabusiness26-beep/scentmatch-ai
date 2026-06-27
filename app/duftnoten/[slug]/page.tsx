@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SiteHeader from '@/app/SiteHeader';
+import NoteArt from '@/app/NoteArt';
 import { PerfumeTile } from '@/app/PerfumeTile';
 import { getPerfumes, type Perfume } from '@/lib/perfumes';
 import { getScentNote, scentNotes, type ScentNote } from '@/lib/notes-glossary';
@@ -82,6 +83,7 @@ export default async function ScentNotePage({
 
         <section className="section legal">
           <p className="eyebrow">Duftnote</p>
+          <NoteArt slug={note.slug} className="note-art-hero" />
           <h1 className="detail-title">{note.name}</h1>
           <p className="lead">{note.intro}</p>
 

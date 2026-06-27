@@ -173,6 +173,13 @@ a.logo { text-decoration:none; color:inherit; }
 .cover-gourmand { background:linear-gradient(140deg,#d6b98a,#f4e7d6); }
 .cover-woody { background:linear-gradient(140deg,#8a6a4e,#d0b594); }
 .cover-floral { background:linear-gradient(140deg,#e3b1c4,#f8e8ee); }
+/* Duftnoten-Illustrationen (selbst erstellt, im Auressa-Stil) */
+.note-art { display:block; border-radius:16px; overflow:hidden; margin-bottom:14px; border:1px solid rgba(185,152,99,.28); box-shadow: inset 0 1px 0 rgba(255,255,255,.5); }
+.note-art svg { display:block; width:100%; height:auto; }
+.note-art-hero { max-width:440px; margin:6px 0 24px; border-radius:22px; box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 18px 44px rgba(75,53,40,.12); }
+.tile-link .note-art { transition: transform .2s ease; }
+.tile-link:hover .note-art { transform: scale(1.02); }
+
 .admin-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
 .field { margin-bottom:14px; }
 .field label { display:block; font-family:var(--font-sans), Arial, sans-serif; font-size:14px; color:#5d4b40; margin-bottom:6px; }

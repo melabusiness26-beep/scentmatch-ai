@@ -172,3 +172,56 @@ gender → anchor (optional, Dropdown) → 3× family → lovedNote → disliked
   Transparenz-Hinweis. Steuern/AHV erst Thema, wenn echtes Geld fließt (Gründerin gibt
   Einnahmen selbst in der Steuererklärung an; keine Firma nötig unter 100k Umsatz).
 
+## 11. Update (27. Juni 2026): Eigene Domain live + Affiliate + Social Media
+
+> Neuester Stand. Wichtigster Einstieg für den nächsten Chat.
+
+### Eigene Domain `auressa.ch` ist LIVE
+- Domain bei **Hostpoint** gekauft (admin.hostpoint.ch, Login `mela.business26@gmail.com`).
+- DNS bei Hostpoint bearbeitet: **A-Eintrag** `auressa.ch` → `216.198.79.1` (Vercel),
+  **AAAA** (apex) gelöscht, **CNAME** `www` → `…vercel-dns…` (Wert von Vercel).
+- In **Vercel** verbunden: `auressa.ch` **und** `www.auressa.ch` laufen, SSL aktiv
+  (www leitet auf apex weiter).
+- In Vercel die Variable **`NEXT_PUBLIC_SITE_URL = https://auressa.ch`** gesetzt
+  (Production+Preview) → ist jetzt die offizielle SEO-Adresse (Sitemap, Canonical, OG).
+  Die technische URL `scentmatch-ai.vercel.app` bleibt unverändert bestehen.
+
+### Aktueller Entwicklungs-Branch
+- `claude/sweet-cerf-zz662k` → PR nach `main` → Vercel deployt.
+
+### Affiliate-Stand
+- **CJ / Notino**: Konto komplett auf **„Auressa"** umgestellt (Werbeplattform,
+  Beschreibung, Organisationsname); Website = `auressa.ch`. Benutzer-/Kontodaten
+  vervollständigt.
+- **OFFEN – Bankdaten in CJ**: Das Zahlungsformular verlangt eine US-Routing-Nummer,
+  die ein Schweizer Konto nicht hat („routing/account number not formatted correctly").
+  Lösung vermutlich **Payoneer** (CJ Internationale Zahlungen) oder via Support. Es ging
+  eine Mail an **affiliate@notino.com** raus (Antwort abwarten). Nicht dringend
+  (Auszahlung erst ab 60 EUR).
+- **Awin**: angemeldet, um Partner bei **Flaconi** zu werden. Bewerbung beim
+  Flaconi-Programm im Awin-Dashboard noch abzuschließen. Vorteil Awin: Auszahlung per
+  IBAN (kein US-Routing-Problem). Hinweis: Awin erhebt ~5 € Verifizierungsgebühr
+  (wird gutgeschrieben).
+
+### Heute behobene Website-Fehler (alle live auf `main`)
+- **PR #74**: feste „über 160 Düfte" auf `/duefte` → **dynamische** Zahl via neue
+  `getPerfumeCount()` (auf 50 abgerundet, „über 400"), aktualisiert sich automatisch.
+- **PR #75**: Wort **„kostenlos"** an 3 Stellen entfernt (Startseite-Teilen-Text +
+  2 Ratgeber) gemäß Marken-Konvention.
+- **PR #76**: Grammatikfehler in `describePerfume` – fehlendes „ist" bei der Sillage
+  („die Sillage **ist** ausgewogen").
+
+### Social Media gestartet
+- **Instagram „Auressa Duft Beratung"**: Profil mit klickbarem Bio-Link `auressa.ch`,
+  Bio „Finde deinen Signatur Duft • Parfüm Empfehlungen • Quiz • günstige Dupes".
+  2 Posts (Sommerdüfte, KI-generierte Flakon-Bilder). Hinweis: max. 5 Hashtags genutzt.
+- **Pinterest**: 1 Pin (Sommerdüfte) online, Ziel-Link `auressa.ch`.
+- KI-Bilder werden per Prompt erzeugt (Flakon mit „AURESSA"-Label + Themen-Elemente).
+
+### Nächste sinnvolle Schritte (Priorität)
+1. **Google Search Console** einrichten (Sitemap einreichen) – am Computer.
+2. **Regelmäßig posten** (Instagram-Reels + Pinterest-Pins) → Besucher gewinnen.
+3. Affiliate fertig: Notino/CJ-Bankdaten lösen (Payoneer) + Flaconi-Bewerbung bei Awin.
+4. Sobald echte Affiliate-Links da sind → pro Duft im **Admin** ins Feld
+   „Affiliate-Link / Shop-URL" eintragen (Button nutzt ihn automatisch).
+

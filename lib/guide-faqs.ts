@@ -468,6 +468,76 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
       q: 'Lohnt sich der höhere Preis?',
       a: 'Wenn dir Charakter, Tiefe und Eigenständigkeit wichtig sind, ja. Am besten zuerst über eine Probe testen.'
     }
+  ],
+  'die-besten-sommerduefte-frauen': [
+    {
+      q: 'Welcher Sommerduft für Frauen hält am längsten?',
+      a: 'Cremige, leicht süsse Düfte mit Vanille, Kokos oder Moschus (z. B. Lattafa Yara, Sol de Janeiro Cheirosa 62) halten länger als rein frische Zitrus- oder Wasserdüfte.'
+    },
+    {
+      q: 'Welcher Sommerduft passt ins Büro?',
+      a: 'Frisch-saubere, aquatische Düfte wie Dolce & Gabbana Light Blue oder Acqua di Gioia – dezent und nie aufdringlich.'
+    },
+    {
+      q: 'Welches Parfum riecht nach Sommer und Sonne?',
+      a: 'Sonnig-cremige Düfte mit Kokos, Pistazie oder Orangenblüte, etwa Sol de Janeiro Cheirosa 62 oder Lattafa Mayar.'
+    }
+  ],
+  'creed-aventus-guenstige-alternativen': [
+    {
+      q: 'Was ist die beste günstige Alternative zu Creed Aventus?',
+      a: 'Armaf Club de Nuit Intense Man gilt als die bekannteste und ähnlichste Alternative – fruchtige Ananas, rauchige Birke und Moschus zu einem Bruchteil des Preises.'
+    },
+    {
+      q: 'Riecht eine Alternative genau wie Creed Aventus?',
+      a: 'Nicht zu 100 %. Die Richtung ist sehr ähnlich, einzelne Noten und ihre Reihenfolge können leicht abweichen. Für den Alltag sind viele Alternativen aber verblüffend nah dran.'
+    },
+    {
+      q: 'Halten die Aventus-Alternativen lange?',
+      a: 'Ja, oft sogar sehr lange. Club de Nuit Intense Man und Lattafa Asad sind für ihre starke Projektion und Haltbarkeit bekannt.'
+    }
+  ],
+  'lattafa-dupes-welches-original': [
+    {
+      q: 'Sind Lattafa-Düfte echte Dupes?',
+      a: 'Es sind eigenständige Düfte in ähnlicher Richtung wie bekannte Originale – keine exakten Kopien, aber oft verblüffend nah dran.'
+    },
+    {
+      q: 'Welcher Lattafa-Duft ist am beliebtesten?',
+      a: 'Khamrah (süss-würzig), Asad (fruchtig-rauchig) und Yara (cremig-süss) gehören zu den meistgekauften Lattafa-Düften.'
+    },
+    {
+      q: 'Warum sind Lattafa-Düfte so günstig?',
+      a: 'Die Marke produziert in grossen Mengen und setzt auf bewährte Duftrichtungen statt teurer Marketingkampagnen – daher der kleine Preis bei guter Haltbarkeit.'
+    }
+  ],
+  'parfum-fuer-junge-leute-unter-60-franken': [
+    {
+      q: 'Welches Parfum ist gut für Teenager?',
+      a: 'Vielseitige, unkomplizierte Düfte wie Davidoff Cool Water, Lattafa Yara oder Sol de Janeiro Cheirosa 62 – frisch oder leicht süss und alltagstauglich.'
+    },
+    {
+      q: 'Welcher günstige Duft hält lange?',
+      a: 'Arabische Marken wie Lattafa (z. B. Khamrah, Yara) und Armaf Club de Nuit Intense Man bieten für wenig Geld erstaunlich lange Haltbarkeit.'
+    },
+    {
+      q: 'Wie viel sollte ein erster Duft kosten?',
+      a: 'Für unter CHF 60 bekommst du schon sehr gute, beliebte Düfte. Teste am besten zuerst eine kleine Abfüllung, bevor du den grossen Flakon kaufst.'
+    }
+  ],
+  'date-duefte-sommer': [
+    {
+      q: 'Welcher Duft kommt beim Date gut an?',
+      a: 'Frische Düfte mit warmem Kern – sauber und nahbar, aber anziehend. Für Frauen z. B. Lattafa Yara, für Männer Versace Eros oder Stronger With You.'
+    },
+    {
+      q: 'Wie viel Parfum trage ich beim Date auf?',
+      a: 'Ein bis zwei Sprühstösse genügen. Komplimente erntet, wer aus der Nähe gut riecht – nicht, wer den ganzen Raum überduftet.'
+    },
+    {
+      q: 'Süss oder frisch fürs Sommer-Date?',
+      a: 'Im Sommer ist frisch mit einem warmen Unterton ideal. Schwere, süsse Abenddüfte können bei Hitze schnell aufdringlich wirken.'
+    }
   ]
 };
 

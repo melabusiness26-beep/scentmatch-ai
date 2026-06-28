@@ -82,7 +82,7 @@ export default function DatenschutzPage() {
           <h2>7. Affiliate-Links</h2>
           <p>
             Auf den Duftseiten findest du Links zu Partner-Shops („Jetzt ansehen"). Klickst du darauf,
-            kann das jeweilige Partnernetzwerk (z. B. Commission Junction / Notino) ein Cookie setzen, um
+            kann das jeweilige Partnernetzwerk (z. B. Commission Junction) ein Cookie setzen, um
             einen möglichen Kauf der Empfehlung zuzuordnen. Diese Verarbeitung erfolgt durch den jeweiligen
             Anbieter gemäss dessen Datenschutzbestimmungen. Für dich entstehen keine Mehrkosten.
           </p>

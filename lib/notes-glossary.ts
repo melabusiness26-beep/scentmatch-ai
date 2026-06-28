@@ -135,7 +135,8 @@ export const scentNotes: ScentNote[] = [
       'Ambroxan wirkt elegant, modern und sehr langlebig. Es sorgt für gute Haltbarkeit und eine zugängliche, hautnahe Wärme, die ganzjährig funktioniert.',
     pairsWith:
       'Ambroxan harmoniert mit Zitrus und Bergamotte im Auftakt, mit Iris und Zedernholz sowie mit Vanille und Moschus in der Basis.',
-    synonyms: ['ambroxan', 'amberholz']
+    synonyms: ['ambroxan', 'amberholz'],
+    photo: '/noten/ambroxan.jpg'
   },
   {
     slug: 'vetiver',

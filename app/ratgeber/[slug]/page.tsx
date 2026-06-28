@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SiteHeader from '@/app/SiteHeader';
 import { getGuide, guides, type Guide } from '@/lib/guides';
+import { getGuideFaqs, type GuideFaq } from '@/lib/guide-faqs';
 import { getPerfumes, type Perfume } from '@/lib/perfumes';
 import { AffiliateButton } from '@/app/AffiliateButton';
 
@@ -67,6 +68,18 @@ function jsonLd(guide: Guide) {
   };
 }
 
+function faqJsonLd(faqs: GuideFaq[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a }
+    }))
+  };
+}
+
 export default async function GuidePage({
   params
 }: {
@@ -75,6 +88,8 @@ export default async function GuidePage({
   const { slug } = await params;
   const guide = getGuide(slug);
   if (!guide) notFound();
+
+  const faqs = getGuideFaqs(slug);
 
   // Alle Düfte einmal laden und nach slug nachschlagbar machen.
   const all = await getPerfumes(2000);
@@ -136,6 +151,18 @@ export default async function GuidePage({
             </section>
           ))}
 
+          {faqs.length > 0 && (
+            <section className="section">
+              <h2>Häufige Fragen</h2>
+              {faqs.map((f, i) => (
+                <div className="faq-item" key={i}>
+                  <h3>{f.q}</h3>
+                  <p className="lead">{f.a}</p>
+                </div>
+              ))}
+            </section>
+          )}
+
           <section className="section">
             <Link className="button" href="/#quiz">
               Welcher Duft passt zu dir? Mach das Quiz
@@ -148,6 +175,12 @@ export default async function GuidePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(guide)) }}
       />
+      {faqs.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(faqs)) }}
+        />
+      )}
     </main>
   );
 }

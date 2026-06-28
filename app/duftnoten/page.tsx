@@ -40,6 +40,12 @@ export default function DuftnotenPage() {
           <div className="grid">
             {scentNotes.map((note) => (
               <Link className="tile tile-link" href={`/duftnoten/${note.slug}`} key={note.slug}>
+                <div
+                  className="cover note-cover"
+                  role="img"
+                  aria-label={`${note.name} – Duftnote`}
+                  style={{ backgroundImage: `url(${note.image})` }}
+                />
                 <h3>{note.name}</h3>
                 <p className="small">{note.short}</p>
               </Link>

@@ -14,6 +14,8 @@ export type ScentNote = {
   smell: string;
   /** Herkunft / Herstellung. */
   origin: string;
+  /** Bild der Duftnote (liegt in /public/notes). */
+  image: string;
   /** Typische Duftfamilie. */
   family: string;
   /** Typische Wirkung. */
@@ -27,6 +29,7 @@ export type ScentNote = {
 export const scentNotes: ScentNote[] = [
   {
     slug: 'bergamotte',
+    image: '/notes/bergamotte.jpg',
     name: 'Bergamotte',
     short: 'Spritzige, leicht bittere Zitrusnote – der frische, elegante Auftakt vieler Parfums.',
     metaTitle: 'Bergamotte in Parfums: Duft, Wirkung und passende Düfte | Auressa',
@@ -47,6 +50,7 @@ export const scentNotes: ScentNote[] = [
   },
   {
     slug: 'iris',
+    image: '/notes/iris.jpg',
     name: 'Iris',
     short: 'Pudrig, kühl und edel – eine der teuersten und elegantesten Noten der Parfümerie.',
     metaTitle: 'Iris in Parfums: Duft, Wirkung und passende Düfte | Auressa',
@@ -67,6 +71,7 @@ export const scentNotes: ScentNote[] = [
   },
   {
     slug: 'oud',
+    image: '/notes/oud.jpg',
     name: 'Oud',
     short: 'Dunkel, harzig und intensiv – das „flüssige Gold" der orientalischen Parfümerie.',
     metaTitle: 'Oud in Parfums: Duft, Wirkung und passende Düfte | Auressa',
@@ -88,6 +93,7 @@ export const scentNotes: ScentNote[] = [
   },
   {
     slug: 'vanille',
+    image: '/notes/vanille.jpg',
     name: 'Vanille',
     short: 'Warm, süß und cremig – die wohl beliebteste Basisnote für gemütliche Düfte.',
     metaTitle: 'Vanille in Parfums: Duft, Wirkung und passende Düfte | Auressa',
@@ -108,6 +114,7 @@ export const scentNotes: ScentNote[] = [
   },
   {
     slug: 'ambroxan',
+    image: '/notes/ambroxan.jpg',
     name: 'Ambroxan',
     short: 'Modern, mineralisch-warm und langlebig – hinter vielen heutigen „Clean"-Düften.',
     metaTitle: 'Ambroxan in Parfums: Duft, Wirkung und passende Düfte | Auressa',
@@ -129,6 +136,7 @@ export const scentNotes: ScentNote[] = [
   },
   {
     slug: 'vetiver',
+    image: '/notes/vetiver.jpg',
     name: 'Vetiver',
     short: 'Erdig, grün und holzig – eine elegante, leicht rauchige Wurzelnote.',
     metaTitle: 'Vetiver in Parfums: Duft, Wirkung und passende Düfte | Auressa',
@@ -149,6 +157,7 @@ export const scentNotes: ScentNote[] = [
   },
   {
     slug: 'jasmin',
+    image: '/notes/jasmin.jpg',
     name: 'Jasmin',
     short: 'Üppig, weiß-blumig und sinnlich – eine der wichtigsten Blütennoten der Parfümerie.',
     metaTitle: 'Jasmin in Parfums: Duft, Wirkung und passende Düfte | Auressa',
@@ -169,6 +178,7 @@ export const scentNotes: ScentNote[] = [
   },
   {
     slug: 'rose',
+    image: '/notes/rose.jpg',
     name: 'Rose',
     short: 'Vielschichtig, blumig und zeitlos – die berühmteste Blüte der Parfümerie.',
     metaTitle: 'Rose in Parfums: Duft, Wirkung und passende Düfte | Auressa',

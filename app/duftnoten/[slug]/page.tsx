@@ -31,7 +31,8 @@ export async function generateMetadata({
       title: note.metaTitle,
       description: note.metaDescription,
       type: 'article',
-      url: `${SITE_URL}/duftnoten/${slug}`
+      url: `${SITE_URL}/duftnoten/${slug}`,
+      images: [{ url: `${SITE_URL}${note.image}`, width: 1200, alt: `${note.name} – Duftnote` }]
     }
   };
 }
@@ -83,6 +84,12 @@ export default async function ScentNotePage({
         <section className="section legal">
           <p className="eyebrow">Duftnote</p>
           <h1 className="detail-title">{note.name}</h1>
+          <div
+            className="cover cover-large note-hero"
+            role="img"
+            aria-label={`${note.name} – Duftnote`}
+            style={{ backgroundImage: `url(${note.image})` }}
+          />
           <p className="lead">{note.intro}</p>
 
           <h2>Wie riecht {note.name}?</h2>

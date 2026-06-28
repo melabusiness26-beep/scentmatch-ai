@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SiteHeader from '@/app/SiteHeader';
-import { getGuide, guides, type Guide } from '@/lib/guides';
+import { getGuide, guides, relatedGuides, type Guide } from '@/lib/guides';
 import { getGuideFaqs, type GuideFaq } from '@/lib/guide-faqs';
 import { getPerfumes, type Perfume } from '@/lib/perfumes';
 import { AffiliateButton } from '@/app/AffiliateButton';
@@ -90,6 +90,7 @@ export default async function GuidePage({
   if (!guide) notFound();
 
   const faqs = getGuideFaqs(slug);
+  const related = relatedGuides(slug, 3);
 
   // Alle Düfte einmal laden und nach slug nachschlagbar machen.
   const all = await getPerfumes(2000);
@@ -160,6 +161,20 @@ export default async function GuidePage({
                   <p className="lead">{f.a}</p>
                 </div>
               ))}
+            </section>
+          )}
+
+          {related.length > 0 && (
+            <section className="section">
+              <h2>Das könnte dich auch interessieren</h2>
+              <div className="perfume-list">
+                {related.map((g) => (
+                  <Link className="tile tile-link" href={`/ratgeber/${g.slug}`} key={g.slug}>
+                    <h3>{g.title}</h3>
+                    <p className="small">{g.description}</p>
+                  </Link>
+                ))}
+              </div>
             </section>
           )}
 

@@ -291,9 +291,9 @@ export const guides: Guide[] = [
     sections: [
       {
         perfumes: [
-          'lattafa-khamrah',
+          'khamrah',
           'lattafa-asad',
-          'armaf-cdnim',
+          'club-de-nuit-intense',
           'davidoff-cool-water',
           'lattafa-yara',
           'joop-homme',
@@ -378,10 +378,10 @@ export const guides: Guide[] = [
         perfumes: [
           'tobacco-vanille',
           'baccarat-rouge-540',
-          'lattafa-khamrah',
+          'khamrah',
           'montale-intense-cafe',
           'mugler-angel',
-          'armaf-cdnim'
+          'club-de-nuit-intense'
         ]
       }
     ]
@@ -472,12 +472,20 @@ export const guides: Guide[] = [
         perfumes: [
           'tobacco-vanille',
           'kayali-vanilla-28',
-          'lattafa-khamrah',
+          'khamrah',
           'guerlain-mon',
           'ariana-cloud',
           'burberry-goddess',
           'lattafa-yara',
           'jpg-la-belle'
+        ]
+      },
+      {
+        heading: 'Welcher Vanille-Typ bist du?',
+        body: [
+          'Pur & cremig: weiche, dessertartige Vanille wie in Kayali Vanilla 28 – kuschelig und süss.',
+          'Würzig & warm: Vanille mit Tabak, Zimt oder Dattel (z. B. Tobacco Vanille, Khamrah) – tief und erwachsen.',
+          'Frisch abgemildert: Vanille mit Holz oder einem Hauch Zitrus wirkt alltagstauglicher und weniger schwer.'
         ]
       },
       {
@@ -512,6 +520,14 @@ export const guides: Guide[] = [
         ]
       },
       {
+        heading: 'Oud für Einsteiger',
+        body: [
+          'Wenn du Oud zum ersten Mal trägst, starte mit weicheren, süsslichen Varianten – etwa Oud mit Rose, Safran oder Vanille.',
+          'Reines, rauchig-medizinisches Oud kann anfangs ungewohnt wirken; gib ihm 15 bis 30 Minuten auf der Haut.',
+          'Günstige Oud-Düfte wie von Lattafa sind ideal, um die Richtung kennenzulernen, bevor du in ein teures Nischen-Oud investierst.'
+        ]
+      },
+      {
         heading: 'Worauf du bei Oud-Düften achten solltest',
         body: [
           'Echtes Oud ist sehr teuer, deshalb arbeiten die meisten Düfte mit hochwertigen Oud-Akkorden – das ist völlig normal und riecht trotzdem edel.',
@@ -541,6 +557,14 @@ export const guides: Guide[] = [
           'mancera-cedrat-boise',
           'dolce-gabbana-light-blue',
           'creed-silver-mountain-water'
+        ]
+      },
+      {
+        heading: 'Zitrus für jede Gelegenheit',
+        body: [
+          'Fürs Büro: klare, saubere Zitrusdüfte mit Bergamotte oder Zitrone wirken gepflegt und nie aufdringlich.',
+          'Für heisse Tage: spritzige Grapefruit- und Orangennoten sind herrlich erfrischend.',
+          'Für den Abend: Zitrus mit holziger oder würziger Basis (z. B. Vetiver, Zedernholz) bekommt mehr Tiefe und hält länger.'
         ]
       },
       {
@@ -771,6 +795,14 @@ export const guides: Guide[] = [
         perfumes: ['marc-jacobs-daisy', 'chloe-edp', 'gucci-bloom', 'dior-miss-dior', 'montblanc-legend', 'pdm-greenley', 'creed-green-irish-tweed', 'dkny-be-delicious']
       },
       {
+        heading: 'Frühlingsduft für jeden Anlass',
+        body: [
+          'Für den Alltag: leichte florale oder grüne Düfte begleiten dich dezent durch den Tag.',
+          'Fürs erste Date im Freien: ein fruchtig-blumiger Duft wirkt frisch und einladend.',
+          'Für den Übergang: Wenn es abends noch kühl ist, darf ein Hauch Moschus oder Holz für etwas Wärme sorgen.'
+        ]
+      },
+      {
         heading: 'Worauf du bei Frühlingsdüften achten solltest',
         body: [
           'Setz auf leichte, frische Kompositionen – blumig, grün oder zitrisch. Schwere, süsse Winterdüfte wirken jetzt schnell zu wuchtig.',
@@ -787,11 +819,19 @@ export const guides: Guide[] = [
       'Bürotaugliche Düfte, die angenehm dezent bleiben und niemanden stören – frisch, sauber und gepflegt. Unsere Empfehlungen für Damen und Herren.',
     intro: [
       'Im Büro gilt: Ein Duft soll dich begleiten, nicht den ganzen Raum füllen. Dezent, sauber und gepflegt ist hier die beste Wahl.',
-      'Diese Düfte gelten als angenehm bürotauglich – present genug, um wahrgenommen zu werden, aber nie aufdringlich.'
+      'Diese Düfte gelten als angenehm bürotauglich – präsent genug, um wahrgenommen zu werden, aber nie aufdringlich.'
     ],
     sections: [
       {
         perfumes: ['chanel-bleu-de-chanel', 'ysl-y-edp', 'boss-bottled', 'le-labo-santal-33', 'jo-malone-wood-sage-sea-salt', 'coco-mademoiselle', 'narciso-for-her', 'dior-homme']
+      },
+      {
+        heading: 'Diese Düfte trägst du besser nicht ins Büro',
+        body: [
+          'Sehr süsse Gourmands (viel Vanille, Karamell, Schokolade) können im geschlossenen Raum schnell erdrückend wirken.',
+          'Schwere Oud- und Amber-Bomben gehören eher in den Abend als an den Schreibtisch.',
+          'Sehr intensive „Beast-Mode"-Düfte mit grosser Projektion sind im Grossraumbüro oft zu viel des Guten.'
+        ]
       },
       {
         heading: 'So liegst du im Büro immer richtig',
@@ -817,6 +857,14 @@ export const guides: Guide[] = [
         perfumes: ['baccarat-rouge-540', 'tobacco-vanille', 'khamrah', 'mugler-angel', 'ysl-black-opium', 'nasomatto-black-afgano', 'jpg-ultra-male', 'lattafa-asad']
       },
       {
+        heading: 'So dosierst du Beast-Mode-Düfte richtig',
+        body: [
+          'Ein Sprühstoss auf die Brust und einer in den Nacken reichen meist für den ganzen Tag.',
+          'Im Sommer und in Innenräumen lieber noch sparsamer – diese Düfte projizieren stark.',
+          'Wenn du unsicher bist: einmal in die Luft sprühen und hindurchgehen – so wird der Duft sanfter und gleichmässiger.'
+        ]
+      },
+      {
         heading: 'Wichtig bei sehr starken Düften',
         body: [
           'Hier reicht wirklich ein Sprühstoss – zu viel wirkt schnell erdrückend, gerade in Innenräumen.',
@@ -840,6 +888,14 @@ export const guides: Guide[] = [
         perfumes: ['coco-mademoiselle', 'chanel-no-5', 'chloe-edp', 'ysl-libre', 'pdm-delina', 'viktor-rolf-flowerbomb', 'dior-miss-dior', 'jo-malone-pear-freesia']
       },
       {
+        heading: 'Wann du deinen Hochzeitsduft aussuchen solltest',
+        body: [
+          'Plane ein paar Wochen Vorlauf ein, damit du in Ruhe testen und dich entscheiden kannst.',
+          'Trag den Kandidaten vorab zu einem schönen Anlass – so verknüpfst du ihn schon mit guten Gefühlen.',
+          'Denk an die Jahreszeit: ein leichter, blumiger Duft für die Sommerhochzeit, etwas Wärmeres für den Winter.'
+        ]
+      },
+      {
         heading: 'Tipps für den Hochzeitsduft',
         body: [
           'Wähle etwas Zeitloses, das du auch in Jahren noch schön findest – nicht den lautesten Trend.',
@@ -860,7 +916,16 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        perfumes: ['le-labo-santal-33', 'creed-aventus', 'chanel-bleu-de-chanel', 'tom-ford-oud-wood', 'byredo-gypsy-water', 'club-de-nuit-intense', 'dior-homme', 'armaf-cdnim']
+        perfumes: ['le-labo-santal-33', 'creed-aventus', 'chanel-bleu-de-chanel', 'tom-ford-oud-wood', 'byredo-gypsy-water', 'club-de-nuit-intense', 'dior-homme', 'terre-dhermes']
+      },
+      {
+        heading: 'Welches Holz steckt drin?',
+        body: [
+          'Sandelholz: cremig, weich und leicht süsslich – sehr tragefreundlich.',
+          'Zedernholz: trocken, klar und elegant – häufig in frisch-holzigen Düften.',
+          'Vetiver: erdig-grün und rauchig – gibt Frische und Charakter.',
+          'Oud & Leder: dunkel, intensiv und edel – am schönsten am Abend und in der kühlen Jahreszeit.'
+        ]
       },
       {
         heading: 'Worauf du bei holzigen Düften achten solltest',
@@ -886,6 +951,15 @@ export const guides: Guide[] = [
         perfumes: ['coco-mademoiselle', 'chloe-edp', 'gucci-bloom', 'ysl-libre', 'dior-miss-dior', 'chanel-no-5', 'lancome-idole', 'pdm-delina']
       },
       {
+        heading: 'Welche Blüte passt zu dir?',
+        body: [
+          'Rose: zeitlos und romantisch – mal klassisch, mal modern mit Frucht oder Oud kombiniert.',
+          'Jasmin & Orangenblüte: warm, sinnlich und leicht betörend.',
+          'Pfingstrose & Maiglöckchen: frisch, leicht und zart – ideal für den Frühling.',
+          'Iris & Veilchen: pudrig-elegant für alle, die es feiner mögen.'
+        ]
+      },
+      {
         heading: 'Worauf du bei blumigen Düften achten solltest',
         body: [
           'Blumig heisst nicht „altmodisch": Moderne Florals kombinieren Blüten mit Frucht, Moschus oder Holz und wirken sehr aktuell.',
@@ -909,6 +983,15 @@ export const guides: Guide[] = [
         perfumes: ['dior-sauvage', 'davidoff-cool-water', 'jo-malone-wood-sage-sea-salt', 'prada-luna-rossa-ocean', 'light-blue-homme', 'armani-acqua-di-gioia', 'creed-silver-mountain-water', 'adp-colonia']
       },
       {
+        heading: 'Frisch ist nicht gleich frisch',
+        body: [
+          'Aquatisch: nach Meer, Wasser und Salz – wie eine Brise am Strand.',
+          'Zitrisch: spritzig nach Zitrone, Bergamotte und Grapefruit.',
+          'Grün: nach frisch geschnittenem Gras, Blättern und Kräutern.',
+          'Clean-Moschus: nach frisch gewaschener Wäsche und sauberer Haut.'
+        ]
+      },
+      {
         heading: 'Worauf du bei frischen Düften achten solltest',
         body: [
           'Aquatische und zitrische Noten sind herrlich leicht, verfliegen aber schneller – ein zweiter Sprühstoss am Mittag hält die Frische.',
@@ -929,7 +1012,15 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        perfumes: ['narciso-for-her', 'coco-mademoiselle', 'chanel-no-5', 'lancome-idole', 'ysl-libre', 'prada-paradoxe']
+        perfumes: ['narciso-for-her', 'coco-mademoiselle', 'chanel-no-5', 'lancome-idole', 'ysl-libre', 'prada-paradoxe', 'lattafa-mayar', 'malle-musc-ravageur']
+      },
+      {
+        heading: 'Pudrig oder Moschus – wo ist der Unterschied?',
+        body: [
+          'Pudrig: weiche, leicht „make-up-artige" Noten wie Iris, Veilchen und Heliotrop – elegant und ein wenig nostalgisch.',
+          'Moschus (Musk): sauber-weiche Basisnoten, die nach gepflegter, warmer Haut riechen – sehr hautnah und vielseitig.',
+          'Viele Düfte kombinieren beides: Das ergibt den typisch weichen, „frisch geduschten" Charakter.'
+        ]
       },
       {
         heading: 'Worauf du bei pudrigen & Moschus-Düften achten solltest',
@@ -1047,12 +1138,21 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        perfumes: ['gisada-ambassador', 'gisada-ambassadora', 'chopard-happy']
+        perfumes: ['gisada-ambassador', 'gisada-ambassadora', 'chopard-happy', 'davidoff-cool-water', 'davidoff-cool-water-woman']
+      },
+      {
+        heading: 'Marken mit Schweizer Wurzeln',
+        body: [
+          'Chopard: Das Luxushaus aus Genf ist vor allem für Schmuck und Uhren bekannt – macht aber auch elegante Düfte wie Happy Chopard.',
+          'Davidoff: Die Marke geht auf Zino Davidoff aus Genf zurück. Cool Water gehört zu den meistverkauften frischen Herrendüften überhaupt.',
+          'Gisada: Ein Schweizer Dufthaus mit modernen, eleganten Kompositionen wie Ambassador und Ambassadora.'
+        ]
       },
       {
         heading: 'Warum lokal Sinn macht',
         body: [
           'Wir achten bewusst auf Schweizer Preise (CHF) und Verfügbarkeit – damit du weisst, was wirklich relevant ist.',
+          'Düfte mit Schweizer Bezug sind ein schönes, lokales Geschenk – etwa zum Geburtstag oder als Mitbringsel.',
           'Du suchst nicht nach einer bestimmten Marke, sondern nach deinem Duft? Dann mach unser Quiz – es findet deine Richtung in unter einer Minute.'
         ]
       }
@@ -1070,6 +1170,15 @@ export const guides: Guide[] = [
     sections: [
       {
         perfumes: ['khamrah', 'lattafa-asad', 'lattafa-yara', 'lattafa-fakhar-men', 'lattafa-oud-for-glory', 'lattafa-ana-abiyedh', 'lattafa-yara-tous', 'lattafa-mayar']
+      },
+      {
+        heading: 'Welcher Lattafa-Duft passt zu dir?',
+        body: [
+          'Süss & würzig: Khamrah mit Dattel, Zimt und Vanille – kuschelig und winterlich.',
+          'Fruchtig & rauchig: Asad in der Richtung von Creed Aventus – ideal für selbstbewusste Auftritte.',
+          'Cremig & feminin: Yara und Yara Tous – beliebte, leicht süsse Damenlieblinge.',
+          'Frisch & blumig: Mayar für alle, die es dezenter und alltagstauglich mögen.'
+        ]
       },
       {
         heading: 'Gut zu wissen',
@@ -1092,7 +1201,16 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        perfumes: ['club-de-nuit-intense', 'armaf-cdn-sillage', 'armaf-club-de-nuit-woman', 'armaf-vanity-femme']
+        perfumes: ['club-de-nuit-intense', 'armaf-cdn-sillage', 'armaf-cdn-milestone', 'armaf-cdn-untold', 'armaf-club-de-nuit-woman', 'armaf-vanity-femme']
+      },
+      {
+        heading: 'Die Club-de-Nuit-Reihe im Überblick',
+        body: [
+          'Intense Man: der Bestseller – fruchtig-rauchig und die bekannteste günstige Aventus-Alternative.',
+          'Sillage: frischer und etwas grüner, ideal für wärmere Tage.',
+          'Milestone und Untold: modern und vielseitig, mit fruchtigen und süssen Akzenten.',
+          'Club de Nuit Woman: die feminine, blumig-fruchtige Variante der Reihe.'
+        ]
       },
       {
         heading: 'Gut zu wissen',
@@ -1137,7 +1255,7 @@ export const guides: Guide[] = [
       },
       {
         body: [
-          'Du bist unsicher, welche Richtung dir steht? Mach unser kostenloses Duft-Quiz – es findet deine Lieblingsrichtung in unter einer Minute, abgestimmt auf Duftrichtung, Anlass, Saison und Budget.'
+          'Du bist unsicher, welche Richtung dir steht? Mach unser Duft-Quiz – es findet deine Lieblingsrichtung in unter einer Minute, abgestimmt auf Duftrichtung, Anlass, Saison und Budget.'
         ]
       }
     ]
@@ -1178,6 +1296,225 @@ export const guides: Guide[] = [
           'Nicht jeder Nischenduft ist automatisch besser als ein guter Designer-Duft – am Ende zählt, ob er dir gefällt und zu dir passt.',
           'Mein Tipp: Teste Nischendüfte zuerst über eine kleine Abfüllung oder Probe, bevor du den grossen Flakon kaufst. So vermeidest du teure Fehlkäufe.',
           'Übrigens: Auch unter günstigen Marken gibt es Düfte, die in eine ähnlich edle Richtung gehen – schau dazu in unseren Ratgeber „Günstige Alternativen zu teuren Parfüms".'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'die-besten-sommerduefte-frauen',
+    title: 'Die besten Sommerdüfte für Frauen 2026',
+    description:
+      'Leichte, frische Damendüfte für heisse Tage: fruchtig, floral und sonnig. Unsere Sommer-Favoriten für Frauen 2026 – von günstig bis edel.',
+    intro: [
+      'Im Sommer dürfen Damendüfte leicht, fruchtig und strahlend sein: ein Hauch Zitrus, sonnige Blüten oder cremige Kokos-Vanille wirken bei Wärme am schönsten – ohne zu erschlagen.',
+      'Hier unsere liebsten Sommerdüfte für Frauen aus dem Katalog – von günstig bis edel, für jeden Geschmack.'
+    ],
+    sections: [
+      {
+        perfumes: [
+          'dolce-gabbana-light-blue',
+          'armani-acqua-di-gioia',
+          'lattafa-yara',
+          'ariana-cloud',
+          'marc-jacobs-daisy',
+          'sdj-cheirosa-62',
+          'dkny-be-delicious',
+          'lattafa-mayar'
+        ]
+      },
+      {
+        heading: 'Welche Duftrichtung passt im Sommer zu dir?',
+        body: [
+          'Frisch & spritzig: aquatische und zitrische Düfte (z. B. Light Blue, Acqua di Gioia) wirken sauber und unbeschwert – ideal fürs Büro und für heisse Tage.',
+          'Fruchtig & fröhlich: leichte Frucht- und Blütendüfte (z. B. DKNY Be Delicious, Marc Jacobs Daisy) bringen sofort gute Laune.',
+          'Sonnig & cremig: Kokos, Pistazie oder weiche Vanille (z. B. Sol de Janeiro Cheirosa 62, Lattafa Yara) sind die kuscheligen Sommerlieblinge für Strand und laue Abende.'
+        ]
+      },
+      {
+        heading: 'So hält dein Sommerduft länger',
+        body: [
+          'Frische Noten verfliegen schneller – trag den Duft auf eingecremte Haut und nimm einen kleinen Zerstäuber für mittags mit.',
+          'Sprüh auch vorsichtig auf Haare und Kleidung: Dort hält ein Duft oft länger als auf erhitzter Haut.',
+          'Weniger ist mehr: Bei Hitze wirkt jeder Duft intensiver – ein bis zwei Sprühstösse reichen meist völlig.'
+        ]
+      },
+      {
+        body: [
+          'Du weisst noch nicht, welche Richtung dir steht? Mach unser Duft-Quiz – es findet deinen Sommerduft in unter einer Minute, abgestimmt auf Duftrichtung, Anlass und Budget.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'creed-aventus-guenstige-alternativen',
+    title: 'Creed Aventus: die besten günstigen Alternativen',
+    description:
+      'Creed Aventus ist legendär – aber teuer. Diese günstigen Alternativen gehen in die gleiche fruchtig-rauchige Richtung. Unsere Spar-Tipps aus dem Katalog.',
+    intro: [
+      'Creed Aventus gilt als einer der berühmtesten Herrendüfte überhaupt: fruchtige Ananas, rauchige Birke und edles Moschus-Holz. Der Preis ist allerdings happig.',
+      'Die gute Nachricht: Es gibt Düfte, die in eine sehr ähnliche fruchtig-rauchige Richtung gehen – zu einem Bruchteil des Preises. Wichtig ehrlich gesagt: Keiner ist eine exakte Kopie, aber für den Alltag verblüffend nah dran.'
+    ],
+    sections: [
+      {
+        heading: 'Die besten Aventus-Alternativen im Vergleich',
+        pairings: [
+          {
+            expensive: 'creed-aventus',
+            cheap: 'club-de-nuit-intense',
+            note: 'Armaf Club de Nuit Intense Man ist die bekannteste Aventus-Alternative überhaupt: fruchtige Ananas, rauchige Birke und Moschus – erstaunlich nah am Original und extrem günstig.'
+          },
+          {
+            expensive: 'creed-aventus',
+            cheap: 'lattafa-asad',
+            note: 'Lattafa Asad geht in dieselbe fruchtig-rauchige Richtung, etwas wärmer und süsser abgestimmt – ein langlebiger, projektionsstarker Sparpick.'
+          },
+          {
+            expensive: 'creed-aventus',
+            cheap: 'armaf-cdn-sillage',
+            note: 'Armaf Club de Nuit Sillage ist die frischere, etwas grünere Variante aus der Club-de-Nuit-Reihe – ideal, wenn dir Aventus im Sommer zu schwer ist.'
+          }
+        ]
+      },
+      {
+        heading: 'Worauf du bei Aventus-Alternativen achten solltest',
+        body: [
+          'Die Reihenfolge der Noten kann leicht abweichen: Mal steht die Ananas im Vordergrund, mal das rauchige Holz. Teste am besten auf der Haut.',
+          'Günstige Alternativen sind oft sogar projektionsstärker als das Original – ein bis zwei Sprühstösse genügen.',
+          'Aventus & Co. passen ganzjährig, kommen aber im Frühling und Herbst besonders schön zur Geltung.'
+        ]
+      },
+      {
+        body: [
+          'Mehr Spar-Tipps zu anderen teuren Originalen findest du in unserem Ratgeber „Günstige Alternativen zu teuren Parfüms".'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'lattafa-dupes-welches-original',
+    title: 'Die besten Lattafa-Dupes: welches Original steckt dahinter?',
+    description:
+      'Lattafa ist bekannt für günstige Düfte, die teuren Originalen ähneln. Wir zeigen dir, welcher Luxus-Duft hinter den beliebtesten Lattafa-Parfüms steckt.',
+    intro: [
+      'Die Marke Lattafa hat sich einen Namen gemacht mit warmen, langlebigen Düften zu kleinen Preisen – viele davon erinnern stark an teure Originale.',
+      'Hier zeigen wir dir die beliebtesten Lattafa-Düfte und in welche edle Richtung sie gehen. Ehrlich gesagt: Es sind keine exakten Kopien, aber oft verblüffend nah dran.'
+    ],
+    sections: [
+      {
+        heading: 'Lattafa & das Original im Vergleich',
+        pairings: [
+          {
+            expensive: 'kilian-angels-share',
+            cheap: 'khamrah',
+            note: 'Lattafa Khamrah geht in die warme, süss-würzige Richtung von Kilian Angels Share: Dattel, Zimt und Vanille – kuschelig und langlebig, zum Sparpreis.'
+          },
+          {
+            expensive: 'creed-aventus',
+            cheap: 'lattafa-asad',
+            note: 'Lattafa Asad trifft die fruchtig-rauchige Aura von Creed Aventus – mit Ananas, Pfeffer und Moschus-Holz.'
+          },
+          {
+            expensive: 'initio-oud-greatness',
+            cheap: 'lattafa-oud-for-glory',
+            note: 'Lattafa Oud for Glory (Badee al Oud) erinnert an Initio Oud for Greatness: safranig-würziges Oud mit toller Tiefe.'
+          }
+        ]
+      },
+      {
+        heading: 'Weitere beliebte Lattafa-Düfte',
+        perfumes: ['lattafa-yara', 'lattafa-yara-tous', 'lattafa-mayar', 'lattafa-fakhar-men', 'lattafa-ana-abiyedh']
+      },
+      {
+        heading: 'Lohnt sich ein Lattafa-Duft?',
+        body: [
+          'Für den Preis bieten Lattafa-Düfte erstaunliche Haltbarkeit und Projektion – oft halten sie 8 Stunden und länger.',
+          'Sie sind ideal, um eine Duftrichtung auszuprobieren, bevor du viel Geld für ein teures Original ausgibst.',
+          'Sparsam dosieren: Viele Lattafa-Düfte sind kräftig – ein bis zwei Sprühstösse reichen meist völlig.'
+        ]
+      },
+      {
+        body: [
+          'Du suchst Alternativen zu einem bestimmten teuren Duft? Schau in unseren Ratgeber „Günstige Alternativen zu teuren Parfüms".'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'parfum-fuer-junge-leute-unter-60-franken',
+    title: 'Parfum für junge Leute & Einsteiger unter CHF 60',
+    description:
+      'Gut riechen muss nicht teuer sein: alltagstaugliche, beliebte Düfte unter CHF 60 für junge Leute und Einsteiger – frisch, süss und unkompliziert.',
+    intro: [
+      'Der erste eigene Duft soll gut riechen, vielseitig sein und nicht das halbe Taschengeld kosten. Zum Glück gibt es viele beliebte Düfte für kleines Geld.',
+      'Hier unsere Favoriten unter CHF 60 – unkompliziert, alltagstauglich und bei jungen Leuten besonders beliebt.'
+    ],
+    sections: [
+      {
+        perfumes: [
+          'lattafa-yara',
+          'khamrah',
+          'club-de-nuit-intense',
+          'davidoff-cool-water',
+          'sdj-cheirosa-62',
+          'ariana-cloud',
+          'joop-homme',
+          'lattafa-mayar'
+        ]
+      },
+      {
+        heading: 'Worauf du beim ersten Duft achten solltest',
+        body: [
+          'Wähle etwas Vielseitiges, das zu Schule, Uni und Freizeit passt – frisch oder leicht süss kommt fast immer gut an.',
+          'Achte auf die Haltbarkeit: Gerade arabische Marken wie Lattafa bieten erstaunlich lange Haltbarkeit fürs Geld.',
+          'Sparsam dosieren: Ein bis zwei Sprühstösse reichen – zu viel wirkt schnell aufdringlich, gerade in der Schule oder im Bus.',
+          'Vor dem grossen Flakon lohnt sich eine kleine Abfüllung oder Probe, um Fehlkäufe zu vermeiden.'
+        ]
+      },
+      {
+        heading: 'Frisch oder süss – was passt zu dir?',
+        body: [
+          'Frisch & sauber: Davidoff Cool Water und Club de Nuit Intense Man wirken gepflegt und kommen breit gut an.',
+          'Süss & kuschelig: Lattafa Yara, Khamrah und Ariana Grande Cloud sind warme Lieblinge für alle, die es gemütlich mögen.',
+          'Sonnig & verspielt: Sol de Janeiro Cheirosa 62 mit Pistazie und Karamell ist ein echter Komplimente-Magnet.'
+        ]
+      },
+      {
+        body: [
+          'Unsicher, was zu dir passt? Mach unser Duft-Quiz – in unter einer Minute findest du deine Richtung, abgestimmt auf Geschmack und Budget.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'date-duefte-sommer',
+    title: 'Date-Düfte im Sommer: frisch & anziehend',
+    description:
+      'Die besten Düfte fürs Sommer-Date: frisch genug für warme Tage, aber anziehend und in Erinnerung bleibend. Unsere Favoriten für Frauen und Männer.',
+    intro: [
+      'Beim Sommer-Date ist die Kunst, frisch zu riechen, ohne langweilig zu wirken: leicht genug für warme Abende, aber mit einem anziehenden, warmen Unterton.',
+      'Hier unsere liebsten Date-Düfte für den Sommer – für Frauen und Männer.'
+    ],
+    sections: [
+      {
+        heading: 'Für Frauen: frisch-fruchtig & anziehend',
+        perfumes: ['lattafa-yara', 'ariana-cloud', 'sdj-cheirosa-62', 'narciso-for-her', 'ysl-mon-paris']
+      },
+      {
+        heading: 'Für Männer: frisch mit Charakter',
+        perfumes: ['versace-eros', 'ea-stronger-with-you', 'versace-dylan-blue', 'allure-homme-sport', 'prada-luna-rossa-ocean']
+      },
+      {
+        heading: 'Tipps für den richtigen Date-Duft im Sommer',
+        body: [
+          'Setz auf frische Düfte mit warmem Kern: Sie wirken sauber und nahbar, bleiben aber anziehend in Erinnerung.',
+          'Dezent dosieren: Komplimente erntet, wer aus der Nähe gut riecht – nicht, wer den ganzen Raum überduftet. Ein bis zwei Sprühstösse genügen.',
+          'Trag den Duft etwas vorher auf, damit sich die spritzige Kopfnote legt und der weichere Kern hervorkommt.',
+          'Bei Hitze lieber leichter: Schwere, süsse Abenddüfte können beim Sommer-Date schnell aufdringlich wirken.'
+        ]
+      },
+      {
+        body: [
+          'Du willst genau deinen Typ treffen? Mach unser Duft-Quiz – es findet deine Lieblingsrichtung in unter einer Minute.'
         ]
       }
     ]

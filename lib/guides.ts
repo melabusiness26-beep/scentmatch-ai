@@ -1594,3 +1594,79 @@ export function relatedGuides(slug: string, count = 3): Guide[] {
     .slice(0, count)
     .map((x) => x.guide);
 }
+
+// Kategorien für die Ratgeber-Übersicht (Gruppierung der Artikel).
+// Reihenfolge der Kategorien und der slugs bestimmt die Anzeige.
+// Artikel, die in keiner Kategorie stehen, landen automatisch unter „Weitere".
+export type GuideCategory = { title: string; slugs: string[] };
+
+export const guideCategories: GuideCategory[] = [
+  {
+    title: 'Nach Jahreszeit',
+    slugs: [
+      'die-besten-fruehlingsduefte',
+      'die-besten-sommerduefte',
+      'die-besten-sommerduefte-frauen',
+      'die-besten-herbstduefte',
+      'die-besten-winterduefte'
+    ]
+  },
+  {
+    title: 'Nach Duftart',
+    slugs: [
+      'suesse-duefte-vanille-schokolade-karamell',
+      'die-besten-vanille-duefte',
+      'die-besten-oud-duefte',
+      'die-besten-zitrus-duefte',
+      'die-besten-holzigen-duefte',
+      'die-besten-blumigen-duefte',
+      'die-besten-frischen-aquatischen-duefte',
+      'die-besten-moschus-pudrigen-duefte',
+      'die-besten-unisex-duefte'
+    ]
+  },
+  {
+    title: 'Für Anlass & Typ',
+    slugs: [
+      'welcher-duft-zu-welchem-anlass',
+      'die-besten-bueroduefte',
+      'date-duefte-sommer',
+      'die-besten-hochzeitsduefte-braut',
+      'parfum-geschenk-die-besten-duefte-zum-verschenken',
+      'maennerduefte-die-frauen-moegen',
+      'damenduefte-die-maenner-lieben',
+      'parfum-das-lange-haelt-beast-mode',
+      'parfum-nach-sternzeichen'
+    ]
+  },
+  {
+    title: 'Günstig & Dupes',
+    slugs: [
+      'guenstige-alternativen-zu-teuren-dueften',
+      'creed-aventus-guenstige-alternativen',
+      'lattafa-dupes-welches-original',
+      'die-besten-duefte-unter-50-franken',
+      'parfum-fuer-junge-leute-unter-60-franken'
+    ]
+  },
+  {
+    title: 'Marken & Besonderes',
+    slugs: [
+      'die-besten-lattafa-duefte',
+      'die-besten-armaf-duefte',
+      'die-besten-nischenduefte',
+      'parfums-mit-schweizer-bezug'
+    ]
+  },
+  {
+    title: 'Wissen & Tipps',
+    slugs: [
+      'parfum-fuer-einsteiger-erster-signature-duft',
+      'wie-lange-haelt-parfum-haltbarkeit',
+      'edt-edp-parfum-unterschied',
+      'parfum-inhaltsstoffe-allergene',
+      'parfum-layering-duefte-kombinieren',
+      'haeufige-parfum-fehler'
+    ]
+  }
+];

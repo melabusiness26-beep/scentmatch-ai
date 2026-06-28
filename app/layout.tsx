@@ -75,7 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </nav>
           </div>
           <p className="container footer-affiliate small">
-            Auressa enthält Partner-Links (z. B. zu Notino). Wenn du über einen solchen Link
+            Auressa enthält Partner-Links zu ausgewählten Shops. Wenn du über einen solchen Link
             kaufst, erhalten wir ggf. eine Provision – für dich ohne Mehrkosten. Preise können
             abweichen; es gilt der jeweils aktuelle Preis im Shop.
           </p>

@@ -49,7 +49,8 @@ export const scentNotes: ScentNote[] = [
     effect:
       'Bergamotte wirkt frisch, sauber und aufhellend. Sie macht einen Duft leichter und zugänglicher und eignet sich besonders für Frühling und Sommer sowie für Tag und Büro.',
     pairsWith:
-      'Bergamotte harmoniert mit fast allem: mit Lavendel und weiteren Zitrusnoten für Frische, mit Vetiver und Zedernholz für holzige Tiefe und mit Jasmin und Rose für florale Eleganz.'
+      'Bergamotte harmoniert mit fast allem: mit Lavendel und weiteren Zitrusnoten für Frische, mit Vetiver und Zedernholz für holzige Tiefe und mit Jasmin und Rose für florale Eleganz.',
+    photo: '/noten/bergamotte.jpg'
   },
   {
     slug: 'iris',

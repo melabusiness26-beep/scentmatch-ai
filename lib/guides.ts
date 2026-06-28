@@ -1370,8 +1370,8 @@ export const guides: Guide[] = [
           },
           {
             expensive: 'creed-aventus',
-            cheap: 'armaf-cdn-sillage',
-            note: 'Armaf Club de Nuit Sillage ist die frischere, etwas grünere Variante aus der Club-de-Nuit-Reihe – ideal, wenn dir Aventus im Sommer zu schwer ist.'
+            cheap: 'armaf-cdn-milestone',
+            note: 'Armaf Club de Nuit Milestone geht in eine ähnliche fruchtige Richtung mit Ananas und warmem Ambroxan – moderner und süsser als Aventus, aber klar verwandt.'
           }
         ]
       },

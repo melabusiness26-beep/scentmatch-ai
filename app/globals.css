@@ -173,6 +173,9 @@ a.logo { text-decoration:none; color:inherit; }
 .cover-gourmand { background:linear-gradient(140deg,#d6b98a,#f4e7d6); }
 .cover-woody { background:linear-gradient(140deg,#8a6a4e,#d0b594); }
 .cover-floral { background:linear-gradient(140deg,#e3b1c4,#f8e8ee); }
+/* Bilder im Duftnoten-Lexikon */
+.note-cover { height:160px; }
+.note-hero { height:clamp(220px,40vw,380px); max-width:800px; margin:8px 0 24px; }
 .admin-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
 .field { margin-bottom:14px; }
 .field label { display:block; font-family:var(--font-sans), Arial, sans-serif; font-size:14px; color:#5d4b40; margin-bottom:6px; }

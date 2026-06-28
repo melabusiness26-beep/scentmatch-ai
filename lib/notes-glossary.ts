@@ -352,26 +352,26 @@ export const scentNotes: ScentNote[] = [
     synonyms: ['amber', 'ambra', 'bernstein']
   },
   {
-    slug: 'orangenbluete',
-    image: '/notes/orangenbluete.jpg',
-    name: 'Orangenblüte',
-    short: 'Sonnig, weiß-blumig und honigsüß – die strahlende Blüte des Orangenbaums (auch Neroli).',
-    metaTitle: 'Orangenblüte & Neroli in Parfums: Duft, Wirkung und passende Düfte | Auressa',
+    slug: 'orange',
+    image: '/notes/orange.jpg',
+    name: 'Orange',
+    short: 'Saftig, sonnig und spritzig – die fröhlichste Zitrusnote für einen frischen Auftakt.',
+    metaTitle: 'Orange in Parfums: Duft, Wirkung und passende Düfte | Auressa',
     metaDescription:
-      'Orangenblüte und Neroli in Parfums: Wie riecht die sonnige weiße Blütennote, woher kommt sie und welche Düfte mit Orangenblüte passen zu dir?',
+      'Orange in Parfums: Wie riecht die saftig-sonnige Zitrusnote, woher kommt sie und welche Düfte mit Orange (und Orangenblüte/Neroli) passen zu dir?',
     intro:
-      'Orangenblüte ist eine sonnige, vielseitige Blütennote vom Bitterorangenbaum und steckt – eng verwandt mit Neroli – in vielen frischen wie sinnlichen Düften.',
+      'Orange ist eine fröhliche, sonnige Zitrusnote und sorgt – allein oder neben Bergamotte und Zitrone – für einen saftig-frischen ersten Eindruck.',
     smell:
-      'Orangenblüte riecht weiß-blumig, sonnig und leicht honigsüß, mit einer frischen zitrisch-grünen Facette. Als Neroli wirkt sie heller und frischer, als Orangenblüten-Absolue wärmer und sinnlicher.',
+      'Orange riecht süß, saftig und sonnig-fruchtig, mit spritziger Zitrus-Frische und einer leicht herben Schalen-Facette. Süßorange wirkt rund und fröhlich, Bitterorange herber und eleganter; Blutorange fügt eine beerige Tiefe hinzu.',
     origin:
-      'Beide stammen von der Blüte des Bitterorangenbaums: Neroli wird durch Wasserdampf-Destillation gewonnen, das satter duftende Orangenblüten-Absolue durch Extraktion. Wichtige Anbaugebiete sind Tunesien, Marokko und Italien.',
+      'Das Orangenöl wird aus der Schale der Frucht kaltgepresst; wichtige Anbaugebiete sind der Mittelmeerraum und Brasilien. Vom selben Bitterorangenbaum stammen übrigens auch Neroli und Orangenblüte (aus der Blüte) sowie Petitgrain (aus Blättern und Zweigen).',
     family:
-      'Orangenblüte gehört zur floralen sowie zur frischen, zitrisch-floralen Duftfamilie und ist Bestandteil eleganter Eau de Colognes wie warmer Blütendüfte.',
+      'Orange gehört zur frischen, zitrischen Duftfamilie, eröffnet aber auch würzige und gourmandige Kompositionen – von der spritzigen Cologne bis zur weihnachtlichen Gewürz-Orange.',
     effect:
-      'Orangenblüte wirkt strahlend, gepflegt und zugleich beruhigend. Sie eignet sich besonders für Frühling und Sommer sowie für Tag und Büro und gibt Düften eine sonnige Leichtigkeit.',
+      'Orange wirkt fröhlich, sonnig und aufhellend. Sie eignet sich besonders für Frühling und Sommer sowie für Tag und Büro und gibt Düften sofort gute Laune und Leichtigkeit.',
     pairsWith:
-      'Orangenblüte harmoniert mit Bergamotte und Petitgrain für klassische Cologne-Frische, mit Jasmin und Tuberose für opulente Blüten sowie mit Moschus und Vanille für eine weiche Basis.',
-    synonyms: ['orangenblüte', 'orangenblute', 'neroli', 'orange blossom', 'petitgrain']
+      'Orange harmoniert mit Bergamotte und Zitrone für sprudelnde Frische, mit Neroli und Petitgrain für eine elegante Bitterorangen-Frische, mit Zimt und Nelke für winterlich-würzige Akkorde sowie mit Vanille und Schokolade für gourmandige Wärme.',
+    synonyms: ['orange', 'orangen', 'orangenblüte', 'orangenblute', 'neroli', 'bitterorange', 'blutorange', 'petitgrain']
   },
   {
     slug: 'leder',

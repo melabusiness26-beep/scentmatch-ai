@@ -40,12 +40,12 @@ export const guides: Guide[] = [
             note: 'Club de Nuit Intense Man von Armaf gilt als die bekannteste günstige Alternative zu Creed Aventus – fruchtig-rauchig mit Ananas und Birke, für einen Bruchteil des Preises.'
           },
           {
-            expensive: 'acqua-di-gio',
+            expensive: 'armani-acqua-di-gio-homme',
             cheap: 'davidoff-cool-water',
             note: 'Du magst die frische, aquatische Richtung von Acqua di Gio? Davidoff Cool Water bietet eine ähnlich sommertaugliche Frische – ein echter Klassiker zum kleinen Preis.'
           },
           {
-            expensive: 'black-opium',
+            expensive: 'ysl-black-opium',
             cheap: 'ariana-cloud',
             note: 'Für die süße, gourmandige Richtung von Black Opium ist Ariana Grande Cloud eine günstige, kuschelige Alternative mit Praline und Vanille.'
           },
@@ -76,8 +76,8 @@ export const guides: Guide[] = [
       {
         perfumes: [
           'davidoff-cool-water',
-          'acqua-di-gio',
-          'light-blue',
+          'armani-acqua-di-gio-homme',
+          'dolce-gabbana-light-blue',
           'jo-malone-wood-sage-sea-salt',
           'orto-megamare',
           'versace-dylan-blue',
@@ -109,17 +109,17 @@ export const guides: Guide[] = [
       {
         heading: 'Für Alltag & Büro: dezent und gepflegt',
         body: ['Frisch, sauber und nicht zu aufdringlich – damit liegst du im Büro immer richtig.'],
-        perfumes: ['bleu-de-chanel', 'terre-dhermes', 'boss-bottled', 'ysl-y-edp', 'le-labo-santal-33']
+        perfumes: ['chanel-bleu-de-chanel', 'terre-dhermes', 'boss-bottled', 'ysl-y-edp', 'le-labo-santal-33']
       },
       {
         heading: 'Für Dates: charmant und anziehend',
         body: ['Etwas süßer, wärmer oder blumiger – Düfte, die in Erinnerung bleiben.'],
-        perfumes: ['black-opium', 'coco-mademoiselle', 'la-vie-est-belle', 'versace-eros', 'pdm-delina']
+        perfumes: ['ysl-black-opium', 'coco-mademoiselle', 'lancome-la-vie-est-belle', 'versace-eros', 'pdm-delina']
       },
       {
         heading: 'Für besondere Abende: intensiv und edel',
         body: ['Hier dürfen die großen, tiefen Düfte ran – mit Projektion und Charakter.'],
-        perfumes: ['creed-aventus', 'tobacco-vanille', 'mugler-angel', 'oud-wood', 'baccarat-rouge-540']
+        perfumes: ['creed-aventus', 'tobacco-vanille', 'mugler-angel', 'tom-ford-oud-wood', 'baccarat-rouge-540']
       }
     ]
   },
@@ -168,7 +168,7 @@ export const guides: Guide[] = [
       {
         perfumes: [
           'tobacco-vanille',
-          'oud-wood',
+          'tom-ford-oud-wood',
           'baccarat-rouge-540',
           'mugler-angel',
           'nasomatto-black-afgano',
@@ -302,6 +302,15 @@ export const guides: Guide[] = [
         ]
       },
       {
+        heading: 'Worauf du bei günstigen Düften achten solltest',
+        body: [
+          'Günstig heisst nicht schlechter: Gerade arabische Marken wie Lattafa und Armaf bieten erstaunliche Haltbarkeit und Projektion für wenig Geld.',
+          'Achte auf die Variante: Oft gibt es bei diesen Marken direkt das intensivere Eau de Parfum – mehr Tiefe und Haltbarkeit ohne Aufpreis.',
+          'Sparsam dosieren: Viele günstige Düfte sind kräftig. Ein bis zwei Sprühstösse reichen meist völlig.',
+          'Vor dem grossen Flakon lohnt sich eine kleine Abfüllung oder Probe – so vermeidest du Fehlkäufe, auch im kleinen Budget.'
+        ]
+      },
+      {
         body: [
           'Tipp: Viele dieser günstigen Düfte sind auch starke „Dupes" für teure Originale – schau dazu in unseren Ratgeber „Günstige Alternativen zu teuren Parfüms".'
         ]
@@ -389,11 +398,20 @@ export const guides: Guide[] = [
     sections: [
       {
         heading: 'Für Frauen',
-        perfumes: ['coco-mademoiselle', 'la-vie-est-belle', 'black-opium', 'good-girl']
+        perfumes: ['coco-mademoiselle', 'lancome-la-vie-est-belle', 'ysl-black-opium', 'ch-good-girl']
       },
       {
         heading: 'Für Männer',
-        perfumes: ['bleu-de-chanel', 'jpg-le-male', 'ea-stronger-with-you', 'boss-bottled']
+        perfumes: ['chanel-bleu-de-chanel', 'jpg-le-male', 'ea-stronger-with-you', 'boss-bottled']
+      },
+      {
+        heading: 'Tipps für das perfekte Duft-Geschenk',
+        body: [
+          'Denk an den Stil der Person: Mag sie es eher frisch und dezent oder warm und auffällig? Im Zweifel passt ein vielseitiger Klassiker fast immer.',
+          'Eau de Parfum wirkt als Geschenk edler und hält länger als ein leichtes Eau de Toilette.',
+          'Ein bekannter, beliebter Duft ist sicherer als ein sehr spezieller – ausgefallene Nischendüfte sind Geschmackssache.',
+          'Schön verpackt mit einer kleinen Karte zur Duftrichtung macht das Geschenk gleich persönlicher.'
+        ]
       },
       {
         body: [
@@ -414,7 +432,7 @@ export const guides: Guide[] = [
     sections: [
       {
         perfumes: [
-          'sauvage',
+          'dior-sauvage',
           'jpg-le-male',
           'ea-stronger-with-you',
           'versace-eros',
@@ -422,6 +440,15 @@ export const guides: Guide[] = [
           'pr-1-million',
           'boss-the-scent',
           'dior-fahrenheit'
+        ]
+      },
+      {
+        heading: 'Warum diese Düfte so gut ankommen',
+        body: [
+          'Es sind meist warme, einladende oder sauber-frische Düfte – sie signalisieren Nähe und Gepflegtheit, statt nur laut zu sein.',
+          'Süsse, warme Noten wie Vanille, Tonkabohne, Zimt und süsses Holz gelten als besonders „anziehend" und gemütlich.',
+          'Auch frische, saubere Düfte (Zitrus, sauberer Moschus) wirken attraktiv, weil sie nach frisch geduschter Haut riechen.',
+          'Dezent dosieren: Komplimente erntet, wer aus der Nähe gut riecht – nicht, wer eine ganze Duftwolke hinterlässt.'
         ]
       },
       {
@@ -475,7 +502,7 @@ export const guides: Guide[] = [
     sections: [
       {
         perfumes: [
-          'oud-wood',
+          'tom-ford-oud-wood',
           'initio-oud-greatness',
           'lattafa-badee-amethyst',
           'mancera-red-tobacco',
@@ -506,13 +533,13 @@ export const guides: Guide[] = [
     sections: [
       {
         perfumes: [
-          'acqua-di-gio',
+          'armani-acqua-di-gio-homme',
           'davidoff-cool-water',
           'adp-colonia',
           'armani-acqua-di-gioia',
           'hermes-jardin-nil',
           'mancera-cedrat-boise',
-          'light-blue',
+          'dolce-gabbana-light-blue',
           'creed-silver-mountain-water'
         ]
       },
@@ -538,14 +565,23 @@ export const guides: Guide[] = [
     sections: [
       {
         perfumes: [
-          'black-opium',
-          'la-vie-est-belle',
-          'good-girl',
+          'ysl-black-opium',
+          'lancome-la-vie-est-belle',
+          'ch-good-girl',
           'lancome-la-nuit-tresor',
           'coco-mademoiselle',
           'lattafa-yara',
           'ysl-mon-paris',
           'gisada-ambassadora'
+        ]
+      },
+      {
+        heading: 'Was diese Düfte gemeinsam haben',
+        body: [
+          'Meist sind es warme, süsse oder sinnliche Kompositionen – mit Vanille, Amber, Praline oder weissen Blüten, die einladend und verführerisch wirken.',
+          'Gourmand-Noten (süss und „essbar") gelten als besonders anziehend, weil sie an Gemütlichkeit und Genuss erinnern.',
+          'Auch sauber-pudrige Moschus-Düfte kommen sehr gut an, weil sie nach gepflegter, weicher Haut riechen.',
+          'Wichtig: Diese Düfte sind meist präsent – ein bis zwei Sprühstösse reichen, damit sie anziehend statt aufdringlich wirken.'
         ]
       },
       {
@@ -658,10 +694,9 @@ export const guides: Guide[] = [
         heading: '♓ Fische (20. Februar – 20. März)',
         body: [
           'Fische sind träumerisch, sensibel und romantisch. Ein aquatisch-frischer, weicher Duft spiegelt ihre sanfte, verträumte Art.',
-          // TODO: passenden konkreten aquatisch-frischen Spar-Pick auswählen (nur wenn bereits im Katalog vorhanden) und ergänzen
-          'Luxus-Pick: Giorgio Armani Acqua di Gioia. Eine passende günstigere Alternative in ähnlicher, aquatisch-frischer Richtung ergänzen wir in Kürze.'
+          'Luxus-Pick: Giorgio Armani Acqua di Gioia. Günstigere Alternative in ähnlicher, aquatisch-frischer Richtung: Davidoff Cool Water. Klare Wasser- und Zitrusnoten wirken sanft, frisch und verträumt.'
         ],
-        perfumes: ['armani-acqua-di-gioia']
+        perfumes: ['armani-acqua-di-gioia', 'davidoff-cool-water']
       },
       {
         body: [

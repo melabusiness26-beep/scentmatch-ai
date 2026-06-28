@@ -110,7 +110,8 @@ export const scentNotes: ScentNote[] = [
     effect:
       'Vanille wirkt behaglich, sinnlich und einladend. Sie eignet sich besonders für Herbst und Winter sowie für gemütliche Abende und gilt als ausgesprochen tragefreundlich.',
     pairsWith:
-      'Vanille passt zu Tonkabohne, Karamell und Kakao für süße Düfte, zu Tabak und Amber für warme orientalische und rundet holzige sowie florale Kompositionen weich ab.'
+      'Vanille passt zu Tonkabohne, Karamell und Kakao für süße Düfte, zu Tabak und Amber für warme orientalische und rundet holzige sowie florale Kompositionen weich ab.',
+    photo: '/noten/vanille.jpg'
   },
   {
     slug: 'ambroxan',

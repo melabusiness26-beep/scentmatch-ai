@@ -196,6 +196,138 @@ export const scentNotes: ScentNote[] = [
       'Rose wirkt je nach Komposition romantisch und klassisch oder modern und kraftvoll. Sie funktioniert ganzjährig und passt zu fast jedem Anlass.',
     pairsWith:
       'Rose harmoniert mit Oud (der berühmte Rose-Oud-Akkord), mit Patchouli und Pfeffer für Würze, mit Litchi und Himbeere für eine fruchtige Note sowie mit Jasmin für volle Blütigkeit.'
+  },
+  {
+    slug: 'sandelholz',
+    image: '/notes/sandelholz.jpg',
+    name: 'Sandelholz',
+    short: 'Cremig, warm und milchig-holzig – eine der edelsten und beruhigendsten Basisnoten.',
+    metaTitle: 'Sandelholz in Parfums: Duft, Wirkung und passende Düfte | Auressa',
+    metaDescription:
+      'Sandelholz in Parfums: Wie riecht die cremig-holzige Note, woher kommt sie und welche Düfte mit Sandelholz passen zu dir?',
+    intro:
+      'Sandelholz zählt zu den edelsten und vertrautesten Holznoten der Parfümerie und gibt vielen Düften ihre warme, cremige Tiefe.',
+    smell:
+      'Sandelholz riecht weich, cremig und leicht milchig, mit einer warmen, holzig-balsamischen und dezent süßen Facette. Es wirkt rund und beruhigend, niemals scharf oder kratzig.',
+    origin:
+      'Das wertvolle Öl stammt aus dem Kernholz des Sandelbaums, traditionell aus Mysore in Indien, heute auch nachhaltig aus Australien. Weil die Bäume viele Jahre wachsen müssen, ist echtes Sandelholz selten und kostbar; oft kommen hochwertige Sandelholz-Akkorde zum Einsatz.',
+    family:
+      'Sandelholz ist eine Kernnote der holzigen und orientalischen Duftfamilie und bildet in vielen Düften ein weiches, tragendes Fundament.',
+    effect:
+      'Sandelholz wirkt warm, sinnlich und ausgleichend. Es eignet sich ganzjährig, besonders für Herbst und Winter sowie für ruhige Abende, und sorgt für gute Haltbarkeit und einen hautnahen, einhüllenden Charakter.',
+    pairsWith:
+      'Sandelholz harmoniert mit Rose und Jasmin für florale Wärme, mit Vanille und Tonkabohne für cremige Süße sowie mit Zedernholz und Vetiver für holzige Tiefe.',
+    synonyms: ['sandelholz', 'sandalwood', 'santal']
+  },
+  {
+    slug: 'tonkabohne',
+    image: '/notes/tonkabohne.jpg',
+    name: 'Tonkabohne',
+    short: 'Warm, süß und mandelig – eine gemütliche Basisnote zwischen Vanille und Karamell.',
+    metaTitle: 'Tonkabohne in Parfums: Duft, Wirkung und passende Düfte | Auressa',
+    metaDescription:
+      'Tonkabohne in Parfums: Wie riecht die warme, süße Note, woher kommt sie und welche Düfte mit Tonkabohne passen zu dir?',
+    intro:
+      'Die Tonkabohne ist eine der beliebtesten warmen Basisnoten und das gemütliche Herz vieler süßer und orientalischer Düfte.',
+    smell:
+      'Tonkabohne riecht warm und süß, mit Facetten von Vanille, Mandel, Karamell und Heu sowie einem leicht würzigen, mandelig-balsamischen Unterton. Der Eindruck ist behaglich und einhüllend.',
+    origin:
+      'Gewonnen wird sie aus dem Samen des südamerikanischen Tonkabaums. Der charakteristische Duft entsteht durch den Inhaltsstoff Cumarin, der den typisch warmen, heuartig-süßen Charakter ausmacht.',
+    family:
+      'Tonkabohne gehört zur gourmandigen und orientalischen Duftfamilie und rundet viele süße, holzige und würzige Kompositionen weich ab.',
+    effect:
+      'Tonkabohne wirkt gemütlich, sinnlich und tröstlich. Sie eignet sich besonders für Herbst und Winter sowie für gemütliche Abende und macht Düfte tragefreundlich und einladend.',
+    pairsWith:
+      'Tonkabohne passt zu Vanille und Karamell für süße Gourmands, zu Lavendel und Tabak für klassische Wärme sowie zu Sandelholz und Amber für eine weiche, orientalische Basis.',
+    synonyms: ['tonkabohne', 'tonka', 'tonka bean']
+  },
+  {
+    slug: 'patchouli',
+    image: '/notes/patchouli.jpg',
+    name: 'Patchouli',
+    short: 'Erdig, dunkel und leicht süßlich – eine charaktervolle, langlebige Basisnote.',
+    metaTitle: 'Patchouli in Parfums: Duft, Wirkung und passende Düfte | Auressa',
+    metaDescription:
+      'Patchouli in Parfums: Wie riecht die erdig-holzige Note, woher kommt sie und welche Düfte mit Patchouli passen zu dir?',
+    intro:
+      'Patchouli ist eine unverwechselbare, charakterstarke Note, die modernen wie klassischen Düften Tiefe und Halt verleiht.',
+    smell:
+      'Patchouli riecht erdig und dunkel, mit holzigen, leicht süßlichen und kampferartigen Facetten. In moderner, „aufgeräumter" Form (oft als Patchouli-Herz) wirkt es schokoladig-samtig und weniger rustikal als das klassische Patchouli-Öl.',
+    origin:
+      'Gewonnen wird Patchouli aus den getrockneten und fermentierten Blättern einer tropischen Pflanze aus der Familie der Lippenblütler, vor allem aus Indonesien. Die Blätter werden destilliert; das Öl reift mit der Zeit nach und wird runder.',
+    family:
+      'Patchouli ist eine tragende Note der orientalischen, holzigen und Chypre-Duftfamilie und Bestandteil vieler moderner Damen- wie Herrendüfte.',
+    effect:
+      'Patchouli wirkt sinnlich, erdverbunden und souverän. Es sorgt für sehr gute Haltbarkeit, eignet sich besonders für Herbst und Winter sowie für den Abend und gibt Düften einen unverwechselbaren Charakter.',
+    pairsWith:
+      'Patchouli harmoniert mit Rose für moderne Chypre-Düfte, mit Vanille und Karamell für süße „Gourmand-Patchouli", mit Zitrus für Frische sowie mit Amber und Leder für Tiefe.',
+    synonyms: ['patchouli', 'patchuli']
+  },
+  {
+    slug: 'moschus',
+    image: '/notes/moschus.jpg',
+    name: 'Moschus',
+    short: 'Weich, sauber und hautnah – die unsichtbare Basisnote, die Düfte zusammenhält.',
+    metaTitle: 'Moschus in Parfums: Duft, Wirkung und passende Düfte | Auressa',
+    metaDescription:
+      'Moschus in Parfums: Wie riecht die weiche, saubere Note, woher kommt sie und welche Düfte mit Moschus passen zu dir?',
+    intro:
+      'Moschus ist eine der wichtigsten Basisnoten der Parfümerie – oft kaum bewusst wahrgenommen, aber prägend für den weichen, „sauberen" Eindruck vieler Düfte.',
+    smell:
+      'Moschus riecht weich, warm und hautnah, je nach Art sauber-pudrig (weißer Moschus), cremig oder leicht animalisch-sinnlich. Er wirkt einhüllend und gibt Düften einen vertrauten Wäsche-frisch-Charakter.',
+    origin:
+      'Früher stammte Moschus von Tieren – das ist heute aus Tierschutzgründen verboten. Moderner Moschus wird ausschließlich synthetisch und tierfrei hergestellt; verschiedene Moschus-Moleküle erzeugen saubere, cremige oder fruchtige Nuancen.',
+    family:
+      'Moschus prägt die saubere, pudrige und ambrierte Duftfamilie und ist Bestandteil nahezu jeder modernen Duftbasis.',
+    effect:
+      'Moschus wirkt sanft, sinnlich und nahbar. Er verlängert die Haltbarkeit, verbindet die übrigen Noten zu einem harmonischen Ganzen und eignet sich ganzjährig sowie für jeden Anlass.',
+    pairsWith:
+      'Moschus harmoniert mit Zitrus und weißen Blüten für Frische, mit Vanille und Tonkabohne für Wärme sowie mit Sandelholz und Ambroxan für eine moderne, cremige Basis.',
+    synonyms: ['moschus', 'musk', 'weisser moschus', 'white musk']
+  },
+  {
+    slug: 'zedernholz',
+    image: '/notes/zedernholz.jpg',
+    name: 'Zedernholz',
+    short: 'Trocken, klar und edel-holzig – eine der elegantesten und vielseitigsten Holznoten.',
+    metaTitle: 'Zedernholz in Parfums: Duft, Wirkung und passende Düfte | Auressa',
+    metaDescription:
+      'Zedernholz in Parfums: Wie riecht die trocken-holzige Note, woher kommt sie und welche Düfte mit Zedernholz passen zu dir?',
+    intro:
+      'Zedernholz ist eine klassische, elegante Holznote, die unzähligen Düften eine trockene, klare und edle Struktur gibt.',
+    smell:
+      'Zedernholz riecht trocken, klar und holzig, mit einer leicht harzigen, bleistiftartigen und manchmal sanft würzigen Facette. Es wirkt sauber und edel, nie schwer.',
+    origin:
+      'Verwendet wird das Holz verschiedener Zedern- und Wacholderarten, etwa der Atlas-Zeder aus Marokko oder der Virginia-Zeder aus Nordamerika. Das ätherische Öl wird aus dem Holz destilliert.',
+    family:
+      'Zedernholz gehört zur holzigen Duftfamilie und bildet das Grundgerüst vieler frischer, würziger und floraler Kompositionen – für Damen wie für Herren.',
+    effect:
+      'Zedernholz wirkt klar, gepflegt und souverän. Es eignet sich ganzjährig sowie für Tag und Büro und gibt Düften eine schlanke, trockene Holzstruktur mit guter Haltbarkeit.',
+    pairsWith:
+      'Zedernholz harmoniert mit Bergamotte und Zitrus im Auftakt, mit Iris und Rose für florale Eleganz sowie mit Vetiver, Sandelholz und Ambroxan für holzige Tiefe.',
+    synonyms: ['zedernholz', 'zeder', 'cedar', 'cedarwood']
+  },
+  {
+    slug: 'lavendel',
+    image: '/notes/lavendel.jpg',
+    name: 'Lavendel',
+    short: 'Aromatisch, frisch-krautig und beruhigend – die klassische Herznote vieler Herrendüfte.',
+    metaTitle: 'Lavendel in Parfums: Duft, Wirkung und passende Düfte | Auressa',
+    metaDescription:
+      'Lavendel in Parfums: Wie riecht die aromatisch-frische Note, woher kommt sie und welche Düfte mit Lavendel passen zu dir?',
+    intro:
+      'Lavendel ist eine der klassischsten aromatischen Noten und das vertraute Herz vieler Fougère- und Herrendüfte.',
+    smell:
+      'Lavendel riecht frisch und krautig-aromatisch, mit einer blumigen, leicht kampferartigen und süßlichen Facette. Er wirkt sauber und beruhigend und kann je nach Komposition sportlich-frisch oder warm-süß ausfallen.',
+    origin:
+      'Gewonnen wird Lavendel aus den Blütenständen der Lavendelpflanze, klassisch aus der Provence in Südfrankreich. Die Blüten werden destilliert; besonders fein gilt der höher gelegene Feinlavendel (Lavandin und echter Lavendel).',
+    family:
+      'Lavendel ist die Signaturnote der aromatischen Fougère-Duftfamilie und Bestandteil zahlloser klassischer Herren- sowie moderner Unisex-Düfte.',
+    effect:
+      'Lavendel wirkt frisch, beruhigend und gepflegt. Er eignet sich besonders für Frühling und Sommer sowie für Tag und Büro und gibt Düften eine saubere, vertraute Eleganz.',
+    pairsWith:
+      'Lavendel harmoniert mit Bergamotte und Zitrus für Frische, mit Tonkabohne und Vanille für warme „Lavendel-Gourmands" sowie mit Vetiver, Eichenmoos und Zedernholz für klassische Fougère-Tiefe.',
+    synonyms: ['lavendel', 'lavender']
   }
 ];
 

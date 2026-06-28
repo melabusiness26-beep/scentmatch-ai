@@ -1539,3 +1539,58 @@ export function guidePerfumeSlugs(): string[] {
   }
   return [...set];
 }
+
+// Alle in einem Ratgeber verlinkten Duft-slugs (perfumes + pairings).
+function guideDuftSlugs(guide: Guide): Set<string> {
+  const set = new Set<string>();
+  for (const section of guide.sections) {
+    section.perfumes?.forEach((s) => set.add(s));
+    section.pairings?.forEach((p) => {
+      set.add(p.expensive);
+      set.add(p.cheap);
+    });
+  }
+  return set;
+}
+
+// Zu häufige Wörter im slug, die nicht für Verwandtschaft zählen sollen.
+const RELATED_STOPWORDS = new Set([
+  'die', 'der', 'das', 'und', 'zu', 'fuer', 'den', 'dem', 'ein', 'eine',
+  'besten', 'parfum', 'parfums', 'duft', 'duefte', 'mit', 'im', 'am', 'auressa'
+]);
+
+function guideKeywords(guide: Guide): Set<string> {
+  return new Set(
+    guide.slug.split('-').filter((w) => w.length > 2 && !RELATED_STOPWORDS.has(w))
+  );
+}
+
+// Verwandte Ratgeber für interne Verlinkung (gut für SEO und Verweildauer).
+// Bewertung: Jaccard-Ähnlichkeit der verlinkten Düfte (so dominieren grosse
+// Artikel mit vielen Düften nicht alles), gemeinsame slug-Stichwörter als
+// zweites Signal; bei Gleichstand bleibt die Katalog-Reihenfolge erhalten.
+export function relatedGuides(slug: string, count = 3): Guide[] {
+  const current = getGuide(slug);
+  if (!current) return [];
+  const currentDuefte = guideDuftSlugs(current);
+  const currentKeywords = guideKeywords(current);
+
+  return guides
+    .filter((g) => g.slug !== slug)
+    .map((g, idx) => {
+      const duefte = guideDuftSlugs(g);
+      let shared = 0;
+      for (const s of duefte) if (currentDuefte.has(s)) shared++;
+      const union = currentDuefte.size + duefte.size - shared;
+      const jaccard = union > 0 ? shared / union : 0;
+      let sharedKeywords = 0;
+      for (const w of guideKeywords(g)) if (currentKeywords.has(w)) sharedKeywords++;
+      return { guide: g, jaccard, sharedKeywords, idx };
+    })
+    .sort(
+      (a, b) =>
+        b.jaccard - a.jaccard || b.sharedKeywords - a.sharedKeywords || a.idx - b.idx
+    )
+    .slice(0, count)
+    .map((x) => x.guide);
+}

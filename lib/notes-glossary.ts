@@ -70,7 +70,8 @@ export const scentNotes: ScentNote[] = [
     effect:
       'Iris wirkt elegant, zurückhaltend und erwachsen. Sie verleiht Düften Tiefe und einen feinen, pudrigen Schleier und eignet sich ganzjährig, besonders für gehobene Anlässe.',
     pairsWith:
-      'Iris passt wunderbar zu Veilchen, Ambroxan und Zedernholz sowie zu Vanille und Tonkabohne, die ihre kühle Art angenehm wärmen.'
+      'Iris passt wunderbar zu Veilchen, Ambroxan und Zedernholz sowie zu Vanille und Tonkabohne, die ihre kühle Art angenehm wärmen.',
+    photo: '/noten/iris.jpg'
   },
   {
     slug: 'oud',
@@ -91,7 +92,8 @@ export const scentNotes: ScentNote[] = [
       'Oud wirkt luxuriös, warm und selbstbewusst. Es entfaltet sich am besten in kühleren Monaten und am Abend und sorgt für lange Haltbarkeit und kräftige Projektion.',
     pairsWith:
       'Oud harmoniert mit Rose (der klassische Rose-Oud-Akkord), mit Safran, Amber, Leder sowie süßen Noten wie Vanille und Dattel.',
-    synonyms: ['oud', 'agarholz']
+    synonyms: ['oud', 'agarholz'],
+    photo: '/noten/oud.jpg'
   },
   {
     slug: 'vanille',

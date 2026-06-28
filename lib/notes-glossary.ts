@@ -328,6 +328,138 @@ export const scentNotes: ScentNote[] = [
     pairsWith:
       'Lavendel harmoniert mit Bergamotte und Zitrus für Frische, mit Tonkabohne und Vanille für warme „Lavendel-Gourmands" sowie mit Vetiver, Eichenmoos und Zedernholz für klassische Fougère-Tiefe.',
     synonyms: ['lavendel', 'lavender']
+  },
+  {
+    slug: 'amber',
+    image: '/notes/amber.jpg',
+    name: 'Amber',
+    short: 'Warm, harzig und süß-pudrig – das goldene Herz unzähliger orientalischer Düfte.',
+    metaTitle: 'Amber in Parfums: Duft, Wirkung und passende Düfte | Auressa',
+    metaDescription:
+      'Amber in Parfums: Wie riecht die warme, harzig-süße Amber-Note, woher kommt sie und welche Düfte mit Amber passen zu dir?',
+    intro:
+      'Amber (auch Bernstein-Akkord) ist eine der prägendsten warmen Noten der Parfümerie und das goldene Fundament vieler orientalischer Düfte.',
+    smell:
+      'Amber riecht warm, harzig und süß-pudrig, mit balsamischen, leicht vanilligen und animalisch-weichen Facetten. Der Eindruck ist gemütlich, einhüllend und sinnlich.',
+    origin:
+      'Amber ist kein einzelner Rohstoff, sondern ein Akkord – klassisch komponiert aus Harzen wie Labdanum und Benzoe zusammen mit Vanille. (Nicht zu verwechseln mit Ambra/Ambergris vom Wal oder dem modernen Molekül Ambroxan.)',
+    family:
+      'Amber ist die namensgebende Note der ambrierten und orientalischen Duftfamilie und Grundlage vieler warmer, süßer Kompositionen.',
+    effect:
+      'Amber wirkt warm, behaglich und verführerisch. Es eignet sich besonders für Herbst und Winter sowie für den Abend, sorgt für gute Haltbarkeit und eine weiche, hautnahe Wärme.',
+    pairsWith:
+      'Amber harmoniert mit Vanille und Tonkabohne für süße Wärme, mit Weihrauch und Patchouli für orientalische Tiefe sowie mit Rose und Sandelholz für eine elegante Basis.',
+    synonyms: ['amber', 'ambra', 'bernstein']
+  },
+  {
+    slug: 'orangenbluete',
+    image: '/notes/orangenbluete.jpg',
+    name: 'Orangenblüte',
+    short: 'Sonnig, weiß-blumig und honigsüß – die strahlende Blüte des Orangenbaums (auch Neroli).',
+    metaTitle: 'Orangenblüte & Neroli in Parfums: Duft, Wirkung und passende Düfte | Auressa',
+    metaDescription:
+      'Orangenblüte und Neroli in Parfums: Wie riecht die sonnige weiße Blütennote, woher kommt sie und welche Düfte mit Orangenblüte passen zu dir?',
+    intro:
+      'Orangenblüte ist eine sonnige, vielseitige Blütennote vom Bitterorangenbaum und steckt – eng verwandt mit Neroli – in vielen frischen wie sinnlichen Düften.',
+    smell:
+      'Orangenblüte riecht weiß-blumig, sonnig und leicht honigsüß, mit einer frischen zitrisch-grünen Facette. Als Neroli wirkt sie heller und frischer, als Orangenblüten-Absolue wärmer und sinnlicher.',
+    origin:
+      'Beide stammen von der Blüte des Bitterorangenbaums: Neroli wird durch Wasserdampf-Destillation gewonnen, das satter duftende Orangenblüten-Absolue durch Extraktion. Wichtige Anbaugebiete sind Tunesien, Marokko und Italien.',
+    family:
+      'Orangenblüte gehört zur floralen sowie zur frischen, zitrisch-floralen Duftfamilie und ist Bestandteil eleganter Eau de Colognes wie warmer Blütendüfte.',
+    effect:
+      'Orangenblüte wirkt strahlend, gepflegt und zugleich beruhigend. Sie eignet sich besonders für Frühling und Sommer sowie für Tag und Büro und gibt Düften eine sonnige Leichtigkeit.',
+    pairsWith:
+      'Orangenblüte harmoniert mit Bergamotte und Petitgrain für klassische Cologne-Frische, mit Jasmin und Tuberose für opulente Blüten sowie mit Moschus und Vanille für eine weiche Basis.',
+    synonyms: ['orangenblüte', 'orangenblute', 'neroli', 'orange blossom', 'petitgrain']
+  },
+  {
+    slug: 'leder',
+    image: '/notes/leder.jpg',
+    name: 'Leder',
+    short: 'Rauchig, warm und animalisch – eine kraftvolle, charaktervolle Basisnote.',
+    metaTitle: 'Leder in Parfums: Duft, Wirkung und passende Düfte | Auressa',
+    metaDescription:
+      'Leder in Parfums: Wie riecht die rauchig-warme Ledernote, woher kommt sie und welche Düfte mit Leder passen zu dir?',
+    intro:
+      'Leder ist eine markante, charakterstarke Note, die Düften Tiefe, Wärme und einen edlen, leicht rebellischen Charakter verleiht.',
+    smell:
+      'Leder riecht warm und animalisch, je nach Komposition rauchig, teerig-dunkel oder weich und sämig wie feines Wildleder (Suède). Der Eindruck reicht von rau und kraftvoll bis vornehm und gepflegt.',
+    origin:
+      'Leder ist ein komponierter Akkord, kein einzelner Rohstoff. Erzeugt wird er aus rauchigen und harzigen Bausteinen wie Birkenteer, Styrax und Safran sowie modernen Leder-Molekülen, die den Geruch von gegerbtem Leder nachbilden.',
+    family:
+      'Leder prägt die Leder- und Chypre-Duftfamilie und ist Bestandteil vieler eleganter Herren- wie selbstbewusster Damen- und Unisex-Düfte.',
+    effect:
+      'Leder wirkt souverän, sinnlich und erwachsen. Es eignet sich besonders für Herbst und Winter sowie für den Abend und gibt Düften eine kraftvolle, langlebige Signatur.',
+    pairsWith:
+      'Leder harmoniert mit Safran und Rose für edle Leder-Akkorde, mit Tabak und Oud für dunkle Tiefe sowie mit Iris und Veilchen für eine weiche, pudrige Lederfacette.',
+    synonyms: ['leder', 'leather', 'suède', 'wildleder']
+  },
+  {
+    slug: 'pfeffer',
+    image: '/notes/pfeffer.jpg',
+    name: 'Pfeffer',
+    short: 'Würzig, prickelnd und belebend – der spritzige Kick in modernen Düften.',
+    metaTitle: 'Pfeffer in Parfums: Duft, Wirkung und passende Düfte | Auressa',
+    metaDescription:
+      'Pfeffer in Parfums: Wie riecht die würzig-prickelnde Note, woher kommt sie und welche Düfte mit Pfeffer (auch rosa Pfeffer) passen zu dir?',
+    intro:
+      'Pfeffer ist eine der beliebtesten würzigen Noten und gibt vielen modernen Düften einen prickelnden, belebenden Auftakt.',
+    smell:
+      'Pfeffer riecht würzig, trocken und leicht prickelnd. Schwarzer Pfeffer wirkt warm und holzig-scharf, rosa Pfeffer dagegen heller, fruchtig und spritzig – beide bringen Lebendigkeit in eine Komposition.',
+    origin:
+      'Schwarzer Pfeffer wird aus den getrockneten Beeren der Pfefferpflanze destilliert. Rosa Pfeffer (Pink Pepper) stammt botanisch vom Schinus-Baum und riecht fruchtiger; beide werden gerne in der Kopf- und Herznote eingesetzt.',
+    family:
+      'Pfeffer gehört zur würzigen Duftfamilie und belebt frische, holzige und orientalische Kompositionen für Damen wie für Herren.',
+    effect:
+      'Pfeffer wirkt energiegeladen, modern und anregend. Er eignet sich ganzjährig und für viele Anlässe und gibt Düften gleich zu Beginn Spannung und Charakter.',
+    pairsWith:
+      'Pfeffer harmoniert mit Bergamotte und Zitrus für frische Würze, mit Rose und Geranie für moderne florale Würze sowie mit Zedernholz, Vetiver und Amber für eine holzig-warme Basis.',
+    synonyms: ['pfeffer', 'pepper', 'rosa pfeffer', 'pink pfeffer', 'pink pepper', 'schwarzer pfeffer']
+  },
+  {
+    slug: 'zimt',
+    image: '/notes/zimt.jpg',
+    name: 'Zimt',
+    short: 'Warm, süß-würzig und gemütlich – das Gewürz für behagliche Herbst- und Winterdüfte.',
+    metaTitle: 'Zimt in Parfums: Duft, Wirkung und passende Düfte | Auressa',
+    metaDescription:
+      'Zimt in Parfums: Wie riecht die warme, süß-würzige Note, woher kommt sie und welche Düfte mit Zimt passen zu dir?',
+    intro:
+      'Zimt ist eine der wärmsten und gemütlichsten Gewürznoten und gibt vielen orientalischen und gourmandigen Düften ihren behaglichen Charakter.',
+    smell:
+      'Zimt riecht warm, süß und würzig, mit einer leicht holzigen, prickelnden und balsamischen Facette. Er wirkt einladend und gemütlich, in höherer Dosierung kräftig und feurig.',
+    origin:
+      'Gewonnen wird Zimt aus der getrockneten Rinde des Zimtbaums, vor allem aus Sri Lanka und Indonesien. Für Parfums werden Zimtrinde und Zimtblatt destilliert; das Öl wird oft mit anderen Gewürzen kombiniert.',
+    family:
+      'Zimt gehört zur würzigen und orientalischen Duftfamilie und prägt warme, süße sowie gourmandige Kompositionen.',
+    effect:
+      'Zimt wirkt warm, sinnlich und festlich. Er eignet sich besonders für Herbst und Winter sowie für gemütliche Abende und gibt Düften eine behagliche, gewürzige Tiefe.',
+    pairsWith:
+      'Zimt harmoniert mit Vanille und Tonkabohne für süße Wärme, mit Apfel und Nelke für würzig-fruchtige Akkorde sowie mit Amber, Weihrauch und Patchouli für orientalische Fülle.',
+    synonyms: ['zimt', 'cinnamon', 'kassia']
+  },
+  {
+    slug: 'tabak',
+    image: '/notes/tabak.jpg',
+    name: 'Tabak',
+    short: 'Warm, süßlich-würzig und rauchig – eine sinnliche, nostalgische Basisnote.',
+    metaTitle: 'Tabak in Parfums: Duft, Wirkung und passende Düfte | Auressa',
+    metaDescription:
+      'Tabak in Parfums: Wie riecht die warme, süßlich-rauchige Note, woher kommt sie und welche Düfte mit Tabak passen zu dir?',
+    intro:
+      'Tabak ist eine warme, charaktervolle Note, die vielen Düften eine sinnliche, gemütliche und leicht nostalgische Tiefe verleiht.',
+    smell:
+      'Tabak riecht warm und süßlich-würzig, mit honigartigen, heuigen und dezent rauchigen Facetten. Der Eindruck ist weich und einhüllend, niemals so scharf wie brennender Tabak, sondern eher wie edler, getrockneter Tabakblatt-Duft.',
+    origin:
+      'Verwendet werden Extrakte aus getrockneten und fermentierten Tabakblättern. Der typisch süße, heuartige Charakter geht – wie bei der Tonkabohne – auch auf Cumarin zurück; oft wird Tabak mit Vanille und Gewürzen abgerundet.',
+    family:
+      'Tabak gehört zur orientalischen und würzigen Duftfamilie und prägt warme, gemütliche Herbst- und Winterdüfte für Herren wie für Damen.',
+    effect:
+      'Tabak wirkt sinnlich, warm und souverän. Er eignet sich besonders für Herbst und Winter sowie für den Abend und gibt Düften eine gemütliche, langlebige Tiefe.',
+    pairsWith:
+      'Tabak harmoniert mit Vanille und Tonkabohne für süße Wärme, mit Honig und Zimt für würzige Fülle sowie mit Leder, Amber und Oud für dunkle, edle Tiefe.',
+    synonyms: ['tabak', 'tobacco']
   }
 ];
 

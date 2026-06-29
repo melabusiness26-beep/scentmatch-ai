@@ -21,6 +21,13 @@ const genderLabels: Record<string, string> = {
   Unisex: 'Unisex-Duft'
 };
 
+// Kurzes Geschlechts-Label für die Badge (passend zu den Duft-Kacheln).
+const genderBadge: Record<string, string> = {
+  Women: 'Weiblich',
+  Men: 'Männlich',
+  Unisex: 'Unisex'
+};
+
 // Detailseiten werden stündlich neu generiert (frische Daten, schnelle Auslieferung).
 export const revalidate = 3600;
 
@@ -284,7 +291,9 @@ export default async function PerfumeDetailPage({
             <p className="lead">{perfume.description || describePerfume(perfume)}</p>
             <div className="badge-row">
               <span className="badge">{familyLabel(perfume.fragrance_family)}</span>
-              {perfume.gender && <span className="badge">{perfume.gender}</span>}
+              {perfume.gender && (
+                <span className="badge">{genderBadge[perfume.gender] || perfume.gender}</span>
+              )}
               {perfume.scentmatch_score != null && (
                 <span className="badge">Auressa {perfume.scentmatch_score}/100</span>
               )}

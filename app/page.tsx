@@ -83,7 +83,7 @@ const questions: QuizQuestion[] = [
     q: 'Eine Note, die dein Herz höher schlagen lässt?',
     hint: 'Diese Note gewichten wir bei deinem Match besonders stark.',
     kind: 'lovedNote',
-    a: NOTE_THEMES.map(t => [t.label, t.code] as [string, string])
+    a: [['Keine bestimmte – überrasch mich', ''], ...NOTE_THEMES.map(t => [t.label, t.code] as [string, string])]
   },
   {
     q: 'Und etwas, das für dich gar nicht geht?',
@@ -114,7 +114,7 @@ const questions: QuizQuestion[] = [
     ]
   },
   {
-    q: 'Wie sehr darf man dich riechen?',
+    q: 'Wie präsent soll dein Duft sein?',
     hint: 'Also: wie weit dein Duft im Raum wahrnehmbar sein soll.',
     kind: 'sillage',
     a: [

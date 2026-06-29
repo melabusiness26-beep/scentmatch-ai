@@ -348,3 +348,14 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 .footer-newsletter .newsletter-row { max-width: 560px; }
 .site-footer .newsletter-title { color: #fbf3e6; }
 .site-footer .newsletter .small, .site-footer .newsletter-consent { color: rgba(243,233,218,.85); }
+
+/* Duft nach Stimmung – Auswahl-Kacheln */
+.mood-grid { margin-top: 22px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.mood-card { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.mood-emoji { font-size: 30px; line-height: 1; margin-bottom: 6px; }
+.mood-title { font-family: var(--font-display), Georgia, serif; font-size: 20px; color: var(--brown); }
+/* Geschlechts-Filter auf der Ergebnis-Seite */
+.mood-genders { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 4px; }
+.mood-chip { cursor: pointer; padding: 9px 18px; border-radius: 999px; font-family: var(--font-sans), Arial, sans-serif; font-size: 14px; color: var(--brown); background: rgba(255,255,255,.55); border: 1px solid rgba(75,53,40,.16); transition: border-color .15s ease, background .15s ease, transform .15s ease; }
+.mood-chip:hover { transform: translateY(-1px); border-color: rgba(185,152,99,.6); }
+.mood-chip.active { background: linear-gradient(180deg, #d8b277, #b1894f); color: #2a1d12; border-color: var(--gold); }

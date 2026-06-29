@@ -357,6 +357,126 @@ export function findCheaperAlternatives(target: Perfume, pool: Perfume[], limit 
     .slice(0, limit);
 }
 
+// ---------- Stimmungs-Finder ("Duft nach Stimmung") ----------
+// Ordnet jeder Stimmung passende Duftfamilien, Noten und Eigenschaften zu.
+// So kann die Seite Düfte rein nach Gefühl empfehlen – ohne Quiz, ohne Fachwissen.
+// Bewusst einfach gehalten: Familie + Noten + (optional) Saison/Anlass/Intensität.
+
+export type Mood = {
+  code: string;
+  emoji: string;
+  title: string;
+  subtitle: string; // kurze Zeile auf der Stimmungs-Kachel
+  result: string; // Einleitungssatz über den Ergebnissen
+  families: Partial<Record<string, number>>; // Duftfamilie -> Gewicht (bis 40)
+  noteThemes: string[]; // passende NOTE_THEMES-Codes (Bonus)
+  season?: string; // bevorzugte Saison (optional)
+  occasions?: string[]; // passende Anlässe (optional)
+  sillage?: 'low' | 'medium' | 'high'; // gewünschte Intensität (optional)
+};
+
+export const MOODS: Mood[] = [
+  {
+    code: 'cozy',
+    emoji: '🤍',
+    title: 'Geborgen & gemütlich',
+    subtitle: 'Warm, weich, wie eine Umarmung.',
+    result: 'Diese Düfte legen sich warm und weich um dich – süß, vertraut und gemütlich.',
+    families: { gourmand: 40, floral: 10 },
+    noteThemes: ['vanille', 'moschus'],
+    sillage: 'low'
+  },
+  {
+    code: 'fresh',
+    emoji: '⚡',
+    title: 'Frisch & wach',
+    subtitle: 'Spritzig, klar, voller Energie.',
+    result: 'Diese Düfte wirken wie klare Morgenluft – frisch, sauber und belebend.',
+    families: { clean: 40 },
+    noteThemes: ['zitrus'],
+    sillage: 'medium'
+  },
+  {
+    code: 'confident',
+    emoji: '🔥',
+    title: 'Selbstbewusst & stark',
+    subtitle: 'Edel, tief, präsent.',
+    result: 'Diese Düfte umgeben dich mit ruhiger, selbstbewusster Eleganz – tief und souverän.',
+    families: { woody: 40 },
+    noteThemes: ['holz', 'orient'],
+    sillage: 'high'
+  },
+  {
+    code: 'romantic',
+    emoji: '💕',
+    title: 'Romantisch & verliebt',
+    subtitle: 'Zart, charmant, voller Gefühl.',
+    result: 'Diese Düfte blühen zart auf der Haut auf – romantisch, weich und voller Charme.',
+    families: { floral: 40, gourmand: 10 },
+    noteThemes: ['blumig'],
+    sillage: 'medium'
+  },
+  {
+    code: 'sensual',
+    emoji: '✨',
+    title: 'Sinnlich & verführerisch',
+    subtitle: 'Warm, tief, magnetisch.',
+    result: 'Diese Düfte sind gemacht für Nähe – warm, tief und unwiderstehlich.',
+    families: { woody: 25, gourmand: 25 },
+    noteThemes: ['orient', 'vanille'],
+    occasions: ['Date', 'Abend'],
+    sillage: 'high'
+  },
+  {
+    code: 'summer',
+    emoji: '🌴',
+    title: 'Verspielt & sommerlich',
+    subtitle: 'Fruchtig, leicht, wie Urlaub.',
+    result: 'Diese Düfte schmecken nach Urlaub – fruchtig, leicht und gut gelaunt.',
+    families: { clean: 25, floral: 20 },
+    noteThemes: ['zitrus'],
+    season: 'Sommer',
+    sillage: 'medium'
+  }
+];
+
+// Bewertet, wie gut ein Duft zu einer Stimmung passt (höher = besser).
+export function moodScore(p: Perfume, mood: Mood): number {
+  let s = 0;
+  // Duftfamilie (bis 40)
+  s += mood.families[p.fragrance_family || ''] || 0;
+  // Passende Noten (bis 25)
+  if (mood.noteThemes.some((code) => perfumeHasTheme(p, code))) s += 25;
+  // Saison (bis 10)
+  if (mood.season && p.season && (p.season === mood.season || p.season === 'Ganzjährig')) s += 10;
+  // Anlass (bis 10)
+  if (mood.occasions && p.occasion && mood.occasions.includes(p.occasion)) s += 10;
+  // Intensität (bis 10)
+  if (mood.sillage) {
+    const target = mood.sillage === 'low' ? 4 : mood.sillage === 'high' ? 9 : 6;
+    const sill = p.sillage ?? 6;
+    s += 10 * (1 - Math.abs(sill - target) / 9);
+  }
+  // Leichter Qualitäts-Tiebreaker über den Auressa-Score (bis 5)
+  s += ((p.scentmatch_score ?? 80) / 100) * 5;
+  return s;
+}
+
+// Liefert die am besten zur Stimmung passenden Düfte – optional nach Geschlecht gefiltert.
+export function rankByMood(
+  perfumes: Perfume[],
+  mood: Mood,
+  gender: QuizAnswers['gender'] = '',
+  limit = 12
+): Perfume[] {
+  return perfumes
+    .filter((p) => matchesGender(p, gender))
+    .map((p) => ({ p, s: moodScore(p, mood) }))
+    .sort((a, b) => b.s - a.s)
+    .slice(0, limit)
+    .map((x) => x.p);
+}
+
 export function rankPerfumes(perfumes: Perfume[], a: QuizAnswers): RankedPerfume[] {
   const anchor = a.anchorId ? perfumes.find((p) => p.id === a.anchorId) || null : null;
   return perfumes

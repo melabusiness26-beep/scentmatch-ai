@@ -48,8 +48,8 @@ export default function RatgeberIndex() {
     <main>
       <SiteHeader />
       <div className="container">
-        <section className="detail-hero">
-          <div>
+        <section className="media-hero">
+          <div className="media-hero-inner">
             <p className="eyebrow">Magazin</p>
             <h1 className="detail-title">Duft-Ratgeber</h1>
             <p className="lead">

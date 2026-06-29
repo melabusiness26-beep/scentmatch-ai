@@ -187,6 +187,15 @@ a.logo { text-decoration:none; color:inherit; }
 .tile-link:hover { transform: translateY(-3px); box-shadow: 0 18px 50px rgba(75,53,40,.16); }
 .backlink { margin: 18px 0 -10px; }
 .detail-hero { display:grid; grid-template-columns: 1.3fr .7fr; gap:36px; align-items:start; margin-top:24px; }
+
+/* Foto-Hero-Banner (echtes Stimmungsbild mit dunklem Verlauf für Lesbarkeit). */
+.media-hero { position:relative; overflow:hidden; margin-top:24px; padding:76px 60px; border-radius:36px; color:#f3e9da; background-image: linear-gradient(120deg, rgba(20,14,10,.84) 0%, rgba(20,14,10,.58) 52%, rgba(20,14,10,.30) 100%), url('/hero-auressa.jpg'); background-size:cover; background-position:center; border:1px solid rgba(185,152,99,.35); box-shadow:0 44px 110px rgba(36,25,18,.38); }
+.media-hero-inner { position:relative; z-index:1; }
+.media-hero .eyebrow { color: var(--gold); }
+.media-hero h1 { color:#fbf3e6; }
+.media-hero .lead { color: rgba(243,233,218,.90); max-width:620px; }
+@media (max-width: 800px) { .media-hero { padding:40px 24px; } }
+
 .detail-title { font-size: clamp(38px, 6vw, 70px); line-height:1.02; margin:6px 0 18px; letter-spacing:-0.01em; color:var(--brown); }
 .badge-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
 .detail-stats h2 { margin-top:0; }

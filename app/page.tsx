@@ -15,7 +15,7 @@ import { PerfumeTile, familyDisplay } from '@/app/PerfumeTile';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import NewsletterForm from '@/app/NewsletterForm';
 
-type QuestionKind = 'gender' | 'anchor' | 'family' | 'occasion' | 'season' | 'sillage' | 'budget' | 'lovedNote' | 'dislikedNote';
+type QuestionKind = 'gender' | 'anchor' | 'family' | 'occasion' | 'season' | 'sillage' | 'budget' | 'lovedNote' | 'dislikedNote' | 'longevity' | 'sweetness' | 'pricePref';
 type QuizQuestion = { q: string; hint?: string; kind: QuestionKind; a: [string, string][] };
 
 const questions: QuizQuestion[] = [
@@ -69,6 +69,17 @@ const questions: QuizQuestion[] = [
     ]
   },
   {
+    q: 'Wie süß darf dein Duft sein?',
+    hint: 'Von frisch-herb bis dessertartig – wir gewichten das passend für dich.',
+    kind: 'sweetness',
+    a: [
+      ['Lieber gar nicht süß', 'low'],
+      ['Ein bisschen Süße', 'medium'],
+      ['Richtig süß & gourmandig', 'high'],
+      ['Egal', '']
+    ]
+  },
+  {
     q: 'Eine Note, die dein Herz höher schlagen lässt?',
     hint: 'Diese Note gewichten wir bei deinem Match besonders stark.',
     kind: 'lovedNote',
@@ -113,6 +124,17 @@ const questions: QuizQuestion[] = [
     ]
   },
   {
+    q: 'Wie lange soll dein Duft halten?',
+    hint: 'Manche Düfte begleiten dich ein paar Stunden, andere den ganzen Tag.',
+    kind: 'longevity',
+    a: [
+      ['Ein paar Stunden reichen', 'low'],
+      ['Solide durch den Tag', 'medium'],
+      ['Möglichst lange', 'high'],
+      ['Egal', '']
+    ]
+  },
+  {
     q: 'Was darf dein neuer Liebling kosten?',
     hint: 'Wir zeigen dir die besten Treffer in deinem Rahmen – ohne dich einzuengen.',
     kind: 'budget',
@@ -121,6 +143,16 @@ const questions: QuizQuestion[] = [
       ['CHF 80–150', '150'],
       ['Premium – über CHF 150', 'premium'],
       ['Budget ist mir egal', 'any']
+    ]
+  },
+  {
+    q: 'Lieber das Original oder eine günstige Alternative?',
+    hint: 'Viele teure Düfte haben erschwingliche Alternativen in ähnlicher Richtung.',
+    kind: 'pricePref',
+    a: [
+      ['Das Original darf es sein', 'original'],
+      ['Lieber eine günstige Alternative', 'alternative'],
+      ['Egal – Hauptsache, er passt', '']
     ]
   }
 ];
@@ -212,6 +244,9 @@ type QuizSnapshot = {
   lovedNote: string;
   dislikedNote: string;
   anchorId: string;
+  longevityPref: QuizAnswers['longevity'];
+  sweetnessPref: QuizAnswers['sweetness'];
+  pricePref: QuizAnswers['pricePref'];
 };
 
 // Fallback, falls die Datenbank (noch) nicht erreichbar ist. Ohne slug -> kein Link.
@@ -233,6 +268,9 @@ export default function Home() {
   const [lovedNote, setLovedNote] = useState('');
   const [dislikedNote, setDislikedNote] = useState('');
   const [anchorId, setAnchorId] = useState('');
+  const [longevityPref, setLongevityPref] = useState<QuizAnswers['longevity']>('');
+  const [sweetnessPref, setSweetnessPref] = useState<QuizAnswers['sweetness']>('');
+  const [pricePref, setPricePref] = useState<QuizAnswers['pricePref']>('');
   const [currentSeason, setCurrentSeason] = useState('');
   const [history, setHistory] = useState<QuizSnapshot[]>([]);
   const [showResult, setShowResult] = useState(false);
@@ -272,12 +310,15 @@ export default function Home() {
       setLovedNote(sp.get('l') || '');
       setDislikedNote(sp.get('d') || '');
       setAnchorId(sp.get('a') || '');
+      setLongevityPref((sp.get('lo') || '') as QuizAnswers['longevity']);
+      setSweetnessPref((sp.get('sw') || '') as QuizAnswers['sweetness']);
+      setPricePref((sp.get('pp') || '') as QuizAnswers['pricePref']);
       setStep(questions.length - 1);
       setShowResult(true);
     }
   }, []);
 
-  const answers: QuizAnswers = { gender: genderPref, family, occasion, season, sillage, budgetMax, lovedNote, dislikedNote, anchorId };
+  const answers: QuizAnswers = { gender: genderPref, family, occasion, season, sillage, budgetMax, lovedNote, dislikedNote, anchorId, longevity: longevityPref, sweetness: sweetnessPref, pricePref };
   const winner = Object.entries(family).sort((a, b) => b[1] - a[1])[0]?.[0] || 'clean';
 
   // Personalisierte Rangliste – nur nach dem Quiz.
@@ -334,7 +375,7 @@ export default function Home() {
   function pushHistory() {
     setHistory(h => [
       ...h,
-      { step, family: { ...family }, genderPref, occasion, season, sillage, budgetMax, lovedNote, dislikedNote, anchorId }
+      { step, family: { ...family }, genderPref, occasion, season, sillage, budgetMax, lovedNote, dislikedNote, anchorId, longevityPref, sweetnessPref, pricePref }
     ]);
   }
 
@@ -348,6 +389,9 @@ export default function Home() {
     else if (kind === 'budget') setBudgetMax(code === '80' ? 80 : code === '150' ? 150 : null);
     else if (kind === 'lovedNote') setLovedNote(code);
     else if (kind === 'dislikedNote') setDislikedNote(code);
+    else if (kind === 'longevity') setLongevityPref(code as QuizAnswers['longevity']);
+    else if (kind === 'sweetness') setSweetnessPref(code as QuizAnswers['sweetness']);
+    else if (kind === 'pricePref') setPricePref(code as QuizAnswers['pricePref']);
 
     advanceStep();
   }
@@ -377,6 +421,9 @@ export default function Home() {
     setLovedNote(prev.lovedNote);
     setDislikedNote(prev.dislikedNote);
     setAnchorId(prev.anchorId);
+    setLongevityPref(prev.longevityPref);
+    setSweetnessPref(prev.sweetnessPref);
+    setPricePref(prev.pricePref);
     setShowResult(false);
     setHistory(history.slice(0, -1));
   }
@@ -392,6 +439,9 @@ export default function Home() {
     setLovedNote('');
     setDislikedNote('');
     setAnchorId('');
+    setLongevityPref('');
+    setSweetnessPref('');
+    setPricePref('');
     setHistory([]);
     setShowResult(false);
     setShareMsg('');
@@ -413,6 +463,9 @@ export default function Home() {
     if (lovedNote) p.set('l', lovedNote);
     if (dislikedNote) p.set('d', dislikedNote);
     if (anchorId) p.set('a', anchorId);
+    if (longevityPref) p.set('lo', longevityPref);
+    if (sweetnessPref) p.set('sw', sweetnessPref);
+    if (pricePref) p.set('pp', pricePref);
     return `${window.location.origin}${window.location.pathname}?${p.toString()}#quiz`;
   }
 

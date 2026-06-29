@@ -359,3 +359,10 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 .mood-chip { cursor: pointer; padding: 9px 18px; border-radius: 999px; font-family: var(--font-sans), Arial, sans-serif; font-size: 14px; color: var(--brown); background: rgba(255,255,255,.55); border: 1px solid rgba(75,53,40,.16); transition: border-color .15s ease, background .15s ease, transform .15s ease; }
 .mood-chip:hover { transform: translateY(-1px); border-color: rgba(185,152,99,.6); }
 .mood-chip.active { background: linear-gradient(180deg, #d8b277, #b1894f); color: #2a1d12; border-color: var(--gold); }
+/* Stimmungs-Detailseite: Hero + "Duft-DNA"-Balken */
+.mood-hero { border: 1px solid rgba(185,152,99,.35); }
+.mood-hero h1 { color: var(--brown); margin: 4px 0 12px; }
+.mood-dna { margin-top: 20px; max-width: 540px; }
+.mood-dna-title { font-weight: 600; color: var(--brown); margin: 0 0 12px; }
+.mood-dna-row { margin-bottom: 11px; }
+.mood-dna-label { display: block; color: var(--text); margin-bottom: 2px; }

@@ -368,6 +368,8 @@ export type Mood = {
   title: string;
   subtitle: string; // kurze Zeile auf der Stimmungs-Kachel
   result: string; // Einleitungssatz über den Ergebnissen
+  intro: string; // längerer SEO-Text auf der eigenen Stimmungs-Seite
+  tone: string; // Akzentfarbe für das atmosphärische Design (Hex)
   families: Partial<Record<string, number>>; // Duftfamilie -> Gewicht (bis 40)
   noteThemes: string[]; // passende NOTE_THEMES-Codes (Bonus)
   season?: string; // bevorzugte Saison (optional)
@@ -382,6 +384,8 @@ export const MOODS: Mood[] = [
     title: 'Geborgen & gemütlich',
     subtitle: 'Warm, weich, wie eine Umarmung.',
     result: 'Diese Düfte legen sich warm und weich um dich – süß, vertraut und gemütlich.',
+    intro: 'Wenn dir nach Geborgenheit ist, passen warme, leicht süße Düfte am besten: Vanille, Karamell, weicher Moschus. Sie fühlen sich an wie eine Umarmung und ein gemütlicher Abend auf dem Sofa.',
+    tone: '#d8a48f',
     families: { gourmand: 40, floral: 10 },
     noteThemes: ['vanille', 'moschus'],
     sillage: 'low'
@@ -392,6 +396,8 @@ export const MOODS: Mood[] = [
     title: 'Frisch & wach',
     subtitle: 'Spritzig, klar, voller Energie.',
     result: 'Diese Düfte wirken wie klare Morgenluft – frisch, sauber und belebend.',
+    intro: 'Für einen wachen, energiegeladenen Tag sind frische, spritzige Düfte ideal: Zitrone, Bergamotte, klare Luft. Sie wirken gepflegt, modern und sofort belebend – perfekt für Alltag und Büro.',
+    tone: '#7fb6c4',
     families: { clean: 40 },
     noteThemes: ['zitrus'],
     sillage: 'medium'
@@ -402,6 +408,8 @@ export const MOODS: Mood[] = [
     title: 'Selbstbewusst & stark',
     subtitle: 'Edel, tief, präsent.',
     result: 'Diese Düfte umgeben dich mit ruhiger, selbstbewusster Eleganz – tief und souverän.',
+    intro: 'Wenn du Eindruck hinterlassen willst, sind holzige, tiefe Düfte deine Wahl: Sandelholz, Vetiver, ein Hauch Leder. Sie wirken edel, souverän und selbstbewusst – ohne aufdringlich zu sein.',
+    tone: '#7a6a55',
     families: { woody: 40 },
     noteThemes: ['holz', 'orient'],
     sillage: 'high'
@@ -412,6 +420,8 @@ export const MOODS: Mood[] = [
     title: 'Romantisch & verliebt',
     subtitle: 'Zart, charmant, voller Gefühl.',
     result: 'Diese Düfte blühen zart auf der Haut auf – romantisch, weich und voller Charme.',
+    intro: 'In romantischer Stimmung passen blumige, zarte Düfte: Rose, Jasmin, Veilchen. Sie wirken charmant, weich und feminin – wie ein Frühlingstag voller Schmetterlinge im Bauch.',
+    tone: '#e0a6c0',
     families: { floral: 40, gourmand: 10 },
     noteThemes: ['blumig'],
     sillage: 'medium'
@@ -422,6 +432,8 @@ export const MOODS: Mood[] = [
     title: 'Sinnlich & verführerisch',
     subtitle: 'Warm, tief, magnetisch.',
     result: 'Diese Düfte sind gemacht für Nähe – warm, tief und unwiderstehlich.',
+    intro: 'Für Dates und besondere Abende sind warme, sinnliche Düfte gemacht: Oud, Amber, Vanille, Gewürze. Sie wirken magnetisch, tief und unwiderstehlich – und bleiben in Erinnerung.',
+    tone: '#9b6a8f',
     families: { woody: 25, gourmand: 25 },
     noteThemes: ['orient', 'vanille'],
     occasions: ['Date', 'Abend'],
@@ -433,12 +445,38 @@ export const MOODS: Mood[] = [
     title: 'Verspielt & sommerlich',
     subtitle: 'Fruchtig, leicht, wie Urlaub.',
     result: 'Diese Düfte schmecken nach Urlaub – fruchtig, leicht und gut gelaunt.',
+    intro: 'Sommer, Sonne, gute Laune: Hier passen fruchtige, leichte Düfte mit Zitrus und frischen Noten. Sie schmecken nach Urlaub, Strand und Leichtigkeit – ideal für warme Tage.',
+    tone: '#e8b65a',
     families: { clean: 25, floral: 20 },
     noteThemes: ['zitrus'],
     season: 'Sommer',
     sillage: 'medium'
   }
 ];
+
+// Eine einzelne Stimmung anhand ihres Codes finden (für die Detailseiten).
+export function getMood(code: string): Mood | undefined {
+  return MOODS.find((m) => m.code === code);
+}
+
+// "Duft-DNA" einer Stimmung: zeigt, welche Notenthemen in den Treffern dominieren.
+// Liefert prozentuale Balken (relativ zum häufigsten Thema) – ideal als Grafik.
+export function moodNoteProfile(
+  perfumes: Perfume[],
+  limit = 5
+): { code: string; label: string; pct: number }[] {
+  if (!perfumes.length) return [];
+  const counts = NOTE_THEMES.map((t) => ({
+    code: t.code,
+    label: t.label.split(' – ')[0], // Kurzform, z. B. "Süß & gemütlich"
+    count: perfumes.filter((p) => perfumeHasTheme(p, t.code)).length
+  })).filter((c) => c.count > 0);
+  const max = Math.max(1, ...counts.map((c) => c.count));
+  return counts
+    .sort((a, b) => b.count - a.count)
+    .slice(0, limit)
+    .map((c) => ({ code: c.code, label: c.label, pct: Math.round((c.count / max) * 100) }));
+}
 
 // Bewertet, wie gut ein Duft zu einer Stimmung passt (höher = besser).
 export function moodScore(p: Perfume, mood: Mood): number {

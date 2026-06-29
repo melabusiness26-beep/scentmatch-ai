@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { getAllPerfumeSlugs } from '@/lib/perfumes';
+import { getAllPerfumeSlugs, MOODS } from '@/lib/perfumes';
 import { guides } from '@/lib/guides';
 import { scentNotes } from '@/lib/notes-glossary';
 
@@ -29,6 +29,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: 0.6
+  }));
+
+  const moodUrls: MetadataRoute.Sitemap = MOODS.map((mood) => ({
+    url: `${SITE_URL}/stimmungen/${mood.code}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.7
   }));
 
   return [
@@ -74,6 +81,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'yearly',
       priority: 0.2
     },
+    ...moodUrls,
     ...guideUrls,
     ...noteUrls,
     ...perfumeUrls

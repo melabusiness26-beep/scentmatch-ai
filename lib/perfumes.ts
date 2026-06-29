@@ -182,6 +182,9 @@ export type QuizAnswers = {
   lovedNote: string; // Theme-Code aus NOTE_THEMES, '' = egal
   dislikedNote: string; // Theme-Code aus NOTE_THEMES, '' = keine
   anchorId: string; // ID eines bereits geliebten Dufts, '' = keiner
+  longevity: 'low' | 'medium' | 'high' | ''; // gewünschte Haltbarkeit, '' = egal
+  sweetness: 'low' | 'medium' | 'high' | ''; // gewünschte Süße, '' = egal
+  pricePref: 'original' | 'alternative' | ''; // Original vs. günstige Alternative, '' = egal
 };
 
 export type RankedPerfume = { perfume: Perfume; score: number };
@@ -266,6 +269,32 @@ function dislikedNotePenalty(p: Perfume, a: QuizAnswers): number {
   return perfumeHasTheme(p, a.dislikedNote) ? 25 : 0;
 }
 
+// Zusatz-Dimensionen: nur wirksam, wenn beantwortet (sonst 0 = neutral).
+// Als Bonus oben drauf, damit die bestehende 100er-Gewichtung unangetastet bleibt.
+function longevityComponent(p: Perfume, a: QuizAnswers): number {
+  if (!a.longevity) return 0;
+  const target = a.longevity === 'low' ? 4 : a.longevity === 'high' ? 9 : 6;
+  const lon = p.longevity ?? 6;
+  return 8 * (1 - Math.abs(lon - target) / 9);
+}
+
+function sweetnessComponent(p: Perfume, a: QuizAnswers): number {
+  if (!a.sweetness) return 0;
+  // Süße-Schätzwert des Dufts: gourmand = sehr süß, Vanille-Thema = mittel.
+  const sweetVal = p.fragrance_family === 'gourmand' ? 9 : perfumeHasTheme(p, 'vanille') ? 6 : 2;
+  const target = a.sweetness === 'low' ? 2 : a.sweetness === 'high' ? 9 : 5;
+  return 6 * (1 - Math.abs(sweetVal - target) / 9);
+}
+
+function pricePrefComponent(p: Perfume, a: QuizAnswers): number {
+  if (!a.pricePref) return 0;
+  const price = p.price_chf ?? 100;
+  // Günstige Alternative -> Bonus für preiswerte Düfte (Dupes).
+  if (a.pricePref === 'alternative') return price <= 60 ? 6 : price <= 100 ? 3 : 0;
+  // Original -> leichter Bonus für hochwertigere/teurere Düfte.
+  return price >= 120 ? 5 : price >= 80 ? 3 : 1;
+}
+
 export function matchScore(p: Perfume, a: QuizAnswers): number {
   const raw =
     familyComponent(p, a) +
@@ -273,7 +302,10 @@ export function matchScore(p: Perfume, a: QuizAnswers): number {
     occasionComponent(p, a) +
     seasonComponent(p, a) +
     sillageComponent(p, a) +
-    budgetComponent(p, a) -
+    budgetComponent(p, a) +
+    longevityComponent(p, a) +
+    sweetnessComponent(p, a) +
+    pricePrefComponent(p, a) -
     dislikedNotePenalty(p, a);
   return Math.round(Math.max(0, Math.min(100, raw)));
 }

@@ -80,6 +80,23 @@ function faqJsonLd(faqs: GuideFaq[]) {
   };
 }
 
+function breadcrumbJsonLd(guide: Guide) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Ratgeber', item: `${SITE_URL}/ratgeber` },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: guide.title,
+        item: `${SITE_URL}/ratgeber/${guide.slug}`
+      }
+    ]
+  };
+}
+
 export default async function GuidePage({
   params
 }: {
@@ -189,6 +206,10 @@ export default async function GuidePage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(guide)) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(guide)) }}
       />
       {faqs.length > 0 && (
         <script

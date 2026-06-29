@@ -198,6 +198,23 @@ function faqJsonLd(faqs: Faq[]) {
   };
 }
 
+function breadcrumbJsonLd(perfume: Perfume) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Düfte', item: `${SITE_URL}/duefte` },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: perfume.perfume_name,
+        item: `${SITE_URL}/duft/${perfume.slug}`
+      }
+    ]
+  };
+}
+
 export default async function PerfumeDetailPage({
   params
 }: {
@@ -399,6 +416,10 @@ export default async function PerfumeDetailPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(perfume)) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(perfume)) }}
       />
       {faqs.length > 0 && (
         <script

@@ -40,13 +40,37 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'de_DE',
+    locale: 'de_CH',
     siteName: 'Auressa',
     url: SITE_URL,
     title: 'Auressa – Finde deinen Signature-Duft',
     description:
       'Finde mit Auressa deinen perfekten Duft – per Quiz und intelligenter Empfehlungslogik.'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Auressa – Finde deinen Signature-Duft',
+    description:
+      'Finde mit Auressa deinen perfekten Duft – per Quiz und intelligenter Empfehlungslogik.'
   }
+};
+
+// Marken-Strukturdaten (hilft Google, „Auressa" als Marke/Website zu verstehen).
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Auressa',
+  url: SITE_URL,
+  description:
+    'Auressa ist die moderne Duft-Findungs-Plattform aus der Schweiz – mit Duft-Quiz, Match-Engine und Ratgebern.'
+};
+
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Auressa',
+  url: SITE_URL,
+  inLanguage: 'de-CH'
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -54,6 +78,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="de" className={`${playfair.variable} ${inter.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         {children}
         <footer className="site-footer">
           <div className="container footer-newsletter">

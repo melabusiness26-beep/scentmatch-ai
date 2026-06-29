@@ -402,7 +402,7 @@ export const guides: Guide[] = [
       },
       {
         heading: 'Für Männer',
-        perfumes: ['chanel-bleu-de-chanel', 'jpg-le-male', 'ea-stronger-with-you', 'boss-bottled']
+        perfumes: ['chanel-bleu-de-chanel', 'le-male', 'ea-stronger-with-you', 'boss-bottled']
       },
       {
         heading: 'Tipps für das perfekte Duft-Geschenk',
@@ -433,11 +433,11 @@ export const guides: Guide[] = [
       {
         perfumes: [
           'dior-sauvage',
-          'jpg-le-male',
+          'le-male',
           'ea-stronger-with-you',
           'versace-eros',
           'ch-bad-boy',
-          'pr-1-million',
+          '1-million',
           'boss-the-scent',
           'dior-fahrenheit'
         ]
@@ -473,7 +473,7 @@ export const guides: Guide[] = [
           'tobacco-vanille',
           'kayali-vanilla-28',
           'khamrah',
-          'guerlain-mon',
+          'mon-guerlain',
           'ariana-cloud',
           'burberry-goddess',
           'lattafa-yara',
@@ -792,7 +792,7 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        perfumes: ['marc-jacobs-daisy', 'chloe-edp', 'gucci-bloom', 'dior-miss-dior', 'montblanc-legend', 'pdm-greenley', 'creed-green-irish-tweed', 'dkny-be-delicious']
+        perfumes: ['marc-jacobs-daisy', 'chloe-edp', 'gucci-bloom', 'dior-miss-dior', 'montblanc-legend', 'pdm-greenley', 'creed-git', 'dkny-be-delicious']
       },
       {
         heading: 'Frühlingsduft für jeden Anlass',

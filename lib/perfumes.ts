@@ -357,6 +357,164 @@ export function findCheaperAlternatives(target: Perfume, pool: Perfume[], limit 
     .slice(0, limit);
 }
 
+// ---------- Stimmungs-Finder ("Duft nach Stimmung") ----------
+// Ordnet jeder Stimmung passende Duftfamilien, Noten und Eigenschaften zu.
+// So kann die Seite Düfte rein nach Gefühl empfehlen – ohne Quiz, ohne Fachwissen.
+// Bewusst einfach gehalten: Familie + Noten + (optional) Saison/Anlass/Intensität.
+
+export type Mood = {
+  code: string;
+  emoji: string;
+  title: string;
+  subtitle: string; // kurze Zeile auf der Stimmungs-Kachel
+  result: string; // Einleitungssatz über den Ergebnissen
+  intro: string; // längerer SEO-Text auf der eigenen Stimmungs-Seite
+  tone: string; // Akzentfarbe für das atmosphärische Design (Hex)
+  families: Partial<Record<string, number>>; // Duftfamilie -> Gewicht (bis 40)
+  noteThemes: string[]; // passende NOTE_THEMES-Codes (Bonus)
+  season?: string; // bevorzugte Saison (optional)
+  occasions?: string[]; // passende Anlässe (optional)
+  sillage?: 'low' | 'medium' | 'high'; // gewünschte Intensität (optional)
+};
+
+export const MOODS: Mood[] = [
+  {
+    code: 'cozy',
+    emoji: '🤍',
+    title: 'Geborgen & gemütlich',
+    subtitle: 'Warm, weich, wie eine Umarmung.',
+    result: 'Diese Düfte legen sich warm und weich um dich – süß, vertraut und gemütlich.',
+    intro: 'Wenn dir nach Geborgenheit ist, passen warme, leicht süße Düfte am besten: Vanille, Karamell, weicher Moschus. Sie fühlen sich an wie eine Umarmung und ein gemütlicher Abend auf dem Sofa.',
+    tone: '#d8a48f',
+    families: { gourmand: 40, floral: 10 },
+    noteThemes: ['vanille', 'moschus'],
+    sillage: 'low'
+  },
+  {
+    code: 'fresh',
+    emoji: '⚡',
+    title: 'Frisch & wach',
+    subtitle: 'Spritzig, klar, voller Energie.',
+    result: 'Diese Düfte wirken wie klare Morgenluft – frisch, sauber und belebend.',
+    intro: 'Für einen wachen, energiegeladenen Tag sind frische, spritzige Düfte ideal: Zitrone, Bergamotte, klare Luft. Sie wirken gepflegt, modern und sofort belebend – perfekt für Alltag und Büro.',
+    tone: '#7fb6c4',
+    families: { clean: 40 },
+    noteThemes: ['zitrus'],
+    sillage: 'medium'
+  },
+  {
+    code: 'confident',
+    emoji: '🔥',
+    title: 'Selbstbewusst & stark',
+    subtitle: 'Edel, tief, präsent.',
+    result: 'Diese Düfte umgeben dich mit ruhiger, selbstbewusster Eleganz – tief und souverän.',
+    intro: 'Wenn du Eindruck hinterlassen willst, sind holzige, tiefe Düfte deine Wahl: Sandelholz, Vetiver, ein Hauch Leder. Sie wirken edel, souverän und selbstbewusst – ohne aufdringlich zu sein.',
+    tone: '#7a6a55',
+    families: { woody: 40 },
+    noteThemes: ['holz', 'orient'],
+    sillage: 'high'
+  },
+  {
+    code: 'romantic',
+    emoji: '💕',
+    title: 'Romantisch & verliebt',
+    subtitle: 'Zart, charmant, voller Gefühl.',
+    result: 'Diese Düfte blühen zart auf der Haut auf – romantisch, weich und voller Charme.',
+    intro: 'In romantischer Stimmung passen blumige, zarte Düfte: Rose, Jasmin, Veilchen. Sie wirken charmant, weich und feminin – wie ein Frühlingstag voller Schmetterlinge im Bauch.',
+    tone: '#e0a6c0',
+    families: { floral: 40, gourmand: 10 },
+    noteThemes: ['blumig'],
+    sillage: 'medium'
+  },
+  {
+    code: 'sensual',
+    emoji: '✨',
+    title: 'Sinnlich & verführerisch',
+    subtitle: 'Warm, tief, magnetisch.',
+    result: 'Diese Düfte sind gemacht für Nähe – warm, tief und unwiderstehlich.',
+    intro: 'Für Dates und besondere Abende sind warme, sinnliche Düfte gemacht: Oud, Amber, Vanille, Gewürze. Sie wirken magnetisch, tief und unwiderstehlich – und bleiben in Erinnerung.',
+    tone: '#9b6a8f',
+    families: { woody: 25, gourmand: 25 },
+    noteThemes: ['orient', 'vanille'],
+    occasions: ['Date', 'Abend'],
+    sillage: 'high'
+  },
+  {
+    code: 'summer',
+    emoji: '🌴',
+    title: 'Verspielt & sommerlich',
+    subtitle: 'Fruchtig, leicht, wie Urlaub.',
+    result: 'Diese Düfte schmecken nach Urlaub – fruchtig, leicht und gut gelaunt.',
+    intro: 'Sommer, Sonne, gute Laune: Hier passen fruchtige, leichte Düfte mit Zitrus und frischen Noten. Sie schmecken nach Urlaub, Strand und Leichtigkeit – ideal für warme Tage.',
+    tone: '#e8b65a',
+    families: { clean: 25, floral: 20 },
+    noteThemes: ['zitrus'],
+    season: 'Sommer',
+    sillage: 'medium'
+  }
+];
+
+// Eine einzelne Stimmung anhand ihres Codes finden (für die Detailseiten).
+export function getMood(code: string): Mood | undefined {
+  return MOODS.find((m) => m.code === code);
+}
+
+// "Duft-DNA" einer Stimmung: zeigt, welche Notenthemen in den Treffern dominieren.
+// Liefert prozentuale Balken (relativ zum häufigsten Thema) – ideal als Grafik.
+export function moodNoteProfile(
+  perfumes: Perfume[],
+  limit = 5
+): { code: string; label: string; pct: number }[] {
+  if (!perfumes.length) return [];
+  const counts = NOTE_THEMES.map((t) => ({
+    code: t.code,
+    label: t.label.split(' – ')[0], // Kurzform, z. B. "Süß & gemütlich"
+    count: perfumes.filter((p) => perfumeHasTheme(p, t.code)).length
+  })).filter((c) => c.count > 0);
+  const max = Math.max(1, ...counts.map((c) => c.count));
+  return counts
+    .sort((a, b) => b.count - a.count)
+    .slice(0, limit)
+    .map((c) => ({ code: c.code, label: c.label, pct: Math.round((c.count / max) * 100) }));
+}
+
+// Bewertet, wie gut ein Duft zu einer Stimmung passt (höher = besser).
+export function moodScore(p: Perfume, mood: Mood): number {
+  let s = 0;
+  // Duftfamilie (bis 40)
+  s += mood.families[p.fragrance_family || ''] || 0;
+  // Passende Noten (bis 25)
+  if (mood.noteThemes.some((code) => perfumeHasTheme(p, code))) s += 25;
+  // Saison (bis 10)
+  if (mood.season && p.season && (p.season === mood.season || p.season === 'Ganzjährig')) s += 10;
+  // Anlass (bis 10)
+  if (mood.occasions && p.occasion && mood.occasions.includes(p.occasion)) s += 10;
+  // Intensität (bis 10)
+  if (mood.sillage) {
+    const target = mood.sillage === 'low' ? 4 : mood.sillage === 'high' ? 9 : 6;
+    const sill = p.sillage ?? 6;
+    s += 10 * (1 - Math.abs(sill - target) / 9);
+  }
+  // Leichter Qualitäts-Tiebreaker über den Auressa-Score (bis 5)
+  s += ((p.scentmatch_score ?? 80) / 100) * 5;
+  return s;
+}
+
+// Liefert die am besten zur Stimmung passenden Düfte – optional nach Geschlecht gefiltert.
+export function rankByMood(
+  perfumes: Perfume[],
+  mood: Mood,
+  gender: QuizAnswers['gender'] = '',
+  limit = 12
+): Perfume[] {
+  return perfumes
+    .filter((p) => matchesGender(p, gender))
+    .map((p) => ({ p, s: moodScore(p, mood) }))
+    .sort((a, b) => b.s - a.s)
+    .slice(0, limit)
+    .map((x) => x.p);
+}
+
 export function rankPerfumes(perfumes: Perfume[], a: QuizAnswers): RankedPerfume[] {
   const anchor = a.anchorId ? perfumes.find((p) => p.id === a.anchorId) || null : null;
   return perfumes

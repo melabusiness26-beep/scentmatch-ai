@@ -50,8 +50,48 @@ export default async function MoodPage({ params }: { params: Promise<{ mood: str
   const dna = moodNoteProfile(ranked.slice(0, 12));
   const others = MOODS.filter((m) => m.code !== code);
 
+  // Häufige Fragen – liefern einzigartigen Text (gut für Google) und echten Mehrwert.
+  const dnaText = dna.length ? dna.map((d) => d.label.toLowerCase()).join(', ') : 'verschiedene Noten';
+  const faq = [
+    { q: `Welche Düfte passen zur Stimmung „${mood.title}"?`, a: mood.intro },
+    {
+      q: `Woran erkenne ich einen Duft für „${mood.title}"?`,
+      a: `Typisch sind ${dnaText}. Auressa wertet die Noten jedes Dufts aus und ordnet ihn automatisch dieser Stimmung zu – ganz ohne Raten.`
+    },
+    {
+      q: 'Sind die Empfehlungen für Damen oder Herren?',
+      a: 'Für beide. Mit dem Filter „Damen", „Herren" oder „Für alle" passt du die Liste mit einem Tippen an dein Wunsch-Geschlecht an.'
+    }
+  ];
+
+  const topForSchema = ranked.slice(0, 9).filter((p) => p.slug);
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'FAQPage',
+        mainEntity: faq.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a }
+        }))
+      },
+      {
+        '@type': 'ItemList',
+        name: `Düfte für die Stimmung „${mood.title}"`,
+        itemListElement: topForSchema.map((p, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          url: `${SITE_URL}/duft/${p.slug}`,
+          name: p.perfume_name
+        }))
+      }
+    ]
+  };
+
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <SiteHeader />
       <div className="container">
         <section
@@ -79,6 +119,19 @@ export default async function MoodPage({ params }: { params: Promise<{ mood: str
           perfumes={ranked}
           mood={{ emoji: mood.emoji, title: mood.title, result: mood.result, code: mood.code }}
         />
+
+        <section className="section">
+          <p className="eyebrow">Häufige Fragen</p>
+          <h2>Gut zu wissen</h2>
+          <div className="faq">
+            {faq.map((f) => (
+              <details className="faq-item" key={f.q}>
+                <summary>{f.q}</summary>
+                <p className="small">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
 
         <section className="section">
           <p className="eyebrow">Andere Stimmungen</p>

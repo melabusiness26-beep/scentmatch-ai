@@ -47,14 +47,14 @@ const questions: QuizQuestion[] = [
     ]
   },
   {
-    q: 'Woran würdest du am liebsten gerade schnuppern?',
-    hint: 'Augen kurz zu – was zieht dich sofort an?',
+    q: 'Wie soll sich dein Duft anfühlen?',
+    hint: 'Geh nach Bauchgefühl – welches Gefühl zieht dich sofort an?',
     kind: 'family',
     a: [
-      ['Etwas Frisches: Zitrus, Tee, sauberer Moschus', 'clean'],
-      ['Etwas Süßes: Vanille, Karamell, Amber', 'gourmand'],
-      ['Etwas Tiefes: Sandelholz, Pfeffer, Oud', 'woody'],
-      ['Etwas Blumiges: Rose, Jasmin, Pfirsich', 'floral']
+      ['Leicht & frisch wie klare Luft', 'clean'],
+      ['Warm & weich wie eine Umarmung', 'gourmand'],
+      ['Kraftvoll & edel wie dunkles Holz', 'woody'],
+      ['Zart & lebendig wie frische Blüten', 'floral']
     ]
   },
   {
@@ -141,7 +141,7 @@ const questions: QuizQuestion[] = [
     a: [
       ['Bis CHF 80', '80'],
       ['CHF 80–150', '150'],
-      ['Premium – über CHF 150', 'premium'],
+      ['Auch Premium (über CHF 150)', 'premium'],
       ['Budget ist mir egal', 'any']
     ]
   },

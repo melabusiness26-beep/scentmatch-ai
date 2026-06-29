@@ -243,3 +243,54 @@ gender → anchor (optional, Dropdown) → 3× family → lovedNote → disliked
 4. Sobald echte Affiliate-Links da sind (Notino/CJ oder Flaconi/Awin) → pro Duft im
    **Admin** ins Feld „Affiliate-Link / Shop-URL" eintragen (Button nutzt ihn automatisch).
 
+## 12. Update (29. Juni 2026): Payoneer-Konto angelegt (CJ-Auszahlung gelöst)
+
+> Neuester Stand. Wichtigster Einstieg für den nächsten Chat. (Kein Code geändert –
+> dieser Tag war reine Affiliate-/Auszahlungs-Einrichtung, Schritt für Schritt begleitet.)
+
+### Ausgangslage / Auslöser
+- Antwort von **Sara Majcenović** (Affiliate Manager DACH, VIVnetworks – CJ-Partner) per
+  E-Mail: Der CJ-Bankdaten-Fehler („routing/account number not formatted correctly")
+  kommt daher, dass CJ auf eine **US-Zahlungsmethode** (mit Routing-Nummer) stand. Lösung:
+  **internationale Zahlung**. In CJ führt der Link **„CJ Internationale Zahlungen"** direkt
+  zu **Payoneer** → bestätigt, dass Payoneer für die Schweiz der vorgesehene Weg ist
+  (löst wie geplant **CJ UND Awin** gleichzeitig).
+
+### Payoneer-Anmeldung (komplett durchlaufen, am Handy)
+- Konto angelegt mit E-Mail **`mela.business26@gmail.com`** (per 6-stelligem Code bestätigt).
+- Wichtige Angaben im Anmelde-Flow:
+  - „Is your business registered…?" → **No, my business isn't registered** (Privatperson,
+    < 100k Umsatz, kein Handelsregister).
+  - Name: **First** = `Melanie`, **Last** = `Viele Sanchez Pantoja` (Payoneer akzeptiert
+    **keinen Bindestrich/Akzente** → „Sanchez Pantoja" ohne `-`, nur englische Zeichen).
+  - Branche: **Affiliate marketing**.
+  - „Where will your payments come from?" → **Business clients or employers** (CJ/Awin sind
+    die zahlenden Firmen).
+  - „Transactions per month?" → **None yet, this is a new business**.
+  - „Where can we find your business online?" → **`https://auressa.ch`**.
+  - „Majority of business activity?" → **Europe**.
+  - **Identität**: Selfie + amtlicher Ausweis hochgeladen → Status **„Submitted"**.
+  - **Namens-Abgleich**: „Account Holder Name" war **MELANIE VIELE**, wich vom Registrierungs-
+    namen ab → als Grund eine Variante gewählt (Account-Holder-Name muss am Ende zum
+    **Raiffeisen-Konto** passen, sonst Auszahlung-Rückweisung).
+  - **Adressnachweis**: Auswahl „Bank/credit card statement or account confirmation letter"
+    (Raiffeisen-Auszug) bzw. „Service or utility bill"; Dokument max. **6 Monate** alt,
+    Name+Adresse+Datum sichtbar. (Erst schien es zu „loopen", war aber nur Verarbeitung.)
+  - **AGB + Datenschutz** bestätigt → **„Confirm to continue"**.
+
+### Status JETZT
+- Payoneer zeigt **„We're verifying your info"** – Prüfung dauert **~2 Werktage**, Payoneer
+  schickt eine **E-Mail** an `mela.business26@gmail.com`, sobald das Konto nutzbar ist.
+  Fortschritt: Registration ✅ · Info and documents ✅ · Verification ⏳ · First transaction 🚀.
+
+### OFFEN – nächste Schritte (erst NACH der Payoneer-Freigabe-Mail)
+1. **Payoneer mit CJ verknüpfen** (Payment Information) → löst den ursprünglichen CJ-
+   Bankdaten-Fehler endgültig.
+2. **Payoneer mit Awin verknüpfen** (Zahlungsmethode = internationale Überweisung/Payoneer)
+   → deckt Flaconi/Awin ab.
+3. Einmalig das **Raiffeisen-Konto** in Payoneer hinterlegen (Auszahlung aufs CH-Konto).
+4. Falls Payoneer-Mail einen **erneuten Adressnachweis** verlangt → Dokument neu/heller
+   hochladen (Name + Adresse + Datum klar, < 6 Monate).
+- Weiterhin offen wie gehabt: **Flaconi-Freigabe** bei Awin abwarten; **Besucher gewinnen**
+  (Social Media + Search Console).
+

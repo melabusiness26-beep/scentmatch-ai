@@ -38,6 +38,15 @@ function familyLabel(code: string | null): string {
   return familyLabels[code] || code;
 }
 
+// Kürzt einen Text auf sinnvolle Meta-Description-Länge (an der Wortgrenze).
+function metaTrim(text: string, max = 155): string {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  if (clean.length <= max) return clean;
+  const cut = clean.slice(0, max);
+  const lastSpace = cut.lastIndexOf(' ');
+  return `${cut.slice(0, lastSpace > 0 ? lastSpace : max).trim()}…`;
+}
+
 // Erzeugt alle Duftseiten beim Build vor (gut für SEO und Tempo).
 export async function generateStaticParams() {
   const slugs = await getAllPerfumeSlugs();
@@ -58,9 +67,9 @@ export async function generateMetadata({
 
   const brand = perfume.brands?.name ? ` von ${perfume.brands.name}` : '';
   const title = `${perfume.perfume_name}${brand} – Duftprofil & Bewertung | Auressa`;
-  const description =
-    perfume.description ||
-    `${perfume.perfume_name}${brand}: Duftfamilie ${familyLabel(perfume.fragrance_family)}, ideal für ${perfume.occasion || 'jeden Anlass'} und die Saison ${perfume.season || 'ganzjährig'}. Auressa-Score ${perfume.scentmatch_score ?? '–'}/100.`;
+  // Abwechslungsreiche Beschreibung aus echten Duftdaten (statt gleicher Schablone
+  // auf hunderten Seiten) – gut gegen „dünnen/doppelten Inhalt".
+  const description = metaTrim(perfume.description || describePerfume(perfume));
 
   return {
     title,
@@ -128,12 +137,16 @@ function jsonLd(perfume: Perfume) {
       perfume.description ||
       `${perfume.perfume_name} – Duftprofil auf Auressa.`,
     image: perfume.image_url || undefined,
-    aggregateRating: perfume.scentmatch_score
+    // Redaktionelle Einschätzung von Auressa (kein vorgetäuschtes Nutzer-Rating).
+    review: perfume.scentmatch_score
       ? {
-          '@type': 'AggregateRating',
-          ratingValue: (perfume.scentmatch_score / 20).toFixed(1),
-          bestRating: '5',
-          ratingCount: 1
+          '@type': 'Review',
+          author: { '@type': 'Organization', name: 'Auressa' },
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: (perfume.scentmatch_score / 20).toFixed(1),
+            bestRating: '5'
+          }
         }
       : undefined,
     offers:

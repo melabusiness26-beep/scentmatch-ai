@@ -18,6 +18,20 @@ export const genderSearchTerms: Record<string, string> = {
   Unisex: 'unisex'
 };
 
+// Deutsche Anzeige-Labels für das Geschlecht (Werte sind englisch gespeichert).
+export const genderDisplay: Record<string, string> = {
+  Women: 'Weiblich',
+  Men: 'Männlich',
+  Unisex: 'Unisex'
+};
+
+// Symbole für das Geschlecht (♀ weiblich, ♂ männlich, ⚥ unisex).
+export const genderSymbol: Record<string, string> = {
+  Women: '♀',
+  Men: '♂',
+  Unisex: '⚥'
+};
+
 export function PerfumeCover({ perfume, large }: { perfume: Perfume; large?: boolean }) {
   const fam = perfume.fragrance_family || '';
   const className = `cover${large ? ' cover-large' : ''} cover-${fam}`;
@@ -43,6 +57,12 @@ export function PerfumeTile({ perfume, matchPercent }: { perfume: Perfume; match
       <p className="small">{perfume.brands?.name || 'Marke offen'} · {familyDisplay[perfume.fragrance_family || ''] || 'Duftfamilie offen'}</p>
       <div className="tile-meta">
         <span className="score-pill">Score {perfume.scentmatch_score ?? 80}</span>
+        {perfume.gender && (
+          <span className="gender-pill" aria-label={genderDisplay[perfume.gender] || perfume.gender}>
+            <span className="gender-symbol" aria-hidden="true">{genderSymbol[perfume.gender] || ''}</span>
+            {genderDisplay[perfume.gender] || perfume.gender}
+          </span>
+        )}
         <span className="small">{perfume.season || 'Ganzjährig'} · {perfume.occasion || 'flexibel'}</span>
       </div>
     </>

@@ -99,7 +99,14 @@ export async function generateMetadata({
 function Cover({ perfume, large }: { perfume: Perfume; large?: boolean }) {
   const className = `cover${large ? ' cover-large' : ''} cover-${perfume.fragrance_family || ''}`;
   if (perfume.image_url) {
-    return <div className={className} style={{ backgroundImage: `url(${perfume.image_url})` }} />;
+    return (
+      <div
+        className={className}
+        role="img"
+        aria-label={`${perfume.perfume_name}${perfume.brands?.name ? ` von ${perfume.brands.name}` : ''} – Duftflakon`}
+        style={{ backgroundImage: `url(${perfume.image_url})` }}
+      />
+    );
   }
   return (
     <div className={className}>

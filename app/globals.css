@@ -376,3 +376,16 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 .faq-item p { margin: 0 0 16px; line-height: 1.6; }
 /* Ehrlichkeits-Hinweis auf der Gefühls-Seite */
 .mood-honest { font-style: italic; color: rgba(38,29,24,.7); margin-top: 10px; }
+/* Stimmungs-Ergebnisse: Top-Treffer + Karten mit Begründung & Kauf-Knopf */
+.mood-top { display: grid; grid-template-columns: 200px 1fr; gap: 22px; align-items: center; background: rgba(185,152,99,.14); border: 1px solid rgba(185,152,99,.4); border-radius: 24px; padding: 20px; margin: 18px 0 24px; }
+.mood-top .cover { margin-bottom: 0; }
+.mood-top-info h3 { margin: 6px 0 4px; color: var(--brown); font-size: 24px; }
+.mood-results { margin-top: 4px; }
+.mood-result-card { display: flex; flex-direction: column; }
+.mood-result-card h3 { margin: 12px 0 2px; }
+.mood-reason { margin: 10px 0 0; color: var(--text); line-height: 1.5; }
+.mood-top-info .score-pill, .mood-result-card .score-pill { display: inline-block; margin-top: 8px; }
+.tile-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.tile-actions .button { padding: 9px 14px; font-size: 14px; margin-top: 0; }
+.mood-result-card .tile-actions { margin-top: auto; padding-top: 12px; }
+@media (max-width: 600px) { .mood-top { grid-template-columns: 1fr; } }

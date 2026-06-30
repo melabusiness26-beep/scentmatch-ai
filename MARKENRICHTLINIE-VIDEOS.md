@@ -9,6 +9,34 @@ So verschmelzen alle Kanäle zu einer hochwertigen Marke.
 
 ---
 
+## 0. Positionierung – das macht Auressa einzigartig
+
+> NICHT „noch eine Seite, die Parfüms bewertet". Auressa hat ein eigenes Profil:
+
+**Auressa = „Luxus riechen, Schweizer Preis sparen."**
+
+Drei Säulen, die Konkurrenz-Accounts (z. B. generische Ranking-Seiten) nicht kopieren können:
+1. **CHF / Schweiz-Fokus** – Dupes & Preise in Franken für den CH-Markt (kaum Konkurrenz).
+2. **Spar-Betrag im Mittelpunkt** – nicht „8/10", sondern „**300 CHF gespart**" (konkreter Nutzen).
+3. **Echtes Tool** – „3 Fragen → dein Signaturduft" leitet auf das Quiz auf auressa.ch.
+
+Dazu der **dunkel-goldene Premium-Look** (wie die Website) statt buntem Chaos → ein Feed, der
+wie *eine* Marke wirkt.
+
+### Wiederkehrende Themen-Serien (Wiedererkennung!)
+- **„Spare CHF X"** ⭐ Hero-Serie: 1 Luxusduft → 1 günstige Alternative → exakter Spar-Betrag.
+  (Bestes bewährtes Muster – Baccarat-/Creed-Reels liefen am besten.)
+- **„Original vs. Alternative – riechst du den Unterschied?"** → Kommentar-/Umfrage-Köder.
+- **„Luxus-Look unter 80 CHF"** → Karussell mit 5 Düften (holt Speicherungen / Saves).
+- **„3 Fragen, dein Duft"** → führt zum Quiz auf auressa.ch (nur Auressa hat dieses Tool).
+
+### Bewährte Mechaniken (vom Vorbild gelernt, im EIGENEN Look umgesetzt)
+- **Foto-Karussells** zum Wischen → viele Saves (Algorithmus pusht Saves stark).
+- **Kommentar-Köder** in der Caption („Welchen Luxusduft soll ich als Nächstes übersetzen?").
+- **Versprechen mit Zahl** im Hook („ohne 300.-") schlägt vage Aussagen.
+
+---
+
 ## 1. Schrift
 
 **Überschrift / Hook:** **Playfair Display** – Gewicht **SemiBold** oder **Bold**

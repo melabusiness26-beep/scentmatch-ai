@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SiteHeader from '@/app/SiteHeader';
-import { getPerfumes, rankByMood, moodNoteProfile, getMood, MOODS } from '@/lib/perfumes';
+import { getPerfumes, rankByMood, moodNoteProfile, moodReason, getMood, MOODS } from '@/lib/perfumes';
 import MoodResults from './MoodResults';
 
 // Stündlich neu generieren – frische Daten, schnelle Auslieferung (wie die Duftseiten).
@@ -47,6 +47,7 @@ export default async function MoodPage({ params }: { params: Promise<{ mood: str
 
   const perfumes = await getPerfumes(2000);
   const ranked = rankByMood(perfumes, mood, '', 30);
+  const items = ranked.map((p) => ({ perfume: p, reason: moodReason(p, mood) }));
   const dna = moodNoteProfile(ranked.slice(0, 12));
   const others = MOODS.filter((m) => m.code !== code);
 
@@ -116,7 +117,7 @@ export default async function MoodPage({ params }: { params: Promise<{ mood: str
         </section>
 
         <MoodResults
-          perfumes={ranked}
+          items={items}
           mood={{ emoji: mood.emoji, title: mood.title, result: mood.result, code: mood.code }}
         />
 

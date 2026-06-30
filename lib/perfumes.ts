@@ -469,6 +469,31 @@ export function getMood(code: string): Mood | undefined {
   return MOODS.find((m) => m.code === code);
 }
 
+// Kurze, ehrliche Begründung, warum ein Duft zu einer Stimmung passt.
+// Nutzt nur vorhandene Daten (Notenthema oder Duftfamilie) – kein Heilversprechen.
+const MOOD_FAMILY_WORDS: Record<string, string> = {
+  clean: 'Frische, klare Noten',
+  gourmand: 'Warme, süße Noten',
+  woody: 'Holzige, tiefe Noten',
+  floral: 'Blumige, zarte Noten'
+};
+const MOOD_THEME_WORDS: Record<string, string> = {
+  vanille: 'Süße Vanille-Noten',
+  zitrus: 'Spritzige Zitrus-Noten',
+  holz: 'Edle Holznoten',
+  blumig: 'Zarte Blütennoten',
+  orient: 'Warme, würzige Noten',
+  moschus: 'Weiche, saubere Noten'
+};
+
+export function moodReason(p: Perfume, mood: Mood): string {
+  const theme = mood.noteThemes.find((code) => perfumeHasTheme(p, code));
+  if (theme && MOOD_THEME_WORDS[theme]) return `${MOOD_THEME_WORDS[theme]} – genau das Richtige dafür.`;
+  const fam = p.fragrance_family || '';
+  if (MOOD_FAMILY_WORDS[fam]) return `${MOOD_FAMILY_WORDS[fam]} – genau das Richtige dafür.`;
+  return 'Passt zu deinem Gefühl.';
+}
+
 // "Duft-DNA" einer Stimmung: zeigt, welche Notenthemen in den Treffern dominieren.
 // Liefert prozentuale Balken (relativ zum häufigsten Thema) – ideal als Grafik.
 export function moodNoteProfile(

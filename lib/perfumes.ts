@@ -461,6 +461,62 @@ export const MOODS: Mood[] = [
     noteThemes: ['orient', 'vanille'],
     occasions: ['Date', 'Abend'],
     sillage: 'high'
+  },
+  {
+    code: 'job',
+    emoji: '💼',
+    title: 'Ich will im Job überzeugen',
+    phrase: 'wenn du im Job einen guten Eindruck machen willst',
+    subtitle: 'Dezent und seriös, fürs Büro.',
+    result: 'Diese gepflegten, dezenten Düfte wirken seriös – ideal fürs Büro und den Arbeitsalltag.',
+    intro: 'Im Job zählt ein Duft, der gepflegt wirkt, ohne aufzudringen: frische, klare Noten und etwas Holz. Dezent dosiert bleibst du angenehm im Hintergrund – professionell und nicht zu präsent für enge Büros.',
+    tone: '#9aa8a0',
+    families: { clean: 25, woody: 20 },
+    noteThemes: ['zitrus', 'holz', 'moschus'],
+    occasions: ['Büro', 'Alltag'],
+    sillage: 'low'
+  },
+  {
+    code: 'urlaub',
+    emoji: '☀️',
+    title: 'Ich will Urlaubsgefühl',
+    phrase: 'wenn du dir Sommer und Urlaub wünschst',
+    subtitle: 'Leicht und fruchtig, wie Ferien.',
+    result: 'Diese leichten, fruchtigen Düfte schmecken nach Urlaub – Sonne, Strand und gute Laune.',
+    intro: 'Sehnsucht nach Sommer? Leichte, fruchtige Düfte mit Zitrus und frischen Blüten holen das Urlaubsgefühl auf die Haut. Spritzig, sonnig und gut gelaunt – ideal für warme Tage und freie Stunden.',
+    tone: '#3fb8c4',
+    families: { clean: 25, floral: 20 },
+    noteThemes: ['zitrus'],
+    season: 'Sommer',
+    sillage: 'medium'
+  },
+  {
+    code: 'abend',
+    emoji: '🌙',
+    title: 'Ich will den Abend genießen',
+    phrase: 'wenn du den Abend gemütlich ausklingen lassen willst',
+    subtitle: 'Warm und entspannt für den Abend.',
+    result: 'Diese warmen, weichen Düfte machen den Abend gemütlich – zum Entspannen und Genießen.',
+    intro: 'Ein ruhiger Abend für dich: warme, weiche Düfte mit Vanille und sanftem Moschus, dazu etwas Holz für Tiefe. Gemütlich und entspannt – wie Kerzenlicht und ein gutes Buch.',
+    tone: '#6b5b8a',
+    families: { gourmand: 30, woody: 15 },
+    noteThemes: ['vanille', 'moschus'],
+    occasions: ['Abend'],
+    sillage: 'low'
+  },
+  {
+    code: 'geschenk',
+    emoji: '🎁',
+    title: 'Ich suche ein Geschenk',
+    phrase: 'wenn du ein Parfüm verschenken möchtest',
+    subtitle: 'Beliebte Allrounder, die fast jedem gefallen.',
+    result: 'Diese vielseitigen, beliebten Düfte sind sichere Geschenke – sie kommen fast immer gut an.',
+    intro: 'Ein Parfüm zu verschenken ist heikel – darum zeigen wir hier vielseitige Allrounder mit hohem Auressa-Score: ganzjährig tragbar, angenehm dosiert und breit beliebt. So liegst du auch ohne genaue Vorlieben selten daneben.',
+    tone: '#c9a24a',
+    families: { clean: 10, gourmand: 10, woody: 10, floral: 10 },
+    noteThemes: [],
+    season: 'Ganzjährig',
+    sillage: 'medium'
   }
 ];
 

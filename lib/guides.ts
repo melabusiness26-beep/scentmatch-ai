@@ -1574,6 +1574,122 @@ export const guides: Guide[] = [
         ]
       }
     ]
+  },
+  {
+    slug: 'zara-parfum-dupes-welches-original',
+    title: 'Zara Parfum Dupes: welches Original steckt dahinter?',
+    description:
+      'Viele Zara-Düfte erinnern stark an teure Designer-Parfums. Wir zeigen die bekanntesten Zara-Dupes und welches Original jeweils dahintersteckt.',
+    intro: [
+      'Zara ist bekannt für überraschend gute Düfte zum kleinen Preis – viele davon erinnern stark an teure Designer-Parfums. Kein Wunder: Ein Teil der Zara-Düfte wurde mit dem renommierten Parfümeur-Haus Jo Loves (Jo Malone) entwickelt.',
+      'Ehrlich gesagt: Ein Dupe ist nie zu 100 % identisch und hält oft etwas kürzer. Aber für den Alltag und zum Ausprobieren einer Duftrichtung sind die Zara-Düfte erstaunlich gut – und kosten meist unter 20 Franken.',
+      'Hier die bekanntesten Zara-Dupes und ihre teuren „Vorbilder". Die genaue Verfügbarkeit wechselt bei Zara saisonal.'
+    ],
+    sections: [
+      {
+        heading: 'Die bekanntesten Zara-Dupes und ihr Original',
+        body: [
+          'Zara Red Vanilla → erinnert an YSL Black Opium: süss-kaffeeartig mit Vanille, ein beliebter Damen-Abendduft.',
+          'Zara Vibrant Leather → geht in die Richtung von Creed Aventus: fruchtig-rauchig, der Klassiker unter den „Komplimente-Düften".',
+          'Zara Tobacco Collection (Rich Warm Addictive) → erinnert an Tom Ford Tobacco Vanille: würzig-süss, warm, perfekt für den Winter.',
+          'Zara Gardenia → wird oft mit edlen Tuberose-/Gardenia-Düften verglichen: cremig-blumig und feminin.',
+          'Zara Femme / Zara Woman → leichte, frische Alltagsdüfte, die an beliebte Damen-Klassiker angelehnt sind.',
+          'Zara Man Silver / Zara for Men → frische, aquatische Herrendüfte in der Richtung bekannter Sommer-Klassiker.'
+        ]
+      },
+      {
+        heading: 'Lohnen sich Zara-Düfte wirklich?',
+        body: [
+          'Für den Preis: definitiv. Du bekommst eine Duftrichtung zum Ausprobieren, ohne gleich 100+ Franken auszugeben.',
+          'Der Kompromiss liegt meist bei der Haltbarkeit und der Sillage (wie weit der Duft im Raum wahrnehmbar ist): Zara-Düfte halten oft ein paar Stunden weniger als das teure Original. Mit dem Auftragen auf eingecremte Haut und etwas auf die Kleidung holst du aber spürbar mehr heraus.',
+          'Tipp: Viele Zara-Düfte sind als kleine 30-ml-Flakons oder im Doppelpack erhältlich – ideal zum Testen, bevor du dich für ein teures Original entscheidest.'
+        ]
+      },
+      {
+        body: [
+          'Du willst wissen, welche Duftrichtung wirklich zu dir passt – egal ob günstig oder edel? Mach unser Duft-Quiz, und schau dir danach unseren Ratgeber „Günstige Alternativen zu teuren Parfüms" für weitere Dupe-Tipps aus unserem Katalog an.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'die-besten-sommerduefte-maenner',
+    title: 'Die besten Sommerdüfte für Männer 2026',
+    description:
+      'Frische, leichte Herrendüfte für den Sommer: aquatisch, zitrisch und alltagstauglich. Unsere Favoriten für heisse Tage – von günstig bis edel.',
+    intro: [
+      'Im Sommer brauchen Herrendüfte vor allem eines: Frische. Schwere, süsse Düfte wirken bei Hitze schnell aufdringlich, während aquatische, zitrische und leicht würzige Düfte sauber und anziehend bleiben.',
+      'Hier unsere liebsten Sommerdüfte für Männer aus dem Katalog – frisch genug für den Tag, aber mit genug Charakter für den Abend.'
+    ],
+    sections: [
+      {
+        heading: 'Frisch & aquatisch: die sicheren Sommer-Favoriten',
+        perfumes: ['davidoff-cool-water', 'armani-acqua-di-gio-homme', 'versace-dylan-blue', 'allure-homme-sport', 'prada-luna-rossa-ocean']
+      },
+      {
+        heading: 'Etwas mehr Charakter: anziehend für laue Abende',
+        perfumes: ['versace-eros', 'ea-stronger-with-you', 'invictus']
+      },
+      {
+        heading: 'Worauf du bei Sommerdüften für Männer achten solltest',
+        body: [
+          'Setz auf leichte Konzentrationen (Eau de Toilette) und frische Familien – aquatisch, zitrisch, grün. Sie wirken bei Hitze angenehmer als schwere, süsse Düfte.',
+          'Dezent dosieren: Bei Wärme entfaltet sich ein Duft viel stärker. Zwei bis drei Sprühstösse reichen meist völlig.',
+          'Frische Düfte verfliegen schneller – ein kleiner Reisezerstäuber für die Tasche hilft, am Nachmittag kurz aufzufrischen.',
+          'Für Büro und Tag gilt: lieber sauber und zurückhaltend. Die intensiveren Varianten passen besser zum Abend.'
+        ]
+      },
+      {
+        body: [
+          'Unsicher, welche Richtung zu dir passt? Mach unser Duft-Quiz – es findet deinen Sommer-Typ in unter einer Minute.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'parfum-trends-2026',
+    title: 'Parfum-Trends 2026: diese Düfte sind jetzt angesagt',
+    description:
+      'Welche Duftrichtungen sind 2026 angesagt? Von gourmandigen Dessert-Düften über salzige Haut-Noten bis zum Aufstieg günstiger Nischen-Marken – die wichtigsten Trends.',
+    intro: [
+      'Düfte folgen Trends wie Mode – manche kommen über Social Media (vor allem TikTok), andere über neue Lieblingsnoten. Hier die wichtigsten Parfum-Trends für 2026, einfach erklärt.',
+      'Wichtig: Trend heisst nicht „besser". Der schönste Duft ist immer der, der zu dir passt. Trends sind aber eine gute Inspiration, Neues auszuprobieren.'
+    ],
+    sections: [
+      {
+        heading: '1. Gourmand bleibt König – jetzt als „Dessert-Duft"',
+        body: [
+          'Süsse, essbare Noten sind weiter extrem beliebt: Vanille, Karamell, Praline – und neu vermehrt Pistazie, Schokolade und „Dubai-Chocolate"-Anklänge.',
+          'Diese Düfte wirken kuschelig und nahbar, perfekt für Herbst und Winter. Wer es nicht zu süss mag, greift zu Varianten mit einer salzigen oder holzigen Kante.'
+        ]
+      },
+      {
+        heading: '2. Salzige & „Haut"-Düfte (Skin Scents)',
+        body: [
+          'Leichte, salzig-warme Düfte, die riechen wie „frisch geduschte Haut in der Sonne", liegen voll im Trend. Noten wie Ambroxan, Moschus und ein Hauch Salz wirken sauber, modern und unaufdringlich.',
+          'Ideal für alle, die einen Duft suchen, der nah an der Haut bleibt und nicht den ganzen Raum füllt.'
+        ]
+      },
+      {
+        heading: '3. Günstige Nischen- & Klon-Marken boomen',
+        body: [
+          'Marken wie Lattafa und Armaf haben gezeigt, dass guter Duft nicht teuer sein muss. 2026 greifen immer mehr Menschen bewusst zu günstigen Alternativen statt zum Designer-Original.',
+          'Auch „Dupe-Kultur" ist längst kein Geheimnis mehr – ähnlich riechen für einen Bruchteil des Preises ist Mainstream geworden.'
+        ]
+      },
+      {
+        heading: '4. Unisex statt strenger Schubladen',
+        body: [
+          'Die klare Trennung „für ihn / für sie" verschwimmt weiter. Viele der gefragtesten Düfte sind unisex – holzig-würzig, frisch oder gourmandig, ganz ohne Geschlechter-Etikett.',
+          'Trag einfach, was dir gefällt – das ist der grösste Trend von allen.'
+        ]
+      },
+      {
+        body: [
+          'Neugierig, welcher Trend zu dir passt? Mach unser Duft-Quiz und entdecke deine Richtung – wir zeigen dir passende Düfte aus jeder dieser Trend-Welten.'
+        ]
+      }
+    ]
   }
 ];
 
@@ -1663,6 +1779,7 @@ export const guideCategories: GuideCategory[] = [
       'die-besten-fruehlingsduefte',
       'die-besten-sommerduefte',
       'die-besten-sommerduefte-frauen',
+      'die-besten-sommerduefte-maenner',
       'die-besten-herbstduefte',
       'die-besten-winterduefte'
     ]
@@ -1701,6 +1818,7 @@ export const guideCategories: GuideCategory[] = [
       'guenstige-alternativen-zu-teuren-dueften',
       'creed-aventus-guenstige-alternativen',
       'lattafa-dupes-welches-original',
+      'zara-parfum-dupes-welches-original',
       'die-besten-duefte-unter-50-franken',
       'parfum-fuer-junge-leute-unter-60-franken'
     ]
@@ -1723,7 +1841,8 @@ export const guideCategories: GuideCategory[] = [
       'edt-edp-parfum-unterschied',
       'parfum-inhaltsstoffe-allergene',
       'parfum-layering-duefte-kombinieren',
-      'haeufige-parfum-fehler'
+      'haeufige-parfum-fehler',
+      'parfum-trends-2026'
     ]
   }
 ];

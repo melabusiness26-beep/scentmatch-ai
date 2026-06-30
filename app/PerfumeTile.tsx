@@ -80,11 +80,15 @@ export function PerfumeTile({ perfume, matchPercent }: { perfume: Perfume; match
 
 // Filtert Düfte anhand eines Suchbegriffs (Name, Marke, Note, Geschlecht, Saison, Anlass).
 export function matchesQuery(p: Perfume, query: string): boolean {
-  if (!query) return true;
+  const q = query.trim().toLowerCase();
+  if (!q) return true;
   const notes = [...(p.top_notes || []), ...(p.heart_notes || []), ...(p.base_notes || [])].join(' ');
   const genderTerms = p.gender ? genderSearchTerms[p.gender] || p.gender : '';
   // Synonyme: "Schokolade" findet auch Kakao/Praline.
   const synonyms = /kakao|schokolade|praline/i.test(notes) ? ' schokolade kakao praline' : '';
   const haystack = `${p.perfume_name} ${p.fragrance_family} ${p.brands?.name || ''} ${genderTerms} ${p.season || ''} ${p.occasion || ''} ${notes}${synonyms}`.toLowerCase();
-  return haystack.includes(query.toLowerCase());
+  // Jedes Suchwort muss vorkommen (Reihenfolge egal). So findet "Creed Aventus"
+  // den Duft, obwohl Marke ("Creed") und Name ("Aventus") in getrennten Feldern
+  // und in anderer Reihenfolge gespeichert sind.
+  return q.split(/\s+/).every((term) => haystack.includes(term));
 }

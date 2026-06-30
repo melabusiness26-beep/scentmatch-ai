@@ -319,22 +319,19 @@ export const guides: Guide[] = [
   },
   {
     slug: 'wie-lange-haelt-parfum-haltbarkeit',
-    title: 'Wie lange hält ein Parfum? Haltbarkeit & richtig auftragen',
+    title: 'Wie lange hält ein Parfum? Haltbarkeit, Gründe & langlebige Düfte',
     description:
-      'Warum verfliegt dein Parfum so schnell – und wie hält es länger? Tipps zum richtigen Auftragen plus die langlebigsten Düfte aus unserem Katalog.',
+      'Warum verfliegt dein Parfum so schnell, welche Düfte halten am längsten und wie lange ist ein Parfum überhaupt haltbar? Alles zur Haltbarkeit plus die langlebigsten Düfte aus unserem Katalog.',
     intro: [
-      'Kennst du das? Morgens aufgesprüht, mittags weg. Wie lange ein Duft hält, hängt von der Konzentration, deiner Haut und vom richtigen Auftragen ab.',
-      'Hier die wichtigsten Tipps – und am Ende die langlebigsten Düfte aus unserem Katalog.'
+      'Kennst du das? Morgens aufgesprüht, mittags weg. Wie lange ein Duft hält, hängt von der Konzentration, deiner Haut und der Duftrichtung ab.',
+      'Hier erfährst du, warum Düfte verfliegen, welche am längsten halten und wie lange ein Parfum haltbar ist – und am Ende die langlebigsten Düfte aus unserem Katalog.'
     ],
     sections: [
       {
-        heading: 'So hält dein Duft länger',
+        heading: 'Hält dein Duft zu kurz? Das Auftragen entscheidet mit',
         body: [
-          'Auf gepflegte, leicht eingecremte Haut sprühen – auf trockener Haut verfliegt der Duft schneller.',
-          'Auf die „Pulspunkte" auftragen: Handgelenke, Hals, hinter den Ohren, Ellenbeugen. Dort ist es warm und der Duft entfaltet sich.',
-          'Nicht verreiben! Das Aneinanderreiben der Handgelenke „bricht" die Duftmoleküle und verkürzt die Haltbarkeit.',
-          'Auch in Haare und auf Kleidung (vorsichtig) sprühen – dort hält Duft besonders lange.',
-          'Eau de Parfum (EdP) hält länger als Eau de Toilette (EdT). Mehr dazu in unserem Ratgeber zu Inhaltsstoffen.'
+          'Wie gut ein Duft hält, hängt stark davon ab, wie du ihn aufträgst: auf eingecremte Haut, auf die „Pulspunkte" (Handgelenke, Hals, hinter den Ohren) – und ohne die Handgelenke aneinanderzureiben, denn das verkürzt die Haltbarkeit.',
+          'Die komplette Schritt-für-Schritt-Anleitung dazu findest du in unserem eigenen Ratgeber „Parfum richtig auftragen".'
         ]
       },
       {
@@ -1562,14 +1559,8 @@ export const guides: Guide[] = [
         ]
       },
       {
-        heading: 'Parfum richtig aufbewahren',
         body: [
-          'Hitze, Licht und Temperaturschwankungen lassen Parfum schneller altern. Das Badezimmer ist daher der schlechteste Ort dafür.',
-          'Bewahr deine Düfte am besten kühl, dunkel und trocken auf – zum Beispiel im Schlafzimmerschrank, idealerweise in der Originalverpackung. So bleibt ein Duft oft mehrere Jahre gut.'
-        ]
-      },
-      {
-        body: [
+          'Übrigens: Wie lange ein Duft grundsätzlich auf der Haut hält und welche Düfte von Natur aus am längsten durchhalten, erfährst du in unserem Ratgeber „Wie lange hält ein Parfum?".',
           'Du hast den Dreh raus – jetzt fehlt nur noch der passende Duft? Mach unser Duft-Quiz und finde in unter einer Minute heraus, welche Richtung wirklich zu dir passt.'
         ]
       }

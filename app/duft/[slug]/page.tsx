@@ -293,7 +293,13 @@ export default async function PerfumeDetailPage({
     <main>
       <SiteHeader />
       <div className="container">
-        <div className="backlink"><Link className="badge" href="/duefte">← Alle Düfte</Link></div>
+        <nav className="breadcrumb small" aria-label="Brotkrümel-Navigation">
+          <Link href="/">Start</Link>
+          <span className="breadcrumb-sep" aria-hidden="true">›</span>
+          <Link href="/duefte">Düfte</Link>
+          <span className="breadcrumb-sep" aria-hidden="true">›</span>
+          <span className="breadcrumb-current" aria-current="page">{perfume.perfume_name}</span>
+        </nav>
 
         <section className="detail-hero">
           <div>

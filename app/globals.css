@@ -188,6 +188,11 @@ a.logo { text-decoration:none; color:inherit; }
 .tile-link { display:block; text-decoration:none; color:inherit; transition: transform .15s ease, box-shadow .15s ease; }
 .tile-link:hover { transform: translateY(-3px); box-shadow: 0 18px 50px rgba(75,53,40,.16); }
 .backlink { margin: 18px 0 -10px; }
+.breadcrumb { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin: 20px 0 -6px; }
+.breadcrumb a { color: var(--brown); opacity:.8; text-decoration:none; }
+.breadcrumb a:hover { opacity:1; text-decoration:underline; }
+.breadcrumb-sep { color: var(--gold); }
+.breadcrumb-current { color: var(--text); font-weight:600; }
 .detail-hero { display:grid; grid-template-columns: 1.3fr .7fr; gap:36px; align-items:start; margin-top:24px; }
 
 /* Foto-Hero-Banner (echtes Stimmungsbild mit dunklem Verlauf für Lesbarkeit). */
@@ -235,6 +240,7 @@ a.note-pill:hover { background:rgba(185,152,99,.3); border-color:var(--gold); tr
 .filter-pill:hover { border-color: var(--gold); }
 .filter-pill-active { background:var(--brown); color:#fff; border-color:var(--brown); }
 .catalog-count { margin:10px 0 18px; }
+.catalog-more { justify-content:center; margin-top:24px; }
 
 /* Premium-Politur: sanfte Bewegungen & Fokus */
 .button { transition: transform .15s ease, box-shadow .15s ease, filter .15s ease, border-color .15s ease; }

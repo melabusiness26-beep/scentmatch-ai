@@ -1518,6 +1518,62 @@ export const guides: Guide[] = [
         ]
       }
     ]
+  },
+  {
+    slug: 'parfum-richtig-auftragen',
+    title: 'Parfum richtig auftragen: So hält dein Duft länger',
+    description:
+      'Wohin Parfum sprühen, wie viele Sprühstösse und warum nicht reiben? Die wichtigsten Tipps, damit dein Duft besser hält und schöner riecht.',
+    intro: [
+      'Der gleiche Duft kann komplett unterschiedlich wirken – je nachdem, wie du ihn aufträgst. Mit ein paar einfachen Handgriffen hält dein Parfum länger, riecht runder und du brauchst weniger davon.',
+      'Hier die wichtigsten Tipps, verständlich erklärt – ganz ohne Fachwissen.'
+    ],
+    sections: [
+      {
+        heading: 'Wohin Parfum auftragen? Die richtigen Stellen',
+        body: [
+          'Trag Parfum auf die sogenannten Pulspunkte auf: Handgelenke, Halsansatz, hinter den Ohren und in die Ellenbeugen. Dort liegen Blutgefässe nahe an der Haut, die Wärme abgeben – das hilft, den Duft sanft zu verströmen.',
+          'Ein Profi-Trick: Sprüh auch etwas auf den Brustkorb (Dekolleté). Düfte steigen über den Tag nach oben, deshalb hält ein Duft von unten oft länger wahrnehmbar.',
+          'Wer mag, sprüht zusätzlich ein bis zwei Stösse auf die Kleidung oder einen Schal – auf Stoff hält ein Duft oft deutlich länger als auf der Haut. Vorsicht nur bei empfindlichen oder hellen Stoffen, da manche Düfte Flecken hinterlassen können.'
+        ]
+      },
+      {
+        heading: 'Wie viele Sprühstösse sind richtig?',
+        body: [
+          'Als Faustregel: zwei bis vier Sprühstösse reichen für die meisten Düfte völlig. Leichte, frische Düfte (Eau de Toilette) dürfen etwas grosszügiger sein, intensive Düfte (Eau de Parfum, Parfum) brauchen weniger.',
+          'Weniger ist fast immer mehr: Du selbst riechst deinen Duft nach kurzer Zeit kaum noch (die Nase gewöhnt sich daran) – andere aber sehr wohl. Wer „nachlegt, weil man nichts mehr riecht", überdosiert schnell.',
+          'Bei Hitze wirkt ein Duft intensiver als im Winter. Im Sommer also lieber sparsamer dosieren.'
+        ]
+      },
+      {
+        heading: 'Der häufigste Fehler: Handgelenke aneinander reiben',
+        body: [
+          'Fast alle machen es – und es schadet dem Duft: Nach dem Auftragen die Handgelenke aneinanderzureiben. Durch die Reibung entsteht Wärme, die die feinen Kopfnoten „zerbricht" und den Duft schneller verfliegen lässt.',
+          'Besser: einfach auftragen und kurz antrocknen lassen. Nicht reiben, nicht föhnen, nicht verwischen.'
+        ]
+      },
+      {
+        heading: 'So hält dein Duft den ganzen Tag',
+        body: [
+          'Trag Parfum auf frisch geduschte, leicht eingecremte Haut auf. Auf trockener Haut verfliegt ein Duft schneller – eine geruchsneutrale Bodylotion oder Vaseline an den Pulspunkten gibt dem Duft „Halt".',
+          'Der beste Zeitpunkt ist direkt nach dem Duschen, wenn die Poren noch leicht geöffnet sind.',
+          'Sprüh aus rund 15–20 cm Abstand, damit sich der Duft fein verteilt statt in einem nassen Fleck zu landen.',
+          'Für unterwegs lohnt sich ein kleiner Reisezerstäuber: So kannst du am Nachmittag dezent auffrischen, ohne das grosse Fläschchen mitzuschleppen.'
+        ]
+      },
+      {
+        heading: 'Parfum richtig aufbewahren',
+        body: [
+          'Hitze, Licht und Temperaturschwankungen lassen Parfum schneller altern. Das Badezimmer ist daher der schlechteste Ort dafür.',
+          'Bewahr deine Düfte am besten kühl, dunkel und trocken auf – zum Beispiel im Schlafzimmerschrank, idealerweise in der Originalverpackung. So bleibt ein Duft oft mehrere Jahre gut.'
+        ]
+      },
+      {
+        body: [
+          'Du hast den Dreh raus – jetzt fehlt nur noch der passende Duft? Mach unser Duft-Quiz und finde in unter einer Minute heraus, welche Richtung wirklich zu dir passt.'
+        ]
+      }
+    ]
   }
 ];
 
@@ -1662,6 +1718,7 @@ export const guideCategories: GuideCategory[] = [
     title: 'Wissen & Tipps',
     slugs: [
       'parfum-fuer-einsteiger-erster-signature-duft',
+      'parfum-richtig-auftragen',
       'wie-lange-haelt-parfum-haltbarkeit',
       'edt-edp-parfum-unterschied',
       'parfum-inhaltsstoffe-allergene',

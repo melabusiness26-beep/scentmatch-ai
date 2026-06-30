@@ -71,7 +71,19 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 .hero-stat:last-child { padding-bottom: 4px; }
 .hero-stat strong { font-family: var(--font-display), Georgia, serif; font-size: 36px; color: var(--gold); line-height: 1; min-width: 70px; }
 .hero-stat span { font-family: var(--font-sans), Arial, sans-serif; font-size: 14px; color: rgba(243,233,218,.86); }
-@media (max-width: 800px) { .hero-stage { padding: 40px 24px; } }
+@media (max-width: 800px) {
+  .hero-stage {
+    padding: 40px 24px;
+    /* Auf dem Handy das Foto sichtbar lassen: hellerer, vertikaler Verlauf
+       (oben Boutique-Foto sichtbar, unten dunkler für lesbare Knöpfe). */
+    background:
+      linear-gradient(180deg, rgba(26,18,12,.46) 0%, rgba(26,18,12,.66) 46%, rgba(22,15,10,.93) 100%),
+      url('/hero-auressa.jpg') center top / cover no-repeat,
+      radial-gradient(130% 130% at 0% 0%, #5a4131 0%, #3a2a20 48%, #241912 100%);
+  }
+  .hero-stage h1, .hero-stage .lead, .hero-stage .eyebrow { text-shadow: 0 2px 16px rgba(14,9,5,.6); }
+  .hero-stage .lead { font-size: 17px; }
+}
 .container { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
 .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 54px; }
 .logo { display: inline-flex; align-items: center; gap: 11px; font-size: 27px; font-weight: 700; letter-spacing: -0.02em; }

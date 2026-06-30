@@ -52,14 +52,19 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 .hero-stat-mini strong { font-family: var(--font-display), Georgia, serif; font-size: 30px; color: #a07c43; line-height: 1; }
 .hero-stat-mini span { font-family: var(--font-sans), Arial, sans-serif; font-size: 13px; color: #6d5a4d; }
 @media (max-width: 800px) {
+  /* Handy: Foto als knackiges Banner oben (volle Farbe), Text darunter auf
+     cleanem Creme – kein verwaschener Überzug mehr. */
   .hero-stage.hero-photo {
-    min-height: 0; padding: 34px 22px 30px;
-    background:
-      linear-gradient(180deg, rgba(252,247,238,.92) 0%, rgba(252,247,238,.74) 42%, rgba(250,243,231,.40) 100%),
-      url('/hero-auressa.jpg') center right / cover no-repeat;
+    display: block; min-height: 0; padding: 0;
+    background: #fbf6ee;
   }
-  .hero-photo-inner { max-width: none; }
-  .hero-photo h1, .hero-photo .lead { text-shadow: 0 1px 2px rgba(255,250,242,.7); }
+  .hero-photo::before {
+    content: ''; display: block; position: static; inset: auto;
+    width: 100%; height: auto; aspect-ratio: 2000 / 1116;
+    background: url('/hero-auressa.jpg') center / cover no-repeat;
+    animation: none;
+  }
+  .hero-photo-inner { max-width: none; padding: 24px 22px 30px; }
 }
 /* Editorial-Flakon im Hero: edler Gold-Umriss mit weichem Schein */
 .hero-flacon { width: 100px; height: 134px; filter: drop-shadow(0 10px 30px rgba(216,178,119,.45)); }

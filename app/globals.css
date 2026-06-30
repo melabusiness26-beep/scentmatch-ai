@@ -43,7 +43,7 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 @media (prefers-reduced-motion: no-preference) {
   .hero-stage::before { animation: heroGlow 13s ease-in-out infinite alternate; }
   .hero-stage::after { animation: heroGlow2 17s ease-in-out infinite alternate; }
-  .hero-flacon { animation: heroFloat 5.5s ease-in-out infinite alternate; }
+  .hero-flacon, .hero-bottle { animation: heroFloat 5.5s ease-in-out infinite alternate; }
   @keyframes heroGlow { from { transform: translate(0,0) scale(1); opacity: .8; } to { transform: translate(-46px, 34px) scale(1.16); opacity: 1; } }
   @keyframes heroGlow2 { from { transform: translate(0,0) scale(1); opacity: .65; } to { transform: translate(40px, -28px) scale(1.12); opacity: .95; } }
   @keyframes heroFloat { from { transform: translateY(-5px); } to { transform: translateY(7px); } }
@@ -56,24 +56,23 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 .hero-stage .button:hover { box-shadow: 0 12px 28px rgba(75,53,40,.28); }
 .hero-stage .secondary { background: rgba(255,255,255,.5); color: var(--brown); border: 1px solid rgba(75,53,40,.22); }
 .hero-stage .secondary:hover { border-color: var(--gold); color: var(--brown); }
-.hero-stage .perfume-card { background: rgba(255,255,255,.66); border: 1px solid rgba(185,152,99,.4); color: var(--brown); box-shadow: 0 24px 60px rgba(75,53,40,.12); backdrop-filter: blur(4px); }
+.hero-stage .perfume-card { background: radial-gradient(120% 80% at 50% 0%, #5a4131 0%, #3a2a20 56%, #271b13 100%); border: 1px solid rgba(216,178,119,.5); color: #f3e9da; box-shadow: 0 30px 70px rgba(40,28,18,.4); }
 .hero-stats-card { min-height: 0; justify-content: flex-start; align-items: center; text-align: center; }
-.hero-emblem { width: 88px; height: auto; display: block; margin: 4px auto 16px; filter: drop-shadow(0 8px 22px rgba(185,152,99,.45)); }
-.hero-emblem rect, .hero-emblem path { stroke: #b99863; stroke-width: 1.6; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
-.hero-stats-title { font-family: var(--font-sans), Arial, sans-serif; text-transform: uppercase; letter-spacing: .22em; font-size: 12px; font-weight: 600; color: #a07c43; margin: 0 0 16px; }
-.hero-stage .perfume-card h2 { color: var(--brown); }
-.hero-stage .perfume-card p.small { color: #6d5a4d; }
+.hero-bottle { width: 150px; height: auto; display: block; margin: 0 auto 16px; filter: drop-shadow(0 16px 32px rgba(20,12,4,.5)); }
+.hero-stats-title { font-family: var(--font-sans), Arial, sans-serif; text-transform: uppercase; letter-spacing: .22em; font-size: 12px; font-weight: 600; color: var(--gold); margin: 0 0 16px; }
+.hero-stage .perfume-card h2 { color: #fbf3e6; }
+.hero-stage .perfume-card p.small { color: rgba(243,233,218,.82); }
 .hero-stage .bottle { background: linear-gradient(135deg, rgba(216,183,170,.4), rgba(185,152,99,.16)); color: #fbf3e6; }
 .hero-stage .hero { gap: 44px; }
 .hero-stage p.lead { max-width: 560px; }
 .hero-trust { margin-top: 22px; font-family: var(--font-sans), Arial, sans-serif; font-size: 14px; color: #6d5a4d; }
 .hero-trust .stars { color: var(--gold); letter-spacing: 2px; margin-right: 6px; }
 .hero-stats { display: flex; flex-direction: column; gap: 0; width: 100%; }
-.hero-stat { display: flex; align-items: baseline; gap: 14px; border-top: 1px solid rgba(75,53,40,.14); padding: 16px 0; }
+.hero-stat { display: flex; align-items: baseline; gap: 14px; border-top: 1px solid rgba(243,233,218,.18); padding: 16px 0; }
 .hero-stat:first-child { border-top: 0; padding-top: 4px; }
 .hero-stat:last-child { padding-bottom: 4px; }
 .hero-stat strong { font-family: var(--font-display), Georgia, serif; font-size: 36px; color: var(--gold); line-height: 1; min-width: 70px; }
-.hero-stat span { font-family: var(--font-sans), Arial, sans-serif; font-size: 14px; color: #6d5a4d; }
+.hero-stat span { font-family: var(--font-sans), Arial, sans-serif; font-size: 14px; color: rgba(243,233,218,.86); }
 @media (max-width: 800px) {
   .hero-stage { padding: 38px 24px; }
   .hero-stage .lead { font-size: 17px; }

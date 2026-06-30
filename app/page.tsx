@@ -512,12 +512,31 @@ export default function Home() {
             </div>
             <div className="card perfume-card hero-stats-card">
               {/* Helles, edles Hero-Panel mit goldenem Flakon-Emblem + Kennzahlen. */}
-              <svg className="hero-emblem" viewBox="0 0 60 86" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-                <rect x="23" y="3" width="14" height="9" rx="2.5" />
-                <rect x="26.5" y="12" width="7" height="6" />
-                <rect x="14" y="18" width="32" height="64" rx="10" />
-                <path d="M20 50 h20" />
-                <path d="M20 58 h13" />
+              <svg className="hero-bottle" viewBox="0 0 140 188" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="auGlow" cx="50%" cy="46%" r="58%">
+                    <stop offset="0%" stopColor="#f6dca0" stopOpacity="0.6" />
+                    <stop offset="100%" stopColor="#f6dca0" stopOpacity="0" />
+                  </radialGradient>
+                  <linearGradient id="auBody" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#f9e9c2" />
+                    <stop offset="46%" stopColor="#d8b277" />
+                    <stop offset="100%" stopColor="#9c7440" />
+                  </linearGradient>
+                  <linearGradient id="auCap" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#ecce8e" />
+                    <stop offset="100%" stopColor="#856030" />
+                  </linearGradient>
+                </defs>
+                <circle cx="70" cy="92" r="68" fill="url(#auGlow)" />
+                <rect x="57" y="12" width="26" height="20" rx="5" fill="url(#auCap)" />
+                <rect x="62" y="31" width="16" height="12" fill="url(#auCap)" />
+                <rect x="34" y="42" width="72" height="130" rx="22" fill="url(#auBody)" stroke="#7d5c30" strokeWidth="1" />
+                <rect x="44" y="56" width="12" height="104" rx="6" fill="#ffffff" opacity="0.28" />
+                <rect x="50" y="100" width="40" height="46" rx="6" fill="#fff8ec" opacity="0.92" />
+                <path d="M59 116 h22 M59 125 h22 M64 134 h12" stroke="#a9824a" strokeWidth="2" strokeLinecap="round" />
+                <path d="M116 46 l2.2 6.4 6.4 2.2 -6.4 2.2 -2.2 6.4 -2.2 -6.4 -6.4 -2.2 6.4 -2.2 z" fill="#f0d18f" />
+                <path d="M20 126 l1.5 4.6 4.6 1.5 -4.6 1.5 -1.5 4.6 -1.5 -4.6 -4.6 -1.5 4.6 -1.5 z" fill="#f0d18f" />
               </svg>
               <p className="hero-stats-title">Auf einen Blick</p>
               <div className="hero-stats">

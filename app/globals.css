@@ -376,6 +376,7 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 .faq-item p { margin: 0 0 16px; line-height: 1.6; }
 /* Ehrlichkeits-Hinweis auf der Gefühls-Seite */
 .mood-honest { font-style: italic; color: rgba(38,29,24,.7); margin-top: 10px; }
+.mood-tips { max-width: 720px; }
 /* Stimmungs-Ergebnisse: Top-Treffer + Karten mit Begründung & Kauf-Knopf */
 .mood-top { display: grid; grid-template-columns: 200px 1fr; gap: 22px; align-items: center; background: rgba(185,152,99,.14); border: 1px solid rgba(185,152,99,.4); border-radius: 24px; padding: 20px; margin: 18px 0 24px; }
 .mood-top .cover { margin-bottom: 0; }

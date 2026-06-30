@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SiteHeader from '@/app/SiteHeader';
-import { getPerfumes, rankByMood, moodNoteProfile, moodReason, getMood, MOODS } from '@/lib/perfumes';
+import { getPerfumes, rankByMood, moodNoteProfile, moodReason, getMood, MOOD_TIPS, MOODS } from '@/lib/perfumes';
 import MoodResults from './MoodResults';
 
 // Stündlich neu generieren – frische Daten, schnelle Auslieferung (wie die Duftseiten).
@@ -62,6 +62,19 @@ export default async function MoodPage({ params }: { params: Promise<{ mood: str
     {
       q: 'Sind die Empfehlungen für Damen oder Herren?',
       a: 'Für beide. Mit dem Filter „Damen", „Herren" oder „Für alle" passt du die Liste mit einem Tippen an dein Wunsch-Geschlecht an.'
+    },
+    {
+      q: 'Wie stark soll ich so einen Duft auftragen?',
+      a:
+        mood.sillage === 'low'
+          ? 'Diese Düfte sind eher dezent – ein bis zwei Sprüher reichen, gern direkt auf die Haut.'
+          : mood.sillage === 'high'
+            ? 'Diese Düfte sind intensiv – ein, zwei Sprüher genügen, sonst wird es schnell zu viel.'
+            : 'Zwei bis drei Sprüher auf Hals und Handgelenke passen meistens gut.'
+    },
+    {
+      q: 'Gibt es auch günstige Alternativen?',
+      a: 'Ja – zu vielen teureren Düften gibt es ähnlich riechende, günstigere Varianten. Öffne ein Duftprofil und schau unter „Günstige Alternativen", oder stöbere in der Duftdatenbank.'
     }
   ];
 
@@ -120,6 +133,14 @@ export default async function MoodPage({ params }: { params: Promise<{ mood: str
           items={items}
           mood={{ emoji: mood.emoji, title: mood.title, result: mood.result, code: mood.code }}
         />
+
+        {MOOD_TIPS[code] && (
+          <section className="section">
+            <p className="eyebrow">Tipp</p>
+            <h2>Worauf du achten kannst</h2>
+            <p className="lead mood-tips">{MOOD_TIPS[code]}</p>
+          </section>
+        )}
 
         <section className="section">
           <p className="eyebrow">Häufige Fragen</p>

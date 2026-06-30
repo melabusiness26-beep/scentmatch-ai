@@ -520,6 +520,31 @@ export const MOODS: Mood[] = [
   }
 ];
 
+// Echte, hilfreiche Praxis-Tipps je Stimmung ("Worauf du achten kannst").
+// Bewusst nützlich statt Fülltext – gut für Leser UND für Google.
+export const MOOD_TIPS: Record<string, string> = {
+  verwoehnen:
+    'Achte auf Gourmand-Düfte mit Vanille, Tonka oder Karamell. Trag sie eher sparsam auf – warme, süße Noten wirken schnell intensiv. Für tagsüber reicht ein Sprüher, abends darf es etwas mehr sein.',
+  stark:
+    'Holzige Düfte mit Vetiver, Zedernholz oder einem Hauch Leder wirken souverän. Sie entfalten sich oft erst nach 10–15 Minuten – gib ihnen Zeit. Ein bis zwei Sprüher genügen, um präsent zu sein.',
+  runterkommen:
+    'Greif zu klaren, frischen Düften mit Moschus oder leichten grünen Noten. Sie halten meist etwas kürzer – ein Nachsprühen am Abend ist völlig okay. Hier gilt: weniger ist mehr.',
+  durchstarten:
+    'Zitrusdüfte mit Zitrone, Bergamotte oder Grapefruit machen sofort wach. Sie verfliegen schneller als andere – ideal als Frische-Kick am Morgen, bei Bedarf mittags auffrischen.',
+  verliebt:
+    'Blumige Düfte mit Rose, Jasmin oder Pfingstrose wirken zart und beschwingt. Auf warmer Haut (Handgelenk, Hals) entfalten sie sich am schönsten. Nicht verreiben – das bricht den Duft.',
+  strahlen:
+    'Für besondere Abende sind intensive Düfte mit Amber, Oud oder Vanille gemacht. Sie halten lang und tragen weit – ein, zwei Sprüher reichen völlig. Am besten ca. 20 Minuten vor dem Rausgehen auftragen.',
+  job:
+    'Im Büro gilt: dezent auftragen – lieber ein Sprüher auf die Kleidung als mehrere auf die Haut. Frische, klare Düfte mit wenig Sillage stören niemanden im Meeting. Schwere, süße Düfte hebst du dir besser für die Freizeit auf.',
+  urlaub:
+    'Leichte Zitrus- und Blütendüfte passen perfekt zu Hitze – schwere Düfte wirken in der Sonne schnell zu viel. Sie halten kürzer, also ruhig nachsprühen. Auf eingecremter Haut duften sie besonders lang.',
+  abend:
+    'Warme Düfte mit Vanille, Moschus und etwas Holz schaffen Gemütlichkeit. Sprüh sie eher nah an die Haut statt in den ganzen Raum. Nach einem warmen Bad hält der Duft besonders gut.',
+  geschenk:
+    'Sicher schenkst du mit vielseitigen Düften: ganzjährig tragbar und mittlere Intensität passen den meisten. Kennst du den Geschmack nicht genau, ist ein Unisex-Duft eine gute Wahl. Ein bekannter, beliebter Duft kommt fast immer gut an.'
+};
+
 // Eine einzelne Stimmung anhand ihres Codes finden (für die Detailseiten).
 export function getMood(code: string): Mood | undefined {
   return MOODS.find((m) => m.code === code);

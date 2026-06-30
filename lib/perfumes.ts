@@ -365,10 +365,11 @@ export function findCheaperAlternatives(target: Perfume, pool: Perfume[], limit 
 export type Mood = {
   code: string;
   emoji: string;
-  title: string;
+  title: string; // die Absicht/das Gefühl, z. B. "Ich will mich verwöhnen"
+  phrase: string; // ehrliche Kurzform für Texte, z. B. "wenn dir nach Trost ist"
   subtitle: string; // kurze Zeile auf der Stimmungs-Kachel
   result: string; // Einleitungssatz über den Ergebnissen
-  intro: string; // längerer SEO-Text auf der eigenen Stimmungs-Seite
+  intro: string; // längerer, ehrlicher SEO-Text auf der eigenen Stimmungs-Seite
   tone: string; // Akzentfarbe für das atmosphärische Design (Hex)
   families: Partial<Record<string, number>>; // Duftfamilie -> Gewicht (bis 40)
   noteThemes: string[]; // passende NOTE_THEMES-Codes (Bonus)
@@ -377,80 +378,89 @@ export type Mood = {
   sillage?: 'low' | 'medium' | 'high'; // gewünschte Intensität (optional)
 };
 
+// Ehrliche Gefühls-Variante: Wir fragen, WONACH der/dem Nutzer:in gerade ist –
+// und ordnen passende Düfte zu. Bewusst KEINE Heilversprechen ("heilt Traurigkeit"),
+// sondern warme, wahre Sprache ("kann guttun"). Duft wirkt nachweislich aufs Gefühl,
+// aber er ist ein schöner Moment, kein Wundermittel.
 export const MOODS: Mood[] = [
   {
-    code: 'cozy',
-    emoji: '🤍',
-    title: 'Geborgen & gemütlich',
-    subtitle: 'Warm, weich, wie eine Umarmung.',
-    result: 'Diese Düfte legen sich warm und weich um dich – süß, vertraut und gemütlich.',
-    intro: 'Wenn dir nach Geborgenheit ist, passen warme, leicht süße Düfte am besten: Vanille, Karamell, weicher Moschus. Sie fühlen sich an wie eine Umarmung und ein gemütlicher Abend auf dem Sofa.',
+    code: 'verwoehnen',
+    emoji: '💙',
+    title: 'Ich will mich verwöhnen',
+    phrase: 'wenn dir nach Trost und Wärme ist',
+    subtitle: 'Warm und weich, wenn dir nach Trost ist.',
+    result: 'Diese warmen, weichen Düfte fühlen sich an wie eine Umarmung – ein kleiner schöner Moment für dich.',
+    intro: 'An einem ruhigen oder schweren Tag kannst du dir mit einem Duft etwas Gutes tun: Vanille, Karamell, weicher Moschus. Ein Parfüm löst keine Probleme – aber warme, süße Noten können tröstend und behaglich wirken, wie ein gemütlicher Abend mit Decke und Tee.',
     tone: '#d8a48f',
     families: { gourmand: 40, floral: 10 },
     noteThemes: ['vanille', 'moschus'],
     sillage: 'low'
   },
   {
-    code: 'fresh',
-    emoji: '⚡',
-    title: 'Frisch & wach',
-    subtitle: 'Spritzig, klar, voller Energie.',
-    result: 'Diese Düfte wirken wie klare Morgenluft – frisch, sauber und belebend.',
-    intro: 'Für einen wachen, energiegeladenen Tag sind frische, spritzige Düfte ideal: Zitrone, Bergamotte, klare Luft. Sie wirken gepflegt, modern und sofort belebend – perfekt für Alltag und Büro.',
-    tone: '#7fb6c4',
-    families: { clean: 40 },
-    noteThemes: ['zitrus'],
-    sillage: 'medium'
-  },
-  {
-    code: 'confident',
+    code: 'stark',
     emoji: '🔥',
-    title: 'Selbstbewusst & stark',
-    subtitle: 'Edel, tief, präsent.',
-    result: 'Diese Düfte umgeben dich mit ruhiger, selbstbewusster Eleganz – tief und souverän.',
-    intro: 'Wenn du Eindruck hinterlassen willst, sind holzige, tiefe Düfte deine Wahl: Sandelholz, Vetiver, ein Hauch Leder. Sie wirken edel, souverän und selbstbewusst – ohne aufdringlich zu sein.',
+    title: 'Ich will mich stark fühlen',
+    phrase: 'wenn du dir den Rücken stärken willst',
+    subtitle: 'Edel und präsent, für mehr Selbstvertrauen.',
+    result: 'Diese holzigen, tiefen Düfte wirken edel und souverän – ein Begleiter, der dir den Rücken stärkt.',
+    intro: 'Vor einem wichtigen Termin oder wenn du dich unsicher fühlst, kann ein edler Duft wie ein vertrautes Kleidungsstück wirken: Sandelholz, Vetiver, ein Hauch Leder. Er macht dich nicht zu jemand anderem – aber er kann dir helfen, dich ein bisschen souveräner zu fühlen.',
     tone: '#7a6a55',
     families: { woody: 40 },
     noteThemes: ['holz', 'orient'],
     sillage: 'high'
   },
   {
-    code: 'romantic',
-    emoji: '💕',
-    title: 'Romantisch & verliebt',
-    subtitle: 'Zart, charmant, voller Gefühl.',
-    result: 'Diese Düfte blühen zart auf der Haut auf – romantisch, weich und voller Charme.',
-    intro: 'In romantischer Stimmung passen blumige, zarte Düfte: Rose, Jasmin, Veilchen. Sie wirken charmant, weich und feminin – wie ein Frühlingstag voller Schmetterlinge im Bauch.',
+    code: 'runterkommen',
+    emoji: '🌿',
+    title: 'Ich will runterkommen',
+    phrase: 'wenn du zur Ruhe kommen willst',
+    subtitle: 'Frisch und klar, zum Durchatmen.',
+    result: 'Diese frischen, klaren Düfte schaffen ein Gefühl von Leichtigkeit – zum Durchatmen und Loslassen.',
+    intro: 'Wenn der Tag stressig war, können frische, klare Düfte ein Gefühl von Ruhe schaffen: saubere Noten, weicher Moschus, etwas Grün. Kein Wundermittel – aber ein bewusster Wohlfühl-Moment nur für dich.',
+    tone: '#7fb6c4',
+    families: { clean: 40, floral: 5 },
+    noteThemes: ['moschus'],
+    sillage: 'low'
+  },
+  {
+    code: 'durchstarten',
+    emoji: '⚡',
+    title: 'Ich will durchstarten',
+    phrase: 'wenn du Energie für den Tag brauchst',
+    subtitle: 'Spritzig und wach, für deinen Schwung.',
+    result: 'Diese spritzigen, frischen Düfte wirken wie ein kleiner Energieschub – wach, klar und gut gelaunt.',
+    intro: 'Wenn du müde bist oder Schwung brauchst, sind spritzige Zitrusdüfte ideal: Zitrone, Bergamotte, Grapefruit. Frische Noten wirken belebend und wach – ein guter Begleiter für den Start in einen vollen Tag.',
+    tone: '#e8b65a',
+    families: { clean: 40 },
+    noteThemes: ['zitrus'],
+    sillage: 'medium'
+  },
+  {
+    code: 'verliebt',
+    emoji: '🥰',
+    title: 'Ich fühl mich verliebt',
+    phrase: 'wenn du dich beschwingt und verliebt fühlst',
+    subtitle: 'Zart und beschwingt, voller Gefühl.',
+    result: 'Diese blumigen, zarten Düfte wirken charmant und beschwingt – wie Schmetterlinge im Bauch.',
+    intro: 'Verliebt? Dann passen blumige, zarte Düfte: Rose, Jasmin, Veilchen. Sie wirken romantisch, weich und feminin – und tragen dein gutes Gefühl durch den Tag.',
     tone: '#e0a6c0',
     families: { floral: 40, gourmand: 10 },
     noteThemes: ['blumig'],
     sillage: 'medium'
   },
   {
-    code: 'sensual',
+    code: 'strahlen',
     emoji: '✨',
-    title: 'Sinnlich & verführerisch',
-    subtitle: 'Warm, tief, magnetisch.',
-    result: 'Diese Düfte sind gemacht für Nähe – warm, tief und unwiderstehlich.',
-    intro: 'Für Dates und besondere Abende sind warme, sinnliche Düfte gemacht: Oud, Amber, Vanille, Gewürze. Sie wirken magnetisch, tief und unwiderstehlich – und bleiben in Erinnerung.',
+    title: 'Ich will strahlen',
+    phrase: 'wenn du auffallen und in Erinnerung bleiben willst',
+    subtitle: 'Warm und tief, für besondere Momente.',
+    result: 'Diese warmen, tiefen Düfte bleiben in Erinnerung – gemacht für Dates und besondere Abende.',
+    intro: 'Für ein Date oder einen besonderen Abend darf es ein Duft sein, der auffällt: Oud, Amber, Vanille, Gewürze. Warm, tief und vielschichtig – damit du dich rundum gut und besonders fühlst.',
     tone: '#9b6a8f',
     families: { woody: 25, gourmand: 25 },
     noteThemes: ['orient', 'vanille'],
     occasions: ['Date', 'Abend'],
     sillage: 'high'
-  },
-  {
-    code: 'summer',
-    emoji: '🌴',
-    title: 'Verspielt & sommerlich',
-    subtitle: 'Fruchtig, leicht, wie Urlaub.',
-    result: 'Diese Düfte schmecken nach Urlaub – fruchtig, leicht und gut gelaunt.',
-    intro: 'Sommer, Sonne, gute Laune: Hier passen fruchtige, leichte Düfte mit Zitrus und frischen Noten. Sie schmecken nach Urlaub, Strand und Leichtigkeit – ideal für warme Tage.',
-    tone: '#e8b65a',
-    families: { clean: 25, floral: 20 },
-    noteThemes: ['zitrus'],
-    season: 'Sommer',
-    sillage: 'medium'
   }
 ];
 

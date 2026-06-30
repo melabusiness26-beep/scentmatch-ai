@@ -53,6 +53,16 @@ export const guides: Guide[] = [
             expensive: 'tobacco-vanille',
             cheap: 'khamrah',
             note: 'Tom Ford Tobacco Vanille ist würzig-süß und teuer. Lattafa Khamrah geht in eine ähnlich warme, süß-würzige Richtung mit Dattel und Zimt – zum Sparpreis.'
+          },
+          {
+            expensive: 'chanel-bleu-de-chanel',
+            cheap: 'armaf-cdn-blue-iconic',
+            note: 'Bleu de Chanel gilt als schwer zu kopieren. Armaf Club de Nuit Blue Iconic kommt der frisch-würzigen, holzigen Richtung mit Zitrus und Weihrauch aber erstaunlich nahe – zu einem Bruchteil des Preises.'
+          },
+          {
+            expensive: 'dior-sauvage',
+            cheap: 'maison-alhambra-salvo',
+            note: 'Dior Sauvage ist ein moderner Klassiker. Maison Alhambra Salvo greift die gleiche frisch-würzige Fougère-Richtung mit Lavendel, Pfeffer und Ambroxan auf – sehr ähnlich, deutlich günstiger.'
           }
         ]
       },

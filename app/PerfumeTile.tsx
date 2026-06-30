@@ -36,7 +36,14 @@ export function PerfumeCover({ perfume, large }: { perfume: Perfume; large?: boo
   const fam = perfume.fragrance_family || '';
   const className = `cover${large ? ' cover-large' : ''} cover-${fam}`;
   if (perfume.image_url) {
-    return <div className={className} style={{ backgroundImage: `url(${perfume.image_url})` }} />;
+    return (
+      <div
+        className={className}
+        role="img"
+        aria-label={`${perfume.perfume_name}${perfume.brands?.name ? ` von ${perfume.brands.name}` : ''} – Duftflakon`}
+        style={{ backgroundImage: `url(${perfume.image_url})` }}
+      />
+    );
   }
   return (
     <div className={className}>

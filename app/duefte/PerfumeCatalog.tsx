@@ -41,6 +41,8 @@ export default function PerfumeCatalog() {
     <section className="section">
       <input
         className="search"
+        type="search"
+        aria-label="Düfte durchsuchen – nach Duft, Marke, Note, Geschlecht oder Anlass"
         placeholder="Suche nach Duft, Marke, Note (z. B. Schokolade), Geschlecht oder Anlass…"
         value={query}
         onChange={(e) => setQuery(e.target.value)}

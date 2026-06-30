@@ -34,6 +34,14 @@ export default function CookieBanner() {
     } catch {
       // Ignore storage errors – the dialog still closes for this session.
     }
+    // Andere Komponenten (z. B. die anonyme Statistik) über die Wahl informieren,
+    // damit sie ohne Neuladen sofort reagieren können.
+    try {
+      window.dispatchEvent(new Event('auressa-consent-changed'));
+    } catch {
+      // Ältere Browser ohne Event-Konstruktor – kein Problem, beim nächsten
+      // Seitenaufruf wird die Zustimmung ohnehin aus localStorage gelesen.
+    }
     setVisible(false);
   }
 

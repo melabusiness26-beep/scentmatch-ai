@@ -63,6 +63,16 @@ export const guides: Guide[] = [
             expensive: 'dior-sauvage',
             cheap: 'maison-alhambra-salvo',
             note: 'Dior Sauvage ist ein moderner Klassiker. Maison Alhambra Salvo greift die gleiche frisch-würzige Fougère-Richtung mit Lavendel, Pfeffer und Ambroxan auf – sehr ähnlich, deutlich günstiger.'
+          },
+          {
+            expensive: 'versace-eros',
+            cheap: 'maison-alhambra-versencia-oro',
+            note: 'Versace Eros lebt von Minze und süsser Vanille. Maison Alhambra Versencia Oro kommt dieser frisch-süssen Richtung sehr nahe – ein beliebter, günstiger Eros-Klon.'
+          },
+          {
+            expensive: 'jpg-le-male',
+            cheap: 'maison-alhambra-glacier-le-noir',
+            note: 'Die Le-Male-Reihe von Jean Paul Gaultier ist würzig-süss. Maison Alhambra Glacier Le Noir greift die warme Mischung aus Kardamom, Lavendel und Vanille auf – sehr ähnlich, zum kleinen Preis.'
           }
         ]
       },

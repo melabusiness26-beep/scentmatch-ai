@@ -103,8 +103,22 @@ Gold-Linie oder kleiner Flakon als Akzent möglich.
 
 ---
 
-## 7. Zu den 2 alten Reels (Baccarat Rouge 540 & Creed Aventus)
+## 7. Zu den bestehenden Beiträgen (Stand: 122 Aufrufe / 30 Tage)
 
-Reichweite ist noch sehr niedrig (5–6 Aufrufe) → **neu machen lohnt sich**, weil du gerade
-den einheitlichen Premium-Look festlegst. Alte Versionen löschen, im neuen Stil erneut posten,
-dabei Titel/Beschreibung leicht ändern. Ab jetzt: **jedes** Video nach dieser Vorlage.
+**Die zwei Reels sind die Gewinner – NICHT löschen:**
+- Baccarat Rouge 540 (Reel): **162 Aufrufe**
+- Creed Aventus (Reel): **122 Aufrufe**
+
+Sie tragen praktisch die gesamte Reichweite. Man löscht keine Gewinner wegen der Schrift.
+Die „Meme"-Schrift hat sie nicht gebremst – das **Konzept** (teurer Luxusduft → günstige
+Alternative + Spar-Hook mit Zahl) funktioniert. Behalten.
+
+**Die zwei statischen Bilder (5 & 6 Aufrufe):** löschen oder lassen – egal, sie schaden nicht.
+
+**Lehren aus den Zahlen:**
+1. **Reels schlagen Bilder massiv** (162/122 vs. 5/6) → ab jetzt fast nur Reels/Videos.
+2. **Klarer Hook mit Zahl** zieht („ohne 300.-") → dieses Muster beibehalten.
+
+**Ab dem nächsten Video:** neuen Premium-Look nach dieser Vorlage anwenden (Playfair Display,
+`#FBF3E6`/`#B99863`, kein dicker Rand). Stil darf sich weiterentwickeln – das fällt nicht
+negativ auf.

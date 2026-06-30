@@ -615,11 +615,11 @@ export default function Home() {
         </section>
 
         <section className="section">
-          <p className="eyebrow">Neu · Duft nach Stimmung</p>
+          <p className="eyebrow">Neu · Duft nach Gefühl</p>
           <h2>Keine Lust auf ein Quiz? Geh nach Gefühl.</h2>
-          <p className="small">Wähl einfach, wie du dich fühlst – wir zeigen dir sofort passende Düfte. Gemütlich, frisch, selbstbewusst, romantisch, sinnlich oder sommerlich.</p>
+          <p className="small">Sag einfach, wonach dir gerade ist – ob verwöhnen, runterkommen, stark fühlen oder strahlen. Wir zeigen dir sofort passende Düfte.</p>
           <div className="cta">
-            <Link className="button" href="/stimmungen">Stimmung wählen</Link>
+            <Link className="button" href="/stimmungen">Nach Gefühl finden</Link>
           </div>
         </section>
 

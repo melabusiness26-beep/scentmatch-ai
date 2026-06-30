@@ -23,11 +23,14 @@ export default function StimmungenPage() {
       <SiteHeader />
       <div className="container">
         <section className="section">
-          <p className="eyebrow">Duft nach Stimmung</p>
-          <h1>Wie fühlst du dich heute?</h1>
+          <p className="eyebrow">Duft nach Gefühl</p>
+          <h1>Wonach ist dir heute?</h1>
           <p className="lead">
-            Wähl deine Stimmung – Auressa zeigt dir sofort Düfte, die genau dazu passen.
+            Sag uns einfach, wie du dich gerade fühlst – Auressa zeigt dir Düfte, die dazu passen.
             Kein Quiz, kein Fachwissen nötig.
+          </p>
+          <p className="small mood-honest">
+            Ehrlich gesagt: Ein Duft löst keine Probleme – aber er kann ein schöner kleiner Moment für dich sein.
           </p>
 
           <div className="grid mood-grid">

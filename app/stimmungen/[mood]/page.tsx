@@ -24,7 +24,7 @@ export async function generateMetadata({
   const mood = getMood(code);
   if (!mood) return { title: 'Stimmung nicht gefunden – Auressa' };
 
-  const title = `Duft für „${mood.title}" – passende Parfums | Auressa`;
+  const title = `Welcher Duft, ${mood.phrase}? | Auressa`;
   const description = mood.intro;
 
   return {
@@ -53,9 +53,9 @@ export default async function MoodPage({ params }: { params: Promise<{ mood: str
   // Häufige Fragen – liefern einzigartigen Text (gut für Google) und echten Mehrwert.
   const dnaText = dna.length ? dna.map((d) => d.label.toLowerCase()).join(', ') : 'verschiedene Noten';
   const faq = [
-    { q: `Welche Düfte passen zur Stimmung „${mood.title}"?`, a: mood.intro },
+    { q: `Welche Düfte passen, ${mood.phrase}?`, a: mood.intro },
     {
-      q: `Woran erkenne ich einen Duft für „${mood.title}"?`,
+      q: 'Woran erkenne ich solche Düfte?',
       a: `Typisch sind ${dnaText}. Auressa wertet die Noten jedes Dufts aus und ordnet ihn automatisch dieser Stimmung zu – ganz ohne Raten.`
     },
     {

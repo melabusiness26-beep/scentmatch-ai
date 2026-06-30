@@ -511,8 +511,14 @@ export default function Home() {
               <p className="hero-trust">{catalogCount ? `${catalogCount} kuratierte Düfte` : 'Kuratierte Düfte'} – von Bestsellern bis zu besonderen Nischenperlen.</p>
             </div>
             <div className="card perfume-card hero-stats-card">
-              {/* Das Hero-Foto liegt jetzt als großer Hintergrund auf der ganzen
-                  Bühne (siehe .hero-stage in globals.css). Hier nur noch die Zahlen. */}
+              {/* Helles, edles Hero-Panel mit goldenem Flakon-Emblem + Kennzahlen. */}
+              <svg className="hero-emblem" viewBox="0 0 60 86" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <rect x="23" y="3" width="14" height="9" rx="2.5" />
+                <rect x="26.5" y="12" width="7" height="6" />
+                <rect x="14" y="18" width="32" height="64" rx="10" />
+                <path d="M20 50 h20" />
+                <path d="M20 58 h13" />
+              </svg>
               <p className="hero-stats-title">Auf einen Blick</p>
               <div className="hero-stats">
                 <div className="hero-stat"><strong>{catalogCount ?? '…'}</strong><span>kuratierte Düfte</span></div>

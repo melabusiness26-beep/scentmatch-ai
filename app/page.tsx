@@ -510,17 +510,10 @@ export default function Home() {
               </div>
               <p className="hero-trust">{catalogCount ? `${catalogCount} kuratierte Düfte` : 'Kuratierte Düfte'} – von Bestsellern bis zu besonderen Nischenperlen.</p>
             </div>
-            <div className="card perfume-card">
-              {/* Echtes Hero-Foto (lokal in /public). Zum Austauschen: public/hero-auressa.jpg ersetzen. */}
-              <figure className="hero-media">
-                <img
-                  className="hero-media-img"
-                  src="/hero-auressa.jpg"
-                  alt="Goldener Parfum-Flakon in warmer Boutique-Atmosphäre – Auressa"
-                  width={1600}
-                  height={864}
-                />
-              </figure>
+            <div className="card perfume-card hero-stats-card">
+              {/* Das Hero-Foto liegt jetzt als großer Hintergrund auf der ganzen
+                  Bühne (siehe .hero-stage in globals.css). Hier nur noch die Zahlen. */}
+              <p className="hero-stats-title">Auf einen Blick</p>
               <div className="hero-stats">
                 <div className="hero-stat"><strong>{catalogCount ?? '…'}</strong><span>kuratierte Düfte</span></div>
                 <div className="hero-stat"><strong>{brandCount ?? '…'}</strong><span>Marken weltweit</span></div>

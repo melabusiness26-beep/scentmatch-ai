@@ -533,8 +533,10 @@ export default function Home() {
                 <rect x="62" y="31" width="16" height="12" fill="url(#auCap)" />
                 <rect x="34" y="42" width="72" height="130" rx="22" fill="url(#auBody)" stroke="#7d5c30" strokeWidth="1" />
                 <rect x="44" y="56" width="12" height="104" rx="6" fill="#ffffff" opacity="0.28" />
-                <rect x="50" y="100" width="40" height="46" rx="6" fill="#fff8ec" opacity="0.92" />
-                <path d="M59 116 h22 M59 125 h22 M64 134 h12" stroke="#a9824a" strokeWidth="2" strokeLinecap="round" />
+                <rect x="48" y="100" width="44" height="46" rx="6" fill="#fff8ec" opacity="0.95" />
+                <text className="hero-bottle-label" x="70" y="119" textAnchor="middle">AURESSA</text>
+                <path d="M62 127 h16" stroke="#a9824a" strokeWidth="1.1" strokeLinecap="round" />
+                <text className="hero-bottle-sub" x="70" y="138" textAnchor="middle">PARFUM</text>
                 <path d="M116 46 l2.2 6.4 6.4 2.2 -6.4 2.2 -2.2 6.4 -2.2 -6.4 -6.4 -2.2 6.4 -2.2 z" fill="#f0d18f" />
                 <path d="M20 126 l1.5 4.6 4.6 1.5 -4.6 1.5 -1.5 4.6 -1.5 -4.6 -4.6 -1.5 4.6 -1.5 z" fill="#f0d18f" />
               </svg>

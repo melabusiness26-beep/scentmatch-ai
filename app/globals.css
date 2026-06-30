@@ -59,6 +59,8 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 .hero-stage .perfume-card { background: radial-gradient(120% 80% at 50% 0%, #5a4131 0%, #3a2a20 56%, #271b13 100%); border: 1px solid rgba(216,178,119,.5); color: #f3e9da; box-shadow: 0 30px 70px rgba(40,28,18,.4); }
 .hero-stats-card { min-height: 0; justify-content: flex-start; align-items: center; text-align: center; }
 .hero-bottle { width: 150px; height: auto; display: block; margin: 0 auto 16px; filter: drop-shadow(0 16px 32px rgba(20,12,4,.5)); }
+.hero-bottle-label { font-family: var(--font-display), Georgia, serif; font-size: 8px; font-weight: 600; letter-spacing: 0.8px; fill: #6b4f37; }
+.hero-bottle-sub { font-family: var(--font-sans), Arial, sans-serif; font-size: 4.2px; font-weight: 600; letter-spacing: 1.4px; fill: #9c7a52; }
 .hero-stats-title { font-family: var(--font-sans), Arial, sans-serif; text-transform: uppercase; letter-spacing: .22em; font-size: 12px; font-weight: 600; color: var(--gold); margin: 0 0 16px; }
 .hero-stage .perfume-card h2 { color: #fbf3e6; }
 .hero-stage .perfume-card p.small { color: rgba(243,233,218,.82); }

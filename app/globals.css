@@ -43,7 +43,7 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
   padding: 56px 60px;
   background:
     linear-gradient(100deg, rgba(252,247,238,.93) 0%, rgba(252,247,238,.74) 30%, rgba(252,247,238,.30) 50%, rgba(252,247,238,0) 66%),
-    url('/hero-auressa.jpg') center right / cover no-repeat;
+    url('/hero-auressa-2.jpg') center right / cover no-repeat;
 }
 .hero-photo::before, .hero-photo::after { display: none; }
 .hero-photo-inner { position: relative; z-index: 1; max-width: 560px; }
@@ -61,7 +61,7 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
   .hero-photo::before {
     content: ''; display: block; position: static; inset: auto;
     width: 100%; height: auto; aspect-ratio: 2000 / 1116;
-    background: url('/hero-auressa.jpg') center / cover no-repeat;
+    background: url('/hero-auressa-2.jpg') center / cover no-repeat;
     animation: none;
   }
   .hero-photo-inner { max-width: none; padding: 24px 22px 30px; }
@@ -248,13 +248,13 @@ a.logo { text-decoration:none; color:inherit; }
 .detail-hero { display:grid; grid-template-columns: 1.3fr .7fr; gap:36px; align-items:start; margin-top:24px; }
 
 /* Foto-Hero-Banner (echtes Stimmungsbild mit dunklem Verlauf für Lesbarkeit). */
-.media-hero { position:relative; overflow:hidden; margin-top:24px; padding:76px 60px; border-radius:36px; color:#f3e9da; background-image: linear-gradient(120deg, rgba(20,14,10,.84) 0%, rgba(20,14,10,.58) 52%, rgba(20,14,10,.30) 100%), url('/hero-auressa.jpg'); background-size:cover; background-position:center; border:1px solid rgba(185,152,99,.35); box-shadow:0 44px 110px rgba(36,25,18,.38); }
+.media-hero { position:relative; overflow:hidden; margin-top:24px; padding:76px 60px; border-radius:36px; color:#f3e9da; background-image: linear-gradient(120deg, rgba(20,14,10,.84) 0%, rgba(20,14,10,.58) 52%, rgba(20,14,10,.30) 100%), url('/hero-auressa-2.jpg'); background-size:cover; background-position:center; border:1px solid rgba(185,152,99,.35); box-shadow:0 44px 110px rgba(36,25,18,.38); }
 .media-hero-inner { position:relative; z-index:1; }
 .media-hero .eyebrow { color: var(--gold); }
 .media-hero h1 { color:#fbf3e6; }
 .media-hero .lead { color: rgba(243,233,218,.90); max-width:620px; }
 @media (max-width: 800px) {
-  .media-hero { padding:40px 24px; background-image: linear-gradient(180deg, rgba(20,14,10,.88) 0%, rgba(20,14,10,.74) 55%, rgba(20,14,10,.60) 100%), url('/hero-auressa.jpg'); }
+  .media-hero { padding:40px 24px; background-image: linear-gradient(180deg, rgba(20,14,10,.88) 0%, rgba(20,14,10,.74) 55%, rgba(20,14,10,.60) 100%), url('/hero-auressa-2.jpg'); }
   .media-hero .lead { max-width:none; }
 }
 

@@ -11,11 +11,16 @@ const FAMILY_TILES: { code: string; label: string }[] = [
   { code: 'floral', label: 'Floral' }
 ];
 
+// Wie viele Düfte pro „Seite" angezeigt werden, bevor „Mehr laden" erscheint.
+// Hält die Seite auch bei hunderten Düften schnell – vor allem auf dem Handy.
+const PAGE_SIZE = 24;
+
 export default function PerfumeCatalog() {
   const [perfumes, setPerfumes] = useState<Perfume[]>([]);
   const [query, setQuery] = useState('');
   const [familyFilter, setFamilyFilter] = useState('');
   const [loaded, setLoaded] = useState(false);
+  const [shownCount, setShownCount] = useState(PAGE_SIZE);
 
   useEffect(() => {
     getPerfumes(2000).then((data) => {
@@ -30,12 +35,19 @@ export default function PerfumeCatalog() {
     if (q) setQuery(q);
   }, []);
 
+  // Bei jeder neuen Suche oder Filter-Auswahl wieder oben mit PAGE_SIZE beginnen.
+  useEffect(() => {
+    setShownCount(PAGE_SIZE);
+  }, [query, familyFilter]);
+
   const sorted = [...perfumes].sort((a, b) =>
     (a.perfume_name || '').localeCompare(b.perfume_name || '', 'de', { sensitivity: 'base' })
   );
   const visible = sorted.filter(
     (p) => (!familyFilter || p.fragrance_family === familyFilter) && matchesQuery(p, query)
   );
+  const shown = visible.slice(0, shownCount);
+  const hasMore = visible.length > shown.length;
 
   return (
     <section className="section">
@@ -77,9 +89,17 @@ export default function PerfumeCatalog() {
         {loaded && visible.length === 0 ? (
           <p className="small">Keine Düfte gefunden. Versuch einen anderen Suchbegriff oder entferne den Filter.</p>
         ) : (
-          visible.map((p) => <PerfumeTile perfume={p} key={p.id} />)
+          shown.map((p) => <PerfumeTile perfume={p} key={p.id} />)
         )}
       </div>
+
+      {hasMore && (
+        <div className="cta catalog-more">
+          <button type="button" className="button secondary" onClick={() => setShownCount((c) => c + PAGE_SIZE)}>
+            Mehr Düfte laden ({visible.length - shown.length} weitere)
+          </button>
+        </div>
+      )}
     </section>
   );
 }

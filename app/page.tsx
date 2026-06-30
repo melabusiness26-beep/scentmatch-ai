@@ -497,55 +497,20 @@ export default function Home() {
     <main>
       <SiteHeader />
       <div className="container">
-        <section className="hero-stage">
-          <div className="hero">
-            <div>
-              <p className="eyebrow">Dein Signature-Duft · kuratiert in der Schweiz</p>
-              <h1>Finde deinen Signature-Duft in 1 Minute.</h1>
-              <p className="lead">Auressa verbindet ein elegantes Duft-Quiz mit einer intelligenten Match-Engine: Jeder Duft wird gegen deine Antworten zu Geschlecht, Duftrichtung, Anlass, Saison, Intensität und Budget bewertet.</p>
-              <div className="cta">
-                <a className="button" href="#quiz">Quiz starten</a>
-                <Link className="button secondary" href="/duefte">Alle Düfte ansehen</Link>
-                <Link className="button secondary" href="/ratgeber">Ratgeber lesen</Link>
-              </div>
-              <p className="hero-trust">{catalogCount ? `${catalogCount} kuratierte Düfte` : 'Kuratierte Düfte'} – von Bestsellern bis zu besonderen Nischenperlen.</p>
+        <section className="hero-stage hero-photo">
+          <div className="hero-photo-inner">
+            <p className="eyebrow">Dein Signature-Duft · kuratiert in der Schweiz</p>
+            <h1>Finde deinen Signature-Duft in 1 Minute.</h1>
+            <p className="lead">Auressa verbindet ein elegantes Duft-Quiz mit einer intelligenten Match-Engine: Jeder Duft wird gegen deine Antworten zu Geschlecht, Duftrichtung, Anlass, Saison, Intensität und Budget bewertet.</p>
+            <div className="cta">
+              <a className="button" href="#quiz">Quiz starten</a>
+              <Link className="button secondary" href="/duefte">Alle Düfte ansehen</Link>
+              <Link className="button secondary" href="/ratgeber">Ratgeber lesen</Link>
             </div>
-            <div className="card perfume-card hero-stats-card">
-              {/* Helles, edles Hero-Panel mit goldenem Flakon-Emblem + Kennzahlen. */}
-              <svg className="hero-bottle" viewBox="0 0 140 188" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <radialGradient id="auGlow" cx="50%" cy="46%" r="58%">
-                    <stop offset="0%" stopColor="#f6dca0" stopOpacity="0.6" />
-                    <stop offset="100%" stopColor="#f6dca0" stopOpacity="0" />
-                  </radialGradient>
-                  <linearGradient id="auBody" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#f9e9c2" />
-                    <stop offset="46%" stopColor="#d8b277" />
-                    <stop offset="100%" stopColor="#9c7440" />
-                  </linearGradient>
-                  <linearGradient id="auCap" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#ecce8e" />
-                    <stop offset="100%" stopColor="#856030" />
-                  </linearGradient>
-                </defs>
-                <circle cx="70" cy="92" r="68" fill="url(#auGlow)" />
-                <rect x="57" y="12" width="26" height="20" rx="5" fill="url(#auCap)" />
-                <rect x="62" y="31" width="16" height="12" fill="url(#auCap)" />
-                <rect x="34" y="42" width="72" height="130" rx="22" fill="url(#auBody)" stroke="#7d5c30" strokeWidth="1" />
-                <rect x="44" y="56" width="12" height="104" rx="6" fill="#ffffff" opacity="0.28" />
-                <rect x="48" y="100" width="44" height="46" rx="6" fill="#fff8ec" opacity="0.95" />
-                <text className="hero-bottle-label" x="70" y="119" textAnchor="middle">AURESSA</text>
-                <path d="M62 127 h16" stroke="#a9824a" strokeWidth="1.1" strokeLinecap="round" />
-                <text className="hero-bottle-sub" x="70" y="138" textAnchor="middle">PARFUM</text>
-                <path d="M116 46 l2.2 6.4 6.4 2.2 -6.4 2.2 -2.2 6.4 -2.2 -6.4 -6.4 -2.2 6.4 -2.2 z" fill="#f0d18f" />
-                <path d="M20 126 l1.5 4.6 4.6 1.5 -4.6 1.5 -1.5 4.6 -1.5 -4.6 -4.6 -1.5 4.6 -1.5 z" fill="#f0d18f" />
-              </svg>
-              <p className="hero-stats-title">Auf einen Blick</p>
-              <div className="hero-stats">
-                <div className="hero-stat"><strong>{catalogCount ?? '…'}</strong><span>kuratierte Düfte</span></div>
-                <div className="hero-stat"><strong>{brandCount ?? '…'}</strong><span>Marken weltweit</span></div>
-                <div className="hero-stat"><strong>0–100</strong><span>echter Match-Score statt Zufall</span></div>
-              </div>
+            <div className="hero-stats-row">
+              <div className="hero-stat-mini"><strong>{catalogCount ?? '…'}</strong><span>kuratierte Düfte</span></div>
+              <div className="hero-stat-mini"><strong>{brandCount ?? '…'}</strong><span>Marken weltweit</span></div>
+              <div className="hero-stat-mini"><strong>0–100</strong><span>echter Match-Score</span></div>
             </div>
           </div>
         </section>

@@ -36,6 +36,31 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 .hero-stage { position: relative; overflow: hidden; margin-top: 8px; padding: 84px 60px; border-radius: 36px; color: var(--brown); background: radial-gradient(115% 120% at 100% 0%, rgba(216,178,119,.30) 0%, rgba(216,178,119,0) 56%), radial-gradient(110% 120% at 0% 100%, rgba(216,183,170,.24) 0%, rgba(216,183,170,0) 55%), linear-gradient(155deg, #fffaf2 0%, #f6ead4 100%); border: 1px solid rgba(185,152,99,.42); box-shadow: 0 34px 90px rgba(75,53,40,.13); }
 .hero-stage::before { content: ''; position: absolute; top: -28%; right: -8%; width: 540px; height: 540px; background: radial-gradient(circle, rgba(185,152,99,.40), rgba(185,152,99,0) 62%); pointer-events: none; z-index: 0; }
 .hero-stage::after { content: ''; position: absolute; bottom: -32%; left: -12%; width: 480px; height: 480px; background: radial-gradient(circle, rgba(216,178,119,.26), rgba(216,178,119,0) 64%); pointer-events: none; z-index: 0; }
+/* Foto-Hero (echtes Stimmungsbild als Vollflächen-Hintergrund). */
+.hero-stage.hero-photo {
+  display: flex; align-items: center;
+  min-height: clamp(440px, 52vw, 600px);
+  padding: 56px 60px;
+  background:
+    linear-gradient(100deg, rgba(252,247,238,.93) 0%, rgba(252,247,238,.74) 30%, rgba(252,247,238,.30) 50%, rgba(252,247,238,0) 66%),
+    url('/hero-auressa.jpg') center right / cover no-repeat;
+}
+.hero-photo::before, .hero-photo::after { display: none; }
+.hero-photo-inner { position: relative; z-index: 1; max-width: 560px; }
+.hero-stats-row { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 26px; }
+.hero-stat-mini { display: flex; flex-direction: column; gap: 2px; }
+.hero-stat-mini strong { font-family: var(--font-display), Georgia, serif; font-size: 30px; color: #a07c43; line-height: 1; }
+.hero-stat-mini span { font-family: var(--font-sans), Arial, sans-serif; font-size: 13px; color: #6d5a4d; }
+@media (max-width: 800px) {
+  .hero-stage.hero-photo {
+    min-height: 0; padding: 34px 22px 30px;
+    background:
+      linear-gradient(180deg, rgba(252,247,238,.92) 0%, rgba(252,247,238,.74) 42%, rgba(250,243,231,.40) 100%),
+      url('/hero-auressa.jpg') center right / cover no-repeat;
+  }
+  .hero-photo-inner { max-width: none; }
+  .hero-photo h1, .hero-photo .lead { text-shadow: 0 1px 2px rgba(255,250,242,.7); }
+}
 /* Editorial-Flakon im Hero: edler Gold-Umriss mit weichem Schein */
 .hero-flacon { width: 100px; height: 134px; filter: drop-shadow(0 10px 30px rgba(216,178,119,.45)); }
 .hero-flacon rect { fill: none; stroke: rgba(235,214,172,.9); stroke-width: 1.5; vector-effect: non-scaling-stroke; }

@@ -497,28 +497,20 @@ export default function Home() {
     <main>
       <SiteHeader />
       <div className="container">
-        <section className="hero-stage">
-          <div className="hero">
-            <div>
-              <p className="eyebrow">Dein Signature-Duft · kuratiert in der Schweiz</p>
-              <h1>Finde deinen Signature-Duft in 1 Minute.</h1>
-              <p className="lead">Auressa verbindet ein elegantes Duft-Quiz mit einer intelligenten Match-Engine: Jeder Duft wird gegen deine Antworten zu Geschlecht, Duftrichtung, Anlass, Saison, Intensität und Budget bewertet.</p>
-              <div className="cta">
-                <a className="button" href="#quiz">Quiz starten</a>
-                <Link className="button secondary" href="/duefte">Alle Düfte ansehen</Link>
-                <Link className="button secondary" href="/ratgeber">Ratgeber lesen</Link>
-              </div>
-              <p className="hero-trust">{catalogCount ? `${catalogCount} kuratierte Düfte` : 'Kuratierte Düfte'} – von Bestsellern bis zu besonderen Nischenperlen.</p>
+        <section className="hero-stage hero-photo">
+          <div className="hero-photo-inner">
+            <p className="eyebrow">Dein Signature-Duft · kuratiert in der Schweiz</p>
+            <h1>Finde deinen Signature-Duft in 1 Minute.</h1>
+            <p className="lead">Auressa verbindet ein elegantes Duft-Quiz mit einer intelligenten Match-Engine: Jeder Duft wird gegen deine Antworten zu Geschlecht, Duftrichtung, Anlass, Saison, Intensität und Budget bewertet.</p>
+            <div className="cta">
+              <a className="button" href="#quiz">Quiz starten</a>
+              <Link className="button secondary" href="/duefte">Alle Düfte ansehen</Link>
+              <Link className="button secondary" href="/ratgeber">Ratgeber lesen</Link>
             </div>
-            <div className="card perfume-card hero-stats-card">
-              {/* Das Hero-Foto liegt jetzt als großer Hintergrund auf der ganzen
-                  Bühne (siehe .hero-stage in globals.css). Hier nur noch die Zahlen. */}
-              <p className="hero-stats-title">Auf einen Blick</p>
-              <div className="hero-stats">
-                <div className="hero-stat"><strong>{catalogCount ?? '…'}</strong><span>kuratierte Düfte</span></div>
-                <div className="hero-stat"><strong>{brandCount ?? '…'}</strong><span>Marken weltweit</span></div>
-                <div className="hero-stat"><strong>0–100</strong><span>echter Match-Score statt Zufall</span></div>
-              </div>
+            <div className="hero-stats-row">
+              <div className="hero-stat-mini"><strong>{catalogCount ?? '…'}</strong><span>kuratierte Düfte</span></div>
+              <div className="hero-stat-mini"><strong>{brandCount ?? '…'}</strong><span>Marken weltweit</span></div>
+              <div className="hero-stat-mini"><strong>0–100</strong><span>echter Match-Score</span></div>
             </div>
           </div>
         </section>

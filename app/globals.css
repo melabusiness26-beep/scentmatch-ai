@@ -33,9 +33,34 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 .eyebrow { display: inline-flex; align-items: center; gap: 11px; font-family: var(--font-sans), Arial, sans-serif; text-transform: uppercase; letter-spacing: .24em; font-size: 12px; font-weight: 600; color: #a07c43; margin: 0 0 14px; }
 .eyebrow::before { content: ''; width: 26px; height: 1px; background: var(--gold); display: inline-block; }
 .hero-stage .eyebrow { color: var(--gold); }
-.hero-stage { position: relative; overflow: hidden; margin-top: 8px; padding: 84px 60px; border-radius: 36px; color: #f3e9da; background: linear-gradient(110deg, rgba(28,19,13,.93) 0%, rgba(30,21,14,.78) 42%, rgba(30,21,14,.48) 100%), url('/hero-auressa.jpg') center / cover no-repeat, radial-gradient(130% 130% at 0% 0%, #5a4131 0%, #3a2a20 48%, #241912 100%); border: 1px solid rgba(185,152,99,.35); box-shadow: 0 44px 110px rgba(36,25,18,.38); }
+.hero-stage { position: relative; overflow: hidden; margin-top: 8px; padding: 84px 60px; border-radius: 36px; color: var(--brown); background: radial-gradient(115% 120% at 100% 0%, rgba(216,178,119,.30) 0%, rgba(216,178,119,0) 56%), radial-gradient(110% 120% at 0% 100%, rgba(216,183,170,.24) 0%, rgba(216,183,170,0) 55%), linear-gradient(155deg, #fffaf2 0%, #f6ead4 100%); border: 1px solid rgba(185,152,99,.42); box-shadow: 0 34px 90px rgba(75,53,40,.13); }
 .hero-stage::before { content: ''; position: absolute; top: -28%; right: -8%; width: 540px; height: 540px; background: radial-gradient(circle, rgba(185,152,99,.40), rgba(185,152,99,0) 62%); pointer-events: none; z-index: 0; }
 .hero-stage::after { content: ''; position: absolute; bottom: -32%; left: -12%; width: 480px; height: 480px; background: radial-gradient(circle, rgba(216,178,119,.26), rgba(216,178,119,0) 64%); pointer-events: none; z-index: 0; }
+/* Foto-Hero (echtes Stimmungsbild als Vollflächen-Hintergrund). */
+.hero-stage.hero-photo {
+  display: flex; align-items: center;
+  min-height: clamp(440px, 52vw, 600px);
+  padding: 56px 60px;
+  background:
+    linear-gradient(100deg, rgba(252,247,238,.93) 0%, rgba(252,247,238,.74) 30%, rgba(252,247,238,.30) 50%, rgba(252,247,238,0) 66%),
+    url('/hero-auressa.jpg') center right / cover no-repeat;
+}
+.hero-photo::before, .hero-photo::after { display: none; }
+.hero-photo-inner { position: relative; z-index: 1; max-width: 560px; }
+.hero-stats-row { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 26px; }
+.hero-stat-mini { display: flex; flex-direction: column; gap: 2px; }
+.hero-stat-mini strong { font-family: var(--font-display), Georgia, serif; font-size: 30px; color: #a07c43; line-height: 1; }
+.hero-stat-mini span { font-family: var(--font-sans), Arial, sans-serif; font-size: 13px; color: #6d5a4d; }
+@media (max-width: 800px) {
+  .hero-stage.hero-photo {
+    min-height: 0; padding: 34px 22px 30px;
+    background:
+      linear-gradient(180deg, rgba(252,247,238,.92) 0%, rgba(252,247,238,.74) 42%, rgba(250,243,231,.40) 100%),
+      url('/hero-auressa.jpg') center right / cover no-repeat;
+  }
+  .hero-photo-inner { max-width: none; }
+  .hero-photo h1, .hero-photo .lead { text-shadow: 0 1px 2px rgba(255,250,242,.7); }
+}
 /* Editorial-Flakon im Hero: edler Gold-Umriss mit weichem Schein */
 .hero-flacon { width: 100px; height: 134px; filter: drop-shadow(0 10px 30px rgba(216,178,119,.45)); }
 .hero-flacon rect { fill: none; stroke: rgba(235,214,172,.9); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
@@ -43,45 +68,40 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 @media (prefers-reduced-motion: no-preference) {
   .hero-stage::before { animation: heroGlow 13s ease-in-out infinite alternate; }
   .hero-stage::after { animation: heroGlow2 17s ease-in-out infinite alternate; }
-  .hero-flacon { animation: heroFloat 5.5s ease-in-out infinite alternate; }
+  .hero-flacon, .hero-bottle { animation: heroFloat 5.5s ease-in-out infinite alternate; }
   @keyframes heroGlow { from { transform: translate(0,0) scale(1); opacity: .8; } to { transform: translate(-46px, 34px) scale(1.16); opacity: 1; } }
   @keyframes heroGlow2 { from { transform: translate(0,0) scale(1); opacity: .65; } to { transform: translate(40px, -28px) scale(1.12); opacity: .95; } }
   @keyframes heroFloat { from { transform: translateY(-5px); } to { transform: translateY(7px); } }
 }
 .hero-stage .hero { position: relative; z-index: 1; }
-.hero-stage h1 { color: #fbf3e6; }
-.hero-stage p.lead { color: rgba(243,233,218,.86); }
-.hero-stage .button { background: linear-gradient(180deg, #d8b277, #b1894f); color: #2a1d12; }
-.hero-stage .button:hover { box-shadow: 0 12px 28px rgba(185,152,99,.45); }
-.hero-stage .secondary { background: rgba(255,255,255,.05); color: #f3e9da; border: 1px solid rgba(243,233,218,.45); }
-.hero-stage .secondary:hover { border-color: var(--gold); color: #fff; }
-.hero-stage .perfume-card { background: rgba(28,19,13,.34); border: 1px solid rgba(235,214,172,.30); color: #f3e9da; box-shadow: 0 24px 60px rgba(20,14,9,.35); backdrop-filter: blur(8px); }
-.hero-stats-card { min-height: 0; justify-content: flex-start; }
-.hero-stats-title { font-family: var(--font-sans), Arial, sans-serif; text-transform: uppercase; letter-spacing: .22em; font-size: 12px; font-weight: 600; color: var(--gold); margin: 0 0 14px; }
+.hero-stage .eyebrow { color: #a07c43; }
+.hero-stage h1 { color: var(--brown); }
+.hero-stage p.lead { color: #5d4b40; }
+.hero-stage .button { background: linear-gradient(180deg, #56402f, #3d2b20); color: #fff; }
+.hero-stage .button:hover { box-shadow: 0 12px 28px rgba(75,53,40,.28); }
+.hero-stage .secondary { background: rgba(255,255,255,.5); color: var(--brown); border: 1px solid rgba(75,53,40,.22); }
+.hero-stage .secondary:hover { border-color: var(--gold); color: var(--brown); }
+.hero-stage .perfume-card { background: radial-gradient(120% 80% at 50% 0%, #5a4131 0%, #3a2a20 56%, #271b13 100%); border: 1px solid rgba(216,178,119,.5); color: #f3e9da; box-shadow: 0 30px 70px rgba(40,28,18,.4); }
+.hero-stats-card { min-height: 0; justify-content: flex-start; align-items: center; text-align: center; }
+.hero-bottle { width: 150px; height: auto; display: block; margin: 0 auto 16px; filter: drop-shadow(0 16px 32px rgba(20,12,4,.5)); }
+.hero-bottle-label { font-family: var(--font-display), Georgia, serif; font-size: 8px; font-weight: 600; letter-spacing: 0.8px; fill: #6b4f37; }
+.hero-bottle-sub { font-family: var(--font-sans), Arial, sans-serif; font-size: 4.2px; font-weight: 600; letter-spacing: 1.4px; fill: #9c7a52; }
+.hero-stats-title { font-family: var(--font-sans), Arial, sans-serif; text-transform: uppercase; letter-spacing: .22em; font-size: 12px; font-weight: 600; color: var(--gold); margin: 0 0 16px; }
 .hero-stage .perfume-card h2 { color: #fbf3e6; }
 .hero-stage .perfume-card p.small { color: rgba(243,233,218,.82); }
 .hero-stage .bottle { background: linear-gradient(135deg, rgba(216,183,170,.4), rgba(185,152,99,.16)); color: #fbf3e6; }
 .hero-stage .hero { gap: 44px; }
 .hero-stage p.lead { max-width: 560px; }
-.hero-trust { margin-top: 22px; font-family: var(--font-sans), Arial, sans-serif; font-size: 14px; color: rgba(243,233,218,.82); }
+.hero-trust { margin-top: 22px; font-family: var(--font-sans), Arial, sans-serif; font-size: 14px; color: #6d5a4d; }
 .hero-trust .stars { color: var(--gold); letter-spacing: 2px; margin-right: 6px; }
 .hero-stats { display: flex; flex-direction: column; gap: 0; width: 100%; }
-.hero-stat { display: flex; align-items: baseline; gap: 14px; border-top: 1px solid rgba(243,233,218,.16); padding: 16px 0; }
+.hero-stat { display: flex; align-items: baseline; gap: 14px; border-top: 1px solid rgba(243,233,218,.18); padding: 16px 0; }
 .hero-stat:first-child { border-top: 0; padding-top: 4px; }
 .hero-stat:last-child { padding-bottom: 4px; }
 .hero-stat strong { font-family: var(--font-display), Georgia, serif; font-size: 36px; color: var(--gold); line-height: 1; min-width: 70px; }
 .hero-stat span { font-family: var(--font-sans), Arial, sans-serif; font-size: 14px; color: rgba(243,233,218,.86); }
 @media (max-width: 800px) {
-  .hero-stage {
-    padding: 40px 24px;
-    /* Auf dem Handy das Foto sichtbar lassen: hellerer, vertikaler Verlauf
-       (oben Boutique-Foto sichtbar, unten dunkler für lesbare Knöpfe). */
-    background:
-      linear-gradient(180deg, rgba(26,18,12,.46) 0%, rgba(26,18,12,.66) 46%, rgba(22,15,10,.93) 100%),
-      url('/hero-auressa.jpg') center top / cover no-repeat,
-      radial-gradient(130% 130% at 0% 0%, #5a4131 0%, #3a2a20 48%, #241912 100%);
-  }
-  .hero-stage h1, .hero-stage .lead, .hero-stage .eyebrow { text-shadow: 0 2px 16px rgba(14,9,5,.6); }
+  .hero-stage { padding: 38px 24px; }
   .hero-stage .lead { font-size: 17px; }
 }
 .container { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }

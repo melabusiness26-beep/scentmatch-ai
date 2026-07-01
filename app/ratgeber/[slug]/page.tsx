@@ -6,6 +6,7 @@ import { getGuide, guides, relatedGuides, type Guide } from '@/lib/guides';
 import { getGuideFaqs, type GuideFaq } from '@/lib/guide-faqs';
 import { getPerfumes, type Perfume } from '@/lib/perfumes';
 import { AffiliateButton } from '@/app/AffiliateButton';
+import NewsletterForm from '@/app/NewsletterForm';
 
 export const revalidate = 3600;
 
@@ -199,6 +200,10 @@ export default async function GuidePage({
             <Link className="button" href="/#quiz">
               Welcher Duft passt zu dir? Mach das Quiz
             </Link>
+          </section>
+
+          <section className="section card">
+            <NewsletterForm source={`ratgeber:${slug}`} />
           </section>
         </article>
       </div>

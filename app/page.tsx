@@ -501,7 +501,7 @@ export default function Home() {
           <div className="hero-photo-inner">
             <p className="eyebrow">Dein Signature-Duft · kuratiert in der Schweiz</p>
             <h1>Finde deinen Signature-Duft in 1 Minute.</h1>
-            <p className="lead">Auressa verbindet ein elegantes Duft-Quiz mit einer intelligenten Match-Engine: Jeder Duft wird gegen deine Antworten zu Geschlecht, Duftrichtung, Anlass, Saison, Intensität und Budget bewertet.</p>
+            <p className="lead">Beantworte ein paar einfache Fragen – und wir finden Düfte, die wirklich zu dir passen. Ehrlich, verständlich und ganz auf deinen Geschmack abgestimmt.</p>
             <div className="cta">
               <a className="button" href="#quiz">Quiz starten</a>
               <Link className="button secondary" href="/duefte">Alle Düfte ansehen</Link>
@@ -627,7 +627,7 @@ export default function Home() {
           {!showResult ? (
             <>
               <p className="small">Frage {step + 1} von {questions.length}</p>
-              <div className="scorebar quiz-progress"><span style={{ width: `${(step / questions.length) * 100}%` }} /></div>
+              <div className="scorebar quiz-progress"><span style={{ width: `${((step + 1) / questions.length) * 100}%` }} /></div>
               <div className="question">{questions[step].q}</div>
               {questions[step].hint && <p className="small quiz-hint">{questions[step].hint}</p>}
               {questions[step].kind === 'anchor' ? (
@@ -695,6 +695,7 @@ export default function Home() {
                 );
               })}
 
+              <p className="small" style={{ marginTop: 16 }}>Dein Duftprofil-Mix – so oft hast du welche Richtung gewählt:</p>
               {Object.entries(family).map(([key, value]) => (
                 <div key={key} style={{ marginBottom: 12 }}>
                   <div className="small">{profileText[key].title}: {value}</div>

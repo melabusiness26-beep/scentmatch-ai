@@ -51,9 +51,8 @@ export default function CookieBanner() {
     <div className="cookie-banner" role="dialog" aria-modal="false" aria-label="Cookie-Hinweis">
       <div className="cookie-inner">
         <p className="cookie-text">
-          Wir verwenden nur technisch notwendige Cookies. Optionale Cookies – etwa für
-          anonyme Statistik – setzen wir ausschliesslich mit deiner Einwilligung. Mehr dazu
-          in der <Link href="/datenschutz">Datenschutzerklärung</Link>.
+          Wir nutzen nur notwendige Cookies. Optionale (anonyme Statistik) nur mit deiner
+          Einwilligung. <Link href="/datenschutz">Mehr erfahren</Link>.
         </p>
         <div className="cookie-actions">
           <button type="button" className="button secondary cookie-btn" onClick={() => decide('necessary')}>

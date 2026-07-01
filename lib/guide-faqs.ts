@@ -538,6 +538,20 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
       q: 'Süss oder frisch fürs Sommer-Date?',
       a: 'Im Sommer ist frisch mit einem warmen Unterton ideal. Schwere, süsse Abenddüfte können bei Hitze schnell aufdringlich wirken.'
     }
+  ],
+  'die-besten-erdbeer-duefte': [
+    {
+      q: 'Welche Parfüms riechen nach Erdbeere?',
+      a: 'Bekannte Beispiele sind Burberry Her, YSL Mon Paris und die günstige Lattafa Eclaire – sie alle tragen eine deutliche Erdbeer- bzw. rote-Beeren-Note.'
+    },
+    {
+      q: 'Sind Erdbeer-Düfte nur für den Sommer?',
+      a: 'Sie passen besonders schön zu warmen Tagen, funktionieren aber auch ganzjährig – vor allem, wenn die Erdbeere mit Vanille oder Karamell kombiniert ist.'
+    },
+    {
+      q: 'Gibt es günstige Erdbeer-Düfte?',
+      a: 'Ja. Lattafa Eclaire duftet fruchtig nach Erdbeere mit Karamell und Vanille und ist bereits für rund 35 Franken zu haben.'
+    }
   ]
 };
 

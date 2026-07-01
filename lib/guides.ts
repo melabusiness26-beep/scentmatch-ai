@@ -47,12 +47,12 @@ export const guides: Guide[] = [
           {
             expensive: 'armani-acqua-di-gio-homme',
             cheap: 'davidoff-cool-water',
-            note: 'Du magst die frische, aquatische Richtung von Acqua di Gio? Davidoff Cool Water bietet eine ähnlich sommertaugliche Frische – ein echter Klassiker zum kleinen Preis.'
+            note: 'Du magst die frische, aquatische Richtung von Acqua di Gio, möchtest aber weniger ausgeben? Davidoff Cool Water ist kein exakter Klon – es riecht etwas seifiger und weniger zitrisch –, gehört aber zur gleichen frisch-aquatischen Familie und ist ein günstiger Sommer-Klassiker.'
           },
           {
             expensive: 'ysl-black-opium',
             cheap: 'ariana-cloud',
-            note: 'Für die süße, gourmandige Richtung von Black Opium ist Ariana Grande Cloud eine günstige, kuschelige Alternative mit Praline und Vanille.'
+            note: 'YSL Black Opium ist ein süßer Kaffee-Vanille-Gourmand. Ariana Grande Cloud ist kein exakter Klon (die typische Kaffeenote fehlt), geht aber in dieselbe süß-kuschelige Gourmand-Richtung mit Praline und Vanille – zum kleinen Preis.'
           },
           {
             expensive: 'tobacco-vanille',

@@ -464,3 +464,114 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 .tile-actions .button { padding: 9px 14px; font-size: 14px; margin-top: 0; }
 .mood-result-card .tile-actions { margin-top: auto; padding-top: 12px; }
 @media (max-width: 600px) { .mood-top { grid-template-columns: 1fr; } }
+
+/* =========================================================
+   AURESSA NOIR – Dunkles Luxus-Theme
+   (ueberschreibt bewusst die hellen Regeln oben; am Ende,
+   damit es im Cascade gewinnt und leicht rueckbaubar bleibt)
+   ========================================================= */
+:root {
+  --gold: #d9b779;
+  --gold-bright: #ecc987;
+  --text: #efe6d7;
+  --muted: rgba(239,230,215,.66);
+  --line: rgba(217,183,121,.22);
+  --line-strong: rgba(217,183,121,.46);
+  --surface: rgba(255,255,255,.045);
+  --surface-2: rgba(255,255,255,.08);
+}
+html { color-scheme: dark; }
+body {
+  color: var(--text);
+  background:
+    radial-gradient(1200px 720px at 50% -12%, rgba(217,183,121,.17), rgba(217,183,121,0) 60%),
+    radial-gradient(880px 620px at 100% 0%, rgba(217,183,121,.10), transparent 55%),
+    radial-gradient(820px 640px at -2% 18%, rgba(150,108,66,.16), transparent 55%),
+    linear-gradient(180deg, #15100b 0%, #0b0805 100%);
+  background-attachment: fixed;
+}
+
+/* --- Text & Ueberschriften hell --- */
+h1, h2, h3, h4, .detail-title, .question, .section h2,
+.top-pick h3, .why-card h3, .tile h3, .tile-family h3, .newsletter-title,
+.mood-title, .faq-item summary, .stat-row strong, .legal h2 {
+  color: #f6ecdb;
+}
+p.lead, .hero-stage p.lead, .media-hero .lead { color: rgba(239,230,215,.84); }
+.small, .legal p, .breadcrumb-current, .mood-reason { color: var(--muted); }
+.eyebrow, .hero-stage .eyebrow, .footer-kicker, .hero-stats-title { color: var(--gold); }
+.quiz-cheer { color: var(--gold-bright); }
+.match-score-num { color: var(--gold-bright); }
+.match-score-pct { color: #f2e8d8; }
+.field label { color: rgba(239,230,215,.72); }
+
+/* --- Flaechen / Karten: dunkel-glaenzend --- */
+.card, .tile, .why-card, .faq-item, .top-pick, .mood-top, .mood-hero {
+  background: var(--surface);
+  border-color: var(--line);
+  box-shadow: 0 26px 64px rgba(0,0,0,.42);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.quiz { background: radial-gradient(130% 95% at 0% 0%, rgba(217,183,121,.12), rgba(255,255,255,.03) 58%); border-color: var(--line-strong); }
+
+/* --- Quiz-Antworten --- */
+.answer { background: rgba(255,255,255,.05); color: #f2e8d8; border-color: var(--line); box-shadow: none; }
+.answer:hover { background: linear-gradient(180deg, rgba(217,183,121,.18), rgba(217,183,121,.08)); border-color: var(--line-strong); box-shadow: 0 14px 30px rgba(0,0,0,.42); }
+
+/* --- Eingabefelder --- */
+.search, .field input, .field select { background: rgba(255,255,255,.06); color: var(--text); border-color: var(--line); }
+.search::placeholder { color: rgba(239,230,215,.4); }
+
+/* --- Kopfleiste --- */
+.site-header { background: rgba(15,11,8,.72); border-bottom-color: var(--line); }
+.site-header.scrolled { background: rgba(15,11,8,.92); box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+.header-inner .logo, .logo { color: #f6ecdb; }
+.main-nav a { color: rgba(239,230,215,.86); }
+.main-nav a:hover { color: var(--gold-bright); }
+.main-nav a:not(.nav-cta) { border-top-color: rgba(217,183,121,.16); }
+.nav-toggle { background: rgba(255,255,255,.06); color: var(--text); border-color: var(--line); }
+
+/* --- Buttons: leuchtendes Gold als Haupt-CTA --- */
+button, .button, .hero-stage .button { background: linear-gradient(180deg, #ecc987, #c99f5c); color: #1b1206; }
+.button:hover, .hero-stage .button:hover { box-shadow: 0 14px 32px rgba(217,183,121,.34); }
+.secondary, .hero-stage .secondary { background: rgba(255,255,255,.05); color: var(--text); border: 1px solid var(--line-strong); }
+.secondary:hover, .hero-stage .secondary:hover { border-color: var(--gold-bright); color: #fff; }
+.nav-cta, .nav-cta:hover { color: #1b1206 !important; }
+
+/* --- Pillen / Badges --- */
+.badge, .score-pill, .gender-pill, .note-pill, .filter-pill, .mood-chip {
+  background: rgba(217,183,121,.12); border-color: var(--line-strong); color: #f0e4cf;
+}
+.filter-pill-active, .mood-chip.active, .match-badge, .filter-chip { background: linear-gradient(180deg, #ecc987, #c99f5c); color: #1b1206; border-color: var(--gold); }
+.scorebar { background: rgba(255,255,255,.12); }
+
+/* --- „Warum"- & Schritt-Icons --- */
+.why-icon { background: rgba(217,183,121,.14); border-color: var(--line-strong); color: var(--gold-bright); }
+
+/* --- Hero (Foto): dunkler, dramatischer Verlauf --- */
+.hero-stage { color: var(--text); border-color: var(--line-strong); box-shadow: 0 40px 100px rgba(0,0,0,.5); }
+.hero-stage h1, .hero-photo h1 { color: #f8efdf; }
+.hero-stage.hero-photo {
+  background:
+    linear-gradient(96deg, rgba(11,8,5,.95) 0%, rgba(11,8,5,.88) 44%, rgba(11,8,5,.5) 66%, rgba(11,8,5,0) 86%),
+    url('/hero-auressa-2.jpg') right center / cover no-repeat;
+}
+.hero-stat-mini strong { color: var(--gold-bright); }
+.hero-stat-mini span { color: rgba(239,230,215,.6); }
+
+/* --- Familien-Kacheln: dunkle, farbig schimmernde Varianten --- */
+.tile-family { background: var(--surface); color: var(--text); border-color: var(--line); }
+.tile-fam-clean { background: linear-gradient(160deg, rgba(90,140,155,.30), rgba(255,255,255,.03) 72%); }
+.tile-fam-gourmand { background: linear-gradient(160deg, rgba(208,162,76,.32), rgba(255,255,255,.03) 72%); }
+.tile-fam-woody { background: linear-gradient(160deg, rgba(140,96,58,.36), rgba(255,255,255,.03) 72%); }
+.tile-fam-floral { background: linear-gradient(160deg, rgba(196,110,138,.32), rgba(255,255,255,.03) 72%); }
+
+/* --- Trennlinien --- */
+.share-box { border-top-color: var(--line); }
+.stat-row, .faq-item { border-color: var(--line); }
+
+/* --- Handy-Hero: dunkler Textblock statt Creme --- */
+@media (max-width: 800px) {
+  .hero-stage.hero-photo { background: #100b07; }
+}

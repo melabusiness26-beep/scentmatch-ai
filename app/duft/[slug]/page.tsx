@@ -173,7 +173,9 @@ function jsonLd(perfume: Perfume) {
         ? {
             '@type': 'Offer',
             price: perfume.price_chf,
-            priceCurrency: 'CHF'
+            priceCurrency: 'CHF',
+            availability: 'https://schema.org/InStock',
+            url: `${SITE_URL}/duft/${perfume.slug}`
           }
         : undefined
   };

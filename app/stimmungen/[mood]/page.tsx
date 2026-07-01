@@ -99,6 +99,14 @@ export default async function MoodPage({ params }: { params: Promise<{ mood: str
           url: `${SITE_URL}/duft/${p.slug}`,
           name: p.perfume_name
         }))
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Startseite', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Stimmungen', item: `${SITE_URL}/stimmungen` },
+          { '@type': 'ListItem', position: 3, name: mood.title, item: `${SITE_URL}/stimmungen/${mood.code}` }
+        ]
       }
     ]
   };
@@ -108,6 +116,13 @@ export default async function MoodPage({ params }: { params: Promise<{ mood: str
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <SiteHeader />
       <div className="container">
+        <nav className="breadcrumb small" aria-label="Brotkrümel-Navigation">
+          <Link href="/">Startseite</Link>
+          <span className="breadcrumb-sep" aria-hidden="true">›</span>
+          <Link href="/stimmungen">Stimmungen</Link>
+          <span className="breadcrumb-sep" aria-hidden="true">›</span>
+          <span aria-current="page">{mood.title}</span>
+        </nav>
         <section
           className="section card mood-hero"
           style={{ background: `linear-gradient(160deg, ${mood.tone}33, rgba(255,255,255,.55))` }}

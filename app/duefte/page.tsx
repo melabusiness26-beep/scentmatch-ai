@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import SiteHeader from '@/app/SiteHeader';
 import PerfumeCatalog from './PerfumeCatalog';
-import { getPerfumeCount } from '@/lib/perfumes';
+import { getPerfumeCount, getPerfumes } from '@/lib/perfumes';
 
 export const revalidate = 3600;
 
@@ -15,9 +15,9 @@ function approxCount(count: number): number {
 export async function generateMetadata(): Promise<Metadata> {
   const approx = approxCount(await getPerfumeCount());
   return {
-    title: 'Alle Düfte – die Auressa-Duftdatenbank',
+    title: 'Parfüm-Datenbank: alle Düfte durchsuchen (Schweiz)',
     description:
-      `Stöbere durch die kuratierte Auressa-Duftdatenbank: über ${approx} Düfte von Bestsellern bis zu seltenen Nischenperlen – suchbar nach Name, Marke, Note, Geschlecht und Anlass.`,
+      `Die grosse Parfüm-Datenbank aus der Schweiz: über ${approx} Düfte von Bestsellern bis zu seltenen Nischenperlen – suchbar nach Name, Marke, Note, Geschlecht und Anlass.`,
     alternates: { canonical: '/duefte' },
     openGraph: {
       title: 'Alle Düfte | Auressa',
@@ -29,7 +29,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function DueftePage() {
-  const approx = approxCount(await getPerfumeCount());
+  const [approx, perfumes] = await Promise.all([
+    getPerfumeCount().then(approxCount),
+    getPerfumes(2000)
+  ]);
   return (
     <main>
       <SiteHeader />
@@ -44,7 +47,7 @@ export default async function DueftePage() {
             </p>
           </div>
         </section>
-        <PerfumeCatalog />
+        <PerfumeCatalog initialPerfumes={perfumes} />
       </div>
     </main>
   );

@@ -73,8 +73,8 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 .hero-flacon rect { fill: none; stroke: rgba(235,214,172,.9); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
 .hero-flacon .hero-flacon-label { stroke: rgba(235,214,172,.5); }
 @media (prefers-reduced-motion: no-preference) {
-  .hero-stage::before { animation: heroGlow 13s ease-in-out infinite alternate; }
-  .hero-stage::after { animation: heroGlow2 17s ease-in-out infinite alternate; }
+  .hero-stage:not(.hero-photo)::before { animation: heroGlow 13s ease-in-out infinite alternate; }
+  .hero-stage:not(.hero-photo)::after { animation: heroGlow2 17s ease-in-out infinite alternate; }
   .hero-flacon, .hero-bottle { animation: heroFloat 5.5s ease-in-out infinite alternate; }
   @keyframes heroGlow { from { transform: translate(0,0) scale(1); opacity: .8; } to { transform: translate(-46px, 34px) scale(1.16); opacity: 1; } }
   @keyframes heroGlow2 { from { transform: translate(0,0) scale(1); opacity: .65; } to { transform: translate(40px, -28px) scale(1.12); opacity: .95; } }

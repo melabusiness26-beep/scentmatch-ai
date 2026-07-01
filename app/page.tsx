@@ -601,7 +601,7 @@ export default function Home() {
             {FAMILY_TILES.map(t => (
               <Link
                 key={t.code}
-                className="tile tile-family"
+                className={`tile tile-family tile-fam-${t.code}`}
                 href={`/duefte?family=${t.code}`}
               >
                 <h3>{t.label}</h3>

@@ -42,7 +42,7 @@ export const guides: Guide[] = [
           {
             expensive: 'dior-sauvage',
             cheap: 'lattafa-asad',
-            note: 'Dior Sauvage ist einer der meistgesuchten Herrendüfte – frisch-würzig mit Bergamotte, Pfeffer und Ambroxan. Lattafa Asad geht in genau diese Richtung (Bergamotte, schwarzer Pfeffer, Ambroxan) und ist deutlich günstiger.'
+            note: 'Dior Sauvage ist einer der meistgesuchten Herrendüfte. Lattafa Asad ist die bekannteste günstige Alternative aus der Sauvage-Familie: dieselbe würzig-ambrierte Grundrichtung mit schwarzem Pfeffer und Ambroxan – allerdings wärmer und süßer und damit am nächsten an der intensiven Variante Sauvage Elixir. Für einen Bruchteil des Preises.'
           },
           {
             expensive: 'armani-acqua-di-gio-homme',

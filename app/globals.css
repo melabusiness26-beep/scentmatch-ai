@@ -466,112 +466,135 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 @media (max-width: 600px) { .mood-top { grid-template-columns: 1fr; } }
 
 /* =========================================================
-   AURESSA NOIR – Dunkles Luxus-Theme
-   (ueberschreibt bewusst die hellen Regeln oben; am Ende,
-   damit es im Cascade gewinnt und leicht rueckbaubar bleibt)
+   AURESSA MAISON – Helles Luxus-Design
+   (Verfeinert bewusst die Regeln oben; am Ende, damit es im
+   Cascade gewinnt und leicht rueckbaubar bleibt.)
    ========================================================= */
 :root {
-  --gold: #d9b779;
-  --gold-bright: #ecc987;
-  --text: #efe6d7;
-  --muted: rgba(239,230,215,.66);
-  --line: rgba(217,183,121,.22);
-  --line-strong: rgba(217,183,121,.46);
-  --surface: rgba(255,255,255,.045);
-  --surface-2: rgba(255,255,255,.08);
+  --cream: #f7f3ec;
+  --gold: #a9884f;
+  --gold-line: rgba(169,136,79,.4);
+  --brown: #2a211b;
+  --ink: #1c1714;
+  --text: #2c2521;
+  --muted: #7a6f65;
+  --line: rgba(40,32,26,.12);
+  --line-soft: rgba(40,32,26,.07);
+  --surface: #fffdf9;
 }
-html { color-scheme: dark; }
+html { color-scheme: light; }
 body {
   color: var(--text);
   background:
-    radial-gradient(1200px 720px at 50% -12%, rgba(217,183,121,.17), rgba(217,183,121,0) 60%),
-    radial-gradient(880px 620px at 100% 0%, rgba(217,183,121,.10), transparent 55%),
-    radial-gradient(820px 640px at -2% 18%, rgba(150,108,66,.16), transparent 55%),
-    linear-gradient(180deg, #15100b 0%, #0b0805 100%);
+    radial-gradient(1200px 720px at 50% -12%, #ffffff 0%, rgba(255,255,255,0) 55%),
+    radial-gradient(900px 620px at 100% 0%, rgba(169,136,79,.05), transparent 55%),
+    linear-gradient(180deg, #f8f4ee 0%, #f1ebe1 100%);
   background-attachment: fixed;
 }
 
-/* --- Text & Ueberschriften hell --- */
+/* --- Typografie: ruhig, editorial --- */
 h1, h2, h3, h4, .detail-title, .question, .section h2,
 .top-pick h3, .why-card h3, .tile h3, .tile-family h3, .newsletter-title,
-.mood-title, .faq-item summary, .stat-row strong, .legal h2 {
-  color: #f6ecdb;
-}
-p.lead, .hero-stage p.lead, .media-hero .lead { color: rgba(239,230,215,.84); }
+.mood-title, .faq-item summary, .stat-row strong, .legal h2 { color: var(--ink); }
+h1 { letter-spacing: -.015em; }
+.section h2 { font-size: clamp(28px, 3.4vw, 42px); letter-spacing: -.01em; }
+p.lead, .hero-stage p.lead, .media-hero .lead { color: #574d45; }
 .small, .legal p, .breadcrumb-current, .mood-reason { color: var(--muted); }
-.eyebrow, .hero-stage .eyebrow, .footer-kicker, .hero-stats-title { color: var(--gold); }
-.quiz-cheer { color: var(--gold-bright); }
-.match-score-num { color: var(--gold-bright); }
-.match-score-pct { color: #f2e8d8; }
-.field label { color: rgba(239,230,215,.72); }
+.eyebrow, .hero-stage .eyebrow, .footer-kicker, .hero-stats-title,
+.media-hero .eyebrow { color: var(--gold); letter-spacing: .3em; font-size: 11px; }
+.eyebrow::before { background: var(--gold); width: 30px; }
+.quiz-cheer { color: var(--gold); }
 
-/* --- Flaechen / Karten: dunkel-glaenzend --- */
-.card, .tile, .why-card, .faq-item, .top-pick, .mood-top, .mood-hero {
-  background: var(--surface);
-  border-color: var(--line);
-  box-shadow: 0 26px 64px rgba(0,0,0,.42);
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
+/* --- Mehr Weissraum zwischen den Abschnitten --- */
+.section { margin-top: 100px; }
+.container { padding: 28px 20px 80px; }
+
+/* --- Knoepfe: flach, edel (Ink solid + Haarlinien-Outline) --- */
+button, .button, .hero-stage .button {
+  background: var(--ink); color: #f7f3ec;
+  border-radius: 3px; padding: 15px 30px;
+  font-weight: 500; letter-spacing: .04em;
+  box-shadow: none; transition: background .18s ease, transform .18s ease;
 }
-.quiz { background: radial-gradient(130% 95% at 0% 0%, rgba(217,183,121,.12), rgba(255,255,255,.03) 58%); border-color: var(--line-strong); }
+.button:hover, .hero-stage .button:hover { background: #3a2f27; transform: translateY(-1px); box-shadow: none; }
+.secondary, .hero-stage .secondary {
+  background: transparent; color: var(--ink);
+  border: 1px solid var(--line); border-radius: 3px;
+}
+.secondary:hover, .hero-stage .secondary:hover { background: rgba(40,32,26,.04); border-color: var(--ink); color: var(--ink); }
+.nav-cta, .nav-cta:hover { background: var(--ink) !important; color: #f7f3ec !important; border-radius: 3px; }
+.buy-button { background: var(--gold); color: #241a10; border-radius: 3px; }
 
-/* --- Quiz-Antworten --- */
-.answer { background: rgba(255,255,255,.05); color: #f2e8d8; border-color: var(--line); box-shadow: none; }
-.answer:hover { background: linear-gradient(180deg, rgba(217,183,121,.18), rgba(217,183,121,.08)); border-color: var(--line-strong); box-shadow: 0 14px 30px rgba(0,0,0,.42); }
+/* --- Flaechen: heller Elfenbein, Haarlinien, weiche Schatten, crisper Radius --- */
+.card, .quiz, .tile, .tile-family, .why-card, .faq-item, .top-pick, .mood-top, .mood-hero {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 54px rgba(40,32,26,.06);
+  border-radius: 10px;
+  backdrop-filter: none;
+}
+.hero-stage { border-radius: 12px; border: 1px solid var(--line); box-shadow: 0 30px 72px rgba(40,32,26,.09); }
+.cover, .cover-large { border-radius: 8px; }
+.answer { border-radius: 7px; }
+
+/* --- Quiz-Antworten: klar, ruhig --- */
+.answer { background: var(--surface); color: var(--brown); border: 1px solid var(--line); box-shadow: none; }
+.answer::after { color: var(--gold); }
+.answer:hover { background: #fff; border-color: var(--ink); box-shadow: 0 10px 26px rgba(40,32,26,.07); }
+.answer:hover::before { opacity: 1; }
 
 /* --- Eingabefelder --- */
-.search, .field input, .field select { background: rgba(255,255,255,.06); color: var(--text); border-color: var(--line); }
-.search::placeholder { color: rgba(239,230,215,.4); }
+.search, .field input, .field select { background: #fff; color: var(--text); border: 1px solid var(--line); }
+.search:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(169,136,79,.14); }
 
-/* --- Kopfleiste --- */
-.site-header { background: rgba(15,11,8,.72); border-bottom-color: var(--line); }
-.site-header.scrolled { background: rgba(15,11,8,.92); box-shadow: 0 10px 30px rgba(0,0,0,.5); }
-.header-inner .logo, .logo { color: #f6ecdb; }
-.main-nav a { color: rgba(239,230,215,.86); }
-.main-nav a:hover { color: var(--gold-bright); }
-.main-nav a:not(.nav-cta) { border-top-color: rgba(217,183,121,.16); }
-.nav-toggle { background: rgba(255,255,255,.06); color: var(--text); border-color: var(--line); }
+/* --- Kopfleiste: Elfenbein, Haarlinie --- */
+.site-header { background: rgba(247,243,236,.82); border-bottom: 1px solid var(--line); }
+.site-header.scrolled { background: rgba(247,243,236,.95); box-shadow: 0 8px 26px rgba(40,32,26,.06); }
+.header-inner .logo, .logo { color: var(--ink); }
+.main-nav a { color: var(--brown); }
+.main-nav a:hover { color: var(--gold); }
+.nav-toggle { background: #fff; color: var(--ink); border: 1px solid var(--line); }
 
-/* --- Buttons: leuchtendes Gold als Haupt-CTA --- */
-button, .button, .hero-stage .button { background: linear-gradient(180deg, #ecc987, #c99f5c); color: #1b1206; }
-.button:hover, .hero-stage .button:hover { box-shadow: 0 14px 32px rgba(217,183,121,.34); }
-.secondary, .hero-stage .secondary { background: rgba(255,255,255,.05); color: var(--text); border: 1px solid var(--line-strong); }
-.secondary:hover, .hero-stage .secondary:hover { border-color: var(--gold-bright); color: #fff; }
-.nav-cta, .nav-cta:hover { color: #1b1206 !important; }
+/* --- Pillen / Badges: reduziert, Haarlinie --- */
+.badge, .score-pill, .gender-pill, .note-pill { background: transparent; border: 1px solid var(--line); color: var(--brown); }
+.filter-pill { background: #fff; border: 1px solid var(--line); color: var(--ink); }
+.filter-pill-active, .filter-chip, .match-badge, .mood-chip.active { background: var(--ink); color: #f7f3ec; border-color: var(--ink); }
+.mood-chip { background: #fff; border: 1px solid var(--line); color: var(--brown); }
+.scorebar { background: rgba(40,32,26,.1); }
+.match-score-num { color: var(--gold); }
+.match-score-pct { color: var(--brown); }
 
-/* --- Pillen / Badges --- */
-.badge, .score-pill, .gender-pill, .note-pill, .filter-pill, .mood-chip {
-  background: rgba(217,183,121,.12); border-color: var(--line-strong); color: #f0e4cf;
-}
-.filter-pill-active, .mood-chip.active, .match-badge, .filter-chip { background: linear-gradient(180deg, #ecc987, #c99f5c); color: #1b1206; border-color: var(--gold); }
-.scorebar { background: rgba(255,255,255,.12); }
+/* --- „Warum"-Icons: feiner Goldkreis --- */
+.why-icon { width: 44px; height: 44px; border-radius: 50%; background: transparent; border: 1px solid var(--gold-line); color: var(--gold); }
 
-/* --- „Warum"- & Schritt-Icons --- */
-.why-icon { background: rgba(217,183,121,.14); border-color: var(--line-strong); color: var(--gold-bright); }
-
-/* --- Hero (Foto): dunkler, dramatischer Verlauf --- */
-.hero-stage { color: var(--text); border-color: var(--line-strong); box-shadow: 0 40px 100px rgba(0,0,0,.5); }
-.hero-stage h1, .hero-photo h1 { color: #f8efdf; }
+/* --- Hero (Foto): ruhiger, editorialer Elfenbein-Verlauf --- */
 .hero-stage.hero-photo {
   background:
-    linear-gradient(96deg, rgba(11,8,5,.95) 0%, rgba(11,8,5,.88) 44%, rgba(11,8,5,.5) 66%, rgba(11,8,5,0) 86%),
+    linear-gradient(96deg, rgba(247,243,236,.98) 0%, rgba(247,243,236,.96) 42%, rgba(247,243,236,.62) 62%, rgba(247,243,236,0) 84%),
     url('/hero-auressa-2.jpg') right center / cover no-repeat;
 }
-.hero-stat-mini strong { color: var(--gold-bright); }
-.hero-stat-mini span { color: rgba(239,230,215,.6); }
+.hero-stage h1, .hero-photo h1 { color: var(--ink); }
+.hero-stat-mini strong { color: var(--gold); }
+.hero-stat-mini span { color: var(--muted); }
 
-/* --- Familien-Kacheln: dunkle, farbig schimmernde Varianten --- */
-.tile-family { background: var(--surface); color: var(--text); border-color: var(--line); }
-.tile-fam-clean { background: linear-gradient(160deg, rgba(90,140,155,.30), rgba(255,255,255,.03) 72%); }
-.tile-fam-gourmand { background: linear-gradient(160deg, rgba(208,162,76,.32), rgba(255,255,255,.03) 72%); }
-.tile-fam-woody { background: linear-gradient(160deg, rgba(140,96,58,.36), rgba(255,255,255,.03) 72%); }
-.tile-fam-floral { background: linear-gradient(160deg, rgba(196,110,138,.32), rgba(255,255,255,.03) 72%); }
+/* --- Familien-Kacheln: gedaempfte, elegante Farbwelt --- */
+.tile-family { background: var(--surface); color: var(--text); border: 1px solid var(--line); }
+.tile-fam-clean { background: linear-gradient(158deg, rgba(206,222,227,.42), #fffdf9 68%); }
+.tile-fam-clean h3::before { background: #7ba0ad; box-shadow: 0 0 0 4px rgba(123,160,173,.14); }
+.tile-fam-gourmand { background: linear-gradient(158deg, rgba(224,201,158,.46), #fffdf9 68%); }
+.tile-fam-gourmand h3::before { background: #bf9a55; box-shadow: 0 0 0 4px rgba(191,154,85,.14); }
+.tile-fam-woody { background: linear-gradient(158deg, rgba(196,170,143,.5), #fffdf9 68%); }
+.tile-fam-woody h3::before { background: #8f6a48; box-shadow: 0 0 0 4px rgba(143,106,72,.14); }
+.tile-fam-floral { background: linear-gradient(158deg, rgba(226,197,206,.5), #fffdf9 68%); }
+.tile-fam-floral h3::before { background: #c07f95; box-shadow: 0 0 0 4px rgba(192,127,149,.14); }
 
 /* --- Trennlinien --- */
-.share-box { border-top-color: var(--line); }
+.share-box { border-top: 1px solid var(--line); }
 .stat-row, .faq-item { border-color: var(--line); }
+.footer-kicker { color: var(--gold); }
 
-/* --- Handy-Hero: dunkler Textblock statt Creme --- */
+/* --- Handy-Feinschliff --- */
 @media (max-width: 800px) {
-  .hero-stage.hero-photo { background: #100b07; }
+  .section { margin-top: 64px; }
+  .hero-stage.hero-photo { background: #f7f3ec; }
 }

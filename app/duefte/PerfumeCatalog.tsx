@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { getPerfumes, type Perfume } from '@/lib/perfumes';
+import { type Perfume } from '@/lib/perfumes';
 import { PerfumeTile, familyDisplay, matchesQuery } from '@/app/PerfumeTile';
 
 const FAMILY_TILES: { code: string; label: string }[] = [
@@ -15,18 +15,16 @@ const FAMILY_TILES: { code: string; label: string }[] = [
 // Hält die Seite auch bei hunderten Düften schnell – vor allem auf dem Handy.
 const PAGE_SIZE = 24;
 
-export default function PerfumeCatalog() {
-  const [perfumes, setPerfumes] = useState<Perfume[]>([]);
+// Die Düfte kommen jetzt server-seitig vorgerendert herein (initialPerfumes).
+// So stehen sie samt Links direkt im HTML (gut für Google) und es gibt kein
+// Nachladen/Flackern mehr. Suche und Filter laufen weiterhin im Browser.
+export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: Perfume[] }) {
+  const perfumes = initialPerfumes;
   const [query, setQuery] = useState('');
   const [familyFilter, setFamilyFilter] = useState('');
-  const [loaded, setLoaded] = useState(false);
   const [shownCount, setShownCount] = useState(PAGE_SIZE);
 
   useEffect(() => {
-    getPerfumes(2000).then((data) => {
-      setPerfumes(data);
-      setLoaded(true);
-    });
     // Vorauswahl aus der URL übernehmen (z. B. von den Duftrichtungs-Kacheln).
     const sp = new URLSearchParams(window.location.search);
     const fam = sp.get('family');
@@ -81,12 +79,12 @@ export default function PerfumeCatalog() {
       </div>
 
       <p className="small catalog-count">
-        {loaded ? `${visible.length} Düfte` : 'Düfte werden geladen…'}
+        {visible.length} Düfte
         {familyFilter ? ` · ${familyDisplay[familyFilter]}` : ''}
       </p>
 
       <div className="perfume-list">
-        {loaded && visible.length === 0 ? (
+        {visible.length === 0 ? (
           <p className="small">Keine Düfte gefunden. Versuch einen anderen Suchbegriff oder entferne den Filter.</p>
         ) : (
           shown.map((p) => <PerfumeTile perfume={p} key={p.id} />)

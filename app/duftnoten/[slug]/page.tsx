@@ -72,14 +72,31 @@ export default async function ScentNotePage({
   const pool = (await getPerfumes(2000)).filter((p) => p.slug);
   const matches = perfumesWithNote(note, pool).slice(0, 8);
   const catalogHref = `/duefte?q=${encodeURIComponent(note.name)}`;
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Duftnoten', item: `${SITE_URL}/duftnoten` },
+      { '@type': 'ListItem', position: 3, name: note.name, item: `${SITE_URL}/duftnoten/${note.slug}` }
+    ]
+  };
 
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <SiteHeader />
       <div className="container">
-        <div className="backlink">
-          <Link className="badge" href="/duftnoten">← Duftnoten-Lexikon</Link>
-        </div>
+        <nav className="breadcrumb small" aria-label="Brotkrümel-Navigation">
+          <Link href="/">Startseite</Link>
+          <span className="breadcrumb-sep" aria-hidden="true">›</span>
+          <Link href="/duftnoten">Duftnoten</Link>
+          <span className="breadcrumb-sep" aria-hidden="true">›</span>
+          <span aria-current="page">{note.name}</span>
+        </nav>
 
         <section className="section legal">
           <p className="eyebrow">Duftnote</p>

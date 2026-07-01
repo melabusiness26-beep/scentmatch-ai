@@ -14,6 +14,7 @@ import {
 import { noteHref } from '@/lib/notes-glossary';
 import { getCuratedLink } from '@/lib/curated-links';
 import { AffiliateButton } from '@/app/AffiliateButton';
+import NewsletterForm from '@/app/NewsletterForm';
 
 const genderLabels: Record<string, string> = {
   Women: 'Damenduft',
@@ -173,7 +174,9 @@ function jsonLd(perfume: Perfume) {
         ? {
             '@type': 'Offer',
             price: perfume.price_chf,
-            priceCurrency: 'CHF'
+            priceCurrency: 'CHF',
+            availability: 'https://schema.org/InStock',
+            url: `${SITE_URL}/duft/${perfume.slug}`
           }
         : undefined
   };
@@ -393,7 +396,7 @@ export default async function PerfumeDetailPage({
                     ? perfume.price_chf - c.price_chf
                     : null;
                 return (
-                  <Link className="tile tile-link" href={`/duft/${c.slug}`} key={c.id}>
+                  <div className="tile" key={c.id}>
                     <Cover perfume={c} />
                     <div className="match-badge">{c.price_chf != null ? `ca. CHF ${c.price_chf}` : 'Preis offen'}</div>
                     <h3>{c.perfume_name}</h3>
@@ -404,7 +407,13 @@ export default async function PerfumeDetailPage({
                       {similarity}% ähnlich
                       {saving != null && saving > 0 ? ` · spart ~CHF ${saving}` : ''}
                     </p>
-                  </Link>
+                    <div className="cta">
+                      {c.slug && (
+                        <Link className="button secondary" href={`/duft/${c.slug}`}>Duftprofil</Link>
+                      )}
+                      <AffiliateButton perfume={c} showNote={false} />
+                    </div>
+                  </div>
                 );
               })}
             </div>
@@ -419,7 +428,7 @@ export default async function PerfumeDetailPage({
             </p>
             <div className="perfume-list">
               {similar.map(({ perfume: s, similarity }) => (
-                <Link className="tile tile-link" href={`/duft/${s.slug}`} key={s.id}>
+                <div className="tile" key={s.id}>
                   <Cover perfume={s} />
                   <div className="match-badge">{similarity}% ähnlich</div>
                   <h3>{s.perfume_name}</h3>
@@ -431,7 +440,13 @@ export default async function PerfumeDetailPage({
                     <br />
                     Anlass: {s.occasion || 'offen'}
                   </p>
-                </Link>
+                  <div className="cta">
+                    {s.slug && (
+                      <Link className="button secondary" href={`/duft/${s.slug}`}>Duftprofil</Link>
+                    )}
+                    <AffiliateButton perfume={s} showNote={false} />
+                  </div>
+                </div>
               ))}
             </div>
           </section>
@@ -453,6 +468,10 @@ export default async function PerfumeDetailPage({
           <Link className="button" href="/#quiz">
             Passt dieser Duft zu dir? Mach das Quiz
           </Link>
+        </section>
+
+        <section className="section card">
+          <NewsletterForm source="duft" />
         </section>
       </div>
 

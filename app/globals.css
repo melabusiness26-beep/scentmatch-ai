@@ -39,14 +39,16 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 /* Foto-Hero (echtes Stimmungsbild als Vollflächen-Hintergrund). */
 .hero-stage.hero-photo {
   display: flex; align-items: center;
-  min-height: clamp(440px, 52vw, 600px);
+  min-height: clamp(400px, 42vw, 520px);
   padding: 56px 60px;
   background:
-    linear-gradient(100deg, rgba(252,247,238,.93) 0%, rgba(252,247,238,.74) 30%, rgba(252,247,238,.30) 50%, rgba(252,247,238,0) 66%),
-    url('/hero-auressa-2.jpg') center right / cover no-repeat;
+    linear-gradient(96deg, rgba(252,247,238,.98) 0%, rgba(252,247,238,.97) 46%, rgba(252,247,238,.66) 60%, rgba(252,247,238,0) 80%),
+    url('/hero-auressa-2.jpg') right center / cover no-repeat;
 }
 .hero-photo::before, .hero-photo::after { display: none; }
-.hero-photo-inner { position: relative; z-index: 1; max-width: 560px; }
+.hero-photo-inner { position: relative; z-index: 1; max-width: 500px; }
+.hero-photo h1 { font-size: clamp(36px, 4.6vw, 60px); }
+.hero-photo p.lead { max-width: 430px; }
 .hero-stats-row { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 26px; }
 .hero-stat-mini { display: flex; flex-direction: column; gap: 2px; }
 .hero-stat-mini strong { font-family: var(--font-display), Georgia, serif; font-size: 30px; color: #a07c43; line-height: 1; }

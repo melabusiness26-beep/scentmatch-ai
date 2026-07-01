@@ -40,6 +40,11 @@ export const guides: Guide[] = [
             note: 'Club de Nuit Intense Man von Armaf gilt als die bekannteste günstige Alternative zu Creed Aventus – fruchtig-rauchig mit Ananas und Birke, für einen Bruchteil des Preises.'
           },
           {
+            expensive: 'dior-sauvage',
+            cheap: 'lattafa-asad',
+            note: 'Dior Sauvage ist einer der meistgesuchten Herrendüfte – frisch-würzig mit Bergamotte, Pfeffer und Ambroxan. Lattafa Asad geht in genau diese Richtung (Bergamotte, schwarzer Pfeffer, Ambroxan) und ist deutlich günstiger.'
+          },
+          {
             expensive: 'armani-acqua-di-gio-homme',
             cheap: 'davidoff-cool-water',
             note: 'Du magst die frische, aquatische Richtung von Acqua di Gio? Davidoff Cool Water bietet eine ähnlich sommertaugliche Frische – ein echter Klassiker zum kleinen Preis.'

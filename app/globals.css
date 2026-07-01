@@ -178,6 +178,7 @@ a.logo { text-decoration:none; color:inherit; }
 .quiz .eyebrow { margin-bottom: 18px; }
 .footer-kicker { font-family: var(--font-sans), Arial, sans-serif; text-transform: uppercase; letter-spacing: .26em; font-size: 11px; font-weight: 600; color: var(--gold); margin: 10px 0 4px; }
 .quiz-hint { margin:-6px 0 14px; font-style:italic; }
+.quiz-cheer { margin:2px 0 14px; font-weight:600; color:#a07c43; }
 .quiz-back { margin-top:14px; background:none; border:0; color:var(--brown); cursor:pointer; font-family:var(--font-sans), Arial, sans-serif; font-size:14px; padding:6px 0; }
 .quiz-back:hover { text-decoration:underline; }
 /* Wow-Moment: großer, hochzählender Match-Score + Erscheinen */

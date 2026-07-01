@@ -159,6 +159,18 @@ const questions: QuizQuestion[] = [
 
 const familyQuestionCount = questions.filter(q => q.kind === 'family').length;
 
+// Kleine Ermutigungen zwischendurch – damit weniger Leute das Quiz abbrechen.
+// Wird unter dem Fortschrittsbalken angezeigt (leer = nichts anzeigen).
+function quizEncouragement(step: number, total: number): string {
+  const remaining = total - step - 1;
+  if (remaining === 0) return 'Letzte Frage – gleich siehst du dein Ergebnis! 🎉';
+  if (remaining === 1) return 'Fast geschafft – nur noch 1 Frage! 💛';
+  if (remaining === 2) return 'Fast geschafft – nur noch 2 Fragen. 💛';
+  if (step === Math.floor(total / 2)) return 'Die Hälfte ist geschafft – weiter so! ✨';
+  if (step === 2) return 'Läuft super – du machst das toll! 🌸';
+  return '';
+}
+
 // Reihenfolge der Duftfamilien für das kompakte Kodieren im Teilen-Link.
 const FAMILY_ORDER = ['clean', 'gourmand', 'woody', 'floral'] as const;
 
@@ -628,6 +640,9 @@ export default function Home() {
             <>
               <p className="small">Frage {step + 1} von {questions.length}</p>
               <div className="scorebar quiz-progress"><span style={{ width: `${((step + 1) / questions.length) * 100}%` }} /></div>
+              {quizEncouragement(step, questions.length) && (
+                <p className="small quiz-cheer">{quizEncouragement(step, questions.length)}</p>
+              )}
               <div className="question">{questions[step].q}</div>
               {questions[step].hint && <p className="small quiz-hint">{questions[step].hint}</p>}
               {questions[step].kind === 'anchor' ? (

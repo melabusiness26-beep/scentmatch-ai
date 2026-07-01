@@ -229,7 +229,7 @@ export const guides: Guide[] = [
     slug: 'parfum-inhaltsstoffe-allergene',
     title: 'Parfum-Inhaltsstoffe & Allergene einfach erklärt',
     description:
-      'Was steckt eigentlich in einem Parfum? Alkohol, Duftöl und die 26 EU-Allergene wie Limonene und Linalool – einfach und verständlich erklärt.',
+      'Was steckt eigentlich in einem Parfum? Alkohol, Duftöl und die deklarationspflichtigen Duftallergene wie Limonene und Linalool – einfach und verständlich erklärt.',
     intro: [
       'Auf jeder Parfumverpackung steht eine Liste mit Inhaltsstoffen – oft mit lateinischen Namen, die etwas einschüchternd wirken. Dabei steckt dahinter kein Hexenwerk. Hier erklären wir dir einfach, was wirklich drin ist und worauf empfindliche Haut achten sollte.',
       'Wichtig vorweg: Die genaue Zusammensetzung ist von Duft zu Duft unterschiedlich und kann sich ändern. Die vollständige, gültige Liste findest du immer auf der Verpackung bzw. beim Hersteller. Dieser Artikel erklärt das Allgemeine.'
@@ -252,9 +252,9 @@ export const guides: Guide[] = [
         ]
       },
       {
-        heading: 'Die 26 Allergene: Limonene, Linalool & Co.',
+        heading: 'Deklarationspflichtige Allergene: Limonene, Linalool & Co.',
         body: [
-          'Bestimmte natürliche Duftbestandteile können bei empfindlichen Menschen Hautreaktionen auslösen. In der EU (und in der Schweiz angelehnt) müssen 26 solcher Stoffe ab einer gewissen Menge einzeln genannt werden – deshalb tauchen sie auf der Liste auf.',
+          'Bestimmte natürliche Duftbestandteile können bei empfindlichen Menschen Hautreaktionen auslösen. In der EU (und in der Schweiz angelehnt) müssen solche Stoffe ab einer gewissen Menge einzeln genannt werden – deshalb tauchen sie auf der Liste auf. Lange waren das 26 Stoffe; die EU hat die Liste inzwischen deutlich erweitert (auf über 80).',
           'Die häufigsten sind: Limonene (zitrusartig), Linalool (blumig, in Lavendel), Citronellol und Geraniol (rosig), Eugenol (würzig, Nelke), Coumarin (heuartig, süsslich) und Citral.',
           'Wichtig: Diese Stoffe sind nicht „schlecht" – sie stecken auch in vielen natürlichen Ölen und Blüten. Sie werden nur aufgelistet, damit Allergikerinnen und Allergiker sie erkennen können.'
         ]
@@ -726,9 +726,9 @@ export const guides: Guide[] = [
         heading: '♐ Schütze (23. November – 21. Dezember)',
         body: [
           'Schützen sind abenteuerlustig, warmherzig und freiheitsliebend. Ein gemütlicher, warm-holziger Duft weckt ihr Fernweh.',
-          'Luxus-Pick: Maison Margiela Replica By the Fireplace. Günstigere Alternative in ähnlicher, warm-holziger Richtung: Lattafa Fakhar (Men). Warme, einhüllende Noten passen zu ihrer optimistischen Wärme.'
+          'Luxus-Pick: Maison Margiela Replica By the Fireplace. Günstigere Alternative in ebenfalls warmer, süß-holziger Richtung: Lattafa Badee al Oud Amethyst. Weiche Amber-, Oud- und süße Noten wirken einhüllend und passen zu ihrer optimistischen Wärme.'
         ],
-        perfumes: ['replica-fireplace', 'lattafa-fakhar-men']
+        perfumes: ['replica-fireplace', 'lattafa-badee-amethyst']
       },
       {
         heading: '♑ Steinbock (22. Dezember – 20. Januar)',
@@ -742,9 +742,9 @@ export const guides: Guide[] = [
         heading: '♒ Wassermann (21. Januar – 19. Februar)',
         body: [
           'Wassermänner sind eigenständig, modern und unkonventionell. Ein minimalistischer, holzig-cleaner Duft passt zu ihrem individuellen Stil.',
-          'Luxus-Pick: Le Labo Santal 33. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Ana Abiyedh. Cremiges Holz und klare Noten wirken modern und eigenständig.'
+          'Luxus-Pick: Le Labo Santal 33. Günstigere Alternative in ähnlich holzig-moderner Richtung: Mancera Cedrat Boisé. Klare Zitrus- und Holznoten wirken modern und eigenständig.'
         ],
-        perfumes: ['le-labo-santal-33', 'lattafa-ana-abiyedh']
+        perfumes: ['le-labo-santal-33', 'mancera-cedrat-boise']
       },
       {
         heading: '♓ Fische (20. Februar – 20. März)',
@@ -1557,7 +1557,7 @@ export const guides: Guide[] = [
     description:
       'Viele Zara-Düfte erinnern stark an teure Designer-Parfums. Wir zeigen die bekanntesten Zara-Dupes und welches Original jeweils dahintersteckt.',
     intro: [
-      'Zara ist bekannt für überraschend gute Düfte zum kleinen Preis – viele davon erinnern stark an teure Designer-Parfums. Kein Wunder: Ein Teil der Zara-Düfte wurde mit dem renommierten Parfümeur-Haus Jo Loves (Jo Malone) entwickelt.',
+      'Zara ist bekannt für überraschend gute Düfte zum kleinen Preis – viele davon erinnern stark an teure Designer-Parfums. Kein Wunder: Ein Teil der bekanntesten Zara-Düfte (die Kollektion „Zara Emotions", 2019) wurde von der renommierten britischen Parfümeurin Jo Malone persönlich komponiert.',
       'Ehrlich gesagt: Ein Dupe ist nie zu 100 % identisch und hält oft etwas kürzer. Aber für den Alltag und zum Ausprobieren einer Duftrichtung sind die Zara-Düfte erstaunlich gut – und kosten meist unter 20 Franken.',
       'Hier die bekanntesten Zara-Dupes und ihre teuren „Vorbilder". Die genaue Verfügbarkeit wechselt bei Zara saisonal.'
     ],

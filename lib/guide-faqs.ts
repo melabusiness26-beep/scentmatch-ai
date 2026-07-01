@@ -101,8 +101,8 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
       a: 'Die genaue Formel ist Betriebsgeheimnis. Deshalb dürfen die Riechstoffe gesammelt als „Parfum" oder „Fragrance" angegeben werden.'
     },
     {
-      q: 'Was sind die 26 Allergene?',
-      a: 'Natürliche Duftbestandteile wie Limonene oder Linalool, die ab einer gewissen Menge einzeln genannt werden müssen – damit Allergikerinnen und Allergiker sie erkennen.'
+      q: 'Was sind deklarationspflichtige Duftallergene?',
+      a: 'Natürliche Duftbestandteile wie Limonene oder Linalool, die ab einer gewissen Menge einzeln genannt werden müssen – damit Allergikerinnen und Allergiker sie erkennen. Lange waren es 26 solcher Stoffe; die EU hat die Liste inzwischen auf über 80 erweitert.'
     }
   ],
   'die-besten-duefte-unter-50-franken': [

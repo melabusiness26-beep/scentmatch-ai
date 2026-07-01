@@ -103,6 +103,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="/duefte">Düfte</a>
               <a href="/duftnoten">Duftnoten</a>
               <a href="/ratgeber">Ratgeber</a>
+              <a href="/ueber-uns">Über uns</a>
               <a href="/impressum">Impressum</a>
               <a href="/datenschutz">Datenschutz</a>
             </nav>

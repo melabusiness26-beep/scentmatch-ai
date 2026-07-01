@@ -23,9 +23,9 @@ export type Guide = {
 export const guides: Guide[] = [
   {
     slug: 'guenstige-alternativen-zu-teuren-dueften',
-    title: 'Günstige Alternativen zu teuren Parfüms: die besten Dupes',
+    title: 'Parfüm-Dupes Schweiz: die besten günstigen Alternativen',
     description:
-      'Teure Düfte wie Creed Aventus haben oft günstige Alternativen, die erstaunlich ähnlich riechen. Hier die besten Spar-Tipps aus unserem Duftkatalog.',
+      'Teure Düfte wie Creed Aventus oder Dior Sauvage haben oft günstige Alternativen (Dupes), die erstaunlich ähnlich riechen. Die besten Parfüm-Dupes für die Schweiz – von frisch bis süß, mit ehrlicher Einschätzung.',
     intro: [
       'Ein sogenanntes „Dupe" ist ein günstiger Duft, der einem teuren Original in der Richtung sehr nahekommt. Gerade in der Schweiz lohnt sich der Blick auf solche Alternativen: ähnlicher Duft, deutlich kleinerer Preis.',
       'Wichtig ehrlich gesagt: Ein Dupe ist nie zu 100 % identisch und hält manchmal etwas kürzer. Aber für den Alltag sind viele Alternativen verblüffend gut – und du sparst oft über 200 Franken.'
@@ -1666,6 +1666,39 @@ export const guides: Guide[] = [
         ]
       }
     ]
+  },
+  {
+    slug: 'die-besten-erdbeer-duefte',
+    title: 'Die besten Erdbeer-Düfte: süß & fruchtig',
+    description:
+      'Parfüms, die herrlich nach reifen Erdbeeren duften – süß, fruchtig und sommerlich. Unsere besten Erdbeer-Düfte von günstig bis edel.',
+    intro: [
+      'Erdbeere ist eine der schönsten fruchtigen Duftnoten: süss, saftig und sofort gute Laune. Mal frisch-spritzig, mal kombiniert mit Sahne, Vanille oder weissen Blüten.',
+      'Hier unsere schönsten Düfte aus dem Katalog, in denen Erdbeere eine tragende Rolle spielt – für alle, die es fruchtig-süss mögen.'
+    ],
+    sections: [
+      {
+        perfumes: [
+          'burberry-her',
+          'ysl-mon-paris',
+          'lattafa-eclaire',
+          'vs-bombshell'
+        ]
+      },
+      {
+        heading: 'Worauf du bei Erdbeer-Düften achten solltest',
+        body: [
+          'Fruchtige Erdbeer-Noten wirken jung, verspielt und sommerlich – ideal für den Alltag, Dates und warme Tage.',
+          'Achte auf die Basis: Erdbeere mit Vanille, Karamell oder Moschus (z. B. Lattafa Eclaire) wird wärmer und haltbarer, Erdbeere mit Blüten (z. B. YSL Mon Paris) bleibt eleganter und frischer.',
+          'Süss-fruchtige Düfte sind oft präsent – ein bis zwei Sprühstösse reichen meist völlig.'
+        ]
+      },
+      {
+        body: [
+          'Nicht sicher, ob fruchtig-süss wirklich dein Typ ist? Mach unser Duft-Quiz – es findet deine Lieblingsrichtung in unter einer Minute.'
+        ]
+      }
+    ]
   }
 ];
 
@@ -1765,6 +1798,7 @@ export const guideCategories: GuideCategory[] = [
     slugs: [
       'suesse-duefte-vanille-schokolade-karamell',
       'die-besten-vanille-duefte',
+      'die-besten-erdbeer-duefte',
       'die-besten-oud-duefte',
       'die-besten-zitrus-duefte',
       'die-besten-holzigen-duefte',

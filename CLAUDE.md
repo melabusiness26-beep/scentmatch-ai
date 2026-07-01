@@ -243,3 +243,25 @@ gender → anchor (optional, Dropdown) → 3× family → lovedNote → disliked
 4. Sobald echte Affiliate-Links da sind (Notino/CJ oder Flaconi/Awin) → pro Duft im
    **Admin** ins Feld „Affiliate-Link / Shop-URL" eintragen (Button nutzt ihn automatisch).
 
+## 12. Persönliches Ziel der Gründerin (Stand: 1. Juli 2026)
+
+> Wichtig für jeden neuen Chat: Das ist das eigentliche wirtschaftliche Ziel, an dem
+> alle Schritte ausgerichtet werden sollen. Immer ehrlich beraten (auch wenn ambitioniert),
+> klare Empfehlung geben, Schritt für Schritt auf Deutsch, keine Programmierkenntnisse
+> voraussetzen.
+
+- **Hauptziel: bis Ende 2026 ca. 30'000 CHF GEWINN** erreichen.
+- **Weg dorthin:** primär **Schmuck-Dropshipping** (AliExpress / evtl. eigenes kleines
+  Lager). **Auressa (Parfüm-Affiliate)** läuft parallel – u. a. um über die Partner-
+  Mediatheken (Awin/Flaconi, CJ/Notino) **legal Produktbilder** nutzen zu dürfen und
+  erste Affiliate-Einnahmen zu testen.
+- **Ressourcen:** ca. **3 Tage pro Woche** Zeit, **max. 500 CHF Startbudget**.
+- **Ehrliche Einordnung (dokumentiert):** 30'000 CHF Gewinn in ~6 Monaten ohne echtes
+  Kapital ist **sehr ambitioniert** (realistischer 12–18 Monate). Der **Engpass ist die
+  Reichweite/Besucher**, nicht der Shop. Strategie: **zuerst Publikum aufbauen** (EIN
+  Social-Kanal, TikTok ODER Instagram, regelmäßig posten), **dann verkaufen**. Affiliate
+  zuerst (kein Kapitalrisiko), Schmuck-Dropshipping dazuschalten, sobald eine kleine
+  Community da ist.
+- **Zahlungs-Setup (CJ/Payoneer) ist NICHT dringend** – Auszahlung erst ab ~50–60 EUR
+  Guthaben; aktuell 0 Einnahmen. Nicht daran festbeißen, bis echte Provisionen nahen.
+

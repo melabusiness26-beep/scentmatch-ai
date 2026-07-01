@@ -63,7 +63,7 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
   .hero-photo::before {
     content: ''; display: block; position: static; inset: auto;
     width: 100%; height: auto; aspect-ratio: 4 / 3;
-    background: url('/hero-auressa-2.jpg') 62% center / cover no-repeat;
+    background: url('/hero-auressa-2.jpg') 92% center / cover no-repeat;
     animation: none;
   }
   .hero-photo-inner { max-width: none; padding: 24px 22px 30px; }

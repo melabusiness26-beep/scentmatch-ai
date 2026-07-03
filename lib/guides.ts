@@ -1679,10 +1679,12 @@ export const guides: Guide[] = [
     sections: [
       {
         perfumes: [
+          'aquolina-pink-sugar',
           'burberry-her',
           'ysl-mon-paris',
           'lattafa-eclaire',
-          'vs-bombshell'
+          'vs-bombshell',
+          'xerjoff-la-capitale'
         ]
       },
       {

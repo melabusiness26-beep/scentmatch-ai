@@ -56,7 +56,13 @@ function jsonLd(note: ScentNote) {
     description: note.metaDescription,
     about: { '@type': 'Thing', name: `${note.name} (Duftnote)` },
     mainEntityOfPage: `${SITE_URL}/duftnoten/${note.slug}`,
-    publisher: { '@type': 'Organization', name: 'Auressa' }
+    image: `${SITE_URL}${note.image}`,
+    author: { '@type': 'Organization', name: 'Auressa', url: SITE_URL },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Auressa',
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon` }
+    }
   };
 }
 
@@ -101,11 +107,12 @@ export default async function ScentNotePage({
         <section className="section legal">
           <p className="eyebrow">Duftnote</p>
           <h1 className="detail-title">{note.name}</h1>
-          <div
+          <img
             className="cover cover-large note-hero"
-            role="img"
-            aria-label={`${note.name} – Duftnote`}
-            style={{ backgroundImage: `url(${note.image})` }}
+            src={note.image}
+            alt={`${note.name} – Duftnote: Aussehen und typische Herkunft`}
+            width={800}
+            height={380}
           />
           <p className="lead">{note.intro}</p>
 

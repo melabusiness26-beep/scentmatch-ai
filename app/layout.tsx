@@ -77,7 +77,7 @@ const websiteJsonLd = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const year = new Date().getFullYear();
   return (
-    <html lang="de" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="de-CH" className={`${playfair.variable} ${inter.variable}`}>
       <body>
         <script
           type="application/ld+json"

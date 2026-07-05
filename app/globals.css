@@ -212,6 +212,9 @@ a.logo { text-decoration:none; color:inherit; }
 
 /* Duft-Bilder & elegante Platzhalter (nach Duftfamilie eingefärbt) */
 .cover { position:relative; height:130px; border-radius:10px; margin-bottom:14px; background-color:#eadfce; background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,.45), inset 0 -30px 50px rgba(75,53,40,.12); }
+/* Echte Bilder (z. B. Duftnoten-Fotos) als <img> statt CSS-Hintergrund –
+   so werden sie von der Google-Bildersuche indexiert und laden effizient. */
+img.cover { display:block; width:100%; object-fit:cover; }
 .cover-large { height:230px; margin-bottom:18px; }
 .cover-glyph { font-size:38px; color:rgba(75,53,40,.5); }
 /* Edle „Etiketten-Karte" als Platzhalter, solange kein echtes Foto da ist */

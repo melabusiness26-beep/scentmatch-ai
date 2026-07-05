@@ -695,11 +695,21 @@ export default function Home() {
                 );
               })}
 
+              {top3.length === 0 && (
+                <div className="top-pick">
+                  <p className="lead">
+                    Für diese Kombination haben wir gerade keinen passenden Treffer gefunden.
+                    Versuch es mit etwas offeneren Angaben – oder{' '}
+                    <Link href="/duefte">stöber im ganzen Duftkatalog</Link>.
+                  </p>
+                </div>
+              )}
+
               <p className="small" style={{ marginTop: 16 }}>Dein Duftprofil-Mix – so oft hast du welche Richtung gewählt:</p>
               {Object.entries(family).map(([key, value]) => (
                 <div key={key} style={{ marginBottom: 12 }}>
                   <div className="small">{profileText[key].title}: {value}</div>
-                  <div className="scorebar bar-reveal"><span style={{ width: `${(value / familyQuestionCount) * 100}%` }} /></div>
+                  <div className="scorebar bar-reveal"><span style={{ width: `${Math.min(100, (value / familyQuestionCount) * 100)}%` }} /></div>
                 </div>
               ))}
 

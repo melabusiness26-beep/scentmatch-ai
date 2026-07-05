@@ -279,9 +279,14 @@ export default async function PerfumeDetailPage({
   );
   const cheaperIds = new Set(cheaper.map((c) => c.perfume.id));
   // In den allgemeinen "ähnlich"-Vorschlägen die guenstigen Alternativen nicht doppelt zeigen.
-  const similar = findSimilarPerfumes(perfume, pool, 4).filter(
-    (s) => s.similarity >= 30 && !cheaperIds.has(s.perfume.id) && s.perfume.slug !== curatedSlug
-  );
+  // Zuerst großzügig holen und filtern, DANN auf 4 kürzen – sonst würde das Kürzen auf 4
+  // vor dem Filtern den Abschnitt oft fälschlich leeren (die günstigen Alternativen riechen
+  // per Definition ähnlich und belegen sonst die Top-Plätze).
+  const similar = findSimilarPerfumes(perfume, pool, 20)
+    .filter(
+      (s) => s.similarity >= 30 && !cheaperIds.has(s.perfume.id) && s.perfume.slug !== curatedSlug
+    )
+    .slice(0, 4);
 
   const faqs = buildFaqs(perfume);
   const whenText = [

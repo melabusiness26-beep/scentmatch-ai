@@ -8,5 +8,12 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <HomeClient />;
+  return (
+    <>
+      {/* Hero-Foto sofort laden lassen (verbessert den LCP / Ladeeindruck spürbar).
+          Next.js hebt diesen Link automatisch in den <head>. */}
+      <link rel="preload" as="image" href="/hero-auressa-2.jpg" fetchPriority="high" />
+      <HomeClient />
+    </>
+  );
 }

@@ -60,8 +60,8 @@ export function PerfumeTile({ perfume, matchPercent }: { perfume: Perfume; match
     <>
       <PerfumeCover perfume={perfume} />
       {matchPercent != null && <div className="match-badge">{matchPercent}% Match</div>}
+      <p className="tile-brand">{perfume.brands?.name || 'Marke offen'} · {familyDisplay[perfume.fragrance_family || ''] || 'Duftfamilie offen'}</p>
       <h3>{perfume.perfume_name}</h3>
-      <p className="small">{perfume.brands?.name || 'Marke offen'} · {familyDisplay[perfume.fragrance_family || ''] || 'Duftfamilie offen'}</p>
       <div className="tile-meta">
         <span className="score-pill">Score {perfume.scentmatch_score ?? 80}</span>
         {perfume.gender && (

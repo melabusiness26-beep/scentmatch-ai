@@ -80,8 +80,10 @@ export default function DatenschutzPage() {
             personenbezogenen Daten – sie erfasst nur anonyme Nutzungsdaten (z. B. aufgerufene Seiten,
             ungefähre Region, Gerätetyp), damit wir sehen, wie viele Menschen Auressa besuchen. Da dabei
             keine Daten auf deinem Gerät gespeichert oder ausgelesen werden und keine Profile entstehen,
-            ist hierfür keine Einwilligung erforderlich. Technisch notwendige Cookies, die für den
-            sicheren Betrieb der Seite nötig sind, kommen ebenfalls zum Einsatz.
+            ist hierfür keine Einwilligung erforderlich. <strong>Auressa selbst setzt keine
+            (Tracking-)Cookies:</strong> Deine Quiz-Eingaben und diesen Hinweis speichern wir nur lokal in
+            deinem Browser, die Statistik ist cookielos. Lediglich unser Hosting-Anbieter kann aus rein
+            technischen Gründen (Sicherheit und stabiler Betrieb) vereinzelt notwendige Cookies verwenden.
           </p>
 
           <h2>7. Affiliate-Links</h2>

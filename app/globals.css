@@ -418,11 +418,16 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 .site-footer .newsletter-title { color: #fbf3e6; }
 .site-footer .newsletter .small, .site-footer .newsletter-consent { color: rgba(243,233,218,.85); }
 
-/* Duft nach Stimmung – Auswahl-Kacheln */
-.mood-grid { margin-top: 22px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+/* Duft nach Stimmung – Auswahl-Kacheln.
+   10 Stimmungen → sauberes 5×2-Raster (statt schiefer letzter Reihe). */
+.mood-grid { margin-top: 22px; grid-template-columns: repeat(5, 1fr); }
 .mood-card { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
-.mood-emoji { font-size: 30px; line-height: 1; margin-bottom: 6px; }
+/* Feiner Icon-Badge im gleichen Stil wie die „Warum Auressa?"-Icons. */
+.mood-icon { width: 44px; height: 44px; border-radius: 13px; display: inline-flex; align-items: center; justify-content: center; color: var(--brown); background: rgba(185,152,99,.16); border: 1px solid rgba(185,152,99,.4); margin-bottom: 8px; }
+.mood-icon svg { width: 23px; height: 23px; }
 .mood-title { font-family: var(--font-display), Georgia, serif; font-size: 20px; color: var(--brown); }
+@media (max-width: 900px) { .mood-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 460px) { .mood-grid { grid-template-columns: 1fr; } }
 /* Geschlechts-Filter auf der Ergebnis-Seite */
 .mood-genders { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 4px; }
 .mood-chip { cursor: pointer; padding: 9px 18px; border-radius: 999px; font-family: var(--font-sans), Arial, sans-serif; font-size: 14px; color: var(--brown); background: rgba(255,255,255,.55); border: 1px solid rgba(75,53,40,.16); transition: border-color .15s ease, background .15s ease, transform .15s ease; }
@@ -431,6 +436,10 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 /* Stimmungs-Detailseite: Hero + "Duft-DNA"-Balken */
 .mood-hero { border: 1px solid rgba(185,152,99,.35); }
 .mood-hero h1 { color: var(--brown); margin: 4px 0 12px; }
+/* Titel mit vorangestelltem Icon-Badge, sauber vertikal ausgerichtet. */
+.mood-hero-title { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.mood-icon-lg { width: 56px; height: 56px; border-radius: 16px; margin-bottom: 0; flex: none; }
+.mood-icon-lg svg { width: 30px; height: 30px; }
 .mood-dna { margin-top: 20px; max-width: 540px; }
 .mood-dna-title { font-weight: 600; color: var(--brown); margin: 0 0 12px; }
 .mood-dna-row { margin-bottom: 11px; }

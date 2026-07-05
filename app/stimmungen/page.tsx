@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import SiteHeader from '@/app/SiteHeader';
+import MoodIcon from '@/app/MoodIcon';
 import { MOODS } from '@/lib/perfumes';
 
 export const metadata: Metadata = {
@@ -41,7 +42,12 @@ export default function StimmungenPage() {
                 className="tile-family mood-card"
                 style={{ background: `linear-gradient(160deg, ${m.tone}26, rgba(255,255,255,.55))` }}
               >
-                <span className="mood-emoji" aria-hidden="true">{m.emoji}</span>
+                <span
+                  className="mood-icon"
+                  style={{ background: `${m.tone}22`, borderColor: `${m.tone}55` }}
+                >
+                  <MoodIcon name={m.icon} />
+                </span>
                 <span className="mood-title">{m.title}</span>
                 <span className="small">{m.subtitle}</span>
               </Link>

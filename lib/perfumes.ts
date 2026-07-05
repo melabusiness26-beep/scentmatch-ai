@@ -364,7 +364,8 @@ export function findCheaperAlternatives(target: Perfume, pool: Perfume[], limit 
 
 export type Mood = {
   code: string;
-  emoji: string;
+  emoji: string; // wird nur noch für Teilen-Texte (WhatsApp/Zwischenablage) genutzt
+  icon: string; // Linien-Icon-Name für das Seiten-Design (siehe app/MoodIcon.tsx)
   title: string; // die Absicht/das Gefühl, z. B. "Ich will mich verwöhnen"
   phrase: string; // ehrliche Kurzform für Texte, z. B. "wenn dir nach Trost ist"
   subtitle: string; // kurze Zeile auf der Stimmungs-Kachel
@@ -386,6 +387,7 @@ export const MOODS: Mood[] = [
   {
     code: 'verwoehnen',
     emoji: '💙',
+    icon: 'mug',
     title: 'Ich will mich verwöhnen',
     phrase: 'wenn dir nach Trost und Wärme ist',
     subtitle: 'Warm und weich, wenn dir nach Trost ist.',
@@ -399,6 +401,7 @@ export const MOODS: Mood[] = [
   {
     code: 'stark',
     emoji: '🔥',
+    icon: 'shield',
     title: 'Ich will mich stark fühlen',
     phrase: 'wenn du dir den Rücken stärken willst',
     subtitle: 'Edel und präsent, für mehr Selbstvertrauen.',
@@ -412,6 +415,7 @@ export const MOODS: Mood[] = [
   {
     code: 'runterkommen',
     emoji: '🌿',
+    icon: 'leaf',
     title: 'Ich will runterkommen',
     phrase: 'wenn du zur Ruhe kommen willst',
     subtitle: 'Frisch und klar, zum Durchatmen.',
@@ -425,6 +429,7 @@ export const MOODS: Mood[] = [
   {
     code: 'durchstarten',
     emoji: '⚡',
+    icon: 'bolt',
     title: 'Ich will durchstarten',
     phrase: 'wenn du Energie für den Tag brauchst',
     subtitle: 'Spritzig und wach, für deinen Schwung.',
@@ -438,6 +443,7 @@ export const MOODS: Mood[] = [
   {
     code: 'verliebt',
     emoji: '🥰',
+    icon: 'heart',
     title: 'Ich fühl mich verliebt',
     phrase: 'wenn du dich beschwingt und verliebt fühlst',
     subtitle: 'Zart und beschwingt, voller Gefühl.',
@@ -451,6 +457,7 @@ export const MOODS: Mood[] = [
   {
     code: 'strahlen',
     emoji: '✨',
+    icon: 'sparkle',
     title: 'Ich will strahlen',
     phrase: 'wenn du auffallen und in Erinnerung bleiben willst',
     subtitle: 'Warm und tief, für besondere Momente.',
@@ -465,6 +472,7 @@ export const MOODS: Mood[] = [
   {
     code: 'job',
     emoji: '💼',
+    icon: 'briefcase',
     title: 'Ich will im Job überzeugen',
     phrase: 'wenn du im Job einen guten Eindruck machen willst',
     subtitle: 'Dezent und seriös, fürs Büro.',
@@ -479,6 +487,7 @@ export const MOODS: Mood[] = [
   {
     code: 'urlaub',
     emoji: '☀️',
+    icon: 'sun',
     title: 'Ich will Urlaubsgefühl',
     phrase: 'wenn du dir Sommer und Urlaub wünschst',
     subtitle: 'Leicht und fruchtig, wie Ferien.',
@@ -493,6 +502,7 @@ export const MOODS: Mood[] = [
   {
     code: 'abend',
     emoji: '🌙',
+    icon: 'moon',
     title: 'Ich will den Abend genießen',
     phrase: 'wenn du den Abend gemütlich ausklingen lassen willst',
     subtitle: 'Warm und entspannt für den Abend.',
@@ -507,6 +517,7 @@ export const MOODS: Mood[] = [
   {
     code: 'geschenk',
     emoji: '🎁',
+    icon: 'gift',
     title: 'Ich suche ein Geschenk',
     phrase: 'wenn du ein Parfüm verschenken möchtest',
     subtitle: 'Beliebte Allrounder, die fast jedem gefallen.',

@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 
-// Schlankes Newsletter-Anmeldefeld. Speichert die E-Mail in der Supabase-Tabelle
-// `subscribers` (nur Insert für anonyme Besucher). Einwilligung per Checkbox +
+// Schlankes Newsletter-Anmeldefeld. Schickt die E-Mail an die Server-Route
+// `/api/subscribe`, die sie in Supabase speichert UND die Betreiberin per
+// E-Mail über die neue Anmeldung informiert. Einwilligung per Checkbox +
 // Datenschutz-Link. Kein Tracking, keine Drittanbieter.
 export default function NewsletterForm({
   source = 'footer',
@@ -33,21 +33,23 @@ export default function NewsletterForm({
       setError('Bitte stimme der Datenschutzerklärung zu.');
       return;
     }
-    if (!isSupabaseConfigured) {
-      setError('Anmeldung gerade nicht möglich. Bitte versuch es später erneut.');
-      return;
-    }
     setStatus('loading');
-    const { error: dbError } = await supabase
-      .from('subscribers')
-      .insert({ email: clean, source, consent: true });
-    // 23505 = E-Mail bereits eingetragen -> trotzdem als Erfolg behandeln.
-    if (dbError && dbError.code !== '23505') {
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: clean, source })
+      });
+      if (!res.ok) {
+        setStatus('idle');
+        setError('Anmeldung gerade nicht möglich. Bitte versuch es später erneut.');
+        return;
+      }
+      setStatus('done');
+    } catch {
       setStatus('idle');
       setError('Etwas ging schief. Bitte versuch es später noch einmal.');
-      return;
     }
-    setStatus('done');
   }
 
   if (status === 'done') {

@@ -54,7 +54,7 @@ export default function MoodResults({ items, mood }: { items: Item[]; mood: Mood
 
   return (
     <section className="section" id="ergebnis">
-      <p className="eyebrow">{mood.emoji} {mood.title}</p>
+      <p className="eyebrow">{mood.title}</p>
       <h2>Diese Düfte passen zu deiner Stimmung</h2>
       <p className="small">{mood.result}</p>
 

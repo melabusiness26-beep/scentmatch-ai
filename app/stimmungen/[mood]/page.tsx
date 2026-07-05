@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SiteHeader from '@/app/SiteHeader';
+import MoodIcon from '@/app/MoodIcon';
 import { getPerfumes, rankByMood, moodNoteProfile, moodReason, getMood, MOOD_TIPS, MOODS } from '@/lib/perfumes';
 import MoodResults from './MoodResults';
 
@@ -128,7 +129,15 @@ export default async function MoodPage({ params }: { params: Promise<{ mood: str
           style={{ background: `linear-gradient(160deg, ${mood.tone}33, rgba(255,255,255,.55))` }}
         >
           <p className="eyebrow">Duft nach Stimmung</p>
-          <h1><span aria-hidden="true">{mood.emoji}</span> {mood.title}</h1>
+          <h1 className="mood-hero-title">
+            <span
+              className="mood-icon mood-icon-lg"
+              style={{ background: `${mood.tone}22`, borderColor: `${mood.tone}55` }}
+            >
+              <MoodIcon name={mood.icon} />
+            </span>
+            {mood.title}
+          </h1>
           <p className="lead">{mood.intro}</p>
 
           {dna.length > 0 && (
@@ -181,7 +190,12 @@ export default async function MoodPage({ params }: { params: Promise<{ mood: str
                 className="tile-family mood-card"
                 style={{ background: `linear-gradient(160deg, ${m.tone}26, rgba(255,255,255,.55))` }}
               >
-                <span className="mood-emoji" aria-hidden="true">{m.emoji}</span>
+                <span
+                  className="mood-icon"
+                  style={{ background: `${m.tone}22`, borderColor: `${m.tone}55` }}
+                >
+                  <MoodIcon name={m.icon} />
+                </span>
                 <span className="mood-title">{m.title}</span>
                 <span className="small">{m.subtitle}</span>
               </Link>

@@ -508,8 +508,8 @@ export default function Home() {
               <Link className="button secondary" href="/ratgeber">Ratgeber lesen</Link>
             </div>
             <div className="hero-stats-row">
-              <div className="hero-stat-mini"><strong>{catalogCount ?? '…'}</strong><span>kuratierte Düfte</span></div>
-              <div className="hero-stat-mini"><strong>{brandCount ?? '…'}</strong><span>Marken weltweit</span></div>
+              <div className="hero-stat-mini"><strong>{catalogCount ?? '…'}</strong><span>{catalogCount === 1 ? 'kuratierter Duft' : 'kuratierte Düfte'}</span></div>
+              <div className="hero-stat-mini"><strong>{brandCount ?? '…'}</strong><span>{brandCount === 1 ? 'Marke weltweit' : 'Marken weltweit'}</span></div>
               <div className="hero-stat-mini"><strong>0–100</strong><span>echter Match-Score</span></div>
             </div>
           </div>

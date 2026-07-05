@@ -169,7 +169,11 @@ button, .button { display: inline-block; max-width: 100%; white-space: normal; t
 .quiz { margin-top: 28px; }
 .question { font-size: 28px; color: var(--brown); margin-bottom: 20px; }
 .answers { display:grid; gap: 12px; }
-.answer { width:100%; text-align:left; background:rgba(255,255,255,.72); color:var(--text); border:1px solid var(--line); border-radius:10px; padding:18px 20px; letter-spacing:0; font-size:16px; }
+.answer { display:flex; align-items:center; justify-content:space-between; gap:14px; width:100%; text-align:left; background:rgba(255,255,255,.72); color:var(--text); border:1px solid var(--line); border-radius:10px; padding:18px 20px; letter-spacing:0; font-size:16px; }
+/* Dezenter Pfeil rechts – signalisiert „führt weiter" und wirkt hochwertiger.
+   Im Ruhezustand blass, beim Überfahren/Antippen wandert er sanft nach rechts. */
+.answer::after { content:'›'; font-family: var(--font-display), Georgia, serif; font-size:22px; line-height:1; color: rgba(176,139,79,.5); flex:none; transition: transform .15s ease, color .15s ease; }
+.answer:hover::after { color: var(--gold); transform: translateX(3px); }
 .result { margin-top:20px; }
 .scorebar { height:10px; background:#eadfce; border-radius:99px; overflow:hidden; margin-top:7px; }
 .scorebar span { display:block; height:100%; background:var(--gold); }
@@ -305,8 +309,10 @@ a.note-pill:hover { background:rgba(185,152,99,.3); border-color:var(--gold); tr
 .button { transition: transform .15s ease, box-shadow .15s ease, filter .15s ease, border-color .15s ease, background .15s ease; }
 .button:hover { transform: translateY(-1px); box-shadow: 0 14px 30px rgba(36,24,17,.22); filter: brightness(1.08); }
 .secondary:hover { border-color: var(--gold); color: var(--brown); }
-.answer { transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease; }
-.answer:hover { transform: translateY(-1px); border-color: rgba(185,152,99,.6); box-shadow: 0 8px 22px rgba(75,53,40,.10); }
+.answer { transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease, background .12s ease; }
+.answer:hover { transform: translateY(-1px); background: rgba(255,251,244,.95); border-color: rgba(185,152,99,.6); box-shadow: inset 3px 0 0 var(--gold), 0 8px 22px rgba(75,53,40,.10); }
+/* Klare Fokus-Anzeige für Tastatur-Bedienung (Barrierefreiheit). */
+.answer:focus-visible { outline:none; border-color: var(--gold); box-shadow: inset 3px 0 0 var(--gold), 0 0 0 3px rgba(185,152,99,.18); }
 .search { transition: border-color .15s ease, box-shadow .15s ease; }
 .search:focus { outline:none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(185,152,99,.18); }
 .badge { transition: background .15s ease, border-color .15s ease; }

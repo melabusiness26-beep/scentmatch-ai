@@ -5,15 +5,15 @@ import Link from 'next/link';
 
 const STORAGE_KEY = 'auressa-cookie-consent';
 
-type Consent = { choice: 'all' | 'necessary'; ts: number };
-
 /**
- * Opt-in cookie consent banner (revDSG / GDPR friendly).
+ * Kurzer Transparenz-Hinweis (revDSG / DSGVO-freundlich).
  *
- * No optional/marketing cookies are loaded until the visitor explicitly
- * accepts. The choice is stored in localStorage so the banner does not
- * reappear on every visit. Other components can read `auressa-cookie-consent`
- * later to conditionally enable analytics once it is added.
+ * Auressa nutzt nur technisch notwendige Cookies und eine anonyme, cookielose
+ * Reichweiten-Statistik (Vercel Web Analytics) – ohne Speicherung
+ * personenbezogener Daten. Da hierfür keine Einwilligung nötig ist, gibt es
+ * keine Zustimmungs-Wahl mehr, sondern nur einen kurzen Hinweis, den die
+ * Besucherin einmal bestätigt. Die Bestätigung wird lokal gespeichert, damit
+ * der Hinweis nicht bei jedem Besuch erneut erscheint.
  */
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
@@ -22,25 +22,16 @@ export default function CookieBanner() {
     try {
       if (!localStorage.getItem(STORAGE_KEY)) setVisible(true);
     } catch {
-      // localStorage blocked (e.g. private mode) – show banner, store nothing.
+      // localStorage blockiert (z. B. privater Modus) – Hinweis zeigen, nichts speichern.
       setVisible(true);
     }
   }, []);
 
-  function decide(choice: Consent['choice']) {
+  function acknowledge() {
     try {
-      const value: Consent = { choice, ts: Date.now() };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(value));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ seen: true, ts: Date.now() }));
     } catch {
-      // Ignore storage errors – the dialog still closes for this session.
-    }
-    // Andere Komponenten (z. B. die anonyme Statistik) über die Wahl informieren,
-    // damit sie ohne Neuladen sofort reagieren können.
-    try {
-      window.dispatchEvent(new Event('auressa-consent-changed'));
-    } catch {
-      // Ältere Browser ohne Event-Konstruktor – kein Problem, beim nächsten
-      // Seitenaufruf wird die Zustimmung ohnehin aus localStorage gelesen.
+      // Speicherfehler ignorieren – der Hinweis schliesst sich für diese Sitzung.
     }
     setVisible(false);
   }
@@ -48,19 +39,16 @@ export default function CookieBanner() {
   if (!visible) return null;
 
   return (
-    <div className="cookie-banner" role="dialog" aria-modal="false" aria-label="Cookie-Hinweis">
+    <div className="cookie-banner" role="dialog" aria-modal="false" aria-label="Datenschutz-Hinweis">
       <div className="cookie-inner">
         <p className="cookie-text">
-          Wir verwenden nur technisch notwendige Cookies. Optionale Cookies – etwa für
-          anonyme Statistik – setzen wir ausschliesslich mit deiner Einwilligung. Mehr dazu
-          in der <Link href="/datenschutz">Datenschutzerklärung</Link>.
+          Auressa nutzt nur technisch notwendige Cookies sowie eine anonyme,
+          cookielose Besucherstatistik – ohne Speicherung persönlicher Daten.
+          Mehr dazu in der <Link href="/datenschutz">Datenschutzerklärung</Link>.
         </p>
         <div className="cookie-actions">
-          <button type="button" className="button secondary cookie-btn" onClick={() => decide('necessary')}>
-            Nur notwendige
-          </button>
-          <button type="button" className="button cookie-btn" onClick={() => decide('all')}>
-            Alle akzeptieren
+          <button type="button" className="button cookie-btn" onClick={acknowledge}>
+            Verstanden
           </button>
         </div>
       </div>

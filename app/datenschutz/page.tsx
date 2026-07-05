@@ -43,8 +43,9 @@ export default function DatenschutzPage() {
             Auressa ist eine reine Informations- und Empfehlungsplattform. Du kannst die Website nutzen,
             ohne ein Konto anzulegen oder persönliche Daten anzugeben. Wir sammeln <strong>keine</strong>{' '}
             Namen, Adressen oder Zahlungsdaten und betreiben <strong>kein</strong> Werbe-Tracking. Eine
-            anonyme Reichweiten-Messung (siehe Abschnitt 6) findet ausschliesslich statt, wenn du im
-            Cookie-Hinweis ausdrücklich zustimmst.
+            anonyme, <strong>cookielose</strong> Reichweiten-Messung (siehe Abschnitt 6) hilft uns nur zu
+            verstehen, wie viele Menschen die Seite besuchen – ohne persönliche Profile und ohne
+            Speicherung persönlicher Daten.
           </p>
 
           <h2>3. Server-Logdaten (Hosting)</h2>
@@ -70,16 +71,17 @@ export default function DatenschutzPage() {
             und werden nicht ausgewertet.
           </p>
 
-          <h2>6. Cookie-Einwilligung &amp; anonyme Statistik</h2>
+          <h2>6. Hinweis &amp; anonyme Statistik</h2>
           <p>
-            Beim ersten Besuch zeigen wir dir einen kurzen Hinweis zu Cookies. Wir speichern deine
-            Cookie-Auswahl lokal in deinem Browser, damit der Hinweis nicht bei jedem Besuch erneut
-            erscheint. Eine anonyme Reichweiten-Statistik (<strong>Vercel Analytics</strong>) laden wir
-            erst, wenn du im Hinweis „Alle akzeptieren" wählst. Sie erfasst nur anonyme Nutzungsdaten
-            (z. B. aufgerufene Seiten) und keine persönlichen Profile. Wählst du „Nur notwendige", findet
-            keine solche Messung statt. Technisch notwendige Cookies, die für den sicheren Betrieb der
-            Seite nötig sind, kommen unabhängig davon zum Einsatz. Du kannst deine Auswahl jederzeit
-            zurücksetzen, indem du die gespeicherten Website-Daten in deinem Browser löschst.
+            Beim ersten Besuch zeigen wir dir einen kurzen Datenschutz-Hinweis. Dass du ihn gesehen hast,
+            speichern wir lokal in deinem Browser, damit er nicht bei jedem Besuch erneut erscheint. Für
+            eine anonyme Reichweiten-Statistik nutzen wir <strong>Vercel Web Analytics</strong>. Diese
+            arbeitet <strong>cookielos</strong>, setzt also keine Cookies und speichert keine
+            personenbezogenen Daten – sie erfasst nur anonyme Nutzungsdaten (z. B. aufgerufene Seiten,
+            ungefähre Region, Gerätetyp), damit wir sehen, wie viele Menschen Auressa besuchen. Da dabei
+            keine Daten auf deinem Gerät gespeichert oder ausgelesen werden und keine Profile entstehen,
+            ist hierfür keine Einwilligung erforderlich. Technisch notwendige Cookies, die für den
+            sicheren Betrieb der Seite nötig sind, kommen ebenfalls zum Einsatz.
           </p>
 
           <h2>7. Affiliate-Links</h2>

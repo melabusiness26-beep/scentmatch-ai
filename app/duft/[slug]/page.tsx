@@ -14,7 +14,6 @@ import {
 import { noteHref } from '@/lib/notes-glossary';
 import { getCuratedLink } from '@/lib/curated-links';
 import { AffiliateButton } from '@/app/AffiliateButton';
-import NewsletterForm from '@/app/NewsletterForm';
 
 const genderLabels: Record<string, string> = {
   Women: 'Damenduft',
@@ -468,10 +467,6 @@ export default async function PerfumeDetailPage({
           <Link className="button" href="/#quiz">
             Passt dieser Duft zu dir? Mach das Quiz
           </Link>
-        </section>
-
-        <section className="section card">
-          <NewsletterForm source="duft" />
         </section>
       </div>
 

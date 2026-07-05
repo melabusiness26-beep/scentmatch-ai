@@ -37,14 +37,17 @@ export default function DuftnotenPage() {
             sie kommen und welche Düfte aus unserem Katalog dazu passen.
           </p>
 
+          <h2>Die wichtigsten Duftnoten im Überblick</h2>
           <div className="grid">
             {scentNotes.map((note) => (
               <Link className="tile tile-link" href={`/duftnoten/${note.slug}`} key={note.slug}>
-                <div
+                <img
                   className="cover note-cover"
-                  role="img"
-                  aria-label={`${note.name} – Duftnote`}
-                  style={{ backgroundImage: `url(${note.image})` }}
+                  src={note.image}
+                  alt={`${note.name} – Duftnote in der Parfümerie`}
+                  width={400}
+                  height={160}
+                  loading="lazy"
                 />
                 <h3>{note.name}</h3>
                 <p className="small">{note.short}</p>

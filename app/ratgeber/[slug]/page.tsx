@@ -64,7 +64,13 @@ function jsonLd(guide: Guide) {
     headline: guide.title,
     description: guide.description,
     mainEntityOfPage: `${SITE_URL}/ratgeber/${guide.slug}`,
-    publisher: { '@type': 'Organization', name: 'Auressa' }
+    image: `${SITE_URL}/ratgeber/${guide.slug}/opengraph-image`,
+    author: { '@type': 'Organization', name: 'Auressa', url: SITE_URL },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Auressa',
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon` }
+    }
   };
 }
 

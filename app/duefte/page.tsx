@@ -33,8 +33,39 @@ export default async function DueftePage() {
     getPerfumeCount().then(approxCount),
     getPerfumes(2000)
   ]);
+
+  // Strukturierte Daten: Brotkrümel + eine ItemList der ersten Düfte,
+  // damit Google die Katalogseite als Duftliste versteht (Rich Results).
+  const listed = perfumes.filter((p) => p.slug).slice(0, 24);
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Düfte', item: `${SITE_URL}/duefte` }
+    ]
+  };
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: listed.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: p.perfume_name,
+      url: `${SITE_URL}/duft/${p.slug}`
+    }))
+  };
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
       <SiteHeader />
       <div className="container">
         <section className="detail-hero">

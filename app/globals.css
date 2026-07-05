@@ -327,8 +327,12 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 }
 
 /* Startmenü (Navigationsleiste, scrollt mit) */
-.site-header { position: sticky; top: 0; z-index: 50; background: rgba(251,246,238,.82); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(185,152,99,.22); transition: box-shadow .25s ease, background .25s ease; }
+.site-header { position: sticky; top: 0; z-index: 120; background: rgba(251,246,238,.82); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(185,152,99,.22); transition: box-shadow .25s ease, background .25s ease; }
 .site-header.scrolled { background: rgba(251,246,238,.94); box-shadow: 0 10px 30px rgba(75,53,40,.10); }
+/* Wenn das Handy-Menü offen ist: Kopf solide einfärben und sicher über dem
+   Cookie-Banner anzeigen, damit alle Menüpunkte (inkl. „Duft finden") sichtbar
+   und antippbar bleiben und der Banner nicht durchscheint. */
+.site-header:has(.main-nav.open) { background: #fbf6ee; box-shadow: 0 12px 34px rgba(75,53,40,.16); }
 .header-inner { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .header-inner .logo { font-size: 24px; }
 .main-nav { display: flex; align-items: center; gap: 24px; }
@@ -391,7 +395,7 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 .cookie-banner .button.secondary { color: #f3e9da; border: 1px solid rgba(243,233,218,.4); background: rgba(255,255,255,.05); }
 .cookie-banner .button.secondary:hover { border-color: var(--gold); color: #fff; }
 .cookie-banner .button:not(.secondary) { background: linear-gradient(180deg, #d8b277, #b1894f); color: #2a1d12; }
-@media (max-width: 560px) { .cookie-inner { flex-direction: column; align-items: stretch; } .cookie-actions { justify-content: stretch; } .cookie-btn { flex: 1; } }
+@media (max-width: 560px) { .cookie-inner { flex-direction: column; align-items: stretch; } .cookie-text { flex: 0 0 auto; } .cookie-actions { justify-content: stretch; } .cookie-btn { flex: 1; } }
 
 /* Newsletter-Anmeldefeld (Quiz-Ende + Footer) */
 .newsletter { margin: 0; }

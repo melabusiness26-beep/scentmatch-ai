@@ -205,7 +205,7 @@ function perfumeNotes(p: Perfume): string[] {
   return [...(p.top_notes || []), ...(p.heart_notes || []), ...(p.base_notes || [])].map((n) => n.toLowerCase());
 }
 
-function perfumeHasTheme(p: Perfume, code: string): boolean {
+export function perfumeHasTheme(p: Perfume, code: string): boolean {
   if (!code) return false;
   const theme = NOTE_THEMES.find((t) => t.code === code);
   if (!theme) return false;

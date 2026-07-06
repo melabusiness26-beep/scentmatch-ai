@@ -6,6 +6,7 @@ import SiteHeader from '@/app/SiteHeader';
 import {
   getPerfumes,
   rankPerfumes,
+  perfumeHasTheme,
   NOTE_THEMES,
   type Perfume,
   type QuizAnswers,
@@ -171,12 +172,44 @@ const profileText: Record<string, { title: string; text: string }> = {
 
 const genderLabels: Record<string, string> = { women: 'Damen', men: 'Herren', unisex: 'Unisex' };
 
-// Kurze, vorsichtig formulierte Begründung – nur aus vorhandenen Daten abgeleitet.
-function buildQuizReason(p: Perfume, answers: QuizAnswers, winner: string): string {
+// Persönliche, nachvollziehbare Begründung – nur aus den Quiz-Antworten und den
+// vorhandenen Duftdaten abgeleitet (kein Heilversprechen, keine erfundenen Fakten).
+// Berücksichtigt möglichst viele Antworten (Lieblingsduft, Note, Richtung,
+// Haltbarkeit, Präsenz, Saison, Anlass, Budget), damit die Empfehlung zeigt,
+// dass wirklich ALLE Angaben in den Match eingeflossen sind.
+function buildQuizReason(p: Perfume, answers: QuizAnswers, winner: string, anchorName?: string): string {
   const reasons: string[] = [];
+
+  // 1. Ähnlichkeit zum genannten Lieblingsduft – der persönlichste Grund.
+  if (answers.anchorId && anchorName) {
+    reasons.push(`er ähnlich riecht wie ${anchorName}, den du schon magst`);
+  }
+
+  // 2. Deine Lieblingsnote kommt tatsächlich in diesem Duft vor.
+  if (answers.lovedNote && perfumeHasTheme(p, answers.lovedNote)) {
+    const label = NOTE_THEMES.find(t => t.code === answers.lovedNote)?.label.split(' – ')[0];
+    if (label) reasons.push(`er deine Lieblingsnote enthält (${label.toLowerCase()})`);
+  }
+
+  // 3. Bevorzugte Duftrichtung.
   if (p.fragrance_family && p.fragrance_family === winner) {
     reasons.push(`er deiner bevorzugten Duftrichtung entspricht (${familyDisplay[winner] || winner})`);
   }
+
+  // 4. Gewünschte Haltbarkeit.
+  if (answers.longevity && p.longevity != null) {
+    if (answers.longevity === 'high' && p.longevity >= 7) reasons.push(`er lange hält (${p.longevity}/10)`);
+    else if (answers.longevity === 'low' && p.longevity <= 6) reasons.push('er angenehm dezent verfliegt');
+    else if (answers.longevity === 'medium' && p.longevity >= 5 && p.longevity <= 8) reasons.push('er solide durch den Tag trägt');
+  }
+
+  // 5. Gewünschte Präsenz (Sillage).
+  if (answers.sillage && p.sillage != null) {
+    if (answers.sillage === 'high' && p.sillage >= 7) reasons.push('er auffällig präsent ist');
+    else if (answers.sillage === 'low' && p.sillage <= 5) reasons.push('er dezent nah an der Haut bleibt');
+  }
+
+  // 6. Wunsch-Saison.
   if (
     answers.season &&
     answers.season !== 'Ganzjährig' &&
@@ -185,15 +218,27 @@ function buildQuizReason(p: Perfume, answers: QuizAnswers, winner: string): stri
   ) {
     reasons.push(`er zu deiner Wunsch-Saison passt (${answers.season})`);
   }
+
+  // 7. Anlass.
   const occMap: Record<string, string[]> = { daily: ['Alltag', 'Büro'], date: ['Date'], evening: ['Abend'] };
   const wanted = answers.occasion ? occMap[answers.occasion] : undefined;
   if (wanted && p.occasion && wanted.includes(p.occasion)) {
     reasons.push(`er zu deinem Anlass passt (${p.occasion})`);
   }
+
+  // 8. Budget.
+  if (answers.budgetMax != null && p.price_chf != null && p.price_chf <= answers.budgetMax) {
+    reasons.push(`er in deinem Budget liegt (ca. CHF ${p.price_chf})`);
+  }
+
   if (reasons.length === 0) {
     return `Könnte zu dir passen, wenn du ${familyDisplay[p.fragrance_family || ''] || 'solche'} Düfte magst.`;
   }
-  return `Passt gut, weil ${reasons.join(' und ')}.`;
+
+  // Die drei stärksten Gründe genügen – mehr würde den Satz überladen.
+  const top = reasons.slice(0, 3);
+  const joined = top.length > 1 ? `${top.slice(0, -1).join(', ')} und ${top[top.length - 1]}` : top[0];
+  return `Passt gut, weil ${joined}.`;
 }
 
 // Anklickbare Familien-Kacheln (führen zur gefilterten Duftdatenbank).
@@ -684,7 +729,7 @@ export default function Home() {
                     )}
                     <h3>{p.perfume_name} · {p.brands?.name || 'Marke offen'}</h3>
                     <p className="small">{meta}</p>
-                    <p className="small">{buildQuizReason(p, answers, winner)}</p>
+                    <p className="small">{buildQuizReason(p, answers, winner, anchorId ? perfumes.find(a => a.id === anchorId)?.perfume_name : undefined)}</p>
                     <div className="cta">
                       {p.slug && (
                         <Link className="button secondary" href={`/duft/${p.slug}`}>Duftprofil ansehen</Link>

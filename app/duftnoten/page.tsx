@@ -6,7 +6,7 @@ import { scentNotes } from '@/lib/notes-glossary';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
 
 export const metadata: Metadata = {
-  title: 'Duftnoten-Lexikon: Parfumnoten einfach erklärt | Auressa',
+  title: 'Duftnoten-Lexikon: Parfumnoten einfach erklärt',
   description:
     'Das Auressa Duftnoten-Lexikon erklärt die wichtigsten Parfumnoten – von Bergamotte bis Oud: wie sie riechen, woher sie kommen und welche Düfte zu dir passen.',
   alternates: { canonical: '/duftnoten' },

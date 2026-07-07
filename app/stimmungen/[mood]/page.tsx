@@ -23,9 +23,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { mood: code } = await params;
   const mood = getMood(code);
-  if (!mood) return { title: 'Stimmung nicht gefunden – Auressa' };
+  if (!mood) return { title: 'Stimmung nicht gefunden' };
 
-  const title = `Welcher Duft, ${mood.phrase}? | Auressa`;
+  // Haupttitel ohne „| Auressa" – das globale Titel-Template haengt die Marke an.
+  const title = `Welcher Duft, ${mood.phrase}?`;
   const description = mood.intro;
 
   return {
@@ -33,7 +34,7 @@ export async function generateMetadata({
     description,
     alternates: { canonical: `/stimmungen/${code}` },
     openGraph: {
-      title,
+      title: `${title} | Auressa`,
       description,
       type: 'website',
       url: `${SITE_URL}/stimmungen/${code}`

@@ -5,7 +5,7 @@ import MoodIcon from '@/app/MoodIcon';
 import { MOODS } from '@/lib/perfumes';
 
 export const metadata: Metadata = {
-  title: 'Duft nach Stimmung finden | Auressa',
+  title: 'Duft nach Stimmung finden',
   description:
     'Wähl deine Stimmung und finde sofort den passenden Duft – ob gemütlich, frisch, selbstbewusst, romantisch, sinnlich oder sommerlich. Schnell, persönlich und ohne Quiz.',
   alternates: { canonical: '/stimmungen' },

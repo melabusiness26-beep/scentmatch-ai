@@ -22,10 +22,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const guide = getGuide(slug);
-  if (!guide) return { title: 'Ratgeber nicht gefunden – Auressa' };
+  if (!guide) return { title: 'Ratgeber nicht gefunden' };
 
   return {
-    title: `${guide.title} | Auressa`,
+    title: guide.title,
     description: guide.description,
     alternates: { canonical: `/ratgeber/${slug}` },
     openGraph: {

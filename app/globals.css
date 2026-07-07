@@ -338,6 +338,12 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
     from { opacity: 0; transform: translateY(22px); }
     to { opacity: 1; transform: translateY(0); }
   }
+  /* Sanfter Übergang zwischen den Quiz-Fragen – jede Frage blendet weich ein */
+  .quiz-step { animation: quizStepIn .34s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes quizStepIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 }
 
 /* Startmenü (Navigationsleiste, scrollt mit) */

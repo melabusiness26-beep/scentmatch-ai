@@ -17,11 +17,17 @@
 --   select lower(btrim(name)) as name, count(*)
 --   from public.brands group by 1 having count(*) > 1;
 
+-- WICHTIG: In allen Schritten muss zusätzlich das GESCHLECHT übereinstimmen.
+-- So bleiben eine Herren- und eine Damen-Version desselben Dufts (gleicher Name,
+-- aber "Men" vs. "Women") als zwei eigenständige Einträge erhalten – sie sind
+-- keine Duplikate und dürfen NICHT gelöscht werden.
+
 -- Schritt 1: doppelte Düfte innerhalb derselben Marke (älteste behalten).
 delete from public.perfumes p
 using public.perfumes q
 where p.brand_id = q.brand_id
   and lower(btrim(p.perfume_name)) = lower(btrim(q.perfume_name))
+  and lower(btrim(coalesce(p.gender, ''))) = lower(btrim(coalesce(q.gender, '')))
   and (
     p.created_at > q.created_at
     or (p.created_at = q.created_at and p.id > q.id)
@@ -57,6 +63,7 @@ delete from public.perfumes p
 using public.perfumes q
 where p.brand_id = q.brand_id
   and lower(btrim(p.perfume_name)) = lower(btrim(q.perfume_name))
+  and lower(btrim(coalesce(p.gender, ''))) = lower(btrim(coalesce(q.gender, '')))
   and (
     p.created_at > q.created_at
     or (p.created_at = q.created_at and p.id > q.id)

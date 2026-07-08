@@ -126,10 +126,14 @@ export function buyUrl(p: Perfume): string {
 }
 
 // Entfernt doppelte Düfte aus einer Liste. Ein Duft gilt als Duplikat, wenn
-// Marke UND Duftname (unabhängig von Gross-/Kleinschreibung, Leerzeichen und
-// Umlauten) übereinstimmen. So verschwinden Doppel-Einträge zuverlässig aus
-// ALLEN Ansichten – auch wenn in der Datenbank z. B. durch Direkt-Importe zwei
-// Einträge desselben Dufts mit unterschiedlichem slug liegen.
+// Marke, Duftname UND Geschlecht (unabhängig von Gross-/Kleinschreibung,
+// Leerzeichen und Umlauten) übereinstimmen. So verschwinden Doppel-Einträge
+// zuverlässig aus ALLEN Ansichten – auch wenn in der Datenbank z. B. durch
+// Direkt-Importe zwei Einträge desselben Dufts mit unterschiedlichem slug liegen.
+//
+// WICHTIG: Das Geschlecht gehört bewusst in den Schlüssel. So bleiben eine
+// Herren- und eine Damen-Version desselben Dufts (gleicher Name, aber „Men" vs.
+// „Women") als ZWEI eigenständige Einträge erhalten – sie sind keine Duplikate.
 //
 // Behalten wird der „beste" Eintrag: bevorzugt der mit einem slug (damit die
 // Detailseite verlinkbar bleibt), sonst der mit dem höheren Auressa-Score. Da
@@ -143,7 +147,7 @@ function dedupeKey(p: Perfume): string {
       .replace(/[̀-ͯ]/g, '') // Kombinierende Akzentzeichen entfernen
       .replace(/\s+/g, ' ')
       .trim();
-  return `${norm(p.brands?.name)}|||${norm(p.perfume_name)}`;
+  return `${norm(p.brands?.name)}|||${norm(p.perfume_name)}|||${norm(p.gender)}`;
 }
 
 export function dedupePerfumes(perfumes: Perfume[]): Perfume[] {

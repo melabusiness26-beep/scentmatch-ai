@@ -413,7 +413,7 @@ export const guides: Guide[] = [
       },
       {
         body: [
-          'Du kennst jetzt die Tricks fürs Auftragen und die Haltbarkeit – fehlt nur noch der passende Duft? Mach unser Duft-Quiz und finde in unter zwei Minuten heraus, welche Richtung wirklich zu dir passt.'
+          'Du kennst jetzt die Tricks fürs Auftragen und die Haltbarkeit – fehlt nur noch der passende Duft? Mach unser Duft-Quiz und finde in unter einer Minute heraus, welche Richtung wirklich zu dir passt.'
         ]
       }
     ]
@@ -756,7 +756,7 @@ export const guides: Guide[] = [
       },
       {
         body: [
-          'Sternzeichen sind ein schöner, spielerischer Einstieg – aber dein echter Lieblingsduft hängt von deinem persönlichen Geschmack ab, nicht vom Kalender. Unser Duft-Quiz findet ihn in unter zwei Minuten, abgestimmt auf Duftrichtung, Anlass, Saison und Budget.'
+          'Sternzeichen sind ein schöner, spielerischer Einstieg – aber dein echter Lieblingsduft hängt von deinem persönlichen Geschmack ab, nicht vom Kalender. Unser Duft-Quiz findet ihn in unter einer Minute, abgestimmt auf Duftrichtung, Anlass, Saison und Budget.'
         ]
       }
     ]
@@ -775,7 +775,7 @@ export const guides: Guide[] = [
         heading: 'Schritt 1: Finde deine Duftrichtung',
         body: [
           'Düfte teilen sich grob in vier Familien: frisch/clean (Zitrus, Meer, sauberer Moschus), süss/gourmand (Vanille, Karamell, Amber), holzig/woody (Sandelholz, Leder, Oud) und blumig/floral (Rose, Jasmin, Pfirsich).',
-          'Überleg dir, welche dieser Beschreibungen dich sofort anspricht – das ist deine Startrichtung. Unser Duft-Quiz nimmt dir diese Einordnung in unter zwei Minuten ab.'
+          'Überleg dir, welche dieser Beschreibungen dich sofort anspricht – das ist deine Startrichtung. Unser Duft-Quiz nimmt dir diese Einordnung in unter einer Minute ab.'
         ]
       },
       {
@@ -1185,7 +1185,7 @@ export const guides: Guide[] = [
         body: [
           'Wir achten bewusst auf Schweizer Preise (CHF) und Verfügbarkeit – damit du weisst, was wirklich relevant ist.',
           'Düfte mit Schweizer Bezug sind ein schönes, lokales Geschenk – etwa zum Geburtstag oder als Mitbringsel.',
-          'Du suchst nicht nach einer bestimmten Marke, sondern nach deinem Duft? Dann mach unser Quiz – es findet deine Richtung in unter zwei Minuten.'
+          'Du suchst nicht nach einer bestimmten Marke, sondern nach deinem Duft? Dann mach unser Quiz – es findet deine Richtung in unter einer Minute.'
         ]
       }
     ]
@@ -1287,7 +1287,7 @@ export const guides: Guide[] = [
       },
       {
         body: [
-          'Du bist unsicher, welche Richtung dir steht? Mach unser Duft-Quiz – es findet deine Lieblingsrichtung in unter zwei Minuten, abgestimmt auf Duftrichtung, Anlass, Saison und Budget.'
+          'Du bist unsicher, welche Richtung dir steht? Mach unser Duft-Quiz – es findet deine Lieblingsrichtung in unter einer Minute, abgestimmt auf Duftrichtung, Anlass, Saison und Budget.'
         ]
       }
     ]
@@ -1372,7 +1372,7 @@ export const guides: Guide[] = [
       },
       {
         body: [
-          'Du weisst noch nicht, welche Richtung dir steht? Mach unser Duft-Quiz – es findet deinen Sommerduft in unter zwei Minuten, abgestimmt auf Duftrichtung, Anlass und Budget.'
+          'Du weisst noch nicht, welche Richtung dir steht? Mach unser Duft-Quiz – es findet deinen Sommerduft in unter einer Minute, abgestimmt auf Duftrichtung, Anlass und Budget.'
         ]
       }
     ]
@@ -1512,7 +1512,7 @@ export const guides: Guide[] = [
       },
       {
         body: [
-          'Unsicher, was zu dir passt? Mach unser Duft-Quiz – in unter zwei Minuten findest du deine Richtung, abgestimmt auf Geschmack und Budget.'
+          'Unsicher, was zu dir passt? Mach unser Duft-Quiz – in unter einer Minute findest du deine Richtung, abgestimmt auf Geschmack und Budget.'
         ]
       }
     ]
@@ -1546,7 +1546,7 @@ export const guides: Guide[] = [
       },
       {
         body: [
-          'Du willst genau deinen Typ treffen? Mach unser Duft-Quiz – es findet deine Lieblingsrichtung in unter zwei Minuten.'
+          'Du willst genau deinen Typ treffen? Mach unser Duft-Quiz – es findet deine Lieblingsrichtung in unter einer Minute.'
         ]
       }
     ]
@@ -1617,7 +1617,7 @@ export const guides: Guide[] = [
       },
       {
         body: [
-          'Unsicher, welche Richtung zu dir passt? Mach unser Duft-Quiz – es findet deinen Sommer-Typ in unter zwei Minuten.'
+          'Unsicher, welche Richtung zu dir passt? Mach unser Duft-Quiz – es findet deinen Sommer-Typ in unter einer Minute.'
         ]
       }
     ]
@@ -1695,7 +1695,7 @@ export const guides: Guide[] = [
       },
       {
         body: [
-          'Nicht sicher, ob fruchtig-süss wirklich dein Typ ist? Mach unser Duft-Quiz – es findet deine Lieblingsrichtung in unter zwei Minuten.'
+          'Nicht sicher, ob fruchtig-süss wirklich dein Typ ist? Mach unser Duft-Quiz – es findet deine Lieblingsrichtung in unter einer Minute.'
         ]
       }
     ]

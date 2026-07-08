@@ -410,7 +410,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Wie finde ich meinen Duft, nicht nur eine Marke?',
-      a: 'Mit unserem Duft-Quiz – es findet deine Richtung in unter zwei Minuten.'
+      a: 'Mit unserem Duft-Quiz – es findet deine Richtung in unter einer Minute.'
     }
   ],
   'die-besten-lattafa-duefte': [

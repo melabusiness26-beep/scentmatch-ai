@@ -125,6 +125,46 @@ export function buyUrl(p: Perfume): string {
   return `https://www.google.com/search?q=${query}`;
 }
 
+// Entfernt doppelte Düfte aus einer Liste. Ein Duft gilt als Duplikat, wenn
+// Marke UND Duftname (unabhängig von Gross-/Kleinschreibung, Leerzeichen und
+// Umlauten) übereinstimmen. So verschwinden Doppel-Einträge zuverlässig aus
+// ALLEN Ansichten – auch wenn in der Datenbank z. B. durch Direkt-Importe zwei
+// Einträge desselben Dufts mit unterschiedlichem slug liegen.
+//
+// Behalten wird der „beste" Eintrag: bevorzugt der mit einem slug (damit die
+// Detailseite verlinkbar bleibt), sonst der mit dem höheren Auressa-Score. Da
+// die Liste bereits nach Score absteigend sortiert hereinkommt, ist der zuerst
+// gesehene i. d. R. schon der stärkere – wir korrigieren nur den slug-Fall.
+function dedupeKey(p: Perfume): string {
+  const norm = (s: string | null | undefined) =>
+    (s || '')
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[̀-ͯ]/g, '') // Kombinierende Akzentzeichen entfernen
+      .replace(/\s+/g, ' ')
+      .trim();
+  return `${norm(p.brands?.name)}|||${norm(p.perfume_name)}`;
+}
+
+export function dedupePerfumes(perfumes: Perfume[]): Perfume[] {
+  const seen = new Map<string, number>(); // key -> Index im Ergebnis
+  const out: Perfume[] = [];
+  for (const p of perfumes) {
+    const key = dedupeKey(p);
+    const existingIdx = seen.get(key);
+    if (existingIdx === undefined) {
+      seen.set(key, out.length);
+      out.push(p);
+      continue;
+    }
+    // Duplikat gefunden: nur ersetzen, wenn der neue Eintrag einen slug hat und
+    // der bereits behaltene keinen – so bleibt die Detailseite verlinkbar.
+    const kept = out[existingIdx];
+    if (!kept.slug && p.slug) out[existingIdx] = p;
+  }
+  return out;
+}
+
 // Liste der Düfte, nach Auressa-Score sortiert (beste zuerst).
 export async function getPerfumes(limit = 60): Promise<Perfume[]> {
   if (!isSupabaseConfigured) return [];
@@ -134,7 +174,7 @@ export async function getPerfumes(limit = 60): Promise<Perfume[]> {
     .order('scentmatch_score', { ascending: false })
     .limit(limit);
   if (error) return [];
-  return (data as unknown as Perfume[]) || [];
+  return dedupePerfumes((data as unknown as Perfume[]) || []);
 }
 
 // Anzahl der Düfte im Katalog – für dynamische Texte wie „über X Düfte".

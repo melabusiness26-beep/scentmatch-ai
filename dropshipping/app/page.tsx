@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
+import TagesProdukt from "@/components/TagesProdukt";
 import { PRODUCTS, topProducts } from "@/data/products";
 import { NICHES } from "@/data/niches";
 import { KNOWLEDGE } from "@/data/knowledge";
@@ -102,6 +103,11 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ---------------------------------------------------- Produkt des Tages */}
+      <section className="container-page -mt-8 pt-14">
+        <TagesProdukt />
+      </section>
+
       {/* -------------------------------------------------------- So geht's */}
       <section className="container-page py-16">
         <p className="kicker">So funktioniert {SITE.name}</p>
@@ -174,8 +180,8 @@ export default function HomePage() {
             persönlichen Fahrplan.
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
-            <Link href="/nischen" className="btn-primary">Nische finden</Link>
-            <Link href="/videos" className="btn-dark-outline">Werbevideo planen</Link>
+            <Link href="/nischen-quiz" className="btn-primary">🧭 Nischen-Quiz starten (1 Minute)</Link>
+            <Link href="/rechner" className="btn-dark-outline">💰 Gewinn-Rechner öffnen</Link>
           </div>
         </div>
       </section>

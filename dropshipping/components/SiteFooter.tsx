@@ -25,6 +25,8 @@ export default function SiteFooter() {
           <ul className="mt-3 space-y-2 text-sm">
             <li><Link href="/produkte" className="hover:text-white/80">Produkt-Finder</Link></li>
             <li><Link href="/nischen" className="hover:text-white/80">Nischen-Guide</Link></li>
+            <li><Link href="/nischen-quiz" className="hover:text-white/80">Nischen-Quiz</Link></li>
+            <li><Link href="/rechner" className="hover:text-white/80">Gewinn-Rechner</Link></li>
             <li><Link href="/store-planer" className="hover:text-white/80">Store-Planer</Link></li>
             <li><Link href="/videos" className="hover:text-white/80">Werbevideo-Studio</Link></li>
             <li><Link href="/studio" className="hover:text-white/80">KI-Studio</Link></li>

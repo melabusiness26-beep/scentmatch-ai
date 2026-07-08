@@ -39,6 +39,16 @@ export default function NischenPage() {
         den kompletten Fahrplan.
       </p>
 
+      <div className="card mt-6 flex flex-wrap items-center justify-between gap-4 border-t-4 border-t-accent">
+        <p className="text-sm leading-relaxed">
+          <strong>Unentschlossen?</strong> Beantworte 5 kurze Fragen – das Quiz sagt
+          dir, welche Nische zu dir, deinem Budget und deinem Content-Stil passt.
+        </p>
+        <Link href="/nischen-quiz" className="btn-primary shrink-0">
+          🧭 Nischen-Quiz starten
+        </Link>
+      </div>
+
       <div className="mt-8 space-y-6">
         {NICHES.map((n) => {
           const products = productsByNiche(n.slug);

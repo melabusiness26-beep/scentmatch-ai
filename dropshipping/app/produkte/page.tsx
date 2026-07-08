@@ -11,8 +11,26 @@ export const metadata: Metadata = {
 };
 
 export default function ProduktePage() {
+  // Strukturierte Daten für Google (Produktliste)
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Geprüfte Dropshipping-Produkte für die Schweiz",
+    numberOfItems: PRODUCTS.length,
+    itemListElement: PRODUCTS.map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: p.name,
+      url: `/produkte/${p.slug}`,
+    })),
+  };
+
   return (
     <div className="container-page py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
       <p className="kicker">Produkt-Finder</p>
       <h1 className="mt-2 font-display text-3xl font-extrabold sm:text-4xl">
         {PRODUCTS.length} geprüfte Produkte – ehrlich bewertet

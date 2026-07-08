@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { NICHES, getNiche } from "@/data/niches";
 import { marginText, productsByNiche } from "@/data/products";
 import { getSupplier } from "@/data/suppliers";
@@ -32,6 +32,28 @@ export default function StorePlaner() {
   const [budget, setBudget] = useState<Budget>("klein");
   const [zeit, setZeit] = useState<Zeit>("mittel");
   const [showPlan, setShowPlan] = useState(Boolean(preselected && getNiche(preselected)));
+
+  // Abgehakte Punkte bleiben im Browser gespeichert – der Plan wird zur To-do-Liste.
+  const [checks, setChecks] = useState<Record<string, boolean>>({});
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("swissdrop-planer-checks");
+      if (raw) setChecks(JSON.parse(raw));
+    } catch {
+      // Ungültige gespeicherte Daten ignorieren
+    }
+  }, []);
+  function toggleCheck(key: string) {
+    setChecks((prev) => {
+      const next = { ...prev, [key]: !prev[key] };
+      try {
+        localStorage.setItem("swissdrop-planer-checks", JSON.stringify(next));
+      } catch {
+        // Speicher voll/blockiert – Häkchen funktionieren trotzdem für die Sitzung
+      }
+      return next;
+    });
+  }
 
   const plan = useMemo(() => {
     const n = getNiche(niche);
@@ -273,21 +295,50 @@ export default function StorePlaner() {
           </div>
 
           <div className="card">
-            <h3 className="font-display text-xl font-bold">🗓️ Dein 4-Wochen-Fahrplan</h3>
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <h3 className="font-display text-xl font-bold">🗓️ Dein 4-Wochen-Fahrplan</h3>
+              <span className="text-xs font-semibold text-muted">
+                Zum Abhaken – dein Fortschritt bleibt gespeichert
+              </span>
+            </div>
             <div className="mt-4 grid gap-4 md:grid-cols-2">
-              {plan.wochenplan.map((w) => (
-                <div key={w.title} className="rounded-xl bg-paper p-4">
-                  <h4 className="font-bold">{w.title}</h4>
-                  <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-muted">
-                    {w.items.map((item) => (
-                      <li key={item} className="flex gap-2">
-                        <span className="text-accent-deep">☐</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+              {plan.wochenplan.map((w) => {
+                const doneCount = w.items.filter((item) => checks[`${plan.n.slug}:${item}`]).length;
+                return (
+                  <div key={w.title} className="rounded-xl bg-paper p-4">
+                    <h4 className="flex items-center justify-between font-bold">
+                      {w.title}
+                      <span className={`text-xs font-bold ${doneCount === w.items.length ? "text-accent-deep" : "text-muted"}`}>
+                        {doneCount}/{w.items.length}
+                      </span>
+                    </h4>
+                    <ul className="mt-2 space-y-1 text-sm leading-relaxed">
+                      {w.items.map((item) => {
+                        const key = `${plan.n.slug}:${item}`;
+                        const isDone = Boolean(checks[key]);
+                        return (
+                          <li key={item}>
+                            <button
+                              type="button"
+                              onClick={() => toggleCheck(key)}
+                              className="flex w-full gap-2 rounded-lg p-1.5 text-left transition hover:bg-card"
+                            >
+                              <span
+                                className={`grid h-5 w-5 shrink-0 place-items-center rounded border text-[11px] font-bold ${
+                                  isDone ? "border-accent bg-accent text-white" : "border-line bg-card text-transparent"
+                                }`}
+                              >
+                                ✓
+                              </span>
+                              <span className={isDone ? "text-muted line-through" : "text-muted"}>{item}</span>
+                            </button>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -301,14 +352,27 @@ export default function StorePlaner() {
                 ["Lieferzeiten ehrlich kommunizieren", "/wissen/lieferzeiten-ehrlich-loesen"],
                 ["Verpackung fürs Hybrid-Modell", "/wissen/verpackungsmaterial-schweiz"],
                 ["Steuern & AHV im Blick behalten", "/wissen/steuern-ahv-einfach"],
-              ].map(([label, href]) => (
-                <li key={href}>
-                  <Link href={href} className="flex items-center gap-2 rounded-xl border border-line p-3 transition hover:border-accent">
-                    <span className="text-accent-deep">☐</span>
-                    <span className="font-semibold">{label}</span>
-                  </Link>
-                </li>
-              ))}
+              ].map(([label, href]) => {
+                const key = `ch:${label}`;
+                const isDone = Boolean(checks[key]);
+                return (
+                  <li key={href} className="flex items-center gap-2 rounded-xl border border-line p-3 transition hover:border-accent">
+                    <button
+                      type="button"
+                      aria-label={`${label} abhaken`}
+                      onClick={() => toggleCheck(key)}
+                      className={`grid h-5 w-5 shrink-0 place-items-center rounded border text-[11px] font-bold ${
+                        isDone ? "border-accent bg-accent text-white" : "border-line bg-card text-transparent"
+                      }`}
+                    >
+                      ✓
+                    </button>
+                    <Link href={href} className={`font-semibold hover:text-accent-deep ${isDone ? "text-muted line-through" : ""}`}>
+                      {label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 

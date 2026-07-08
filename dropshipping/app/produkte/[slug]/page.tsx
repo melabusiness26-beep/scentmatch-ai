@@ -95,6 +95,15 @@ export default async function ProduktDetailPage({
         ))}
       </section>
 
+      <div className="mt-4">
+        <Link
+          href={`/rechner?einkauf=${product.buyPriceChf[1]}&verkauf=${product.sellPriceChf[0]}`}
+          className="btn-secondary"
+        >
+          💰 Gewinn für dieses Produkt genau berechnen
+        </Link>
+      </div>
+
       {/* Vor- und Nachteile */}
       <section className="mt-6 grid gap-5 md:grid-cols-2">
         <div className="card border-t-4 border-t-accent">

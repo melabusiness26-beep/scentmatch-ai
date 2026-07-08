@@ -1,10 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import { PRODUCTS, getProduct } from "@/data/products";
 import { getNiche } from "@/data/niches";
 import { AI_VIDEO_SERVICES, SCRIPT_STYLES } from "@/data/videos";
+import { buildAiPrompt } from "@/lib/aiPrompt";
 
 type Scene = {
   time: string;
@@ -137,57 +139,6 @@ function buildScript(
         ...base,
       };
   }
-}
-
-/**
- * Baut einen fertigen Prompt für KI-Video-Dienste (Sora, Runway, Kling, Pika).
- * Auf Englisch, weil die Video-Modelle damit die besten Ergebnisse liefern.
- */
-function buildAiPrompt(styleId: string, productName: string, benefit: string): string {
-  const baseLook =
-    "Vertical 9:16 video, ~20-25 seconds total, shot like authentic smartphone UGC content: natural daylight, slight handheld movement, realistic home environment, NO studio look, NO text overlays (text will be added later in editing), NO logos.";
-
-  const scenesByStyle: Record<string, string[]> = {
-    "drei-gruende": [
-      `Scene 1 (2s): Close-up of a hand holding the product "${productName}", presenting it to the camera in a bright living room.`,
-      `Scene 2 (6s): The product being used in a real everyday situation, clearly showing its main benefit: ${benefit}.`,
-      "Scene 3 (6s): Macro detail shot of the product's material and mechanism, fingers interacting with it.",
-      "Scene 4 (6s): A satisfied person reacting positively while using the product, casual and natural, no exaggerated acting.",
-      "Scene 5 (4s): Calm final shot of the product placed nicely on a table, soft morning light.",
-    ],
-    "ehrlicher-test": [
-      `Scene 1 (3s): A person holding a small shipping package, looking curious and slightly skeptical, about to unbox "${productName}".`,
-      "Scene 2 (5s): Time-lapse style unboxing on a wooden table, hands opening the package and revealing the product.",
-      `Scene 3 (7s): The product in real daily use over what feels like several days, showing: ${benefit}.`,
-      "Scene 4 (5s): Honest close inspection of the product, turning it around in the hands, checking quality.",
-      "Scene 5 (5s): The person nodding with a convinced, satisfied expression, product visible in the foreground.",
-    ],
-    "pov-story": [
-      "Scene 1 (3s): An everyday frustrating situation at home, person mildly annoyed (relatable, slightly humorous, no product visible).",
-      "Scene 2 (5s): The problem shown in close-up detail so viewers recognize themselves in it.",
-      `Scene 3 (6s): The product "${productName}" enters the frame like a small discovery moment, warm lighting shift.`,
-      `Scene 4 (7s): Same situation as scene 1, but now relaxed and solved thanks to the product: ${benefit}.`,
-      "Scene 5 (4s): Content, happy end scene with the product casually placed in the environment.",
-    ],
-    "problem-loesung": [
-      "Scene 1 (3s): A common everyday problem shown big and clearly, with motion in the very first second (mild chaos or frustration, relatable).",
-      "Scene 2 (4s): Close-up that intensifies the problem, annoyed facial expression.",
-      `Scene 3 (6s): The product "${productName}" appears and is used immediately, hands clearly visible.`,
-      `Scene 4 (8s): The wow moment - the product visibly solves the problem: ${benefit}. This is the hero shot, make it satisfying.`,
-      "Scene 5 (4s): Relaxed final scene, person enjoying the result, product clearly visible one more time.",
-    ],
-  };
-
-  const scenes = scenesByStyle[styleId] ?? scenesByStyle["problem-loesung"];
-
-  return [
-    `Create a realistic short product advertisement video for "${productName}".`,
-    baseLook,
-    "",
-    ...scenes,
-    "",
-    "Consistent person, home and lighting across all scenes. The result should feel like a genuine recommendation filmed by a real customer, not like a commercial.",
-  ].join("\n");
 }
 
 export default function VideoScriptGenerator() {
@@ -468,6 +419,22 @@ export default function VideoScriptGenerator() {
                 vom Muster für die Nahaufnahmen. Prüfe das KI-Video vor dem Posten
                 kritisch: Hände, Logos und Texte sind typische Schwachstellen.
               </p>
+              <div className="mt-4 rounded-xl bg-navy p-4 text-white sm:flex sm:items-center sm:justify-between sm:gap-4">
+                <p className="text-sm leading-relaxed text-muted-dark">
+                  <strong className="text-white">Ohne Kopieren:</strong> Im KI-Studio
+                  erstellst du die Video-Szenen direkt hier auf der Seite.
+                </p>
+                <Link
+                  href={
+                    productSlug
+                      ? `/studio?produkt=${productSlug}&stil=${style}`
+                      : "/studio"
+                  }
+                  className="btn-primary mt-3 shrink-0 sm:mt-0"
+                >
+                  🎬 Zum KI-Studio
+                </Link>
+              </div>
             </div>
           )}
         </div>

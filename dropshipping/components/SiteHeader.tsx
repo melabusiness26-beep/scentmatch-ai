@@ -10,6 +10,7 @@ const NAV = [
   { href: "/nischen", label: "Nischen" },
   { href: "/store-planer", label: "Store-Planer" },
   { href: "/videos", label: "Werbevideos" },
+  { href: "/studio", label: "KI-Studio" },
   { href: "/wissen", label: "Schweiz-Wissen" },
 ];
 

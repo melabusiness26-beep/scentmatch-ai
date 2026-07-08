@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ Theme */
+/* Tailwind v4: diese Tokens erzeugen Utilities wie bg-paper, text-navy, … */
+@theme {
+  --color-paper: #f6f7f9;
+  --color-card: #ffffff;
+  --color-ink: #101d31;
+  --color-navy: #0d1f38;
+  --color-navy-2: #14304f;
+  --color-line: #e3e7ee;
+  --color-line-dark: rgba(255, 255, 255, 0.12);
+  --color-muted: #5a6678;
+  --color-muted-dark: #9fb0c4;
+  --color-accent: #0e9f6e;
+  --color-accent-deep: #0b7f58;
+  --color-accent-soft: #e5f6ef;
+  --color-swiss: #d5342b;
+  --color-swiss-soft: #fdeceb;
+  --color-amber-soft: #fdf3e3;
+
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* -------------------------------------------------------------- Base layer */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: #fff;
+  }
+}
+
+/* -------------------------------------------------------- Komponenten-Layer */
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+
+  .kicker {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-accent-deep;
+  }
+
+  .card {
+    @apply rounded-2xl border border-line bg-card p-6 shadow-[0_1px_3px_rgba(16,29,49,0.06)];
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent-deep focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-card px-5 py-3 text-sm font-semibold text-ink transition hover:border-accent hover:text-accent-deep;
+  }
+
+  .btn-dark-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/60 hover:bg-white/5;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border border-line bg-card px-3 py-1 text-xs font-semibold text-muted;
+  }
+
+  .chip-active {
+    @apply border-accent bg-accent-soft text-accent-deep;
+  }
+
+  .field-label {
+    @apply mb-1 block text-sm font-semibold text-ink;
+  }
+
+  .field-input {
+    @apply w-full rounded-xl border border-line bg-card px-4 py-3 text-sm text-ink outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/25;
+  }
+}

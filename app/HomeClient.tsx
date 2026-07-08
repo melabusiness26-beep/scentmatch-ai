@@ -645,7 +645,16 @@ export default function Home() {
         </section>
 
         <section className="section">
-          <p className="eyebrow">Neu · Duft nach Gefühl</p>
+          <p className="eyebrow">Neu · Der Dupe-Finder</p>
+          <h2>Teuren Lieblingsduft eingeben, günstigen Zwilling finden.</h2>
+          <p className="small">Von Creed Aventus bis Baccarat Rouge 540: Gib den Duft ein, den du liebst – wir zeigen dir sofort ähnlich riechende Alternativen, die oft hunderte Franken weniger kosten.</p>
+          <div className="cta">
+            <Link className="button" href="/dupes">Dupe-Finder starten</Link>
+          </div>
+        </section>
+
+        <section className="section">
+          <p className="eyebrow">Duft nach Gefühl</p>
           <h2>Keine Lust auf ein Quiz? Geh nach Gefühl.</h2>
           <p className="small">Sag einfach, wonach dir gerade ist – ob verwöhnen, runterkommen, stark fühlen oder strahlen. Wir zeigen dir sofort passende Düfte.</p>
           <div className="cta">

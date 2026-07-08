@@ -440,6 +440,8 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 /* Feiner Icon-Badge im gleichen Stil wie die „Warum Auressa?"-Icons. */
 .mood-icon { width: 44px; height: 44px; border-radius: 13px; display: inline-flex; align-items: center; justify-content: center; color: var(--brown); background: rgba(185,152,99,.16); border: 1px solid rgba(185,152,99,.4); margin-bottom: 8px; }
 .mood-icon svg { width: 23px; height: 23px; }
+.dest-emoji { font-size: 24px; line-height: 1; }
+.mood-icon-lg.dest-emoji { font-size: 30px; }
 .mood-title { font-family: var(--font-display), Georgia, serif; font-size: 20px; color: var(--brown); }
 @media (max-width: 900px) { .mood-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 460px) { .mood-grid { grid-template-columns: 1fr; } }

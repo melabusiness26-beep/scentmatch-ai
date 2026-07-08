@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getAllPerfumeSlugs, MOODS } from '@/lib/perfumes';
+import { DESTINATIONS } from '@/lib/destinations';
 import { guides } from '@/lib/guides';
 import { scentNotes } from '@/lib/notes-glossary';
 
@@ -38,6 +39,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7
   }));
 
+  const destinationUrls: MetadataRoute.Sitemap = DESTINATIONS.map((dest) => ({
+    url: `${SITE_URL}/reiseduefte/${dest.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.7
+  }));
+
   return [
     {
       url: SITE_URL,
@@ -53,6 +61,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${SITE_URL}/stimmungen`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8
+    },
+    {
+      url: `${SITE_URL}/reiseduefte`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8
@@ -88,6 +102,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.2
     },
     ...moodUrls,
+    ...destinationUrls,
     ...guideUrls,
     ...noteUrls,
     ...perfumeUrls

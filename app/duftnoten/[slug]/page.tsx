@@ -21,10 +21,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const note = getScentNote(slug);
-  if (!note) return { title: 'Duftnote nicht gefunden – Auressa' };
+  if (!note) return { title: 'Duftnote nicht gefunden' };
 
   return {
-    title: note.metaTitle,
+    // metaTitle enthaelt bereits „| Auressa" als vollstaendigen Titel – mit
+    // { absolute } umgehen wir das globale Template, sonst stuende es doppelt da.
+    title: { absolute: note.metaTitle },
     description: note.metaDescription,
     alternates: { canonical: `/duftnoten/${slug}` },
     openGraph: {

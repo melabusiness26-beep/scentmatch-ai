@@ -74,11 +74,13 @@ export async function generateMetadata({
   const perfume = await getPerfumeBySlug(slug);
 
   if (!perfume) {
-    return { title: 'Duft nicht gefunden – Auressa' };
+    return { title: 'Duft nicht gefunden' };
   }
 
   const brand = perfume.brands?.name ? ` von ${perfume.brands.name}` : '';
-  const title = `${perfume.perfume_name}${brand} – Duftprofil & Bewertung | Auressa`;
+  // Haupttitel ohne „| Auressa" – die Marke haengt das globale Titel-Template
+  // (%s | Auressa) automatisch an. So entsteht kein doppeltes „| Auressa".
+  const title = `${perfume.perfume_name}${brand} – Duftprofil & Bewertung`;
   // Abwechslungsreiche Beschreibung aus echten Duftdaten (statt gleicher Schablone
   // auf hunderten Seiten) – gut gegen „dünnen/doppelten Inhalt".
   const description = metaTrim(perfume.description || describePerfume(perfume));
@@ -88,7 +90,7 @@ export async function generateMetadata({
     description,
     alternates: { canonical: `/duft/${slug}` },
     openGraph: {
-      title,
+      title: `${title} | Auressa`,
       description,
       type: 'article',
       url: `${SITE_URL}/duft/${slug}`

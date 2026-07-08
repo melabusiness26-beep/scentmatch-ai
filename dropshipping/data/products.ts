@@ -1217,3 +1217,50 @@ export function marginText(p: Product): string {
   const high = p.sellPriceChf[1] - p.buyPriceChf[0];
   return `ca. CHF ${low}–${high} pro Verkauf`;
 }
+
+/** Marge in Prozent (Mittelwerte), z. B. 71. */
+export function marginPercent(p: Product): number {
+  const avgBuy = (p.buyPriceChf[0] + p.buyPriceChf[1]) / 2;
+  const avgSell = (p.sellPriceChf[0] + p.sellPriceChf[1]) / 2;
+  if (avgSell <= 0) return 0;
+  return Math.round(((avgSell - avgBuy) / avgSell) * 100);
+}
+
+/**
+ * Kennzahlen-Aufschlüsselung (0–100) – abgeleitet aus den Katalogdaten:
+ * Marge aus den Preisen, Nachfrage aus Trend-Status + Gesamtscore,
+ * Versand aus den Lieferwegen, Konkurrenz aus der Nischen-Einstufung.
+ */
+export type ScoreBreakdown = {
+  label: string;
+  value: number;
+  hint: string;
+}[];
+
+export function scoreBreakdown(
+  p: Product,
+  nicheCompetition: "niedrig" | "mittel" | "hoch" | undefined
+): ScoreBreakdown {
+  const margePct = marginPercent(p);
+  const marge = Math.min(100, Math.round((margePct / 80) * 100));
+
+  const demand =
+    p.trend === "Im Trend" ? 88 : p.trend === "Kommender Trend" ? 70 : 78;
+
+  const delivery = p.deliveryDays.toLowerCase();
+  const shipping = delivery.includes("eu-lager")
+    ? 85
+    : delivery.includes("bigbuy") || delivery.includes("print-on-demand")
+      ? 78
+      : 55;
+
+  const competition =
+    nicheCompetition === "niedrig" ? 85 : nicheCompetition === "mittel" ? 65 : 45;
+
+  return [
+    { label: "Marge", value: marge, hint: `${margePct} % vom Verkaufspreis bleiben vor Werbung übrig` },
+    { label: "Nachfrage", value: demand, hint: `Einstufung: ${p.trend}` },
+    { label: "Versand", value: shipping, hint: shipping >= 78 ? "Schnelle Lieferwege (EU/POD) verfügbar" : "Standard-Lieferwege aus Asien – Lieferzeit ehrlich kommunizieren" },
+    { label: "Konkurrenz-Chance", value: competition, hint: `Konkurrenz in der Nische: ${nicheCompetition ?? "mittel"} (höher = leichter durchzukommen)` },
+  ];
+}

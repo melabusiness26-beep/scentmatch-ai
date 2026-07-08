@@ -41,6 +41,33 @@ export default function ProduktePage() {
         Vor- und Nachteile, Qualitäts-Checkliste, Bezugsquellen und eine fertige
         Werbevideo-Idee. Der Katalog wächst laufend – auch mit kommenden Trends.
       </p>
+      {/* Trend-Radar: kommende Gewinner zuerst zeigen */}
+      {PRODUCTS.some((p) => p.trend === "Kommender Trend") && (
+        <section className="card mt-8 border-t-4 border-t-amber-400">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h2 className="font-display text-lg font-bold">📡 Trend-Radar: Das kommt als Nächstes</h2>
+            <span className="text-xs font-semibold text-muted">
+              Früh einsteigen = weniger Konkurrenz
+            </span>
+          </div>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {PRODUCTS.filter((p) => p.trend === "Kommender Trend").map((p) => (
+              <a
+                key={p.slug}
+                href={`/produkte/${p.slug}`}
+                className="flex items-center gap-3 rounded-xl border border-line p-3 transition hover:-translate-y-0.5 hover:border-accent"
+              >
+                <span className="text-2xl">{p.emoji}</span>
+                <span>
+                  <span className="block text-sm font-bold leading-snug">{p.name}</span>
+                  <span className="text-xs font-semibold text-muted">Score {p.score}</span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
       <div className="mt-8">
         <ProductExplorer />
       </div>

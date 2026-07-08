@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
-import { getProduct, marginText, productsByNiche, PRODUCTS } from "@/data/products";
+import { getProduct, marginText, productsByNiche, scoreBreakdown, PRODUCTS } from "@/data/products";
 import { getNiche } from "@/data/niches";
 import { getSupplier } from "@/data/suppliers";
 
@@ -103,6 +103,34 @@ export default async function ProduktDetailPage({
           💰 Gewinn für dieses Produkt genau berechnen
         </Link>
       </div>
+
+      {/* Kennzahlen-Aufschlüsselung */}
+      <section className="card mt-6">
+        <h2 className="font-display text-xl font-bold">📊 Kennzahlen im Detail</h2>
+        <p className="mt-1 text-sm text-muted">
+          Abgeleitet aus unseren Katalogdaten: Preise, Trend-Status, Lieferwege und
+          Nischen-Konkurrenz.
+        </p>
+        <div className="mt-5 grid gap-x-10 gap-y-4 sm:grid-cols-2">
+          {scoreBreakdown(product, niche?.competition).map((b) => (
+            <div key={b.label}>
+              <div className="flex items-baseline justify-between text-sm">
+                <span className="font-bold">{b.label}</span>
+                <span className="font-display font-extrabold text-accent-deep">{b.value}/100</span>
+              </div>
+              <div className="mt-1.5 h-2.5 overflow-hidden rounded-full bg-paper">
+                <div
+                  className={`h-full rounded-full ${
+                    b.value >= 75 ? "bg-accent" : b.value >= 55 ? "bg-amber-400" : "bg-swiss"
+                  }`}
+                  style={{ width: `${b.value}%` }}
+                />
+              </div>
+              <p className="mt-1 text-xs leading-snug text-muted">{b.hint}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Vor- und Nachteile */}
       <section className="mt-6 grid gap-5 md:grid-cols-2">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Suspense } from "react";
 import StudioClient from "@/components/StudioClient";
 
@@ -42,6 +43,17 @@ export default function StudioPage() {
         direkt auf dieser Seite. Bezahlt wird nur pro erstelltem Video über dein
         eigenes Guthaben – ohne Abo. Der Zugang ist mit deinem persönlichen Code
         geschützt, damit niemand sonst dein Guthaben nutzen kann.
+      </p>
+
+      <p className="card mt-6 max-w-2xl border-t-4 border-t-accent text-sm leading-relaxed">
+        <strong>💚 Kein Budget? Kein Problem.</strong> Mit der{" "}
+        <Link href="/videos" className="font-semibold text-accent-deep hover:underline">
+          0-Franken-Route
+        </Link>{" "}
+        erstellst du KI-Videos komplett gratis: Prompt hier generieren, bei Kling AI
+        oder Hailuo AI mit den täglichen Gratis-Credits erstellen, herunterladen.
+        Dieses Studio ist nur die Komfort-Variante ohne Kopieren – für später, wenn
+        die ersten Einnahmen da sind.
       </p>
 
       <div className="mt-8">

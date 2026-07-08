@@ -93,25 +93,43 @@ export const VIDEO_TOOLS: VideoTool[] = [
 /** KI-Video-Dienste, in die man den generierten Prompt einfügen kann. */
 export const AI_VIDEO_SERVICES = [
   {
-    name: "Sora (OpenAI)",
-    url: "https://sora.com",
-    note: "Sehr realistische Szenen; Verfügbarkeit/Kontingent je nach Konto.",
-  },
-  {
-    name: "Runway",
-    url: "https://runwayml.com",
-    note: "Etabliertes Profi-Tool, Gratis-Credits zum Testen.",
-  },
-  {
     name: "Kling AI",
     url: "https://klingai.com",
-    note: "Starke Produkt-Shots, tägliche Gratis-Credits.",
+    free: "GRATIS: tägliche Gratis-Credits (jeden Tag neu)",
+    note: "Starke, realistische Produkt-Shots – unsere Empfehlung für die Gratis-Route.",
+  },
+  {
+    name: "Hailuo AI",
+    url: "https://hailuoai.video",
+    free: "GRATIS: tägliche Gratis-Credits",
+    note: "Schnell und erstaunlich gut – zweiter Gratis-Favorit.",
   },
   {
     name: "Pika",
     url: "https://pika.art",
+    free: "GRATIS: Gratis-Credits zum Start",
     note: "Einfach zu bedienen, gut für kurze Effekt-Szenen.",
   },
+  {
+    name: "Runway",
+    url: "https://runwayml.com",
+    free: "Gratis-Credits zum Testen, danach Abo",
+    note: "Etabliertes Profi-Tool.",
+  },
+  {
+    name: "Sora (OpenAI)",
+    url: "https://sora.com",
+    free: "Kontingent je nach Konto",
+    note: "Sehr realistische Szenen.",
+  },
+];
+
+/** Die 0-Franken-Route: KI-Videos komplett ohne Ausgaben erstellen. */
+export const FREE_ROUTE_STEPS = [
+  "Drehbuch + Prompt hier generieren und auf «Prompt kopieren» klicken (gratis).",
+  "Bei Kling AI oder Hailuo AI kostenlos anmelden – beide schenken dir täglich neue Gratis-Credits.",
+  "Prompt einfügen, Szene erstellen lassen, Video herunterladen. Reichen die Credits heute nicht für alle Szenen: morgen gibt es neue – oder du nutzt beide Dienste parallel.",
+  "Szenen in CapCut (gratis) zusammenfügen, Untertitel + Trend-Sound dazu, posten. Gesamtkosten: CHF 0.",
 ];
 
 /* ------------------------------------------------------------------ Skripte */

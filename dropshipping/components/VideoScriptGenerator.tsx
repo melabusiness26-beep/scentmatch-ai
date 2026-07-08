@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import { PRODUCTS, getProduct } from "@/data/products";
 import { getNiche } from "@/data/niches";
-import { AI_VIDEO_SERVICES, SCRIPT_STYLES } from "@/data/videos";
+import { AI_VIDEO_SERVICES, FREE_ROUTE_STEPS, SCRIPT_STYLES } from "@/data/videos";
 import { buildAiPrompt } from "@/lib/aiPrompt";
 
 type Scene = {
@@ -399,17 +399,43 @@ export default function VideoScriptGenerator() {
               <pre className="mt-4 max-h-72 overflow-auto whitespace-pre-wrap rounded-xl bg-paper p-4 text-xs leading-relaxed text-ink">
                 {aiPrompt}
               </pre>
-              <div className="mt-4 flex flex-wrap gap-2">
+              <div className="mt-4 rounded-xl bg-accent-soft p-4">
+                <h5 className="font-display text-sm font-extrabold text-accent-deep">
+                  💚 Die 0-Franken-Route (komplett gratis)
+                </h5>
+                <ol className="mt-2 space-y-1.5 text-sm leading-relaxed">
+                  {FREE_ROUTE_STEPS.map((step, i) => (
+                    <li key={step} className="flex gap-2">
+                      <span className="font-bold text-accent-deep">{i + 1}.</span>
+                      <span>{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+              <div className="mt-4 grid gap-2 sm:grid-cols-2">
                 {AI_VIDEO_SERVICES.map((s) => (
                   <a
                     key={s.name}
                     href={s.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="chip hover:border-accent hover:text-accent-deep"
-                    title={s.note}
+                    className="rounded-xl border border-line p-3 transition hover:border-accent"
                   >
-                    {s.name} ↗
+                    <span className="flex items-center justify-between gap-2">
+                      <span className="text-sm font-bold">{s.name} ↗</span>
+                      <span
+                        className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${
+                          s.free.startsWith("GRATIS")
+                            ? "bg-accent-soft text-accent-deep"
+                            : "bg-paper text-muted"
+                        }`}
+                      >
+                        {s.free.startsWith("GRATIS") ? "GRATIS-Credits" : "Testen möglich"}
+                      </span>
+                    </span>
+                    <span className="mt-1 block text-xs leading-snug text-muted">
+                      {s.free} · {s.note}
+                    </span>
                   </a>
                 ))}
               </div>

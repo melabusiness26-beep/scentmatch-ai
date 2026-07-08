@@ -14,6 +14,17 @@ function trendChip(trend: Product["trend"]) {
   }
 }
 
+/* Jede Nische bekommt ihre eigene, wiedererkennbare Kachel-Farbe. */
+const NICHE_TILE: Record<string, string> = {
+  haustiere: "from-amber-100 to-orange-50",
+  "home-living": "from-violet-100 to-indigo-50",
+  "beauty-selfcare": "from-rose-100 to-pink-50",
+  "fitness-sport": "from-emerald-100 to-teal-50",
+  "kueche-haushalt": "from-yellow-100 to-amber-50",
+  "baby-kids": "from-sky-100 to-cyan-50",
+  "tech-gadgets": "from-slate-200 to-slate-50",
+};
+
 export default function ProductCard({ product }: { product: Product }) {
   const niche = getNiche(product.niche);
   return (
@@ -22,12 +33,16 @@ export default function ProductCard({ product }: { product: Product }) {
       className="card group flex flex-col gap-3 transition hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(16,29,49,0.10)]"
     >
       <div className="flex items-start justify-between gap-3">
-        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-paper text-2xl">
+        <span
+          className={`grid h-14 w-14 shrink-0 place-items-center rounded-xl bg-gradient-to-br text-3xl ${
+            NICHE_TILE[product.niche] ?? "from-slate-100 to-slate-50"
+          }`}
+        >
           {product.emoji}
         </span>
         <span
-          className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-navy font-display text-sm font-extrabold text-white"
-          title="SwissDrop-Score (0–100)"
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-navy font-display text-sm font-extrabold text-white ring-2 ring-navy/10 ring-offset-2"
+          title="Score (0–100)"
         >
           {product.score}
         </span>

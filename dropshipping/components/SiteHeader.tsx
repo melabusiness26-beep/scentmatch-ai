@@ -62,6 +62,9 @@ export default function SiteHeader() {
               </Link>
             );
           })}
+          <Link href="/store-planer" className="btn-primary ml-2 !px-4 !py-2">
+            Jetzt starten
+          </Link>
         </nav>
 
         <button
@@ -87,6 +90,9 @@ export default function SiteHeader() {
                 {item.label}
               </Link>
             ))}
+            <Link href="/store-planer" className="btn-primary mt-2 mb-2">
+              Jetzt starten
+            </Link>
           </div>
         </nav>
       )}

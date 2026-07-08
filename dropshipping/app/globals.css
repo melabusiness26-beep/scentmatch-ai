@@ -42,7 +42,20 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
+  }
+
+  /* Ausgewogene Zeilenumbrüche in grossen Überschriften (kein einzelnes Wort in der letzten Zeile) */
+  h1,
+  h2 {
+    text-wrap: balance;
+  }
+
+  /* Sichtbarer, konsistenter Fokus-Ring für Tastatur-Nutzung */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 
   ::selection {
@@ -62,19 +75,31 @@
   }
 
   .card {
-    @apply rounded-2xl border border-line bg-card p-6 shadow-[0_1px_3px_rgba(16,29,49,0.06)];
+    /* Zweistufiger Schatten: feine Kontur-Tiefe + weicher Ambient-Schatten */
+    @apply rounded-2xl border border-line bg-card p-6 shadow-[0_1px_2px_rgba(16,29,49,0.05),0_12px_32px_-16px_rgba(16,29,49,0.14)];
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent-deep focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-white shadow-[0_1px_2px_rgba(11,127,88,0.4),0_8px_20px_-8px_rgba(14,159,110,0.5)] transition hover:bg-accent-deep active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-card px-5 py-3 text-sm font-semibold text-ink transition hover:border-accent hover:text-accent-deep;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-card px-5 py-3 text-sm font-semibold text-ink shadow-[0_1px_2px_rgba(16,29,49,0.06)] transition hover:border-accent hover:text-accent-deep active:scale-[0.98];
   }
 
   .btn-dark-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/60 hover:bg-white/5;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/60 hover:bg-white/5 active:scale-[0.98];
+  }
+
+  /* Dunkle Bühnen-Flächen (Hero, CTA): dezente Lichtquellen + feines Raster für Tiefe */
+  .hero-surface {
+    background-color: var(--color-navy);
+    background-image:
+      radial-gradient(52rem 30rem at 85% -10%, rgba(14, 159, 110, 0.22), transparent 60%),
+      radial-gradient(40rem 26rem at -10% 110%, rgba(213, 52, 43, 0.14), transparent 55%),
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: auto, auto, 44px 44px, 44px 44px;
   }
 
   .chip {

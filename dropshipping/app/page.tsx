@@ -50,29 +50,37 @@ export default function HomePage() {
   return (
     <>
       {/* --------------------------------------------------------------- Hero */}
-      <section className="bg-navy text-white">
-        <div className="container-page grid gap-10 py-16 md:grid-cols-[1.2fr_1fr] md:items-center md:py-24">
+      <section className="hero-surface text-white">
+        <div className="container-page grid gap-12 py-20 md:grid-cols-[1.2fr_1fr] md:items-center md:py-28">
           <div>
-            <p className="kicker !text-emerald-300">
-              <span className="grid h-5 w-5 place-items-center rounded bg-swiss text-[10px] font-black text-white">+</span>
+            <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-emerald-300">
+              <span className="grid h-4 w-4 place-items-center rounded bg-swiss text-[9px] font-black text-white">+</span>
               E-Commerce &amp; Dropshipping · Schweiz
             </p>
-            <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight sm:text-5xl">
-              Finde Produkte, die sich verkaufen – und starte deinen Shop richtig.
+            <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.08] sm:text-6xl">
+              Finde Produkte, die sich verkaufen.
+              <span className="block text-emerald-300">Starte deinen Shop richtig.</span>
             </h1>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-dark">
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-dark">
               {SITE.name} zeigt dir aktuelle und kommende Trend-Produkte mit ehrlichen
-              Vor- und Nachteilen, hilft dir bei Qualität, Preisen und Lieferzeiten –
-              und plant mit dir Shop und Werbevideos. Alles für den Schweizer Markt.
+              Vor- und Nachteilen, hilft bei Qualität, Preisen und Lieferzeiten – und
+              plant mit dir Shop und Werbevideos. Alles für den Schweizer Markt.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/produkte" className="btn-primary">
-                🔎 Produkte entdecken
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link href="/produkte" className="btn-primary !px-7 !py-3.5 !text-base">
+                Produkte entdecken
               </Link>
-              <Link href="/store-planer" className="btn-dark-outline">
-                🚀 Store-Planer starten
+              <Link href="/store-planer" className="btn-dark-outline !px-7 !py-3.5 !text-base">
+                Store-Planer starten
               </Link>
             </div>
+            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-dark">
+              {["Ehrliche Bewertungen", "Für die Schweiz gemacht", "Start ohne Budget möglich"].map((t) => (
+                <li key={t} className="flex items-center gap-2">
+                  <span className="text-emerald-300">✓</span> {t}
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
@@ -82,9 +90,12 @@ export default function HomePage() {
               [String(KNOWLEDGE.length), "Schweiz-Ratgeber (Zoll, Recht, Versand …)"],
               ["100 %", "ehrliche Vor- und Nachteile"],
             ].map(([num, label]) => (
-              <div key={label} className="rounded-2xl border border-line-dark bg-white/5 p-5">
-                <div className="font-display text-3xl font-extrabold text-emerald-300">{num}</div>
-                <div className="mt-1 text-sm leading-snug text-muted-dark">{label}</div>
+              <div
+                key={label}
+                className="rounded-2xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur-sm transition hover:border-white/25"
+              >
+                <div className="font-display text-3xl font-extrabold text-emerald-300 sm:text-4xl">{num}</div>
+                <div className="mt-1.5 text-sm leading-snug text-muted-dark">{label}</div>
               </div>
             ))}
           </div>
@@ -153,7 +164,7 @@ export default function HomePage() {
 
       {/* -------------------------------------------------------------- CTA */}
       <section className="container-page pb-4">
-        <div className="rounded-3xl bg-navy px-6 py-12 text-center text-white sm:px-12">
+        <div className="hero-surface rounded-3xl px-6 py-14 text-center text-white sm:px-12">
           <h2 className="font-display text-3xl font-extrabold">
             Noch keine Nische? Kein Problem.
           </h2>

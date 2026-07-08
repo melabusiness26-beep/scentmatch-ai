@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import { PRODUCTS, getProduct } from "@/data/products";
 import { getNiche } from "@/data/niches";
-import { SCRIPT_STYLES } from "@/data/videos";
+import { AI_VIDEO_SERVICES, SCRIPT_STYLES } from "@/data/videos";
 
 type Scene = {
   time: string;
@@ -139,6 +139,57 @@ function buildScript(
   }
 }
 
+/**
+ * Baut einen fertigen Prompt für KI-Video-Dienste (Sora, Runway, Kling, Pika).
+ * Auf Englisch, weil die Video-Modelle damit die besten Ergebnisse liefern.
+ */
+function buildAiPrompt(styleId: string, productName: string, benefit: string): string {
+  const baseLook =
+    "Vertical 9:16 video, ~20-25 seconds total, shot like authentic smartphone UGC content: natural daylight, slight handheld movement, realistic home environment, NO studio look, NO text overlays (text will be added later in editing), NO logos.";
+
+  const scenesByStyle: Record<string, string[]> = {
+    "drei-gruende": [
+      `Scene 1 (2s): Close-up of a hand holding the product "${productName}", presenting it to the camera in a bright living room.`,
+      `Scene 2 (6s): The product being used in a real everyday situation, clearly showing its main benefit: ${benefit}.`,
+      "Scene 3 (6s): Macro detail shot of the product's material and mechanism, fingers interacting with it.",
+      "Scene 4 (6s): A satisfied person reacting positively while using the product, casual and natural, no exaggerated acting.",
+      "Scene 5 (4s): Calm final shot of the product placed nicely on a table, soft morning light.",
+    ],
+    "ehrlicher-test": [
+      `Scene 1 (3s): A person holding a small shipping package, looking curious and slightly skeptical, about to unbox "${productName}".`,
+      "Scene 2 (5s): Time-lapse style unboxing on a wooden table, hands opening the package and revealing the product.",
+      `Scene 3 (7s): The product in real daily use over what feels like several days, showing: ${benefit}.`,
+      "Scene 4 (5s): Honest close inspection of the product, turning it around in the hands, checking quality.",
+      "Scene 5 (5s): The person nodding with a convinced, satisfied expression, product visible in the foreground.",
+    ],
+    "pov-story": [
+      "Scene 1 (3s): An everyday frustrating situation at home, person mildly annoyed (relatable, slightly humorous, no product visible).",
+      "Scene 2 (5s): The problem shown in close-up detail so viewers recognize themselves in it.",
+      `Scene 3 (6s): The product "${productName}" enters the frame like a small discovery moment, warm lighting shift.`,
+      `Scene 4 (7s): Same situation as scene 1, but now relaxed and solved thanks to the product: ${benefit}.`,
+      "Scene 5 (4s): Content, happy end scene with the product casually placed in the environment.",
+    ],
+    "problem-loesung": [
+      "Scene 1 (3s): A common everyday problem shown big and clearly, with motion in the very first second (mild chaos or frustration, relatable).",
+      "Scene 2 (4s): Close-up that intensifies the problem, annoyed facial expression.",
+      `Scene 3 (6s): The product "${productName}" appears and is used immediately, hands clearly visible.`,
+      `Scene 4 (8s): The wow moment - the product visibly solves the problem: ${benefit}. This is the hero shot, make it satisfying.`,
+      "Scene 5 (4s): Relaxed final scene, person enjoying the result, product clearly visible one more time.",
+    ],
+  };
+
+  const scenes = scenesByStyle[styleId] ?? scenesByStyle["problem-loesung"];
+
+  return [
+    `Create a realistic short product advertisement video for "${productName}".`,
+    baseLook,
+    "",
+    ...scenes,
+    "",
+    "Consistent person, home and lighting across all scenes. The result should feel like a genuine recommendation filmed by a real customer, not like a commercial.",
+  ].join("\n");
+}
+
 export default function VideoScriptGenerator() {
   const searchParams = useSearchParams();
   const preselected = searchParams.get("produkt");
@@ -150,6 +201,7 @@ export default function VideoScriptGenerator() {
   const [customBenefit, setCustomBenefit] = useState("");
   const [style, setStyle] = useState<string>("problem-loesung");
   const [generated, setGenerated] = useState(Boolean(preselected && getProduct(preselected)));
+  const [copied, setCopied] = useState(false);
 
   const script = useMemo(() => {
     if (productSlug) {
@@ -176,6 +228,33 @@ export default function VideoScriptGenerator() {
     }
     return null;
   }, [productSlug, customName, customBenefit, style]);
+
+  const aiPrompt = useMemo(() => {
+    if (productSlug) {
+      const p = getProduct(productSlug);
+      if (!p) return null;
+      return buildAiPrompt(style, p.name, p.short.replace(/\.$/, ""));
+    }
+    if (customName.trim()) {
+      return buildAiPrompt(
+        style,
+        customName.trim(),
+        customBenefit.trim() || "it makes everyday life noticeably easier"
+      );
+    }
+    return null;
+  }, [productSlug, customName, customBenefit, style]);
+
+  async function copyPrompt() {
+    if (!aiPrompt) return;
+    try {
+      await navigator.clipboard.writeText(aiPrompt);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      // Fallback: Text markieren lassen – das Feld ist sichtbar und auswählbar.
+    }
+  }
 
   const selectedProduct = productSlug ? getProduct(productSlug) : undefined;
   const nicheName = selectedProduct ? getNiche(selectedProduct.niche)?.name : null;
@@ -349,6 +428,48 @@ export default function VideoScriptGenerator() {
               </ul>
             </div>
           </div>
+
+          {aiPrompt && (
+            <div className="card border-t-4 border-t-accent">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <h4 className="font-display text-lg font-bold">
+                  🤖 Fertiger KI-Video-Prompt (zum Kopieren)
+                </h4>
+                <button type="button" onClick={copyPrompt} className="btn-primary !py-2">
+                  {copied ? "✓ Kopiert!" : "📋 Prompt kopieren"}
+                </button>
+              </div>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                Willst du das Video per KI erstellen lassen? Kopiere diesen Prompt und
+                füge ihn in ein KI-Video-Tool ein (viele haben Gratis-Kontingente).
+                Der Prompt ist auf Englisch, weil die Video-KIs damit die besten
+                Ergebnisse liefern.
+              </p>
+              <pre className="mt-4 max-h-72 overflow-auto whitespace-pre-wrap rounded-xl bg-paper p-4 text-xs leading-relaxed text-ink">
+                {aiPrompt}
+              </pre>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {AI_VIDEO_SERVICES.map((s) => (
+                  <a
+                    key={s.name}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="chip hover:border-accent hover:text-accent-deep"
+                    title={s.note}
+                  >
+                    {s.name} ↗
+                  </a>
+                ))}
+              </div>
+              <p className="mt-3 rounded-xl bg-amber-soft p-3 text-sm leading-relaxed">
+                <strong>Ehrlicher Profi-Tipp:</strong> Am glaubwürdigsten wirkt die
+                Mischung – KI-Szenen für Stimmung und Umgebung, echte Handy-Aufnahmen
+                vom Muster für die Nahaufnahmen. Prüfe das KI-Video vor dem Posten
+                kritisch: Hände, Logos und Texte sind typische Schwachstellen.
+              </p>
+            </div>
+          )}
         </div>
       )}
     </div>

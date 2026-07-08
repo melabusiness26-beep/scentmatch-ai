@@ -82,11 +82,35 @@ export const VIDEO_TOOLS: VideoTool[] = [
     verdict: "Gute CapCut-Alternative, wenn dir CapCut zu voll ist.",
   },
   {
-    name: "KI-Video-Tools (z. B. Runway, Pika, Sora)",
-    price: "kostenpflichtig (Abo/Credits)",
-    what: "Erzeugen Videoszenen komplett per KI aus Text.",
+    name: "KI-Video-Tools (z. B. Sora, Runway, Kling, Pika)",
+    price: "Gratis-Kontingente, danach Abo/Credits",
+    what: "Erzeugen Videoszenen komplett per KI aus einer Text-Beschreibung (Prompt).",
     verdict:
-      "Ehrliche Einschätzung: Für Produktwerbung (noch) NICHT empfohlen – reine KI-Videos wirken oft künstlich, und genau das senkt das Vertrauen. Echtes Handyvideo vom Muster schlägt KI-Material fast immer. KI lieber für Ideen, Skripte und Voice-Over nutzen.",
+      "Unser Drehbuch-Generator erstellt dir den fertigen Profi-Prompt zum Kopieren. Ehrlicher Tipp dazu: KI-Szenen am besten mit echten Handy-Aufnahmen vom Muster mischen (KI für Stimmung, echt für Nahaufnahmen) – das wirkt am glaubwürdigsten.",
+  },
+];
+
+/** KI-Video-Dienste, in die man den generierten Prompt einfügen kann. */
+export const AI_VIDEO_SERVICES = [
+  {
+    name: "Sora (OpenAI)",
+    url: "https://sora.com",
+    note: "Sehr realistische Szenen; Verfügbarkeit/Kontingent je nach Konto.",
+  },
+  {
+    name: "Runway",
+    url: "https://runwayml.com",
+    note: "Etabliertes Profi-Tool, Gratis-Credits zum Testen.",
+  },
+  {
+    name: "Kling AI",
+    url: "https://klingai.com",
+    note: "Starke Produkt-Shots, tägliche Gratis-Credits.",
+  },
+  {
+    name: "Pika",
+    url: "https://pika.art",
+    note: "Einfach zu bedienen, gut für kurze Effekt-Szenen.",
   },
 ];
 

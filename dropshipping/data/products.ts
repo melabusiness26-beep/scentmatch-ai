@@ -100,6 +100,74 @@ export const PRODUCTS: Product[] = [
     targetAudience: "Katzen- und Hundebesitzer:innen mit Haar-Problem auf Sofa & Kleidung",
   },
   {
+    slug: "schleckmatte",
+    name: "Schleckmatte für Hunde & Katzen",
+    niche: "haustiere",
+    emoji: "🐾",
+    short: "Beschäftigt das Tier beim Baden, Krallenschneiden oder als Snack-Spiel.",
+    description:
+      "Eine Silikonmatte mit Saugnäpfen, auf die Leckpaste gestrichen wird – das Tier ist minutenlang beschäftigt und entspannt. Löst echte Probleme (Baden, Tierarzt-Stress, Alleinsein) und liefert herzige Video-Momente.",
+    trend: "Im Trend",
+    score: 83,
+    buyPriceChf: [2, 5],
+    sellPriceChf: [12, 19],
+    deliveryDays: "AliExpress 10–20 Tage · CJ 6–14 Tage",
+    suppliers: ["aliexpress", "cj-dropshipping"],
+    pros: [
+      "Sehr günstiger Einkauf, gute Marge, unkaputtbar im Versand",
+      "Videos vom schleckenden Hund/Katze sind Klick-Magneten",
+      "Perfektes Bundle-Produkt (z. B. mit Tierhaarbürste)",
+    ],
+    cons: [
+      "Kleiner Warenkorb – besser im Set oder als Zusatzartikel",
+      "Material muss lebensmittelecht sein (Zertifikat verlangen)",
+    ],
+    qualityChecks: [
+      "Saugnäpfe an Duschwand testen – hält die Matte bei Zug?",
+      "Lebensmittelechtes Silikon (LFGB/FDA) beim Lieferanten bestätigen lassen",
+      "Spülmaschinentest mit dem Muster",
+    ],
+    videoIdea:
+      "Hund beim Baden – vorher Panik, dann Schleckmatte an die Wand: Hund schleckt seelenruhig. Text: «Der Baden-Hack, den dein Hund liebt.»",
+    season: "Ganzjährig",
+    targetAudience: "Hunde- und Katzenbesitzer:innen, deren Tier Pflege stresst",
+  },
+  {
+    slug: "katzen-trinkbrunnen",
+    name: "Leiser Katzen-Trinkbrunnen",
+    niche: "haustiere",
+    emoji: "⛲",
+    short: "Fliessendes Wasser animiert Katzen zum Trinken – Gesundheits-Argument inklusive.",
+    description:
+      "Ein leiser Wasserbrunnen mit Filter, der Katzen zum Trinken animiert (viele Katzen trinken zu wenig). Höherer Warenkorb, klarer Nutzen und laufende Folgekäufe durch Ersatzfilter.",
+    trend: "Dauerbrenner",
+    score: 78,
+    buyPriceChf: [10, 18],
+    sellPriceChf: [39, 59],
+    deliveryDays: "AliExpress 12–20 Tage · CJ 8–15 Tage · BigBuy 3–7 Tage",
+    suppliers: ["aliexpress", "cj-dropshipping", "bigbuy"],
+    pros: [
+      "Hoher Warenkorb (CHF 39–59) und echtes Gesundheits-Argument",
+      "Folgegeschäft mit Ersatzfiltern (wiederkehrender Umsatz)",
+      "ASMR-taugliche Videos (plätscherndes Wasser + Katze)",
+    ],
+    cons: [
+      "Elektronik + Wasser = höchste Qualitätsansprüche, nur Top-Lieferanten",
+      "Pumpe kann laut werden – Lautstärke selbst testen",
+      "Grösseres Paket, höhere Versandkosten",
+    ],
+    qualityChecks: [
+      "Pumpe 24 Stunden laufen lassen: leise? kein Leck?",
+      "USB-Betrieb bevorzugen, CE-Kennzeichnung bestätigen lassen",
+      "Ersatzfilter-Verfügbarkeit und -Preis beim Lieferanten klären",
+      "Material BPA-frei bestätigen lassen",
+    ],
+    videoIdea:
+      "Katze ignoriert Wassernapf → Brunnen wird hingestellt → Katze trinkt sofort. Text: «Katzen trinken zu wenig. Das löst es.»",
+    season: "Ganzjährig, stark im Sommer",
+    targetAudience: "Katzenbesitzer:innen, die sich um die Gesundheit sorgen",
+  },
+  {
     slug: "hunde-trinkflasche",
     name: "2-in-1 Hunde-Trinkflasche für unterwegs",
     niche: "haustiere",
@@ -237,6 +305,73 @@ export const PRODUCTS: Product[] = [
     targetAudience: "Mieter:innen 20–45, Deko-Fans, Wohnungs-Neueinrichter",
   },
 
+  {
+    slug: "mini-luftbefeuchter",
+    name: "Mini-Luftbefeuchter mit Licht (USB)",
+    niche: "home-living",
+    emoji: "💨",
+    short: "Leiser Tisch-Luftbefeuchter mit sanftem Licht – Winter- und Büro-Liebling.",
+    description:
+      "Ein kompakter USB-Luftbefeuchter mit Nebel-Effekt und dezentem Licht. In der Heizperiode (trockene Luft!) ein Problemlöser, im Video ein Ästhetik-Produkt – der Nebel filmt sich wunderschön.",
+    trend: "Dauerbrenner",
+    score: 77,
+    buyPriceChf: [5, 10],
+    sellPriceChf: [25, 39],
+    deliveryDays: "AliExpress 10–20 Tage · CJ 6–14 Tage",
+    suppliers: ["aliexpress", "cj-dropshipping"],
+    pros: [
+      "Klarer Saison-Peak Oktober–März (Heizungsluft)",
+      "Nebel + Licht = hypnotisch schöne Videos",
+      "Büro-Zielgruppe als zweiter Markt (Geschenk unter Kolleg:innen)",
+    ],
+    cons: [
+      "Billige Geräte verkalken oder werden laut – Muster lange testen",
+      "Wassertank-Grösse ehrlich angeben (kleine Tanks = häufiges Nachfüllen)",
+    ],
+    qualityChecks: [
+      "48-Stunden-Test: Lautstärke, Kalkränder, Abschaltautomatik bei leerem Tank",
+      "USB-C-Anschluss und CE-Kennzeichnung prüfen",
+      "Reinigung testen: Kommt man gut an alle Teile?",
+    ],
+    videoIdea:
+      "Cozy-Abend-Szene: Kerze, Buch, Befeuchter-Nebel im Gegenlicht. Text: «Heizungsluft? Nicht in meiner Wohnung.»",
+    season: "Herbst/Winter",
+    targetAudience: "Cozy-Home-Fans, Büromenschen, Allergiker:innen 20–50",
+  },
+  {
+    slug: "akku-tischlampe",
+    name: "Dimmbare Akku-Tischlampe (Restaurant-Look)",
+    niche: "home-living",
+    emoji: "🕯️",
+    short: "Kabellose Designer-Lampe für Esstisch & Balkon – der Gastro-Trend fürs Zuhause.",
+    description:
+      "Elegante, aufladbare Tischlampen im Stil moderner Restaurants – dimmbar, kabellos, drinnen wie draussen nutzbar. Der Look wirkt deutlich teurer als der Einkaufspreis, ein klassisches «Premium-Anmutung»-Produkt.",
+    trend: "Kommender Trend",
+    score: 80,
+    buyPriceChf: [8, 15],
+    sellPriceChf: [35, 59],
+    deliveryDays: "AliExpress 10–20 Tage · CJ 6–14 Tage",
+    suppliers: ["aliexpress", "cj-dropshipping"],
+    pros: [
+      "Hohe wahrgenommene Wertigkeit → starke Marge",
+      "Balkon-/Garten-Saison UND Weihnachtsgeschäft (zwei Peaks)",
+      "2er-/3er-Sets erhöhen den Warenkorb deutlich",
+    ],
+    cons: [
+      "Akkulaufzeit ist das Reklamationsrisiko Nr. 1",
+      "Metall-Look-Varianten können zerkratzt ankommen – Verpackung prüfen",
+    ],
+    qualityChecks: [
+      "Akkulaufzeit auf höchster + niedrigster Stufe messen (sollte 8+ Std. gedimmt sein)",
+      "Dimm-Mechanik (Touch/Drehen) 50× bedienen",
+      "IP-Schutzklasse für Aussenbereich klären, USB-C-Ladung bevorzugen",
+    ],
+    videoIdea:
+      "Tisch decken im Zeitraffer, letzter Handgriff: Lampe an, Licht dimmen – Restaurant-Stimmung. Text: «Date-Night zuhause > Restaurant.»",
+    season: "Frühling/Sommer (Balkon) + Winter (cozy)",
+    targetAudience: "Paare & Gastgeber:innen 25–50, Design-affin",
+  },
+
   // -------------------------------------------------------- Beauty & Selfcare
   {
     slug: "heatless-curls-set",
@@ -337,6 +472,73 @@ export const PRODUCTS: Product[] = [
       "ASMR-Duschszene (nur Haare + Schaum), Massage in Zeitlupe. Caption: «Der beste Teil vom Tag.» Als Bundle mit Heatless Curls bewerben.",
     season: "Ganzjährig",
     targetAudience: "Alle mit Haaren 😉 – primär Frauen 18–45",
+  },
+
+  {
+    slug: "ice-roller",
+    name: "Ice Roller / Gesichts-Kühlroller",
+    niche: "beauty-selfcare",
+    emoji: "🧊",
+    short: "Kühl-Roller gegen müde Haut am Morgen – fester Bestandteil vieler Routinen.",
+    description:
+      "Ein Roller mit Kühlkopf für Gesicht und Augenpartie – abschwellend und erfrischend am Morgen. Günstig im Einkauf, etabliert in Skincare-Routinen und ideal als Bundle mit Gua Sha.",
+    trend: "Im Trend",
+    score: 79,
+    buyPriceChf: [3, 6],
+    sellPriceChf: [15, 25],
+    deliveryDays: "AliExpress 10–20 Tage · CJ 6–14 Tage",
+    suppliers: ["aliexpress", "cj-dropshipping"],
+    pros: [
+      "Fester Platz in Morgenroutine-Content (riesiges Format auf TikTok)",
+      "Günstig, leicht, robust – kaum Versandrisiko",
+      "Starkes Bundle mit Gua Sha/Skincare-Zubehör",
+    ],
+    cons: [
+      "Keine Wunder versprechen (nur «erfrischt/kühlt», keine Anti-Aging-Claims)",
+      "Griff-Mechanik billiger Modelle wackelt",
+    ],
+    qualityChecks: [
+      "Rollkopf nach 2 Std. Gefrierfach testen: gleichmässig kalt, läuft rund?",
+      "Griff auf Spiel/Wackeln prüfen",
+      "Material rostfrei? (nach 3× Einfrieren kontrollieren)",
+    ],
+    videoIdea:
+      "5-Uhr-Morgen-POV: verschlafenes Gesicht, Ice Roller aus dem Gefrierfach, sichtbares Aufwachen. Text: «Der 10-Sekunden-Wachmacher.»",
+    season: "Ganzjährig, stark im Sommer",
+    targetAudience: "Skincare-Community 18–40, Frühaufsteher:innen",
+  },
+  {
+    slug: "seiden-schlafhaube",
+    name: "Satin-Schlafhaube + Kissenbezug (Set)",
+    niche: "beauty-selfcare",
+    emoji: "🌙",
+    short: "Schützt Haare über Nacht – perfekte Ergänzung zum Heatless-Curls-Trend.",
+    description:
+      "Ein Set aus Satin-Haube und Satin-Kissenbezug gegen Haarbruch und Frizz über Nacht. Die «Hair-Care-Nacht-Routine» ist ein wachsender Content-Trend – und das Set hebt den Warenkorb.",
+    trend: "Kommender Trend",
+    score: 76,
+    buyPriceChf: [3, 7],
+    sellPriceChf: [19, 32],
+    deliveryDays: "AliExpress 10–20 Tage · CJ 6–14 Tage",
+    suppliers: ["aliexpress", "cj-dropshipping", "printful"],
+    pros: [
+      "Wachsender Trend mit treuer Community (Hair Care, Curly Girls)",
+      "Leicht, unzerbrechlich, keine Elektronik",
+      "Ideal im Bundle mit Heatless Curls (gleiche Zielgruppe!)",
+    ],
+    cons: [
+      "«Satin» ist nicht «Seide» – ehrlich deklarieren, sonst Beschwerden",
+      "Einzeln kleiner Warenkorb, als Set verkaufen",
+    ],
+    qualityChecks: [
+      "Nähte und Gummizug der Haube prüfen (drückt nichts an der Stirn?)",
+      "Waschtest 30 Grad: bleibt der Stoff glatt und glänzend?",
+      "Materialangabe des Lieferanten klären und korrekt deklarieren",
+    ],
+    videoIdea:
+      "Nacht-Routine: Haube auf, schlafen, morgens glatte glänzende Haare vs. «vorher»-Frizz. Text: «Dein Haar repariert sich nachts – wenn du es lässt.»",
+    season: "Ganzjährig",
+    targetAudience: "Frauen 16–45 mit Fokus auf Haarpflege",
   },
 
   // ---------------------------------------------------------- Fitness & Sport
@@ -440,6 +642,73 @@ export const PRODUCTS: Product[] = [
       "«Nach dem Joggen: 5 Minuten, die deine Beine dir danken» – Rollen-Demo mit ehrlichem Verziehen des Gesichts (relatable = Kommentare).",
     season: "Ganzjährig, Peak Frühling (Laufsaison)",
     targetAudience: "Läufer:innen, Wanderer, Kraftsportler 20–55",
+  },
+
+  {
+    slug: "smart-springseil",
+    name: "Smart-Springseil mit Zähler",
+    niche: "fitness-sport",
+    emoji: "⏱️",
+    short: "Zählt Sprünge und Kalorien im Griff – Cardio für kleine Wohnungen (auch seillos).",
+    description:
+      "Ein Springseil mit digitalem Zähler im Griff, oft mit seillosem Modus für drinnen (keine Deckenhöhe nötig!). Der Zähler macht Fortschritt sichtbar – und Fortschritt macht süchtig.",
+    trend: "Im Trend",
+    score: 77,
+    buyPriceChf: [5, 10],
+    sellPriceChf: [22, 35],
+    deliveryDays: "AliExpress 10–20 Tage · CJ 6–14 Tage",
+    suppliers: ["aliexpress", "cj-dropshipping"],
+    pros: [
+      "Seilloser Modus = Training in der Mietwohnung (starkes CH-Argument)",
+      "Zahlen/Fortschritt liefern Content («1000 Sprünge am Tag»-Challenge)",
+      "Leicht und günstig zu versenden",
+    ],
+    cons: [
+      "Zähler-Genauigkeit schwankt bei Billigmodellen",
+      "Januar-Peak, danach flacher – mit anderen Produkten kombinieren",
+    ],
+    qualityChecks: [
+      "100 Sprünge machen und mitzählen – stimmt der Zähler (±5)?",
+      "Kugellager der Griffe: dreht das Seil flüssig?",
+      "Seillänge verstellbar? Batterie wechselbar?",
+    ],
+    videoIdea:
+      "«30 Tage je 1000 Sprünge»-Challenge, Tag 1 vs. Tag 30, Zähler im Bild. Ehrliches Format mit Wiederkehr-Effekt (Follower bleiben dran).",
+    season: "Ganzjährig, Peak Januar",
+    targetAudience: "Cardio-Fans und Abnehm-Community 18–45 in Wohnungen",
+  },
+  {
+    slug: "motivations-trinkflasche",
+    name: "Motivations-Trinkflasche mit Zeitmarkierungen",
+    niche: "fitness-sport",
+    emoji: "🥤",
+    short: "Zeitmarken zeigen, wie viel du bis wann trinken solltest – simpel und wirksam.",
+    description:
+      "Eine grosse Trinkflasche (1–2 l) mit aufgedruckten Uhrzeiten und Motivationssprüchen. Das «Genug-Wasser-trinken»-Problem kennt jeder – die Flasche macht die Lösung sichtbar.",
+    trend: "Dauerbrenner",
+    score: 75,
+    buyPriceChf: [4, 8],
+    sellPriceChf: [19, 32],
+    deliveryDays: "AliExpress 10–20 Tage · CJ 6–14 Tage · BigBuy 3–7 Tage",
+    suppliers: ["aliexpress", "cj-dropshipping", "bigbuy"],
+    pros: [
+      "Universelles Vorsatz-Produkt (Fitness, Büro, Gesundheit)",
+      "Ästhetische Farben = Pinterest-tauglich",
+      "Personalisierbar via Print-on-Demand (Name drauf) als Premium-Variante",
+    ],
+    cons: [
+      "Markt sichtbar besetzt – über Design/Farben und Bundles differenzieren",
+      "Dichtigkeit und BPA-frei sind Pflicht",
+    ],
+    qualityChecks: [
+      "Gefüllt kopfüber schütteln und über Nacht liegen lassen – absolut dicht?",
+      "BPA-frei-Zertifikat verlangen, Geruchstest nach erster Füllung",
+      "Aufdruck-Test: hält die Beschriftung 20 Spülgänge?",
+    ],
+    videoIdea:
+      "Zeitraffer eines Arbeitstags: Bei jeder Uhrzeit-Marke ein Schluck, abends leere Flasche + Glow-Kommentar. Text: «Trink-Ziel erreicht ohne nachzudenken.»",
+    season: "Ganzjährig, Peak Januar & Sommer",
+    targetAudience: "Büro- und Fitness-Zielgruppe 18–50",
   },
 
   // -------------------------------------------------------- Küche & Haushalt
@@ -546,6 +815,75 @@ export const PRODUCTS: Product[] = [
     targetAudience: "Nachhaltigkeitsbewusste Haushalte 25–55",
   },
 
+  {
+    slug: "portabler-mixer",
+    name: "Kabelloser Mini-Standmixer (USB)",
+    niche: "kueche-haushalt",
+    emoji: "🥤",
+    short: "Smoothies direkt im Becher mixen – unterwegs, im Büro, im Gym.",
+    description:
+      "Ein akkubetriebener Mixer in Flaschenform: Zutaten rein, Knopf drücken, aus demselben Behälter trinken. Trifft Fitness-, Büro- und Gesundheits-Zielgruppe gleichzeitig – ein bewährter Social-Commerce-Bestseller.",
+    trend: "Im Trend",
+    score: 81,
+    buyPriceChf: [8, 15],
+    sellPriceChf: [29, 49],
+    deliveryDays: "AliExpress 10–20 Tage · CJ 6–14 Tage",
+    suppliers: ["aliexpress", "cj-dropshipping"],
+    pros: [
+      "Drei Zielgruppen in einem Produkt (Fitness, Büro, Reisen)",
+      "Demo-Video erklärt sich selbst: mixen → trinken",
+      "Guter Warenkorb (CHF 29–49)",
+    ],
+    cons: [
+      "Motorleistung entscheidend: Billige schaffen kein gefrorenes Obst",
+      "Akku + Klingen = Qualität und Sicherheit streng prüfen",
+      "Dichtung muss zu 100 % dicht sein (Tasche!)",
+    ],
+    qualityChecks: [
+      "Härtetest mit gefrorenen Beeren + Banane – schafft er es ohne Stocken?",
+      "Dichtigkeitstest: gefüllt in Tasche legen (über Stunden)",
+      "Sicherheitsabschaltung ohne Deckel vorhanden? CE bestätigen lassen",
+      "USB-C-Ladung, Akkuladung reicht für 8+ Mixvorgänge?",
+    ],
+    videoIdea:
+      "Gym-Bag-Check: Mixer raus, Beeren + Wasser, 20 Sekunden mixen, direkt trinken. Text: «Proteinshake ohne Klumpen. Überall.»",
+    season: "Ganzjährig, Peak Januar & Sommer",
+    targetAudience: "Fitness- und Büro-Zielgruppe 18–45, Smoothie-Fans",
+  },
+  {
+    slug: "bento-lunchbox",
+    name: "Bento-Lunchbox mit Fächern & Besteck",
+    niche: "kueche-haushalt",
+    emoji: "🍱",
+    short: "Auslaufsichere Lunchbox mit Fächern – Meal-Prep-Trend trifft Büroalltag.",
+    description:
+      "Eine Lunchbox im Bento-Stil mit getrennten Fächern, Besteck und teils Mikrowellen-Eignung. «Lunchbox-Content» (was ich heute mitnehme) ist ein eigenes, stabiles Videoformat.",
+    trend: "Im Trend",
+    score: 78,
+    buyPriceChf: [6, 11],
+    sellPriceChf: [25, 39],
+    deliveryDays: "AliExpress 10–20 Tage · CJ 6–14 Tage · BigBuy 3–7 Tage",
+    suppliers: ["aliexpress", "cj-dropshipping", "bigbuy"],
+    pros: [
+      "Meal-Prep- und Spar-Trend (auswärts essen ist teuer in der Schweiz!)",
+      "«What's in my lunchbox»-Videos laufen konstant gut",
+      "Eltern als Zweitzielgruppe (Schul-Znüni)",
+    ],
+    cons: [
+      "Dichtungen billiger Boxen verlieren nach Wochen – Muster hart testen",
+      "Mikrowellen-/Spülmaschinen-Angaben exakt übernehmen",
+    ],
+    qualityChecks: [
+      "Mit Sauce gefüllt schräg transportieren – bleibt alles im Fach?",
+      "Lebensmittelecht (LFGB) bestätigen lassen, Geruchstest",
+      "Verschluss-Clips 100× öffnen/schliessen",
+    ],
+    videoIdea:
+      "«Znüni-Prep in 5 Minuten»: Fächer füllen im Zeitraffer, befriedigendes Schliess-Klicken am Ende. Text: «Nie wieder 15 Franken für Mittagessen.»",
+    season: "Ganzjährig, Peak August (Back-to-School) & Januar",
+    targetAudience: "Pendler:innen, Meal-Prep-Fans, Eltern 20–50",
+  },
+
   // ------------------------------------------------------------- Baby & Kids
   {
     slug: "meilenstein-decke",
@@ -616,6 +954,41 @@ export const PRODUCTS: Product[] = [
       "Auto-Szene nachts: Baby weint, Fläschchen im Wärmer, Countdown-Text «3 Minuten später», Baby trinkt zufrieden. Jedes Elternteil fühlt dieses Video.",
     season: "Ganzjährig",
     targetAudience: "Eltern mit Babys 0–18 Monate, viel unterwegs",
+  },
+
+  {
+    slug: "wickelrucksack",
+    name: "Wickelrucksack mit Wickelunterlage",
+    niche: "baby-kids",
+    emoji: "🎒",
+    short: "Der organisierte Eltern-Rucksack – hoher Warenkorb und Geschenk-Klassiker.",
+    description:
+      "Ein Rucksack mit durchdachten Fächern (isolierte Flaschentasche, Nasstasche, ausklappbare Wickelunterlage). Löst das tägliche Chaos-Problem junger Eltern und rechtfertigt Preise um CHF 60–90.",
+    trend: "Dauerbrenner",
+    score: 79,
+    buyPriceChf: [15, 25],
+    sellPriceChf: [59, 89],
+    deliveryDays: "AliExpress 12–20 Tage · CJ 8–15 Tage",
+    suppliers: ["aliexpress", "cj-dropshipping"],
+    pros: [
+      "Hoher Warenkorb (CHF 59–89) bei solider Marge",
+      "Beliebtes Geschenk zur Geburt (Babyshower-Listen!)",
+      "«What's in my bag»-Videos zeigen jedes Fach = langer Watchtime",
+    ],
+    cons: [
+      "Höherer Einkaufspreis → Muster-Test kostet mehr",
+      "Reissverschlüsse und Nähte sind die Schwachstellen",
+      "Grösseres Paket, Versandkosten einrechnen",
+    ],
+    qualityChecks: [
+      "Voll bepackt tragen: Nähte, Träger und Reissverschlüsse unter Last testen",
+      "Wasserabweisend? Aussen mit Wasser besprühen",
+      "Isolierfach: hält es eine Flasche 2–3 Std. warm?",
+    ],
+    videoIdea:
+      "«Alles, was in den Eltern-Rucksack passt»: Fach für Fach auspacken, am Ende erstaunte Reaktion. Text: «Mary Poppins, aber für Eltern.»",
+    season: "Ganzjährig",
+    targetAudience: "Werdende & frische Eltern, Geschenkkäufer:innen",
   },
 
   // ------------------------------------------------------------ Tech & Gadgets
@@ -720,6 +1093,74 @@ export const PRODUCTS: Product[] = [
       "Schlagloch-Test: Kamera auf Halterung während holpriger Fahrt, Handy wackelt nicht. Text: «Der Härtetest.» Vertrauen durch Beweis.",
     season: "Ganzjährig",
     targetAudience: "Pendler:innen und Vielfahrer:innen 20–60",
+  },
+  {
+    slug: "retro-digitalkamera",
+    name: "Retro-Digitalkamera (Y2K-Style)",
+    niche: "tech-gadgets",
+    emoji: "📷",
+    short: "Kompaktkamera mit Nostalgie-Look – der Foto-Trend der Gen Z.",
+    description:
+      "Kleine digitale Kompaktkameras im 2000er-Look für den «Digicam-Ästhetik»-Trend: leicht überbelichtete, nostalgische Fotos statt perfekter Handy-Bilder. Grosse Nachfrage bei 16–25-Jährigen.",
+    trend: "Im Trend",
+    score: 76,
+    buyPriceChf: [15, 28],
+    sellPriceChf: [49, 79],
+    deliveryDays: "AliExpress 12–20 Tage · CJ 8–15 Tage",
+    suppliers: ["aliexpress", "cj-dropshipping"],
+    pros: [
+      "Starker Ästhetik-Trend mit sehr aktiver Community (#digicam)",
+      "Hoher Warenkorb (CHF 49–79)",
+      "Content entsteht automatisch: Die Fotos SIND der Content",
+    ],
+    cons: [
+      "Qualität der Billigmodelle schwankt stark (Muster zwingend!)",
+      "Erwartungsmanagement: bewusst «retro», keine Profi-Kamera – ehrlich beschreiben",
+      "Akku/Speicherkarte: Lieferumfang exakt angeben",
+    ],
+    qualityChecks: [
+      "Testfotos bei Tageslicht UND abends mit Blitz machen – trifft es den Retro-Look?",
+      "Akkulaufzeit und Ladeanschluss (USB-C?) prüfen",
+      "Speicherkarte dabei? Übertragung aufs Handy testen",
+      "CE-Kennzeichnung bestätigen lassen",
+    ],
+    videoIdea:
+      "Nebeneinander: Handy-Foto vs. Digicam-Foto vom selben Moment. Text: «Warum alle wieder mit Digicams fotografieren.» Die Kommentare diskutieren von selbst.",
+    season: "Ganzjährig, Peaks Sommer (Festivals) & Weihnachten",
+    targetAudience: "Gen Z 16–28, Festival- und Party-Fotografie",
+  },
+  {
+    slug: "ringlicht-stativ",
+    name: "Ringlicht mit Stativ & Handyhalterung",
+    niche: "tech-gadgets",
+    emoji: "💡",
+    short: "Das Werkzeug der Creator – verkauft sich an alle, die selbst Content machen.",
+    description:
+      "Ein dimmbares Ringlicht mit Stativ und Handyhalterung für Videos und Videocalls. Cleverer Doppelnutzen: Du verkaufst es – und nutzt es selbst für deine eigenen Produktvideos.",
+    trend: "Dauerbrenner",
+    score: 74,
+    buyPriceChf: [8, 14],
+    sellPriceChf: [29, 49],
+    deliveryDays: "AliExpress 10–20 Tage · CJ 6–14 Tage",
+    suppliers: ["aliexpress", "cj-dropshipping"],
+    pros: [
+      "Creator-Wirtschaft wächst – ständig neue Käufer:innen",
+      "Auch Homeoffice-Zielgruppe (gutes Licht im Videocall)",
+      "Eigennutzen: verbessert deine eigenen Produktvideos sofort",
+    ],
+    cons: [
+      "Stativ-Stabilität ist die Schwachstelle billiger Sets",
+      "Markt gut besetzt – über Set-Umfang (Fernauslöser etc.) differenzieren",
+    ],
+    qualityChecks: [
+      "Stativ voll ausgezogen mit Handy: kippelt oder wackelt nichts?",
+      "Alle Lichtmodi (warm/kalt/dimmen) durchschalten",
+      "Handyhalterung mit grossem Handy testen, Fernauslöser koppeln",
+    ],
+    videoIdea:
+      "Vorher/Nachher-Selfievideo: dunkles Zimmerlicht vs. Ringlicht an. Text: «Der Unterschied, den dein Content verdient.»",
+    season: "Ganzjährig",
+    targetAudience: "Content-Creator, Homeoffice, Hobby-Verkäufer:innen 16–45",
   },
   {
     slug: "mini-etikettendrucker",

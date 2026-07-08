@@ -39,8 +39,8 @@ const HONESTY = [
     text: "Zoll, Einfuhrsteuer, TWINT, Post-Tarife, Schweizer Recht: Alles Wissen ist auf die Schweiz zugeschnitten, nicht auf Deutschland oder die USA kopiert.",
   },
   {
-    title: "Videos: echt statt künstlich",
-    text: "Wir setzen auf Drehbücher fürs Handy statt auf KI-Videos, die künstlich wirken. Der Video-Generator liefert dir Szene für Szene ein professionelles Skript.",
+    title: "Videos: Drehbuch + KI-Prompt",
+    text: "Der Video-Generator liefert dir Szene für Szene ein professionelles Drehbuch fürs Handy – und auf Wunsch den fertigen Profi-Prompt für KI-Video-Tools wie Sora oder Runway.",
   },
 ];
 

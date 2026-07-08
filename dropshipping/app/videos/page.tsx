@@ -18,10 +18,11 @@ export default function VideosPage() {
         Videos, die verkaufen – ohne dass sie nach Werbung aussehen
       </h1>
       <p className="mt-3 max-w-2xl text-muted">
-        Du brauchst keine Agentur und keine teure KI: Die erfolgreichsten
-        Dropshipping-Videos sind mit dem Handy gefilmt und folgen einem klaren
-        Drehbuch. Genau das erstellt dir der Generator – Szene für Szene, mit
-        Hooks, Text-Einblendungen und Hashtags.
+        Die erfolgreichsten Dropshipping-Videos folgen einem klaren Drehbuch –
+        genau das erstellt dir der Generator: Szene für Szene, mit Hooks,
+        Text-Einblendungen und Hashtags. Dazu bekommst du den fertigen
+        <strong className="text-ink"> KI-Video-Prompt zum Kopieren</strong>, falls du
+        das Video von einer Video-KI (Sora, Runway, Kling …) erstellen lassen willst.
       </p>
 
       {/* Generator */}

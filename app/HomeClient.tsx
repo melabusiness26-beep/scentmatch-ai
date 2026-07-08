@@ -545,7 +545,7 @@ export default function Home() {
         <section className="hero-stage hero-photo">
           <div className="hero-photo-inner">
             <p className="eyebrow">Dein Signature-Duft · kuratiert in der Schweiz</p>
-            <h1>Finde deinen Signature-Duft in 1 Minute.</h1>
+            <h1>Finde deinen Signature-Duft in 2 Minuten.</h1>
             <p className="lead">Beantworte ein paar einfache Fragen – und wir finden Düfte, die wirklich zu dir passen. Ehrlich, verständlich und ganz auf deinen Geschmack abgestimmt.</p>
             <div className="cta">
               <a className="button" href="#quiz">Quiz starten</a>
@@ -604,7 +604,7 @@ export default function Home() {
             <div className="why-card">
               <div className="why-icon">♡</div>
               <h3>Schnell & persönlich</h3>
-              <p className="small">Dein Ergebnis in unter 1 Minute – abgestimmt auf deinen Geschmack, Anlass und Budget.</p>
+              <p className="small">Dein Ergebnis in unter 2 Minuten – abgestimmt auf deinen Geschmack, Anlass und Budget.</p>
             </div>
           </div>
         </section>

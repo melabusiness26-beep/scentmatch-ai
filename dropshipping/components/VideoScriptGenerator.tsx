@@ -33,6 +33,12 @@ const NICHE_HASHTAGS: Record<string, string[]> = {
   "baby-kids": ["#babyshower", "#neugeborenes", "#mamaleben", "#geschenkidee"],
   "tech-gadgets": ["#gadgets", "#techtok", "#desksetup", "#lifehack"],
   "outdoor-reisen": ["#wandern", "#schweiz", "#reisetipps", "#camping"],
+  "gaming-zubehoer": ["#desksetup", "#gamingsetup", "#battlestation", "#gamer"],
+  "garten-balkon": ["#balkongarten", "#urbangardening", "#pflanzen", "#gartentipps"],
+  "wellness-schlaf": ["#schlaf", "#abendroutine", "#selfcare", "#entspannung"],
+  "auto-pendeln": ["#carhacks", "#autoliebe", "#cartok", "#organisieren"],
+  "buero-homeoffice": ["#homeoffice", "#studytok", "#deskmakeover", "#produktivität"],
+  "nachhaltig-leben": ["#nachhaltigkeit", "#zerowaste", "#nachhaltigleben", "#plastikfrei"],
 };
 
 function buildScript(

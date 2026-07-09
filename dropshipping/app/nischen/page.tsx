@@ -49,11 +49,23 @@ export default function NischenPage() {
         </Link>
       </div>
 
-      <div className="mt-8 space-y-6">
-        {NICHES.map((n) => {
+      {(
+        [
+          ["Im Trend", "🔥", "Diese Nischen laufen JETZT stark – gute Nachfrage, aber auch Bewegung im Markt."],
+          ["Kommender Trend", "📡", "Hier baut sich die Welle gerade erst auf – früh einsteigen heisst weniger Konkurrenz."],
+          ["Dauerbrenner", "🧱", "Diese Nischen funktionieren seit Jahren stabil – der sichere Boden für den Start."],
+        ] as const
+      ).map(([trendLabel, trendEmoji, trendIntro]) => (
+        <section key={trendLabel} className="mt-12">
+          <h2 className="font-display text-2xl font-extrabold">
+            {trendEmoji} {trendLabel}
+          </h2>
+          <p className="mt-1 max-w-2xl text-sm text-muted">{trendIntro}</p>
+          <div className="mt-5 space-y-6">
+            {NICHES.filter((n) => n.trend === trendLabel).map((n) => {
           const products = productsByNiche(n.slug);
           return (
-            <section key={n.slug} className="card">
+            <article key={n.slug} className="card">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <h2 className="font-display text-2xl font-extrabold">
@@ -109,10 +121,12 @@ export default function NischenPage() {
                   Store für {n.name} planen
                 </Link>
               </div>
-            </section>
+            </article>
           );
-        })}
-      </div>
+            })}
+          </div>
+        </section>
+      ))}
     </div>
   );
 }

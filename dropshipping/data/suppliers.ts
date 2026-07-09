@@ -7,6 +7,8 @@ export type Supplier = {
   slug: string;
   name: string;
   url: string;
+  /** Such-URL-Vorlage; {q} wird durch den Produkt-Suchbegriff ersetzt. */
+  searchTemplate?: string;
   type: "Marktplatz" | "Dropshipping-Agent" | "EU-Grosshandel" | "Print-on-Demand";
   deliveryToCh: string;
   costs: string;
@@ -16,11 +18,21 @@ export type Supplier = {
   bestFor: string;
 };
 
+/** Baut den direkten Such-Link eines Lieferanten für einen Produkt-Suchbegriff. */
+export function supplierSearchUrl(s: Supplier, term: string): string | null {
+  if (!s.searchTemplate) return null;
+  const q = s.searchTemplate.includes("wholesale-{q}")
+    ? term.trim().toLowerCase().replace(/\s+/g, "-")
+    : encodeURIComponent(term.trim());
+  return s.searchTemplate.replace("{q}", q);
+}
+
 export const SUPPLIERS: Supplier[] = [
   {
     slug: "aliexpress",
     name: "AliExpress",
     url: "https://www.aliexpress.com",
+    searchTemplate: "https://www.aliexpress.com/w/wholesale-{q}.html",
     type: "Marktplatz",
     deliveryToCh: "ca. 10–20 Tage (AliExpress Standard Shipping)",
     costs: "Keine Grundgebühr – du zahlst nur Produkt + Versand pro Bestellung.",
@@ -43,6 +55,7 @@ export const SUPPLIERS: Supplier[] = [
     slug: "cj-dropshipping",
     name: "CJ Dropshipping",
     url: "https://cjdropshipping.com",
+    searchTemplate: "https://www.cjdropshipping.com/search?keyword={q}",
     type: "Dropshipping-Agent",
     deliveryToCh: "ca. 6–14 Tage; mit EU-Lager teils 3–8 Tage",
     costs: "Kein Abo nötig; Produkt + Versand pro Bestellung, optionale Extras (Branding, Fulfillment).",
@@ -64,6 +77,7 @@ export const SUPPLIERS: Supplier[] = [
     slug: "bigbuy",
     name: "BigBuy",
     url: "https://www.bigbuy.eu",
+    searchTemplate: "https://www.bigbuy.eu/en/search?controller=search&s={q}",
     type: "EU-Grosshandel",
     deliveryToCh: "ca. 3–7 Tage (Versand aus Spanien/EU)",
     costs: "Abo-Modell (Dropshipping-Paket kostenpflichtig, ab ca. 70 €/Monat) + Produktkosten.",

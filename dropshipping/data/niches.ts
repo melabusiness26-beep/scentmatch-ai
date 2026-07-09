@@ -3,10 +3,13 @@
  * Wird vom Nischen-Finder, dem Store-Planer und den Produktseiten genutzt.
  */
 
+export type NicheTrend = "Im Trend" | "Kommender Trend" | "Dauerbrenner";
+
 export type Niche = {
   slug: string;
   name: string;
   emoji: string;
+  trend: NicheTrend;
   short: string;
   audience: string;
   competition: "niedrig" | "mittel" | "hoch";
@@ -23,6 +26,7 @@ export const NICHES: Niche[] = [
     slug: "haustiere",
     name: "Haustiere",
     emoji: "🐶",
+    trend: "Dauerbrenner",
     short: "Hunde- und Katzenzubehör – emotionale Käufe mit treuer Zielgruppe.",
     audience: "Hunde- und Katzenbesitzer:innen 25–55, kaufen aus Liebe zum Tier – oft impulsiv.",
     competition: "mittel",
@@ -43,6 +47,7 @@ export const NICHES: Niche[] = [
     slug: "home-living",
     name: "Home & Living",
     emoji: "🏠",
+    trend: "Im Trend",
     short: "Deko, Licht und Ordnung – visuell starke Produkte, perfekt für Social Media.",
     audience: "18–35, richtet die erste eigene Wohnung ein, inspiriert von TikTok/Pinterest.",
     competition: "hoch",
@@ -63,6 +68,7 @@ export const NICHES: Niche[] = [
     slug: "beauty-selfcare",
     name: "Beauty & Selfcare",
     emoji: "✨",
+    trend: "Im Trend",
     short: "Tools statt Kosmetik: Massage, Haarstyling, Skincare-Zubehör.",
     audience: "Frauen 18–45, stark auf Instagram/TikTok unterwegs, Routinen-orientiert.",
     competition: "hoch",
@@ -83,6 +89,7 @@ export const NICHES: Niche[] = [
     slug: "fitness-sport",
     name: "Fitness & Sport",
     emoji: "💪",
+    trend: "Dauerbrenner",
     short: "Home-Workout, Regeneration und Outdoor – saisonstark im Januar und Frühling.",
     audience: "20–45, trainiert zuhause oder draussen, kauft Ausrüstung in Schüben (Neujahr!).",
     competition: "mittel",
@@ -103,6 +110,7 @@ export const NICHES: Niche[] = [
     slug: "kueche-haushalt",
     name: "Küche & Haushalt",
     emoji: "🍳",
+    trend: "Dauerbrenner",
     short: "Praktische Helfer mit sofort sichtbarem Nutzen – ideal für Demo-Videos.",
     audience: "25–60, sehr breit – jeder kocht. Problemlösende Gadgets verkaufen sich ganzjährig.",
     competition: "mittel",
@@ -123,6 +131,7 @@ export const NICHES: Niche[] = [
     slug: "baby-kids",
     name: "Baby & Kids",
     emoji: "🧸",
+    trend: "Dauerbrenner",
     short: "Eltern kaufen ständig – aber Sicherheit und Vorschriften ernst nehmen.",
     audience: "Eltern 25–40, kaufen häufig und wiederholt; Geschenke von Grosseltern/Gotti/Götti.",
     competition: "mittel",
@@ -143,6 +152,7 @@ export const NICHES: Niche[] = [
     slug: "tech-gadgets",
     name: "Tech & Gadgets",
     emoji: "📱",
+    trend: "Im Trend",
     short: "Handy-Zubehör und smarte Helfer – hohe Nachfrage, schnelle Trends.",
     audience: "16–45, technikaffin, kauft Zubehör mehrmals pro Jahr.",
     competition: "hoch",
@@ -165,6 +175,7 @@ NICHES.push({
   slug: "outdoor-reisen",
   name: "Outdoor & Reisen",
   emoji: "🏔️",
+    trend: "Im Trend",
   short: "Wandern, Camping, Reisen – die Schweiz ist der perfekte Heimmarkt dafür.",
   audience: "20–55, wandert, campt, reist – plant Ausflüge am Handy und kauft Ausrüstung online.",
   competition: "mittel",
@@ -181,6 +192,135 @@ NICHES.push({
     "Vorher/Nachher: Kofferchaos → organisiert gepackt",
   ],
 });
+
+NICHES.push(
+  {
+    slug: "gaming-zubehoer",
+    name: "Gaming & Streaming",
+    emoji: "🎮",
+    trend: "Im Trend",
+    short: "Desk-Setups, RGB und Zubehör – eine kauffreudige Community, die Ästhetik liebt.",
+    audience: "16–35, spielt am PC/Handy/Konsole, investiert laufend ins Setup; Geschenkkäufe durch Partner & Eltern.",
+    competition: "mittel",
+    beginnerScore: 4,
+    marginHint: "Aufschlag 3–4×; Setup-Zubehör (Ständer, Pads, Licht) ist leicht und unkompliziert.",
+    whySwitzerland:
+      "Gaming ist längst Mainstream – über die Hälfte der Schweizer Bevölkerung spielt. Desk-Setup-Content (#battlestation) ist eine eigene, sehr aktive Video-Welt mit hoher Kauflust.",
+    risks:
+      "Keine Elektronik mit Markenbezug (Controller-Klone etc.) – rechtlich riskant und qualitativ heikel. Bleib bei Zubehör: Ständer, Pads, Beleuchtung, Organizer.",
+    storeNameIdeas: ["SetupLab", "PixelNest", "LevelUp Store", "DeskArena", "LootBude"],
+    videoAngles: [
+      "Desk-Setup-Makeover: vorher chaotisch → nachher clean mit RGB",
+      "«5 Dinge, die dein Setup sofort besser machen»-Listen",
+      "Satisfying Kabelmanagement-Videos (laufen erstaunlich gut)",
+    ],
+  },
+  {
+    slug: "garten-balkon",
+    name: "Garten & Balkon",
+    emoji: "🌱",
+    trend: "Im Trend",
+    short: "Urban Gardening: Hochbeet, Balkon und Kräuter – wächst jedes Jahr weiter.",
+    audience: "25–65, vom Balkon-Gärtner bis zur Schrebergarten-Familie; stark saisonale Kauffreude ab März.",
+    competition: "niedrig",
+    beginnerScore: 4,
+    marginHint: "Aufschlag 3–4×; Bewässerung und Deko sind leichte, margenstarke Produkte.",
+    whySwitzerland:
+      "Urban Gardening boomt – Balkone, Hochbeete und Familiengärten überall. Weniger Dropshipping-Konkurrenz als in Beauty/Tech, und die Zielgruppe ist treu und begeisterungsfähig.",
+    risks:
+      "Stark saisonal (März–September) – im Winter mit Indoor-Produkten (Anzucht, Kräuter) überbrücken. Keine Samen/Pflanzen dropshippen (Einfuhrbestimmungen!) – nur Zubehör.",
+    storeNameIdeas: ["Balkonglück", "GrünZeug", "Beetschwester", "Gartenpost", "Urban Gaertli"],
+    videoAngles: [
+      "Zeitraffer: Balkon-Makeover vom kahlen Balkon zur grünen Oase",
+      "«Das giesst meine Pflanzen, wenn ich in den Ferien bin»-Problemlöser",
+      "Ernte-Content: eigene Kräuter/Tomaten ernten (extrem hohe Interaktion)",
+    ],
+  },
+  {
+    slug: "wellness-schlaf",
+    name: "Schlaf & Entspannung",
+    emoji: "😴",
+    trend: "Kommender Trend",
+    short: "Sleep-Tech und Entspannung – der grosse Gesundheitstrend nach Fitness.",
+    audience: "25–55, gestresst, schläft schlecht, gibt für besseren Schlaf gerne Geld aus.",
+    competition: "niedrig",
+    beginnerScore: 4,
+    marginHint: "Aufschlag 3–4×; «Schlafqualität» rechtfertigt Premium-Preise.",
+    whySwitzerland:
+      "Schlaf ist das nächste grosse Gesundheitsthema («Sleepmaxxing» wächst stark). Gestresste Berufstätige sind kaufkräftig – und das Thema betrifft buchstäblich jeden.",
+    risks:
+      "Keine Heilversprechen («heilt Schlaflosigkeit») – nur Komfort und Wohlbefinden versprechen. Keine Nahrungsergänzung (Melatonin etc.) dropshippen – bleib bei Masken, Licht und Sound.",
+    storeNameIdeas: ["Nachtruh", "SoftNacht", "Traumfabrik CH", "Ruhepol", "SchlafGut Studio"],
+    videoAngles: [
+      "Abendroutinen-Ästhetik: «Meine 9-Uhr-Routine für besseren Schlaf»",
+      "«Ich habe 7 Tage lang X getestet» mit ehrlichem Schlaf-Tagebuch",
+      "POV: Sonntagmorgen ausschlafen – Gemütlichkeits-Content",
+    ],
+  },
+  {
+    slug: "auto-pendeln",
+    name: "Auto & Pendeln",
+    emoji: "🚗",
+    trend: "Dauerbrenner",
+    short: "Ordnung und Komfort im Auto – praktische Problemlöser für Vielfahrer.",
+    audience: "25–60, pendelt täglich oder fährt Familie durch die Gegend; kauft Problemlöser sofort.",
+    competition: "niedrig",
+    beginnerScore: 4,
+    marginHint: "Aufschlag 3–4×; Organizer und Reinigung sind bewährte Impulskäufe.",
+    whySwitzerland:
+      "Millionen Pendler:innen, hohe Autodichte, lange Arbeitswege – und kaum spezialisierte Schweizer Shops. Auto-Organisation ist ein unterschätzter, ruhiger Markt.",
+    risks:
+      "Nichts verkaufen, was die Sicherheit betrifft (Kindersitze, Warndreiecke – Normen!). Bleib bei Organisation, Reinigung und Komfort.",
+    storeNameIdeas: ["Fahrwerk Shop", "CarOrdnung", "PendlerPro", "AutoNest", "Drivezeit"],
+    videoAngles: [
+      "Kofferraum-/Innenraum-Makeover in 30 Sekunden",
+      "«Dinge, die in jedes Familienauto gehören»-Listen",
+      "Satisfying Detailing-/Reinigungs-Videos",
+    ],
+  },
+  {
+    slug: "buero-homeoffice",
+    name: "Home-Office & Studium",
+    emoji: "💻",
+    trend: "Kommender Trend",
+    short: "Desk-Setups, Ergonomie und Studytok – Arbeiten und Lernen zuhause bleibt.",
+    audience: "20–50 im Home-Office plus Studierende (#studytok); kaufen für Produktivität und Ästhetik.",
+    competition: "mittel",
+    beginnerScore: 4,
+    marginHint: "Aufschlag 3–4×; Ständer und Organizer wirken hochwertig bei tiefem Einkauf.",
+    whySwitzerland:
+      "Home-Office ist in der Schweiz fest etabliert, und die Study-Community wächst. Desk-Makeover-Content läuft auf TikTok UND Pinterest – doppelte Reichweite.",
+    risks:
+      "Grosse Möbel (Stühle, Tische) lohnen sich im Dropshipping nicht – bleib bei Zubehör. Ergonomie-Versprechen vorsichtig formulieren («entlastet» statt «heilt Rückenschmerzen»).",
+    storeNameIdeas: ["Deskly", "StudySpot", "Pultwerk", "FokusZone", "Arbeitsplatz Studio"],
+    videoAngles: [
+      "Desk-Makeover: 3 Produkte, komplett neuer Arbeitsplatz",
+      "Study-with-me-Ästhetik mit dem Produkt im Bild",
+      "«Produktivitäts-Setup unter CHF 100»-Zusammenstellungen",
+    ],
+  },
+  {
+    slug: "nachhaltig-leben",
+    name: "Nachhaltig leben",
+    emoji: "♻️",
+    trend: "Kommender Trend",
+    short: "Wiederverwendbar statt Wegwerf – Werte-getriebene Kundschaft mit Wiederkauf.",
+    audience: "20–45, umweltbewusst, kauft lieber einmal gut als zehnmal billig; sehr community-getrieben.",
+    competition: "niedrig",
+    beginnerScore: 3,
+    marginHint: "Aufschlag 3–4×; Sets («Zero-Waste-Starterset») heben den Warenkorb.",
+    whySwitzerland:
+      "Nachhaltigkeit ist in der Schweiz Kaufargument Nr. 1 geworden – und die Community teilt gute Produkte aktiv weiter. Wer hier ehrlich auftritt, baut eine treue Marke auf.",
+    risks:
+      "Die Zielgruppe merkt Greenwashing sofort: Lange Lieferwege aus China ehrlich kommunizieren oder EU-Lager nutzen. Materialien und Zertifikate sauber belegen.",
+    storeNameIdeas: ["GrünGut", "NullAbfall", "Wiederschön", "EcoNest CH", "Kreislauf Shop"],
+    videoAngles: [
+      "«Dinge in meinem Haushalt, die Abfall ersetzen» – Serienformat",
+      "Vorher/Nachher: Wegwerfprodukt vs. wiederverwendbare Alternative",
+      "Ehrliche Ökobilanz-Erklärungen (baut enorm Vertrauen auf)",
+    ],
+  }
+);
 
 export function getNiche(slug: string): Niche | undefined {
   return NICHES.find((n) => n.slug === slug);

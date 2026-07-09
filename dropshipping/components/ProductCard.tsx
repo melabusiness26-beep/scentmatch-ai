@@ -24,6 +24,12 @@ const NICHE_TILE: Record<string, string> = {
   "baby-kids": "from-sky-100 to-cyan-50",
   "tech-gadgets": "from-slate-200 to-slate-50",
   "outdoor-reisen": "from-lime-100 to-green-50",
+  "gaming-zubehoer": "from-fuchsia-100 to-purple-50",
+  "garten-balkon": "from-green-100 to-emerald-50",
+  "wellness-schlaf": "from-indigo-100 to-blue-50",
+  "auto-pendeln": "from-zinc-200 to-stone-50",
+  "buero-homeoffice": "from-cyan-100 to-sky-50",
+  "nachhaltig-leben": "from-teal-100 to-lime-50",
 };
 
 export default function ProductCard({ product }: { product: Product }) {

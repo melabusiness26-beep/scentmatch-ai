@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
-import { getProduct, marginText, productsByNiche, scoreBreakdown, PRODUCTS } from "@/data/products";
+import { getProduct, marginText, productsByNiche, scoreBreakdown, searchTermFor, PRODUCTS } from "@/data/products";
 import { getNiche } from "@/data/niches";
-import { getSupplier } from "@/data/suppliers";
+import { getSupplier, supplierSearchUrl } from "@/data/suppliers";
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
@@ -183,30 +183,61 @@ export default async function ProduktDetailPage({
       {/* Bezugsquellen */}
       <section className="mt-6">
         <h2 className="font-display text-2xl font-extrabold">📦 Wo du dieses Produkt findest</h2>
+        <p className="mt-2 max-w-2xl text-sm text-muted">
+          Ein Klick öffnet die Suche nach genau diesem Produkt beim Lieferanten
+          (Suchbegriff: «{searchTermFor(product)}»). Wähle dort Angebote mit vielen
+          Bestellungen und 4.5+ Sternen – und bestelle zuerst ein Muster.
+        </p>
         <div className="mt-4 grid gap-5 md:grid-cols-2">
-          {suppliers.map((s) => (
-            <div key={s.slug} className="card">
-              <div className="flex items-center justify-between gap-3">
-                <h3 className="font-display text-lg font-bold">{s.name}</h3>
-                <span className="chip">{s.type}</span>
+          {suppliers.map((s) => {
+            const directUrl = supplierSearchUrl(s, searchTermFor(product));
+            return (
+              <div key={s.slug} className="card">
+                <div className="flex items-center justify-between gap-3">
+                  <h3 className="font-display text-lg font-bold">{s.name}</h3>
+                  <span className="chip">{s.type}</span>
+                </div>
+                <p className="mt-2 text-sm text-muted">
+                  <strong className="text-ink">Lieferung CH:</strong> {s.deliveryToCh}
+                </p>
+                <p className="mt-1 text-sm text-muted">
+                  <strong className="text-ink">Kosten:</strong> {s.costs}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{s.bestFor}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {directUrl ? (
+                    <a
+                      href={directUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary !py-2 text-sm"
+                    >
+                      🔗 Produkt bei {s.name} finden
+                    </a>
+                  ) : (
+                    <a
+                      href={s.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary !py-2 text-sm"
+                    >
+                      🔗 {s.name} öffnen
+                    </a>
+                  )}
+                  {directUrl && (
+                    <a
+                      href={s.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-secondary !py-2 text-sm"
+                    >
+                      Startseite ↗
+                    </a>
+                  )}
+                </div>
               </div>
-              <p className="mt-2 text-sm text-muted">
-                <strong className="text-ink">Lieferung CH:</strong> {s.deliveryToCh}
-              </p>
-              <p className="mt-1 text-sm text-muted">
-                <strong className="text-ink">Kosten:</strong> {s.costs}
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{s.bestFor}</p>
-              <a
-                href={s.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 inline-block text-sm font-bold text-accent-deep hover:underline"
-              >
-                {s.name} öffnen ↗
-              </a>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 

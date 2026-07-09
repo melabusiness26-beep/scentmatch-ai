@@ -161,6 +161,27 @@ export const NICHES: Niche[] = [
   },
 ];
 
+NICHES.push({
+  slug: "outdoor-reisen",
+  name: "Outdoor & Reisen",
+  emoji: "🏔️",
+  short: "Wandern, Camping, Reisen – die Schweiz ist der perfekte Heimmarkt dafür.",
+  audience: "20–55, wandert, campt, reist – plant Ausflüge am Handy und kauft Ausrüstung online.",
+  competition: "mittel",
+  beginnerScore: 4,
+  marginHint: "Aufschlag 3–4×; leichtes, faltbares Zubehör ist ideal zu versenden.",
+  whySwitzerland:
+    "Wandern ist Volkssport Nr. 1 in der Schweiz, dazu Seen, Camping und viel Reiselust. Outdoor-Content (Berge, Seen) produziert sich hier fast von selbst – dein Umfeld ist die Kulisse.",
+  risks:
+    "Stark saisonal (April–Oktober am stärksten). Keine Sicherheitsausrüstung verkaufen (Klettergurte, Helme) – bei Versagen haftungskritisch. Bleib bei Komfort-Zubehör.",
+  storeNameIdeas: ["AlpKit", "Wanderlust Basel", "GipfelGut", "TrailBuddy", "Seeluft Shop"],
+  videoAngles: [
+    "Produkt im echten Einsatz am Berg/See – die Schweizer Kulisse verkauft mit",
+    "«Das nehme ich auf jede Wanderung mit»-Packlisten-Videos",
+    "Vorher/Nachher: Kofferchaos → organisiert gepackt",
+  ],
+});
+
 export function getNiche(slug: string): Niche | undefined {
   return NICHES.find((n) => n.slug === slug);
 }

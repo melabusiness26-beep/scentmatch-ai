@@ -32,6 +32,7 @@ const NICHE_HASHTAGS: Record<string, string[]> = {
   "kueche-haushalt": ["#kitchenhacks", "#küchenhelfer", "#foodprep", "#kitchentok"],
   "baby-kids": ["#babyshower", "#neugeborenes", "#mamaleben", "#geschenkidee"],
   "tech-gadgets": ["#gadgets", "#techtok", "#desksetup", "#lifehack"],
+  "outdoor-reisen": ["#wandern", "#schweiz", "#reisetipps", "#camping"],
 };
 
 function buildScript(

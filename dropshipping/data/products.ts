@@ -1199,6 +1199,208 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
+// ---------------------------------------------------------- Outdoor & Reisen
+PRODUCTS.push(
+  {
+    slug: "wasserdichte-picknickdecke",
+    name: "Wasserdichte Falt-Picknickdecke",
+    niche: "outdoor-reisen",
+    emoji: "🧺",
+    short: "Faltet auf Handtaschengrösse, unten wasserdicht – der See-Sommer-Klassiker.",
+    description:
+      "Eine grosse Picknickdecke mit wasserdichter Unterseite, die sich auf Handtaschen-Format falten lässt. In einem Land voller Seen und Grillplätze ein sicherer Sommer-Seller mit schöner Video-Kulisse gratis dazu.",
+    trend: "Dauerbrenner",
+    score: 79,
+    buyPriceChf: [6, 11],
+    sellPriceChf: [25, 39],
+    deliveryDays: "AliExpress 10–20 Tage · CJ 6–14 Tage",
+    suppliers: ["aliexpress", "cj-dropshipping"],
+    pros: [
+      "Perfekt für den Schweizer Sommer (Seen, Grillplätze, Openairs)",
+      "Leicht und flach im Versand, keine Elektronik",
+      "Schöne Videos fast ohne Aufwand (Bergsee + Decke + Znüni)",
+    ],
+    cons: [
+      "Stark saisonal (Mai–September)",
+      "Billige Decken haben undichte Nähte an der Unterseite",
+    ],
+    qualityChecks: [
+      "Wassertest: Decke auf nasse Wiese legen, 30 Min. draufsitzen – bleibt es trocken?",
+      "Falt-Test: 20× falten – leiern Gummizug/Verschluss aus?",
+      "Grösse nachmessen (Angaben weichen oft ab)",
+    ],
+    videoIdea:
+      "Zeitraffer am See: Decke aus der Tasche, ausrollen, Picknick aufbauen, Sonnenuntergang. Text: «Der Schweizer Sommer in einem Video.»",
+    season: "Frühling/Sommer",
+    targetAudience: "Picknick-, See- und Festival-Gänger:innen 18–45",
+  },
+  {
+    slug: "packwuerfel-set",
+    name: "Packwürfel-Set (Koffer-Organizer)",
+    niche: "outdoor-reisen",
+    emoji: "🧳",
+    short: "7-teiliges Set bringt Ordnung in jeden Koffer – der Reise-Orga-Trend.",
+    description:
+      "Leichte Stoffwürfel in verschiedenen Grössen, die Kleider und Zubehör im Koffer sortieren. Vorher/Nachher-Videos (Chaos → perfekt gepackt) sind ein bewährtes Erfolgsformat.",
+    trend: "Im Trend",
+    score: 81,
+    buyPriceChf: [7, 12],
+    sellPriceChf: [29, 45],
+    deliveryDays: "AliExpress 10–20 Tage · CJ 6–14 Tage",
+    suppliers: ["aliexpress", "cj-dropshipping"],
+    pros: [
+      "Orga-Content läuft ganzjährig, Reise-Peaks im Frühling/Herbst",
+      "Set-Charakter = guter Warenkorb (CHF 29–45)",
+      "Federleicht im Versand, unkaputtbar",
+    ],
+    cons: [
+      "Viele Anbieter – über Farben/Set-Grösse und gutes Video differenzieren",
+      "Reissverschlüsse sind die Schwachstelle billiger Sets",
+    ],
+    qualityChecks: [
+      "Jeden Reissverschluss 50× auf- und zuziehen",
+      "Nähte bei vollgestopftem Würfel prüfen",
+      "Gewicht nachwiegen (Angabe «ultraleicht» stimmt nicht immer)",
+    ],
+    videoIdea:
+      "Split-Screen: Koffer-Chaos vs. Packwürfel-Ordnung, dann der «Alles-passt-rein»-Moment. Text: «Warum hab ich das nicht früher gekannt?»",
+    season: "Ganzjährig, Peaks vor Ferienzeiten",
+    targetAudience: "Reisende, Familien, Orga-Fans 20–55",
+  },
+  {
+    slug: "solar-campinglampe",
+    name: "Faltbare Solar-Campinglampe",
+    niche: "outdoor-reisen",
+    emoji: "🏕️",
+    short: "Lädt per Sonne und USB, faltet flach – Camping- und Balkon-Liebling.",
+    description:
+      "Eine faltbare LED-Laterne mit Solarpanel und USB-Ladung. Funktioniert fürs Camping genauso wie für Balkon und Garten – zwei Zielgruppen mit einem Produkt.",
+    trend: "Kommender Trend",
+    score: 77,
+    buyPriceChf: [6, 12],
+    sellPriceChf: [25, 42],
+    deliveryDays: "AliExpress 10–20 Tage · CJ 6–14 Tage",
+    suppliers: ["aliexpress", "cj-dropshipping"],
+    pros: [
+      "Camping boomt in der Schweiz, plus Balkon-Zielgruppe im Sommer",
+      "Solar-Argument = Nachhaltigkeits-Story gratis",
+      "Flach faltbar = günstiger Versand",
+    ],
+    cons: [
+      "Solarladung ist langsam – ehrlich kommunizieren (USB ist die Hauptladung)",
+      "Elektronik: Akku- und Verarbeitungsqualität streng prüfen",
+    ],
+    qualityChecks: [
+      "Leuchtdauer nach voller USB-Ladung messen (sollte 4+ Std. hell sein)",
+      "Solartest: 1 Tag Fensterbank – wie viel Ladung kommt real dazu?",
+      "Faltmechanik 50× betätigen, CE-Kennzeichnung bestätigen lassen",
+    ],
+    videoIdea:
+      "Abend am Zeltplatz/Balkon: Lampe entfalten, warmes Licht, Sternenhimmel. Text: «Aufgeladen von der Sonne heute Nachmittag.»",
+    season: "Frühling–Herbst",
+    targetAudience: "Camper, Festival-Gänger, Balkon-Besitzer:innen 20–50",
+  },
+  {
+    slug: "faltbarer-tagesrucksack",
+    name: "Ultraleichter faltbarer Rucksack",
+    niche: "outdoor-reisen",
+    emoji: "🎒",
+    short: "Passt zusammengefaltet in die Jackentasche – für Ausflüge und als Reserve.",
+    description:
+      "Ein Tagesrucksack, der sich auf Faustgrösse zusammenfalten lässt. Ideal als Zweitrucksack auf Reisen, für spontane Wanderungen und als Einkaufs-Reserve – kleiner Preis, breiter Nutzen.",
+    trend: "Dauerbrenner",
+    score: 75,
+    buyPriceChf: [4, 8],
+    sellPriceChf: [19, 32],
+    deliveryDays: "AliExpress 10–20 Tage · CJ 6–14 Tage",
+    suppliers: ["aliexpress", "cj-dropshipping"],
+    pros: [
+      "Der «Wow, so klein!»-Moment trägt das ganze Video",
+      "Günstiger Einkauf, leicht im Versand",
+      "Gutes Zusatzprodukt im Bundle mit Packwürfeln",
+    ],
+    cons: [
+      "Tragekomfort ist begrenzt – ehrlich als Zweit-/Faltrucksack positionieren",
+      "Nähte an den Trägern sind die Schwachstelle",
+    ],
+    qualityChecks: [
+      "Mit 6–8 kg beladen 1 Stunde tragen – halten Nähte und Träger?",
+      "Falten/Entfalten 30× testen",
+      "Wasserabweisung mit Sprühflasche prüfen",
+    ],
+    videoIdea:
+      "Hand öffnet sich: winziges Päckchen → entfaltet sich zum Rucksack → wird am Bergweg getragen. Text: «Immer dabei. Nie im Weg.»",
+    season: "Frühling–Herbst",
+    targetAudience: "Wanderer, Städtereisende, Pendler:innen 18–55",
+  },
+  {
+    slug: "mikrofaser-reisehandtuch",
+    name: "Mikrofaser-Reisehandtuch (schnelltrocknend)",
+    niche: "outdoor-reisen",
+    emoji: "🏖️",
+    short: "Trocknet in Stunden statt Tagen, packt auf Buchgrösse – See, Gym, Reise.",
+    description:
+      "Ein leichtes Mikrofaser-Handtuch mit Packbeutel, das extrem schnell trocknet. Drei Märkte in einem: Badi/See, Fitnessstudio und Reisen.",
+    trend: "Dauerbrenner",
+    score: 74,
+    buyPriceChf: [4, 8],
+    sellPriceChf: [19, 29],
+    deliveryDays: "AliExpress 10–20 Tage · CJ 6–14 Tage · BigBuy 3–7 Tage",
+    suppliers: ["aliexpress", "cj-dropshipping", "bigbuy"],
+    pros: [
+      "Drei Zielgruppen (Badi, Gym, Reise) = ganzjährige Nachfrage",
+      "Leicht, flach, unkaputtbar im Versand",
+      "Personalisierbar via Print-on-Demand als Premium-Variante",
+    ],
+    cons: [
+      "Mikrofaser fühlt sich anders an als Frottee – ehrlich zeigen, sonst Retouren",
+      "Sehr preisgetriebener Markt – über Set/Farben differenzieren",
+    ],
+    qualityChecks: [
+      "Trocknungstest: nass aufhängen, Zeit stoppen (sollte unter 2–3 Std. sein)",
+      "Waschtest 40 Grad: Farbe und Saugkraft nach 5 Wäschen",
+      "Grösse nachmessen",
+    ],
+    videoIdea:
+      "Zeitraffer: normales Handtuch vs. Mikrofaser nebeneinander an der Leine – Uhr läuft mit. Text: «3 Stunden vs. 2 Tage.»",
+    season: "Ganzjährig, Peak Sommer",
+    targetAudience: "Badi-Gänger, Gym-Besucher, Reisende 16–55",
+  },
+  {
+    slug: "digitale-kofferwaage",
+    name: "Digitale Kofferwaage",
+    niche: "outdoor-reisen",
+    emoji: "⚖️",
+    short: "Nie mehr Übergepäck-Gebühren – winziger Preis, klarer Nutzen.",
+    description:
+      "Eine Handwaage, an die man den Koffer hängt. Löst eine echte Angst (Übergepäck-Gebühren am Flughafen) für unter CHF 20 – ideales Zusatzprodukt für jede Reise-Bestellung.",
+    trend: "Dauerbrenner",
+    score: 72,
+    buyPriceChf: [2, 5],
+    sellPriceChf: [12, 19],
+    deliveryDays: "AliExpress 10–20 Tage · CJ 6–14 Tage",
+    suppliers: ["aliexpress", "cj-dropshipping"],
+    pros: [
+      "Löst eine konkrete Geld-Angst (Airline-Gebühren von CHF 50+)",
+      "Sehr günstiger Einkauf, winzig im Versand",
+      "Perfektes Upsell-Produkt zu Packwürfeln & Rucksack",
+    ],
+    cons: [
+      "Als Einzelprodukt kleiner Warenkorb – im Bundle verkaufen",
+      "Messgenauigkeit billiger Modelle schwankt",
+    ],
+    qualityChecks: [
+      "Gegen Personenwaage gegenprüfen (±0.2 kg akzeptabel)",
+      "Haken und Gurt mit 20+ kg belasten",
+      "Batterietyp prüfen (gängige Knopfzelle?)",
+    ],
+    videoIdea:
+      "Flughafen-Drama nachgestellt: Koffer zu schwer, CHF 60 Gebühr – Schnitt: Zuhause wiegen, umpacken, entspannt. Text: «CHF 15 statt CHF 60.»",
+    season: "Ganzjährig, Peaks vor Ferienzeiten",
+    targetAudience: "Flugreisende, Familien 20–60",
+  }
+);
+
 export function getProduct(slug: string): Product | undefined {
   return PRODUCTS.find((p) => p.slug === slug);
 }

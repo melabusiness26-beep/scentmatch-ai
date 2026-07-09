@@ -27,6 +27,7 @@ export const QUIZ: QuizQuestion[] = [
       { label: "Kochen & Geniessen", emoji: "🍳", points: { "kueche-haushalt": 5 } },
       { label: "Zeit mit Kindern", emoji: "🧸", points: { "baby-kids": 5 } },
       { label: "Neue Technik testen", emoji: "📱", points: { "tech-gadgets": 5 } },
+      { label: "Draussen: Berge & Seen", emoji: "🏔️", points: { "outdoor-reisen": 5 } },
     ],
   },
   {
@@ -61,6 +62,7 @@ export const QUIZ: QuizQuestion[] = [
       { label: "Emotionale Familien-Momente", emoji: "🥹", points: { "baby-kids": 4 } },
       { label: "Gadget-Tests & Unboxings", emoji: "📦", points: { "tech-gadgets": 4 } },
       { label: "Workout- & Challenge-Clips", emoji: "🏃‍♀️", points: { "fitness-sport": 4 } },
+      { label: "Natur-, Wander- & Reise-Videos", emoji: "🏞️", points: { "outdoor-reisen": 4 } },
     ],
   },
   {
@@ -73,6 +75,7 @@ export const QUIZ: QuizQuestion[] = [
       { label: "Sportliche Menschen", emoji: "⛰️", points: { "fitness-sport": 3 } },
       { label: "Familien & Eltern", emoji: "👨‍👩‍👧", points: { "baby-kids": 3, "kueche-haushalt": 1 } },
       { label: "Einfach alle Haushalte", emoji: "🏠", points: { "kueche-haushalt": 3, "home-living": 1 } },
+      { label: "Wanderer & Reisende", emoji: "🥾", points: { "outdoor-reisen": 3, "fitness-sport": 1 } },
     ],
   },
   {

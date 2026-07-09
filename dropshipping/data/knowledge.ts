@@ -412,6 +412,115 @@ KNOWLEDGE.push({
   ],
 });
 
+KNOWLEDGE.push(
+  {
+    slug: "shopify-einrichten-schritt-fuer-schritt",
+    title: "Shopify einrichten: Vom leeren Konto zum fertigen Shop",
+    emoji: "🏗️",
+    teaser:
+      "Die komplette Einrichtung in einer Anleitung – ohne Technik-Wissen, mit allen Schweizer Einstellungen (CHF, TWINT, Versandtexte).",
+    readMinutes: 9,
+    sections: [
+      {
+        heading: "Schritt 1: Konto und Grundeinstellungen (20 Min.)",
+        paragraphs: [
+          "Auf shopify.com registrieren und die Testphase starten (meist 1. Monat für wenige Franken). Danach zuerst die Grundlagen unter Einstellungen (Settings):",
+        ],
+        bullets: [
+          "Store-Details: Shop-Name, deine Adresse (wird im Impressum gebraucht), E-Mail",
+          "Währung: CHF – WICHTIG, sonst brechen Schweizer Kund:innen ab",
+          "Standard-Sprache: Deutsch (Theme-Texte werden automatisch übersetzt)",
+          "Steuern: Für den Start ohne MWST-Registrierung KEINE Steuern konfigurieren (du bist unter CHF 100'000 nicht MWST-pflichtig)",
+        ],
+      },
+      {
+        heading: "Schritt 2: Design – weniger ist mehr (1–2 Std.)",
+        paragraphs: [
+          "Wähle ein kostenloses Theme (z. B. «Dawn») – die Gratis-Themes sind modern und schnell. Anfänger-Fehler Nr. 1 ist Überladung. Du brauchst nur: Startseite mit einem starken Produktfoto und klarer Aussage, Produktseiten, und die Rechtsseiten im Footer.",
+          "Farben: EINE Hauptfarbe plus neutrale Töne. Schriften: die Theme-Vorgabe behalten. Logo: In Canva (gratis) einen sauberen Schriftzug erstellen – das reicht für den Start völlig.",
+        ],
+      },
+      {
+        heading: "Schritt 3: Produkte anlegen (pro Produkt ~30 Min.)",
+        paragraphs: [
+          "Struktur einer Produktseite, die verkauft: Ein Nutzen-Titel («LED-Leuchthalsband – sicher sichtbar bei jedem Abendspaziergang»), 3–5 eigene Fotos/Videos vom Muster (!), dann Beschreibung nach der Formel: grösster Nutzen → 3 Aufzählungspunkte mit Details → ehrliche Lieferzeit → Rückgabe-Versprechen.",
+          "Preise: Rechne vorher mit unserem Gewinn-Rechner. Psychologie: CHF 29 wirkt deutlich günstiger als CHF 30.50 – runde auf .90 oder glatte Zahlen.",
+        ],
+      },
+      {
+        heading: "Schritt 4: Zahlungen für die Schweiz (30 Min.)",
+        paragraphs: [
+          "Shopify Payments aktivieren (Karten, Apple Pay, Google Pay laufen damit automatisch). Dann TWINT ergänzen: über eine TWINT-App aus dem Shopify App Store oder einen Schweizer Zahlungsanbieter wie Payrexx. TWINT ist in der Schweiz kaufentscheidend – nicht überspringen!",
+        ],
+      },
+      {
+        heading: "Schritt 5: Recht & Versandtexte (45 Min.)",
+        paragraphs: [
+          "Im Footer vier Seiten anlegen: Impressum, Datenschutzerklärung, AGB, Versand & Rückgabe. Vorlagen und Details findest du in unserem Artikel «Rechtliches für Schweizer Onlineshops». Bei Versand & Rückgabe die Lieferzeit ehrlich angeben (8–15 Werktage) – auf der Produktseite UND im Checkout.",
+        ],
+      },
+      {
+        heading: "Schritt 6: Dropshipping-Anbindung & Testbestellung (30 Min.)",
+        paragraphs: [
+          "Installiere DSers (für AliExpress) oder die CJ-App aus dem App Store – damit gehen Bestellungen halbautomatisch an den Lieferanten. Zum Schluss der wichtigste Schritt, den fast alle auslassen: Mach eine ECHTE Testbestellung bei dir selbst (kleinster Betrag). Nur so siehst du, was deine Kundschaft wirklich erlebt – vom Checkout bis zur Bestätigungs-E-Mail.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "tiktok-kanal-aufbauen",
+    title: "TikTok-Kanal aufbauen: Die ersten 30 Tage",
+    emoji: "📈",
+    teaser:
+      "Von 0 Followern zum Verkaufskanal: der ehrliche 30-Tage-Plan mit Posting-Rhythmus, Formaten und den Fehlern, die Reichweite killen.",
+    readMinutes: 8,
+    sections: [
+      {
+        heading: "Warum TikTok dein wichtigster Kanal ist",
+        paragraphs: [
+          "TikTok zeigt Videos nach Interesse, nicht nach Follower-Zahl – ein brandneues Konto kann mit dem ersten Video 100'000 Menschen erreichen. Für Dropshipping ohne Werbebudget ist das die grösste Gratis-Chance. Instagram Reels und YouTube Shorts bekommen dieselben Videos als Zweitverwertung.",
+        ],
+      },
+      {
+        heading: "Konto richtig aufsetzen (Tag 1)",
+        paragraphs: ["Kleine Details mit grosser Wirkung:"],
+        bullets: [
+          "Name = Shop-Name, Profilbild = Logo, Bio = ein Satz Nutzen + Link zum Shop",
+          "Als Land/Sprache konsequent Deutsch(schweiz) – deine Zielgruppe ist hier",
+          "Die ersten 3–5 Videos VOR dem ersten Posten produzieren, damit du einen Vorrat hast",
+        ],
+      },
+      {
+        heading: "Der 30-Tage-Plan",
+        paragraphs: ["Realistischer Rhythmus für neben Job/Familie:"],
+        bullets: [
+          "Woche 1: 1 Video pro Tag (aus deinem Vorrat). Formate testen: Problem→Lösung, 3 Gründe, POV. Noch NICHT verkaufen – erst lernen, was läuft.",
+          "Woche 2: Die 2 besten Formate erkennen (Watchtime in den Statistiken!) und davon Varianten drehen. Auf jeden Kommentar antworten.",
+          "Woche 3: Das beste Video als Vorlage nehmen und 3 neue Versionen mit anderen Hooks drehen. Jetzt dezent den Shop erwähnen («Link in Bio»).",
+          "Woche 4: Rhythmus festigen (mind. 4–5 Videos/Woche), erste Bestellungen beantworten, Bewertungen sammeln und als Content nutzen.",
+        ],
+      },
+      {
+        heading: "Die 5 Reichweiten-Killer",
+        paragraphs: ["Diese Fehler drücken fast jedes Anfänger-Konto:"],
+        bullets: [
+          "Wasserzeichen anderer Plattformen im Video (TikTok straft CapCut-/IG-Logos ab → immer ohne Wasserzeichen exportieren)",
+          "Erste Sekunde ohne Bewegung oder mit Logo-Einblendung",
+          "Videos löschen, die «nicht laufen» – manche zünden erst nach Tagen",
+          "Zu früh zu werblich («KAUF JETZT» im ersten Video)",
+          "Unregelmässigkeit: 2 Wochen Pause setzen den Lerneffekt des Algorithmus zurück",
+        ],
+      },
+      {
+        heading: "Ehrliche Erwartung",
+        paragraphs: [
+          "Von 30 Videos werden vielleicht 25 wenig Reichweite bekommen, 4 solide – und 1 kann alles verändern. Das ist kein Scheitern, das ist die Statistik dieses Spiels. Jedes Video kostet dich 20–30 Minuten und CHF 0. Wer 30 Tage durchhält, weiss mehr über sein Produkt und seine Zielgruppe als 95 % der Mitbewerber.",
+        ],
+      },
+    ],
+  }
+);
+
 export function getArticle(slug: string): KnowledgeArticle | undefined {
   return KNOWLEDGE.find((a) => a.slug === slug);
 }

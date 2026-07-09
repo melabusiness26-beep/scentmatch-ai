@@ -32,6 +32,7 @@ export default function SiteFooter() {
             <li><Link href="/store-planer" className="hover:text-white/80">Store-Planer</Link></li>
             <li><Link href="/videos" className="hover:text-white/80">Werbevideo-Studio</Link></li>
             <li><Link href="/studio" className="hover:text-white/80">KI-Studio</Link></li>
+            <li><Link href="/vorlagen" className="hover:text-white/80">Kundenservice-Vorlagen</Link></li>
             <li><Link href="/wissen" className="hover:text-white/80">Schweiz-Wissen</Link></li>
           </ul>
         </div>

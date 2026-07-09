@@ -622,6 +622,20 @@ KNOWLEDGE.push({
       ],
     },
     {
+      heading: "1688.com ohne Chinesisch: So bekommst du die tiefsten Preise trotzdem",
+      paragraphs: [
+        "Zuerst die ehrliche Einordnung: SELBST auf 1688.com bestellen funktioniert für dich nicht – die Plattform ist nur auf Chinesisch, die Händler versenden nur innerhalb Chinas, bezahlt wird mit chinesischen Zahlungsmitteln, und einen Käuferschutz für Ausländer gibt es nicht. Finger weg vom Direktkauf.",
+        "ABER: Du kannst die 1688-Preise trotzdem nutzen – über deinen Agenten. So geht der Profi-Weg:",
+      ],
+      bullets: [
+        "Schritt 1 – Produkt normal auf AliExpress finden (mit der Such-Formel oben) und den Link oder ein Foto speichern.",
+        "Schritt 2 – Bei CJ Dropshipping (oder EPROLO) eine «Sourcing Request» stellen: Link/Foto einreichen mit der Bitte «please source this product». Der Agent kauft in China ein – oft direkt auf 1688.",
+        "Schritt 3 – Angebot vergleichen: Häufig liegt der Agenten-Preis 20–40 % unter AliExpress. Der Agent verdient an einer kleinen Gebühr mit – dir bleibt trotzdem mehr Marge, und Versand/Qualitätskontrolle laufen wie gewohnt.",
+        "Optional – selbst auf 1688 stöbern (nur zum Schauen): Seite in Chrome öffnen und automatisch übersetzen lassen; mit dem Kamera-Symbol im Suchfeld ein Produktfoto hochladen (Bildersuche funktioniert ohne Sprache!). Interessante Treffer als Screenshot an den Agenten schicken.",
+        "Realistische Erwartung: Der 1688-Weg lohnt sich ab regelmässigen Bestellungen – für die ersten Tests reicht AliExpress völlig.",
+      ],
+    },
+    {
       heading: "Ehrliche Warnung: Temu & Markenware",
       paragraphs: [
         "Temu taucht in jeder Werbung auf – ist aber KEINE Einkaufsquelle für deinen Shop: Es ist eine Endkunden-Plattform, deren Bedingungen den Weiterverkauf nicht vorsehen, und die Preise sind bereits Endkundenpreise (keine Marge für dich). Genauso tabu: Markenware oder Marken-Nachahmungen auf DHgate & Co. – das ist rechtlich gefährlich und kann dich den Shop kosten.",

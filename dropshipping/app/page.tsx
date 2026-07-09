@@ -82,6 +82,12 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
+            <p className="mt-5 text-sm text-muted-dark">
+              🌱 Ganz neu und keine Ahnung, wo anfangen?{" "}
+              <Link href="/start" className="font-bold text-emerald-300 hover:underline">
+                Zum geführten Einstieg →
+              </Link>
+            </p>
           </div>
 
           <div className="grid grid-cols-2 gap-4">

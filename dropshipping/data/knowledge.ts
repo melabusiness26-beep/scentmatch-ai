@@ -354,6 +354,64 @@ export const KNOWLEDGE: KnowledgeArticle[] = [
   },
 ];
 
+KNOWLEDGE.push({
+  slug: "konkurrenz-recherche-gratis",
+  title: "Konkurrenz gratis ausspionieren: Die legalen Profi-Tricks",
+  emoji: "🕵️",
+  teaser:
+    "Bezahl-Tools wie Dropship.io verkaufen vor allem Daten über fremde Shops. Das meiste davon findest du mit diesen Tricks selbst – kostenlos und legal.",
+  readMinutes: 7,
+  sections: [
+    {
+      heading: "Trick 1: Die Bestseller JEDES Shopify-Shops sehen",
+      paragraphs: [
+        "Der wertvollste Trick überhaupt – und kaum jemand kennt ihn: Fast jeder Dropshipping-Shop läuft auf Shopify, und Shopify-Shops haben eine öffentliche Sortierung nach Verkaufszahlen. Hänge an die Shop-Adresse einfach an: /collections/all?sort_by=best-selling",
+        "Beispiel: shopname.com/collections/all?sort_by=best-selling – und du siehst die Produkte des Shops sortiert nach dem, was sich am besten verkauft. Genau diese Information verkaufen Bezahl-Tools teuer. Zusatz-Trick: /products.json ans Ende der Adresse zeigt die zuletzt hinzugefügten Produkte – so siehst du, worauf ein erfolgreicher Shop gerade neu setzt.",
+      ],
+    },
+    {
+      heading: "Trick 2: Welche Werbung läuft – und wie lange schon",
+      paragraphs: [
+        "Die Werbebibliotheken von Meta und TikTok sind öffentlich und gratis. Suche dort nach Produkt-Begriffen oder Shop-Namen:",
+      ],
+      bullets: [
+        "Meta Ad Library (facebook.com/ads/library): Alle aktiven Facebook-/Instagram-Anzeigen eines Shops. Der Profi-Blick: Läuft eine Anzeige seit WOCHEN, verdient sie sehr wahrscheinlich Geld – niemand bezahlt wochenlang für Werbung, die nichts bringt.",
+        "TikTok Creative Center (ads.tiktok.com/business/creativecenter): Die erfolgreichsten TikTok-Anzeigen nach Land und Branche, sortierbar nach Klickrate – zeigt dir gleichzeitig Trend-Produkte UND wie man sie bewirbt.",
+      ],
+    },
+    {
+      heading: "Trick 3: Verkaufszahlen ohne Bezahl-Tool abschätzen",
+      paragraphs: [
+        "Die exakten Umsätze eines fremden Shops kennt kein Gratis-Tool (und die Zahlen der Bezahl-Tools sind auch nur Schätzungen!). Aber du kannst die Nachfrage gut abschätzen:",
+      ],
+      bullets: [
+        "AliExpress zeigt bei jedem Produkt die echte Zahl der Bestellungen – tausende Bestellungen + 4.5 Sterne = bewährter Gewinner.",
+        "Amazon «Movers & Shakers» (gratis) zeigt, welche Produkte gerade im Verkaufsrang explodieren – ein Frühindikator für den DACH-Raum.",
+        "Google Trends (Region Schweiz einstellen): steigende Suchkurve = wachsende Nachfrage, fallende Kurve = Trend vorbei.",
+        "Bewertungs-Zähler beobachten: Notiere die Anzahl Bewertungen eines Konkurrenz-Produkts und schau 2 Wochen später nach – aus dem Zuwachs kannst du die Verkäufe grob hochrechnen (nur ~2–5 % der Käufer bewerten).",
+      ],
+    },
+    {
+      heading: "Trick 4: Die Recherche-Routine (20 Minuten pro Woche)",
+      paragraphs: [
+        "Profis recherchieren nicht stundenlang, sondern regelmässig. Eine einfache Wochen-Routine:",
+      ],
+      bullets: [
+        "Montag: TikTok Creative Center – 10 Minuten Top-Anzeigen deiner Nische anschauen.",
+        "2–3 erfolgreiche Konkurrenz-Shops mit dem Bestseller-Trick prüfen: Was ist neu? Was ist vorne?",
+        "Auffällige Produkte in Google Trends gegenprüfen (steigt die Kurve?).",
+        "Den besten Fund mit unserem Gewinn-Rechner durchrechnen – erst dann Muster bestellen.",
+      ],
+    },
+    {
+      heading: "Was bleibt der Unterschied zu Bezahl-Tools?",
+      paragraphs: [
+        "Bezahl-Tools automatisieren genau diese Handgriffe und zeigen geschätzte Umsatzkurven auf einen Blick – das spart Zeit, bringt aber keine Information, die du mit den Tricks oben nicht auch bekommst. Ehrliche Empfehlung: Starte mit der Gratis-Routine. Ein Abo lohnt sich frühestens, wenn dein Shop läuft und deine Zeit knapper ist als dein Geld.",
+      ],
+    },
+  ],
+});
+
 export function getArticle(slug: string): KnowledgeArticle | undefined {
   return KNOWLEDGE.find((a) => a.slug === slug);
 }

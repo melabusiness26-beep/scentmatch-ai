@@ -138,7 +138,12 @@ export default function ProduktePage() {
         </h2>
         <p className="mt-3 max-w-2xl text-sm text-muted">
           Unser Katalog wird laufend erweitert – aber du kannst kommende Trends auch
-          selbst aufspüren. Diese fünf kostenlosen Tools nutzen Profis täglich:
+          selbst aufspüren. Diese fünf kostenlosen Tools nutzen Profis täglich. Noch
+          mehr davon (inkl. dem Bestseller-Trick für jeden Shopify-Shop) im Ratgeber{" "}
+          <a href="/wissen/konkurrenz-recherche-gratis" className="font-semibold text-accent-deep hover:underline">
+            «Konkurrenz gratis ausspionieren»
+          </a>
+          .
         </p>
         <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {RESEARCH_TOOLS.map((t) => (

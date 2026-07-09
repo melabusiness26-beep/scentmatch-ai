@@ -232,14 +232,15 @@ export default function StartPage() {
         </div>
         <div className="mx-auto mt-10 max-w-3xl">
           <div className="hero-surface rounded-3xl p-8 text-center text-white">
-            <h3 className="font-display text-2xl font-extrabold">Bereit für Schritt 1?</h3>
+            <h3 className="font-display text-2xl font-extrabold">Bereit? Dann begleiten wir dich jetzt.</h3>
             <p className="mx-auto mt-2 max-w-md text-sm text-muted-dark">
-              10 Minuten Lexikon, 1 Minute Quiz – und du weisst mehr als die meisten,
-              die einfach drauflos starten.
+              «Mein Weg» führt dich in 6 Phasen von hier bis zur ersten abgewickelten
+              Bestellung – mit gespeichertem Fortschritt und immer dem nächsten
+              Schritt vor Augen.
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <Link href="/lexikon" className="btn-primary">📖 Lexikon lesen</Link>
-              <Link href="/nischen-quiz" className="btn-dark-outline">🧭 Direkt zum Quiz</Link>
+              <Link href="/mein-weg" className="btn-primary">🧭 Mein Weg starten</Link>
+              <Link href="/nischen-quiz" className="btn-dark-outline">Direkt zum Quiz</Link>
             </div>
           </div>
         </div>

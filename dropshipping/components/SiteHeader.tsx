@@ -62,8 +62,8 @@ export default function SiteHeader() {
               </Link>
             );
           })}
-          <Link href="/start" className="btn-primary ml-2 !px-4 !py-2">
-            Starte hier
+          <Link href="/mein-weg" className="btn-primary ml-2 !px-4 !py-2">
+            🧭 Mein Weg
           </Link>
         </nav>
 
@@ -90,8 +90,8 @@ export default function SiteHeader() {
                 {item.label}
               </Link>
             ))}
-            <Link href="/start" className="btn-primary mt-2 mb-2">
-              Starte hier
+            <Link href="/mein-weg" className="btn-primary mt-2 mb-2">
+              🧭 Mein Weg – deine Begleitung
             </Link>
           </div>
         </nav>

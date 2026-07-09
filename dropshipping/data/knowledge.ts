@@ -521,6 +521,52 @@ KNOWLEDGE.push(
   }
 );
 
+KNOWLEDGE.push({
+  slug: "erste-bestellung-abwickeln",
+  title: "Ding! Deine erste Bestellung – was jetzt genau zu tun ist",
+  emoji: "🎉",
+  teaser:
+    "Der grosse Moment ist da – und plötzlich Panik: Was muss ich jetzt machen? Hier ist der komplette Ablauf, Klick für Klick.",
+  readMinutes: 6,
+  sections: [
+    {
+      heading: "Erstmal: Durchatmen und gratulieren",
+      paragraphs: [
+        "Jemand, den du nicht kennst, hat dir Geld überwiesen, weil dein Video und dein Shop überzeugt haben. Das schaffen die wenigsten, die «mal Dropshipping probieren». Und die gute Nachricht: Die Abwicklung ist einfacher, als du denkst – beim ersten Mal ca. 15 Minuten, später 2 Minuten.",
+      ],
+    },
+    {
+      heading: "Schritt 1: Bestellung an den Lieferanten weiterleiten (5–10 Min.)",
+      paragraphs: [
+        "Mit DSers/CJ-App: Bestellung öffnen → «Order» klicken → die App überträgt Produkt und Kundenadresse automatisch → bezahlen (deinen Einkaufspreis). Fertig.",
+        "Ohne App (manuell): Beim Lieferanten das Produkt bestellen und als LIEFERADRESSE die Adresse deiner Kundin eintragen (nicht deine!). Im Nachrichtenfeld an den Händler schreiben: «Please no invoice or promotional material in the package» – sonst liegt womöglich eine China-Rechnung über CHF 6 im Paket deiner CHF-29-Kundin.",
+      ],
+    },
+    {
+      heading: "Schritt 2: Der Kundin ein gutes Gefühl geben (5 Min.)",
+      paragraphs: [
+        "Die automatische Bestellbestätigung verschickt dein Shop selbst. Sobald der Lieferant versendet hat (1–3 Tage später), bekommst du eine Tracking-Nummer: Trage sie in deinem Shop bei der Bestellung ein («Als versandt markieren») – die Kundin erhält automatisch die Versandbestätigung mit Link.",
+        "Extra-Punkte: Schick nach 2–3 Tagen eine kurze persönliche Nachricht («Dein Paket ist unterwegs – hier kannst du es verfolgen»). Genau dafür gibt es unsere fertigen Vorlagen.",
+      ],
+    },
+    {
+      heading: "Schritt 3: Nachverfolgen, bis es ankommt",
+      paragraphs: [
+        "Schau alle paar Tage kurz aufs Tracking (oder lass die App das machen). Hängt eine Sendung länger als erwartet: Melde dich PROAKTIV bei der Kundin (Vorlage «Verspätung»). 5–7 Tage nach Zustellung: freundlich um eine Bewertung bitten (Vorlage «Bewertung»).",
+      ],
+    },
+    {
+      heading: "Die 3 häufigsten Anfänger-Fehler dabei",
+      paragraphs: [""],
+      bullets: [
+        "Die eigene Adresse als Lieferadresse eingeben (passiert öfter, als man denkt – doppelt prüfen!)",
+        "Vergessen, die Tracking-Nummer im Shop einzutragen → Kundin fühlt sich im Dunkeln gelassen → «Wo ist mein Paket?»-Mails",
+        "Den Gewinn sofort ausgeben: Lass das Geld im Business-Töpfchen, bis Produktkosten, Gebühren und ein Retouren-Puffer gedeckt sind. Was übrig bleibt, ist dein echter Gewinn.",
+      ],
+    },
+  ],
+});
+
 export function getArticle(slug: string): KnowledgeArticle | undefined {
   return KNOWLEDGE.find((a) => a.slug === slug);
 }

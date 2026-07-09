@@ -34,6 +34,7 @@ export default function SiteFooter() {
             <li><Link href="/videos" className="hover:text-white/80">Werbevideo-Studio</Link></li>
             <li><Link href="/studio" className="hover:text-white/80">KI-Studio</Link></li>
             <li><Link href="/vorlagen" className="hover:text-white/80">Kundenservice-Vorlagen</Link></li>
+            <li><Link href="/saisonkalender" className="hover:text-white/80">Saisonkalender</Link></li>
             <li><Link href="/wissen" className="hover:text-white/80">Schweiz-Wissen</Link></li>
           </ul>
         </div>
@@ -52,6 +53,10 @@ export default function SiteFooter() {
       <div className="border-t border-line-dark">
         <div className="container-page flex flex-col items-center justify-between gap-2 py-5 text-xs text-muted-dark sm:flex-row">
           <span>© {new Date().getFullYear()} {SITE.name} · Schweiz 🇨🇭</span>
+          <span className="flex gap-4">
+            <Link href="/impressum" className="hover:text-white/80">Impressum</Link>
+            <Link href="/datenschutz" className="hover:text-white/80">Datenschutz</Link>
+          </span>
           <span>Finden · Prüfen · Verkaufen</span>
         </div>
       </div>

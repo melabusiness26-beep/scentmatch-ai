@@ -158,6 +158,46 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ----------------------------------------------------- Werkzeugkasten */}
+      <section className="container-page py-16">
+        <p className="kicker">Alles auf einen Blick</p>
+        <h2 className="mt-2 font-display text-3xl font-extrabold">
+          Dein kompletter Werkzeugkasten
+        </h2>
+        <p className="mt-2 max-w-2xl text-sm text-muted">
+          Von der ersten Idee bis zur abgewickelten Bestellung – für jeden Schritt
+          gibt es hier ein Werkzeug.
+        </p>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            ["🧭", "Mein Weg", "Deine 1-zu-1-Begleitung mit Fortschritt", "/mein-weg"],
+            ["🌱", "Starte hier", "Für absolute Anfänger:innen", "/start"],
+            ["❓", "Nischen-Quiz", "Finde deine Nische in 1 Minute", "/nischen-quiz"],
+            ["🔎", "Produkt-Finder", "Geprüfte Produkte mit Direkt-Links", "/produkte"],
+            ["💰", "Gewinn-Rechner", "Lohnt sich dein Produkt wirklich?", "/rechner"],
+            ["🚀", "Store-Planer", "Dein 4-Wochen-Fahrplan", "/store-planer"],
+            ["🎬", "Werbevideo-Studio", "Drehbücher + KI-Prompts", "/videos"],
+            ["🤖", "KI-Studio", "Videos direkt auf der Seite erstellen", "/studio"],
+            ["💬", "Vorlagen", "Kundenservice-Texte zum Kopieren", "/vorlagen"],
+            ["📅", "Saisonkalender", "Was sich wann verkauft", "/saisonkalender"],
+            ["🇨🇭", "Schweiz-Wissen", "Zoll, Recht, TWINT, Versand & mehr", "/wissen"],
+            ["📖", "Lexikon", "Alle Begriffe einfach erklärt", "/lexikon"],
+          ].map(([emoji, title, desc, href]) => (
+            <Link
+              key={href}
+              href={href}
+              className="card group !p-5 transition hover:-translate-y-0.5 hover:border-accent"
+            >
+              <span className="text-2xl">{emoji}</span>
+              <span className="mt-2 block font-display text-base font-bold group-hover:text-accent-deep">
+                {title}
+              </span>
+              <span className="mt-0.5 block text-xs leading-snug text-muted">{desc}</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* ------------------------------------------------------- Ehrlichkeit */}
       <section className="container-page py-16">
         <p className="kicker">Warum {SITE.name}?</p>

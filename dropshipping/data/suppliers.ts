@@ -173,51 +173,69 @@ export type AliStoreTip = {
 
 export const ALIEXPRESS_TOP_STORES: AliStoreTip[] = [
   {
-    stores: "Baseus · UGREEN · Essager",
-    niche: "Tech, Laden & Desk-Setup",
-    why: "Die drei grossen Zubehör-Marken: Ladegeräte, Halterungen, Hubs und Ständer in Marken-Qualität mit CE – millionenfach verkauft, offizielle Stores.",
+    stores: "Baseus · UGREEN · Essager · INIU",
+    niche: "Tech, Laden & Handy-Zubehör",
+    why: "Die grossen Zubehör-Marken: Ladegeräte, Powerbanks, Halterungen und Ständer in Marken-Qualität mit CE – millionenfach verkauft, offizielle Stores.",
   },
   {
-    stores: "ROCKBROS · WEST BIKING",
+    stores: "Vention · Orico",
+    niche: "Kabel, Hubs & Desk-Setup",
+    why: "Die Spezialisten für Kabel, USB-Hubs und Docking – solide Verarbeitung, klare Spezifikationen, ideal für Home-Office- und Gaming-Setups.",
+  },
+  {
+    stores: "ROCKBROS · WEST BIKING · Rhinowalk · NEWBOLER",
     niche: "Velo & E-Bike",
-    why: "Velo-Spezialisten mit riesigem Sortiment (Taschen, Licht, Halterungen) – Qualität nahe am Fachhandel zu einem Bruchteil des Preises.",
+    why: "Die Velo-Spezialisten: ROCKBROS/WEST BIKING fürs volle Sortiment, Rhinowalk für Taschen, NEWBOLER für Flaschen & Zubehör – Qualität nahe am Fachhandel.",
   },
   {
-    stores: "Naturehike",
+    stores: "Naturehike · Widesea · 3F UL Gear · Fire-Maple",
     niche: "Outdoor & Camping",
-    why: "Ultraleicht-Ausrüstung mit erstaunlich guter Verarbeitung – in der Outdoor-Community auch in Europa etabliert.",
+    why: "Etablierte Outdoor-Marken (Fire-Maple für Kocher) mit erstaunlich guter Verarbeitung – auch in der europäischen Outdoor-Community anerkannt.",
   },
   {
-    stores: "Truelove",
+    stores: "Truelove · Benepaw · PETKIT",
     niche: "Haustiere",
-    why: "Hundegeschirre und -zubehör in Premium-Qualität (reflektierend, gepolstert) – einer der wenigen echten Marken-Hersteller im Pet-Bereich.",
+    why: "Truelove/Benepaw für Premium-Geschirre und Zubehör, PETKIT (offizieller Store) für Trinkbrunnen & Pet-Tech – echte Marken-Hersteller statt No-Name.",
   },
   {
     stores: "Yhpup · Joolim · eManco",
     niche: "Schmuck (Edelstahl, 18K vergoldet)",
-    why: "Die etablierten Edelstahl-Schmuck-Stores für den «Waterproof Jewelry»-Trend: 316L-Edelstahl, 18K-Vergoldung, saubere Materialangaben – seit Jahren feste Grössen bei Schmuck-Dropshippern.",
+    why: "Die etablierten Edelstahl-Schmuck-Stores für den «Waterproof Jewelry»-Trend: 316L-Edelstahl, 18K-Vergoldung, saubere Materialangaben.",
   },
   {
-    stores: "CANNER",
-    niche: "Schmuck (925er Silber)",
-    why: "Bekannter 925er-Silber-Store mit Zertifikats-Angaben – gute Adresse für echten Silberschmuck; grosse Mengen ergänzt du über Nihaojewelry.",
+    stores: "17KM · CANNER · Vnox · U7",
+    niche: "Schmuck (Mode / Silber / Herren)",
+    why: "17KM für trendigen Mode-Schmuck, CANNER für echtes 925er Silber, Vnox und U7 (offizielle Stores) für Herren-Schmuck aus Edelstahl.",
   },
   {
-    stores: "ANLAN",
-    niche: "Beauty-Geräte",
-    why: "Spezialist für Beauty-Tools (Gesichtsreinigung, Massage) mit CE-Kennzeichnung – deutlich konstanter als No-Name-Geräte.",
+    stores: "ANLAN · CkeyiN",
+    niche: "Beauty-Geräte & Haar-Tools",
+    why: "Spezialisten für Beauty-Tools mit CE-Kennzeichnung – deutlich konstanter als No-Name-Geräte.",
   },
   {
-    stores: "WORTHBUY · Xiaomi-Ökosystem-Stores",
+    stores: "WORTHBUY · GIANXI · Xiaomi-Ökosystem-Stores",
     niche: "Küche & Haushalt",
-    why: "WORTHBUY für Küchenhelfer mit sauberen Materialangaben; Xiaomi-/Mijia-Stores für schlichte, gut verarbeitete Haushalts-Gadgets.",
+    why: "WORTHBUY für Küchenhelfer mit Materialangaben, GIANXI (offizieller Store) für Pfannen & Küchenwerkzeug, Xiaomi/Mijia für schlichte Haushalts-Gadgets.",
   },
   {
-    stores: "QCY · Edifier (offizielle Stores)",
+    stores: "Huacan · GATYZTORY · RUOPOTY",
+    niche: "Kreativ & DIY",
+    why: "DIE Adressen für Diamond Painting (Huacan) und Malen nach Zahlen (GATYZTORY, RUOPOTY) – riesige Motiv-Auswahl, vollständige Kits, offizielle Stores.",
+  },
+  {
+    stores: "QCY · Edifier",
     niche: "Audio-Zubehör (falls du dahin erweiterst)",
-    why: "Etablierte Audio-Marken mit offiziellen Stores – falls du Kopfhörer-Zubehör ins Sortiment nimmst.",
+    why: "Etablierte Audio-Marken mit offiziellen Stores – falls du Kopfhörer & Co. ins Sortiment nimmst.",
   },
 ];
+
+/**
+ * Ehrlichkeit: In diesen Nischen gibt es KEINE dominanten Marken-Stores auf
+ * AliExpress (Deko, Garten, Grill, Yoga, Baby, Winter, Geschenke). Dort gilt:
+ * «Choice»-Filter nutzen und die Händler-Checkliste anwenden.
+ */
+export const ALIEXPRESS_NO_BRAND_NOTE =
+  "Ehrlich gesagt: In manchen Nischen (Deko, Garten, Grill, Yoga, Baby, Winter) gibt es keine dominanten Marken-Stores – dort wechseln die besten Händler laufend. Nutze dann den «Choice»-Filter und die Checkliste unten; sie funktioniert in jeder Nische.";
 
 /** Woran man gute AliExpress-Händler generell erkennt. */
 export const ALIEXPRESS_STORE_CHECKS = [

@@ -46,7 +46,7 @@ export const NICHES: Niche[] = [
     ],
     bestSources: [
       "CJ Dropshipping (Kategorie «Pet Supplies»): beste Balance aus Qualität und Preis, Qualitätskontrolle vor Versand möglich – ideal ab regelmässigen Bestellungen.",
-      "AliExpress: Händler mit «Choice»-Label, 1000+ Bestellungen und 95 %+ Bewertung wählen – Marken-Tipp: «Truelove» für Geschirre & Premium-Zubehör.",
+      "AliExpress: Händler mit «Choice»-Label, 1000+ Bestellungen und 95 %+ Bewertung – Marken-Tipps: «Truelove»/«Benepaw» für Geschirre & Zubehör, «PETKIT» (offizieller Store) für Trinkbrunnen & Pet-Tech.",
       "Qualitäts-Merkmal der Nische: Nähte, Verschlüsse und Materialgeruch – Tiere kauen an allem, also nur robuste Muster freigeben.",
     ],
   },
@@ -600,7 +600,7 @@ NICHES.push(
       "«Mein Feierabend ohne Handy»-Entspannungs-Content",
     ],
     bestSources: [
-      "AliExpress: Malen-nach-Zahlen- und Diamond-Painting-Spezialisten mit zehntausenden Verkäufen – Vollständigkeit des Kits am Muster prüfen.",
+      "AliExpress – die bewährten Kreativ-Stores: «Huacan» für Diamond Painting, «GATYZTORY» und «RUOPOTY» für Malen nach Zahlen (offizielle Stores, riesige Motiv-Auswahl) – Vollständigkeit des Kits am Muster prüfen.",
       "CJ Dropshipping: eigene Motive/Fotos als Kit produzieren lassen (Personalisierungs-Option = Alleinstellung!).",
       "Qualitäts-Merkmal: Ein Kit selbst anfangen! Leinwand-Nummern lesbar? Farben deckend? Genug Material? Das merkt man nur beim Machen.",
     ],

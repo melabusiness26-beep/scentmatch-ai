@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ProductExplorer from "@/components/ProductExplorer";
 import { PRODUCTS } from "@/data/products";
 import {
+  ALIEXPRESS_NO_BRAND_NOTE,
   ALIEXPRESS_STORE_CHECKS,
   ALIEXPRESS_TOP_STORES,
   RESEARCH_TOOLS,
@@ -159,6 +160,9 @@ export default function ProduktePage() {
             </div>
           ))}
         </div>
+        <p className="mt-5 rounded-xl bg-amber-soft p-4 text-sm leading-relaxed">
+          {ALIEXPRESS_NO_BRAND_NOTE}
+        </p>
         <div className="card mt-5 border-t-4 border-t-accent">
           <h3 className="font-display text-base font-bold">
             🔍 So erkennst du gute Händler auch ohne diese Liste

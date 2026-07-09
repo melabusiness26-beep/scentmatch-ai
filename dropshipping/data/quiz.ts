@@ -31,6 +31,12 @@ export const QUIZ: QuizQuestion[] = [
       { label: "Gaming & Zocken", emoji: "🎮", points: { "gaming-zubehoer": 5 } },
       { label: "Garten & Pflanzen", emoji: "🌱", points: { "garten-balkon": 5 } },
       { label: "Entspannen & gut schlafen", emoji: "😴", points: { "wellness-schlaf": 5 } },
+      { label: "Schmuck, Mode & Style", emoji: "💍", points: { "schmuck-accessoires": 5 } },
+      { label: "Kaffee, Tee & Genuss", emoji: "☕", points: { "kaffee-tee": 4, "grill-bbq": 1 } },
+      { label: "Basteln & Kreatives", emoji: "🎨", points: { "kreativ-diy": 5 } },
+      { label: "Velofahren", emoji: "🚲", points: { "velo-ebike": 5 } },
+      { label: "Yoga & Achtsamkeit", emoji: "🧘", points: { "yoga-achtsamkeit": 5 } },
+      { label: "Grillieren & Gäste", emoji: "🔥", points: { "grill-bbq": 4, "kaffee-tee": 1 } },
     ],
   },
   {
@@ -69,6 +75,9 @@ export const QUIZ: QuizQuestion[] = [
       { label: "Desk-Setups & Study-Content", emoji: "🖥️", points: { "buero-homeoffice": 3, "gaming-zubehoer": 2 } },
       { label: "Auto-Hacks & Ordnungs-Videos", emoji: "🚗", points: { "auto-pendeln": 4 } },
       { label: "Nachhaltigkeits-Tipps", emoji: "♻️", points: { "nachhaltig-leben": 4 } },
+      { label: "Styling & Schmuck-Looks", emoji: "💎", points: { "schmuck-accessoires": 4 } },
+      { label: "Geschenk-Reaktionen & Emotionales", emoji: "🎁", points: { "geschenke-personalisiert": 4, "baby-kids": 1 } },
+      { label: "Winter- & Schnee-Content", emoji: "❄️", points: { "winter-schnee": 4 } },
     ],
   },
   {

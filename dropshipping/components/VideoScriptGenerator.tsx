@@ -39,6 +39,14 @@ const NICHE_HASHTAGS: Record<string, string[]> = {
   "auto-pendeln": ["#carhacks", "#autoliebe", "#cartok", "#organisieren"],
   "buero-homeoffice": ["#homeoffice", "#studytok", "#deskmakeover", "#produktivität"],
   "nachhaltig-leben": ["#nachhaltigkeit", "#zerowaste", "#nachhaltigleben", "#plastikfrei"],
+  "schmuck-accessoires": ["#schmuck", "#waterproofjewelry", "#jewelrytok", "#styling"],
+  "kaffee-tee": ["#cafeathome", "#kaffeeliebe", "#homecafe", "#teatime"],
+  "yoga-achtsamkeit": ["#yoga", "#achtsamkeit", "#yogapractice", "#morgenroutine"],
+  "grill-bbq": ["#grillen", "#bbq", "#grillsaison", "#foodtok"],
+  "velo-ebike": ["#velo", "#ebike", "#biketok", "#pendeln"],
+  "winter-schnee": ["#winter", "#schweiz", "#winterhacks", "#schnee"],
+  "geschenke-personalisiert": ["#geschenkidee", "#personalisiert", "#geschenk", "#überraschung"],
+  "kreativ-diy": ["#malennachzahlen", "#diamondpainting", "#diy", "#kreativ"],
 };
 
 function buildScript(

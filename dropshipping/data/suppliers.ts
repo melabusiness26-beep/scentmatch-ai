@@ -115,6 +115,26 @@ export const SUPPLIERS: Supplier[] = [
     bestFor: "Wer bewusst auf kurze Lieferzeiten setzt und dafür Fixkosten akzeptiert.",
   },
   {
+    slug: "nihaojewelry",
+    name: "Nihaojewelry",
+    url: "https://www.nihaojewelry.com",
+    type: "Marktplatz",
+    deliveryToCh: "ca. 8–15 Tage; Dropshipping-Versand direkt an Kundschaft möglich",
+    costs: "Keine Grundgebühr; sehr tiefe Stückpreise, kleine Mindestmengen (teils ab 1–3 Stück).",
+    beginnerFriendly: 4,
+    pros: [
+      "DER Spezialist für Mode-Schmuck & Accessoires – riesige Auswahl, ständig neue Trends",
+      "Grosshandels-Preise schon bei kleinen Mengen – ideal fürs Hybrid-Modell (Bestseller auf Vorrat)",
+      "Gute Filter nach Material (Edelstahl, 925er Silber, vergoldet)",
+    ],
+    cons: [
+      "Qualität schwankt je Artikel – Materialangaben prüfen und Muster tragen (Anlauf-Test!)",
+      "Oberfläche auf Englisch, an Grosshandel orientiert – kleine Lernkurve",
+      "Retouren praktisch nicht machbar – Erstattungskulanz einplanen",
+    ],
+    bestFor: "Die erste Adresse für Schmuck & Accessoires – Qualität über Materialfilter, Menge über Grosshandelspreise.",
+  },
+  {
     slug: "printful",
     name: "Printful / Printify",
     url: "https://www.printful.com",

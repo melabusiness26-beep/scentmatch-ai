@@ -101,6 +101,20 @@ export default function NischenPage() {
                 </div>
               </div>
 
+              <div className="mt-4 rounded-xl border border-line bg-paper p-4">
+                <h3 className="text-sm font-bold">
+                  🏆 Beste Bezugsquellen: Qualität &amp; Menge
+                </h3>
+                <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-muted">
+                  {n.bestSources.map((s) => (
+                    <li key={s} className="flex gap-2">
+                      <span className="text-accent-deep">▸</span>
+                      <span>{s}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
               {products.length > 0 && (
                 <div className="mt-5">
                   <h3 className="text-sm font-bold uppercase tracking-wider text-muted">

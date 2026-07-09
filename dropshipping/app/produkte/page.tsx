@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import ProductExplorer from "@/components/ProductExplorer";
 import { PRODUCTS } from "@/data/products";
-import { RESEARCH_TOOLS, SUPPLIERS } from "@/data/suppliers";
+import {
+  ALIEXPRESS_STORE_CHECKS,
+  ALIEXPRESS_TOP_STORES,
+  RESEARCH_TOOLS,
+  SUPPLIERS,
+} from "@/data/suppliers";
 
 export const metadata: Metadata = {
   title: "Produkt-Finder: Geprüfte Dropshipping-Produkte für die Schweiz",
@@ -127,6 +132,45 @@ export default function ProduktePage() {
               </a>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Empfehlenswerte AliExpress-Händler */}
+      <section className="mt-16">
+        <p className="kicker">Insider-Wissen</p>
+        <h2 className="mt-2 font-display text-2xl font-extrabold">
+          ⭐ Empfehlenswerte Händler auf AliExpress
+        </h2>
+        <p className="mt-3 max-w-2xl text-sm text-muted">
+          AliExpress ist ein Ozean – aber Profis kaufen bei bestimmten Marken-Stores,
+          die seit Jahren zuverlässig liefern. Gib den Store-Namen einfach im
+          AliExpress-Suchfeld ein. (Trotzdem gilt: Muster bestellen bleibt Pflicht.)
+        </p>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {ALIEXPRESS_TOP_STORES.map((s) => (
+            <div key={s.stores} className="card !p-5">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <h3 className="font-display text-base font-extrabold text-accent-deep">
+                  {s.stores}
+                </h3>
+                <span className="chip">{s.niche}</span>
+              </div>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{s.why}</p>
+            </div>
+          ))}
+        </div>
+        <div className="card mt-5 border-t-4 border-t-accent">
+          <h3 className="font-display text-base font-bold">
+            🔍 So erkennst du gute Händler auch ohne diese Liste
+          </h3>
+          <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted">
+            {ALIEXPRESS_STORE_CHECKS.map((c) => (
+              <li key={c} className="flex gap-2">
+                <span className="text-accent-deep">✓</span>
+                <span>{c}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

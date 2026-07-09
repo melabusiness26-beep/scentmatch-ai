@@ -46,7 +46,7 @@ export const NICHES: Niche[] = [
     ],
     bestSources: [
       "CJ Dropshipping (Kategorie «Pet Supplies»): beste Balance aus Qualität und Preis, Qualitätskontrolle vor Versand möglich – ideal ab regelmässigen Bestellungen.",
-      "AliExpress: Händler mit «Choice»-Label, 1000+ Bestellungen und 95 %+ Bewertung wählen – dort stimmt die Menge, das Muster prüft die Qualität.",
+      "AliExpress: Händler mit «Choice»-Label, 1000+ Bestellungen und 95 %+ Bewertung wählen – Marken-Tipp: «Truelove» für Geschirre & Premium-Zubehör.",
       "Qualitäts-Merkmal der Nische: Nähte, Verschlüsse und Materialgeruch – Tiere kauen an allem, also nur robuste Muster freigeben.",
     ],
   },

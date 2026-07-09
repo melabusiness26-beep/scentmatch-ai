@@ -160,6 +160,69 @@ export function getSupplier(slug: string): Supplier | undefined {
   return SUPPLIERS.find((s) => s.slug === slug);
 }
 
+/**
+ * Empfehlenswerte Händler/Marken AUF AliExpress – bekannte Hersteller mit
+ * offiziellen Stores, die seit Jahren zuverlässig liefern. Im AliExpress-Suchfeld
+ * den Store-Namen eingeben oder in den Suchergebnissen nach dem Store filtern.
+ */
+export type AliStoreTip = {
+  stores: string;
+  niche: string;
+  why: string;
+};
+
+export const ALIEXPRESS_TOP_STORES: AliStoreTip[] = [
+  {
+    stores: "Baseus · UGREEN · Essager",
+    niche: "Tech, Laden & Desk-Setup",
+    why: "Die drei grossen Zubehör-Marken: Ladegeräte, Halterungen, Hubs und Ständer in Marken-Qualität mit CE – millionenfach verkauft, offizielle Stores.",
+  },
+  {
+    stores: "ROCKBROS · WEST BIKING",
+    niche: "Velo & E-Bike",
+    why: "Velo-Spezialisten mit riesigem Sortiment (Taschen, Licht, Halterungen) – Qualität nahe am Fachhandel zu einem Bruchteil des Preises.",
+  },
+  {
+    stores: "Naturehike",
+    niche: "Outdoor & Camping",
+    why: "Ultraleicht-Ausrüstung mit erstaunlich guter Verarbeitung – in der Outdoor-Community auch in Europa etabliert.",
+  },
+  {
+    stores: "Truelove",
+    niche: "Haustiere",
+    why: "Hundegeschirre und -zubehör in Premium-Qualität (reflektierend, gepolstert) – einer der wenigen echten Marken-Hersteller im Pet-Bereich.",
+  },
+  {
+    stores: "CANNER",
+    niche: "Schmuck (925er Silber)",
+    why: "Bekannter 925er-Silber-Store mit Zertifikats-Angaben – gute Adresse für echten Silberschmuck; Edelstahl-Trends ergänzt du über Nihaojewelry.",
+  },
+  {
+    stores: "ANLAN",
+    niche: "Beauty-Geräte",
+    why: "Spezialist für Beauty-Tools (Gesichtsreinigung, Massage) mit CE-Kennzeichnung – deutlich konstanter als No-Name-Geräte.",
+  },
+  {
+    stores: "WORTHBUY · Xiaomi-Ökosystem-Stores",
+    niche: "Küche & Haushalt",
+    why: "WORTHBUY für Küchenhelfer mit sauberen Materialangaben; Xiaomi-/Mijia-Stores für schlichte, gut verarbeitete Haushalts-Gadgets.",
+  },
+  {
+    stores: "QCY · Edifier (offizielle Stores)",
+    niche: "Audio-Zubehör (falls du dahin erweiterst)",
+    why: "Etablierte Audio-Marken mit offiziellen Stores – falls du Kopfhörer-Zubehör ins Sortiment nimmst.",
+  },
+];
+
+/** Woran man gute AliExpress-Händler generell erkennt. */
+export const ALIEXPRESS_STORE_CHECKS = [
+  "«Official Store» oder «Choice»-Kennzeichnung – AliExpress prüft und versendet Choice-Artikel selbst (schneller + geprüfter).",
+  "Store-Alter 3+ Jahre und 95 %+ positive Bewertungen (im Store-Profil sichtbar).",
+  "Beim Produkt: 1000+ Bestellungen UND 4.7+ Sterne – lies gezielt die 1-Stern-Bewertungen mit Fotos.",
+  "Antwortet der Händler im Chat innert 24 h auf deine Zertifikats-Frage? Wer ausweicht, fliegt raus.",
+  "Fotos in den Bewertungen mit den Produktfotos vergleichen – grosse Abweichung = Finger weg.",
+];
+
 /** Kostenlose Recherche-Tools, mit denen man aktuelle & kommende Trendprodukte findet. */
 export const RESEARCH_TOOLS = [
   {

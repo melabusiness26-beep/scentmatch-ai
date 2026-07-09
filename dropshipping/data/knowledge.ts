@@ -636,6 +636,19 @@ KNOWLEDGE.push({
       ],
     },
     {
+      heading: "Agenten: Brauchst du einen? Was kosten sie? Wo bekommst du einen?",
+      paragraphs: [
+        "Ein «Agent» klingt nach Geheimwissen – ist aber einfach eine Firma in China, die für dich einkauft, prüft und versendet. Die drei wichtigsten Antworten:",
+      ],
+      bullets: [
+        "BRAUCHST DU EINEN? Am Anfang: nein. Für die ersten Bestellungen reicht AliExpress völlig. Ein Agent lohnt sich, sobald regelmässig Bestellungen kommen (ab ca. 5–10 pro Woche) – dann bringt er bessere Preise, Qualitätskontrolle vor dem Versand und eigenes Branding.",
+        "WAS KOSTET EIN AGENT? Bei CJ Dropshipping und EPROLO: nichts – kein Abo, keine Gebühr. Sie verdienen an einer kleinen Spanne im Produktpreis, den du siehst, BEVOR du bestellst. Du zahlst also nur pro Bestellung und kannst jeden Preis vorher mit AliExpress vergleichen.",
+        "WO BEKOMMST DU EINEN? Du hast ihn schon fast: CJ Dropshipping und EPROLO SIND Agenten. Gratis-Konto erstellen, fertig. Bei CJ bekommst du ab regelmässigen Bestellungen automatisch eine persönliche Ansprechperson im Chat zugeteilt – das ist «dein Agent».",
+        "SO STARTEST DU KONKRET: 1) Gratis-Konto bei CJ erstellen → 2) «Sourcing Request» mit AliExpress-Link/Foto deines Produkts stellen (kostenlos) → 3) Preisangebot abwarten und vergleichen → 4) Erst bestellen, wenn es sich rechnet.",
+        "Private Einzel-Agenten (5–10 % Kommission, wollen Volumen) brauchst du erst bei richtig grossem Erfolg – für dich sind die Gratis-Agenten CJ/EPROLO jahrelang die richtige Lösung.",
+      ],
+    },
+    {
       heading: "Ehrliche Warnung: Temu & Markenware",
       paragraphs: [
         "Temu taucht in jeder Werbung auf – ist aber KEINE Einkaufsquelle für deinen Shop: Es ist eine Endkunden-Plattform, deren Bedingungen den Weiterverkauf nicht vorsehen, und die Preise sind bereits Endkundenpreise (keine Marge für dich). Genauso tabu: Markenware oder Marken-Nachahmungen auf DHgate & Co. – das ist rechtlich gefährlich und kann dich den Shop kosten.",

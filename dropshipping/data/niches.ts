@@ -417,7 +417,7 @@ NICHES.push(
     ],
     bestSources: [
       "Nihaojewelry: DER Spezialist für Mode-Schmuck im Grosshandel – riesige Auswahl, tiefe Preise, kleine Mindestmengen; ideal, sobald du Bestseller auf Vorrat holst (Hybrid-Modell).",
-      "AliExpress: Gezielt nach «316L stainless steel» / «18K gold plated stainless steel» filtern und nur Stores mit 4.8+ und zehntausenden Verkäufen – Muster 2 Wochen im Alltag tragen (Duschen!).",
+      "AliExpress – die bewährten Schmuck-Stores: «Yhpup», «Joolim» und «eManco» für Edelstahl/18K-vergoldet (Waterproof-Trend), «CANNER» für echtes 925er Silber. Gezielt nach «316L stainless steel» filtern – und das Muster 2 Wochen im Alltag tragen (Duschen!).",
       "CJ Dropshipping (Jewelry): gute Mitte mit Qualitätskontrolle und eigenem Branding (Schmuckbeutel mit Logo = Premium-Gefühl).",
       "Für Personalisiertes (Namensketten, Gravuren): CJ-Print-on-Demand oder Etsy-Grosshändler – Premium-Preise ab CHF 39 möglich.",
       "Qualitäts-Merkmal: 2-Wochen-Trage-Test (Wasser, Schweiss, Parfüm). Läuft nichts an und färbt nichts ab → shop-tauglich. Materialzertifikat (nickelfrei) schriftlich geben lassen.",

@@ -193,9 +193,14 @@ export const ALIEXPRESS_TOP_STORES: AliStoreTip[] = [
     why: "Hundegeschirre und -zubehör in Premium-Qualität (reflektierend, gepolstert) – einer der wenigen echten Marken-Hersteller im Pet-Bereich.",
   },
   {
+    stores: "Yhpup · Joolim · eManco",
+    niche: "Schmuck (Edelstahl, 18K vergoldet)",
+    why: "Die etablierten Edelstahl-Schmuck-Stores für den «Waterproof Jewelry»-Trend: 316L-Edelstahl, 18K-Vergoldung, saubere Materialangaben – seit Jahren feste Grössen bei Schmuck-Dropshippern.",
+  },
+  {
     stores: "CANNER",
     niche: "Schmuck (925er Silber)",
-    why: "Bekannter 925er-Silber-Store mit Zertifikats-Angaben – gute Adresse für echten Silberschmuck; Edelstahl-Trends ergänzt du über Nihaojewelry.",
+    why: "Bekannter 925er-Silber-Store mit Zertifikats-Angaben – gute Adresse für echten Silberschmuck; grosse Mengen ergänzt du über Nihaojewelry.",
   },
   {
     stores: "ANLAN",

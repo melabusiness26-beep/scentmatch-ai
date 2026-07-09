@@ -567,6 +567,75 @@ KNOWLEDGE.push({
   ],
 });
 
+KNOWLEDGE.push({
+  slug: "perfekte-produktsuche",
+  title: "Die perfekte Produkt-Suche: Was du eingeben musst – und wo",
+  emoji: "🔎",
+  teaser:
+    "Die Such-Formel der Profis: welche Wörter du bei AliExpress, Alibaba & Co. eintippst, welche Filter du setzt – und welche Plattform wofür die richtige ist.",
+  readMinutes: 8,
+  sections: [
+    {
+      heading: "Die Such-Formel: 3 Bausteine",
+      paragraphs: [
+        "Profis suchen nie nur «Kette» oder «Hundehalsband». Die Formel lautet: PRODUKT (englisch) + MATERIAL/QUALITÄT + EIGENSCHAFT. Englisch ist Pflicht – die Plattformen sind englischsprachig, und deutsche Suchen liefern schlechtere Treffer.",
+      ],
+      bullets: [
+        "Schmuck: «necklace» + «316L stainless steel» + «18k gold plated waterproof» → filtert automatisch den Billig-Schrott weg, der anläuft",
+        "Küche: «lunch box» + «leakproof» + «bento cutlery» → nur die auslaufsicheren Sets mit Zubehör",
+        "Haustiere: «dog collar» + «led rechargeable» + «usb c» → moderne Variante statt Batterie-Altware",
+        "Kreativ: «paint by numbers» + «adults kit» + «framed canvas» → fertig bespannte Leinwand statt gerollter",
+        "Merke: Jedes Qualitätswort in der Suche ist ein Filter gegen schlechte Ware.",
+      ],
+    },
+    {
+      heading: "Die wichtigsten Qualitäts-Suchwörter (zum Merken)",
+      paragraphs: ["Diese Begriffe hängst du je nach Produkt an deine Suche an:"],
+      bullets: [
+        "Materialien: «316L stainless steel» (Schmuck), «food grade silicone» / «BPA free» (Küche/Baby), «borosilicate glass» (Kannen), «organic cotton» (Textil)",
+        "Technik: «USB C rechargeable» (statt Batterie/Micro-USB), «CE certified», «IP67 waterproof» (Outdoor/Elektronik)",
+        "Qualitäts-Signale: «official store», dazu der AliExpress-«Choice»-Filter (von AliExpress geprüft & schneller versendet)",
+        "Auf unserer Seite vorbereitet: Jede Produktseite zeigt dir den fertigen englischen Suchbegriff an – der «Produkt finden»-Knopf tippt ihn automatisch für dich ein.",
+      ],
+    },
+    {
+      heading: "Filter & Sortierung: die 30-Sekunden-Routine",
+      paragraphs: ["Nach dem Eintippen immer dieselben vier Handgriffe:"],
+      bullets: [
+        "1. Nach «Orders/Bestellungen» sortieren – die Bestseller nach oben",
+        "2. Filter: 4.5+ Sterne (bzw. 4 Sterne & mehr)",
+        "3. «Choice»- oder «Official Store»-Filter aktivieren, wenn verfügbar",
+        "4. Bei den Top-3-Treffern die 1-Stern-Bewertungen MIT FOTOS lesen – dort steht die Wahrheit",
+      ],
+    },
+    {
+      heading: "Welche Plattform wofür? Die komplette Übersicht",
+      paragraphs: [
+        "Es gibt mehr als AliExpress und Alibaba – aber jede Plattform hat ihren Zweck. Alle Details und Links findest du im Bezugsquellen-Vergleich auf der Produkte-Seite:",
+      ],
+      bullets: [
+        "TESTEN (einzelne Bestellungen): AliExpress (grösste Auswahl), Nihaojewelry (Schmuck-Spezialist)",
+        "AUTOMATISIEREN (laufender Shop): CJ Dropshipping (Allrounder mit EU-Lagern), EPROLO (gratis Alternative), Zendrop (einfach, eher US), Spocket (EU/US-Lieferanten)",
+        "MENGE & MARGE (Bestseller auf Vorrat): Alibaba (Hersteller-Grosshandel, verhandeln!), DHgate (kleine Grosshandels-Mengen)",
+        "QUALITÄT & MARKEN (Premium-Weg): Faire und Ankorstore (echte europäische Marken, kleine Mengen), BigBuy (EU-Lager), Printful/Printify (Personalisiertes)",
+        "Profi-Wissen: Die günstigste Quelle überhaupt ist 1688.com (Alibabas China-Inlandsplattform) – aber nur auf Chinesisch und über Agenten wie CJ nutzbar. Genau dort kaufen deine Agenten ein; deshalb lohnt sich bei CJ immer eine Sourcing-Anfrage («findet mir dieses Produkt günstiger»).",
+      ],
+    },
+    {
+      heading: "Ehrliche Warnung: Temu & Markenware",
+      paragraphs: [
+        "Temu taucht in jeder Werbung auf – ist aber KEINE Einkaufsquelle für deinen Shop: Es ist eine Endkunden-Plattform, deren Bedingungen den Weiterverkauf nicht vorsehen, und die Preise sind bereits Endkundenpreise (keine Marge für dich). Genauso tabu: Markenware oder Marken-Nachahmungen auf DHgate & Co. – das ist rechtlich gefährlich und kann dich den Shop kosten.",
+      ],
+    },
+    {
+      heading: "Von der Suche zum perfekten Produkt",
+      paragraphs: [
+        "Die Suche liefert Kandidaten – das perfekte Produkt bestätigt sich erst danach: Bewertungs-Fotos anschauen, dem Händler im Chat 2–3 Fragen stellen (Zertifikate! Antwortzeit ist ein Qualitäts-Signal), Muster bestellen und mit unserer Checkliste testen, Gewinn im Rechner durchrechnen. Erst dann kommt es in den Shop.",
+      ],
+    },
+  ],
+});
+
 export function getArticle(slug: string): KnowledgeArticle | undefined {
   return KNOWLEDGE.find((a) => a.slug === slug);
 }

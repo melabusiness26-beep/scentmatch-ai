@@ -160,6 +160,123 @@ export function getSupplier(slug: string): Supplier | undefined {
   return SUPPLIERS.find((s) => s.slug === slug);
 }
 
+// Weitere Plattformen: Grosshandel & Alternativen
+SUPPLIERS.push(
+  {
+    slug: "alibaba",
+    name: "Alibaba",
+    url: "https://www.alibaba.com",
+    searchTemplate: "https://www.alibaba.com/trade/search?SearchText={q}",
+    type: "Marktplatz",
+    deliveryToCh: "je nach Versandart 10–30 Tage (Grosshandels-Sendungen)",
+    costs: "Keine Grundgebühr; Grosshandelspreise mit Mindestmengen (MOQ, oft ab 10–100 Stück).",
+    beginnerFriendly: 2,
+    pros: [
+      "Die tiefsten Preise überhaupt – direkt von den Herstellern",
+      "Verhandeln ist normal und erwünscht (Preis, Menge, Branding)",
+      "«Trade Assurance» schützt deine Zahlung",
+    ],
+    cons: [
+      "Mindestmengen: nichts für einzelne Dropshipping-Bestellungen",
+      "Kommunikation auf Englisch mit Herstellern nötig",
+      "Import-Abwicklung liegt bei dir (ab gewissen Mengen Verzollung beachten)",
+    ],
+    bestFor: "Der Schritt NACH dem Testen: Bestseller in Menge einkaufen (Hybrid-Modell) und die Marge verdoppeln.",
+  },
+  {
+    slug: "dhgate",
+    name: "DHgate",
+    url: "https://www.dhgate.com",
+    type: "Marktplatz",
+    deliveryToCh: "ca. 10–20 Tage",
+    costs: "Keine Grundgebühr; Klein-Grosshandel (oft ab 2–10 Stück günstiger).",
+    beginnerFriendly: 3,
+    pros: [
+      "Zwischending aus AliExpress und Alibaba: kleine Mengen zu fast Grosshandelspreisen",
+      "Käuferschutz ähnlich wie AliExpress",
+    ],
+    cons: [
+      "Qualität schwankt stärker – Muster-Pflicht gilt doppelt",
+      "Achtung Markenfälschungen: strikt meiden (rechtlich gefährlich!)",
+    ],
+    bestFor: "Kleine Vorrats-Käufe deiner Bestseller, bevor sich Alibaba-Mengen lohnen.",
+  },
+  {
+    slug: "eprolo",
+    name: "EPROLO",
+    url: "https://www.eprolo.com",
+    type: "Dropshipping-Agent",
+    deliveryToCh: "ca. 7–15 Tage",
+    costs: "Kostenlos (kein Abo!); du zahlst Produkt + Versand pro Bestellung.",
+    beginnerFriendly: 4,
+    pros: [
+      "Gratis-Alternative zu CJ Dropshipping (kein Abo, keine Fixkosten)",
+      "Branding-Service (eigenes Etikett/Verpackung) schon bei kleinen Mengen",
+      "Einfache Shopify-Anbindung",
+    ],
+    cons: [
+      "Kleinere Auswahl als CJ/AliExpress",
+      "Support-Qualität schwankt",
+    ],
+    bestFor: "Zweite Meinung zum CJ-Preis: dieselben Produkte anfragen und vergleichen – kostet nichts.",
+  },
+  {
+    slug: "zendrop",
+    name: "Zendrop",
+    url: "https://zendrop.com",
+    type: "Dropshipping-Agent",
+    deliveryToCh: "ca. 8–15 Tage (je nach Produkt)",
+    costs: "Gratis-Basisplan; sinnvoller Funktionsumfang ab ca. 50 $/Monat.",
+    beginnerFriendly: 3,
+    pros: [
+      "Sehr einfache, aufgeräumte Bedienung + Automatisierung",
+      "Eigenes Branding und schnelle Bestellabwicklung",
+    ],
+    cons: [
+      "Voller Nutzen erst im Bezahlplan",
+      "Auf US-Markt optimiert – Lieferzeiten in die Schweiz pro Produkt prüfen",
+    ],
+    bestFor: "Wer maximale Einfachheit will und Fixkosten akzeptiert – für den CH-Start ist CJ/EPROLO meist sinnvoller.",
+  },
+  {
+    slug: "faire",
+    name: "Faire",
+    url: "https://www.faire.com",
+    type: "EU-Grosshandel",
+    deliveryToCh: "ca. 3–10 Tage (echte Marken, oft aus Europa)",
+    costs: "Keine Grundgebühr; Grosshandels-Einkauf mit kleinen Mindestbestellwerten, oft 60 Tage Zahlungsziel.",
+    beginnerFriendly: 3,
+    pros: [
+      "Echte Boutique-Marken statt Massenware – sofort höhere Wertigkeit",
+      "Erstbestellungen oft mit Rückgaberecht und Zahlungsziel (risikoarm testen)",
+      "Perfekt für Nachhaltigkeit, Geschenke, Schmuck und Deko mit Premium-Anspruch",
+    ],
+    cons: [
+      "Kein klassisches Dropshipping: du lagerst und verschickst selbst (Hybrid-Modell)",
+      "Höhere Einkaufspreise als China – dafür Premium-Verkaufspreise möglich",
+    ],
+    bestFor: "Der Qualitäts-Weg: aus dem Dropshipping-Test einen Marken-Shop mit echten Produkten machen.",
+  },
+  {
+    slug: "ankorstore",
+    name: "Ankorstore",
+    url: "https://www.ankorstore.com",
+    type: "EU-Grosshandel",
+    deliveryToCh: "ca. 3–10 Tage (europäische Marken)",
+    costs: "Keine Grundgebühr; kleine Mindestbestellwerte pro Marke, Zahlungsziele möglich.",
+    beginnerFriendly: 3,
+    pros: [
+      "Tausende europäische Marken (Deko, Papeterie, Geschenke, Kids) mit kleinen Mengen",
+      "«Made in Europe» als Verkaufsargument für Schweizer Kundschaft",
+    ],
+    cons: [
+      "Wie Faire: selbst lagern und verschicken (Hybrid-Modell)",
+      "Margen kleiner als bei China-Ware – Premium-Positionierung nötig",
+    ],
+    bestFor: "Europäische Qualität für Geschenk-, Deko- und Kids-Sortimente – die seriöse Alternative zur Massenware.",
+  }
+);
+
 /**
  * Empfehlenswerte Händler/Marken AUF AliExpress – bekannte Hersteller mit
  * offiziellen Stores, die seit Jahren zuverlässig liefern. Im AliExpress-Suchfeld

@@ -84,6 +84,15 @@ export default function ProduktePage() {
         <h2 className="mt-2 font-display text-2xl font-extrabold">
           Wo man Dropshipping-Produkte findet – der ehrliche Vergleich
         </h2>
+        <p className="mt-3 max-w-2xl text-sm text-muted">
+          Und WAS gibt man in die Suche ein? Die Such-Formel der Profis (Produkt +
+          Material + Eigenschaft, auf Englisch) inkl. aller Qualitäts-Suchwörter
+          steht im Ratgeber{" "}
+          <a href="/wissen/perfekte-produktsuche" className="font-semibold text-accent-deep hover:underline">
+            «Die perfekte Produkt-Suche»
+          </a>
+          .
+        </p>
         <div className="mt-6 grid gap-5 md:grid-cols-2">
           {SUPPLIERS.map((s) => (
             <div key={s.slug} className="card">

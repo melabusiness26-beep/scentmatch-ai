@@ -179,6 +179,7 @@ export default function HomePage() {
             ["🎬", "Werbevideo-Studio", "Drehbücher + KI-Prompts", "/videos"],
             ["🤖", "KI-Studio", "Videos direkt auf der Seite erstellen", "/studio"],
             ["💬", "Vorlagen", "Kundenservice-Texte zum Kopieren", "/vorlagen"],
+            ["📡", "Trend-Radar", "Trends erkennen + Trend-Check", "/trend-radar"],
             ["📅", "Saisonkalender", "Was sich wann verkauft", "/saisonkalender"],
             ["🇨🇭", "Schweiz-Wissen", "Zoll, Recht, TWINT, Versand & mehr", "/wissen"],
             ["📖", "Lexikon", "Alle Begriffe einfach erklärt", "/lexikon"],

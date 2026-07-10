@@ -52,9 +52,9 @@ export default function ProduktePage() {
         <section className="card mt-8 border-t-4 border-t-amber-400">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h2 className="font-display text-lg font-bold">📡 Trend-Radar: Das kommt als Nächstes</h2>
-            <span className="text-xs font-semibold text-muted">
-              Früh einsteigen = weniger Konkurrenz
-            </span>
+            <a href="/trend-radar" className="text-xs font-bold text-accent-deep hover:underline">
+              Zum vollständigen Trend-Radar mit Trend-Check →
+            </a>
           </div>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {PRODUCTS.filter((p) => p.trend === "Kommender Trend").map((p) => (

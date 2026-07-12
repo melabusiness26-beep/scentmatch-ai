@@ -23,6 +23,16 @@ export const curatedLinks: Record<string, CuratedLink> = {
     partnerSlug: 'tom-ford-oud-wood',
     heading: 'Luxus-Inspiration',
     text: 'Dieser Duft richtet sich an Menschen, die warme Oud- und Holzkompositionen mögen. Viele Liebhaber vergleichen die allgemeine Duftrichtung mit Tom Ford Oud Wood, auch wenn beide Düfte ihre eigene Charakteristik besitzen.'
+  },
+  'baccarat-rouge-540': {
+    partnerSlug: 'lattafa-ana-abiyedh',
+    heading: 'Alternative mit ähnlicher Duftrichtung',
+    text: 'Wer die warme Kombination aus Safran- und Amberholz-Noten liebt, aber deutlich weniger ausgeben möchte, kann sich Lattafa Ana Abiyedh Rouge ansehen – in der Duft-Community die bekannteste günstige Alternative. Kein exakter Klon, aber dieselbe warme Amber-Richtung.'
+  },
+  'lattafa-ana-abiyedh': {
+    partnerSlug: 'baccarat-rouge-540',
+    heading: 'Luxus-Inspiration',
+    text: 'Dieser Duft richtet sich an Menschen, die warme Safran- und Amberholz-Kompositionen mögen. Viele Liebhaber vergleichen die allgemeine Duftrichtung mit Baccarat Rouge 540, auch wenn beide Düfte ihre eigene Charakteristik besitzen.'
   }
 };
 

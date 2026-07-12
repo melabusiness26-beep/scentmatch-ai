@@ -58,6 +58,11 @@ export const guides: Guide[] = [
             expensive: 'tobacco-vanille',
             cheap: 'khamrah',
             note: 'Tom Ford Tobacco Vanille ist würzig-süß und teuer. Lattafa Khamrah geht in eine ähnlich warme, süß-würzige Richtung mit Dattel und Zimt – zum Sparpreis.'
+          },
+          {
+            expensive: 'baccarat-rouge-540',
+            cheap: 'lattafa-ana-abiyedh',
+            note: 'Baccarat Rouge 540 von Maison Francis Kurkdjian ist einer der meistgesuchten Luxusdüfte überhaupt. Lattafa Ana Abiyedh Rouge gilt in der Duft-Community als die bekannteste günstige Alternative: dieselbe warme Amber-Richtung mit Safran und Amberholz – kein exakter Klon, aber für den kleinen Preis verblüffend edel.'
           }
         ]
       },

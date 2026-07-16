@@ -32,6 +32,7 @@ export default function SiteHeader() {
         </button>
         <nav className={`main-nav${menuOpen ? ' open' : ''}`}>
           <Link href="/#quiz" onClick={close}>Quiz</Link>
+          <Link href="/dufttyp" onClick={close}>Dufttyp-Test</Link>
           <Link href="/stimmungen" onClick={close}>Stimmungen</Link>
           <Link href="/reiseduefte" onClick={close}>Reise-Düfte</Link>
           <Link href="/#warum" onClick={close}>Warum wir?</Link>

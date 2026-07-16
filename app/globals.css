@@ -485,3 +485,13 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 .tile-actions .button { padding: 9px 14px; font-size: 14px; margin-top: 0; }
 .mood-result-card .tile-actions { margin-top: auto; padding-top: 12px; }
 @media (max-width: 600px) { .mood-top { grid-template-columns: 1fr; } }
+
+/* Dufttyp-Persönlichkeitstest (/dufttyp): Typen-Raster + Ergebnis-Seite */
+.typ-grid { margin-top: 22px; grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) { .typ-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 460px) { .typ-grid { grid-template-columns: 1fr; } }
+.typ-traits { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 6px; }
+.typ-trait { background: rgba(255,255,255,.72); border: 1px solid rgba(185,152,99,.45); color: var(--brown); border-radius: 999px; padding: 6px 14px; font-family: var(--font-sans), Arial, sans-serif; font-size: 13px; font-weight: 600; }
+.typ-intro { margin-top: 14px; font-size: 17px; }
+.typ-scent { margin-top: 12px; max-width: 680px; line-height: 1.55; }
+.typ-scent strong { color: var(--brown); }

@@ -44,7 +44,7 @@ export default function UeberUnsPage() {
         <section className="section">
           <h2>Über mich</h2>
           <p>
-            Ich bin {OPERATOR.name} und habe Auressa in der {OPERATOR.country} gegründet. Ich liebe Düfte und
+            Ich bin Melanie und habe Auressa in der {OPERATOR.country} gegründet. Ich liebe Düfte und
             habe selbst schon zu viele Flaschen gekauft, die dann ungenutzt im Schrank standen.
           </p>
         </section>

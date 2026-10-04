@@ -42,44 +42,50 @@ export default function UeberUnsPage() {
         </section>
 
         <section className="section">
-          <h2>Warum es Auressa gibt</h2>
+          <h2>Über mich</h2>
           <p>
-            Vor dem Parfümregal zu stehen kann überfordern: hunderte Flakons, fremde Begriffe und stolze
-            Preise. Auressa ist aus dem Wunsch entstanden, diese Welt einfach und verständlich zu machen –
-            ohne Fachchinesisch und ohne Verkaufsdruck. Statt „was gerade beworben wird" zeigen wir dir, was
-            zu deinem Geschmack, deinem Anlass und deinem Budget passt.
-          </p>
-          <p>
-            Hinter Auressa steht {OPERATOR.name}, eine Duftliebhaberin aus der {OPERATOR.country}. Die
-            Plattform wird mit viel Sorgfalt und Liebe zum Detail gepflegt – Schritt für Schritt, mit dem
-            Ziel, die modernste und ehrlichste Duft-Findung im deutschsprachigen Raum zu werden.
+            Ich bin {OPERATOR.name} und habe Auressa in der {OPERATOR.country} gegründet. Ich liebe Düfte und
+            habe selbst schon zu viele Flaschen gekauft, die dann ungenutzt im Schrank standen.
           </p>
         </section>
 
         <section className="section">
-          <h2>Wie wir Düfte auswählen</h2>
+          <h2>Warum Auressa</h2>
           <p>
-            Unser Katalog wird redaktionell und faktenbasiert gepflegt: Jeder Duft ist mit Duftfamilie,
-            Noten, Saison, Anlass und einem Richtpreis erfasst. Der „Auressa-Score" ist eine redaktionelle
-            Einschätzung – kein gekauftes Ranking und kein vorgetäuschtes Nutzer-Rating.
-          </p>
-          <p>
-            Beim Thema „Dupes" (günstige Alternativen) bleiben wir ehrlich: Ein Dupe riecht nie zu 100 %
-            identisch wie das teure Original – wir sagen dir, wie nah es wirklich kommt, statt zu viel zu
-            versprechen.
+            Ein Parfum kostet schnell 100 oder 200 Franken, und oft merkt man erst zu Hause, dass er doch
+            nicht passt. Ich wollte eine Seite, die beim Finden hilft, bevor man kauft: verständlich, ehrlich
+            und auf Deutsch.
           </p>
         </section>
 
         <section className="section">
-          <h2>Unabhängig – trotz Partner-Links</h2>
+          <h2>So entstehen die Empfehlungen</h2>
           <p>
-            Auressa finanziert sich teilweise über Affiliate-Links: Wenn du über einen Partner-Link bei
-            einem Shop kaufst, erhalten wir ggf. eine kleine Provision – für
-            dich ohne Mehrkosten. Diese Links kennzeichnen wir transparent. Unsere Empfehlungen richten sich
-            nach deinem Geschmack, nicht nach der Provision.
+            Das Duft-Quiz stellt dir 14 Fragen zu Duftrichtung, Anlass, Saison, Intensität und Budget. Die
+            Match-Engine vergleicht deine Antworten mit über 400 Düften und berechnet für jeden einen
+            Match-Score von 0 bis 100.
           </p>
-          <p className="small">
-            Fragen, Feedback oder ein Duft-Wunsch? Schreib uns gern:{' '}
+        </section>
+
+        <section className="section">
+          <h2>Ehrlich bei Dupes</h2>
+          <p>
+            Ein günstiger Duftzwilling riecht ähnlich, aber nie identisch. Deshalb steht bei jeder Alternative
+            dabei, wo die Unterschiede liegen.
+          </p>
+        </section>
+
+        <section className="section">
+          <h2>Preise in Franken</h2>
+          <p>
+            Alle Preise sind Richtpreise in CHF. Massgebend ist immer der aktuelle Preis im Shop.
+          </p>
+        </section>
+
+        <section className="section">
+          <h2>Kontakt</h2>
+          <p>
+            Du hast Fragen, Vorschläge oder willst mir einfach Hallo sagen? Schreib mir gern:{' '}
             <a href={`mailto:${OPERATOR.email}`}>{OPERATOR.email}</a>.
           </p>
         </section>

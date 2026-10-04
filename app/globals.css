@@ -154,7 +154,7 @@ button, .button { display: inline-block; max-width: 100%; white-space: normal; t
 .gender-pill .gender-symbol { font-size: 15px; line-height: 1; }
 .tile h3 { font-size: 20px; }
 
-/* Edler Fußbereich */
+/* Edler Fussbereich */
 .site-footer { margin-top: 100px; background: radial-gradient(120% 130% at 100% 0%, #5a4131 0%, #3a2a20 50%, #241912 100%); color: #f3e9da; padding: 52px 0 28px; border-top: 1px solid rgba(185,152,99,.3); }
 .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 28px; flex-wrap: wrap; }
 .site-footer .logo { color: #fbf3e6; }
@@ -189,7 +189,7 @@ a.logo { text-decoration:none; color:inherit; }
 .quiz-hint { margin:-6px 0 14px; font-style:italic; }
 .quiz-back { margin-top:14px; background:none; border:0; color:var(--brown); cursor:pointer; font-family:var(--font-sans), Arial, sans-serif; font-size:14px; padding:6px 0; }
 .quiz-back:hover { text-decoration:underline; }
-/* Wow-Moment: großer, hochzählender Match-Score + Erscheinen */
+/* Wow-Moment: grosser, hochzählender Match-Score + Erscheinen */
 .match-score-big { display:flex; align-items:baseline; gap:6px; margin:2px 0 8px; }
 .match-score-num { font-family:var(--font-display), Georgia, serif; font-size:clamp(52px, 11vw, 80px); line-height:1; font-weight:700; color:var(--gold); }
 .match-score-pct { font-family:var(--font-sans), Arial, sans-serif; font-size:18px; font-weight:600; color:var(--brown); }

@@ -40,7 +40,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.verc
 
 const familyLabels: Record<string, string> = {
   clean: 'Clean / Frisch',
-  gourmand: 'Gourmand / Süß',
+  gourmand: 'Gourmand / Süss',
   woody: 'Woody / Holzig',
   floral: 'Floral / Blumig'
 };

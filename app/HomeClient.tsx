@@ -41,7 +41,7 @@ const questions: QuizQuestion[] = [
     hint: 'Geh ganz nach Bauchgefühl. Es gibt kein Richtig oder Falsch.',
     kind: 'family',
     a: [
-      ['Frisch geduscht, weißes Hemd, Fenster weit auf', 'clean'],
+      ['Frisch geduscht, weisses Hemd, Fenster weit auf', 'clean'],
       ['Kerzenlicht, Vanille und eine warme Decke', 'gourmand'],
       ['Dunkle Bar, edles Holz, ein Hauch Leder', 'woody'],
       ['Blumenmarkt im Frühling, leichtes Kleid', 'floral']
@@ -70,13 +70,13 @@ const questions: QuizQuestion[] = [
     ]
   },
   {
-    q: 'Wie süß darf dein Duft sein?',
+    q: 'Wie süss darf dein Duft sein?',
     hint: 'Von frisch-herb bis dessertartig – wir gewichten das passend für dich.',
     kind: 'sweetness',
     a: [
-      ['Lieber gar nicht süß', 'low'],
-      ['Ein bisschen Süße', 'medium'],
-      ['Richtig süß & gourmandig', 'high'],
+      ['Lieber gar nicht süss', 'low'],
+      ['Ein bisschen Süsse', 'medium'],
+      ['Richtig süss & gourmandig', 'high'],
       ['Egal', '']
     ]
   },
@@ -165,7 +165,7 @@ const FAMILY_ORDER = ['clean', 'gourmand', 'woody', 'floral'] as const;
 
 const profileText: Record<string, { title: string; text: string }> = {
   clean: { title: 'The Clean Slate', text: 'Du liebst frische, saubere Düfte. Deine Signatur wirkt gepflegt, leicht und modern.' },
-  gourmand: { title: 'The Soft Cashmere Vibe', text: 'Du passt zu warmen, weichen und leicht süßen Düften. Deine Duftsignatur wirkt gemütlich und sinnlich.' },
+  gourmand: { title: 'The Soft Cashmere Vibe', text: 'Du passt zu warmen, weichen und leicht süssen Düften. Deine Duftsignatur wirkt gemütlich und sinnlich.' },
   woody: { title: 'Midnight Tailoring', text: 'Du brauchst elegante, holzige und würzige Düfte. Deine Signatur wirkt hochwertig und selbstbewusst.' },
   floral: { title: 'The Blooming Romance', text: 'Du passt zu blumigen, fruchtigen und femininen Düften. Deine Signatur wirkt charmant und weich.' }
 };
@@ -243,8 +243,8 @@ function buildQuizReason(p: Perfume, answers: QuizAnswers, winner: string, ancho
 
 // Anklickbare Familien-Kacheln (führen zur gefilterten Duftdatenbank).
 const FAMILY_TILES: { code: string; label: string; desc: string }[] = [
-  { code: 'clean', label: 'Clean', desc: 'Frisch, sauber, weißer Moschus.' },
-  { code: 'gourmand', label: 'Gourmand', desc: 'Vanille, Amber, weiche Süße.' },
+  { code: 'clean', label: 'Clean', desc: 'Frisch, sauber, weisser Moschus.' },
+  { code: 'gourmand', label: 'Gourmand', desc: 'Vanille, Amber, weiche Süsse.' },
   { code: 'woody', label: 'Woody', desc: 'Holz, Leder, edle Tiefe.' },
   { code: 'floral', label: 'Floral', desc: 'Rose, Jasmin, feminine Eleganz.' }
 ];

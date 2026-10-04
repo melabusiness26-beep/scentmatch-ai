@@ -95,14 +95,14 @@ export const scentNotes: ScentNote[] = [
     slug: 'vanille',
     image: '/notes/vanille.jpg',
     name: 'Vanille',
-    short: 'Warm, süß und cremig – die wohl beliebteste Basisnote für gemütliche Düfte.',
+    short: 'Warm, süss und cremig – die wohl beliebteste Basisnote für gemütliche Düfte.',
     metaTitle: 'Vanille in Parfums: Duft, Wirkung und passende Düfte | Auressa',
     metaDescription:
       'Vanille in Parfums: Wie riecht die warme, süße Note, woher kommt sie und welche Düfte mit Vanille passen zu dir?',
     intro:
-      'Vanille ist eine der beliebtesten und vertrautesten Duftnoten und das Herzstück vieler süßer, gourmandiger Parfums.',
+      'Vanille ist eine der beliebtesten und vertrautesten Duftnoten und das Herzstück vieler süsser, gourmandiger Parfums.',
     smell:
-      'Vanille riecht warm, süß und cremig, mit balsamischen und leicht rauchigen Facetten. Je nach Komposition wirkt sie pudrig-elegant oder dessertartig-gourmand.',
+      'Vanille riecht warm, süss und cremig, mit balsamischen und leicht rauchigen Facetten. Je nach Komposition wirkt sie pudrig-elegant oder dessertartig-gourmand.',
     origin:
       'Echte Vanille stammt aus der Schote einer Orchidee und wird vor allem auf Madagaskar angebaut. Weil natürliche Vanille teuer ist, kommen in Parfums häufig Vanillin und moderne Vanille-Akkorde zum Einsatz.',
     family:
@@ -110,7 +110,7 @@ export const scentNotes: ScentNote[] = [
     effect:
       'Vanille wirkt behaglich, sinnlich und einladend. Sie eignet sich besonders für Herbst und Winter sowie für gemütliche Abende und gilt als ausgesprochen tragefreundlich.',
     pairsWith:
-      'Vanille passt zu Tonkabohne, Karamell und Kakao für süße Düfte, zu Tabak und Amber für warme orientalische und rundet holzige sowie florale Kompositionen weich ab.'
+      'Vanille passt zu Tonkabohne, Karamell und Kakao für süsse Düfte, zu Tabak und Amber für warme orientalische und rundet holzige sowie florale Kompositionen weich ab.'
   },
   {
     slug: 'ambroxan',

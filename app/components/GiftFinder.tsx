@@ -244,7 +244,7 @@ export default function GiftFinder({ allPerfumes }: { allPerfumes: Perfume[] }) 
               className={`option-btn ${state.gender === 'any' ? 'active' : ''}`}
               onClick={() => handleNext({ gender: 'any', step: 2 })}
             >
-              🎭 Egal / Unisex
+              🎭 Egal
             </button>
           </div>
         </div>

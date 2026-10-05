@@ -6,11 +6,10 @@ import {
   getPerfumeBySlug,
   getAllPerfumeSlugs,
   getPerfumes,
-  findSimilarPerfumes,
-  findCheaperAlternatives,
   describePerfume,
   type Perfume
 } from '@/lib/perfumes';
+import { findSimilarPerfumesV2, findCheaperAlternativesV2 } from '@/lib/similarity';
 import { noteHref } from '@/lib/notes-glossary';
 import { getCuratedLink } from '@/lib/curated-links';
 import { AffiliateButton } from '@/app/AffiliateButton';
@@ -276,7 +275,7 @@ export default async function PerfumeDetailPage({
   const curatedPartner = curated ? pool.find((p) => p.slug === curated.partnerSlug) : undefined;
   const curatedSlug = curatedPartner?.slug;
 
-  const cheaper = findCheaperAlternatives(perfume, pool, 3).filter(
+  const cheaper = findCheaperAlternativesV2(perfume, pool, 3).filter(
     (c) => c.perfume.slug !== curatedSlug
   );
   const cheaperIds = new Set(cheaper.map((c) => c.perfume.id));
@@ -284,9 +283,9 @@ export default async function PerfumeDetailPage({
   // Zuerst großzügig holen und filtern, DANN auf 4 kürzen – sonst würde das Kürzen auf 4
   // vor dem Filtern den Abschnitt oft fälschlich leeren (die günstigen Alternativen riechen
   // per Definition ähnlich und belegen sonst die Top-Plätze).
-  const similar = findSimilarPerfumes(perfume, pool, 20)
+  const similar = findSimilarPerfumesV2(perfume, pool)
     .filter(
-      (s) => s.similarity >= 30 && !cheaperIds.has(s.perfume.id) && s.perfume.slug !== curatedSlug
+      (s) => !cheaperIds.has(s.perfume.id) && s.perfume.slug !== curatedSlug
     )
     .slice(0, 4);
 
@@ -396,11 +395,15 @@ export default async function PerfumeDetailPage({
               aber sparen möchtest.
             </p>
             <div className="perfume-list">
-              {cheaper.map(({ perfume: c, similarity }) => {
+              {cheaper.map(({ perfume: c, level, sharedNotes }) => {
                 const saving =
                   perfume.price_chf != null && c.price_chf != null
                     ? perfume.price_chf - c.price_chf
                     : null;
+                const shared = [...(sharedNotes.top || []), ...(sharedNotes.heart || []), ...(sharedNotes.base || [])]
+                  .filter(Boolean)
+                  .slice(0, 3)
+                  .join(', ');
                 return (
                   <div className="tile" key={c.id}>
                     <Cover perfume={c} />
@@ -410,8 +413,9 @@ export default async function PerfumeDetailPage({
                       {c.brands?.name || 'Marke offen'} · {familyLabel(c.fragrance_family)}
                     </p>
                     <p className="small">
-                      {similarity}% ähnlich
+                      <strong>{level}</strong>
                       {saving != null && saving > 0 ? ` · spart ~CHF ${saving}` : ''}
+                      {shared && <><br />Gemeinsam: {shared}</> }
                     </p>
                     <div className="cta">
                       {c.slug && (
@@ -433,27 +437,34 @@ export default async function PerfumeDetailPage({
               Düfte aus unserem Katalog, die {perfume.perfume_name} im Charakter am nächsten kommen.
             </p>
             <div className="perfume-list">
-              {similar.map(({ perfume: s, similarity }) => (
-                <div className="tile" key={s.id}>
-                  <Cover perfume={s} />
-                  <div className="match-badge">{similarity}% ähnlich</div>
-                  <h3>{s.perfume_name}</h3>
-                  <p className="small">
-                    {s.brands?.name || 'Marke offen'} · {familyLabel(s.fragrance_family)}
-                  </p>
-                  <p className="small">
-                    Saison: {s.season || 'offen'}
-                    <br />
-                    Anlass: {s.occasion || 'offen'}
-                  </p>
-                  <div className="cta">
-                    {s.slug && (
-                      <Link className="button secondary" href={`/duft/${s.slug}`}>Duftprofil</Link>
-                    )}
-                    <AffiliateButton perfume={s} showNote={false} />
+              {similar.map(({ perfume: s, level, sharedNotes }) => {
+                const shared = [...(sharedNotes.top || []), ...(sharedNotes.heart || []), ...(sharedNotes.base || [])]
+                  .filter(Boolean)
+                  .slice(0, 3)
+                  .join(', ');
+                return (
+                  <div className="tile" key={s.id}>
+                    <Cover perfume={s} />
+                    <div className="match-badge"><strong>{level}</strong></div>
+                    <h3>{s.perfume_name}</h3>
+                    <p className="small">
+                      {s.brands?.name || 'Marke offen'} · {familyLabel(s.fragrance_family)}
+                    </p>
+                    <p className="small">
+                      {shared && <>Gemeinsam: {shared}<br /></> }
+                      Saison: {s.season || 'offen'}
+                      <br />
+                      Anlass: {s.occasion || 'offen'}
+                    </p>
+                    <div className="cta">
+                      {s.slug && (
+                        <Link className="button secondary" href={`/duft/${s.slug}`}>Duftprofil</Link>
+                      )}
+                      <AffiliateButton perfume={s} showNote={false} />
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </section>
         )}

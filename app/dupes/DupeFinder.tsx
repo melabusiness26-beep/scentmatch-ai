@@ -3,10 +3,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import {
-  findCheaperAlternatives,
-  findSimilarPerfumes,
   type Perfume
 } from '@/lib/perfumes';
+import { findCheaperAlternativesV2, findSimilarPerfumesV2 } from '@/lib/similarity';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import { PerfumeCover, familyDisplay, matchesQuery } from '@/app/PerfumeTile';
 
@@ -32,18 +31,26 @@ function familyLabel(code: string | null | undefined): string {
 function AlternativeTile({
   target,
   perfume,
-  similarity,
+  level,
+  sharedNotes,
   editorial
 }: {
   target: Perfume;
   perfume: Perfume;
-  similarity?: number;
+  level?: 'sehr ähnlich' | 'ähnliche Richtung' | 'gleiche Duftfamilie';
+  sharedNotes?: { top: string[]; heart: string[]; base: string[] };
   editorial?: string;
 }) {
   const saving =
     target.price_chf != null && perfume.price_chf != null
       ? target.price_chf - perfume.price_chf
       : null;
+  const shared = sharedNotes
+    ? [...(sharedNotes.top || []), ...(sharedNotes.heart || []), ...(sharedNotes.base || [])]
+        .filter(Boolean)
+        .slice(0, 2)
+        .join(', ')
+    : '';
   return (
     <div className="tile">
       <PerfumeCover perfume={perfume} />
@@ -57,8 +64,9 @@ function AlternativeTile({
       <p className="small">
         {editorial
           ? editorial
-          : `${similarity}% ähnlich${saving != null && saving > 0 ? ` · spart ~CHF ${saving}` : ''}`}
+          : level ? `${level}${saving != null && saving > 0 ? ` · spart ~CHF ${saving}` : ''}` : 'Ähnlichkeit berechnet...'}
         {editorial && saving != null && saving > 0 ? ` Spart ~CHF ${saving}.` : ''}
+        {!editorial && shared && <><br />Gemeinsam: {shared}</> }
       </p>
       <div className="cta">
         {perfume.slug && (
@@ -113,8 +121,16 @@ export default function DupeFinder({
 
   // Ergebnisse für den gewählten Duft berechnen.
   let curatedResults: { perfume: Perfume; note: string }[] = [];
-  let algoResults: { perfume: Perfume; similarity: number }[] = [];
-  let similarFallback: { perfume: Perfume; similarity: number }[] = [];
+  let algoResults: {
+    perfume: Perfume;
+    level: 'sehr ähnlich' | 'ähnliche Richtung' | 'gleiche Duftfamilie';
+    sharedNotes: { top: string[]; heart: string[]; base: string[] };
+  }[] = [];
+  let similarFallback: {
+    perfume: Perfume;
+    level: 'sehr ähnlich' | 'ähnliche Richtung' | 'gleiche Duftfamilie';
+    sharedNotes: { top: string[]; heart: string[]; base: string[] };
+  }[] = [];
 
   if (selected) {
     const curatedEntries = (selected.slug && curated[selected.slug]) || [];
@@ -125,15 +141,13 @@ export default function DupeFinder({
       })
       .filter((e): e is { perfume: Perfume; note: string } => Boolean(e));
     const curatedIds = new Set(curatedResults.map((e) => e.perfume.id));
-    algoResults = findCheaperAlternatives(selected, perfumes, 6).filter(
+    algoResults = findCheaperAlternativesV2(selected, perfumes, 6).filter(
       (a) => !curatedIds.has(a.perfume.id)
     ).slice(0, 4);
     if (curatedResults.length === 0 && algoResults.length === 0) {
       // Kein günstigerer Zwilling gefunden – ehrlich sagen und stattdessen
       // ähnlich riechende Düfte zeigen (der gewählte Duft ist oft selbst günstig).
-      similarFallback = findSimilarPerfumes(selected, perfumes, 3).filter(
-        (s) => s.similarity >= 30
-      );
+      similarFallback = findSimilarPerfumesV2(selected, perfumes, 3);
     }
   }
 
@@ -222,12 +236,13 @@ export default function DupeFinder({
                   editorial={note}
                 />
               ))}
-              {algoResults.map(({ perfume, similarity }) => (
+              {algoResults.map(({ perfume, level, sharedNotes }) => (
                 <AlternativeTile
                   key={perfume.id}
                   target={selected}
                   perfume={perfume}
-                  similarity={similarity}
+                  level={level}
+                  sharedNotes={sharedNotes}
                 />
               ))}
             </div>
@@ -243,12 +258,13 @@ export default function DupeFinder({
               </p>
               {similarFallback.length > 0 && (
                 <div className="perfume-list">
-                  {similarFallback.map(({ perfume, similarity }) => (
+                  {similarFallback.map(({ perfume, level, sharedNotes }) => (
                     <AlternativeTile
                       key={perfume.id}
                       target={selected}
                       perfume={perfume}
-                      similarity={similarity}
+                      level={level}
+                      sharedNotes={sharedNotes}
                     />
                   ))}
                 </div>

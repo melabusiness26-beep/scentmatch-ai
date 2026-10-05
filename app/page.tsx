@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import HomeClient from './HomeClient';
-import { getPerfumes } from '@/lib/perfumes';
+import { getPerfumes, getPerfumeCount } from '@/lib/perfumes';
 import { PerfumeTile } from '@/app/PerfumeTile';
 
 export const metadata: Metadata = {
@@ -17,8 +17,13 @@ export default async function Page() {
   let highlightPerfumes = [];
 
   try {
+    // Höchste Priorität: echte Anzahl aus der Datenbank via getPerfumeCount().
+    catalogCount = await getPerfumeCount();
+
+    // Für Highlights brauchen wir die Perfume-Objekte selbst (nicht nur Zählung).
     perfumes = await getPerfumes(2000);
-    catalogCount = perfumes.length;
+
+    // Markenanzahl aus den geladenen Düften berechnen.
     brandCount = new Set(perfumes.map((p) => p.brands?.name).filter(Boolean)).size;
 
     // Highlights: Zuerst die 4 echten Slugs, dann Fallback zu Top-Scores.

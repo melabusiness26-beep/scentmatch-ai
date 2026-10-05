@@ -54,21 +54,36 @@ export default function DesignTestVariant({
       <style>{`
         :root {
           --dt-variant: '${variant}';
-          ${variant === 'b' ? `--dt-bg: #ffffff !important;` : ''}
+          ${variant === 'b' ? `
+            --dt-bg: #ffffff !important;
+            --dt-bg-light: #ffffff !important;
+            --dt-text: #333333 !important;
+          ` : ''}
         }
         ${variant === 'b' ? `
-          html, body {
+          html, body, main {
             background-color: #ffffff !important;
+            background: #ffffff !important;
             color: #333333 !important;
           }
           .design-test,
           .design-test-b {
             background-color: #ffffff !important;
-            color: #333333 !important;
             background: #ffffff !important;
+            color: #333333 !important;
           }
-          .design-test-b * {
-            background-color: inherit;
+          .design-test-b .page-hero,
+          .design-test-b .design-test-hero {
+            background: none !important;
+            background-color: #ffffff !important;
+          }
+          .design-test-b section {
+            background-color: #ffffff !important;
+          }
+          .design-test-b h1,
+          .design-test-b h2,
+          .design-test-b h3 {
+            color: #1a3028 !important;
           }
         ` : ''}
       `}</style>

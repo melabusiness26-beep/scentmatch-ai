@@ -15,6 +15,7 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
   const [results, setResults] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [searched, setSearched] = useState(false);
+  const [debugInfo, setDebugInfo] = useState<string>('');
 
   const handleSearch = () => {
     if (!description.trim()) return;
@@ -22,28 +23,12 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
     setLoading(true);
     setSearched(true);
 
-    // Simulate brief processing
     setTimeout(() => {
-      // DEBUG: Log perfume data
-      console.log('=== DUFT-FINDER DEBUG ===');
-      console.log('Total perfumes loaded:', allPerfumes.length);
-      console.log('First 3 perfumes:', allPerfumes.slice(0, 3).map(p => ({
-        name: p.perfume_name,
-        family: p.fragrance_family,
-        gender: p.gender,
-        topNotes: p.top_notes?.slice(0, 2),
-        heartNotes: p.heart_notes?.slice(0, 2),
-        baseNotes: p.base_notes?.slice(0, 2),
-      })));
-      console.log('Description:', description);
+      const firstPerfume = allPerfumes[0];
+      const debugText = `Geladen: ${allPerfumes.length} Düfte | Erster Duft: "${firstPerfume?.perfume_name}" | Familie: ${firstPerfume?.fragrance_family || 'null'} | Geschlecht: ${firstPerfume?.gender || 'null'}`;
 
       const matches = matchPerfumesByDescription(description, allPerfumes);
-      console.log('Matches found:', matches.length);
-      if (matches.length > 0) {
-        console.log('Top match:', matches[0]);
-      }
-      console.log('======================');
-
+      setDebugInfo(debugText);
       setResults(matches);
       setLoading(false);
     }, 300);
@@ -53,6 +38,7 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
     setDescription('');
     setResults([]);
     setSearched(false);
+    setDebugInfo('');
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -152,6 +138,24 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
           )}
         </div>
       </div>
+
+      {/* Debug Info */}
+      {debugInfo && (
+        <div
+          style={{
+            padding: '12px',
+            marginBottom: '16px',
+            backgroundColor: 'rgba(212, 175, 55, 0.1)',
+            borderLeft: '4px solid var(--dt-accent, #d4af37)',
+            borderRadius: '4px',
+            fontSize: '12px',
+            color: 'var(--dt-text-secondary, #d4cfc3)',
+            fontFamily: 'monospace',
+          }}
+        >
+          <strong>DEBUG:</strong> {debugInfo}
+        </div>
+      )}
 
       {/* Results */}
       {searched && (

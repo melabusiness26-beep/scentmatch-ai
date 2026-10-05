@@ -17,7 +17,6 @@ export default async function Page() {
   let highlightPerfumes = [];
 
   try {
-    // Debug: getPerfumes wird beim Laden dieser Funktion aufgerufen und loggt Duplikatinformationen.
     // Höchste Priorität: echte Anzahlen direkt aus der Datenbank.
     const [count, brands] = await Promise.all([getPerfumeCount(), getBrandCount()]);
     catalogCount = count;

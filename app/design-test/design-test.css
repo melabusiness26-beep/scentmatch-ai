@@ -168,10 +168,7 @@
   border-color: rgba(212, 175, 55, 0.15);
 }
 
-.design-test-b .section {
-  background: var(--dt-bg-light);
-  border: 1px solid var(--dt-border);
-}
+/* .design-test-b .section defined below in variant-specific section */
 
 .design-test-c .section {
   background: rgba(232, 220, 200, 0.25);
@@ -233,11 +230,6 @@
   color: #1a1410;
 }
 
-.design-test-b .button {
-  background: var(--dt-accent);
-  color: var(--dt-bg-light);
-}
-
 .design-test-c .button {
   background: var(--dt-accent);
   color: var(--dt-bg-light);
@@ -275,11 +267,6 @@
 .design-test-a .tile {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(212, 175, 55, 0.2);
-}
-
-.design-test-b .tile {
-  background: var(--dt-bg-light);
-  border-color: var(--dt-border);
 }
 
 .design-test-c .tile {

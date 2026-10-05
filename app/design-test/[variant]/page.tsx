@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   robots: 'noindex, nofollow',
 };
 
-const VALID_VARIANTS = ['a', 'b', 'c'];
+const VALID_VARIANTS = ['a', 'c'];
 const HIGHLIGHT_SLUGS = ['baccarat-rouge-540', 'black-opium', 'tobacco-vanille', '1-million'];
 
 export const generateStaticParams = () => {

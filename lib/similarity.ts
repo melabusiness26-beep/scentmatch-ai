@@ -225,6 +225,11 @@ export function computeSimilarity(
   const heartSim = computeWeightedSimilarity(heartA, heartT, freq, totalPerfumes);
   const baseSim = computeWeightedSimilarity(baseA, baseT, freq, totalPerfumes);
 
+  // Reverse Coverage: Wie viel von Targets Noten sind im Anchor?
+  const topRevSim = computeWeightedSimilarity(topT, topA, freq, totalPerfumes);
+  const heartRevSim = computeWeightedSimilarity(heartT, heartA, freq, totalPerfumes);
+  const baseRevSim = computeWeightedSimilarity(baseT, baseA, freq, totalPerfumes);
+
   // Zähle Layer mit Übereinstimmungen
   const layersWithMatch = [topSim.shared.length > 0, heartSim.shared.length > 0, baseSim.shared.length > 0].filter(Boolean).length;
 
@@ -250,6 +255,12 @@ export function computeSimilarity(
   const minCoverage = Math.min(baseCoverage, heartCoverage, topCoverage);
   const avgCoverage = (baseCoverage * 3 + heartCoverage * 2 + topCoverage * 1) / 6;
 
+  // Reverse Coverage berechnen: Wie viel von Targets Noten sind im Anchor?
+  const baseRevCoverage = baseRevSim.coverage;
+  const heartRevCoverage = heartRevSim.coverage;
+  const topRevCoverage = topRevSim.coverage;
+  const revAvgCoverage = (baseRevCoverage * 3 + heartRevCoverage * 2 + topRevCoverage * 1) / 6;
+
   // Gewichtet: Base 3x, Heart 2x, Top 1x mit Bonus für coverage
   const baseScore = baseSim.score * 40;
   const heartScore = heartSim.score * 35;
@@ -267,8 +278,9 @@ export function computeSimilarity(
   // Bestimme Level: Asymmetrische, strengere Kriterien
   let level: 'sehr ähnlich' | 'ähnliche Richtung' | 'teilt einzelne Noten' | null = null;
 
-  // "Sehr ähnlich": Hohe Coverage + mindestens 2 Layer + mindestens eine seltene Note
-  if (avgCoverage >= 0.65 && layersWithMatch >= 2 && sharesRareNote) {
+  // "Sehr ähnlich": Hohe bidirektionale Coverage + mindestens 2 Layer + mindestens eine seltene Note
+  // revAvgCoverage >= 0.50 stellt sicher, dass Target nicht zu viele exklusive Noten hat
+  if (avgCoverage >= 0.65 && revAvgCoverage >= 0.50 && layersWithMatch >= 2 && sharesRareNote) {
     level = 'sehr ähnlich';
   }
   // "Ähnliche Richtung": Moderate Coverage oder gute Jaccard-Ähnlichkeit

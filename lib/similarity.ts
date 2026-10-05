@@ -132,11 +132,13 @@ function noteRarityWeight(note: string, frequencies: Map<string, number>, totalP
 
 // Berechnet Jaccard-Ähnlichkeit zweier Note-Arrays mit Gewichtung
 function computeWeightedSimilarity(
-  notes1: string[],
-  notes2: string[],
+  notes1: string[] | null,
+  notes2: string[] | null,
   frequencies: Map<string, number>,
   totalPerfumes: number
 ): { score: number; shared: string[]; different: string[] } {
+  if (!notes1) notes1 = [];
+  if (!notes2) notes2 = [];
   const set1 = new Set(notes1);
   const set2 = new Set(notes2);
 
@@ -176,7 +178,8 @@ function computeWeightedSimilarity(
 export function computeSimilarity(
   anchor: Perfume,
   target: Perfume,
-  allPerfumes: Perfume[]
+  allPerfumes: Perfume[],
+  frequencies?: Map<string, number>
 ): {
   level: 'sehr ähnlich' | 'ähnliche Richtung' | 'gleiche Duftfamilie' | null;
   score: number;
@@ -187,7 +190,7 @@ export function computeSimilarity(
     return { level: 'sehr ähnlich', score: 100, sharedNotes: { top: [], heart: [], base: [] }, differentNotes: { top: [], heart: [], base: [] } };
   }
 
-  const frequencies = calculateNoteFrequencies(allPerfumes);
+  const freq = frequencies || calculateNoteFrequencies(allPerfumes);
   const totalPerfumes = allPerfumes.length;
 
   // Konsolidierte Noten pro Layer
@@ -200,9 +203,9 @@ export function computeSimilarity(
   const baseT = consolidateNotes(target.base_notes);
 
   // Ähnlichkeit pro Layer
-  const topSim = computeWeightedSimilarity(topA, topT, frequencies, totalPerfumes);
-  const heartSim = computeWeightedSimilarity(heartA, heartT, frequencies, totalPerfumes);
-  const baseSim = computeWeightedSimilarity(baseA, baseT, frequencies, totalPerfumes);
+  const topSim = computeWeightedSimilarity(topA, topT, freq, totalPerfumes);
+  const heartSim = computeWeightedSimilarity(heartA, heartT, freq, totalPerfumes);
+  const baseSim = computeWeightedSimilarity(baseA, baseT, freq, totalPerfumes);
 
   // Gewichtet: Base 3x, Heart 2x, Top 1x
   const baseScore = baseSim.score * 40; // 40 Punkte max
@@ -250,10 +253,12 @@ export type SimilarPerfumeV2 = {
 
 // Findet ähnliche Düfte
 export function findSimilarPerfumesV2(target: Perfume, pool: Perfume[], limit = 4): SimilarPerfumeV2[] {
+  const frequencies = calculateNoteFrequencies(pool);
+
   return pool
     .filter((p) => p.id !== target.id)
     .map((p) => {
-      const sim = computeSimilarity(target, p, pool);
+      const sim = computeSimilarity(target, p, pool, frequencies);
       return { perfume: p, ...sim };
     })
     .filter((s): s is SimilarPerfumeV2 => s.level !== null) // Nur Treffer anzeigen
@@ -272,11 +277,13 @@ export function findCheaperAlternativesV2(target: Perfume, pool: Perfume[], limi
   const targetPrice = target.price_chf;
   if (targetPrice == null) return [];
 
+  const frequencies = calculateNoteFrequencies(pool);
+
   return pool
     .filter((p) => p.id !== target.id)
     .filter((p) => p.price_chf != null && p.price_chf <= targetPrice * 0.7) // 30% günstiger
     .map((p) => {
-      const sim = computeSimilarity(target, p, pool);
+      const sim = computeSimilarity(target, p, pool, frequencies);
       return { perfume: p, ...sim };
     })
     .filter((s): s is SimilarPerfumeV2 => s.level === 'sehr ähnlich' || s.level === 'ähnliche Richtung') // Nur "ähnliche Richtung" oder besser

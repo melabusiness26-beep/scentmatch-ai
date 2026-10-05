@@ -26,13 +26,16 @@ export default async function Page() {
     perfumes = await getPerfumes(2000);
 
     // Highlights: Zuerst die 4 echten Slugs, dann Fallback zu Top-Scores.
+    // (Exclude fantasy perfumes with 'auressa' in the name)
     highlightPerfumes = perfumes
       .filter(p => HIGHLIGHT_SLUGS.includes(p.slug || ''))
+      .filter(p => !p.perfume_name?.toLowerCase().includes('auressa'))
       .slice(0, 4);
 
     // Fallback: Wenn weniger als 4, mit Top-Scores auffüllen.
     if (highlightPerfumes.length < 4) {
       const topPerfumes = perfumes
+        .filter(p => !p.perfume_name?.toLowerCase().includes('auressa'))
         .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
         .slice(0, 6 - highlightPerfumes.length);
       highlightPerfumes = [...highlightPerfumes, ...topPerfumes];

@@ -39,10 +39,12 @@ export default async function DesignTestPage({
 
     highlightPerfumes = perfumes
       .filter((p) => HIGHLIGHT_SLUGS.includes(p.slug || ''))
+      .filter((p) => !p.perfume_name?.toLowerCase().includes('auressa'))
       .slice(0, 4);
 
     if (highlightPerfumes.length < 4) {
       const topPerfumes = perfumes
+        .filter((p) => !p.perfume_name?.toLowerCase().includes('auressa'))
         .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
         .slice(0, 6 - highlightPerfumes.length);
       highlightPerfumes = [...highlightPerfumes, ...topPerfumes];

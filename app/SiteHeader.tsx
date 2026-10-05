@@ -38,6 +38,7 @@ export default function SiteHeader() {
           <Link href="/duefte" onClick={close}>Düfte</Link>
           <Link href="/dupes" onClick={close}>Dupe-Finder</Link>
           <Link href="/duftnoten" onClick={close}>Duftnoten</Link>
+          <Link href="/geschenk-finder" onClick={close}>Geschenk-Finder</Link>
           <Link href="/ratgeber" onClick={close}>Ratgeber</Link>
           <Link className="button nav-cta" href="/#quiz" onClick={close}>Duft finden</Link>
         </nav>

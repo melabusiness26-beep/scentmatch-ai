@@ -24,7 +24,26 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
 
     // Simulate brief processing
     setTimeout(() => {
+      // DEBUG: Log perfume data
+      console.log('=== DUFT-FINDER DEBUG ===');
+      console.log('Total perfumes loaded:', allPerfumes.length);
+      console.log('First 3 perfumes:', allPerfumes.slice(0, 3).map(p => ({
+        name: p.perfume_name,
+        family: p.fragrance_family,
+        gender: p.gender,
+        topNotes: p.top_notes?.slice(0, 2),
+        heartNotes: p.heart_notes?.slice(0, 2),
+        baseNotes: p.base_notes?.slice(0, 2),
+      })));
+      console.log('Description:', description);
+
       const matches = matchPerfumesByDescription(description, allPerfumes);
+      console.log('Matches found:', matches.length);
+      if (matches.length > 0) {
+        console.log('Top match:', matches[0]);
+      }
+      console.log('======================');
+
       setResults(matches);
       setLoading(false);
     }, 300);

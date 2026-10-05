@@ -191,16 +191,6 @@ export async function getPerfumeCount(): Promise<number> {
   return count;
 }
 
-// Echte Anzahl der Marken im Katalog – aus der brands-Tabelle, nicht aus geladenen Düften.
-export async function getBrandCount(): Promise<number> {
-  if (!isSupabaseConfigured) return 0;
-  const { count, error } = await supabase
-    .from('brands')
-    .select('id', { count: 'exact', head: true });
-  if (error || count == null) return 0;
-  return count;
-}
-
 // Einzelnen Duft anhand seines slug laden (für die Detailseite).
 export async function getPerfumeBySlug(slug: string): Promise<Perfume | null> {
   if (!isSupabaseConfigured) return null;

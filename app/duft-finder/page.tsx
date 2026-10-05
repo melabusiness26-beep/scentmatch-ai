@@ -10,11 +10,25 @@ export const metadata: Metadata = {
 
 export default async function DuftFinderPage() {
   let perfumes = [];
+  let loadError = '';
 
   try {
+    console.log('[DuftFinder Page] Loading perfumes...');
     perfumes = await getPerfumes(2000);
+    console.log(`[DuftFinder Page] Successfully loaded ${perfumes.length} perfumes`);
+
+    if (perfumes.length > 0) {
+      console.log('[DuftFinder Page] First perfume:', {
+        name: perfumes[0].perfume_name,
+        family: perfumes[0].fragrance_family,
+        gender: perfumes[0].gender,
+        topNotes: perfumes[0].top_notes?.slice(0, 2),
+      });
+    }
   } catch (error) {
-    console.error('Failed to load perfumes for Duft-Finder:', error);
+    const message = error instanceof Error ? error.message : String(error);
+    console.error('[DuftFinder Page] Failed to load perfumes:', message);
+    loadError = `Fehler beim Laden der Düfte: ${message}`;
   }
 
   return (
@@ -31,7 +45,12 @@ export default async function DuftFinderPage() {
 
       <div className="container">
         <section className="section">
-          <DuftFinder allPerfumes={perfumes} />
+          {loadError && (
+            <div style={{ padding: '16px', backgroundColor: '#8B4513', color: '#faf7f2', borderRadius: '8px', marginBottom: '16px' }}>
+              <strong>⚠️ {loadError}</strong>
+            </div>
+          )}
+          <DuftFinder allPerfumes={perfumes} perfumeCount={perfumes.length} />
         </section>
       </div>
     </main>

@@ -8,9 +8,10 @@ import Link from 'next/link';
 
 interface DuftFinderProps {
   allPerfumes: Perfume[];
+  perfumeCount?: number;
 }
 
-export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
+export default function DuftFinder({ allPerfumes, perfumeCount }: DuftFinderProps) {
   const [description, setDescription] = useState('');
   const [results, setResults] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
@@ -24,8 +25,15 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
     setSearched(true);
 
     setTimeout(() => {
+      if (allPerfumes.length === 0) {
+        setDebugInfo('❌ FEHLER: Keine Düfte geladen! getPerfumes() hat leeres Array zurückgegeben.');
+        setResults([]);
+        setLoading(false);
+        return;
+      }
+
       const firstPerfume = allPerfumes[0];
-      const debugText = `Geladen: ${allPerfumes.length} Düfte | Erster Duft: "${firstPerfume?.perfume_name}" | Familie: ${firstPerfume?.fragrance_family || 'null'} | Geschlecht: ${firstPerfume?.gender || 'null'}`;
+      const debugText = `✅ Geladen: ${allPerfumes.length} Düfte | Erster: "${firstPerfume?.perfume_name}" | Familie: ${firstPerfume?.fragrance_family || 'null'} | Geschlecht: ${firstPerfume?.gender || 'null'}`;
 
       const matches = matchPerfumesByDescription(description, allPerfumes);
       setDebugInfo(debugText);

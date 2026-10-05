@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Perfume } from '@/lib/perfumes';
 import { GIFT_FINDER_STYLES } from '@/lib/gift-finder-styles';
-import { consolidateNotes, findSimilarPerfumesV2 } from '@/lib/similarity';
+import { consolidateNotes, findSimilarPerfumesV2, findCheaperAlternativesV2 } from '@/lib/similarity';
 import GiftFinderResults from './GiftFinderResults';
 
 type Gender = 'female' | 'male' | 'any';
@@ -15,7 +15,13 @@ interface QuizState {
   budget: BudgetRange | null;
   style: string | null;
   favoriteSlug: string | null;
-  results: Array<{ perfume: Perfume; explanation: string; cheaper?: Perfume }> | null;
+  results: Array<{
+    perfume: Perfume;
+    explanation: string;
+    cheaper?: Perfume;
+    cheaperLevel?: string;
+    cheaperSharedNotes?: { top: string[]; heart: string[]; base: string[] };
+  }> | null;
 }
 
 export default function GiftFinder({ allPerfumes }: { allPerfumes: Perfume[] }) {
@@ -122,6 +128,13 @@ export default function GiftFinder({ allPerfumes }: { allPerfumes: Perfume[] }) 
     const pool = getFilteredPool();
     const selectedStyle = GIFT_FINDER_STYLES.find((s) => s.id === state.style);
 
+    // Full pool for cheaper alternatives (gender-filtered only, no budget/style restriction)
+    const fullPoolForCheaper = allPerfumes.filter((p) => {
+      if (state.gender === 'female' && !['Women', 'Unisex'].includes(p.gender)) return false;
+      if (state.gender === 'male' && !['Men', 'Unisex'].includes(p.gender)) return false;
+      return true;
+    });
+
     let candidates = pool;
 
     // If favorite is selected, filter by similarity
@@ -160,23 +173,21 @@ export default function GiftFinder({ allPerfumes }: { allPerfumes: Perfume[] }) 
 
     // Take top 3
     const topCandidates = candidates.slice(0, 3);
+    const topCandidateIds = new Set(topCandidates.map((c) => c.id));
 
-    // Add cheaper alternatives
+    // Add cheaper alternatives using findCheaperAlternativesV2 with full gender-filtered pool
     const results = topCandidates.map((perf) => {
       const styleNotes = selectedStyle ? getStyleNotesInPerfume(perf, selectedStyle.notes) : [];
-      const targetPriceStr = String(perf.price_chf || '0');
-      const targetPrice = parseFloat(targetPriceStr);
-      const cheaper = pool.find(
-        (p) => {
-          const pPriceStr = String(p.price_chf || '0');
-          const pPrice = parseFloat(pPriceStr);
-          return p.id !== perf.id && pPrice <= targetPrice * 0.7 && pPrice > 0;
-        }
-      );
+      // Use full pool (without topCandidates) to find cheaper alternatives
+      const poolForCheaper = fullPoolForCheaper.filter((p) => !topCandidateIds.has(p.id) && p.id !== perf.id);
+      const cheaperAlternatives = findCheaperAlternativesV2(perf, poolForCheaper);
+      const first = cheaperAlternatives[0];
       return {
         perfume: perf,
         explanation: buildExplanation(perf, styleNotes),
-        cheaper,
+        cheaper: first?.perfume,
+        cheaperLevel: first?.level,
+        cheaperSharedNotes: first?.sharedNotes,
       };
     });
 
@@ -219,7 +230,7 @@ export default function GiftFinder({ allPerfumes }: { allPerfumes: Perfume[] }) 
 
       {state.step > 1 && (
         <button className="btn-back" onClick={goBack} aria-label="Zurück">
-          ← Zurück
+          Zurück
         </button>
       )}
 
@@ -232,19 +243,19 @@ export default function GiftFinder({ allPerfumes }: { allPerfumes: Perfume[] }) 
               className={`option-btn ${state.gender === 'female' ? 'active' : ''}`}
               onClick={() => handleNext({ gender: 'female', step: 2 })}
             >
-              👩 Für eine Frau
+              Für eine Frau
             </button>
             <button
               className={`option-btn ${state.gender === 'male' ? 'active' : ''}`}
               onClick={() => handleNext({ gender: 'male', step: 2 })}
             >
-              👨 Für einen Mann
+              Für einen Mann
             </button>
             <button
               className={`option-btn ${state.gender === 'any' ? 'active' : ''}`}
               onClick={() => handleNext({ gender: 'any', step: 2 })}
             >
-              🎭 Egal
+              Egal
             </button>
           </div>
         </div>
@@ -259,19 +270,19 @@ export default function GiftFinder({ allPerfumes }: { allPerfumes: Perfume[] }) 
               className={`option-btn ${state.budget === 'under50' ? 'active' : ''}`}
               onClick={() => handleNext({ budget: 'under50', step: 3 })}
             >
-              💰 Unter CHF 50
+              Unter CHF 50
             </button>
             <button
               className={`option-btn ${state.budget === '50to100' ? 'active' : ''}`}
               onClick={() => handleNext({ budget: '50to100', step: 3 })}
             >
-              💵 CHF 50–100
+              CHF 50–100
             </button>
             <button
               className={`option-btn ${state.budget === 'over100' ? 'active' : ''}`}
               onClick={() => handleNext({ budget: 'over100', step: 3 })}
             >
-              💎 Über CHF 100
+              Über CHF 100
             </button>
           </div>
         </div>
@@ -318,10 +329,10 @@ export default function GiftFinder({ allPerfumes }: { allPerfumes: Perfume[] }) 
           </div>
           <div className="quiz-options">
             <button className="option-btn active" onClick={() => handleSubmit()}>
-              → Empfehlungen anzeigen
+              Empfehlungen anzeigen
             </button>
             <button className="option-btn" onClick={() => setState((prev) => ({ ...prev, favoriteSlug: null }))}>
-              ← Keine Auswahl
+              Keine Auswahl
             </button>
           </div>
         </div>

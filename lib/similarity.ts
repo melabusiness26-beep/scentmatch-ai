@@ -85,7 +85,7 @@ function findSynonymGroup(normalizedNote: string): string | null {
 }
 
 // Konsolidiert Noten (mehrere Schreibvarianten → eine repräsentative)
-function consolidateNotes(notes: string[] | null): string[] {
+export function consolidateNotes(notes: string[] | null): string[] {
   if (!notes) return [];
   const consolidated = new Map<string, string>(); // group -> canonical note
 

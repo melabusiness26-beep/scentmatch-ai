@@ -550,9 +550,42 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
     setTimeout(() => setShareMsg(''), 5000);
   }
 
+  // Weihnachts-Banner: Client-seitige Datumsprüfung (1. Nov – 24. Dez, Europe/Zurich)
+  const [showGiftBanner, setShowGiftBanner] = useState(false);
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    // Prüfe ?banner=test Parameter (nur in Preview erlaubt)
+    const params = new URLSearchParams(window.location.search);
+    const bannerTest = params.has('banner') && params.get('banner') === 'test';
+    const isPreview = process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview';
+
+    if (bannerTest && isPreview) {
+      setShowGiftBanner(true);
+      return;
+    }
+
+    // Datum IMMER prüfen (Europe/Zurich), unabhängig von Umgebung
+    const now = new Date();
+    const zurich = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Zurich' }));
+    const month = zurich.getMonth() + 1;
+    const date = zurich.getDate();
+
+    const isNovDec = (month === 11) || (month === 12 && date <= 24);
+    setShowGiftBanner(isNovDec);
+  }, []);
+
   return (
     <main>
       <SiteHeader />
+      {showGiftBanner && (
+        <div className="gift-banner">
+          <div className="container">
+            <p className="gift-banner-text">🎁 Suchst du noch das perfekte Weihnachtsgeschenk? Unser <strong>Geschenk-Finder</strong> zeigt dir in 4 Fragen die besten Parfüm-Empfehlungen.</p>
+            <Link href="/geschenk-finder" className="gift-banner-cta">Zum Geschenk-Finder →</Link>
+          </div>
+        </div>
+      )}
       <div className="container">
         <section className="hero-stage hero-photo">
           <div className="hero-photo-inner">

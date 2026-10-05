@@ -128,6 +128,13 @@ export default function GiftFinder({ allPerfumes }: { allPerfumes: Perfume[] }) 
     const pool = getFilteredPool();
     const selectedStyle = GIFT_FINDER_STYLES.find((s) => s.id === state.style);
 
+    // Full pool for cheaper alternatives (gender-filtered only, no budget/style restriction)
+    const fullPoolForCheaper = allPerfumes.filter((p) => {
+      if (state.gender === 'female' && !['Women', 'Unisex'].includes(p.gender)) return false;
+      if (state.gender === 'male' && !['Men', 'Unisex'].includes(p.gender)) return false;
+      return true;
+    });
+
     let candidates = pool;
 
     // If favorite is selected, filter by similarity
@@ -168,11 +175,11 @@ export default function GiftFinder({ allPerfumes }: { allPerfumes: Perfume[] }) 
     const topCandidates = candidates.slice(0, 3);
     const topCandidateIds = new Set(topCandidates.map((c) => c.id));
 
-    // Add cheaper alternatives using findCheaperAlternativesV2
+    // Add cheaper alternatives using findCheaperAlternativesV2 with full gender-filtered pool
     const results = topCandidates.map((perf) => {
       const styleNotes = selectedStyle ? getStyleNotesInPerfume(perf, selectedStyle.notes) : [];
-      // Filter pool to exclude topCandidates and self
-      const poolForCheaper = pool.filter((p) => !topCandidateIds.has(p.id) && p.id !== perf.id);
+      // Use full pool (without topCandidates) to find cheaper alternatives
+      const poolForCheaper = fullPoolForCheaper.filter((p) => !topCandidateIds.has(p.id) && p.id !== perf.id);
       const cheaperAlternatives = findCheaperAlternativesV2(perf, poolForCheaper);
       const first = cheaperAlternatives[0];
       return {

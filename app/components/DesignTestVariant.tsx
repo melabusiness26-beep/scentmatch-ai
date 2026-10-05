@@ -42,8 +42,15 @@ export default function DesignTestVariant({
 }: DesignTestVariantProps) {
   const meta = variantMeta[variant];
 
+  const getVariantStyle = () => {
+    if (variant === 'b') {
+      return { backgroundColor: '#ffffff', color: '#333333' };
+    }
+    return {};
+  };
+
   return (
-    <main className={`design-test design-test-${variant}`}>
+    <main className={`design-test design-test-${variant}`} style={getVariantStyle()}>
       <style>{`
         :root {
           --dt-variant: '${variant}';

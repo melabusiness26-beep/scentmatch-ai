@@ -555,26 +555,24 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // Prüfe ?banner=test Parameter
+    // Prüfe ?banner=test Parameter (nur in Preview erlaubt)
     const params = new URLSearchParams(window.location.search);
     const bannerTest = params.has('banner') && params.get('banner') === 'test';
-    const isProduction = process.env.NEXT_PUBLIC_VERCEL_ENV === 'production';
+    const isPreview = process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview';
 
-    if (bannerTest && !isProduction) {
+    if (bannerTest && isPreview) {
       setShowGiftBanner(true);
       return;
     }
 
-    // Normales Datum-Check (nur in Production ohne ?banner=test)
-    if (isProduction) {
-      const now = new Date();
-      const zurich = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Zurich' }));
-      const month = zurich.getMonth() + 1;
-      const date = zurich.getDate();
+    // Datum IMMER prüfen (Europe/Zurich), unabhängig von Umgebung
+    const now = new Date();
+    const zurich = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Zurich' }));
+    const month = zurich.getMonth() + 1;
+    const date = zurich.getDate();
 
-      const isNovDec = (month === 11) || (month === 12 && date <= 24);
-      setShowGiftBanner(isNovDec);
-    }
+    const isNovDec = (month === 11) || (month === 12 && date <= 24);
+    setShowGiftBanner(isNovDec);
   }, []);
 
   return (

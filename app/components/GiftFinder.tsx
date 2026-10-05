@@ -47,9 +47,13 @@ export default function GiftFinder({ allPerfumes }: { allPerfumes: Perfume[] }) 
       ...(perfume.heart_notes || []),
       ...(perfume.base_notes || []),
     ];
-    const consolidated = consolidateNotes(allNotes);
-    const lowerStyleNotes = styleNotes.map((n) => n.toLowerCase());
-    return consolidated.filter((note) => lowerStyleNotes.includes(note.toLowerCase())).slice(0, 3);
+    const normalizedStyleNotes = consolidateNotes(styleNotes).map((n) => n.toLowerCase());
+    return allNotes
+      .filter((note) => {
+        const normalized = consolidateNotes([note])[0]?.toLowerCase() || '';
+        return normalizedStyleNotes.includes(normalized);
+      })
+      .slice(0, 3);
   };
 
   // Get filtered pool based on gender & budget
@@ -99,7 +103,7 @@ export default function GiftFinder({ allPerfumes }: { allPerfumes: Perfume[] }) 
 
     // Add season text only if season exists
     if (perfume.season && perfume.season !== 'Ganzjährig') {
-      const seasonWithAnd = perfume.season.replace(/\s+und\s+/g, ' und ');
+      const seasonWithAnd = perfume.season.replace(/\s*\/\s*/g, ' und ');
       fullText += `. Am schönsten im ${seasonWithAnd}.`;
     } else if (perfume.season === 'Ganzjährig') {
       fullText += '. Das ganze Jahr tragbar.';

@@ -304,7 +304,13 @@ const starterPerfumes: Perfume[] = [];
 // bei der Katalog-Abfrage automatisch matcht mit den echten Duft-Daten.
 const HIGHLIGHT_SLUGS = ['baccarat-rouge-540', 'black-opium', 'tobacco-vanille', '1-million'];
 
-export default function Home() {
+interface HomeClientProps {
+  initialCatalogCount?: number | null;
+  initialBrandCount?: number | null;
+  initialHighlights?: Perfume[];
+}
+
+export default function Home({ initialCatalogCount, initialBrandCount, initialHighlights }: HomeClientProps = {}) {
   const [step, setStep] = useState(0);
   const [family, setFamily] = useState<Record<string, number>>({ ...emptyFamily });
   const [genderPref, setGenderPref] = useState<QuizAnswers['gender']>('');
@@ -401,12 +407,16 @@ export default function Home() {
   }, [showResult, topPick?.perfume.id, topPick?.score]);
 
   // Ausgewogene Highlight-Auswahl für die Startseite (vor dem Quiz).
-  const highlights = pickHighlights(perfumes, 6);
+  // Priorität: initialHighlights (vom Server SSR) → Fallback zur Client-Berechnung.
+  const highlights = initialHighlights && initialHighlights.length > 0
+    ? initialHighlights
+    : pickHighlights(perfumes, 6);
   // Echte Katalog-Kennzahlen aus den geladenen Düften – keine erfundenen Werte.
-  const catalogCount = loaded ? perfumes.length : null;
-  const brandCount = loaded
+  // Priorität: initialCatalogCount (vom Server SSR) → Fallback zur Client-Berechnung.
+  const catalogCount = initialCatalogCount ?? (loaded ? perfumes.length : null);
+  const brandCount = initialBrandCount ?? (loaded
     ? new Set(perfumes.map((p) => p.brands?.name).filter(Boolean)).size
-    : null;
+    : null);
 
   const seasonLabel = SEASON_LABEL[currentSeason] || '';
   const seasonMatch = SEASON_MATCH[currentSeason] || [];

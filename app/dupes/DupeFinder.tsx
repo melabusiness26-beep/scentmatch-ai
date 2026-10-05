@@ -37,7 +37,7 @@ function AlternativeTile({
 }: {
   target: Perfume;
   perfume: Perfume;
-  level?: 'sehr ähnlich' | 'ähnliche Richtung' | 'gleiche Duftfamilie';
+  level?: 'sehr ähnlich' | 'ähnliche Richtung' | 'teilt einzelne Noten';
   sharedNotes?: { top: string[]; heart: string[]; base: string[] };
   editorial?: string;
 }) {
@@ -123,12 +123,12 @@ export default function DupeFinder({
   let curatedResults: { perfume: Perfume; note: string }[] = [];
   let algoResults: {
     perfume: Perfume;
-    level: 'sehr ähnlich' | 'ähnliche Richtung' | 'gleiche Duftfamilie';
+    level: 'sehr ähnlich' | 'ähnliche Richtung' | 'teilt einzelne Noten';
     sharedNotes: { top: string[]; heart: string[]; base: string[] };
   }[] = [];
   let similarFallback: {
     perfume: Perfume;
-    level: 'sehr ähnlich' | 'ähnliche Richtung' | 'gleiche Duftfamilie';
+    level: 'sehr ähnlich' | 'ähnliche Richtung' | 'teilt einzelne Noten';
     sharedNotes: { top: string[]; heart: string[]; base: string[] };
   }[] = [];
 

@@ -130,25 +130,36 @@ function noteRarityWeight(note: string, frequencies: Map<string, number>, totalP
   return isGeneric ? rarity * 0.5 : rarity;
 }
 
-// Berechnet Jaccard-Ähnlichkeit zweier Note-Arrays mit Gewichtung
+// Berechnet Ähnlichkeit mit asymmetrischer Abdeckung + Jaccard
 function computeWeightedSimilarity(
   notes1: string[] | null,
   notes2: string[] | null,
   frequencies: Map<string, number>,
   totalPerfumes: number
-): { score: number; shared: string[]; different: string[] } {
+): {
+  score: number;
+  coverage: number; // Asymmetrisch: wie viel von notes1 ist in notes2?
+  shared: string[];
+  different: string[];
+  sharedWeight: number;
+  weight1: number;
+} {
   if (!notes1) notes1 = [];
   if (!notes2) notes2 = [];
   const set1 = new Set(notes1);
   const set2 = new Set(notes2);
 
-  // Gemeinsame Noten
-  const shared: string[] = [];
+  // Berechne Gewichte
+  let weight1 = 0;
   let sharedWeight = 0;
+  const shared: string[] = [];
+
   for (const note of set1) {
+    const w = noteRarityWeight(note, frequencies, totalPerfumes);
+    weight1 += w;
     if (set2.has(note)) {
       shared.push(note);
-      sharedWeight += noteRarityWeight(note, frequencies, totalPerfumes);
+      sharedWeight += w;
     }
   }
 
@@ -161,17 +172,24 @@ function computeWeightedSimilarity(
     if (!set1.has(note)) different.push(note);
   }
 
-  // Jaccard: gemeinsam / (insgesamt ohne Duplikate)
+  // Asymmetrische Abdeckung: wie viel von notes1 hat notes2?
+  const coverage = weight1 > 0 ? (sharedWeight / weight1) : 0;
+
+  // Jaccard für Symmetrie (bestraft lange Listen weniger wenn hohe coverage)
   const allNotes = new Set([...set1, ...set2]);
-  if (allNotes.size === 0) return { score: 0, shared, different };
+  if (allNotes.size === 0) return { score: 0, coverage: 0, shared, different, sharedWeight: 0, weight1: 0 };
 
   let allWeight = 0;
   for (const note of allNotes) {
     allWeight += noteRarityWeight(note, frequencies, totalPerfumes);
   }
 
-  const similarity = allWeight > 0 ? (sharedWeight / allWeight) : 0;
-  return { score: similarity, shared, different };
+  const jaccard = allWeight > 0 ? (sharedWeight / allWeight) : 0;
+
+  // Kombiniere Coverage (dominant) mit Jaccard (Bias gegen lange Listen)
+  const score = coverage * 0.65 + jaccard * 0.35;
+
+  return { score, coverage, shared, different, sharedWeight, weight1 };
 }
 
 // Hauptfunktion: Berechne Ähnlichkeit zwischen zwei Düften
@@ -181,7 +199,7 @@ export function computeSimilarity(
   allPerfumes: Perfume[],
   frequencies?: Map<string, number>
 ): {
-  level: 'sehr ähnlich' | 'ähnliche Richtung' | 'gleiche Duftfamilie' | null;
+  level: 'sehr ähnlich' | 'ähnliche Richtung' | 'teilt einzelne Noten' | null;
   score: number;
   sharedNotes: { top: string[]; heart: string[]; base: string[] };
   differentNotes: { top: string[]; heart: string[]; base: string[] };
@@ -207,10 +225,35 @@ export function computeSimilarity(
   const heartSim = computeWeightedSimilarity(heartA, heartT, freq, totalPerfumes);
   const baseSim = computeWeightedSimilarity(baseA, baseT, freq, totalPerfumes);
 
-  // Gewichtet: Base 3x, Heart 2x, Top 1x
-  const baseScore = baseSim.score * 40; // 40 Punkte max
-  const heartScore = heartSim.score * 35; // 35 Punkte max
-  const topScore = topSim.score * 20; // 20 Punkte max
+  // Zähle Layer mit Übereinstimmungen
+  const layersWithMatch = [topSim.shared.length > 0, heartSim.shared.length > 0, baseSim.shared.length > 0].filter(Boolean).length;
+
+  // Identifiziere die 2-3 seltenen (wertvollsten) Noten des Anchors
+  const allAnchorNotes = [...topA, ...heartA, ...baseA];
+  const rareAnchorNotes = allAnchorNotes
+    .sort((a, b) => {
+      const weightA = noteRarityWeight(a, freq, totalPerfumes);
+      const weightB = noteRarityWeight(b, freq, totalPerfumes);
+      return weightB - weightA;
+    })
+    .slice(0, 3);
+
+  const sharesRareNote = rareAnchorNotes.some(note => {
+    const allTargetNotes = new Set([...topT, ...heartT, ...baseT]);
+    return allTargetNotes.has(note);
+  });
+
+  // Gewichte Coverage statt Score für bessere Unterscheidung
+  const baseCoverage = baseSim.coverage;
+  const heartCoverage = heartSim.coverage;
+  const topCoverage = topSim.coverage;
+  const minCoverage = Math.min(baseCoverage, heartCoverage, topCoverage);
+  const avgCoverage = (baseCoverage * 3 + heartCoverage * 2 + topCoverage * 1) / 6;
+
+  // Gewichtet: Base 3x, Heart 2x, Top 1x mit Bonus für coverage
+  const baseScore = baseSim.score * 40;
+  const heartScore = heartSim.score * 35;
+  const topScore = topSim.score * 20;
 
   let score = baseScore + heartScore + topScore; // max 95
 
@@ -219,33 +262,48 @@ export function computeSimilarity(
     score += 5;
   }
 
-  score = Math.min(99, score); // Nie 100%
+  score = Math.min(99, score);
 
-  // Bestimme Level
-  let level: 'sehr ähnlich' | 'ähnliche Richtung' | 'gleiche Duftfamilie' | null = null;
-  if (score >= 45) level = 'sehr ähnlich';
-  else if (score >= 30) level = 'ähnliche Richtung';
-  else if (score >= 15) level = 'gleiche Duftfamilie';
+  // Bestimme Level: Asymmetrische, strengere Kriterien
+  let level: 'sehr ähnlich' | 'ähnliche Richtung' | 'teilt einzelne Noten' | null = null;
+
+  // "Sehr ähnlich": Hohe Coverage + mindestens 2 Layer + mindestens eine seltene Note
+  if (avgCoverage >= 0.65 && layersWithMatch >= 2 && sharesRareNote) {
+    level = 'sehr ähnlich';
+  }
+  // "Ähnliche Richtung": Moderate Coverage oder gute Jaccard-Ähnlichkeit
+  else if (avgCoverage >= 0.45 || (layersWithMatch >= 2 && Math.max(baseSim.score, heartSim.score) >= 0.35)) {
+    level = 'ähnliche Richtung';
+  }
+  // "Teilt einzelne Noten": Mindestens eine geteilte Note in einer Layer
+  else if (topSim.shared.length > 0 || heartSim.shared.length > 0 || baseSim.shared.length > 0) {
+    level = 'teilt einzelne Noten';
+  }
 
   return {
     level,
     score: Math.round(score),
     sharedNotes: {
-      top: topSim.shared,
-      heart: heartSim.shared,
-      base: baseSim.shared,
+      top: topSim.shared.map(capitalizeNote),
+      heart: heartSim.shared.map(capitalizeNote),
+      base: baseSim.shared.map(capitalizeNote),
     },
     differentNotes: {
-      top: topSim.different,
-      heart: heartSim.different,
-      base: baseSim.different,
+      top: topSim.different.map(capitalizeNote),
+      heart: heartSim.different.map(capitalizeNote),
+      base: baseSim.different.map(capitalizeNote),
     },
   };
 }
 
+// Kapitalisiere Noten für Anzeige (z.B. "Lavendel" statt "lavendel")
+function capitalizeNote(note: string): string {
+  return note.charAt(0).toUpperCase() + note.slice(1);
+}
+
 export type SimilarPerfumeV2 = {
   perfume: Perfume;
-  level: 'sehr ähnlich' | 'ähnliche Richtung' | 'gleiche Duftfamilie';
+  level: 'sehr ähnlich' | 'ähnliche Richtung' | 'teilt einzelne Noten';
   score: number;
   sharedNotes: { top: string[]; heart: string[]; base: string[] };
   differentNotes: { top: string[]; heart: string[]; base: string[] };
@@ -264,7 +322,7 @@ export function findSimilarPerfumesV2(target: Perfume, pool: Perfume[], limit = 
     .filter((s): s is SimilarPerfumeV2 => s.level !== null) // Nur Treffer anzeigen
     .sort((a, b) => {
       // Sortiere nach Level, dann nach Score
-      const levelOrder = { 'sehr ähnlich': 3, 'ähnliche Richtung': 2, 'gleiche Duftfamilie': 1 };
+      const levelOrder = { 'sehr ähnlich': 3, 'ähnliche Richtung': 2, 'teilt einzelne Noten': 1 };
       const levelDiff = levelOrder[b.level] - levelOrder[a.level];
       if (levelDiff !== 0) return levelDiff;
       return b.score - a.score;
@@ -288,7 +346,7 @@ export function findCheaperAlternativesV2(target: Perfume, pool: Perfume[], limi
     })
     .filter((s): s is SimilarPerfumeV2 => s.level === 'sehr ähnlich' || s.level === 'ähnliche Richtung') // Nur "ähnliche Richtung" oder besser
     .sort((a, b) => {
-      const levelOrder = { 'sehr ähnlich': 3, 'ähnliche Richtung': 2, 'gleiche Duftfamilie': 1 };
+      const levelOrder = { 'sehr ähnlich': 3, 'ähnliche Richtung': 2, 'teilt einzelne Noten': 1 };
       const levelDiff = levelOrder[b.level] - levelOrder[a.level];
       if (levelDiff !== 0) return levelDiff;
       return b.score - a.score;

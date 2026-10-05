@@ -54,15 +54,21 @@ export default function DesignTestVariant({
       <style>{`
         :root {
           --dt-variant: '${variant}';
+          ${variant === 'b' ? `--dt-bg: #ffffff !important;` : ''}
         }
         ${variant === 'b' ? `
-          body, html {
+          html, body {
             background-color: #ffffff !important;
             color: #333333 !important;
           }
-          .design-test {
+          .design-test,
+          .design-test-b {
             background-color: #ffffff !important;
             color: #333333 !important;
+            background: #ffffff !important;
+          }
+          .design-test-b * {
+            background-color: inherit;
           }
         ` : ''}
       `}</style>

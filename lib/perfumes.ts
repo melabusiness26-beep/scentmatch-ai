@@ -153,6 +153,8 @@ function dedupeKey(p: Perfume): string {
 export function dedupePerfumes(perfumes: Perfume[]): Perfume[] {
   const seen = new Map<string, number>(); // key -> Index im Ergebnis
   const out: Perfume[] = [];
+  const removed: { perfume: Perfume; key: string; keptDuplicateOf: Perfume }[] = [];
+
   for (const p of perfumes) {
     const key = dedupeKey(p);
     const existingIdx = seen.get(key);
@@ -164,8 +166,28 @@ export function dedupePerfumes(perfumes: Perfume[]): Perfume[] {
     // Duplikat gefunden: nur ersetzen, wenn der neue Eintrag einen slug hat und
     // der bereits behaltene keinen – so bleibt die Detailseite verlinkbar.
     const kept = out[existingIdx];
-    if (!kept.slug && p.slug) out[existingIdx] = p;
+    if (!kept.slug && p.slug) {
+      removed.push({ perfume: kept, key, keptDuplicateOf: p });
+      out[existingIdx] = p;
+    } else {
+      removed.push({ perfume: p, key, keptDuplicateOf: kept });
+    }
   }
+
+  // Debug: Log removed duplicates
+  if (removed.length > 0) {
+    console.log(`[dedupePerfumes] Removed ${removed.length} duplicates out of ${perfumes.length} perfumes`);
+    removed.slice(0, 10).forEach((r, i) => {
+      console.log(
+        `  [${i}] Removed: "${r.perfume.perfume_name}" (${r.perfume.brands?.name}, ${r.perfume.gender}) ` +
+        `→ kept as duplicate of: "${r.keptDuplicateOf.perfume_name}" (key: ${r.key})`
+      );
+    });
+    if (removed.length > 10) {
+      console.log(`  ... and ${removed.length - 10} more`);
+    }
+  }
+
   return out;
 }
 
@@ -177,8 +199,14 @@ export async function getPerfumes(limit = 60): Promise<Perfume[]> {
     .select(PERFUME_FIELDS)
     .order('scentmatch_score', { ascending: false })
     .limit(limit);
-  if (error) return [];
-  return dedupePerfumes((data as unknown as Perfume[]) || []);
+  if (error) {
+    console.error('[getPerfumes] Supabase error:', error);
+    return [];
+  }
+  const rawCount = (data as unknown as Perfume[])?.length || 0;
+  const result = dedupePerfumes((data as unknown as Perfume[]) || []);
+  console.log(`[getPerfumes] Limit: ${limit}, Raw from DB: ${rawCount}, After dedupe: ${result.length}`);
+  return result;
 }
 
 // Anzahl der Düfte im Katalog – für dynamische Texte wie „über X Düfte".

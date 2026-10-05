@@ -8,22 +8,22 @@ interface MatchResult {
 }
 
 const NOTE_SYNONYMS: Record<string, string[]> = {
-  bergamotte: ['bergamot', 'zitrone', 'citrus'],
-  vanille: ['vanilla', 'vanille'],
-  moschus: ['musk', 'muskat', 'moschus'],
-  holz: ['holzy', 'woody', 'zedernholz', 'sandelholz', 'patchouli'],
-  blume: ['blüte', 'floral', 'rose', 'jasmin', 'lilie'],
-  kakao: ['kakao', 'schokolade', 'chocolate', 'kakao'],
-  amber: ['ambra', 'amber', 'ambra'],
-  pfeffer: ['pfeffer', 'pepper', 'gewürz', 'spice'],
-  sandelholz: ['sandelholz', 'sandalwood'],
-  oud: ['oud', 'ouds'],
-  zitrus: ['zitrus', 'citrus', 'lemon', 'orange', 'grapefruit'],
-  frisch: ['frisch', 'fresh', 'crisp', 'clean'],
-  süss: ['süss', 'sweet', 'süsslich', 'gourmand'],
-  warm: ['warm', 'wärmend', 'cozy', 'gemütlich'],
-  würzig: ['würzig', 'spicy', 'würze'],
-  grün: ['grün', 'green', 'grasig', 'herbal'],
+  bergamotte: ['bergamot', 'zitrone', 'citrus', 'frisch', 'fresh', 'clean', 'crisp'],
+  vanille: ['vanilla', 'vanille', 'süss', 'sweet'],
+  moschus: ['musk', 'muskat', 'moschus', 'warm'],
+  holz: ['holzy', 'woody', 'zedernholz', 'sandelholz', 'patchouli', 'würzig'],
+  blume: ['blüte', 'floral', 'rose', 'jasmin', 'lilie', 'elegant'],
+  kakao: ['kakao', 'schokolade', 'chocolate', 'süss', 'sweet', 'gourmand'],
+  amber: ['ambra', 'amber', 'ambra', 'warm', 'würzig'],
+  pfeffer: ['pfeffer', 'pepper', 'gewürz', 'spice', 'würzig'],
+  sandelholz: ['sandelholz', 'sandalwood', 'warm', 'würzig', 'holz', 'woody'],
+  oud: ['oud', 'ouds', 'warm', 'würzig', 'holz'],
+  zitrus: ['zitrus', 'citrus', 'lemon', 'orange', 'grapefruit', 'limette', 'frisch', 'fresh', 'clean', 'crisp'],
+  frisch: ['frisch', 'fresh', 'crisp', 'clean', 'zitrus', 'citrus', 'bergamotte', 'limette'],
+  süss: ['süss', 'sweet', 'süsslich', 'gourmand', 'vanille', 'kakao', 'chocolate'],
+  warm: ['warm', 'wärmend', 'cozy', 'gemütlich', 'moschus', 'holz', 'amber'],
+  würzig: ['würzig', 'spicy', 'würze', 'pfeffer', 'holz', 'warm'],
+  grün: ['grün', 'green', 'grasig', 'herbal', 'frisch', 'crisp'],
 };
 
 function normalizeText(text: string): string {
@@ -41,16 +41,44 @@ function fuzzyMatch(text: string, keyword: string): boolean {
   const normalized = normalizeText(text);
   const normalizedKw = normalizeText(keyword);
 
+  if (normalized === normalizedKw) return true;
   if (normalized.includes(normalizedKw)) return true;
   if (normalizedKw.includes(normalized)) return true;
 
-  // Levenshtein-ähnlich: Wenn mindestens 70% der Zeichen übereinstimmen
-  const common = Math.min(normalized.length, normalizedKw.length);
-  let matches = 0;
-  for (let i = 0; i < common; i++) {
-    if (normalized[i] === normalizedKw[i]) matches++;
+  // Echte Levenshtein-Distanz für Näherungen
+  const maxLen = Math.max(normalized.length, normalizedKw.length);
+  const distance = levenshteinDistance(normalized, normalizedKw);
+  const similarity = 1 - distance / maxLen;
+
+  return similarity > 0.65;
+}
+
+function levenshteinDistance(a: string, b: string): number {
+  const matrix: number[][] = [];
+
+  for (let i = 0; i <= b.length; i++) {
+    matrix[i] = [i];
   }
-  return matches / Math.max(normalized.length, normalizedKw.length) > 0.7;
+
+  for (let j = 0; j <= a.length; j++) {
+    matrix[0][j] = j;
+  }
+
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      if (b.charAt(i - 1) === a.charAt(j - 1)) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j - 1] + 1,
+          matrix[i][j - 1] + 1,
+          matrix[i - 1][j] + 1
+        );
+      }
+    }
+  }
+
+  return matrix[b.length][a.length];
 }
 
 function extractKeywords(description: string): string[] {

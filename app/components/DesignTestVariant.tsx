@@ -55,6 +55,16 @@ export default function DesignTestVariant({
         :root {
           --dt-variant: '${variant}';
         }
+        ${variant === 'b' ? `
+          body, html {
+            background-color: #ffffff !important;
+            color: #333333 !important;
+          }
+          .design-test {
+            background-color: #ffffff !important;
+            color: #333333 !important;
+          }
+        ` : ''}
       `}</style>
 
       <SiteHeader />

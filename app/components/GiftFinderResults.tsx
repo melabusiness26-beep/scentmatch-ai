@@ -22,11 +22,13 @@ export default function GiftFinderResults({
     return (
       <div className="gift-finder-results">
         <div className="results-empty">
-          <h2>Keine Treffer gefunden</h2>
-          <p>Leider gibt es in dieser Kategorie noch keine Düfte. Versuch eine andere Kombination!</p>
-          <button className="btn-primary" onClick={onReset}>
-            ← Neue Suche
-          </button>
+          <h2>Keine passenden Düfte gefunden</h2>
+          <p>Für diese Kombination haben wir leider keinen passenden Duft im Katalog. Versuch, ein anderes Budget oder einen anderen Stil zu wählen.</p>
+          <div className="results-footer">
+            <button className="btn-primary" onClick={onReset}>
+              ← Andere Kombination probieren
+            </button>
+          </div>
         </div>
       </div>
     );

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default async function GiftFinderPage() {
-  const perfumes = await getPerfumes();
+  const perfumes = await getPerfumes(1000); // Load all perfumes (not just 60) for complete Gift Finder results
 
   return (
     <main>

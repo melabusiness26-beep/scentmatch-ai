@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import HomeClient from './HomeClient';
-import { getPerfumes, getPerfumeCount, getBrandCount, debugPerfumeCount } from '@/lib/perfumes';
+import { getPerfumes, getPerfumeCount, getBrandCount } from '@/lib/perfumes';
 import { PerfumeTile } from '@/app/PerfumeTile';
 
 export const metadata: Metadata = {
@@ -17,9 +17,6 @@ export default async function Page() {
   let highlightPerfumes = [];
 
   try {
-    // Debug: Zeige wo Düfte verloren gehen.
-    await debugPerfumeCount(2000);
-
     // Höchste Priorität: echte Anzahlen direkt aus der Datenbank.
     const [count, brands] = await Promise.all([getPerfumeCount(), getBrandCount()]);
     catalogCount = count;

@@ -169,50 +169,6 @@ export function dedupePerfumes(perfumes: Perfume[]): Perfume[] {
   return out;
 }
 
-// Debuggen: Zeige wo Düfte verloren gehen (nur für Server-Console-Logging).
-export async function debugPerfumeCount(limit = 2000): Promise<void> {
-  if (!isSupabaseConfigured) {
-    console.log('[DEBUG] Supabase nicht konfiguriert');
-    return;
-  }
-
-  // 1. Echte Anzahl aller Düfte in perfumes-Tabelle
-  const { count: totalCount } = await supabase
-    .from('perfumes')
-    .select('id', { count: 'exact', head: true });
-  console.log(`[DEBUG] Total perfumes in DB: ${totalCount}`);
-
-  // 2. Anzahl ohne Filter, nur IDs (kein Join)
-  const { data: idsOnly } = await supabase
-    .from('perfumes')
-    .select('id')
-    .order('scentmatch_score', { ascending: false })
-    .limit(limit);
-  console.log(`[DEBUG] IDs loaded (no join): ${idsOnly?.length || 0}`);
-
-  // 3. Mit PERFUME_FIELDS (mit brands-Join)
-  const { data: withBrands, error: brandError } = await supabase
-    .from('perfumes')
-    .select(PERFUME_FIELDS)
-    .order('scentmatch_score', { ascending: false })
-    .limit(limit);
-  console.log(`[DEBUG] With brands JOIN: ${withBrands?.length || 0}`, brandError ? `(Error: ${brandError.message})` : '');
-
-  // 4. Nach Dedupe
-  const afterDedupe = dedupePerfumes((withBrands as unknown as Perfume[]) || []);
-  console.log(`[DEBUG] After dedupePerfumes(): ${afterDedupe.length}`);
-
-  // 5. Zeige ein paar Beispiele
-  if (afterDedupe.length > 0) {
-    console.log('[DEBUG] Sample perfumes (first 3):');
-    afterDedupe.slice(0, 3).forEach((p, i) => {
-      console.log(
-        `  [${i}] ${p.perfume_name} (${p.brands?.name || 'NO BRAND'}) - slug: ${p.slug || 'NO SLUG'}`
-      );
-    });
-  }
-}
-
 // Liste der Düfte, nach Auressa-Score sortiert (beste zuerst).
 export async function getPerfumes(limit = 60): Promise<Perfume[]> {
   if (!isSupabaseConfigured) return [];
@@ -221,13 +177,8 @@ export async function getPerfumes(limit = 60): Promise<Perfume[]> {
     .select(PERFUME_FIELDS)
     .order('scentmatch_score', { ascending: false })
     .limit(limit);
-  if (error) {
-    console.error('[getPerfumes] Supabase error:', error);
-    return [];
-  }
-  const result = dedupePerfumes((data as unknown as Perfume[]) || []);
-  console.log(`[getPerfumes] Loaded ${result.length} after dedupe (limit was ${limit})`);
-  return result;
+  if (error) return [];
+  return dedupePerfumes((data as unknown as Perfume[]) || []);
 }
 
 // Anzahl der Düfte im Katalog – für dynamische Texte wie „über X Düfte".

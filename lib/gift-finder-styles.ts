@@ -43,7 +43,7 @@ export const GIFT_FINDER_STYLES: GiftStyle[] = [
   {
     id: 'elegant',
     label: 'Elegant und klassisch',
-    description: 'Zeitlos, gepflegt, feiner – für anspruchsvolle, elegante Personen.',
+    description: 'Zeitlos, gepflegt, fein – für anspruchsvolle, elegante Personen.',
     notes: [
       'Iris',
       'Veilchen',

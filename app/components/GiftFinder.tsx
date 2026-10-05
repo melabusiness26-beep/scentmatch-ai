@@ -84,17 +84,30 @@ export default function GiftFinder({ allPerfumes }: { allPerfumes: Perfume[] }) 
     };
     const family = familyLabel[perfume.fragrance_family] || perfume.fragrance_family;
 
-    // Use style notes if provided
-    let notesText = '';
+    // Build notes text (max 3 notes with "und" before last)
+    let fullText = family;
     if (styleNotes && styleNotes.length > 0) {
-      notesText = `mit ${styleNotes.join(', ')}`;
-    } else {
-      notesText = 'mit charaktervollen Noten';
+      const notesToShow = styleNotes.slice(0, 3);
+      if (notesToShow.length === 1) {
+        fullText += ` mit ${notesToShow[0]}`;
+      } else if (notesToShow.length === 2) {
+        fullText += ` mit ${notesToShow[0]} und ${notesToShow[1]}`;
+      } else {
+        fullText += ` mit ${notesToShow.slice(0, -1).join(', ')} und ${notesToShow[notesToShow.length - 1]}`;
+      }
     }
 
-    const season = perfume.season || 'Ganzjährig';
-    const seasonText = season === 'Ganzjährig' ? 'Das ganze Jahr tragbar.' : `Am schönsten im ${season}.`;
-    return `${family} ${notesText}. ${seasonText}`;
+    // Add season text only if season exists
+    if (perfume.season && perfume.season !== 'Ganzjährig') {
+      const seasonWithAnd = perfume.season.replace(/\s+und\s+/g, ' und ');
+      fullText += `. Am schönsten im ${seasonWithAnd}.`;
+    } else if (perfume.season === 'Ganzjährig') {
+      fullText += '. Das ganze Jahr tragbar.';
+    } else {
+      fullText += '.';
+    }
+
+    return fullText;
   };
 
   const handleNext = (nextState: Partial<QuizState>) => {

@@ -452,7 +452,7 @@ export const guides: Guide[] = [
       },
       {
         body: [
-          'Unsicher, was die Person mag? Verschenk einen Gutschein oder mach unser Duft-Quiz gemeinsam – so triffst du den Geschmack viel sicherer.'
+          'Unsicher, was die Person mag? Nutze unseren Geschenk-Finder: Er führt dich in 4 Fragen zu perfekten Empfehlungen. Oder verschenk einen Gutschein oder macht das Duft-Quiz gemeinsam – so triffst du den Geschmack viel sicherer.'
         ]
       }
     ]

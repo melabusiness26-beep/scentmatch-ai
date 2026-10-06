@@ -2,7 +2,7 @@ export type DetektivAnswers = {
   location: 'person' | 'store' | 'holiday' | 'hotel' | 'online' | 'unknown' | null;
   country: string;
   gender: 'woman' | 'man' | 'unisex' | 'unknown' | null;
-  age: 'under25' | '25-40' | 'over40' | 'unknown' | null;
+  age: 'under25' | 'age_20_35' | 'age_35_50' | 'over50' | 'unknown' | null;
   timing: '<1year' | '1-5years' | '>5years' | 'unknown' | null;
   feeling: 'fresh' | 'warm' | 'woody' | 'floral' | 'oriental' | 'spicy' | null;
   strength: 'subtle' | 'medium' | 'intense' | 'unknown' | null;

@@ -70,11 +70,11 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
             minHeight: '140px',
             padding: '20px',
             borderRadius: '12px',
-            border: '1px solid rgba(212, 175, 55, 0.3)',
+            border: '1px solid #e8dcc8',
             fontSize: '16px',
             fontFamily: 'inherit',
-            backgroundColor: 'var(--dt-bg, #2a1d12)',
-            color: 'var(--dt-text, #faf7f2)',
+            backgroundColor: '#ffffff',
+            color: '#2a1d12',
             resize: 'vertical',
             boxSizing: 'border-box',
             marginBottom: '1.5rem',
@@ -110,7 +110,7 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
             <p
               style={{
                 textAlign: 'center',
-                color: 'var(--dt-text-secondary, #d4cfc3)',
+                color: '#6b5a4e',
                 fontSize: '16px',
                 padding: '2rem',
               }}
@@ -123,7 +123,7 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                 style={{
                   fontSize: '20px',
                   marginBottom: '2rem',
-                  color: 'var(--dt-text, #faf7f2)',
+                  color: '#2a1d12',
                   fontWeight: 600,
                 }}
               >
@@ -137,10 +137,10 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                     style={{
                       display: 'flex',
                       flexDirection: 'column',
-                      padding: '1rem',
+                      padding: '1.25rem',
                       borderRadius: '16px',
-                      border: '0.5px solid rgba(255, 255, 255, 0.08)',
-                      backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                      border: '0.5px solid #e8dcc8',
+                      backgroundColor: '#ffffff',
                       gap: '0.75rem',
                     }}
                   >
@@ -190,10 +190,10 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                         {/* Perfume Name */}
                         <h3
                           style={{
-                            fontSize: 'clamp(16px, 4vw, 22px)',
+                            fontSize: '18px',
                             fontFamily: "'Playfair Display', serif",
                             fontWeight: 700,
-                            color: 'var(--dt-text, #faf7f2)',
+                            color: '#2a1d12',
                             marginBottom: '0.25rem',
                             lineHeight: 1.2,
                             display: '-webkit-box',
@@ -209,7 +209,7 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                         <div
                           style={{
                             fontSize: '12px',
-                            color: 'var(--dt-text-secondary, #d4cfc3)',
+                            color: '#6b5a4e',
                             marginBottom: '0.5rem',
                             display: 'flex',
                             justifyContent: 'space-between',
@@ -226,7 +226,7 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                             {perfume.gender}
                           </span>
                           {perfume.price_chf && (
-                            <span style={{ fontWeight: 700, color: 'var(--dt-text, #faf7f2)' }}>
+                            <span style={{ fontWeight: 600, color: '#2a1d12', fontSize: '16px' }}>
                               CHF {perfume.price_chf}
                             </span>
                           )}
@@ -238,8 +238,8 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                             display: 'inline-block',
                             fontSize: '11px',
                             fontWeight: 600,
-                            color: score > 85 ? '#4ade80' : score >= 70 ? '#fbbf24' : '#94a3b8',
-                            backgroundColor: score > 85 ? 'rgba(74, 222, 128, 0.1)' : score >= 70 ? 'rgba(251, 191, 36, 0.1)' : 'rgba(148, 163, 184, 0.1)',
+                            color: '#b08b4f',
+                            backgroundColor: 'rgba(176, 139, 79, 0.08)',
                             padding: '4px 10px',
                             borderRadius: '6px',
                           }}
@@ -254,7 +254,7 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                       <p
                         style={{
                           fontSize: '12px',
-                          color: 'var(--dt-text-secondary, #d4cfc3)',
+                          color: '#888888',
                           margin: '0',
                         }}
                       >
@@ -285,7 +285,7 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                           boxSizing: 'border-box',
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = 'rgba(176, 139, 79, 0.15)';
+                          e.currentTarget.style.backgroundColor = 'rgba(176, 139, 79, 0.05)';
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.backgroundColor = 'transparent';
@@ -303,7 +303,7 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                           borderRadius: '6px',
                           border: 'none',
                           backgroundColor: 'transparent',
-                          color: 'var(--dt-text-secondary, #d4cfc3)',
+                          color: '#6b5a4e',
                           fontSize: '13px',
                           fontWeight: 600,
                           textDecoration: 'none',
@@ -315,10 +315,10 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                           boxSizing: 'border-box',
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.color = 'var(--dt-text, #faf7f2)';
+                          e.currentTarget.style.backgroundColor = 'rgba(107, 90, 78, 0.05)';
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.color = 'var(--dt-text-secondary, #d4cfc3)';
+                          e.currentTarget.style.backgroundColor = 'transparent';
                         }}
                       >
                         Produkt suchen
@@ -335,16 +335,16 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                   style={{
                     padding: '12px 32px',
                     borderRadius: '8px',
-                    border: '1px solid rgba(212, 175, 55, 0.3)',
+                    border: '1px solid #e8dcc8',
                     backgroundColor: 'transparent',
-                    color: 'var(--dt-text, #faf7f2)',
+                    color: '#2a1d12',
                     fontSize: '14px',
                     fontWeight: 600,
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
+                    e.currentTarget.style.backgroundColor: 'rgba(232, 220, 200, 0.1)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = 'transparent';
@@ -358,22 +358,22 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
             <div
               style={{
                 padding: '2rem',
-                backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                backgroundColor: '#f5f3f0',
                 borderRadius: '12px',
-                border: '0.5px solid rgba(255, 255, 255, 0.08)',
+                border: '0.5px solid #e8dcc8',
                 textAlign: 'center',
               }}
             >
               <p
                 style={{
-                  color: 'var(--dt-text-secondary, #d4cfc3)',
+                  color: '#6b5a4e',
                   marginBottom: '12px',
                   fontSize: '15px',
                 }}
               >
                 Keine passenden Düfte gefunden – versuch eine andere Beschreibung.
               </p>
-              <p style={{ fontSize: '13px', color: 'var(--dt-text-secondary, #d4cfc3)' }}>
+              <p style={{ fontSize: '13px', color: '#6b5a4e' }}>
                 Tipp: Probier konkrete Duftnoten wie „Vanille", „Zitrus" oder „Sandelholz".
               </p>
               <button
@@ -382,9 +382,9 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                   marginTop: '1rem',
                   padding: '10px 24px',
                   borderRadius: '6px',
-                  border: '1px solid rgba(212, 175, 55, 0.3)',
+                  border: '1px solid #e8dcc8',
                   backgroundColor: 'transparent',
-                  color: 'var(--dt-text, #faf7f2)',
+                  color: '#2a1d12',
                   fontSize: '13px',
                   fontWeight: 600,
                   cursor: 'pointer',

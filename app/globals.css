@@ -185,6 +185,9 @@ a.logo { text-decoration:none; color:inherit; }
 .top-pick h3 { margin:4px 0 14px; color:var(--brown); }
 .quiz-progress { height:6px; margin:6px 0 18px; }
 .quiz .eyebrow { margin-bottom: 18px; }
+
+/* Duft-Detektiv Progress Bar – explizit Gold */
+.duft-detektiv-progress-bar { background: #b08b4f !important; }
 .footer-kicker { font-family: var(--font-sans), Arial, sans-serif; text-transform: uppercase; letter-spacing: .26em; font-size: 11px; font-weight: 600; color: var(--gold); margin: 10px 0 4px; }
 .quiz-hint { margin:-6px 0 14px; font-style:italic; }
 .quiz-back { margin-top:14px; background:none; border:0; color:var(--brown); cursor:pointer; font-family:var(--font-sans), Arial, sans-serif; font-size:14px; padding:6px 0; }
@@ -552,3 +555,23 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 .faq-item p { color: var(--text); margin: 0; line-height: 1.6; font-size: 14px; }
 .faq-item a { color: var(--gold); text-decoration: none; }
 .faq-item a:hover { text-decoration: underline; }
+
+/* Duft-Detektiv: Meine Düfte Button */
+.duft-detektiv-button {
+  background-color: #b08b4f !important;
+  color: #2a1d12 !important;
+  border: none !important;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  display: block;
+}
+
+.duft-detektiv-button:hover {
+  background-color: #c99a5b !important;
+}

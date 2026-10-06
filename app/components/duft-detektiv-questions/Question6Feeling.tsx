@@ -34,7 +34,7 @@ export default function Question6Feeling({ answers, handleAnswer }: QuestionProp
         {options.map(option => (
           <button
             key={option.value}
-            onClick={() => handleAnswer('feeling', option.value)}
+            onClick={() => handleAnswer('feeling', option.value === 'unknown' ? null : option.value)}
             style={{
               padding: '1.25rem 1.5rem',
               borderRadius: '16px',

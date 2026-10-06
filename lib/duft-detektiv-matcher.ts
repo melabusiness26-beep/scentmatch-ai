@@ -157,9 +157,11 @@ export function matchPerfumesDetektiv(
         reasons.push('Unisex');
       }
     } else {
-      // Fallback: if no gender specified, give all Unisex a base score
+      // Fallback: if no gender specified, give all perfumes a base score
       if (perfume.gender === 'Unisex') {
-        score += 5;
+        score += 10; // increased from 5
+      } else {
+        score += 2; // give Women/Men perfumes minimal score too
       }
     }
 

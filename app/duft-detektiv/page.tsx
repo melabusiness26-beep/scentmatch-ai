@@ -13,9 +13,16 @@ export default async function DuftDetektivPage() {
 
   try {
     perfumes = await getPerfumes(2000);
+    console.log('[DuftDetektiv Page] Loaded perfumes:', perfumes.length);
   } catch (error) {
     console.error('[DuftDetektiv Page] Failed to load perfumes:', error);
   }
+
+  // Debug: Check if Supabase is configured
+  console.log('[DuftDetektiv Page] Env vars available:', {
+    supabaseUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
+    supabaseKey: !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  });
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>

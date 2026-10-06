@@ -155,6 +155,24 @@ export default function DuftDetektiv({ allPerfumes }: DuftDetektivProps) {
 
   return (
     <div>
+      {/* Debug Banner if no perfumes */}
+      {allPerfumes.length === 0 && (
+        <div style={{
+          backgroundColor: '#ffebee',
+          border: '1px solid #ef5350',
+          borderRadius: '8px',
+          padding: '1rem',
+          marginBottom: '2rem',
+          color: '#d32f2f',
+          fontSize: '14px',
+        }}>
+          ⚠️ <strong>Fehler:</strong> Die Duffdatenbank konnte nicht geladen werden. Bitte überprüfe deine Internetverbindung oder versuche es später erneut.
+          <div style={{ marginTop: '0.5rem', fontSize: '12px', opacity: 0.8 }}>
+            Debug: {allPerfumes.length} Düfte verfügbar
+          </div>
+        </div>
+      )}
+
       {/* Thin Progress Bar at Top */}
       <div style={{
         position: 'sticky',

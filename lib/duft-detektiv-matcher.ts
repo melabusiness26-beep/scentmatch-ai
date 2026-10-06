@@ -125,6 +125,7 @@ export function matchPerfumesDetektiv(
   answers: DetektivAnswers,
   perfumes: Perfume[]
 ): MatchResult[] {
+  console.log('[Duft-Detektiv] Matching with answers:', answers);
   const targetFamilies = answers.feeling ? getFamilyFromFeeling(answers.feeling) : [];
   const results: MatchResult[] = [];
 
@@ -146,6 +147,11 @@ export function matchPerfumesDetektiv(
         score += 15;
         reasons.push('Unisex');
       }
+    } else {
+      // Fallback: if no gender specified, give all Unisex a base score
+      if (perfume.gender === 'Unisex') {
+        score += 5;
+      }
     }
 
     // Family (25%)
@@ -154,6 +160,9 @@ export function matchPerfumesDetektiv(
         score += 25;
         reasons.push(perfume.fragrance_family.charAt(0).toUpperCase() + perfume.fragrance_family.slice(1));
       }
+    } else {
+      // Fallback: if no feeling specified, give base score for any perfume
+      if (!answers.feeling) score += 3;
     }
 
     // Occasion (15%)
@@ -193,5 +202,6 @@ export function matchPerfumesDetektiv(
     }
   }
 
+  console.log(`[Duft-Detektiv] Found ${results.length} matching perfumes`);
   return results.sort((a, b) => b.score - a.score).slice(0, 8);
 }

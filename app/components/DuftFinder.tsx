@@ -344,7 +344,7 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                     transition: 'all 0.2s ease',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor: 'rgba(232, 220, 200, 0.1)';
+                    e.currentTarget.style.backgroundColor = 'rgba(232, 220, 200, 0.1)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = 'transparent';

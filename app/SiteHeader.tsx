@@ -38,6 +38,7 @@ export default function SiteHeader() {
           <Link href="/duefte" onClick={close}>Düfte</Link>
           <Link href="/dupes" onClick={close}>Dupe-Finder</Link>
           <Link href="/duft-finder" onClick={close}>Duft-Finder</Link>
+          <Link href="/duft-detektiv" onClick={close}>Duft-Detektiv</Link>
           <Link href="/duftnoten" onClick={close}>Duftnoten</Link>
           <Link href="/geschenk-finder" onClick={close}>Geschenk-Finder</Link>
           <Link href="/ratgeber" onClick={close}>Ratgeber</Link>

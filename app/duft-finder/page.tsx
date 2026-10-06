@@ -4,53 +4,45 @@ import DuftFinder from '@/app/components/DuftFinder';
 
 export const metadata: Metadata = {
   robots: 'noindex, nofollow',
-  title: 'Duft-Finder – Dein Duft nach Beschreibung | Auressa',
-  description: 'Beschreib einen Duft in deinen Worten – unser KI-Duft-Finder zeigt dir die besten Parfüm-Matches.',
+  title: 'Duft-Finder – Welchen Duft suchst du? | Auressa',
+  description: 'Beschreib den Duft, den du suchst – wir finden ihn aus 409 Düften.',
 };
 
 export default async function DuftFinderPage() {
   let perfumes = [];
-  let loadError = '';
 
   try {
-    console.log('[DuftFinder Page] Loading perfumes...');
     perfumes = await getPerfumes(2000);
-    console.log(`[DuftFinder Page] Successfully loaded ${perfumes.length} perfumes`);
-
-    if (perfumes.length > 0) {
-      console.log('[DuftFinder Page] First perfume:', {
-        name: perfumes[0].perfume_name,
-        family: perfumes[0].fragrance_family,
-        gender: perfumes[0].gender,
-        topNotes: perfumes[0].top_notes?.slice(0, 2),
-      });
-    }
   } catch (error) {
-    const message = error instanceof Error ? error.message : String(error);
-    console.error('[DuftFinder Page] Failed to load perfumes:', message);
-    loadError = `Fehler beim Laden der Düfte: ${message}`;
+    console.error('[DuftFinder Page] Failed to load perfumes:', error);
   }
 
   return (
     <main className="page-container">
       <section className="page-hero">
         <div className="hero-content">
-          <div className="eyebrow">Duft-Finder</div>
-          <h1>Finde deinen Duft nach Beschreibung</h1>
-          <p className="hero-subtitle">
-            Beschreib den Duft, den du suchst – unsere KI zeigt dir die besten Matches aus über 400 Düften.
+          <h1 style={{
+            fontSize: 'clamp(32px, 8vw, 48px)',
+            fontFamily: "'Playfair Display', serif",
+            fontWeight: 700,
+            marginBottom: '1rem',
+            lineHeight: 1.1,
+          }}>
+            Welchen Duft suchst du?
+          </h1>
+          <p className="hero-subtitle" style={{
+            fontSize: '16px',
+            color: 'var(--dt-text-secondary, #d4cfc3)',
+            maxWidth: '600px',
+          }}>
+            Beschreib ihn in eigenen Worten – wir finden ihn aus 409 Düften.
           </p>
         </div>
       </section>
 
       <div className="container">
         <section className="section">
-          {loadError && (
-            <div style={{ padding: '16px', backgroundColor: '#8B4513', color: '#faf7f2', borderRadius: '8px', marginBottom: '16px' }}>
-              <strong>⚠️ {loadError}</strong>
-            </div>
-          )}
-          <DuftFinder allPerfumes={perfumes} perfumeCount={perfumes.length} />
+          <DuftFinder allPerfumes={perfumes} />
         </section>
       </div>
     </main>

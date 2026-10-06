@@ -3,40 +3,41 @@
 import { useState } from 'react';
 import { Perfume } from '@/lib/perfumes';
 import { matchPerfumesByDescription } from '@/lib/duft-matcher';
-import { PerfumeTile } from '@/app/PerfumeTile';
 import Link from 'next/link';
 
 interface DuftFinderProps {
   allPerfumes: Perfume[];
-  perfumeCount?: number;
 }
 
-export default function DuftFinder({ allPerfumes, perfumeCount }: DuftFinderProps) {
+function getScoreLabel(score: number): string {
+  if (score > 85) return 'Sehr passend';
+  if (score >= 70) return 'Passend';
+  return 'Ähnliche Richtung';
+}
+
+function getBrandInitials(brandName: string | null | undefined): string {
+  if (!brandName) return 'A';
+  return brandName
+    .split(' ')
+    .map(w => w[0])
+    .join('')
+    .toUpperCase()
+    .slice(0, 2);
+}
+
+export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
   const [description, setDescription] = useState('');
   const [results, setResults] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [searched, setSearched] = useState(false);
-  const [debugInfo, setDebugInfo] = useState<string>('');
 
   const handleSearch = () => {
     if (!description.trim()) return;
-
     setLoading(true);
     setSearched(true);
 
     setTimeout(() => {
-      if (allPerfumes.length === 0) {
-        setDebugInfo('❌ FEHLER: Keine Düfte geladen! getPerfumes() hat leeres Array zurückgegeben.');
-        setResults([]);
-        setLoading(false);
-        return;
-      }
-
-      const firstPerfume = allPerfumes[0];
-      const debugText = `✅ Geladen: ${allPerfumes.length} Düfte | Erster: "${firstPerfume?.perfume_name}" | Familie: ${firstPerfume?.fragrance_family || 'null'} | Geschlecht: ${firstPerfume?.gender || 'null'}`;
-
       const matches = matchPerfumesByDescription(description, allPerfumes);
-      setDebugInfo(debugText);
       setResults(matches);
       setLoading(false);
     }, 300);
@@ -46,7 +47,6 @@ export default function DuftFinder({ allPerfumes, perfumeCount }: DuftFinderProp
     setDescription('');
     setResults([]);
     setSearched(false);
-    setDebugInfo('');
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -58,114 +58,52 @@ export default function DuftFinder({ allPerfumes, perfumeCount }: DuftFinderProp
 
   return (
     <div className="duft-finder" style={{ maxWidth: '100%' }}>
-      <div
-        className="duft-finder-input-section"
-        style={{
-          padding: '24px',
-          backgroundColor: 'var(--dt-card-bg, rgba(255, 255, 255, 0.08))',
-          borderRadius: '12px',
-          border: '1px solid var(--dt-border, rgba(212, 175, 55, 0.2))',
-          marginBottom: '24px',
-        }}
-      >
-        <label
-          htmlFor="duft-description"
-          style={{
-            display: 'block',
-            marginBottom: '12px',
-            fontWeight: 600,
-            fontSize: '15px',
-          }}
-        >
-          Beschreib einen Duft, den du suchst
-        </label>
-
+      {/* Input Section */}
+      <div style={{ marginBottom: '3rem' }}>
         <textarea
-          id="duft-description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           onKeyPress={handleKeyPress}
-          placeholder="z.B. frisch, etwas holzig, süssliche Basis, habe ich an einer Person gerochen"
+          placeholder="z. B. frisch, etwas holzig, habe ihn an einer Person gerochen…"
           style={{
             width: '100%',
-            minHeight: '100px',
-            padding: '12px',
-            borderRadius: '8px',
+            minHeight: '140px',
+            padding: '20px',
+            borderRadius: '12px',
             border: '1px solid rgba(212, 175, 55, 0.3)',
-            fontSize: '14px',
+            fontSize: '16px',
             fontFamily: 'inherit',
             backgroundColor: 'var(--dt-bg, #2a1d12)',
             color: 'var(--dt-text, #faf7f2)',
             resize: 'vertical',
             boxSizing: 'border-box',
+            marginBottom: '1.5rem',
           }}
         />
 
-        <p
+        <button
+          onClick={handleSearch}
+          disabled={!description.trim() || loading}
           style={{
-            fontSize: '12px',
-            color: 'var(--dt-text-secondary, #d4cfc3)',
-            marginTop: '8px',
-            marginBottom: '16px',
+            width: '100%',
+            padding: '16px 24px',
+            borderRadius: '8px',
+            border: 'none',
+            backgroundColor: !description.trim() || loading ? 'rgba(176, 139, 79, 0.6)' : '#b08b4f',
+            color: '#1a1410',
+            fontSize: '16px',
+            fontWeight: 600,
+            cursor: !description.trim() || loading ? 'not-allowed' : 'pointer',
+            transition: 'all 0.2s ease',
           }}
+          onMouseEnter={(e) => !description.trim() || loading ? null : (e.currentTarget.style.backgroundColor = '#c99a5b')}
+          onMouseLeave={(e) => !description.trim() || loading ? null : (e.currentTarget.style.backgroundColor = '#b08b4f')}
         >
-          Nutze einfache Worte: Duftrichtung (frisch, holzig, blumig, süss), Noten (Vanille, Zitrus,
-          Sandelholz), oder Gefühle (warm, elegant, frech).
-        </p>
-
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <button
-            onClick={handleSearch}
-            disabled={!description.trim() || loading}
-            className="button"
-            style={{
-              opacity: !description.trim() || loading ? 0.6 : 1,
-              cursor: !description.trim() || loading ? 'not-allowed' : 'pointer',
-            }}
-          >
-            {loading ? 'Suche läuft...' : 'Duft finden'}
-          </button>
-
-          {searched && (
-            <button
-              onClick={handleReset}
-              style={{
-                padding: '12px 24px',
-                borderRadius: '8px',
-                border: '1px solid var(--dt-border, rgba(212, 175, 55, 0.2))',
-                backgroundColor: 'transparent',
-                color: 'var(--dt-text, #faf7f2)',
-                fontSize: '15px',
-                fontWeight: 600,
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-              }}
-            >
-              Neue Suche
-            </button>
-          )}
-        </div>
+          {loading ? 'Suche läuft...' : 'Duft finden'}
+        </button>
       </div>
 
-      {/* Debug Info */}
-      {debugInfo && (
-        <div
-          style={{
-            padding: '12px',
-            marginBottom: '16px',
-            backgroundColor: 'rgba(212, 175, 55, 0.1)',
-            borderLeft: '4px solid var(--dt-accent, #d4af37)',
-            borderRadius: '4px',
-            fontSize: '12px',
-            color: 'var(--dt-text-secondary, #d4cfc3)',
-            fontFamily: 'monospace',
-          }}
-        >
-          <strong>DEBUG:</strong> {debugInfo}
-        </div>
-      )}
-
-      {/* Results */}
+      {/* Results Section */}
       {searched && (
         <div>
           {loading ? (
@@ -173,58 +111,246 @@ export default function DuftFinder({ allPerfumes, perfumeCount }: DuftFinderProp
               style={{
                 textAlign: 'center',
                 color: 'var(--dt-text-secondary, #d4cfc3)',
-                fontSize: '14px',
-            }}
+                fontSize: '16px',
+                padding: '2rem',
+              }}
             >
               Suche nach passenden Düften...
             </p>
           ) : results.length > 0 ? (
             <div>
-              <h3
+              <h2
                 style={{
-                  fontSize: '16px',
-                  marginBottom: '16px',
+                  fontSize: '20px',
+                  marginBottom: '2rem',
                   color: 'var(--dt-text, #faf7f2)',
                   fontWeight: 600,
                 }}
               >
-                Wir haben {results.length} passende {results.length === 1 ? 'Duft' : 'Düfte'} gefunden
-              </h3>
+                {results.length} {results.length === 1 ? 'Duft gefunden' : 'Düfte gefunden'}
+              </h2>
 
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
-                  gap: '16px',
-                }}
-              >
-                {results.map(({ perfume, matchedNotes }) => (
-                  <div key={perfume.id}>
-                    <PerfumeTile perfume={perfume} />
-                    {matchedNotes.length > 0 && (
-                      <p
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                {results.map(({ perfume, score, matchedNotes }) => (
+                  <div
+                    key={perfume.id}
+                    style={{
+                      display: 'flex',
+                      gap: '1.5rem',
+                      padding: '1.5rem',
+                      borderRadius: '16px',
+                      border: '0.5px solid rgba(255, 255, 255, 0.08)',
+                      backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                      alignItems: 'flex-start',
+                    }}
+                  >
+                    {/* Brand Initials Box */}
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '80px',
+                        height: '80px',
+                        minWidth: '80px',
+                        borderRadius: '8px',
+                        backgroundColor: 'rgba(176, 139, 79, 0.15)',
+                        border: '1px solid rgba(176, 139, 79, 0.3)',
+                        fontSize: '20px',
+                        fontWeight: 700,
+                        color: '#b08b4f',
+                        letterSpacing: '2px',
+                      }}
+                    >
+                      {getBrandInitials(perfume.brands?.name)}
+                    </div>
+
+                    {/* Main Info */}
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      {/* Brand Name */}
+                      <div
                         style={{
-                          fontSize: '12px',
-                          color: 'var(--dt-accent-soft, #e8d5a8)',
-                          marginTop: '8px',
-                          fontStyle: 'italic',
+                          fontSize: '11px',
+                          color: '#b08b4f',
+                          fontWeight: 700,
+                          letterSpacing: '1.5px',
+                          textTransform: 'uppercase',
+                          marginBottom: '0.5rem',
                         }}
                       >
-                        Gemeinsam: {matchedNotes.slice(0, 2).join(', ')}
-                        {matchedNotes.length > 2 ? '...' : ''}
-                      </p>
+                        {perfume.brands?.name || 'Unbekannt'}
+                      </div>
+
+                      {/* Perfume Name */}
+                      <h3
+                        style={{
+                          fontSize: 'clamp(18px, 5vw, 24px)',
+                          fontFamily: "'Playfair Display', serif",
+                          fontWeight: 700,
+                          color: 'var(--dt-text, #faf7f2)',
+                          marginBottom: '0.5rem',
+                          lineHeight: 1.2,
+                        }}
+                      >
+                        {perfume.perfume_name}
+                      </h3>
+
+                      {/* Family & Gender */}
+                      <div
+                        style={{
+                          fontSize: '14px',
+                          color: 'var(--dt-text-secondary, #d4cfc3)',
+                          marginBottom: '0.75rem',
+                        }}
+                      >
+                        {perfume.fragrance_family && (
+                          <>
+                            {perfume.fragrance_family.charAt(0).toUpperCase() + perfume.fragrance_family.slice(1)}
+                            {perfume.gender && ' • '}
+                          </>
+                        )}
+                        {perfume.gender}
+                      </div>
+
+                      {/* Score Label */}
+                      <div
+                        style={{
+                          display: 'inline-block',
+                          fontSize: '12px',
+                          fontWeight: 600,
+                          color: score > 85 ? '#4ade80' : score >= 70 ? '#fbbf24' : '#94a3b8',
+                          backgroundColor: score > 85 ? 'rgba(74, 222, 128, 0.1)' : score >= 70 ? 'rgba(251, 191, 36, 0.1)' : 'rgba(148, 163, 184, 0.1)',
+                          padding: '6px 12px',
+                          borderRadius: '6px',
+                          marginBottom: '1rem',
+                        }}
+                      >
+                        {getScoreLabel(score)}
+                      </div>
+
+                      {/* Matched Notes */}
+                      {matchedNotes.length > 0 && (
+                        <p
+                          style={{
+                            fontSize: '13px',
+                            color: 'var(--dt-text-secondary, #d4cfc3)',
+                            marginBottom: '1rem',
+                          }}
+                        >
+                          {matchedNotes.slice(0, 3).join(', ')}
+                          {matchedNotes.length > 3 ? '...' : ''}
+                        </p>
+                      )}
+
+                      {/* Buttons */}
+                      <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                        <Link
+                          href={`/duft/${perfume.slug}`}
+                          style={{
+                            padding: '10px 20px',
+                            borderRadius: '6px',
+                            border: '1px solid #b08b4f',
+                            backgroundColor: 'transparent',
+                            color: '#b08b4f',
+                            fontSize: '13px',
+                            fontWeight: 600,
+                            textDecoration: 'none',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s ease',
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = 'rgba(176, 139, 79, 0.1)';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = 'transparent';
+                          }}
+                        >
+                          Duftprofil
+                        </Link>
+                        <a
+                          href={`https://www.google.com/search?q=${encodeURIComponent(`${perfume.perfume_name} ${perfume.brands?.name || ''} Parfum`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            padding: '10px 20px',
+                            borderRadius: '6px',
+                            border: 'none',
+                            backgroundColor: 'transparent',
+                            color: 'var(--dt-text-secondary, #d4cfc3)',
+                            fontSize: '13px',
+                            fontWeight: 600,
+                            textDecoration: 'none',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s ease',
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = 'var(--dt-text, #faf7f2)';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = 'var(--dt-text-secondary, #d4cfc3)';
+                          }}
+                        >
+                          Produkt suchen
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* Price */}
+                    {perfume.price_chf && (
+                      <div
+                        style={{
+                          textAlign: 'right',
+                          minWidth: '100px',
+                        }}
+                      >
+                        <div
+                          style={{
+                            fontSize: '18px',
+                            fontWeight: 700,
+                            color: 'var(--dt-text, #faf7f2)',
+                          }}
+                        >
+                          CHF {perfume.price_chf}
+                        </div>
+                      </div>
                     )}
                   </div>
                 ))}
+              </div>
+
+              {/* Reset Button */}
+              <div style={{ marginTop: '2rem', textAlign: 'center' }}>
+                <button
+                  onClick={handleReset}
+                  style={{
+                    padding: '12px 32px',
+                    borderRadius: '8px',
+                    border: '1px solid rgba(212, 175, 55, 0.3)',
+                    backgroundColor: 'transparent',
+                    color: 'var(--dt-text, #faf7f2)',
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                  }}
+                >
+                  Neue Suche
+                </button>
               </div>
             </div>
           ) : (
             <div
               style={{
-                padding: '24px',
-                backgroundColor: 'var(--dt-card-bg, rgba(255, 255, 255, 0.08))',
+                padding: '2rem',
+                backgroundColor: 'rgba(255, 255, 255, 0.02)',
                 borderRadius: '12px',
-                border: '1px solid var(--dt-border, rgba(212, 175, 55, 0.2))',
+                border: '0.5px solid rgba(255, 255, 255, 0.08)',
                 textAlign: 'center',
               }}
             >
@@ -232,14 +358,30 @@ export default function DuftFinder({ allPerfumes, perfumeCount }: DuftFinderProp
                 style={{
                   color: 'var(--dt-text-secondary, #d4cfc3)',
                   marginBottom: '12px',
-                  fontSize: '14px',
+                  fontSize: '15px',
                 }}
               >
                 Keine passenden Düfte gefunden – versuch eine andere Beschreibung.
               </p>
-              <p style={{ fontSize: '12px', color: 'var(--dt-text-secondary, #d4cfc3)' }}>
+              <p style={{ fontSize: '13px', color: 'var(--dt-text-secondary, #d4cfc3)' }}>
                 Tipp: Probier konkrete Duftnoten wie „Vanille", „Zitrus" oder „Sandelholz".
               </p>
+              <button
+                onClick={handleReset}
+                style={{
+                  marginTop: '1rem',
+                  padding: '10px 24px',
+                  borderRadius: '6px',
+                  border: '1px solid rgba(212, 175, 55, 0.3)',
+                  backgroundColor: 'transparent',
+                  color: 'var(--dt-text, #faf7f2)',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                }}
+              >
+                Neue Suche
+              </button>
             </div>
           )}
         </div>

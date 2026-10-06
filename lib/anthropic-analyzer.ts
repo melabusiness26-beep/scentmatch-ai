@@ -26,7 +26,7 @@ export async function analyzeImageWithClaude(
 Gib mir folgende Informationen als JSON zurück (nutze null für unbekannte Werte):
 {
   where: 'person' | 'store' | 'holiday' | 'hotel' | 'online' | null,
-  gender: 'self_woman' | 'self_man' | 'gift_woman' | 'gift_man' | 'unisex' | null,
+  gender: 'woman' | 'man' | 'unisex' | null,
   feeling: 'fresh' | 'warm' | 'woody' | 'floral' | 'oriental' | 'spicy' | null,
   intensity: 'very_light' | 'light' | 'medium' | 'strong' | 'very_strong' | null,
   occasion: 'daily' | 'office' | 'evening' | 'special' | null,

@@ -54,6 +54,16 @@ export default function ImageAnalyzer({ onAnalysisComplete, includeProductInfo }
       // Erfolg: Vorbefüllte Answers aus Analyse
       const analysisResult = data.data;
 
+      // Map intensity to strength values
+      const intensityToStrength: Record<string | undefined, 'subtle' | 'medium' | 'intense' | null> = {
+        'very_light': 'subtle',
+        'light': 'subtle',
+        'medium': 'medium',
+        'strong': 'intense',
+        'very_strong': 'intense',
+        'undefined': null,
+      };
+
       const prefilled: DetektivAnswers = {
         location: analysisResult.where || null,
         country: '',
@@ -61,7 +71,7 @@ export default function ImageAnalyzer({ onAnalysisComplete, includeProductInfo }
         age: null,
         timing: null,
         feeling: analysisResult.feeling || null,
-        strength: analysisResult.intensity || null,
+        strength: (analysisResult.intensity && intensityToStrength[analysisResult.intensity]) || null,
         occasion: analysisResult.occasion || null,
         price: null,
         brand: analysisResult.brandName || '',

@@ -146,32 +146,66 @@ export default function DuftDetektiv({ allPerfumes }: DuftDetektivProps) {
 
   return (
     <div>
-      {/* Progress Bar */}
-      <div style={{ marginBottom: '2rem' }}>
-        <div style={{
-          height: '4px',
-          backgroundColor: '#e8dcc8',
-          borderRadius: '2px',
-          overflow: 'hidden',
-        }}>
-          <div
-            style={{
-              display: 'block',
-              height: '100%',
-              backgroundColor: '#b08b4f',
-              width: `${progress}%`,
-              transition: 'width 0.3s ease',
-            }} />
-        </div>
-        <p style={{
-          fontSize: '12px',
-          color: '#6b5a4e',
-          marginTop: '0.5rem',
-          textAlign: 'center',
-        }}>
-          Frage {currentQuestion + 1} von {totalQuestions}
-        </p>
+      {/* Thin Progress Bar at Top */}
+      <div style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 100,
+        height: '2px',
+        backgroundColor: 'rgba(232, 220, 200, 0.3)',
+        overflow: 'hidden',
+        marginBottom: '0',
+      }}>
+        <div
+          style={{
+            display: 'block',
+            height: '100%',
+            backgroundColor: '#b08b4f',
+            width: `${progress}%`,
+            transition: 'width 0.3s ease',
+          }} />
       </div>
+
+      {/* Hero Section - only show on question 0 */}
+      {currentQuestion === 0 && (
+        <div style={{
+          textAlign: 'center',
+          marginBottom: '3rem',
+          marginTop: '2rem',
+        }}>
+          <h1 style={{
+            fontSize: 'clamp(32px, 7vw, 48px)',
+            fontFamily: "'Playfair Display', serif",
+            fontWeight: 700,
+            marginBottom: '1rem',
+            lineHeight: 1.1,
+            color: '#2a1d12',
+          }}>
+            Duft-Detektiv
+          </h1>
+          <p style={{
+            fontSize: 'clamp(16px, 3vw, 18px)',
+            color: '#6b5a4e',
+            margin: '0 auto 2rem auto',
+            maxWidth: '500px',
+            lineHeight: 1.6,
+            fontStyle: 'italic',
+          }}>
+            Beschreib mir den Duft – ich finde ihn für dich.
+          </p>
+        </div>
+      )}
+
+      {/* Progress Text */}
+      <p style={{
+        fontSize: '12px',
+        color: '#6b5a4e',
+        marginBottom: '2.5rem',
+        textAlign: 'center',
+        fontWeight: 500,
+      }}>
+        Frage {currentQuestion + 1} von {totalQuestions}
+      </p>
 
       {/* Questions */}
       {currentQuestion === 0 && <Question1Location answers={answers} handleAnswer={handleAnswer} />}
@@ -190,59 +224,68 @@ export default function DuftDetektiv({ allPerfumes }: DuftDetektivProps) {
       {/* Navigation Buttons */}
       <div style={{
         display: 'flex',
-        gap: '1rem',
-        marginTop: '2rem',
+        gap: '1.5rem',
+        marginTop: '3rem',
         justifyContent: 'space-between',
+        alignItems: 'center',
       }}>
         <button
           onClick={handleBack}
           disabled={currentQuestion === 0}
           style={{
-            padding: '12px 24px',
-            borderRadius: '8px',
-            border: '1px solid #e8dcc8',
-            backgroundColor: currentQuestion === 0 ? 'rgba(232, 220, 200, 0.3)' : 'transparent',
-            color: currentQuestion === 0 ? '#b08b4f99' : '#2a1d12',
-            fontSize: '14px',
-            fontWeight: 600,
+            padding: '0',
+            borderRadius: '0',
+            border: 'none',
+            backgroundColor: 'transparent',
+            color: currentQuestion === 0 ? '#b08b4f66' : '#2a1d12',
+            fontSize: '13px',
+            fontWeight: 500,
             cursor: currentQuestion === 0 ? 'not-allowed' : 'pointer',
             transition: 'all 0.2s ease',
+            textDecoration: 'none',
+            opacity: currentQuestion === 0 ? 0.4 : 1,
           }}
           onMouseEnter={(e) => {
             if (currentQuestion > 0) {
-              e.currentTarget.style.backgroundColor = 'rgba(232, 220, 200, 0.1)';
+              e.currentTarget.style.opacity = '0.7';
             }
           }}
           onMouseLeave={(e) => {
             if (currentQuestion > 0) {
-              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.opacity = '1';
             }
           }}
         >
-          Zurück
+          ← Zurück
         </button>
 
         <button
           onClick={handleNext}
           style={{
-            padding: '12px 32px',
-            borderRadius: '8px',
+            padding: currentQuestion === totalQuestions - 1 ? '16px 48px' : '14px 40px',
+            borderRadius: '16px',
             border: 'none',
             backgroundColor: '#b08b4f',
             color: '#1a1410',
-            fontSize: '14px',
-            fontWeight: 600,
+            fontSize: currentQuestion === totalQuestions - 1 ? '15px' : '14px',
+            fontWeight: 700,
             cursor: 'pointer',
-            transition: 'all 0.2s ease',
+            transition: 'all 0.3s ease',
+            letterSpacing: '0.5px',
+            boxShadow: '0 4px 12px rgba(176, 139, 79, 0.2)',
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = '#c99a5b';
+            e.currentTarget.style.backgroundColor = '#d4a566';
+            e.currentTarget.style.transform = 'translateY(-2px)';
+            e.currentTarget.style.boxShadow = '0 6px 16px rgba(176, 139, 79, 0.3)';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = '#b08b4f';
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '0 4px 12px rgba(176, 139, 79, 0.2)';
           }}
         >
-          {currentQuestion === totalQuestions - 1 ? 'Ergebnis zeigen' : 'Weiter'}
+          {currentQuestion === totalQuestions - 1 ? 'Ergebnis zeigen' : 'Weiter →'}
         </button>
       </div>
     </div>

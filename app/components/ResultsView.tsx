@@ -14,8 +14,8 @@ interface ResultsViewProps {
 }
 
 function getScoreLabel(score: number): string {
-  if (score > 70) return 'Sehr passend';
-  if (score >= 50) return 'Passend';
+  if (score > 30) return 'Sehr passend';
+  if (score >= 15) return 'Passend';
   return 'Ähnliche Richtung';
 }
 

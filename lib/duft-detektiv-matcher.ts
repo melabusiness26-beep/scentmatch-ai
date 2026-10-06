@@ -144,6 +144,7 @@ export function matchPerfumesDetektiv(
         reasons.push(perfume.gender);
       } else if (perfume.gender === 'Unisex') {
         score += 15;
+        reasons.push('Unisex');
       }
     }
 
@@ -151,18 +152,29 @@ export function matchPerfumesDetektiv(
     if (targetFamilies.length > 0 && perfume.fragrance_family) {
       if (targetFamilies.includes(perfume.fragrance_family)) {
         score += 25;
-        reasons.push(perfume.fragrance_family);
+        reasons.push(perfume.fragrance_family.charAt(0).toUpperCase() + perfume.fragrance_family.slice(1));
       }
     }
 
     // Occasion (15%)
     const occasionScore = getOccasionMatch(answers.occasion, perfume);
     score += occasionScore;
-    if (occasionScore > 0) reasons.push(answers.occasion);
+    if (occasionScore > 0) {
+      const occasionLabels: Record<string, string> = {
+        daily: 'für Alltag',
+        office: 'für Büro',
+        evening: 'für Abend',
+        special: 'für Spezial',
+      };
+      reasons.push(occasionLabels[answers.occasion] || answers.occasion);
+    }
 
     // Price (15%)
     const priceScore = getPriceMatch(answers.price, perfume);
     score += priceScore;
+    if (priceScore > 0 && perfume.price_chf) {
+      reasons.push(`CHF ${perfume.price_chf}`);
+    }
 
     // Country Bonus (5%)
     const [countryBonus, countryReasons] = getCountryBonus(answers.country, perfume);

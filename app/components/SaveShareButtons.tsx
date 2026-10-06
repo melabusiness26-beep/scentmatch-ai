@@ -41,25 +41,7 @@ export default function SaveShareButtons({ answers, resultIds }: SaveShareButton
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
         <a
           href="/meine-duefte"
-          style={{
-            padding: '0.75rem 1rem',
-            borderRadius: '8px',
-            border: 'none',
-            backgroundColor: '#b08b4f',
-            color: '#2a1d12',
-            fontSize: '14px',
-            fontWeight: 600,
-            textDecoration: 'none',
-            cursor: 'pointer',
-            transition: 'all 0.2s ease',
-            textAlign: 'center',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = '#c99a5b';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = '#b08b4f';
-          }}
+          className="duft-detektiv-button"
         >
           Meine gesammelten Düfte ansehen
         </a>

@@ -35,7 +35,7 @@ export default async function DuftFinderPage() {
             color: 'var(--dt-text-secondary, #d4cfc3)',
             maxWidth: '600px',
           }}>
-            Beschreib ihn in eigenen Worten – wir finden ihn aus 409 Düften.
+            Gib einen Duftnamen oder eine Beschreibung ein – wir finden ihn aus 409 Düften.
           </p>
         </div>
       </section>

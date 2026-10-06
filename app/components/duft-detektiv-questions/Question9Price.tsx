@@ -16,25 +16,25 @@ export default function Question9Price({ answers, handleAnswer }: QuestionProps)
   ];
 
   return (
-    <div style={{ marginBottom: '2rem' }}>
+    <div style={{ marginBottom: '3rem' }}>
       <h2 style={{
-        fontSize: '20px',
+        fontSize: 'clamp(20px, 4vw, 28px)',
         fontFamily: "'Playfair Display', serif",
         fontWeight: 700,
         color: '#2a1d12',
-        marginBottom: '1.5rem',
+        marginBottom: '2.5rem', lineHeight: 1.3,
       }}>
         Wie teuer darf dieser Duft sein?
       </h2>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
         {options.map(option => (
           <button
             key={option.value}
             onClick={() => handleAnswer('price', option.value)}
             style={{
-              padding: '1rem',
-              borderRadius: '8px',
+              padding: '1.25rem 1.5rem',
+              borderRadius: '16px',
               border: answers.price === option.value ? '2px solid #b08b4f' : '1px solid #e8dcc8',
               backgroundColor: answers.price === option.value ? 'rgba(176, 139, 79, 0.08)' : '#ffffff',
               cursor: 'pointer',
@@ -55,7 +55,7 @@ export default function Question9Price({ answers, handleAnswer }: QuestionProps)
             <div style={{ fontWeight: 600, color: '#2a1d12', marginBottom: '0.25rem' }}>
               {option.label}
             </div>
-            <div style={{ fontSize: '12px', color: '#6b5a4e' }}>
+            <div style={{ fontSize: '13px', color: '#6b5a4e' }}>
               {option.description}
             </div>
           </button>

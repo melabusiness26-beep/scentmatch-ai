@@ -18,13 +18,13 @@ export default function Question11Bottle({ answers, handleAnswer }: QuestionProp
   ];
 
   return (
-    <div style={{ marginBottom: '2rem' }}>
+    <div style={{ marginBottom: '3rem' }}>
       <h2 style={{
-        fontSize: '20px',
+        fontSize: 'clamp(20px, 4vw, 28px)',
         fontFamily: "'Playfair Display', serif",
         fontWeight: 700,
         color: '#2a1d12',
-        marginBottom: '1.5rem',
+        marginBottom: '2.5rem', lineHeight: 1.3,
       }}>
         Wie sah die Flasche aus? (Optional)
       </h2>
@@ -37,14 +37,14 @@ export default function Question11Bottle({ answers, handleAnswer }: QuestionProp
         Wähle eine Option – oder gib unten noch mehr Details:
       </p>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
         {options.map(option => (
           <button
             key={option.value}
             onClick={() => handleAnswer('bottle', option.value)}
             style={{
-              padding: '1rem',
-              borderRadius: '8px',
+              padding: '1.25rem 1.5rem',
+              borderRadius: '16px',
               border: answers.bottle === option.value ? '2px solid #b08b4f' : '1px solid #e8dcc8',
               backgroundColor: answers.bottle === option.value ? 'rgba(176, 139, 79, 0.08)' : '#ffffff',
               cursor: 'pointer',
@@ -65,7 +65,7 @@ export default function Question11Bottle({ answers, handleAnswer }: QuestionProp
             <div style={{ fontWeight: 600, color: '#2a1d12', marginBottom: '0.25rem' }}>
               {option.label}
             </div>
-            <div style={{ fontSize: '12px', color: '#6b5a4e' }}>
+            <div style={{ fontSize: '13px', color: '#6b5a4e' }}>
               {option.description}
             </div>
           </button>
@@ -81,7 +81,7 @@ export default function Question11Bottle({ answers, handleAnswer }: QuestionProp
             width: '100%',
             minHeight: '80px',
             padding: '12px 16px',
-            borderRadius: '8px',
+            borderRadius: '16px',
             border: '1px solid #e8dcc8',
             fontSize: '14px',
             fontFamily: 'inherit',
@@ -92,7 +92,7 @@ export default function Question11Bottle({ answers, handleAnswer }: QuestionProp
           }}
         />
         <p style={{
-          fontSize: '12px',
+          fontSize: '13px',
           color: '#6b5a4e',
           marginTop: '0.5rem',
           margin: '0.5rem 0 0 0',

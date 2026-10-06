@@ -18,46 +18,62 @@ export default function Question3Gender({ answers, handleAnswer }: QuestionProps
   ];
 
   return (
-    <div style={{ marginBottom: '2rem' }}>
+    <div style={{ marginBottom: '3rem' }}>
       <h2 style={{
-        fontSize: '20px',
+        fontSize: 'clamp(20px, 4vw, 28px)',
         fontFamily: "'Playfair Display', serif",
         fontWeight: 700,
         color: '#2a1d12',
-        marginBottom: '1.5rem',
+        marginBottom: '2.5rem',
+        lineHeight: 1.3,
       }}>
         Für wen suchst du den Duft?
       </h2>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
         {options.map((option, index) => (
           <button
             key={index}
             onClick={() => handleAnswer('gender', option.value)}
             style={{
-              padding: '1rem',
-              borderRadius: '8px',
-              border: answers.gender === option.value ? '2px solid #b08b4f' : '1px solid #e8dcc8',
-              backgroundColor: answers.gender === option.value ? 'rgba(176, 139, 79, 0.08)' : '#ffffff',
+              padding: '1.25rem 1.5rem',
+              borderRadius: option.value === 'unknown' ? '12px' : '16px',
+              border: answers.gender === option.value
+                ? '2px solid #b08b4f'
+                : option.value === 'unknown'
+                  ? '2px dashed #d4c4b8'
+                  : '1px solid #e8dcc8',
+              backgroundColor: answers.gender === option.value
+                ? 'rgba(176, 139, 79, 0.12)'
+                : option.value === 'unknown'
+                  ? 'rgba(232, 220, 200, 0.04)'
+                  : '#ffffff',
               color: '#2a1d12',
-              fontSize: '15px',
+              fontSize: '16px',
               fontWeight: 600,
               cursor: 'pointer',
               textAlign: 'left',
-              transition: 'all 0.2s ease',
+              transition: 'all 0.3s ease',
             }}
             onMouseEnter={(e) => {
               if (answers.gender !== option.value) {
                 e.currentTarget.style.backgroundColor = 'rgba(232, 220, 200, 0.1)';
+                e.currentTarget.style.borderColor = 'rgba(176, 139, 79, 0.3)';
               }
             }}
             onMouseLeave={(e) => {
               if (answers.gender !== option.value) {
-                e.currentTarget.style.backgroundColor = '#ffffff';
+                e.currentTarget.style.backgroundColor = option.value === 'unknown' ? 'rgba(232, 220, 200, 0.04)' : '#ffffff';
+                e.currentTarget.style.borderColor = option.value === 'unknown' ? '#d4c4b8' : '#e8dcc8';
               }
             }}
           >
-            {option.label}
+            <div style={{ marginBottom: '0.5rem' }}>
+              {option.label}
+            </div>
+            <div style={{ fontSize: '13px', color: '#6b5a4e', fontWeight: 400 }}>
+              {option.description}
+            </div>
           </button>
         ))}
       </div>

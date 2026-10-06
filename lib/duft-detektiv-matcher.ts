@@ -121,12 +121,21 @@ function getNotesMatch(description: string, perfume: Perfume): [number, string[]
   return [Math.min(score, 10), matchedNotes];
 }
 
+function normalizeGender(gender: string | null): string | null {
+  if (!gender || gender === 'unknown') return null;
+  if (gender === 'self_woman' || gender === 'gift_woman') return 'woman';
+  if (gender === 'self_man' || gender === 'gift_man') return 'man';
+  if (gender === 'unisex') return 'unisex';
+  return null;
+}
+
 export function matchPerfumesDetektiv(
   answers: DetektivAnswers,
   perfumes: Perfume[]
 ): MatchResult[] {
   console.log('[Duft-Detektiv] Matching with answers:', answers);
   const targetFamilies = answers.feeling ? getFamilyFromFeeling(answers.feeling) : [];
+  const normalizedGender = normalizeGender(answers.gender as any);
   const results: MatchResult[] = [];
 
   for (const perfume of perfumes) {
@@ -134,11 +143,11 @@ export function matchPerfumesDetektiv(
     const reasons: string[] = [];
 
     // Gender (30%)
-    if (answers.gender && answers.gender !== 'unknown') {
+    if (normalizedGender) {
       const genderMatch =
-        (answers.gender === 'woman' && ['Women', 'Unisex'].includes(perfume.gender)) ||
-        (answers.gender === 'man' && ['Men', 'Unisex'].includes(perfume.gender)) ||
-        (answers.gender === 'unisex' && perfume.gender === 'Unisex');
+        (normalizedGender === 'woman' && ['Women', 'Unisex'].includes(perfume.gender)) ||
+        (normalizedGender === 'man' && ['Men', 'Unisex'].includes(perfume.gender)) ||
+        (normalizedGender === 'unisex' && perfume.gender === 'Unisex');
 
       if (genderMatch) {
         score += 30;

@@ -394,5 +394,7 @@ export default function ResultsView({ results }: ResultsViewProps) {
             ))}
           </div>
         </div>
+      )}
+    </div>
   );
 }

@@ -30,9 +30,9 @@ export default function Question3Gender({ answers, handleAnswer }: QuestionProps
       </h2>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-        {options.map(option => (
+        {options.map((option, index) => (
           <button
-            key={option.value}
+            key={index}
             onClick={() => handleAnswer('gender', option.value)}
             style={{
               padding: '1rem',

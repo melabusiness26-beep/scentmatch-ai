@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from 'next';
 import { Playfair_Display, Inter } from 'next/font/google';
 import ConsentedAnalytics from '@/app/ConsentedAnalytics';
 import CookieBanner from '@/app/CookieBanner';
-import NewsletterForm from '@/app/NewsletterForm';
+import FooterNewsletter from '@/app/FooterNewsletter';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -89,9 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         {children}
         <footer className="site-footer">
-          <div className="container footer-newsletter">
-            <NewsletterForm source="footer" />
-          </div>
+          <FooterNewsletter />
           <div className="container footer-inner">
             <div>
               <div className="logo">Auressa</div>

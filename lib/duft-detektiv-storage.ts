@@ -1,13 +1,13 @@
 export type DetektivAnswers = {
-  location: 'person' | 'store' | 'holiday' | 'hotel' | 'online' | 'unknown';
+  location: 'person' | 'store' | 'holiday' | 'hotel' | 'online' | 'unknown' | null;
   country: string;
-  gender: 'woman' | 'man' | 'unisex' | 'unknown';
-  age: 'under25' | '25-40' | 'over40' | 'unknown';
-  timing: '<1year' | '1-5years' | '>5years' | 'unknown';
-  feeling: 'fresh' | 'warm' | 'woody' | 'floral' | 'oriental' | 'spicy';
-  strength: 'subtle' | 'medium' | 'intense' | 'unknown';
-  occasion: 'daily' | 'evening' | 'office' | 'special' | 'unknown';
-  price: '<50' | '50-150' | '>150' | 'unknown';
+  gender: 'woman' | 'man' | 'unisex' | 'unknown' | null;
+  age: 'under25' | '25-40' | 'over40' | 'unknown' | null;
+  timing: '<1year' | '1-5years' | '>5years' | 'unknown' | null;
+  feeling: 'fresh' | 'warm' | 'woody' | 'floral' | 'oriental' | 'spicy' | null;
+  strength: 'subtle' | 'medium' | 'intense' | 'unknown' | null;
+  occasion: 'daily' | 'evening' | 'office' | 'special' | 'unknown' | null;
+  price: '<50' | '50-150' | '>150' | 'unknown' | null;
   brand: string;
   bottle: string;
   description: string;
@@ -103,15 +103,15 @@ export const storage = {
 
   parseShareUrl: (searchParams: URLSearchParams): Partial<DetektivAnswers> => {
     return {
-      location: (searchParams.get('location') as any) || 'unknown',
+      location: (searchParams.get('location') as any) || null,
       country: searchParams.get('country') || '',
-      gender: (searchParams.get('gender') as any) || 'unknown',
-      age: (searchParams.get('age') as any) || 'unknown',
-      timing: (searchParams.get('timing') as any) || 'unknown',
-      feeling: (searchParams.get('feeling') as any) || 'fresh',
-      strength: (searchParams.get('strength') as any) || 'unknown',
-      occasion: (searchParams.get('occasion') as any) || 'unknown',
-      price: (searchParams.get('price') as any) || 'unknown',
+      gender: (searchParams.get('gender') as any) || null,
+      age: (searchParams.get('age') as any) || null,
+      timing: (searchParams.get('timing') as any) || null,
+      feeling: (searchParams.get('feeling') as any) || null,
+      strength: (searchParams.get('strength') as any) || null,
+      occasion: (searchParams.get('occasion') as any) || null,
+      price: (searchParams.get('price') as any) || null,
       brand: searchParams.get('brand') || '',
       bottle: searchParams.get('bottle') || '',
       description: searchParams.get('description') || '',

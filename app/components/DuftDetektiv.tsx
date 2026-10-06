@@ -19,6 +19,7 @@ import Question12Description from './duft-detektiv-questions/Question12Descripti
 import LoadingAnimation from './LoadingAnimation';
 import ResultsView from './ResultsView';
 import SaveShareButtons from './SaveShareButtons';
+import NewsletterForm from '@/app/NewsletterForm';
 
 interface DuftDetektivProps {
   allPerfumes: Perfume[];
@@ -31,15 +32,15 @@ export default function DuftDetektiv({ allPerfumes }: DuftDetektivProps) {
   const [showResults, setShowResults] = useState(false);
 
   const [answers, setAnswers] = useState<DetektivAnswers>({
-    location: 'unknown',
+    location: null,
     country: '',
-    gender: 'unknown',
-    age: 'unknown',
-    timing: 'unknown',
-    feeling: 'fresh',
-    strength: 'unknown',
-    occasion: 'unknown',
-    price: 'unknown',
+    gender: null,
+    age: null,
+    timing: null,
+    feeling: null,
+    strength: null,
+    occasion: null,
+    price: null,
     brand: '',
     bottle: '',
     description: '',
@@ -85,15 +86,15 @@ export default function DuftDetektiv({ allPerfumes }: DuftDetektivProps) {
   const handleReset = () => {
     setCurrentQuestion(0);
     setAnswers({
-      location: 'unknown',
+      location: null,
       country: '',
-      gender: 'unknown',
-      age: 'unknown',
-      timing: 'unknown',
-      feeling: 'fresh',
-      strength: 'unknown',
-      occasion: 'unknown',
-      price: 'unknown',
+      gender: null,
+      age: null,
+      timing: null,
+      feeling: null,
+      strength: null,
+      occasion: null,
+      price: null,
       brand: '',
       bottle: '',
       description: '',
@@ -134,6 +135,9 @@ export default function DuftDetektiv({ allPerfumes }: DuftDetektivProps) {
           >
             Neue Suche
           </button>
+        </div>
+        <div style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid #e8dcc8' }}>
+          <NewsletterForm source="detektiv" />
         </div>
       </div>
     );

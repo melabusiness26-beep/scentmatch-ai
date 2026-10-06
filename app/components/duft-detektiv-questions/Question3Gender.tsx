@@ -9,10 +9,10 @@ interface QuestionProps {
 
 export default function Question3Gender({ answers, handleAnswer }: QuestionProps) {
   const options: Array<{ value: any; label: string; description: string }> = [
-    { value: 'woman', label: 'Für mich – eine Frau', description: 'Ich selbst bin weiblich' },
-    { value: 'man', label: 'Für mich – einen Mann', description: 'Ich selbst bin männlich' },
-    { value: 'woman', label: 'Für jemand anderen – eine Frau', description: 'Als Geschenk für eine Frau' },
-    { value: 'man', label: 'Für jemand anderen – einen Mann', description: 'Als Geschenk für einen Mann' },
+    { value: 'self_woman', label: 'Für mich – eine Frau', description: 'Ich selbst bin weiblich' },
+    { value: 'self_man', label: 'Für mich – einen Mann', description: 'Ich selbst bin männlich' },
+    { value: 'gift_woman', label: 'Für jemand anderen – eine Frau', description: 'Als Geschenk für eine Frau' },
+    { value: 'gift_man', label: 'Für jemand anderen – einen Mann', description: 'Als Geschenk für einen Mann' },
     { value: 'unisex', label: 'Unisex, egal', description: 'Egal wer ihn trägt' },
     { value: 'unknown', label: 'Ich weiss es nicht', description: 'Diese Info wird übersprungen' },
   ];

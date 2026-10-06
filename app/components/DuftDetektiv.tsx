@@ -77,6 +77,7 @@ export default function DuftDetektiv({ allPerfumes }: DuftDetektivProps) {
       const matches = matchPerfumesDetektiv(answers, allPerfumes);
       const resultIds = matches.map(m => m.perfume.id);
       storage.saveSearch(answers, resultIds);
+      resultIds.forEach(id => storage.addPerfume(id));
       setResults(matches);
       setShowResults(true);
       setLoading(false);
@@ -154,9 +155,9 @@ export default function DuftDetektiv({ allPerfumes }: DuftDetektivProps) {
           overflow: 'hidden',
         }}>
           <div
-            className="duft-detektiv-progress-bar"
             style={{
               height: '100%',
+              backgroundColor: '#b08b4f',
               width: `${progress}%`,
               transition: 'width 0.3s ease',
             }} />

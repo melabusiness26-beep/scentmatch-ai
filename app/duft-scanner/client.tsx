@@ -6,7 +6,6 @@ import { DetektivAnswers } from '@/lib/duft-detektiv-storage';
 import { matchPerfumesDetektiv } from '@/lib/duft-detektiv-matcher';
 import ImageAnalyzer from '@/app/components/ImageAnalyzer';
 import ResultsView from '@/app/components/ResultsView';
-import Link from 'next/link';
 
 interface DuftScannerClientProps {
   allPerfumes: Perfume[];

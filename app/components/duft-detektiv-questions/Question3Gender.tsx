@@ -12,6 +12,7 @@ export default function Question3Gender({ answers, handleAnswer }: QuestionProps
     { value: 'woman', label: 'Für Frauen' },
     { value: 'man', label: 'Für Männer' },
     { value: 'unisex', label: 'Unisex' },
+    { value: 'unknown', label: 'Ich weiss es nicht' },
   ];
 
   return (

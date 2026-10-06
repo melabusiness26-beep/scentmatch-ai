@@ -14,6 +14,7 @@ export default function Question1Location({ answers, handleAnswer }: QuestionPro
     { value: 'holiday', label: 'Im Urlaub', description: 'Während einer Reise' },
     { value: 'hotel', label: 'Im Hotel', description: 'In der Hotelausstattung' },
     { value: 'online', label: 'Online', description: 'Im Internet gesehen' },
+    { value: 'unknown', label: 'Ich weiss es nicht', description: 'Diese Info wird übersprungen' },
   ];
 
   return (

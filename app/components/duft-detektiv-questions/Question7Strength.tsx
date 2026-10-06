@@ -12,6 +12,7 @@ export default function Question7Strength({ answers, handleAnswer }: QuestionPro
     { value: 'subtle', label: 'Subtil', description: 'Kaum wahrnehmbar, elegant' },
     { value: 'medium', label: 'Mittel', description: 'Angenehm intensiv, perfekt' },
     { value: 'intense', label: 'Intensiv', description: 'Sehr präsent, markant' },
+    { value: 'unknown', label: 'Ich weiss es nicht', description: 'Diese Info wird übersprungen' },
   ];
 
   return (

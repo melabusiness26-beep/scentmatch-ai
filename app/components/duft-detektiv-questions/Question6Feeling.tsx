@@ -15,6 +15,7 @@ export default function Question6Feeling({ answers, handleAnswer }: QuestionProp
     { value: 'floral', label: 'Blumig', description: 'Rose, Pfingstrose, Jasmin' },
     { value: 'oriental', label: 'Orientalisch', description: 'Schwer, würzig, Oud, Amber' },
     { value: 'spicy', label: 'Würzig', description: 'Kräuter, Gewürze, Wald' },
+    { value: 'unknown', label: 'Ich weiss es nicht', description: 'Diese Info wird übersprungen' },
   ];
 
   return (

@@ -12,6 +12,7 @@ export default function Question4Age({ answers, handleAnswer }: QuestionProps) {
     { value: 'under25', label: 'Unter 25', description: 'Frisch, trendy, verspielt' },
     { value: '25-40', label: '25–40', description: 'Ausgewogen, reif, elegant' },
     { value: 'over40', label: 'Über 40', description: 'Klassisch, kultiviert, zeitlos' },
+    { value: 'unknown', label: 'Ich weiss es nicht', description: 'Diese Info wird übersprungen' },
   ];
 
   return (

@@ -12,6 +12,7 @@ export default function Question9Price({ answers, handleAnswer }: QuestionProps)
     { value: '<50', label: 'Unter CHF 50', description: 'Budget-freundlich' },
     { value: '50-150', label: 'CHF 50–150', description: 'Mittleres Budget' },
     { value: '>150', label: 'Über CHF 150', description: 'Premium-Düfte' },
+    { value: 'unknown', label: 'Ich weiss es nicht', description: 'Diese Info wird übersprungen' },
   ];
 
   return (

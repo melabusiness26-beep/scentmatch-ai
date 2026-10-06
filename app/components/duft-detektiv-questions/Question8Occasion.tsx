@@ -13,6 +13,7 @@ export default function Question8Occasion({ answers, handleAnswer }: QuestionPro
     { value: 'office', label: 'Büro', description: 'Professionell, angenehm' },
     { value: 'evening', label: 'Abend', description: 'Ausgehen, Dinner, Party' },
     { value: 'special', label: 'Spezial', description: 'Hochzeitsgast, Festlich' },
+    { value: 'unknown', label: 'Ich weiss es nicht', description: 'Diese Info wird übersprungen' },
   ];
 
   return (

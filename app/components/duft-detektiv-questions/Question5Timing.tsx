@@ -12,6 +12,7 @@ export default function Question5Timing({ answers, handleAnswer }: QuestionProps
     { value: '<1year', label: 'Weniger als 1 Jahr', description: 'Sehr frisch für die Person' },
     { value: '1-5years', label: '1–5 Jahre', description: 'Bekannte Marke oder Geschenk' },
     { value: '>5years', label: 'Mehr als 5 Jahre', description: 'Ein Klassiker, Lieblingduft' },
+    { value: 'unknown', label: 'Ich weiss es nicht', description: 'Diese Info wird übersprungen' },
   ];
 
   return (

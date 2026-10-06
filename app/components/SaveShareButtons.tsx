@@ -46,7 +46,7 @@ export default function SaveShareButtons({ answers, resultIds }: SaveShareButton
             borderRadius: '8px',
             border: 'none',
             backgroundColor: '#b08b4f',
-            color: '#1a1410',
+            color: '#2a1d12',
             fontSize: '14px',
             fontWeight: 600,
             textDecoration: 'none',

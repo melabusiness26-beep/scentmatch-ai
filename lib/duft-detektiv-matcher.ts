@@ -181,5 +181,5 @@ export function matchPerfumesDetektiv(
     }
   }
 
-  return results.sort((a, b) => b.score - a.score).slice(0, 5);
+  return results.sort((a, b) => b.score - a.score).slice(0, 8);
 }

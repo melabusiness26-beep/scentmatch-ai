@@ -14,8 +14,8 @@ interface ResultsViewProps {
 }
 
 function getScoreLabel(score: number): string {
-  if (score > 50) return 'Sehr passend';
-  if (score >= 30) return 'Passend';
+  if (score > 70) return 'Sehr passend';
+  if (score >= 50) return 'Passend';
   return 'Ähnliche Richtung';
 }
 
@@ -143,36 +143,38 @@ export default function ResultsView({ results }: ResultsViewProps) {
                   )}
                 </div>
 
-                {/* Score Label */}
-                <div
-                  style={{
-                    display: 'inline-block',
-                    fontSize: '11px',
-                    fontWeight: 600,
-                    color: '#b08b4f',
-                    backgroundColor: 'rgba(176, 139, 79, 0.08)',
-                    padding: '4px 10px',
-                    borderRadius: '6px',
-                  }}
-                >
-                  {getScoreLabel(score)}
+                {/* Score Label with Reasoning */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                  <div
+                    style={{
+                      display: 'inline-block',
+                      fontSize: '11px',
+                      fontWeight: 600,
+                      color: '#b08b4f',
+                      backgroundColor: 'rgba(176, 139, 79, 0.08)',
+                      padding: '4px 10px',
+                      borderRadius: '6px',
+                      width: 'fit-content',
+                    }}
+                  >
+                    {getScoreLabel(score)}
+                  </div>
+                  {reasons.length > 0 && (
+                    <p
+                      style={{
+                        fontSize: '12px',
+                        color: '#6b5a4e',
+                        margin: '0',
+                        fontStyle: 'italic',
+                      }}
+                    >
+                      Passt weil: {reasons.slice(0, 3).map(r => r.charAt(0).toLowerCase() + r.slice(1)).join(', ')}
+                      {reasons.length > 3 ? ', ...' : ''}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
-
-            {/* Reasons Section */}
-            {reasons.length > 0 && (
-              <p
-                style={{
-                  fontSize: '12px',
-                  color: '#888888',
-                  margin: '0',
-                }}
-              >
-                {reasons.slice(0, 3).map(r => r.charAt(0).toUpperCase() + r.slice(1)).join(', ')}
-                {reasons.length > 3 ? '...' : ''}
-              </p>
-            )}
 
             {/* Buttons Section */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>

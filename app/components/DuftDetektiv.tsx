@@ -153,12 +153,13 @@ export default function DuftDetektiv({ allPerfumes }: DuftDetektivProps) {
           borderRadius: '2px',
           overflow: 'hidden',
         }}>
-          <div style={{
-            height: '100%',
-            backgroundColor: '#b08b4f',
-            width: `${progress}%`,
-            transition: 'width 0.3s ease',
-          }} />
+          <div
+            className="duft-detektiv-progress-bar"
+            style={{
+              height: '100%',
+              width: `${progress}%`,
+              transition: 'width 0.3s ease',
+            }} />
         </div>
         <p style={{
           fontSize: '12px',

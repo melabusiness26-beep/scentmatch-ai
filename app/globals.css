@@ -185,6 +185,9 @@ a.logo { text-decoration:none; color:inherit; }
 .top-pick h3 { margin:4px 0 14px; color:var(--brown); }
 .quiz-progress { height:6px; margin:6px 0 18px; }
 .quiz .eyebrow { margin-bottom: 18px; }
+
+/* Duft-Detektiv Progress Bar – explizit Gold */
+.duft-detektiv-progress-bar { background: #b08b4f !important; }
 .footer-kicker { font-family: var(--font-sans), Arial, sans-serif; text-transform: uppercase; letter-spacing: .26em; font-size: 11px; font-weight: 600; color: var(--gold); margin: 10px 0 4px; }
 .quiz-hint { margin:-6px 0 14px; font-style:italic; }
 .quiz-back { margin-top:14px; background:none; border:0; color:var(--brown); cursor:pointer; font-family:var(--font-sans), Arial, sans-serif; font-size:14px; padding:6px 0; }

@@ -552,3 +552,23 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 .faq-item p { color: var(--text); margin: 0; line-height: 1.6; font-size: 14px; }
 .faq-item a { color: var(--gold); text-decoration: none; }
 .faq-item a:hover { text-decoration: underline; }
+
+/* Duft-Detektiv: Meine Düfte Button */
+.duft-detektiv-button {
+  background-color: #b08b4f !important;
+  color: #2a1d12 !important;
+  border: none !important;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  display: block;
+}
+
+.duft-detektiv-button:hover {
+  background-color: #c99a5b !important;
+}

@@ -30,30 +30,183 @@ function getBrandInitials(brandName: string | null | undefined): string {
 }
 
 export default function ResultsView({ results }: ResultsViewProps) {
+  const topMatch = results[0];
+  const otherMatches = results.slice(1);
+
   return (
     <div style={{ marginBottom: '2rem' }}>
       <h2 style={{
-        fontSize: '20px',
-        marginBottom: '2rem',
+        fontSize: 'clamp(24px, 5vw, 32px)',
+        marginBottom: '3rem',
         color: '#2a1d12',
-        fontWeight: 600,
+        fontWeight: 700,
+        fontFamily: "'Playfair Display', serif",
+        lineHeight: 1.2,
       }}>
-        {results.length} {results.length === 1 ? 'Duft gefunden' : 'Düfte gefunden'}
+        Dein Duft-Profil
       </h2>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        {results.map(({ perfume, score, reasons }) => (
-          <div
-            key={perfume.id}
+      {/* Top Match - Highlighted */}
+      {topMatch && (
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '2rem',
+          borderRadius: '20px',
+          border: '3px solid #b08b4f',
+          backgroundColor: 'rgba(176, 139, 79, 0.04)',
+          gap: '1.5rem',
+          marginBottom: '2rem',
+        }}>
+          <div style={{
+            fontSize: '13px',
+            fontWeight: 700,
+            color: '#b08b4f',
+            textTransform: 'uppercase',
+            letterSpacing: '2px',
+          }}>
+            ⭐ Top Match
+          </div>
+
+          <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '64px',
+                height: '64px',
+                minWidth: '64px',
+                borderRadius: '14px',
+                backgroundColor: '#b08b4f',
+                border: '2px solid #b08b4f',
+                fontSize: '24px',
+                fontWeight: 700,
+                color: '#ffffff',
+                letterSpacing: '0.5px',
+              }}
+            >
+              {getBrandInitials(topMatch.perfume.brands?.name)}
+            </div>
+
+            <div style={{ flex: 1 }}>
+              <div style={{
+                fontSize: '12px',
+                color: '#b08b4f',
+                fontWeight: 700,
+                letterSpacing: '1.5px',
+                textTransform: 'uppercase',
+                marginBottom: '0.5rem',
+              }}>
+                {topMatch.perfume.brands?.name || 'Unbekannt'}
+              </div>
+
+              <h3 style={{
+                fontSize: 'clamp(20px, 4vw, 28px)',
+                fontFamily: "'Playfair Display', serif",
+                fontWeight: 700,
+                color: '#2a1d12',
+                marginBottom: '0.5rem',
+                lineHeight: 1.2,
+              }}>
+                {topMatch.perfume.perfume_name}
+              </h3>
+
+              <div style={{
+                fontSize: '14px',
+                color: '#6b5a4e',
+                marginBottom: '1rem',
+                display: 'flex',
+                gap: '1rem',
+                alignItems: 'center',
+              }}>
+                <span>
+                  {topMatch.perfume.fragrance_family && (
+                    <>
+                      {topMatch.perfume.fragrance_family.charAt(0).toUpperCase() + topMatch.perfume.fragrance_family.slice(1)}
+                      {topMatch.perfume.gender && ' • '}
+                    </>
+                  )}
+                  {topMatch.perfume.gender}
+                </span>
+                {topMatch.perfume.price_chf && (
+                  <span style={{ fontWeight: 700, color: '#2a1d12' }}>
+                    CHF {topMatch.perfume.price_chf}
+                  </span>
+                )}
+              </div>
+
+              <div
+                style={{
+                  display: 'inline-block',
+                  fontSize: '12px',
+                  fontWeight: 700,
+                  color: '#ffffff',
+                  backgroundColor: '#b08b4f',
+                  padding: '6px 14px',
+                  borderRadius: '20px',
+                }}
+              >
+                {getScoreLabel(topMatch.score)}
+              </div>
+            </div>
+          </div>
+
+          <Link
+            href={`/duft/${topMatch.perfume.slug}`}
             style={{
-              display: 'flex',
-              flexDirection: 'column',
-              padding: '1.25rem',
-              borderRadius: '16px',
-              border: '0.5px solid #e8dcc8',
-              backgroundColor: '#ffffff',
-              gap: '0.75rem',
+              width: '100%',
+              padding: '14px 24px',
+              borderRadius: '12px',
+              border: 'none',
+              backgroundColor: '#b08b4f',
+              color: '#ffffff',
+              fontSize: '14px',
+              fontWeight: 700,
+              textDecoration: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              textAlign: 'center',
             }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#d4a566';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#b08b4f';
+            }}
+          >
+            Zum Duftprofil →
+          </Link>
+        </div>
+      )}
+
+      {/* Other Matches */}
+      {otherMatches.length > 0 && (
+        <div>
+          <p style={{
+            fontSize: '13px',
+            fontWeight: 600,
+            color: '#6b5a4e',
+            marginBottom: '1.5rem',
+            textTransform: 'uppercase',
+            letterSpacing: '1px',
+          }}>
+            Weitere passende Düfte
+          </p>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            {otherMatches.map(({ perfume, score, reasons }) => (
+              <div
+                key={perfume.id}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  padding: '1.25rem',
+                  borderRadius: '16px',
+                  border: '1px solid #e8dcc8',
+                  backgroundColor: '#ffffff',
+                  gap: '0.75rem',
+                }}
           >
             {/* Top Section: Initials + Info */}
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
@@ -237,9 +390,9 @@ export default function ResultsView({ results }: ResultsViewProps) {
                 Produkt suchen
               </a>
             </div>
+            </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
+        </div>
   );
 }

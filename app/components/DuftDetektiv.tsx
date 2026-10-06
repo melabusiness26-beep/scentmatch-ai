@@ -156,6 +156,7 @@ export default function DuftDetektiv({ allPerfumes }: DuftDetektivProps) {
         }}>
           <div
             style={{
+              display: 'block',
               height: '100%',
               backgroundColor: '#b08b4f',
               width: `${progress}%`,

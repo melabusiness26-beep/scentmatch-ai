@@ -35,8 +35,8 @@ function getFamilyFromFeeling(feeling: string): string[] {
   return mapping[feeling] || [];
 }
 
-function getOccasionMatch(occasion: string, perfume: Perfume): number {
-  if (occasion === 'unknown') return 0;
+function getOccasionMatch(occasion: string | null, perfume: Perfume): number {
+  if (!occasion || occasion === 'unknown') return 0;
 
   const perfumeOccasion = perfume.occasion?.toLowerCase() || '';
   const seasonMap: Record<string, string[]> = {
@@ -49,8 +49,8 @@ function getOccasionMatch(occasion: string, perfume: Perfume): number {
   return seasonMap[occasion]?.some(s => perfumeOccasion.includes(s)) ? 10 : 0;
 }
 
-function getPriceMatch(priceRange: string, perfume: Perfume): number {
-  if (priceRange === 'unknown' || !perfume.price_chf) return 0;
+function getPriceMatch(priceRange: string | null, perfume: Perfume): number {
+  if (!priceRange || priceRange === 'unknown' || !perfume.price_chf) return 0;
 
   const price = perfume.price_chf;
   const ranges: Record<string, [number, number]> = {
@@ -125,7 +125,7 @@ export function matchPerfumesDetektiv(
   answers: DetektivAnswers,
   perfumes: Perfume[]
 ): MatchResult[] {
-  const targetFamilies = getFamilyFromFeeling(answers.feeling);
+  const targetFamilies = answers.feeling ? getFamilyFromFeeling(answers.feeling) : [];
   const results: MatchResult[] = [];
 
   for (const perfume of perfumes) {
@@ -133,7 +133,7 @@ export function matchPerfumesDetektiv(
     const reasons: string[] = [];
 
     // Gender (30%)
-    if (answers.gender !== 'unknown') {
+    if (answers.gender && answers.gender !== 'unknown') {
       const genderMatch =
         (answers.gender === 'woman' && ['Women', 'Unisex'].includes(perfume.gender)) ||
         (answers.gender === 'man' && ['Men', 'Unisex'].includes(perfume.gender)) ||

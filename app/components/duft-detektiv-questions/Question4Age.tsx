@@ -10,9 +10,9 @@ interface QuestionProps {
 export default function Question4Age({ answers, handleAnswer }: QuestionProps) {
   const options: Array<{ value: any; label: string; description: string }> = [
     { value: 'under25', label: 'Unter 20 – jung und trendy', description: 'Frisch, verspielt, modern' },
-    { value: '25-40', label: '20–35 – modern und aktiv', description: 'Ausgewogen, energisch, cool' },
-    { value: '25-40', label: '35–50 – reif und elegant', description: 'Kultiviert, selbstsicher, klassisch' },
-    { value: 'over40', label: 'Über 50 – klassisch und zeitlos', description: 'Elegant, raffiniert, bewährt' },
+    { value: 'age_20_35', label: '20–35 – modern und aktiv', description: 'Ausgewogen, energisch, cool' },
+    { value: 'age_35_50', label: '35–50 – reif und elegant', description: 'Kultiviert, selbstsicher, klassisch' },
+    { value: 'over50', label: 'Über 50 – klassisch und zeitlos', description: 'Elegant, raffiniert, bewährt' },
     { value: 'unknown', label: 'Ich weiss es nicht', description: 'Diese Info wird übersprungen' },
   ];
 

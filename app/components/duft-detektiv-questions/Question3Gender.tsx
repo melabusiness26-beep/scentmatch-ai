@@ -8,11 +8,13 @@ interface QuestionProps {
 }
 
 export default function Question3Gender({ answers, handleAnswer }: QuestionProps) {
-  const options: Array<{ value: any; label: string }> = [
-    { value: 'woman', label: 'Für Frauen' },
-    { value: 'man', label: 'Für Männer' },
-    { value: 'unisex', label: 'Unisex' },
-    { value: 'unknown', label: 'Ich weiss es nicht' },
+  const options: Array<{ value: any; label: string; description: string }> = [
+    { value: 'woman', label: 'Für mich – eine Frau', description: 'Ich selbst bin weiblich' },
+    { value: 'man', label: 'Für mich – einen Mann', description: 'Ich selbst bin männlich' },
+    { value: 'woman', label: 'Für jemand anderen – eine Frau', description: 'Als Geschenk für eine Frau' },
+    { value: 'man', label: 'Für jemand anderen – einen Mann', description: 'Als Geschenk für einen Mann' },
+    { value: 'unisex', label: 'Unisex, egal', description: 'Egal wer ihn trägt' },
+    { value: 'unknown', label: 'Ich weiss es nicht', description: 'Diese Info wird übersprungen' },
   ];
 
   return (
@@ -24,7 +26,7 @@ export default function Question3Gender({ answers, handleAnswer }: QuestionProps
         color: '#2a1d12',
         marginBottom: '1.5rem',
       }}>
-        Für wen ist dieser Duft?
+        Für wen suchst du den Duft?
       </h2>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>

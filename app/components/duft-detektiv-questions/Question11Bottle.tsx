@@ -9,10 +9,12 @@ interface QuestionProps {
 
 export default function Question11Bottle({ answers, handleAnswer }: QuestionProps) {
   const options: Array<{ value: any; label: string; description: string }> = [
-    { value: 'glass', label: 'Glasflasche', description: 'Klassisch, elegant' },
-    { value: 'spray', label: 'Mit Sprühzerstäuber', description: 'Praktisch' },
-    { value: 'roll-on', label: 'Roll-On', description: 'Kompakt, praktisch' },
-    { value: 'atomizer', label: 'Zerstäuber', description: 'Leicht' },
+    { value: 'dark', label: 'Dunkel oder schwarz', description: 'Geheimnisvoll, edel' },
+    { value: 'light', label: 'Hell oder transparent', description: 'Modern, minimalistisch' },
+    { value: 'gold', label: 'Gold oder luxuriös', description: 'Glamourös, auffällig' },
+    { value: 'small', label: 'Klein und kompakt', description: 'Praktisch, tragbar' },
+    { value: 'large', label: 'Gross und auffällig', description: 'Statement-Piece' },
+    { value: 'unknown', label: 'Ich weiss es nicht', description: 'Diese Info wird übersprungen' },
   ];
 
   return (
@@ -24,8 +26,16 @@ export default function Question11Bottle({ answers, handleAnswer }: QuestionProp
         color: '#2a1d12',
         marginBottom: '1.5rem',
       }}>
-        In welcher Verpackung magst du Düfte? (Optional)
+        Wie sah die Flasche aus? (Optional)
       </h2>
+
+      <p style={{
+        fontSize: '14px',
+        color: '#6b5a4e',
+        marginBottom: '1rem',
+      }}>
+        Wähle eine Option – oder gib unten noch mehr Details:
+      </p>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
         {options.map(option => (
@@ -60,6 +70,35 @@ export default function Question11Bottle({ answers, handleAnswer }: QuestionProp
             </div>
           </button>
         ))}
+      </div>
+
+      <div style={{ marginTop: '1rem' }}>
+        <textarea
+          value={answers.description}
+          onChange={(e) => handleAnswer('description', e.target.value)}
+          placeholder="z. B. ovale Flasche mit Leder, rechteckig mit goldenen Details, runde Flasche mit Schnörkel..."
+          style={{
+            width: '100%',
+            minHeight: '80px',
+            padding: '12px 16px',
+            borderRadius: '8px',
+            border: '1px solid #e8dcc8',
+            fontSize: '14px',
+            fontFamily: 'inherit',
+            backgroundColor: '#ffffff',
+            color: '#2a1d12',
+            resize: 'vertical',
+            boxSizing: 'border-box',
+          }}
+        />
+        <p style={{
+          fontSize: '12px',
+          color: '#6b5a4e',
+          marginTop: '0.5rem',
+          margin: '0.5rem 0 0 0',
+        }}>
+          Weitere Details helfen uns, den exakten Duft zu finden.
+        </p>
       </div>
     </div>
   );

@@ -9,9 +9,10 @@ interface QuestionProps {
 
 export default function Question4Age({ answers, handleAnswer }: QuestionProps) {
   const options: Array<{ value: any; label: string; description: string }> = [
-    { value: 'under25', label: 'Unter 25', description: 'Frisch, trendy, verspielt' },
-    { value: '25-40', label: '25–40', description: 'Ausgewogen, reif, elegant' },
-    { value: 'over40', label: 'Über 40', description: 'Klassisch, kultiviert, zeitlos' },
+    { value: 'under25', label: 'Unter 20 – jung und trendy', description: 'Frisch, verspielt, modern' },
+    { value: '25-40', label: '20–35 – modern und aktiv', description: 'Ausgewogen, energisch, cool' },
+    { value: '25-40', label: '35–50 – reif und elegant', description: 'Kultiviert, selbstsicher, klassisch' },
+    { value: 'over40', label: 'Über 50 – klassisch und zeitlos', description: 'Elegant, raffiniert, bewährt' },
     { value: 'unknown', label: 'Ich weiss es nicht', description: 'Diese Info wird übersprungen' },
   ];
 
@@ -24,7 +25,7 @@ export default function Question4Age({ answers, handleAnswer }: QuestionProps) {
         color: '#2a1d12',
         marginBottom: '1.5rem',
       }}>
-        In welcher Altersgruppe befindet sich diese Person?
+        Wie alt ist die Person ungefähr?
       </h2>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>

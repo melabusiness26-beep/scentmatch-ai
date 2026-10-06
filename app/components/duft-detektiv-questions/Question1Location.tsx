@@ -9,11 +9,11 @@ interface QuestionProps {
 
 export default function Question1Location({ answers, handleAnswer }: QuestionProps) {
   const options: Array<{ value: any; label: string; description: string }> = [
-    { value: 'person', label: 'Bei einer Person', description: 'Duft geschenkt bekommen' },
-    { value: 'store', label: 'Im Geschäft', description: 'Beim Einkaufen entdeckt' },
-    { value: 'holiday', label: 'Im Urlaub', description: 'Während einer Reise' },
-    { value: 'hotel', label: 'Im Hotel', description: 'In der Hotelausstattung' },
-    { value: 'online', label: 'Online', description: 'Im Internet gesehen' },
+    { value: 'person', label: 'Bei einer Person', description: 'Jemand trug ihn' },
+    { value: 'store', label: 'In einer Parfümerie oder Laden', description: 'Beim Einkaufen entdeckt' },
+    { value: 'holiday', label: 'Im Urlaub im Ausland', description: 'Während einer Reise' },
+    { value: 'hotel', label: 'In einem Hotel oder Restaurant', description: 'Beim Besuch gerochen' },
+    { value: 'online', label: 'Online entdeckt', description: 'Im Internet oder Social Media' },
     { value: 'unknown', label: 'Ich weiss es nicht', description: 'Diese Info wird übersprungen' },
   ];
 
@@ -26,7 +26,7 @@ export default function Question1Location({ answers, handleAnswer }: QuestionPro
         color: '#2a1d12',
         marginBottom: '1.5rem',
       }}>
-        Wo hast du einen Duft entdeckt, der dir gefallen hat?
+        Wo hast du diesen Duft zum ersten Mal gerochen?
       </h2>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>

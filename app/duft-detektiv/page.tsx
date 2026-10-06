@@ -21,7 +21,7 @@ export default async function DuftDetektivPage() {
     <main style={{ backgroundColor: '#faf7f2' }}>
       <section
         style={{
-          backgroundImage: 'linear-gradient(rgba(26,18,9,0.80), rgba(26,18,9,0.80)), url(https://images.unsplash.com/photo-1542315503-1025c1b4e6e7?w=800)',
+          backgroundImage: 'linear-gradient(rgba(26,18,9,0.80), rgba(26,18,9,0.80)), url(/hero-auressa-2.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           minHeight: '280px',

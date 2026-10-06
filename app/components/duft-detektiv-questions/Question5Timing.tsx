@@ -9,9 +9,10 @@ interface QuestionProps {
 
 export default function Question5Timing({ answers, handleAnswer }: QuestionProps) {
   const options: Array<{ value: any; label: string; description: string }> = [
-    { value: '<1year', label: 'Weniger als 1 Jahr', description: 'Sehr frisch für die Person' },
-    { value: '1-5years', label: '1–5 Jahre', description: 'Bekannte Marke oder Geschenk' },
-    { value: '>5years', label: 'Mehr als 5 Jahre', description: 'Ein Klassiker, Lieblingduft' },
+    { value: '<1year', label: 'Vor weniger als einer Woche', description: 'Noch ganz frisch in Erinnerung' },
+    { value: '1-5years', label: 'Vor 1–6 Monaten', description: 'Immer noch präsent im Gedächtnis' },
+    { value: '1-5years', label: 'Vor 1–3 Jahren', description: 'Schöne alte Erinnerung' },
+    { value: '>5years', label: 'Vor mehr als 3 Jahren', description: 'Wie ein fernes Abenteuer' },
     { value: 'unknown', label: 'Ich weiss es nicht', description: 'Diese Info wird übersprungen' },
   ];
 
@@ -24,7 +25,7 @@ export default function Question5Timing({ answers, handleAnswer }: QuestionProps
         color: '#2a1d12',
         marginBottom: '1.5rem',
       }}>
-        Wie lange nutzt diese Person diesen Duft bereits?
+        Wann hast du diesen Duft zuletzt gerochen?
       </h2>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>

@@ -9,12 +9,12 @@ interface QuestionProps {
 
 export default function Question6Feeling({ answers, handleAnswer }: QuestionProps) {
   const options: Array<{ value: any; label: string; description: string }> = [
-    { value: 'fresh', label: 'Frisch', description: 'Zitrus, Wasser, Grüne Düfte' },
-    { value: 'warm', label: 'Warm', description: 'Gourmand, Vanille, Karamel, Schokolade' },
-    { value: 'woody', label: 'Holzig', description: 'Sandelholz, Zedernholz, Musk' },
-    { value: 'floral', label: 'Blumig', description: 'Rose, Pfingstrose, Jasmin' },
-    { value: 'oriental', label: 'Orientalisch', description: 'Schwer, würzig, Oud, Amber' },
-    { value: 'spicy', label: 'Würzig', description: 'Kräuter, Gewürze, Wald' },
+    { value: 'fresh', label: 'Frisch', description: 'Zitrus, Meer, Grün' },
+    { value: 'warm', label: 'Warm', description: 'Vanille, Schokolade, Karamel' },
+    { value: 'woody', label: 'Holzig', description: 'Sandelholz, Zeder, Vetiver' },
+    { value: 'floral', label: 'Blumig', description: 'Rose, Jasmin, Pfingstrose' },
+    { value: 'oriental', label: 'Orientalisch', description: 'Oud, Amber, Moschus' },
+    { value: 'spicy', label: 'Würzig', description: 'Pfeffer, Ingwer, Zimt' },
     { value: 'unknown', label: 'Ich weiss es nicht', description: 'Diese Info wird übersprungen' },
   ];
 

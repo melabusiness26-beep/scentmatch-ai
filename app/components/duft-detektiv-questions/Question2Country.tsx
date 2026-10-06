@@ -17,14 +17,14 @@ export default function Question2Country({ answers, handleAnswer }: QuestionProp
         color: '#2a1d12',
         marginBottom: '1.5rem',
       }}>
-        Aus welchem Land oder Ort stammt dieser Duft? (Optional)
+        In welchem Land oder welcher Stadt hast du ihn gerochen? (Optional)
       </h2>
 
       <input
         type="text"
         value={answers.country}
         onChange={(e) => handleAnswer('country', e.target.value)}
-        placeholder="z. B. Frankreich, Dubai, Schweiz..."
+        placeholder="z. B. Dubai, Paris, Zürich, New York, Türkei..."
         style={{
           width: '100%',
           padding: '12px 16px',

@@ -17,14 +17,14 @@ export default function Question10Brand({ answers, handleAnswer }: QuestionProps
         color: '#2a1d12',
         marginBottom: '1.5rem',
       }}>
-        Welche Marke oder Duft magst du? (Optional)
+        Erinnerst du dich an die Marke oder den Namen? (Optional)
       </h2>
 
       <input
         type="text"
         value={answers.brand}
         onChange={(e) => handleAnswer('brand', e.target.value)}
-        placeholder="z. B. Chanel, Dior, Lancôme..."
+        placeholder="z. B. Chanel, Dior, oder ein Teil des Namens wie 'Bleu' oder 'Noir'"
         style={{
           width: '100%',
           padding: '12px 16px',

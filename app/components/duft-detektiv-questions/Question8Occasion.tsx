@@ -9,10 +9,11 @@ interface QuestionProps {
 
 export default function Question8Occasion({ answers, handleAnswer }: QuestionProps) {
   const options: Array<{ value: any; label: string; description: string }> = [
-    { value: 'daily', label: 'Alltag', description: 'Jeden Tag, zuverlässig' },
-    { value: 'office', label: 'Büro', description: 'Professionell, angenehm' },
-    { value: 'evening', label: 'Abend', description: 'Ausgehen, Dinner, Party' },
-    { value: 'special', label: 'Spezial', description: 'Hochzeitsgast, Festlich' },
+    { value: 'daily', label: 'Alltag – frisch und unkompliziert', description: 'Täglich tragbar, zuverlässig' },
+    { value: 'office', label: 'Büro – professionell und dezent', description: 'Im Job angemessen' },
+    { value: 'evening', label: 'Abend – verführerisch und stark', description: 'Ausgehen, Dinner, Party' },
+    { value: 'special', label: 'Besonderer Anlass – unvergesslich', description: 'Hochzeitsgast, Festlich' },
+    { value: 'holiday', label: 'Sport oder Outdoor', description: 'Beim Trainieren, Wandern' },
     { value: 'unknown', label: 'Ich weiss es nicht', description: 'Diese Info wird übersprungen' },
   ];
 
@@ -25,7 +26,7 @@ export default function Question8Occasion({ answers, handleAnswer }: QuestionPro
         color: '#2a1d12',
         marginBottom: '1.5rem',
       }}>
-        Zu welchem Anlass wird dieser Duft getragen?
+        Zu welcher Gelegenheit wurde er getragen?
       </h2>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>

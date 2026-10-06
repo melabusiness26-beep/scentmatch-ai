@@ -9,9 +9,10 @@ interface QuestionProps {
 
 export default function Question7Strength({ answers, handleAnswer }: QuestionProps) {
   const options: Array<{ value: any; label: string; description: string }> = [
-    { value: 'subtle', label: 'Subtil', description: 'Kaum wahrnehmbar, elegant' },
-    { value: 'medium', label: 'Mittel', description: 'Angenehm intensiv, perfekt' },
-    { value: 'intense', label: 'Intensiv', description: 'Sehr präsent, markant' },
+    { value: 'subtle', label: 'Sehr dezent – kaum wahrnehmbar', description: 'Man muss nah dran sein' },
+    { value: 'medium', label: 'Angenehm präsent – gut dosiert', description: 'Perfekt für Alltag' },
+    { value: 'intense', label: 'Intensiv – man riecht ihn sofort', description: 'Im Umkreis deutlich spürbar' },
+    { value: 'intense', label: 'Sehr stark – bleibt lange hängen', description: 'Dominiert den Raum' },
     { value: 'unknown', label: 'Ich weiss es nicht', description: 'Diese Info wird übersprungen' },
   ];
 
@@ -24,7 +25,7 @@ export default function Question7Strength({ answers, handleAnswer }: QuestionPro
         color: '#2a1d12',
         marginBottom: '1.5rem',
       }}>
-        Wie intensiv ist dieser Duft?
+        Wie intensiv war der Duft?
       </h2>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>

@@ -150,16 +150,16 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        width: '80px',
-                        height: '80px',
-                        minWidth: '80px',
+                        width: '44px',
+                        height: '44px',
+                        minWidth: '44px',
                         borderRadius: '8px',
                         backgroundColor: 'rgba(176, 139, 79, 0.15)',
                         border: '1px solid rgba(176, 139, 79, 0.3)',
-                        fontSize: '20px',
+                        fontSize: '14px',
                         fontWeight: 700,
                         color: '#b08b4f',
-                        letterSpacing: '2px',
+                        letterSpacing: '1px',
                       }}
                     >
                       {getBrandInitials(perfume.brands?.name)}
@@ -176,6 +176,10 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                           letterSpacing: '1.5px',
                           textTransform: 'uppercase',
                           marginBottom: '0.5rem',
+                          maxWidth: '180px',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          whiteSpace: 'nowrap',
                         }}
                       >
                         {perfume.brands?.name || 'Unbekannt'}
@@ -190,6 +194,10 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                           color: 'var(--dt-text, #faf7f2)',
                           marginBottom: '0.5rem',
                           lineHeight: 1.2,
+                          display: '-webkit-box',
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: 'vertical',
+                          overflow: 'hidden',
                         }}
                       >
                         {perfume.perfume_name}
@@ -237,17 +245,18 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                             marginBottom: '1rem',
                           }}
                         >
-                          {matchedNotes.slice(0, 3).join(', ')}
+                          {matchedNotes.slice(0, 3).map(note => note.charAt(0).toUpperCase() + note.slice(1)).join(', ')}
                           {matchedNotes.length > 3 ? '...' : ''}
                         </p>
                       )}
 
                       {/* Buttons */}
-                      <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                      <div style={{ display: 'flex', gap: '8px' }}>
                         <Link
                           href={`/duft/${perfume.slug}`}
                           style={{
-                            padding: '10px 20px',
+                            flex: 1,
+                            padding: '10px 16px',
                             borderRadius: '6px',
                             border: '1px solid #b08b4f',
                             backgroundColor: 'transparent',
@@ -257,6 +266,10 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                             textDecoration: 'none',
                             cursor: 'pointer',
                             transition: 'all 0.2s ease',
+                            textAlign: 'center',
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
                           }}
                           onMouseEnter={(e) => {
                             e.currentTarget.style.backgroundColor = 'rgba(176, 139, 79, 0.1)';
@@ -272,9 +285,10 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                           target="_blank"
                           rel="noopener noreferrer"
                           style={{
-                            padding: '10px 20px',
+                            flex: 1,
+                            padding: '10px 16px',
                             borderRadius: '6px',
-                            border: 'none',
+                            border: '1px solid rgba(212, 175, 55, 0.3)',
                             backgroundColor: 'transparent',
                             color: 'var(--dt-text-secondary, #d4cfc3)',
                             fontSize: '13px',
@@ -282,11 +296,17 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                             textDecoration: 'none',
                             cursor: 'pointer',
                             transition: 'all 0.2s ease',
+                            textAlign: 'center',
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
                           }}
                           onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
                             e.currentTarget.style.color = 'var(--dt-text, #faf7f2)';
                           }}
                           onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = 'transparent';
                             e.currentTarget.style.color = 'var(--dt-text-secondary, #d4cfc3)';
                           }}
                         >

@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
     }
 
     console.log('[image-analyzer] Analysis successful, returning result');
-    return NextResponse.json(result);
+    return NextResponse.json({ success: true, data: result });
   } catch (error) {
     console.error('[image-analyzer] Fehler:', error);
     return NextResponse.json(

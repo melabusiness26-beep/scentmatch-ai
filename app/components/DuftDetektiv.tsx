@@ -20,18 +20,21 @@ import LoadingAnimation from './LoadingAnimation';
 import ResultsView from './ResultsView';
 import SaveShareButtons from './SaveShareButtons';
 import NewsletterForm from '@/app/NewsletterForm';
+import ImageAnalyzer from './ImageAnalyzer';
 
 interface DuftDetektivProps {
   allPerfumes: Perfume[];
+  prefilledAnswers?: Partial<DetektivAnswers>;
 }
 
-export default function DuftDetektiv({ allPerfumes }: DuftDetektivProps) {
+export default function DuftDetektiv({ allPerfumes, prefilledAnswers }: DuftDetektivProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<any[]>([]);
   const [showResults, setShowResults] = useState(false);
+  const [showImageAnalyzer, setShowImageAnalyzer] = useState(false);
 
-  const [answers, setAnswers] = useState<DetektivAnswers>({
+  const defaultAnswers: DetektivAnswers = {
     location: null,
     country: '',
     gender: null,
@@ -44,6 +47,11 @@ export default function DuftDetektiv({ allPerfumes }: DuftDetektivProps) {
     brand: '',
     bottle: '',
     description: '',
+  };
+
+  const [answers, setAnswers] = useState<DetektivAnswers>({
+    ...defaultAnswers,
+    ...prefilledAnswers,
   });
 
   const totalQuestions = 12;
@@ -111,6 +119,7 @@ export default function DuftDetektiv({ allPerfumes }: DuftDetektivProps) {
     });
     setShowResults(false);
     setResults([]);
+    setShowImageAnalyzer(false);
   };
 
   if (loading) {
@@ -220,6 +229,116 @@ export default function DuftDetektiv({ allPerfumes }: DuftDetektivProps) {
           }}>
             Beschreib mir den Duft – ich finde ihn für dich.
           </p>
+
+          {/* Two Entry Options */}
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem',
+            alignItems: 'center',
+            marginTop: '2rem',
+          }}>
+            {/* Text or Photo Toggle */}
+            {showImageAnalyzer ? (
+              <>
+                <ImageAnalyzer
+                  onAnalysisComplete={(prefilledAnswers) => {
+                    setAnswers((prev) => ({
+                      ...prev,
+                      ...prefilledAnswers,
+                    }));
+                    setShowImageAnalyzer(false);
+                    setCurrentQuestion(1);
+                  }}
+                />
+                <button
+                  onClick={() => setShowImageAnalyzer(false)}
+                  style={{
+                    padding: '0',
+                    borderRadius: '0',
+                    border: 'none',
+                    backgroundColor: 'transparent',
+                    color: '#b08b4f',
+                    fontSize: '13px',
+                    fontWeight: 500,
+                    cursor: 'pointer',
+                    transition: 'opacity 0.2s ease',
+                    textDecoration: 'none',
+                    marginTop: '0.5rem',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.opacity = '0.7';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.opacity = '1';
+                  }}
+                >
+                  ← Zurück zur manuellen Eingabe
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => setCurrentQuestion(1)}
+                  style={{
+                    padding: '16px 48px',
+                    borderRadius: '16px',
+                    border: 'none',
+                    backgroundColor: '#b08b4f',
+                    color: '#ffffff',
+                    fontSize: '15px',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    letterSpacing: '0.5px',
+                    boxShadow: '0 4px 12px rgba(176, 139, 79, 0.2)',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#d4a566';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 6px 16px rgba(176, 139, 79, 0.3)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = '#b08b4f';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(176, 139, 79, 0.2)';
+                  }}
+                >
+                  Erzähl mir davon →
+                </button>
+
+                <button
+                  onClick={() => setShowImageAnalyzer(true)}
+                  style={{
+                    padding: '16px 48px',
+                    borderRadius: '16px',
+                    border: '2px solid #b08b4f',
+                    backgroundColor: 'transparent',
+                    color: '#b08b4f',
+                    fontSize: '15px',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    letterSpacing: '0.5px',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = 'rgba(176, 139, 79, 0.05)';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  📷 Foto analysieren
+                </button>
+
+                <p style={{ fontSize: '12px', color: '#6b5a4e', margin: '0.5rem 0 0 0' }}>
+                  Flakon, Outfit oder Stimmung
+                </p>
+              </>
+            )}
+          </div>
         </div>
       )}
 

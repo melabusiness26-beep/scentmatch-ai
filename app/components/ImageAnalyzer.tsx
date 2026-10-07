@@ -17,6 +17,7 @@ export default function ImageAnalyzer({ onAnalysisComplete }: ImageAnalyzerProps
     setError(null);
 
     try {
+      // Call image analyzer API
       const response = await fetch('/api/image-analyzer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { analyzeImageWithAnthropic } from '@/lib/anthropic-analyzer';
-import { validateImageSize, extractMimeTypeFromDataUri, extractBase64FromDataUri } from '@/lib/image-validation';
+import { analyzeImageWithClaude } from '@/lib/anthropic-analyzer';
+
+const MAX_SIZE_BYTES = 5 * 1024 * 1024;
+
+function validateBase64Size(base64String: string): boolean {
+  const sizeBytes = Math.ceil(base64String.length * 0.75);
+  return sizeBytes <= MAX_SIZE_BYTES;
+}
 
 export async function GET() {
   return NextResponse.json({ ok: true, version: '1.0.1' });
@@ -18,16 +24,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!validateImageSize(imageBase64)) {
+    if (!validateBase64Size(imageBase64)) {
       return NextResponse.json(
         { success: false, error: 'Bild zu groß (max 5MB)' },
         { status: 400 }
       );
     }
 
-    const mimeType = extractMimeTypeFromDataUri(imageBase64);
-    const base64Data = extractBase64FromDataUri(imageBase64);
-    const result = await analyzeImageWithAnthropic(base64Data, mimeType);
+    const result = await analyzeImageWithClaude(imageBase64);
+
+    if (!result) {
+      return NextResponse.json(
+        { success: false, error: 'Bildanalyse fehlgeschlagen' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json(result);
   } catch (error) {

@@ -35,3 +35,15 @@ export interface AnalysisResponse {
   data?: ImageAnalysisResult['data'];
   error?: string;
 }
+
+// Legacy types for /api/analyze-image (old endpoint)
+export interface AnalyzeImageRequest {
+  imageBase64: string;
+  includeProductInfo?: boolean;
+}
+
+export interface AnalyzeImageResponse {
+  success: boolean;
+  data?: ImageAnalysisResult;
+  error?: string;
+}

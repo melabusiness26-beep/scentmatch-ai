@@ -4,10 +4,10 @@ const ANTHROPIC_API_KEY = (process.env.ANTHROPIC_API_KEY || '').trim();
 
 export const isAnthropicConfigured = ANTHROPIC_API_KEY.length > 0;
 
-export async function analyzeImageWithAnthropic(
+export async function analyzeImageWithClaude(
   base64Image: string,
-  mediaType: string = 'image/jpeg'
-): Promise<ImageAnalysisResult> {
+  includeProductInfo: boolean = false
+): Promise<ImageAnalysisResult | null> {
   if (!isAnthropicConfigured) {
     return {
       success: false,

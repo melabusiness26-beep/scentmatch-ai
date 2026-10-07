@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(result);
   } catch (error) {
-    console.error('[analyze-image] Fehler:', error);
+    console.error('[image-analyzer] Fehler:', error);
     return NextResponse.json(
       { success: false, error: 'Server-Fehler bei Bildanalyse' },
       { status: 500 }

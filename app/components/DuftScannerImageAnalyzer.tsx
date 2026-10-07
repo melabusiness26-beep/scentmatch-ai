@@ -17,7 +17,7 @@ export default function DuftScannerImageAnalyzer({ onAnalysisComplete }: DuftSca
     setError(null);
 
     try {
-      const response = await fetch('/api/analyze-image', {
+      const response = await fetch('/api/image-analyzer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

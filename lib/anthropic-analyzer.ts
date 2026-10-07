@@ -1,15 +1,17 @@
 import { ImageAnalysisResult } from '@/types/image-analysis';
 
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
+const ANTHROPIC_API_KEY = (process.env.ANTHROPIC_API_KEY || '').trim();
+
+export const isAnthropicConfigured = ANTHROPIC_API_KEY.length > 0;
 
 export async function analyzeImageWithAnthropic(
   base64Image: string,
   mediaType: string = 'image/jpeg'
 ): Promise<ImageAnalysisResult> {
-  if (!ANTHROPIC_API_KEY) {
+  if (!isAnthropicConfigured) {
     return {
       success: false,
-      error: 'API-Konfigurationsfehler: ANTHROPIC_API_KEY nicht gesetzt',
+      error: 'Anthropic API nicht konfiguriert. Bitte kontaktiere den Support.',
     };
   }
 

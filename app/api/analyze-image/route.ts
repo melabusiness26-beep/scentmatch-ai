@@ -1,10 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { analyzeImageWithAnthropic } from '@/lib/anthropic-analyzer';
+import { analyzeImageWithAnthropic, isAnthropicConfigured } from '@/lib/anthropic-analyzer';
 import { validateImageSize, extractMimeTypeFromDataUri, extractBase64FromDataUri } from '@/lib/image-validation';
 import { AnalysisResponse } from '@/types/image-analysis';
 
 export async function POST(request: NextRequest): Promise<NextResponse<AnalysisResponse>> {
   try {
+    // Prüfe ob Anthropic konfiguriert ist
+    if (!isAnthropicConfigured) {
+      return NextResponse.json(
+        { success: false, error: 'Bildanalyse nicht verfügbar. Bitte später versuchen.' },
+        { status: 503 }
+      );
+    }
+
     const body = await request.json();
     const { imageBase64 } = body;
 

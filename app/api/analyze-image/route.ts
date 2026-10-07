@@ -3,6 +3,10 @@ import { analyzeImageWithAnthropic, isAnthropicConfigured } from '@/lib/anthropi
 import { validateImageSize, extractMimeTypeFromDataUri, extractBase64FromDataUri } from '@/lib/image-validation';
 import { AnalysisResponse } from '@/types/image-analysis';
 
+export async function GET() {
+  return NextResponse.json({ error: 'POST nur' }, { status: 405 });
+}
+
 export async function POST(request: NextRequest): Promise<NextResponse<AnalysisResponse>> {
   try {
     // Check if Anthropic is configured

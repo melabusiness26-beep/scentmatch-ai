@@ -106,7 +106,13 @@ Antworte NUR mit dem JSON-Objekt, kein anderer Text.`;
 
     return result;
   } catch (error) {
-    console.error('[Analyzer] Fehler bei Bildanalyse:', error);
+    if (error instanceof Error) {
+      console.error('[Analyzer] Error name:', error.name);
+      console.error('[Analyzer] Error message:', error.message);
+      console.error('[Analyzer] Error stack:', error.stack);
+    } else {
+      console.error('[Analyzer] Unknown error:', error);
+    }
     return null;
   }
 }

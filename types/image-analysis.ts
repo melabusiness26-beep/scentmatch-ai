@@ -10,6 +10,9 @@ export interface ImageAnalysisResult {
   brandName?: string | null;
   perfumeName?: string | null;
   confidence: 'high' | 'medium' | 'low';
+  family?: 'clean' | 'gourmand' | 'woody' | 'floral' | null;
+  generalDescription?: string | null;
+  data?: ImageAnalysisResult;
 }
 
 // API Request/Response

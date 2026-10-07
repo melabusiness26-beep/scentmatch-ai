@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { analyzeImageWithAnthropic } from '@/lib/anthropic-analyzer';
+import { validateImageSize, extractMimeTypeFromDataUri, extractBase64FromDataUri } from '@/lib/image-validation';
 
 export async function GET() {
   return NextResponse.json({ ok: true });
@@ -6,9 +8,6 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
-    const { analyzeImageWithAnthropic } = await import('@/lib/anthropic-analyzer');
-    const { validateImageSize, extractMimeTypeFromDataUri, extractBase64FromDataUri } = await import('@/lib/image-validation');
-
     const body = await request.json();
     const { imageBase64 } = body;
 

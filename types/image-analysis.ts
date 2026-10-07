@@ -1,45 +1,21 @@
+// Analyse-Result von Claude für Bild-Input
+// Gender ist normalisiert (woman/man/unisex, nicht self_woman/gift_woman)
 export interface ImageAnalysisResult {
-  success: boolean;
-  data?: {
-    perfumeName: string;
-    brandName: string;
-    confidence: 'high' | 'medium' | 'low';
-    notes: {
-      top: string[];
-      heart: string[];
-      base: string[];
-    };
-    development: {
-      opening: string;
-      middleGame: string;
-      drydown: string;
-    };
-    family: string;
-    origin?: string;
-    usageRecommendations: {
-      occasions: string[];
-      seasons: string[];
-      timeOfDay: string[];
-      skinType?: string[];
-    };
-    intensity: 'very_light' | 'light' | 'medium' | 'strong' | 'very_strong' | undefined;
-    gender: 'woman' | 'man' | 'unisex' | null;
-    bottleDescription: string;
-    generalDescription: string;
-  };
-  error?: string;
+  where?: 'person' | 'store' | 'holiday' | 'hotel' | 'online' | null;
+  gender?: 'woman' | 'man' | 'unisex' | null;
+  feeling?: 'fresh' | 'warm' | 'woody' | 'floral' | 'oriental' | 'spicy' | null;
+  intensity?: 'very_light' | 'light' | 'medium' | 'strong' | 'very_strong' | null;
+  occasion?: 'daily' | 'office' | 'evening' | 'special' | null;
+  bottleDescription?: string | null;
+  brandName?: string | null;
+  perfumeName?: string | null;
+  confidence: 'high' | 'medium' | 'low';
 }
 
-export interface AnalysisResponse {
-  success: boolean;
-  data?: ImageAnalysisResult['data'];
-  error?: string;
-}
-
-// Legacy types for /api/analyze-image (old endpoint)
+// API Request/Response
 export interface AnalyzeImageRequest {
   imageBase64: string;
-  includeProductInfo?: boolean;
+  includeProductInfo?: boolean; // für /duft-scanner: mit brandName/perfumeName
 }
 
 export interface AnalyzeImageResponse {

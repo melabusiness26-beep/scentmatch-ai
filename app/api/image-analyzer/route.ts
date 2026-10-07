@@ -3,7 +3,7 @@ import { analyzeImageWithAnthropic } from '@/lib/anthropic-analyzer';
 import { validateImageSize, extractMimeTypeFromDataUri, extractBase64FromDataUri } from '@/lib/image-validation';
 
 export async function GET() {
-  return NextResponse.json({ ok: true, version: '1.0.0' });
+  return NextResponse.json({ ok: true, version: '1.0.1' });
 }
 
 export async function POST(request: NextRequest) {

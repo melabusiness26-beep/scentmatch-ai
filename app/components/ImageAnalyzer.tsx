@@ -84,6 +84,7 @@ export default function ImageAnalyzer({ onAnalysisComplete, includeProductInfo }
         console.warn('[ImageAnalyzer] Low confidence – Quiz mit vorbefüllten Antworten');
       }
 
+      setIsLoading(false);
       onAnalysisComplete(prefilled);
     } catch (err) {
       console.error('[ImageAnalyzer] Fehler:', err);

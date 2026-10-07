@@ -40,27 +40,37 @@ export async function analyzeImageWithAnthropic(
               },
               {
                 type: 'text',
-                text: `Analysiere das Parfüm-Flakon-Bild gründlich und antworte mit AUSSCHLIESSLICH ein gültiges JSON (keine Markdown, kein Text davor/danach).
+                text: `Du bist ein Parfüm-Erkennungs-Assistent. Analysiere dieses Bild eines Parfüms und antworte mit AUSSCHLIESSLICH gültigem JSON (keine Markdown, kein Text davor/danach).
 
-Extrahiere folgende Informationen:
-- perfumeName: Der genaue Name des Parfüms (aus dem Etikett lesbar)
-- brandName: Der Markenname
-- confidence: "high" wenn du sicher bist, "medium" wenn möglich aber unklar, "low" wenn sehr unsicher
-- notes: Ein Objekt mit top (Array), heart (Array), base (Array) - die Duftnoten falls sichtbar oder gut erkennbar
-- development: Wie das Parfüm sich entwickelt: opening (erste Minuten), middleGame (nach 1-2h), drydown (Ende des Tages)
-- family: Die Duftfamilie (z.B. "Floral", "Woody", "Clean", "Gourmand")
-- origin: Das Herkunftsland oder die Region
-- usageRecommendations: Ein Objekt mit:
-  - occasions: Array von Anlässen (z.B. ["Alltag", "Büro", "Abend"])
-  - seasons: Array von Jahreszeiten (z.B. ["Frühling", "Sommer"])
-  - timeOfDay: Array von Tageszeiten (z.B. ["Morgens", "Abends"])
-  - skinType: Optional Array von Hauttypen
-- intensity: Die Intensität/Sillage: "very_light", "light", "medium", "strong" oder "very_strong"
-- gender: "woman", "man", "unisex" oder null
-- bottleDescription: Beschreibung des Flakons/der Verpackung
-- generalDescription: 1-2 Sätze allgemeine Beschreibung des Parfüms
+Das Bild kann sein:
+- Ein echtes Flakon-Bild
+- Ein Produktfoto vom Online-Shop
+- Ein Marketing-Bild
+- Ein Screenshot
+- Eine Verpackung oder ein Label
 
-Antworte AUSSCHLIESSLICH mit JSON:
+AUFGABE: Erkenne das Parfüm so gut wie möglich und extrahiere:
+
+- perfumeName: Name des Parfüms (egal ob vom Etikett, Logo, Verpackung, oder aus visuellen Hinweisen erkannt)
+- brandName: Markenname (auch wenn nur erkannt, nicht gelesen)
+- confidence: "high" für sicherer erkannte Parfüms, "medium" für educated guesses basierend auf visuellen Merkmalen, "low" nur für sehr unsicher
+- notes: Duftnoten falls erkennbar, ansonsten leere Arrays. Format: {"top": ["Note1", "Note2"], "heart": [...], "base": [...]}
+- development: Kurze Beschreibung wie sich das Parfüm entwickelt. Fallback: generische Beschreibung basierend auf Familie. Format: {"opening": "...", "middleGame": "...", "drydown": "..."}
+- family: Duftfamilie (Clean, Floral, Woody, Gourmand, Oriental, Fruity, Aromatic, etc.)
+- origin: Land oder Region wenn erkennbar, sonst "Unbekannt"
+- usageRecommendations: Objekt mit Arrays. Fallback: generische Empfehlung. Format: {"occasions": ["Alltag", "Büro", ...], "seasons": ["Frühling", ...], "timeOfDay": ["Morgens", ...], "skinType": []}
+- intensity: "light", "medium", oder "strong" - basierend auf visuellen Hinweisen oder Duftfamilie
+- gender: "woman", "man", "unisex", oder null
+- bottleDescription: Beschreibung des Flakons oder der Verpackung
+- generalDescription: 1-2 Sätze allgemeine Beschreibung
+
+WICHTIG:
+- Es ist OK, educated guesses zu machen – erzähle nicht "ich kann nicht erkennen", sondern gib deine beste Einschätzung
+- Leere Arrays sind OK wenn Informationen nicht verfügbar sind
+- Nutze "medium" oder "low" Confidence wenn du dir nicht völlig sicher bist, aber antworte trotzdem
+- Sei tolerant – auch unscharfe oder Produktfotos sind gültig
+
+Antworte AUSSCHLIESSLICH mit JSON (keine Markdown-Blöcke):
 {
   "perfumeName": "...",
   "brandName": "...",

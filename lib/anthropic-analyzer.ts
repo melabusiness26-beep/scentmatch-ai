@@ -1,15 +1,31 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { ImageAnalysisResult } from '@/types/image-analysis';
 
-const client = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
-});
+// Client will be created per-request to ensure API key is available
+function getAnthropicClient() {
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    throw new Error('ANTHROPIC_API_KEY environment variable is not set');
+  }
+  return new Anthropic({ apiKey });
+}
 
 export async function analyzeImageWithClaude(
   imageBase64: string,
   includeProductInfo: boolean = false
 ): Promise<ImageAnalysisResult | null> {
   try {
+    // Log API key configuration
+    const apiKey = process.env.ANTHROPIC_API_KEY;
+    console.log('[Analyzer] Checking API key configuration...');
+    console.log('[Analyzer] ANTHROPIC_API_KEY exists:', !!apiKey);
+    console.log('[Analyzer] API key length:', apiKey?.length);
+
+    if (!apiKey) {
+      console.error('[Analyzer] ANTHROPIC_API_KEY is not configured!');
+      return null;
+    }
+
     // Bestimme den MIME-Type aus dem Base64-String
     let mediaType: 'image/jpeg' | 'image/png' | 'image/gif' | 'image/webp' = 'image/jpeg';
     if (imageBase64.includes('image/png')) {
@@ -40,6 +56,9 @@ Antworte NUR mit dem JSON-Objekt, kein anderer Text.`;
     const productPrompt = includeProductInfo
       ? basePrompt
       : basePrompt; // Beide sind gleich, perfumeName wird optional verwendet
+
+    const client = getAnthropicClient();
+    console.log('[Analyzer] Anthropic client created, calling API...');
 
     const response = await client.messages.create({
       model: 'claude-sonnet-4-20250514',

@@ -13,9 +13,11 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
+  console.log('[image-analyzer POST] Starting image analysis request');
   try {
     const body = await request.json();
     const { imageBase64 } = body;
+    console.log('[image-analyzer] Received request with image length:', imageBase64?.length);
 
     if (!imageBase64 || typeof imageBase64 !== 'string') {
       return NextResponse.json(
@@ -31,15 +33,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    console.log('[image-analyzer] Calling analyzeImageWithClaude...');
     const result = await analyzeImageWithClaude(imageBase64);
+    console.log('[image-analyzer] Analysis result:', result);
 
     if (!result) {
+      console.error('[image-analyzer] Analysis returned null - checking API key configuration');
       return NextResponse.json(
         { success: false, error: 'Bildanalyse fehlgeschlagen' },
         { status: 500 }
       );
     }
 
+    console.log('[image-analyzer] Analysis successful, returning result');
     return NextResponse.json(result);
   } catch (error) {
     console.error('[image-analyzer] Fehler:', error);

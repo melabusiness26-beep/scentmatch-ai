@@ -61,7 +61,7 @@ Antworte NUR mit dem JSON-Objekt, kein anderer Text.`;
     console.log('[Analyzer] Anthropic client created, calling API...');
 
     const response = await client.messages.create({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-sonnet-4-5',
       max_tokens: 500,
       messages: [
         {

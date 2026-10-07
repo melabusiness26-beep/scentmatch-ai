@@ -5,6 +5,7 @@ import { AnalysisResponse } from '@/types/image-analysis';
 
 export async function POST(request: NextRequest): Promise<NextResponse<AnalysisResponse>> {
   try {
+    // Check if Anthropic is configured
     // Prüfe ob Anthropic konfiguriert ist
     if (!isAnthropicConfigured) {
       return NextResponse.json(

@@ -1,22 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { analyzeImageWithAnthropic, isAnthropicConfigured } from '@/lib/anthropic-analyzer';
-import { validateImageSize, extractMimeTypeFromDataUri, extractBase64FromDataUri } from '@/lib/image-validation';
-import { AnalysisResponse } from '@/types/image-analysis';
 
 export async function GET() {
-  return NextResponse.json({ error: 'POST nur' }, { status: 405 });
+  return NextResponse.json({ ok: true });
 }
 
-export async function POST(request: NextRequest): Promise<NextResponse<AnalysisResponse>> {
+export async function POST(request: NextRequest) {
   try {
-    // Check if Anthropic is configured
-    // Prüfe ob Anthropic konfiguriert ist
-    if (!isAnthropicConfigured) {
-      return NextResponse.json(
-        { success: false, error: 'Bildanalyse nicht verfügbar. Bitte später versuchen.' },
-        { status: 503 }
-      );
-    }
+    const { analyzeImageWithAnthropic } = await import('@/lib/anthropic-analyzer');
+    const { validateImageSize, extractMimeTypeFromDataUri, extractBase64FromDataUri } = await import('@/lib/image-validation');
 
     const body = await request.json();
     const { imageBase64 } = body;
@@ -28,7 +19,6 @@ export async function POST(request: NextRequest): Promise<NextResponse<AnalysisR
       );
     }
 
-    // Validiere Bildgröße
     if (!validateImageSize(imageBase64)) {
       return NextResponse.json(
         { success: false, error: 'Bild zu groß (max 5MB)' },
@@ -36,11 +26,8 @@ export async function POST(request: NextRequest): Promise<NextResponse<AnalysisR
       );
     }
 
-    // Extrahiere MIME-Type und Base64-Daten
     const mimeType = extractMimeTypeFromDataUri(imageBase64);
     const base64Data = extractBase64FromDataUri(imageBase64);
-
-    // Analysiere mit Anthropic
     const result = await analyzeImageWithAnthropic(base64Data, mimeType);
 
     return NextResponse.json(result);

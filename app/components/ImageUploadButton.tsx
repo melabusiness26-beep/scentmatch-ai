@@ -13,27 +13,25 @@ export default function ImageUploadButton({
   isLoading = false,
   size = 'large',
 }: ImageUploadButtonProps) {
-  const inputRef = useRef<HTMLInputElement>(null);
+  const cameraInputRef = useRef<HTMLInputElement>(null);
+  const galleryInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
-    // Validiere Dateigröße
     const maxSizeMB = 5;
     if (file.size > maxSizeMB * 1024 * 1024) {
       alert(`Bild zu gross (max ${maxSizeMB}MB)`);
       return;
     }
 
-    // Validiere MIME-Type
     const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
     if (!allowedTypes.includes(file.type)) {
       alert('Nur JPEG, PNG oder WebP akzeptiert');
       return;
     }
 
-    // Konvertiere zu Base64
     const reader = new FileReader();
     reader.onload = () => {
       const result = reader.result as string;
@@ -57,10 +55,18 @@ export default function ImageUploadButton({
     boxShadow: '0 4px 12px rgba(176, 139, 79, 0.2)',
   };
 
+  const containerStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1rem',
+    width: '100%',
+    maxWidth: '400px',
+  };
+
   return (
     <>
       <input
-        ref={inputRef}
+        ref={cameraInputRef}
         type="file"
         accept="image/jpeg,image/png,image/webp"
         capture="environment"
@@ -68,27 +74,61 @@ export default function ImageUploadButton({
         style={{ display: 'none' }}
         disabled={isLoading}
       />
-      <button
-        onClick={() => inputRef.current?.click()}
+      <input
+        ref={galleryInputRef}
+        type="file"
+        accept="image/jpeg,image/png,image/webp"
+        onChange={handleFileChange}
+        style={{ display: 'none' }}
         disabled={isLoading}
-        style={buttonStyle}
-        onMouseEnter={(e) => {
-          if (!isLoading) {
-            e.currentTarget.style.backgroundColor = '#d4a566';
-            e.currentTarget.style.transform = 'translateY(-2px)';
-            e.currentTarget.style.boxShadow = '0 6px 16px rgba(176, 139, 79, 0.3)';
-          }
-        }}
-        onMouseLeave={(e) => {
-          if (!isLoading) {
-            e.currentTarget.style.backgroundColor = '#b08b4f';
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 4px 12px rgba(176, 139, 79, 0.2)';
-          }
-        }}
-      >
-        {isLoading ? 'Analysiere...' : '📷 Foto analysieren'}
-      </button>
+      />
+      <div style={containerStyle}>
+        <button
+          onClick={() => cameraInputRef.current?.click()}
+          disabled={isLoading}
+          style={buttonStyle}
+          onMouseEnter={(e) => {
+            if (!isLoading) {
+              e.currentTarget.style.backgroundColor = '#d4a566';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 6px 16px rgba(176, 139, 79, 0.3)';
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (!isLoading) {
+              e.currentTarget.style.backgroundColor = '#b08b4f';
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(176, 139, 79, 0.2)';
+            }
+          }}
+        >
+          {isLoading ? 'Analysiere...' : '📷 Kamera'}
+        </button>
+        <button
+          onClick={() => galleryInputRef.current?.click()}
+          disabled={isLoading}
+          style={{
+            ...buttonStyle,
+            backgroundColor: 'transparent',
+            border: '2px solid #b08b4f',
+            color: '#b08b4f',
+          }}
+          onMouseEnter={(e) => {
+            if (!isLoading) {
+              e.currentTarget.style.backgroundColor = 'rgba(176, 139, 79, 0.05)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (!isLoading) {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.transform = 'translateY(0)';
+            }
+          }}
+        >
+          🖼️ Galerie wählen
+        </button>
+      </div>
     </>
   );
 }

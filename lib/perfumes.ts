@@ -239,45 +239,50 @@ const TAG_KEYWORD_MAP: Record<string, string[]> = {
   'warm':           ['amber', 'vanille', 'sandelholz', 'tonkabohne', 'benzoe'],
   'kuehl':          ['minze', 'eukalyptus', 'bergamotte', 'zitrus', 'aquatisch'],
   'natuerlich':     ['vetiver', 'zeder', 'fichte', 'moos', 'erde', 'woody'],
-  'luxurioees':     ['oud', 'rose', 'iris', 'jasmin', 'amber', 'sandelholz'],
+  'luxurioes':      ['oud', 'rose', 'iris', 'jasmin', 'amber', 'sandelholz'],
   'entspannt':      ['lavendel', 'kamille', 'vanille', 'sandelholz', 'moschus'],
+  'jugendlich':     ['zitrus', 'bergamotte', 'apfel', 'beere', 'frucht', 'clean', 'floral'],
+  'feminin':        ['rose', 'jasmin', 'pfingstrose', 'floral', 'iris', 'veilchen'],
+  'maskulin':       ['holz', 'leder', 'vetiver', 'zeder', 'pfeffer', 'amber'],
+  'zeitlos':        ['rose', 'jasmin', 'sandelholz', 'moschus', 'amber', 'iris'],
+  'aufregend':      ['pfeffer', 'ingwer', 'kardamom', 'oud', 'leder', 'rauch'],
+  'sauber':         ['moschus', 'clean', 'aquatisch', 'zitrus', 'lavendel'],
+  'blumig':         ['rose', 'jasmin', 'pfingstrose', 'floral', 'iris', 'maiglöckchen'],
+  'holzig':         ['zeder', 'sandelholz', 'vetiver', 'holz', 'woody', 'patchouli'],
+  'orientalisch':   ['oud', 'amber', 'weihrauch', 'moschus', 'vanille', 'benzoe'],
+  'zitrusig':       ['bergamotte', 'zitrone', 'limette', 'grapefruit', 'orange', 'mandarine'],
+  'moschusartig':   ['moschus', 'amber', 'sandelholz', 'benzoe', 'tonkabohne'],
+  'intensiv':       ['oud', 'amber', 'leder', 'patchouli', 'weihrauch', 'rauch'],
+  'leicht':         ['zitrus', 'bergamotte', 'clean', 'aquatisch', 'maiglöckchen', 'minze'],
+  'sommerlich':     ['zitrus', 'bergamotte', 'aquatisch', 'floral', 'frucht', 'Sommer'],
+  'winterlich':     ['vanille', 'amber', 'oud', 'weihrauch', 'zimt', 'Winter'],
 };
 
 export async function getPerfumesByTag(tag: string, limit = 40): Promise<Perfume[]> {
   if (!isSupabaseConfigured) return [];
   const tagLower = tag.toLowerCase();
 
-  // Direkte Suche in Text-Feldern
-  const { data: directData } = await supabase
+  // Keyword-Map: abstrakte Tags auf konkrete Suchbegriffe mappen
+  const keywords = TAG_KEYWORD_MAP[tagLower] ?? [];
+
+  // Alle Suchbegriffe in EINER einzigen OR-Abfrage zusammenführen
+  const terms = [tagLower, ...keywords];
+  const orParts = terms.flatMap((t) => [
+    `occasion.ilike.%${t}%`,
+    `season.ilike.%${t}%`,
+    `fragrance_family.ilike.%${t}%`,
+    `description.ilike.%${t}%`,
+  ]);
+
+  const { data, error } = await supabase
     .from('perfumes')
     .select(PERFUME_FIELDS)
-    .or(
-      `occasion.ilike.%${tagLower}%,season.ilike.%${tagLower}%,fragrance_family.ilike.%${tagLower}%,description.ilike.%${tagLower}%,perfume_name.ilike.%${tagLower}%`
-    )
+    .or(orParts.join(','))
     .order('scentmatch_score', { ascending: false })
     .limit(limit);
 
-  const direct = dedupePerfumes((directData as unknown as Perfume[]) || []);
-  if (direct.length >= 6) return direct;
-
-  // Keyword-Map: abstrakte Tags auf konkrete Noten-Begriffe mappen
-  const keywords = TAG_KEYWORD_MAP[tagLower] ?? [tagLower];
-
-  // Noten-Suche: für jedes Keyword in occasion/description suchen
-  const noteSearches = await Promise.all(
-    keywords.slice(0, 4).map((kw) =>
-      supabase
-        .from('perfumes')
-        .select(PERFUME_FIELDS)
-        .or(`occasion.ilike.%${kw}%,description.ilike.%${kw}%,fragrance_family.ilike.%${kw}%`)
-        .order('scentmatch_score', { ascending: false })
-        .limit(20)
-    )
-  );
-
-  const allFromNotes = noteSearches.flatMap((r) => (r.data as unknown as Perfume[]) || []);
-  const combined = dedupePerfumes([...direct, ...allFromNotes]);
-  return combined.slice(0, limit);
+  if (error || !data) return [];
+  return dedupePerfumes((data as unknown as Perfume[]) || []);
 }
 
 // ---------- Matching-Engine ----------

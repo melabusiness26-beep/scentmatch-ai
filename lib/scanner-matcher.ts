@@ -58,7 +58,7 @@ export async function findPerfumeInDB(
         perfumeName.toLowerCase() === nameLower
       ) {
         console.log(`[scanner-matcher] ✓ Stage 1 (Exact): ${brandName} ${perfumeName}`);
-        return perfume;
+        return perfume as unknown as Perfume;
       }
     }
 
@@ -76,7 +76,7 @@ export async function findPerfumeInDB(
 
       if (score > bestFuzzyScore) {
         bestFuzzyScore = score;
-        bestFuzzyMatch = perfume;
+        bestFuzzyMatch = perfume as unknown as Perfume;
       }
     }
 
@@ -122,7 +122,7 @@ export async function findPerfumeInDB(
 
         if (notesScore > bestNotesScore) {
           bestNotesScore = notesScore;
-          bestNotesMatch = perfume;
+          bestNotesMatch = perfume as unknown as Perfume;
         }
       }
 

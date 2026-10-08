@@ -1,16 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { DetektivAnswers } from '@/lib/duft-detektiv-storage';
-import { AnalyzeImageResponse } from '@/types/image-analysis';
+import { ImageAnalysisResult } from '@/types/image-analysis';
 import ImageUploadButton from './ImageUploadButton';
 
 interface ImageAnalyzerProps {
-  onAnalysisComplete: (answers: DetektivAnswers) => void;
-  includeProductInfo?: boolean; // für /duft-scanner
+  onAnalysisComplete: (analysis: ImageAnalysisResult['data']) => void;
 }
 
-export default function ImageAnalyzer({ onAnalysisComplete, includeProductInfo }: ImageAnalyzerProps) {
+export default function ImageAnalyzer({ onAnalysisComplete }: ImageAnalyzerProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -19,73 +17,29 @@ export default function ImageAnalyzer({ onAnalysisComplete, includeProductInfo }
     setError(null);
 
     try {
-      const response = await fetch('/api/analyze-image', {
+      console.log('[ImageAnalyzer] Starte Bildanalyse...');
+
+      const response = await fetch('/api/image-analyzer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          imageBase64: base64,
-          includeProductInfo,
-        }),
+        body: JSON.stringify({ imageBase64: base64 }),
       });
 
-      const data: AnalyzeImageResponse = await response.json();
+      console.log('[ImageAnalyzer] API-Antwort erhalten:', response.status);
+      const data: ImageAnalysisResult = await response.json();
+      console.log('[ImageAnalyzer] API-Daten geparst:', data);
 
       if (!data.success || !data.data) {
-        // Fehler oder low confidence → Quiz mit leeren Answers starten
-        console.warn('[ImageAnalyzer] Analyse fehlgeschlagen:', data.error);
-        onAnalysisComplete({
-          location: null,
-          country: '',
-          gender: null,
-          age: null,
-          timing: null,
-          feeling: null,
-          strength: null,
-          occasion: null,
-          price: null,
-          brand: '',
-          bottle: '',
-          description: '',
-        });
-        setError('Bild nicht erkannt – beantworte die Fragen manuell');
+        const errorMsg = data.error || 'Bild konnte nicht analysiert werden';
+        console.warn('[ImageAnalyzer] Analyse fehlgeschlagen:', errorMsg);
+        setError(errorMsg);
+        setIsLoading(false);
         return;
       }
 
-      // Erfolg: Vorbefüllte Answers aus Analyse
-      const analysisResult = data.data;
-
-      // Map intensity to strength values
-      const intensityToStrength: Record<string | undefined, 'subtle' | 'medium' | 'intense' | null> = {
-        'very_light': 'subtle',
-        'light': 'subtle',
-        'medium': 'medium',
-        'strong': 'intense',
-        'very_strong': 'intense',
-        'undefined': null,
-      };
-
-      const prefilled: DetektivAnswers = {
-        location: analysisResult.where || null,
-        country: '',
-        gender: analysisResult.gender || null,
-        age: null,
-        timing: null,
-        feeling: analysisResult.feeling || null,
-        strength: (analysisResult.intensity && intensityToStrength[analysisResult.intensity]) || null,
-        occasion: analysisResult.occasion || null,
-        price: null,
-        brand: analysisResult.brandName || '',
-        bottle: analysisResult.bottleDescription || '',
-        description: analysisResult.bottleDescription || '', // Verwende bottleDescription als Fallback
-      };
-
-      // Low confidence → auch starten, aber mit Hinweis
-      if (analysisResult.confidence === 'low') {
-        console.warn('[ImageAnalyzer] Low confidence – Quiz mit vorbefüllten Antworten');
-      }
-
+      console.log('[ImageAnalyzer] Analyse erfolgreich');
       setIsLoading(false);
-      onAnalysisComplete(prefilled);
+      onAnalysisComplete(data.data);
     } catch (err) {
       console.error('[ImageAnalyzer] Fehler:', err);
       setError('Fehler bei Bildanalyse – versuche es später erneut');

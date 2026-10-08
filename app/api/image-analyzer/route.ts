@@ -1,52 +1,40 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { analyzeImageWithClaude } from '@/lib/anthropic-analyzer';
-
-const MAX_SIZE_BYTES = 5 * 1024 * 1024;
-
-function validateBase64Size(base64String: string): boolean {
-  const sizeBytes = Math.ceil(base64String.length * 0.75);
-  return sizeBytes <= MAX_SIZE_BYTES;
-}
+import { analyzeImageWithAnthropic } from '@/lib/anthropic-analyzer';
+import { validateImageSize, extractMimeTypeFromDataUri, extractBase64FromDataUri } from '@/lib/image-validation';
 
 export async function GET() {
   return NextResponse.json({ ok: true, version: '1.0.1' });
 }
 
 export async function POST(request: NextRequest) {
-  console.log('[image-analyzer POST] Starting image analysis request');
   try {
+    console.log('[image-analyzer] POST-Request empfangen');
     const body = await request.json();
     const { imageBase64 } = body;
-    console.log('[image-analyzer] Received request with image length:', imageBase64?.length);
 
     if (!imageBase64 || typeof imageBase64 !== 'string') {
+      console.error('[image-analyzer] Ungültige Bildanfrage');
       return NextResponse.json(
         { success: false, error: 'Ungültige Bildanfrage' },
         { status: 400 }
       );
     }
 
-    if (!validateBase64Size(imageBase64)) {
+    if (!validateImageSize(imageBase64)) {
+      console.error('[image-analyzer] Bild zu groß');
       return NextResponse.json(
         { success: false, error: 'Bild zu groß (max 5MB)' },
         { status: 400 }
       );
     }
 
-    console.log('[image-analyzer] Calling analyzeImageWithClaude...');
-    const result = await analyzeImageWithClaude(imageBase64);
-    console.log('[image-analyzer] Analysis result:', result);
+    console.log('[image-analyzer] Bild validiert, starte Anthropic-Analyse...');
+    const mimeType = extractMimeTypeFromDataUri(imageBase64);
+    const base64Data = extractBase64FromDataUri(imageBase64);
+    const result = await analyzeImageWithAnthropic(base64Data, mimeType);
+    console.log('[image-analyzer] Analyse abgeschlossen:', result.success ? 'erfolgreich' : 'fehlgeschlagen');
 
-    if (!result) {
-      console.error('[image-analyzer] Analysis returned null - checking API key configuration');
-      return NextResponse.json(
-        { success: false, error: 'Bildanalyse fehlgeschlagen' },
-        { status: 500 }
-      );
-    }
-
-    console.log('[image-analyzer] Analysis successful, returning result');
-    return NextResponse.json({ success: true, data: result });
+    return NextResponse.json(result);
   } catch (error) {
     console.error('[image-analyzer] Fehler:', error);
     return NextResponse.json(

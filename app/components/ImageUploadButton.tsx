@@ -22,7 +22,7 @@ export default function ImageUploadButton({
 
     const maxSizeMB = 5;
     if (file.size > maxSizeMB * 1024 * 1024) {
-      alert(`Bild zu gross (max ${maxSizeMB}MB)`);
+      alert(`Bild zu groß (max ${maxSizeMB}MB)`);
       return;
     }
 

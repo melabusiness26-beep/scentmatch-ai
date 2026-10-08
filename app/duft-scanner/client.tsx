@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Perfume } from '@/lib/perfumes';
 import { ImageAnalysisResult } from '@/types/image-analysis';
 import { findSimilarPerfumes } from '@/lib/analysis-matcher';
-import DuftScannerImageAnalyzer from '@/app/components/DuftScannerImageAnalyzer';
+import ImageAnalyzer from '@/app/components/ImageAnalyzer';
 import AnalysisResultView from '@/app/components/AnalysisResultView';
 import LoadingAnimation from '@/app/components/LoadingAnimation';
 
@@ -132,7 +132,7 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
           Fotografiere einen Parfüm-Flakon – wir analysieren ihn und zeigen dir ähnliche Düfte.
         </p>
 
-        <DuftScannerImageAnalyzer onAnalysisComplete={handleAnalysisComplete} />
+        <ImageAnalyzer onAnalysisComplete={handleAnalysisComplete} />
       </div>
     </div>
   );

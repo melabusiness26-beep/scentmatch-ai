@@ -4,7 +4,7 @@ import SiteHeader from '@/app/SiteHeader';
 import { getPerfumesByTag } from '@/lib/perfumes';
 import { PerfumeTile } from '@/app/PerfumeTile';
 
-export const revalidate = 3600;
+export const revalidate = 300;
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
 

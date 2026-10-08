@@ -90,15 +90,50 @@ const Pill = ({ children }: { children: React.ReactNode }) => (
   </span>
 );
 
+const ClickableNote = ({ note }: { note: string }) => (
+  <a
+    href={`/?search=${encodeURIComponent(note)}`}
+    title={`Düfte mit ${note} entdecken`}
+    style={{
+      fontSize: '0.82rem', color: C.text, display: 'flex', alignItems: 'flex-start',
+      gap: '0.3rem', lineHeight: '1.4', overflowWrap: 'break-word', hyphens: 'none',
+      textDecoration: 'none', borderRadius: '4px', padding: '0.1rem 0.2rem',
+      transition: 'color 0.15s',
+    }}
+    onMouseEnter={(e) => { e.currentTarget.style.color = C.goldMuted; }}
+    onMouseLeave={(e) => { e.currentTarget.style.color = C.text; }}
+  >
+    <span style={{ flexShrink: 0, color: C.gold, fontWeight: '700' }}>·</span>
+    <span>{note}</span>
+  </a>
+);
+
+const ClickableTag = ({ tag }: { tag: string }) => (
+  <a
+    href={`/?search=${encodeURIComponent(tag)}`}
+    style={{
+      backgroundColor: 'rgba(212,175,55,0.18)',
+      border: `1px solid rgba(212,175,55,0.45)`,
+      color: C.gold,
+      padding: '0.28rem 0.8rem',
+      borderRadius: '20px',
+      fontSize: '0.82rem',
+      fontWeight: '500',
+      textDecoration: 'none',
+      transition: 'background 0.15s',
+      cursor: 'pointer',
+    }}
+    onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(212,175,55,0.32)'; }}
+    onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(212,175,55,0.18)'; }}
+  >
+    {tag}
+  </a>
+);
+
 const NoteList = ({ notes }: { notes: string[] }) => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginTop: '0.6rem' }}>
     {notes.length > 0
-      ? notes.map((n, i) => (
-          <span key={i} style={{ fontSize: '0.82rem', color: C.text, display: 'flex', alignItems: 'flex-start', gap: '0.3rem', lineHeight: '1.4', overflowWrap: 'break-word', hyphens: 'none' }}>
-            <span style={{ flexShrink: 0, color: C.gold, fontWeight: '700' }}>·</span>
-            <span>{n}</span>
-          </span>
-        ))
+      ? notes.map((n, i) => <ClickableNote key={i} note={n} />)
       : <span style={{ fontSize: '0.85rem', color: C.textLight, fontStyle: 'italic' }}>Keine Daten</span>
     }
   </div>
@@ -143,6 +178,21 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
 
   return (
     <div style={{ maxWidth: '860px', margin: '0 auto', padding: '1.5rem 1rem 4rem' }}>
+
+      {/* ── FLOATING NEUE SUCHE ──────────────────────────────────────────── */}
+      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '0.75rem' }}>
+        <button
+          onClick={onNewSearch}
+          style={{
+            padding: '0.5rem 1.1rem', borderRadius: '20px',
+            border: `1px solid ${C.sand}`, backgroundColor: C.cream,
+            color: C.textMuted, fontSize: '0.82rem', fontWeight: '600',
+            cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.4rem',
+          }}
+        >
+          ← Neuer Scan
+        </button>
+      </div>
 
       {/* ── KORREKTUR-BANNER ─────────────────────────────────────────────── */}
       <ScanCorrectionBanner
@@ -269,7 +319,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
       {/* ── 2. STECKBRIEF ────────────────────────────────────────────────── */}
       <section style={{ marginBottom: '2.5rem' }}>
         <SectionHeading>Steckbrief</SectionHeading>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '0.75rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.75rem' }}>
           {[
             currentAnalysis.concentration && { icon: '🧴', label: 'Konzentration', value: currentAnalysis.concentration },
             currentAnalysis.family && { icon: '🌸', label: 'Duftfamilie', value: currentAnalysis.family },
@@ -408,17 +458,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                 <div style={{ fontSize: '0.72rem', color: C.gold, fontWeight: '700', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>Charakter-Tags</div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                   {currentAnalysis.characterTags.map((tag, i) => (
-                    <span key={i} style={{
-                      backgroundColor: 'rgba(212,175,55,0.18)',
-                      border: `1px solid rgba(212,175,55,0.45)`,
-                      color: C.gold,
-                      padding: '0.28rem 0.8rem',
-                      borderRadius: '20px',
-                      fontSize: '0.82rem',
-                      fontWeight: '500',
-                    }}>
-                      {tag}
-                    </span>
+                    <ClickableTag key={i} tag={tag} />
                   ))}
                 </div>
               </div>

@@ -174,6 +174,111 @@ Antworte NUR mit vollständigem JSON:`,
       analysis.intensity = 'medium';
     }
 
+    // Post-Processing: Dedupliziere und normalisiere Noten (Übersetzungen entfernen)
+    if (analysis.notes && typeof analysis.notes === 'object') {
+      const translationMap: Record<string, string> = {
+        // Spanisch → Deutsch
+        'frambuesa': 'Himbeere',
+        'fresa': 'Erdbeere',
+        'rosa': 'Rose',
+        'violeta': 'Veilchen',
+        'jazmín': 'Jasmin',
+        'vainilla': 'Vanille',
+        'almíbar': 'Sirup',
+        'caramelo': 'Karamell',
+        'chocolate': 'Schokolade',
+        'café': 'Kaffee',
+        'pimienta': 'Pfeffer',
+        'canela': 'Zimt',
+        'ginger': 'Ingwer',
+        'jengibre': 'Ingwer',
+        'limón': 'Zitrone',
+        'naranja': 'Orange',
+        'bergamota': 'Bergamotte',
+        'neroli': 'Neroli',
+        'limona': 'Zitrone',
+        'sándalo': 'Sandelholz',
+        'cedro': 'Zeder',
+        'palisander': 'Palisander',
+        'musgo': 'Moos',
+        'almíbar de miel': 'Honig',
+        'miel': 'Honig',
+        'ámbar': 'Amber',
+        // Englisch → Deutsch
+        'raspberry': 'Himbeere',
+        'strawberry': 'Erdbeere',
+        'rose': 'Rose',
+        'violet': 'Veilchen',
+        'jasmine': 'Jasmin',
+        'vanilla': 'Vanille',
+        'caramel': 'Karamell',
+        'chocolate': 'Schokolade',
+        'coffee': 'Kaffee',
+        'pepper': 'Pfeffer',
+        'cinnamon': 'Zimt',
+        'ginger': 'Ingwer',
+        'lemon': 'Zitrone',
+        'orange': 'Orange',
+        'bergamot': 'Bergamotte',
+        'sandalwood': 'Sandelholz',
+        'cedar': 'Zeder',
+        'moss': 'Moos',
+        'honey': 'Honig',
+        'amber': 'Amber',
+        // Französisch → Deutsch
+        'framboise': 'Himbeere',
+        'fraise': 'Erdbeere',
+        'rose': 'Rose',
+        'violette': 'Veilchen',
+        'jasmin': 'Jasmin',
+        'vanille': 'Vanille',
+        'caramel': 'Karamell',
+        'chocolat': 'Schokolade',
+        'café': 'Kaffee',
+        'poivre': 'Pfeffer',
+        'cannelle': 'Zimt',
+        'gingembre': 'Ingwer',
+        'citron': 'Zitrone',
+        'orange': 'Orange',
+        'bergamote': 'Bergamotte',
+        'bois de santal': 'Sandelholz',
+        'cèdre': 'Zeder',
+        'miel': 'Honig',
+        'ambre': 'Amber',
+      };
+
+      const normalizeNote = (note: string): string => {
+        const normalized = note.toLowerCase().trim();
+        return translationMap[normalized] || note;
+      };
+
+      const deduplicateNotes = (notes: string[]): string[] => {
+        if (!Array.isArray(notes)) return notes;
+
+        // Normalize alle Noten (übersetze zu Deutsch)
+        const normalized = notes.map(normalizeNote);
+
+        // Entferne Duplikate (case-insensitive)
+        const seen = new Set<string>();
+        return normalized.filter(note => {
+          const lower = note.toLowerCase();
+          if (seen.has(lower)) return false;
+          seen.add(lower);
+          return true;
+        });
+      };
+
+      if (Array.isArray(analysis.notes.top)) {
+        analysis.notes.top = deduplicateNotes(analysis.notes.top);
+      }
+      if (Array.isArray(analysis.notes.heart)) {
+        analysis.notes.heart = deduplicateNotes(analysis.notes.heart);
+      }
+      if (Array.isArray(analysis.notes.base)) {
+        analysis.notes.base = deduplicateNotes(analysis.notes.base);
+      }
+    }
+
     return {
       success: true,
       data: analysis,

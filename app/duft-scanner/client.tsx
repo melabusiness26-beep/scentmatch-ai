@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Perfume } from '@/lib/perfumes';
 import { ImageAnalysisResult } from '@/types/image-analysis';
 import { findSimilarPerfumes } from '@/lib/analysis-matcher';
+import { findPerfumeInDB } from '@/lib/scanner-matcher';
 import ImageAnalyzer from '@/app/components/ImageAnalyzer';
 import AnalysisResultView from '@/app/components/AnalysisResultView';
 import LoadingAnimation from '@/app/components/LoadingAnimation';
@@ -18,15 +19,20 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
   const [stage, setStage] = useState<Stage>('scanner');
   const [analysis, setAnalysis] = useState<ImageAnalysisResult['data'] | null>(null);
   const [similarPerfumes, setSimilarPerfumes] = useState<Perfume[]>([]);
+  const [dbMatch, setDbMatch] = useState<Perfume | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleAnalysisComplete = (analysisData: ImageAnalysisResult['data']) => {
+  const handleAnalysisComplete = async (analysisData: ImageAnalysisResult['data']) => {
     setAnalysis(analysisData);
     setIsLoading(true);
 
     // Simuliere kurze Ladezeit
-    setTimeout(() => {
+    setTimeout(async () => {
       const similar = findSimilarPerfumes(analysisData, allPerfumes, 40, 7);
+
+      // Look for perfume in DB
+      const dbPerfume = await findPerfumeInDB(analysisData.brandName, analysisData.perfumeName);
+      setDbMatch(dbPerfume);
 
       if (similar.length === 0) {
         setStage('not-found');
@@ -42,6 +48,7 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
     setStage('scanner');
     setAnalysis(null);
     setSimilarPerfumes([]);
+    setDbMatch(null);
   };
 
   if (isLoading) {
@@ -53,6 +60,7 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
       <AnalysisResultView
         analysis={analysis}
         similarPerfumes={similarPerfumes}
+        dbMatch={dbMatch}
         onNewSearch={handleNewSearch}
       />
     );

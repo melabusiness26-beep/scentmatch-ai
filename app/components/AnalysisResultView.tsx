@@ -1,12 +1,15 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { Perfume } from '@/lib/perfumes';
 import { ImageAnalysisResult } from '@/types/image-analysis';
+import ScanCorrectionBanner from './ScanCorrectionBanner';
 
 interface AnalysisResultViewProps {
   analysis: ImageAnalysisResult['data'];
   similarPerfumes: Perfume[];
+  dbMatch: Perfume | null;
   onNewSearch: () => void;
 }
 
@@ -30,12 +33,39 @@ const Rating = ({ value, max = 10 }: { value?: number; max?: number }) => {
 export default function AnalysisResultView({
   analysis,
   similarPerfumes,
+  dbMatch,
   onNewSearch,
 }: AnalysisResultViewProps) {
   if (!analysis) return null;
 
+  const [correctedBrand, setCorrectedBrand] = useState<string | null>(null);
+  const [correctedName, setCorrectedName] = useState<string | null>(null);
+
+  // Determine display data: prefer DB match or corrections, fallback to analysis
+  const displayBrand = correctedBrand || dbMatch?.brands?.name || analysis.brandName;
+  const displayName = correctedName || dbMatch?.perfume_name || analysis.perfumeName;
+  const displayNotes = dbMatch
+    ? {
+        top: dbMatch.top_notes || [],
+        heart: dbMatch.heart_notes || [],
+        base: dbMatch.base_notes || [],
+      }
+    : analysis.notes;
+
+  const handleCorrection = (brand: string, name: string) => {
+    setCorrectedBrand(brand);
+    setCorrectedName(name);
+  };
+
   return (
     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem 1rem' }}>
+      {/* CORRECTION BANNER */}
+      <ScanCorrectionBanner
+        originalBrand={analysis.brandName}
+        originalName={analysis.perfumeName}
+        dbFound={!!dbMatch}
+        onCorrect={handleCorrection}
+      />
       {/* 1. HERO SECTION */}
       <section style={{ backgroundColor: '#2a1d12', color: '#f9f6f1', padding: '4rem 2rem', borderRadius: '12px', marginBottom: '3rem', textAlign: 'center' }}>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
@@ -44,10 +74,10 @@ export default function AnalysisResultView({
           </span>
         </div>
         <h1 style={{ fontSize: '3.5rem', fontFamily: "'Playfair Display', serif", fontWeight: 700, margin: '1rem 0' }}>
-          {analysis.perfumeName}
+          {displayName}
         </h1>
         <p style={{ fontSize: '1.5rem', color: '#d4af37', marginBottom: '1.5rem' }}>
-          {analysis.brandName}
+          {displayBrand}
         </p>
         {analysis.year && <p style={{ fontSize: '0.9rem', color: '#c4b5a0' }}>seit {analysis.year}</p>}
         <p style={{ fontSize: '1.1rem', lineHeight: 1.8, color: '#e8dcc8', maxWidth: '600px', margin: '2rem auto' }}>
@@ -237,8 +267,8 @@ export default function AnalysisResultView({
               Kopfnoten
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              {analysis.notes.top.length > 0 ? (
-                analysis.notes.top.map((note, idx) => (
+              {displayNotes?.top && displayNotes.top.length > 0 ? (
+                displayNotes.top.map((note, idx) => (
                   <span key={idx} style={{ fontSize: '0.95rem', color: '#2a1d12' }}>
                     • {note}
                   </span>
@@ -254,8 +284,8 @@ export default function AnalysisResultView({
               Herznoten
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              {analysis.notes.heart.length > 0 ? (
-                analysis.notes.heart.map((note, idx) => (
+              {displayNotes?.heart && displayNotes.heart.length > 0 ? (
+                displayNotes.heart.map((note, idx) => (
                   <span key={idx} style={{ fontSize: '0.95rem', color: '#2a1d12' }}>
                     • {note}
                   </span>
@@ -271,8 +301,8 @@ export default function AnalysisResultView({
               Basisnoten
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              {analysis.notes.base.length > 0 ? (
-                analysis.notes.base.map((note, idx) => (
+              {displayNotes?.base && displayNotes.base.length > 0 ? (
+                displayNotes.base.map((note, idx) => (
                   <span key={idx} style={{ fontSize: '0.95rem', color: '#2a1d12' }}>
                     • {note}
                   </span>

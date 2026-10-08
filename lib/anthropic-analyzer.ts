@@ -44,17 +44,24 @@ export async function analyzeImageWithAnthropic(
 
 Das Bild kann sein: echtes Flakon, Produktfoto, Marketing-Bild, Screenshot oder Verpackung.
 
+KRITISCH – TEXT LESEN VOR RATEN:
+- Wenn du Text/Noten auf der Box/Flakon siehst → LIES und NUTZE diese exakt (nicht raten!)
+- Wenn "Notas de Salida / Kopfnoten" sichtbar sind → nimm diese, nicht dein Wissen
+- Kleinere/europäische/spanische Marken → recherchiere genauestens, nicht ignorieren
+- Geschlecht: Achte auf Farbe, Design, Formensprache (z.B. rosa/zart = Woman, eckig/dunkel = Man)
+
 AUFGABE: Erkenne das Parfüm und extrahiere ALLES als reines JSON (keine Markdown):
 
 Basis-Infos:
 - perfumeName, brandName, year (null ok), parfumeur (null ok), originCountry
 - concentration: "Parfum"|"EDP"|"EDT"|"Eau de Cologne"|null
 - family: Duftfamilie
+- gender: "woman"|"man"|"unisex"|null (WICHTIG: Basierend auf Geschlechtsmarkierungen im Design)
 
 Bewertungen (1-10 Skala):
 - rating, sillage, longevity, projection, uniqueness, priceValue
 
-Noten:
+Noten (ZUERST auf Box lesen, dann ergänzen):
 - notes: {top: [...], heart: [...], base: [...]}
 
 Analyse:
@@ -85,14 +92,16 @@ Fallback-Daten:
 - development: {opening, middleGame, drydown}
 - usageRecommendations: {occasions, seasons, timeOfDay, skinType}
 - bottleDescription: Beschreibung des Flakons
-- intensity, gender, confidence
+- intensity, confidence
 
 WICHTIG:
-- Es ist OK, educated guesses zu machen
+- TEXT auf Box/Flakon hat PRIORITÄT über Wissen
+- Es ist OK, educated guesses zu machen, ABER nur wenn Text nicht sichtbar
 - Nutze null nur wenn unmöglich
 - Leere Arrays sind OK
 - Sei großzügig – auch unscharfe Fotos/Screenshots zählen
-- confidence: "high"|"medium"|"low"
+- confidence: "high" wenn Text lesbar, "medium" wenn zu erkennen aber unklar, "low" wenn unsicher
+- Klein-/Nischemarken NICHT ignorieren – recherchiere genau
 
 Antworte NUR mit vollständigem JSON:`,
               },

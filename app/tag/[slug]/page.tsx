@@ -19,23 +19,24 @@ function tagDescription(slug: string): string {
   return `Entdecke Parfüms mit dem Charakter „${label}" – kuratierte Duftempfehlungen von Auressa, der Schweizer KI-Duftberatung.`;
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const label = tagLabel(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const label = tagLabel(slug);
   return {
     title: `${label} Düfte – Parfüm-Empfehlungen | Auressa`,
-    description: tagDescription(params.slug),
-    alternates: { canonical: `/tag/${params.slug}` },
+    description: tagDescription(slug),
+    alternates: { canonical: `/tag/${slug}` },
     openGraph: {
       title: `${label} Düfte | Auressa`,
-      description: tagDescription(params.slug),
+      description: tagDescription(slug),
       type: 'website',
-      url: `${SITE_URL}/tag/${params.slug}`,
+      url: `${SITE_URL}/tag/${slug}`,
     },
   };
 }
 
-export default async function TagPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function TagPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const label = tagLabel(slug);
   const perfumes = await getPerfumesByTag(slug);
 

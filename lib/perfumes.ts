@@ -251,7 +251,7 @@ const TAG_KEYWORD_MAP: Record<string, string[]> = {
   'holzig':         ['zeder', 'sandelholz', 'vetiver', 'holz', 'woody', 'patchouli'],
   'orientalisch':   ['oud', 'amber', 'weihrauch', 'moschus', 'vanille', 'benzoe'],
   'zitrusig':       ['bergamotte', 'zitrone', 'limette', 'grapefruit', 'orange', 'mandarine'],
-  'muschig':        ['moschus', 'amber', 'sandelholz', 'benzoe', 'tonkabohne'],
+  'moschusartig':   ['moschus', 'amber', 'sandelholz', 'benzoe', 'tonkabohne'],
   'intensiv':       ['oud', 'amber', 'leder', 'patchouli', 'weihrauch', 'rauch'],
   'leicht':         ['zitrus', 'bergamotte', 'clean', 'aquatisch', 'maiglöckchen', 'minze'],
   'sommerlich':     ['zitrus', 'bergamotte', 'aquatisch', 'floral', 'frucht', 'Sommer'],

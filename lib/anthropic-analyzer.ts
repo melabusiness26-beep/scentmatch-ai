@@ -44,24 +44,17 @@ export async function analyzeImageWithAnthropic(
 
 Das Bild kann sein: echtes Flakon, Produktfoto, Marketing-Bild, Screenshot oder Verpackung.
 
-KRITISCH – TEXT LESEN VOR RATEN:
-- Wenn du Text/Noten auf der Box/Flakon siehst → LIES und NUTZE diese exakt (nicht raten!)
-- Wenn "Notas de Salida / Kopfnoten" sichtbar sind → nimm diese, nicht dein Wissen
-- Kleinere/europäische/spanische Marken → recherchiere genauestens, nicht ignorieren
-- Geschlecht: Achte auf Farbe, Design, Formensprache (z.B. rosa/zart = Woman, eckig/dunkel = Man)
-
 AUFGABE: Erkenne das Parfüm und extrahiere ALLES als reines JSON (keine Markdown):
 
 Basis-Infos:
 - perfumeName, brandName, year (null ok), parfumeur (null ok), originCountry
 - concentration: "Parfum"|"EDP"|"EDT"|"Eau de Cologne"|null
 - family: Duftfamilie
-- gender: "woman"|"man"|"unisex"|null (WICHTIG: Basierend auf Geschlechtsmarkierungen im Design)
 
 Bewertungen (1-10 Skala):
 - rating, sillage, longevity, projection, uniqueness, priceValue
 
-Noten (ZUERST auf Box lesen, dann ergänzen):
+Noten:
 - notes: {top: [...], heart: [...], base: [...]}
 
 Analyse:
@@ -92,16 +85,15 @@ Fallback-Daten:
 - development: {opening, middleGame, drydown}
 - usageRecommendations: {occasions, seasons, timeOfDay, skinType}
 - bottleDescription: Beschreibung des Flakons
-- intensity, confidence
+- intensity, gender, confidence
 
 WICHTIG:
-- TEXT auf Box/Flakon hat PRIORITÄT über Wissen
-- Es ist OK, educated guesses zu machen, ABER nur wenn Text nicht sichtbar
+- Es ist OK, educated guesses zu machen
 - Nutze null nur wenn unmöglich
 - Leere Arrays sind OK
 - Sei großzügig – auch unscharfe Fotos/Screenshots zählen
-- confidence: "high" wenn Text lesbar, "medium" wenn zu erkennen aber unklar, "low" wenn unsicher
-- Klein-/Nischemarken NICHT ignorieren – recherchiere genau
+- confidence: "high"|"medium"|"low"
+- ALLE Duft-Noten (top, heart, base) IMMER auf DEUTSCH (z.B. "Himbeere" nicht "Frambuesa", "Rose" nicht "Rosa", "Vanille" nicht "Vanilla", "Bergamotte" nicht "Bergamot"). Keine doppelten Übersetzungen – jede Note NUR EINMAL.
 
 Antworte NUR mit vollständigem JSON:`,
               },
@@ -163,6 +155,56 @@ Antworte NUR mit vollständigem JSON:`,
       analysis.gender = genderMap[analysis.gender.toLowerCase()] || analysis.gender;
     }
 
+    // Noten auf Deutsch normalisieren & Duplikate entfernen
+    const NOTE_TRANSLATIONS: Record<string, string> = {
+      // Spanisch
+      'frambuesa': 'Himbeere', 'rosa': 'Rose', 'vainilla': 'Vanille', 'bergamota': 'Bergamotte',
+      'limon': 'Zitrone', 'limon amarillo': 'Zitrone', 'naranja': 'Orange', 'almizcle': 'Moschus',
+      'madera': 'Holz', 'musgo': 'Moos', 'ambar': 'Amber', 'incienso': 'Weihrauch',
+      'ylang ylang': 'Ylang-Ylang', 'jazmin': 'Jasmin', 'jazmín': 'Jasmin',
+      'lirio': 'Lilie', 'sandalo': 'Sandelholz', 'sándalo': 'Sandelholz',
+      'pachuli': 'Patchouli', 'mandarina': 'Mandarine',
+      'melocoton': 'Pfirsich', 'melocotón': 'Pfirsich',
+      // Englisch
+      'raspberry': 'Himbeere', 'vanilla': 'Vanille', 'musk': 'Moschus',
+      'bergamot': 'Bergamotte', 'lemon': 'Zitrone', 'orange': 'Orange',
+      'amber': 'Amber', 'rose': 'Rose', 'jasmine': 'Jasmin', 'lily': 'Lilie',
+      'cedar': 'Zeder', 'cedarwood': 'Zeder', 'sandalwood': 'Sandelholz',
+      'peach': 'Pfirsich', 'mandarin': 'Mandarine', 'incense': 'Weihrauch',
+      'iris': 'Iris', 'violet': 'Veilchen', 'lavender': 'Lavendel',
+      'blackcurrant': 'Schwarze Johannisbeere', 'patchouli': 'Patchouli',
+      'vetiver': 'Vetiver', 'oakmoss': 'Eichenmoos', 'tonka bean': 'Tonkabohne',
+      'white musk': 'Weißer Moschus', 'pink pepper': 'Rosa Pfeffer',
+      // Französisch
+      'ambre': 'Amber', 'bergamote': 'Bergamotte', 'musc': 'Moschus',
+      'cedre': 'Zeder', 'cèdre': 'Zeder', 'framboise': 'Himbeere',
+      'vanille': 'Vanille', 'jasmin': 'Jasmin',
+    };
+
+    function normalizeNoteName(note: string): string {
+      const lower = note.toLowerCase().trim();
+      return NOTE_TRANSLATIONS[lower] || note;
+    }
+
+    function deduplicateNotes(notes: string[]): string[] {
+      if (!Array.isArray(notes)) return [];
+      const normalized = notes.map(normalizeNoteName);
+      // Entferne Duplikate (case-insensitive)
+      const seen = new Set<string>();
+      return normalized.filter(n => {
+        const key = n.toLowerCase();
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+
+    if (analysis.notes) {
+      analysis.notes.top = deduplicateNotes(analysis.notes.top || []);
+      analysis.notes.heart = deduplicateNotes(analysis.notes.heart || []);
+      analysis.notes.base = deduplicateNotes(analysis.notes.base || []);
+    }
+
     // Validiere dass confidence einer der erwarteten Werte ist
     if (!['high', 'medium', 'low'].includes(analysis.confidence)) {
       analysis.confidence = 'medium';
@@ -172,111 +214,6 @@ Antworte NUR mit vollständigem JSON:`,
     const validIntensities = ['very_light', 'light', 'medium', 'strong', 'very_strong'];
     if (analysis.intensity && !validIntensities.includes(analysis.intensity)) {
       analysis.intensity = 'medium';
-    }
-
-    // Post-Processing: Dedupliziere und normalisiere Noten (Übersetzungen entfernen)
-    if (analysis.notes && typeof analysis.notes === 'object') {
-      const translationMap: Record<string, string> = {
-        // Spanisch → Deutsch
-        'frambuesa': 'Himbeere',
-        'fresa': 'Erdbeere',
-        'rosa': 'Rose',
-        'violeta': 'Veilchen',
-        'jazmín': 'Jasmin',
-        'vainilla': 'Vanille',
-        'almíbar': 'Sirup',
-        'caramelo': 'Karamell',
-        'chocolate': 'Schokolade',
-        'café': 'Kaffee',
-        'pimienta': 'Pfeffer',
-        'canela': 'Zimt',
-        'ginger': 'Ingwer',
-        'jengibre': 'Ingwer',
-        'limón': 'Zitrone',
-        'naranja': 'Orange',
-        'bergamota': 'Bergamotte',
-        'neroli': 'Neroli',
-        'limona': 'Zitrone',
-        'sándalo': 'Sandelholz',
-        'cedro': 'Zeder',
-        'palisander': 'Palisander',
-        'musgo': 'Moos',
-        'almíbar de miel': 'Honig',
-        'miel': 'Honig',
-        'ámbar': 'Amber',
-        // Englisch → Deutsch
-        'raspberry': 'Himbeere',
-        'strawberry': 'Erdbeere',
-        'rose': 'Rose',
-        'violet': 'Veilchen',
-        'jasmine': 'Jasmin',
-        'vanilla': 'Vanille',
-        'caramel': 'Karamell',
-        'chocolate': 'Schokolade',
-        'coffee': 'Kaffee',
-        'pepper': 'Pfeffer',
-        'cinnamon': 'Zimt',
-        'ginger': 'Ingwer',
-        'lemon': 'Zitrone',
-        'orange': 'Orange',
-        'bergamot': 'Bergamotte',
-        'sandalwood': 'Sandelholz',
-        'cedar': 'Zeder',
-        'moss': 'Moos',
-        'honey': 'Honig',
-        'amber': 'Amber',
-        // Französisch → Deutsch
-        'framboise': 'Himbeere',
-        'fraise': 'Erdbeere',
-        'rose': 'Rose',
-        'violette': 'Veilchen',
-        'jasmin': 'Jasmin',
-        'vanille': 'Vanille',
-        'caramel': 'Karamell',
-        'chocolat': 'Schokolade',
-        'café': 'Kaffee',
-        'poivre': 'Pfeffer',
-        'cannelle': 'Zimt',
-        'gingembre': 'Ingwer',
-        'citron': 'Zitrone',
-        'orange': 'Orange',
-        'bergamote': 'Bergamotte',
-        'bois de santal': 'Sandelholz',
-        'cèdre': 'Zeder',
-        'miel': 'Honig',
-        'ambre': 'Amber',
-      };
-
-      const normalizeNote = (note: string): string => {
-        const normalized = note.toLowerCase().trim();
-        return translationMap[normalized] || note;
-      };
-
-      const deduplicateNotes = (notes: string[]): string[] => {
-        if (!Array.isArray(notes)) return notes;
-
-        // Normalize alle Noten (übersetze zu Deutsch)
-        const normalized = notes.map(normalizeNote);
-
-        // Entferne Duplikate (case-insensitive)
-        const seen = new Set<string>();
-        return normalized.filter(note => {
-          const lower = note.toLowerCase();
-          if (seen.has(lower)) return false;
-          seen.add(lower);
-          return true;
-        });
-      };
-
-      if (Array.isArray(analysis.notes.top)) {
-        analysis.notes.top = deduplicateNotes(analysis.notes.top);
-      }
-      if (Array.isArray(analysis.notes.heart)) {
-        analysis.notes.heart = deduplicateNotes(analysis.notes.heart);
-      }
-      if (Array.isArray(analysis.notes.base)) {
-        analysis.notes.base = deduplicateNotes(analysis.notes.base);
-      }
     }
 
     return {

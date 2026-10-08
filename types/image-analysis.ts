@@ -43,7 +43,7 @@ export interface ImageAnalysisResult {
     personalityType?: string | null;
     mood?: string | null;
     seasonRecommendation?: string | null;
-    occasion?: string[] | null;
+    occasionList?: string[] | null;
     climate?: string[] | null;
     perfectMoment?: string | null;
     comparisonPerfumes?: Array<{ name: string; reason: string }> | null;

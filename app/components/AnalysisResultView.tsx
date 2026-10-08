@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Perfume } from '@/lib/perfumes';
@@ -104,6 +104,125 @@ const NoteList = ({ notes }: { notes: string[] }) => (
   </div>
 );
 
+// Sternebewertung
+const StarRating = ({ rating }: { rating: number }) => {
+  const stars = Math.round(rating / 2); // 1–10 → 1–5 Sterne
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.2rem', marginTop: '0.75rem', marginBottom: '0.25rem' }}>
+      {[1, 2, 3, 4, 5].map((s) => (
+        <span key={s} style={{
+          fontSize: '1.3rem',
+          color: s <= stars ? C.gold : 'rgba(212,175,55,0.25)',
+          filter: s <= stars ? 'drop-shadow(0 0 4px rgba(212,175,55,0.5))' : 'none',
+        }}>
+          ★
+        </span>
+      ))}
+      <span style={{ fontSize: '0.78rem', color: 'rgba(212,175,55,0.6)', marginLeft: '0.4rem' }}>
+        {rating.toFixed(1)}/10
+      </span>
+    </div>
+  );
+};
+
+// Intensitäts-Badge
+const intensityMap: Record<string, { label: string; emoji: string; color: string }> = {
+  very_light: { label: 'Sehr leicht', emoji: '🌬️', color: '#a8d8ea' },
+  light:       { label: 'Leicht',      emoji: '💨', color: '#b8e0d2' },
+  medium:      { label: 'Mittel',      emoji: '🌿', color: '#d4af37' },
+  strong:      { label: 'Intensiv',    emoji: '🔥', color: '#c97d4e' },
+  very_strong: { label: 'Sehr stark',  emoji: '💥', color: '#9e3030' },
+};
+
+// Scroll-Fortschrittsbalken
+const ScrollProgressBar = () => {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      height: '3px',
+      zIndex: 9999,
+      backgroundColor: 'transparent',
+    }}>
+      <div style={{
+        height: '100%',
+        width: `${progress}%`,
+        background: `linear-gradient(90deg, ${C.goldMuted}, ${C.gold}, ${C.goldLight})`,
+        transition: 'width 0.1s linear',
+        boxShadow: `0 0 8px rgba(212,175,55,0.6)`,
+      }} />
+    </div>
+  );
+};
+
+// Teilen-Button
+const ShareButton = ({ name, brand }: { name: string; brand: string }) => {
+  const [copied, setCopied] = useState(false);
+
+  const shareText = `Ich habe gerade "${name}" von ${brand} mit Auressa entdeckt – dem KI-Duft-Scanner! 🌸`;
+  const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://auressa.ch';
+  const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText + '\n' + shareUrl)}`;
+
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      // Fallback
+    }
+  };
+
+  return (
+    <div style={{ display: 'flex', gap: '0.6rem', justifyContent: 'center', marginTop: '1rem', flexWrap: 'wrap' }}>
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+          padding: '0.5rem 1.1rem', borderRadius: '8px',
+          backgroundColor: '#25D366', color: '#fff',
+          fontWeight: '600', fontSize: '0.82rem', textDecoration: 'none',
+          border: 'none', cursor: 'pointer',
+        }}
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        WhatsApp
+      </a>
+      <button
+        onClick={copyLink}
+        style={{
+          display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+          padding: '0.5rem 1.1rem', borderRadius: '8px',
+          backgroundColor: copied ? C.gold : 'transparent',
+          border: `1px solid ${copied ? C.gold : C.sand}`,
+          color: copied ? C.dark : C.textMuted,
+          fontWeight: '600', fontSize: '0.82rem', cursor: 'pointer',
+          fontFamily: "'Inter', sans-serif",
+          transition: 'all 0.2s ease',
+        }}
+      >
+        {copied ? '✓ Kopiert!' : '🔗 Link kopieren'}
+      </button>
+    </div>
+  );
+};
+
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function AnalysisResultView({ analysis, similarPerfumes, onNewSearch, dbMatch }: AnalysisResultViewProps) {
@@ -141,8 +260,18 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
 
   const confidenceLabel = dbMatch ? 'In Auressa-DB gefunden' : currentAnalysis.confidence === 'high' ? 'Hohe Konfidenz' : currentAnalysis.confidence === 'medium' ? 'Mittlere Konfidenz' : 'Niedrige Konfidenz';
 
+  // Intensität
+  const intensityInfo = currentAnalysis.intensity ? intensityMap[currentAnalysis.intensity] : null;
+
+  // Entwicklung (Opening → Middle → Drydown)
+  const hasDevelopment = currentAnalysis.development &&
+    (currentAnalysis.development.opening || currentAnalysis.development.middleGame || currentAnalysis.development.drydown);
+
   return (
     <div style={{ maxWidth: '860px', margin: '0 auto', padding: '1.5rem 1rem 4rem' }}>
+
+      {/* ── SCROLL-FORTSCHRITTSBALKEN ────────────────────────────────────── */}
+      <ScrollProgressBar />
 
       {/* ── KORREKTUR-BANNER ─────────────────────────────────────────────── */}
       <ScanCorrectionBanner
@@ -220,6 +349,11 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
             </p>
           )}
 
+          {/* Sternebewertung */}
+          {currentAnalysis.rating && currentAnalysis.rating > 0 && (
+            <StarRating rating={currentAnalysis.rating} />
+          )}
+
           {/* Beschreibung — kürzer & besser lesbar */}
           {displayDescription && (
             <p style={{
@@ -227,12 +361,15 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
               lineHeight: 1.75,
               color: 'rgba(249,246,241,0.8)',
               maxWidth: '500px',
-              margin: '0 auto',
+              margin: '0.75rem auto 0',
               fontStyle: 'italic',
             }}>
               {displayDescription.length > 220 ? displayDescription.slice(0, 220).trimEnd() + ' …' : displayDescription}
             </p>
           )}
+
+          {/* Teilen-Button im Hero */}
+          <ShareButton name={displayName} brand={displayBrand} />
         </div>
       </section>
 
@@ -279,6 +416,10 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
             currentAnalysis.parfumeur && { icon: '👃', label: 'Parfümeur', value: currentAnalysis.parfumeur },
             dbMatch?.price_chf && { icon: '💰', label: 'Preis (CH)', value: `CHF ${dbMatch.price_chf}` },
             dbMatch?.season && { icon: '🍂', label: 'Saison', value: dbMatch.season },
+            // Flakon-Beschreibung
+            currentAnalysis.bottleDescription && { icon: '🫙', label: 'Flakon', value: currentAnalysis.bottleDescription },
+            // Intensitäts-Badge
+            intensityInfo && { icon: intensityInfo.emoji, label: 'Intensität', value: intensityInfo.label },
           ].filter(Boolean).map((item) => {
             const it = item as { icon: string; label: string; value: string };
             return (
@@ -325,6 +466,61 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
           ))}
         </div>
       </section>
+
+      {/* ── ENTWICKLUNG (Opening → Middle → Drydown) ─────────────────────── */}
+      {hasDevelopment && (
+        <section style={{ marginBottom: '2.5rem' }}>
+          <SectionHeading>Entwicklung auf der Haut</SectionHeading>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0' }}>
+            {[
+              { key: 'opening',    icon: '🌅', label: 'Kopfnote', subtitle: 'erste Minuten', text: currentAnalysis.development?.opening },
+              { key: 'middleGame', icon: '🌸', label: 'Herznote', subtitle: 'nach 30 Min.', text: currentAnalysis.development?.middleGame },
+              { key: 'drydown',    icon: '🌙', label: 'Basis',    subtitle: 'nach Stunden', text: currentAnalysis.development?.drydown },
+            ].filter(s => s.text).map((stage, i, arr) => (
+              <div key={stage.key} style={{
+                position: 'relative',
+                backgroundColor: i % 2 === 0 ? C.cream : C.creamDark,
+                padding: '1.25rem 1.5rem',
+                borderTop: `3px solid ${C.gold}`,
+                borderBottom: `1px solid ${C.sand}`,
+                borderLeft: i === 0 ? `1px solid ${C.sand}` : 'none',
+                borderRight: `1px solid ${C.sand}`,
+                borderRadius: i === 0 ? '10px 0 0 10px' : i === arr.length - 1 ? '0 10px 10px 0' : '0',
+              }}>
+                {/* Pfeil zwischen Phasen */}
+                {i < arr.length - 1 && (
+                  <div style={{
+                    position: 'absolute',
+                    right: '-10px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    zIndex: 1,
+                    width: '20px',
+                    height: '20px',
+                    backgroundColor: C.gold,
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '0.65rem',
+                    color: C.dark,
+                    fontWeight: '700',
+                    boxShadow: `0 0 0 3px ${C.cream}`,
+                  }}>
+                    →
+                  </div>
+                )}
+                <div style={{ fontSize: '1.2rem', marginBottom: '0.4rem' }}>{stage.icon}</div>
+                <div style={{ fontSize: '0.72rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.15rem' }}>
+                  {stage.label}
+                </div>
+                <div style={{ fontSize: '0.68rem', color: C.textLight, marginBottom: '0.5rem' }}>{stage.subtitle}</div>
+                <p style={{ fontSize: '0.88rem', color: C.text, margin: 0, lineHeight: 1.65 }}>{stage.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* ── 4. BEWERTUNGEN + DNA ─────────────────────────────────────────── */}
       <section style={{ marginBottom: '2.5rem' }}>

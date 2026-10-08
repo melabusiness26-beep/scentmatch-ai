@@ -262,37 +262,27 @@ export async function getPerfumesByTag(tag: string, limit = 40): Promise<Perfume
   if (!isSupabaseConfigured) return [];
   const tagLower = tag.toLowerCase();
 
-  // Direkte Suche in Text-Feldern
-  const { data: directData } = await supabase
+  // Keyword-Map: abstrakte Tags auf konkrete Suchbegriffe mappen
+  const keywords = TAG_KEYWORD_MAP[tagLower] ?? [];
+
+  // Alle Suchbegriffe in EINER einzigen OR-Abfrage zusammenführen
+  const terms = [tagLower, ...keywords];
+  const orParts = terms.flatMap((t) => [
+    `occasion.ilike.%${t}%`,
+    `season.ilike.%${t}%`,
+    `fragrance_family.ilike.%${t}%`,
+    `description.ilike.%${t}%`,
+  ]);
+
+  const { data, error } = await supabase
     .from('perfumes')
     .select(PERFUME_FIELDS)
-    .or(
-      `occasion.ilike.%${tagLower}%,season.ilike.%${tagLower}%,fragrance_family.ilike.%${tagLower}%,description.ilike.%${tagLower}%,perfume_name.ilike.%${tagLower}%`
-    )
+    .or(orParts.join(','))
     .order('scentmatch_score', { ascending: false })
     .limit(limit);
 
-  const direct = dedupePerfumes((directData as unknown as Perfume[]) || []);
-  if (direct.length >= 6) return direct;
-
-  // Keyword-Map: abstrakte Tags auf konkrete Noten-Begriffe mappen
-  const keywords = TAG_KEYWORD_MAP[tagLower] ?? [tagLower];
-
-  // Noten-Suche: für jedes Keyword in occasion/description suchen
-  const noteSearches = await Promise.all(
-    keywords.slice(0, 4).map((kw) =>
-      supabase
-        .from('perfumes')
-        .select(PERFUME_FIELDS)
-        .or(`occasion.ilike.%${kw}%,description.ilike.%${kw}%,fragrance_family.ilike.%${kw}%`)
-        .order('scentmatch_score', { ascending: false })
-        .limit(20)
-    )
-  );
-
-  const allFromNotes = noteSearches.flatMap((r) => (r.data as unknown as Perfume[]) || []);
-  const combined = dedupePerfumes([...direct, ...allFromNotes]);
-  return combined.slice(0, limit);
+  if (error || !data) return [];
+  return dedupePerfumes((data as unknown as Perfume[]) || []);
 }
 
 // ---------- Matching-Engine ----------

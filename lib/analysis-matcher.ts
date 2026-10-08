@@ -26,20 +26,26 @@ function nameSimilarity(a: string, b: string): number {
 
 /**
  * Sucht nach dem gescannten Duft in der Auressa-DB.
- * Gibt den besten Match zurück wenn Namens-UND Marken-Übereinstimmung hoch genug.
+ *
+ * Strategie (mehrere Stufen):
+ * 1. Exakter Name+Marke Match (slugified)
+ * 2. Name allein mit hoher Übereinstimmung (>= 0.8) — deckt Schreibfehler ab
+ * 3. Marke allein mit hoher Übereinstimmung + Noten-Overlap >= 50 %
+ *    — deckt den Fall ab, wo KI den Parfüm-Namen falsch erkennt
  */
 export function findPerfumeInDB(
   perfumeName: string,
   brandName: string,
+  analysisNotes: { top: string[]; heart: string[]; base: string[] },
   allPerfumes: Perfume[]
 ): Perfume | null {
+  // Stufe 1 & 2: Name+Marke Matching
   let bestMatch: Perfume | null = null;
   let bestScore = 0;
 
   for (const p of allPerfumes) {
     const nameScore = nameSimilarity(perfumeName, p.perfume_name);
     const brandScore = nameSimilarity(brandName, p.brands?.name || '');
-    // Beide müssen gut passen
     const combined = nameScore * 0.6 + brandScore * 0.4;
     if (combined > bestScore) {
       bestScore = combined;
@@ -47,8 +53,63 @@ export function findPerfumeInDB(
     }
   }
 
-  // Nur zurückgeben wenn wirklich guter Match (>= 0.65)
-  return bestScore >= 0.65 ? bestMatch : null;
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(`[scanner-matcher] Best name+brand match: "${bestMatch?.perfume_name}" by "${bestMatch?.brands?.name}" (score: ${bestScore.toFixed(2)})`);
+  }
+
+  // Stufe 1: Guter Name+Marke Match
+  if (bestScore >= 0.6) return bestMatch;
+
+  // Stufe 2: Nur Name sehr gut (KI hat Marke falsch geschrieben)
+  let bestNameOnly: Perfume | null = null;
+  let bestNameScore = 0;
+  for (const p of allPerfumes) {
+    const s = nameSimilarity(perfumeName, p.perfume_name);
+    if (s > bestNameScore) { bestNameScore = s; bestNameOnly = p; }
+  }
+  if (bestNameScore >= 0.8) return bestNameOnly;
+
+  // Stufe 3: Marke passt gut + Noten-Overlap hoch
+  // (deckt den Fall ab: Marke erkannt, aber Name falsch z.B. "Comotù" → "Comoró")
+  const allAnalysisNotes = [
+    ...analysisNotes.top,
+    ...analysisNotes.heart,
+    ...analysisNotes.base,
+  ].map(n => n.toLowerCase().trim());
+
+  let bestNoteMatch: Perfume | null = null;
+  let bestNoteScore = 0;
+
+  for (const p of allPerfumes) {
+    const brandScore = nameSimilarity(brandName, p.brands?.name || '');
+    if (brandScore < 0.5) continue; // Marke muss halbwegs passen
+
+    const dbNotes = [
+      ...(p.top_notes || []),
+      ...(p.heart_notes || []),
+      ...(p.base_notes || []),
+    ].map(n => n.toLowerCase().trim());
+
+    if (dbNotes.length === 0) continue;
+
+    const matches = allAnalysisNotes.filter(an =>
+      dbNotes.some(dn => dn.includes(an) || an.includes(dn))
+    ).length;
+    const noteOverlap = matches / Math.max(allAnalysisNotes.length, 1);
+    const combined = brandScore * 0.5 + noteOverlap * 0.5;
+
+    if (combined > bestNoteScore) {
+      bestNoteScore = combined;
+      bestNoteMatch = p;
+    }
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(`[scanner-matcher] Best brand+notes match: "${bestNoteMatch?.perfume_name}" (score: ${bestNoteScore.toFixed(2)})`);
+  }
+
+  // Nur zurückgeben bei ausreichendem Combined-Score
+  return bestNoteScore >= 0.45 ? bestNoteMatch : null;
 }
 
 // Hilfsfunktion: Noten-Strings normalisieren für Vergleich

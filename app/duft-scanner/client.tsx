@@ -46,8 +46,8 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
     setIsLoading(true);
 
     setTimeout(() => {
-      // DB-Lookup: Ist der Duft in Auressa?
-      const found = findPerfumeInDB(analysisData.perfumeName, analysisData.brandName, allPerfumes);
+      // DB-Lookup: Ist der Duft in Auressa? (Name + Marke + Noten)
+      const found = findPerfumeInDB(analysisData.perfumeName, analysisData.brandName, analysisData.notes, allPerfumes);
       setDbMatch(found);
 
       const similar = findSimilarPerfumes(analysisData, allPerfumes, 40, 7);
@@ -74,7 +74,7 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
   };
 
   const handleLoadFromHistory = (entry: ScanHistoryEntry) => {
-    const found = findPerfumeInDB(entry.analysis.perfumeName, entry.analysis.brandName, allPerfumes);
+    const found = findPerfumeInDB(entry.analysis.perfumeName, entry.analysis.brandName, entry.analysis.notes, allPerfumes);
     const similar = findSimilarPerfumes(entry.analysis, allPerfumes, 40, 7);
     setAnalysis(entry.analysis);
     setSimilarPerfumes(similar);

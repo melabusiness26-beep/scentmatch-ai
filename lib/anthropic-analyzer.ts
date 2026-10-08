@@ -93,6 +93,7 @@ WICHTIG:
 - Leere Arrays sind OK
 - Sei großzügig – auch unscharfe Fotos/Screenshots zählen
 - confidence: "high"|"medium"|"low"
+- ALLE Duft-Noten (top, heart, base) IMMER auf DEUTSCH (z.B. "Himbeere" nicht "Frambuesa", "Rose" nicht "Rosa", "Vanille" nicht "Vanilla", "Bergamotte" nicht "Bergamot"). Keine doppelten Übersetzungen – jede Note NUR EINMAL.
 
 Antworte NUR mit vollständigem JSON:`,
               },
@@ -152,6 +153,56 @@ Antworte NUR mit vollständigem JSON:`,
         'both': 'unisex',
       };
       analysis.gender = genderMap[analysis.gender.toLowerCase()] || analysis.gender;
+    }
+
+    // Noten auf Deutsch normalisieren & Duplikate entfernen
+    const NOTE_TRANSLATIONS: Record<string, string> = {
+      // Spanisch
+      'frambuesa': 'Himbeere', 'rosa': 'Rose', 'vainilla': 'Vanille', 'bergamota': 'Bergamotte',
+      'limon': 'Zitrone', 'limon amarillo': 'Zitrone', 'naranja': 'Orange', 'almizcle': 'Moschus',
+      'madera': 'Holz', 'musgo': 'Moos', 'ambar': 'Amber', 'incienso': 'Weihrauch',
+      'ylang ylang': 'Ylang-Ylang', 'jazmin': 'Jasmin', 'jazmín': 'Jasmin',
+      'lirio': 'Lilie', 'sandalo': 'Sandelholz', 'sándalo': 'Sandelholz',
+      'pachuli': 'Patchouli', 'mandarina': 'Mandarine',
+      'melocoton': 'Pfirsich', 'melocotón': 'Pfirsich',
+      // Englisch
+      'raspberry': 'Himbeere', 'vanilla': 'Vanille', 'musk': 'Moschus',
+      'bergamot': 'Bergamotte', 'lemon': 'Zitrone', 'orange': 'Orange',
+      'amber': 'Amber', 'rose': 'Rose', 'jasmine': 'Jasmin', 'lily': 'Lilie',
+      'cedar': 'Zeder', 'cedarwood': 'Zeder', 'sandalwood': 'Sandelholz',
+      'peach': 'Pfirsich', 'mandarin': 'Mandarine', 'incense': 'Weihrauch',
+      'iris': 'Iris', 'violet': 'Veilchen', 'lavender': 'Lavendel',
+      'blackcurrant': 'Schwarze Johannisbeere', 'patchouli': 'Patchouli',
+      'vetiver': 'Vetiver', 'oakmoss': 'Eichenmoos', 'tonka bean': 'Tonkabohne',
+      'white musk': 'Weißer Moschus', 'pink pepper': 'Rosa Pfeffer',
+      // Französisch
+      'ambre': 'Amber', 'bergamote': 'Bergamotte', 'musc': 'Moschus',
+      'cedre': 'Zeder', 'cèdre': 'Zeder', 'framboise': 'Himbeere',
+      'vanille': 'Vanille', 'jasmin': 'Jasmin',
+    };
+
+    function normalizeNoteName(note: string): string {
+      const lower = note.toLowerCase().trim();
+      return NOTE_TRANSLATIONS[lower] || note;
+    }
+
+    function deduplicateNotes(notes: string[]): string[] {
+      if (!Array.isArray(notes)) return [];
+      const normalized = notes.map(normalizeNoteName);
+      // Entferne Duplikate (case-insensitive)
+      const seen = new Set<string>();
+      return normalized.filter(n => {
+        const key = n.toLowerCase();
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+
+    if (analysis.notes) {
+      analysis.notes.top = deduplicateNotes(analysis.notes.top || []);
+      analysis.notes.heart = deduplicateNotes(analysis.notes.heart || []);
+      analysis.notes.base = deduplicateNotes(analysis.notes.base || []);
     }
 
     // Validiere dass confidence einer der erwarteten Werte ist

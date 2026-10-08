@@ -1,11 +1,18 @@
 import { supabase } from './supabase';
 import type { Perfume } from './perfumes';
 
+interface AnalysisNotes {
+  top?: string[];
+  heart?: string[];
+  base?: string[];
+}
+
 // Finds a perfume in the Auressa DB that matches the scanned perfume
-// Uses multi-stage matching: exact → fuzzy → partial
+// Uses multi-stage matching: exact name → fuzzy name → notes-based
 export async function findPerfumeInDB(
   scannedBrand: string | null,
-  scannedName: string | null
+  scannedName: string | null,
+  scannedNotes?: AnalysisNotes
 ): Promise<Perfume | null> {
   if (!scannedBrand || !scannedName) return null;
 
@@ -15,14 +22,19 @@ export async function findPerfumeInDB(
     const nameLower = scannedName.toLowerCase().trim();
 
     console.log(`[scanner-matcher] Searching for: "${brandLower}" / "${nameLower}"`);
+    if (scannedNotes) {
+      console.log(
+        `[scanner-matcher] Notes: ${scannedNotes.top?.join(',')} / ${scannedNotes.heart?.join(',')} / ${scannedNotes.base?.join(',')}`
+      );
+    }
 
-    // Query ALL perfumes with brand info (load more for better matching)
+    // Query ALL perfumes with brand info
     const { data, error } = await supabase
       .from('perfumes')
       .select(
         'id, perfume_name, slug, gender, fragrance_family, price_chf, longevity, sillage, scentmatch_score, season, occasion, description, image_url, affiliate_url, top_notes, heart_notes, base_notes, brands(name, slug, country)'
       )
-      .limit(500); // Load more perfumes for comprehensive search
+      .limit(500);
 
     if (error) {
       console.error('[scanner-matcher] DB query error:', error);
@@ -36,7 +48,7 @@ export async function findPerfumeInDB(
 
     console.log(`[scanner-matcher] Loaded ${data.length} perfumes from DB`);
 
-    // Stage 1: Try exact matches
+    // Stage 1: Exact name + brand match
     for (const perfume of data) {
       const brandName = (perfume.brands as any)?.name || '';
       const perfumeName = perfume.perfume_name || '';
@@ -45,41 +57,87 @@ export async function findPerfumeInDB(
         brandName.toLowerCase() === brandLower &&
         perfumeName.toLowerCase() === nameLower
       ) {
-        console.log(`[scanner-matcher] Exact match found: ${brandName} ${perfumeName}`);
+        console.log(`[scanner-matcher] ✓ Stage 1 (Exact): ${brandName} ${perfumeName}`);
         return perfume;
       }
     }
 
-    // Stage 2: Fuzzy matching with relaxed threshold
-    let bestMatch: Perfume | null = null;
-    let bestScore = 0;
+    // Stage 2: Fuzzy name matching
+    let bestFuzzyMatch: Perfume | null = null;
+    let bestFuzzyScore = 0;
 
     for (const perfume of data) {
       const brandName = (perfume.brands as any)?.name || '';
       const perfumeName = perfume.perfume_name || '';
 
-      // Calculate similarity scores
       const brandSim = calculateSimilarity(brandLower, brandName.toLowerCase());
       const nameSim = calculateSimilarity(nameLower, perfumeName.toLowerCase());
-
-      // Weighted score: perfume name is more critical (70%) than brand (30%)
       const score = nameSim * 0.7 + brandSim * 0.3;
 
-      if (score > bestScore) {
-        bestScore = score;
-        bestMatch = perfume;
+      if (score > bestFuzzyScore) {
+        bestFuzzyScore = score;
+        bestFuzzyMatch = perfume;
       }
     }
 
-    // Lower threshold to 0.5 (50% match) for better results
-    if (bestMatch && bestScore >= 0.5) {
+    if (bestFuzzyMatch && bestFuzzyScore >= 0.5) {
       console.log(
-        `[scanner-matcher] Fuzzy match found: ${(bestMatch.brands as any)?.name} ${bestMatch.perfume_name} (score: ${bestScore.toFixed(3)})`
+        `[scanner-matcher] ✓ Stage 2 (Fuzzy): ${(bestFuzzyMatch.brands as any)?.name} ${bestFuzzyMatch.perfume_name} (${bestFuzzyScore.toFixed(3)})`
       );
-      return bestMatch;
+      return bestFuzzyMatch;
     }
 
-    console.log(`[scanner-matcher] No match found (best score: ${bestScore.toFixed(3)})`);
+    // Stage 3: Notes-based matching (when names don't match but notes do)
+    if (scannedNotes && (scannedNotes.top || scannedNotes.heart || scannedNotes.base)) {
+      let bestNotesMatch: Perfume | null = null;
+      let bestNotesScore = 0;
+
+      for (const perfume of data) {
+        const dbNotes = [
+          ...(perfume.top_notes || []),
+          ...(perfume.heart_notes || []),
+          ...(perfume.base_notes || []),
+        ].map((n) => n.toLowerCase());
+
+        const scannedNotesAll = [
+          ...(scannedNotes.top || []),
+          ...(scannedNotes.heart || []),
+          ...(scannedNotes.base || []),
+        ].map((n) => n.toLowerCase());
+
+        // Count matching notes (with fuzzy matching)
+        let matchCount = 0;
+        for (const scannedNote of scannedNotesAll) {
+          for (const dbNote of dbNotes) {
+            const noteSim = calculateSimilarity(scannedNote, dbNote);
+            if (noteSim >= 0.7) {
+              matchCount++;
+              break;
+            }
+          }
+        }
+
+        // Score based on matching notes ratio
+        const notesScore = scannedNotesAll.length > 0 ? matchCount / scannedNotesAll.length : 0;
+
+        if (notesScore > bestNotesScore) {
+          bestNotesScore = notesScore;
+          bestNotesMatch = perfume;
+        }
+      }
+
+      // Accept notes match if at least 50% of notes match
+      if (bestNotesMatch && bestNotesScore >= 0.5) {
+        const brandName = (bestNotesMatch.brands as any)?.name || '';
+        const perfumeName = bestNotesMatch.perfume_name || '';
+        console.log(
+          `[scanner-matcher] ✓ Stage 3 (Notes): ${brandName} ${perfumeName} (${(bestNotesScore * 100).toFixed(0)}% notes match)`
+        );
+        return bestNotesMatch;
+      }
+    }
+
+    console.log(`[scanner-matcher] ✗ No match found (fuzzy: ${bestFuzzyScore.toFixed(3)})`);
     return null;
   } catch (err) {
     console.error('[scanner-matcher] Error finding perfume:', err);

@@ -30,8 +30,12 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
     setTimeout(async () => {
       const similar = findSimilarPerfumes(analysisData, allPerfumes, 40, 7);
 
-      // Look for perfume in DB
-      const dbPerfume = await findPerfumeInDB(analysisData.brandName, analysisData.perfumeName);
+      // Look for perfume in DB (including notes for fuzzy matching)
+      const dbPerfume = await findPerfumeInDB(
+        analysisData.brandName,
+        analysisData.perfumeName,
+        analysisData.notes
+      );
       setDbMatch(dbPerfume);
 
       if (similar.length === 0) {

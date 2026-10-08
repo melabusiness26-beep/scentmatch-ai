@@ -1,13 +1,16 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { Perfume } from '@/lib/perfumes';
 import { ImageAnalysisResult } from '@/types/image-analysis';
+import ScanCorrectionBanner from './ScanCorrectionBanner';
 
 interface AnalysisResultViewProps {
   analysis: ImageAnalysisResult['data'];
   similarPerfumes: Perfume[];
   onNewSearch: () => void;
+  dbMatch?: Perfume | null; // Exakter DB-Treffer wenn vorhanden
 }
 
 // ─── Design Tokens ───────────────────────────────────────────────────────────
@@ -118,15 +121,34 @@ const NoteList = ({ notes }: { notes: string[] }) => (
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
-export default function AnalysisResultView({ analysis, similarPerfumes, onNewSearch }: AnalysisResultViewProps) {
-  if (!analysis) return null;
+export default function AnalysisResultView({ analysis, similarPerfumes, onNewSearch, dbMatch }: AnalysisResultViewProps) {
+  const [currentAnalysis, setCurrentAnalysis] = useState(analysis);
 
-  const confidenceColor = analysis.confidence === 'high' ? C.gold : analysis.confidence === 'medium' ? '#c0a96a' : C.textLight;
-  const confidenceLabel = analysis.confidence === 'high' ? 'Hohe Konfidenz' : analysis.confidence === 'medium' ? 'Mittlere Konfidenz' : 'Niedrige Konfidenz';
-  const genderLabel = analysis.gender === 'woman' ? 'Damen' : analysis.gender === 'man' ? 'Herren' : 'Unisex';
+  if (!currentAnalysis) return null;
+
+  // DB-Daten bevorzugen wenn verfügbar
+  const displayName = dbMatch?.perfume_name || currentAnalysis.perfumeName;
+  const displayBrand = dbMatch?.brands?.name || currentAnalysis.brandName;
+  const displayNotes = dbMatch
+    ? {
+        top: dbMatch.top_notes || currentAnalysis.notes.top,
+        heart: dbMatch.heart_notes || currentAnalysis.notes.heart,
+        base: dbMatch.base_notes || currentAnalysis.notes.base,
+      }
+    : currentAnalysis.notes;
+
+  const confidenceColor = dbMatch ? C.gold : currentAnalysis.confidence === 'high' ? C.gold : currentAnalysis.confidence === 'medium' ? '#c0a96a' : C.textLight;
+  const confidenceLabel = dbMatch ? 'In Auressa-DB gefunden' : currentAnalysis.confidence === 'high' ? 'Hohe Konfidenz' : currentAnalysis.confidence === 'medium' ? 'Mittlere Konfidenz' : 'Niedrige Konfidenz';
+  const genderLabel = currentAnalysis.gender === 'woman' ? 'Damen' : currentAnalysis.gender === 'man' ? 'Herren' : 'Unisex';
 
   return (
     <div style={{ maxWidth: '860px', margin: '0 auto', padding: '1.5rem 1rem 4rem' }}>
+
+      {/* ── KORREKTUR-BANNER ─────────────────────────────────────────────── */}
+      <ScanCorrectionBanner
+        analysis={currentAnalysis}
+        onCorrected={(updated) => setCurrentAnalysis(updated)}
+      />
 
       {/* ── 1. HERO ─────────────────────────────────────────────────────── */}
       <section style={{
@@ -160,13 +182,18 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
           lineHeight: 1.15,
           letterSpacing: '-0.01em',
         }}>
-          {analysis.perfumeName}
+          {displayName}
         </h1>
         <p style={{ fontSize: '1.2rem', color: C.gold, marginBottom: '0.5rem', fontWeight: '500' }}>
-          {analysis.brandName}
+          {displayBrand}
         </p>
-        {analysis.year && (
-          <p style={{ fontSize: '0.85rem', color: '#c4b5a0', marginBottom: '1.5rem' }}>seit {analysis.year}</p>
+        {currentAnalysis.year && (
+          <p style={{ fontSize: '0.85rem', color: '#c4b5a0', marginBottom: '1.5rem' }}>seit {currentAnalysis.year}</p>
+        )}
+        {dbMatch && (
+          <p style={{ fontSize: '0.8rem', color: 'rgba(212,175,55,0.7)', marginBottom: '1rem' }}>
+            ✓ Daten aus Auressa-Datenbank
+          </p>
         )}
         <p style={{
           fontSize: '1.05rem',
@@ -176,9 +203,84 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
           margin: '0 auto',
           fontStyle: 'italic',
         }}>
-          {analysis.poeticDescription || analysis.generalDescription}
+          {currentAnalysis.poeticDescription || currentAnalysis.generalDescription}
         </p>
       </section>
+
+      {/* ── AFFILIATE CTA ────────────────────────────────────────────────── */}
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '0.75rem',
+        marginBottom: '2rem',
+        flexWrap: 'wrap',
+      }}>
+        <a
+          href={`https://www.notino.ch/suche/?q=${encodeURIComponent(`${displayBrand} ${displayName}`)}`}
+          target="_blank"
+          rel="sponsored noopener noreferrer"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.75rem 1.75rem',
+            borderRadius: '8px',
+            backgroundColor: C.gold,
+            color: C.dark,
+            fontWeight: '700',
+            fontSize: '0.95rem',
+            textDecoration: 'none',
+            fontFamily: "'Inter', sans-serif",
+            transition: 'all 0.2s ease',
+            boxShadow: '0 2px 8px rgba(212,175,55,0.3)',
+          }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLAnchorElement).style.backgroundColor = C.goldLight;
+            (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-1px)';
+            (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 4px 14px rgba(212,175,55,0.4)';
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLAnchorElement).style.backgroundColor = C.gold;
+            (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)';
+            (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 2px 8px rgba(212,175,55,0.3)';
+          }}
+        >
+          🛍️ Duft kaufen
+        </a>
+        <a
+          href={`https://www.flaconi.ch/suche/?q=${encodeURIComponent(`${displayBrand} ${displayName}`)}`}
+          target="_blank"
+          rel="sponsored noopener noreferrer"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.75rem 1.75rem',
+            borderRadius: '8px',
+            backgroundColor: 'transparent',
+            border: `2px solid ${C.gold}`,
+            color: C.dark,
+            fontWeight: '700',
+            fontSize: '0.95rem',
+            textDecoration: 'none',
+            fontFamily: "'Inter', sans-serif",
+            transition: 'all 0.2s ease',
+          }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLAnchorElement).style.backgroundColor = `rgba(212,175,55,0.1)`;
+            (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-1px)';
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent';
+            (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)';
+          }}
+        >
+          🔍 Bei Flaconi ansehen
+        </a>
+      </div>
+      <p style={{ textAlign: 'center', fontSize: '0.75rem', color: C.textLight, marginBottom: '2.5rem', marginTop: '-1.5rem' }}>
+        * Affiliate-Links – du zahlst nichts extra, wir erhalten eine kleine Provision.
+      </p>
 
       {/* ── 2. STECKBRIEF ────────────────────────────────────────────────── */}
       <section style={{ marginBottom: '2.5rem' }}>
@@ -226,9 +328,9 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
         <SectionHeading>Duftpyramide</SectionHeading>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '1rem' }}>
           {[
-            { label: 'KOPFNOTEN', emoji: '✨', notes: analysis.notes.top },
-            { label: 'HERZNOTEN', emoji: '💛', notes: analysis.notes.heart },
-            { label: 'BASISNOTEN', emoji: '🌿', notes: analysis.notes.base },
+            { label: 'KOPFNOTEN', emoji: '✨', notes: displayNotes.top },
+            { label: 'HERZNOTEN', emoji: '💛', notes: displayNotes.heart },
+            { label: 'BASISNOTEN', emoji: '🌿', notes: displayNotes.base },
           ].map(({ label, emoji, notes }) => (
             <div key={label} style={{
               backgroundColor: C.cream,

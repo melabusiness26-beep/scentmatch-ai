@@ -1,6 +1,117 @@
 import { Perfume } from '@/lib/perfumes';
 import { ImageAnalysisResult } from '@/types/image-analysis';
 
+// ─── DB-Lookup: Ist der gescannte Duft in der Auressa-DB? ─────────────────────
+
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+}
+
+function nameSimilarity(a: string, b: string): number {
+  const sa = slugify(a);
+  const sb = slugify(b);
+  if (sa === sb) return 1;
+  if (sa.includes(sb) || sb.includes(sa)) return 0.85;
+  // Levenshtein-ähnliche Heuristik: Zeichenüberlappung
+  const setA = new Set(sa.split(' '));
+  const setB = new Set(sb.split(' '));
+  const intersection = [...setA].filter(w => setB.has(w)).length;
+  const union = new Set([...setA, ...setB]).size;
+  return union > 0 ? intersection / union : 0;
+}
+
+/**
+ * Sucht nach dem gescannten Duft in der Auressa-DB.
+ *
+ * Strategie (mehrere Stufen):
+ * 1. Exakter Name+Marke Match (slugified)
+ * 2. Name allein mit hoher Übereinstimmung (>= 0.8) — deckt Schreibfehler ab
+ * 3. Marke allein mit hoher Übereinstimmung + Noten-Overlap >= 50 %
+ *    — deckt den Fall ab, wo KI den Parfüm-Namen falsch erkennt
+ */
+export function findPerfumeInDB(
+  perfumeName: string,
+  brandName: string,
+  analysisNotes: { top: string[]; heart: string[]; base: string[] },
+  allPerfumes: Perfume[]
+): Perfume | null {
+  // Stufe 1 & 2: Name+Marke Matching
+  let bestMatch: Perfume | null = null;
+  let bestScore = 0;
+
+  for (const p of allPerfumes) {
+    const nameScore = nameSimilarity(perfumeName, p.perfume_name);
+    const brandScore = nameSimilarity(brandName, p.brands?.name || '');
+    const combined = nameScore * 0.6 + brandScore * 0.4;
+    if (combined > bestScore) {
+      bestScore = combined;
+      bestMatch = p;
+    }
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(`[scanner-matcher] Best name+brand match: "${bestMatch?.perfume_name}" by "${bestMatch?.brands?.name}" (score: ${bestScore.toFixed(2)})`);
+  }
+
+  // Stufe 1: Guter Name+Marke Match
+  if (bestScore >= 0.6) return bestMatch;
+
+  // Stufe 2: Nur Name sehr gut (KI hat Marke falsch geschrieben)
+  let bestNameOnly: Perfume | null = null;
+  let bestNameScore = 0;
+  for (const p of allPerfumes) {
+    const s = nameSimilarity(perfumeName, p.perfume_name);
+    if (s > bestNameScore) { bestNameScore = s; bestNameOnly = p; }
+  }
+  if (bestNameScore >= 0.8) return bestNameOnly;
+
+  // Stufe 3: Marke passt gut + Noten-Overlap hoch
+  // (deckt den Fall ab: Marke erkannt, aber Name falsch z.B. "Comotù" → "Comoró")
+  const allAnalysisNotes = [
+    ...analysisNotes.top,
+    ...analysisNotes.heart,
+    ...analysisNotes.base,
+  ].map(n => n.toLowerCase().trim());
+
+  let bestNoteMatch: Perfume | null = null;
+  let bestNoteScore = 0;
+
+  for (const p of allPerfumes) {
+    const brandScore = nameSimilarity(brandName, p.brands?.name || '');
+    if (brandScore < 0.5) continue; // Marke muss halbwegs passen
+
+    const dbNotes = [
+      ...(p.top_notes || []),
+      ...(p.heart_notes || []),
+      ...(p.base_notes || []),
+    ].map(n => n.toLowerCase().trim());
+
+    if (dbNotes.length === 0) continue;
+
+    const matches = allAnalysisNotes.filter(an =>
+      dbNotes.some(dn => dn.includes(an) || an.includes(dn))
+    ).length;
+    const noteOverlap = matches / Math.max(allAnalysisNotes.length, 1);
+    const combined = brandScore * 0.5 + noteOverlap * 0.5;
+
+    if (combined > bestNoteScore) {
+      bestNoteScore = combined;
+      bestNoteMatch = p;
+    }
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(`[scanner-matcher] Best brand+notes match: "${bestNoteMatch?.perfume_name}" (score: ${bestNoteScore.toFixed(2)})`);
+  }
+
+  // Nur zurückgeben bei ausreichendem Combined-Score
+  return bestNoteScore >= 0.45 ? bestNoteMatch : null;
+}
+
 // Hilfsfunktion: Noten-Strings normalisieren für Vergleich
 function normalizeNote(note: string): string {
   return note.toLowerCase().trim();

@@ -417,7 +417,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
             dbMatch?.price_chf && { icon: '💰', label: 'Preis (CH)', value: `CHF ${dbMatch.price_chf}` },
             dbMatch?.season && { icon: '🍂', label: 'Saison', value: dbMatch.season },
             // Flakon-Beschreibung
-            currentAnalysis.bottleDescription && { icon: '🫙', label: 'Flakon', value: currentAnalysis.bottleDescription.length > 80 ? currentAnalysis.bottleDescription.slice(0, 80).trimEnd() + ' …' : currentAnalysis.bottleDescription },
+            currentAnalysis.bottleDescription && { icon: '🫙', label: 'Flakon', value: currentAnalysis.bottleDescription },
             // Intensitäts-Badge
             intensityInfo && { icon: intensityInfo.emoji, label: 'Intensität', value: intensityInfo.label },
           ].filter(Boolean).map((item) => {

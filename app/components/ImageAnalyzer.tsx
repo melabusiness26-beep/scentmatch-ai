@@ -17,23 +17,27 @@ export default function ImageAnalyzer({ onAnalysisComplete }: ImageAnalyzerProps
     setError(null);
 
     try {
-      // Call image analyzer API
+      console.log('[ImageAnalyzer] Starte Bildanalyse...');
+
       const response = await fetch('/api/image-analyzer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ imageBase64: base64 }),
       });
 
+      console.log('[ImageAnalyzer] API-Antwort erhalten:', response.status);
       const data: ImageAnalysisResult = await response.json();
+      console.log('[ImageAnalyzer] API-Daten geparst:', data);
 
       if (!data.success || !data.data) {
-        console.warn('[ImageAnalyzer] Analyse fehlgeschlagen:', data.error);
-        setError(data.error || 'Bild konnte nicht analysiert werden');
+        const errorMsg = data.error || 'Bild konnte nicht analysiert werden';
+        console.warn('[ImageAnalyzer] Analyse fehlgeschlagen:', errorMsg);
+        setError(errorMsg);
         setIsLoading(false);
         return;
       }
 
-      // Erfolg: Analyseergebnis weitergeben
+      console.log('[ImageAnalyzer] Analyse erfolgreich');
       setIsLoading(false);
       onAnalysisComplete(data.data);
     } catch (err) {

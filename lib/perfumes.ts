@@ -289,9 +289,14 @@ export async function getPerfumesByTag(tag: string, limit = 40): Promise<Perfume
     .order('scentmatch_score', { ascending: false })
     .limit(limit);
 
-  // Parallel: Array-Felder mit cs (contains) – jeder Begriff einzeln
+  // Parallel: Array-Felder mit cs (contains) – jeder Begriff in Varianten (klein + Großschreibung)
+  // cs ist case-sensitive → wir suchen sowohl 'bergamotte' als auch 'Bergamotte'
+  const arrayTermVariants = terms.flatMap((t) => [
+    t,
+    t.charAt(0).toUpperCase() + t.slice(1),
+  ]);
   const arrayResults = await Promise.all(
-    terms.map((t) =>
+    arrayTermVariants.map((t) =>
       supabase
         .from('perfumes')
         .select(PERFUME_FIELDS)

@@ -5,6 +5,7 @@ import { Perfume } from '@/lib/perfumes';
 import { ImageAnalysisResult } from '@/types/image-analysis';
 import { findSimilarPerfumes } from '@/lib/analysis-matcher';
 import { getScanHistory, addScanToHistory, clearScanHistory, ScanHistoryEntry, formatRelativeTime } from '@/lib/scan-history';
+import { findPerfumeInDB } from '@/lib/analysis-matcher';
 import ImageAnalyzer from '@/app/components/ImageAnalyzer';
 import AnalysisResultView from '@/app/components/AnalysisResultView';
 import LoadingAnimation from '@/app/components/LoadingAnimation';
@@ -30,6 +31,7 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
   const [stage, setStage] = useState<Stage>('scanner');
   const [analysis, setAnalysis] = useState<ImageAnalysisResult['data'] | null>(null);
   const [similarPerfumes, setSimilarPerfumes] = useState<Perfume[]>([]);
+  const [dbMatch, setDbMatch] = useState<Perfume | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [history, setHistory] = useState<ScanHistoryEntry[]>([]);
   const [showHistory, setShowHistory] = useState(false);
@@ -44,13 +46,17 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
     setIsLoading(true);
 
     setTimeout(() => {
+      // DB-Lookup: Ist der Duft in Auressa?
+      const found = findPerfumeInDB(analysisData.perfumeName, analysisData.brandName, allPerfumes);
+      setDbMatch(found);
+
       const similar = findSimilarPerfumes(analysisData, allPerfumes, 40, 7);
 
       // Save to history
       addScanToHistory(analysisData);
       setHistory(getScanHistory());
 
-      if (similar.length === 0) {
+      if (similar.length === 0 && !found) {
         setStage('not-found');
       } else {
         setSimilarPerfumes(similar);
@@ -64,13 +70,16 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
     setStage('scanner');
     setAnalysis(null);
     setSimilarPerfumes([]);
+    setDbMatch(null);
   };
 
   const handleLoadFromHistory = (entry: ScanHistoryEntry) => {
+    const found = findPerfumeInDB(entry.analysis.perfumeName, entry.analysis.brandName, allPerfumes);
     const similar = findSimilarPerfumes(entry.analysis, allPerfumes, 40, 7);
     setAnalysis(entry.analysis);
     setSimilarPerfumes(similar);
-    setStage(similar.length > 0 ? 'results' : 'not-found');
+    setDbMatch(found);
+    setStage(similar.length > 0 || found ? 'results' : 'not-found');
     setShowHistory(false);
   };
 
@@ -89,6 +98,7 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
         analysis={analysis}
         similarPerfumes={similarPerfumes}
         onNewSearch={handleNewSearch}
+        dbMatch={dbMatch}
       />
     );
   }

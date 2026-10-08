@@ -1,6 +1,56 @@
 import { Perfume } from '@/lib/perfumes';
 import { ImageAnalysisResult } from '@/types/image-analysis';
 
+// ─── DB-Lookup: Ist der gescannte Duft in der Auressa-DB? ─────────────────────
+
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+}
+
+function nameSimilarity(a: string, b: string): number {
+  const sa = slugify(a);
+  const sb = slugify(b);
+  if (sa === sb) return 1;
+  if (sa.includes(sb) || sb.includes(sa)) return 0.85;
+  // Levenshtein-ähnliche Heuristik: Zeichenüberlappung
+  const setA = new Set(sa.split(' '));
+  const setB = new Set(sb.split(' '));
+  const intersection = [...setA].filter(w => setB.has(w)).length;
+  const union = new Set([...setA, ...setB]).size;
+  return union > 0 ? intersection / union : 0;
+}
+
+/**
+ * Sucht nach dem gescannten Duft in der Auressa-DB.
+ * Gibt den besten Match zurück wenn Namens-UND Marken-Übereinstimmung hoch genug.
+ */
+export function findPerfumeInDB(
+  perfumeName: string,
+  brandName: string,
+  allPerfumes: Perfume[]
+): Perfume | null {
+  let bestMatch: Perfume | null = null;
+  let bestScore = 0;
+
+  for (const p of allPerfumes) {
+    const nameScore = nameSimilarity(perfumeName, p.perfume_name);
+    const brandScore = nameSimilarity(brandName, p.brands?.name || '');
+    // Beide müssen gut passen
+    const combined = nameScore * 0.6 + brandScore * 0.4;
+    if (combined > bestScore) {
+      bestScore = combined;
+      bestMatch = p;
+    }
+  }
+
+  // Nur zurückgeben wenn wirklich guter Match (>= 0.65)
+  return bestScore >= 0.65 ? bestMatch : null;
+}
+
 // Hilfsfunktion: Noten-Strings normalisieren für Vergleich
 function normalizeNote(note: string): string {
   return note.toLowerCase().trim();

@@ -94,7 +94,7 @@ const NoteList = ({ notes }: { notes: string[] }) => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginTop: '0.6rem' }}>
     {notes.length > 0
       ? notes.map((n, i) => (
-          <span key={i} style={{ fontSize: '0.82rem', color: C.text, display: 'flex', alignItems: 'flex-start', gap: '0.3rem', lineHeight: '1.4', wordBreak: 'break-word' }}>
+          <span key={i} style={{ fontSize: '0.82rem', color: C.text, display: 'flex', alignItems: 'flex-start', gap: '0.3rem', lineHeight: '1.4', overflowWrap: 'break-word', hyphens: 'none' }}>
             <span style={{ flexShrink: 0, color: C.gold, fontWeight: '700' }}>·</span>
             <span>{n}</span>
           </span>
@@ -269,7 +269,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
       {/* ── 2. STECKBRIEF ────────────────────────────────────────────────── */}
       <section style={{ marginBottom: '2.5rem' }}>
         <SectionHeading>Steckbrief</SectionHeading>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.75rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '0.75rem' }}>
           {[
             currentAnalysis.concentration && { icon: '🧴', label: 'Konzentration', value: currentAnalysis.concentration },
             currentAnalysis.family && { icon: '🌸', label: 'Duftfamilie', value: currentAnalysis.family },
@@ -316,10 +316,11 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
               borderTop: `3px solid ${C.gold}`,
               minWidth: 0,
             }}>
-              <div style={{ fontSize: '0.62rem', fontWeight: '700', color: C.gold, letterSpacing: '0.04em', marginBottom: '0.1rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                {emoji} {label}
+              <div style={{ fontSize: '1rem', marginBottom: '0.15rem' }}>{emoji}</div>
+              <div style={{ fontSize: '0.6rem', fontWeight: '700', color: C.gold, letterSpacing: '0.04em', marginBottom: '0.1rem' }}>
+                {label}
               </div>
-              <div style={{ fontSize: '0.65rem', color: C.textLight, marginBottom: '0.25rem' }}>{desc}</div>
+              <div style={{ fontSize: '0.62rem', color: C.textLight, marginBottom: '0.25rem' }}>{desc}</div>
               <NoteList notes={notes} />
             </div>
           ))}

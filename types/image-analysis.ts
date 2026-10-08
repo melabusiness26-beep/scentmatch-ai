@@ -26,6 +26,31 @@ export interface ImageAnalysisResult {
     gender: 'woman' | 'man' | 'unisex' | null;
     bottleDescription: string;
     generalDescription: string;
+    // Premium Fields (15-section profile)
+    year?: number | null;
+    parfumeur?: string | null;
+    concentration?: string | null;
+    rating?: number;
+    sillage?: number;
+    longevity?: number;
+    projection?: number;
+    uniqueness?: number;
+    priceValue?: number;
+    duftDNA?: { blumig?: number; holzig?: number; frisch?: number; süss?: number; würzig?: number } | null;
+    poeticDescription?: string | null;
+    duftJourney?: { morgen?: string; mittag?: string; abend?: string; nacht?: string } | null;
+    characterTags?: string[] | null;
+    personalityType?: string | null;
+    mood?: string | null;
+    seasonRecommendation?: string | null;
+    occasion?: string[] | null;
+    climate?: string[] | null;
+    perfectMoment?: string | null;
+    comparisonPerfumes?: Array<{ name: string; reason: string }> | null;
+    funFacts?: string[] | null;
+    famouswearers?: string[] | null;
+    history?: string | null;
+    similarPerfumes?: Array<{ name: string; reason: string }> | null;
   };
   error?: string;
 }

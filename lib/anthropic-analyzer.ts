@@ -24,8 +24,8 @@ export async function analyzeImageWithAnthropic(
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 2000,
+        model: 'claude-sonnet-4-5',
+        max_tokens: 3000,
         messages: [
           {
             role: 'user',
@@ -40,51 +40,61 @@ export async function analyzeImageWithAnthropic(
               },
               {
                 type: 'text',
-                text: `Du bist ein Parfüm-Erkennungs-Assistent. Analysiere dieses Bild eines Parfüms und antworte mit AUSSCHLIESSLICH gültigem JSON (keine Markdown, kein Text davor/danach).
+                text: `Du bist ein Premium-Parfüm-Analyse-Assistent. Analysiere dieses Bild eines Parfüms sorgfältig und erstelle ein ULTIMATIVES PREMIUM-STECKBRIEF mit maximalen Details.
 
-Das Bild kann sein:
-- Ein echtes Flakon-Bild
-- Ein Produktfoto vom Online-Shop
-- Ein Marketing-Bild
-- Ein Screenshot
-- Eine Verpackung oder ein Label
+Das Bild kann sein: echtes Flakon, Produktfoto, Marketing-Bild, Screenshot oder Verpackung.
 
-AUFGABE: Erkenne das Parfüm so gut wie möglich und extrahiere:
+AUFGABE: Erkenne das Parfüm und extrahiere ALLES als reines JSON (keine Markdown):
 
-- perfumeName: Name des Parfüms (egal ob vom Etikett, Logo, Verpackung, oder aus visuellen Hinweisen erkannt)
-- brandName: Markenname (auch wenn nur erkannt, nicht gelesen)
-- confidence: "high" für sicherer erkannte Parfüms, "medium" für educated guesses basierend auf visuellen Merkmalen, "low" nur für sehr unsicher
-- notes: Duftnoten falls erkennbar, ansonsten leere Arrays. Format: {"top": ["Note1", "Note2"], "heart": [...], "base": [...]}
-- development: Kurze Beschreibung wie sich das Parfüm entwickelt. Fallback: generische Beschreibung basierend auf Familie. Format: {"opening": "...", "middleGame": "...", "drydown": "..."}
-- family: Duftfamilie (Clean, Floral, Woody, Gourmand, Oriental, Fruity, Aromatic, etc.)
-- origin: Land oder Region wenn erkennbar, sonst "Unbekannt"
-- usageRecommendations: Objekt mit Arrays. Fallback: generische Empfehlung. Format: {"occasions": ["Alltag", "Büro", ...], "seasons": ["Frühling", ...], "timeOfDay": ["Morgens", ...], "skinType": []}
-- intensity: "light", "medium", oder "strong" - basierend auf visuellen Hinweisen oder Duftfamilie
-- gender: "woman", "man", "unisex", oder null
-- bottleDescription: Beschreibung des Flakons oder der Verpackung
-- generalDescription: 1-2 Sätze allgemeine Beschreibung
+Basis-Infos:
+- perfumeName, brandName, year (null ok), parfumeur (null ok), originCountry
+- concentration: "Parfum"|"EDP"|"EDT"|"Eau de Cologne"|null
+- family: Duftfamilie
+
+Bewertungen (1-10 Skala):
+- rating, sillage, longevity, projection, uniqueness, priceValue
+
+Noten:
+- notes: {top: [...], heart: [...], base: [...]}
+
+Analyse:
+- duftDNA: {blumig: %, holzig: %, frisch: %, süss: %, würzig: %} (Summe ~100)
+- poeticDescription: 2-3 Sätze, emotional
+- duftJourney: {morgen: "...", mittag: "...", abend: "...", nacht: "..."}
+
+Charakter:
+- characterTags: ["5-6 Wörter"], personalityType, mood
+
+Anwendung:
+- seasonRecommendation: "Frühling"|"Sommer"|"Herbst"|"Winter"|"Ganzjährig"
+- occasion: ["Alltag", "Büro", "Date", "Abendessen", "Party", "Sport"]
+- climate: ["warm", "kalt", "tropisch", "gemäßigt"]
+
+Stories:
+- perfectMoment: kurze emotionale Story
+- comparisonPerfumes: [{name, reason}] (2-3 Düfte)
+- funFacts: [...]
+- famouswearers: [...] oder null
+- history: kurze Geschichte oder null
+
+KI-Empfehlungen:
+- similarPerfumes: [{name, reason}] (5 Düfte aus KI-Wissen, NICHT aus DB)
+
+Fallback-Daten:
+- generalDescription: 1-2 Sätze
+- development: {opening, middleGame, drydown}
+- usageRecommendations: {occasions, seasons, timeOfDay, skinType}
+- bottleDescription: Beschreibung des Flakons
+- intensity, gender, confidence
 
 WICHTIG:
-- Es ist OK, educated guesses zu machen – erzähle nicht "ich kann nicht erkennen", sondern gib deine beste Einschätzung
-- Leere Arrays sind OK wenn Informationen nicht verfügbar sind
-- Nutze "medium" oder "low" Confidence wenn du dir nicht völlig sicher bist, aber antworte trotzdem
-- Sei tolerant – auch unscharfe oder Produktfotos sind gültig
+- Es ist OK, educated guesses zu machen
+- Nutze null nur wenn unmöglich
+- Leere Arrays sind OK
+- Sei großzügig – auch unscharfe Fotos/Screenshots zählen
+- confidence: "high"|"medium"|"low"
 
-Antworte AUSSCHLIESSLICH mit JSON (keine Markdown-Blöcke):
-{
-  "perfumeName": "...",
-  "brandName": "...",
-  "confidence": "high|medium|low",
-  "notes": {"top": [...], "heart": [...], "base": [...]},
-  "development": {"opening": "...", "middleGame": "...", "drydown": "..."},
-  "family": "...",
-  "origin": "...",
-  "usageRecommendations": {"occasions": [...], "seasons": [...], "timeOfDay": [...], "skinType": [...]},
-  "intensity": "...",
-  "gender": "woman|man|unisex|null",
-  "bottleDescription": "...",
-  "generalDescription": "..."
-}`,
+Antworte NUR mit vollständigem JSON:`,
               },
             ],
           },

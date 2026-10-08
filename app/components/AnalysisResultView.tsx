@@ -131,15 +131,19 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
   const displayBrand = dbMatch?.brands?.name || currentAnalysis.brandName;
   const displayNotes = dbMatch
     ? {
-        top: dbMatch.top_notes || currentAnalysis.notes.top,
-        heart: dbMatch.heart_notes || currentAnalysis.notes.heart,
-        base: dbMatch.base_notes || currentAnalysis.notes.base,
+        top: (dbMatch.top_notes && dbMatch.top_notes.length > 0) ? dbMatch.top_notes : currentAnalysis.notes.top,
+        heart: (dbMatch.heart_notes && dbMatch.heart_notes.length > 0) ? dbMatch.heart_notes : currentAnalysis.notes.heart,
+        base: (dbMatch.base_notes && dbMatch.base_notes.length > 0) ? dbMatch.base_notes : currentAnalysis.notes.base,
       }
     : currentAnalysis.notes;
 
+  // Geschlecht: DB-Match bevorzugen (Women/Men/Unisex), sonst KI-Analyse
+  const dbGender = dbMatch?.gender;
+  const displayGender = dbGender === 'Women' ? 'Damen' : dbGender === 'Men' ? 'Herren' : dbGender === 'Unisex' ? 'Unisex' : null;
+  const genderLabel = displayGender || (currentAnalysis.gender === 'woman' ? 'Damen' : currentAnalysis.gender === 'man' ? 'Herren' : 'Unisex');
+
   const confidenceColor = dbMatch ? C.gold : currentAnalysis.confidence === 'high' ? C.gold : currentAnalysis.confidence === 'medium' ? '#c0a96a' : C.textLight;
   const confidenceLabel = dbMatch ? 'In Auressa-DB gefunden' : currentAnalysis.confidence === 'high' ? 'Hohe Konfidenz' : currentAnalysis.confidence === 'medium' ? 'Mittlere Konfidenz' : 'Niedrige Konfidenz';
-  const genderLabel = currentAnalysis.gender === 'woman' ? 'Damen' : currentAnalysis.gender === 'man' ? 'Herren' : 'Unisex';
 
   return (
     <div style={{ maxWidth: '860px', margin: '0 auto', padding: '1.5rem 1rem 4rem' }}>

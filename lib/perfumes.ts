@@ -224,20 +224,60 @@ export async function getAllPerfumeSlugs(): Promise<string[]> {
 }
 
 // Düfte anhand eines Tags (occasion, season, fragrance_family, oder Noten-Suche) laden.
+// Abstrakte Charakter-Tags → konkrete Suchbegriffe die in der DB vorkommen
+const TAG_KEYWORD_MAP: Record<string, string[]> = {
+  'selbstbewusst':  ['oud', 'amber', 'moschus', 'leder', 'holz', 'vetiver', 'patchouli'],
+  'verführerisch':  ['amber', 'moschus', 'vanille', 'sandelholz', 'jasmin', 'ylang'],
+  'romantisch':     ['rose', 'jasmin', 'pfingstrose', 'veilchen', 'iris', 'floral'],
+  'frisch':         ['bergamotte', 'zitrone', 'limette', 'grapefruit', 'minze', 'aquatisch'],
+  'kraftvoll':      ['oud', 'leder', 'vetiver', 'zeder', 'pfeffer', 'rauch'],
+  'elegant':        ['iris', 'jasmin', 'rose', 'sandelholz', 'moschus', 'aldehyde'],
+  'verspielt':      ['frucht', 'beere', 'apfel', 'birne', 'vanille', 'praline'],
+  'geheimnisvoll':  ['oud', 'amber', 'weihrauch', 'myrrhe', 'rauch', 'leder'],
+  'sportlich':      ['zitrus', 'bergamotte', 'aquatisch', 'holz', 'minze'],
+  'suess':          ['vanille', 'praline', 'karamell', 'schokolade', 'tonkabohne', 'gourmand'],
+  'warm':           ['amber', 'vanille', 'sandelholz', 'tonkabohne', 'benzoe'],
+  'kuehl':          ['minze', 'eukalyptus', 'bergamotte', 'zitrus', 'aquatisch'],
+  'natuerlich':     ['vetiver', 'zeder', 'fichte', 'moos', 'erde', 'woody'],
+  'luxurioees':     ['oud', 'rose', 'iris', 'jasmin', 'amber', 'sandelholz'],
+  'entspannt':      ['lavendel', 'kamille', 'vanille', 'sandelholz', 'moschus'],
+};
+
 export async function getPerfumesByTag(tag: string, limit = 40): Promise<Perfume[]> {
   if (!isSupabaseConfigured) return [];
   const tagLower = tag.toLowerCase();
-  // Suche in occasion, season, fragrance_family, top/heart/base_notes
-  const { data, error } = await supabase
+
+  // Direkte Suche in Text-Feldern
+  const { data: directData } = await supabase
     .from('perfumes')
     .select(PERFUME_FIELDS)
     .or(
-      `occasion.ilike.%${tagLower}%,season.ilike.%${tagLower}%,fragrance_family.ilike.%${tagLower}%`
+      `occasion.ilike.%${tagLower}%,season.ilike.%${tagLower}%,fragrance_family.ilike.%${tagLower}%,description.ilike.%${tagLower}%,perfume_name.ilike.%${tagLower}%`
     )
     .order('scentmatch_score', { ascending: false })
     .limit(limit);
-  if (error || !data) return [];
-  return dedupePerfumes((data as unknown as Perfume[]) || []);
+
+  const direct = dedupePerfumes((directData as unknown as Perfume[]) || []);
+  if (direct.length >= 6) return direct;
+
+  // Keyword-Map: abstrakte Tags auf konkrete Noten-Begriffe mappen
+  const keywords = TAG_KEYWORD_MAP[tagLower] ?? [tagLower];
+
+  // Noten-Suche: für jedes Keyword in occasion/description suchen
+  const noteSearches = await Promise.all(
+    keywords.slice(0, 4).map((kw) =>
+      supabase
+        .from('perfumes')
+        .select(PERFUME_FIELDS)
+        .or(`occasion.ilike.%${kw}%,description.ilike.%${kw}%,fragrance_family.ilike.%${kw}%`)
+        .order('scentmatch_score', { ascending: false })
+        .limit(20)
+    )
+  );
+
+  const allFromNotes = noteSearches.flatMap((r) => (r.data as unknown as Perfume[]) || []);
+  const combined = dedupePerfumes([...direct, ...allFromNotes]);
+  return combined.slice(0, limit);
 }
 
 // ---------- Matching-Engine ----------

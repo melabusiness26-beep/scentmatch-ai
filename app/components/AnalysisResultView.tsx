@@ -417,7 +417,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
             dbMatch?.price_chf && { icon: '💰', label: 'Preis (CH)', value: `CHF ${dbMatch.price_chf}` },
             dbMatch?.season && { icon: '🍂', label: 'Saison', value: dbMatch.season },
             // Flakon-Beschreibung
-            currentAnalysis.bottleDescription && { icon: '🫙', label: 'Flakon', value: currentAnalysis.bottleDescription },
+            currentAnalysis.bottleDescription && { icon: '🫙', label: 'Flakon', value: currentAnalysis.bottleDescription.length > 80 ? currentAnalysis.bottleDescription.slice(0, 80).trimEnd() + ' …' : currentAnalysis.bottleDescription },
             // Intensitäts-Badge
             intensityInfo && { icon: intensityInfo.emoji, label: 'Intensität', value: intensityInfo.label },
           ].filter(Boolean).map((item) => {
@@ -603,19 +603,28 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
               <div>
                 <div style={{ fontSize: '0.72rem', color: C.gold, fontWeight: '700', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>Charakter-Tags</div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                  {currentAnalysis.characterTags.map((tag, i) => (
-                    <span key={i} style={{
-                      backgroundColor: 'rgba(212,175,55,0.18)',
-                      border: `1px solid rgba(212,175,55,0.45)`,
-                      color: C.gold,
-                      padding: '0.28rem 0.8rem',
-                      borderRadius: '20px',
-                      fontSize: '0.82rem',
-                      fontWeight: '500',
-                    }}>
-                      {tag}
-                    </span>
-                  ))}
+                  {currentAnalysis.characterTags.map((tag, i) => {
+                    const tagSlug = tag.toLowerCase().replace(/[äöü]/g, (c) => ({ ä: 'ae', ö: 'oe', ü: 'ue' }[c] || c)).replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+                    return (
+                      <Link key={i} href={`/tag/${tagSlug}`} style={{
+                        backgroundColor: 'rgba(212,175,55,0.18)',
+                        border: `1px solid rgba(212,175,55,0.45)`,
+                        color: C.gold,
+                        padding: '0.28rem 0.8rem',
+                        borderRadius: '20px',
+                        fontSize: '0.82rem',
+                        fontWeight: '500',
+                        textDecoration: 'none',
+                        display: 'inline-block',
+                        transition: 'background 0.15s ease',
+                      }}
+                      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(212,175,55,0.35)'; }}
+                      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(212,175,55,0.18)'; }}
+                      >
+                        #{tag}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             )}

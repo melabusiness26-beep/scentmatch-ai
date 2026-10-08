@@ -223,6 +223,23 @@ export async function getAllPerfumeSlugs(): Promise<string[]> {
     .filter((slug): slug is string => Boolean(slug));
 }
 
+// Düfte anhand eines Tags (occasion, season, fragrance_family, oder Noten-Suche) laden.
+export async function getPerfumesByTag(tag: string, limit = 40): Promise<Perfume[]> {
+  if (!isSupabaseConfigured) return [];
+  const tagLower = tag.toLowerCase();
+  // Suche in occasion, season, fragrance_family, top/heart/base_notes
+  const { data, error } = await supabase
+    .from('perfumes')
+    .select(PERFUME_FIELDS)
+    .or(
+      `occasion.ilike.%${tagLower}%,season.ilike.%${tagLower}%,fragrance_family.ilike.%${tagLower}%`
+    )
+    .order('scentmatch_score', { ascending: false })
+    .limit(limit);
+  if (error || !data) return [];
+  return dedupePerfumes((data as unknown as Perfume[]) || []);
+}
+
 // ---------- Matching-Engine ----------
 // Bewertet jeden Duft gewichtet gegen alle Quiz-Antworten (0–100 % Match).
 

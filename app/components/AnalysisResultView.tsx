@@ -61,11 +61,11 @@ export default function AnalysisResultView({
           Steckbrief
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1.5rem' }}>
-          {analysis.originCountry && (
+          {analysis.origin && (
             <div style={{ backgroundColor: '#f9f6f1', padding: '1rem', borderRadius: '8px' }}>
               <div style={{ fontSize: '0.85rem', color: '#9a8a7e', marginBottom: '0.5rem' }}>🌍 Herkunft</div>
               <div style={{ fontSize: '1.1rem', fontWeight: '600', color: '#2a1d12' }}>
-                {analysis.originCountry}
+                {analysis.origin}
               </div>
             </div>
           )}

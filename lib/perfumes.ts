@@ -267,22 +267,48 @@ export async function getPerfumesByTag(tag: string, limit = 40): Promise<Perfume
 
   // Alle Suchbegriffe in EINER einzigen OR-Abfrage zusammenführen
   const terms = [tagLower, ...keywords];
-  const orParts = terms.flatMap((t) => [
+
+  // Text-Felder: ilike-Suche
+  const textParts = terms.flatMap((t) => [
     `occasion.ilike.%${t}%`,
     `season.ilike.%${t}%`,
     `fragrance_family.ilike.%${t}%`,
     `description.ilike.%${t}%`,
+    `perfume_name.ilike.%${t}%`,
   ]);
 
-  const { data, error } = await supabase
+  // Array-Felder (top_notes, heart_notes, base_notes): cs (contains) mit case-insensitive Suche
+  // Supabase unterstützt kein ilike auf Arrays – wir nutzen .ilike auf dem Array-Element via
+  // PostgreSQL-Syntax: top_notes.cs.{term} funktioniert nur bei exaktem Match.
+  // Daher: description enthält oft die Noten als Text → reicht für die meisten Fälle.
+  // Zusätzlich suchen wir die Noten als Text über eine separate Abfrage und mergen.
+  const { data: textData, error: textError } = await supabase
     .from('perfumes')
     .select(PERFUME_FIELDS)
-    .or(orParts.join(','))
+    .or(textParts.join(','))
     .order('scentmatch_score', { ascending: false })
     .limit(limit);
 
-  if (error || !data) return [];
-  return dedupePerfumes((data as unknown as Perfume[]) || []);
+  // Parallel: Array-Felder mit cs (contains) – jeder Begriff einzeln
+  const arrayResults = await Promise.all(
+    terms.map((t) =>
+      supabase
+        .from('perfumes')
+        .select(PERFUME_FIELDS)
+        .or(`top_notes.cs.{${t}},heart_notes.cs.{${t}},base_notes.cs.{${t}}`)
+        .order('scentmatch_score', { ascending: false })
+        .limit(20)
+    )
+  );
+
+  const allData: Perfume[] = [];
+  if (!textError && textData) allData.push(...(textData as unknown as Perfume[]));
+  for (const res of arrayResults) {
+    if (!res.error && res.data) allData.push(...(res.data as unknown as Perfume[]));
+  }
+
+  if (allData.length === 0) return [];
+  return dedupePerfumes(allData).slice(0, limit);
 }
 
 // ---------- Matching-Engine ----------

@@ -304,9 +304,9 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
         <SectionHeading>Duftpyramide</SectionHeading>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '0.6rem' }}>
           {[
-            { label: 'Kopfnoten', emoji: '✨', notes: displayNotes.top },
-            { label: 'Herznoten', emoji: '🌸', notes: displayNotes.heart },
-            { label: 'Basisnoten', emoji: '🌿', notes: displayNotes.base },
+            { label: 'Kopf', emoji: '✨', notes: displayNotes.top },
+            { label: 'Herz', emoji: '🌸', notes: displayNotes.heart },
+            { label: 'Basis', emoji: '🌿', notes: displayNotes.base },
           ].map(({ label, emoji, notes }) => (
             <div key={label} style={{
               backgroundColor: C.cream,
@@ -316,9 +316,9 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
               borderTop: `3px solid ${C.gold}`,
               minWidth: 0,
             }}>
-              <div style={{ fontSize: '0.65rem', fontWeight: '700', color: C.gold, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.2rem' }}>
-                <span>{emoji}</span>
-                <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{label}</span>
+              <div style={{ marginBottom: '0.5rem' }}>
+                <div style={{ fontSize: '1rem', lineHeight: 1 }}>{emoji}</div>
+                <div style={{ fontSize: '0.65rem', fontWeight: '700', color: C.gold, marginTop: '0.2rem' }}>{label}</div>
               </div>
               <NoteList notes={notes} />
             </div>

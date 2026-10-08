@@ -180,6 +180,81 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
         </p>
       </section>
 
+      {/* ── AFFILIATE CTA ────────────────────────────────────────────────── */}
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '0.75rem',
+        marginBottom: '2rem',
+        flexWrap: 'wrap',
+      }}>
+        <a
+          href={`https://www.notino.ch/suche/?q=${encodeURIComponent(`${analysis.brandName} ${analysis.perfumeName}`)}`}
+          target="_blank"
+          rel="sponsored noopener noreferrer"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.75rem 1.75rem',
+            borderRadius: '8px',
+            backgroundColor: C.gold,
+            color: C.dark,
+            fontWeight: '700',
+            fontSize: '0.95rem',
+            textDecoration: 'none',
+            fontFamily: "'Inter', sans-serif",
+            transition: 'all 0.2s ease',
+            boxShadow: '0 2px 8px rgba(212,175,55,0.3)',
+          }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLAnchorElement).style.backgroundColor = C.goldLight;
+            (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-1px)';
+            (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 4px 14px rgba(212,175,55,0.4)';
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLAnchorElement).style.backgroundColor = C.gold;
+            (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)';
+            (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 2px 8px rgba(212,175,55,0.3)';
+          }}
+        >
+          🛍️ Duft kaufen
+        </a>
+        <a
+          href={`https://www.flaconi.ch/suche/?q=${encodeURIComponent(`${analysis.brandName} ${analysis.perfumeName}`)}`}
+          target="_blank"
+          rel="sponsored noopener noreferrer"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.75rem 1.75rem',
+            borderRadius: '8px',
+            backgroundColor: 'transparent',
+            border: `2px solid ${C.gold}`,
+            color: C.dark,
+            fontWeight: '700',
+            fontSize: '0.95rem',
+            textDecoration: 'none',
+            fontFamily: "'Inter', sans-serif",
+            transition: 'all 0.2s ease',
+          }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLAnchorElement).style.backgroundColor = `rgba(212,175,55,0.1)`;
+            (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-1px)';
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent';
+            (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)';
+          }}
+        >
+          🔍 Bei Flaconi ansehen
+        </a>
+      </div>
+      <p style={{ textAlign: 'center', fontSize: '0.75rem', color: C.textLight, marginBottom: '2.5rem', marginTop: '-1.5rem' }}>
+        * Affiliate-Links – du zahlst nichts extra, wir erhalten eine kleine Provision.
+      </p>
+
       {/* ── 2. STECKBRIEF ────────────────────────────────────────────────── */}
       <section style={{ marginBottom: '2.5rem' }}>
         <SectionHeading>Steckbrief</SectionHeading>

@@ -231,7 +231,7 @@ export default function AnalysisResultView({
         <h2 style={{ fontSize: '1.8rem', fontFamily: "'Playfair Display', serif", color: '#2a1d12', marginBottom: '1.5rem' }}>
           Duftpyramide
         </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '1.5rem' }}>
           <div style={{ backgroundColor: '#f9f6f1', padding: '1.5rem', borderRadius: '8px' }}>
             <h3 style={{ fontSize: '0.9rem', fontWeight: '600', color: '#d4af37', marginBottom: '1rem', textTransform: 'uppercase' }}>
               Kopfnoten
@@ -239,8 +239,8 @@ export default function AnalysisResultView({
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               {analysis.notes.top.length > 0 ? (
                 analysis.notes.top.map((note, idx) => (
-                  <span key={idx} style={{ fontSize: '0.95rem', color: '#2a1d12' }}>
-                    • {note}
+                  <span key={idx} style={{ fontSize: '0.95rem', color: '#2a1d12', display: 'flex', alignItems: 'flex-start', gap: '0.35rem' }}>
+                    <span style={{ flexShrink: 0 }}>•</span><span>{note}</span>
                   </span>
                 ))
               ) : (
@@ -256,8 +256,8 @@ export default function AnalysisResultView({
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               {analysis.notes.heart.length > 0 ? (
                 analysis.notes.heart.map((note, idx) => (
-                  <span key={idx} style={{ fontSize: '0.95rem', color: '#2a1d12' }}>
-                    • {note}
+                  <span key={idx} style={{ fontSize: '0.95rem', color: '#2a1d12', display: 'flex', alignItems: 'flex-start', gap: '0.35rem' }}>
+                    <span style={{ flexShrink: 0 }}>•</span><span>{note}</span>
                   </span>
                 ))
               ) : (
@@ -273,8 +273,8 @@ export default function AnalysisResultView({
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               {analysis.notes.base.length > 0 ? (
                 analysis.notes.base.map((note, idx) => (
-                  <span key={idx} style={{ fontSize: '0.95rem', color: '#2a1d12' }}>
-                    • {note}
+                  <span key={idx} style={{ fontSize: '0.95rem', color: '#2a1d12', display: 'flex', alignItems: 'flex-start', gap: '0.35rem' }}>
+                    <span style={{ flexShrink: 0 }}>•</span><span>{note}</span>
                   </span>
                 ))
               ) : (
@@ -291,7 +291,7 @@ export default function AnalysisResultView({
           <h2 style={{ fontSize: '1.8rem', fontFamily: "'Playfair Display', serif", color: '#2a1d12', marginBottom: '1.5rem' }}>
             Duftreise durch den Tag
           </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1.5rem' }}>
             {analysis.duftJourney.morgen && (
               <div style={{ backgroundColor: '#fff8e7', padding: '1.5rem', borderRadius: '8px', borderLeft: '4px solid #ffd700' }}>
                 <h3 style={{ fontSize: '0.9rem', fontWeight: '600', color: '#d4af37', marginBottom: '0.5rem' }}>🌅 Morgen</h3>

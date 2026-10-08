@@ -94,7 +94,7 @@ const NoteList = ({ notes }: { notes: string[] }) => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginTop: '0.6rem' }}>
     {notes.length > 0
       ? notes.map((n, i) => (
-          <span key={i} style={{ fontSize: '0.95rem', color: C.text, display: 'flex', alignItems: 'flex-start', gap: '0.4rem', lineHeight: '1.4' }}>
+          <span key={i} style={{ fontSize: '0.82rem', color: C.text, display: 'flex', alignItems: 'flex-start', gap: '0.3rem', lineHeight: '1.4', wordBreak: 'break-word' }}>
             <span style={{ flexShrink: 0, color: C.gold, fontWeight: '700' }}>·</span>
             <span>{n}</span>
           </span>
@@ -269,7 +269,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
       {/* ── 2. STECKBRIEF ────────────────────────────────────────────────── */}
       <section style={{ marginBottom: '2.5rem' }}>
         <SectionHeading>Steckbrief</SectionHeading>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: '0.75rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.75rem' }}>
           {[
             currentAnalysis.concentration && { icon: '🧴', label: 'Konzentration', value: currentAnalysis.concentration },
             currentAnalysis.family && { icon: '🌸', label: 'Duftfamilie', value: currentAnalysis.family },
@@ -302,7 +302,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
       {/* ── 3. DUFTPYRAMIDE ──────────────────────────────────────────────── */}
       <section style={{ marginBottom: '2.5rem' }}>
         <SectionHeading>Duftpyramide</SectionHeading>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.85rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '0.6rem' }}>
           {[
             { label: 'KOPFNOTEN', emoji: '✨', notes: displayNotes.top, desc: 'erster Eindruck' },
             { label: 'HERZNOTEN', emoji: '🌸', notes: displayNotes.heart, desc: 'Charakter' },
@@ -312,13 +312,14 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
               backgroundColor: C.cream,
               border: `1px solid ${C.sand}`,
               borderRadius: '12px',
-              padding: '1.1rem 1rem',
+              padding: '0.85rem 0.6rem',
               borderTop: `3px solid ${C.gold}`,
+              minWidth: 0,
             }}>
-              <div style={{ fontSize: '0.68rem', fontWeight: '700', color: C.gold, letterSpacing: '0.07em', marginBottom: '0.1rem' }}>
+              <div style={{ fontSize: '0.62rem', fontWeight: '700', color: C.gold, letterSpacing: '0.04em', marginBottom: '0.1rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 {emoji} {label}
               </div>
-              <div style={{ fontSize: '0.7rem', color: C.textLight, marginBottom: '0.1rem' }}>{desc}</div>
+              <div style={{ fontSize: '0.65rem', color: C.textLight, marginBottom: '0.25rem' }}>{desc}</div>
               <NoteList notes={notes} />
             </div>
           ))}

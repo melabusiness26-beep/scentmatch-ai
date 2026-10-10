@@ -451,7 +451,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
               margin: '0.75rem auto 0',
               fontStyle: 'italic',
             }}>
-              {displayDescription.length > 220 ? displayDescription.slice(0, 220).trimEnd() + ' …' : displayDescription}
+              {displayDescription}
             </p>
           )}
 

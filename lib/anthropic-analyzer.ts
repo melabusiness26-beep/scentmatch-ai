@@ -92,6 +92,16 @@ Regeln: Noten auf DEUTSCH. Educated guesses OK. confidence: high/medium/low.`,
       };
     }
 
+    // originCountry → origin (Feldname-Normalisierung)
+    if (analysis.originCountry && !analysis.origin) {
+      analysis.origin = analysis.originCountry;
+    }
+
+    // occasion → occasionList (Feldname-Normalisierung)
+    if (analysis.occasion && !analysis.occasionList) {
+      analysis.occasionList = Array.isArray(analysis.occasion) ? analysis.occasion : [analysis.occasion];
+    }
+
     // Normaliserung der Gender-Werte falls nötig
     if (analysis.gender && typeof analysis.gender === 'string') {
       const genderMap: Record<string, string> = {

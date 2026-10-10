@@ -488,7 +488,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                   currentAnalysis.parfumeur && { icon: '👃', label: 'Parfümeur', value: currentAnalysis.parfumeur },
                   dbMatch?.price_chf && { icon: '💰', label: 'Preis (CH)', value: `CHF ${dbMatch.price_chf}` },
                   dbMatch?.season && { icon: '🍂', label: 'Saison', value: dbMatch.season },
-                  currentAnalysis.bottleDescription && { icon: '🫙', label: 'Flakon', value: currentAnalysis.bottleDescription },
+                  currentAnalysis.bottleDescription && { icon: '🫙', label: 'Flakon', value: currentAnalysis.bottleDescription.length > 80 ? currentAnalysis.bottleDescription.slice(0, 80).trimEnd() + ' …' : currentAnalysis.bottleDescription },
                   intensityInfo && { icon: intensityInfo.emoji, label: 'Intensität', value: intensityInfo.label },
                 ].filter(Boolean).map((item) => {
                   const it = item as { icon: string; label: string; value: string };

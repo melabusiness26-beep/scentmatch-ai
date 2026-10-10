@@ -36,6 +36,7 @@ export default function ImageAnalyzer({ onAnalysisComplete, onLoadingChange }: I
         console.warn('[ImageAnalyzer] Analyse fehlgeschlagen:', errorMsg);
         setError(errorMsg);
         setIsLoading(false);
+        onLoadingChange?.(false);
         return;
       }
 

@@ -3,9 +3,8 @@
 import { useState, useEffect } from 'react';
 import { Perfume } from '@/lib/perfumes';
 import { ImageAnalysisResult } from '@/types/image-analysis';
-import { findSimilarPerfumes } from '@/lib/analysis-matcher';
+import { findSimilarPerfumes, findPerfumeInDB } from '@/lib/analysis-matcher';
 import { getScanHistory, addScanToHistory, clearScanHistory, ScanHistoryEntry, formatRelativeTime } from '@/lib/scan-history';
-import { findPerfumeInDB } from '@/lib/analysis-matcher';
 import ImageAnalyzer from '@/app/components/ImageAnalyzer';
 import AnalysisResultView from '@/app/components/AnalysisResultView';
 import LoadingAnimation from '@/app/components/LoadingAnimation';
@@ -72,6 +71,7 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
   const handleNewSearch = () => {
     setStage('scanner');
     setAnalysis(null);
+    setUploadedImage(null);
     setSimilarPerfumes([]);
     setDbMatch(null);
   };
@@ -97,6 +97,20 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
     setHistory([]);
   };
 
+  // Re-run matching after user corrects the perfume name/brand
+  const handleAnalysisCorrected = (updated: ImageAnalysisResult['data']) => {
+    setAnalysis(updated);
+    const found = findPerfumeInDB(updated.perfumeName, updated.brandName, updated.notes, allPerfumes);
+    const similar = findSimilarPerfumes(updated, allPerfumes, 40, 7);
+    setDbMatch(found);
+    setSimilarPerfumes(similar);
+    if (similar.length === 0 && !found) {
+      setStage('not-found');
+    } else {
+      setStage('results');
+    }
+  };
+
   if (isLoading) {
     return <LoadingAnimation />;
   }
@@ -109,6 +123,7 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
         onNewSearch={handleNewSearch}
         dbMatch={dbMatch}
         uploadedImage={uploadedImage}
+        onAnalysisCorrected={handleAnalysisCorrected}
       />
     );
   }

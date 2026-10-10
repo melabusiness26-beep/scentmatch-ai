@@ -13,6 +13,7 @@ interface AnalysisResultViewProps {
   onNewSearch: () => void;
   dbMatch?: Perfume | null;
   uploadedImage?: string | null;
+  onAnalysisCorrected?: (updated: ImageAnalysisResult['data']) => void;
 }
 
 // ─── Design Tokens ────────────────────────────────────────────────────────────
@@ -416,6 +417,20 @@ const ScanShareImageButton = ({
     ctx.strokeStyle = 'rgba(212,175,55,0.3)'; ctx.lineWidth = 1; ctx.stroke();
     ctx.restore();
 
+    // Cross-browser rounded rectangle: ctx.roundRect is Chrome 99+ / Safari 15.4+
+    const canvasRoundRect = (c: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) => {
+      if (typeof (c as any).roundRect === 'function') {
+        (c as any).roundRect(x, y, w, h, r);
+      } else {
+        c.moveTo(x + r, y);
+        c.lineTo(x + w - r, y); c.arcTo(x + w, y, x + w, y + r, r);
+        c.lineTo(x + w, y + h - r); c.arcTo(x + w, y + h, x + w - r, y + h, r);
+        c.lineTo(x + r, y + h); c.arcTo(x, y + h, x, y + h - r, r);
+        c.lineTo(x, y + r); c.arcTo(x, y, x + r, y, r);
+        c.closePath();
+      }
+    };
+
     const badgeText = dbMatch ? '✓ VERIFIZIERT' : confidence === 'high' ? '✓ ERKANNT' : confidence === 'medium' ? 'GESCHÄTZT' : 'NIEDRIGE KONFIDENZ';
     const badgeColor = dbMatch ? '#d4af37' : confidence === 'high' ? '#4caf50' : confidence === 'medium' ? '#ff9800' : '#f44336';
     ctx.save();
@@ -425,7 +440,7 @@ const ScanShareImageButton = ({
     ctx.fillStyle = `${badgeColor}22`;
     const bx = 540 - badgeWidth / 2;
     ctx.beginPath();
-    (ctx as any).roundRect(bx, 160, badgeWidth, 42, 21);
+    canvasRoundRect(ctx, bx, 160, badgeWidth, 42, 21);
     ctx.fill();
     ctx.strokeStyle = badgeColor; ctx.lineWidth = 1.5; ctx.stroke();
     ctx.fillStyle = badgeColor;
@@ -538,13 +553,17 @@ const ScanShareImageButton = ({
 };
 
 // ─── ShareButton — kein display:contents mehr ─────────────────────────────────
-const ShareButton = ({ name, brand, family, topNotes, confidence, dbMatch, uploadedImage }: {
+const ShareButton = ({ name, brand, family, topNotes, confidence, dbMatch, uploadedImage, dbMatchSlug }: {
   name: string; brand: string; family?: string; topNotes?: string[];
   confidence: 'high' | 'medium' | 'low'; dbMatch: boolean; uploadedImage?: string | null;
+  dbMatchSlug?: string;
 }) => {
   const [copied, setCopied] = useState(false);
   const shareText = `Ich habe gerade „${name}" von ${brand} mit Auressa entdeckt – dem KI-Parfümberater! 🌸`;
-  const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://auressa.ch';
+  // Share the perfume detail page when we have a DB match, otherwise the scanner
+  const shareUrl = dbMatchSlug
+    ? `https://auressa.ch/duft/${dbMatchSlug}`
+    : (typeof window !== 'undefined' ? window.location.href : 'https://auressa.ch');
   const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText + '\n' + shareUrl)}`;
 
   const copyLink = async () => {
@@ -719,7 +738,7 @@ const PyramidLayer = ({
 };
 
 // ─── Main Component ───────────────────────────────────────────────────────────
-export default function AnalysisResultView({ analysis, similarPerfumes, onNewSearch, dbMatch, uploadedImage }: AnalysisResultViewProps) {
+export default function AnalysisResultView({ analysis, similarPerfumes, onNewSearch, dbMatch, uploadedImage, onAnalysisCorrected }: AnalysisResultViewProps) {
   const [currentAnalysis, setCurrentAnalysis] = useState(analysis);
   const [activeTab, setActiveTab] = useState<TabId>('profil');
   const tabContentRef = useRef<HTMLDivElement | null>(null);
@@ -809,7 +828,10 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
       <div style={{ padding: '0 1rem' }}>
         <ScanCorrectionBanner
           analysis={currentAnalysis}
-          onCorrected={(updated) => setCurrentAnalysis(updated)}
+          onCorrected={(updated) => {
+            setCurrentAnalysis(updated);
+            onAnalysisCorrected?.(updated);
+          }}
         />
       </div>
 
@@ -959,6 +981,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
               family={currentAnalysis.family} topNotes={displayNotes.top}
               confidence={currentAnalysis.confidence as 'high' | 'medium' | 'low'}
               dbMatch={!!dbMatch} uploadedImage={uploadedImage}
+              dbMatchSlug={dbMatch?.slug}
             />
           </div>
         </div>

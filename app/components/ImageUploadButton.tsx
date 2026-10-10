@@ -28,7 +28,12 @@ export default function ImageUploadButton({
 
     const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
     if (!allowedTypes.includes(file.type)) {
-      alert('Nur JPEG, PNG und WebP werden unterstützt.');
+      const isHeic = file.type === 'image/heic' || file.type === 'image/heif' || file.name.toLowerCase().endsWith('.heic');
+      if (isHeic) {
+        alert('iPhone-Fotos im HEIC-Format werden leider nicht unterstützt.\n\nLösung: Gehe zu Einstellungen → Kamera → Format und wähle „Maximale Kompatibilität" (JPEG). Dann nochmals versuchen.');
+      } else {
+        alert('Nur JPEG, PNG und WebP werden unterstützt.');
+      }
       return;
     }
 

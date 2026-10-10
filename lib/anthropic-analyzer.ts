@@ -70,7 +70,8 @@ Wenn NICHT erkennbar: confidence="low", perfumeName="Unbekanntes Parfüm", brand
     });
 
     if (!response.ok) {
-      const errorData = await response.json();
+      let errorData: unknown = null;
+      try { errorData = await response.json(); } catch { errorData = await response.text().catch(() => null); }
       console.error('[anthropic-analyzer] API-Fehler:', errorData);
       return {
         success: false,
@@ -90,12 +91,16 @@ Wenn NICHT erkennbar: confidence="low", perfumeName="Unbekanntes Parfüm", brand
 
     let analysisText = data.content[0].text.trim();
 
-    // Falls Markdown-Code-Block dabei ist, extrahiere JSON
+    // Extract JSON from Markdown code block if present
     if (analysisText.startsWith('```')) {
       const jsonMatch = analysisText.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
-      if (jsonMatch) {
-        analysisText = jsonMatch[1].trim();
-      }
+      if (jsonMatch) analysisText = jsonMatch[1].trim();
+    }
+
+    // Fallback: extract first {...} object even if there's surrounding prose
+    if (!analysisText.startsWith('{')) {
+      const objectMatch = analysisText.match(/\{[\s\S]*\}/);
+      if (objectMatch) analysisText = objectMatch[0];
     }
 
     let analysis;

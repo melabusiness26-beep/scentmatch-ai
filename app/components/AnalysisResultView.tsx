@@ -77,6 +77,8 @@ const KEYFRAMES = `
     box-shadow: 0 8px 28px rgba(212,175,55,0.28);
     border-color: #d4af37 !important;
   }
+  :root { color-scheme: light !important; }
+  * { box-sizing: border-box; }
 `;
 
 // ─── Central Scroll Hook ──────────────────────────────────────────────────────
@@ -201,6 +203,48 @@ const StarRating = ({ rating }: { rating: number }) => {
     </div>
   );
 };
+
+// ─── German Translation Maps ─────────────────────────────────────────────────
+const SEASON_DE: Record<string, string> = {
+  spring: 'Frühling', summer: 'Sommer', fall: 'Herbst', autumn: 'Herbst',
+  winter: 'Winter', 'all year': 'Ganzjährig', 'all seasons': 'Ganzjährig',
+  year_round: 'Ganzjährig', spring_summer: 'Frühling/Sommer',
+  fall_winter: 'Herbst/Winter', 'spring, summer': 'Frühling, Sommer',
+  'fall, winter': 'Herbst, Winter', 'all year round': 'Ganzjährig',
+};
+const OCCASION_DE: Record<string, string> = {
+  'daily wear': 'Alltag', 'casual': 'Lässig', 'romantic': 'Romantisch',
+  'date night': 'Date Night', 'office': 'Büro', 'work': 'Büro',
+  'evening': 'Abend', 'night out': 'Ausgang', 'formal': 'Formell',
+  'sport': 'Sport', 'sports': 'Sport', 'outdoor': 'Outdoor',
+  'party': 'Party', 'special occasion': 'Besondere Anlässe',
+  'beach': 'Strand', 'travel': 'Reisen', 'relaxing': 'Entspannen',
+  'everyday': 'Alltag', 'daytime': 'Tagsüber', 'nighttime': 'Abends',
+  'spring': 'Frühling', 'summer': 'Sommer', 'fall': 'Herbst', 'winter': 'Winter',
+};
+const MOOD_DE: Record<string, string> = {
+  romantic: 'Romantisch', 'fresh': 'Frisch', 'casual': 'Lässig',
+  sophisticated: 'Elegant', mysterious: 'Geheimnisvoll', playful: 'Verspielt',
+  sensual: 'Sinnlich', elegant: 'Elegant', sporty: 'Sportlich',
+  joyful: 'Fröhlich', cozy: 'Gemütlich', energetic: 'Energetisch',
+  calm: 'Ruhig', bold: 'Mutig', flirty: 'Verführerisch',
+  luxurious: 'Luxuriös', adventurous: 'Abenteuerlich',
+};
+
+function translateSeason(val?: string): string | undefined {
+  if (!val) return undefined;
+  const lower = val.toLowerCase().trim();
+  return SEASON_DE[lower] ?? val;
+}
+function translateOccasion(val: string): string {
+  const lower = val.toLowerCase().trim();
+  return OCCASION_DE[lower] ?? val;
+}
+function translateMood(val?: string): string | undefined {
+  if (!val) return undefined;
+  const lower = val.toLowerCase().trim();
+  return MOOD_DE[lower] ?? val;
+}
 
 // ─── Intensity Map ────────────────────────────────────────────────────────────
 const intensityMap: Record<string, { label: string; emoji: string; color: string }> = {
@@ -934,7 +978,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                         <p style={{
                           fontSize: 'clamp(1.2rem, 4vw, 1.55rem)', fontFamily: "'Playfair Display', serif",
                           color: C.cream, margin: '0 0 1rem', fontStyle: 'italic', lineHeight: 1.4,
-                        }}>„{currentAnalysis.mood}"</p>
+                        }}>„{translateMood(currentAnalysis.mood)}"</p>
                       </>
                     )}
                     {perfectMomentText && (
@@ -1010,7 +1054,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                         <span style={{ fontSize: '1.4rem', lineHeight: 1 }}>🍂</span>
                         <div>
                           <div style={{ fontSize: '0.65rem', fontWeight: '700', color: C.goldMuted, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.25rem' }}>Saison</div>
-                          <p style={{ fontSize: '0.9rem', color: C.dark, margin: 0, fontWeight: '500', lineHeight: 1.4 }}>{currentAnalysis.seasonRecommendation}</p>
+                          <p style={{ fontSize: '0.9rem', color: C.dark, margin: 0, fontWeight: '500', lineHeight: 1.4 }}>{translateSeason(currentAnalysis.seasonRecommendation)}</p>
                         </div>
                       </div>
                     )}
@@ -1025,7 +1069,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                             <span key={i} style={{
                               backgroundColor: C.creamDark, color: C.text, border: `1px solid ${C.sand}`,
                               padding: '0.2rem 0.65rem', borderRadius: '14px', fontSize: '0.8rem', fontWeight: '500',
-                            }}>{o}</span>
+                            }}>{translateOccasion(o)}</span>
                           ))}
                         </div>
                       </div>
@@ -1281,31 +1325,36 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
           ══════════════════════════════════════════════════════════════════ */}
           {activeTab === 'kaufen' && (
             <div className="tab-content-enter">
-              {/* ── PREIS ──────────────────────────────────────────────────── */}
+              {/* ── PREIS-HEADER ──────────────────────────────────────────────────────── */}
               {(dbMatch?.price_chf || currentAnalysis.estimatedPrice) && (
                 <div style={{
-                  textAlign: 'center', marginBottom: '2rem', padding: '1.75rem',
-                  background: `linear-gradient(135deg, #fdf7e8, #fef9ee)`,
-                  borderRadius: '14px', border: `1px solid #f0e0a0`,
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  marginBottom: '1.5rem', padding: '1rem 1.25rem',
+                  backgroundColor: C.creamDark, borderRadius: '12px', border: `1px solid ${C.sand}`,
+                  flexWrap: 'wrap', gap: '0.75rem',
                 }}>
-                  {dbMatch?.price_chf ? (
-                    <>
-                      <div style={{ fontSize: '0.7rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.5rem' }}>Preis</div>
-                      <div style={{ fontSize: '2.4rem', fontWeight: '800', color: C.dark, fontFamily: "'Playfair Display', serif" }}>
-                        CHF {dbMatch.price_chf}
+                  <div>
+                    <div style={{ fontSize: '0.68rem', color: C.textLight, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.2rem' }}>
+                      {dbMatch?.price_chf ? 'Schweizer Marktpreis' : 'KI-Preisschätzung 🤖'}
+                    </div>
+                    <div style={{ fontSize: '1.8rem', fontWeight: '800', color: C.dark, fontFamily: "'Playfair Display', serif", lineHeight: 1 }}>
+                      {dbMatch?.price_chf ? `CHF ${dbMatch.price_chf}` : (currentAnalysis.estimatedPrice || '–')}
+                    </div>
+                    {!dbMatch?.price_chf && (
+                      <div style={{ fontSize: '0.68rem', color: C.textLight, marginTop: '0.2rem' }}>
+                        Geschätzt · kann variieren
                       </div>
-                    </>
-                  ) : (
-                    <>
-                      <div style={{ fontSize: '0.7rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.5rem' }}>KI-Preisschätzung 🤖</div>
-                      <div style={{ fontSize: '2rem', fontWeight: '800', color: C.dark, fontFamily: "'Playfair Display', serif" }}>
-                        {currentAnalysis.estimatedPrice}
-                      </div>
-                      <div style={{ fontSize: '0.72rem', color: C.textLight, marginTop: '0.35rem' }}>
-                        Geschätzter Schweizer Marktpreis – Preise können variieren.
-                      </div>
-                    </>
-                  )}
+                    )}
+                  </div>
+                  <a href={buyUrl} target="_blank" rel="sponsored noopener noreferrer" style={{
+                    display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                    padding: '0.65rem 1.4rem', backgroundColor: C.gold, color: C.dark,
+                    fontWeight: '700', fontSize: '0.9rem', borderRadius: '10px',
+                    textDecoration: 'none', boxShadow: '0 4px 16px rgba(212,175,55,0.35)',
+                    whiteSpace: 'nowrap',
+                  }}>
+                    🛍️ Kaufen →
+                  </a>
                 </div>
               )}
 
@@ -1390,7 +1439,10 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
         return (
           <section style={{ marginBottom: '2.5rem', padding: '0 0' }}>
             <div style={{ padding: '0 1rem', marginBottom: '1rem' }}>
-              <SectionHeading>Das könnte dir auch gefallen</SectionHeading>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <SectionHeading>Das könnte dir auch gefallen</SectionHeading>
+                <span style={{ fontSize: '0.7rem', color: C.textLight, flexShrink: 0, marginTop: '-1rem' }}>← Wischen →</span>
+              </div>
             </div>
             <div style={{
               display: 'flex', gap: '0.75rem', overflowX: 'auto',
@@ -1421,8 +1473,19 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                       />
                     </div>
                   ) : (
-                    <div style={{ width: '100%', aspectRatio: '1 / 1', borderRadius: '8px', backgroundColor: C.creamDark, marginBottom: '0.6rem', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.8rem' }}>
-                      🌸
+                    <div style={{
+                      width: '100%', aspectRatio: '1 / 1', borderRadius: '8px',
+                      background: 'linear-gradient(135deg, #e8dcc8 0%, #d4af3722 50%, #e8dcc8 100%)',
+                      marginBottom: '0.6rem', display: 'flex', alignItems: 'center',
+                      justifyContent: 'center', flexDirection: 'column', gap: '0.2rem',
+                      border: '1px solid rgba(212,175,55,0.2)',
+                    }}>
+                      <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="6" y="14" width="16" height="20" rx="3" fill="rgba(212,175,55,0.35)" stroke="rgba(212,175,55,0.5)" strokeWidth="1"/>
+                        <rect x="10" y="9" width="8" height="7" rx="1.5" fill="rgba(212,175,55,0.25)" stroke="rgba(212,175,55,0.4)" strokeWidth="1"/>
+                        <rect x="8" y="6" width="12" height="4" rx="2" fill="rgba(212,175,55,0.3)" stroke="rgba(212,175,55,0.45)" strokeWidth="1"/>
+                        <rect x="9" y="17" width="3" height="10" rx="1.5" fill="rgba(255,255,255,0.3)"/>
+                      </svg>
                     </div>
                   )}
                   <div style={{ fontSize: '0.82rem', fontWeight: '700', color: C.dark, marginBottom: '0.15rem', lineHeight: 1.3, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' } as React.CSSProperties}>{perfume.perfume_name}</div>
@@ -1470,13 +1533,13 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           style={{
-            position: 'fixed', bottom: '5.5rem', right: '1.25rem',
+            position: 'fixed', bottom: '5rem', right: '1.25rem',
             width: '44px', height: '44px', borderRadius: '50%',
             backgroundColor: C.gold, border: 'none', color: C.dark,
             fontSize: '1.1rem', cursor: 'pointer',
             boxShadow: '0 4px 16px rgba(212,175,55,0.4)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            zIndex: 200, fontWeight: '700',
+            zIndex: 250, fontWeight: '700',
             transition: 'transform 0.15s ease',
           }}
           onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.transform = 'scale(1.1)'; }}

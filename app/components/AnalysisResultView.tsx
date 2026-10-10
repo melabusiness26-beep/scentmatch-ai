@@ -15,7 +15,7 @@ interface AnalysisResultViewProps {
   uploadedImage?: string | null;
 }
 
-// ─── Design Tokens ───────────────────────────────────────────────────────────
+// ─── Design Tokens ────────────────────────────────────────────────────────────
 const C = {
   dark: '#2a1d12',
   gold: '#d4af37',
@@ -40,7 +40,57 @@ const TAB_CONFIG: { id: TabId; label: string; icon: string }[] = [
   { id: 'kaufen',  label: 'Kaufen',   icon: '🛍️' },
 ];
 
-// Wandelt KI-String-Werte ("moderate", "medium", "high" etc.) in Zahlen um
+// ─── CSS Keyframes ────────────────────────────────────────────────────────────
+const KEYFRAMES = `
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes shimmer {
+    0%   { background-position: -800px 0; }
+    100% { background-position: 800px 0; }
+  }
+  @keyframes pulseGold {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); }
+    50%       { box-shadow: 0 0 0 8px rgba(212,175,55,0.22); }
+  }
+  @keyframes slideUpBar {
+    from { transform: translateY(100%); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
+  @keyframes tabFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes strokeDraw {
+    from { stroke-dashoffset: var(--circ); }
+    to   { stroke-dashoffset: var(--target); }
+  }
+  .tab-content-enter {
+    animation: tabFadeIn 0.28s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  .similar-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .similar-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 28px rgba(212,175,55,0.28);
+    border-color: #d4af37 !important;
+  }
+`;
+
+// ─── Central Scroll Hook ──────────────────────────────────────────────────────
+function useScrollState() {
+  const [scrollY, setScrollY] = useState(0);
+  useEffect(() => {
+    const fn = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', fn, { passive: true });
+    return () => window.removeEventListener('scroll', fn);
+  }, []);
+  return scrollY;
+}
+
+// ─── Normalize Numeric Value ──────────────────────────────────────────────────
 function normalizeNumericValue(val: number | string | undefined): number | undefined {
   if (val === undefined || val === null) return undefined;
   if (typeof val === 'number') return val > 0 ? val : undefined;
@@ -54,22 +104,13 @@ function normalizeNumericValue(val: number | string | undefined): number | undef
   return strMap[String(val).toLowerCase().replace(/[\s-]/g, '_')] ?? undefined;
 }
 
-// ─── Sub-components ───────────────────────────────────────────────────────────
-
+// ─── SectionHeading ───────────────────────────────────────────────────────────
 const SectionHeading = ({ children, subtitle }: { children: React.ReactNode; subtitle?: string }) => (
   <div style={{ marginBottom: '1.4rem', marginTop: 0 }}>
     <h2 style={{
-      fontSize: '0.72rem',
-      color: C.goldMuted,
-      marginBottom: subtitle ? '0.2rem' : 0,
-      marginTop: 0,
-      textTransform: 'uppercase',
-      letterSpacing: '0.14em',
-      fontWeight: '700',
-      fontFamily: "'Inter', sans-serif",
-      display: 'flex',
-      alignItems: 'center',
-      gap: '0.6rem',
+      fontSize: '0.72rem', color: C.goldMuted, marginBottom: subtitle ? '0.2rem' : 0,
+      marginTop: 0, textTransform: 'uppercase', letterSpacing: '0.14em', fontWeight: '700',
+      fontFamily: "'Inter', sans-serif", display: 'flex', alignItems: 'center', gap: '0.6rem',
     }}>
       <span style={{ display: 'block', width: '20px', height: '1.5px', backgroundColor: C.gold, flexShrink: 0 }} />
       {children}
@@ -80,70 +121,71 @@ const SectionHeading = ({ children, subtitle }: { children: React.ReactNode; sub
   </div>
 );
 
-// Big Performance Bar with large right-side number
-const BarRow = ({ label, value, max = 10, suffix = '/10' }: { label: string; value?: number | string; max?: number; suffix?: string }) => {
+// ─── BarRow with Counter Animation ───────────────────────────────────────────
+const BarRow = ({
+  label, value, max = 10, suffix = '/10', hint,
+}: {
+  label: string; value?: number | string; max?: number; suffix?: string; hint?: string;
+}) => {
   const num = normalizeNumericValue(value);
+  const [displayed, setDisplayed] = useState(0);
+  const [barWidth, setBarWidth] = useState(0);
+
+  useEffect(() => {
+    if (!num) return;
+    const start = performance.now();
+    const duration = 900;
+    const raf = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplayed(eased * num);
+      setBarWidth(Math.min(100, (eased * num / max) * 100));
+      if (progress < 1) requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [num]);
+
   if (!num) return null;
-  const pct = Math.min(100, (num / max) * 100);
+
   return (
-    <div style={{ marginBottom: '1.4rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-      <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontSize: '0.82rem', fontWeight: '600', color: C.textMuted, marginBottom: '0.5rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>{label}</div>
-        <div style={{ height: '8px', backgroundColor: C.sand, borderRadius: '6px', overflow: 'hidden' }}>
-          <div style={{
-            height: '100%',
-            width: `${pct}%`,
-            background: `linear-gradient(90deg, ${C.goldMuted}, ${C.gold})`,
-            borderRadius: '6px',
-            transition: 'width 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
-          }} />
+    <div style={{ marginBottom: hint ? '1.6rem' : '1.4rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ fontSize: '0.82rem', fontWeight: '600', color: C.textMuted, marginBottom: '0.5rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>{label}</div>
+          <div style={{ height: '8px', backgroundColor: C.sand, borderRadius: '6px', overflow: 'hidden' }}>
+            <div style={{
+              height: '100%', width: `${barWidth}%`,
+              background: `linear-gradient(90deg, ${C.goldMuted}, ${C.gold})`,
+              borderRadius: '6px',
+            }} />
+          </div>
+          {hint && (
+            <div style={{ fontSize: '0.68rem', color: C.textLight, marginTop: '0.3rem', fontStyle: 'italic' }}>{hint}</div>
+          )}
         </div>
-      </div>
-      <div style={{
-        flexShrink: 0,
-        fontSize: '1.6rem',
-        fontWeight: '800',
-        color: C.gold,
-        fontFamily: "'Playfair Display', serif",
-        lineHeight: 1,
-        minWidth: '3.5rem',
-        textAlign: 'right',
-        fontVariantNumeric: 'tabular-nums',
-      }}>
-        {num.toFixed(1)}
-        <span style={{ fontSize: '0.65rem', fontWeight: '500', color: C.goldMuted, verticalAlign: 'super' }}>{suffix}</span>
+        <div style={{
+          flexShrink: 0, fontSize: '1.6rem', fontWeight: '800', color: C.gold,
+          fontFamily: "'Playfair Display', serif", lineHeight: 1,
+          minWidth: '3.5rem', textAlign: 'right', fontVariantNumeric: 'tabular-nums',
+        }}>
+          {displayed.toFixed(1)}
+          <span style={{ fontSize: '0.65rem', fontWeight: '500', color: C.goldMuted, verticalAlign: 'super' }}>{suffix}</span>
+        </div>
       </div>
     </div>
   );
 };
 
-// Fact Pill für horizontale Zeilen
-const FactPill = ({ children }: { children: React.ReactNode }) => (
-  <span style={{
-    color: C.text,
-    fontSize: '0.88rem',
-    fontWeight: '500',
-    whiteSpace: 'nowrap',
-  }}>
+// ─── FactPill ─────────────────────────────────────────────────────────────────
+const FactPill = ({ children, icon }: { children: React.ReactNode; icon?: string }) => (
+  <span style={{ color: C.text, fontSize: '0.88rem', fontWeight: '500', whiteSpace: 'nowrap' }}>
+    {icon && <span style={{ marginRight: '0.25rem' }}>{icon}</span>}
     {children}
   </span>
 );
 
-const NoteList = ({ notes }: { notes: string[] }) => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.5rem' }}>
-    {notes.length > 0
-      ? notes.map((n, i) => (
-          <span key={i} style={{ fontSize: '0.84rem', color: C.text, display: 'flex', alignItems: 'flex-start', gap: '0.4rem', lineHeight: '1.4', overflowWrap: 'break-word' }}>
-            <span style={{ flexShrink: 0, color: C.gold, fontWeight: '700', fontSize: '0.9rem' }}>·</span>
-            <span>{n}</span>
-          </span>
-        ))
-      : <span style={{ fontSize: '0.82rem', color: C.textLight, fontStyle: 'italic' }}>Keine Daten</span>
-    }
-  </div>
-);
-
-// Sternebewertung
+// ─── StarRating ───────────────────────────────────────────────────────────────
 const StarRating = ({ rating }: { rating: number }) => {
   const stars = Math.round(rating / 2);
   return (
@@ -153,18 +195,14 @@ const StarRating = ({ rating }: { rating: number }) => {
           fontSize: '1.4rem',
           color: s <= stars ? C.gold : 'rgba(212,175,55,0.2)',
           filter: s <= stars ? 'drop-shadow(0 0 4px rgba(212,175,55,0.5))' : 'none',
-        }}>
-          ★
-        </span>
+        }}>★</span>
       ))}
-      <span style={{ fontSize: '0.78rem', color: 'rgba(212,175,55,0.5)', marginLeft: '0.4rem' }}>
-        {rating.toFixed(1)}/10
-      </span>
+      <span style={{ fontSize: '0.78rem', color: 'rgba(212,175,55,0.5)', marginLeft: '0.4rem' }}>{rating.toFixed(1)}/10</span>
     </div>
   );
 };
 
-// Intensitäts-Badge
+// ─── Intensity Map ────────────────────────────────────────────────────────────
 const intensityMap: Record<string, { label: string; emoji: string; color: string }> = {
   very_light: { label: 'Sehr leicht', emoji: '🌬️', color: '#a8d8ea' },
   light:       { label: 'Leicht',      emoji: '💨', color: '#b8e0d2' },
@@ -173,42 +211,9 @@ const intensityMap: Record<string, { label: string; emoji: string; color: string
   very_strong: { label: 'Sehr stark',  emoji: '💥', color: '#9e3030' },
 };
 
-// Scroll-Fortschrittsbalken
-const ScrollProgressBar = () => {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return (
-    <div style={{ position: 'fixed', top: 0, left: 0, right: 0, height: '3px', zIndex: 9999 }}>
-      <div style={{
-        height: '100%',
-        width: `${progress}%`,
-        background: `linear-gradient(90deg, ${C.goldMuted}, ${C.gold}, ${C.goldLight})`,
-        transition: 'width 0.1s linear',
-        boxShadow: `0 0 8px rgba(212,175,55,0.6)`,
-      }} />
-    </div>
-  );
-};
-
-// ─── Confidence Ring ──────────────────────────────────────────────────────────
-interface ConfidenceRingProps {
-  confidence: 'high' | 'medium' | 'low';
-  dbMatch: boolean;
-}
-
-const ConfidenceRing = ({ confidence, dbMatch }: ConfidenceRingProps) => {
+// ─── ConfidenceRing with stroke animation ─────────────────────────────────────
+const ConfidenceRing = ({ confidence, dbMatch }: { confidence: 'high' | 'medium' | 'low'; dbMatch: boolean }) => {
   if (dbMatch) return null;
-
   const config = {
     high:   { pct: 92, color: '#4caf50', label: 'Hohe Konfidenz',    sublabel: '~92% sicher' },
     medium: { pct: 68, color: '#ff9800', label: 'Mittlere Konfidenz', sublabel: '~68% sicher' },
@@ -217,30 +222,27 @@ const ConfidenceRing = ({ confidence, dbMatch }: ConfidenceRingProps) => {
 
   const r = 18;
   const circ = 2 * Math.PI * r;
-  const dash = (config.pct / 100) * circ;
+  const target = circ - (config.pct / 100) * circ;
 
   return (
     <div style={{
-      display: 'inline-flex',
-      alignItems: 'center',
-      gap: '0.5rem',
-      backgroundColor: 'rgba(0,0,0,0.5)',
-      backdropFilter: 'blur(8px)',
-      padding: '0.35rem 0.7rem 0.35rem 0.4rem',
-      borderRadius: '20px',
+      display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+      backgroundColor: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(8px)',
+      padding: '0.35rem 0.7rem 0.35rem 0.4rem', borderRadius: '20px',
       border: '1px solid rgba(255,255,255,0.15)',
     }}>
       <svg width="44" height="44" style={{ flexShrink: 0 }}>
         <circle cx="22" cy="22" r={r} fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="3.5" />
         <circle
-          cx="22" cy="22" r={r}
-          fill="none"
-          stroke={config.color}
-          strokeWidth="3.5"
-          strokeLinecap="round"
-          strokeDasharray={`${dash} ${circ - dash}`}
-          strokeDashoffset={circ / 4}
-          style={{ filter: `drop-shadow(0 0 4px ${config.color}80)` }}
+          cx="22" cy="22" r={r} fill="none"
+          stroke={config.color} strokeWidth="3.5" strokeLinecap="round"
+          strokeDasharray={circ}
+          strokeDashoffset={target}
+          transform="rotate(-90 22 22)"
+          style={{
+            filter: `drop-shadow(0 0 4px ${config.color}80)`,
+            transition: 'stroke-dashoffset 1.2s cubic-bezier(0.16,1,0.3,1)',
+          }}
         />
         <text x="22" y="26" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="white" fontFamily="Inter, sans-serif">
           {config.pct}%
@@ -254,18 +256,13 @@ const ConfidenceRing = ({ confidence, dbMatch }: ConfidenceRingProps) => {
   );
 };
 
-// ─── Instagram Share Card Generator ──────────────────────────────────────────
-interface ScanShareImageButtonProps {
-  name: string;
-  brand: string;
-  family?: string;
-  topNotes?: string[];
-  confidence: 'high' | 'medium' | 'low';
-  dbMatch: boolean;
-  uploadedImage?: string | null;
-}
-
-const ScanShareImageButton = ({ name, brand, family, topNotes, confidence, dbMatch, uploadedImage }: ScanShareImageButtonProps) => {
+// ─── ScanShareImageButton with Web Share API fallback ─────────────────────────
+const ScanShareImageButton = ({
+  name, brand, family, topNotes, confidence, dbMatch, uploadedImage,
+}: {
+  name: string; brand: string; family?: string; topNotes?: string[];
+  confidence: 'high' | 'medium' | 'low'; dbMatch: boolean; uploadedImage?: string | null;
+}) => {
   const [generating, setGenerating] = useState(false);
   const [done, setDone] = useState(false);
 
@@ -317,11 +314,9 @@ const ScanShareImageButton = ({ name, brand, family, topNotes, confidence, dbMat
     }
 
     ctx.save();
-    ctx.strokeStyle = '#d4af37';
-    ctx.lineWidth = 3;
+    ctx.strokeStyle = '#d4af37'; ctx.lineWidth = 3;
     ctx.strokeRect(28, 28, 1024, 1024);
-    ctx.strokeStyle = 'rgba(212,175,55,0.3)';
-    ctx.lineWidth = 1;
+    ctx.strokeStyle = 'rgba(212,175,55,0.3)'; ctx.lineWidth = 1;
     ctx.strokeRect(36, 36, 1008, 1008);
     ctx.restore();
 
@@ -340,28 +335,23 @@ const ScanShareImageButton = ({ name, brand, family, topNotes, confidence, dbMat
     ctx.save();
     ctx.beginPath();
     ctx.moveTo(200, 140); ctx.lineTo(880, 140);
-    ctx.strokeStyle = 'rgba(212,175,55,0.3)';
-    ctx.lineWidth = 1;
-    ctx.stroke();
+    ctx.strokeStyle = 'rgba(212,175,55,0.3)'; ctx.lineWidth = 1; ctx.stroke();
     ctx.restore();
 
     const badgeText = dbMatch ? '✓ VERIFIZIERT' : confidence === 'high' ? '✓ ERKANNT' : confidence === 'medium' ? 'GESCHÄTZT' : 'NIEDRIGE KONFIDENZ';
     const badgeColor = dbMatch ? '#d4af37' : confidence === 'high' ? '#4caf50' : confidence === 'medium' ? '#ff9800' : '#f44336';
-    const badgeX = 540;
     ctx.save();
     ctx.font = '700 20px Inter, Arial, sans-serif';
     ctx.textAlign = 'center';
     const badgeWidth = ctx.measureText(badgeText).width + 48;
     ctx.fillStyle = `${badgeColor}22`;
-    const bx = badgeX - badgeWidth / 2;
+    const bx = 540 - badgeWidth / 2;
     ctx.beginPath();
     (ctx as any).roundRect(bx, 160, badgeWidth, 42, 21);
     ctx.fill();
-    ctx.strokeStyle = badgeColor;
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
+    ctx.strokeStyle = badgeColor; ctx.lineWidth = 1.5; ctx.stroke();
     ctx.fillStyle = badgeColor;
-    ctx.fillText(badgeText, badgeX, 187);
+    ctx.fillText(badgeText, 540, 187);
     ctx.restore();
 
     ctx.save();
@@ -392,9 +382,7 @@ const ScanShareImageButton = ({ name, brand, family, topNotes, confidence, dbMat
     ctx.save();
     ctx.beginPath();
     ctx.moveTo(340, brandY + 30); ctx.lineTo(740, brandY + 30);
-    ctx.strokeStyle = 'rgba(212,175,55,0.4)';
-    ctx.lineWidth = 1;
-    ctx.stroke();
+    ctx.strokeStyle = 'rgba(212,175,55,0.4)'; ctx.lineWidth = 1; ctx.stroke();
     ctx.restore();
 
     const infoY = brandY + 80;
@@ -412,8 +400,7 @@ const ScanShareImageButton = ({ name, brand, family, topNotes, confidence, dbMat
       ctx.fillStyle = 'rgba(249,246,241,0.55)';
       ctx.font = '400 22px Inter, Arial, sans-serif';
       ctx.textAlign = 'center';
-      const notesStr = topNotes.slice(0, 4).join('  ·  ');
-      ctx.fillText(notesStr, 540, infoY + (family ? 46 : 0));
+      ctx.fillText(topNotes.slice(0, 4).join('  ·  '), 540, infoY + (family ? 46 : 0));
       ctx.restore();
     }
 
@@ -427,14 +414,26 @@ const ScanShareImageButton = ({ name, brand, family, topNotes, confidence, dbMat
     try {
       const blob = await new Promise<Blob | null>((res) => canvas.toBlob(res, 'image/png'));
       if (blob) {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `auressa-${name.toLowerCase().replace(/\s+/g, '-')}.png`;
-        a.click();
-        URL.revokeObjectURL(url);
-        setDone(true);
-        setTimeout(() => setDone(false), 4000);
+        // Web Share API als iOS-Fallback
+        if (navigator.canShare && navigator.canShare({ files: [new File([blob], 'auressa.png', { type: 'image/png' })] })) {
+          try {
+            await navigator.share({
+              files: [new File([blob], `auressa-${name.toLowerCase().replace(/\s+/g, '-')}.png`, { type: 'image/png' })],
+              title: `${name} von ${brand} – Auressa`,
+            });
+            setDone(true);
+            setTimeout(() => setDone(false), 4000);
+          } catch { /* abgebrochen */ }
+        } else {
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `auressa-${name.toLowerCase().replace(/\s+/g, '-')}.png`;
+          a.click();
+          URL.revokeObjectURL(url);
+          setDone(true);
+          setTimeout(() => setDone(false), 4000);
+        }
       }
     } catch { /* ignore */ }
     setGenerating(false);
@@ -451,8 +450,7 @@ const ScanShareImageButton = ({ name, brand, family, topNotes, confidence, dbMat
         border: `1px solid ${done ? C.gold : '#e040fb'}`,
         color: done ? C.dark : '#e040fb',
         fontWeight: '600', fontSize: '0.82rem', cursor: generating ? 'wait' : 'pointer',
-        fontFamily: "'Inter', sans-serif",
-        transition: 'all 0.2s ease',
+        fontFamily: "'Inter', sans-serif", transition: 'all 0.2s ease',
         opacity: generating ? 0.7 : 1,
       }}
     >
@@ -461,14 +459,13 @@ const ScanShareImageButton = ({ name, brand, family, topNotes, confidence, dbMat
   );
 };
 
-// ─── Teilen-Button ────────────────────────────────────────────────────────────
+// ─── ShareButton — kein display:contents mehr ─────────────────────────────────
 const ShareButton = ({ name, brand, family, topNotes, confidence, dbMatch, uploadedImage }: {
   name: string; brand: string; family?: string; topNotes?: string[];
   confidence: 'high' | 'medium' | 'low'; dbMatch: boolean; uploadedImage?: string | null;
 }) => {
   const [copied, setCopied] = useState(false);
-
-  const shareText = `Ich habe gerade "${name}" von ${brand} mit Auressa entdeckt – dem KI-Parfümberater! 🌸`;
+  const shareText = `Ich habe gerade „${name}" von ${brand} mit Auressa entdeckt – dem KI-Parfümberater! 🌸`;
   const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://auressa.ch';
   const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText + '\n' + shareUrl)}`;
 
@@ -477,34 +474,28 @@ const ShareButton = ({ name, brand, family, topNotes, confidence, dbMatch, uploa
       await navigator.clipboard.writeText(shareUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
-    } catch { /* Fallback */ }
+    } catch { /* ignore */ }
   };
 
   return (
-    <div style={{ display: 'contents' }}>
+    <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', justifyContent: 'center' }}>
       <a
-        href={whatsappUrl}
-        target="_blank"
-        rel="noopener noreferrer"
+        href={whatsappUrl} target="_blank" rel="noopener noreferrer"
         style={{
           display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
           padding: '0.5rem 1.1rem', borderRadius: '8px',
           backgroundColor: '#25D366', color: '#fff',
           fontWeight: '600', fontSize: '0.82rem', textDecoration: 'none',
-          border: 'none', cursor: 'pointer',
         }}
       >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
         WhatsApp
       </a>
       <ScanShareImageButton
-        name={name}
-        brand={brand}
-        family={family}
-        topNotes={topNotes}
-        confidence={confidence}
-        dbMatch={dbMatch}
-        uploadedImage={uploadedImage}
+        name={name} brand={brand} family={family} topNotes={topNotes}
+        confidence={confidence} dbMatch={dbMatch} uploadedImage={uploadedImage}
       />
       <button
         onClick={copyLink}
@@ -515,8 +506,7 @@ const ShareButton = ({ name, brand, family, topNotes, confidence, dbMatch, uploa
           border: `1px solid ${copied ? C.gold : C.sand}`,
           color: copied ? C.dark : C.textMuted,
           fontWeight: '600', fontSize: '0.82rem', cursor: 'pointer',
-          fontFamily: "'Inter', sans-serif",
-          transition: 'all 0.2s ease',
+          fontFamily: "'Inter', sans-serif", transition: 'all 0.2s ease',
         }}
       >
         {copied ? '✓ Kopiert!' : '🔗 Link kopieren'}
@@ -525,30 +515,68 @@ const ShareButton = ({ name, brand, family, topNotes, confidence, dbMatch, uploa
   );
 };
 
-// ─── Sticky Buy Bar ───────────────────────────────────────────────────────────
-const StickyBuyBar = ({ name, brand, buyUrl, price }: { name: string; brand: string; buyUrl: string; price?: number | null }) => {
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const fn = () => setVisible(window.scrollY > 320);
-    window.addEventListener('scroll', fn, { passive: true });
-    return () => window.removeEventListener('scroll', fn);
-  }, []);
+// ─── StickyTabBar ─────────────────────────────────────────────────────────────
+const StickyTabBar = ({
+  activeTab, setActiveTab, tabContentRef,
+}: {
+  activeTab: TabId;
+  setActiveTab: (tab: TabId) => void;
+  tabContentRef: React.RefObject<HTMLDivElement | null>;
+}) => (
+  <div style={{
+    position: 'sticky', top: 0, zIndex: 100, display: 'flex', gap: 0,
+    marginBottom: '2rem', background: C.cream, borderBottom: `2px solid ${C.sand}`,
+    borderRadius: '12px 12px 0 0', overflow: 'hidden',
+    boxShadow: '0 2px 16px rgba(42,29,18,0.10)',
+  }}>
+    {TAB_CONFIG.map(({ id, label, icon }) => {
+      const isActive = activeTab === id;
+      return (
+        <button
+          key={id}
+          onClick={() => {
+            setActiveTab(id);
+            setTimeout(() => {
+              tabContentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 10);
+          }}
+          style={{
+            flex: 1, padding: '0.9rem 0.3rem 0.75rem', border: 'none',
+            borderBottom: isActive ? `3px solid ${C.gold}` : '3px solid transparent',
+            background: isActive ? `linear-gradient(180deg, #fff 0%, ${C.cream} 100%)` : 'transparent',
+            color: isActive ? C.dark : C.textMuted,
+            fontWeight: isActive ? '700' : '500', fontSize: '0.78rem',
+            cursor: 'pointer', fontFamily: "'Inter', sans-serif",
+            letterSpacing: '0.02em', transition: 'all 0.15s ease',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.2rem',
+          }}
+          onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.backgroundColor = C.creamDark; }}
+          onMouseLeave={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent'; }}
+        >
+          <span style={{ fontSize: '1.1rem', lineHeight: 1 }}>{icon}</span>
+          <span>{label}</span>
+        </button>
+      );
+    })}
+  </div>
+);
+
+// ─── StickyBuyBar with slideUp animation ──────────────────────────────────────
+const StickyBuyBar = ({
+  name, brand, buyUrl, price, visible,
+}: {
+  name: string; brand: string; buyUrl: string; price?: number | null; visible: boolean;
+}) => {
   if (!visible) return null;
   return (
     <div style={{
-      position: 'fixed',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      zIndex: 300,
+      position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 300,
       background: 'linear-gradient(to top, rgba(26,17,8,0.98), rgba(26,17,8,0.95))',
-      backdropFilter: 'blur(12px)',
-      borderTop: `1px solid rgba(212,175,55,0.25)`,
+      backdropFilter: 'blur(12px)', borderTop: `1px solid rgba(212,175,55,0.25)`,
       padding: '0.75rem 1.25rem',
-      display: 'flex',
-      alignItems: 'center',
-      gap: '0.75rem',
       paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom, 0px))',
+      display: 'flex', alignItems: 'center', gap: '0.75rem',
+      animation: 'slideUpBar 0.3s cubic-bezier(0.16,1,0.3,1) both',
     }}>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ fontSize: '0.72rem', color: 'rgba(212,175,55,0.6)', fontWeight: '600', letterSpacing: '0.04em' }}>{brand}</div>
@@ -558,20 +586,12 @@ const StickyBuyBar = ({ name, brand, buyUrl, price }: { name: string; brand: str
         <div style={{ flexShrink: 0, fontSize: '1.1rem', fontWeight: '800', color: C.gold }}>CHF {price}</div>
       )}
       <a
-        href={buyUrl}
-        target="_blank"
-        rel="sponsored noopener noreferrer"
+        href={buyUrl} target="_blank" rel="sponsored noopener noreferrer"
         style={{
-          flexShrink: 0,
-          backgroundColor: C.gold,
-          color: C.dark,
-          fontWeight: '700',
-          fontSize: '0.88rem',
-          padding: '0.65rem 1.4rem',
-          borderRadius: '10px',
-          textDecoration: 'none',
-          boxShadow: '0 4px 20px rgba(212,175,55,0.4)',
-          letterSpacing: '0.02em',
+          flexShrink: 0, backgroundColor: C.gold, color: C.dark,
+          fontWeight: '700', fontSize: '0.88rem', padding: '0.65rem 1.4rem',
+          borderRadius: '10px', textDecoration: 'none',
+          boxShadow: '0 4px 20px rgba(212,175,55,0.4)', letterSpacing: '0.02em',
         }}
       >
         Kaufen →
@@ -580,86 +600,11 @@ const StickyBuyBar = ({ name, brand, buyUrl, price }: { name: string; brand: str
   );
 };
 
-// ─── Sticky Tab Bar ───────────────────────────────────────────────────────────
-const StickyTabBar = ({
-  activeTab,
-  setActiveTab,
-  tabContentRef,
-}: {
-  activeTab: TabId;
-  setActiveTab: (tab: TabId) => void;
-  tabContentRef: React.RefObject<HTMLDivElement | null>;
-}) => {
-  return (
-    <div style={{
-      position: 'sticky',
-      top: 0,
-      zIndex: 100,
-      display: 'flex',
-      gap: 0,
-      marginBottom: '2rem',
-      background: C.cream,
-      borderBottom: `2px solid ${C.sand}`,
-      borderRadius: '12px 12px 0 0',
-      overflow: 'hidden',
-      boxShadow: '0 2px 16px rgba(42,29,18,0.10)',
-    }}>
-      {TAB_CONFIG.map(({ id, label, icon }) => {
-        const isActive = activeTab === id;
-        return (
-          <button
-            key={id}
-            onClick={() => {
-              setActiveTab(id);
-              setTimeout(() => {
-                tabContentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }, 10);
-            }}
-            style={{
-              flex: 1,
-              padding: '0.9rem 0.3rem 0.75rem',
-              border: 'none',
-              borderBottom: isActive ? `3px solid ${C.gold}` : '3px solid transparent',
-              background: isActive ? `linear-gradient(180deg, #fff 0%, ${C.cream} 100%)` : 'transparent',
-              color: isActive ? C.dark : C.textMuted,
-              fontWeight: isActive ? '700' : '500',
-              fontSize: '0.78rem',
-              cursor: 'pointer',
-              fontFamily: "'Inter', sans-serif",
-              letterSpacing: '0.02em',
-              transition: 'all 0.15s ease',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '0.2rem',
-            }}
-            onMouseEnter={(e) => {
-              if (!isActive) (e.currentTarget as HTMLElement).style.backgroundColor = C.creamDark;
-            }}
-            onMouseLeave={(e) => {
-              if (!isActive) (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent';
-            }}
-          >
-            <span style={{ fontSize: '1.1rem', lineHeight: 1 }}>{icon}</span>
-            <span>{label}</span>
-          </button>
-        );
-      })}
-    </div>
-  );
-};
-
-// ─── Duftpyramide (visuelle Pyramidenform) ────────────────────────────────────
+// ─── PyramidLayer ─────────────────────────────────────────────────────────────
 const PyramidLayer = ({
-  label,
-  emoji,
-  notes,
-  tier,
+  label, emoji, notes, tier,
 }: {
-  label: string;
-  emoji: string;
-  notes: string[];
-  tier: 'top' | 'heart' | 'base';
+  label: string; emoji: string; notes: string[]; tier: 'top' | 'heart' | 'base';
 }) => {
   const tierConfig = {
     top:   { bg: `linear-gradient(135deg, #2a1d12, #3d2e22)`, color: C.goldLight, width: '62%',  border: `2px solid rgba(212,175,55,0.8)` },
@@ -670,13 +615,9 @@ const PyramidLayer = ({
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', marginBottom: '4px' }}>
       <div style={{
-        width: tierConfig.width,
-        background: tierConfig.bg,
-        border: tierConfig.border,
+        width: tierConfig.width, background: tierConfig.bg, border: tierConfig.border,
         borderRadius: tier === 'top' ? '12px 12px 4px 4px' : tier === 'base' ? '4px 4px 12px 12px' : '4px',
-        padding: '1rem 1.25rem 1rem',
-        color: C.cream,
-        position: 'relative',
+        padding: '1rem 1.25rem', color: C.cream, position: 'relative',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.6rem' }}>
           <span style={{ fontSize: '1.1rem' }}>{emoji}</span>
@@ -686,16 +627,10 @@ const PyramidLayer = ({
           ? <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
               {notes.map((n, i) => (
                 <span key={i} style={{
-                  backgroundColor: 'rgba(212,175,55,0.15)',
-                  border: `1px solid rgba(212,175,55,0.3)`,
-                  color: 'rgba(249,246,241,0.9)',
-                  padding: '0.2rem 0.65rem',
-                  borderRadius: '20px',
-                  fontSize: '0.8rem',
-                  fontWeight: '500',
-                }}>
-                  {n}
-                </span>
+                  backgroundColor: 'rgba(212,175,55,0.15)', border: `1px solid rgba(212,175,55,0.3)`,
+                  color: 'rgba(249,246,241,0.9)', padding: '0.2rem 0.65rem',
+                  borderRadius: '20px', fontSize: '0.8rem', fontWeight: '500',
+                }}>{n}</span>
               ))}
             </div>
           : <span style={{ fontSize: '0.8rem', color: 'rgba(249,246,241,0.4)', fontStyle: 'italic' }}>Keine Daten</span>
@@ -706,18 +641,23 @@ const PyramidLayer = ({
 };
 
 // ─── Main Component ───────────────────────────────────────────────────────────
-
 export default function AnalysisResultView({ analysis, similarPerfumes, onNewSearch, dbMatch, uploadedImage }: AnalysisResultViewProps) {
   const [currentAnalysis, setCurrentAnalysis] = useState(analysis);
   const [activeTab, setActiveTab] = useState<TabId>('profil');
-  const [showBackToTop, setShowBackToTop] = useState(false);
   const tabContentRef = useRef<HTMLDivElement | null>(null);
 
+  // Central scroll state
+  const scrollY = useScrollState();
+  const showBackToTop = scrollY > 400;
+  const showStickyBar = scrollY > 320;
+  const [progressPct, setProgressPct] = useState(0);
+
   useEffect(() => {
-    const handleScroll = () => setShowBackToTop(window.scrollY > 400);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    if (typeof document !== 'undefined') {
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      setProgressPct(docH > 0 ? Math.min(100, (scrollY / docH) * 100) : 0);
+    }
+  }, [scrollY]);
 
   if (!currentAnalysis) return null;
 
@@ -726,9 +666,9 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
 
   const displayNotes = dbMatch
     ? {
-        top: (dbMatch.top_notes && dbMatch.top_notes.length > 0) ? dbMatch.top_notes : currentAnalysis.notes.top,
+        top:   (dbMatch.top_notes   && dbMatch.top_notes.length   > 0) ? dbMatch.top_notes   : currentAnalysis.notes.top,
         heart: (dbMatch.heart_notes && dbMatch.heart_notes.length > 0) ? dbMatch.heart_notes : currentAnalysis.notes.heart,
-        base: (dbMatch.base_notes && dbMatch.base_notes.length > 0) ? dbMatch.base_notes : currentAnalysis.notes.base,
+        base:  (dbMatch.base_notes  && dbMatch.base_notes.length  > 0) ? dbMatch.base_notes  : currentAnalysis.notes.base,
       }
     : currentAnalysis.notes;
 
@@ -749,23 +689,40 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
   const hasDevelopment = currentAnalysis.development &&
     (currentAnalysis.development.opening || currentAnalysis.development.middleGame || currentAnalysis.development.drydown);
 
-  // Fact Pills data
-  const factPills = [
-    currentAnalysis.concentration,
-    currentAnalysis.family,
-    genderLabel,
-    currentAnalysis.year ? String(currentAnalysis.year) : null,
-    intensityInfo ? intensityInfo.label : null,
-  ].filter(Boolean) as string[];
+  // Fact pills with icons
+  const factPillsRaw: { label: string; icon: string }[] = [
+    currentAnalysis.concentration ? { label: currentAnalysis.concentration, icon: '🧴' } : null,
+    currentAnalysis.family        ? { label: currentAnalysis.family,        icon: '🌸' } : null,
+    { label: genderLabel, icon: '👥' },
+    currentAnalysis.year          ? { label: String(currentAnalysis.year),  icon: '📅' } : null,
+    intensityInfo                 ? { label: intensityInfo.label,           icon: intensityInfo.emoji } : null,
+  ].filter(Boolean) as { label: string; icon: string }[];
+
+  // Profil-Tab: perfectMoment Platzhalter
+  const perfectMomentText = currentAnalysis.perfectMoment
+    || (() => {
+        const fam = currentAnalysis.family || '';
+        const gen = genderLabel;
+        if (fam && gen) return `Ein ${gen}duft der ${fam}-Familie – ideal für entspannte Abende oder besondere Anlässe.`;
+        if (gen) return `Ein wunderbarer ${gen}duft für besondere Momente und unvergessliche Begegnungen.`;
+        return null;
+      })();
 
   return (
-    <div style={{ maxWidth: '860px', margin: '0 auto', padding: '0 0 6rem' }}>
+    <div style={{ maxWidth: '860px', margin: '0 auto', paddingBottom: 'calc(6rem + env(safe-area-inset-bottom, 0px))' }}>
+      <style dangerouslySetInnerHTML={{ __html: KEYFRAMES }} />
 
       {/* ── STICKY BUY BAR ────────────────────────────────────────────────── */}
-      <StickyBuyBar name={displayName} brand={displayBrand} buyUrl={buyUrl} price={dbMatch?.price_chf ?? null} />
+      <StickyBuyBar name={displayName} brand={displayBrand} buyUrl={buyUrl} price={dbMatch?.price_chf ?? null} visible={showStickyBar} />
 
-      {/* ── SCROLL-FORTSCHRITTSBALKEN ──────────────────────────────────────── */}
-      <ScrollProgressBar />
+      {/* ── SCROLL PROGRESS BAR ───────────────────────────────────────────── */}
+      <div style={{ position: 'fixed', top: 0, left: 0, right: 0, height: '3px', zIndex: 9999 }}>
+        <div style={{
+          height: '100%', width: `${progressPct}%`,
+          background: `linear-gradient(90deg, ${C.goldMuted}, ${C.gold}, ${C.goldLight})`,
+          transition: 'width 0.1s linear', boxShadow: `0 0 8px rgba(212,175,55,0.6)`,
+        }} />
+      </div>
 
       {/* ── KORREKTUR-BANNER ──────────────────────────────────────────────── */}
       <div style={{ padding: '0 1rem' }}>
@@ -782,12 +739,8 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
           backgroundColor: currentAnalysis.confidence === 'low' ? '#fff8e6' : '#fffbf0',
           border: `1px solid ${currentAnalysis.confidence === 'low' ? '#f5c842' : '#e8d875'}`,
           borderLeft: `4px solid ${currentAnalysis.confidence === 'low' ? '#d4a017' : '#c9b848'}`,
-          borderRadius: '10px',
-          padding: '0.9rem 1.1rem',
-          margin: '0 1rem 1.25rem',
-          fontSize: '0.85rem',
-          color: '#6b5205',
-          lineHeight: 1.55,
+          borderRadius: '10px', padding: '0.9rem 1.1rem', margin: '0 1rem 1.25rem',
+          fontSize: '0.85rem', color: '#6b5205', lineHeight: 1.55,
         }}>
           <span style={{ fontSize: '1.1rem', flexShrink: 0, marginTop: '0.05rem' }}>
             {currentAnalysis.confidence === 'low' ? '⚠️' : 'ℹ️'}
@@ -804,20 +757,15 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
       )}
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          HERO — vollbild, Foto als dramatischer Hintergrund
+          HERO
       ════════════════════════════════════════════════════════════════════════ */}
       <section style={{
         position: 'relative',
         background: heroImage ? 'transparent' : `linear-gradient(160deg, #1a1108 0%, ${C.dark} 55%, #3a2518 100%)`,
-        color: C.cream,
-        marginBottom: 0,
-        overflow: 'hidden',
+        color: C.cream, marginBottom: 0, overflow: 'hidden',
         minHeight: heroImage ? '420px' : '320px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
+        display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
       }}>
-        {/* Vollbild-Hintergrundbild */}
         {heroImage && (
           <>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -825,25 +773,17 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
               src={heroImage}
               alt={`${displayName} von ${displayBrand}`}
               style={{
-                position: 'absolute',
-                inset: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center',
+                position: 'absolute', inset: 0, width: '100%', height: '100%',
+                objectFit: 'cover', objectPosition: 'center',
                 opacity: uploadedImage && !displayImage ? 0.6 : 0.85,
               }}
             />
-            {/* Starkes dunkles Overlay - oben leicht, unten sehr dunkel */}
             <div style={{
-              position: 'absolute',
-              inset: 0,
+              position: 'absolute', inset: 0,
               background: 'linear-gradient(to bottom, rgba(26,17,8,0.25) 0%, rgba(26,17,8,0.55) 40%, rgba(26,17,8,0.88) 75%, rgba(26,17,8,0.97) 100%)',
             }} />
           </>
         )}
-
-        {/* Wenn kein Bild: dezente Gold-Textur */}
         {!heroImage && (
           <div style={{
             position: 'absolute', inset: 0,
@@ -851,19 +791,16 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
           }} />
         )}
 
-        {/* Confidence Badge - oben links */}
+        {/* Badge oben links */}
         <div style={{ position: 'absolute', top: '1.25rem', left: '1.25rem', zIndex: 10 }}>
           {dbMatch ? (
             <span style={{
-              backgroundColor: C.gold,
-              color: C.dark,
-              padding: '0.3rem 0.9rem',
-              borderRadius: '20px',
-              fontSize: '0.7rem',
-              fontWeight: '700',
-              letterSpacing: '0.07em',
-              textTransform: 'uppercase',
+              backgroundColor: C.gold, color: C.dark, padding: '0.3rem 0.9rem',
+              borderRadius: '20px', fontSize: '0.7rem', fontWeight: '700',
+              letterSpacing: '0.07em', textTransform: 'uppercase',
               boxShadow: '0 2px 12px rgba(212,175,55,0.4)',
+              animation: 'pulseGold 2.5s ease-in-out infinite',
+              display: 'inline-block',
             }}>
               ✓ {confidenceLabel}
             </span>
@@ -872,7 +809,6 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
           )}
         </div>
 
-        {/* Scan-Label oben rechts wenn hochgeladen */}
         {uploadedImage && !displayImage && (
           <div style={{
             position: 'absolute', top: '1.25rem', right: '1.25rem', zIndex: 10,
@@ -885,138 +821,91 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
           </div>
         )}
 
-        {/* Hero-Content unten */}
+        {/* Hero Content — mit fadeSlideUp */}
         <div style={{
-          position: 'relative',
-          zIndex: 5,
-          padding: '0 1.5rem 2.5rem',
-          textAlign: 'center',
+          position: 'relative', zIndex: 5,
+          padding: '0 1.5rem 2.5rem', textAlign: 'center',
+          animation: 'fadeSlideUp 0.6s cubic-bezier(0.16,1,0.3,1) both',
         }}>
-          {/* KI vs DB-Label */}
           <p style={{ fontSize: '0.68rem', color: 'rgba(212,175,55,0.5)', marginBottom: '0.75rem', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
             {dbMatch ? '✓ Verifizierte Daten' : '🤖 KI-Erkennung'}
           </p>
-
-          {/* RIESIGER NAME */}
           <h1 style={{
             fontSize: 'clamp(2.4rem, 9vw, 4.5rem)',
-            fontFamily: "'Playfair Display', serif",
-            fontWeight: 700,
-            margin: '0 0 0.4rem',
-            lineHeight: 1.05,
-            letterSpacing: '-0.02em',
-            color: C.cream,
-            textShadow: '0 2px 20px rgba(0,0,0,0.5)',
+            fontFamily: "'Playfair Display', serif", fontWeight: 700,
+            margin: '0 0 0.4rem', lineHeight: 1.05, letterSpacing: '-0.02em',
+            color: C.cream, textShadow: '0 2px 20px rgba(0,0,0,0.5)',
           }}>
             {displayName}
           </h1>
-
-          {/* MARKE in Gold */}
           <p style={{
-            fontSize: 'clamp(1rem, 3.5vw, 1.4rem)',
-            color: C.gold,
-            marginBottom: '0.5rem',
-            fontWeight: '600',
-            letterSpacing: '0.04em',
+            fontSize: 'clamp(1rem, 3.5vw, 1.4rem)', color: C.gold,
+            marginBottom: '0.5rem', fontWeight: '600', letterSpacing: '0.04em',
             textShadow: '0 1px 8px rgba(0,0,0,0.4)',
           }}>
             {displayBrand}
           </p>
-
-          {/* Sternebewertung */}
           {dbMatch && currentAnalysis.rating && currentAnalysis.rating > 0 && (
             <StarRating rating={currentAnalysis.rating} />
           )}
-
-          {/* Beschreibung in kursiv */}
           {displayDescription && (
             <p style={{
-              fontSize: 'clamp(0.9rem, 2.5vw, 1.05rem)',
-              lineHeight: 1.8,
-              color: 'rgba(249,246,241,0.82)',
-              maxWidth: '520px',
-              margin: '0.85rem auto 0',
-              fontStyle: 'italic',
-              fontFamily: "'Playfair Display', serif",
+              fontSize: 'clamp(0.9rem, 2.5vw, 1.05rem)', lineHeight: 1.8,
+              color: 'rgba(249,246,241,0.82)', maxWidth: '520px', margin: '0.85rem auto 0',
+              fontStyle: 'italic', fontFamily: "'Playfair Display', serif",
               textShadow: '0 1px 6px rgba(0,0,0,0.4)',
             }}>
               {displayDescription}
             </p>
           )}
 
-          {/* Hero Buy CTA + Teilen */}
+          {/* Hero CTA — Preis NUR hier (+ StickyBuyBar) */}
           <div style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
             <a
-              href={buyUrl}
-              target="_blank"
-              rel="sponsored noopener noreferrer"
+              href={buyUrl} target="_blank" rel="sponsored noopener noreferrer"
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
-                padding: '0.75rem 1.75rem',
-                backgroundColor: C.gold, color: C.dark,
-                fontWeight: '700', fontSize: '0.95rem',
-                borderRadius: '12px', textDecoration: 'none',
-                boxShadow: '0 4px 20px rgba(212,175,55,0.45)',
+                padding: '0.75rem 1.75rem', backgroundColor: C.gold, color: C.dark,
+                fontWeight: '700', fontSize: '0.95rem', borderRadius: '12px',
+                textDecoration: 'none', boxShadow: '0 4px 20px rgba(212,175,55,0.45)',
                 letterSpacing: '0.02em',
               }}
             >
               🛍️ Jetzt kaufen{dbMatch?.price_chf ? ` · CHF ${dbMatch.price_chf}` : ''}
             </a>
             <ShareButton
-              name={displayName}
-              brand={displayBrand}
-              family={currentAnalysis.family}
-              topNotes={displayNotes.top}
+              name={displayName} brand={displayBrand}
+              family={currentAnalysis.family} topNotes={displayNotes.top}
               confidence={currentAnalysis.confidence as 'high' | 'medium' | 'low'}
-              dbMatch={!!dbMatch}
-              uploadedImage={uploadedImage}
+              dbMatch={!!dbMatch} uploadedImage={uploadedImage}
             />
           </div>
         </div>
       </section>
 
-      {/* ── FACT PILLS – horizontale Zeile unter dem Hero ──────────────────── */}
-      {factPills.length > 0 && (
+      {/* ── FACT PILLS ────────────────────────────────────────────────────── */}
+      {factPillsRaw.length > 0 && (
         <div style={{
-          backgroundColor: C.creamDark,
-          borderBottom: `1px solid ${C.sand}`,
-          padding: '0.85rem 1.5rem',
-          overflowX: 'auto',
-          WebkitOverflowScrolling: 'touch',
-          scrollbarWidth: 'none',
+          backgroundColor: C.creamDark, borderBottom: `1px solid ${C.sand}`,
+          padding: '0.85rem 1.5rem', overflowX: 'auto',
+          WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none',
         }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 0,
-            whiteSpace: 'nowrap',
-            minWidth: 'max-content',
-          }}>
-            {factPills.map((pill, i) => (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 0, whiteSpace: 'nowrap', minWidth: 'max-content' }}>
+            {factPillsRaw.map((pill, i) => (
               <span key={i} style={{ display: 'flex', alignItems: 'center' }}>
                 {i > 0 && (
                   <span style={{ color: C.goldMuted, margin: '0 0.65rem', fontSize: '0.75rem', fontWeight: '300' }}>·</span>
                 )}
-                <FactPill>{pill}</FactPill>
+                <FactPill icon={pill.icon}>{pill.label}</FactPill>
               </span>
             ))}
-            {(currentAnalysis.year || currentAnalysis.concentration) && dbMatch?.price_chf && (
-              <>
-                <span style={{ color: C.goldMuted, margin: '0 0.65rem', fontSize: '0.75rem', fontWeight: '300' }}>·</span>
-                <span style={{ fontSize: '0.88rem', fontWeight: '700', color: C.gold }}>CHF {dbMatch.price_chf}</span>
-              </>
-            )}
           </div>
         </div>
       )}
 
       {/* ── TABS + CONTENT ─────────────────────────────────────────────────── */}
       <div style={{ padding: '0 0' }}>
-        <StickyTabBar
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          tabContentRef={tabContentRef}
-        />
+        <StickyTabBar activeTab={activeTab} setActiveTab={setActiveTab} tabContentRef={tabContentRef} />
 
         <div ref={tabContentRef} style={{ padding: '0 1rem' }}>
 
@@ -1024,18 +913,15 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
               TAB: PROFIL
           ══════════════════════════════════════════════════════════════════ */}
           {activeTab === 'profil' && (
-            <>
-              {/* ── 1. PERFEKTE MOMENT & PERSÖNLICHKEIT — emotionaler Einstieg ── */}
-              {(currentAnalysis.perfectMoment || currentAnalysis.personalityType || currentAnalysis.mood) && (
+            <div className="tab-content-enter">
+              {/* ── PERFEKTER MOMENT — mit Fallback ──────────────────────── */}
+              {(perfectMomentText || currentAnalysis.personalityType || currentAnalysis.mood) && (
                 <section style={{ marginBottom: '2rem' }}>
                   <div style={{
                     background: `linear-gradient(160deg, #2a1d12, #1a1108)`,
-                    borderRadius: '16px',
-                    padding: '1.75rem 2rem',
-                    position: 'relative',
-                    overflow: 'hidden',
+                    borderRadius: '16px', padding: '1.75rem 2rem',
+                    position: 'relative', overflow: 'hidden',
                   }}>
-                    {/* Dekoratives Muster */}
                     <div style={{
                       position: 'absolute', top: 0, right: 0,
                       width: '120px', height: '120px',
@@ -1043,42 +929,30 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                       pointerEvents: 'none',
                     }} />
                     {currentAnalysis.mood && (
-                      <div style={{ fontSize: '0.65rem', color: 'rgba(212,175,55,0.6)', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
-                        ✦ Stimmung
-                      </div>
+                      <>
+                        <div style={{ fontSize: '0.65rem', color: 'rgba(212,175,55,0.6)', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>✦ Stimmung</div>
+                        <p style={{
+                          fontSize: 'clamp(1.2rem, 4vw, 1.55rem)', fontFamily: "'Playfair Display', serif",
+                          color: C.cream, margin: '0 0 1rem', fontStyle: 'italic', lineHeight: 1.4,
+                        }}>„{currentAnalysis.mood}"</p>
+                      </>
                     )}
-                    {currentAnalysis.mood && (
+                    {perfectMomentText && (
                       <p style={{
-                        fontSize: 'clamp(1.2rem, 4vw, 1.55rem)',
-                        fontFamily: "'Playfair Display', serif",
-                        color: C.cream,
-                        margin: '0 0 1rem',
-                        fontStyle: 'italic',
-                        lineHeight: 1.4,
-                      }}>
-                        „{currentAnalysis.mood}"
-                      </p>
-                    )}
-                    {currentAnalysis.perfectMoment && (
-                      <p style={{
-                        fontSize: '0.93rem',
-                        color: 'rgba(249,246,241,0.78)',
-                        lineHeight: 1.75,
+                        fontSize: '0.93rem', color: 'rgba(249,246,241,0.78)', lineHeight: 1.75,
                         margin: currentAnalysis.personalityType ? '0 0 1rem' : 0,
                         borderTop: currentAnalysis.mood ? `1px solid rgba(212,175,55,0.2)` : 'none',
                         paddingTop: currentAnalysis.mood ? '1rem' : 0,
                       }}>
-                        {currentAnalysis.perfectMoment}
+                        {perfectMomentText}
                       </p>
                     )}
                     {currentAnalysis.personalityType && (
                       <p style={{
-                        fontSize: '0.88rem',
-                        color: 'rgba(212,175,55,0.7)',
-                        lineHeight: 1.65,
+                        fontSize: '0.88rem', color: 'rgba(212,175,55,0.7)', lineHeight: 1.65,
                         margin: 0,
-                        borderTop: (currentAnalysis.mood || currentAnalysis.perfectMoment) ? `1px solid rgba(212,175,55,0.15)` : 'none',
-                        paddingTop: (currentAnalysis.mood || currentAnalysis.perfectMoment) ? '0.9rem' : 0,
+                        borderTop: (currentAnalysis.mood || perfectMomentText) ? `1px solid rgba(212,175,55,0.15)` : 'none',
+                        paddingTop: (currentAnalysis.mood || perfectMomentText) ? '0.9rem' : 0,
                         fontStyle: 'italic',
                       }}>
                         {currentAnalysis.personalityType}
@@ -1088,25 +962,23 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                 </section>
               )}
 
-              {/* ── 2. CHARAKTER-TAGS — schnell scanbar ─────────────────────── */}
+              {/* ── CHARAKTER-TAGS ─────────────────────────────────────────── */}
               {currentAnalysis.characterTags && currentAnalysis.characterTags.length > 0 && (
                 <section style={{ marginBottom: '2rem' }}>
                   <SectionHeading>Charakter-Tags</SectionHeading>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                     {currentAnalysis.characterTags.map((tag, i) => {
-                      const tagSlug = tag.toLowerCase().replace(/[äöü]/g, (c) => ({ ä: 'ae', ö: 'oe', ü: 'ue' }[c] || c)).replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+                      const tagSlug = tag.toLowerCase()
+                        .replace(/[äöü]/g, (c) => ({ ä: 'ae', ö: 'oe', ü: 'ue' }[c] || c))
+                        .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
                       return (
                         <Link key={i} href={`/tag/${tagSlug}`} style={{
                           backgroundColor: i === 0 ? C.gold : 'transparent',
                           border: `1.5px solid ${i === 0 ? C.gold : 'rgba(212,175,55,0.4)'}`,
                           color: i === 0 ? C.dark : C.goldMuted,
-                          padding: '0.35rem 0.9rem',
-                          borderRadius: '20px',
-                          fontSize: '0.85rem',
-                          fontWeight: i === 0 ? '700' : '600',
-                          textDecoration: 'none',
-                          display: 'inline-block',
-                          transition: 'all 0.15s ease',
+                          padding: '0.35rem 0.9rem', borderRadius: '20px',
+                          fontSize: '0.85rem', fontWeight: i === 0 ? '700' : '600',
+                          textDecoration: 'none', display: 'inline-block', transition: 'all 0.15s ease',
                         }}
                         onMouseEnter={(e) => {
                           (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(212,175,55,0.2)';
@@ -1125,7 +997,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                 </section>
               )}
 
-              {/* ── 3. WANN TRAGEN ──────────────────────────────────────────── */}
+              {/* ── WANN TRAGEN ────────────────────────────────────────────── */}
               {(currentAnalysis.seasonRecommendation || (currentAnalysis.occasionList?.length ?? 0) > 0) && (
                 <section style={{ marginBottom: '2rem' }}>
                   <SectionHeading>Wann tragen?</SectionHeading>
@@ -1144,8 +1016,8 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                     )}
                     {currentAnalysis.occasionList && currentAnalysis.occasionList.length > 0 && (
                       <div style={{
-                        backgroundColor: C.cream, border: `1px solid ${C.sand}`, borderRadius: '12px',
-                        padding: '1rem 1.25rem',
+                        backgroundColor: C.cream, border: `1px solid ${C.sand}`,
+                        borderRadius: '12px', padding: '1rem 1.25rem',
                       }}>
                         <div style={{ fontSize: '0.65rem', fontWeight: '700', color: C.goldMuted, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.6rem' }}>🎯 Anlässe</div>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
@@ -1162,7 +1034,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                 </section>
               )}
 
-              {/* ── 4. STECKBRIEF ──────────────────────────────────────────── */}
+              {/* ── STECKBRIEF ─────────────────────────────────────────────── */}
               <section style={{ marginBottom: '2rem' }}>
                 <SectionHeading>Steckbrief</SectionHeading>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: '0.55rem' }}>
@@ -1181,13 +1053,11 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                       <div key={it.label} style={{
                         backgroundColor: C.cream,
                         border: `1px solid ${it.estimated ? 'rgba(212,175,55,0.25)' : C.sand}`,
-                        borderRadius: '10px',
-                        padding: '0.8rem 0.95rem',
+                        borderRadius: '10px', padding: '0.8rem 0.95rem',
                         display: 'flex', flexDirection: 'column', gap: '0.25rem',
                       }}>
                         <div style={{ fontSize: '0.62rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-                          {it.icon} {it.label}
-                          {it.estimated && <span style={{ marginLeft: '0.25rem', opacity: 0.7 }}>~</span>}
+                          {it.icon} {it.label}{it.estimated && <span style={{ marginLeft: '0.25rem', opacity: 0.7 }}>~</span>}
                         </div>
                         <div style={{ fontSize: '0.87rem', color: C.dark, fontWeight: '600', lineHeight: 1.3 }}>{it.value}</div>
                       </div>
@@ -1195,20 +1065,18 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                   })}
                 </div>
                 {!dbMatch && (
-                  <p style={{ fontSize: '0.72rem', color: C.textLight, margin: '0.6rem 0 0', fontStyle: 'italic' }}>
-                    ~ = KI-Schätzung
-                  </p>
+                  <p style={{ fontSize: '0.72rem', color: C.textLight, margin: '0.6rem 0 0', fontStyle: 'italic' }}>~ = KI-Schätzung</p>
                 )}
               </section>
-            </>
+            </div>
           )}
 
           {/* ══════════════════════════════════════════════════════════════════
               TAB: NOTEN
           ══════════════════════════════════════════════════════════════════ */}
           {activeTab === 'noten' && (
-            <>
-              {/* ── VISUELLE DUFTPYRAMIDE ──────────────────────────────────── */}
+            <div className="tab-content-enter">
+              {/* ── DUFTPYRAMIDE ────────────────────────────────────────────── */}
               <section style={{ marginBottom: '2.75rem' }}>
                 <SectionHeading>Duftpyramide</SectionHeading>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0 }}>
@@ -1228,16 +1096,26 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                     </div>
                   ))}
                 </div>
+                {/* Fachkundiger Hinweis zur Pyramide */}
+                <div style={{
+                  marginTop: '1.25rem', padding: '0.85rem 1.1rem',
+                  backgroundColor: C.journeyBg, borderRadius: '10px',
+                  border: `1px solid #f0e0a0`, borderLeft: `3px solid ${C.gold}`,
+                }}>
+                  <p style={{ fontSize: '0.8rem', color: C.textMuted, margin: 0, lineHeight: 1.65 }}>
+                    💡 <strong>Wissenswertes:</strong> Kopfnoten verflüchtigen sich schnell (erste 30 Min.), Herznoten prägen den eigentlichen Charakter des Dufts, Basisnoten bleiben stundenlang auf der Haut.
+                  </p>
+                </div>
               </section>
 
-              {/* ── ENTWICKLUNG AUF DER HAUT ───────────────────────────────── */}
+              {/* ── ENTWICKLUNG AUF DER HAUT ──────────────────────────────── */}
               {hasDevelopment && (
                 <section style={{ marginBottom: '2.75rem' }}>
                   <SectionHeading>Entwicklung auf der Haut</SectionHeading>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 0 }}>
                     {[
                       { key: 'opening',    icon: '🌅', label: 'Kopfnote', subtitle: 'erste Minuten', text: currentAnalysis.development?.opening },
-                      { key: 'middleGame', icon: '🌸', label: 'Herznote', subtitle: 'nach 30 Min.', text: currentAnalysis.development?.middleGame },
+                      { key: 'middleGame', icon: '🌸', label: 'Herznote', subtitle: 'nach 30 Min.',  text: currentAnalysis.development?.middleGame },
                       { key: 'drydown',    icon: '🌙', label: 'Basis',    subtitle: 'nach Stunden', text: currentAnalysis.development?.drydown },
                     ].filter(s => s.text).map((stage, i, arr) => (
                       <div key={stage.key} style={{
@@ -1277,14 +1155,12 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                     {[
                       { key: 'morgen', icon: '🌅', label: 'Morgen', text: currentAnalysis.duftJourney.morgen },
                       { key: 'mittag', icon: '☀️', label: 'Mittag', text: currentAnalysis.duftJourney.mittag },
-                      { key: 'abend', icon: '🌆', label: 'Abend', text: currentAnalysis.duftJourney.abend },
-                      { key: 'nacht', icon: '🌙', label: 'Nacht', text: currentAnalysis.duftJourney.nacht },
+                      { key: 'abend',  icon: '🌆', label: 'Abend',  text: currentAnalysis.duftJourney.abend },
+                      { key: 'nacht',  icon: '🌙', label: 'Nacht',  text: currentAnalysis.duftJourney.nacht },
                     ].filter(t => t.text).map(({ key, icon, label, text }) => (
                       <div key={key} style={{
-                        backgroundColor: C.journeyBg,
-                        borderRadius: '10px',
-                        padding: '1.1rem',
-                        border: `1px solid #f0e0a0`,
+                        backgroundColor: C.journeyBg, borderRadius: '10px',
+                        padding: '1.1rem', border: `1px solid #f0e0a0`,
                         borderLeft: `3px solid ${C.gold}`,
                       }}>
                         <div style={{ fontSize: '0.82rem', fontWeight: '700', color: C.goldMuted, marginBottom: '0.5rem' }}>{icon} {label}</div>
@@ -1294,15 +1170,14 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                   </div>
                 </section>
               )}
-            </>
+            </div>
           )}
 
           {/* ══════════════════════════════════════════════════════════════════
               TAB: ANALYSE
           ══════════════════════════════════════════════════════════════════ */}
           {activeTab === 'analyse' && (
-            <>
-              {/* ── BEWERTUNGEN mit großen Zahlen ──────────────────────────── */}
+            <div className="tab-content-enter">
               <section style={{ marginBottom: '2.75rem' }}>
                 <SectionHeading>Bewertungen & Duft-DNA</SectionHeading>
                 {!dbMatch && (
@@ -1314,21 +1189,24 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                   {(currentAnalysis.longevity || currentAnalysis.sillage || currentAnalysis.projection || currentAnalysis.uniqueness || currentAnalysis.priceValue) && (
                     <div style={{ backgroundColor: C.cream, border: `1px solid ${C.sand}`, borderRadius: '14px', padding: '1.5rem 1.75rem' }}>
                       <div style={{ fontSize: '0.7rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '1.5rem' }}>Performance</div>
-                      <BarRow label="Haltbarkeit" value={currentAnalysis.longevity} />
-                      <BarRow label="Sillage" value={currentAnalysis.sillage} />
-                      <BarRow label="Projektion" value={currentAnalysis.projection} />
+                      <BarRow label="Haltbarkeit"    value={currentAnalysis.longevity}   hint="Wie lange bleibt der Duft auf der Haut?" />
+                      <BarRow label="Sillage"        value={currentAnalysis.sillage}     hint="Wie weit trägt der Duft in die Umgebung?" />
+                      <BarRow label="Projektion"     value={currentAnalysis.projection}  hint="Wie stark ist die erste Ausstrahlung?" />
                       <BarRow label="Einzigartigkeit" value={currentAnalysis.uniqueness} />
-                      <BarRow label="Preis-Leistung" value={currentAnalysis.priceValue} />
+                      <BarRow label="Preis-Leistung" value={currentAnalysis.priceValue}  />
                     </div>
                   )}
                   {currentAnalysis.duftDNA && Object.values(currentAnalysis.duftDNA).some(v => v !== undefined) && (
                     <div style={{ backgroundColor: C.cream, border: `1px solid ${C.sand}`, borderRadius: '14px', padding: '1.5rem 1.75rem' }}>
-                      <div style={{ fontSize: '0.7rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '1.5rem' }}>Duft-DNA</div>
-                      <BarRow label="Blumig" value={currentAnalysis.duftDNA.blumig} max={100} suffix="%" />
-                      <BarRow label="Frisch" value={currentAnalysis.duftDNA.frisch} max={100} suffix="%" />
-                      <BarRow label="Süss" value={currentAnalysis.duftDNA.süss} max={100} suffix="%" />
-                      <BarRow label="Holzig" value={currentAnalysis.duftDNA.holzig} max={100} suffix="%" />
-                      <BarRow label="Würzig" value={currentAnalysis.duftDNA.würzig} max={100} suffix="%" />
+                      <div style={{ fontSize: '0.7rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.5rem' }}>Duft-DNA</div>
+                      <p style={{ fontSize: '0.75rem', color: C.textLight, margin: '0 0 1.25rem', lineHeight: 1.5 }}>
+                        Die Duft-DNA zeigt, wie stark verschiedene Duftkategorien im Gesamtbild vertreten sind.
+                      </p>
+                      <BarRow label="Blumig"  value={currentAnalysis.duftDNA.blumig}  max={100} suffix="%" />
+                      <BarRow label="Frisch"  value={currentAnalysis.duftDNA.frisch}  max={100} suffix="%" />
+                      <BarRow label="Süss"    value={currentAnalysis.duftDNA.süss}    max={100} suffix="%" />
+                      <BarRow label="Holzig"  value={currentAnalysis.duftDNA.holzig}  max={100} suffix="%" />
+                      <BarRow label="Würzig"  value={currentAnalysis.duftDNA.würzig}  max={100} suffix="%" />
                     </div>
                   )}
                 </div>
@@ -1395,23 +1273,20 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                   </div>
                 </section>
               )}
-            </>
+            </div>
           )}
 
           {/* ══════════════════════════════════════════════════════════════════
               TAB: KAUFEN
           ══════════════════════════════════════════════════════════════════ */}
           {activeTab === 'kaufen' && (
-            <>
+            <div className="tab-content-enter">
               {/* ── PREIS ──────────────────────────────────────────────────── */}
               {(dbMatch?.price_chf || currentAnalysis.estimatedPrice) && (
                 <div style={{
-                  textAlign: 'center',
-                  marginBottom: '2rem',
-                  padding: '1.75rem',
+                  textAlign: 'center', marginBottom: '2rem', padding: '1.75rem',
                   background: `linear-gradient(135deg, #fdf7e8, #fef9ee)`,
-                  borderRadius: '14px',
-                  border: `1px solid #f0e0a0`,
+                  borderRadius: '14px', border: `1px solid #f0e0a0`,
                 }}>
                   {dbMatch?.price_chf ? (
                     <>
@@ -1434,7 +1309,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                 </div>
               )}
 
-              {/* ── AFFILIATE BUTTONS – groß mit mehr Luft ─────────────────── */}
+              {/* ── AFFILIATE BUTTONS ──────────────────────────────────────── */}
               <section style={{ marginBottom: '2.75rem' }}>
                 <SectionHeading>Duft kaufen</SectionHeading>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -1477,8 +1352,6 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                 </p>
               </section>
 
-              {/* Ähnliche Düfte: unter den Tabs, immer sichtbar */}
-
               {/* ── KI-EMPFEHLUNGEN ───────────────────────────────────────── */}
               {currentAnalysis.similarPerfumes && currentAnalysis.similarPerfumes.length > 0 && (
                 <section style={{ marginBottom: '2.75rem' }}>
@@ -1500,13 +1373,12 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                   </div>
                 </section>
               )}
-            </>
+            </div>
           )}
-
-        </div>{/* end padding wrapper */}
+        </div>
       </div>
 
-      {/* ── ÄHNLICHE DÜFTE – immer sichtbar, unter den Tabs ──────────────────── */}
+      {/* ── ÄHNLICHE DÜFTE — immer sichtbar, unter den Tabs ────────────────── */}
       {similarPerfumes.length > 0 && (() => {
         const seen = new Set<string>();
         const unique = similarPerfumes.filter(p => {
@@ -1521,39 +1393,20 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
               <SectionHeading>Das könnte dir auch gefallen</SectionHeading>
             </div>
             <div style={{
-              display: 'flex',
-              gap: '0.75rem',
-              overflowX: 'auto',
-              paddingBottom: '0.75rem',
-              WebkitOverflowScrolling: 'touch',
-              scrollbarWidth: 'none',
-              paddingLeft: '1rem',
-              paddingRight: '1rem',
+              display: 'flex', gap: '0.75rem', overflowX: 'auto',
+              paddingBottom: '0.75rem', WebkitOverflowScrolling: 'touch',
+              scrollbarWidth: 'none', paddingLeft: '1rem', paddingRight: '1rem',
             }}>
               {unique.map((perfume) => (
                 <Link
                   key={perfume.id}
                   href={`/duft/${perfume.slug}`}
+                  className="similar-card"
                   style={{
-                    display: 'block',
-                    flexShrink: 0,
-                    width: '130px',
-                    padding: '0.85rem',
-                    backgroundColor: C.cream,
-                    borderRadius: '12px',
-                    border: `1px solid ${C.sand}`,
+                    display: 'block', flexShrink: 0, width: '130px',
+                    padding: '0.85rem', backgroundColor: C.cream,
+                    borderRadius: '12px', border: `1px solid ${C.sand}`,
                     textDecoration: 'none',
-                    transition: 'all 0.2s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.boxShadow = `0 6px 20px rgba(212,175,55,0.22)`;
-                    e.currentTarget.style.borderColor = C.gold;
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.boxShadow = 'none';
-                    e.currentTarget.style.borderColor = C.sand;
-                    e.currentTarget.style.transform = 'translateY(0)';
                   }}
                 >
                   {perfume.image_url ? (
@@ -1623,7 +1476,8 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
             fontSize: '1.1rem', cursor: 'pointer',
             boxShadow: '0 4px 16px rgba(212,175,55,0.4)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            zIndex: 200, fontWeight: '700', transition: 'transform 0.15s ease',
+            zIndex: 200, fontWeight: '700',
+            transition: 'transform 0.15s ease',
           }}
           onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.transform = 'scale(1.1)'; }}
           onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.transform = 'scale(1)'; }}

@@ -305,7 +305,7 @@ a.note-pill:hover { background:rgba(185,152,99,.3); border-color:var(--gold); tr
 
 /* Filter-Leiste auf der Duftseite */
 .filter-row { display:flex; flex-wrap:wrap; gap:10px; margin:16px 0 6px; }
-.filter-pill { background:rgba(255,255,255,.6); color:var(--brown); border:1px solid rgba(75,53,40,.2); border-radius:999px; padding:9px 18px; font-family:var(--font-sans), Arial, sans-serif; font-size:14px; font-weight:600; cursor:pointer; transition: border-color .15s ease, background .15s ease, color .15s ease; }
+.filter-pill { background:rgba(255,255,255,.6); color:var(--brown); border:1px solid rgba(75,53,40,.2); border-radius:999px; padding:9px 18px; min-height:44px; font-family:var(--font-sans), Arial, sans-serif; font-size:14px; font-weight:600; cursor:pointer; transition: border-color .15s ease, background .15s ease, color .15s ease; }
 .filter-pill:hover { border-color: var(--gold); }
 .filter-pill-active { background:var(--brown); color:#fff; border-color:var(--brown); }
 .catalog-count { margin:10px 0 18px; }

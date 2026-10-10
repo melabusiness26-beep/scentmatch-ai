@@ -7,6 +7,7 @@ import {
   getAllPerfumeSlugs,
   getPerfumes,
   describePerfume,
+  buyUrl,
   type Perfume
 } from '@/lib/perfumes';
 import { findSimilarPerfumesV2, findCheaperAlternativesV2 } from '@/lib/similarity';
@@ -176,7 +177,7 @@ function jsonLd(perfume: Perfume) {
             price: perfume.price_chf,
             priceCurrency: 'CHF',
             availability: 'https://schema.org/InStock',
-            url: `${SITE_URL}/duft/${perfume.slug}`
+            url: buyUrl(perfume)
           }
         : undefined
   };

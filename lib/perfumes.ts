@@ -80,12 +80,13 @@ export function describePerfume(p: Perfume): string {
   const top = notesList(p.top_notes);
   const heart = notesList(p.heart_notes);
   const base = notesList(p.base_notes);
+  const pronoun = p.gender === 'Women' ? 'Sie' : p.gender === 'Unisex' ? 'Der Duft' : 'Er';
   const bits: string[] = [];
   if (top) bits.push(`öffnet mit ${top}`);
   if (heart) bits.push(`entfaltet im Herzen ${heart}`);
   if (base) bits.push(`klingt mit ${base} aus`);
-  if (bits.length === 1) sentences.push(`Er ${bits[0]}.`);
-  else if (bits.length > 1) sentences.push(`Er ${bits.slice(0, -1).join(', ')} und ${bits[bits.length - 1]}.`);
+  if (bits.length === 1) sentences.push(`${pronoun} ${bits[0]}.`);
+  else if (bits.length > 1) sentences.push(`${pronoun} ${bits.slice(0, -1).join(', ')} und ${bits[bits.length - 1]}.`);
 
   const perf: string[] = [];
   if (p.longevity != null) {
@@ -107,7 +108,7 @@ export function describePerfume(p: Perfume): string {
   if (p.season) {
     sentences.push(
       p.season === 'Ganzjährig'
-        ? 'Am schönsten trägt er sich das ganze Jahr über.'
+        ? `Am schönsten trägt ${pronoun === 'Sie' ? 'sie' : pronoun === 'Der Duft' ? 'er' : 'er'} sich das ganze Jahr über.`
         : `Am schönsten in der Saison ${p.season}.`
     );
   }

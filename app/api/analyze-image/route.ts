@@ -1,27 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { validateImageSize, extractMimeTypeFromDataUri, extractBase64FromDataUri } from '@/lib/image-validation';
-import { analyzeImageWithAnthropic } from '@/lib/anthropic-analyzer';
+import { NextResponse } from 'next/server';
 
-export async function POST(request: NextRequest) {
-  try {
-    const body = await request.json();
-    const { imageBase64 } = body;
+// This endpoint is deprecated — use /api/image-analyzer instead (has rate limiting + MIME validation)
+export async function POST() {
+  return NextResponse.json(
+    { success: false, error: 'Dieser Endpunkt ist veraltet. Bitte /api/image-analyzer verwenden.' },
+    { status: 410, headers: { 'Location': '/api/image-analyzer' } }
+  );
+}
 
-    if (!imageBase64 || typeof imageBase64 !== 'string') {
-      return NextResponse.json({ success: false, error: 'Ungültige Bildanfrage' }, { status: 400 });
-    }
-
-    if (!validateImageSize(imageBase64)) {
-      return NextResponse.json({ success: false, error: 'Bild zu groß (max 5MB)' }, { status: 400 });
-    }
-
-    const mimeType = extractMimeTypeFromDataUri(imageBase64);
-    const base64Data = extractBase64FromDataUri(imageBase64);
-    const result = await analyzeImageWithAnthropic(base64Data, mimeType);
-
-    return NextResponse.json(result);
-  } catch (error) {
-    console.error('[analyze-image] Fehler:', error);
-    return NextResponse.json({ success: false, error: 'Server-Fehler' }, { status: 500 });
-  }
+export async function GET() {
+  return NextResponse.redirect('/api/image-analyzer');
 }

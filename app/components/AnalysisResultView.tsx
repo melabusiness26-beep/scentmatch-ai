@@ -854,7 +854,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
             </section>
 
             {/* ── CHARAKTER & PERSÖNLICHKEIT ────────────────────────────── */}
-            {(currentAnalysis.characterTags || currentAnalysis.personalityType || currentAnalysis.mood) && (
+            {(currentAnalysis.characterTags?.length || currentAnalysis.personalityType || currentAnalysis.mood) && (
               <section style={{ marginBottom: '2.5rem' }}>
                 <SectionHeading>Charakter & Persönlichkeit</SectionHeading>
                 <div style={{
@@ -909,7 +909,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
             )}
 
             {/* ── WANN TRAGEN ───────────────────────────────────────────── */}
-            {(currentAnalysis.seasonRecommendation || currentAnalysis.occasionList?.length || currentAnalysis.climate?.length) && (
+            {(currentAnalysis.seasonRecommendation || (currentAnalysis.occasionList?.length ?? 0) > 0 || (currentAnalysis.climate?.length ?? 0) > 0) && (
               <section style={{ marginBottom: '2.5rem' }}>
                 <SectionHeading>Wann tragen?</SectionHeading>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.85rem' }}>

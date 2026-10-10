@@ -24,8 +24,8 @@ export async function analyzeImageWithAnthropic(
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-5',
-        max_tokens: 3000,
+        model: 'claude-haiku-4-5',
+        max_tokens: 2000,
         messages: [
           {
             role: 'user',
@@ -40,62 +40,11 @@ export async function analyzeImageWithAnthropic(
               },
               {
                 type: 'text',
-                text: `Du bist ein Premium-Parfüm-Analyse-Assistent. Analysiere dieses Bild eines Parfüms sorgfältig und erstelle ein ULTIMATIVES PREMIUM-STECKBRIEF mit maximalen Details.
+                text: `Parfüm-Analyse. Erkenne das Parfüm im Bild. Antworte NUR mit JSON (kein Markdown):
 
-Das Bild kann sein: echtes Flakon, Produktfoto, Marketing-Bild, Screenshot oder Verpackung.
+{"perfumeName":"...","brandName":"...","year":null,"parfumeur":null,"originCountry":"...","concentration":"EDP","family":"...","rating":7,"sillage":6,"longevity":7,"projection":6,"uniqueness":5,"priceValue":8,"notes":{"top":["Note1"],"heart":["Note2"],"base":["Note3"]},"duftDNA":{"blumig":40,"holzig":20,"frisch":25,"süss":10,"würzig":5},"poeticDescription":"2-3 Sätze.","duftJourney":{"morgen":"...","mittag":"...","abend":"...","nacht":"..."},"characterTags":["Tag1","Tag2","Tag3"],"personalityType":"...","mood":"...","seasonRecommendation":"Ganzjährig","occasion":["Alltag","Büro"],"climate":["gemäßigt"],"perfectMoment":"...","comparisonPerfumes":[{"name":"...","reason":"..."}],"funFacts":["..."],"famouswearers":null,"history":"...","similarPerfumes":[{"name":"...","reason":"..."},{"name":"...","reason":"..."},{"name":"...","reason":"..."},{"name":"...","reason":"..."},{"name":"...","reason":"..."}],"generalDescription":"...","development":{"opening":"...","middleGame":"...","drydown":"..."},"usageRecommendations":{"occasions":["..."],"seasons":["..."],"timeOfDay":["..."],"skinType":"..."},"bottleDescription":"max 80 Zeichen.","intensity":"medium","gender":"unisex","confidence":"high"}
 
-AUFGABE: Erkenne das Parfüm und extrahiere ALLES als reines JSON (keine Markdown):
-
-Basis-Infos:
-- perfumeName, brandName, year (null ok), parfumeur (null ok), originCountry
-- concentration: "Parfum"|"EDP"|"EDT"|"Eau de Cologne"|null
-- family: Duftfamilie
-
-Bewertungen (1-10 Skala):
-- rating, sillage, longevity, projection, uniqueness, priceValue
-
-Noten:
-- notes: {top: [...], heart: [...], base: [...]}
-
-Analyse:
-- duftDNA: {blumig: %, holzig: %, frisch: %, süss: %, würzig: %} (Summe ~100)
-- poeticDescription: 2-3 Sätze, emotional
-- duftJourney: {morgen: "...", mittag: "...", abend: "...", nacht: "..."}
-
-Charakter:
-- characterTags: ["5-6 Wörter"], personalityType, mood
-
-Anwendung:
-- seasonRecommendation: "Frühling"|"Sommer"|"Herbst"|"Winter"|"Ganzjährig"
-- occasion: ["Alltag", "Büro", "Date", "Abendessen", "Party", "Sport"]
-- climate: ["warm", "kalt", "tropisch", "gemäßigt"]
-
-Stories:
-- perfectMoment: kurze emotionale Story
-- comparisonPerfumes: [{name, reason}] (2-3 Düfte)
-- funFacts: [...]
-- famouswearers: [...] oder null
-- history: kurze Geschichte oder null
-
-KI-Empfehlungen:
-- similarPerfumes: [{name, reason}] (5 Düfte aus KI-Wissen, NICHT aus DB)
-
-Fallback-Daten:
-- generalDescription: 1-2 Sätze
-- development: {opening, middleGame, drydown}
-- usageRecommendations: {occasions, seasons, timeOfDay, skinType}
-- bottleDescription: Beschreibung des Flakons
-- intensity, gender, confidence
-
-WICHTIG:
-- Es ist OK, educated guesses zu machen
-- Nutze null nur wenn unmöglich
-- Leere Arrays sind OK
-- Sei großzügig – auch unscharfe Fotos/Screenshots zählen
-- confidence: "high"|"medium"|"low"
-- ALLE Duft-Noten (top, heart, base) IMMER auf DEUTSCH (z.B. "Himbeere" nicht "Frambuesa", "Rose" nicht "Rosa", "Vanille" nicht "Vanilla", "Bergamotte" nicht "Bergamot"). Keine doppelten Übersetzungen – jede Note NUR EINMAL.
-
-Antworte NUR mit vollständigem JSON:`,
+Regeln: Noten auf DEUTSCH. Educated guesses OK. confidence: high/medium/low.`,
               },
             ],
           },

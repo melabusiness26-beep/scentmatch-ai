@@ -24,8 +24,8 @@ export async function analyzeImageWithAnthropic(
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-5',
-        max_tokens: 3000,
+        model: 'claude-haiku-4-5',
+        max_tokens: 2000,
         messages: [
           {
             role: 'user',
@@ -40,62 +40,23 @@ export async function analyzeImageWithAnthropic(
               },
               {
                 type: 'text',
-                text: `Du bist ein Premium-Parfüm-Analyse-Assistent. Analysiere dieses Bild eines Parfüms sorgfältig und erstelle ein ULTIMATIVES PREMIUM-STECKBRIEF mit maximalen Details.
+                text: `Du bist ein Parfüm-Experte. Analysiere das Bild und erkenne das Parfüm. Antworte NUR mit JSON (kein Markdown, keine Erklärungen).
 
-Das Bild kann sein: echtes Flakon, Produktfoto, Marketing-Bild, Screenshot oder Verpackung.
+WICHTIGE REGELN:
+1. "perfumeName" und "brandName": Nur was du auf dem Flakon LIEST oder mit sehr hoher Sicherheit erkennst. Kein Raten.
+2. Noten, Bewertungen (rating, sillage etc.): NUR wenn du den Duft wirklich kennst. Sonst null.
+3. "confidence": "high" = du bist >90% sicher; "medium" = 60-90%; "low" = <60% oder unsicher.
+4. Bei low/medium confidence: setze rating, sillage, longevity, projection, uniqueness, priceValue auf null.
+5. duftDNA, duftJourney, comparisonPerfumes: nur wenn du den Duft sicher kennst. Sonst null.
+6. estimatedPrice: nur wenn bekannt, sonst null. Format: "ca. 80–150 CHF".
+7. Alle Noten auf DEUTSCH. Keine erfundenen Noten.
+8. "family": eine von: floral, woody, fresh, oriental, gourmand, chypre, fougere, aquatic, spicy. Nur wenn bekannt.
+9. generalDescription und bottleDescription: was du SIEHST und weisst. Keine Erfindungen.
 
-AUFGABE: Erkenne das Parfüm und extrahiere ALLES als reines JSON (keine Markdown):
+JSON-Format (null = unbekannt/unsicher):
+{"perfumeName":"Exakter Name vom Flakon","brandName":"Exakte Marke","confidence":"high","year":null,"parfumeur":null,"concentration":null,"family":"floral","gender":"woman","rating":null,"sillage":null,"longevity":null,"projection":null,"uniqueness":null,"priceValue":null,"estimatedPrice":null,"notes":{"top":[],"heart":[],"base":[]},"duftDNA":null,"poeticDescription":null,"duftJourney":null,"characterTags":[],"personalityType":null,"mood":null,"seasonRecommendation":null,"occasion":[],"climate":[],"perfectMoment":null,"comparisonPerfumes":null,"funFacts":[],"famouswearers":null,"history":null,"similarPerfumes":[],"generalDescription":"Was du über diesen Duft weisst.","development":{"opening":"","middleGame":"","drydown":""},"usageRecommendations":{"occasions":[],"seasons":[],"timeOfDay":[]},"bottleDescription":"Was du auf dem Bild siehst.","intensity":"medium"}
 
-Basis-Infos:
-- perfumeName, brandName, year (null ok), parfumeur (null ok), originCountry
-- concentration: "Parfum"|"EDP"|"EDT"|"Eau de Cologne"|null
-- family: Duftfamilie
-
-Bewertungen (1-10 Skala):
-- rating, sillage, longevity, projection, uniqueness, priceValue
-
-Noten:
-- notes: {top: [...], heart: [...], base: [...]}
-
-Analyse:
-- duftDNA: {blumig: %, holzig: %, frisch: %, süss: %, würzig: %} (Summe ~100)
-- poeticDescription: 2-3 Sätze, emotional
-- duftJourney: {morgen: "...", mittag: "...", abend: "...", nacht: "..."}
-
-Charakter:
-- characterTags: ["5-6 Wörter"], personalityType, mood
-
-Anwendung:
-- seasonRecommendation: "Frühling"|"Sommer"|"Herbst"|"Winter"|"Ganzjährig"
-- occasion: ["Alltag", "Büro", "Date", "Abendessen", "Party", "Sport"]
-- climate: ["warm", "kalt", "tropisch", "gemäßigt"]
-
-Stories:
-- perfectMoment: kurze emotionale Story
-- comparisonPerfumes: [{name, reason}] (2-3 Düfte)
-- funFacts: [...]
-- famouswearers: [...] oder null
-- history: kurze Geschichte oder null
-
-KI-Empfehlungen:
-- similarPerfumes: [{name, reason}] (5 Düfte aus KI-Wissen, NICHT aus DB)
-
-Fallback-Daten:
-- generalDescription: 1-2 Sätze
-- development: {opening, middleGame, drydown}
-- usageRecommendations: {occasions, seasons, timeOfDay, skinType}
-- bottleDescription: Beschreibung des Flakons
-- intensity, gender, confidence
-
-WICHTIG:
-- Es ist OK, educated guesses zu machen
-- Nutze null nur wenn unmöglich
-- Leere Arrays sind OK
-- Sei großzügig – auch unscharfe Fotos/Screenshots zählen
-- confidence: "high"|"medium"|"low"
-- ALLE Duft-Noten (top, heart, base) IMMER auf DEUTSCH (z.B. "Himbeere" nicht "Frambuesa", "Rose" nicht "Rosa", "Vanille" nicht "Vanilla", "Bergamotte" nicht "Bergamot"). Keine doppelten Übersetzungen – jede Note NUR EINMAL.
-
-Antworte NUR mit vollständigem JSON:`,
+Wenn du den Parfümnamen NICHT lesen/erkennen kannst: confidence = "low", perfumeName = "Unbekanntes Parfüm", brandName = "Unbekannte Marke".`,
               },
             ],
           },
@@ -141,6 +102,16 @@ Antworte NUR mit vollständigem JSON:`,
         success: false,
         error: 'Analyse konnte nicht verarbeitet werden',
       };
+    }
+
+    // originCountry → origin (Feldname-Normalisierung)
+    if (analysis.originCountry && !analysis.origin) {
+      analysis.origin = analysis.originCountry;
+    }
+
+    // occasion → occasionList (Feldname-Normalisierung)
+    if (analysis.occasion && !analysis.occasionList) {
+      analysis.occasionList = Array.isArray(analysis.occasion) ? analysis.occasion : [analysis.occasion];
     }
 
     // Normaliserung der Gender-Werte falls nötig

@@ -12,6 +12,7 @@ interface AnalysisResultViewProps {
   similarPerfumes: Perfume[];
   onNewSearch: () => void;
   dbMatch?: Perfume | null;
+  uploadedImage?: string | null;
 }
 
 // ─── Design Tokens ───────────────────────────────────────────────────────────
@@ -29,6 +30,15 @@ const C = {
   journeyBg: '#fdf7e8',
   heroBg: '#1a1108',
 } as const;
+
+type TabId = 'profil' | 'noten' | 'analyse' | 'kaufen';
+
+const TAB_LABELS: Record<TabId, string> = {
+  profil:  'Profil',
+  noten:   'Noten',
+  analyse: 'Analyse',
+  kaufen:  'Kaufen',
+};
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
@@ -173,7 +183,7 @@ const ScrollProgressBar = () => {
 const ShareButton = ({ name, brand }: { name: string; brand: string }) => {
   const [copied, setCopied] = useState(false);
 
-  const shareText = `Ich habe gerade "${name}" von ${brand} mit Auressa entdeckt – dem KI-Duft-Scanner! 🌸`;
+  const shareText = `Ich habe gerade "${name}" von ${brand} mit Auressa entdeckt – dem KI-Parfümberater! 🌸`;
   const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://auressa.ch';
   const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText + '\n' + shareUrl)}`;
 
@@ -223,10 +233,88 @@ const ShareButton = ({ name, brand }: { name: string; brand: string }) => {
   );
 };
 
+// ─── Sticky Tab Bar ───────────────────────────────────────────────────────────
+
+const StickyTabBar = ({
+  activeTab,
+  setActiveTab,
+  tabContentRef,
+}: {
+  activeTab: TabId;
+  setActiveTab: (tab: TabId) => void;
+  tabContentRef: React.RefObject<HTMLDivElement | null>;
+}) => {
+  const tabs: TabId[] = ['profil', 'noten', 'analyse', 'kaufen'];
+
+  return (
+    <div style={{
+      position: 'sticky',
+      top: 0,
+      zIndex: 100,
+      display: 'flex',
+      gap: 0,
+      marginBottom: '1.75rem',
+      background: C.cream,
+      borderBottom: `2px solid ${C.sand}`,
+      borderRadius: '12px 12px 0 0',
+      overflow: 'hidden',
+      boxShadow: '0 2px 12px rgba(42,29,18,0.08)',
+    }}>
+      {tabs.map((tab) => {
+        const isActive = activeTab === tab;
+        return (
+          <button
+            key={tab}
+            onClick={() => {
+              setActiveTab(tab);
+              // Scroll zum Tab-Inhalt
+              setTimeout(() => {
+                tabContentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }, 10);
+            }}
+            style={{
+              flex: 1,
+              padding: '0.85rem 0.5rem',
+              border: 'none',
+              borderBottom: isActive ? `3px solid ${C.gold}` : '3px solid transparent',
+              background: isActive ? `linear-gradient(180deg, #fff 0%, ${C.cream} 100%)` : 'transparent',
+              color: isActive ? C.dark : C.textMuted,
+              fontWeight: isActive ? '700' : '500',
+              fontSize: '0.82rem',
+              cursor: 'pointer',
+              fontFamily: "'Inter', sans-serif",
+              letterSpacing: '0.02em',
+              transition: 'all 0.15s ease',
+              whiteSpace: 'nowrap',
+            }}
+            onMouseEnter={(e) => {
+              if (!isActive) (e.currentTarget as HTMLElement).style.backgroundColor = C.creamDark;
+            }}
+            onMouseLeave={(e) => {
+              if (!isActive) (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent';
+            }}
+          >
+            {TAB_LABELS[tab]}
+          </button>
+        );
+      })}
+    </div>
+  );
+};
+
 // ─── Main Component ───────────────────────────────────────────────────────────
 
-export default function AnalysisResultView({ analysis, similarPerfumes, onNewSearch, dbMatch }: AnalysisResultViewProps) {
+export default function AnalysisResultView({ analysis, similarPerfumes, onNewSearch, dbMatch, uploadedImage }: AnalysisResultViewProps) {
   const [currentAnalysis, setCurrentAnalysis] = useState(analysis);
+  const [activeTab, setActiveTab] = useState<TabId>('profil');
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const tabContentRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => setShowBackToTop(window.scrollY > 400);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   if (!currentAnalysis) return null;
 
@@ -246,8 +334,9 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
   // Beschreibungstext: DB bevorzugen
   const displayDescription = dbMatch?.description || currentAnalysis.poeticDescription || currentAnalysis.generalDescription;
 
-  // Bild: DB bevorzugen
+  // Bild: DB bevorzugen, dann hochgeladenes Scan-Bild als Fallback
   const displayImage = dbMatch?.image_url || null;
+  const heroImage = displayImage || uploadedImage || null;
 
   // Geschlecht: DB bevorzugen
   const dbGender = dbMatch?.gender;
@@ -279,6 +368,34 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
         onCorrected={(updated) => setCurrentAnalysis(updated)}
       />
 
+      {/* ── KONFIDENZ-WARNUNG (nur wenn kein DB-Match + niedrige/mittlere KI-Konfidenz) ── */}
+      {!dbMatch && (currentAnalysis.confidence === 'low' || currentAnalysis.confidence === 'medium') && (
+        <div style={{
+          display: 'flex', alignItems: 'flex-start', gap: '0.75rem',
+          backgroundColor: currentAnalysis.confidence === 'low' ? '#fff8e6' : '#fffbf0',
+          border: `1px solid ${currentAnalysis.confidence === 'low' ? '#f5c842' : '#e8d875'}`,
+          borderLeft: `4px solid ${currentAnalysis.confidence === 'low' ? '#d4a017' : '#c9b848'}`,
+          borderRadius: '10px',
+          padding: '0.9rem 1.1rem',
+          marginBottom: '1.25rem',
+          fontSize: '0.85rem',
+          color: '#6b5205',
+          lineHeight: 1.55,
+        }}>
+          <span style={{ fontSize: '1.1rem', flexShrink: 0, marginTop: '0.05rem' }}>
+            {currentAnalysis.confidence === 'low' ? '⚠️' : 'ℹ️'}
+          </span>
+          <div>
+            <strong style={{ display: 'block', marginBottom: '0.2rem', color: '#5a4200' }}>
+              {currentAnalysis.confidence === 'low' ? 'Niedrige KI-Konfidenz' : 'Mittlere KI-Konfidenz'}
+            </strong>
+            {currentAnalysis.confidence === 'low'
+              ? 'Das Bild war schwer zu erkennen – das Ergebnis könnte ungenau sein. Versuche ein klareres Foto direkt vom Flakon aufzunehmen.'
+              : 'Die KI ist sich nicht ganz sicher. Ist das der richtige Duft? Falls nicht, kannst du das Ergebnis unten korrigieren.'}
+          </div>
+        </div>
+      )}
+
       {/* ── 1. HERO ─────────────────────────────────────────────────────── */}
       <section style={{
         background: `linear-gradient(160deg, #1a1108 0%, ${C.dark} 55%, #3a2518 100%)`,
@@ -288,21 +405,32 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
         overflow: 'hidden',
         boxShadow: '0 10px 40px rgba(42,29,18,0.22)',
       }}>
-        {/* Bild oben wenn vorhanden */}
-        {displayImage && (
+        {/* Bild oben wenn vorhanden (DB-Bild oder hochgeladenes Scan-Bild) */}
+        {heroImage && (
           <div style={{ position: 'relative', width: '100%', height: '220px', overflow: 'hidden' }}>
-            <Image
-              src={displayImage}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={heroImage.startsWith('data:') ? heroImage : heroImage}
               alt={`${displayName} von ${displayBrand}`}
-              fill
-              style={{ objectFit: 'cover', objectPosition: 'center top', opacity: 0.75 }}
-              unoptimized
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', opacity: uploadedImage && !displayImage ? 0.55 : 0.75 }}
             />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 40%, #1a1108 100%)' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 30%, #1a1108 100%)' }} />
+            {/* Label wenn Scan-Bild (kein DB-Bild) */}
+            {uploadedImage && !displayImage && (
+              <div style={{
+                position: 'absolute', top: '0.75rem', right: '0.75rem',
+                backgroundColor: 'rgba(42,29,18,0.75)', backdropFilter: 'blur(4px)',
+                color: 'rgba(212,175,55,0.9)', fontSize: '0.68rem', fontWeight: '700',
+                letterSpacing: '0.05em', padding: '0.2rem 0.6rem', borderRadius: '10px',
+                border: '1px solid rgba(212,175,55,0.3)',
+              }}>
+                📸 Dein Scan
+              </div>
+            )}
           </div>
         )}
 
-        <div style={{ padding: displayImage ? '0 2rem 2.5rem' : '3rem 2rem 2.5rem', textAlign: 'center' }}>
+        <div style={{ padding: heroImage ? '0 2rem 2.5rem' : '3rem 2rem 2.5rem', textAlign: 'center' }}>
           {/* Badge */}
           <div style={{ marginBottom: '1rem' }}>
             <span style={{
@@ -343,14 +471,12 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
             </p>
           )}
 
-          {dbMatch && (
-            <p style={{ fontSize: '0.75rem', color: 'rgba(212,175,55,0.55)', marginBottom: '1rem', letterSpacing: '0.03em' }}>
-              ✓ Daten aus Auressa-Datenbank
-            </p>
-          )}
+          <p style={{ fontSize: '0.75rem', color: 'rgba(212,175,55,0.55)', marginBottom: '1rem', letterSpacing: '0.03em' }}>
+            {dbMatch ? '✓ Verifizierte Daten aus Auressa-Datenbank' : '🤖 KI-Erkennung – Angaben sind Schätzungen'}
+          </p>
 
-          {/* Sternebewertung */}
-          {currentAnalysis.rating && currentAnalysis.rating > 0 && (
+          {/* Sternebewertung — nur wenn DB-Match, sonst irreführend */}
+          {dbMatch && currentAnalysis.rating && currentAnalysis.rating > 0 && (
             <StarRating rating={currentAnalysis.rating} />
           )}
 
@@ -364,7 +490,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
               margin: '0.75rem auto 0',
               fontStyle: 'italic',
             }}>
-              {displayDescription.length > 220 ? displayDescription.slice(0, 220).trimEnd() + ' …' : displayDescription}
+              {displayDescription}
             </p>
           )}
 
@@ -373,450 +499,530 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
         </div>
       </section>
 
-      {/* ── AFFILIATE CTA ────────────────────────────────────────────────── */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        gap: '0.75rem',
-        marginBottom: '0.75rem',
-        flexWrap: 'wrap',
-      }}>
-        <a href={buyUrl} target="_blank" rel="sponsored noopener noreferrer" style={{
-          display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-          padding: '0.75rem 1.75rem', borderRadius: '8px',
-          backgroundColor: C.gold, color: C.dark,
-          fontWeight: '700', fontSize: '0.95rem', textDecoration: 'none',
-          boxShadow: '0 2px 10px rgba(212,175,55,0.3)',
-        }}>
-          🛍️ Duft kaufen
-        </a>
-        <a href={flaconiUrl} target="_blank" rel="sponsored noopener noreferrer" style={{
-          display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-          padding: '0.75rem 1.75rem', borderRadius: '8px',
-          backgroundColor: 'transparent', border: `2px solid ${C.gold}`,
-          color: C.dark, fontWeight: '700', fontSize: '0.95rem', textDecoration: 'none',
-        }}>
-          🔍 Bei Flaconi ansehen
-        </a>
-      </div>
-      <p style={{ textAlign: 'center', fontSize: '0.72rem', color: C.textLight, marginBottom: '2.5rem' }}>
-        * Affiliate-Links – du zahlst nichts extra, wir erhalten eine kleine Provision.
-      </p>
+      {/* ── STICKY TAB NAVIGATION ────────────────────────────────────────── */}
+      <StickyTabBar
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        tabContentRef={tabContentRef}
+      />
 
-      {/* ── 2. STECKBRIEF ────────────────────────────────────────────────── */}
-      <section style={{ marginBottom: '2.5rem' }}>
-        <SectionHeading>Steckbrief</SectionHeading>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '0.75rem' }}>
-          {[
-            currentAnalysis.concentration && { icon: '🧴', label: 'Konzentration', value: currentAnalysis.concentration },
-            currentAnalysis.family && { icon: '🌸', label: 'Duftfamilie', value: currentAnalysis.family },
-            { icon: '👥', label: 'Geschlecht', value: genderLabel },
-            currentAnalysis.origin && { icon: '🌍', label: 'Herkunft', value: currentAnalysis.origin },
-            currentAnalysis.year && { icon: '📅', label: 'Jahr', value: String(currentAnalysis.year) },
-            currentAnalysis.parfumeur && { icon: '👃', label: 'Parfümeur', value: currentAnalysis.parfumeur },
-            dbMatch?.price_chf && { icon: '💰', label: 'Preis (CH)', value: `CHF ${dbMatch.price_chf}` },
-            dbMatch?.season && { icon: '🍂', label: 'Saison', value: dbMatch.season },
-            // Flakon-Beschreibung
-            currentAnalysis.bottleDescription && { icon: '🫙', label: 'Flakon', value: currentAnalysis.bottleDescription },
-            // Intensitäts-Badge
-            intensityInfo && { icon: intensityInfo.emoji, label: 'Intensität', value: intensityInfo.label },
-          ].filter(Boolean).map((item) => {
-            const it = item as { icon: string; label: string; value: string };
-            return (
-              <div key={it.label} style={{
-                backgroundColor: C.cream,
-                border: `1px solid ${C.sand}`,
-                borderRadius: '10px',
-                padding: '0.85rem 1rem',
-                display: 'flex', flexDirection: 'column', gap: '0.25rem',
-              }}>
-                <div style={{ fontSize: '0.7rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  {it.icon} {it.label}
+      {/* ── TAB CONTENT ──────────────────────────────────────────────────── */}
+      <div ref={tabContentRef}>
+
+        {/* ════════════════════════════════════════════════════════════════ */}
+        {/* TAB: PROFIL                                                      */}
+        {/* ════════════════════════════════════════════════════════════════ */}
+        {activeTab === 'profil' && (
+          <>
+            {/* ── STECKBRIEF ────────────────────────────────────────────── */}
+            <section style={{ marginBottom: '2.5rem' }}>
+              <SectionHeading>Steckbrief</SectionHeading>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '0.75rem' }}>
+                {[
+                  currentAnalysis.concentration && { icon: '🧴', label: 'Konzentration', value: currentAnalysis.concentration, estimated: !dbMatch },
+                  currentAnalysis.family && { icon: '🌸', label: 'Duftfamilie', value: currentAnalysis.family, estimated: !dbMatch },
+                  { icon: '👥', label: 'Geschlecht', value: genderLabel, estimated: !dbMatch },
+                  currentAnalysis.origin && { icon: '🌍', label: 'Herkunft', value: currentAnalysis.origin, estimated: !dbMatch },
+                  currentAnalysis.year && { icon: '📅', label: 'Jahr', value: String(currentAnalysis.year), estimated: !dbMatch },
+                  currentAnalysis.parfumeur && { icon: '👃', label: 'Parfümeur', value: currentAnalysis.parfumeur, estimated: !dbMatch },
+                  dbMatch?.price_chf && { icon: '💰', label: 'Preis (CH)', value: `CHF ${dbMatch.price_chf}`, estimated: false },
+                  dbMatch?.season && { icon: '🍂', label: 'Saison', value: dbMatch.season, estimated: false },
+                  currentAnalysis.bottleDescription && { icon: '🫙', label: 'Flakon', value: currentAnalysis.bottleDescription, estimated: false },
+                  intensityInfo && { icon: intensityInfo.emoji, label: 'Intensität', value: intensityInfo.label, estimated: !dbMatch },
+                ].filter(Boolean).map((item) => {
+                  const it = item as { icon: string; label: string; value: string; estimated: boolean };
+                  return (
+                    <div key={it.label} style={{
+                      backgroundColor: C.cream,
+                      border: `1px solid ${it.estimated ? '#e0d0b0' : C.sand}`,
+                      borderRadius: '10px',
+                      padding: '0.85rem 1rem',
+                      display: 'flex', flexDirection: 'column', gap: '0.25rem',
+                      gridColumn: it.label === 'Flakon' ? 'span 2' : undefined,
+                    }}>
+                      <div style={{ fontSize: '0.7rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                        {it.icon} {it.label}
+                        {it.estimated && (
+                          <span style={{ marginLeft: '0.3rem', fontSize: '0.6rem', color: '#a08040', fontWeight: '600', letterSpacing: '0.02em', textTransform: 'none' }}>
+                            (KI)
+                          </span>
+                        )}
+                      </div>
+                      <div style={{ fontSize: '0.9rem', color: C.dark, fontWeight: '600' }}>{it.value}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+
+            {/* ── CHARAKTER & PERSÖNLICHKEIT ────────────────────────────── */}
+            {(currentAnalysis.characterTags || currentAnalysis.personalityType || currentAnalysis.mood) && (
+              <section style={{ marginBottom: '2.5rem' }}>
+                <SectionHeading>Charakter & Persönlichkeit</SectionHeading>
+                <div style={{
+                  background: `linear-gradient(135deg, ${C.dark} 0%, #3a2518 100%)`,
+                  color: C.cream,
+                  padding: '1.75rem 2rem',
+                  borderRadius: '14px',
+                }}>
+                  {currentAnalysis.personalityType && (
+                    <div style={{ marginBottom: '1rem' }}>
+                      <div style={{ fontSize: '0.72rem', color: C.gold, fontWeight: '700', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>Persönlichkeitstyp</div>
+                      <p style={{ fontSize: '1rem', color: C.cream, margin: 0, lineHeight: 1.5 }}>{currentAnalysis.personalityType}</p>
+                    </div>
+                  )}
+                  {currentAnalysis.mood && (
+                    <div style={{ marginBottom: '1rem' }}>
+                      <div style={{ fontSize: '0.72rem', color: C.gold, fontWeight: '700', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>Stimmung</div>
+                      <p style={{ fontSize: '1rem', color: C.cream, margin: 0 }}>{currentAnalysis.mood}</p>
+                    </div>
+                  )}
+                  {currentAnalysis.characterTags && currentAnalysis.characterTags.length > 0 && (
+                    <div>
+                      <div style={{ fontSize: '0.72rem', color: C.gold, fontWeight: '700', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>Charakter-Tags</div>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                        {currentAnalysis.characterTags.map((tag, i) => {
+                          const tagSlug = tag.toLowerCase().replace(/[äöü]/g, (c) => ({ ä: 'ae', ö: 'oe', ü: 'ue' }[c] || c)).replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+                          return (
+                            <Link key={i} href={`/tag/${tagSlug}`} style={{
+                              backgroundColor: 'rgba(212,175,55,0.18)',
+                              border: `1px solid rgba(212,175,55,0.45)`,
+                              color: C.gold,
+                              padding: '0.28rem 0.8rem',
+                              borderRadius: '20px',
+                              fontSize: '0.82rem',
+                              fontWeight: '500',
+                              textDecoration: 'none',
+                              display: 'inline-block',
+                              transition: 'background 0.15s ease',
+                            }}
+                            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(212,175,55,0.35)'; }}
+                            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(212,175,55,0.18)'; }}
+                            >
+                              #{tag}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <div style={{ fontSize: '0.9rem', color: C.dark, fontWeight: '600' }}>{it.value}</div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
+              </section>
+            )}
 
-      {/* ── 3. DUFTPYRAMIDE ──────────────────────────────────────────────── */}
-      <section style={{ marginBottom: '2.5rem' }}>
-        <SectionHeading>Duftpyramide</SectionHeading>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '0.6rem' }}>
-          {[
-            { label: 'Kopf', emoji: '✨', notes: displayNotes.top },
-            { label: 'Herz', emoji: '🌸', notes: displayNotes.heart },
-            { label: 'Basis', emoji: '🌿', notes: displayNotes.base },
-          ].map(({ label, emoji, notes }) => (
-            <div key={label} style={{
-              backgroundColor: C.cream,
-              border: `1px solid ${C.sand}`,
-              borderRadius: '12px',
-              padding: '0.85rem 0.5rem',
-              borderTop: `3px solid ${C.gold}`,
-              minWidth: 0,
-            }}>
-              <div style={{ marginBottom: '0.5rem' }}>
-                <div style={{ fontSize: '1rem', lineHeight: 1 }}>{emoji}</div>
-                <div style={{ fontSize: '0.65rem', fontWeight: '700', color: C.gold, marginTop: '0.2rem' }}>{label}</div>
-              </div>
-              <NoteList notes={notes} />
-            </div>
-          ))}
-        </div>
-      </section>
+            {/* ── WANN TRAGEN ───────────────────────────────────────────── */}
+            {(currentAnalysis.seasonRecommendation || currentAnalysis.occasionList?.length || currentAnalysis.climate?.length) && (
+              <section style={{ marginBottom: '2.5rem' }}>
+                <SectionHeading>Wann tragen?</SectionHeading>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.85rem' }}>
+                  {currentAnalysis.seasonRecommendation && (
+                    <Card>
+                      <div style={{ fontSize: '0.72rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.4rem' }}>🍂 Saison</div>
+                      <p style={{ fontSize: '1rem', color: C.dark, margin: 0, fontWeight: '500' }}>{currentAnalysis.seasonRecommendation}</p>
+                    </Card>
+                  )}
+                  {currentAnalysis.occasionList && currentAnalysis.occasionList.length > 0 && (
+                    <Card>
+                      <div style={{ fontSize: '0.72rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.6rem' }}>🎯 Anlässe</div>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
+                        {currentAnalysis.occasionList.map((o, i) => <Pill key={i}>{o}</Pill>)}
+                      </div>
+                    </Card>
+                  )}
+                  {currentAnalysis.climate && currentAnalysis.climate.length > 0 && (
+                    <Card>
+                      <div style={{ fontSize: '0.72rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.6rem' }}>🌡️ Klima</div>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
+                        {currentAnalysis.climate.map((c, i) => <Pill key={i}>{c}</Pill>)}
+                      </div>
+                    </Card>
+                  )}
+                </div>
+              </section>
+            )}
 
-      {/* ── ENTWICKLUNG (Opening → Middle → Drydown) ─────────────────────── */}
-      {hasDevelopment && (
-        <section style={{ marginBottom: '2.5rem' }}>
-          <SectionHeading>Entwicklung auf der Haut</SectionHeading>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0' }}>
-            {[
-              { key: 'opening',    icon: '🌅', label: 'Kopfnote', subtitle: 'erste Minuten', text: currentAnalysis.development?.opening },
-              { key: 'middleGame', icon: '🌸', label: 'Herznote', subtitle: 'nach 30 Min.', text: currentAnalysis.development?.middleGame },
-              { key: 'drydown',    icon: '🌙', label: 'Basis',    subtitle: 'nach Stunden', text: currentAnalysis.development?.drydown },
-            ].filter(s => s.text).map((stage, i, arr) => (
-              <div key={stage.key} style={{
-                position: 'relative',
-                backgroundColor: i % 2 === 0 ? C.cream : C.creamDark,
-                padding: '1.25rem 1.5rem',
-                borderTop: `3px solid ${C.gold}`,
-                borderBottom: `1px solid ${C.sand}`,
-                borderLeft: i === 0 ? `1px solid ${C.sand}` : 'none',
-                borderRight: `1px solid ${C.sand}`,
-                borderRadius: i === 0 ? '10px 0 0 10px' : i === arr.length - 1 ? '0 10px 10px 0' : '0',
-              }}>
-                {/* Pfeil zwischen Phasen */}
-                {i < arr.length - 1 && (
-                  <div style={{
-                    position: 'absolute',
-                    right: '-10px',
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    zIndex: 1,
-                    width: '20px',
-                    height: '20px',
-                    backgroundColor: C.gold,
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '0.65rem',
-                    color: C.dark,
-                    fontWeight: '700',
-                    boxShadow: `0 0 0 3px ${C.cream}`,
+            {/* ── DER PERFEKTE MOMENT ───────────────────────────────────── */}
+            {currentAnalysis.perfectMoment && (
+              <section style={{ marginBottom: '2.5rem' }}>
+                <SectionHeading>Der perfekte Moment</SectionHeading>
+                <div style={{
+                  background: `linear-gradient(135deg, #fdf7e8, #fef9ee)`,
+                  border: `1px solid #f0e0a0`,
+                  borderLeft: `4px solid ${C.gold}`,
+                  borderRadius: '10px',
+                  padding: '1.5rem 1.75rem',
+                }}>
+                  <p style={{ fontSize: '1rem', lineHeight: 1.8, color: C.dark, margin: 0, fontStyle: 'italic' }}>
+                    ✨ {currentAnalysis.perfectMoment}
+                  </p>
+                </div>
+              </section>
+            )}
+          </>
+        )}
+
+        {/* ════════════════════════════════════════════════════════════════ */}
+        {/* TAB: NOTEN                                                       */}
+        {/* ════════════════════════════════════════════════════════════════ */}
+        {activeTab === 'noten' && (
+          <>
+            {/* ── DUFTPYRAMIDE ──────────────────────────────────────────── */}
+            <section style={{ marginBottom: '2.5rem' }}>
+              <SectionHeading>Duftpyramide</SectionHeading>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '0.6rem' }}>
+                {[
+                  { label: 'Kopf', emoji: '✨', notes: displayNotes.top },
+                  { label: 'Herz', emoji: '🌸', notes: displayNotes.heart },
+                  { label: 'Basis', emoji: '🌿', notes: displayNotes.base },
+                ].map(({ label, emoji, notes }) => (
+                  <div key={label} style={{
+                    backgroundColor: C.cream,
+                    border: `1px solid ${C.sand}`,
+                    borderRadius: '12px',
+                    padding: '0.85rem 0.5rem',
+                    borderTop: `3px solid ${C.gold}`,
+                    minWidth: 0,
                   }}>
-                    →
+                    <div style={{ marginBottom: '0.5rem' }}>
+                      <div style={{ fontSize: '1rem', lineHeight: 1 }}>{emoji}</div>
+                      <div style={{ fontSize: '0.65rem', fontWeight: '700', color: C.gold, marginTop: '0.2rem' }}>{label}</div>
+                    </div>
+                    <NoteList notes={notes} />
                   </div>
-                )}
-                <div style={{ fontSize: '1.2rem', marginBottom: '0.4rem' }}>{stage.icon}</div>
-                <div style={{ fontSize: '0.72rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.15rem' }}>
-                  {stage.label}
-                </div>
-                <div style={{ fontSize: '0.68rem', color: C.textLight, marginBottom: '0.5rem' }}>{stage.subtitle}</div>
-                <p style={{ fontSize: '0.88rem', color: C.text, margin: 0, lineHeight: 1.65 }}>{stage.text}</p>
+                ))}
               </div>
-            ))}
-          </div>
-        </section>
-      )}
+            </section>
 
-      {/* ── 4. BEWERTUNGEN + DNA ─────────────────────────────────────────── */}
-      <section style={{ marginBottom: '2.5rem' }}>
-        <SectionHeading>Bewertungen & Duft-DNA</SectionHeading>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
-          {(currentAnalysis.longevity || currentAnalysis.sillage || currentAnalysis.projection || currentAnalysis.uniqueness || currentAnalysis.priceValue) && (
-            <Card>
-              <div style={{ fontSize: '0.75rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1rem' }}>Performance</div>
-              <BarRow label="Haltbarkeit" value={currentAnalysis.longevity} />
-              <BarRow label="Sillage" value={currentAnalysis.sillage} />
-              <BarRow label="Projektion" value={currentAnalysis.projection} />
-              <BarRow label="Einzigartigkeit" value={currentAnalysis.uniqueness} />
-              <BarRow label="Preis-Leistung" value={currentAnalysis.priceValue} />
-            </Card>
-          )}
-          {currentAnalysis.duftDNA && Object.values(currentAnalysis.duftDNA).some(v => v !== undefined) && (
-            <Card>
-              <div style={{ fontSize: '0.75rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1rem' }}>Duft-DNA</div>
-              <BarRow label="Blumig" value={currentAnalysis.duftDNA.blumig} max={100} suffix="%" />
-              <BarRow label="Frisch" value={currentAnalysis.duftDNA.frisch} max={100} suffix="%" />
-              <BarRow label="Süss" value={currentAnalysis.duftDNA.süss} max={100} suffix="%" />
-              <BarRow label="Holzig" value={currentAnalysis.duftDNA.holzig} max={100} suffix="%" />
-              <BarRow label="Würzig" value={currentAnalysis.duftDNA.würzig} max={100} suffix="%" />
-            </Card>
-          )}
-        </div>
-      </section>
-
-      {/* ── 5. DUFTREISE ─────────────────────────────────────────────────── */}
-      {currentAnalysis.duftJourney && Object.values(currentAnalysis.duftJourney).some(v => v) && (
-        <section style={{ marginBottom: '2.5rem' }}>
-          <SectionHeading>Duftreise durch den Tag</SectionHeading>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '0.85rem' }}>
-            {[
-              { key: 'morgen', icon: '🌅', label: 'Morgen', text: currentAnalysis.duftJourney.morgen },
-              { key: 'mittag', icon: '☀️', label: 'Mittag', text: currentAnalysis.duftJourney.mittag },
-              { key: 'abend', icon: '🌆', label: 'Abend', text: currentAnalysis.duftJourney.abend },
-              { key: 'nacht', icon: '🌙', label: 'Nacht', text: currentAnalysis.duftJourney.nacht },
-            ].filter(t => t.text).map(({ key, icon, label, text }) => (
-              <div key={key} style={{
-                backgroundColor: C.journeyBg,
-                borderRadius: '10px',
-                padding: '1.1rem',
-                border: `1px solid #f0e0a0`,
-                borderLeft: `3px solid ${C.gold}`,
-              }}>
-                <div style={{ fontSize: '0.82rem', fontWeight: '700', color: C.goldMuted, marginBottom: '0.5rem' }}>
-                  {icon} {label}
-                </div>
-                <p style={{ fontSize: '0.88rem', color: C.text, margin: 0, lineHeight: 1.6 }}>{text}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* ── 6. CHARAKTER ─────────────────────────────────────────────────── */}
-      {(currentAnalysis.characterTags || currentAnalysis.personalityType || currentAnalysis.mood) && (
-        <section style={{ marginBottom: '2.5rem' }}>
-          <SectionHeading>Charakter & Persönlichkeit</SectionHeading>
-          <div style={{
-            background: `linear-gradient(135deg, ${C.dark} 0%, #3a2518 100%)`,
-            color: C.cream,
-            padding: '1.75rem 2rem',
-            borderRadius: '14px',
-          }}>
-            {currentAnalysis.personalityType && (
-              <div style={{ marginBottom: '1rem' }}>
-                <div style={{ fontSize: '0.72rem', color: C.gold, fontWeight: '700', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>Persönlichkeitstyp</div>
-                <p style={{ fontSize: '1rem', color: C.cream, margin: 0, lineHeight: 1.5 }}>{currentAnalysis.personalityType}</p>
-              </div>
-            )}
-            {currentAnalysis.mood && (
-              <div style={{ marginBottom: '1rem' }}>
-                <div style={{ fontSize: '0.72rem', color: C.gold, fontWeight: '700', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>Stimmung</div>
-                <p style={{ fontSize: '1rem', color: C.cream, margin: 0 }}>{currentAnalysis.mood}</p>
-              </div>
-            )}
-            {currentAnalysis.characterTags && currentAnalysis.characterTags.length > 0 && (
-              <div>
-                <div style={{ fontSize: '0.72rem', color: C.gold, fontWeight: '700', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>Charakter-Tags</div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                  {currentAnalysis.characterTags.map((tag, i) => {
-                    const tagSlug = tag.toLowerCase().replace(/[äöü]/g, (c) => ({ ä: 'ae', ö: 'oe', ü: 'ue' }[c] || c)).replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-                    return (
-                      <Link key={i} href={`/tag/${tagSlug}`} style={{
-                        backgroundColor: 'rgba(212,175,55,0.18)',
-                        border: `1px solid rgba(212,175,55,0.45)`,
-                        color: C.gold,
-                        padding: '0.28rem 0.8rem',
-                        borderRadius: '20px',
-                        fontSize: '0.82rem',
-                        fontWeight: '500',
-                        textDecoration: 'none',
-                        display: 'inline-block',
-                        transition: 'background 0.15s ease',
-                      }}
-                      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(212,175,55,0.35)'; }}
-                      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(212,175,55,0.18)'; }}
-                      >
-                        #{tag}
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-          </div>
-        </section>
-      )}
-
-      {/* ── 7. WANN TRAGEN ───────────────────────────────────────────────── */}
-      {(currentAnalysis.seasonRecommendation || currentAnalysis.occasionList?.length || currentAnalysis.climate?.length) && (
-        <section style={{ marginBottom: '2.5rem' }}>
-          <SectionHeading>Wann tragen?</SectionHeading>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.85rem' }}>
-            {currentAnalysis.seasonRecommendation && (
-              <Card>
-                <div style={{ fontSize: '0.72rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.4rem' }}>🍂 Saison</div>
-                <p style={{ fontSize: '1rem', color: C.dark, margin: 0, fontWeight: '500' }}>{currentAnalysis.seasonRecommendation}</p>
-              </Card>
-            )}
-            {currentAnalysis.occasionList && currentAnalysis.occasionList.length > 0 && (
-              <Card>
-                <div style={{ fontSize: '0.72rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.6rem' }}>🎯 Anlässe</div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
-                  {currentAnalysis.occasionList.map((o, i) => <Pill key={i}>{o}</Pill>)}
-                </div>
-              </Card>
-            )}
-            {currentAnalysis.climate && currentAnalysis.climate.length > 0 && (
-              <Card>
-                <div style={{ fontSize: '0.72rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.6rem' }}>🌡️ Klima</div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
-                  {currentAnalysis.climate.map((c, i) => <Pill key={i}>{c}</Pill>)}
-                </div>
-              </Card>
-            )}
-          </div>
-        </section>
-      )}
-
-      {/* ── 8. DER PERFEKTE MOMENT ───────────────────────────────────────── */}
-      {currentAnalysis.perfectMoment && (
-        <section style={{ marginBottom: '2.5rem' }}>
-          <SectionHeading>Der perfekte Moment</SectionHeading>
-          <div style={{
-            background: `linear-gradient(135deg, #fdf7e8, #fef9ee)`,
-            border: `1px solid #f0e0a0`,
-            borderLeft: `4px solid ${C.gold}`,
-            borderRadius: '10px',
-            padding: '1.5rem 1.75rem',
-          }}>
-            <p style={{ fontSize: '1rem', lineHeight: 1.8, color: C.dark, margin: 0, fontStyle: 'italic' }}>
-              ✨ {currentAnalysis.perfectMoment}
-            </p>
-          </div>
-        </section>
-      )}
-
-      {/* ── 9. VERGLEICH MIT BEKANNTEN DÜFTEN ─────────────────────────────── */}
-      {currentAnalysis.comparisonPerfumes && currentAnalysis.comparisonPerfumes.length > 0 && (
-        <section style={{ marginBottom: '2.5rem' }}>
-          <SectionHeading>Ähnelt bekannten Düften</SectionHeading>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-            {currentAnalysis.comparisonPerfumes.map((comp, i) => (
-              <div key={i} style={{
-                display: 'flex', gap: '1rem',
-                backgroundColor: C.cream, border: `1px solid ${C.sand}`,
-                borderRadius: '10px', padding: '1rem 1.25rem', alignItems: 'flex-start',
-              }}>
-                <div style={{ flexShrink: 0, width: '26px', height: '26px', borderRadius: '50%', backgroundColor: C.gold, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.72rem', fontWeight: '700', color: C.dark }}>
-                  {i + 1}
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.93rem', fontWeight: '700', color: C.dark, marginBottom: '0.25rem' }}>{comp.name}</div>
-                  <div style={{ fontSize: '0.85rem', color: C.textMuted, lineHeight: 1.5 }}>{comp.reason}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* ── 10. FUN FACTS & GESCHICHTE ───────────────────────────────────── */}
-      {(currentAnalysis.history || (currentAnalysis.funFacts && currentAnalysis.funFacts.length > 0) || (currentAnalysis.famouswearers && currentAnalysis.famouswearers.length > 0)) && (
-        <section style={{ marginBottom: '2.5rem' }}>
-          <SectionHeading>Geschichte & Wissenswertes</SectionHeading>
-          <Card>
-            {currentAnalysis.history && (
-              <div style={{ marginBottom: currentAnalysis.funFacts?.length ? '1.5rem' : 0 }}>
-                <div style={{ fontSize: '0.72rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.5rem' }}>📖 Geschichte</div>
-                <p style={{ fontSize: '0.93rem', color: C.textMuted, lineHeight: 1.75, margin: 0 }}>{currentAnalysis.history}</p>
-              </div>
-            )}
-            {currentAnalysis.famouswearers && currentAnalysis.famouswearers.length > 0 && (
-              <div style={{ marginBottom: currentAnalysis.funFacts?.length ? '1.5rem' : 0 }}>
-                <div style={{ fontSize: '0.72rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.5rem' }}>⭐ Bekannte Träger</div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
-                  {currentAnalysis.famouswearers.map((w, i) => <Pill key={i}>{w}</Pill>)}
-                </div>
-              </div>
-            )}
-            {currentAnalysis.funFacts && currentAnalysis.funFacts.length > 0 && (
-              <div>
-                <div style={{ fontSize: '0.72rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.6rem' }}>💡 Interessantes</div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
-                  {currentAnalysis.funFacts.map((fact, i) => (
-                    <div key={i} style={{ display: 'flex', gap: '0.65rem', alignItems: 'flex-start' }}>
-                      <span style={{ flexShrink: 0, color: C.gold, fontWeight: '700', marginTop: '0.1rem' }}>·</span>
-                      <span style={{ fontSize: '0.93rem', color: C.textMuted, lineHeight: 1.65 }}>{fact}</span>
+            {/* ── ENTWICKLUNG ───────────────────────────────────────────── */}
+            {hasDevelopment && (
+              <section style={{ marginBottom: '2.5rem' }}>
+                <SectionHeading>Entwicklung auf der Haut</SectionHeading>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0' }}>
+                  {[
+                    { key: 'opening',    icon: '🌅', label: 'Kopfnote', subtitle: 'erste Minuten', text: currentAnalysis.development?.opening },
+                    { key: 'middleGame', icon: '🌸', label: 'Herznote', subtitle: 'nach 30 Min.', text: currentAnalysis.development?.middleGame },
+                    { key: 'drydown',    icon: '🌙', label: 'Basis',    subtitle: 'nach Stunden', text: currentAnalysis.development?.drydown },
+                  ].filter(s => s.text).map((stage, i, arr) => (
+                    <div key={stage.key} style={{
+                      position: 'relative',
+                      backgroundColor: i % 2 === 0 ? C.cream : C.creamDark,
+                      padding: '1.25rem 1.5rem',
+                      borderTop: `3px solid ${C.gold}`,
+                      borderBottom: `1px solid ${C.sand}`,
+                      borderLeft: i === 0 ? `1px solid ${C.sand}` : 'none',
+                      borderRight: `1px solid ${C.sand}`,
+                      borderRadius: i === 0 ? '10px 0 0 10px' : i === arr.length - 1 ? '0 10px 10px 0' : '0',
+                    }}>
+                      {i < arr.length - 1 && (
+                        <div style={{
+                          position: 'absolute',
+                          right: '-10px',
+                          top: '50%',
+                          transform: 'translateY(-50%)',
+                          zIndex: 1,
+                          width: '20px',
+                          height: '20px',
+                          backgroundColor: C.gold,
+                          borderRadius: '50%',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '0.65rem',
+                          color: C.dark,
+                          fontWeight: '700',
+                          boxShadow: `0 0 0 3px ${C.cream}`,
+                        }}>
+                          →
+                        </div>
+                      )}
+                      <div style={{ fontSize: '1.2rem', marginBottom: '0.4rem' }}>{stage.icon}</div>
+                      <div style={{ fontSize: '0.72rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.15rem' }}>
+                        {stage.label}
+                      </div>
+                      <div style={{ fontSize: '0.68rem', color: C.textLight, marginBottom: '0.5rem' }}>{stage.subtitle}</div>
+                      <p style={{ fontSize: '0.88rem', color: C.text, margin: 0, lineHeight: 1.65 }}>{stage.text}</p>
                     </div>
                   ))}
                 </div>
-              </div>
+              </section>
             )}
-          </Card>
-        </section>
-      )}
 
-      {/* ── 11. ÄHNLICHE DÜFTE AUS AURESSA ───────────────────────────────── */}
-      {similarPerfumes.length > 0 && (
-        <section style={{ marginBottom: '2.5rem' }}>
-          <SectionHeading>Ähnliche Düfte aus Auressa</SectionHeading>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '0.75rem' }}>
-            {similarPerfumes.map((perfume) => (
-              <Link
-                key={perfume.id}
-                href={`/duft/${perfume.slug}`}
-                style={{
-                  display: 'block', padding: '1.1rem',
-                  backgroundColor: C.cream, borderRadius: '12px',
-                  border: `1px solid ${C.sand}`, textDecoration: 'none',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = `0 4px 16px rgba(212,175,55,0.2)`;
-                  e.currentTarget.style.borderColor = C.gold;
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = 'none';
-                  e.currentTarget.style.borderColor = C.sand;
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
-              >
-                {perfume.image_url && (
-                  <div style={{ width: '100%', height: '90px', borderRadius: '8px', overflow: 'hidden', marginBottom: '0.75rem', backgroundColor: C.creamDark }}>
-                    <Image
-                      src={perfume.image_url}
-                      alt={perfume.perfume_name}
-                      width={200}
-                      height={90}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                      unoptimized
-                    />
-                  </div>
-                )}
-                <div style={{ fontSize: '0.9rem', fontWeight: '700', color: C.dark, marginBottom: '0.25rem', lineHeight: 1.3 }}>{perfume.perfume_name}</div>
-                <div style={{ fontSize: '0.8rem', color: C.goldMuted, fontWeight: '600', marginBottom: '0.45rem' }}>{perfume.brands?.name}</div>
-                {perfume.fragrance_family && (
-                  <div style={{ fontSize: '0.75rem', color: C.textLight, marginBottom: '0.35rem' }}>{perfume.fragrance_family}</div>
-                )}
-                {perfume.price_chf && (
-                  <div style={{ fontSize: '0.88rem', fontWeight: '700', color: C.gold }}>CHF {perfume.price_chf}</div>
-                )}
-                <div style={{ marginTop: '0.6rem', fontSize: '0.75rem', color: C.goldMuted, fontWeight: '600' }}>
-                  Mehr erfahren →
+            {/* ── DUFTREISE ─────────────────────────────────────────────── */}
+            {currentAnalysis.duftJourney && Object.values(currentAnalysis.duftJourney).some(v => v) && (
+              <section style={{ marginBottom: '2.5rem' }}>
+                <SectionHeading>Duftreise durch den Tag</SectionHeading>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '0.85rem' }}>
+                  {[
+                    { key: 'morgen', icon: '🌅', label: 'Morgen', text: currentAnalysis.duftJourney.morgen },
+                    { key: 'mittag', icon: '☀️', label: 'Mittag', text: currentAnalysis.duftJourney.mittag },
+                    { key: 'abend', icon: '🌆', label: 'Abend', text: currentAnalysis.duftJourney.abend },
+                    { key: 'nacht', icon: '🌙', label: 'Nacht', text: currentAnalysis.duftJourney.nacht },
+                  ].filter(t => t.text).map(({ key, icon, label, text }) => (
+                    <div key={key} style={{
+                      backgroundColor: C.journeyBg,
+                      borderRadius: '10px',
+                      padding: '1.1rem',
+                      border: `1px solid #f0e0a0`,
+                      borderLeft: `3px solid ${C.gold}`,
+                    }}>
+                      <div style={{ fontSize: '0.82rem', fontWeight: '700', color: C.goldMuted, marginBottom: '0.5rem' }}>
+                        {icon} {label}
+                      </div>
+                      <p style={{ fontSize: '0.88rem', color: C.text, margin: 0, lineHeight: 1.6 }}>{text}</p>
+                    </div>
+                  ))}
                 </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
+              </section>
+            )}
+          </>
+        )}
 
-      {/* ── 12. ÄHNLICHE DÜFTE (KI) ──────────────────────────────────────── */}
-      {currentAnalysis.similarPerfumes && currentAnalysis.similarPerfumes.length > 0 && (
-        <section style={{ marginBottom: '2.5rem' }}>
-          <SectionHeading>Weitere Empfehlungen (KI)</SectionHeading>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-            {currentAnalysis.similarPerfumes.map((perf, i) => (
-              <div key={i} style={{
-                display: 'flex', gap: '1rem',
-                backgroundColor: C.cream, border: `1px solid ${C.sand}`,
-                borderRadius: '10px', padding: '0.9rem 1.1rem', alignItems: 'flex-start',
-              }}>
-                <div style={{ flexShrink: 0, width: '6px', height: '6px', borderRadius: '50%', backgroundColor: C.gold, marginTop: '0.5rem' }} />
-                <div>
-                  <div style={{ fontSize: '0.9rem', fontWeight: '700', color: C.dark, marginBottom: '0.2rem' }}>{perf.name}</div>
-                  <div style={{ fontSize: '0.82rem', color: C.textMuted, lineHeight: 1.5 }}>{perf.reason}</div>
-                </div>
+        {/* ════════════════════════════════════════════════════════════════ */}
+        {/* TAB: ANALYSE                                                     */}
+        {/* ════════════════════════════════════════════════════════════════ */}
+        {activeTab === 'analyse' && (
+          <>
+            {/* ── BEWERTUNGEN + DNA ─────────────────────────────────────── */}
+            <section style={{ marginBottom: '2.5rem' }}>
+              <SectionHeading>Bewertungen & Duft-DNA</SectionHeading>
+              {!dbMatch && (
+                <p style={{ fontSize: '0.78rem', color: '#a08040', marginBottom: '1rem', fontStyle: 'italic' }}>
+                  🤖 Diese Werte sind KI-Schätzungen und können von der Realität abweichen.
+                </p>
+              )}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
+                {(currentAnalysis.longevity || currentAnalysis.sillage || currentAnalysis.projection || currentAnalysis.uniqueness || currentAnalysis.priceValue) && (
+                  <Card>
+                    <div style={{ fontSize: '0.75rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1rem' }}>Performance</div>
+                    <BarRow label="Haltbarkeit" value={currentAnalysis.longevity} />
+                    <BarRow label="Sillage" value={currentAnalysis.sillage} />
+                    <BarRow label="Projektion" value={currentAnalysis.projection} />
+                    <BarRow label="Einzigartigkeit" value={currentAnalysis.uniqueness} />
+                    <BarRow label="Preis-Leistung" value={currentAnalysis.priceValue} />
+                  </Card>
+                )}
+                {currentAnalysis.duftDNA && Object.values(currentAnalysis.duftDNA).some(v => v !== undefined) && (
+                  <Card>
+                    <div style={{ fontSize: '0.75rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1rem' }}>Duft-DNA</div>
+                    <BarRow label="Blumig" value={currentAnalysis.duftDNA.blumig} max={100} suffix="%" />
+                    <BarRow label="Frisch" value={currentAnalysis.duftDNA.frisch} max={100} suffix="%" />
+                    <BarRow label="Süss" value={currentAnalysis.duftDNA.süss} max={100} suffix="%" />
+                    <BarRow label="Holzig" value={currentAnalysis.duftDNA.holzig} max={100} suffix="%" />
+                    <BarRow label="Würzig" value={currentAnalysis.duftDNA.würzig} max={100} suffix="%" />
+                  </Card>
+                )}
               </div>
-            ))}
-          </div>
-        </section>
-      )}
+            </section>
+
+            {/* ── VERGLEICH MIT BEKANNTEN DÜFTEN ────────────────────────── */}
+            {currentAnalysis.comparisonPerfumes && currentAnalysis.comparisonPerfumes.length > 0 && (
+              <section style={{ marginBottom: '2.5rem' }}>
+                <SectionHeading>Ähnelt bekannten Düften</SectionHeading>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                  {currentAnalysis.comparisonPerfumes.map((comp, i) => (
+                    <div key={i} style={{
+                      display: 'flex', gap: '1rem',
+                      backgroundColor: C.cream, border: `1px solid ${C.sand}`,
+                      borderRadius: '10px', padding: '1rem 1.25rem', alignItems: 'flex-start',
+                    }}>
+                      <div style={{ flexShrink: 0, width: '26px', height: '26px', borderRadius: '50%', backgroundColor: C.gold, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.72rem', fontWeight: '700', color: C.dark }}>
+                        {i + 1}
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '0.93rem', fontWeight: '700', color: C.dark, marginBottom: '0.25rem' }}>{comp.name}</div>
+                        <div style={{ fontSize: '0.85rem', color: C.textMuted, lineHeight: 1.5 }}>{comp.reason}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* ── FUN FACTS & GESCHICHTE ────────────────────────────────── */}
+            {(currentAnalysis.history || (currentAnalysis.funFacts && currentAnalysis.funFacts.length > 0) || (currentAnalysis.famouswearers && currentAnalysis.famouswearers.length > 0)) && (
+              <section style={{ marginBottom: '2.5rem' }}>
+                <SectionHeading>Geschichte & Wissenswertes</SectionHeading>
+                <Card>
+                  {currentAnalysis.history && (
+                    <div style={{ marginBottom: currentAnalysis.funFacts?.length ? '1.5rem' : 0 }}>
+                      <div style={{ fontSize: '0.72rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.5rem' }}>📖 Geschichte</div>
+                      <p style={{ fontSize: '0.93rem', color: C.textMuted, lineHeight: 1.75, margin: 0 }}>{currentAnalysis.history}</p>
+                    </div>
+                  )}
+                  {currentAnalysis.famouswearers && currentAnalysis.famouswearers.length > 0 && (
+                    <div style={{ marginBottom: currentAnalysis.funFacts?.length ? '1.5rem' : 0 }}>
+                      <div style={{ fontSize: '0.72rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.5rem' }}>⭐ Bekannte Fans</div>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
+                        {currentAnalysis.famouswearers.map((w, i) => <Pill key={i}>{w}</Pill>)}
+                      </div>
+                    </div>
+                  )}
+                  {currentAnalysis.funFacts && currentAnalysis.funFacts.length > 0 && (
+                    <div>
+                      <div style={{ fontSize: '0.72rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.6rem' }}>💡 Interessantes</div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
+                        {currentAnalysis.funFacts.map((fact, i) => (
+                          <div key={i} style={{ display: 'flex', gap: '0.65rem', alignItems: 'flex-start' }}>
+                            <span style={{ flexShrink: 0, color: C.gold, fontWeight: '700', marginTop: '0.1rem' }}>·</span>
+                            <span style={{ fontSize: '0.93rem', color: C.textMuted, lineHeight: 1.65 }}>{fact}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </Card>
+              </section>
+            )}
+          </>
+        )}
+
+        {/* ════════════════════════════════════════════════════════════════ */}
+        {/* TAB: KAUFEN                                                      */}
+        {/* ════════════════════════════════════════════════════════════════ */}
+        {activeTab === 'kaufen' && (
+          <>
+            {/* ── AFFILIATE CTA (gross) ─────────────────────────────────── */}
+            <section style={{ marginBottom: '2.5rem' }}>
+              <SectionHeading>Duft kaufen</SectionHeading>
+
+              {/* Preis: DB-Preis bevorzugen, sonst KI-Schätzung */}
+              {(dbMatch?.price_chf || currentAnalysis.estimatedPrice) && (
+                <div style={{
+                  textAlign: 'center',
+                  marginBottom: '1.5rem',
+                  padding: '1.25rem',
+                  background: `linear-gradient(135deg, #fdf7e8, #fef9ee)`,
+                  borderRadius: '12px',
+                  border: `1px solid #f0e0a0`,
+                }}>
+                  {dbMatch?.price_chf ? (
+                    <>
+                      <div style={{ fontSize: '0.75rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.4rem' }}>Preis</div>
+                      <div style={{ fontSize: '2rem', fontWeight: '800', color: C.dark, fontFamily: "'Playfair Display', serif" }}>
+                        CHF {dbMatch.price_chf}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div style={{ fontSize: '0.75rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.4rem' }}>KI-Preisschätzung 🤖</div>
+                      <div style={{ fontSize: '1.6rem', fontWeight: '800', color: C.dark, fontFamily: "'Playfair Display', serif" }}>
+                        {currentAnalysis.estimatedPrice}
+                      </div>
+                      <div style={{ fontSize: '0.72rem', color: C.textLight, marginTop: '0.3rem' }}>
+                        Geschätzter Schweizer Marktpreis – Preise können variieren.
+                      </div>
+                    </>
+                  )}
+                </div>
+              )}
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                <a href={buyUrl} target="_blank" rel="sponsored noopener noreferrer" style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  padding: '1.1rem 1.5rem', borderRadius: '12px',
+                  backgroundColor: C.gold, color: C.dark,
+                  fontWeight: '700', fontSize: '1rem', textDecoration: 'none',
+                  boxShadow: '0 4px 16px rgba(212,175,55,0.3)',
+                }}>
+                  <span>🛍️ Bei Notino kaufen</span>
+                  <span style={{ fontSize: '0.8rem', opacity: 0.75 }}>→</span>
+                </a>
+                <a href={flaconiUrl} target="_blank" rel="sponsored noopener noreferrer" style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  padding: '1.1rem 1.5rem', borderRadius: '12px',
+                  backgroundColor: 'transparent', border: `2px solid ${C.gold}`,
+                  color: C.dark, fontWeight: '700', fontSize: '1rem', textDecoration: 'none',
+                }}>
+                  <span>🔍 Bei Flaconi ansehen</span>
+                  <span style={{ fontSize: '0.8rem', opacity: 0.75 }}>→</span>
+                </a>
+              </div>
+
+              <p style={{ textAlign: 'center', fontSize: '0.72rem', color: C.textLight, marginTop: '1rem' }}>
+                * Affiliate-Links – du zahlst nichts extra, wir erhalten eine kleine Provision.
+              </p>
+            </section>
+
+            {/* ── ÄHNLICHE DÜFTE AUS AURESSA ────────────────────────────── */}
+            {similarPerfumes.length > 0 && (
+              <section style={{ marginBottom: '2.5rem' }}>
+                <SectionHeading>Ähnliche Düfte aus Auressa</SectionHeading>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '0.75rem' }}>
+                  {similarPerfumes.map((perfume) => (
+                    <Link
+                      key={perfume.id}
+                      href={`/duft/${perfume.slug}`}
+                      style={{
+                        display: 'block', padding: '1.1rem',
+                        backgroundColor: C.cream, borderRadius: '12px',
+                        border: `1px solid ${C.sand}`, textDecoration: 'none',
+                        transition: 'all 0.2s ease',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.boxShadow = `0 4px 16px rgba(212,175,55,0.2)`;
+                        e.currentTarget.style.borderColor = C.gold;
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.boxShadow = 'none';
+                        e.currentTarget.style.borderColor = C.sand;
+                        e.currentTarget.style.transform = 'translateY(0)';
+                      }}
+                    >
+                      {perfume.image_url && (
+                        <div style={{ width: '100%', height: '90px', borderRadius: '8px', overflow: 'hidden', marginBottom: '0.75rem', backgroundColor: C.creamDark }}>
+                          <Image
+                            src={perfume.image_url}
+                            alt={perfume.perfume_name}
+                            width={200}
+                            height={90}
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                            unoptimized
+                          />
+                        </div>
+                      )}
+                      <div style={{ fontSize: '0.9rem', fontWeight: '700', color: C.dark, marginBottom: '0.25rem', lineHeight: 1.3 }}>{perfume.perfume_name}</div>
+                      <div style={{ fontSize: '0.8rem', color: C.goldMuted, fontWeight: '600', marginBottom: '0.45rem' }}>{perfume.brands?.name}</div>
+                      {perfume.fragrance_family && (
+                        <div style={{ fontSize: '0.75rem', color: C.textLight, marginBottom: '0.35rem' }}>{perfume.fragrance_family}</div>
+                      )}
+                      {perfume.price_chf && (
+                        <div style={{ fontSize: '0.88rem', fontWeight: '700', color: C.gold }}>CHF {perfume.price_chf}</div>
+                      )}
+                      <div style={{ marginTop: '0.6rem', fontSize: '0.75rem', color: C.goldMuted, fontWeight: '600' }}>
+                        Zum Duft →
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* ── KI-EMPFEHLUNGEN ───────────────────────────────────────── */}
+            {currentAnalysis.similarPerfumes && currentAnalysis.similarPerfumes.length > 0 && (
+              <section style={{ marginBottom: '2.5rem' }}>
+                <SectionHeading>Weitere Empfehlungen (KI)</SectionHeading>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                  {currentAnalysis.similarPerfumes.map((perf, i) => (
+                    <div key={i} style={{
+                      display: 'flex', gap: '1rem',
+                      backgroundColor: C.cream, border: `1px solid ${C.sand}`,
+                      borderRadius: '10px', padding: '0.9rem 1.1rem', alignItems: 'flex-start',
+                    }}>
+                      <div style={{ flexShrink: 0, width: '6px', height: '6px', borderRadius: '50%', backgroundColor: C.gold, marginTop: '0.5rem' }} />
+                      <div>
+                        <div style={{ fontSize: '0.9rem', fontWeight: '700', color: C.dark, marginBottom: '0.2rem' }}>{perf.name}</div>
+                        <div style={{ fontSize: '0.82rem', color: C.textMuted, lineHeight: 1.5 }}>{perf.reason}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+          </>
+        )}
+
+      </div>{/* end tabContentRef div */}
 
       {/* ── CTA ──────────────────────────────────────────────────────────── */}
       <div style={{ textAlign: 'center', paddingTop: '2rem', borderTop: `1px solid ${C.sand}` }}>
@@ -835,6 +1041,38 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
           Ein anderes Parfüm fotografieren?
         </p>
       </div>
+
+      {/* ── BACK TO TOP BUTTON ───────────────────────────────────────────── */}
+      {showBackToTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          style={{
+            position: 'fixed',
+            bottom: '5.5rem',
+            right: '1.25rem',
+            width: '44px',
+            height: '44px',
+            borderRadius: '50%',
+            backgroundColor: C.gold,
+            border: 'none',
+            color: C.dark,
+            fontSize: '1.1rem',
+            cursor: 'pointer',
+            boxShadow: '0 4px 16px rgba(212,175,55,0.4)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 200,
+            fontWeight: '700',
+            transition: 'transform 0.15s ease',
+          }}
+          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.transform = 'scale(1.1)'; }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.transform = 'scale(1)'; }}
+          title="Nach oben"
+        >
+          ↑
+        </button>
+      )}
 
     </div>
   );

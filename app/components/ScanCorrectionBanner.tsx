@@ -107,7 +107,7 @@ export default function ScanCorrectionBanner({ analysis, onCorrected }: ScanCorr
                   fontSize: '0.9rem', color: C.dark, backgroundColor: '#fff',
                   outline: 'none', boxSizing: 'border-box',
                 }}
-                placeholder="z.B. THE ROSE"
+                placeholder="z. B. Baccarat Rouge 540"
               />
             </div>
             <div>
@@ -123,7 +123,7 @@ export default function ScanCorrectionBanner({ analysis, onCorrected }: ScanCorr
                   fontSize: '0.9rem', color: C.dark, backgroundColor: '#fff',
                   outline: 'none', boxSizing: 'border-box',
                 }}
-                placeholder="z.B. Comotù"
+                placeholder="z. B. Chanel"
               />
             </div>
           </div>

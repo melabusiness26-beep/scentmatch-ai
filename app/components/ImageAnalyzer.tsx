@@ -5,7 +5,7 @@ import { ImageAnalysisResult } from '@/types/image-analysis';
 import ImageUploadButton from './ImageUploadButton';
 
 interface ImageAnalyzerProps {
-  onAnalysisComplete: (analysis: ImageAnalysisResult['data']) => void;
+  onAnalysisComplete: (analysis: ImageAnalysisResult['data'], imageBase64?: string) => void;
 }
 
 export default function ImageAnalyzer({ onAnalysisComplete }: ImageAnalyzerProps) {
@@ -30,7 +30,7 @@ export default function ImageAnalyzer({ onAnalysisComplete }: ImageAnalyzerProps
       console.log('[ImageAnalyzer] API-Daten geparst:', data);
 
       if (!data.success || !data.data) {
-        const errorMsg = data.error || 'Bild konnte nicht analysiert werden';
+        const errorMsg = data.error || 'Das Bild konnte leider nicht analysiert werden.';
         console.warn('[ImageAnalyzer] Analyse fehlgeschlagen:', errorMsg);
         setError(errorMsg);
         setIsLoading(false);
@@ -39,10 +39,10 @@ export default function ImageAnalyzer({ onAnalysisComplete }: ImageAnalyzerProps
 
       console.log('[ImageAnalyzer] Analyse erfolgreich');
       setIsLoading(false);
-      onAnalysisComplete(data.data);
+      onAnalysisComplete(data.data, base64);
     } catch (err) {
       console.error('[ImageAnalyzer] Fehler:', err);
-      setError('Fehler bei Bildanalyse – versuche es später erneut');
+      setError('Fehler bei der Bildanalyse – bitte versuche es später erneut.');
       setIsLoading(false);
     }
   };
@@ -69,7 +69,7 @@ export default function ImageAnalyzer({ onAnalysisComplete }: ImageAnalyzerProps
       )}
 
       <p style={{ fontSize: '13px', color: '#6b5a4e', textAlign: 'center', marginTop: '0.5rem' }}>
-        Flakon, Outfit oder Stimmung – wir lesen das Bild
+        Parfümflakon fotografieren – wir erkennen den Duft.
       </p>
     </div>
   );

@@ -30,6 +30,7 @@ const C = {
 export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProps) {
   const [stage, setStage] = useState<Stage>('scanner');
   const [analysis, setAnalysis] = useState<ImageAnalysisResult['data'] | null>(null);
+  const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [similarPerfumes, setSimilarPerfumes] = useState<Perfume[]>([]);
   const [dbMatch, setDbMatch] = useState<Perfume | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -41,8 +42,9 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
     setHistory(getScanHistory());
   }, []);
 
-  const handleAnalysisComplete = (analysisData: ImageAnalysisResult['data']) => {
+  const handleAnalysisComplete = (analysisData: ImageAnalysisResult['data'], image: string) => {
     setAnalysis(analysisData);
+    setUploadedImage(image);
     setIsLoading(true);
 
     // DB-Lookup: Ist der Duft in Auressa? (Name + Marke + Noten)
@@ -97,6 +99,7 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
         similarPerfumes={similarPerfumes}
         onNewSearch={handleNewSearch}
         dbMatch={dbMatch}
+        uploadedImage={uploadedImage}
       />
     );
   }
@@ -119,7 +122,7 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
           </p>
           <p style={{ fontSize: '14px', color: C.textLight, marginBottom: '2rem' }}>
             Leider haben wir keine ähnlichen Düfte in unserem Katalog gefunden, die dieser Beschreibung
-            entsprechen. Schau dir aber den Duft selbst an!
+            entsprechen. Versuche eine neue Suche oder schau den Duft direkt beim Händler an.
           </p>
           <p style={{ fontSize: '14px', color: C.textMuted, marginBottom: '2rem', lineHeight: 1.6 }}>
             {analysis.generalDescription}
@@ -164,7 +167,7 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
           Fotografiere einen Parfüm-Flakon – wir analysieren ihn und zeigen dir ähnliche Düfte.
         </p>
 
-        <ImageAnalyzer onAnalysisComplete={handleAnalysisComplete} />
+        <ImageAnalyzer onAnalysisComplete={(data: ImageAnalysisResult['data'], img?: string) => handleAnalysisComplete(data, img || '')} />
       </div>
 
       {/* Scan history */}

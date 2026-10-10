@@ -3,31 +3,32 @@
 import { useEffect, useState } from 'react';
 
 const STEPS = [
-  { icon: '📸', text: 'Bild wird analysiert...' },
-  { icon: '🧪', text: 'Duftnoten werden erkannt...' },
-  { icon: '🔍', text: 'Parfüm wird identifiziert...' },
-  { icon: '✨', text: 'Profil wird erstellt...' },
+  'Parfüm wird erkannt …',
+  'Duftnoten werden analysiert …',
+  'Profil wird erstellt …',
 ];
 
 export default function LoadingAnimation() {
-  const [stepIndex, setStepIndex] = useState(0);
-  const [dots, setDots] = useState('');
+  const [step, setStep] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const stepTimer = setInterval(() => {
-      setStepIndex((i) => (i + 1) % STEPS.length);
-    }, 1400);
-    return () => clearInterval(stepTimer);
+    // Progress bar läuft in ~8s durch (optimistic — Haiku ist schnell)
+    const start = Date.now();
+    const duration = 8000;
+    const frame = () => {
+      const elapsed = Date.now() - start;
+      const p = Math.min(95, (elapsed / duration) * 100);
+      setProgress(p);
+      if (p < 95) requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
   }, []);
 
   useEffect(() => {
-    const dotTimer = setInterval(() => {
-      setDots((d) => (d.length >= 3 ? '' : d + '.'));
-    }, 400);
-    return () => clearInterval(dotTimer);
+    const t = setInterval(() => setStep(s => (s + 1) % STEPS.length), 2200);
+    return () => clearInterval(t);
   }, []);
-
-  const current = STEPS[stepIndex];
 
   return (
     <div style={{
@@ -35,101 +36,93 @@ export default function LoadingAnimation() {
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      minHeight: '420px',
-      gap: '2.5rem',
-      padding: '2rem',
+      minHeight: '380px',
+      padding: '2rem 1.5rem',
+      gap: '2rem',
     }}>
 
-      {/* Animated perfume bottle */}
-      <div style={{ position: 'relative', width: '80px', height: '80px' }}>
-        {/* Outer ring */}
+      {/* Flakon-Icon mit Puls */}
+      <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        {/* Pulsringe */}
         <div style={{
           position: 'absolute',
-          inset: 0,
-          border: '2px solid rgba(212,175,55,0.15)',
+          width: '90px', height: '90px',
           borderRadius: '50%',
-          animation: 'scanRingOuter 2s linear infinite',
+          border: '1.5px solid rgba(212,175,55,0.25)',
+          animation: 'pulse 2s ease-out infinite',
         }} />
-        {/* Middle ring */}
         <div style={{
           position: 'absolute',
-          inset: '8px',
-          border: '2px solid rgba(212,175,55,0.3)',
+          width: '70px', height: '70px',
           borderRadius: '50%',
-          animation: 'scanRingMid 1.5s linear infinite reverse',
+          border: '1.5px solid rgba(212,175,55,0.4)',
+          animation: 'pulse 2s ease-out 0.6s infinite',
         }} />
-        {/* Inner spinner */}
+        {/* Icon */}
         <div style={{
-          position: 'absolute',
-          inset: '16px',
-          border: '3px solid rgba(212,175,55,0.1)',
-          borderTop: '3px solid #d4af37',
+          width: '52px', height: '52px',
           borderRadius: '50%',
-          animation: 'spin 0.8s linear infinite',
-        }} />
-        {/* Center icon */}
-        <div style={{
-          position: 'absolute',
-          inset: '50%',
-          transform: 'translate(-50%, -50%)',
-          fontSize: '1.4rem',
-          lineHeight: 1,
-          transition: 'opacity 0.3s ease',
+          background: 'linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.05))',
+          border: '1.5px solid rgba(212,175,55,0.5)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          fontSize: '1.5rem',
         }}>
-          {current.icon}
+          🔍
         </div>
       </div>
 
-      {/* Step text */}
-      <div style={{ textAlign: 'center', maxWidth: '320px' }}>
+      {/* Headline */}
+      <div style={{ textAlign: 'center' }}>
         <h3 style={{
-          fontSize: '20px',
+          fontSize: '1.25rem',
           fontFamily: "'Playfair Display', serif",
-          fontWeight: 700,
           color: '#2a1d12',
-          marginBottom: '0.6rem',
-          minHeight: '28px',
-          transition: 'opacity 0.3s ease',
+          margin: '0 0 0.4rem',
+          fontWeight: 700,
         }}>
-          KI analysiert deinen Duft{dots}
+          Die KI analysiert deinen Duft
         </h3>
         <p style={{
-          fontSize: '15px',
-          color: '#7a6a5e',
+          fontSize: '14px',
+          color: '#9a8a7e',
           margin: 0,
-          minHeight: '22px',
-          transition: 'all 0.3s ease',
+          minHeight: '20px',
+          transition: 'opacity 0.4s ease',
         }}>
-          {current.text}
+          {STEPS[step]}
         </p>
       </div>
 
-      {/* Progress steps */}
-      <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-        {STEPS.map((_, i) => (
-          <div key={i} style={{
-            width: i === stepIndex ? '24px' : '8px',
-            height: '8px',
-            borderRadius: '4px',
-            backgroundColor: i === stepIndex ? '#d4af37' : i < stepIndex ? 'rgba(212,175,55,0.4)' : 'rgba(212,175,55,0.15)',
-            transition: 'all 0.4s ease',
+      {/* Progress bar */}
+      <div style={{ width: '100%', maxWidth: '280px' }}>
+        <div style={{
+          height: '3px',
+          background: 'rgba(212,175,55,0.15)',
+          borderRadius: '2px',
+          overflow: 'hidden',
+        }}>
+          <div style={{
+            height: '100%',
+            width: `${progress}%`,
+            background: 'linear-gradient(90deg, #b08b4f, #d4af37)',
+            borderRadius: '2px',
+            transition: 'width 0.1s linear',
           }} />
-        ))}
+        </div>
+        <p style={{
+          fontSize: '12px',
+          color: '#b0a098',
+          textAlign: 'center',
+          marginTop: '0.6rem',
+        }}>
+          Dauert meist 5–10 Sekunden …
+        </p>
       </div>
 
       <style>{`
-        @keyframes spin {
-          to { transform: rotate(360deg); }
-        }
-        @keyframes scanRingOuter {
-          0% { transform: rotate(0deg) scale(1); opacity: 0.5; }
-          50% { transform: rotate(180deg) scale(1.05); opacity: 1; }
-          100% { transform: rotate(360deg) scale(1); opacity: 0.5; }
-        }
-        @keyframes scanRingMid {
-          0% { transform: rotate(0deg); opacity: 0.4; }
-          50% { opacity: 0.9; }
-          100% { transform: rotate(360deg); opacity: 0.4; }
+        @keyframes pulse {
+          0% { transform: scale(0.8); opacity: 0.8; }
+          100% { transform: scale(1.6); opacity: 0; }
         }
       `}</style>
     </div>

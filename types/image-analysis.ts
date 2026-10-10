@@ -51,6 +51,7 @@ export interface ImageAnalysisResult {
     famouswearers?: string[] | null;
     history?: string | null;
     similarPerfumes?: Array<{ name: string; reason: string }> | null;
+    estimatedPrice?: string | null;
   };
   error?: string;
 }

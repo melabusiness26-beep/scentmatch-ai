@@ -42,10 +42,14 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
     setHistory(getScanHistory());
   }, []);
 
+  const handleScanningChange = (scanning: boolean) => {
+    setIsLoading(scanning);
+  };
+
   const handleAnalysisComplete = (analysisData: ImageAnalysisResult['data'], image: string) => {
+    setIsLoading(false);
     setAnalysis(analysisData);
     setUploadedImage(image);
-    setIsLoading(true);
 
     // DB-Lookup: Ist der Duft in Auressa? (Name + Marke + Noten)
     const found = findPerfumeInDB(analysisData.perfumeName, analysisData.brandName, analysisData.notes, allPerfumes);
@@ -63,7 +67,6 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
       setSimilarPerfumes(similar);
       setStage('results');
     }
-    setIsLoading(false);
   };
 
   const handleNewSearch = () => {
@@ -167,7 +170,10 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
           Fotografiere einen Parfüm-Flakon – wir analysieren ihn und zeigen dir ähnliche Düfte.
         </p>
 
-        <ImageAnalyzer onAnalysisComplete={(data: ImageAnalysisResult['data'], img?: string) => handleAnalysisComplete(data, img || '')} />
+        <ImageAnalyzer
+          onAnalysisComplete={(data: ImageAnalysisResult['data'], img?: string) => handleAnalysisComplete(data, img || '')}
+          onLoadingChange={handleScanningChange}
+        />
       </div>
 
       {/* Scan history */}

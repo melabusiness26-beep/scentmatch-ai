@@ -6,14 +6,16 @@ import ImageUploadButton from './ImageUploadButton';
 
 interface ImageAnalyzerProps {
   onAnalysisComplete: (analysis: ImageAnalysisResult['data'], imageBase64?: string) => void;
+  onLoadingChange?: (loading: boolean) => void;
 }
 
-export default function ImageAnalyzer({ onAnalysisComplete }: ImageAnalyzerProps) {
+export default function ImageAnalyzer({ onAnalysisComplete, onLoadingChange }: ImageAnalyzerProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleImageSelected = async (base64: string) => {
     setIsLoading(true);
+    onLoadingChange?.(true);
     setError(null);
 
     try {
@@ -39,11 +41,13 @@ export default function ImageAnalyzer({ onAnalysisComplete }: ImageAnalyzerProps
 
       console.log('[ImageAnalyzer] Analyse erfolgreich');
       setIsLoading(false);
+      onLoadingChange?.(false);
       onAnalysisComplete(data.data, base64);
     } catch (err) {
       console.error('[ImageAnalyzer] Fehler:', err);
       setError('Fehler bei der Bildanalyse – bitte versuche es später erneut.');
       setIsLoading(false);
+      onLoadingChange?.(false);
     }
   };
 

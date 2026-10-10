@@ -471,14 +471,12 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
             </p>
           )}
 
-          {dbMatch && (
-            <p style={{ fontSize: '0.75rem', color: 'rgba(212,175,55,0.55)', marginBottom: '1rem', letterSpacing: '0.03em' }}>
-              ✓ Daten aus Auressa-Datenbank
-            </p>
-          )}
+          <p style={{ fontSize: '0.75rem', color: 'rgba(212,175,55,0.55)', marginBottom: '1rem', letterSpacing: '0.03em' }}>
+            {dbMatch ? '✓ Verifizierte Daten aus Auressa-Datenbank' : '🤖 KI-Erkennung – Angaben sind Schätzungen'}
+          </p>
 
-          {/* Sternebewertung */}
-          {currentAnalysis.rating && currentAnalysis.rating > 0 && (
+          {/* Sternebewertung — nur wenn DB-Match, sonst irreführend */}
+          {dbMatch && currentAnalysis.rating && currentAnalysis.rating > 0 && (
             <StarRating rating={currentAnalysis.rating} />
           )}
 
@@ -521,22 +519,22 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
               <SectionHeading>Steckbrief</SectionHeading>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '0.75rem' }}>
                 {[
-                  currentAnalysis.concentration && { icon: '🧴', label: 'Konzentration', value: currentAnalysis.concentration },
-                  currentAnalysis.family && { icon: '🌸', label: 'Duftfamilie', value: currentAnalysis.family },
-                  { icon: '👥', label: 'Geschlecht', value: genderLabel },
-                  currentAnalysis.origin && { icon: '🌍', label: 'Herkunft', value: currentAnalysis.origin },
-                  currentAnalysis.year && { icon: '📅', label: 'Jahr', value: String(currentAnalysis.year) },
-                  currentAnalysis.parfumeur && { icon: '👃', label: 'Parfümeur', value: currentAnalysis.parfumeur },
-                  dbMatch?.price_chf && { icon: '💰', label: 'Preis (CH)', value: `CHF ${dbMatch.price_chf}` },
-                  dbMatch?.season && { icon: '🍂', label: 'Saison', value: dbMatch.season },
-                  currentAnalysis.bottleDescription && { icon: '🫙', label: 'Flakon', value: currentAnalysis.bottleDescription },
-                  intensityInfo && { icon: intensityInfo.emoji, label: 'Intensität', value: intensityInfo.label },
+                  currentAnalysis.concentration && { icon: '🧴', label: 'Konzentration', value: currentAnalysis.concentration, estimated: !dbMatch },
+                  currentAnalysis.family && { icon: '🌸', label: 'Duftfamilie', value: currentAnalysis.family, estimated: !dbMatch },
+                  { icon: '👥', label: 'Geschlecht', value: genderLabel, estimated: !dbMatch },
+                  currentAnalysis.origin && { icon: '🌍', label: 'Herkunft', value: currentAnalysis.origin, estimated: !dbMatch },
+                  currentAnalysis.year && { icon: '📅', label: 'Jahr', value: String(currentAnalysis.year), estimated: !dbMatch },
+                  currentAnalysis.parfumeur && { icon: '👃', label: 'Parfümeur', value: currentAnalysis.parfumeur, estimated: !dbMatch },
+                  dbMatch?.price_chf && { icon: '💰', label: 'Preis (CH)', value: `CHF ${dbMatch.price_chf}`, estimated: false },
+                  dbMatch?.season && { icon: '🍂', label: 'Saison', value: dbMatch.season, estimated: false },
+                  currentAnalysis.bottleDescription && { icon: '🫙', label: 'Flakon', value: currentAnalysis.bottleDescription, estimated: false },
+                  intensityInfo && { icon: intensityInfo.emoji, label: 'Intensität', value: intensityInfo.label, estimated: !dbMatch },
                 ].filter(Boolean).map((item) => {
-                  const it = item as { icon: string; label: string; value: string };
+                  const it = item as { icon: string; label: string; value: string; estimated: boolean };
                   return (
                     <div key={it.label} style={{
                       backgroundColor: C.cream,
-                      border: `1px solid ${C.sand}`,
+                      border: `1px solid ${it.estimated ? '#e0d0b0' : C.sand}`,
                       borderRadius: '10px',
                       padding: '0.85rem 1rem',
                       display: 'flex', flexDirection: 'column', gap: '0.25rem',
@@ -544,6 +542,11 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                     }}>
                       <div style={{ fontSize: '0.7rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                         {it.icon} {it.label}
+                        {it.estimated && (
+                          <span style={{ marginLeft: '0.3rem', fontSize: '0.6rem', color: '#a08040', fontWeight: '600', letterSpacing: '0.02em', textTransform: 'none' }}>
+                            (KI)
+                          </span>
+                        )}
                       </div>
                       <div style={{ fontSize: '0.9rem', color: C.dark, fontWeight: '600' }}>{it.value}</div>
                     </div>
@@ -782,6 +785,11 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
             {/* ── BEWERTUNGEN + DNA ─────────────────────────────────────── */}
             <section style={{ marginBottom: '2.5rem' }}>
               <SectionHeading>Bewertungen & Duft-DNA</SectionHeading>
+              {!dbMatch && (
+                <p style={{ fontSize: '0.78rem', color: '#a08040', marginBottom: '1rem', fontStyle: 'italic' }}>
+                  🤖 Diese Werte sind KI-Schätzungen und können von der Realität abweichen.
+                </p>
+              )}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
                 {(currentAnalysis.longevity || currentAnalysis.sillage || currentAnalysis.projection || currentAnalysis.uniqueness || currentAnalysis.priceValue) && (
                   <Card>

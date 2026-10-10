@@ -488,7 +488,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                   currentAnalysis.parfumeur && { icon: '👃', label: 'Parfümeur', value: currentAnalysis.parfumeur },
                   dbMatch?.price_chf && { icon: '💰', label: 'Preis (CH)', value: `CHF ${dbMatch.price_chf}` },
                   dbMatch?.season && { icon: '🍂', label: 'Saison', value: dbMatch.season },
-                  currentAnalysis.bottleDescription && { icon: '🫙', label: 'Flakon', value: currentAnalysis.bottleDescription.length > 80 ? currentAnalysis.bottleDescription.slice(0, 80).trimEnd() + ' …' : currentAnalysis.bottleDescription },
+                  currentAnalysis.bottleDescription && { icon: '🫙', label: 'Flakon', value: currentAnalysis.bottleDescription.length > 100 ? currentAnalysis.bottleDescription.slice(0, 100).trimEnd() + ' …' : currentAnalysis.bottleDescription },
                   intensityInfo && { icon: intensityInfo.emoji, label: 'Intensität', value: intensityInfo.label },
                 ].filter(Boolean).map((item) => {
                   const it = item as { icon: string; label: string; value: string };
@@ -984,7 +984,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           style={{
             position: 'fixed',
-            bottom: '1.5rem',
+            bottom: '5.5rem',
             right: '1.25rem',
             width: '44px',
             height: '44px',

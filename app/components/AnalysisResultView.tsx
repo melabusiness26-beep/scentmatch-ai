@@ -392,14 +392,22 @@ const ScanShareImageButton = ({
 
     ctx.save();
     ctx.fillStyle = 'rgba(212,175,55,0.8)';
-    ctx.font = '500 28px Inter, Arial, sans-serif';
-    (ctx as any).letterSpacing = '8px';
     ctx.textAlign = 'center';
-    ctx.fillText('AURESSA', 540, 90);
-    ctx.fillStyle = 'rgba(212,175,55,0.35)';
-    ctx.font = '400 15px Inter, Arial, sans-serif';
-    (ctx as any).letterSpacing = '4px';
-    ctx.fillText('DUFT-SCANNER', 540, 118);
+    // ctx.letterSpacing is Chrome-only; iOS Safari ignores it.
+    // Workaround: manually space out letters for spaced text.
+    const drawSpaced = (text: string, x: number, y: number, spacing: number, font: string, fillStyle: string) => {
+      ctx.font = font;
+      ctx.fillStyle = fillStyle;
+      const chars = text.split('');
+      const totalWidth = chars.reduce((acc, ch) => acc + ctx.measureText(ch).width, 0) + spacing * (chars.length - 1);
+      let cx = x - totalWidth / 2;
+      for (const ch of chars) {
+        ctx.fillText(ch, cx + ctx.measureText(ch).width / 2, y);
+        cx += ctx.measureText(ch).width + spacing;
+      }
+    };
+    drawSpaced('AURESSA', 540, 90, 8, '500 28px Inter, Arial, sans-serif', 'rgba(212,175,55,0.8)');
+    drawSpaced('DUFT-SCANNER', 540, 118, 4, '400 15px Inter, Arial, sans-serif', 'rgba(212,175,55,0.35)');
     ctx.restore();
 
     ctx.save();

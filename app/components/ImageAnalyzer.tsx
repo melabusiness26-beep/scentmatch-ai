@@ -5,7 +5,7 @@ import { ImageAnalysisResult } from '@/types/image-analysis';
 import ImageUploadButton from './ImageUploadButton';
 
 interface ImageAnalyzerProps {
-  onAnalysisComplete: (analysis: ImageAnalysisResult['data']) => void;
+  onAnalysisComplete: (analysis: ImageAnalysisResult['data'], imageBase64?: string) => void;
 }
 
 export default function ImageAnalyzer({ onAnalysisComplete }: ImageAnalyzerProps) {
@@ -39,7 +39,7 @@ export default function ImageAnalyzer({ onAnalysisComplete }: ImageAnalyzerProps
 
       console.log('[ImageAnalyzer] Analyse erfolgreich');
       setIsLoading(false);
-      onAnalysisComplete(data.data);
+      onAnalysisComplete(data.data, base64);
     } catch (err) {
       console.error('[ImageAnalyzer] Fehler:', err);
       setError('Fehler bei Bildanalyse – versuche es später erneut');

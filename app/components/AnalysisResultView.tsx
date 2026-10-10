@@ -12,6 +12,7 @@ interface AnalysisResultViewProps {
   similarPerfumes: Perfume[];
   onNewSearch: () => void;
   dbMatch?: Perfume | null;
+  uploadedImage?: string | null;
 }
 
 // ─── Design Tokens ───────────────────────────────────────────────────────────
@@ -303,7 +304,7 @@ const StickyTabBar = ({
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
-export default function AnalysisResultView({ analysis, similarPerfumes, onNewSearch, dbMatch }: AnalysisResultViewProps) {
+export default function AnalysisResultView({ analysis, similarPerfumes, onNewSearch, dbMatch, uploadedImage }: AnalysisResultViewProps) {
   const [currentAnalysis, setCurrentAnalysis] = useState(analysis);
   const [activeTab, setActiveTab] = useState<TabId>('profil');
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -333,8 +334,9 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
   // Beschreibungstext: DB bevorzugen
   const displayDescription = dbMatch?.description || currentAnalysis.poeticDescription || currentAnalysis.generalDescription;
 
-  // Bild: DB bevorzugen
+  // Bild: DB bevorzugen, dann hochgeladenes Scan-Bild als Fallback
   const displayImage = dbMatch?.image_url || null;
+  const heroImage = displayImage || uploadedImage || null;
 
   // Geschlecht: DB bevorzugen
   const dbGender = dbMatch?.gender;
@@ -366,6 +368,34 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
         onCorrected={(updated) => setCurrentAnalysis(updated)}
       />
 
+      {/* ── KONFIDENZ-WARNUNG (nur wenn kein DB-Match + niedrige/mittlere KI-Konfidenz) ── */}
+      {!dbMatch && (currentAnalysis.confidence === 'low' || currentAnalysis.confidence === 'medium') && (
+        <div style={{
+          display: 'flex', alignItems: 'flex-start', gap: '0.75rem',
+          backgroundColor: currentAnalysis.confidence === 'low' ? '#fff8e6' : '#fffbf0',
+          border: `1px solid ${currentAnalysis.confidence === 'low' ? '#f5c842' : '#e8d875'}`,
+          borderLeft: `4px solid ${currentAnalysis.confidence === 'low' ? '#d4a017' : '#c9b848'}`,
+          borderRadius: '10px',
+          padding: '0.9rem 1.1rem',
+          marginBottom: '1.25rem',
+          fontSize: '0.85rem',
+          color: '#6b5205',
+          lineHeight: 1.55,
+        }}>
+          <span style={{ fontSize: '1.1rem', flexShrink: 0, marginTop: '0.05rem' }}>
+            {currentAnalysis.confidence === 'low' ? '⚠️' : 'ℹ️'}
+          </span>
+          <div>
+            <strong style={{ display: 'block', marginBottom: '0.2rem', color: '#5a4200' }}>
+              {currentAnalysis.confidence === 'low' ? 'Niedrige KI-Konfidenz' : 'Mittlere KI-Konfidenz'}
+            </strong>
+            {currentAnalysis.confidence === 'low'
+              ? 'Das Bild war schwer zu erkennen – das Ergebnis könnte ungenau sein. Versuche ein klareres Foto direkt auf den Flakon.'
+              : 'Die KI ist sich nicht ganz sicher. Stimmt der Duft? Falls nicht, kannst du das Ergebnis unten korrigieren.'}
+          </div>
+        </div>
+      )}
+
       {/* ── 1. HERO ─────────────────────────────────────────────────────── */}
       <section style={{
         background: `linear-gradient(160deg, #1a1108 0%, ${C.dark} 55%, #3a2518 100%)`,
@@ -375,21 +405,32 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
         overflow: 'hidden',
         boxShadow: '0 10px 40px rgba(42,29,18,0.22)',
       }}>
-        {/* Bild oben wenn vorhanden */}
-        {displayImage && (
+        {/* Bild oben wenn vorhanden (DB-Bild oder hochgeladenes Scan-Bild) */}
+        {heroImage && (
           <div style={{ position: 'relative', width: '100%', height: '220px', overflow: 'hidden' }}>
-            <Image
-              src={displayImage}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={heroImage.startsWith('data:') ? heroImage : heroImage}
               alt={`${displayName} von ${displayBrand}`}
-              fill
-              style={{ objectFit: 'cover', objectPosition: 'center top', opacity: 0.75 }}
-              unoptimized
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', opacity: uploadedImage && !displayImage ? 0.55 : 0.75 }}
             />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 40%, #1a1108 100%)' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 30%, #1a1108 100%)' }} />
+            {/* Label wenn Scan-Bild (kein DB-Bild) */}
+            {uploadedImage && !displayImage && (
+              <div style={{
+                position: 'absolute', top: '0.75rem', right: '0.75rem',
+                backgroundColor: 'rgba(42,29,18,0.75)', backdropFilter: 'blur(4px)',
+                color: 'rgba(212,175,55,0.9)', fontSize: '0.68rem', fontWeight: '700',
+                letterSpacing: '0.05em', padding: '0.2rem 0.6rem', borderRadius: '10px',
+                border: '1px solid rgba(212,175,55,0.3)',
+              }}>
+                📸 Dein Scan
+              </div>
+            )}
           </div>
         )}
 
-        <div style={{ padding: displayImage ? '0 2rem 2.5rem' : '3rem 2rem 2.5rem', textAlign: 'center' }}>
+        <div style={{ padding: heroImage ? '0 2rem 2.5rem' : '3rem 2rem 2.5rem', textAlign: 'center' }}>
           {/* Badge */}
           <div style={{ marginBottom: '1rem' }}>
             <span style={{
@@ -836,8 +877,8 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
             <section style={{ marginBottom: '2.5rem' }}>
               <SectionHeading>Duft kaufen</SectionHeading>
 
-              {/* Preis wenn bekannt */}
-              {dbMatch?.price_chf && (
+              {/* Preis: DB-Preis bevorzugen, sonst KI-Schätzung */}
+              {(dbMatch?.price_chf || currentAnalysis.estimatedPrice) && (
                 <div style={{
                   textAlign: 'center',
                   marginBottom: '1.5rem',
@@ -846,10 +887,24 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                   borderRadius: '12px',
                   border: `1px solid #f0e0a0`,
                 }}>
-                  <div style={{ fontSize: '0.75rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.4rem' }}>Preis</div>
-                  <div style={{ fontSize: '2rem', fontWeight: '800', color: C.dark, fontFamily: "'Playfair Display', serif" }}>
-                    CHF {dbMatch.price_chf}
-                  </div>
+                  {dbMatch?.price_chf ? (
+                    <>
+                      <div style={{ fontSize: '0.75rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.4rem' }}>Preis</div>
+                      <div style={{ fontSize: '2rem', fontWeight: '800', color: C.dark, fontFamily: "'Playfair Display', serif" }}>
+                        CHF {dbMatch.price_chf}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div style={{ fontSize: '0.75rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.4rem' }}>KI-Preisschätzung 🤖</div>
+                      <div style={{ fontSize: '1.6rem', fontWeight: '800', color: C.dark, fontFamily: "'Playfair Display', serif" }}>
+                        {currentAnalysis.estimatedPrice}
+                      </div>
+                      <div style={{ fontSize: '0.72rem', color: C.textLight, marginTop: '0.3rem' }}>
+                        Geschätzter Schweizer Marktpreis – kann variieren
+                      </div>
+                    </>
+                  )}
                 </div>
               )}
 

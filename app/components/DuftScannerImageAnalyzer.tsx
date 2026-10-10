@@ -5,7 +5,7 @@ import { ImageAnalysisResult } from '@/types/image-analysis';
 import ImageUploadButton from './ImageUploadButton';
 
 interface DuftScannerImageAnalyzerProps {
-  onAnalysisComplete: (data: ImageAnalysisResult['data']) => void;
+  onAnalysisComplete: (data: ImageAnalysisResult['data'], uploadedImage: string) => void;
 }
 
 export default function DuftScannerImageAnalyzer({ onAnalysisComplete }: DuftScannerImageAnalyzerProps) {
@@ -36,7 +36,7 @@ export default function DuftScannerImageAnalyzer({ onAnalysisComplete }: DuftSca
       }
 
       setIsLoading(false);
-      onAnalysisComplete(data.data as ImageAnalysisResult['data']);
+      onAnalysisComplete(data.data as ImageAnalysisResult['data'], base64);
     } catch (err) {
       console.error('[DuftScannerImageAnalyzer] Fehler:', err);
       setError('Fehler bei Bildanalyse – versuche es später erneut');

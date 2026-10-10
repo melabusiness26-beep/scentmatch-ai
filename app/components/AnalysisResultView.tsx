@@ -273,7 +273,7 @@ const ScanShareImageButton = ({ name, brand, family, topNotes, confidence, dbMat
     // If uploaded image, draw it faded at top
     if (uploadedImage) {
       try {
-        const img = new Image();
+        const img = new window.Image();
         await new Promise<void>((res, rej) => {
           img.onload = () => res();
           img.onerror = () => rej();

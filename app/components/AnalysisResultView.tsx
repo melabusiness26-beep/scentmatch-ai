@@ -311,12 +311,12 @@ const ScanShareImageButton = ({ name, brand, family, topNotes, confidence, dbMat
     ctx.save();
     ctx.fillStyle = 'rgba(212,175,55,0.8)';
     ctx.font = '500 28px Inter, Arial, sans-serif';
-    ctx.letterSpacing = '8px';
+    (ctx as any).letterSpacing = '8px';
     ctx.textAlign = 'center';
     ctx.fillText('AURESSA', 540, 90);
     ctx.fillStyle = 'rgba(212,175,55,0.35)';
     ctx.font = '400 15px Inter, Arial, sans-serif';
-    ctx.letterSpacing = '4px';
+    (ctx as any).letterSpacing = '4px';
     ctx.fillText('DUFT-SCANNER', 540, 118);
     ctx.restore();
 
@@ -340,7 +340,7 @@ const ScanShareImageButton = ({ name, brand, family, topNotes, confidence, dbMat
     ctx.fillStyle = `${badgeColor}22`;
     const bx = badgeX - badgeWidth / 2;
     ctx.beginPath();
-    ctx.roundRect(bx, 160, badgeWidth, 42, 21);
+    (ctx as any).roundRect(bx, 160, badgeWidth, 42, 21);
     ctx.fill();
     ctx.strokeStyle = badgeColor;
     ctx.lineWidth = 1.5;

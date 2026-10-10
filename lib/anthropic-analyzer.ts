@@ -40,23 +40,28 @@ export async function analyzeImageWithAnthropic(
               },
               {
                 type: 'text',
-                text: `Du bist ein Parfüm-Experte. Analysiere das Bild und erkenne das Parfüm. Antworte NUR mit JSON (kein Markdown, keine Erklärungen).
+                text: `Du bist ein Weltklasse-Parfüm-Experte mit Zugang zu einer Datenbank von 410+ Düften. Analysiere das Bild PRÄZISE. Antworte NUR mit JSON (kein Markdown, keine Erklärungen).
+
+ERKENNUNGS-PRIORITÄT:
+1. Lies zuerst ALLES auf dem Flakon: Markenname, Duftname, Konzentration (EdP/EdT/Parfum), Jahrgang.
+2. Achte auf Form, Farbe und Design des Flakons — viele Parfüms erkennst du allein daran.
+3. Bekannte Flakons: Chanel N°5 = goldener eckiger Flakon; Dior Sauvage = blaue Flasche; YSL Black Opium = schwarzer Glitzer; La Vie Est Belle = geschwungener Flakon etc.
 
 WICHTIGE REGELN:
-1. "perfumeName" und "brandName": Nur was du auf dem Flakon LIEST oder mit sehr hoher Sicherheit erkennst. Kein Raten.
-2. Noten, Bewertungen (rating, sillage etc.): NUR wenn du den Duft wirklich kennst. Sonst null.
-3. "confidence": "high" = du bist >90% sicher; "medium" = 60-90%; "low" = <60% oder unsicher.
-4. Bei low/medium confidence: setze rating, sillage, longevity, projection, uniqueness, priceValue auf null.
-5. duftDNA, duftJourney, comparisonPerfumes: nur wenn du den Duft sicher kennst. Sonst null.
-6. estimatedPrice: nur wenn bekannt, sonst null. Format: "ca. 80–150 CHF".
-7. Alle Noten auf DEUTSCH. Keine erfundenen Noten.
-8. "family": eine von: floral, woody, fresh, oriental, gourmand, chypre, fougere, aquatic, spicy. Nur wenn bekannt.
-9. generalDescription und bottleDescription: was du SIEHST und weisst. Keine Erfindungen.
+1. "perfumeName": EXAKT wie auf dem Flakon. Z.B. "N°5" nicht "No.5", "La Vie Est Belle" nicht "La vie est belle".
+2. "brandName": EXAKT wie auf dem Flakon. Z.B. "Yves Saint Laurent" nicht "YSL".
+3. "confidence": "high" = >90% sicher (du liest es oder erkennst es eindeutig); "medium" = 60-90%; "low" = <60%.
+4. Bei "medium" oder "low": rating, sillage, longevity, projection, uniqueness, priceValue = null.
+5. Bei "high": Fülle ALLE Felder aus die du kennst — notes, history, characterTags, perfectMoment etc.
+6. estimatedPrice: Schweizer Franken, nur wenn bekannt. Z.B. "ca. 120–160 CHF".
+7. Noten NUR auf DEUTSCH. Keine erfundenen Noten. Bekannte Düfte = bekannte Noten.
+8. "family": floral, woody, fresh, oriental, gourmand, chypre, fougere, aquatic, oder spicy.
+9. generalDescription: Schreib einen echten, informativen Satz über diesen Duft.
 
 JSON-Format (null = unbekannt/unsicher):
-{"perfumeName":"Exakter Name vom Flakon","brandName":"Exakte Marke","confidence":"high","year":null,"parfumeur":null,"concentration":null,"family":"floral","gender":"woman","rating":null,"sillage":null,"longevity":null,"projection":null,"uniqueness":null,"priceValue":null,"estimatedPrice":null,"notes":{"top":[],"heart":[],"base":[]},"duftDNA":null,"poeticDescription":null,"duftJourney":null,"characterTags":[],"personalityType":null,"mood":null,"seasonRecommendation":null,"occasion":[],"climate":[],"perfectMoment":null,"comparisonPerfumes":null,"funFacts":[],"famouswearers":null,"history":null,"similarPerfumes":[],"generalDescription":"Was du über diesen Duft weisst.","development":{"opening":"","middleGame":"","drydown":""},"usageRecommendations":{"occasions":[],"seasons":[],"timeOfDay":[]},"bottleDescription":"Was du auf dem Bild siehst.","intensity":"medium"}
+{"perfumeName":"Exakter Name","brandName":"Exakte Marke","confidence":"high","year":null,"parfumeur":null,"concentration":null,"family":"floral","gender":"woman","rating":null,"sillage":null,"longevity":null,"projection":null,"uniqueness":null,"priceValue":null,"estimatedPrice":null,"notes":{"top":[],"heart":[],"base":[]},"duftDNA":null,"poeticDescription":null,"duftJourney":null,"characterTags":[],"personalityType":null,"mood":null,"seasonRecommendation":null,"occasion":[],"climate":[],"perfectMoment":null,"comparisonPerfumes":null,"funFacts":[],"famouswearers":null,"history":null,"similarPerfumes":[],"generalDescription":"Informativer Satz über diesen Duft.","development":{"opening":"","middleGame":"","drydown":""},"usageRecommendations":{"occasions":[],"seasons":[],"timeOfDay":[]},"bottleDescription":"Was du siehst.","intensity":"medium"}
 
-Wenn du den Parfümnamen NICHT lesen/erkennen kannst: confidence = "low", perfumeName = "Unbekanntes Parfüm", brandName = "Unbekannte Marke".`,
+Wenn NICHT erkennbar: confidence="low", perfumeName="Unbekanntes Parfüm", brandName="Unbekannte Marke".`,
               },
             ],
           },

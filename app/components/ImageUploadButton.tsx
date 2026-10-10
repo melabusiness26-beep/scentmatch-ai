@@ -22,13 +22,13 @@ export default function ImageUploadButton({
 
     const maxSizeMB = 5;
     if (file.size > maxSizeMB * 1024 * 1024) {
-      alert(`Bild zu groß (max ${maxSizeMB}MB)`);
+      alert(`Bild zu gross – max. ${maxSizeMB} MB erlaubt.`);
       return;
     }
 
     const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
     if (!allowedTypes.includes(file.type)) {
-      alert('Nur JPEG, PNG oder WebP akzeptiert');
+      alert('Nur JPEG, PNG und WebP werden unterstützt.');
       return;
     }
 
@@ -132,7 +132,7 @@ export default function ImageUploadButton({
                 margin: '0 0 0.25rem',
                 letterSpacing: '0.3px',
               }}>
-                KI analysiert deinen Duft
+                Die KI analysiert deinen Duft
               </p>
               <p style={{
                 fontSize: '12px',

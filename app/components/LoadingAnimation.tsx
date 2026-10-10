@@ -80,7 +80,7 @@ export default function LoadingAnimation() {
           margin: '0 0 0.4rem',
           fontWeight: 700,
         }}>
-          KI analysiert deinen Duft
+          Die KI analysiert deinen Duft
         </h3>
         <p style={{
           fontSize: '14px',
@@ -115,7 +115,7 @@ export default function LoadingAnimation() {
           textAlign: 'center',
           marginTop: '0.6rem',
         }}>
-          Dauert meist 5–10 Sekunden
+          Dauert meist 5–10 Sekunden …
         </p>
       </div>
 

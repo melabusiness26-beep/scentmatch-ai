@@ -183,7 +183,7 @@ const ScrollProgressBar = () => {
 const ShareButton = ({ name, brand }: { name: string; brand: string }) => {
   const [copied, setCopied] = useState(false);
 
-  const shareText = `Ich habe gerade "${name}" von ${brand} mit Auressa entdeckt – dem KI-Duft-Scanner! 🌸`;
+  const shareText = `Ich habe gerade "${name}" von ${brand} mit Auressa entdeckt – dem KI-Parfümberater! 🌸`;
   const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://auressa.ch';
   const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText + '\n' + shareUrl)}`;
 
@@ -390,8 +390,8 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
               {currentAnalysis.confidence === 'low' ? 'Niedrige KI-Konfidenz' : 'Mittlere KI-Konfidenz'}
             </strong>
             {currentAnalysis.confidence === 'low'
-              ? 'Das Bild war schwer zu erkennen – das Ergebnis könnte ungenau sein. Versuche ein klareres Foto direkt auf den Flakon.'
-              : 'Die KI ist sich nicht ganz sicher. Stimmt der Duft? Falls nicht, kannst du das Ergebnis unten korrigieren.'}
+              ? 'Das Bild war schwer zu erkennen – das Ergebnis könnte ungenau sein. Versuche ein klareres Foto direkt vom Flakon aufzunehmen.'
+              : 'Die KI ist sich nicht ganz sicher. Ist das der richtige Duft? Falls nicht, kannst du das Ergebnis unten korrigieren.'}
           </div>
         </div>
       )}
@@ -843,7 +843,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                   )}
                   {currentAnalysis.famouswearers && currentAnalysis.famouswearers.length > 0 && (
                     <div style={{ marginBottom: currentAnalysis.funFacts?.length ? '1.5rem' : 0 }}>
-                      <div style={{ fontSize: '0.72rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.5rem' }}>⭐ Bekannte Träger</div>
+                      <div style={{ fontSize: '0.72rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.5rem' }}>⭐ Bekannte Fans</div>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
                         {currentAnalysis.famouswearers.map((w, i) => <Pill key={i}>{w}</Pill>)}
                       </div>
@@ -901,7 +901,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                         {currentAnalysis.estimatedPrice}
                       </div>
                       <div style={{ fontSize: '0.72rem', color: C.textLight, marginTop: '0.3rem' }}>
-                        Geschätzter Schweizer Marktpreis – kann variieren
+                        Geschätzter Schweizer Marktpreis – Preise können variieren.
                       </div>
                     </>
                   )}
@@ -982,7 +982,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                         <div style={{ fontSize: '0.88rem', fontWeight: '700', color: C.gold }}>CHF {perfume.price_chf}</div>
                       )}
                       <div style={{ marginTop: '0.6rem', fontSize: '0.75rem', color: C.goldMuted, fontWeight: '600' }}>
-                        Mehr erfahren →
+                        Zum Duft →
                       </div>
                     </Link>
                   ))}

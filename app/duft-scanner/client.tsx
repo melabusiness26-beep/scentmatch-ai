@@ -122,7 +122,7 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
           </p>
           <p style={{ fontSize: '14px', color: C.textLight, marginBottom: '2rem' }}>
             Leider haben wir keine ähnlichen Düfte in unserem Katalog gefunden, die dieser Beschreibung
-            entsprechen. Schau dir aber den Duft selbst an!
+            entsprechen. Versuche eine neue Suche oder schau den Duft direkt beim Händler an.
           </p>
           <p style={{ fontSize: '14px', color: C.textMuted, marginBottom: '2rem', lineHeight: 1.6 }}>
             {analysis.generalDescription}

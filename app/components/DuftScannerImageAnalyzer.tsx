@@ -30,7 +30,7 @@ export default function DuftScannerImageAnalyzer({ onAnalysisComplete }: DuftSca
 
       if (!data.success || !data.data) {
         console.warn('[DuftScannerImageAnalyzer] Analyse fehlgeschlagen:', data.error);
-        setError(data.error || 'Bild nicht erkannt');
+        setError(data.error || 'Das Bild konnte nicht erkannt werden.');
         setIsLoading(false);
         return;
       }
@@ -39,7 +39,7 @@ export default function DuftScannerImageAnalyzer({ onAnalysisComplete }: DuftSca
       onAnalysisComplete(data.data as ImageAnalysisResult['data'], base64);
     } catch (err) {
       console.error('[DuftScannerImageAnalyzer] Fehler:', err);
-      setError('Fehler bei Bildanalyse – versuche es später erneut');
+      setError('Fehler bei der Bildanalyse – bitte versuche es später erneut.');
       setIsLoading(false);
     }
   };
@@ -66,7 +66,7 @@ export default function DuftScannerImageAnalyzer({ onAnalysisComplete }: DuftSca
       )}
 
       <p style={{ fontSize: '13px', color: '#6b5a4e', textAlign: 'center', marginTop: '0.5rem' }}>
-        Flakon, Outfit oder Stimmung – wir lesen das Bild
+        Parfümflakon fotografieren – wir erkennen den Duft.
       </p>
     </div>
   );

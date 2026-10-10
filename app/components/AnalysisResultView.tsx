@@ -68,15 +68,30 @@ const Card = ({ children, style = {} }: { children: React.ReactNode; style?: Rea
   </div>
 );
 
-const BarRow = ({ label, value, max = 10, suffix = '/10' }: { label: string; value?: number; max?: number; suffix?: string }) => {
-  if (!value) return null;
-  const pct = Math.min(100, (value / max) * 100);
+// Wandelt KI-String-Werte ("moderate", "medium", "high" etc.) in Zahlen um
+function normalizeNumericValue(val: number | string | undefined): number | undefined {
+  if (val === undefined || val === null) return undefined;
+  if (typeof val === 'number') return val > 0 ? val : undefined;
+  const strMap: Record<string, number> = {
+    very_low: 2, low: 3, moderate: 5, medium: 6, high: 8, very_high: 9,
+    light: 3, medium_light: 5, strong: 8, very_strong: 9,
+    poor: 2, average: 5, good: 7, excellent: 9,
+  };
+  const n = parseFloat(String(val));
+  if (!isNaN(n)) return n > 0 ? n : undefined;
+  return strMap[String(val).toLowerCase().replace(/[\s-]/g, '_')] ?? undefined;
+}
+
+const BarRow = ({ label, value, max = 10, suffix = '/10' }: { label: string; value?: number | string; max?: number; suffix?: string }) => {
+  const num = normalizeNumericValue(value);
+  if (!num) return null;
+  const pct = Math.min(100, (num / max) * 100);
   return (
     <div style={{ marginBottom: '1rem' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
         <span style={{ fontSize: '0.9rem', fontWeight: '600', color: C.text }}>{label}</span>
         <span style={{ fontSize: '0.85rem', color: C.textLight, fontVariantNumeric: 'tabular-nums' }}>
-          {value}{suffix}
+          {num.toFixed(1)}{suffix}
         </span>
       </div>
       <div style={{ height: '6px', backgroundColor: C.sand, borderRadius: '4px', overflow: 'hidden' }}>
@@ -1242,59 +1257,114 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
             </section>
 
             {/* ── ÄHNLICHE DÜFTE AUS AURESSA ────────────────────────────── */}
-            {similarPerfumes.length > 0 && (
-              <section style={{ marginBottom: '2.5rem' }}>
-                <SectionHeading>Ähnliche Düfte aus Auressa</SectionHeading>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '0.75rem' }}>
-                  {similarPerfumes.map((perfume) => (
-                    <Link
-                      key={perfume.id}
-                      href={`/duft/${perfume.slug}`}
-                      style={{
-                        display: 'block', padding: '1.1rem',
-                        backgroundColor: C.cream, borderRadius: '12px',
-                        border: `1px solid ${C.sand}`, textDecoration: 'none',
-                        transition: 'all 0.2s ease',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.boxShadow = `0 4px 16px rgba(212,175,55,0.2)`;
-                        e.currentTarget.style.borderColor = C.gold;
-                        e.currentTarget.style.transform = 'translateY(-2px)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.boxShadow = 'none';
-                        e.currentTarget.style.borderColor = C.sand;
-                        e.currentTarget.style.transform = 'translateY(0)';
-                      }}
-                    >
-                      {perfume.image_url && (
-                        <div style={{ width: '100%', height: '90px', borderRadius: '8px', overflow: 'hidden', marginBottom: '0.75rem', backgroundColor: C.creamDark }}>
-                          <Image
-                            src={perfume.image_url}
-                            alt={perfume.perfume_name}
-                            width={200}
-                            height={90}
-                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                            unoptimized
-                          />
-                        </div>
-                      )}
-                      <div style={{ fontSize: '0.9rem', fontWeight: '700', color: C.dark, marginBottom: '0.25rem', lineHeight: 1.3 }}>{perfume.perfume_name}</div>
-                      <div style={{ fontSize: '0.8rem', color: C.goldMuted, fontWeight: '600', marginBottom: '0.45rem' }}>{perfume.brands?.name}</div>
-                      {perfume.fragrance_family && (
-                        <div style={{ fontSize: '0.75rem', color: C.textLight, marginBottom: '0.35rem' }}>{perfume.fragrance_family}</div>
-                      )}
-                      {perfume.price_chf && (
-                        <div style={{ fontSize: '0.88rem', fontWeight: '700', color: C.gold }}>CHF {perfume.price_chf}</div>
-                      )}
-                      <div style={{ marginTop: '0.6rem', fontSize: '0.75rem', color: C.goldMuted, fontWeight: '600' }}>
-                        Zum Duft →
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </section>
-            )}
+            {similarPerfumes.length > 0 && (() => {
+              // Deduplizieren nach ID + auf 6 begrenzen
+              const seen = new Set<string>();
+              const unique = similarPerfumes.filter(p => {
+                if (seen.has(p.id)) return false;
+                seen.add(p.id);
+                return true;
+              }).slice(0, 6);
+              const hasImages = unique.some(p => p.image_url);
+              return (
+                <section style={{ marginBottom: '2.5rem' }}>
+                  <SectionHeading>Ähnliche Düfte aus Auressa</SectionHeading>
+                  {hasImages ? (
+                    // Grid-Layout wenn Bilder vorhanden
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: '0.75rem' }}>
+                      {unique.map((perfume) => (
+                        <Link
+                          key={perfume.id}
+                          href={`/duft/${perfume.slug}`}
+                          style={{
+                            display: 'block', padding: '1rem',
+                            backgroundColor: C.cream, borderRadius: '12px',
+                            border: `1px solid ${C.sand}`, textDecoration: 'none',
+                            transition: 'all 0.2s ease',
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.boxShadow = `0 4px 16px rgba(212,175,55,0.2)`;
+                            e.currentTarget.style.borderColor = C.gold;
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.boxShadow = 'none';
+                            e.currentTarget.style.borderColor = C.sand;
+                          }}
+                        >
+                          {perfume.image_url && (
+                            <div style={{ width: '100%', height: '90px', borderRadius: '8px', overflow: 'hidden', marginBottom: '0.75rem', backgroundColor: C.creamDark }}>
+                              <Image
+                                src={perfume.image_url}
+                                alt={perfume.perfume_name}
+                                width={200}
+                                height={90}
+                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                unoptimized
+                              />
+                            </div>
+                          )}
+                          <div style={{ fontSize: '0.88rem', fontWeight: '700', color: C.dark, marginBottom: '0.2rem', lineHeight: 1.3 }}>{perfume.perfume_name}</div>
+                          <div style={{ fontSize: '0.75rem', color: C.goldMuted, fontWeight: '600', marginBottom: '0.3rem' }}>{perfume.brands?.name}</div>
+                          {perfume.fragrance_family && (
+                            <div style={{ fontSize: '0.72rem', color: C.textLight, marginBottom: '0.3rem' }}>{perfume.fragrance_family}</div>
+                          )}
+                          {perfume.price_chf && (
+                            <div style={{ fontSize: '0.85rem', fontWeight: '700', color: C.gold }}>CHF {perfume.price_chf}</div>
+                          )}
+                          <div style={{ marginTop: '0.5rem', fontSize: '0.72rem', color: C.goldMuted, fontWeight: '600' }}>
+                            Zum Duft →
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  ) : (
+                    // Horizontales Listen-Layout wenn keine Bilder
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      {unique.map((perfume, i) => (
+                        <Link
+                          key={perfume.id}
+                          href={`/duft/${perfume.slug}`}
+                          style={{
+                            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                            padding: '1rem 1.25rem',
+                            backgroundColor: C.cream, borderRadius: '10px',
+                            border: `1px solid ${C.sand}`, textDecoration: 'none',
+                            transition: 'all 0.15s ease',
+                            gap: '1rem',
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.borderColor = C.gold;
+                            e.currentTarget.style.backgroundColor = C.creamDark;
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.borderColor = C.sand;
+                            e.currentTarget.style.backgroundColor = C.cream;
+                          }}
+                        >
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', minWidth: 0 }}>
+                            <span style={{ flexShrink: 0, fontSize: '0.72rem', fontWeight: '700', color: C.textLight, width: '18px' }}>{i + 1}</span>
+                            <div style={{ minWidth: 0 }}>
+                              <div style={{ fontSize: '0.92rem', fontWeight: '700', color: C.dark, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                                {perfume.perfume_name}
+                              </div>
+                              <div style={{ fontSize: '0.78rem', color: C.goldMuted, fontWeight: '500' }}>
+                                {perfume.brands?.name}{perfume.fragrance_family ? ` · ${perfume.fragrance_family}` : ''}
+                              </div>
+                            </div>
+                          </div>
+                          <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                            {perfume.price_chf && (
+                              <span style={{ fontSize: '0.88rem', fontWeight: '700', color: C.gold }}>CHF {perfume.price_chf}</span>
+                            )}
+                            <span style={{ fontSize: '0.8rem', color: C.goldMuted }}>→</span>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </section>
+              );
+            })()}
 
             {/* ── KI-EMPFEHLUNGEN ───────────────────────────────────────── */}
             {currentAnalysis.similarPerfumes && currentAnalysis.similarPerfumes.length > 0 && (

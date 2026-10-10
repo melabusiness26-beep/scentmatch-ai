@@ -77,13 +77,19 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
   };
 
   const handleLoadFromHistory = (entry: ScanHistoryEntry) => {
-    const found = findPerfumeInDB(entry.analysis.perfumeName, entry.analysis.brandName, entry.analysis.notes, allPerfumes);
-    const similar = findSimilarPerfumes(entry.analysis, allPerfumes, 40, 7);
-    setAnalysis(entry.analysis);
-    setSimilarPerfumes(similar);
-    setDbMatch(found);
-    setStage(similar.length > 0 || found ? 'results' : 'not-found');
+    setIsLoading(true);
     setShowHistory(false);
+    // Use rAF to let the loading screen render before heavy computation
+    requestAnimationFrame(() => {
+      const found = findPerfumeInDB(entry.analysis.perfumeName, entry.analysis.brandName, entry.analysis.notes, allPerfumes);
+      const similar = findSimilarPerfumes(entry.analysis, allPerfumes, 40, 7);
+      setAnalysis(entry.analysis);
+      setUploadedImage(null); // no image for history entries
+      setSimilarPerfumes(similar);
+      setDbMatch(found);
+      setIsLoading(false);
+      setStage(similar.length > 0 || found ? 'results' : 'not-found');
+    });
   };
 
   const handleClearHistory = () => {

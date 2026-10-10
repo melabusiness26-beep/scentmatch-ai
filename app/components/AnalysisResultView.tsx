@@ -336,6 +336,8 @@ const ScanShareImageButton = ({
 
   const generate = async () => {
     setGenerating(true);
+    // Yield to the event loop so the button enters "generating" state before the canvas blocks
+    await new Promise(r => setTimeout(r, 16));
     const canvas = document.createElement('canvas');
     canvas.width = 1080;
     canvas.height = 1080;
@@ -592,7 +594,7 @@ const StickyTabBar = ({
   tabContentRef: React.RefObject<HTMLDivElement | null>;
 }) => (
   <div style={{
-    position: 'sticky', top: 0, zIndex: 100, display: 'flex', gap: 0,
+    position: 'sticky', top: 54, zIndex: 100, display: 'flex', gap: 0,
     marginBottom: '2rem', background: C.cream, borderBottom: `2px solid ${C.sand}`,
     borderRadius: '12px 12px 0 0', overflow: 'hidden',
     boxShadow: '0 2px 16px rgba(42,29,18,0.10)',
@@ -732,13 +734,16 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
   const displayName = dbMatch?.perfume_name || currentAnalysis.perfumeName;
   const displayBrand = dbMatch?.brands?.name || currentAnalysis.brandName;
 
+  // Defensive fallback in case API returns malformed data without notes
+  const safeNotes = currentAnalysis.notes ?? { top: [], heart: [], base: [] };
+
   const displayNotes = dbMatch
     ? {
-        top:   (dbMatch.top_notes   && dbMatch.top_notes.length   > 0) ? dbMatch.top_notes   : currentAnalysis.notes.top,
-        heart: (dbMatch.heart_notes && dbMatch.heart_notes.length > 0) ? dbMatch.heart_notes : currentAnalysis.notes.heart,
-        base:  (dbMatch.base_notes  && dbMatch.base_notes.length  > 0) ? dbMatch.base_notes  : currentAnalysis.notes.base,
+        top:   (dbMatch.top_notes   && dbMatch.top_notes.length   > 0) ? dbMatch.top_notes   : safeNotes.top,
+        heart: (dbMatch.heart_notes && dbMatch.heart_notes.length > 0) ? dbMatch.heart_notes : safeNotes.heart,
+        base:  (dbMatch.base_notes  && dbMatch.base_notes.length  > 0) ? dbMatch.base_notes  : safeNotes.base,
       }
-    : currentAnalysis.notes;
+    : safeNotes;
 
   const displayDescription = dbMatch?.description || currentAnalysis.poeticDescription || currentAnalysis.generalDescription;
   const displayImage = dbMatch?.image_url || null;

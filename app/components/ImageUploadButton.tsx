@@ -32,6 +32,9 @@ export default function ImageUploadButton({
       return;
     }
 
+    // Reset input so the same file can be re-selected after an error
+    event.target.value = '';
+
     const reader = new FileReader();
     reader.onload = () => {
       const result = reader.result as string;

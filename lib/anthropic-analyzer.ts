@@ -40,11 +40,23 @@ export async function analyzeImageWithAnthropic(
               },
               {
                 type: 'text',
-                text: `Parfüm-Analyse. Erkenne das Parfüm im Bild. Antworte NUR mit JSON (kein Markdown):
+                text: `Du bist ein Parfüm-Experte. Analysiere das Bild und erkenne das Parfüm. Antworte NUR mit JSON (kein Markdown, keine Erklärungen).
 
-{"perfumeName":"...","brandName":"...","year":null,"parfumeur":null,"originCountry":"...","concentration":"EDP","family":"...","rating":7,"sillage":6,"longevity":7,"projection":6,"uniqueness":5,"priceValue":8,"estimatedPrice":"ca. 80–150 CHF","notes":{"top":["Note1"],"heart":["Note2"],"base":["Note3"]},"duftDNA":{"blumig":40,"holzig":20,"frisch":25,"süss":10,"würzig":5},"poeticDescription":"2-3 Sätze.","duftJourney":{"morgen":"...","mittag":"...","abend":"...","nacht":"..."},"characterTags":["Tag1","Tag2","Tag3"],"personalityType":"...","mood":"...","seasonRecommendation":"Ganzjährig","occasion":["Alltag","Büro"],"climate":["gemäßigt"],"perfectMoment":"2-3 Sätze: Stimmung, Ort, Gefühl.","comparisonPerfumes":[{"name":"...","reason":"..."}],"funFacts":["..."],"famouswearers":null,"history":"...","similarPerfumes":[{"name":"...","reason":"..."},{"name":"...","reason":"..."},{"name":"...","reason":"..."},{"name":"...","reason":"..."},{"name":"...","reason":"..."}],"generalDescription":"...","development":{"opening":"...","middleGame":"...","drydown":"..."},"usageRecommendations":{"occasions":["..."],"seasons":["..."],"timeOfDay":["..."],"skinType":"..."},"bottleDescription":"Flakon in 1 Satz.","intensity":"medium","gender":"unisex","confidence":"high"}
+WICHTIGE REGELN:
+1. "perfumeName" und "brandName": Nur was du auf dem Flakon LIEST oder mit sehr hoher Sicherheit erkennst. Kein Raten.
+2. Noten, Bewertungen (rating, sillage etc.): NUR wenn du den Duft wirklich kennst. Sonst null.
+3. "confidence": "high" = du bist >90% sicher; "medium" = 60-90%; "low" = <60% oder unsicher.
+4. Bei low/medium confidence: setze rating, sillage, longevity, projection, uniqueness, priceValue auf null.
+5. duftDNA, duftJourney, comparisonPerfumes: nur wenn du den Duft sicher kennst. Sonst null.
+6. estimatedPrice: nur wenn bekannt, sonst null. Format: "ca. 80–150 CHF".
+7. Alle Noten auf DEUTSCH. Keine erfundenen Noten.
+8. "family": eine von: floral, woody, fresh, oriental, gourmand, chypre, fougere, aquatic, spicy. Nur wenn bekannt.
+9. generalDescription und bottleDescription: was du SIEHST und weisst. Keine Erfindungen.
 
-Regeln: Noten auf DEUTSCH. Educated guesses OK. confidence: high/medium/low. estimatedPrice: realistischer Schweizer Marktpreis (z.B. "ca. 60–90 CHF").`,
+JSON-Format (null = unbekannt/unsicher):
+{"perfumeName":"Exakter Name vom Flakon","brandName":"Exakte Marke","confidence":"high","year":null,"parfumeur":null,"concentration":null,"family":"floral","gender":"woman","rating":null,"sillage":null,"longevity":null,"projection":null,"uniqueness":null,"priceValue":null,"estimatedPrice":null,"notes":{"top":[],"heart":[],"base":[]},"duftDNA":null,"poeticDescription":null,"duftJourney":null,"characterTags":[],"personalityType":null,"mood":null,"seasonRecommendation":null,"occasion":[],"climate":[],"perfectMoment":null,"comparisonPerfumes":null,"funFacts":[],"famouswearers":null,"history":null,"similarPerfumes":[],"generalDescription":"Was du über diesen Duft weisst.","development":{"opening":"","middleGame":"","drydown":""},"usageRecommendations":{"occasions":[],"seasons":[],"timeOfDay":[]},"bottleDescription":"Was du auf dem Bild siehst.","intensity":"medium"}
+
+Wenn du den Parfümnamen NICHT lesen/erkennen kannst: confidence = "low", perfumeName = "Unbekanntes Parfüm", brandName = "Unbekannte Marke".`,
               },
             ],
           },

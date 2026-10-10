@@ -114,43 +114,140 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
   }
 
   if (stage === 'not-found' && analysis) {
+    // Try with a much lower threshold to find at least some fallback suggestions
+    const fallbackSuggestions = findSimilarPerfumes(analysis, allPerfumes, 15, 4);
+    // Also try family-based fallback if still empty
+    const familySuggestions = fallbackSuggestions.length > 0 ? fallbackSuggestions : (
+      analysis.family
+        ? allPerfumes
+            .filter(p => (p.fragrance_family || '').toLowerCase() === (analysis.family || '').toLowerCase())
+            .slice(0, 4)
+        : allPerfumes.slice(0, 4)
+    );
+
     return (
-      <div style={{ maxWidth: '600px', margin: '0 auto', padding: '2rem 1rem', textAlign: 'center' }}>
-        <div style={{ backgroundColor: C.cream, borderRadius: '12px', padding: '3rem 2rem', border: `1px solid ${C.sand}` }}>
-          <h2 style={{
-            fontSize: '28px',
-            fontFamily: "'Playfair Display', serif",
-            fontWeight: 700,
-            color: C.dark,
-            marginBottom: '1rem',
-          }}>
-            Parfüm erkannt!
-          </h2>
-          <p style={{ fontSize: '16px', color: C.textMuted, marginBottom: '1.5rem', lineHeight: 1.6 }}>
-            <strong>{analysis.perfumeName}</strong> von <strong>{analysis.brandName}</strong>
+      <div style={{ maxWidth: '640px', margin: '0 auto', padding: '2rem 1rem' }}>
+        <div style={{ backgroundColor: C.cream, borderRadius: '14px', padding: '2rem', border: `1px solid ${C.sand}`, marginBottom: '1.5rem' }}>
+          {/* Header */}
+          <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🔍</div>
+            <h2 style={{
+              fontSize: '24px',
+              fontFamily: "'Playfair Display', serif",
+              fontWeight: 700,
+              color: C.dark,
+              marginBottom: '0.5rem',
+            }}>
+              Erkannt: {analysis.perfumeName}
+            </h2>
+            <p style={{ fontSize: '14px', color: C.textMuted }}>
+              von <strong>{analysis.brandName}</strong>
+            </p>
+          </div>
+
+          {/* Analysis info pills */}
+          {(analysis.family || analysis.intensity || analysis.gender) && (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center', marginBottom: '1.25rem' }}>
+              {analysis.family && (
+                <span style={{ padding: '0.25rem 0.75rem', borderRadius: '99px', backgroundColor: 'rgba(212,175,55,0.12)', color: C.text, fontSize: '12px', fontWeight: 600 }}>
+                  {analysis.family}
+                </span>
+              )}
+              {analysis.intensity && (
+                <span style={{ padding: '0.25rem 0.75rem', borderRadius: '99px', backgroundColor: 'rgba(212,175,55,0.08)', color: C.textMuted, fontSize: '12px' }}>
+                  {analysis.intensity.replace('_', ' ')}
+                </span>
+              )}
+              {analysis.gender && (
+                <span style={{ padding: '0.25rem 0.75rem', borderRadius: '99px', backgroundColor: 'rgba(212,175,55,0.08)', color: C.textMuted, fontSize: '12px' }}>
+                  {analysis.gender === 'woman' ? 'Damen' : analysis.gender === 'man' ? 'Herren' : 'Unisex'}
+                </span>
+              )}
+            </div>
+          )}
+
+          {/* Description */}
+          {analysis.generalDescription && (
+            <p style={{ fontSize: '14px', color: C.textMuted, lineHeight: 1.7, textAlign: 'center', marginBottom: '1.25rem' }}>
+              {analysis.generalDescription}
+            </p>
+          )}
+
+          {/* Notes */}
+          {analysis.notes && (analysis.notes.top?.length > 0 || analysis.notes.heart?.length > 0 || analysis.notes.base?.length > 0) && (
+            <div style={{ backgroundColor: 'white', borderRadius: '8px', padding: '0.9rem 1.1rem', border: `1px solid ${C.sand}`, marginBottom: '1.25rem' }}>
+              <p style={{ fontSize: '11px', fontWeight: 700, color: C.textLight, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.5rem' }}>Erkannte Duftnoten</p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                {[...(analysis.notes.top || []), ...(analysis.notes.heart || []), ...(analysis.notes.base || [])].map((note, i) => (
+                  <span key={i} style={{ padding: '0.2rem 0.55rem', borderRadius: '6px', backgroundColor: C.cream, border: `1px solid ${C.sand}`, fontSize: '12px', color: C.text }}>
+                    {note}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <p style={{ fontSize: '13px', color: C.textLight, textAlign: 'center', marginBottom: '1.5rem' }}>
+            Dieser Duft ist noch nicht in unserem Katalog – aber du könntest diese ähnlichen Düfte mögen:
           </p>
-          <p style={{ fontSize: '14px', color: C.textLight, marginBottom: '2rem' }}>
-            Leider haben wir keine ähnlichen Düfte in unserem Katalog gefunden, die dieser Beschreibung
-            entsprechen. Versuche eine neue Suche oder schau den Duft direkt beim Händler an.
-          </p>
-          <p style={{ fontSize: '14px', color: C.textMuted, marginBottom: '2rem', lineHeight: 1.6 }}>
-            {analysis.generalDescription}
-          </p>
+        </div>
+
+        {/* Fallback suggestions */}
+        {familySuggestions.length > 0 && (
+          <div style={{ marginBottom: '1.5rem' }}>
+            <p style={{ fontSize: '13px', fontWeight: 700, color: C.textMuted, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>
+              {fallbackSuggestions.length > 0 ? 'Ähnliche Düfte' : `Düfte aus der Familie: ${analysis.family || 'Alle'}`}
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              {familySuggestions.map(p => (
+                <a
+                  key={p.id}
+                  href={`/duft/${p.slug}`}
+                  style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                    backgroundColor: C.cream, borderRadius: '10px', padding: '0.9rem 1.1rem',
+                    border: `1px solid ${C.sand}`, textDecoration: 'none', gap: '0.75rem',
+                    transition: 'border-color 0.2s',
+                  }}
+                >
+                  <div>
+                    <p style={{ fontSize: '15px', fontWeight: 700, color: C.dark, margin: 0 }}>{p.perfume_name}</p>
+                    <p style={{ fontSize: '12px', color: C.textMuted, margin: '0.15rem 0 0' }}>{p.brands?.name}</p>
+                    {p.fragrance_family && (
+                      <span style={{ fontSize: '11px', color: C.textLight }}>{p.fragrance_family}</span>
+                    )}
+                  </div>
+                  {p.price_chf && (
+                    <span style={{ fontSize: '14px', fontWeight: 600, color: C.gold, whiteSpace: 'nowrap' }}>
+                      CHF {p.price_chf}
+                    </span>
+                  )}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center' }}>
           <button
             onClick={handleNewSearch}
             style={{
-              padding: '12px 32px',
-              borderRadius: '8px',
-              border: `1px solid ${C.sand}`,
-              backgroundColor: 'transparent',
-              color: C.dark,
-              fontSize: '14px',
-              fontWeight: 600,
-              cursor: 'pointer',
+              padding: '12px 32px', borderRadius: '8px', border: `1px solid ${C.sand}`,
+              backgroundColor: 'transparent', color: C.dark, fontSize: '14px', fontWeight: 600, cursor: 'pointer',
             }}
           >
             Neue Suche
           </button>
+          <a
+            href="/duefte"
+            style={{
+              padding: '12px 32px', borderRadius: '8px', border: `1px solid ${C.gold}`,
+              backgroundColor: C.gold, color: C.dark, fontSize: '14px', fontWeight: 700,
+              cursor: 'pointer', textDecoration: 'none', display: 'inline-block',
+            }}
+          >
+            Alle Düfte
+          </a>
         </div>
       </div>
     );

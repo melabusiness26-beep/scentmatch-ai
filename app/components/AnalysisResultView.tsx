@@ -488,7 +488,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                   currentAnalysis.parfumeur && { icon: '👃', label: 'Parfümeur', value: currentAnalysis.parfumeur },
                   dbMatch?.price_chf && { icon: '💰', label: 'Preis (CH)', value: `CHF ${dbMatch.price_chf}` },
                   dbMatch?.season && { icon: '🍂', label: 'Saison', value: dbMatch.season },
-                  currentAnalysis.bottleDescription && { icon: '🫙', label: 'Flakon', value: currentAnalysis.bottleDescription.length > 100 ? currentAnalysis.bottleDescription.slice(0, 100).trimEnd() + ' …' : currentAnalysis.bottleDescription },
+                  currentAnalysis.bottleDescription && { icon: '🫙', label: 'Flakon', value: currentAnalysis.bottleDescription },
                   intensityInfo && { icon: intensityInfo.emoji, label: 'Intensität', value: intensityInfo.label },
                 ].filter(Boolean).map((item) => {
                   const it = item as { icon: string; label: string; value: string };
@@ -499,6 +499,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                       borderRadius: '10px',
                       padding: '0.85rem 1rem',
                       display: 'flex', flexDirection: 'column', gap: '0.25rem',
+                      gridColumn: it.label === 'Flakon' ? 'span 2' : undefined,
                     }}>
                       <div style={{ fontSize: '0.7rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                         {it.icon} {it.label}

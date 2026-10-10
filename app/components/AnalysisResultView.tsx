@@ -81,13 +81,23 @@ const KEYFRAMES = `
   * { box-sizing: border-box; }
 `;
 
-// ─── Central Scroll Hook ──────────────────────────────────────────────────────
+// ─── Central Scroll Hook (RAF-throttled) ─────────────────────────────────────
 function useScrollState() {
   const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
-    const fn = () => setScrollY(window.scrollY);
+    let rafId: number | null = null;
+    const fn = () => {
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(() => {
+        setScrollY(window.scrollY);
+        rafId = null;
+      });
+    };
     window.addEventListener('scroll', fn, { passive: true });
-    return () => window.removeEventListener('scroll', fn);
+    return () => {
+      window.removeEventListener('scroll', fn);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
   }, []);
   return scrollY;
 }
@@ -137,16 +147,17 @@ const BarRow = ({
     if (!num) return;
     const start = performance.now();
     const duration = 900;
+    let rafId: number;
     const raf = (now: number) => {
       const progress = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       setDisplayed(eased * num);
       setBarWidth(Math.min(100, (eased * num / max) * 100));
-      if (progress < 1) requestAnimationFrame(raf);
+      if (progress < 1) rafId = requestAnimationFrame(raf);
     };
-    requestAnimationFrame(raf);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [num]);
+    rafId = requestAnimationFrame(raf);
+    return () => cancelAnimationFrame(rafId);
+  }, [num, max]);
 
   if (!num) return null;
 
@@ -233,12 +244,25 @@ const MOOD_DE: Record<string, string> = {
 
 function translateSeason(val?: string): string | undefined {
   if (!val) return undefined;
+  // Handle comma-separated values like "spring, summer, fall"
+  const parts = val.split(/[,/]+/).map(s => s.trim().toLowerCase()).filter(Boolean);
+  if (parts.length > 1) {
+    const translated = parts.map(p => SEASON_DE[p] ?? (p.charAt(0).toUpperCase() + p.slice(1)));
+    return translated.join(', ');
+  }
   const lower = val.toLowerCase().trim();
   return SEASON_DE[lower] ?? val;
 }
 function translateOccasion(val: string): string {
   const lower = val.toLowerCase().trim();
-  return OCCASION_DE[lower] ?? val;
+  if (OCCASION_DE[lower]) return OCCASION_DE[lower];
+  // Try splitting multi-word entries: "daily wear, romantic" → each part
+  const parts = val.split(/[,/]+/).map(s => s.trim());
+  if (parts.length > 1) {
+    return parts.map(p => OCCASION_DE[p.toLowerCase().trim()] ?? p).join(', ');
+  }
+  // Capitalize first letter as fallback
+  return val.charAt(0).toUpperCase() + val.slice(1);
 }
 function translateMood(val?: string): string | undefined {
   if (!val) return undefined;

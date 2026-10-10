@@ -56,22 +56,28 @@ function normalizeNumericValue(val: number | string | undefined): number | undef
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
-const SectionHeading = ({ children }: { children: React.ReactNode }) => (
-  <h2 style={{
-    fontSize: '1.1rem',
-    fontFamily: "'Playfair Display', serif",
-    color: C.text,
-    marginBottom: '1.25rem',
-    marginTop: 0,
-    textTransform: 'uppercase',
-    letterSpacing: '0.12em',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.6rem',
-  }}>
-    <span style={{ display: 'block', width: '28px', height: '2px', backgroundColor: C.gold, flexShrink: 0 }} />
-    {children}
-  </h2>
+const SectionHeading = ({ children, subtitle }: { children: React.ReactNode; subtitle?: string }) => (
+  <div style={{ marginBottom: '1.4rem', marginTop: 0 }}>
+    <h2 style={{
+      fontSize: '0.72rem',
+      color: C.goldMuted,
+      marginBottom: subtitle ? '0.2rem' : 0,
+      marginTop: 0,
+      textTransform: 'uppercase',
+      letterSpacing: '0.14em',
+      fontWeight: '700',
+      fontFamily: "'Inter', sans-serif",
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.6rem',
+    }}>
+      <span style={{ display: 'block', width: '20px', height: '1.5px', backgroundColor: C.gold, flexShrink: 0 }} />
+      {children}
+    </h2>
+    {subtitle && (
+      <p style={{ fontSize: '0.82rem', color: C.textLight, margin: 0, paddingLeft: '2rem' }}>{subtitle}</p>
+    )}
+  </div>
 );
 
 // Big Performance Bar with large right-side number
@@ -475,7 +481,7 @@ const ShareButton = ({ name, brand, family, topNotes, confidence, dbMatch, uploa
   };
 
   return (
-    <div style={{ display: 'flex', gap: '0.6rem', justifyContent: 'center', marginTop: '1.25rem', flexWrap: 'wrap' }}>
+    <div style={{ display: 'contents' }}>
       <a
         href={whatsappUrl}
         target="_blank"
@@ -515,6 +521,61 @@ const ShareButton = ({ name, brand, family, topNotes, confidence, dbMatch, uploa
       >
         {copied ? '✓ Kopiert!' : '🔗 Link kopieren'}
       </button>
+    </div>
+  );
+};
+
+// ─── Sticky Buy Bar ───────────────────────────────────────────────────────────
+const StickyBuyBar = ({ name, brand, buyUrl, price }: { name: string; brand: string; buyUrl: string; price?: number | null }) => {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const fn = () => setVisible(window.scrollY > 320);
+    window.addEventListener('scroll', fn, { passive: true });
+    return () => window.removeEventListener('scroll', fn);
+  }, []);
+  if (!visible) return null;
+  return (
+    <div style={{
+      position: 'fixed',
+      bottom: 0,
+      left: 0,
+      right: 0,
+      zIndex: 300,
+      background: 'linear-gradient(to top, rgba(26,17,8,0.98), rgba(26,17,8,0.95))',
+      backdropFilter: 'blur(12px)',
+      borderTop: `1px solid rgba(212,175,55,0.25)`,
+      padding: '0.75rem 1.25rem',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.75rem',
+      paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom, 0px))',
+    }}>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontSize: '0.72rem', color: 'rgba(212,175,55,0.6)', fontWeight: '600', letterSpacing: '0.04em' }}>{brand}</div>
+        <div style={{ fontSize: '0.9rem', color: C.cream, fontWeight: '700', lineHeight: 1.2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{name}</div>
+      </div>
+      {price && (
+        <div style={{ flexShrink: 0, fontSize: '1.1rem', fontWeight: '800', color: C.gold }}>CHF {price}</div>
+      )}
+      <a
+        href={buyUrl}
+        target="_blank"
+        rel="sponsored noopener noreferrer"
+        style={{
+          flexShrink: 0,
+          backgroundColor: C.gold,
+          color: C.dark,
+          fontWeight: '700',
+          fontSize: '0.88rem',
+          padding: '0.65rem 1.4rem',
+          borderRadius: '10px',
+          textDecoration: 'none',
+          boxShadow: '0 4px 20px rgba(212,175,55,0.4)',
+          letterSpacing: '0.02em',
+        }}
+      >
+        Kaufen →
+      </a>
     </div>
   );
 };
@@ -698,7 +759,10 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
   ].filter(Boolean) as string[];
 
   return (
-    <div style={{ maxWidth: '860px', margin: '0 auto', padding: '0 0 4rem' }}>
+    <div style={{ maxWidth: '860px', margin: '0 auto', padding: '0 0 6rem' }}>
+
+      {/* ── STICKY BUY BAR ────────────────────────────────────────────────── */}
+      <StickyBuyBar name={displayName} brand={displayBrand} buyUrl={buyUrl} price={dbMatch?.price_chf ?? null} />
 
       {/* ── SCROLL-FORTSCHRITTSBALKEN ──────────────────────────────────────── */}
       <ScrollProgressBar />
@@ -880,16 +944,34 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
             </p>
           )}
 
-          {/* Teilen */}
-          <ShareButton
-            name={displayName}
-            brand={displayBrand}
-            family={currentAnalysis.family}
-            topNotes={displayNotes.top}
-            confidence={currentAnalysis.confidence as 'high' | 'medium' | 'low'}
-            dbMatch={!!dbMatch}
-            uploadedImage={uploadedImage}
-          />
+          {/* Hero Buy CTA + Teilen */}
+          <div style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
+            <a
+              href={buyUrl}
+              target="_blank"
+              rel="sponsored noopener noreferrer"
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                padding: '0.75rem 1.75rem',
+                backgroundColor: C.gold, color: C.dark,
+                fontWeight: '700', fontSize: '0.95rem',
+                borderRadius: '12px', textDecoration: 'none',
+                boxShadow: '0 4px 20px rgba(212,175,55,0.45)',
+                letterSpacing: '0.02em',
+              }}
+            >
+              🛍️ Jetzt kaufen{dbMatch?.price_chf ? ` · CHF ${dbMatch.price_chf}` : ''}
+            </a>
+            <ShareButton
+              name={displayName}
+              brand={displayBrand}
+              family={currentAnalysis.family}
+              topNotes={displayNotes.top}
+              confidence={currentAnalysis.confidence as 'high' | 'medium' | 'low'}
+              dbMatch={!!dbMatch}
+              uploadedImage={uploadedImage}
+            />
+          </div>
         </div>
       </section>
 
@@ -943,143 +1025,136 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
           ══════════════════════════════════════════════════════════════════ */}
           {activeTab === 'profil' && (
             <>
-              {/* ── CHARAKTER & PERSÖNLICHKEIT (neu an erster Stelle) ──────── */}
-              {(currentAnalysis.characterTags?.length || currentAnalysis.personalityType || currentAnalysis.mood) && (
-                <section style={{ marginBottom: '2.75rem' }}>
-                  <SectionHeading>Charakter & Persönlichkeit</SectionHeading>
-
-                  {/* Mood als große Headline */}
-                  {currentAnalysis.mood && (
-                    <p style={{
-                      fontSize: 'clamp(1.1rem, 3vw, 1.35rem)',
-                      fontFamily: "'Playfair Display', serif",
-                      color: C.text,
-                      margin: '0 0 1.25rem',
-                      fontStyle: 'italic',
-                      lineHeight: 1.5,
-                    }}>
-                      Stimmung: <em style={{ color: C.goldMuted }}>{currentAnalysis.mood}</em>
-                    </p>
-                  )}
-
-                  {currentAnalysis.personalityType && (
-                    <p style={{
-                      fontSize: '0.95rem',
-                      color: C.textMuted,
-                      lineHeight: 1.7,
-                      marginBottom: '1.25rem',
-                    }}>
-                      {currentAnalysis.personalityType}
-                    </p>
-                  )}
-
-                  {/* Charakter-Tags als Gold-Pills auf Beige */}
-                  {currentAnalysis.characterTags && currentAnalysis.characterTags.length > 0 && (
+              {/* ── 1. PERFEKTE MOMENT & PERSÖNLICHKEIT — emotionaler Einstieg ── */}
+              {(currentAnalysis.perfectMoment || currentAnalysis.personalityType || currentAnalysis.mood) && (
+                <section style={{ marginBottom: '2rem' }}>
+                  <div style={{
+                    background: `linear-gradient(160deg, #2a1d12, #1a1108)`,
+                    borderRadius: '16px',
+                    padding: '1.75rem 2rem',
+                    position: 'relative',
+                    overflow: 'hidden',
+                  }}>
+                    {/* Dekoratives Muster */}
                     <div style={{
-                      backgroundColor: '#fdf8f0',
-                      border: `1px solid #f0e4c0`,
-                      borderRadius: '14px',
-                      padding: '1.25rem 1.5rem',
-                    }}>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
-                        {currentAnalysis.characterTags.map((tag, i) => {
-                          const tagSlug = tag.toLowerCase().replace(/[äöü]/g, (c) => ({ ä: 'ae', ö: 'oe', ü: 'ue' }[c] || c)).replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-                          return (
-                            <Link key={i} href={`/tag/${tagSlug}`} style={{
-                              backgroundColor: 'rgba(212,175,55,0.14)',
-                              border: `1.5px solid rgba(212,175,55,0.5)`,
-                              color: C.goldMuted,
-                              padding: '0.4rem 1rem',
-                              borderRadius: '24px',
-                              fontSize: '0.88rem',
-                              fontWeight: '600',
-                              textDecoration: 'none',
-                              display: 'inline-block',
-                              transition: 'all 0.15s ease',
-                            }}
-                            onMouseEnter={(e) => {
-                              (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(212,175,55,0.28)';
-                              (e.currentTarget as HTMLElement).style.color = C.dark;
-                            }}
-                            onMouseLeave={(e) => {
-                              (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(212,175,55,0.14)';
-                              (e.currentTarget as HTMLElement).style.color = C.goldMuted;
-                            }}
-                            >
-                              #{tag}
-                            </Link>
-                          );
-                        })}
+                      position: 'absolute', top: 0, right: 0,
+                      width: '120px', height: '120px',
+                      background: 'radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 70%)',
+                      pointerEvents: 'none',
+                    }} />
+                    {currentAnalysis.mood && (
+                      <div style={{ fontSize: '0.65rem', color: 'rgba(212,175,55,0.6)', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
+                        ✦ Stimmung
                       </div>
-                    </div>
-                  )}
+                    )}
+                    {currentAnalysis.mood && (
+                      <p style={{
+                        fontSize: 'clamp(1.2rem, 4vw, 1.55rem)',
+                        fontFamily: "'Playfair Display', serif",
+                        color: C.cream,
+                        margin: '0 0 1rem',
+                        fontStyle: 'italic',
+                        lineHeight: 1.4,
+                      }}>
+                        „{currentAnalysis.mood}"
+                      </p>
+                    )}
+                    {currentAnalysis.perfectMoment && (
+                      <p style={{
+                        fontSize: '0.93rem',
+                        color: 'rgba(249,246,241,0.78)',
+                        lineHeight: 1.75,
+                        margin: currentAnalysis.personalityType ? '0 0 1rem' : 0,
+                        borderTop: currentAnalysis.mood ? `1px solid rgba(212,175,55,0.2)` : 'none',
+                        paddingTop: currentAnalysis.mood ? '1rem' : 0,
+                      }}>
+                        {currentAnalysis.perfectMoment}
+                      </p>
+                    )}
+                    {currentAnalysis.personalityType && (
+                      <p style={{
+                        fontSize: '0.88rem',
+                        color: 'rgba(212,175,55,0.7)',
+                        lineHeight: 1.65,
+                        margin: 0,
+                        borderTop: (currentAnalysis.mood || currentAnalysis.perfectMoment) ? `1px solid rgba(212,175,55,0.15)` : 'none',
+                        paddingTop: (currentAnalysis.mood || currentAnalysis.perfectMoment) ? '0.9rem' : 0,
+                        fontStyle: 'italic',
+                      }}>
+                        {currentAnalysis.personalityType}
+                      </p>
+                    )}
+                  </div>
                 </section>
               )}
 
-              {/* ── WANN TRAGEN – horizontale Fact-Rows ─────────────────────── */}
-              {(currentAnalysis.seasonRecommendation || (currentAnalysis.occasionList?.length ?? 0) > 0 || (currentAnalysis.climate?.length ?? 0) > 0) && (
-                <section style={{ marginBottom: '2.75rem' }}>
+              {/* ── 2. CHARAKTER-TAGS — schnell scanbar ─────────────────────── */}
+              {currentAnalysis.characterTags && currentAnalysis.characterTags.length > 0 && (
+                <section style={{ marginBottom: '2rem' }}>
+                  <SectionHeading>Charakter-Tags</SectionHeading>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                    {currentAnalysis.characterTags.map((tag, i) => {
+                      const tagSlug = tag.toLowerCase().replace(/[äöü]/g, (c) => ({ ä: 'ae', ö: 'oe', ü: 'ue' }[c] || c)).replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+                      return (
+                        <Link key={i} href={`/tag/${tagSlug}`} style={{
+                          backgroundColor: i === 0 ? C.gold : 'transparent',
+                          border: `1.5px solid ${i === 0 ? C.gold : 'rgba(212,175,55,0.4)'}`,
+                          color: i === 0 ? C.dark : C.goldMuted,
+                          padding: '0.35rem 0.9rem',
+                          borderRadius: '20px',
+                          fontSize: '0.85rem',
+                          fontWeight: i === 0 ? '700' : '600',
+                          textDecoration: 'none',
+                          display: 'inline-block',
+                          transition: 'all 0.15s ease',
+                        }}
+                        onMouseEnter={(e) => {
+                          (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(212,175,55,0.2)';
+                          (e.currentTarget as HTMLElement).style.color = C.dark;
+                        }}
+                        onMouseLeave={(e) => {
+                          (e.currentTarget as HTMLElement).style.backgroundColor = i === 0 ? C.gold : 'transparent';
+                          (e.currentTarget as HTMLElement).style.color = i === 0 ? C.dark : C.goldMuted;
+                        }}
+                        >
+                          #{tag}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </section>
+              )}
+
+              {/* ── 3. WANN TRAGEN ──────────────────────────────────────────── */}
+              {(currentAnalysis.seasonRecommendation || (currentAnalysis.occasionList?.length ?? 0) > 0) && (
+                <section style={{ marginBottom: '2rem' }}>
                   <SectionHeading>Wann tragen?</SectionHeading>
-                  <div style={{
-                    backgroundColor: C.cream,
-                    border: `1px solid ${C.sand}`,
-                    borderRadius: '14px',
-                    overflow: 'hidden',
-                  }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.65rem' }}>
                     {currentAnalysis.seasonRecommendation && (
                       <div style={{
-                        display: 'flex',
-                        alignItems: 'flex-start',
-                        gap: '1rem',
-                        padding: '1rem 1.4rem',
-                        borderBottom: (currentAnalysis.occasionList?.length ?? 0) > 0 || (currentAnalysis.climate?.length ?? 0) > 0 ? `1px solid ${C.sand}` : 'none',
+                        backgroundColor: C.cream, border: `1px solid ${C.sand}`, borderRadius: '12px',
+                        padding: '1rem 1.25rem', display: 'flex', alignItems: 'flex-start', gap: '0.85rem',
                       }}>
-                        <span style={{ fontSize: '1.2rem', flexShrink: 0, marginTop: '0.05rem' }}>🍂</span>
+                        <span style={{ fontSize: '1.4rem', lineHeight: 1 }}>🍂</span>
                         <div>
-                          <div style={{ fontSize: '0.68rem', fontWeight: '700', color: C.goldMuted, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.25rem' }}>Saison</div>
-                          <p style={{ fontSize: '0.92rem', color: C.dark, margin: 0, fontWeight: '500' }}>{currentAnalysis.seasonRecommendation}</p>
+                          <div style={{ fontSize: '0.65rem', fontWeight: '700', color: C.goldMuted, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.25rem' }}>Saison</div>
+                          <p style={{ fontSize: '0.9rem', color: C.dark, margin: 0, fontWeight: '500', lineHeight: 1.4 }}>{currentAnalysis.seasonRecommendation}</p>
                         </div>
                       </div>
                     )}
                     {currentAnalysis.occasionList && currentAnalysis.occasionList.length > 0 && (
                       <div style={{
-                        display: 'flex',
-                        alignItems: 'flex-start',
-                        gap: '1rem',
-                        padding: '1rem 1.4rem',
-                        borderBottom: (currentAnalysis.climate?.length ?? 0) > 0 ? `1px solid ${C.sand}` : 'none',
+                        backgroundColor: C.cream, border: `1px solid ${C.sand}`, borderRadius: '12px',
+                        padding: '1rem 1.25rem',
                       }}>
-                        <span style={{ fontSize: '1.2rem', flexShrink: 0, marginTop: '0.05rem' }}>🎯</span>
-                        <div>
-                          <div style={{ fontSize: '0.68rem', fontWeight: '700', color: C.goldMuted, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.5rem' }}>Anlässe</div>
-                          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
-                            {currentAnalysis.occasionList.map((o, i) => (
-                              <span key={i} style={{
-                                backgroundColor: C.creamDark, color: C.text,
-                                border: `1px solid ${C.sand}`,
-                                padding: '0.2rem 0.7rem', borderRadius: '16px',
-                                fontSize: '0.82rem', fontWeight: '500',
-                              }}>{o}</span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                    {currentAnalysis.climate && currentAnalysis.climate.length > 0 && (
-                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', padding: '1rem 1.4rem' }}>
-                        <span style={{ fontSize: '1.2rem', flexShrink: 0, marginTop: '0.05rem' }}>🌡️</span>
-                        <div>
-                          <div style={{ fontSize: '0.68rem', fontWeight: '700', color: C.goldMuted, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.5rem' }}>Klima</div>
-                          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
-                            {currentAnalysis.climate.map((c, i) => (
-                              <span key={i} style={{
-                                backgroundColor: C.creamDark, color: C.text,
-                                border: `1px solid ${C.sand}`,
-                                padding: '0.2rem 0.7rem', borderRadius: '16px',
-                                fontSize: '0.82rem', fontWeight: '500',
-                              }}>{c}</span>
-                            ))}
-                          </div>
+                        <div style={{ fontSize: '0.65rem', fontWeight: '700', color: C.goldMuted, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.6rem' }}>🎯 Anlässe</div>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
+                          {currentAnalysis.occasionList.map((o, i) => (
+                            <span key={i} style={{
+                              backgroundColor: C.creamDark, color: C.text, border: `1px solid ${C.sand}`,
+                              padding: '0.2rem 0.65rem', borderRadius: '14px', fontSize: '0.8rem', fontWeight: '500',
+                            }}>{o}</span>
+                          ))}
                         </div>
                       </div>
                     )}
@@ -1087,28 +1162,10 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                 </section>
               )}
 
-              {/* ── DER PERFEKTE MOMENT ─────────────────────────────────────── */}
-              {currentAnalysis.perfectMoment && (
-                <section style={{ marginBottom: '2.75rem' }}>
-                  <SectionHeading>Der perfekte Moment</SectionHeading>
-                  <div style={{
-                    background: `linear-gradient(135deg, #fdf7e8, #fef9ee)`,
-                    border: `1px solid #f0e0a0`,
-                    borderLeft: `4px solid ${C.gold}`,
-                    borderRadius: '10px',
-                    padding: '1.5rem 1.75rem',
-                  }}>
-                    <p style={{ fontSize: '1rem', lineHeight: 1.8, color: C.dark, margin: 0, fontStyle: 'italic' }}>
-                      ✨ {currentAnalysis.perfectMoment}
-                    </p>
-                  </div>
-                </section>
-              )}
-
-              {/* ── STECKBRIEF – kompakte Grid-Fakten (ans Ende) ─────────────── */}
-              <section style={{ marginBottom: '2.75rem' }}>
+              {/* ── 4. STECKBRIEF ──────────────────────────────────────────── */}
+              <section style={{ marginBottom: '2rem' }}>
                 <SectionHeading>Steckbrief</SectionHeading>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(138px, 1fr))', gap: '0.65rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: '0.55rem' }}>
                   {[
                     currentAnalysis.concentration && { icon: '🧴', label: 'Konzentration', value: currentAnalysis.concentration, estimated: !dbMatch },
                     currentAnalysis.family && { icon: '🌸', label: 'Duftfamilie', value: currentAnalysis.family, estimated: !dbMatch },
@@ -1117,31 +1174,31 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                     currentAnalysis.year && { icon: '📅', label: 'Jahr', value: String(currentAnalysis.year), estimated: !dbMatch },
                     currentAnalysis.parfumeur && { icon: '👃', label: 'Parfümeur', value: currentAnalysis.parfumeur, estimated: !dbMatch },
                     dbMatch?.price_chf && { icon: '💰', label: 'Preis (CH)', value: `CHF ${dbMatch.price_chf}`, estimated: false },
-                    dbMatch?.season && { icon: '🍂', label: 'Saison', value: dbMatch.season, estimated: false },
-                    currentAnalysis.bottleDescription && { icon: '🫙', label: 'Flakon', value: currentAnalysis.bottleDescription, estimated: false },
                     intensityInfo && { icon: intensityInfo.emoji, label: 'Intensität', value: intensityInfo.label, estimated: !dbMatch },
                   ].filter(Boolean).map((item) => {
                     const it = item as { icon: string; label: string; value: string; estimated: boolean };
                     return (
                       <div key={it.label} style={{
                         backgroundColor: C.cream,
-                        border: `1px solid ${it.estimated ? '#e0d0b0' : C.sand}`,
+                        border: `1px solid ${it.estimated ? 'rgba(212,175,55,0.25)' : C.sand}`,
                         borderRadius: '10px',
-                        padding: '0.85rem 1rem',
-                        display: 'flex', flexDirection: 'column', gap: '0.2rem',
-                        gridColumn: it.label === 'Flakon' ? 'span 2' : undefined,
+                        padding: '0.8rem 0.95rem',
+                        display: 'flex', flexDirection: 'column', gap: '0.25rem',
                       }}>
-                        <div style={{ fontSize: '0.67rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                        <div style={{ fontSize: '0.62rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                           {it.icon} {it.label}
-                          {it.estimated && (
-                            <span style={{ marginLeft: '0.3rem', fontSize: '0.58rem', color: '#a08040', fontWeight: '600' }}>(KI)</span>
-                          )}
+                          {it.estimated && <span style={{ marginLeft: '0.25rem', opacity: 0.7 }}>~</span>}
                         </div>
-                        <div style={{ fontSize: '0.88rem', color: C.dark, fontWeight: '600' }}>{it.value}</div>
+                        <div style={{ fontSize: '0.87rem', color: C.dark, fontWeight: '600', lineHeight: 1.3 }}>{it.value}</div>
                       </div>
                     );
                   })}
                 </div>
+                {!dbMatch && (
+                  <p style={{ fontSize: '0.72rem', color: C.textLight, margin: '0.6rem 0 0', fontStyle: 'italic' }}>
+                    ~ = KI-Schätzung
+                  </p>
+                )}
               </section>
             </>
           )}
@@ -1420,78 +1477,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                 </p>
               </section>
 
-              {/* ── ÄHNLICHE DÜFTE – horizontaler Scroll-Strip ─────────────── */}
-              {similarPerfumes.length > 0 && (() => {
-                const seen = new Set<string>();
-                const unique = similarPerfumes.filter(p => {
-                  if (seen.has(p.id)) return false;
-                  seen.add(p.id);
-                  return true;
-                }).slice(0, 6);
-
-                return (
-                  <section style={{ marginBottom: '2.75rem' }}>
-                    <SectionHeading>Ähnliche Düfte aus Auressa</SectionHeading>
-                    <div style={{
-                      display: 'flex',
-                      gap: '0.85rem',
-                      overflowX: 'auto',
-                      paddingBottom: '0.75rem',
-                      WebkitOverflowScrolling: 'touch',
-                      scrollbarWidth: 'none',
-                      marginLeft: '-1rem',
-                      marginRight: '-1rem',
-                      paddingLeft: '1rem',
-                      paddingRight: '1rem',
-                    }}>
-                      {unique.map((perfume) => (
-                        <Link
-                          key={perfume.id}
-                          href={`/duft/${perfume.slug}`}
-                          style={{
-                            display: 'block',
-                            flexShrink: 0,
-                            width: '145px',
-                            padding: '1rem',
-                            backgroundColor: C.cream,
-                            borderRadius: '12px',
-                            border: `1px solid ${C.sand}`,
-                            textDecoration: 'none',
-                            transition: 'all 0.2s ease',
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.boxShadow = `0 4px 16px rgba(212,175,55,0.2)`;
-                            e.currentTarget.style.borderColor = C.gold;
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.boxShadow = 'none';
-                            e.currentTarget.style.borderColor = C.sand;
-                          }}
-                        >
-                          {perfume.image_url && (
-                            <div style={{ width: '100%', height: '80px', borderRadius: '8px', overflow: 'hidden', marginBottom: '0.7rem', backgroundColor: C.creamDark }}>
-                              <Image
-                                src={perfume.image_url}
-                                alt={perfume.perfume_name}
-                                width={145}
-                                height={80}
-                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                unoptimized
-                              />
-                            </div>
-                          )}
-                          <div style={{ fontSize: '0.85rem', fontWeight: '700', color: C.dark, marginBottom: '0.15rem', lineHeight: 1.3, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' } as React.CSSProperties}>{perfume.perfume_name}</div>
-                          <div style={{ fontSize: '0.72rem', color: C.goldMuted, fontWeight: '600', marginBottom: '0.35rem' }}>{perfume.brands?.name}</div>
-                          {perfume.price_chf && (
-                            <div style={{ fontSize: '0.82rem', fontWeight: '700', color: C.gold }}>CHF {perfume.price_chf}</div>
-                          )}
-                          <div style={{ marginTop: '0.45rem', fontSize: '0.7rem', color: C.goldMuted, fontWeight: '600' }}>→</div>
-                        </Link>
-                      ))}
-                    </div>
-                  </section>
-                );
-              })()}
+              {/* Ähnliche Düfte: unter den Tabs, immer sichtbar */}
 
               {/* ── KI-EMPFEHLUNGEN ───────────────────────────────────────── */}
               {currentAnalysis.similarPerfumes && currentAnalysis.similarPerfumes.length > 0 && (
@@ -1519,6 +1505,84 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
 
         </div>{/* end padding wrapper */}
       </div>
+
+      {/* ── ÄHNLICHE DÜFTE – immer sichtbar, unter den Tabs ──────────────────── */}
+      {similarPerfumes.length > 0 && (() => {
+        const seen = new Set<string>();
+        const unique = similarPerfumes.filter(p => {
+          if (seen.has(p.id)) return false;
+          seen.add(p.id);
+          return true;
+        }).slice(0, 8);
+
+        return (
+          <section style={{ marginBottom: '2.5rem', padding: '0 0' }}>
+            <div style={{ padding: '0 1rem', marginBottom: '1rem' }}>
+              <SectionHeading>Das könnte dir auch gefallen</SectionHeading>
+            </div>
+            <div style={{
+              display: 'flex',
+              gap: '0.75rem',
+              overflowX: 'auto',
+              paddingBottom: '0.75rem',
+              WebkitOverflowScrolling: 'touch',
+              scrollbarWidth: 'none',
+              paddingLeft: '1rem',
+              paddingRight: '1rem',
+            }}>
+              {unique.map((perfume) => (
+                <Link
+                  key={perfume.id}
+                  href={`/duft/${perfume.slug}`}
+                  style={{
+                    display: 'block',
+                    flexShrink: 0,
+                    width: '130px',
+                    padding: '0.85rem',
+                    backgroundColor: C.cream,
+                    borderRadius: '12px',
+                    border: `1px solid ${C.sand}`,
+                    textDecoration: 'none',
+                    transition: 'all 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.boxShadow = `0 6px 20px rgba(212,175,55,0.22)`;
+                    e.currentTarget.style.borderColor = C.gold;
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.boxShadow = 'none';
+                    e.currentTarget.style.borderColor = C.sand;
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  {perfume.image_url ? (
+                    <div style={{ width: '100%', aspectRatio: '1 / 1', borderRadius: '8px', overflow: 'hidden', marginBottom: '0.6rem', backgroundColor: C.creamDark }}>
+                      <Image
+                        src={perfume.image_url}
+                        alt={perfume.perfume_name}
+                        width={130}
+                        height={130}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        unoptimized
+                      />
+                    </div>
+                  ) : (
+                    <div style={{ width: '100%', aspectRatio: '1 / 1', borderRadius: '8px', backgroundColor: C.creamDark, marginBottom: '0.6rem', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.8rem' }}>
+                      🌸
+                    </div>
+                  )}
+                  <div style={{ fontSize: '0.82rem', fontWeight: '700', color: C.dark, marginBottom: '0.15rem', lineHeight: 1.3, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' } as React.CSSProperties}>{perfume.perfume_name}</div>
+                  <div style={{ fontSize: '0.68rem', color: C.goldMuted, fontWeight: '600', marginBottom: '0.25rem' }}>{perfume.brands?.name}</div>
+                  {perfume.price_chf && (
+                    <div style={{ fontSize: '0.78rem', fontWeight: '700', color: C.gold }}>CHF {perfume.price_chf}</div>
+                  )}
+                </Link>
+              ))}
+            </div>
+          </section>
+        );
+      })()}
 
       {/* ── CTA ──────────────────────────────────────────────────────────────── */}
       <div style={{ textAlign: 'center', paddingTop: '2rem', borderTop: `1px solid ${C.sand}`, margin: '0 1rem' }}>

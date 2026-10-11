@@ -4,7 +4,7 @@ import { DESTINATIONS } from '@/lib/destinations';
 import { guides } from '@/lib/guides';
 import { scentNotes } from '@/lib/notes-glossary';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const revalidate = 3600;
 

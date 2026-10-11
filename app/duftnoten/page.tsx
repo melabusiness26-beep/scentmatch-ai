@@ -3,7 +3,7 @@ import Link from 'next/link';
 import SiteHeader from '@/app/SiteHeader';
 import { scentNotes } from '@/lib/notes-glossary';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
   title: 'Duftnoten-Lexikon: Parfumnoten einfach erklärt',

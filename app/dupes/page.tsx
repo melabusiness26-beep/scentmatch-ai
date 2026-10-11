@@ -6,7 +6,7 @@ import { guides } from '@/lib/guides';
 
 export const revalidate = 3600;
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
   title: 'Dupe-Finder: die günstige Alternative zu deinem Lieblingsduft',

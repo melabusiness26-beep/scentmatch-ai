@@ -35,7 +35,7 @@ const genderSymbol: Record<string, string> = {
 // Detailseiten werden stündlich neu generiert (frische Daten, schnelle Auslieferung).
 export const revalidate = 3600;
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 const familyLabels: Record<string, string> = {
   clean: 'Clean / Frisch',

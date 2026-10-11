@@ -5,7 +5,7 @@ import { getPerfumeCount, getPerfumes } from '@/lib/perfumes';
 
 export const revalidate = 3600;
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 // Auf 50 abgerundete „über X"-Zahl – so verspricht der Text nie mehr Düfte als wirklich vorhanden sind.
 function approxCount(count: number): number {

@@ -6,7 +6,7 @@ import { PerfumeTile } from '@/app/PerfumeTile';
 
 export const revalidate = 300;
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 // Slug → lesbares Label
 function tagLabel(slug: string): string {

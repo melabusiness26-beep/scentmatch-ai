@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import SiteHeader from '@/app/SiteHeader';
 import { OPERATOR } from '@/lib/operator';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
   title: 'Datenschutzerklärung',

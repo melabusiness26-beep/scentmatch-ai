@@ -9,7 +9,7 @@ import { AffiliateButton } from '@/app/AffiliateButton';
 
 export const revalidate = 3600;
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export async function generateStaticParams() {
   return guides.map((g) => ({ slug: g.slug }));

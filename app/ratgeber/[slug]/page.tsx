@@ -1,11 +1,15 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { cache } from 'react';
 import SiteHeader from '@/app/SiteHeader';
 import { getGuide, guides, relatedGuides, type Guide } from '@/lib/guides';
 import { getGuideFaqs, type GuideFaq } from '@/lib/guide-faqs';
 import { getPerfumes, type Perfume } from '@/lib/perfumes';
 import { AffiliateButton } from '@/app/AffiliateButton';
+
+// Cache across all SSG renders during build – one Supabase call for all ~49 guide pages
+const getCachedPerfumes = cache(() => getPerfumes(2000));
 
 export const revalidate = 3600;
 
@@ -153,7 +157,7 @@ export default async function GuidePage({
   const hero = getGuideHero(slug);
 
   // Alle Düfte einmal laden und nach slug nachschlagbar machen.
-  const all = await getPerfumes(2000);
+  const all = await getCachedPerfumes();
   const bySlug = new Map(all.filter((p) => p.slug).map((p) => [p.slug as string, p]));
 
   return (

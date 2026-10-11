@@ -39,7 +39,7 @@ export default async function MarkenIndex() {
   // Alphabetisch nach erstem Buchstaben gruppieren
   const grouped: Record<string, Brand[]> = {};
   for (const b of brandsWithPerfumes) {
-    const letter = b.name[0].toUpperCase();
+    const letter = b.name?.[0]?.toUpperCase() ?? '#';
     if (!grouped[letter]) grouped[letter] = [];
     grouped[letter].push(b);
   }

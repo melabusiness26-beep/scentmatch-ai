@@ -68,6 +68,10 @@ export default function ImageAnalyzer({ onAnalysisComplete }: ImageAnalyzerProps
       <p style={{ fontSize: '13px', color: '#6b5a4e', textAlign: 'center', marginTop: '0.5rem' }}>
         Flakon, Outfit oder Stimmung – wir lesen das Bild
       </p>
+
+      <p style={{ fontSize: '11px', color: '#9a8a7e', textAlign: 'center', marginTop: '0.25rem', lineHeight: 1.5 }}>
+        🔒 Dein Bild wird nur zur Analyse an die KI übermittelt und nicht gespeichert.
+      </p>
     </div>
   );
 }

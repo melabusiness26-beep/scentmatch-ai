@@ -171,6 +171,12 @@ const TabNav = ({ active, onChange }: { active: Tab; onChange: (t: Tab) => void 
       marginBottom: '2rem',
       gap: 0,
       overflowX: 'auto',
+      position: 'sticky',
+      top: 0,
+      backgroundColor: '#fdfaf5',
+      zIndex: 100,
+      borderRadius: '0',
+      scrollbarWidth: 'none',
     }}>
       {tabs.map((t) => (
         <button
@@ -274,7 +280,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
   const hasDevelopment     = currentAnalysis.development && (currentAnalysis.development.opening || currentAnalysis.development.middleGame || currentAnalysis.development.drydown);
 
   return (
-    <div style={{ maxWidth: '860px', margin: '0 auto', padding: '1.5rem 1rem 6rem' }}>
+    <div style={{ maxWidth: '860px', margin: '0 auto', padding: '1.5rem 1rem calc(6rem + env(safe-area-inset-bottom, 0px))' }}>
 
       <ScrollProgressBar />
 
@@ -845,12 +851,14 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
         left: 0,
         right: 0,
         padding: '0.85rem 1rem',
+        paddingBottom: 'calc(0.85rem + env(safe-area-inset-bottom, 0px))',
         backgroundColor: C.dark,
         borderTop: `1px solid rgba(212,175,55,0.3)`,
         display: 'flex',
         gap: '0.75rem',
         zIndex: 1000,
         backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
       }}>
         <a href={buyUrl} target="_blank" rel="sponsored noopener noreferrer" style={{
           flex: 1,

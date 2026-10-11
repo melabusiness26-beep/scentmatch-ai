@@ -40,7 +40,7 @@ export default function ScanCorrectionBanner({ analysis, onCorrected }: ScanCorr
         fontSize: '0.85rem', color: '#1a7a3e', marginBottom: '1.5rem',
       }}>
         <span>✅</span>
-        <span>Korrektur gespeichert – Ergebnisse wurden aktualisiert.</span>
+        <span>Korrektur gespeichert. Ergebnisse wurden aktualisiert.</span>
       </div>
     );
   }
@@ -62,7 +62,7 @@ export default function ScanCorrectionBanner({ analysis, onCorrected }: ScanCorr
           <span>🤔</span>
           <span>
             Erkannt als <strong style={{ color: C.dark }}>{analysis.perfumeName}</strong> von{' '}
-            <strong style={{ color: C.dark }}>{analysis.brandName}</strong> – stimmt das?
+            <strong style={{ color: C.dark }}>{analysis.brandName}</strong>. Stimmt das?
           </span>
         </div>
         <button

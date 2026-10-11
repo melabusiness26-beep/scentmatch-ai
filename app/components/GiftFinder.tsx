@@ -310,7 +310,7 @@ export default function GiftFinder({ allPerfumes }: { allPerfumes: Perfume[] }) 
       {state.step === 4 && (
         <div className="quiz-step">
           <h2>Lieblingsduft? (optional)</h2>
-          <p className="step-description">Falls die Person einen Duft mag, wähle ihn hier – wir zeigen ähnliche Alternativen.</p>
+          <p className="step-description">Falls die Person einen Duft mag, wähle ihn hier. Wir zeigen ähnliche Alternativen.</p>
           <div className="quiz-datalist">
             <input
               list="perfume-list"

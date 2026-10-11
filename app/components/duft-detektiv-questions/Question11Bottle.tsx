@@ -34,7 +34,7 @@ export default function Question11Bottle({ answers, handleAnswer }: QuestionProp
         color: '#6b5a4e',
         marginBottom: '1rem',
       }}>
-        Wähle eine Option – oder gib unten noch mehr Details:
+        Wähle eine Option, oder gib unten noch mehr Details:
       </p>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>

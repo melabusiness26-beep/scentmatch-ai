@@ -10,7 +10,7 @@ interface ImageAnalyzerProps {
 }
 
 const TIPS = [
-  '📷 Halte den Flakon ins Licht – das Etikett muss lesbar sein',
+  '📷 Halte den Flakon ins Licht, das Etikett muss lesbar sein',
   '🔍 Fotografiere von vorne, damit Marke und Name sichtbar sind',
   '🌟 Auch Screenshots von Produktseiten funktionieren gut',
   '📦 Verpackungskarton scannen geht genauso',
@@ -46,7 +46,7 @@ export default function ImageAnalyzer({ onAnalysisComplete }: ImageAnalyzerProps
       onAnalysisComplete(data.data);
     } catch (err) {
       console.error('[ImageAnalyzer] Fehler:', err);
-      setError('Fehler bei Bildanalyse – versuche es später erneut');
+      setError('Fehler bei Bildanalyse. Bitte versuche es später erneut.');
       setIsLoading(false);
     }
   };
@@ -107,7 +107,7 @@ export default function ImageAnalyzer({ onAnalysisComplete }: ImageAnalyzerProps
       )}
 
       <p style={{ fontSize: '13px', color: '#6b5a4e', textAlign: 'center', marginTop: '0.25rem' }}>
-        Flakon, Verpackung oder Screenshot – wir erkennen den Duft
+        Flakon, Verpackung oder Screenshot. Wir erkennen den Duft.
       </p>
 
       {/* Tipps für bessere Scans */}

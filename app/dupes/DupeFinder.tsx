@@ -191,7 +191,7 @@ export default function DupeFinder({
         {!selected && query.trim().length >= 2 && suggestions.length === 0 && (
           <p className="small">
             Diesen Duft haben wir (noch) nicht im Katalog. Probier eine andere
-            Schreibweise – oder stöbere in <Link href="/duefte">allen Düften</Link>.
+            Schreibweise. Oder stöbere in <Link href="/duefte">allen Düften</Link>.
           </p>
         )}
 
@@ -222,7 +222,7 @@ export default function DupeFinder({
             {selected.price_chf != null ? ` (ca. CHF ${selected.price_chf})` : ''}
           </h2>
           <p className="small">
-            Ehrlich gesagt: Keine Alternative ist eine exakte Kopie – aber diese
+            Ehrlich gesagt: Keine Alternative ist eine exakte Kopie, aber diese
             Düfte gehen in eine sehr ähnliche Richtung und kosten deutlich weniger.
           </p>
 
@@ -253,7 +253,7 @@ export default function DupeFinder({
               <p className="small">
                 Gute Nachricht: {selected.perfume_name}
                 {selected.price_chf != null ? ` (ca. CHF ${selected.price_chf})` : ''} ist
-                selbst schon günstig – hier brauchst du keinen Dupe.
+                selbst schon günstig, hier brauchst du keinen Dupe.
                 {similarFallback.length > 0 ? ' Diese Düfte riechen ähnlich:' : ''}
               </p>
               {similarFallback.length > 0 && (

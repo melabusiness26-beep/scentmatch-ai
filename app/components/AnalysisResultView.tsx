@@ -214,7 +214,7 @@ const TabNav = ({ active, onChange }: { active: Tab; onChange: (t: Tab) => void 
 // ─── Teilen-Buttons ───────────────────────────────────────────────────────────
 const ShareButtons = ({ name, brand }: { name: string; brand: string }) => {
   const [copied, setCopied] = useState(false);
-  const shareText = `Ich habe gerade "${name}" von ${brand} mit Auressa entdeckt – dem KI-Duft-Scanner! 🌸`;
+  const shareText = `Ich habe gerade "${name}" von ${brand} mit Auressa entdeckt, dem KI-Duft-Scanner! 🌸`;
   const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://auressa.ch';
   const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText + '\n' + shareUrl)}`;
   const copyLink = async () => {

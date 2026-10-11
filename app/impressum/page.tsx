@@ -57,7 +57,7 @@ export default function ImpressumPage() {
           <p>
             Auressa finanziert sich teilweise über Affiliate-Links. Klickst du auf einen mit
             „Affiliate" gekennzeichneten Link und kaufst beim Partner-Shop ein, erhalten wir ggf. eine
-            kleine Provision. Für dich entstehen dadurch keine Mehrkosten – der Preis bleibt gleich.
+            kleine Provision. Für dich entstehen dadurch keine Mehrkosten, der Preis bleibt gleich.
           </p>
 
           <h2>Urheberrecht</h2>

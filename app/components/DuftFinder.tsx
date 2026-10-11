@@ -64,7 +64,7 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           onKeyPress={handleKeyPress}
-          placeholder="Duftname oder Beschreibung – z. B. Guess Seductive Noir oder frisch holzig männlich"
+          placeholder="Duftname oder Beschreibung, z. B. Guess Seductive Noir oder frisch holzig männlich"
           style={{
             width: '100%',
             minHeight: '140px',
@@ -371,7 +371,7 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                   fontSize: '15px',
                 }}
               >
-                Keine passenden Düfte gefunden – versuch eine andere Beschreibung.
+                Keine passenden Düfte gefunden. Versuch eine andere Beschreibung.
               </p>
               <p style={{ fontSize: '13px', color: '#6b5a4e' }}>
                 Tipp: Probier konkrete Duftnoten wie „Vanille", „Zitrus" oder „Sandelholz".

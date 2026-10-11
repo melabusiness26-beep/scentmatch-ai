@@ -419,7 +419,7 @@ export default async function PerfumeDetailPage({
           <section className="section">
             <h2>Günstige Alternativen zu {perfume.perfume_name}</h2>
             <p className="small">
-              Ähnlich riechende Düfte, die deutlich weniger kosten – ideal, wenn du den Stil magst,
+              Ähnlich riechende Düfte, die deutlich weniger kosten. Ideal, wenn du den Stil magst,
               aber sparen möchtest.
             </p>
             <div className="perfume-list">

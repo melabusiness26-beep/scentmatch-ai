@@ -9,10 +9,10 @@ interface QuestionProps {
 
 export default function Question7Strength({ answers, handleAnswer }: QuestionProps) {
   const options: Array<{ value: any; label: string; description: string }> = [
-    { value: 'subtle', label: 'Sehr dezent – kaum wahrnehmbar', description: 'Man muss nah dran sein' },
-    { value: 'medium', label: 'Angenehm präsent – gut dosiert', description: 'Perfekt für Alltag' },
-    { value: 'intense', label: 'Intensiv – man riecht ihn sofort', description: 'Im Umkreis deutlich spürbar' },
-    { value: 'intense', label: 'Sehr stark – bleibt lange hängen', description: 'Dominiert den Raum' },
+    { value: 'subtle', label: 'Sehr dezent, kaum wahrnehmbar', description: 'Man muss nah dran sein' },
+    { value: 'medium', label: 'Angenehm präsent, gut dosiert', description: 'Perfekt für Alltag' },
+    { value: 'intense', label: 'Intensiv, sofort wahrnehmbar', description: 'Im Umkreis deutlich spürbar' },
+    { value: 'intense', label: 'Sehr stark, bleibt lange hängen', description: 'Dominiert den Raum' },
     { value: 'unknown', label: 'Ich weiss es nicht', description: 'Diese Info wird übersprungen' },
   ];
 

@@ -59,7 +59,7 @@ export default async function DuftFinderPage() {
             Welchen Duft suchst du?
           </h1>
           <p style={{ fontSize: '16px', color: 'rgba(250,247,242,0.65)', margin: 0 }}>
-            Name, Note oder Beschreibung eingeben – aus über {roundedCount || 400} kuratierten Parfüms.
+            Name, Note oder Beschreibung eingeben, aus über {roundedCount || 400} kuratierten Parfüms.
           </p>
         </div>
       </section>

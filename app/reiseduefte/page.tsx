@@ -28,7 +28,7 @@ export default function ReisedueftePage() {
           <p className="eyebrow">Reise & Duft</p>
           <h1>Welcher Duft passt zu deinem Reiseziel? ✈️</h1>
           <p className="lead">
-            Jeder Ort hat seinen eigenen Duft-Charakter – warm wie Rom, frisch wie die Alpen,
+            Jeder Ort hat seinen eigenen Duft-Charakter: warm wie Rom, frisch wie die Alpen,
             tropisch wie die Karibik. Wähl dein Traumziel und finde die Düfte, die dazu passen.
           </p>
           <p className="small mood-honest">

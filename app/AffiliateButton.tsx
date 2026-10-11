@@ -38,7 +38,7 @@ export function AffiliateButton({
       {showNote && isPartnerLink && (
         <p className="small buy-note affiliate-note">
           <span className="affiliate-note-icon" aria-hidden="true">ⓘ</span>
-          Partner-Link – für dich ohne Mehrkosten.
+          Partner-Link, für dich ohne Mehrkosten.
         </p>
       )}
     </>

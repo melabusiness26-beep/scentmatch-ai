@@ -10,7 +10,7 @@ import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 export default function NewsletterForm({
   source = 'footer',
   title = 'Duft-Tipps per E-Mail',
-  text = 'Neue Düfte, Spar-Tipps und Empfehlungen – ab und zu, nie Spam.'
+  text = 'Neue Düfte, Spar-Tipps und Empfehlungen. Ab und zu, nie Spam.'
 }: {
   source?: string;
   title?: string;
@@ -54,7 +54,7 @@ export default function NewsletterForm({
     return (
       <div className="newsletter">
         <h3 className="newsletter-title">Danke! 🌸</h3>
-        <p className="small">Du bist auf der Liste – wir melden uns mit Duft-Tipps, versprochen ohne Spam.</p>
+        <p className="small">Du bist auf der Liste. Wir melden uns mit Duft-Tipps, versprochen ohne Spam.</p>
       </div>
     );
   }

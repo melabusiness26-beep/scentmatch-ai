@@ -105,7 +105,7 @@ export default async function Page() {
                 Duft-Wissen, das wirklich hilft
               </h2>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', margin: 0 }}>
-                Ehrlich, ohne Fachjargon – für alle, die einfach gut riechen wollen.
+                Ehrlich, ohne Fachjargon. Für alle, die einfach gut riechen wollen.
               </p>
             </div>
 

@@ -218,7 +218,7 @@ export default function DuftDetektiv({ allPerfumes, prefilledAnswers }: DuftDete
             lineHeight: 1.6,
             fontStyle: 'italic',
           }}>
-            Beschreib mir den Duft – ich finde ihn für dich.
+            Beschreib mir den Duft. Ich finde ihn für dich.
           </p>
 
           {/* Two Entry Options */}

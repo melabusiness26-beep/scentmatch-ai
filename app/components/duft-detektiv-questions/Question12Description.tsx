@@ -17,7 +17,7 @@ export default function Question12Description({ answers, handleAnswer }: Questio
         color: '#2a1d12',
         marginBottom: '2.5rem', lineHeight: 1.3,
       }}>
-        Beschreib den Duft – welche Noten oder Eindrücke magst du? (Optional)
+        Beschreib den Duft: welche Noten oder Eindrücke magst du? (Optional)
       </h2>
 
       <textarea

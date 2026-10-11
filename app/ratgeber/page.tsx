@@ -98,26 +98,7 @@ function GuideTiles({ items }: { items: Guide[] }) {
         <Link
           key={guide.slug}
           href={`/ratgeber/${guide.slug}`}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '0.6rem',
-            background: '#fff',
-            border: '1px solid rgba(212,175,55,0.18)',
-            borderRadius: '12px',
-            padding: '1.25rem',
-            textDecoration: 'none',
-            color: 'inherit',
-            transition: 'box-shadow 0.2s, transform 0.2s',
-          }}
-          onMouseOver={(e) => {
-            (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 4px 16px rgba(212,175,55,0.18)';
-            (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-2px)';
-          }}
-          onMouseOut={(e) => {
-            (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none';
-            (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)';
-          }}
+          className="guide-tile"
         >
           <span style={{ fontSize: '1.75rem', lineHeight: 1 }}>{getGuideEmoji(guide.slug)}</span>
           <h3 style={{

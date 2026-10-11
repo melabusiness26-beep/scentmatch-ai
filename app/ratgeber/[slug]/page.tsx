@@ -172,14 +172,26 @@ export default async function GuidePage({
         position: 'relative',
         overflow: 'hidden',
       }}>
-        {/* Dekorativer Schimmer-Ring */}
+        {/* Hintergrundfoto (Unsplash) */}
+        {guide.heroImage && (
+          <div aria-hidden="true" style={{
+            position: 'absolute', inset: 0,
+            backgroundImage: `url(${guide.heroImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            zIndex: 0,
+          }} />
+        )}
+        {/* Overlay: Foto → dunkler Verlauf, kein Foto → Schimmer-Ring */}
         <div aria-hidden="true" style={{
-          position: 'absolute', top: '-40%', left: '50%', transform: 'translateX(-50%)',
-          width: '600px', height: '600px', borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 65%)',
+          position: 'absolute', inset: 0,
+          background: guide.heroImage
+            ? 'linear-gradient(to bottom, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.38) 100%)'
+            : 'radial-gradient(circle at 50% -40%, rgba(255,255,255,0.06) 0%, transparent 65%)',
+          zIndex: 1,
           pointerEvents: 'none',
         }} />
-        <div style={{ position: 'relative', maxWidth: '700px', margin: '0 auto' }}>
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: '700px', margin: '0 auto' }}>
           <div style={{ fontSize: 'clamp(2.5rem,8vw,4rem)', lineHeight: 1, marginBottom: '1rem' }}
                aria-hidden="true">{hero.icon}</div>
           <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.75rem', letterSpacing: '0.18em',
@@ -187,7 +199,7 @@ export default async function GuidePage({
             Ratgeber
           </p>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.6rem,5vw,2.4rem)',
-                       fontWeight: 700, lineHeight: 1.15, color: hero.textColor, margin: '0 0 1rem' }}>
+                       fontWeight: 700, lineHeight: 1.15, color: guide.heroImage ? '#fff' : hero.textColor, margin: '0 0 1rem' }}>
             {guide.title}
           </h1>
           <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.65)', maxWidth: '520px',

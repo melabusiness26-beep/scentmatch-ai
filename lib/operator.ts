@@ -9,5 +9,5 @@ export const OPERATOR = {
   country: 'Schweiz',
   email: 'mela.business26@gmail.com',
   // Stand der Rechtstexte (bei Änderungen aktualisieren):
-  lastUpdated: 'Juni 2026'
+  lastUpdated: 'Oktober 2026'
 };

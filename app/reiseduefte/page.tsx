@@ -3,6 +3,8 @@ import Link from 'next/link';
 import SiteHeader from '@/app/SiteHeader';
 import { destinationsByCategory, CATEGORY_LABELS, CATEGORY_INTRO } from '@/lib/destinations';
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
+
 export const metadata: Metadata = {
   title: 'Welcher Duft passt zu deinem Reiseziel?',
   description:
@@ -12,7 +14,7 @@ export const metadata: Metadata = {
     title: 'Welcher Duft passt zu deinem Reiseziel? | Auressa',
     description:
       'Von Rom bis zur Karibik: Finde den Duft, der zu deinem Traumziel passt. Für Städtereisen, Berge und Strände.',
-    url: '/reiseduefte',
+    url: `${SITE_URL}/reiseduefte`,
     type: 'website'
   }
 };

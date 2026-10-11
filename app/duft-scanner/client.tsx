@@ -3,9 +3,8 @@
 import { useState, useEffect } from 'react';
 import { Perfume } from '@/lib/perfumes';
 import { ImageAnalysisResult } from '@/types/image-analysis';
-import { findSimilarPerfumes } from '@/lib/analysis-matcher';
+import { findSimilarPerfumes, findPerfumeInDB } from '@/lib/analysis-matcher';
 import { getScanHistory, addScanToHistory, clearScanHistory, ScanHistoryEntry, formatRelativeTime } from '@/lib/scan-history';
-import { findPerfumeInDB } from '@/lib/analysis-matcher';
 import ImageAnalyzer from '@/app/components/ImageAnalyzer';
 import AnalysisResultView from '@/app/components/AnalysisResultView';
 import LoadingAnimation from '@/app/components/LoadingAnimation';
@@ -30,6 +29,7 @@ const C = {
 export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProps) {
   const [stage, setStage] = useState<Stage>('scanner');
   const [analysis, setAnalysis] = useState<ImageAnalysisResult['data'] | null>(null);
+  const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [similarPerfumes, setSimilarPerfumes] = useState<Perfume[]>([]);
   const [dbMatch, setDbMatch] = useState<Perfume | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -41,9 +41,14 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
     setHistory(getScanHistory());
   }, []);
 
-  const handleAnalysisComplete = (analysisData: ImageAnalysisResult['data']) => {
+  const handleScanningChange = (scanning: boolean) => {
+    setIsLoading(scanning);
+  };
+
+  const handleAnalysisComplete = (analysisData: ImageAnalysisResult['data'], image: string) => {
+    setIsLoading(false);
     setAnalysis(analysisData);
-    setIsLoading(true);
+    setUploadedImage(image);
 
     // DB-Lookup: Ist der Duft in Auressa? (Name + Marke + Noten)
     const found = findPerfumeInDB(analysisData.perfumeName, analysisData.brandName, analysisData.notes, allPerfumes);
@@ -61,24 +66,30 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
       setSimilarPerfumes(similar);
       setStage('results');
     }
-    setIsLoading(false);
   };
 
   const handleNewSearch = () => {
     setStage('scanner');
     setAnalysis(null);
+    setUploadedImage(null);
     setSimilarPerfumes([]);
     setDbMatch(null);
   };
 
   const handleLoadFromHistory = (entry: ScanHistoryEntry) => {
-    const found = findPerfumeInDB(entry.analysis.perfumeName, entry.analysis.brandName, entry.analysis.notes, allPerfumes);
-    const similar = findSimilarPerfumes(entry.analysis, allPerfumes, 40, 7);
-    setAnalysis(entry.analysis);
-    setSimilarPerfumes(similar);
-    setDbMatch(found);
-    setStage(similar.length > 0 || found ? 'results' : 'not-found');
+    setIsLoading(true);
     setShowHistory(false);
+    // Double-rAF: first frame paints loading screen, second frame runs heavy computation
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      const found = findPerfumeInDB(entry.analysis.perfumeName, entry.analysis.brandName, entry.analysis.notes, allPerfumes);
+      const similar = findSimilarPerfumes(entry.analysis, allPerfumes, 40, 7);
+      setAnalysis(entry.analysis);
+      setUploadedImage(null); // no image for history entries
+      setSimilarPerfumes(similar);
+      setDbMatch(found);
+      setIsLoading(false);
+      setStage(similar.length > 0 || found ? 'results' : 'not-found');
+    }));
   };
 
   const handleClearHistory = () => {
@@ -86,61 +97,46 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
     setHistory([]);
   };
 
+  // Re-run matching after user corrects the perfume name/brand
+  const handleAnalysisCorrected = (updated: ImageAnalysisResult['data']) => {
+    setAnalysis(updated);
+    const found = findPerfumeInDB(updated.perfumeName, updated.brandName, updated.notes, allPerfumes);
+    const similar = findSimilarPerfumes(updated, allPerfumes, 40, 7);
+    setDbMatch(found);
+    setSimilarPerfumes(similar);
+    if (similar.length === 0 && !found) {
+      setStage('not-found');
+    } else {
+      setStage('results');
+    }
+  };
+
   if (isLoading) {
     return <LoadingAnimation />;
   }
 
-  if (stage === 'results' && analysis) {
+  if ((stage === 'results' || stage === 'not-found') && analysis) {
+    // For not-found: use lower threshold + family fallback as similar perfumes
+    const displaySimilar = stage === 'not-found' ? (() => {
+      const fallback = findSimilarPerfumes(analysis, allPerfumes, 15, 6);
+      if (fallback.length > 0) return fallback;
+      return analysis.family
+        ? allPerfumes
+            .filter(p => (p.fragrance_family || '').toLowerCase() === (analysis.family || '').toLowerCase())
+            .slice(0, 6)
+        : allPerfumes.slice(0, 6);
+    })() : similarPerfumes;
+
     return (
       <AnalysisResultView
         analysis={analysis}
-        similarPerfumes={similarPerfumes}
+        similarPerfumes={displaySimilar}
         onNewSearch={handleNewSearch}
         dbMatch={dbMatch}
+        uploadedImage={uploadedImage}
+        onAnalysisCorrected={handleAnalysisCorrected}
+        notInCatalog={stage === 'not-found'}
       />
-    );
-  }
-
-  if (stage === 'not-found' && analysis) {
-    return (
-      <div style={{ maxWidth: '600px', margin: '0 auto', padding: '2rem 1rem', textAlign: 'center' }}>
-        <div style={{ backgroundColor: C.cream, borderRadius: '12px', padding: '3rem 2rem', border: `1px solid ${C.sand}` }}>
-          <h2 style={{
-            fontSize: '28px',
-            fontFamily: "'Playfair Display', serif",
-            fontWeight: 700,
-            color: C.dark,
-            marginBottom: '1rem',
-          }}>
-            Parfüm erkannt!
-          </h2>
-          <p style={{ fontSize: '16px', color: C.textMuted, marginBottom: '1.5rem', lineHeight: 1.6 }}>
-            <strong>{analysis.perfumeName}</strong> von <strong>{analysis.brandName}</strong>
-          </p>
-          <p style={{ fontSize: '14px', color: C.textLight, marginBottom: '2rem' }}>
-            Leider haben wir keine ähnlichen Düfte in unserem Katalog gefunden, die dieser Beschreibung
-            entsprechen. Schau dir aber den Duft selbst an!
-          </p>
-          <p style={{ fontSize: '14px', color: C.textMuted, marginBottom: '2rem', lineHeight: 1.6 }}>
-            {analysis.generalDescription}
-          </p>
-          <button
-            onClick={handleNewSearch}
-            style={{
-              padding: '12px 32px',
-              borderRadius: '8px',
-              border: `1px solid ${C.sand}`,
-              backgroundColor: 'transparent',
-              color: C.dark,
-              fontSize: '14px',
-              fontWeight: 600,
-              cursor: 'pointer',
-            }}
-          >
-            Neue Suche
-          </button>
-        </div>
-      </div>
     );
   }
 
@@ -164,7 +160,10 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
           Fotografiere einen Parfüm-Flakon – wir analysieren ihn und zeigen dir ähnliche Düfte.
         </p>
 
-        <ImageAnalyzer onAnalysisComplete={handleAnalysisComplete} />
+        <ImageAnalyzer
+          onAnalysisComplete={(data: ImageAnalysisResult['data'], img?: string) => handleAnalysisComplete(data, img || '')}
+          onLoadingChange={handleScanningChange}
+        />
       </div>
 
       {/* Scan history */}

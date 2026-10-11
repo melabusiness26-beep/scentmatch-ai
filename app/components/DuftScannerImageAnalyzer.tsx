@@ -5,7 +5,7 @@ import { ImageAnalysisResult } from '@/types/image-analysis';
 import ImageUploadButton from './ImageUploadButton';
 
 interface DuftScannerImageAnalyzerProps {
-  onAnalysisComplete: (data: ImageAnalysisResult['data']) => void;
+  onAnalysisComplete: (data: ImageAnalysisResult['data'], uploadedImage: string) => void;
 }
 
 export default function DuftScannerImageAnalyzer({ onAnalysisComplete }: DuftScannerImageAnalyzerProps) {
@@ -30,16 +30,16 @@ export default function DuftScannerImageAnalyzer({ onAnalysisComplete }: DuftSca
 
       if (!data.success || !data.data) {
         console.warn('[DuftScannerImageAnalyzer] Analyse fehlgeschlagen:', data.error);
-        setError(data.error || 'Bild nicht erkannt');
+        setError(data.error || 'Das Bild konnte nicht erkannt werden.');
         setIsLoading(false);
         return;
       }
 
       setIsLoading(false);
-      onAnalysisComplete(data.data as ImageAnalysisResult['data']);
+      onAnalysisComplete(data.data as ImageAnalysisResult['data'], base64);
     } catch (err) {
       console.error('[DuftScannerImageAnalyzer] Fehler:', err);
-      setError('Fehler bei Bildanalyse – versuche es später erneut');
+      setError('Fehler bei der Bildanalyse – bitte versuche es später erneut.');
       setIsLoading(false);
     }
   };
@@ -66,7 +66,7 @@ export default function DuftScannerImageAnalyzer({ onAnalysisComplete }: DuftSca
       )}
 
       <p style={{ fontSize: '13px', color: '#6b5a4e', textAlign: 'center', marginTop: '0.5rem' }}>
-        Flakon, Outfit oder Stimmung – wir lesen das Bild
+        Parfümflakon fotografieren – wir erkennen den Duft.
       </p>
     </div>
   );

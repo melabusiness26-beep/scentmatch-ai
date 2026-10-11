@@ -4,6 +4,8 @@ import SiteHeader from '@/app/SiteHeader';
 import MoodIcon from '@/app/MoodIcon';
 import { MOODS } from '@/lib/perfumes';
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
+
 export const metadata: Metadata = {
   title: 'Duft nach Stimmung finden',
   description:
@@ -13,7 +15,7 @@ export const metadata: Metadata = {
     title: 'Duft nach Stimmung finden | Auressa',
     description:
       'Wähl deine Stimmung und finde sofort den passenden Duft – gemütlich, frisch, selbstbewusst, romantisch, sinnlich oder sommerlich.',
-    url: '/stimmungen',
+    url: `${SITE_URL}/stimmungen`,
     type: 'website'
   }
 };

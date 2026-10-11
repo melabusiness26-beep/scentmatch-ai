@@ -1,29 +1,40 @@
 import type { Metadata } from 'next';
-import { getPerfumes } from '@/lib/perfumes';
+import { getPerfumes, getPerfumeCount } from '@/lib/perfumes';
 import DuftFinder from '@/app/components/DuftFinder';
+import SiteHeader from '@/app/SiteHeader';
 
-export const metadata: Metadata = {
-  robots: 'noindex, nofollow',
-  title: 'Duft-Finder – Welchen Duft suchst du? | Auressa',
-  description: 'Beschreib den Duft, den du suchst – wir finden ihn aus 409 Düften.',
-};
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
+
+function approxCount(n: number): number {
+  return Math.floor(n / 50) * 50;
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const count = approxCount(await getPerfumeCount());
+  return {
+    title: 'Duft-Finder – Welchen Duft suchst du? | Auressa',
+    description: `Beschreib den Duft, den du suchst – wir finden ihn aus über ${count} Düften.`,
+    openGraph: {
+      title: 'Duft-Finder | Auressa',
+      description: `Finde deinen Duft aus über ${count} Parfüms.`,
+      url: `${SITE_URL}/duft-finder`,
+    },
+  };
+}
 
 export default async function DuftFinderPage() {
-  let perfumes = [];
-
-  try {
-    perfumes = await getPerfumes(2000);
-  } catch (error) {
-    console.error('[DuftFinder Page] Failed to load perfumes:', error);
-  }
+  const [perfumes, count] = await Promise.all([
+    getPerfumes(2000).catch(() => []),
+    getPerfumeCount().catch(() => 0),
+  ]);
+  const approx = approxCount(count);
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
+      <SiteHeader />
       <section
         style={{
-          backgroundImage: 'linear-gradient(rgba(26,18,9,0.80), rgba(26,18,9,0.80)), url(https://images.unsplash.com/photo-1549049950-48d5887197a0?w=800)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          background: 'linear-gradient(135deg, #2a1d12 0%, #1a1209 100%)',
           minHeight: '280px',
           padding: '2.5rem 1.25rem',
           display: 'flex',
@@ -47,7 +58,7 @@ export default async function DuftFinderPage() {
             color: 'rgba(250,247,242,0.65)',
             margin: 0,
           }}>
-            Gib einen Duftnamen oder eine Beschreibung ein – wir finden ihn aus 409 Düften.
+            Gib einen Duftnamen oder eine Beschreibung ein – wir finden ihn aus über {approx || '400'} Düften.
           </p>
         </div>
       </section>

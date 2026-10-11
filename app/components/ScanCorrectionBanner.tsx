@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ImageAnalysisResult } from '@/types/image-analysis';
 
 interface ScanCorrectionBannerProps {
@@ -23,6 +23,14 @@ export default function ScanCorrectionBanner({ analysis, onCorrected }: ScanCorr
   const [name, setName] = useState(analysis.perfumeName);
   const [brand, setBrand] = useState(analysis.brandName);
   const [saved, setSaved] = useState(false);
+
+  // Reset form when analysis changes (e.g. when loading from history)
+  useEffect(() => {
+    setName(analysis.perfumeName);
+    setBrand(analysis.brandName);
+    setSaved(false);
+    setOpen(false);
+  }, [analysis.perfumeName, analysis.brandName]);
 
   const handleSave = () => {
     if (!name.trim() || !brand.trim()) return;
@@ -107,7 +115,7 @@ export default function ScanCorrectionBanner({ analysis, onCorrected }: ScanCorr
                   fontSize: '0.9rem', color: C.dark, backgroundColor: '#fff',
                   outline: 'none', boxSizing: 'border-box',
                 }}
-                placeholder="z.B. THE ROSE"
+                placeholder="z. B. Baccarat Rouge 540"
               />
             </div>
             <div>
@@ -123,7 +131,7 @@ export default function ScanCorrectionBanner({ analysis, onCorrected }: ScanCorr
                   fontSize: '0.9rem', color: C.dark, backgroundColor: '#fff',
                   outline: 'none', boxSizing: 'border-box',
                 }}
-                placeholder="z.B. Comotù"
+                placeholder="z. B. Chanel"
               />
             </div>
           </div>

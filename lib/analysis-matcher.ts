@@ -57,8 +57,8 @@ export function findPerfumeInDB(
     console.log(`[scanner-matcher] Best name+brand match: "${bestMatch?.perfume_name}" by "${bestMatch?.brands?.name}" (score: ${bestScore.toFixed(2)})`);
   }
 
-  // Stufe 1: Guter Name+Marke Match
-  if (bestScore >= 0.6) return bestMatch;
+  // Stufe 1: Guter Name+Marke Match (0.72 erfordert, dass beide Felder passen)
+  if (bestScore >= 0.72) return bestMatch;
 
   // Stufe 2: Nur Name sehr gut (KI hat Marke falsch geschrieben)
   let bestNameOnly: Perfume | null = null;
@@ -71,10 +71,11 @@ export function findPerfumeInDB(
 
   // Stufe 3: Marke passt gut + Noten-Overlap hoch
   // (deckt den Fall ab: Marke erkannt, aber Name falsch z.B. "Comotù" → "Comoró")
+  const safeNotes = analysisNotes ?? { top: [], heart: [], base: [] };
   const allAnalysisNotes = [
-    ...analysisNotes.top,
-    ...analysisNotes.heart,
-    ...analysisNotes.base,
+    ...(safeNotes.top || []),
+    ...(safeNotes.heart || []),
+    ...(safeNotes.base || []),
   ].map(n => n.toLowerCase().trim());
 
   let bestNoteMatch: Perfume | null = null;
@@ -158,20 +159,20 @@ function calculateSimilarityScore(analysis: ImageAnalysisResult['data'], perfume
   const maxScore = 100;
 
   // 1. Duftfamilie-Match (30 Punkte)
-  if (analysis.family.toLowerCase() === (perfume.fragrance_family || '').toLowerCase()) {
+  const analysisFamily = (analysis.family || '').toLowerCase();
+  const perfumeFamily = (perfume.fragrance_family || '').toLowerCase();
+  if (analysisFamily && perfumeFamily && analysisFamily === perfumeFamily) {
     score += 30;
-  } else if (
-    analysis.family.toLowerCase().includes((perfume.fragrance_family || '').toLowerCase()) ||
-    (perfume.fragrance_family || '').toLowerCase().includes(analysis.family.toLowerCase())
-  ) {
+  } else if (analysisFamily && perfumeFamily && (analysisFamily.includes(perfumeFamily) || perfumeFamily.includes(analysisFamily))) {
     score += 15;
   }
 
   // 2. Noten-Übereinstimmung (35 Punkte)
+  const safeAnalysisNotes = analysis.notes ?? { top: [], heart: [], base: [] };
   const analysisNotes = [
-    ...analysis.notes.top,
-    ...analysis.notes.heart,
-    ...analysis.notes.base,
+    ...(safeAnalysisNotes.top || []),
+    ...(safeAnalysisNotes.heart || []),
+    ...(safeAnalysisNotes.base || []),
   ];
   const perfumeNotes = [
     ...(perfume.top_notes || []),

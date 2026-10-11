@@ -931,7 +931,7 @@ export const guides: Guide[] = [
         perfumes: [
           'davidoff-cool-water',
           'lattafa-yara',
-          'dkny-be-delicious',
+          'sdj-cheirosa-62',
           'club-de-nuit-intense'
         ]
       },

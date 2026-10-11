@@ -55,12 +55,9 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
     addScanToHistory(analysisData);
     setHistory(getScanHistory());
 
-    if (similar.length === 0 && !found) {
-      setStage('not-found');
-    } else {
-      setSimilarPerfumes(similar);
-      setStage('results');
-    }
+    // Immer Ergebnisseite zeigen – KI liefert Geschichte, Charakter, Duftreise auch ohne DB-Treffer
+    setSimilarPerfumes(similar);
+    setStage('results');
     setIsLoading(false);
   };
 

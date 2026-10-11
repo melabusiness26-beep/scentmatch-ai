@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Playfair_Display, Inter } from 'next/font/google';
+import Link from 'next/link';
 import ConsentedAnalytics from '@/app/ConsentedAnalytics';
 import CookieBanner from '@/app/CookieBanner';
 import FooterNewsletter from '@/app/FooterNewsletter';
@@ -126,20 +127,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <p className="small footer-tag">Die moderne Duft-Findung – kuratiert in der Schweiz. Finde mit Quiz und intelligenter Match-Engine deinen Signature-Duft.</p>
             </div>
             <nav className="footer-links">
-              <a href="/#quiz">Quiz</a>
-              <a href="/duefte">Düfte</a>
-              <a href="/duft-finder">Duft-Finder</a>
-              <a href="/duft-detektiv">Duft-Detektiv</a>
-              <a href="/duft-scanner">Duft-Scanner</a>
-              <a href="/geschenk-finder">Geschenk-Finder</a>
-              <a href="/stimmungen">Stimmungen</a>
-              <a href="/reiseduefte">Reisedüfte</a>
-              <a href="/duftnoten">Duftnoten</a>
-              <a href="/ratgeber">Ratgeber</a>
-              <a href="/faq">FAQ</a>
-              <a href="/ueber-uns">Über uns</a>
-              <a href="/impressum">Impressum</a>
-              <a href="/datenschutz">Datenschutz</a>
+              <Link href="/#quiz">Quiz</Link>
+              <Link href="/duefte">Düfte</Link>
+              <Link href="/duft-finder">Duft-Finder</Link>
+              <Link href="/duft-detektiv">Duft-Detektiv</Link>
+              <Link href="/duft-scanner">Duft-Scanner</Link>
+              <Link href="/geschenk-finder">Geschenk-Finder</Link>
+              <Link href="/stimmungen">Stimmungen</Link>
+              <Link href="/reiseduefte">Reisedüfte</Link>
+              <Link href="/duftnoten">Duftnoten</Link>
+              <Link href="/ratgeber">Ratgeber</Link>
+              <Link href="/faq">FAQ</Link>
+              <Link href="/ueber-uns">Über uns</Link>
+              <Link href="/impressum">Impressum</Link>
+              <Link href="/datenschutz">Datenschutz</Link>
             </nav>
           </div>
           <p className="container footer-affiliate small">

@@ -102,6 +102,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8
     },
     {
+      url: `${SITE_URL}/duft-finder`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8
+    },
+    {
+      url: `${SITE_URL}/duft-detektiv`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7
+    },
+    {
       url: `${SITE_URL}/faq`,
       lastModified: new Date(),
       changeFrequency: 'monthly',

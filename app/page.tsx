@@ -31,7 +31,7 @@ export default async function Page() {
   let perfumes: Awaited<ReturnType<typeof getPerfumes>> = [];
   let catalogCount = 0;
   let brandCount = 0;
-  let highlightPerfumes = [];
+  let highlightPerfumes: Awaited<ReturnType<typeof getPerfumes>> = [];
 
   try {
     // Höchste Priorität: echte Anzahlen direkt aus der Datenbank.

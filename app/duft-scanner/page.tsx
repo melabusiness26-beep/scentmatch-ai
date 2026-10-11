@@ -3,6 +3,8 @@ import { getPerfumes } from '@/lib/perfumes';
 import DuftScannerClient from './client';
 import SiteHeader from '@/app/SiteHeader';
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
+
 export const metadata: Metadata = {
   title: 'Duft-Scanner – Parfüm per Foto erkennen | Auressa',
   description: 'Fotografiere einen Parfümflakon und lass die KI den Duft sofort identifizieren: Noten, Sillage, Charakter, Geschichte und ähnliche Düfte – alles in Sekunden.',
@@ -10,11 +12,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Duft-Scanner – Parfüm per Foto erkennen',
     description: 'Fotografiere einen Parfümflakon und erhalte sofort das komplette Duftprofil: Noten, Charakter, Geschichte und ähnliche Empfehlungen.',
-    url: 'https://auressa.ch/duft-scanner',
+    url: `${SITE_URL}/duft-scanner`,
     type: 'website',
   },
   alternates: {
-    canonical: 'https://auressa.ch/duft-scanner',
+    canonical: `${SITE_URL}/duft-scanner`,
   },
 };
 

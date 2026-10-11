@@ -274,6 +274,8 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
   const displayDescription = dbMatch?.description || currentAnalysis.poeticDescription || currentAnalysis.generalDescription;
   const displayImage       = dbMatch?.image_url || null;
   const dbGender           = dbMatch?.gender;
+  // Wenn DB-Match: verlässliches Geschlecht. Ohne DB-Match: KI-Erkennung aus Flakon-Text.
+  // Fallback auf 'Unisex' statt raten, wenn gender null/unbekannt.
   const genderLabel        = dbGender === 'Women' ? 'Damen' : dbGender === 'Men' ? 'Herren' : dbGender === 'Unisex' ? 'Unisex' : (currentAnalysis.gender === 'woman' ? 'Damen' : currentAnalysis.gender === 'man' ? 'Herren' : 'Unisex');
   const buyUrl             = dbMatch?.affiliate_url || `https://www.notino.ch/suche/?q=${encodeURIComponent(`${displayBrand} ${displayName}`)}`;
   const flaconiUrl         = `https://www.flaconi.ch/suche/?q=${encodeURIComponent(`${displayBrand} ${displayName}`)}`;

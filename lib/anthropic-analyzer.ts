@@ -50,6 +50,7 @@ Lese JEDEN sichtbaren Text auf dem Bild:
 - Volumen (50ml, 100ml etc.)
 - Batchcode / Lot-Nummer (ignorieren)
 - Text auf Karton/Verpackung falls sichtbar
+- GENDER-HINWEISE: Wörter wie „Homme", „Pour Homme", „for Men", „Man", „Men", „Herren", „Him" → ZWINGEND gender = "man"; Wörter wie „Femme", „Pour Femme", „for Women", „Woman", „Women", „Damen", „Her" → ZWINGEND gender = "woman"
 
 SCHRITT 2 – VISUELL-KONTEXTUELLE ANALYSE:
 - Flakonsform, Farbe, Material (Glas, Metall, Plastik)
@@ -79,7 +80,7 @@ ANTWORTE AUSSCHLIESSLICH mit gültigem JSON (kein Markdown, keine Erklärung dav
   "originCountry": "Land",
   "concentration": "Parfum|EDP|EDT|Eau de Cologne|null",
   "family": "Duftfamilie auf Deutsch (z.B. Blumig-Fruchtig, Holzig-Orientalisch, Frisch-Aquatisch)",
-  "gender": "woman|man|unisex",
+  "gender": "woman|man|unisex — PFLICHT: Wenn 'Homme', 'Pour Homme', 'for Men', 'Man' auf dem Flakon steht → IMMER 'man'. Wenn 'Femme', 'Pour Femme', 'for Women', 'Woman' steht → IMMER 'woman'. Kein Raten: Falls kein Hinweis sichtbar → 'unisex'.",
   "intensity": "very_light|light|medium|strong|very_strong",
   "rating": 7.5,
   "sillage": 6,

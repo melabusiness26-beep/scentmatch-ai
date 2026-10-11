@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   title: 'Duft nach Stimmung finden',
   description:
     'Wähl deine Stimmung und finde sofort den passenden Duft – ob gemütlich, frisch, selbstbewusst, romantisch, sinnlich oder sommerlich. Schnell, persönlich und ohne Quiz.',
-  alternates: { canonical: '/stimmungen' },
+  alternates: { canonical: 'https://auressa.ch/stimmungen' },
   openGraph: {
     title: 'Duft nach Stimmung finden | Auressa',
     description:
       'Wähl deine Stimmung und finde sofort den passenden Duft – gemütlich, frisch, selbstbewusst, romantisch, sinnlich oder sommerlich.',
-    url: '/stimmungen',
+    url: 'https://auressa.ch/stimmungen',
     type: 'website'
   }
 };

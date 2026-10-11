@@ -25,7 +25,7 @@ const inter = Inter({
   display: 'swap'
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -99,6 +99,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <nav className="footer-links">
               <a href="/#quiz">Quiz</a>
               <a href="/duefte">Düfte</a>
+              <a href="/duft-finder">Duft-Finder</a>
+              <a href="/duft-detektiv">Duft-Detektiv</a>
+              <a href="/duft-scanner">Duft-Scanner</a>
+              <a href="/geschenk-finder">Geschenk-Finder</a>
+              <a href="/stimmungen">Stimmungen</a>
+              <a href="/reiseduefte">Reisedüfte</a>
               <a href="/duftnoten">Duftnoten</a>
               <a href="/ratgeber">Ratgeber</a>
               <a href="/ueber-uns">Über uns</a>

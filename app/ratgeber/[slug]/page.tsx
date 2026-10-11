@@ -192,8 +192,10 @@ export default async function GuidePage({
           pointerEvents: 'none',
         }} />
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '700px', margin: '0 auto' }}>
+          {!guide.heroImage && (
           <div style={{ fontSize: 'clamp(2.5rem,8vw,4rem)', lineHeight: 1, marginBottom: '1rem' }}
                aria-hidden="true">{hero.icon}</div>
+          )}
           <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.75rem', letterSpacing: '0.18em',
                       textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', marginBottom: '0.6rem' }}>
             Ratgeber

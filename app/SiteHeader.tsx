@@ -31,19 +31,12 @@ export default function SiteHeader() {
           {menuOpen ? '✕' : '☰'}
         </button>
         <nav className={`main-nav${menuOpen ? ' open' : ''}`}>
-          <Link href="/#quiz" onClick={close}>Quiz</Link>
-          <Link href="/stimmungen" onClick={close}>Stimmungen</Link>
-          <Link href="/reiseduefte" onClick={close}>Reise-Düfte</Link>
-          <Link href="/#warum" onClick={close}>Warum wir?</Link>
           <Link href="/duefte" onClick={close}>Düfte</Link>
-          <Link href="/dupes" onClick={close}>Dupe-Finder</Link>
-          <Link href="/duft-finder" onClick={close}>Duft-Finder</Link>
           <Link href="/duft-detektiv" onClick={close}>Duft-Detektiv</Link>
           <Link href="/duft-scanner" onClick={close}>Duft-Scanner</Link>
-          <Link href="/duftnoten" onClick={close}>Duftnoten</Link>
-          <Link href="/geschenk-finder" onClick={close}>Geschenk-Finder</Link>
           <Link href="/ratgeber" onClick={close}>Ratgeber</Link>
-          <Link className="button nav-cta" href="/#quiz" onClick={close}>Duft finden</Link>
+          <Link href="/ueber-uns" onClick={close}>Über uns</Link>
+          <Link className="button nav-cta" href="/#quiz" onClick={close}>Quiz starten</Link>
         </nav>
       </div>
     </header>

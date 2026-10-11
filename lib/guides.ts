@@ -95,7 +95,7 @@ export const guides: Guide[] = [
       'Frische, leichte Düfte für den Sommer: aquatisch, zitrisch und unbeschwert. Unsere Empfehlungen für warme Tage, für Damen, Herren und Unisex.',
     heroImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80&fit=crop',
     intro: [
-      'Im Sommer dürfen Düfte leicht, frisch und nicht zu schwer sein. Zitrus, aquatische Noten und ein Hauch Salz wirken bei Hitze am besten und überladen nicht. Schwere Winterdüfte mit viel Oud, Amber oder intensiver Vanille kommen im Hochsommer schnell erdrückend rüber – du selbst und alle um dich herum werden es danken, wenn du die saisonale Wahl ernst nimmst.',
+      'Im Sommer dürfen Düfte leicht, frisch und nicht zu schwer sein. Zitrus, aquatische Noten und ein Hauch Salz sind bei Hitze am angenehmsten. Schwere Winterdüfte mit viel Oud, Amber oder intensiver Vanille können im Hochsommer schnell erdrückend wirken – besonders in der Nähe anderer.',
       'Ein guter Sommerduft kombiniert Frische mit einer dezenten Basis: Aquatische Noten oder Zitrus vorne, etwas Moschus oder leichtes Holz im Abgang, damit er nicht sofort verfliegt. Die Dosierung ist im Sommer besonders wichtig: Bei 30 Grad entfaltet sich jeder Duft viel intensiver als im Frühling.',
       'Hier unsere Empfehlungen aus dem Katalog, von günstig bis edel – für Damen, Herren und alle dazwischen.'
     ],
@@ -481,8 +481,8 @@ export const guides: Guide[] = [
     heroImage: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=1200&q=80&fit=crop',
     intro: [
       'Ein Duft ist ein persönliches, edles Geschenk – wenn er passt. Die Kunst ist, etwas zu wählen, das fast jeder mag: nicht zu speziell, aber trotzdem besonders. Ein klassischer, vielseitiger Duft kommt fast immer besser an als ein ausgefallener Nischen-Geheimtipp, den die beschenkte Person möglicherweise nie getragen hätte.',
-      'Als Faustregel gilt: Je weniger du den Geschmack der Person kennst, desto sicherer sind beliebte, leicht zugängliche Düfte. Bekannte Namen von Chanel, Dior oder Lancôme haben ein gewisses Vertrauens-Plus – man weiss, was man bekommt.',
-      'Hier unsere „sicheren" Geschenk-Tipps, die erfahrungsgemäss sehr gut ankommen – für Frauen und Männer, von charmant-frisch bis warm-elegant.'
+      'Wenn du den Geschmack der Person nicht gut kennst, bist du mit beliebten, zugänglichen Düften auf der sicheren Seite. Chanel, Dior oder Lancôme sind fast immer eine gute Wahl – klassisch und hochwertig.',
+      'Hier unsere Geschenk-Favoriten für Frauen und Männer, von frisch bis warm-elegant.'
     ],
     sections: [
       {
@@ -519,7 +519,7 @@ export const guides: Guide[] = [
     intro: [
       'Manche Männerdüfte ernten einfach besonders oft Komplimente. Meist sind es warme, einladende oder sauber-frische Düfte, die angenehm in Erinnerung bleiben – Düfte, die man noch Stunden später an einer Person wahrnimmt und denkt: „Was riecht der gut?"',
       'Was dabei auffällt: Die grössten Kompliment-Magneten sind selten die lautesten oder extrovertiertesten Düfte. Es sind oft Kompositionen, die etwas Vertrautes und Einladendes haben – eine warme Vanille-Note, sauberer Moschus oder eine fruchtig-holzige Qualität, die anziehend wirkt, ohne zu überfordern.',
-      'Hier die Klassiker, die erfahrungsgemäss sehr gut ankommen – mit einer kurzen Erklärung, warum sie so wirken.'
+      'Hier die Klassiker, die besonders oft Komplimente einheimsen – mit einer kurzen Erklärung, warum sie so wirken.'
     ],
     sections: [
       {
@@ -545,7 +545,7 @@ export const guides: Guide[] = [
       },
       {
         body: [
-          'Wichtig: „Kommt gut an" ist kein Garant. Am Ende zählt, dass der Duft zu dir passt. Mach das Quiz, um deine eigene Richtung zu finden.'
+          'Am Ende zählt, dass der Duft zu dir passt und du dich darin wohlfühlst. Mach das Quiz, um deine eigene Richtung zu finden.'
         ]
       }
     ]
@@ -600,7 +600,7 @@ export const guides: Guide[] = [
     heroImage: 'https://images.unsplash.com/photo-1540202404-a2f29016b523?w=1200&q=80&fit=crop',
     intro: [
       'Oud (auch Agarholz) ist eine der edelsten und intensivsten Duftnoten überhaupt: warm, holzig, leicht rauchig und sehr langanhaltend. Es gilt als „flüssiges Gold" der Parfümwelt – und das mit gutem Grund: Echter Oud ist extrem selten und entsprechend teuer.',
-      'Was die meisten Düfte als „Oud" bezeichnen, sind hochwertigen Oud-Akkorde oder synthetische Varianten, die trotzdem die typische Wärme und Tiefe vermitteln. Das ist vollkommen normal und macht die Düfte keineswegs schlechter – gerade für Einsteiger ins Thema ist ein gut gemachter Oud-Akkord oft sogar angenehmer als reines Agarholzöl.',
+      'Die meisten Düfte arbeiten mit hochwertigen Oud-Akkorden statt echtem Agarholzöl – das ist günstiger und für viele sogar angenehmer im Tragekomfort. Echter Oud kann sehr intensiv und gewöhnungsbedürftig sein.',
       'Hier unsere Empfehlungen, von erschwinglich bis exklusiv – besonders schön im Herbst und Winter.'
     ],
     sections: [
@@ -640,7 +640,7 @@ export const guides: Guide[] = [
       'Spritzig, frisch und gute Laune pur: Die besten Zitrus-Düfte mit Bergamotte, Zitrone und Grapefruit, ideal für Sommer, Büro und heisse Tage.',
     heroImage: 'https://images.unsplash.com/photo-1528825871115-3581a5387919?w=1200&q=80&fit=crop',
     intro: [
-      'Zitrus-Düfte sind frisch, leicht und sofort gute Laune: Zitrone, Bergamotte, Grapefruit und Orange wirken sauber und unbeschwert, perfekt für warme Tage und fürs Büro. Sie zählen zu den klassischsten Duftkategorien überhaupt – und es ist kein Zufall, dass die meisten Eau de Colognes auf Zitrus setzen.',
+      'Zitrus-Düfte sind frisch, leicht und heben sofort die Stimmung: Zitrone, Bergamotte, Grapefruit und Orange riechen sauber und unbeschwert. Perfekt für warme Tage, das Büro oder wenn man einfach etwas Leichtes tragen will.',
       'Der Trick bei Zitrus-Düften liegt in der Basis: Pur ist Zitrus herrlich frisch, aber schnell verflogen. Die besten Zitrus-Düfte haben ein holziges, moschusartiges oder leicht würziges Fundament, das die Frische verankert und dem Duft Tiefe und Ausdauer gibt.',
       'Hier unsere spritzigsten Empfehlungen – für Sommer, Büro und alle, die es leicht und unaufdringlich mögen.'
     ],
@@ -683,7 +683,7 @@ export const guides: Guide[] = [
     heroImage: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1200&q=80&fit=crop',
     intro: [
       'Manche Damendüfte ziehen einfach magisch an und ernten besonders oft Komplimente, gerade von Männern. Meist sind es warme, süsse oder sinnlich-verführerische Kompositionen, die angenehm in Erinnerung bleiben – Düfte, die man von einer Person wahrnimmt und sofort denkt: „Was riecht sie gut?"',
-      'Was diese Düfte verbindet: Sie haben oft eine einladende, süss-warme Qualität, die an Wärme und Geborgenheit erinnert. Das klingt banal, aber auf der emotionalen Ebene wirken solche Düfte eben besonders stark. Gourmand-Noten mit Vanille oder Karamell, weiche Moschus-Akkorde und blumige Herztnoten sind die häufigsten Erfolgsgaranten.',
+      'Was diese Düfte verbindet: eine süss-warme Qualität, die einladend und angenehm ist, ohne zu überwältigen. Vanille, Karamell, weicher Moschus und blumige Noten kommen dabei am häufigsten gut an.',
       'Hier die Düfte, die als echte „Anziehungs-Klassiker" gelten – mit einem ehrlichen Hinweis: Manche Frauen lieben sie, andere finden sie zu süss. Es kommt auf dich an.'
     ],
     sections: [
@@ -837,7 +837,7 @@ export const guides: Guide[] = [
       'Neu in der Welt der Düfte? So findest du Schritt für Schritt deinen ersten Signature-Duft, ohne teure Fehlkäufe. Mit einfachen Tipps und sicheren Einsteiger-Empfehlungen.',
     heroImage: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=1200&q=80&fit=crop',
     intro: [
-      'Vor dem Parfumregal zu stehen kann überfordern: hunderte Flakons, fremde Begriffe und stolze Preise. Dabei ist es gar nicht so schwer, deinen Lieblingsduft zu finden, wenn du weisst, worauf du achten musst.',
+      'Vor dem Parfumregal zu stehen kann überwältigend sein: hunderte Flakons, fremde Begriffe und stolze Preise. Aber mit ein paar einfachen Tricks findest du deinen Lieblingsduft schneller als du denkst.',
       'Hier bekommst du eine einfache Anleitung für deinen ersten eigenen Duft, ganz ohne Fachchinesisch.'
     ],
     sections: [

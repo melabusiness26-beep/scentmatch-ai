@@ -340,7 +340,13 @@ export default async function PerfumeDetailPage({
         <section className="detail-hero">
           <div>
             <Cover perfume={perfume} large />
-            <p className="small">{brandName}</p>
+            {perfume.brands?.slug ? (
+              <Link href={`/marke/${perfume.brands.slug}`} className="small" style={{ color: '#8c7060', textDecoration: 'none', borderBottom: '1px solid rgba(140,112,96,0.3)' }}>
+                {brandName}
+              </Link>
+            ) : (
+              <p className="small">{brandName}</p>
+            )}
             <h1 className="detail-title">{perfume.perfume_name}</h1>
             <p className="lead">{perfume.description || describePerfume(perfume)}</p>
             <div className="badge-row">

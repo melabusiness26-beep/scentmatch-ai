@@ -14,6 +14,7 @@ interface AnalysisResultViewProps {
   dbMatch?: Perfume | null;
   uploadedImage?: string | null;
   onAnalysisCorrected?: (updated: ImageAnalysisResult['data']) => void;
+  notInCatalog?: boolean;
 }
 
 // ─── Design Tokens ────────────────────────────────────────────────────────────
@@ -738,7 +739,7 @@ const PyramidLayer = ({
 };
 
 // ─── Main Component ───────────────────────────────────────────────────────────
-export default function AnalysisResultView({ analysis, similarPerfumes, onNewSearch, dbMatch, uploadedImage, onAnalysisCorrected }: AnalysisResultViewProps) {
+export default function AnalysisResultView({ analysis, similarPerfumes, onNewSearch, dbMatch, uploadedImage, onAnalysisCorrected, notInCatalog }: AnalysisResultViewProps) {
   const [currentAnalysis, setCurrentAnalysis] = useState(analysis);
   const [activeTab, setActiveTab] = useState<TabId>('profil');
   const tabContentRef = useRef<HTMLDivElement | null>(null);
@@ -834,6 +835,26 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
           }}
         />
       </div>
+
+      {/* ── NICHT-IM-KATALOG NOTICE ───────────────────────────────────────── */}
+      {notInCatalog && (
+        <div style={{
+          display: 'flex', alignItems: 'flex-start', gap: '0.75rem',
+          backgroundColor: '#f0f7ff',
+          border: '1px solid #b3d4f5',
+          borderLeft: '4px solid #3a8fd4',
+          borderRadius: '10px', padding: '0.9rem 1.1rem', margin: '0 1rem 1.25rem',
+          fontSize: '0.85rem', color: '#1a3d5c', lineHeight: 1.55,
+        }}>
+          <span style={{ fontSize: '1.1rem', flexShrink: 0, marginTop: '0.05rem' }}>ℹ️</span>
+          <div>
+            <strong style={{ display: 'block', marginBottom: '0.2rem', color: '#0d2840' }}>
+              Noch nicht in unserem Katalog
+            </strong>
+            Dieser Duft ist noch nicht bei Auressa gelistet. Die KI-Analyse zeigt dir trotzdem alle Daten – und unten findest du ähnliche Düfte aus unserem Sortiment.
+          </div>
+        </div>
+      )}
 
       {/* ── KONFIDENZ-WARNUNG ──────────────────────────────────────────────── */}
       {!dbMatch && (currentAnalysis.confidence === 'low' || currentAnalysis.confidence === 'medium') && (

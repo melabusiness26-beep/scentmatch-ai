@@ -205,6 +205,29 @@ PFLICHTREGELN:
       analysis.gender = genderMap[analysis.gender.toLowerCase()] || analysis.gender;
     }
 
+    // SICHERHEITS-CHECK: Parfümname und Marke auf Gender-Keywords prüfen.
+    // Dieser Code überschreibt die KI-Antwort – verhindert falsche Gender-Labels.
+    const nameToCheck = `${analysis.perfumeName || ''} ${analysis.brandName || ''}`.toLowerCase();
+    const MAN_KEYWORDS = [
+      'pour homme', 'for men', 'for him', 'homme', ' man ', 'men\'s',
+      ' him ', 'herren', 'masculin', 'masculine', 'uomo', 'hombre',
+    ];
+    const WOMAN_KEYWORDS = [
+      'pour femme', 'for women', 'for her', 'femme', ' woman ', 'women\'s',
+      ' her ', 'damen', 'féminin', 'feminine', 'donna', 'mujer', 'elle ',
+    ];
+    const isManByName  = MAN_KEYWORDS.some(kw => nameToCheck.includes(kw));
+    const isWomanByName = WOMAN_KEYWORDS.some(kw => nameToCheck.includes(kw));
+    if (isManByName && !isWomanByName) {
+      analysis.gender = 'man';
+    } else if (isWomanByName && !isManByName) {
+      analysis.gender = 'woman';
+    }
+    // Wenn kein Keyword gefunden und gender noch null/ungültig → sicherer Fallback
+    if (!['man', 'woman', 'unisex'].includes(analysis.gender)) {
+      analysis.gender = 'unisex';
+    }
+
     // Noten auf Deutsch normalisieren & Duplikate entfernen
     const NOTE_TRANSLATIONS: Record<string, string> = {
       // Spanisch

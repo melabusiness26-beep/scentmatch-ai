@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { getAllPerfumeSlugs, MOODS } from '@/lib/perfumes';
+import { getAllPerfumeSlugs, getAllBrandSlugs, MOODS } from '@/lib/perfumes';
 import { DESTINATIONS } from '@/lib/destinations';
 import { guides } from '@/lib/guides';
 import { scentNotes } from '@/lib/notes-glossary';
@@ -9,7 +9,10 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const slugs = await getAllPerfumeSlugs();
+  const [slugs, brandSlugs] = await Promise.all([
+    getAllPerfumeSlugs(),
+    getAllBrandSlugs(),
+  ]);
 
   const perfumeUrls: MetadataRoute.Sitemap = slugs.map((slug) => ({
     url: `${SITE_URL}/duft/${slug}`,
@@ -46,6 +49,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7
   }));
 
+  const brandUrls: MetadataRoute.Sitemap = brandSlugs.map((slug) => ({
+    url: `${SITE_URL}/marke/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.75
+  }));
+
   return [
     {
       url: SITE_URL,
@@ -58,6 +68,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.9
+    },
+    {
+      url: `${SITE_URL}/marke`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8
     },
     {
       url: `${SITE_URL}/duft-scanner`,
@@ -141,6 +157,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...destinationUrls,
     ...guideUrls,
     ...noteUrls,
+    ...brandUrls,
     ...perfumeUrls
   ];
 }

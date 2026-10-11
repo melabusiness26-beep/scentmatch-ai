@@ -191,6 +191,67 @@ export async function getPerfumeCount(): Promise<number> {
   return count;
 }
 
+// ─── Marken-Typen & Abfragen ────────────────────────────────────────────────
+
+export type Brand = {
+  id: string;
+  name: string;
+  slug: string;
+  country: string | null;
+  description: string | null;
+};
+
+// Alle Marken alphabetisch – für den Marken-Index.
+export async function getAllBrands(): Promise<Brand[]> {
+  if (!isSupabaseConfigured) return [];
+  const { data, error } = await supabase
+    .from('brands')
+    .select('id, name, slug, country, description')
+    .order('name', { ascending: true });
+  if (error || !data) return [];
+  return (data as Brand[]).filter((b) => b.slug);
+}
+
+// Alle Brand-Slugs – für generateStaticParams.
+export async function getAllBrandSlugs(): Promise<string[]> {
+  if (!isSupabaseConfigured) return [];
+  const { data, error } = await supabase
+    .from('brands')
+    .select('slug');
+  if (error || !data) return [];
+  return (data as { slug: string | null }[])
+    .map((r) => r.slug)
+    .filter((s): s is string => Boolean(s));
+}
+
+// Einzelne Marke per Slug.
+export async function getBrandBySlug(slug: string): Promise<Brand | null> {
+  if (!isSupabaseConfigured) return null;
+  const { data, error } = await supabase
+    .from('brands')
+    .select('id, name, slug, country, description')
+    .eq('slug', slug)
+    .maybeSingle();
+  if (error || !data) return null;
+  return data as Brand;
+}
+
+// Alle Düfte einer bestimmten Marke.
+export async function getPerfumesByBrand(brandSlug: string): Promise<Perfume[]> {
+  if (!isSupabaseConfigured) return [];
+  const { data, error } = await supabase
+    .from('perfumes')
+    .select(PERFUME_FIELDS)
+    .eq('brands.slug', brandSlug)
+    .order('scentmatch_score', { ascending: false });
+  if (error || !data) return [];
+  // Filter client-side, weil Supabase den Join-Filter nicht immer korrekt umsetzt
+  const all = (data as unknown as Perfume[]);
+  return dedupePerfumes(all.filter((p) => p.brands?.slug === brandSlug));
+}
+
+// ─── Brand-Statistiken ───────────────────────────────────────────────────────
+
 // Echte Anzahl der Marken im Katalog – aus der brands-Tabelle, nicht aus geladenen Düften.
 export async function getBrandCount(): Promise<number> {
   if (!isSupabaseConfigured) return 0;

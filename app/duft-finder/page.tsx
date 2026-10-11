@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 export default async function DuftFinderPage() {
-  let perfumes = [];
+  let perfumes: Awaited<ReturnType<typeof getPerfumes>> = [];
   let count = 0;
 
   try {

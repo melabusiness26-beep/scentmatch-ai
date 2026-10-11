@@ -28,7 +28,7 @@ export default async function DesignTestPage({
   let perfumes: Awaited<ReturnType<typeof getPerfumes>> = [];
   let catalogCount = 0;
   let brandCount = 0;
-  let highlightPerfumes = [];
+  let highlightPerfumes: Awaited<ReturnType<typeof getPerfumes>> = [];
 
   try {
     const [count, brands] = await Promise.all([getPerfumeCount(), getBrandCount()]);

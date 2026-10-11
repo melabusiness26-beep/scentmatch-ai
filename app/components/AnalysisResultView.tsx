@@ -256,6 +256,8 @@ const ShareButtons = ({ name, brand }: { name: string; brand: string }) => {
 export default function AnalysisResultView({ analysis, similarPerfumes, onNewSearch, dbMatch }: AnalysisResultViewProps) {
   const [currentAnalysis, setCurrentAnalysis] = useState(analysis);
   const [activeTab, setActiveTab] = useState<Tab>('profil');
+  const [priceFilter, setPriceFilter] = useState<number | null>(null);
+  const [genderFilter, setGenderFilter] = useState<string | null>(null);
 
   if (!currentAnalysis) return null;
 
@@ -375,6 +377,29 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
           <ShareButtons name={displayName} brand={displayBrand} />
         </div>
       </section>
+
+      {/* ── KONFIDENZ-WARNUNG bei niedriger Sicherheit ────────────────────── */}
+      {!dbMatch && currentAnalysis.confidence === 'low' && (
+        <div style={{
+          backgroundColor: '#fff8e6',
+          border: '1px solid #f0c040',
+          borderLeft: '4px solid #d4af37',
+          borderRadius: '10px',
+          padding: '0.85rem 1.1rem',
+          marginBottom: '1.25rem',
+          fontSize: '0.85rem',
+          color: '#7a5c10',
+          lineHeight: 1.6,
+        }}>
+          <strong>⚠️ Niedrige Erkennungssicherheit</strong>
+          {currentAnalysis.confidenceReason && (
+            <span> — {currentAnalysis.confidenceReason}</span>
+          )}
+          <div style={{ marginTop: '0.4rem', fontSize: '0.8rem', color: '#9a7a30' }}>
+            Tipp: Fotografiere das Etikett direkt und sorge für gute Beleuchtung für ein genaueres Ergebnis.
+          </div>
+        </div>
+      )}
 
       {/* ── TAB-NAVIGATION ────────────────────────────────────────────────── */}
       <TabNav active={activeTab} onChange={setActiveTab} />
@@ -751,8 +776,57 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
           {similarPerfumes.length > 0 && (
             <section style={{ marginBottom: '2.5rem' }}>
               <SectionHeading>Ähnliche Düfte aus Auressa</SectionHeading>
+
+              {/* Filter-Leiste */}
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+                {/* Preis-Filter */}
+                {[null, 50, 80, 120].map((price) => (
+                  <button
+                    key={price ?? 'alle'}
+                    onClick={() => setPriceFilter(price)}
+                    style={{
+                      padding: '0.3rem 0.8rem',
+                      borderRadius: '20px',
+                      border: `1px solid ${priceFilter === price ? '#d4af37' : '#e8dcc8'}`,
+                      backgroundColor: priceFilter === price ? '#d4af37' : 'transparent',
+                      color: priceFilter === price ? '#2a1d12' : '#7a6a5e',
+                      fontSize: '0.78rem',
+                      fontWeight: priceFilter === price ? '700' : '500',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    {price === null ? 'Alle Preise' : `bis CHF ${price}`}
+                  </button>
+                ))}
+                {/* Trennlinie */}
+                <span style={{ color: '#e8dcc8', alignSelf: 'center' }}>|</span>
+                {/* Geschlechts-Filter */}
+                {[null, 'Women', 'Men', 'Unisex'].map((g) => (
+                  <button
+                    key={g ?? 'alle'}
+                    onClick={() => setGenderFilter(g)}
+                    style={{
+                      padding: '0.3rem 0.8rem',
+                      borderRadius: '20px',
+                      border: `1px solid ${genderFilter === g ? '#d4af37' : '#e8dcc8'}`,
+                      backgroundColor: genderFilter === g ? '#d4af37' : 'transparent',
+                      color: genderFilter === g ? '#2a1d12' : '#7a6a5e',
+                      fontSize: '0.78rem',
+                      fontWeight: genderFilter === g ? '700' : '500',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    {g === null ? 'Alle' : g === 'Women' ? 'Damen' : g === 'Men' ? 'Herren' : 'Unisex'}
+                  </button>
+                ))}
+              </div>
+
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '0.75rem' }}>
-                {similarPerfumes.map((perfume) => (
+                {similarPerfumes.filter(p => {
+                  if (priceFilter !== null && (p.price_chf == null || p.price_chf > priceFilter)) return false;
+                  if (genderFilter !== null && p.gender !== genderFilter) return false;
+                  return true;
+                }).map((perfume) => (
                   <Link
                     key={perfume.id}
                     href={`/duft/${perfume.slug}`}

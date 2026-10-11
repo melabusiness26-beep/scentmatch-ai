@@ -247,16 +247,28 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
   ],
   'die-besten-fruehlingsduefte': [
     {
-      q: 'Welche Düfte passen in den Frühling?',
-      a: 'Leichte, blumig-frische und grüne Noten mit einem Hauch Zitrus – frisch, fröhlich und nicht zu schwer.'
+      q: 'Welche Düfte passen am besten in den Frühling?',
+      a: 'Leichte, blumig-frische Düfte mit grünen Noten, Zitrus oder Blüten. Klassiker sind florale Damendüfte wie Chloé oder Marc Jacobs Daisy und frisch-aquatische Herrendüfte wie Acqua di Gio oder Cool Water.'
     },
     {
-      q: 'Sind Winterdüfte im Frühling okay?',
-      a: 'Schwere, süsse Winterdüfte wirken jetzt schnell zu wuchtig. Luftigere Kompositionen passen besser.'
+      q: 'Ab wann sollte ich auf Frühlingsdüfte wechseln?',
+      a: 'Ab etwa März/April, wenn die Temperaturen über 12–15 Grad steigen. Schwere Winterdüfte mit Oud, Tabak oder dicker Vanille wirken bei Wärme schnell aufdringlich – der Wechsel lohnt sich früh.'
     },
     {
       q: 'EdT oder EdP im Frühling?',
-      a: 'Leichtes Eau de Parfum oder Eau de Toilette ist ideal – präsent, aber luftig.'
+      a: 'Eau de Toilette ist im Frühling meist die bessere Wahl: leichter, luftiger und hält bei milden Temperaturen gut genug durch. Ein leichtes EdP geht auch – aber schwere EdP-Konzentrate lieber für abends aufheben.'
+    },
+    {
+      q: 'Wie viel Parfum im Frühling auftragen?',
+      a: '1–2 Sprühstösse reichen. Mit steigenden Temperaturen entfaltet sich ein Duft intensiver auf der Haut. Weniger ist im Frühling definitiv mehr.'
+    },
+    {
+      q: 'Gibt es gute günstige Frühlingsdüfte?',
+      a: 'Ja! Davidoff Cool Water (Herren), DKNY Be Delicious und Lattafa Yara (Damen) sind tolle Frühlingsdüfte unter 40 CHF. Sie riechen frisch, lebendig und sind alltagstauglich.'
+    },
+    {
+      q: 'Was ist der Unterschied zwischen einem Frühlings- und einem Sommerdüft?',
+      a: 'Frühlingsdüfte sind oft blumiger und grüner, Sommerdüfte eher aquatischer und zitrischer. Im Frühling darf noch etwas mehr Wärme im Basisakkord stecken – der Sommer verlangt maximale Leichtigkeit.'
     }
   ],
   'die-besten-bueroduefte': [

@@ -842,30 +842,79 @@ export const guides: Guide[] = [
     slug: 'die-besten-fruehlingsduefte',
     title: 'Die besten Frühlingsdüfte: frisch, blumig & leicht',
     description:
-      'Leichte, blumig-frische Düfte für den Frühling: grüne Noten, Blüten und Zitrus. Unsere Frühlings-Favoriten für Damen und Herren.',
+      'Leichte, blumig-frische Düfte für den Frühling: grüne Noten, Blüten und Zitrus. Unsere Frühlings-Favoriten für Damen und Herren – von günstig bis edel.',
     heroImage: '/ratgeber/die-besten-fruehlingsduefte.jpg',
     intro: [
-      'Der Frühling ruft nach leichten, lebendigen Düften: zarte Blüten, grüne Noten und ein Hauch Zitrus passen perfekt zu den ersten warmen Tagen.',
-      'Hier unsere schönsten Frühlingsdüfte aus dem Katalog, frisch, fröhlich und nicht zu schwer.'
+      'Der Frühling ruft nach leichten, lebendigen Düften: zarte Blüten, grüne Noten und ein Hauch Zitrus passen perfekt zu den ersten warmen Tagen. Die schweren Winterdüfte kommen in die Schublade – jetzt ist Zeit für Frische und Leichtigkeit.',
+      'Wir haben die schönsten Frühlingsdüfte aus unserem Katalog zusammengestellt: für Damen, Herren und alle dazwischen, von erschwinglich bis edel.'
     ],
     sections: [
       {
-        perfumes: ['marc-jacobs-daisy', 'chloe-edp', 'gucci-bloom', 'dior-miss-dior', 'montblanc-legend', 'pdm-greenley', 'creed-git', 'dkny-be-delicious']
+        heading: 'Die besten Frühlingsdüfte für Damen',
+        body: [
+          'Blüten, zarte Früchte und ein Hauch Grün – diese Düfte fangen den Frühling in einer Flasche ein.'
+        ],
+        perfumes: [
+          'marc-jacobs-daisy',
+          'chloe-edp',
+          'gucci-bloom',
+          'dior-miss-dior',
+          'dkny-be-delicious',
+          'armani-acqua-di-gioia',
+          'lattafa-yara'
+        ]
+      },
+      {
+        heading: 'Die besten Frühlingsdüfte für Herren',
+        body: [
+          'Frisch, sauber und lebendig – diese Herrendüfte sind ideal für wärmere Tage und hinterlassen einen positiven ersten Eindruck.'
+        ],
+        perfumes: [
+          'montblanc-legend',
+          'creed-git',
+          'pdm-greenley',
+          'armani-acqua-di-gio-homme',
+          'davidoff-cool-water',
+          'allure-homme-sport'
+        ]
+      },
+      {
+        heading: 'Günstige Frühlingsdüfte unter 50 CHF',
+        body: [
+          'Frühling muss nicht teuer sein. Diese Düfte liefern echte Frühlingsfrische zum kleinen Preis – perfekt für den Alltag.'
+        ],
+        perfumes: [
+          'davidoff-cool-water',
+          'lattafa-yara',
+          'dkny-be-delicious',
+          'club-de-nuit-intense'
+        ]
       },
       {
         heading: 'Frühlingsduft für jeden Anlass',
         body: [
-          'Für den Alltag: leichte florale oder grüne Düfte begleiten dich dezent durch den Tag.',
-          'Fürs erste Date im Freien: ein fruchtig-blumiger Duft wirkt frisch und einladend.',
-          'Für den Übergang: Wenn es abends noch kühl ist, darf ein Hauch Moschus oder Holz für etwas Wärme sorgen.'
+          'Alltag & Büro: Leichte florale oder grüne Düfte begleiten dich dezent durch den Tag ohne aufzufallen. Weniger ist mehr – ein bis zwei Sprühstösse reichen.',
+          'Date im Freien: Ein fruchtig-blumiger Duft wirkt frisch, einladend und sympathisch. Vermeide schwere orientalische Düfte – sie wirken im Frühling zu wuchtig.',
+          'Abends & Übergang: Wenn es abends noch kühl wird, darf ein Hauch Moschus oder sanftes Holz im Basisakkord für angenehme Wärme sorgen.',
+          'Sport & Outdoor: Aquatische und grüne Düfte sind hier ideal – leicht, sauber und trotzdem präsent.'
         ]
       },
       {
-        heading: 'Worauf du bei Frühlingsdüften achten solltest',
+        heading: 'Worauf du beim Kauf achten solltest',
         body: [
-          'Setz auf leichte, frische Kompositionen: blumig, grün oder zitrisch. Schwere, süsse Winterdüfte wirken jetzt schnell zu wuchtig.',
-          'Eau de Toilette und leichte Eau de Parfum sind ideal: präsent, aber luftig.',
-          'Tipp: Frühlingsdüfte eignen sich wunderbar für den Alltag, das Büro und entspannte Treffen im Freien.'
+          'Konzentration: Eau de Toilette (EdT) ist für den Frühling meist ideal – leichter, luftiger und günstiger als Eau de Parfum. Bei milderen Frühlingstagen kann ein EdP jedoch angenehm sein.',
+          'Dosierung: Im Frühling reichen 1–2 Sprühstösse. Mit steigenden Temperaturen wirkt ein Duft intensiver als gewohnt.',
+          'Noten im Fokus: Achte auf Kopfnoten wie Bergamotte, Zitrone, grünen Tee, Maiglöckchen oder Iris. Diese Noten wirken im Frühling besonders lebendig.',
+          'Was du vermeiden solltest: Sehr schwere Basis-Noten wie Oud, Tabak oder dicke Vanille – diese passen eher in den Herbst und Winter.',
+          'Probiere zuerst: Bestelle wenn möglich eine Probe, bevor du einen ganzen Flakon kaufst. Auf der Haut riecht ein Duft immer anders als im Laden.'
+        ]
+      },
+      {
+        heading: 'Die typischen Noten eines Frühlingsdufts',
+        body: [
+          'Kopfnoten (erster Eindruck): Bergamotte, Zitrone, grüner Apfel, Grapefruit, Mandarine – frisch und lebendig.',
+          'Herznoten (der eigentliche Charakter): Rose, Maiglöckchen, Pfingstrose, Jasmin, Iris, Veilchen – blumig und feminin. Oder für Herren: Lavendel, grünes Gras, Kardamom.',
+          'Basisnoten (bleibt auf der Haut): Weisser Moschus, sanftes Holz, Zedernholz, leichte Amber – gibt Wärme ohne Schwere.'
         ]
       }
     ]

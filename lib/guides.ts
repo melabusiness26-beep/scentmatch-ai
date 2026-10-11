@@ -1673,6 +1673,155 @@ export const guides: Guide[] = [
     ]
   },
   {
+    slug: 'parfum-im-handgepaeck-reise-tipps',
+    title: 'Parfüm im Handgepäck: Was ist erlaubt? (Reise-Tipps)',
+    description:
+      'Flüssigkeiten im Handgepäck: Was gilt für Parfüm? Die 100-ml-Regel einfach erklärt – plus die besten kompakten Reisedüfte für unterwegs.',
+    intro: [
+      'Du willst deinen Lieblingsduft auf Reisen mitnehmen? Dann gilt die EU-Flüssigkeitsregel auch für Parfüm: Alles über 100 ml muss ins aufgegebene Gepäck. Hier was du wissen musst – und welche kompakten Düfte sich für Reisen besonders eignen.',
+      'Wichtig: Die Regeln können sich ändern, und es gibt Unterschiede je nach Flughafen und Airline. Prüfe immer vorab die aktuellen Bestimmungen deiner Fluggesellschaft.'
+    ],
+    sections: [
+      {
+        heading: 'Die 100-ml-Regel: Was gilt für Parfüm?',
+        body: [
+          'Im Handgepäck dürfen Flüssigkeiten – auch Parfüm – nur in Behältern bis maximal 100 ml mitgenommen werden. Alle Behälter müssen zusammen in einen transparenten, wiederverschliessbaren Zip-Beutel passen (Fassungsvermögen 1 Liter, ein Beutel pro Person).',
+          'Ein 200-ml-Flakon, der nur halbvoll ist, zählt als 200-ml-Behälter und ist nicht erlaubt. Massgeblich ist die Beschriftung des Behälters, nicht der Inhalt.',
+          'Im aufgegebenen Gepäck gibt es keine Mengenbeschränkung – dort darf auch der grosse Lieblingsflakon mit.',
+          'Viele Marken bieten 30-ml- und 50-ml-Flakons an, die perfekt für Reisen geeignet sind. Reisezerstäuber (Atomizer) lassen sich zudem mit deinem Lieblingsduft befüllen – platzsparend und regelkonform.'
+        ]
+      },
+      {
+        heading: 'Kompakte Reisedüfte aus unserem Katalog',
+        perfumes: ['davidoff-cool-water', 'prada-luna-rossa-ocean', 'lattafa-mayar', 'ariana-cloud', 'allure-homme-sport']
+      },
+      {
+        heading: 'Tipps für unterwegs',
+        body: [
+          'Reisezerstäuber: Leere Flakon-Füller aus dem Drogeriemarkt oder von Muji lassen sich mit deinem Duft befüllen und passen bequem in die Tasche.',
+          'Feste Parfüms (Solid Perfume): Als Stift oder Tiegel gibt es Düfte ohne Flüssigkeit – von der 100-ml-Regel nicht betroffen. Das Angebot ist aber noch begrenzt.',
+          'Tipp: Kaufe am Flughafen im Duty-Free erst nach dem Sicherheitscheck – dort gibt es auch grosse Flakons, die du im Handgepäck mitnehmen darfst.',
+          'Trag den Duft lieber auf die Haut als auf die Kleidung: Im Flugzeug lüften sich Kleider kaum, auf der Haut ist der Duft zurückhaltender.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'parfum-und-hauttyp-was-passt-zu-meiner-haut',
+    title: 'Parfüm und Hauttyp: Wie deine Haut den Duft verändert',
+    description:
+      'Warum riecht dasselbe Parfüm bei dir anders als bei Freunden? Dein Hauttyp, pH-Wert und Pflegeroutine beeinflussen, wie ein Duft auf dir wirkt. Das steckt dahinter.',
+    intro: [
+      'Ein und dasselbe Parfüm kann auf verschiedenen Menschen völlig unterschiedlich riechen. Das liegt nicht an Einbildung, sondern an echten chemischen Prozessen auf der Haut.',
+      'Hier die wichtigsten Faktoren – und was du daraus für die Duft-Wahl mitnehmen kannst.'
+    ],
+    sections: [
+      {
+        heading: 'Warum riecht Parfüm bei jedem anders?',
+        body: [
+          'pH-Wert der Haut: Jeder Mensch hat einen leicht unterschiedlichen Haut-pH. Saure Haut (niedriger pH) kann frische, zitrische Noten schneller verflüchtigen lassen; alkalischere Haut hebt sie hervor.',
+          'Hautfeuchtigkeit: Trockene Haut hält Düfte kürzer. Gut eingecremte Haut bietet den Duftstoffen eine bessere Oberfläche – der Duft hält länger und entfaltet sich voller.',
+          'Körperwärme: Wärmere Körperzonen (Handgelenk, Hals) verstärken die Projektion eines Dufts. Die natürliche Körpertemperatur beeinflusst, welche Noten sich in den Vordergrund schieben.',
+          'Ernährung & Hormone: In kleinerem Ausmass beeinflusst auch das, was du isst, sowie Hormonschwankungen, wie ein Duft auf deiner Haut riecht. Dieser Effekt ist aber wissenschaftlich schwer messbar und individuell sehr verschieden.'
+        ]
+      },
+      {
+        heading: 'Tipps je nach Hauttyp',
+        body: [
+          'Trockene Haut: Creme oder Körperlotion vor dem Parfüm auftragen – das gibt den Duftstoffen Halt. Reichere, wärmere Düfte (z. B. Vanille, Holz, Moschus) halten tendenziell besser als sehr frische Düfte.',
+          'Fettige Haut: Düfte halten in der Regel besser und können intensiver wirken. Weniger auftragen und lieber leichtere Konzentrationen wählen.',
+          'Empfindliche Haut: Auf Alkohol und Aldehyde kann empfindliche Haut reagieren. Parfüms mit Naturextrakten oder ohne aggressive Duftstoffe wählen; vor dem Kauf testen.'
+        ]
+      },
+      {
+        heading: 'Die wichtigste Konsequenz: immer auf der eigenen Haut testen',
+        body: [
+          'Eine Duftbeschreibung, eine Rezension oder ein Papierstreifen sagt dir nur, wie ein Parfüm grundsätzlich riecht. Wie es sich auf deiner Haut entwickelt – das weisst du erst nach 20–30 Minuten auf der Haut.',
+          'Deshalb lohnen sich Proben: viele Händler geben Proben mit, oder du kannst kleine Abfüllungen (5–10 ml) über Parfümerie-Websites kaufen. So vermeidest du teure Fehlkäufe.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'vegane-tierversuchsfreie-parfums',
+    title: 'Vegane & tierversuchsfreie Parfüms',
+    description:
+      'Welche Parfüms sind vegan und tierversuchsfrei? Was steckt hinter Begriffen wie „cruelty free" und welche Duftstoffe können tierischen Ursprungs sein – klar erklärt.',
+    intro: [
+      'Viele Parfümkäufer fragen sich: Stecken in Parfüms tierische Inhaltsstoffe? Werden sie an Tieren getestet? Die Antwort ist komplizierter als man denkt – und oft schwerer zu überprüfen als bei Kosmetik.',
+      'Hier ein ehrlicher Überblick, was die Begriffe bedeuten und was du beim Kauf beachten kannst.'
+    ],
+    sections: [
+      {
+        heading: 'Tierische Inhaltsstoffe in Parfüms',
+        body: [
+          'Klassische Parfümerie nutzte früher Rohstoffe wie Moschus (aus Moschustieren), Ambra (aus Pottwalen), Zibet (aus der Zibetkatze) und Castoreum (aus Bibern). Heute sind die meisten davon in der EU verboten oder nicht mehr zeitgemäss.',
+          'Echter tierischer Moschus ist in Europa verboten. Was wir heute als „Moschus" in Parfüms kennen, sind synthetische Muskusverbindungen – also keine echten Tierstoffe.',
+          'Ambra (Ambergris) ist legal, sehr selten und teuer – in günstigen Massenparfüms praktisch nie enthalten. Synthetische Alternativen (z. B. Ambroxan) sind heute der Standard.',
+          'Andere mögliche tierische Inhaltsstoffe: Lanolin (Wollfett), Honig oder Bienenwachs. Diese stecken eher in Körperpflegeprodukten als in reinen Parfüms, können aber vorkommen.'
+        ]
+      },
+      {
+        heading: 'Tierversuche: „Cruelty Free" im Parfümbereich',
+        body: [
+          'In der EU sind Tierversuche für Kosmetik und deren Inhaltsstoffe verboten. Das bedeutet aber nicht, dass ein in der EU verkauftes Parfüm automatisch weltweit ohne Tierversuche hergestellt wird.',
+          'Für den Verkauf in China waren bis vor kurzem Tierversuche teils Pflicht (für importierte Kosmetik). Das hat sich für einige Produktkategorien geändert – aber die Situation ist im Wandel.',
+          'Zertifizierungen wie PETA „Beauty Without Bunnies" oder „Leaping Bunny" geben Orientierung, sind aber freiwillig. Nicht zertifiziert heisst nicht zwingend, dass Tierversuche stattfinden.',
+          'Die grossen Luxushäuser (Chanel, Dior, etc.) verkaufen in China und sind daher oft nicht „Leaping Bunny"-zertifiziert, aber das muss nicht bedeuten, dass sie aktiv Tierversuche in Auftrag geben.'
+        ]
+      },
+      {
+        heading: 'Düfte mit veganer und cruelty-free Ausrichtung',
+        body: [
+          'Einige kleinere Nischenmarken setzen bewusst auf vegane Inhaltsstoffe und verzichten auf Tierversuche. Sie kommunizieren das oft explizit.',
+          'Unser Tipp: Schreib den Hersteller direkt an, wenn dir das Thema wichtig ist. Die meisten grossen Marken haben einen Kundenservice, der Auskunft geben kann.',
+          'Für eine zuverlässige, aktuelle Liste veganer Parfümmarken eignen sich spezialisierte Seiten wie PETA.org (Beauty Without Bunnies-Datenbank) oder Leaping Bunny – dort kannst du konkrete Marken und Produkte prüfen.'
+        ]
+      }
+    ]
+  },
+  {
+    slug: 'parfum-proben-abfuellungen-schweiz',
+    title: 'Wo bekomme ich Parfüm-Proben & Abfüllungen in der Schweiz?',
+    description:
+      'Bevor du 150 Franken ausgibst: So kommst du günstig an Proben und Abfüllungen – in Schweizer Parfümerien, online und per Versand.',
+    intro: [
+      'Ein Parfüm riecht auf dem Papierstreifen anders als auf deiner Haut. Und nach 2 Stunden nochmals anders. Deshalb macht es Sinn, bevor du einen Flakon für 100–200 Franken kaufst, zuerst eine Probe zu testen.',
+      'Hier die besten Wege, um an Parfüm-Proben und Abfüllungen zu kommen – in der Schweiz und online.'
+    ],
+    sections: [
+      {
+        heading: 'In der Parfümerie & Drogerie',
+        body: [
+          'Müller, Manor Beauty, Douglas und Marionnaud geben in der Regel kostenlose Probenstreifen aus Testdisplays mit. Beim Kauf anderer Produkte gibt es manchmal auch kleine Proben-Fläschchen – einfach nachfragen.',
+          'In gehobenen Parfümerien (z. B. Osswald Zürich) kannst du Düfte auf der Haut testen und hast Zeit, sie zu beurteilen. Gutes Personal lässt dir Raum dafür.',
+          'Empfehlung: Beschränke dich auf 2–3 Düfte pro Besuch. Zu viele Düfte gleichzeitig erschnuppern, überfordert die Nase schnell.'
+        ]
+      },
+      {
+        heading: 'Online: Abfüllungen kaufen',
+        body: [
+          'Über Plattformen wie Decant X (decantx.com), Parfumerie.ch oder spezialisierten Foren/Communities (Reddit r/fragrance) kannst du kleine Abfüllungen (2–10 ml) von bekannten und Nischendüften kaufen.',
+          'Auf ebay.ch und ricardo.ch werden ebenfalls Proben und Abfüllungen angeboten – Qualität und Echtheit variieren, achte auf bewertete Verkäufer.',
+          'Notino.ch bietet bei einigen Düften kleine Travelsize-Flakons (10–30 ml) zu günstigerem Preis als der grosse Flakon an – ein guter Einstieg ohne grossen Aufwand.'
+        ]
+      },
+      {
+        heading: 'Discovery Sets der Hersteller',
+        body: [
+          'Viele Nischenmarken bieten offizielle „Discovery Sets" an: 5–8 kleine Proben ihrer Kollektion in einem Set für rund 30–60 CHF. Der Betrag wird manchmal beim späteren Kauf angerechnet.',
+          'Beispiele: Le Labo, Byredo, Maison Margiela Replica – diese Marken verkaufen ihre Discovery Sets direkt auf ihrer Website oder bei spezialisierten Parfümerien.',
+          'Für günstigere Marken wie Lattafa oder Armaf gibt es oft keine offiziellen Kits – hier helfen Abfüllungs-Plattformen oder die kleinen Flakons direkt kaufen.'
+        ]
+      },
+      {
+        body: [
+          'Du weisst noch nicht, welche Duftrichtung überhaupt zu dir passt? Mach erst unser Duft-Quiz – dann weisst du, welche Düfte du testen solltest, bevor du eine Probe kaufst.'
+        ]
+      }
+    ]
+  },
+  {
     slug: 'die-besten-erdbeer-duefte',
     title: 'Die besten Erdbeer-Düfte: süß & fruchtig',
     description:
@@ -1856,7 +2005,11 @@ export const guideCategories: GuideCategory[] = [
       'parfum-inhaltsstoffe-allergene',
       'parfum-layering-duefte-kombinieren',
       'haeufige-parfum-fehler',
-      'parfum-trends-2026'
+      'parfum-trends-2026',
+      'parfum-und-hauttyp-was-passt-zu-meiner-haut',
+      'vegane-tierversuchsfreie-parfums',
+      'parfum-proben-abfuellungen-schweiz',
+      'parfum-im-handgepaeck-reise-tipps'
     ]
   }
 ];

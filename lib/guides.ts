@@ -843,7 +843,7 @@ export const guides: Guide[] = [
     title: 'Die besten Frühlingsdüfte: frisch, blumig & leicht',
     description:
       'Leichte, blumig-frische Düfte für den Frühling: grüne Noten, Blüten und Zitrus. Unsere Frühlings-Favoriten für Damen und Herren.',
-    heroImage: 'https://images.unsplash.com/photo-1490750967868-88df5691cc08?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/die-besten-fruehlingsduefte.jpg',
     intro: [
       'Der Frühling ruft nach leichten, lebendigen Düften: zarte Blüten, grüne Noten und ein Hauch Zitrus passen perfekt zu den ersten warmen Tagen.',
       'Hier unsere schönsten Frühlingsdüfte aus dem Katalog, frisch, fröhlich und nicht zu schwer.'

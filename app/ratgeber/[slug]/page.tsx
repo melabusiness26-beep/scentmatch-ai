@@ -186,7 +186,7 @@ export default async function GuidePage({
         <div aria-hidden="true" style={{
           position: 'absolute', inset: 0,
           background: guide.heroImage
-            ? 'linear-gradient(to bottom, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.38) 100%)'
+            ? 'linear-gradient(to bottom, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.50) 100%)'
             : 'radial-gradient(circle at 50% -40%, rgba(255,255,255,0.06) 0%, transparent 65%)',
           zIndex: 1,
           pointerEvents: 'none',

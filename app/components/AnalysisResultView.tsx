@@ -177,15 +177,15 @@ const TabNav = ({ active, onChange }: { active: Tab; onChange: (t: Tab) => void 
           key={t.id}
           onClick={() => onChange(t.id)}
           style={{
-            flex: 1,
-            minWidth: '80px',
-            padding: '0.85rem 0.5rem',
+            flex: '1 1 0',
+            minWidth: 0,
+            padding: '0.85rem 0.25rem',
             border: 'none',
             borderBottom: active === t.id ? `3px solid ${C.gold}` : '3px solid transparent',
             backgroundColor: 'transparent',
             color: active === t.id ? C.dark : C.textMuted,
             fontWeight: active === t.id ? '700' : '500',
-            fontSize: '0.82rem',
+            fontSize: '0.78rem',
             cursor: 'pointer',
             fontFamily: "'Inter', sans-serif",
             transition: 'all 0.18s ease',
@@ -194,9 +194,10 @@ const TabNav = ({ active, onChange }: { active: Tab; onChange: (t: Tab) => void 
             alignItems: 'center',
             gap: '0.2rem',
             marginBottom: '-2px',
+            whiteSpace: 'nowrap',
           }}
         >
-          <span style={{ fontSize: '1.1rem' }}>{t.emoji}</span>
+          <span style={{ fontSize: '1rem', lineHeight: 1 }}>{t.emoji}</span>
           {t.label}
         </button>
       ))}

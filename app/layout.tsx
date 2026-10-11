@@ -88,6 +88,35 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         {children}
+        {/* Trust-Bar: Vertrauens-Signale vor dem Footer */}
+        <div style={{
+          backgroundColor: '#2a1d12',
+          borderTop: '1px solid rgba(212,175,55,0.12)',
+          padding: '1.5rem 1.25rem',
+        }}>
+          <div style={{
+            maxWidth: '1100px',
+            margin: '0 auto',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '1rem',
+            textAlign: 'center',
+          }}>
+            {[
+              { icon: '🇨🇭', label: 'Aus der Schweiz', sub: 'Ehrlich & unabhängig' },
+              { icon: '🎯', label: 'Echter Match-Score', sub: '0–100, kein Zufall' },
+              { icon: '💸', label: 'Günstige Dupes', sub: 'Zu jedem Lieblingsduft' },
+              { icon: '🔒', label: 'Kein Konto nötig', sub: 'Kein Newsletter-Zwang' },
+            ].map((item) => (
+              <div key={item.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.25rem' }}>
+                <span style={{ fontSize: '1.4rem', lineHeight: 1 }}>{item.icon}</span>
+                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#d4af37' }}>{item.label}</span>
+                <span style={{ fontSize: '0.72rem', color: 'rgba(250,247,242,0.55)' }}>{item.sub}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <footer className="site-footer">
           <FooterNewsletter />
           <div className="container footer-inner">
@@ -107,6 +136,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="/reiseduefte">Reisedüfte</a>
               <a href="/duftnoten">Duftnoten</a>
               <a href="/ratgeber">Ratgeber</a>
+              <a href="/faq">FAQ</a>
               <a href="/ueber-uns">Über uns</a>
               <a href="/impressum">Impressum</a>
               <a href="/datenschutz">Datenschutz</a>

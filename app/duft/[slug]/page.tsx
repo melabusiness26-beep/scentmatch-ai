@@ -128,6 +128,34 @@ function StatRow({ label, value }: { label: string; value: string }) {
   );
 }
 
+// Visueller Balken für Scores (0–10 oder 0–100)
+function ScoreBar({ label, value, max = 10 }: { label: string; value: number | null | undefined; max?: number }) {
+  if (value == null) return <StatRow label={label} value="–" />;
+  const pct = Math.min(100, Math.round((value / max) * 100));
+  return (
+    <div style={{ marginBottom: '0.75rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.3rem' }}>
+        <span style={{ fontSize: '0.78rem', color: '#6b5344' }}>{label}</span>
+        <strong style={{ fontSize: '0.85rem', color: '#2a1d12' }}>{value}/{max}</strong>
+      </div>
+      <div style={{
+        height: '6px',
+        background: 'rgba(212,175,55,0.15)',
+        borderRadius: '3px',
+        overflow: 'hidden',
+      }}>
+        <div style={{
+          height: '100%',
+          width: `${pct}%`,
+          background: 'linear-gradient(90deg, #d4af37, #c9a227)',
+          borderRadius: '3px',
+          transition: 'width 0.6s ease',
+        }} />
+      </div>
+    </div>
+  );
+}
+
 function Notes({ title, notes }: { title: string; notes: string[] | null }) {
   if (!notes || notes.length === 0) return null;
   return (
@@ -331,9 +359,9 @@ export default async function PerfumeDetailPage({
 
           <div className="card detail-stats">
             <h2>Auf einen Blick</h2>
-            <StatRow label="Auressa-Score" value={`${perfume.scentmatch_score ?? '–'}/100`} />
-            <StatRow label="Haltbarkeit" value={`${perfume.longevity ?? '–'}/10`} />
-            <StatRow label="Sillage (Projektion)" value={`${perfume.sillage ?? '–'}/10`} />
+            <ScoreBar label="Auressa-Score" value={perfume.scentmatch_score} max={100} />
+            <ScoreBar label="Haltbarkeit" value={perfume.longevity} max={10} />
+            <ScoreBar label="Sillage (Projektion)" value={perfume.sillage} max={10} />
             <StatRow label="Saison" value={perfume.season || 'ganzjährig'} />
             <StatRow label="Anlass" value={perfume.occasion || 'flexibel'} />
             <StatRow

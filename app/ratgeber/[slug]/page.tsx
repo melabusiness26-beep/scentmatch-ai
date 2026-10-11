@@ -123,7 +123,14 @@ export default async function GuidePage({
     <main>
       <SiteHeader />
       <div className="container">
-        <div className="backlink"><Link className="badge" href="/ratgeber">← Alle Ratgeber</Link></div>
+        {/* Sichtbare Breadcrumb-Navigation */}
+        <nav className="breadcrumb small" aria-label="Brotkrümel-Navigation">
+          <Link href="/">Start</Link>
+          <span className="breadcrumb-sep" aria-hidden="true">›</span>
+          <Link href="/ratgeber">Ratgeber</Link>
+          <span className="breadcrumb-sep" aria-hidden="true">›</span>
+          <span className="breadcrumb-current" aria-current="page">{guide.title}</span>
+        </nav>
 
         <article>
           <p className="eyebrow">Ratgeber</p>

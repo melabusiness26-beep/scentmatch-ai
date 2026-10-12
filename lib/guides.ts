@@ -1483,10 +1483,11 @@ export const guides: Guide[] = [
     title: 'Die besten Sommerdüfte für Frauen 2026',
     description:
       'Leichte, frische Damendüfte für heisse Tage: fruchtig, floral und sonnig. Unsere Sommer-Favoriten für Frauen 2026, von günstig bis edel.',
-    heroImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/sommerduefte-frauen-hero.jpg',
     intro: [
-      'Im Sommer dürfen Damendüfte leicht, fruchtig und strahlend sein: ein Hauch Zitrus, sonnige Blüten oder cremige Kokos-Vanille wirken bei Wärme am schönsten, ohne zu erschlagen.',
-      'Hier unsere liebsten Sommerdüfte für Frauen aus dem Katalog, von günstig bis edel, für jeden Geschmack.'
+      'Im Sommer dürfen Damendüfte leicht, fruchtig und strahlend sein: ein Hauch Zitrus, sonnige Blüten oder cremige Kokos-Vanille wirken bei Wärme am schönsten, ohne zu erschlagen. Schwere Düfte mit intensivem Oud oder dicker Vanille können bei 30 Grad schnell erdrückend wirken – besonders in der Nähe anderer Menschen.',
+      'Ein guter Sommerduft für Frauen kombiniert Frische mit einem dezenten Abgang: leichte Frucht- oder Blütennoten vorne, etwas cremige oder holzige Basis im Hintergrund, damit die Frische nicht sofort verfliegt. Bei Hitze entfalten sich Düfte viel intensiver als im Frühling – weniger ist oft mehr.',
+      'Hier unsere liebsten Sommerdüfte für Frauen aus unserem Katalog, von günstig bis edel, für jeden Geschmack und Anlass. Von der aquatischen Klassikerin über fruchtige Flirts bis zur kuschelig-cremigen Strandduft.'
     ],
     sections: [
       {

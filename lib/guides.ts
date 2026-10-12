@@ -1081,7 +1081,7 @@ export const guides: Guide[] = [
     title: 'Die besten holzigen Düfte: edel, warm & zeitlos – seit Jahrhunderten der Klassiker',
     description:
       'Holzige Düfte mit Sandelholz, Zedernholz, Oud und Vetiver: edel, warm, langanhaltend. Von frisch-holzig bis dunkel-cremig – unsere liebsten Holz-Kompositionen für Damen, Herren und Unisex.',
-    heroImage: '/ratgeber/holzige-duefte-hero.jpg',
+    heroImage: '/ratgeber/holzige-duefte-hero-v2.jpg',
     intro: [
       'Holzige Düfte sind der Inbegriff von Eleganz und Reife. Sandelholz, Zedernholz, Vetiver und Oud wirken warm, erwachsen und unglaublich tragefreundlich – ob im Büro, beim Date oder zu besonderen Anlässen. Sie sind zeitlos, verlässlich und passen zu fast jeder Jahreszeit.',
       'Das Faszinierende an Holz ist seine Vielseitigkeit: Je nach Art und Begleitung kann Holz cremig und süsslich wirken (Sandelholz), klar und herb-elegant (Zedernholz), frisch-grün (Vetiver) oder dunkel und intensiv (Oud und Leder). Deshalb gibt es für jeden Geschmack ein perfektes Holz-Parfüm.',

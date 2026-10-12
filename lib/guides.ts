@@ -641,14 +641,14 @@ export const guides: Guide[] = [
   },
   {
     slug: 'die-besten-zitrus-duefte',
-    title: 'Die besten Zitrus-Düfte',
+    title: 'Die besten Zitrus-Düfte: frisch, spritztig und voller Energie',
     description:
-      'Spritzig, frisch und gute Laune pur: Die besten Zitrus-Düfte mit Bergamotte, Zitrone und Grapefruit, ideal für Sommer, Büro und heisse Tage.',
-    heroImage: 'https://images.unsplash.com/photo-1528825871115-3581a5387919?w=1200&q=80&fit=crop',
+      'Zitrus-Düfte mit Bergamotte, Zitrone, Grapefruit und Orange: frisch, leicht und full of joy. Perfekt für Sommer, Büro und heisse Tage – garantiert gute Laune.',
+    heroImage: '/ratgeber/zitrus-duefte-hero.jpg',
     intro: [
-      'Zitrus-Düfte sind frisch, leicht und heben sofort die Stimmung: Zitrone, Bergamotte, Grapefruit und Orange riechen sauber und unbeschwert. Perfekt für warme Tage, das Büro oder wenn man einfach etwas Leichtes tragen will.',
-      'Der Trick bei Zitrus-Düften liegt in der Basis: Pur ist Zitrus herrlich frisch, aber schnell verflogen. Die besten Zitrus-Düfte haben ein holziges, moschusartiges oder leicht würziges Fundament, das die Frische verankert und dem Duft Tiefe und Ausdauer gibt.',
-      'Hier unsere spritzigsten Empfehlungen, für Sommer, Büro und alle, die es leicht und unaufdringlich mögen.'
+      'Zitrus-Düfte sind das Gegenmittel gegen schwere, dunkle Momente. Zitrone, Bergamotte, Grapefruit und Orange riechen sauber, unbeschwert und strahlend – jeder Sprühstoss hebt die Stimmung. Sie sind leicht, luftig und wirken sofort erfrischend, perfekt für alle, die es unkompliziert und energiegeladen mögen.',
+      'Das Besondere: Zitrus ist eine der ältesten Duftrichtungen überhaupt. Bereits seit Jahrhunderten werden Zitrusnoten in orientalischen Parfümen, Eau de Colognes und Frischeparfümen geschätzt. Ihre Frische wirkt zeitlos – egal ob Klassiker wie Acqua di Gio oder moderne Interpretationen.',
+      'Der Trick bei guten Zitrus-Düften liegt in der Basis: Pur ist Zitrus herrlich frisch, aber flüchtig. Die besten Zitrus-Kompositionen haben ein holziges, moschusartiges oder würziges Fundament, das die Frische verankert und dem Duft Tiefe und echte Ausdauer schenkt.'
     ],
     sections: [
       {
@@ -666,17 +666,24 @@ export const guides: Guide[] = [
       {
         heading: 'Zitrus für jede Gelegenheit',
         body: [
-          'Fürs Büro: klare, saubere Zitrusdüfte mit Bergamotte oder Zitrone wirken gepflegt und nie aufdringlich.',
-          'Für heisse Tage: spritzige Grapefruit- und Orangennoten sind herrlich erfrischend.',
-          'Für den Abend: Zitrus mit holziger oder würziger Basis (z. B. Vetiver, Zedernholz) bekommt mehr Tiefe und hält länger.'
+          'Fürs Büro: klare, saubere Zitrusdüfte mit Bergamotte oder Zitrone wirken gepflegt, belebend und nie aufdringlich. Ein Klassiker, auf den man sich verlassen kann.',
+          'Für heisse Tage: spritzige Grapefruit-, Zitrone- und Orangennoten sind herrlich erfrischend. Sie wirken wie eine Brise und bringen sofortige Abkühlung ins Gemüt.',
+          'Für den Abend: Zitrus mit holziger oder würziger Basis (z. B. Vetiver, Zedernholz, schwarzer Pfeffer) bekommt mehr Tiefe, Eleganz und Ausdauer. So wird Zitrus auch für besondere Anlässe geeignet.'
         ]
       },
       {
         heading: 'Worauf du bei Zitrus-Düften achten solltest',
         body: [
-          'Zitrus-Noten sind herrlich frisch, aber von Natur aus flüchtig. Viele Zitrus-Düfte halten kürzer. Ein zweiter Sprühstoss am Mittag wirkt Wunder.',
-          'Achte auf eine holzige oder moschusartige Basis (z. B. Zedernholz, Vetiver, weisser Moschus): Sie verankert die Frische und macht den Duft langlebiger.',
-          'Zitrus ist die perfekte Wahl für Sommer, heisse Tage und das Büro, sauber, leicht und nie aufdringlich.'
+          'Zitrus-Noten sind von Natur aus flüchtig: Sie verdampfen schneller als schwere Basis-Noten. Deshalb halten viele Zitrus-Düfte kürzer – ein zweiter Sprühstoss am Mittag wirkt Wunder und verhilft dir über den Tag.',
+          'Achte auf eine starke Basis (holzig, moschusartig oder würzig): Sie verankert die Frische und macht den Duft langlebiger. Zedernholz, Vetiver, Moschus oder schwarzer Pfeffer sind ideale Partner für Zitrus.',
+          'Lagern im Dunkeln: Zitrus-Düfte sind lichtempfindlich. Lagere sie dunkel und kühl, damit die Noten nicht zu schnell verflüchtigen. So bleibt dein Zitrus-Duft länger frisch und spritzig.'
+        ]
+      },
+      {
+        heading: 'Warum Zitrus immer funktioniert',
+        body: [
+          'Zitrus ist demokratisch: Es gefällt fast allen, wirkt elegant und nie aufdringlich. Ein Zitrus-Duft im Schrank ist wie ein zuverlässiger Freund – du brauchst ihn vielleicht nicht jeden Tag, aber wenn du ihn brauchst, ist er genau richtig.',
+          'Perfekt fürs erste Mal: Wenn du gerade dein erstes Parfüm kaufst oder jemandem etwas schenken möchtest, der Dufte noch nicht kennt – Zitrus ist immer eine sichere Wahl.'
         ]
       }
     ]

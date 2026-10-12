@@ -123,33 +123,19 @@ export default async function GuidePage({
     <main>
       <SiteHeader />
 
-      {guide.heroImage && (
-        <div className="guide-hero">
-          <img src={guide.heroImage} alt={guide.title} />
-          <div className="guide-hero-overlay">
-            <div className="container">
-              <p className="eyebrow">Ratgeber</p>
-              <h1 className="hero-title">{guide.title}</h1>
-            </div>
-          </div>
-        </div>
-      )}
-
       <div className="container">
-        {!guide.heroImage && (
-          <div className="backlink"><Link className="badge" href="/ratgeber">← Alle Ratgeber</Link></div>
-        )}
+        <div className="backlink"><Link className="badge" href="/ratgeber">← Alle Ratgeber</Link></div>
 
         <article>
-          {!guide.heroImage && (
-            <>
-              <p className="eyebrow">Ratgeber</p>
-              <h1 className="detail-title">{guide.title}</h1>
-            </>
-          )}
+          <p className="eyebrow">Ratgeber</p>
+          <h1 className="detail-title">{guide.title}</h1>
+
           {guide.heroImage && (
-            <div className="backlink"><Link className="badge" href="/ratgeber">← Alle Ratgeber</Link></div>
+            <div className="guide-hero-simple">
+              <img src={guide.heroImage} alt={guide.title} />
+            </div>
           )}
+
           {guide.intro.map((p, i) => (
             <p className="lead" key={i}>
               {p}

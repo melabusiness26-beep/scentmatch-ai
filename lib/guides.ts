@@ -1750,7 +1750,7 @@ export const guides: Guide[] = [
     title: 'Die besten Sommerdüfte für Männer 2026',
     description:
       'Frische, leichte Herrendüfte für den Sommer: aquatisch, zitrisch und alltagstauglich. Unsere Favoriten für heisse Tage, von günstig bis edel.',
-    heroImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/sommerduefte-maenner-hero.jpg',
     intro: [
       'Im Sommer brauchen Herrendüfte vor allem eines: Frische. Schwere, süsse Düfte wirken bei Hitze schnell aufdringlich, während aquatische, zitrische und leicht würzige Düfte sauber und anziehend bleiben.',
       'Dazu kommt ein praktischer Grund: Bei Wärme verdunstet Alkohol schneller, der Duft öffnet sich stärker und trägt weiter. Was im Winter dezent wirkt, kann im Sommer den ganzen Raum füllen. Weniger sprühen ist oft die bessere Wahl.',

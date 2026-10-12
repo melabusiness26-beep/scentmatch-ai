@@ -156,7 +156,7 @@ export const guides: Guide[] = [
     title: 'Süße Düfte: Vanille, Schokolade & Karamell',
     description:
       'Warme, süße Gourmand-Düfte mit Vanille, Schokolade, Karamell und Tonkabohne, kuschelig, sinnlich und perfekt für kühle Tage.',
-    heroImage: 'https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/suesse-duefte-hero.jpg',
     intro: [
       'Süsse Düfte, auch Gourmands genannt, riechen nach guten Dingen: Vanille, Schokolade, Karamell, Praline oder Kaffee. Sie wirken warm, einladend und bleiben angenehm in Erinnerung und gehören zu den beliebtesten Duftrichtungen überhaupt, besonders in der kühlen Jahreszeit.',
       'Gourmand-Düfte können sehr unterschiedlich sein: mal leicht und cremig-pudrig, mal tief und würzig mit Tabak oder Gewürzen, mal richtig dessertartig. Wichtig ist, die Dosierung im Griff zu behalten. Süsse Düfte wirken intensiver als frische, und eine Wolke Karamell im vollen Bus ist nicht das Ziel.',

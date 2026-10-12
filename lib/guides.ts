@@ -16,12 +16,9 @@ export type Guide = {
   slug: string;
   title: string;
   description: string;
-  icon?: string;       // Emoji-Icon für Hero-Banner
-  heroGradient?: string; // CSS-Gradient für Hero
-  heroImage?: string;  // Unsplash-Foto-URL für Hero-Banner
+  heroImage?: string;
   intro: string[];
   sections: GuideSection[];
-  heroImage?: string;
 };
 
 export const guides: Guide[] = [

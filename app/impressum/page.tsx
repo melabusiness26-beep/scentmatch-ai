@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import SiteHeader from '@/app/SiteHeader';
 import { OPERATOR } from '@/lib/operator';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
   title: 'Impressum',
@@ -57,7 +57,7 @@ export default function ImpressumPage() {
           <p>
             Auressa finanziert sich teilweise über Affiliate-Links. Klickst du auf einen mit
             „Affiliate" gekennzeichneten Link und kaufst beim Partner-Shop ein, erhalten wir ggf. eine
-            kleine Provision. Für dich entstehen dadurch keine Mehrkosten – der Preis bleibt gleich.
+            kleine Provision. Für dich entstehen dadurch keine Mehrkosten, der Preis bleibt gleich.
           </p>
 
           <h2>Urheberrecht</h2>

@@ -15,7 +15,7 @@ import DestinationResults from './DestinationResults';
 // Stündlich neu generieren – frische Daten, schnelle Auslieferung (wie die Duftseiten).
 export const revalidate = 3600;
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 // Alle Reise-Seiten beim Build vorerzeugen (gut für SEO und Tempo).
 export async function generateStaticParams() {

@@ -1,5 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'hxzgakxxqxdfewyymvyl.supabase.co' },
+      { protocol: 'https', hostname: '*.notino.com' },
+      { protocol: 'https', hostname: '*.flaconi.ch' },
+    ],
+  },
   async redirects() {
     return [
       {

@@ -22,12 +22,12 @@ type QuizQuestion = { q: string; hint?: string; kind: QuestionKind; a: [string, 
 const questions: QuizQuestion[] = [
   {
     q: 'Für wen suchen wir den perfekten Duft?',
-    hint: 'So zeigen wir dir nur, was wirklich passt – kein Suchen im Heuhaufen.',
+    hint: 'So zeigen wir dir nur, was wirklich passt. Kein Suchen im Heuhaufen.',
     kind: 'gender',
     a: [
       ['Für Damen', 'women'],
       ['Für Herren', 'men'],
-      ['Egal – zeig mir alles', 'unisex']
+      ['Egal, zeig mir alles', 'unisex']
     ]
   },
   {
@@ -84,7 +84,7 @@ const questions: QuizQuestion[] = [
     q: 'Eine Note, die dein Herz höher schlagen lässt?',
     hint: 'Diese Note gewichten wir bei deinem Match besonders stark.',
     kind: 'lovedNote',
-    a: [['Keine bestimmte – überrasch mich', ''], ...NOTE_THEMES.map(t => [t.label, t.code] as [string, string])]
+    a: [['Keine bestimmte, überrasch mich', ''], ...NOTE_THEMES.map(t => [t.label, t.code] as [string, string])]
   },
   {
     q: 'Und etwas, das für dich gar nicht geht?',
@@ -119,9 +119,9 @@ const questions: QuizQuestion[] = [
     hint: 'Also: wie weit dein Duft im Raum wahrnehmbar sein soll.',
     kind: 'sillage',
     a: [
-      ['Dezent – nur wer mir nah kommt', 'low'],
-      ['Ausgewogen – angenehm präsent', 'medium'],
-      ['Auffällig – ich hinterlasse Eindruck', 'high']
+      ['Dezent, nur wer mir nah kommt', 'low'],
+      ['Ausgewogen, angenehm präsent', 'medium'],
+      ['Auffällig, ich hinterlasse Eindruck', 'high']
     ]
   },
   {
@@ -591,7 +591,7 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
           <div className="hero-photo-inner">
             <p className="eyebrow">Dein Signature-Duft · kuratiert in der Schweiz</p>
             <h1>Finde deinen Signature-Duft in 1 Minute.</h1>
-            <p className="lead">Beantworte ein paar einfache Fragen – und wir finden Düfte, die wirklich zu dir passen. Ehrlich, verständlich und ganz auf deinen Geschmack abgestimmt.</p>
+            <p className="lead">Beantworte ein paar einfache Fragen. Wir finden Düfte, die wirklich zu dir passen. Ehrlich, verständlich und ganz auf deinen Geschmack abgestimmt.</p>
             <div className="cta">
               <a className="button" href="#quiz">Quiz starten</a>
               <Link className="button secondary" href="/duefte">Alle Düfte ansehen</Link>
@@ -740,7 +740,7 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
                       )
                       .map(p => (
                         <option value={p.id} key={p.id}>
-                          {p.perfume_name}{p.brands?.name ? ` – ${p.brands.name}` : ''}
+                          {p.perfume_name}{p.brands?.name ? ` · ${p.brands.name}` : ''}
                         </option>
                       ))}
                   </select>
@@ -806,7 +806,7 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
                 </div>
               )}
 
-              <p className="small" style={{ marginTop: 16 }}>Dein Duftprofil-Mix – so oft hast du welche Richtung gewählt:</p>
+              <p className="small" style={{ marginTop: 16 }}>Dein Duftprofil-Mix, so oft hast du welche Richtung gewählt:</p>
               {Object.entries(family).map(([key, value]) => (
                 <div key={key} style={{ marginBottom: 12 }}>
                   <div className="small">{profileText[key].title}: {value}</div>

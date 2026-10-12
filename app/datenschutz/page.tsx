@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import SiteHeader from '@/app/SiteHeader';
 import { OPERATOR } from '@/lib/operator';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
   title: 'Datenschutzerklärung',
@@ -90,7 +90,18 @@ export default function DatenschutzPage() {
             Anbieter gemäss dessen Datenschutzbestimmungen. Für dich entstehen keine Mehrkosten.
           </p>
 
-          <h2>8. Newsletter</h2>
+          <h2>8. Duft-Scanner (KI-Bilderkennung)</h2>
+          <p>
+            Wenn du den Duft-Scanner nutzt, wird das von dir aufgenommene oder hochgeladene Foto zur
+            Erkennung des Parfüms an die KI-API von <strong>Anthropic, Inc.</strong> (USA) übertragen.
+            Das Bild wird ausschliesslich für die einmalige Analyse verwendet und danach
+            <strong> nicht gespeichert</strong>. Anthropic verarbeitet die Daten gemäss seiner{' '}
+            <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">
+              Datenschutzrichtlinie
+            </a>. Die Nutzung des Scanners ist freiwillig.
+          </p>
+
+          <h2>9. Newsletter</h2>
           <p>
             Wenn du dich für unseren Newsletter anmeldest, speichern wir deine E-Mail-Adresse
             ausschliesslich zu dem Zweck, dir Duft-Tipps und Empfehlungen zu senden. Die Anmeldung
@@ -100,7 +111,7 @@ export default function DatenschutzPage() {
             oben genannte E-Mail-Adresse genügt, und wir löschen deine Daten.
           </p>
 
-          <h2>9. Deine Rechte</h2>
+          <h2>10. Deine Rechte</h2>
           <p>
             Du hast im Rahmen der geltenden Datenschutzgesetze (insb. des Schweizer Datenschutzgesetzes,
             revDSG) das Recht auf Auskunft über die zu deiner Person bearbeiteten Daten sowie auf
@@ -108,7 +119,7 @@ export default function DatenschutzPage() {
             genannte E-Mail-Adresse.
           </p>
 
-          <h2>10. Änderungen</h2>
+          <h2>11. Änderungen</h2>
           <p>
             Wir passen diese Datenschutzerklärung an, wenn sich Funktionen der Website ändern (z. B. falls
             künftig ein Login oder weitere Dienste hinzukommen).

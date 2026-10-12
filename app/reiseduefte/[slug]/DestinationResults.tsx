@@ -113,7 +113,7 @@ export default function DestinationResults({ items, dest }: { items: Item[]; des
           )}
         </>
       ) : (
-        <p className="small">Für diese Auswahl gerade keine Treffer – probier „Für alle".</p>
+        <p className="small">Für diese Auswahl gerade keine Treffer. Probier «Für alle».</p>
       )}
 
       <div className="cta">

@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { getPerfumes } from '@/lib/perfumes';
 import DuftScannerClient from './client';
+import SiteHeader from '@/app/SiteHeader';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
   title: 'Duft-Scanner – Parfüm per Foto erkennen | Auressa',
@@ -9,26 +12,26 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Duft-Scanner – Parfüm per Foto erkennen',
     description: 'Fotografiere einen Parfümflakon und erhalte sofort das komplette Duftprofil: Noten, Charakter, Geschichte und ähnliche Empfehlungen.',
-    url: 'https://auressa.ch/duft-scanner',
+    url: `${SITE_URL}/duft-scanner`,
     type: 'website',
   },
   alternates: {
-    canonical: 'https://auressa.ch/duft-scanner',
+    canonical: `${SITE_URL}/duft-scanner`,
   },
 };
 
 export default async function DuftScannerPage() {
-  let perfumes = [];
+  let perfumes: Awaited<ReturnType<typeof getPerfumes>> = [];
 
   try {
     perfumes = await getPerfumes(2000);
-    console.log('[DuftScanner Page] Loaded perfumes:', perfumes.length);
   } catch (error) {
     console.error('[DuftScanner Page] Failed to load perfumes:', error);
   }
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
+      <SiteHeader />
       <section
         style={{
           backgroundImage: 'linear-gradient(rgba(26,18,9,0.80), rgba(26,18,9,0.80)), url(/hero-auressa-2.jpg)',
@@ -42,6 +45,9 @@ export default async function DuftScannerPage() {
         }}
       >
         <div style={{ textAlign: 'center', maxWidth: '600px' }}>
+          <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.75rem' }}>
+            Duft-Scanner
+          </p>
           <h1 style={{
             fontSize: 'clamp(32px, 8vw, 48px)',
             fontFamily: "'Playfair Display', serif",
@@ -50,7 +56,7 @@ export default async function DuftScannerPage() {
             lineHeight: 1.1,
             color: '#faf7f2',
           }}>
-            Duft-Scanner
+            Parfüm per Foto erkennen
           </h1>
           <p style={{
             fontSize: '16px',

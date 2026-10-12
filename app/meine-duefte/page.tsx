@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getPerfumes } from '@/lib/perfumes';
 import SavedPerfumes from '@/app/components/SavedPerfumes';
+import SiteHeader from '@/app/SiteHeader';
 
 export const metadata: Metadata = {
   robots: 'noindex, nofollow',
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function MeineDueftePage() {
-  let perfumes = [];
+  let perfumes: Awaited<ReturnType<typeof getPerfumes>> = [];
 
   try {
     perfumes = await getPerfumes(2000);
@@ -19,9 +20,10 @@ export default async function MeineDueftePage() {
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
+      <SiteHeader />
       <section
         style={{
-          backgroundImage: 'linear-gradient(rgba(26,18,9,0.80), rgba(26,18,9,0.80)), url(https://images.unsplash.com/photo-1585707571895-b2b6cff95ba5?w=800)',
+          backgroundImage: 'linear-gradient(rgba(26,18,9,0.80), rgba(26,18,9,0.80))',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           minHeight: '280px',

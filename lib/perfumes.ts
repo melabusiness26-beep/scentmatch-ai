@@ -191,6 +191,67 @@ export async function getPerfumeCount(): Promise<number> {
   return count;
 }
 
+// ─── Marken-Typen & Abfragen ────────────────────────────────────────────────
+
+export type Brand = {
+  id: string;
+  name: string;
+  slug: string;
+  country: string | null;
+  description: string | null;
+};
+
+// Alle Marken alphabetisch – für den Marken-Index.
+export async function getAllBrands(): Promise<Brand[]> {
+  if (!isSupabaseConfigured) return [];
+  const { data, error } = await supabase
+    .from('brands')
+    .select('id, name, slug, country, description')
+    .order('name', { ascending: true });
+  if (error || !data) return [];
+  return (data as Brand[]).filter((b) => b.slug);
+}
+
+// Alle Brand-Slugs – für generateStaticParams.
+export async function getAllBrandSlugs(): Promise<string[]> {
+  if (!isSupabaseConfigured) return [];
+  const { data, error } = await supabase
+    .from('brands')
+    .select('slug');
+  if (error || !data) return [];
+  return (data as { slug: string | null }[])
+    .map((r) => r.slug)
+    .filter((s): s is string => Boolean(s));
+}
+
+// Einzelne Marke per Slug.
+export async function getBrandBySlug(slug: string): Promise<Brand | null> {
+  if (!isSupabaseConfigured) return null;
+  const { data, error } = await supabase
+    .from('brands')
+    .select('id, name, slug, country, description')
+    .eq('slug', slug)
+    .maybeSingle();
+  if (error || !data) return null;
+  return data as Brand;
+}
+
+// Alle Düfte einer bestimmten Marke.
+export async function getPerfumesByBrand(brandSlug: string): Promise<Perfume[]> {
+  if (!isSupabaseConfigured) return [];
+  const { data, error } = await supabase
+    .from('perfumes')
+    .select(PERFUME_FIELDS)
+    .eq('brands.slug', brandSlug)
+    .order('scentmatch_score', { ascending: false });
+  if (error || !data) return [];
+  // Filter client-side, weil Supabase den Join-Filter nicht immer korrekt umsetzt
+  const all = (data as unknown as Perfume[]);
+  return dedupePerfumes(all.filter((p) => p.brands?.slug === brandSlug));
+}
+
+// ─── Brand-Statistiken ───────────────────────────────────────────────────────
+
 // Echte Anzahl der Marken im Katalog – aus der brands-Tabelle, nicht aus geladenen Düften.
 export async function getBrandCount(): Promise<number> {
   if (!isSupabaseConfigured) return 0;
@@ -221,6 +282,99 @@ export async function getAllPerfumeSlugs(): Promise<string[]> {
   return (data as { slug: string | null }[])
     .map((row) => row.slug)
     .filter((slug): slug is string => Boolean(slug));
+}
+
+// Düfte anhand eines Tags (occasion, season, fragrance_family, oder Noten-Suche) laden.
+// Abstrakte Charakter-Tags → konkrete Suchbegriffe die in der DB vorkommen
+const TAG_KEYWORD_MAP: Record<string, string[]> = {
+  'selbstbewusst':  ['oud', 'amber', 'moschus', 'leder', 'holz', 'vetiver', 'patchouli'],
+  'verführerisch':  ['amber', 'moschus', 'vanille', 'sandelholz', 'jasmin', 'ylang'],
+  'romantisch':     ['rose', 'jasmin', 'pfingstrose', 'veilchen', 'iris', 'floral'],
+  'frisch':         ['bergamotte', 'zitrone', 'limette', 'grapefruit', 'minze', 'aquatisch'],
+  'kraftvoll':      ['oud', 'leder', 'vetiver', 'zeder', 'pfeffer', 'rauch'],
+  'elegant':        ['iris', 'jasmin', 'rose', 'sandelholz', 'moschus', 'aldehyde'],
+  'verspielt':      ['frucht', 'beere', 'apfel', 'birne', 'vanille', 'praline'],
+  'geheimnisvoll':  ['oud', 'amber', 'weihrauch', 'myrrhe', 'rauch', 'leder'],
+  'sportlich':      ['zitrus', 'bergamotte', 'aquatisch', 'holz', 'minze'],
+  'suess':          ['vanille', 'praline', 'karamell', 'schokolade', 'tonkabohne', 'gourmand'],
+  'warm':           ['amber', 'vanille', 'sandelholz', 'tonkabohne', 'benzoe'],
+  'kuehl':          ['minze', 'eukalyptus', 'bergamotte', 'zitrus', 'aquatisch'],
+  'natuerlich':     ['vetiver', 'zeder', 'fichte', 'moos', 'erde', 'woody'],
+  'luxurioes':      ['oud', 'rose', 'iris', 'jasmin', 'amber', 'sandelholz'],
+  'entspannt':      ['lavendel', 'kamille', 'vanille', 'sandelholz', 'moschus'],
+  'jugendlich':     ['zitrus', 'bergamotte', 'apfel', 'beere', 'frucht', 'clean', 'floral'],
+  'feminin':        ['rose', 'jasmin', 'pfingstrose', 'floral', 'iris', 'veilchen'],
+  'maskulin':       ['holz', 'leder', 'vetiver', 'zeder', 'pfeffer', 'amber'],
+  'zeitlos':        ['rose', 'jasmin', 'sandelholz', 'moschus', 'amber', 'iris'],
+  'aufregend':      ['pfeffer', 'ingwer', 'kardamom', 'oud', 'leder', 'rauch'],
+  'sauber':         ['moschus', 'clean', 'aquatisch', 'zitrus', 'lavendel'],
+  'blumig':         ['rose', 'jasmin', 'pfingstrose', 'floral', 'iris', 'maiglöckchen'],
+  'holzig':         ['zeder', 'sandelholz', 'vetiver', 'holz', 'woody', 'patchouli'],
+  'orientalisch':   ['oud', 'amber', 'weihrauch', 'moschus', 'vanille', 'benzoe'],
+  'zitrusig':       ['bergamotte', 'zitrone', 'limette', 'grapefruit', 'orange', 'mandarine'],
+  'moschusartig':   ['moschus', 'amber', 'sandelholz', 'benzoe', 'tonkabohne'],
+  'intensiv':       ['oud', 'amber', 'leder', 'patchouli', 'weihrauch', 'rauch'],
+  'leicht':         ['zitrus', 'bergamotte', 'clean', 'aquatisch', 'maiglöckchen', 'minze'],
+  'sommerlich':     ['zitrus', 'bergamotte', 'aquatisch', 'floral', 'frucht', 'Sommer'],
+  'winterlich':     ['vanille', 'amber', 'oud', 'weihrauch', 'zimt', 'Winter'],
+};
+
+export async function getPerfumesByTag(tag: string, limit = 40): Promise<Perfume[]> {
+  if (!isSupabaseConfigured) return [];
+  const tagLower = tag.toLowerCase();
+
+  // Keyword-Map: abstrakte Tags auf konkrete Suchbegriffe mappen
+  const keywords = TAG_KEYWORD_MAP[tagLower] ?? [];
+
+  // Alle Suchbegriffe in EINER einzigen OR-Abfrage zusammenführen
+  const terms = [tagLower, ...keywords];
+
+  // Text-Felder: ilike-Suche
+  const textParts = terms.flatMap((t) => [
+    `occasion.ilike.%${t}%`,
+    `season.ilike.%${t}%`,
+    `fragrance_family.ilike.%${t}%`,
+    `description.ilike.%${t}%`,
+    `perfume_name.ilike.%${t}%`,
+  ]);
+
+  // Array-Felder (top_notes, heart_notes, base_notes): cs (contains) mit case-insensitive Suche
+  // Supabase unterstützt kein ilike auf Arrays – wir nutzen .ilike auf dem Array-Element via
+  // PostgreSQL-Syntax: top_notes.cs.{term} funktioniert nur bei exaktem Match.
+  // Daher: description enthält oft die Noten als Text → reicht für die meisten Fälle.
+  // Zusätzlich suchen wir die Noten als Text über eine separate Abfrage und mergen.
+  const { data: textData, error: textError } = await supabase
+    .from('perfumes')
+    .select(PERFUME_FIELDS)
+    .or(textParts.join(','))
+    .order('scentmatch_score', { ascending: false })
+    .limit(limit);
+
+  // Parallel: Array-Felder mit cs (contains) – jeder Begriff in Varianten (klein + Großschreibung)
+  // cs ist case-sensitive → wir suchen sowohl 'bergamotte' als auch 'Bergamotte'
+  const arrayTermVariants = terms.flatMap((t) => [
+    t,
+    t.charAt(0).toUpperCase() + t.slice(1),
+  ]);
+  const arrayResults = await Promise.all(
+    arrayTermVariants.map((t) =>
+      supabase
+        .from('perfumes')
+        .select(PERFUME_FIELDS)
+        .or(`top_notes.cs.{${t}},heart_notes.cs.{${t}},base_notes.cs.{${t}}`)
+        .order('scentmatch_score', { ascending: false })
+        .limit(20)
+    )
+  );
+
+  const allData: Perfume[] = [];
+  if (!textError && textData) allData.push(...(textData as unknown as Perfume[]));
+  for (const res of arrayResults) {
+    if (!res.error && res.data) allData.push(...(res.data as unknown as Perfume[]));
+  }
+
+  if (allData.length === 0) return [];
+  return dedupePerfumes(allData).slice(0, limit);
 }
 
 // ---------- Matching-Engine ----------

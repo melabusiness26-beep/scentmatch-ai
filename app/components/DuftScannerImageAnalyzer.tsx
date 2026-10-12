@@ -39,7 +39,7 @@ export default function DuftScannerImageAnalyzer({ onAnalysisComplete }: DuftSca
       onAnalysisComplete(data.data as ImageAnalysisResult['data']);
     } catch (err) {
       console.error('[DuftScannerImageAnalyzer] Fehler:', err);
-      setError('Fehler bei Bildanalyse – versuche es später erneut');
+      setError('Fehler bei Bildanalyse. Bitte versuche es später erneut.');
       setIsLoading(false);
     }
   };
@@ -66,7 +66,7 @@ export default function DuftScannerImageAnalyzer({ onAnalysisComplete }: DuftSca
       )}
 
       <p style={{ fontSize: '13px', color: '#6b5a4e', textAlign: 'center', marginTop: '0.5rem' }}>
-        Flakon, Outfit oder Stimmung – wir lesen das Bild
+        Flakon, Outfit oder Stimmung. Wir lesen das Bild.
       </p>
     </div>
   );

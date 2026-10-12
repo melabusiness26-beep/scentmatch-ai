@@ -6,7 +6,7 @@ import { guides } from '@/lib/guides';
 
 export const revalidate = 3600;
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
   title: 'Dupe-Finder: die günstige Alternative zu deinem Lieblingsduft',
@@ -66,7 +66,7 @@ export default async function DupesPage() {
             <p className="eyebrow">Spar-Werkzeug</p>
             <h1 className="detail-title">Der Dupe-Finder</h1>
             <p className="lead">
-              Du liebst einen Duft, aber nicht seinen Preis? Gib ihn ein – wir zeigen
+              Du liebst einen Duft, aber nicht seinen Preis? Gib ihn ein. Wir zeigen
               dir sofort ähnlich riechende Alternativen, die oft hunderte Franken
               weniger kosten. Ehrlich eingeordnet, mit Duftprofil zu jedem Treffer.
             </p>

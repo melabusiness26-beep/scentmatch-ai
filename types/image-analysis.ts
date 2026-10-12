@@ -4,6 +4,7 @@ export interface ImageAnalysisResult {
     perfumeName: string;
     brandName: string;
     confidence: 'high' | 'medium' | 'low';
+    confidenceReason?: string | null;
     notes: {
       top: string[];
       heart: string[];

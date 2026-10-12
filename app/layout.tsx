@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Playfair_Display, Inter } from 'next/font/google';
+import Link from 'next/link';
 import ConsentedAnalytics from '@/app/ConsentedAnalytics';
 import CookieBanner from '@/app/CookieBanner';
 import FooterNewsletter from '@/app/FooterNewsletter';
@@ -25,7 +26,7 @@ const inter = Inter({
   display: 'swap'
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -88,6 +89,35 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         {children}
+        {/* Trust-Bar: Vertrauens-Signale vor dem Footer */}
+        <div style={{
+          backgroundColor: '#2a1d12',
+          borderTop: '1px solid rgba(212,175,55,0.12)',
+          padding: '1.5rem 1.25rem',
+        }}>
+          <div style={{
+            maxWidth: '1100px',
+            margin: '0 auto',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '1rem',
+            textAlign: 'center',
+          }}>
+            {[
+              { icon: '🇨🇭', label: 'Aus der Schweiz', sub: 'Ehrlich & unabhängig' },
+              { icon: '🎯', label: 'Echter Match-Score', sub: '0–100, kein Zufall' },
+              { icon: '💸', label: 'Günstige Dupes', sub: 'Zu jedem Lieblingsduft' },
+              { icon: '🔒', label: 'Kein Konto nötig', sub: 'Kein Newsletter-Zwang' },
+            ].map((item) => (
+              <div key={item.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.25rem' }}>
+                <span style={{ fontSize: '1.4rem', lineHeight: 1 }}>{item.icon}</span>
+                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#d4af37' }}>{item.label}</span>
+                <span style={{ fontSize: '0.72rem', color: 'rgba(250,247,242,0.55)' }}>{item.sub}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <footer className="site-footer">
           <FooterNewsletter />
           <div className="container footer-inner">
@@ -97,13 +127,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <p className="small footer-tag">Die moderne Duft-Findung – kuratiert in der Schweiz. Finde mit Quiz und intelligenter Match-Engine deinen Signature-Duft.</p>
             </div>
             <nav className="footer-links">
-              <a href="/#quiz">Quiz</a>
-              <a href="/duefte">Düfte</a>
-              <a href="/duftnoten">Duftnoten</a>
-              <a href="/ratgeber">Ratgeber</a>
-              <a href="/ueber-uns">Über uns</a>
-              <a href="/impressum">Impressum</a>
-              <a href="/datenschutz">Datenschutz</a>
+              <Link href="/#quiz">Quiz</Link>
+              <Link href="/duefte">Düfte</Link>
+              <Link href="/marke">Marken</Link>
+              <Link href="/duft-finder">Duft-Finder</Link>
+              <Link href="/duft-detektiv">Duft-Detektiv</Link>
+              <Link href="/duft-scanner">Duft-Scanner</Link>
+              <Link href="/geschenk-finder">Geschenk-Finder</Link>
+              <Link href="/stimmungen">Stimmungen</Link>
+              <Link href="/reiseduefte">Reisedüfte</Link>
+              <Link href="/duftnoten">Duftnoten</Link>
+              <Link href="/ratgeber">Ratgeber</Link>
+              <Link href="/faq">FAQ</Link>
+              <Link href="/ueber-uns">Über uns</Link>
+              <Link href="/impressum">Impressum</Link>
+              <Link href="/datenschutz">Datenschutz</Link>
             </nav>
           </div>
           <p className="container footer-affiliate small">

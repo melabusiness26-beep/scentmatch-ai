@@ -9,10 +9,10 @@ interface QuestionProps {
 
 export default function Question8Occasion({ answers, handleAnswer }: QuestionProps) {
   const options: Array<{ value: any; label: string; description: string }> = [
-    { value: 'daily', label: 'Alltag – frisch und unkompliziert', description: 'Täglich tragbar, zuverlässig' },
-    { value: 'office', label: 'Büro – professionell und dezent', description: 'Im Job angemessen' },
-    { value: 'evening', label: 'Abend – verführerisch und stark', description: 'Ausgehen, Dinner, Party' },
-    { value: 'special', label: 'Besonderer Anlass – unvergesslich', description: 'Hochzeitsgast, Festlich' },
+    { value: 'daily', label: 'Alltag (frisch, unkompliziert)', description: 'Täglich tragbar, zuverlässig' },
+    { value: 'office', label: 'Büro (professionell, dezent)', description: 'Im Job angemessen' },
+    { value: 'evening', label: 'Abend (verführerisch, stark)', description: 'Ausgehen, Dinner, Party' },
+    { value: 'special', label: 'Besonderer Anlass (unvergesslich)', description: 'Hochzeitsgast, Festlich' },
     { value: 'unknown', label: 'Ich weiss es nicht', description: 'Diese Info wird übersprungen' },
   ];
 

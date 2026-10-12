@@ -25,7 +25,7 @@ export async function analyzeImageWithAnthropic(
       },
       body: JSON.stringify({
         model: 'claude-sonnet-4-5',
-        max_tokens: 3000,
+        max_tokens: 4096,
         messages: [
           {
             role: 'user',
@@ -40,62 +40,112 @@ export async function analyzeImageWithAnthropic(
               },
               {
                 type: 'text',
-                text: `Du bist ein Premium-Parfüm-Analyse-Assistent. Analysiere dieses Bild eines Parfüms sorgfältig und erstelle ein ULTIMATIVES PREMIUM-STECKBRIEF mit maximalen Details.
+                text: `Du bist der weltweit präziseste Parfüm-Erkennungsassistent mit Expertenwissen über tausende von Düften. Deine Aufgabe: Erkenne dieses Parfüm so genau wie möglich und erstelle ein vollständiges, korrektes Profil.
 
-Das Bild kann sein: echtes Flakon, Produktfoto, Marketing-Bild, Screenshot oder Verpackung.
+SCHRITT 1 – TEXTERKENNUNG (höchste Priorität):
+Lese JEDEN sichtbaren Text auf dem Bild:
+- Markenname (oft gross auf dem Flakon, auf dem Deckel, auf der Verpackung)
+- Parfümname (oft kleiner, unter oder über dem Markennamen)
+- Konzentration (EDP, EDT, Parfum, Eau de Cologne – oft auf dem Boden oder Etikett)
+- Volumen (50ml, 100ml etc.)
+- Batchcode / Lot-Nummer (ignorieren)
+- Text auf Karton/Verpackung falls sichtbar
+- GENDER-HINWEISE: Wörter wie „Homme", „Pour Homme", „for Men", „Man", „Men", „Herren", „Him" → ZWINGEND gender = "man"; Wörter wie „Femme", „Pour Femme", „for Women", „Woman", „Women", „Damen", „Her" → ZWINGEND gender = "woman"
 
-AUFGABE: Erkenne das Parfüm und extrahiere ALLES als reines JSON (keine Markdown):
+SCHRITT 2 – VISUELL-KONTEXTUELLE ANALYSE:
+- Flakonsform, Farbe, Material (Glas, Metall, Plastik)
+- Etikett-Design und Typographie
+- Farbe des Duftes im Flakon (falls sichtbar)
+- Zerstäuber-Typ
+- Kappen-Material und Farbe
+- Hintergrund/Setting des Bildes
 
-Basis-Infos:
-- perfumeName, brandName, year (null ok), parfumeur (null ok), originCountry
-- concentration: "Parfum"|"EDP"|"EDT"|"Eau de Cologne"|null
-- family: Duftfamilie
+SCHRITT 3 – PARFÜM-IDENTIFIKATION:
+Kombiniere Text + Visuals um das genaue Produkt zu bestimmen. Bei bekannten Marken:
+- Chanel, Dior, Yves Saint Laurent, Guerlain → Prüfe alle Linien
+- Creed, Maison Margiela, Byredo → Nischen-Linien kennen
+- Armaf, Lattafa, Al Haramain → Arabische/günstige Alternativen
+- Zara, H&M, Lidl → Massenmarkt-Klone
+Auch bei schlechter Qualität: Logo-Form, Flakonstil und Farbe geben Hinweise.
 
-Bewertungen (1-10 Skala):
-- rating, sillage, longevity, projection, uniqueness, priceValue
+ANTWORTE AUSSCHLIESSLICH mit gültigem JSON (kein Markdown, keine Erklärung davor/danach):
 
-Noten:
-- notes: {top: [...], heart: [...], base: [...]}
+{
+  "perfumeName": "exakter Produktname wie auf dem Flakon",
+  "brandName": "Markenname",
+  "confidence": "high|medium|low",
+  "confidenceReason": "Kurze Begründung: was hat die Erkennung erschwert oder erleichtert",
+  "year": null,
+  "parfumeur": null,
+  "originCountry": "Land",
+  "concentration": "Parfum|EDP|EDT|Eau de Cologne|null",
+  "family": "Duftfamilie auf Deutsch (z.B. Blumig-Fruchtig, Holzig-Orientalisch, Frisch-Aquatisch)",
+  "gender": "woman|man|unisex — PFLICHT: Wenn 'Homme', 'Pour Homme', 'for Men', 'Man' auf dem Flakon steht → IMMER 'man'. Wenn 'Femme', 'Pour Femme', 'for Women', 'Woman' steht → IMMER 'woman'. Kein Raten: Falls kein Hinweis sichtbar → 'unisex'.",
+  "intensity": "very_light|light|medium|strong|very_strong",
+  "rating": 7.5,
+  "sillage": 6,
+  "longevity": 7,
+  "projection": 6,
+  "uniqueness": 5,
+  "priceValue": 8,
+  "notes": {
+    "top": ["Deutsche Notennamen", "z.B. Bergamotte", "Zitrone"],
+    "heart": ["Rose", "Jasmin"],
+    "base": ["Sandelholz", "Moschus", "Vanille"]
+  },
+  "duftDNA": {"blumig": 35, "holzig": 20, "frisch": 25, "süss": 15, "würzig": 5},
+  "poeticDescription": "2-3 emotionale Sätze auf Deutsch die den Duft lebendig beschreiben",
+  "generalDescription": "1-2 sachliche Sätze zur Einführung",
+  "duftJourney": {
+    "morgen": "Wie trägt sich der Duft am Morgen?",
+    "mittag": "Wie entwickelt er sich über den Tag?",
+    "abend": "Abendliche Transformation",
+    "nacht": "Nachtcharakter"
+  },
+  "development": {
+    "opening": "Erste 10-30 Minuten auf der Haut",
+    "middleGame": "Nach 1-2 Stunden",
+    "drydown": "Trockene Basis nach mehreren Stunden"
+  },
+  "characterTags": ["5 bis 6 prägnante Schlagwörter"],
+  "personalityType": "Welche Persönlichkeit passt zu diesem Duft?",
+  "mood": "Stimmung in 2-3 Wörtern",
+  "seasonRecommendation": "Frühling|Sommer|Herbst|Winter|Ganzjährig",
+  "occasionList": ["Alltag", "Büro", "Date", "Abendessen", "Party"],
+  "climate": ["warm", "kalt", "tropisch", "gemässigt"],
+  "perfectMoment": "Eine kurze emotionale Geschichte: wann ist dieser Duft perfekt?",
+  "bottleDescription": "Beschreibung des Flakons: Form, Farbe, Material, Besonderheiten",
+  "comparisonPerfumes": [
+    {"name": "Bekannter Duft 1", "reason": "Warum ähnlich"},
+    {"name": "Bekannter Duft 2", "reason": "Warum ähnlich"},
+    {"name": "Bekannter Duft 3", "reason": "Warum ähnlich"}
+  ],
+  "similarPerfumes": [
+    {"name": "Empfehlung 1", "reason": "Warum empfohlen"},
+    {"name": "Empfehlung 2", "reason": "Warum empfohlen"},
+    {"name": "Empfehlung 3", "reason": "Warum empfohlen"},
+    {"name": "Empfehlung 4", "reason": "Warum empfohlen"},
+    {"name": "Empfehlung 5", "reason": "Warum empfohlen"}
+  ],
+  "funFacts": ["Interessanter Fakt 1", "Fakt 2", "Fakt 3"],
+  "famouswearers": ["Prominente Person die diesen Duft trägt oder getragen hat"],
+  "history": "Geschichte des Parfüms: Entstehung, Besonderheiten, kulturelle Bedeutung",
+  "usageRecommendations": {
+    "occasions": ["Anlass 1", "Anlass 2"],
+    "seasons": ["Saison 1"],
+    "timeOfDay": ["Morgen", "Abend"],
+    "skinType": ["Trockene Haut", "Normale Haut"]
+  }
+}
 
-Analyse:
-- duftDNA: {blumig: %, holzig: %, frisch: %, süss: %, würzig: %} (Summe ~100)
-- poeticDescription: 2-3 Sätze, emotional
-- duftJourney: {morgen: "...", mittag: "...", abend: "...", nacht: "..."}
-
-Charakter:
-- characterTags: ["5-6 Wörter"], personalityType, mood
-
-Anwendung:
-- seasonRecommendation: "Frühling"|"Sommer"|"Herbst"|"Winter"|"Ganzjährig"
-- occasion: ["Alltag", "Büro", "Date", "Abendessen", "Party", "Sport"]
-- climate: ["warm", "kalt", "tropisch", "gemäßigt"]
-
-Stories:
-- perfectMoment: kurze emotionale Story
-- comparisonPerfumes: [{name, reason}] (2-3 Düfte)
-- funFacts: [...]
-- famouswearers: [...] oder null
-- history: kurze Geschichte oder null
-
-KI-Empfehlungen:
-- similarPerfumes: [{name, reason}] (5 Düfte aus KI-Wissen, NICHT aus DB)
-
-Fallback-Daten:
-- generalDescription: 1-2 Sätze
-- development: {opening, middleGame, drydown}
-- usageRecommendations: {occasions, seasons, timeOfDay, skinType}
-- bottleDescription: Beschreibung des Flakons
-- intensity, gender, confidence
-
-WICHTIG:
-- Es ist OK, educated guesses zu machen
-- Nutze null nur wenn unmöglich
-- Leere Arrays sind OK
-- Sei großzügig – auch unscharfe Fotos/Screenshots zählen
-- confidence: "high"|"medium"|"low"
-- ALLE Duft-Noten (top, heart, base) IMMER auf DEUTSCH (z.B. "Himbeere" nicht "Frambuesa", "Rose" nicht "Rosa", "Vanille" nicht "Vanilla", "Bergamotte" nicht "Bergamot"). Keine doppelten Übersetzungen – jede Note NUR EINMAL.
-
-Antworte NUR mit vollständigem JSON:`,
+PFLICHTREGELN:
+- perfumeName und brandName: IMMER ausfüllen, auch wenn es nur ein educated guess ist
+- Alle Duft-Noten (top/heart/base) IMMER auf Deutsch: "Bergamotte" nicht "Bergamot", "Vanille" nicht "Vanilla", "Moschus" nicht "Musk", "Zitrone" nicht "Lemon", "Rose" statt "Rosa"
+- Jede Note NUR EINMAL (keine Duplikate zwischen top/heart/base)
+- occasionList: IMMER als Array, nie null
+- duftDNA-Werte müssen sich auf ~100 summieren
+- confidence "high" = Text klar lesbar + Duft bekannt; "medium" = Duft erkannt aber unsicher; "low" = nur visueller Guess möglich
+- Antworte NUR mit dem JSON-Objekt, kein Text davor oder danach`,
               },
             ],
           },
@@ -153,6 +203,29 @@ Antworte NUR mit vollständigem JSON:`,
         'both': 'unisex',
       };
       analysis.gender = genderMap[analysis.gender.toLowerCase()] || analysis.gender;
+    }
+
+    // SICHERHEITS-CHECK: Parfümname und Marke auf Gender-Keywords prüfen.
+    // Dieser Code überschreibt die KI-Antwort – verhindert falsche Gender-Labels.
+    const nameToCheck = `${analysis.perfumeName || ''} ${analysis.brandName || ''}`.toLowerCase();
+    const MAN_KEYWORDS = [
+      'pour homme', 'for men', 'for him', 'homme', ' man ', 'men\'s',
+      ' him ', 'herren', 'masculin', 'masculine', 'uomo', 'hombre',
+    ];
+    const WOMAN_KEYWORDS = [
+      'pour femme', 'for women', 'for her', 'femme', ' woman ', 'women\'s',
+      ' her ', 'damen', 'féminin', 'feminine', 'donna', 'mujer', 'elle ',
+    ];
+    const isManByName  = MAN_KEYWORDS.some(kw => nameToCheck.includes(kw));
+    const isWomanByName = WOMAN_KEYWORDS.some(kw => nameToCheck.includes(kw));
+    if (isManByName && !isWomanByName) {
+      analysis.gender = 'man';
+    } else if (isWomanByName && !isManByName) {
+      analysis.gender = 'woman';
+    }
+    // Wenn kein Keyword gefunden und gender noch null/ungültig → sicherer Fallback
+    if (!['man', 'woman', 'unisex'].includes(analysis.gender)) {
+      analysis.gender = 'unisex';
     }
 
     // Noten auf Deutsch normalisieren & Duplikate entfernen
@@ -214,6 +287,37 @@ Antworte NUR mit vollständigem JSON:`,
     const validIntensities = ['very_light', 'light', 'medium', 'strong', 'very_strong'];
     if (analysis.intensity && !validIntensities.includes(analysis.intensity)) {
       analysis.intensity = 'medium';
+    }
+
+    // occasionList-Bug: KI gibt manchmal 'occasion' (Array) statt 'occasionList' zurück
+    if (!analysis.occasionList && Array.isArray(analysis.occasion)) {
+      analysis.occasionList = analysis.occasion;
+    }
+    if (!Array.isArray(analysis.occasionList)) {
+      analysis.occasionList = [];
+    }
+
+    // climate: sicherstellen dass es ein Array ist
+    if (!Array.isArray(analysis.climate)) {
+      analysis.climate = analysis.climate ? [analysis.climate] : [];
+    }
+
+    // characterTags: sicherstellen dass es ein Array ist
+    if (!Array.isArray(analysis.characterTags)) {
+      analysis.characterTags = [];
+    }
+
+    // Zahlen-Felder validieren (1–10 Bereich)
+    const numericFields = ['rating', 'sillage', 'longevity', 'projection', 'uniqueness', 'priceValue'];
+    for (const field of numericFields) {
+      if (analysis[field] !== undefined && analysis[field] !== null) {
+        const val = Number(analysis[field]);
+        if (isNaN(val) || val < 1 || val > 10) {
+          analysis[field] = null;
+        } else {
+          analysis[field] = Math.round(val * 10) / 10; // auf 1 Dezimalstelle runden
+        }
+      }
     }
 
     return {

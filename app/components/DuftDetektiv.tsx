@@ -82,16 +82,7 @@ export default function DuftDetektiv({ allPerfumes, prefilledAnswers }: DuftDete
     setLoading(true);
 
     setTimeout(() => {
-      console.log('[DuftDetektiv] Quiz finished with answers:', answers);
-      console.log('[DuftDetektiv] Total perfumes available:', allPerfumes.length);
       const matches = matchPerfumesDetektiv(answers, allPerfumes);
-      console.log('[DuftDetektiv] Matches returned:', matches.length);
-      if (matches.length === 0) {
-        console.warn('[DuftDetektiv] NO MATCHES FOUND - Debug info:');
-        console.log('  answers:', JSON.stringify(answers, null, 2));
-        console.log('  allPerfumes count:', allPerfumes.length);
-        console.log('  first 3 perfumes:', allPerfumes.slice(0, 3));
-      }
       const resultIds = matches.map(m => m.perfume.id);
       storage.saveSearch(answers, resultIds);
       resultIds.forEach(id => storage.addPerfume(id));
@@ -227,7 +218,7 @@ export default function DuftDetektiv({ allPerfumes, prefilledAnswers }: DuftDete
             lineHeight: 1.6,
             fontStyle: 'italic',
           }}>
-            Beschreib mir den Duft – ich finde ihn für dich.
+            Beschreib mir den Duft. Ich finde ihn für dich.
           </p>
 
           {/* Two Entry Options */}

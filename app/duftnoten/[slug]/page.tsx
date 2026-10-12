@@ -8,7 +8,7 @@ import { getScentNote, scentNotes, type ScentNote } from '@/lib/notes-glossary';
 
 export const revalidate = 3600;
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export async function generateStaticParams() {
   return scentNotes.map((n) => ({ slug: n.slug }));

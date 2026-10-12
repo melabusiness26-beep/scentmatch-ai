@@ -1,31 +1,34 @@
 import type { Metadata } from 'next';
 import { getPerfumes } from '@/lib/perfumes';
 import DuftDetektiv from '@/app/components/DuftDetektiv';
+import SiteHeader from '@/app/SiteHeader';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  robots: 'noindex, nofollow',
   title: 'Duft-Detektiv – Finde deinen Signature Duft | Auressa',
-  description: 'Beantworte 12 einfache Fragen und finde den perfekten Duft aus über 400 Düften.',
+  description: 'Beantworte 12 einfache Fragen und finde den perfekten Duft aus über 400 kuratierten Parfüms. Dein persönlicher Duft-Detektiv.',
+  alternates: { canonical: `${SITE_URL}/duft-detektiv` },
+  openGraph: {
+    title: 'Duft-Detektiv | Auressa',
+    description: 'Beantworte 12 Fragen und finde deinen Signature Duft – aus hunderten kuratierten Parfüms.',
+    url: `${SITE_URL}/duft-detektiv`,
+    type: 'website',
+  },
 };
 
 export default async function DuftDetektivPage() {
-  let perfumes = [];
+  let perfumes: Awaited<ReturnType<typeof getPerfumes>> = [];
 
   try {
     perfumes = await getPerfumes(2000);
-    console.log('[DuftDetektiv Page] Loaded perfumes:', perfumes.length);
   } catch (error) {
     console.error('[DuftDetektiv Page] Failed to load perfumes:', error);
   }
 
-  // Debug: Check if Supabase is configured
-  console.log('[DuftDetektiv Page] Env vars available:', {
-    supabaseUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
-    supabaseKey: !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-  });
-
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
+      <SiteHeader />
       <section
         style={{
           backgroundImage: 'linear-gradient(rgba(26,18,9,0.80), rgba(26,18,9,0.80)), url(/hero-auressa-2.jpg)',
@@ -39,6 +42,9 @@ export default async function DuftDetektivPage() {
         }}
       >
         <div style={{ textAlign: 'center', maxWidth: '600px' }}>
+          <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.75rem' }}>
+            Duft-Detektiv
+          </p>
           <h1 style={{
             fontSize: 'clamp(32px, 8vw, 48px)',
             fontFamily: "'Playfair Display', serif",
@@ -47,7 +53,7 @@ export default async function DuftDetektivPage() {
             lineHeight: 1.1,
             color: '#faf7f2',
           }}>
-            Duft-Detektiv
+            Finde deinen Signature Duft
           </h1>
           <p style={{
             fontSize: '16px',

@@ -214,7 +214,7 @@ a.logo { text-decoration:none; color:inherit; }
 .match-badge { display:inline-block; background:var(--brown); color:#fff; font-family:var(--font-sans), Arial, sans-serif; font-size:13px; font-weight:700; padding:5px 12px; border-radius:999px; margin-bottom:10px; }
 
 /* Duft-Bilder & elegante Platzhalter (nach Duftfamilie eingefärbt) */
-.cover { position:relative; height:130px; border-radius:10px; margin-bottom:14px; background-color:#eadfce; background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,.45), inset 0 -30px 50px rgba(75,53,40,.12); }
+.cover { position:relative; height:130px; border-radius:10px; margin-bottom:14px; background: radial-gradient(ellipse 70% 60% at 75% 20%, rgba(255,248,220,0.7) 0%, transparent 60%), radial-gradient(ellipse 55% 65% at 20% 80%, rgba(216,183,140,0.45) 0%, transparent 65%), linear-gradient(145deg, #c9a96e 0%, #e8d4a8 35%, #f5ead0 65%, #dfc49a 100%); background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,.45), inset 0 -30px 50px rgba(75,53,40,.12); }
 /* Echte Bilder (z. B. Duftnoten-Fotos) als <img> statt CSS-Hintergrund –
    so werden sie von der Google-Bildersuche indexiert und laden effizient. */
 img.cover { display:block; width:100%; object-fit:cover; }
@@ -227,10 +227,40 @@ img.cover { display:block; width:100%; object-fit:cover; }
 .cover-large .cover-label { padding:16px 22px; gap:6px; max-width:78%; }
 .cover-large .cover-label-brand { font-size:12px; }
 .cover-large .cover-label-name { font-size:26px; }
-.cover-clean { background:linear-gradient(140deg,#aecdd0,#eef4f3); }
-.cover-gourmand { background:linear-gradient(140deg,#d6b98a,#f4e7d6); }
-.cover-woody { background:linear-gradient(140deg,#8a6a4e,#d0b594); }
-.cover-floral { background:linear-gradient(140deg,#e3b1c4,#f8e8ee); }
+/* Premium-Gradienten pro Duftfamilie – mehrschichtig für Tiefe */
+.cover-clean {
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 20%, rgba(255,255,255,0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 70% at 15% 80%, rgba(174,205,208,0.5) 0%, transparent 65%),
+    linear-gradient(145deg, #b8dde0 0%, #d8eef0 40%, #eef6f7 70%, #f5fafb 100%);
+}
+.cover-gourmand {
+  background:
+    radial-gradient(ellipse 60% 55% at 75% 15%, rgba(255,240,210,0.55) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 65% at 20% 85%, rgba(180,120,60,0.25) 0%, transparent 60%),
+    linear-gradient(145deg, #c8934a 0%, #deb87a 30%, #eed9b0 60%, #f8edd8 100%);
+}
+.cover-woody {
+  background:
+    radial-gradient(ellipse 55% 50% at 78% 18%, rgba(220,185,140,0.4) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 60% at 18% 82%, rgba(60,38,22,0.3) 0%, transparent 60%),
+    linear-gradient(145deg, #6b4c30 0%, #9a7050 30%, #c0956a 60%, #d9b990 100%);
+}
+.cover-floral {
+  background:
+    radial-gradient(ellipse 65% 55% at 75% 18%, rgba(255,240,248,0.6) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 60% at 20% 82%, rgba(180,90,130,0.2) 0%, transparent 60%),
+    linear-gradient(145deg, #d4789e 0%, #e5a0bc 30%, #f2cedd 65%, #fbeef4 100%);
+}
+/* Goldener Glanz-Overlay auf allen Covers */
+.cover-clean::after, .cover-gourmand::after, .cover-woody::after, .cover-floral::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(212,175,55,0.08) 0%, transparent 50%, rgba(212,175,55,0.05) 100%);
+  border-radius: inherit;
+  pointer-events: none;
+}
 /* Edlerer Platzhalter (solange kein echtes Foto da ist): feine Flakon-Silhouette
    über dem Etikett – wirkt wie ein gestaltetes Produktbild statt einer Farbfläche. */
 .cover:has(.cover-label) { flex-direction: column; gap: 11px; }
@@ -242,6 +272,11 @@ img.cover { display:block; width:100%; object-fit:cover; }
   opacity: .62;
   filter: drop-shadow(0 1px 0 rgba(255,255,255,.35));
 }
+/* Familien-spezifische Flakon-Farben */
+.cover-clean:has(.cover-label)::before { filter: drop-shadow(0 1px 0 rgba(255,255,255,.5)) hue-rotate(180deg) brightness(1.1); opacity: .55; }
+.cover-floral:has(.cover-label)::before { filter: drop-shadow(0 1px 0 rgba(255,255,255,.5)) hue-rotate(310deg) saturate(0.8); opacity: .58; }
+.cover-woody:has(.cover-label)::before { filter: drop-shadow(0 1px 0 rgba(255,255,255,.3)) sepia(0.5) brightness(1.1); opacity: .7; }
+.cover-gourmand:has(.cover-label)::before { filter: drop-shadow(0 1px 0 rgba(255,255,255,.4)) sepia(0.3) saturate(1.2); opacity: .65; }
 .cover-large:has(.cover-label) { gap: 16px; }
 .cover-large:has(.cover-label)::before { width: 60px; height: 78px; }
 /* Bilder im Duftnoten-Lexikon */
@@ -581,4 +616,22 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 
 .duft-detektiv-button:hover {
   background-color: #c99a5b !important;
+}
+
+/* Ratgeber-Index: Guide-Tile Karte */
+.guide-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  background: #fff;
+  border: 1px solid rgba(212,175,55,0.18);
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.guide-tile:hover {
+  box-shadow: 0 4px 16px rgba(212,175,55,0.22);
+  transform: translateY(-2px);
 }

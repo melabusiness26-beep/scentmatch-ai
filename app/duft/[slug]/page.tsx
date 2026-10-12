@@ -35,7 +35,7 @@ const genderSymbol: Record<string, string> = {
 // Detailseiten werden stündlich neu generiert (frische Daten, schnelle Auslieferung).
 export const revalidate = 3600;
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://scentmatch-ai.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 const familyLabels: Record<string, string> = {
   clean: 'Clean / Frisch',
@@ -124,6 +124,34 @@ function StatRow({ label, value }: { label: string; value: string }) {
     <div className="stat-row">
       <span className="small">{label}</span>
       <strong>{value}</strong>
+    </div>
+  );
+}
+
+// Visueller Balken für Scores (0–10 oder 0–100)
+function ScoreBar({ label, value, max = 10 }: { label: string; value: number | null | undefined; max?: number }) {
+  if (value == null) return <StatRow label={label} value="–" />;
+  const pct = Math.min(100, Math.round((value / max) * 100));
+  return (
+    <div style={{ marginBottom: '0.75rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.3rem' }}>
+        <span style={{ fontSize: '0.78rem', color: '#6b5344' }}>{label}</span>
+        <strong style={{ fontSize: '0.85rem', color: '#2a1d12' }}>{value}/{max}</strong>
+      </div>
+      <div style={{
+        height: '6px',
+        background: 'rgba(212,175,55,0.15)',
+        borderRadius: '3px',
+        overflow: 'hidden',
+      }}>
+        <div style={{
+          height: '100%',
+          width: `${pct}%`,
+          background: 'linear-gradient(90deg, #d4af37, #c9a227)',
+          borderRadius: '3px',
+          transition: 'width 0.6s ease',
+        }} />
+      </div>
     </div>
   );
 }
@@ -312,7 +340,13 @@ export default async function PerfumeDetailPage({
         <section className="detail-hero">
           <div>
             <Cover perfume={perfume} large />
-            <p className="small">{brandName}</p>
+            {perfume.brands?.slug ? (
+              <Link href={`/marke/${perfume.brands.slug}`} className="small" style={{ color: '#8c7060', textDecoration: 'none', borderBottom: '1px solid rgba(140,112,96,0.3)' }}>
+                {brandName}
+              </Link>
+            ) : (
+              <p className="small">{brandName}</p>
+            )}
             <h1 className="detail-title">{perfume.perfume_name}</h1>
             <p className="lead">{perfume.description || describePerfume(perfume)}</p>
             <div className="badge-row">
@@ -331,9 +365,9 @@ export default async function PerfumeDetailPage({
 
           <div className="card detail-stats">
             <h2>Auf einen Blick</h2>
-            <StatRow label="Auressa-Score" value={`${perfume.scentmatch_score ?? '–'}/100`} />
-            <StatRow label="Haltbarkeit" value={`${perfume.longevity ?? '–'}/10`} />
-            <StatRow label="Sillage (Projektion)" value={`${perfume.sillage ?? '–'}/10`} />
+            <ScoreBar label="Auressa-Score" value={perfume.scentmatch_score} max={100} />
+            <ScoreBar label="Haltbarkeit" value={perfume.longevity} max={10} />
+            <ScoreBar label="Sillage (Projektion)" value={perfume.sillage} max={10} />
             <StatRow label="Saison" value={perfume.season || 'ganzjährig'} />
             <StatRow label="Anlass" value={perfume.occasion || 'flexibel'} />
             <StatRow
@@ -391,7 +425,7 @@ export default async function PerfumeDetailPage({
           <section className="section">
             <h2>Günstige Alternativen zu {perfume.perfume_name}</h2>
             <p className="small">
-              Ähnlich riechende Düfte, die deutlich weniger kosten – ideal, wenn du den Stil magst,
+              Ähnlich riechende Düfte, die deutlich weniger kosten. Ideal, wenn du den Stil magst,
               aber sparen möchtest.
             </p>
             <div className="perfume-list">

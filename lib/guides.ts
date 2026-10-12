@@ -1987,9 +1987,9 @@ export const guides: Guide[] = [
       'Parfüms, die herrlich nach reifen Erdbeeren duften: süß, fruchtig und sommerlich. Unsere besten Erdbeer-Düfte von günstig bis edel.',
     heroImage: 'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=1200&q=80&fit=crop',
     intro: [
-      'Erdbeere ist eine der schönsten fruchtigen Duftnoten: süss, saftig und sofort gute Laune. Mal frisch-spritzig, mal kombiniert mit Sahne, Vanille oder weissen Blüten. Erdbeer-Düfte gehören zu den zugänglichsten und fröhlichsten Düften überhaupt.',
-      'Was viele nicht wissen: Erdbeer ist in der Parfümwelt fast immer eine Kombination aus verschiedenen synthetischen Fruchtmolekülen, da echter Erdbeerextrakt sich in der Parfümerie schwer einsetzen lässt. Das Ergebnis riecht aber trotzdem täuschend echt und oft noch schöner als die Frucht selbst.',
-      'Hier unsere schönsten Düfte aus dem Katalog, in denen Erdbeere eine tragende Rolle spielt, für alle, die es fruchtig-süss und beschwingt mögen.'
+      'Erdbeer-Düfte sind fruchtig, süss und sorgen sofort für gute Laune. Sie wirken jung und verspielt, mal frisch-spritztig, mal kombiniert mit Sahne, Vanille oder weissen Blüten. Sie gehören zu den beliebtesten und zugänglichsten Duftrichtungen überhaupt – perfekt für alle, die es unkompliziert und fröhlich mögen.',
+      'In der Parfümwelt ist Erdbeere fast immer eine Kombination aus verschiedenen synthetischen Fruchtmolekülen. Echter Erdbeerextrakt ist zu flüchtig und schwierig zu verarbeiten. Das Ergebnis riecht aber verblüffend echt – oft sogar schöner und runder als die echte Frucht selbst. Die besten Erdbeer-Kompositionen verbinden die Süsse mit einer stabilen Basis, damit der Duft nicht sofort verfliegt.',
+      'Hier unsere liebsten Erdbeer-Düfte aus dem Katalog – von frisch und leicht bis warm und cremig. Für Sommer, Dates und alle Momente, in denen du es fruchtig-süss und beschwingt magst.'
     ],
     sections: [
       {
@@ -2003,9 +2003,9 @@ export const guides: Guide[] = [
       {
         heading: 'Worauf du bei Erdbeer-Düften achten solltest',
         body: [
-          'Fruchtige Erdbeer-Noten wirken jung, verspielt und sommerlich, ideal für den Alltag, Dates und warme Tage.',
-          'Achte auf die Basis: Erdbeere mit Vanille, Karamell oder Moschus (z. B. Lattafa Eclaire) wird wärmer und haltbarer, Erdbeere mit Blüten (z. B. YSL Mon Paris) bleibt eleganter und frischer.',
-          'Süss-fruchtige Düfte sind oft präsent. Ein bis zwei Sprühstösse reichen meist völlig.'
+          'Fruchtige Erdbeer-Noten wirken jung, verspielt und sommerlich – ideal für den Alltag, Dates und warme Tage. Sie sind einsteigerfreundlich und brauchen keine grosse Gewöhnung.',
+          'Achte auf die Basis: Erdbeere mit Vanille, Karamell oder Moschus (z. B. Lattafa Eclaire) wird wärmer und haltbarer, behält aber ihre Süsse. Erdbeere mit Blüten (z. B. YSL Mon Paris) bleibt eleganter und frischer – ideal für Büro und Alltag.',
+          'Erdbeer-Noten sind präsent und intensiv. Ein bis zwei Sprühstösse reichen völlig aus. Wer es dezenter mag, dosiert sparsam – Erdbeere entfaltet sich schnell und gleichmässig auf der Haut.'
         ]
       },
       {

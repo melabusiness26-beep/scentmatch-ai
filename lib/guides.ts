@@ -592,14 +592,14 @@ export const guides: Guide[] = [
   },
   {
     slug: 'die-besten-oud-duefte',
-    title: 'Die besten Oud-Düfte',
+    title: 'Die besten Oud-Düfte: das flüssige Gold der Parfümerie',
     description:
-      'Oud, das „flüssige Gold" der Parfümerie: orientalisch, edel und intensiv. Unsere besten Oud-Düfte von günstig bis luxuriös.',
-    heroImage: 'https://images.unsplash.com/photo-1540202404-a2f29016b523?w=1200&q=80&fit=crop',
+      'Oud (Agarholz) ist eine der edelsten Duftnoten überhaupt: orientalisch, warm, langanhaltend und luxuriös. Die besten Oud-Düfte von günstigen Nischen bis zu exklusiven Meisterwerken.',
+    heroImage: '/ratgeber/oud-duefte-hero.jpg',
     intro: [
-      'Oud (auch Agarholz) ist eine der edelsten und intensivsten Duftnoten überhaupt: warm, holzig, leicht rauchig und sehr langanhaltend. Es gilt als „flüssiges Gold" der Parfümwelt und das mit gutem Grund: Echter Oud ist extrem selten und entsprechend teuer.',
-      'Die meisten Düfte arbeiten mit hochwertigen Oud-Akkorden statt echtem Agarholzöl. Das ist günstiger und für viele sogar angenehmer im Tragekomfort. Echter Oud kann sehr intensiv und gewöhnungsbedürftig sein.',
-      'Hier unsere Empfehlungen, von erschwinglich bis exklusiv, besonders schön im Herbst und Winter.'
+      'Oud, auch Agarholz genannt, ist eine der edelsten und teuersten Duftnoten der Welt. Es stammt aus dem Harz des Adlerholzbaums und wird seit Jahrtausenden in der orientalischen Kultur geschätzt. Kein Wunder: Oud ist warm, holzig, leicht rauchig und unglaublich langanhaltend – ein Duft, der sich tief in die Erinnerung eingräbt.',
+      'Der Haken: Echter Oud aus reifen Adlerholzbäumen ist extrem selten und kostet ein Vermögen. Deshalb arbeiten die meisten modernen Parfüme mit hochwertigen Oud-Akkorden – synthetische Moleküle, die das Original täuschend echt nachbilden. Das ist nicht nur günstiger, sondern für viele sogar angenehmer im Tragekomfort: prägnanter, aber ausgewogen.',
+      'Hier sind unsere liebsten Oud-Düfte: von erschwinglichen Nischen-Schätzen bis zu exklusiven Luxuskreationen. Besonders schön entfalten sie sich in der kühlen Jahreszeit und am Abend.'
     ],
     sections: [
       {
@@ -614,19 +614,27 @@ export const guides: Guide[] = [
         ]
       },
       {
-        heading: 'Oud für Einsteiger',
+        heading: 'Oud für Einsteiger: So startest du richtig',
         body: [
-          'Wenn du Oud zum ersten Mal trägst, starte mit weicheren, süsslichen Varianten, etwa Oud mit Rose, Safran oder Vanille.',
-          'Reines, rauchig-medizinisches Oud kann anfangs ungewohnt wirken; gib ihm 15 bis 30 Minuten auf der Haut.',
-          'Günstige Oud-Düfte wie von Lattafa sind ideal, um die Richtung kennenzulernen, bevor du in ein teures Nischen-Oud investierst.'
+          'Wenn du Oud zum ersten Mal trägst, beginne mit weicheren, süsslichen Varianten – etwa Oud mit Rose, Safran oder Vanille. Diese sind zugänglicher und helfen dir, die Richtung kennenzulernen.',
+          'Reines, rauchig-medizinisches Oud kann anfangs intensiv wirken. Gib ihm 15 bis 30 Minuten auf der Haut, um dich daran zu gewöhnen. Die Nase passt sich an und der Duft wird runder.',
+          'Günstige Oud-Düfte von Marken wie Lattafa, Montale oder Mancera sind perfekt zum Ausprobieren. So lernst du deine Vorliebe kennen, bevor du in exklusive Nischendüfte investierst.'
         ]
       },
       {
         heading: 'Worauf du bei Oud-Düften achten solltest',
         body: [
-          'Echtes Oud ist sehr teuer, deshalb arbeiten die meisten Düfte mit hochwertigen Oud-Akkorden. Das ist völlig normal und riecht trotzdem edel.',
-          'Oud ist intensiv und langlebig: Hier reicht wirklich ein Sprühstoss. Lieber dezent starten und bei Bedarf nachlegen.',
-          'Am schönsten kommt Oud in der kühlen Jahreszeit und am Abend zur Geltung. Wunderbar harmoniert es mit Rose, Safran und süssen Noten wie Vanille und Dattel.'
+          'Echtes Oud kostet mehr als Gold. Deshalb nutzen fast alle modernen Düfte hochwertige Oud-Akkorde statt reines Agarholzöl. Das ist völlig normal, weit verbreitet und riecht trotzdem edel und authentisch.',
+          'Oud ist intensiv und extrem langlebig. Ein bis zwei Sprühstösse reichen völlig – lieber dezent starten und bei Bedarf nachlegen. Zu viel Oud wirkt schnell aufdringlich.',
+          'Die beste Zeit für Oud ist der Herbst und Winter – warm und kuschelig, am besten am Abend oder zu besonderen Anlässen. Im Sommer wirkt Oud oft zu schwer. Kombinier es mit Rose, Safran, Vanille oder Dattel für mehr Eleganz und Balance.'
+        ]
+      },
+      {
+        heading: 'Oud-Düfte lagern und pflegen',
+        body: [
+          'Oud ist kostbar und empfindlich gegenüber Hitze, Licht und Luftsauerstoff. Lagere deine Flasche dunkel und kühl, idealerweise in der Originalverpackung.',
+          'Oud-Düfte entwickeln sich über Tage und Wochen auf deiner Haut weiter. Gib deinem neuen Oud Zeit, bevor du ein Urteil fällst. Echte Oud-Liebhaber swear by dem Aging-Effekt – der Duft wird immer schöner.',
+          'Wer zu intensives Oud vortäuscht: echte Parfüme mit Oud (EDP/Eau de Parfum mindestens 15 % ätherische Öle) halten deutlich länger als Eau de Toilette.'
         ]
       }
     ]

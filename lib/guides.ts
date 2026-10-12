@@ -1985,7 +1985,7 @@ export const guides: Guide[] = [
     title: 'Die besten Erdbeer-Düfte: süß & fruchtig',
     description:
       'Parfüms, die herrlich nach reifen Erdbeeren duften: süß, fruchtig und sommerlich. Unsere besten Erdbeer-Düfte von günstig bis edel.',
-    heroImage: '/ratgeber/erdbeer-duefte-hero.jpg',
+    heroImage: '/ratgeber/erdbeer-duefte-hero.png',
     intro: [
       'Erdbeer-Düfte sind fruchtig, süss und sorgen sofort für gute Laune. Sie wirken jung und verspielt, mal frisch-spritztig, mal kombiniert mit Sahne, Vanille oder weissen Blüten. Sie gehören zu den beliebtesten und zugänglichsten Duftrichtungen überhaupt – perfekt für alle, die es unkompliziert und fröhlich mögen.',
       'In der Parfümwelt ist Erdbeere fast immer eine Kombination aus verschiedenen synthetischen Fruchtmolekülen. Echter Erdbeerextrakt ist zu flüchtig und schwierig zu verarbeiten. Das Ergebnis riecht aber verblüffend echt – oft sogar schöner und runder als die echte Frucht selbst. Die besten Erdbeer-Kompositionen verbinden die Süsse mit einer stabilen Basis, damit der Duft nicht sofort verfliegt.',

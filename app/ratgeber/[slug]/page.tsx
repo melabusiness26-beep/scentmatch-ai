@@ -210,7 +210,6 @@ export default async function GuidePage({
           </p>
         </div>
       </div>
-
       <div className="container">
         {/* Sichtbare Breadcrumb-Navigation */}
         <nav className="breadcrumb small" aria-label="Brotkrümel-Navigation" style={{ marginTop: '1.5rem' }}>

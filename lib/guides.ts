@@ -21,6 +21,7 @@ export type Guide = {
   heroImage?: string;  // Unsplash-Foto-URL für Hero-Banner
   intro: string[];
   sections: GuideSection[];
+  heroImage?: string;
 };
 
 export const guides: Guide[] = [

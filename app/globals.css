@@ -310,6 +310,13 @@ img.cover { display:block; width:100%; object-fit:cover; }
   .media-hero .lead { max-width:none; }
 }
 
+/* Magazine-Style Ratgeber-Hero: volles Bild unter Titel */
+.guide-hero-simple { margin: 32px 0 28px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 24px 60px rgba(67,48,31,.12); }
+.guide-hero-simple img { width:100%; height:auto; display:block; }
+@media (max-width: 800px) {
+  .guide-hero-simple { margin: 24px 0 22px; }
+}
+
 .detail-title { font-size: clamp(38px, 6vw, 70px); line-height:1.02; margin:6px 0 18px; letter-spacing:-0.01em; color:var(--brown); }
 .badge-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
 .detail-stats h2 { margin-top:0; }

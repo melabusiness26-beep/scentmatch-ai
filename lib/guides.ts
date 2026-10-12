@@ -201,11 +201,11 @@ export const guides: Guide[] = [
     title: 'Die besten Winterdüfte: warm, intensiv & einhüllend',
     description:
       'Wärmende Düfte für Herbst und Winter: Oud, Amber, Vanille und Gewürze, die bei Kälte besonders schön zur Geltung kommen.',
-    heroImage: 'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/winterduefte-hero.jpg',
     intro: [
-      'Im Winter darf ein Duft schwerer und wärmer sein. Holz, Amber, Oud, Gewürze und süsse Noten entfalten sich bei Kälte besonders gut und hüllen dich angenehm ein. Ganz anders wäre es im Sommer, wo im Sommer, wo dieselben Düfte schnell erdrückend wirken würden.',
-      'Die kalte Jahreszeit ist die grosse Bühne für warme Duftfamilien: Orientalische Düfte mit Weihrauch und Moschus, dunkle Holzdüfte mit Oud und Sandelholz, oder opulente Gourmands mit Vanille und Karamell. Sie alle kommen bei 5 Grad aussenrum erst richtig zur Geltung.',
-      'Diese Düfte sind wie gemacht für die kalte Jahreszeit: warm, einhüllend und mit echter Tiefe.'
+      'Im Winter brauchen Düfte Kraft und Wärme. Holz, Amber, Oud, Gewürze und süsse Noten entfalten sich bei Kälte besonders schön und umhüllen dich angenehm. Im Sommer wirken dieselben Düfte schnell erdrückend – Winter ist ihre Saison.',
+      'Im Winter sind opulente Düfte endlich am richtigen Platz: Orientalische Düfte mit Weihrauch und Moschus, dunkle Holzdüfte mit Oud und Sandelholz, oder reichhaltige Gourmands mit Vanille und Karamell. Bei Kälte entfalten sie ihre volle Tiefe und wirken rund statt aufdringlich.',
+      'Hier sind unsere liebsten Winterdüfte aus dem Katalog – von edel bis alltagstauglich, für jeden Geschmack und jede Tageszeit.'
     ],
     sections: [
       {

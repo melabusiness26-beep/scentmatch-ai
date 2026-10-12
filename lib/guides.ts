@@ -556,8 +556,8 @@ export const guides: Guide[] = [
     heroImage: 'https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=1200&q=80&fit=crop',
     intro: [
       'Vanille ist die wohl beliebteste süsse Note: warm, cremig und einladend. Mal pur und kuschelig, mal kombiniert mit Gewürzen, Tabak oder Karamell. Vanille gehört zu den vielseitigsten Basisnoten der Parfümwelt.',
-      'Was Vanille in einem Parfüm bewirkt, hängt stark von der Begleitung ab: Mit Holz wirkt sie edel und trocken, mit Praline und Kaffee fast essbar, mit Blumen elegant-feminin. Die Nase eines gutenVanille-Dufts liegt oft in eben dieser Kombination.',
-      'Hier unsere schönsten Vanille-Düfte aus dem Katalog, von cremig-leicht bis würzig-intensiv.'
+      'Was Vanille im Duft bewirkt, hängt stark vom Kontext ab. Mit Holz wirkt sie edel und trocken, mit Praline und Kaffee fast essbar, mit Blumen elegant-feminin. Ein guter Vanille-Duft ist selten pur: Die Magie liegt in der Begleitung.',
+      'Hier unsere liebsten Vanille-Düfte aus dem Katalog, von cremig-leicht bis würzig-intensiv.'
     ],
     sections: [
       {
@@ -583,9 +583,9 @@ export const guides: Guide[] = [
       {
         heading: 'Worauf du bei Vanille-Düften achten solltest',
         body: [
-          'Vanille kann ganz unterschiedlich wirken: pudrig-elegant, dessertartig-süss oder warm-rauchig in Kombination mit Tabak und Gewürzen.',
+          'Vanille kann je nach Kontext sehr unterschiedlich wirken: pudrig-elegant, dessertartig-süss oder warm-rauchig mit Tabak und Gewürzen.',
           'Sehr süsse, reine Vanille kann schnell schwer werden. Wer es alltagstauglich mag, wählt Vanille mit Holz, Moschus oder einem Hauch Frische.',
-          'Vanille gehört zur Basis und hält von Natur aus lange, ideal für Herbst, Winter und gemütliche Abende.'
+          'Vanille gehört zur Basis und hält von Natur aus lange. Ideal für Herbst, Winter und gemütliche Abende.'
         ]
       }
     ]

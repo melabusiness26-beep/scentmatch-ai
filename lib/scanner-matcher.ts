@@ -47,9 +47,10 @@ export async function findPerfumeInDB(
     }
 
     console.log(`[scanner-matcher] Loaded ${data.length} perfumes from DB`);
+    const perfumes = data as unknown as Perfume[];
 
     // Stage 1: Exact name + brand match
-    for (const perfume of data) {
+    for (const perfume of perfumes) {
       const brandName = (perfume.brands as any)?.name || '';
       const perfumeName = perfume.perfume_name || '';
 
@@ -66,7 +67,7 @@ export async function findPerfumeInDB(
     let bestFuzzyMatch: Perfume | null = null;
     let bestFuzzyScore = 0;
 
-    for (const perfume of data) {
+    for (const perfume of perfumes) {
       const brandName = (perfume.brands as any)?.name || '';
       const perfumeName = perfume.perfume_name || '';
 
@@ -92,7 +93,7 @@ export async function findPerfumeInDB(
       let bestNotesMatch: Perfume | null = null;
       let bestNotesScore = 0;
 
-      for (const perfume of data) {
+      for (const perfume of perfumes) {
         const dbNotes = [
           ...(perfume.top_notes || []),
           ...(perfume.heart_notes || []),

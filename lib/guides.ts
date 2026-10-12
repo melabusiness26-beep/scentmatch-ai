@@ -595,7 +595,7 @@ export const guides: Guide[] = [
     title: 'Die besten Oud-Düfte: das flüssige Gold der Parfümerie',
     description:
       'Oud (Agarholz) ist eine der edelsten Duftnoten überhaupt: orientalisch, warm, langanhaltend und luxuriös. Die besten Oud-Düfte von günstigen Nischen bis zu exklusiven Meisterwerken.',
-    heroImage: '/ratgeber/oud-duefte-hero.jpg',
+    heroImage: '/ratgeber/oud-duefte-hero.png',
     intro: [
       'Oud, auch Agarholz genannt, ist eine der edelsten und teuersten Duftnoten der Welt. Es stammt aus dem Harz des Adlerholzbaums und wird seit Jahrtausenden in der orientalischen Kultur geschätzt. Kein Wunder: Oud ist warm, holzig, leicht rauchig und unglaublich langanhaltend – ein Duft, der sich tief in die Erinnerung eingräbt.',
       'Der Haken: Echter Oud aus reifen Adlerholzbäumen ist extrem selten und kostet ein Vermögen. Deshalb arbeiten die meisten modernen Parfüme mit hochwertigen Oud-Akkorden – synthetische Moleküle, die das Original täuschend echt nachbilden. Das ist nicht nur günstiger, sondern für viele sogar angenehmer im Tragekomfort: prägnanter, aber ausgewogen.',

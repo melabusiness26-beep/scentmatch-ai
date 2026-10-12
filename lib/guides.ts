@@ -1402,7 +1402,7 @@ export const guides: Guide[] = [
     title: 'Die besten Herbstdüfte: warm, würzig & gemütlich',
     description:
       'Wärmende Düfte für den Herbst: würzig, holzig und leicht süss, ideal für kühle, goldene Tage. Unsere Herbst-Favoriten für Damen, Herren und Unisex.',
-    heroImage: 'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/herbstduefte-hero.jpg',
     intro: [
       'Der Herbst ist die schönste Zeit für etwas wärmere Düfte: Wenn die Tage kühler und die Blätter golden werden, dürfen würzige, holzige und leicht süsse Noten ran. Sie wirken gemütlich und einhüllend, ohne schon so schwer zu sein wie ein tiefer Winterduft.',
       'Hier unsere liebsten Herbstdüfte aus dem Katalog, von erschwinglich bis edel, für jeden Geschmack.'

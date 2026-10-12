@@ -11,7 +11,7 @@ import { AffiliateButton } from '@/app/AffiliateButton';
 // Cache across all SSG renders during build – one Supabase call for all ~49 guide pages
 const getCachedPerfumes = cache(() => getPerfumes(2000));
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
@@ -167,8 +167,6 @@ export default async function GuidePage({
           <Link href="/">Start</Link>
           <span className="breadcrumb-sep" aria-hidden="true">›</span>
           <Link href="/ratgeber">Ratgeber</Link>
-          <span className="breadcrumb-sep" aria-hidden="true">›</span>
-          <span className="breadcrumb-current" aria-current="page">{guide.title}</span>
         </nav>
 
         <article>

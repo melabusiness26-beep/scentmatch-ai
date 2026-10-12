@@ -167,8 +167,6 @@ export default async function GuidePage({
           <Link href="/">Start</Link>
           <span className="breadcrumb-sep" aria-hidden="true">›</span>
           <Link href="/ratgeber">Ratgeber</Link>
-          <span className="breadcrumb-sep" aria-hidden="true">›</span>
-          <span className="breadcrumb-current" aria-current="page">{guide.title}</span>
         </nav>
 
         <article>

@@ -553,7 +553,7 @@ export const guides: Guide[] = [
     title: 'Die besten Vanille-Düfte',
     description:
       'Warme, süsse Vanille-Düfte zum Verlieben: kuschelig, sinnlich und perfekt für kühle Tage. Unsere Vanille-Favoriten für Damen, Herren und Unisex.',
-    heroImage: 'https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/vanille-duefte-hero.jpg',
     intro: [
       'Vanille ist die wohl beliebteste süsse Note: warm, cremig und einladend. Mal pur und kuschelig, mal kombiniert mit Gewürzen, Tabak oder Karamell. Vanille gehört zu den vielseitigsten Basisnoten der Parfümwelt.',
       'Was Vanille im Duft bewirkt, hängt stark vom Kontext ab. Mit Holz wirkt sie edel und trocken, mit Praline und Kaffee fast essbar, mit Blumen elegant-feminin. Ein guter Vanille-Duft ist selten pur: Die Magie liegt in der Begleitung.',

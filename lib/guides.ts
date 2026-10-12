@@ -91,7 +91,7 @@ export const guides: Guide[] = [
     title: 'Die besten Sommerdüfte: frisch & leicht für heiße Tage',
     description:
       'Frische, leichte Düfte für den Sommer: aquatisch, zitrisch und unbeschwert. Unsere Empfehlungen für warme Tage, für Damen, Herren und Unisex.',
-    heroImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/sommerduefte-hero.jpg',
     intro: [
       'Im Sommer dürfen Düfte leicht, frisch und nicht zu schwer sein. Zitrus, aquatische Noten und ein Hauch Salz sind bei Hitze am angenehmsten. Schwere Winterdüfte mit viel Oud, Amber oder intensiver Vanille können im Hochsommer schnell erdrückend wirken, besonders in der Nähe anderer.',
       'Ein guter Sommerduft kombiniert Frische mit einer dezenten Basis: Aquatische Noten oder Zitrus vorne, etwas Moschus oder leichtes Holz im Abgang, damit er nicht sofort verfliegt. Die Dosierung ist im Sommer besonders wichtig: Bei 30 Grad entfaltet sich jeder Duft viel intensiver als im Frühling.',

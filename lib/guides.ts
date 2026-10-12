@@ -27,7 +27,6 @@ export const guides: Guide[] = [
     title: 'Parfüm-Dupes Schweiz: die besten günstigen Alternativen',
     description:
       'Teure Düfte wie Creed Aventus oder Dior Sauvage haben oft günstige Alternativen (Dupes), die erstaunlich ähnlich riechen. Die besten Parfüm-Dupes für die Schweiz – von frisch bis süß, mit ehrlicher Einschätzung.',
-    heroImage: '/images/guides/dupes.jpg',
     intro: [
       'Ein sogenanntes „Dupe" ist ein günstiger Duft, der einem teuren Original in der Richtung sehr nahekommt. Gerade in der Schweiz lohnt sich der Blick auf solche Alternativen: ähnlicher Duft, deutlich kleinerer Preis.',
       'Wichtig ehrlich gesagt: Ein Dupe ist nie zu 100 % identisch und hält manchmal etwas kürzer. Aber für den Alltag sind viele Alternativen verblüffend gut – und du sparst oft über 200 Franken.'
@@ -80,7 +79,6 @@ export const guides: Guide[] = [
     title: 'Die besten Sommerdüfte: frisch & leicht für heiße Tage',
     description:
       'Frische, leichte Düfte für den Sommer: aquatisch, zitrisch und unbeschwert. Unsere Empfehlungen für warme Tage – für Damen, Herren und Unisex.',
-    heroImage: '/images/guides/sommer.jpg',
     intro: [
       'Im Sommer dürfen Düfte leicht, frisch und nicht zu schwer sein. Zitrus, aquatische Noten und ein Hauch Salz wirken bei Hitze am besten und überladen nicht.',
       'Hier unsere Empfehlungen aus dem Katalog – von günstig bis edel.'
@@ -173,7 +171,6 @@ export const guides: Guide[] = [
     title: 'Die besten Winterdüfte: warm, intensiv & einhüllend',
     description:
       'Wärmende Düfte für Herbst und Winter: Oud, Amber, Vanille und Gewürze, die bei Kälte besonders schön zur Geltung kommen.',
-    heroImage: '/images/guides/winter.jpg',
     intro: [
       'Im Winter darf ein Duft schwerer und wärmer sein. Holz, Amber, Oud, Gewürze und süße Noten entfalten sich bei Kälte besonders gut und hüllen dich angenehm ein.',
       'Diese Düfte sind wie gemacht für die kalte Jahreszeit.'
@@ -207,7 +204,6 @@ export const guides: Guide[] = [
     title: 'Die besten Unisex-Düfte: für alle gemacht',
     description:
       'Düfte ohne Geschlecht: vielseitige Unisex-Parfüms, die an jedem gut riechen – von frisch bis warm-holzig.',
-    heroImage: '/images/guides/unisex.jpg',
     intro: [
       'Unisex-Düfte sind nicht auf Damen oder Herren festgelegt – sie passen einfach zu dir, egal wer du bist. Oft sind es vielseitige, ausgewogene Kompositionen.',
       'Hier unsere Lieblinge zum Teilen oder einfach für jeden Geschmack.'

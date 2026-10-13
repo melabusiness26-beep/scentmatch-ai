@@ -1672,10 +1672,10 @@ export const guides: Guide[] = [
     sections: [
       {
         perfumes: [
-          'lattafa-asad',
           'tobacco-vanille',
+          'montale-arabians-tonka',
           'ysl-la-nuit-de-lhomme',
-          'club-de-nuit-intense',
+          'khamrah',
           'guerlain-lhomme-ideal',
           'mancera-red-tobacco',
           'boss-bottled-night',

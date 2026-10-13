@@ -29,9 +29,9 @@ export const guides: Guide[] = [
       'Große Düfte muss nicht teuer kosten. Ein Dupe ist ein intelligenter Duft in ähnlicher Richtung zum Luxus-Original, aber für einen Bruchteil des Preises. Creed Aventus, Dior Sauvage, Baccarat Rouge – für alle gibt es großartige Alternativen. Hier unsere ehrlichsten Empfehlungen.',
     heroImage: 'https://images.unsplash.com/photo-1541643600914-78b084683702?w=1200&q=80&fit=crop',
     intro: [
-      'Ein „Dupe" ist nicht ein billiger Klon, sondern eine intelligente Alternative. Ein Duft in ähnlicher Richtung, von einer seriösen Marke, zu einem Bruchteil des Preises. Die Geschichte der Dupes ist eine Geschichte von Demokratisierung. Vor 15 Jahren war Creed Aventus ein Duft nur für diejenigen mit echtem Geld. Heute kannst du in ähnliche Richtung für CHF 25 statt CHF 250 sprühen. Das hat die arabischen Duft-Häuser wie Lattafa, Armaf und Al Haramain möglich gemacht. Sie haben verstanden, dass es möglich ist, großartige Düfte zu machen, ohne Marken-Luxe-Preismarke zu haben.',
-      'Ein wichtiger Punkt: Ein Dupe ist nicht 100 Prozent identisch mit dem Original, und es muss auch nicht sein. Ein Dupe ist ein Respekt-Tribut, nicht ein Betrug. Es sagt: Ich mag die Richtung dieses Duftes, ich mag die Geschichte, aber ich spare gerne 200 Franken. Ein Dupe hält manchmal etwas kürzer, es hat eine leicht andere Haltbarkeit oder Projektion, aber als eigenständiger Duft ist es oft großartig. Die Qualität der arabischen Marken ist exponentiell besser geworden. Das sind keine minderwertigen Imitate mehr, sondern Düfte mit eigenem Charakter und echter Qualität.',
-      'Hier sind unsere liebsten Dupe-Paare und die Strategie, wie du Dupes intelligent nutzt, ohne dich selbst zu belügen.'
+      'Ein guter Dupe ist nicht billig – er ist klug. Es ist ein Duft in derselben Familie wie ein teures Original, von einer seriösen Marke, zu einem Bruchteil des Preises. Club de Nuit Intense statt Creed Aventus, Lattafa Asad statt Dior Sauvage. Das funktioniert, weil gute Duft-Komposition nichts mit Marken-Namen zu tun hat. Arabische Häuser wie Lattafa und Armaf haben verstanden, dass man großartige Düfte für weniger als ein Fünftel des Preises machen kann – ohne Qualität zu sparen.',
+      'Der wichtigste Punkt: Ein Dupe muss nicht identisch mit dem Original riechen. Das ist auch gar nicht der Sinn. Ein Dupe sagt: Ich mag die Richtung, den Charakter, die Stimmung – und ich spare dabei hunderte Franken. Der Duft hält manchmal etwas kürzer, die Projektion ist anders, aber das ist ein fairer Kompromiss. Arabische Marken machen heute keine minderwertigen Imitate mehr, sondern echte Alternativen mit eigenem Charakter.',
+      'Hier sind unsere liebsten Paarungen und wie du Dupes richtig nutzt – ohne dich selbst zu belügen.'
     ],
     sections: [
       {
@@ -73,36 +73,25 @@ export const guides: Guide[] = [
         ]
       },
       {
-        heading: 'Die Philosophie der Dupes: Intelligenz statt Illusion',
+        heading: 'Wie du Dupes richtig nutzt',
         body: [
-          'Ein Dupe zu tragen ist nicht Betrug, es ist Intelligenz. Es bedeutet: Ich verstehe, dass Duft-Qualität nicht nur vom Namen kommt. Ein großartiger Duft von Lattafa kostet einen Bruchteil von Creed, weil Lattafa nicht Jahrzehnte Marketing zahlt. Das macht Lattafa nicht minderwertig, es macht es smart.',
-          'Ein Dupe ist auch nicht „unsichtbar". Menschen, die beide kennen, werden sagen: Das riecht anders als das Original. Und ja, natürlich. Ein Dupe ist kein Betrug, weil es nicht behauptet, das Original zu sein. Es sagt: Ich bin in der gleichen Familie. Das ist vollkommen legitim.',
-          'Die Etikette für Dupe-Nutzer ist einfach: Sei ehrlich. Wenn jemand fragt, was du trägst, sage nicht „Das ist Creed Aventus". Sage: Das ist Club de Nuit Intense, ein großartiger Duft in ähnlicher Richtung. Das ist elegant und ehrlich.'
+          'Sei ehrlich damit. Wenn dich jemand fragt, was du trägst, sag nicht „Creed Aventus". Sag: Das ist Club de Nuit Intense, ein großartiger Duft in ähnlicher Richtung. Das ist elegant und zeigt Selbstbewusstsein – du entscheidest dich bewusst für intelligent statt Status.',
+          'Teste immer auf der Haut, nicht auf Papier. Ein Duft riecht auf dem Teststreifen völlig anders als nach 20 Minuten auf deiner Haut. Gib dem Duft einen ganzen Tag, bevor du entscheidest. Manche Dupes offenbaren sich erst nach einer Stunde, wenn die mittleren Noten kommen.',
+          'Akzeptiere Unterschiede als Teil des Deals. Ein Dupe hält manchmal zwei Stunden weniger als das Original – aber du bezahlst auch ein Zehntel des Preises. Haltbarkeit und Projektion sind real, aber sie sind fair für den Preis. Seriöse Marken wie Lattafa, Armaf und Al Haramain machen keine billigen Imitate – das sind echte Alternativen mit solider Qualität.'
         ]
       },
       {
-        heading: 'Wie du Dupes richtig bewertest und testest',
+        heading: 'Wo und wie du kaufst',
         body: [
-          'Teste immer auf der Haut vor dem Kauf. Ein Duft riecht auf dem Papierstreifen komplett anders als nach 20 Minuten auf deiner Haut. Gib dem Duft Zeit, sich auf deiner Körperwärme zu entwickeln. Das erste Urteil ist nicht das Endurteil.',
-          'Vergleiche nicht nach einem Sprühstoss. Manche Dupes riechen beim ersten Sprühstoss anders als nach einer Stunde, wenn sich die mittleren Noten entwickeln. Trag den Duft einen ganzen Tag, bevor du entscheidest, ob er dir gefällt.',
-          'Haltbarkeit und Projektion sind echte Parameter, nicht Fehler. Ein Dupe hält manchmal zwei Stunden weniger als das Original. Das ist ok, weil du für den zehnten Preis bezahlst. Wenn du Langlebigkeit brauchst, achte darauf, aber akzeptiere, dass Kompromisse normal sind.',
-          'Qualität: Seriöse Dupe-Marken wie Lattafa, Armaf und Al Haramain machen keine minderwertigen Produkte. Die Flakons sind solide, der Duft riecht großartig, die Verpackung ist respektvoll. Das sind echte Alternativen, nicht billige Fälschungen.'
+          'Notino.ch, Parfumino und Douglas haben große Auswahl an Lattafa, Armaf und Al Haramain – in der Schweiz oft günstiger als in Deutschland. Kaufe nur bei etablierten Shops, nicht bei fragwürdigen Marktplätzen.',
+          'Versand ist meistens schnell: innerhalb einer Woche, oft sogar nur Tage.'
         ]
       },
       {
-        heading: 'Wo du Dupes in der Schweiz kaufst',
+        heading: 'Die beste Strategie: Erst testen, dann investieren',
         body: [
-          'Die besten arabischen Dupes sind online bei Notino.ch, Parfumino oder Douglas erhältlich. Die Schweizer Preise sind oft noch attraktiver als die deutschen Preise, weil diese Marken auf den Schweizer Markt optimiert haben.',
-          'Achte auf Authentizität. Kaufe nur bei etablierten, vertrauenswürdigen Online-Shops. Lattafa, Armaf und Al Haramain sind alle legitime, registrierte Marken mit echten Düften.',
-          'Versand und Lieferzeit: Diese Shops bieten schnellen Versand in die Schweiz. Du wartest normalerweise nicht länger als eine Woche, manchmal sogar nur Tage.'
-        ]
-      },
-      {
-        heading: 'Der intelligente Weg: Dupes als Einstieg',
-        body: [
-          'Hier ist ein Geheimnis der Duft-Community: Viele Dupe-Nutzer sind nicht arme Menschen, die sich das Original nicht leisten können. Sie sind intelligente Menschen, die verstanden haben, dass Duft-Qualität von der Komposition kommt, nicht vom Namen. Sie vergleichen ein Club de Nuit Intense mit Creed Aventus und sagen: Der Dupe ist großartig für den Preis, und ich spare CHF 200 für weitere Experimente.',
-          'Ein Dupe ist auch ein perfekter Einstieg. Du magst die Idee von Creed Aventus, aber du willst nicht CHF 250 auf einen Blind-Buy riskieren. Club de Nuit Intense ist CHF 35 und du wirst wissen, ob dir diese Duft-Familie gefällt. Das ist klug.',
-          'Unser Tipp: Mach zuerst unser Duft-Quiz, um deine Richtung herauszufinden. Danach nutze Dupes, um diese Richtung günstig zu erkunden. Wenn dir eine Familie gefällt, investiere in das Original später, wenn du wirklich sicher bist. Das ist die intelligenteste Dupe-Strategie.'
+          'Das Geheimnis: Intelligente Dupe-Nutzer sind nicht arm – sie verstehen nur, dass Duft-Qualität nichts mit dem Namen zu tun hat. Du magst die Idee von Creed Aventus, willst aber nicht CHF 250 auf einen Blind-Buy riskieren? Club de Nuit Intense kostet CHF 35 und zeigt dir, ob dir diese Familie überhaupt liegt. Das ist kluger als zu spekulieren.',
+          'Unser Tipp: Mach zuerst das Duft-Quiz, um deine Richtung zu finden. Dann nutze Dupes, um diese Richtung günstig zu erkunden. Wenn dir eine Familie gefällt, investiere später in das Original – wenn du wirklich sicher bist. Das ist die intelligenteste Strategie.'
         ]
       }
     ]

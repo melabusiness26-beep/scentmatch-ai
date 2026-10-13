@@ -577,14 +577,14 @@ export const guides: Guide[] = [
         body: [
           'Diese Düfte sind zeitlos elegant und funktionieren auf den meisten Frauen wunderbar. Sie sind nicht zu experimentell, aber auch nicht langweilig. Das ist die goldene Mitte des Duft-Schenkens: Eine Frau, die einen dieser Düfte trägt, wirkt gepflegt, kultiviert und elegant, ohne dass sie dich unter Druck setzt, genau ihren speziellen Nischen-Geschmack zu treffen.'
         ],
-        perfumes: ['coco-mademoiselle', 'lancome-la-vie-est-belle', 'ysl-black-opium', 'ch-good-girl']
+        perfumes: ['coco-mademoiselle', 'la-vie-est-belle', 'black-opium', 'good-girl']
       },
       {
         heading: 'Für Männer: zeitlose Favoriten',
         body: [
           'Männer-Düfte sind eine Balance zwischen Professionalität und Charakter. Die folgenden Düfte funktionieren im Büro, beim Date und beim Abenteuer gleich gut. Sie sind nicht zu intensiv, nicht zu experimentell, sondern zuverlässig schön.'
         ],
-        perfumes: ['chanel-bleu-de-chanel', 'le-male', 'ea-stronger-with-you', 'boss-bottled']
+        perfumes: ['bleu-de-chanel', 'le-male', 'ea-stronger-with-you', 'boss-bottled']
       },
       {
         heading: 'Wie du die richtige Wahl triffst – ohne Fehlkauf',

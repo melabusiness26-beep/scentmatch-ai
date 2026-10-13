@@ -271,9 +271,9 @@ export const guides: Guide[] = [
       'Winter ist die Saison der opulenten Düfte. Entdecke Oud, Amber, Weihrauch und Gewürze, die bei Kälte ihre volle Tiefe entfalten. Von zeitlosen Klassikern bis zu intensiven Nischen-Favoriten: Düfte, die dich wärmen, begleiten und in der dunklen Jahreszeit leuchten.',
     heroImage: '/ratgeber/winterduefte-hero.jpg',
     intro: [
-      'Der Winter ändert alles. Düfte, die im Sommer erdrückend wirken würden, werden im Winter zu deinen besten Begleitern. Es gibt eine poetische Gerechtigkeit darin: Während die Tage kürzer werden und die Temperaturen fallen, brauchen wir Düfte, die uns umhüllen, trösten und wärmen. Ein großartiger Winterduft ist nicht einfach nur „stark", sondern tiefgründig. Er hat Schichten. Er erzählt eine Geschichte von Reichtum, Komfort und Eleganz. Die Geschichte der Winterdüfte reicht zurück bis zu orientalischen Harzen, Weihrauch und den kostbaren Aromen, die Karawanen über die Seidenstraße transportierten. Diese Düfte waren damals der Inbegriff von Luxus und Macht.',
-      'Die moderne Winterduft-Philosophie versteckt sich hinter einer einfachen Einsicht: Bei Kälte braucht dein Körper und deine Nase andere Noten als im Sommer. Warme, tiefe Materialien wie Oud, Amber, Sandelholz, Vanille, Tabak und Gewürze entfalten sich langsam, wunderbar ausgewogen, statt aggressiv. Das ist nicht einfach ein Quantitätsunterschied, sondern ein Qualitätssprung. Ein Duft mit Oud, der im Juli absurd wirken würde, wird im Januar zur reinen Eleganz. Heizungsluft, deine wärmere Haut, die intimere Nähe in geschlossenen Räumen – alles spielt zusammen, um Winterdüfte in ihrem besten Licht zu zeigen.',
-      'Hier findest du unsere liebsten Winterdüfte, vom absoluten Klassiker bis zur intensiven Nischen-Entdeckung. Manche sind zeitlos, andere sind für diejenigen, die es luxuriös und muttig mögen. Der Winter ist die Jahreszeit, in der du es dir leisten kannst, mutig zu sein.'
+      'Im Winter funktionieren Düfte anders. Warme, tiefe Materialien wie Oud, Amber, Sandelholz, Vanille, Tabak und Gewürze entfalten sich langsam und ausgewogen – nicht aggressiv. Ein Duft mit Oud, der im Juli absurd wirken würde, wird im Januar zur puren Eleganz. Das ist kein Quantitätssprung, sondern qualitativ anders.',
+      'Der Winter braucht andere Düfte, weil kalt deine Nase und deinen Körper anders berührt. Heizungsluft, deine wärmere Innentemperatur, die intimere Nähe in geschlossenen Räumen – alles spielt zusammen. Ein großartiger Winterduft hat Schichten und Tiefe. Er kann tiefgründig sein, ohne dominant zu wirken.',
+      'Hier sind unsere liebsten Winterdüfte, vom Klassiker bis zur intensiven Nischen-Entdeckung. Der Winter ist die Jahreszeit, in der du es dir leisten kannst, mutig zu sein.'
     ],
     sections: [
       {
@@ -302,28 +302,20 @@ export const guides: Guide[] = [
         ]
       },
       {
-        heading: 'Die Physik der Winterdüfte: Warum alles anders ist',
+        heading: 'Wie du Winterdüfte trägst und dosierst',
         body: [
-          'Kalte Luft ändert, wie Düfte sich verhalten. Bei Minusgraden verdunsten flüchtige Kopfnoten langsamer, was bedeutet, dass die Herznoten länger dominieren. Das ist warum ein Winterduft auf der Haut viel länger hält als im Sommer. Ein Extrait, der im Juli unerträglich wäre, wird im Januar zur perfekten Wahl, weil die Kälte die Intensität moderiert. Heizungsluft in Innenräumen wird fast zum Verbündeten – warme Luft lässt den Duft sich langsam, präsent und angenehm entfalten.',
-          'Deine Haut ist im Winter anders. Sie ist trockener, was Düfte schneller verdunsten lässt, aber auch kälter, was bedeutet, dass dein Körper weniger Wärme an den Duft abgibt. Das ist kein Problem, weil intensive Winterdüfte nicht auf Körperwärme angewiesen sind. Eine gute Feuchtigkeitscreme vorher verdoppelt die Haltbarkeit und macht den Duft noch wunderschöner. Trockenheit der Haut ist ein echter Feind – nicht nur für deine Haut, sondern auch für den Duft-Auftrag.',
-          'Raumklima spielt eine Rolle. In einem kalten Freien wirkt ein Winterduft anders als in einem geheizten Innenraum. Bedenke das bei der Wahl: Wenn du viel unterwegs bist, wähle etwas mit Langlebigkeit. Wenn du viel drinnen bist (Restaurant, Büro, Zuhause), darfst du etwas mutigeres wählen.'
+          'Im Winter funktioniert dein Duft durch Physik anders. Kalte Luft lässt flüchtige Kopfnoten langsamer verdunsten, sodass Herznoten länger dominieren. Ein Extrait, der im Juli unerträglich wäre, wird im Januar perfekt, weil die Kälte die Intensität moderiert. Heizungsluft ist dein Verbündeter – warme Innenräume lassen intensive Düfte langsam und angenehm entfalten.',
+          'Du brauchst normalerweise nicht mehr Sprühstösse als im Sommer, aber höhere Konzentrationen. Ein bis zwei Sprühstösse einer Eau de Parfum sind ideal. Ein einzelner Sprühstoss eines Extrait auf Hals oder Nacken hält überraschend lange. Trag auf Hals, Unterarm und Nacken auf – die warmen Stellen geben dem Duft einen kontinuierlichen Ausstoff.',
+          'Deine Haut ist im Winter trockener. Das bedeutet, dass Düfte schneller verdunsten, aber intensive Winterdüfte brauchen nicht auf Körperwärme zu verlassen. Eine gute Feuchtigkeitscreme vorher verdoppelt die Haltbarkeit. Wenn der Duft gegen Mittag nachlässt, ein einzelner zusätzlicher Sprühstoss reicht aus, um bis zum Abend zu halten.',
+          'Raumklima spielt eine Rolle. Draußen in der Kälte brauchst du etwas mit Langlebigkeit. Drinnen (Restaurant, Büro, Zuhause) darfst du mutiger sein, weil die Wärme den Duft trägt.'
         ]
       },
       {
-        heading: 'Winterdüfte richtig auftragen und dosieren',
+        heading: 'Winterdüfte für Alltag, Dates und Feste',
         body: [
-          'Im Winter brauchst du normalerweise nicht mehr Sprühstösse als im Sommer, aber höhere Konzentrationen. Ein bis zwei Sprühstösse einer Eau de Parfum ist ideal. Wenn du eine höhere Konzentration wie Extrait trägst, genügt ein einzelner Sprühstoss am Hals oder auf dem Nacken völlig. Du wirst überrascht sein, wie lange das hält.',
-          'Auftrag-Strategie: Die beste Anwendung für Winterdüfte ist auf den Hals, den inneren Unterarm und evtl. den Nacken. Die warme Stelle am Hals gibt dem Duft einen langsamen, kontinuierlichen Ausstoff. Wenn du an einem kalten Tag draußen bist, braucht der Duft einen Moment, um sich zu entfalten, aber drinnen wird er wunderbar. Das ist normal und beabsichtigt.',
-          'Eincremen hilft wirklich. Eine geruchsneutrale Bodylotion kurz vor dem Auftragen gibt dem Duft Haftung und Dauer. Trockene Heizungsluft im Winter entzieht der Haut Feuchtigkeit, was Düfte schneller verdunsten lässt. Mit einer kurzen Pflege-Routine bekommst du aus deinem Winterduft doppelte Langlebigkeit.',
-          'Nachbrennung: Falls der Duft gegen Mittag oder Nachmittag nachlässt, ein einzelner zusätzlicher Sprühstoss reicht aus. Du brauchst nicht neu anzufangen – ein Schuss genügt, um den Duft bis zum Abend zu halten.'
-        ]
-      },
-      {
-        heading: 'Winterdüfte für verschiedene Kontexte und Tageszeiten',
-        body: [
-          'Im Alltag und im Büro wählst du eher Winterdüfte mit Struktur als mit purem Glanz. Etwas mit Oud oder einer würzigen Komponente wirkt sophisticiert, nicht aufdringlich. Vanille-basierte Düfte sind auch hervorragend, wenn sie nicht zu süß sind. Das Ziel ist, elegant und gesammelt zu wirken, nicht dominierend.',
-          'Beim Date oder abends zum Ausgehen kannst du es voller machen. Ein reicher, ambient-starker Duft wirkt wunderbar verführerisch im Winter. Die Nähe, die Wärme des Restaurants, die intimere Atmosphäre erlauben es dir, mutig zu sein. Ein intensiver Oud-Duft oder ein sinnlicher Amber-Duft ist perfekt.',
-          'Bei festlichen Gelegenheiten oder gehobenen Veranstaltungen (Empfänge, formale Dinners) ziehst du deine absoluten Geheimwaffen an. Das ist die Jahreszeit, um dich mit deinem liebsten intensiven Duft zu präsentieren. Ein opulenter Weihrauch-Duft oder ein tiefes Oud-Extrait sagt: Ich bin präsent, eleganz, ich habe Geschmack.'
+          'Im Alltag und Büro: Wähle Winterdüfte mit Struktur – etwas mit Oud oder würzigen Komponenten wirkt sophisticiert, nicht aufdringlich. Vanille-basierte Düfte funktionieren, wenn sie nicht zu süß sind. Das Ziel ist elegant und gesammelt, nicht dominierend.',
+          'Beim Date oder abends: Das ist deine Gelegenheit, vollere, reichere Düfte zu tragen. Ein intensiver Oud-Duft oder ein sinnlicher Amber-Duft wirkt wunderbar verführerisch. Die Wärme und Nähe erlauben Mut.',
+          'Bei festlichen Gelegenheiten: Das ist die Jahreszeit für deine absoluten Favoriten. Ein opulenter Weihrauch-Duft oder ein tiefes Oud-Extrait zeigt Geschmack und Präsenz.'
         ]
       }
     ]

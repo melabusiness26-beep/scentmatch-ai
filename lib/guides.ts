@@ -124,30 +124,58 @@ export const guides: Guide[] = [
   },
   {
     slug: 'welcher-duft-zu-welchem-anlass',
-    title: 'Welcher Duft passt zu welchem Anlass?',
+    title: 'Der richtige Duft für jeden Moment: Büro, Date, Abend – die Kunst der eleganten Wahl',
     description:
-      'Büro, Date oder Abend: nicht jeder Duft passt überall. So findest du den richtigen Duft für Alltag, Date und besondere Abende.',
+      'Der richtige Duft für den richtigen Moment ist kein Zufall – es ist eine bewusste Kunst. Entdecke, wie intelligente Anlass-Wahl deine Ausstrahlung sicher stärkt: vom dezenten Büro über sichere Dates bis zum intensiven Abend. Unser Ratgeber zeigt dir die psychologischen Regeln, praktischen Tipps und perfekten Düfte für Selbstvertrauen & zeitlose Eleganz.',
     heroImage: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=1200&q=80&fit=crop',
     intro: [
-      'Der gleiche Duft wirkt im Büro anders als beim Date und ein schwerer Abendduft im Grossraumbüro kann schnell für Unmut sorgen. Als Faustregel gilt: tagsüber dezent und sauber, abends darf es wärmer und intensiver sein.',
-      'Der Anlass beeinflusst, wie stark du dosierst und welche Duftrichtung passt. Im Büro soll dein Duft angenehm auffallen, nicht dominieren. Beim Date darf er mehr Persönlichkeit zeigen. Abends am Tisch sind opulente Düfte der Abend-Lieblinge willkommen.',
-      'Hier passende Empfehlungen für die drei häufigsten Anlässe, sowie Tipps, wie du den richtigen Duft für den richtigen Moment wählst.'
+      'Dein Duft ist eine stille Sprache. Er sagt etwas über dich aus – nicht mit Worten, sondern durch den Eindruck, den du auf andere machst. Seit Jahrtausenden wissen Menschen: Ein Duft ändert die Wahrnehmung. Im Büro soll dein Duft professionelle Ruhe und Genauigkeit ausstrahlen – beim Date etwas Verführung, beim festlichen Abend volle Eleganz. Die gleiche Flasche im Grossraumbüro und beim Date wirkt völlig unterschiedlich, weil der Kontext deine Ausstrahlung formt. Dieser Ratgeber zeigt dir, wie du diese Psychologie bewusst nutzt – nicht, um andere zu manipulieren, sondern um dein authentisches Selbst elegant einzurahmen.',
+      'Die Intelligenz der Anlass-Wahl liegt in der Subtilität. Es geht nicht um Regeln, sondern um ein Verständnis dafür, wie Düfte in verschiedenen Räumen, bei verschiedenen Temperaturen und in verschiedenen Nähe-Verhältnissen wirken. Ein würziger, warmer Duft, der beim Date wunderbar funktioniert, kann im Büro (besonders in der Nähe) zu intim wirken. Ein intensiver Abendduft mit Oud und Amber sieht tagsüber fehl am Platz aus. Aber die richtige Wahl – und die richtige Dosierung – gibt dir Selbstvertrauen und ein Gefühl von Eleganz, das man spürt.',
+      'Hier findest du nicht nur Duftem­pfehlungen, sondern ein praktisches Regelwerk: Wie dosierst du intelligent? Welche Familien funktionieren wann? Wie navigierst du hybrid-Tage, an denen du vom Büro direkt zum Date gehst? Unser Katalog ist voll von perfekten Düften für jeden Anlass – hier zeigen wir dir, welche wirklich glänzen.'
     ],
     sections: [
       {
-        heading: 'Für Alltag & Büro: dezent und gepflegt',
-        body: ['Frisch, sauber und nicht zu aufdringlich. Damit liegst du im Büro immer richtig. Achte auf leichte Konzentrationen (EdT) und frische bis holzige Familien.'],
+        heading: 'Für Alltag & Büro: dezent, professionell & zeitlos elegant',
+        body: [
+          'Ein Büro-Duft ist ein subtiles Statement. Er soll präsent sein – nicht unsichtbar – aber nie dominant. Die Psychologie ist klar: Kolleginnen und Kollegen sollen dich als professionell, sauber und kultiviert wahrnehmen, nicht von einer Duft-Wolke überrascht werden. Im Büro ist „weniger ist mehr" keine Metapher, sondern die Regel.',
+          'Ideal sind frische bis holzige Familien mit leichten Konzentrationen (Eau de Toilette) oder sanften Eau de Parfums, die sich nicht sofort ins Raumklima drängen. Zitrus, aquatische Noten, grüne Aromen und edle Hölzer (Sandelholz, Zeder) funktionieren perfekt, weil sie wirken, ohne zu dominieren. Vermeide schwere Amber, intensive Oud, dominante Vanilla oder süsse Gourmands – diese brauchen mehr Platz und Dunkelheit um zu glänzen.',
+          'Die Dosierung ist entscheidend: Im Büro reicht meist ein einzelner, gezielter Sprühstoss (etwa auf den Hals oder die Innenseiten der Unterarme, nicht mehrfach auf den ganzen Körper). Bei einer Präsentation oder einem wichtigen Termin spürt man, dass der Duft dich begleitet, ohne dich zu überwältigen. Nachmittags, wenn dein erstes Auftragen nachlässt, kannst du eine kleine Auffrischung machen – ein kleiner Sprühstoss genügt meist.',
+          'Subtyp-Büro: Willst du bei Zoom-Calls oder in deinem eigenen Büro etwas intensiver wirken, darfst du zu einer volleren EdP greifen. In offenen Räumen oder Grossraumbüros: lieber EdT oder sparing mit EdP dosieren.'
+        ],
         perfumes: ['chanel-bleu-de-chanel', 'terre-dhermes', 'boss-bottled', 'ysl-y-edp', 'le-labo-santal-33']
       },
       {
-        heading: 'Für Dates: charmant und anziehend',
-        body: ['Etwas süsser, wärmer oder blumiger: Düfte, die in Erinnerung bleiben. Wichtig: Dezent genug für die Nähe, aber präsent genug, um aufzufallen.'],
+        heading: 'Für Dates: verführerisch, präsent & unvergesslich',
+        body: [
+          'Ein Date ist Nähe. Dein Duft ist nicht für den ganzen Raum, sondern für die Distanz zwischen dir und dieser einen Person. Das ändert alles. Ein Duft, der im Büro zu schwach wäre, ist beim Date plötzlich intensiv; ein Duft, der am Schreibtisch elegant ist, wirkt beim Date manchmal fade. Du brauchst etwas, das „Hallo, ich bin hier" sagt, ohne zu schreien.',
+          'Ideal sind wärmere, sinnlichere Familien: leicht süssliche Noten (Vanille, Mandel), Blumiges (Rose, Jasmin, Orchidee), orientalische Amber-Mischungen oder auch mutige Düfte mit etwas Gewürz und Weihrauch. Der Trick: Ein Duft, der beim Date eine emotionale Reaktion auslöst – sei es ein Hauch von Verführung, Süsse oder eleganter Wärme. Der andere Mensch soll sich später denken: „Das war der Duft von dieser Person" – ein olfaktorisches Merkmal.',
+          'Die Dosierung beim Date ist die Balance zwischen „merklich, aber nicht dominant" und „nah, aber respektvoll". Zwei Sprühstösse sind meist das Optimum – einer auf den Hals, einer auf die Innenseite des Unterarms, damit er subtil nach oben diffundiert, wenn ihr näher zusammenkommt. Die leichte Wärmung deiner Haut verstärkt den Duft natürlich, also sei nicht überraschend vom „mehr" das an die Nase kommt.',
+          'Erste Dates vs. etablierte Beziehungen: Bei einem ersten Date darfst du etwas mutiger sein – ein bleibender Eindruck ist das Ziel. In einer etablierten Beziehung darf dein Duft „dein Duft" sein, den der andere Person liebt und erkennt. Oft ist es das gleiche Duft, das ihr teilt.'
+        ],
         perfumes: ['ysl-black-opium', 'coco-mademoiselle', 'lancome-la-vie-est-belle', 'versace-eros', 'pdm-delina']
       },
       {
-        heading: 'Für besondere Abende: intensiv und edel',
-        body: ['Hier dürfen die grossen, tiefen Düfte ran, mit Projektion und Charakter. Abends ausser Haus darf ein Duft mutig sein und du ihn selbst wählen, ohne Rücksicht auf Büro-Etikette.'],
+        heading: 'Für besondere Abende: mutig, intensiv & unverwechselbar',
+        body: [
+          'Abends bist du frei. Keine Büro-Etikette, keine Flächenrücksicht, keine „zu viel"-Sorgen. Ein Abendduft ist deine Gelegenheit, die grossen, tiefen, charaktervollen Düfte zu tragen – die, die du tagsüber nicht brauchen kannst, aber abends glänzen lassen wollen. Hier darf ein Duft mutig, dunkel, intensiv oder opulent sein.',
+          'Ideal sind orientalische Düfte mit intensiven Basisnoten (Oud, Amber, Sandelholz, Musk), warme Gourmands mit Tiefe (Tobacco, Vanilla, würzige Gewürze) oder nischierte Kompositionen mit Charakter und Projektion. Eine gute Faustregel: Wenn es am Morgen im Büro zu schwer wäre, ist es abends genau richtig. Intensität ist nicht Fehler, sondern Feature.',
+          'Dosierung am Abend: Hier kannst du grosszügiger sein. Zwei bis drei Sprühstösse sind völlig in Ordnung, besonders wenn du in geschlossenen Räumen (Restaurant, Club) bist, wo die Akustik den Duft in einem angenehmen Radius um dich verteilt. Die Körperwärme nach wenigen Minuten verstärkt intensive Abendduft noch – das ist beabsichtigt und schön. Behalte nur im Blick: In sehr engen Räumen oder bei sehr vielen Menschen genügen zwei Sprühstösse auch hier.',
+          'Hybrid-Abende: Gehst du vom Büro direkt aus zum Abend, kannst du entweder deinen Büro-Duft behalten (er wird sich mit deiner Körperwärme bis dahin verändert haben, wird intensiver und wärmer) oder du macht eine komplette Wechsel und tauschst ihn gegen einen echten Abendduft. Ein kleines Duft-Tüchchen, das du im Büro sprühst und später wieder drüber wischst, oder ein komplett anderer Duft ist auch ok – abends darf es laut sein.'
+        ],
         perfumes: ['creed-aventus', 'tobacco-vanille', 'mugler-angel', 'tom-ford-oud-wood', 'baccarat-rouge-540']
+      },
+      {
+        heading: 'Die Intelligenz der Dosierung: das Regelwerk für jeden Moment',
+        body: [
+          'Dosierung ist nicht arbitrary – es ist die zentrale Fähigkeit, damit dein Duft brilliert. Hier das praktische Regelwerk:',
+          '**Büro / Grossraum:** 1–1,5 Sprühstösse (ein Sprühstoss Hals, ggf. kleine Auffrischung am Nachmittag). Konzentrationen: EdT ideal, EdP sparing.',
+          '**Date / Nähe:** 2 Sprühstösse (Hals + Innenseite Unterarm), EdT oder EdP beide ok. Die leichte Körperwärme macht den Rest.',
+          '**Festlicher Abend / Restaurant:** 2–3 Sprühstösse, EdP ideal. Geschlossene Räume verstärken natürlich, also eher 2, wenn du unsicher bist.',
+          '**Hybrid-Tag (Büro → Abend):** Entweder Büro-Duft behalten (wird durch Körperwärme intensiver) oder kompletter Wechsel. Ein tragbares Duft-Tüchchen für unterwegs hilft.',
+          '**Warme Jahreszeit:** −1 Sprühstoss überall. Hitze verstärkt Düfte dramatisch – weniger ist mehr bei 25+ °C.',
+          '**Kalte Jahreszeit:** +1 Sprühstoss möglich. Kälte schluckt Projektion – intensive Düfte brauchen etwas mehr Platz.',
+          'Die goldene Regel: Beginne mit einem Sprühstoss weniger, als du denkst, brauchst zu sein. Deine Nase desensibilisiert sich (das heisst: du riechst deinen Duft nach 15 Minuten selbst nicht mehr), aber andere Menschen riechen ihn noch sehr deutlich. Starte dezent und dosiere beim nächsten Mal höher, wenn nötig.'
+        ]
       }
     ]
   },

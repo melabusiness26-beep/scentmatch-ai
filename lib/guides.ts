@@ -1120,34 +1120,42 @@ export const guides: Guide[] = [
   },
   {
     slug: 'die-besten-blumigen-duefte',
-    title: 'Die besten blumigen Düfte: feminin & elegant',
+    title: 'Die besten blumigen Düfte: feminin, elegant & zeitlos – seit Jahrtausenden die Klassiker',
     description:
-      'Blumige Düfte mit Rose, Jasmin, Pfingstrose und Orangenblüte, romantisch, elegant und vielseitig. Unsere floralen Favoriten.',
-    heroImage: 'https://images.unsplash.com/photo-1490750967868-88df5691cc08?w=1200&q=80&fit=crop',
+      'Blumige Düfte mit Rose, Jasmin, Pfingstrose und Orangenblüte: romantisch, elegant und zeitlos. Von zart-frisch bis opulent-sinnlich – unsere liebsten floralen Meisterwerke für Damen, Herren und Unisex.',
+    heroImage: '/ratgeber/blumige-duefte-hero.jpg',
     intro: [
-      'Blumige Düfte sind der Inbegriff von Eleganz: Rose, Jasmin, Pfingstrose oder Orangenblüte wirken feminin, romantisch und zeitlos. Florale Düfte sind die grösste und älteste Duftkategorie überhaupt. Kein Wunder, denn echte Blütenöle gehören zu den begehrtesten Rohstoffen der Parfümerie.',
-      'Moderne Florals haben sich stark entwickelt: Statt der klassischen „Blumenvase" von früher kombinieren heutige Düfte Blüten mit Frucht, Moschus, Holz oder sogar Gourmand-Noten. Das macht sie vielseitiger und moderner, ohne die romantische Seele zu verlieren.',
-      'Hier unsere schönsten floralen Düfte, von zart und frisch bis opulent und sinnlich, hauptsächlich für Damen, aber auch für alle, die Blüten lieben.'
+      'Blumige Düfte sind der Inbegriff von Eleganz und Weiblichkeit. Rose, Jasmin, Pfingstrose, Orangenblüte – diese Blüten wirken zeitlos feminin, romantisch und unglaublich vielseitig. Florale Düfte sind die grösste und älteste Duftkategorie überhaupt. Kein Wunder: echte Blütenöle gehören zu den kostbarsten Rohstoffen der Parfümerie, und ihre Schönheit ist seit Jahrtausenden unerreicht.',
+      'Moderne Florals haben sich dramatisch entwickelt: Weg von der klassischen „Blumenvase" hin zu komplexen Kompositionen. Heute kombinieren die besten Florals zarte Blüten mit Frucht, Moschus, Holz oder sogar Gourmand-Noten – das macht sie vielseitiger, moderner und trotzdem unglaublich romantisch.',
+      'Hier unsere liebsten floralen Düfte: von hauchzart und frisch über elegant-klassisch bis hin zu opulent und sinnlich. Für Damen, für Herren, für alle, die Blüten lieben.'
     ],
     sections: [
       {
         perfumes: ['coco-mademoiselle', 'chloe-edp', 'gucci-bloom', 'ysl-libre', 'dior-miss-dior', 'chanel-no-5', 'lancome-idole', 'pdm-delina']
       },
       {
-        heading: 'Welche Blüte passt zu dir?',
+        heading: 'Welche Blüte steckt in dir?',
         body: [
-          'Rose: zeitlos und romantisch, mal klassisch, mal modern mit Frucht oder Oud kombiniert.',
-          'Jasmin & Orangenblüte: warm, sinnlich und leicht betörend.',
-          'Pfingstrose & Maiglöckchen: frisch, leicht und zart, ideal für den Frühling.',
-          'Iris & Veilchen: pudrig-elegant für alle, die es feiner mögen.'
+          'Rose: zeitlos, romantisch und unendlich vielseitig – mal klassisch und opulent, mal modern mit Frucht, Moschus oder sogar Oud kombiniert. Die Königin unter den Blüten.',
+          'Jasmin & Orangenblüte: warm, sinnlich und leicht betörend. Sie wirken intim und sinnlich, besonders schön am Abend oder in der kühlen Jahreszeit.',
+          'Pfingstrose & Maiglöckchen: frisch, leicht und zart – das ist Frühling im Duft. Perfekt für alle, die es romantisch, aber nicht schwer mögen.',
+          'Iris & Veilchen: pudrig-elegant und fein. Für alle, die Blüten lieben, aber subtiler und eleganter als andere Florals mögen.'
+        ]
+      },
+      {
+        heading: 'Blumig ist nicht altmodisch',
+        body: [
+          'Moderne Florals kombinieren Blüten geschickt mit Frucht, Moschus, Holz oder sogar Vanille und wirken dadurch komplett aktuell – alles andere als Omas Parfüm.',
+          'Zarte, frische Florals (mit grünen oder fruchtigen Noten) passen perfekt in Frühling und Alltag. Opulente, süsse Blütendüfte entfalten ihre volle Schönheit am Abend und in der kühlen Jahreszeit.',
+          'Florale Düfte mit einer Holz-Komponente wirken erwachsener und moderner. Eine Moschus-Basis macht Blütendüfte eleganter und langlebiger.'
         ]
       },
       {
         heading: 'Worauf du bei blumigen Düften achten solltest',
         body: [
-          'Blumig heisst nicht „altmodisch": Moderne Florals kombinieren Blüten mit Frucht, Moschus oder Holz und wirken sehr aktuell.',
-          'Zarte, frische Florals passen perfekt in Frühling und Alltag; opulente, süsse Blütendüfte kommen abends und in der kühlen Jahreszeit schön zur Geltung.',
-          'Tipp: Wenn dir reine Blüten zu klassisch sind, achte auf florale Düfte mit einer fruchtigen oder holzigen Note.'
+          'Echte, hochwertige Blütenöle sind teuer – das sieht man am Preis. Synthetic Florals können auch schön sein, echte Öle haben aber eine Tiefe, die synthetische Versionen nicht erreichen.',
+          'Manche Menschen finden Blütendüfte zu „süss" oder „dicht". Das ist normal – wähle dann zarte, frische Florals statt opulente, oder achte auf Florals mit einer holzigen Note.',
+          'Florals halten von Natur aus lange, weil die Blüten in der Basis landen. Ideal für den ganzen Tag und für besondere Anlässe.'
         ]
       }
     ]

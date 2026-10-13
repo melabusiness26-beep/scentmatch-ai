@@ -114,9 +114,9 @@ export const guides: Guide[] = [
       'Der richtige Sommerduft ändert alles. Entdecke Düfte, die dich erfrischt, elegant und unbeschwert durch warme Tage bringen. Von frischen Klassikern über moderne Nischen-Favoriten bis zu überraschenden Geheimtipps: für Alltag, Strand, Date und festliche Aperitifs. Dein Sommer-Signature wartet.',
     heroImage: '/ratgeber/sommerduefte-hero.jpg',
     intro: [
-      'Sommerdüfte sind kein Luxus, sondern eine Notwendigkeit. Bei 30 Grad Hitze wirkt ein schwerer Winterduft mit Oud und intensiver Amber schnell erdrückend, nicht nur für dich selbst, sondern auch für diejenigen in deiner Nähe. Die Geschichte der modernen Sommerdüfte beginnt Anfang der neunziger Jahre, als Designer erkannten, dass Frische eine eigene Kunstform ist: nicht einfach „kein Duft", sondern eine bewusste, sorgfältig komponierte Leichtigkeit. Ein guter Sommerduft soll dich erfrischt fühlen lassen, dein Selbstvertrauen stärken und gleichzeitig elegant wirken, egal ob du gerade aus dem See kommst oder im Büro sitzt.',
-      'Die Intelligenz eines Sommerduftes liegt in seiner Balance. Eine großartige Sommerkompositon beginnt mit frischen, hellen Noten vorne (Zitrus, Bergamotte, aquatische Salzigkeit), hat aber eine subtile, angenehme Basis, damit der Duft nicht nach einer Minute verfliegt. Bei Hitze passiert etwas Magisches mit Düften: Sie entfalten sich schneller, intensiver und anders als bei kühlerem Wetter. Ein Duft, der im Frühling diskret ist, wird im Juli plötzlich präsent. Das zu verstehen ist der Schlüssel zur richtigen Dosierung und Wahl.',
-      'Hier findest du unsere liebsten Sommerdüfte aus dem Katalog, sortiert nach Geschmack und Anlass. Einige sind zeitlose Klassiker, die es seit Jahrzehnten gibt. Andere sind moderne Nischen-Entdeckungen, die nur wenige kennen. Zusammen bilden sie eine Sommer-Kollektion, die für jeden Moment passt.'
+      'Ein schwerer Duft mit Oud im Juli ist eine Tortur. 30 Grad Hitze verstärkt jede Note, und das Resultat ist erdrückend – für dich selbst, für deine Umgebung, für alle. Ein guter Sommerduft ist nicht „weniger Duft", sondern eine andere Art von Duft. Es geht nicht darum, auf Qualität zu verzichten, sondern Leichtigkeit bewusst zu komponieren. Ein wirklich großartiger Sommerduft erfrischt dich, wirkt elegant, und bleibt präsent ohne aufdringlich zu sein, egal ob du gerade aus dem Wasser kommst oder im Büro sitzt.',
+      'Der Trick mit Sommerdüften liegt in einem ganz praktischen Problem: Bei Hitze verdampfen leichte Noten schneller und präsente Noten werden noch präsenter. Ein Duft, der im Mai perfekt ist, wird im Juli überraschend laut. Die meisten großartigen Sommerdüfte starten mit etwas sehr Leichtem – Zitrus, Bergamotte, aquatische Salzigkeit – aber haben genug Struktur in der Basis, damit sie nicht nach zehn Minuten weg sind. Das Gleichgewicht zu finden ist die Kunst.',
+      'Hier sind unsere liebsten Sommerdüfte: einige sind bekannte Klassiker, die jeder kennt. Andere sind Nischen-Entdeckungen, die nur wenige finden. Alle funktionieren wirklich bei Hitze.'
     ],
     sections: [
       {
@@ -136,35 +136,35 @@ export const guides: Guide[] = [
         ]
       },
       {
-        heading: 'Die verschiedenen Sommer-Familien: Welche passt zu dir?',
+        heading: 'Was Sommerdüfte unterscheidet: Frische reicht allein nicht',
         body: [
-          'Aquatische Düfte wirken wie eine kühle Meeresbrise. Sie riechen nach Wasser, Salz und Frische, manchmal mit einem Hauch Moschus im Hintergrund. Diese Familie ist perfekt, wenn du es absolut hell und erfrischend magst, ohne süße oder holzige Noten. Klassiker wie Acqua di Gio oder Cool Water gehören hierher.',
-          'Zitrus-Düfte sind die Klassiker unter den Sommerdüften. Sie basieren auf Zitrusnoten wie Bergamotte, Zitrone, Grapefruit oder Orange. Sie wirken belebend, natürlich und jung. Zitrus-Düfte halten oft nicht ganz so lange wie aquatische, aber ihr frischer Punch am Morgen ist unschlagbar.',
-          'Frisch-Holzige oder Grüne Düfte kombinieren Frische mit subtilen holzigen oder grünen Noten (wie grüner Tee, Galbanum oder zedernartigen Elementen). Sie wirken etwas strukturierter als reine Aquatik oder Zitrus, aber immer noch leicht. Perfekt für diejenigen, die ein bisschen mehr Charakter mögen, ohne auf Frische zu verzichten.',
-          'Frische Gourmands sind eine moderne Erfindung: Sie kombinieren frische Noten mit subtilen süßlichen Elementen, etwa Kokosnuss oder Vanille. Das klingt widersprüchlich, funktioniert im Sommer aber wunderbar, weil die Süße nicht überwältigend wirkt und die Frische dominiert.'
+          'Es gibt viele Arten von Sommerdüften, und sie funktionieren aus ganz unterschiedlichen Gründen. Aquatische Düfte – wie Acqua di Gio oder Cool Water – wirken wie Meer und Luft. Sie sind die zugänglichsten Sommerdüfte, weil Frische universell funktioniert. Das Problem: Sie halten oft nicht lange, weil die leichten Wassernoten schnell verdampfen.',
+          'Zitrus-Düfte sind das Klassiker-Fundament des Sommers. Bergamotte, Zitrone, Grapefruit – diese Noten riechen natürlich frisch und jung. Ein reiner Zitrus-Duft ist aber auch eine Herausforderung: Er kann nach ein bis zwei Stunden weg sein. Die besten Zitrus-Sommer-Düfte haben deshalb etwas dahinter – einen subtilen grünen, holzigen oder aromatischen Grund, der den Duft haltbar macht.',
+          'Frisch-Holzige und Grüne Düfte sind für Sommerkönner. Sie kombinieren echte Frische mit dunkleren Elementen: grüner Tee, Zeder, Vetiver, aromatische Grünnoten. Das klingt nach Widerspruch, funktioniert aber. Der Duft wirkt weniger hell als rein aquatisch, hat aber deutlich mehr Charakter und Länge. Perfekt für diejenigen, die Sommer-Eleganz wollen, nicht nur Sommer-Frische.',
+          'Leichte, cremig-pudrige Düfte sind das Geheimnis-Asset vieler Sommer-Fans. Ein pudrig-süßlicher Duft mit großer Haltbarkeit funktioniert im Sommer, wenn der Fokus auf Leichtigkeit liegt und nicht auf extremer Frische. Das ist eine gute Option für wärmeempfindliche Menschen, die trotzdem einen Signature-Duft mögen.'
         ]
       },
       {
-        heading: 'Die Kunst der Sommerdosierung und Länge',
+        heading: 'Dosierung im Sommer: Das erste Problem',
         body: [
-          'Bei Hitze ist weniger definitiv mehr. Bei 25 Grad oder höher wirkt jeder Duft intensiver als bei angenehmen 15 Grad. Ein Sprühstoss, den du im Frühling kaum riechen würdest, kann im Juli überraschend präsent sein. Die goldene Regel lautet: Beginne mit einem Sprühstoss und dosiere beim nächsten Mal höher, wenn du merkst, dass du mehr brauchst. Ein bis zwei Sprühstösse reichen im Sommer für die meisten Menschen völlig aus.',
-          'Frische Düfte halten oft nicht so lange wie intensive Winterdüfte. Das ist völlig normal und kein Qualitätsmangel. Ein Sommerduft, der drei Stunden hält, ist perfekt dimensioniert. Leichte Eau de Toilette-Konzentrationen sind im Sommer oft die bessere Wahl als schwere Eau de Parfums, weil sie natürlicher verdunsten und die Hitze die Projektion eh verstärkt.',
-          'Praktischer Tipp: Bewahre einen kleinen Zerstäuber mit deinem Lieblingsduft in der Tasche auf. Nach dem Schwimmen, nach dem Mittagessen oder wenn du merkst, dass der Duft verflogen ist, ein kurzer Sprühstoss erfrischt dich nicht nur olfaktorisch, sondern auch mental. Das ist Teil des Sommerlichkeit-Gefühls.'
+          'Hitze verstärkt Düfte. Das ist nicht subjektiv – deine Haut ist wärmer, Moleküle verdampfen schneller, jede Note wirkt intensiver. Ein Sprühstoss Dior Sauvage im Mai ist dezent. Der gleiche Sprühstoss im Juli ist präsent. Das bedeutet: Starte konservativ. Ein Sprühstoss – auf den Hals oder die Innenseiten der Unterarme – ist ein guter Test. Wenn du merkst, dass du mehr brauchst, steigerst du beim nächsten Mal. Im Sommer brauchen die meisten Menschen eins bis zwei Sprühstösse.',
+          'Die Haltbarkeit ist ein anderes Thema. Sommerdüfte halten kürzer als Winterdüfte – das ist normal. Ein Sommerduft, der vier bis fünf Stunden hält, ist gut dimensioniert. Das ist ausreichend für den Alltag. Frische Eau de Toilettes sind im Sommer oft die bessere Wahl als schwere Eau de Parfums, weil Sie sie nicht so schwer wirken, und die Hitze verstärkt die Projection ohnehin.',
+          'Ein praktischer Hack: Ein kleines Duft-Zerstäuber in der Tasche hilft. Nach dem Mittagessen, nach dem Pool, wenn du merkst, dass der Duft weg ist – ein kurzer Sprühstoss. Das ist auch eine mentale Erfrischung, nicht nur eine olfaktorische.'
         ]
       },
       {
-        heading: 'Sommerdüfte für jeden Kontext',
+        heading: 'Sommerdüfte richtig wählen: Kontext und Haltbarkeit',
         body: [
-          'Im Alltag und beim Sport brauchst du einen Duft, der dich erfrischen kann, ohne unangenehm zu riechen, wenn du ins Schwitzen kommst. Aquatische und reine Zitrus-Düfte sind hier ideal. Sie vertragen sich mit Schweiß besser als süßliche oder holzige Düfte. Ein sportlicher Sommerduft sollte leicht sein und schnell verflogen, damit du ohne schlechtes Gewissen trainieren kannst.',
-          'Am Strand ist Leichtigkeit das oberste Gebot. Die salzige, nach Sonne riechende Qualität aquatischer Düfte ist hier perfekt. Vermeide zu intensive oder zu süße Düfte, weil sie mit Sonnencreme und Meerwasser seltsam interagieren können. Reine, frische Düfte sind der beste Begleiter für Strandtage.',
-          'Beim Date oder abends zum Ausgehen darfst du etwas Charakter wählen. Ein zitronig-warmer Duft oder ein frisch-blumiger funktioniert wunderbar. Etwas mit leichtem Moschus oder subtiler Vanille ist im Sommer nicht unangenehm, solange es die frische Komponente behält. Der Fokus bleibt auf Leichtigkeit und Eleganz.',
-          'Bei festlichen Anlässen, Hochzeiten oder eleganten Aperitifs darfst du zu etwas Ausgefalleneren greifen. Ein frischer Duft mit mehr Struktur, etwa mit grünen oder aromatischen Noten, wirkt sophisticated. Vermeide aber schwere, warme Basisnoten, die bei Hitze erdrückend wirken.'
+          'Beim Sport und im Alltag brauchst du einen Duft, der mit Schweiß nicht seltsam reagiert. Reine, aquatische und frische Düfte sind hier die sicherste Wahl – sie wirken frisch, wenn du Bewegung hast, und werden nicht unangenehm. Zitrus funktioniert auch gut, solange es nicht zu süß ist. Schwere, warme Noten mit Oud oder intensiver Amber werden mit Schweiß seltsam.',
+          'Am Strand ist das erste Problem Haltbarkeit – Sonne, Wasser und Sonnencreme machen alles kompliziert. Ein sehr leichter, aquatischer Duft ist praktisch, weil der eh schnell verfliegt und du nicht fragen musst, ob es noch da ist. Vermeide zu intensive oder zu süße Düfte, weil sie mit Sonnencreme-Chemikalien seltsam reagieren können.',
+          'Beim Date oder abends darfst du mutiger sein und etwas mit Charakter wählen. Ein frisch-blumiger Duft mit etwas Moschus oder subtiler Vanille wirkt elegant und sinnlich zugleich – immer noch leicht für den Sommer, aber mit mehr Präsenz. Das Wichtigste: nicht erdrückend wirken, sondern attraktiv.',
+          'Bei Hochzeiten und eleganten Abend-Events: Hier darfst du zu etwas Strukturierterem greifen – ein frischer Duft mit grünen oder aromatischen Noten, der etwas Charakter hat. Aber nicht schwer: Keine intensiven Amber- oder Oud-Basis-Noten, die bei Hitze erdrückend wirken. Eleganz statt Intensität ist hier die Regel.'
         ]
       },
       {
-        heading: 'Sommerdüfte und Jahreszeiten überlappen: Wann ist Schluss mit Frische?',
+        heading: 'Der Übergang zum Herbst: Es gibt keine Regeln',
         body: [
-          'Es gibt keinen exakten Punkt, an dem du von Sommerdüften zu Herbstdüften wechseln musst. Das ist persönlich und kontextabhängig. Manche Menschen tragen Sommerdüfte bis Oktober, wenn es noch warm ist. Andere schalten Anfang September um, weil die Nächte kälter werden und sie psychologisch „Wechsel" brauchen. Die intelligente Strategie ist hybrid: Halten Sie Ihre liebsten Sommerdüfte noch eine Weile parat, nutzen Sie aber auch erste Herbst-Düfte mit leicht wärmerer Grundstimmung. So bleibt die Transition fließend und angenehm.'
+          'Es gibt keinen Punkt, an dem du sagen musst: „Jetzt ist Schluss mit Sommerdüften." Manche Menschen tragen Sommerdüfte bis Oktober, wenn es noch warm ist. Andere wechseln Anfang September, weil psychologisch ein Schnittwechsel gut tut – die Nächte werden kälter, die Energie ändert sich. Die praktische Lösung ist einfach: Keep your best summer fragrances aber nutze auch schon erste Herbstdüfte. Das ist nicht entweder-oder, sondern hybrid. Wenn es tagsüber noch 25 Grad ist, trägt du einen Sommerduft. Wenn es abends kühl wird, schaltest du auf etwas Warmeres um. Das ist eleganter als streng nach Datum zu wechseln.'
         ]
       }
     ]

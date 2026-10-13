@@ -608,11 +608,11 @@ export const guides: Guide[] = [
     title: 'Parfum als Geschenk: Der Weg zum perfekten Duft – Elegant, persönlich und unvergessen',
     description:
       'Parfum ist eines der wertvollsten Geschenke überhaupt – wenn es stimmt. Erfahre, wie du Sicherheit und Eleganz kombinierst und garantiert die richtige Wahl triffst. Unsere liebsten Geschenk-Klassiker für jeden Geschmack und jeden Anlass.',
-    heroImage: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=1200&q=80&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1513506003901-1e6c229e2d15?w=1200&q=80&fit=crop',
     intro: [
-      'Ein Duft ist eines der persönlichsten Geschenke, die man machen kann. Körperwärme, Hautchemie, Lebensstil – sie verändern, wie ein Duft wirkt. Das macht ein Duft sowohl wertvoll als auch riskant als Geschenk. Die Kunst liegt in der Balance: Du willst etwas geben, das wirklich passt und geliebt wird, nicht etwas, das in einer Schublade endet, weil der Geschmack nicht stimmt. Ein durchdachtes Duft-Geschenk zeigt: Ich kenne dich, ich respektiere dich, ich schenke dir etwas, das zu dir gehört.',
-      'Die sicherste Strategie ist bekannt: Klassische, vielseitige Düfte funktionieren fast immer besser als spekulativ ausgewählte Nischen-Kreationen. Ein eleganter Dior, Chanel oder Lancôme kommt bei fast jedem an, weil diese Marken über Jahrzehnte gelernt haben, Düfte zu schaffen, die nicht polarisieren, sondern verführen. Das klingt konservativ, ist aber smart: Wer würde ein Coco Mademoiselle Geschenk zurückweisen? Wer lehnt einen Dior Sauvage ab? Klassisch heißt hier nicht spießig, sondern zeitlos intelligent.',
-      'Hier sind unsere liebsten Duft-Geschenke: Klassiker, die garantiert funktionieren, sortiert nach Persönlichkeit und Budget. Mit ein paar praktischen Tricks sparst du dir Fehlkäufe, und die beschenkte Person wird sich unvergessen fühlen.'
+      'Ein Duft ist eines der persönlichsten Geschenke überhaupt – aber auch eines der riskantesten. Ein durchdachter Duft zeigt: Ich kenne dich, ich respektiere dich, ich habe bedacht, was zu dir passt. Ein falscher Duft endet in der Schublade und signalisiert das Gegenteil.',
+      'Das Geheimnis liegt bei Klassikern: Ein eleganter Chanel, Dior oder Lancôme funktioniert fast immer, weil diese Marken über Jahrzehnte gelernt haben, Düfte zu schaffen, die verführen, ohne zu polarisieren. Ein durchdachtes Geschenk mit einem zeitlosen Klassiker schlägt ein spekulatives Nischen-Abenteuer jedes Mal.',
+      'Hier findest du unsere liebsten Duft-Geschenke und praktische Tricks, um sicher die richtige Wahl zu treffen – sortiert nach Geschmack und Budget, mit Tipps, die garantiert funktionieren.'
     ],
     sections: [
       {
@@ -640,10 +640,10 @@ export const guides: Guide[] = [
       {
         heading: 'Praktische Tipps für das perfekte Duft-Geschenk',
         body: [
-          'Eau de Parfum statt Eau de Toilette: Als Geschenk wirkt Eau de Parfum automatisch edler, hält länger und zeigt, dass du es ernst gemeint hast. Der Preisunterschied zu EdT ist oft nur 10 bis 20 Franken, aber der wahrgenommene Luxus ist deutlich höher.',
-          'Verpackung ist wichtig: Ein schön verpackter Duft wird sofort als Geschenk wahrgenommen, nicht als „zufälliger Kauf". Die meisten guten Düfte kommen bereits in hochwertiger Verpackung, aber eine zusätzliche Schleife, eine kleine Karte oder eine personalisierte Nachricht macht den Unterschied.',
-          'Mach es persönlich: Schreib eine kurze Notiz, warum du diesen Duft gewählt hast. Es muss nicht lang sein: „Dieser Duft erinnert mich an dich – elegant, warm und immer angenehm" macht einen großen Eindruck.',
-          'Fallback-Plan für totale Unsicherheit: Wenn du dir absolut nicht sicher bist, verschenk stattdessen einen edlen Duft-Gutschein oder mach einen Gutschein für eine Beratung in einer guten Parfümerie. Das klingt unkreativ, aber es ist besser, einen Gutschein zu geben, als einen Duft zu kaufen, der endet in der Schublade.'
+          'Eau de Parfum statt Eau de Toilette: Wirkt automatisch edler, hält länger, kostet oft nur 10–20 CHF mehr. Als Geschenk macht dieser kleine Unterschied großen optischen und emotionalen Eindruck.',
+          'Die Verpackung zählt: Ein schöner Duft in hochwertiger Verpackung + eine kleine persönliche Karte ist der Unterschied zwischen „Ich habe etwas gekauft" und „Ich habe an dich gedacht".',
+          'Schreib eine kurze Notiz, warum du diesen Duft gewählt hast: „Dieser Duft erinnert mich an dich: elegant, warm, unvergessen." Kurz, persönlich, wirkungsvoll.',
+          'Fallback für totale Unsicherheit: Wähle einen edlen Duft-Gutschein statt eines Ratschusses. Besser als ein Duft, der ungetragen in der Schublade landet.'
         ]
       },
       {

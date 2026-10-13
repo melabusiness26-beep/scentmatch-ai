@@ -356,14 +356,14 @@ export const guides: Guide[] = [
   },
   {
     slug: 'die-besten-unisex-duefte',
-    title: 'Die besten Unisex-Düfte: Geschlechterlos schön – für jeden sein eigenes Abenteuer',
+    title: 'Unisex-Düfte: Keine Grenzen – Für deine Individualität, nicht für dein Geschlecht',
     description:
-      'Unisex-Düfte ohne Geschlechts-Grenzen: vielseitig, charaktervoll & elegant. Von Sandelholz bis Gypsy Water – unsere liebsten Düfte, die Grenzen sprengen und zu wirklich jedem passen.',
+      'Düfte ohne Geschlechts-Etiketten: vielseitig, charaktervoll und zeitlos. Von Sandelholz bis Gypsy Water – unsere liebsten Kompositionen, die Grenzen sprengen und zu jedem passen, unabhängig vom Geschlecht.',
     heroImage: '/ratgeber/unisex-duefte-hero.png',
     intro: [
-      'Unisex-Düfte sind nicht auf Damen oder Herren festgelegt – sie sind für dich, egal wer du bist. Sie sind das Gegenteil von Klischees und Schubladen. Ein Duft, der nicht flüstert „ich bin männlich oder weiblich", sondern der laut sagt: „ich bin ein Abenteuer, ein Erlebnis, eine Individualität". Die besten Unisex-Düfte sind vielseitig, ausgewogen, charaktervoll – nicht zu süss-blumig, nicht zu holzig-maskulin, sondern unerwartete, elegante Kompositionen, die auf jeder Haut anders funktionieren.',
-      'Die Kategorie Unisex hat sich in den letzten Jahren revolutioniert. Nischenhäuser wie Le Labo, Byredo und Maison Francis Kurkdjian haben die Grenze zwischen „für ihn" und „für sie" bewusst aufgelöst und zeigen, dass die beste Duft-Logik ist: „riecht es auf deiner Haut schön?" Das ist alles. Diese Bewegung hat dem ganzen Duft-Universum gutgetan.',
-      'Hier unsere liebsten Unisex-Düfte – zum Teilen, zum Entdecken, zum Brechen von Grenzen. Vielseitig, hochwertig, ohne Gedanken an Geschlecht.'
+      'Die beste Duft-Logik ist die einfachste: Riecht es auf deiner Haut schön? Punkt. Für Hunderte von Jahren wurde Duft nach Geschlecht sortiert, männlich oder weiblich. Aber die Realität ist komplexer und viel schöner: Ein großartiger Duft kennt keine Geschlechts-Grenzen. Er funktioniert auf jeder Haut anders, je nach Körperchemie, Persönlichkeit und Lebenskontext. Die beste Duft-Philosophie ist die radikale Einfachheit: Du bist du, und dein Duft sollte das ausdrücken, nicht irgendwelche veralteten Marketing-Kategorien.',
+      'Die Kultur der Unisex-Düfte ist eine Revolution der letzten 15 Jahre. Nischenhäuser wie Le Labo, Byredo und Maison Francis Kurkdjian haben das erkannt und bauen bewusst Düfte ohne Gender-Kodierung. Das heißt nicht „neutral" oder „langweilig", sondern das Gegenteil: Es ermöglicht Kompositionen, die komplexer, persönlicher und ehrlicher sind. Ein Duft, der nicht für „Damen" oder „Herren" gemacht werden muss, kann sich einfach auf das konzentrieren, was zählt: handwerkliche Qualität, Charakter und emotionale Resonanz.',
+      'Hier findest du unsere liebsten Unisex-Düfte: Düfte, die Grenzen sprengen, die zu dir gehören, egal wer du bist. Manche sind warm und würzig, andere frisch und minimalistisch. Was sie alle teilen, ist dass sie absolute Individuen sind, keine Klischees. Sie laden dich ein, dein eigenes Abenteuer zu schreiben.'
     ],
     sections: [
       {
@@ -605,54 +605,75 @@ export const guides: Guide[] = [
   },
   {
     slug: 'parfum-geschenk-die-besten-duefte-zum-verschenken',
-    title: 'Parfum verschenken: die besten Düfte als Geschenk',
+    title: 'Parfum als Geschenk: Der Weg zum perfekten Duft – Elegant, persönlich und unvergessen',
     description:
-      'Parfum ist ein wunderschönes Geschenk, wenn es passt. Unsere sicheren Favoriten zum Verschenken für Frauen und Männer, plus Tipps zur Auswahl.',
+      'Parfum ist eines der wertvollsten Geschenke überhaupt – wenn es stimmt. Erfahre, wie du Sicherheit und Eleganz kombinierst und garantiert die richtige Wahl triffst. Unsere liebsten Geschenk-Klassiker für jeden Geschmack und jeden Anlass.',
     heroImage: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=1200&q=80&fit=crop',
     intro: [
-      'Ein Duft ist ein persönliches, edles Geschenk, wenn er passt. Die Kunst ist, etwas zu wählen, das fast jeder mag: nicht zu speziell, aber trotzdem besonders. Ein klassischer, vielseitiger Duft kommt fast immer besser an als ein ausgefallener Nischen-Geheimtipp, den die beschenkte Person möglicherweise nie getragen hätte.',
-      'Wenn du den Geschmack der Person nicht gut kennst, bist du mit beliebten, zugänglichen Düften auf der sicheren Seite. Chanel, Dior oder Lancôme sind fast immer eine gute Wahl. Klassisch und hochwertig.',
-      'Hier unsere Geschenk-Favoriten für Frauen und Männer, von frisch bis warm-elegant.'
+      'Ein Duft ist eines der persönlichsten Geschenke, die man machen kann. Körperwärme, Hautchemie, Lebensstil – sie verändern, wie ein Duft wirkt. Das macht ein Duft sowohl wertvoll als auch riskant als Geschenk. Die Kunst liegt in der Balance: Du willst etwas geben, das wirklich passt und geliebt wird, nicht etwas, das in einer Schublade endet, weil der Geschmack nicht stimmt. Ein durchdachtes Duft-Geschenk zeigt: Ich kenne dich, ich respektiere dich, ich schenke dir etwas, das zu dir gehört.',
+      'Die sicherste Strategie ist bekannt: Klassische, vielseitige Düfte funktionieren fast immer besser als spekulativ ausgewählte Nischen-Kreationen. Ein eleganter Dior, Chanel oder Lancôme kommt bei fast jedem an, weil diese Marken über Jahrzehnte gelernt haben, Düfte zu schaffen, die nicht polarisieren, sondern verführen. Das klingt konservativ, ist aber smart: Wer würde ein Coco Mademoiselle Geschenk zurückweisen? Wer lehnt einen Dior Sauvage ab? Klassisch heißt hier nicht spießig, sondern zeitlos intelligent.',
+      'Hier sind unsere liebsten Duft-Geschenke: Klassiker, die garantiert funktionieren, sortiert nach Persönlichkeit und Budget. Mit ein paar praktischen Tricks sparst du dir Fehlkäufe, und die beschenkte Person wird sich unvergessen fühlen.'
     ],
     sections: [
       {
-        heading: 'Für Frauen',
+        heading: 'Für Frauen: die sicheren Klassiker',
+        body: [
+          'Diese Düfte sind zeitlos elegant und funktionieren auf den meisten Frauen wunderbar. Sie sind nicht zu experimentell, aber auch nicht langweilig. Das ist die goldene Mitte des Duft-Schenkens: Eine Frau, die einen dieser Düfte trägt, wirkt gepflegt, kultiviert und elegant, ohne dass sie dich unter Druck setzt, genau ihren speziellen Nischen-Geschmack zu treffen.'
+        ],
         perfumes: ['coco-mademoiselle', 'lancome-la-vie-est-belle', 'ysl-black-opium', 'ch-good-girl']
       },
       {
-        heading: 'Für Männer',
+        heading: 'Für Männer: zeitlose Favoriten',
+        body: [
+          'Männer-Düfte sind eine Balance zwischen Professionalität und Charakter. Die folgenden Düfte funktionieren im Büro, beim Date und beim Abenteuer gleich gut. Sie sind nicht zu intensiv, nicht zu experimentell, sondern zuverlässig schön.'
+        ],
         perfumes: ['chanel-bleu-de-chanel', 'le-male', 'ea-stronger-with-you', 'boss-bottled']
       },
       {
-        heading: 'Tipps für das perfekte Duft-Geschenk',
+        heading: 'Wie du die richtige Wahl triffst – ohne Fehlkauf',
         body: [
-          'Denk an den Stil der Person: Mag sie es eher frisch und dezent oder warm und auffällig? Im Zweifel passt ein vielseitiger Klassiker fast immer.',
-          'Eau de Parfum wirkt als Geschenk edler und hält länger als ein leichtes Eau de Toilette. Der Preisunterschied ist oft nicht gross, aber der Eindruck schon.',
-          'Ein bekannter, beliebter Duft ist sicherer als ein sehr spezieller. Ausgefallene Nischendüfte sind Geschmackssache. Toll, wenn du den Geschmack der Person gut kennst, riskanter sonst.',
-          'Auf Vorrat kaufen: Schau, ob die Person schon einen Duft trägt, den sie liebt. Eine zweite Flasche davon ist fast nie falsch.',
-          'Schön verpackt mit einer kleinen Karte zur Duftrichtung macht das Geschenk gleich persönlicher und die beschenkte Person weiss, was sie trägt und warum du es ausgesucht hast.'
+          'Erste Frage: Kennt die Person, die du beschenken möchtest, bereits andere Düfte, die sie liebt? Das ist deine wertvollste Information. Frag im Gespräch oder beobachte: Trägt sie etwas? Mag sie es frisch und leicht oder warm und süßlich? Wenn sie bereits einen liebsten Duft hat, hast du zwei sichere Optionen: entweder verschenkst du eine zweite Flasche davon, oder du wählst einen Duft, der in die gleiche Kategorie passt. Ein Treffer fast garantiert.',
+          'Zweite Frage: Welche Jahreszeit steht an? Im Sommer sind frische, leichte Düfte idealer, im Winter dürfen es wärmere sein. Ein winterlicher Duft im Juni wirkt fehl am Platz, auch wenn er schön ist. Passe das Geschenk an die kommende Jahreszeit an, damit die beschenkte Person es sofort tragen kann.',
+          'Dritte Frage: Was ist dein Budget? Ein Eau de Parfum in einer bekannten Marke zwischen 70 und 150 CHF ist oft eine gute Wahl. Es ist edel genug, um besonders zu wirken, aber nicht so teuer, dass die Person nervös wird, es zu tragen. Luxus-Nische (200+ CHF) ist nur für Leute mit bekanntem speziellen Geschmack geeignet.'
         ]
       },
       {
+        heading: 'Praktische Tipps für das perfekte Duft-Geschenk',
         body: [
-          'Unsicher, was die Person mag? Nutze unseren Geschenk-Finder: Er führt dich in 4 Fragen zu perfekten Empfehlungen. Oder verschenk einen Gutschein oder macht das Duft-Quiz gemeinsam: so triffst du den Geschmack viel sicherer.'
+          'Eau de Parfum statt Eau de Toilette: Als Geschenk wirkt Eau de Parfum automatisch edler, hält länger und zeigt, dass du es ernst gemeint hast. Der Preisunterschied zu EdT ist oft nur 10 bis 20 Franken, aber der wahrgenommene Luxus ist deutlich höher.',
+          'Verpackung ist wichtig: Ein schön verpackter Duft wird sofort als Geschenk wahrgenommen, nicht als „zufälliger Kauf". Die meisten guten Düfte kommen bereits in hochwertiger Verpackung, aber eine zusätzliche Schleife, eine kleine Karte oder eine personalisierte Nachricht macht den Unterschied.',
+          'Mach es persönlich: Schreib eine kurze Notiz, warum du diesen Duft gewählt hast. Es muss nicht lang sein: „Dieser Duft erinnert mich an dich – elegant, warm und immer angenehm" macht einen großen Eindruck.',
+          'Fallback-Plan für totale Unsicherheit: Wenn du dir absolut nicht sicher bist, verschenk stattdessen einen edlen Duft-Gutschein oder mach einen Gutschein für eine Beratung in einer guten Parfümerie. Das klingt unkreativ, aber es ist besser, einen Gutschein zu geben, als einen Duft zu kaufen, der endet in der Schublade.'
+        ]
+      },
+      {
+        heading: 'Sonderfälle und spezielle Situationen',
+        body: [
+          'Ein Duft zum Jahrestag: Hier darfst du etwas mutiger sein. Ein Duft, den die Person schon hat und liebt, oder einen neuen in ihrer Lieblings-Familie, wird zu einem romantischen Geschenk, das tägliche Nähe bedeutet. Jedes Mal, wenn sie den Duft trägt, denkt sie an dich.',
+          'Ein Duft als Willkommensgeschenk: Wenn du jemanden gerade kennengelernt hast (neue Partnerin, neuer Freund), wähle einen sicheren Klassiker. Es darf nicht zu intim wirken, aber es sollte zeigen, dass du Geschmack hast. Ein Chanel, Dior oder Jo Malone funktioniert hier immer.',
+          'Ein Duft als Abschied oder Andenken: Wenn jemand wegzieht oder ihr euch trennt, kann ein Duft zum Erinnerungsstück werden. Wähle einen, der zeitlos ist und lange hält, damit die Person dich riechen kann, wenn sie den Duft trägt.',
+          'Duft-Sets für Neulinge: Einige Marken verkaufen Sets mit mehreren kleinen Flakons. Das ist ideal, wenn du jemanden beschenken möchtest, der noch nicht so viele Düfte kennt – die Person kann ausprobieren, ohne dich unter Druck zu setzen.'
         ]
       }
     ]
   },
   {
     slug: 'maennerduefte-die-frauen-moegen',
-    title: 'Männerdüfte, die Frauen mögen',
+    title: 'Männerdüfte, die Frauen lieben: Eleganz, Wärme & echte Komplimente – nicht Lärm',
     description:
-      'Welche Herrendüfte kommen besonders gut an? Unsere Liste der beliebtesten „Komplimente-Düfte" für Männer, von frisch bis süss-würzig.',
+      'Welche Herrendüfte ziehen an? Unsere Liste der echten „Kompliment-Klassiker" für Männer: elegant, einladend und unvergessen. Die Düfte, die Frauen wirklich mag und lange erinnert.',
     heroImage: 'https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=1200&q=80&fit=crop',
     intro: [
-      'Manche Männerdüfte ernten einfach besonders oft Komplimente. Meist sind es warme, einladende oder sauber-frische Düfte, die angenehm in Erinnerung bleiben. Düfte, die man noch Stunden später wahrnimmt und denkt: „Was riecht der gut?"',
-      'Was dabei auffällt: Die grössten Kompliment-Magneten sind selten die lautesten oder extrovertiertesten Düfte. Es sind oft Kompositionen, die etwas Vertrautes und Einladendes haben. Meist eine warme Vanille-Note, sauberer Moschus oder eine fruchtig-holzige Qualität, die anziehend wirkt, ohne zu überfordern.',
-      'Hier die Klassiker, die besonders oft Komplimente einheimsen. Kurze Erklärung, warum sie so wirken.'
+      'Es gibt Düfte, die sammeln Komplimente wie ein Magnet. Ein Mann trägt sie einmal, und Stunden später fragen Frauen in seiner Nähe: „Was riechst du?" Das sind nicht die lautesten Düfte, nicht die intensivsten, sondern Düfte, die eine bestimmte psychologische Wirkung haben: Sie wirken nahbar, vertrauenswürdig und sinnlich zugleich. Sie sagen ohne Worte: Hier ist jemand, der auf sich selbst achtet, der nicht aggressiv ist, sondern einladend. Das ist Anziehung auf chemischer Ebene.',
+      'Die Psychologie dahinter ist klar: Frauen werden tendenziell zu Düften hingezogen, die Wärme, Sauberkeit und Nähe ausstrahlen. Ein intensiver Oud-Duft kann elegant sein, wirkt aber oft zu dominant. Ein reiner Zitrus-Duft wirkt manchmal zu kühl. Die besten Männerdüfte für Frauen treffen eine bestimmte Balance: Sie haben eine warme Basis (Vanille, Amber, Moschus), aber vorne genug Frische (Zitrus, aromatische Noten) zum Balancieren. Das ist die Formel.',
+      'Hier sind unsere liebsten Männerdüfte, die bei Frauen garantiert gut ankommen. Das heißt nicht, dass der Mann den Duft für Frauen trägt, sondern dass er mit diesem Duft selbstbewusst wirkt und dadurch natürlich anziehend ist. Ein Duft ist immer eine Erweiterung der Persönlichkeit, nicht ein Manipulationsmittel.'
     ],
     sections: [
       {
+        heading: 'Die Klassiker, die garantiert funktionieren',
+        body: [
+          'Diese Düfte sind nicht neu, nicht trendig, aber zeitlos erfolgreich. Sie funktionieren bei fast jeder Frau, weil sie Charakter mit Eleganz verbinden. Sie wirken nicht aufdringlich, sondern einladend.'
+        ],
         perfumes: [
           'dior-sauvage',
           'le-male',
@@ -665,34 +686,55 @@ export const guides: Guide[] = [
         ]
       },
       {
-        heading: 'Warum diese Düfte so gut ankommen',
+        heading: 'Warum Frauen diese Düfte auf Männern lieben',
         body: [
-          'Es sind meist warme, einladende oder sauber-frische Düfte. Sie signalisieren Nähe und Gepflegtheit, statt nur laut zu sein.',
-          'Süsse, warme Noten wie Vanille, Tonkabohne, Zimt und süsses Holz gelten als besonders „anziehend" und gemütlich.',
-          'Auch frische, saubere Düfte (Zitrus, sauberer Moschus) wirken attraktiv, weil sie nach frisch geduschter Haut riechen.',
-          'Dezent dosieren: Komplimente erntet, wer aus der Nähe gut riecht, nicht, wer eine ganze Duftwolke hinterlässt.'
+          'Die erfolgreichsten Männerdüfte haben ein psychologisches Muster. Sie beginnen mit Frische oder Frucht (macht den Duft nicht zu schwer), haben eine warme, süßliche oder würzige Herznote (wirkt sinnlich und sauber zugleich), und enden mit einer warmen Basis (Vanille, Amber, Moschus). Ein Duft, der mit dieser Formel gut gemacht ist, wirkt auf Frauen fast magisch anziehend.',
+          'Warme, würzige Noten wie Zimt, schwarzer Pfeffer und Ambroxan werden oft als besonders „männlich" und anziehend wahrgenommen. Aber nicht, weil sie aggressiv sind, sondern weil sie Wärme ausstrahlen. Ein würziger Duft auf einem Mann, der sich selbst kennt, wirkt selbstbewusst und elegant.',
+          'Süße Noten wie Vanille, Tonka oder Dattel gelten überraschenderweise nicht als weiblich oder unmännlich. Ein Mann, der einen Duft mit subtiler Vanille trägt, wirkt nicht unmännlich, sondern nachdenklich und sinnlich. Frauen finden das sehr anziehend.',
+          'Saubere, frische Düfte mit Zitrus und Moschus werden als besonders gepflegt wahrgenommen. Sie wirken wie frisch geduscht, energetisch und modern. Ein Duft, der nach sauberer Haut riecht, wirkt auf Frauen irresistibel anziehend.',
+          'Dosierung ist alles: Ein Kompliment entsteht, wenn eine Frau dich riechen kann, wenn sie näher kommt, aber nicht, wenn du vorbeigehen. Das ist Subtilität mit Wirkung. Ein Duft, der aus zwei Metern entfernt bereits projektion, kann auch aggressiv wirken.'
+        ]
+      },
+      {
+        heading: 'Das Geheimnis: Es geht nicht um Lärm',
+        body: [
+          'Viele Männer machen den Fehler, zu denken, dass ein intensiver, projektionsstarker Duft besser ankommt. Das ist falsch. Ein sehr intensiver Duft kann aufdringlich wirken, besonders in Innenräumen. Die größten Kompliment-Magneten sind Düfte, die elegant dosiert wirken, nicht wie eine Duftwolke, sondern wie ein Versprechen. Ein Duft, der nur aus der Nähe wahrnehmbar ist, wirkt sinnlich und intelligent. Ein Duft, der den ganzen Raum erfüllt, wirkt dominanz-bedürftig.',
+          'Das bedeutet: Der beste Männerduft ist ein Duft, den der Mann morgens aufträgt, und den Frauen den ganzen Tag über wahrnehmen, aber nicht als aufdringlich erleben. Das ist Balance.'
+        ]
+      },
+      {
+        heading: 'Für verschiedene Typen',
+        body: [
+          'Der klassisch-elegante Mann: Dior Sauvage oder Boss Bottled. Diese Düfte wirken zeitlos elegant, nicht rebellisch, sondern kultiviert. Sie funktionieren im Büro und beim Date gleich gut.',
+          'Der kreative, künstlerische Typ: Fahrenheit oder Le Male. Diese haben mehr Charakter, mehr Persönlichkeit. Sie wirken auf Frauen, die Individualität schätzen, besonders anziehend.',
+          'Der warme, süßliche Typ: One Million oder Versace Eros. Diese Düfte sind nicht aggressiv, sondern einladend und warm. Sie wirken auf Frauen, die Sinnlichkeit schätzen, magisch anziehend.',
+          'Der moderne Typ: Stronger with You hat diese moderne, balancierte Formel, die zeitgenössische Männer anzieht. Nicht zu konservativ, nicht zu experimentell.'
         ]
       },
       {
         body: [
-          'Am Ende zählt, dass der Duft zu dir passt und du dich darin wohlfühlst. Mach das Quiz, um deine eigene Richtung zu finden.'
+          'Wichtig: Ein Duft muss zu dir passen, nicht zu Frauen, die du beeindrucken möchtest. Der beste Duft ist der, in dem du dich selbstbewusst fühlst. Das ist deine authentische Anziehung – deutlich kraftvoller als jeder Trick. Mach das Quiz, um deine eigene Duftrichtung zu finden und trage sie mit Selbstvertrauen.'
         ]
       }
     ]
   },
   {
     slug: 'die-besten-vanille-duefte',
-    title: 'Die besten Vanille-Düfte',
+    title: 'Vanille-Düfte: Wärme, Komfort & Sinnlichkeit – Das Herz der süßen Düfte',
     description:
-      'Warme, süsse Vanille-Düfte zum Verlieben: kuschelig, sinnlich und perfekt für kühle Tage. Unsere Vanille-Favoriten für Damen, Herren und Unisex.',
+      'Vanille ist die universelle Sprache der Behaglichkeit. Entdecke reine cremige Vanille-Düfte bis zu würzigen Varianten mit Tabak und Gewürzen. Von kuschelWeich bis elegant-trocken: Dein perfekter Vanille-Signature.',
     heroImage: '/ratgeber/vanille-duefte-hero.jpg',
     intro: [
-      'Vanille ist die wohl beliebteste süsse Note: warm, cremig und einladend. Mal pur und kuschelig, mal kombiniert mit Gewürzen, Tabak oder Karamell. Vanille gehört zu den vielseitigsten Basisnoten der Parfümwelt.',
-      'Was Vanille im Duft bewirkt, hängt stark vom Kontext ab. Mit Holz wirkt sie edel und trocken, mit Praline und Kaffee fast essbar, mit Blumen elegant-feminin. Ein guter Vanille-Duft ist selten pur: Die Magie liegt in der Begleitung.',
-      'Hier unsere liebsten Vanille-Düfte aus dem Katalog, von cremig-leicht bis würzig-intensiv.'
+      'Vanille ist nicht einfach nur eine Note, sie ist eine Emotion. Die beste Vanille in der Parfümwelt kommt aus Madagascar, ist kostbar und wird seit Jahrhunderten in Luxus-Kompositionen genutzt. Ein großartiger Vanille-Duft riecht warm, umhüllend, einladend – wie ein Zuhause auf der Haut. Vanille hat die Kraft, Menschen sofort zu beruhigen und glücklich zu machen. Das ist kein Zufall: Vanille wurde lange Zeit in der Medizin verwendet, weil sie tatsächlich entspannend wirkt.',
+      'Die Intelligenz eines Vanille-Dufts liegt nicht in der reinen Vanille, sondern in ihrer Begleitung. Ein Vanille-Duft, der pur ist, wirkt schnell eintönig und eine-dimensional. Die besten Vanille-Kompositionen paaren Vanille mit Komplizen: Holz für Eleganz und Trockenheit, Gewürzen für Würze und Tiefe, Kaffeenoten für Sophistication oder Blumigen für romantische Weiblichkeit. Das schafft Tiefe und macht den Duft unvergessen.',
+      'Hier findest du unsere liebsten Vanille-Düfte: von dessertartig-kuschelig bis würzig-edel. Alle sind langlebig, alle sind tröstlich, alle sind auf ihre Weise wunderschön.'
     ],
     sections: [
       {
+        heading: 'Die schönsten Vanille-Düfte – von cremig bis würzig',
+        body: [
+          'Ein großartiger Vanille-Duft braucht Charakter. Die folgenden acht Düfte zeigen die ganze Bandbreite: von reiner Vanille über Vanille mit Gewürzen bis zu Vanille mit Holz und edlen Basisnoten.'
+        ],
         perfumes: [
           'tobacco-vanille',
           'kayali-vanilla-28',
@@ -705,36 +747,49 @@ export const guides: Guide[] = [
         ]
       },
       {
-        heading: 'Welcher Vanille-Typ bist du?',
+        heading: 'Die Vanille-Familien: Welche Variante ist deine?',
         body: [
-          'Pur & cremig: weiche, dessertartige Vanille wie in Kayali Vanilla 28, kuschelig und süss.',
-          'Würzig & warm: Vanille mit Tabak, Zimt oder Dattel (z. B. Tobacco Vanille, Khamrah), tief und erwachsen.',
-          'Frisch abgemildert: Vanille mit Holz oder einem Hauch Zitrus wirkt alltagstauglicher und weniger schwer.'
+          'Rein cremige Vanille ist das Klassischste. Ein Duft, der primär nach hochwertiger Vanille riecht, manchmal mit pudrigen oder cremigen Zusätzen. Das wirkt kuschelig, süß und dessertartig. Ideal für diejenigen, die Vanille lieben und Einfachheit schätzen.',
+          'Würzige Vanille mit Tabak, Zimt oder Dattel ist die erwachsenere Variante. Tabak und Vanille kombiniert wirkt edel, rauchig-warm, fast barbarisch. Das ist für diejenigen, die Vanille lieben, aber auch Struktur und Tiefe brauchen.',
+          'Vanille mit Holz oder floralen Elementen schafft Balance. Ein Hauch Iris oder Rose mit Vanille wirkt elegant und weniger eintönig. Mit Sandelholz oder Zeder wird Vanille trocken und zeitlos. Perfekt für Alltag und Büro.',
+          'Vanille mit Kaffee oder schokoladen Elementen ist die gourmande Variante. Das wirkt fast essbar, verführerisch und einladend. Perfekt für Abende und intime Momente.'
         ]
       },
       {
-        heading: 'Worauf du bei Vanille-Düften achten solltest',
+        heading: 'Vanille das ganze Jahr: Saison-Anpassungen',
         body: [
-          'Vanille kann je nach Kontext sehr unterschiedlich wirken: pudrig-elegant, dessertartig-süss oder warm-rauchig mit Tabak und Gewürzen.',
-          'Sehr süsse, reine Vanille kann schnell schwer werden. Wer es alltagstauglich mag, wählt Vanille mit Holz, Moschus oder einem Hauch Frische.',
-          'Vanille gehört zur Basis und hält von Natur aus lange. Ideal für Herbst, Winter und gemütliche Abende.'
+          'Vanille ist Winter und Herbst die Königin, aber sie funktioniert das ganze Jahr. Im Sommer wähle eine leichtere Vanille oder eine Vanille mit Frische-Elementen, die nicht so schwer wirkt. Ein Hauch Zitrus mit Vanille wirkt im Sommer erfrischend statt schwer.',
+          'Im Frühjahr und Herbst ist Vanille perfekt in ihrer reinen Form. Ein cremig-pudrig Vanille-Duft wirkt in diesen Übergangsjahreszeiten elegant und tröstlich. Du wechselst langsam von Frische zu Wärme.',
+          'Im Winter ist Vanille am wunderschönsten. Hier darfst du zu volleren, würzigeren oder süßeren Varianten greifen. Ein Vanille mit Tabak oder Gewürzen brilliert im Winter wie sonst nirgends.'
+        ]
+      },
+      {
+        heading: 'Vanille-Düfte richtig dosieren und tragen',
+        body: [
+          'Vanille wirkt intensiv, besonders auf trockener Haut. Eine gute Feuchtigkeitspflege vorher verdoppelt die Haltbarkeit und macht den Duft angenehmer. Im Winter, wenn die Heizungsluft austrocknet, ist Hautpflege essentiell.',
+          'Ein bis zwei Sprühstösse sind normalerweise ideal. Vanille braucht nicht viel, um präsent zu sein. Ein Sprühstoss am Hals, evtl. einen auf den Unterarm – mehr ist selten nötig.',
+          'Vanille-Düfte halten lange. Das ist einer ihrer großen Vorteile. Ein qualitativ hochwertiger Vanille-Duft hält oft acht bis zehn Stunden auf der Haut, manchmal sogar länger. Das ist, weil Vanille eine Basis-Note ist, nicht flüchtig, sondern haftend.'
         ]
       }
     ]
   },
   {
     slug: 'die-besten-oud-duefte',
-    title: 'Die besten Oud-Düfte: das flüssige Gold der Parfümerie',
+    title: 'Oud-Düfte: Das flüssige Gold der Parfümerie – Von Einsteigerfreundlich bis Luxus-Extrait',
     description:
-      'Oud (Agarholz) ist eine der edelsten Duftnoten überhaupt: orientalisch, warm, langanhaltend und luxuriös. Die besten Oud-Düfte von günstigen Nischen bis zu exklusiven Meisterwerken.',
+      'Oud ist das Herz orientalischer Eleganz: warm, zeitlos, langanhaltend und faszinierend. Entdecke die besten Oud-Kompositionen von günstigen Schätzen bis zu exklusiven Meisterwerken – wann und wie du Oud richtig trägst.',
     heroImage: '/ratgeber/oud-duefte-hero.png',
     intro: [
-      'Oud, auch Agarholz genannt, ist eine der edelsten und teuersten Duftnoten der Welt. Es stammt aus dem Harz des Adlerholzbaums und wird seit Jahrtausenden in der orientalischen Kultur geschätzt. Kein Wunder: Oud ist warm, holzig, leicht rauchig und unglaublich langanhaltend – ein Duft, der sich tief in die Erinnerung eingräbt.',
-      'Der Haken: Echter Oud aus reifen Adlerholzbäumen ist extrem selten und kostet ein Vermögen. Deshalb arbeiten die meisten modernen Parfüme mit hochwertigen Oud-Akkorden – synthetische Moleküle, die das Original täuschend echt nachbilden. Das ist nicht nur günstiger, sondern für viele sogar angenehmer im Tragekomfort: prägnanter, aber ausgewogen.',
-      'Hier sind unsere liebsten Oud-Düfte: von erschwinglichen Nischen-Schätzen bis zu exklusiven Luxuskreationen. Besonders schön entfalten sie sich in der kühlen Jahreszeit und am Abend.'
+      'Oud ist das flüssige Gold der Parfümerie. Es ist das Harz des indischen Adlerholzbaums, und echtes, gereiftes Oud kostet mehr als sein Gewicht in Gold. Aber es ist nicht nur teuer, weil es selten ist, sondern weil es magisch wirkt. Ein Duft mit echtem Oud riecht warm, tiefgründig, leicht rauchig und unglaublich langanhaltend. Oud hinterlässt ein Aroma auf der Haut, das 12 bis 24 Stunden dauert, manchmal noch länger. Es ist eines der wenigen Düfte, die sich noch Tage später im Gedächtnis befinden.',
+      'Die gute Nachricht: Echtes, natürliches Oud ist für die meisten Menschen unerschwinglich, aber gute synthetische Oud-Akkorde sind kostengünstig und arbeiten perfekt. Moderne Oud-Düfte verwenden Moleküle wie Iso E Super und spezielle Oud-Synthesen, die das Original täuschend echt nachbilden. Das ist nicht eine Täuschung, sondern eine Lösung. Ein synthetisches Oud in einem guten Duft ist oft sogar prägnanter und angenehmer zu tragen als echtes, weil es balancierter ist. Die Duft-Industrie hat verstanden, dass Qualität nicht nur davon kommt, ob etwas echt ist, sondern wie es komponiert wird.',
+      'Hier findest du unsere liebsten Oud-Düfte: einsteigerfreundlich, warm, meisterlich komponiert. Vom erschwinglichen Schatz bis zum Luxus-Extrait, für jeden Weg in die Welt des Ouds.'
     ],
     sections: [
       {
+        heading: 'Die besten Oud-Düfte: Vom Einstieg bis zur Sammler-Rarität',
+        body: [
+          'Diese Auswahl zeigt die volle Bandbreite der Oud-Welt. Von einsteigerfreundlich und süßlich bis zu reinen, intensiven Kompositionen, jeder dieser Düfte ist ein Meisterwerk.'
+        ],
         perfumes: [
           'tom-ford-oud-wood',
           'initio-oud-greatness',
@@ -746,27 +801,38 @@ export const guides: Guide[] = [
         ]
       },
       {
-        heading: 'Oud für Einsteiger: So startest du richtig',
+        heading: 'Oud für Einsteiger: Richtig beginnen ohne Überwältigung',
         body: [
-          'Wenn du Oud zum ersten Mal trägst, beginne mit weicheren, süsslichen Varianten – etwa Oud mit Rose, Safran oder Vanille. Diese sind zugänglicher und helfen dir, die Richtung kennenzulernen.',
-          'Reines, rauchig-medizinisches Oud kann anfangs intensiv wirken. Gib ihm 15 bis 30 Minuten auf der Haut, um dich daran zu gewöhnen. Die Nase passt sich an und der Duft wird runder.',
-          'Günstige Oud-Düfte von Marken wie Lattafa, Montale oder Mancera sind perfekt zum Ausprobieren. So lernst du deine Vorliebe kennen, bevor du in exklusive Nischendüfte investierst.'
+          'Der erste Oud ist ein Abenteuer. Reines, rauchig-medizinisches Oud kann anfangs intensiv wirken, fast antiseptisch oder kampferartig. Das ist normal und kein Fehler – deine Nase gewöhnt sich daran und nach 15 bis 30 Minuten wird der Duft weicher und runder. Gib ihm Zeit. Viele Oud-Liebhaber sagen: Der erste Eindruck war Schock, aber nach einer Minute war es Liebe.',
+          'Wenn du Oud zum ersten Mal erlebst, wähle eine süßlich-warme Variante: Oud mit Rose, Safran, Vanille oder Amber. Diese sind zugänglicher, weil die süßen Begleiter die intensive Rauchigkeit des Ouds balancieren. Lattafa Badee Amethyst oder Montale Arabians Tonka sind perfekt für den Anfang – sie zeigen dir Oud in seiner wärmsten, verführendsten Form.',
+          'Günstige Oud-Düfte von Lattafa, Montale oder Mancera sind perfekt zum Ausprobieren. So lernst du, ob dir die Richtung überhaupt gefällt, bevor du 200 Franken für einen Tom Ford investierst. Ein Oud-Duft, der 30 Franken kostet, kann derselben psychologischen Effekt haben wie einer für 300 Franken, wenn er gut komponiert ist.'
         ]
       },
       {
-        heading: 'Worauf du bei Oud-Düften achten solltest',
+        heading: 'Die verschiedenen Oud-Typen: Welcher passt zu dir?',
         body: [
-          'Echtes Oud kostet mehr als Gold. Deshalb nutzen fast alle modernen Düfte hochwertige Oud-Akkorde statt reines Agarholzöl. Das ist völlig normal, weit verbreitet und riecht trotzdem edel und authentisch.',
-          'Oud ist intensiv und extrem langlebig. Ein bis zwei Sprühstösse reichen völlig – lieber dezent starten und bei Bedarf nachlegen. Zu viel Oud wirkt schnell aufdringlich.',
-          'Die beste Zeit für Oud ist der Herbst und Winter – warm und kuschelig, am besten am Abend oder zu besonderen Anlässen. Im Sommer wirkt Oud oft zu schwer. Kombinier es mit Rose, Safran, Vanille oder Dattel für mehr Eleganz und Balance.'
+          'Süßlich-warmer Oud mit Vanille und Amber: Das ist der einladendste Oud. Er wirkt warm, tröstet wie eine Umarmung, und ist perfekt für Anfänger. Der Oud ist präsent, aber nicht aggressiv. Lattafa Badee Amethyst ist ein Klassiker in dieser Kategorie.',
+          'Würziger Oud mit Tabak und Gewürzen: Das ist reifer, männlich kodiert, und hat mehr Charakter. Ein rauchiger Oud mit schwarzem Pfeffer oder Zimt wirkt geheimnisvoll und intellektuell. Mancera Red Tobacco geht in diese Richtung.',
+          'Blumiger Oud mit Rose und Safran: Das ist einer der elegantesten Ouds. Rose und Oud kombiniert wirken orientalisch-romantisch. Shaghaf Oud hat diese Kombination perfekt gemacht. Für alle, die Oud wollen, aber nicht auf Eleganz verzichten mögen.',
+          'Reiner, intensiver Oud: Das ist für Sammler und Oud-Liebhaber. Ein Duft wie Tom Ford Oud Wood oder Initio Oud Greatness ist tiefe Rauchigkeit, fast medizinisch, sehr langlebig. Das ist nicht zum Anfangen, sondern zum Verstehen.'
         ]
       },
       {
-        heading: 'Oud-Düfte lagern und pflegen',
+        heading: 'Oud richtig dosieren und tragen',
         body: [
-          'Oud ist kostbar und empfindlich gegenüber Hitze, Licht und Luftsauerstoff. Lagere deine Flasche dunkel und kühl, idealerweise in der Originalverpackung.',
-          'Oud-Düfte entwickeln sich über Tage und Wochen auf deiner Haut weiter. Gib deinem neuen Oud Zeit, bevor du ein Urteil fällst. Echte Oud-Liebhaber swear by dem Aging-Effekt – der Duft wird immer schöner.',
-          'Wer zu intensives Oud vortäuscht: echte Parfüme mit Oud (EDP/Eau de Parfum mindestens 15 % ätherische Öle) halten deutlich länger als Eau de Toilette.'
+          'Oud ist intensiv. Ein einzelner Sprühstoss auf die Brust oder der Nacken genügt für den ganzen Tag. Zwei Sprühstösse sind Maximum, es sei denn, du bist draußen im Freien in kaltem Wetter und willst Projektion. Ein zu intensiver Oud in einem geschlossenen Raum oder im Büro wirkt schnell erdrückend und dominierend. In diesen Kontexten: ein Sprühstoss, nicht mehr.',
+          'Die beste Zeit für Oud ist der Herbst und Winter. Die Kälte und die beheizte Innenluft helfen Oud, sich zu entfalten, ohne aufdringlich zu wirken. Im Sommer wirkt Oud oft zu schwer und cloying. Wenn du Oud im Sommer tragen möchtest, wähle einen mit leichterer Basis oder kombiniere ihn mit frischen Noten wie Rose oder Zitrus.',
+          'Oud ist am schönsten am Abend oder zu besonderen Anlässen. Im Alltag oder im Büro, wenn du subtil wirken möchtest, ist ein anderer Duft besser. Oud ist für Momente, in denen du präsent sein darfst, nicht subtil.',
+          'Eine gute Hautpflege vorher ist wichtig: Oud braucht Haftung. Eine gute Bodylotion gibt dem Duft die richtige Basis, damit er lange und schön hält, nicht zu schnell verdunstend.'
+        ]
+      },
+      {
+        heading: 'Oud-Düfte lagern, behandeln und vertiefen',
+        body: [
+          'Oud ist kostbar und empfindlich gegenüber Hitze, Licht und Luft. Lagere deine Flasche immer dunkel und kühl, idealerweise in der Originalverpackung. Im Badezimmer ist der schlechteste Ort – Temperaturwechsel und Feuchtigkeit lassen Oud schneller kippen. Ein Schrank im kühlen Schlafzimmer ist ideal.',
+          'Echte Oud-Liebhaber sagen: Oud wird mit der Zeit besser. Wenn du einen neuen Oud kaufst, gib ihm ein paar Wochen, um sich zu settlen. Der Duft kann sich auf der Haut mit der Zeit verändern, wird manchmal runder, manchmal intensiver. Das ist nicht gut oder schlecht, sondern Tiefe.',
+          'Wenn du in echte Oud-Extraits investierst (Tom Ford, Initio, Penhaligons), wissen Sie, dass echte Oud-Düfte extrem langlebig sind. Ein Duft, den du 2-3 Mal pro Woche trägst, hält dir Monate bis Jahre. Das ist eine langfristige Investition, aber eine, die sich lohnt.',
+          'Wichtig: Der Unterschied zwischen günstigen und teuren Oud-Düften liegt nicht immer darin, wie viel echter Oud drin ist, sondern in der Komposition. Ein 30-Franken-Oud von Lattafa kann derselbe psychologische Effekt haben wie ein 300-Franken-Tom Ford, wenn er gut gestaltet ist. Teste immer zuerst.'
         ]
       }
     ]
@@ -822,17 +888,21 @@ export const guides: Guide[] = [
   },
   {
     slug: 'damenduefte-die-maenner-lieben',
-    title: 'Damendüfte, die Männer lieben',
+    title: 'Frauendüfte, die Männer lieben: Wärme, Verführung & Eleganz – Die Klassiker der Anziehung',
     description:
-      'Welche Frauendüfte kommen bei Männern besonders gut an? Unsere Liste der beliebtesten „Komplimente-Düfte" für Frauen, von süss-warm bis verführerisch.',
+      'Welche Frauendüfte ziehen auf Männer an? Unsere Liste der echten „Anziehungs-Klassiker": süß, sinnlich und zeitlos. Düfte, die im Gedächtnis bleiben und echte Komplimente bringen.',
     heroImage: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1200&q=80&fit=crop',
     intro: [
-      'Manche Damendüfte ziehen einfach magisch an und ernten besonders oft Komplimente, gerade von Männern. Meist sind es warme, süsse oder sinnlich-verführerische Kompositionen, die angenehm in Erinnerung bleiben. Düfte, die man wahrnimmt und sofort denkt: „Was riecht sie gut?"',
-      'Was diese Düfte verbindet: eine süss-warme Qualität, die einladend und angenehm ist, ohne zu überwältigen. Vanille, Karamell, weicher Moschus und blumige Noten kommen dabei am häufigsten gut an.',
-      'Hier die Düfte, die als echte „Anziehungs-Klassiker" gelten. Ehrlicher Hinweis: Manche Frauen lieben sie, andere finden sie zu süss. Es kommt auf dich an.'
+      'Es gibt Frauendüfte, die scheinen auf Männer wie ein Magnet zu wirken. Lange nachdem die Frau vorbei ist, erinnert sich ein Mann noch an den Duft, und er wirkt unbewusst attraktiv auf ihn ein. Aber nicht wegen eines Tricks oder einer Manipulation, sondern weil gute Düfte die Psychologie verstehen. Die erfolgreichsten Frauendüfte kombinieren warmth, Sinnlichkeit und leichte Rätselhaftigkeit. Sie riechen nicht nach „Mädchen", sondern nach einer reifen, intelligenten Frau, die weiß, was sie will.',
+      'Was diese Düfte alle gemeinsam haben: Sie beginnen oft mit leichtem Fruchtig oder Blüte (macht den Duft nicht zu schwer), haben eine sinnliche Herznote (warme Blüten wie Rose, Orchidee oder exotische Frucht), und enden mit einer warmen, subtil süßlich-sinnlichen Basis (Vanille, Moschus, Amber). Ein Duft, der dieses Dreieck schafft, wirkt magisch anziehend, weil er Eleganz mit Verführung verbindet.',
+      'Hier sind die Klassiker, die bei Männern garantiert gut ankommen. Das ist nicht «für Männer geschrieben», sondern eine Beobachtung dessen, was psychologisch funktioniert. Eine Frau, die sich in einem dieser Düfte wohlfühlt, trägt ihn mit echtem Selbstvertrauen – und das ist die eigentliche Anziehung.'
     ],
     sections: [
       {
+        heading: 'Die größten Anziehungs-Klassiker',
+        body: [
+          'Diese Düfte sind nicht neu und nicht trendig, aber zeitlos anziehend auf Männer. Sie funktionieren, weil sie ein psychologisches Muster erfüllen, das tief sitzt: Sie wirken elegant, sinnlich und nahbar zugleich. Eine Frau, die einen dieser Düfte trägt, wird wahrgenommen als selbstbewusst, kultiviert und sinnlich intelligent.'
+        ],
         perfumes: [
           'ysl-black-opium',
           'lancome-la-vie-est-belle',
@@ -845,17 +915,28 @@ export const guides: Guide[] = [
         ]
       },
       {
-        heading: 'Was diese Düfte gemeinsam haben',
+        heading: 'Die psychologische Formel: Warum Männer diese Düfte anziehend finden',
         body: [
-          'Meist sind es warme, süsse oder sinnliche Kompositionen, mit Vanille, Amber, Praline oder weissen Blüten, die einladend und verführerisch wirken.',
-          'Gourmand-Noten (süss und „essbar") gelten als besonders anziehend, weil sie an Gemütlichkeit und Genuss erinnern.',
-          'Auch sauber-pudrige Moschus-Düfte kommen sehr gut an, weil sie nach gepflegter, weicher Haut riechen.',
-          'Wichtig: Diese Düfte sind meist präsent. Ein bis zwei Sprühstösse reichen, damit sie anziehend statt aufdringlich wirken.'
+          'Süße und Wärme gelten unbewusst als Zeichen von Femininität und Sinnlichkeit. Noten wie Vanille, Tonka und Karamell wirken auf der unbewussten Ebene vertrauenswürdig und einladend. Sie sind nicht aggressiv, sondern zieht. Das ist auch, warum viele traditionelle Verführungs-Düfte süße Basis-Noten haben.',
+          'Blumige Noten wie Rose, Jasmin und Orchidee werden mit Romantik und Weiblichkeit assoziiert. Sie wirken nicht hart, sondern elegant-weich. Eine Rose mit Vanille ist die klassische «Verführungs-Formel» in der Parfümerie – und sie funktioniert auch heute noch, weil Männer diese Kombination psychologisch als attraktiv wahrnehmen.',
+          'Amber und Moschus wirken nach gepflegter, warmer Haut. Sie riechen nach Nähe und Zärtlichkeit, nicht nach chemikalischen Dingen. Das ist, warum pudrige, moschus-artige Frauendüfte auf Männer hypnotisierend wirken.',
+          'Das Geheimnis ist Balance: Der Duft darf nicht zu aufdringlich sein, nicht zu laut. Ein Frauenduft, der sehr intensiv ist, kann überwältigend wirken. Die besten Anziehungs-Düfte sind solche, die nur aus der Nähe zu riechen sind, die aber dann intensiv wirken. Das schafft Anziehung auf unbewusster Ebene.',
+          'Süßlichkeit ohne Infantilität: Ein guter süßer Frauenduft ist niemals niedlich oder mädchenhaft. Er ist reif, sinnlich und intelligent. Das ist der Unterschied zwischen «verspielte Süße» (wirkt jung) und «sinnliche Süße» (wirkt reif). Die guten Düfte haben diese Reife.'
+        ]
+      },
+      {
+        heading: 'Für verschiedene Kontexte und Ziele',
+        body: [
+          'Für das erste Date: Ein Duft, der nicht zu dominant ist, aber sinnlich wirkt. YSL Black Opium oder Lancôme La Vie Est Belle haben diese Balance perfekt. Sie wirken sexy ohne aufdringlich zu sein.',
+          'Für etablierte Beziehungen: Ein Duft, den der Partner kennt und liebt, wird zu eurem «gemeinsamen Duft». Coco Mademoiselle oder Mon Paris werden zu Düften, die sofort mit dir verbunden sind. Das ist Langzeit-Anziehung.',
+          'Für alltägliche Anziehung: Ein pudrig-moschusartiger Duft wie Lattafa Yara oder Gisada Ambassadora wirkt im Alltag, beim Einkaufen oder im Büro, immer noch subtil anziehend. Es ist nicht aufdringlich, aber man bemerkt es.',
+          'Für intensive Momente: Ein sehr sinnlicher, warmer Duft wie Black Opium mit mehr Dosierung wirkt am Abend oder in intimen Kontexten magisch anziehend. Hier darf der Duft sinnlich und full-bodied sein.',
+          'Wichtig in allen Kontexten: Dosierung und Selbstvertrauen sind wichtiger als der Duft selbst. Eine Frau, die sich in einem Duft wohlfühlt und ihn mit Selbstvertrauen trägt, wird immer attraktiver wirken als eine Frau, die sich unwohl fühlt, aber einen «anziehenden» Duft trägt.'
         ]
       },
       {
         body: [
-          'Ehrlich gesagt: „Was Männer mögen" ist Geschmackssache und sehr individuell. Der schönste Duft ist der, in dem du dich selbstbewusst fühlst. Mach unser Quiz, um deine eigene Lieblingsrichtung zu finden.'
+          'Das wichtigste Geheimnis: Es geht nicht darum, für Männer zu fallen oder dich zu manipulieren. Es geht darum, einen Duft zu tragen, der du liebst, in dem du dich selbstbewusst und elegant fühlst. Diese echte Sicherheit ist die größte Anziehung. Mach das Quiz und finde deine eigene Lieblingsrichtung. Dann trage sie mit voller Überzeugung – das ist was wirklich anziehend ist.'
         ]
       }
     ]
@@ -1030,19 +1111,20 @@ export const guides: Guide[] = [
   },
   {
     slug: 'die-besten-fruehlingsduefte',
-    title: 'Die besten Frühlingsdüfte: frisch, blumig & leicht',
+    title: 'Die besten Frühlingsdüfte: Aufbruch, Grüne Noten & Blüten-Eleganz',
     description:
-      'Leichte, blumig-frische Düfte für den Frühling: grüne Noten, Blüten und Zitrus. Unsere Frühlings-Favoriten für Damen und Herren, von günstig bis edel.',
+      'Der Frühling braucht Leichtigkeit. Entdecke blumig-frische Düfte mit grünen Noten, zarten Blüten und Zitrus. Von zart bis mutig, für Alltag und besondere Momente. Deine Frühlings-Signatur wartet.',
     heroImage: '/ratgeber/die-besten-fruehlingsduefte.jpg',
     intro: [
-      'Der Frühling ruft nach leichten, lebendigen Düften: zarte Blüten, grüne Noten und ein Hauch Zitrus passen perfekt zu den ersten warmen Tagen. Die schweren Winterdüfte kommen in die Schublade. Jetzt ist Zeit für Frische und Leichtigkeit.',
-      'Wir haben die schönsten Frühlingsdüfte aus unserem Katalog zusammengestellt: für Damen, Herren und alle dazwischen, von erschwinglich bis edel.'
+      'Der Frühling ist ein Neuanfang, und dein Duft sollte das spiegeln. Die schweren, dunklen Winterdüfte kommen jetzt in den Schrank. Der Frühling ruft nach Leichtigkeit, nach Düften, die wie eine Brise riechen, wie die erste grüne Knospe, wie Zitrus und Blüten in der Sonne. Ein großartiger Frühlingsduft macht dich nicht nur riechen, sondern fühlen: energetisch, erwacht, hoffnungsvoll. Die Psychologie ist klar: Im Frühling sehnen wir uns nach Helligkeit und Bewegung, und ein frischer, lebendiger Duft unterstützt diesen mentalen Übergang.',
+      'Die Intelligenz eines Frühlingsduft liegt in seiner Balance zwischen Frische und Struktur. Es reicht nicht, einfach nur Zitrus zu nehmen. Ein wirklich großartiger Frühlingsduft hat Tiefe: vielleicht grüne aromatische Noten, ein Hauch Blüte im Herz, und eine dezente, wärmende Basis, die den Duft zusammenhält, wenn die Sonne untergeht. Der Frühling ist die Jahreszeit, in der Düfte am schnellsten verflogen, aber auch wo sie am schönsten funktionieren, weil deine Nase frischer ist.',
+      'Hier findest du unsere liebsten Frühlingsdüfte: blumig, grün, zart, manchmal mit einem Hauch Frucht. Manche sind zeitlose Klassiker, andere sind moderne Entdeckungen. Alle funktionieren wunderbar in dieser magischen Jahreszeit.'
     ],
     sections: [
       {
-        heading: 'Die besten Frühlingsdüfte für Damen',
+        heading: 'Die schönsten Frühlingsdüfte – von zart bis mutig',
         body: [
-          'Blüten, zarte Früchte und ein Hauch Grün: Diese Düfte fangen den Frühling in einer Flasche ein.'
+          'Ein großartiger Frühlingsduft braucht Charakter. Die folgenden Düfte repräsentieren die Bandbreite: von zarten, pudrig-blumigen bis zu grünen, strukturierten Kompositionen. Alle sind leicht, alle funktionieren im Frühling wunderbar.'
         ],
         perfumes: [
           'marc-jacobs-daisy',
@@ -1055,40 +1137,33 @@ export const guides: Guide[] = [
         ]
       },
       {
-        heading: 'Die besten Frühlingsdüfte für Herren',
+        heading: 'Frühlings-Duft-Familien: Welche Energie passt zu dir?',
         body: [
-          'Frisch, sauber und lebendig: Diese Herrendüfte sind ideal für wärmere Tage und hinterlassen einen positiven ersten Eindruck.'
-        ],
-        perfumes: [
-          'montblanc-legend',
-          'creed-git',
-          'pdm-greenley',
-          'armani-acqua-di-gio-homme',
-          'davidoff-cool-water',
-          'allure-homme-sport'
+          'Blumig-zarte Düfte riechen nach Blüten im frühesten Stadium: Pfirsich-Blüte, Kirsche-Blüte, Magnolie. Sie sind feminin, weich und manchmal mit pudrig-weiße Basis. Diese Düfte wirken romantisch und sanft. Perfekt, wenn du es zart magst.',
+          'Grüne und aromatische Düfte sind modern und strukturiert. Sie riechen nach grünen Blättern, manchmal Galbanum, manchmal grüner Tee. Sie wirken frisch, weniger süß als blumige, und unglaublich erfrischend. Diese Familie ist für diejenigen, die Leichtigkeit mit Charakter wollen.',
+          'Zitrus-Blüten-Kombinationen sind die klassische Frühlingsformel. Ein Hauch Zitrus, dazu zartes Blüten-Herz, dezente Basis. Das ist der Inbegriff von Frühling: hell, hell, hell, aber mit etwas Struktur.',
+          'Fruchtig-blumige Düfte kombinieren Blüten mit Frucht-Akkorden wie Pfirsich, Apfel oder Birne. Sie wirken jung, verspielt und energetisch. Perfekt für aktive, freche Frühlings-Momente.'
         ]
       },
       {
-        heading: 'Günstige Frühlingsdüfte unter 50 CHF',
+        heading: 'Frühlingsdüfte für verschiedene Kontexte',
         body: [
-          'Frühling muss nicht teuer sein. Diese Düfte liefern echte Frühlingsfrische zum kleinen Preis,ekt für den Alltag.'
-        ],
-        perfumes: [
-          'davidoff-cool-water',
-          'lattafa-yara',
-          'sdj-cheirosa-62',
-          'club-de-nuit-intense'
+          'Alltag & Büro: Eine zarte oder grüne Frühlingskomposition ist ideal. Sie wirkt frisch, ohne dich zu dominieren. Ein bis zwei Sprühstösse reichen, weil der Frühling auch der Jahreszeit ist, wo Düfte schneller evaporieren.',
+          'Date im Freien: Ein fruchtig-blumiger Duft mit ein bisschen mehr Charakter funktioniert hervorragend. Die frische Luft, die Sonne, deine erwachte Haut nach dem Winter – alles spielt zusammen. Vermeide schwere oder warme Düfte, die wirken im Frühling fehl am Platz.',
+          'Abends & bei Kühle: Wenn es nach Sonnenuntergang noch kühl wird, ein Hauch wärmere Basis (subtiles Moschus oder sanftes Holz) gibt dem Frühlingsduft Halt. Das ist die Schönheit des Übergangssasons: Das gleiche Duft funktioniert vom Tag ins Abend.',
+          'Sport & Outdoor: Aquatische oder grüne Frühjahrs-Düfte sind hier ideal. Sauber, leicht, präsent, aber nicht aufdringlich. Dein Körper wird warm, der Duft wird sich mit der Aktivität verändern – das ist Teil des Erlebnisses.'
         ]
       },
       {
-        heading: 'Frühlingsduft für jeden Anlass',
+        heading: 'Haltbarkeit und Dosierung im Frühling',
         body: [
-          'Alltag & Büro: Leichte florale oder grüne Düfte begleiten dich dezent durch den Tag ohne aufzufallen. Weniger ist mehr. Ein bis zwei Sprühstösse reichen.',
-          'Date im Freien: Ein fruchtig-blumiger Duft wirkt frisch, einladend und sympathisch. Vermeide schwere orientalische Düfte. Sie wirken im Frühling zu wuchtig.',
-          'Abends & Übergang: Wenn es abends noch kühl wird, darf ein Hauch Moschus oder sanftes Holz im Basisakkord für angenehme Wärme sorgen.',
-          'Sport & Outdoor: Aquatische und grüne Düfte sind hier ideal, leicht, sauber und trotzdem präsent.'
+          'Frühjahrs-Düfte halten oft nicht ganz so lange wie Winter- oder sogar Sommerdüfte. Das ist ok, weil sie für diese Jahreszeit dimensioniert sind. Ein Frühlingsduft, der vier bis fünf Stunden hält, ist perfekt. Die leichte, frische Formel evaporiert schneller.',
+          'Dosierung: Der Frühling verlangt nach weniger als der Sommer. Ein Sprühstoss am Hals und vielleicht eine kleine Auffrischung am Nachmittag. Die milde Temperatur und deine regenerierte Haut (nach dem Winter) verstärken den Duft natürlich.',
+          'Praktischer Tipp: Ein tragbarer Zerstäuber mit deinem Frühjahrs-Liebling ist ideal. Nach dem Training, nach dem Lunch, wenn dich die Nase ruft – ein schneller Sprühstoss holt dich ins Jetzt zurück.'
         ]
-      },
+      }
+    ]
+  },
       {
         heading: 'Worauf du beim Kauf achten solltest',
         body: [

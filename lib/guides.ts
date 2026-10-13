@@ -237,7 +237,7 @@ export const guides: Guide[] = [
     title: 'Die besten Unisex-Düfte: Geschlechterlos schön – für jeden sein eigenes Abenteuer',
     description:
       'Unisex-Düfte ohne Geschlechts-Grenzen: vielseitig, charaktervoll & elegant. Von Sandelholz bis Gypsy Water – unsere liebsten Düfte, die Grenzen sprengen und zu wirklich jedem passen.',
-    heroImage: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/unisex-duefte-hero.png',
     intro: [
       'Unisex-Düfte sind nicht auf Damen oder Herren festgelegt – sie sind für dich, egal wer du bist. Sie sind das Gegenteil von Klischees und Schubladen. Ein Duft, der nicht flüstert „ich bin männlich oder weiblich", sondern der laut sagt: „ich bin ein Abenteuer, ein Erlebnis, eine Individualität". Die besten Unisex-Düfte sind vielseitig, ausgewogen, charaktervoll – nicht zu süss-blumig, nicht zu holzig-maskulin, sondern unerwartete, elegante Kompositionen, die auf jeder Haut anders funktionieren.',
       'Die Kategorie Unisex hat sich in den letzten Jahren revolutioniert. Nischenhäuser wie Le Labo, Byredo und Maison Francis Kurkdjian haben die Grenze zwischen „für ihn" und „für sie" bewusst aufgelöst und zeigen, dass die beste Duft-Logik ist: „riecht es auf deiner Haut schön?" Das ist alles. Diese Bewegung hat dem ganzen Duft-Universum gutgetan.',

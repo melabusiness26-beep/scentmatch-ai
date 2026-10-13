@@ -234,14 +234,14 @@ export const guides: Guide[] = [
   },
   {
     slug: 'die-besten-unisex-duefte',
-    title: 'Die besten Unisex-Düfte: für alle gemacht',
+    title: 'Die besten Unisex-Düfte: Geschlechterlos schön – für jeden sein eigenes Abenteuer',
     description:
-      'Düfte ohne Geschlecht: vielseitige Unisex-Parfüms, die an jedem gut riechen, von frisch bis warm-holzig.',
+      'Unisex-Düfte ohne Geschlechts-Grenzen: vielseitig, charaktervoll & elegant. Von Sandelholz bis Gypsy Water – unsere liebsten Düfte, die Grenzen sprengen und zu wirklich jedem passen.',
     heroImage: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=1200&q=80&fit=crop',
     intro: [
-      'Unisex-Düfte sind nicht auf Damen oder Herren festgelegt. Sie passen einfach zu dir, egal wer du bist. Oft sind es vielseitige, ausgewogene Kompositionen. Nicht zu süss-blumig, nicht zu holzig-maskulin, sondern irgendwo dazwischen.',
-      'Die Kategorie Unisex hat sich in den letzten Jahren enorm entwickelt. Heute tragen Nischenhäuser wie Le Labo, Byredo oder Maison Francis Kurkdjian aktiv dazu bei, dass die Grenze zwischen „für ihn" und „für sie" immer mehr verschwimmt. Zum Vorteil aller.',
-      'Hier unsere Lieblinge zum Teilen oder einfach für jeden Geschmack: vielseitig, hochwertig und ohne Schubladendenken.'
+      'Unisex-Düfte sind nicht auf Damen oder Herren festgelegt – sie sind für dich, egal wer du bist. Sie sind das Gegenteil von Klischees und Schubladen. Ein Duft, der nicht flüstert „ich bin männlich oder weiblich", sondern der laut sagt: „ich bin ein Abenteuer, ein Erlebnis, eine Individualität". Die besten Unisex-Düfte sind vielseitig, ausgewogen, charaktervoll – nicht zu süss-blumig, nicht zu holzig-maskulin, sondern unerwartete, elegante Kompositionen, die auf jeder Haut anders funktionieren.',
+      'Die Kategorie Unisex hat sich in den letzten Jahren revolutioniert. Nischenhäuser wie Le Labo, Byredo und Maison Francis Kurkdjian haben die Grenze zwischen „für ihn" und „für sie" bewusst aufgelöst und zeigen, dass die beste Duft-Logik ist: „riecht es auf deiner Haut schön?" Das ist alles. Diese Bewegung hat dem ganzen Duft-Universum gutgetan.',
+      'Hier unsere liebsten Unisex-Düfte – zum Teilen, zum Entdecken, zum Brechen von Grenzen. Vielseitig, hochwertig, ohne Gedanken an Geschlecht.'
     ],
     sections: [
       {
@@ -257,19 +257,29 @@ export const guides: Guide[] = [
         ]
       },
       {
-        heading: 'Was macht einen Unisex-Duft aus?',
+        heading: 'Was macht einen Unisex-Duft wirklich aus?',
         body: [
-          'Unisex-Düfte verzichten auf typisch „weibliche" oder „männliche" Klischees und setzen auf ausgewogene, vielseitige Kompositionen. Oft holzig, frisch oder leicht orientalisch, selten rein blumig oder übermässig pudrig.',
-          'Sie eignen sich perfekt zum Teilen im Haushalt: Ein Flakon für zwei funktioniert wunderbar, wenn beide ähnliche Duftvorlieben haben. Und für alle, die sich nicht festlegen wollen, sind Unisex-Düfte ohnehin die beste Wahl.',
-          'Tipp: Ignorier beim Testen ruhig die „Damen-" und „Herren-"-Schilder. Die meisten wurden willkürlich gesetzt. Entscheidend ist allein, ob der Duft auf deiner Haut schön riecht und zu deinem Stil passt.'
+          'Keine weiblichen oder männlichen Klischees: Unisex-Düfte verzichten bewusst auf die typische Codierung (süss-blumig = feminin, holzig-würzig = maskulin) und setzen auf ausgewogene, vielschichtige Kompositionen. Oft holzig, frisch, aromatisch oder leicht orientalisch – selten rein blumig, selten übermässig pudrig.',
+          'Geschlechterlos ≠ charakterlos: Ganz im Gegenteil! Die besten Unisex-Düfte haben enorme Tiefe und Persönlichkeit. Sie wirken einfach nicht stereotyp, sondern originell, individuell und elegant.',
+          'Unglaubliche Vielseitigkeit: Ein Flakon funktioniert für mehrere Menschen, die verschiedene Geschlechter haben. Das spart nicht nur Geld – es zeigt auch, wie universal gute Düfte sein können, wenn man die Codierung weglässt.'
         ]
       },
       {
         heading: 'Worauf du bei Unisex-Düften achten solltest',
         body: [
-          'Unisex heisst nicht „langweilig" oder „neutral": Die besten Unisex-Düfte haben viel Charakter. Sie wirken nur nicht stereotyp männlich oder weiblich.',
-          'Teste Unisex-Düfte immer auf der eigenen Haut. Durch die fehlende Geschlechter-Codierung entfalten sie sich besonders individuell. Auf mancher Haut wirken sie holziger, auf anderer blumiger.',
-          'Viele Unisex-Düfte sind etwas intensiver als klassische Mainstream-Düfte. Starte mit einem Sprühstoss und schau, wie weit er projiziert, bevor du nachdosierst.'
+          'Ignoriere die Etikettierungen bewusst. Die „Damen-" und „Herren-"-Schilder sind oft willkürlich gesetzt (manchmal auch politisch motiviert). Entscheidend ist allein: Riecht es auf deiner Haut schön? Passt es zu deinem Leben?',
+          'Teste auf deiner eigenen Haut. Durch die fehlende Geschlechts-Codierung entfalten sich Unisex-Düfte besonders individuell. Auf mancher Haut wirken sie holziger, auf anderer blumiger, auf einer dritten aromatischer. Das ist die Schönheit.',
+          'Viele Unisex-Düfte sind intensiver als klassische Mainstream-Düfte. Starte mit einem Sprühstoss und beobachte, wie weit die Projektion reicht, bevor du nachdosierst. Qualität braucht oft weniger.',
+          'Denk an Layering: Unisex-Düfte eignen sich wunderbar zum Schichten mit anderen Düften oder Body-Produkten. Sie sind neutrale, großartige Basis-Partner für Duft-Experimente.'
+        ]
+      },
+      {
+        heading: 'Unisex für jeden Moment',
+        body: [
+          'Alltag & Büro: Unisex-Düfte sind perfekt für professionelle Umgebungen, weil sie sich niemandem aufdrängen und universal angenehm wirken. Sie sagen nichts über dein Geschlecht – nur über deinen Geschmack.',
+          'Abends & Abenteuer: Viele Unisex-Düfte (wie Baccarat Rouge 540) sind intensive, tiefe Düfte für besondere Momente. Sie funktionieren hervorragend für Dates, Partys, Momente, wo du leuchten möchtest.',
+          'Jahreszeiten: Von frischen Unisex-Düften im Sommer (Gypsy Water) bis zu wärmeren im Winter (Santal 33, Tobacco Vanille) – diese Kategorie hat für jede Jahreszeit etwas.',
+          'Sharing & Pairing: Das beste Merkmal: Teilen! Ein Duft für zwei Menschen funktioniert nur, wenn die Geschlechts-Codierung weg ist. Genau das ist der Punkt von Unisex.'
         ]
       }
     ]

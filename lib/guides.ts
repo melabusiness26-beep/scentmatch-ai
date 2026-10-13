@@ -1073,9 +1073,9 @@ export const guides: Guide[] = [
       'Der Frühling braucht Leichtigkeit. Entdecke blumig-frische Düfte mit grünen Noten, zarten Blüten und Zitrus. Von zart bis mutig, für Alltag und besondere Momente. Deine Frühlings-Signatur wartet.',
     heroImage: '/ratgeber/die-besten-fruehlingsduefte.jpg',
     intro: [
-      'Der Frühling ist ein Neuanfang, und dein Duft sollte das spiegeln. Die schweren, dunklen Winterdüfte kommen jetzt in den Schrank. Der Frühling ruft nach Leichtigkeit, nach Düften, die wie eine Brise riechen, wie die erste grüne Knospe, wie Zitrus und Blüten in der Sonne. Ein großartiger Frühlingsduft macht dich nicht nur riechen, sondern fühlen: energetisch, erwacht, hoffnungsvoll. Die Psychologie ist klar: Im Frühling sehnen wir uns nach Helligkeit und Bewegung, und ein frischer, lebendiger Duft unterstützt diesen mentalen Übergang.',
-      'Die Intelligenz eines Frühlingsduft liegt in seiner Balance zwischen Frische und Struktur. Es reicht nicht, einfach nur Zitrus zu nehmen. Ein wirklich großartiger Frühlingsduft hat Tiefe: vielleicht grüne aromatische Noten, ein Hauch Blüte im Herz, und eine dezente, wärmende Basis, die den Duft zusammenhält, wenn die Sonne untergeht. Der Frühling ist die Jahreszeit, in der Düfte am schnellsten verflogen, aber auch wo sie am schönsten funktionieren, weil deine Nase frischer ist.',
-      'Hier findest du unsere liebsten Frühlingsdüfte: blumig, grün, zart, manchmal mit einem Hauch Frucht. Manche sind zeitlose Klassiker, andere sind moderne Entdeckungen. Alle funktionieren wunderbar in dieser magischen Jahreszeit.'
+      'Im Frühling brauchst du Leichtigkeit statt Schwere. Die dunklen Winterdüfte kommen in den Schrank. Der Frühling verlangt nach Düften, die wie eine Brise riechen – Zitrus und Blüten in der Sonne. Ein guter Frühlingsduft macht dich nicht nur riechen, sondern fühlen: energetisch, erwacht.',
+      'Das Geheimnis liegt in der Balance zwischen Frische und Struktur. Es reicht nicht, einfach nur Zitrus zu nehmen. Ein großartiger Frühlingsduft hat Tiefe: vielleicht grüne aromatische Noten, ein Hauch Blüte im Herz, und eine dezente, wärmende Basis, die den Duft zusammenhält, wenn die Sonne untergeht. Der Frühling ist die Jahreszeit, in der Düfte am schnellsten verfliegen, aber auch wo sie am schönsten funktionieren.',
+      'Hier sind unsere liebsten Frühlingsdüfte: blumig, grün, zart, manchmal mit Frucht. Klassiker und moderne Entdeckungen, alle funktionieren wunderbar in dieser Jahreszeit.'
     ],
     sections: [
       {
@@ -1094,29 +1094,21 @@ export const guides: Guide[] = [
         ]
       },
       {
-        heading: 'Frühlings-Duft-Familien: Welche Energie passt zu dir?',
+        heading: 'Die verschiedenen Frühjahrs-Familien',
         body: [
-          'Blumig-zarte Düfte riechen nach Blüten im frühesten Stadium: Pfirsich-Blüte, Kirsche-Blüte, Magnolie. Sie sind feminin, weich und manchmal mit pudrig-weiße Basis. Diese Düfte wirken romantisch und sanft. Perfekt, wenn du es zart magst.',
-          'Grüne und aromatische Düfte sind modern und strukturiert. Sie riechen nach grünen Blättern, manchmal Galbanum, manchmal grüner Tee. Sie wirken frisch, weniger süß als blumige, und unglaublich erfrischend. Diese Familie ist für diejenigen, die Leichtigkeit mit Charakter wollen.',
-          'Zitrus-Blüten-Kombinationen sind die klassische Frühlingsformel. Ein Hauch Zitrus, dazu zartes Blüten-Herz, dezente Basis. Das ist der Inbegriff von Frühling: hell, hell, hell, aber mit etwas Struktur.',
-          'Fruchtig-blumige Düfte kombinieren Blüten mit Frucht-Akkorden wie Pfirsich, Apfel oder Birne. Sie wirken jung, verspielt und energetisch. Perfekt für aktive, freche Frühlings-Momente.'
+          'Blumig-zart: Pfirsich-Blüte, Kirsche-Blüte, Magnolie – feminin, weich, manchmal pudrig. Romantisch und sanft. Grün & aromatisch: Grüne Blätter, Galbanum, grüner Tee – modern, strukturiert, frisch. Für diejenigen, die Leichtigkeit mit Charakter wollen. Zitrus-Blüte: Die klassische Formel – Zitrus, zartes Blüten-Herz, dezente Basis. Die Essenz von Frühling. Fruchtig-blumig: Blüten + Frucht-Akkorde wie Pfirsich oder Apfel – jung, verspielt, energetisch.'
         ]
       },
       {
-        heading: 'Frühlingsdüfte für verschiedene Kontexte',
+        heading: 'Frühlingsdüfte in verschiedenen Momenten',
         body: [
-          'Alltag & Büro: Eine zarte oder grüne Frühlingskomposition ist ideal. Sie wirkt frisch, ohne dich zu dominieren. Ein bis zwei Sprühstösse reichen, weil der Frühling auch der Jahreszeit ist, wo Düfte schneller evaporieren.',
-          'Date im Freien: Ein fruchtig-blumiger Duft mit ein bisschen mehr Charakter funktioniert hervorragend. Die frische Luft, die Sonne, deine erwachte Haut nach dem Winter – alles spielt zusammen. Vermeide schwere oder warme Düfte, die wirken im Frühling fehl am Platz.',
-          'Abends & bei Kühle: Wenn es nach Sonnenuntergang noch kühl wird, ein Hauch wärmere Basis (subtiles Moschus oder sanftes Holz) gibt dem Frühlingsduft Halt. Das ist die Schönheit des Übergangssasons: Das gleiche Duft funktioniert vom Tag ins Abend.',
-          'Sport & Outdoor: Aquatische oder grüne Frühjahrs-Düfte sind hier ideal. Sauber, leicht, präsent, aber nicht aufdringlich. Dein Körper wird warm, der Duft wird sich mit der Aktivität verändern – das ist Teil des Erlebnisses.'
+          'Alltag & Büro: Eine zarte oder grüne Komposition ist ideal – frisch, aber nicht dominierend. Ein bis zwei Sprühstösse reichen, weil Düfte im Frühling schneller verfliegen. Date im Freien: Ein fruchtig-blumiger Duft mit Charakter funktioniert – frische Luft, Sonne, deine erwachte Haut nach dem Winter spielen zusammen. Vermeide schwere, warme Düfte. Abends & Kühle: Ein Hauch wärmere Basis (subtiles Moschus oder sanftes Holz) gibt Halt, wenn es nach Sonnenuntergang kühl wird. Sport & Outdoor: Aquatische oder grüne Frühjahrs-Düfte sind ideal – sauber, leicht, präsent, aber nicht aufdringlich.'
         ]
       },
       {
-        heading: 'Haltbarkeit und Dosierung im Frühling',
+        heading: 'Haltbarkeit und Dosierung',
         body: [
-          'Frühjahrs-Düfte halten oft nicht ganz so lange wie Winter- oder sogar Sommerdüfte. Das ist ok, weil sie für diese Jahreszeit dimensioniert sind. Ein Frühlingsduft, der vier bis fünf Stunden hält, ist perfekt. Die leichte, frische Formel evaporiert schneller.',
-          'Dosierung: Der Frühling verlangt nach weniger als der Sommer. Ein Sprühstoss am Hals und vielleicht eine kleine Auffrischung am Nachmittag. Die milde Temperatur und deine regenerierte Haut (nach dem Winter) verstärken den Duft natürlich.',
-          'Praktischer Tipp: Ein tragbarer Zerstäuber mit deinem Frühjahrs-Liebling ist ideal. Nach dem Training, nach dem Lunch, wenn dich die Nase ruft – ein schneller Sprühstoss holt dich ins Jetzt zurück.'
+          'Frühjahrs-Düfte halten oft nicht so lange wie Winter- oder Sommerdüfte – das ist normal, weil sie für diese Jahreszeit gemacht sind. Ein Frühlingsduft, der vier bis fünf Stunden hält, ist perfekt. Der Frühling verlangt nach weniger Dosierung als der Sommer: ein Sprühstoss am Hals, vielleicht eine kleine Auffrischung am Nachmittag. Milde Temperatur und deine regenerierte Haut verstärken den Duft natürlich. Tipp: Ein tragbarer Zerstäuber mit deinem Liebling ist ideal – ein schneller Sprühstoss nach dem Training oder Lunch belebt dich.'
         ]
       }
     ]

@@ -1412,26 +1412,16 @@ export const guides: Guide[] = [
       'Layering bedeutet, zwei Düfte zu schichten und so deine eigene Duftkreation zu erschaffen. So gelingt das Kombinieren, einfach erklärt.',
     heroImage: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=1200&q=80&fit=crop',
     intro: [
-      'Beim Layering trägst du zwei Düfte übereinander und erschaffst so eine ganz persönliche Note, die niemand sonst genau so hat. Das klingt nach Profi-Kunst, ist aber einfacher als gedacht und macht grossen Spass beim Experimentieren.',
-      'Viele Nischenmarken empfehlen das Layering sogar ausdrücklich: Le Labo, Byredo oder Maison Margiela verkaufen bewusst unisexe, „neutrale" Düfte, die als Schicht für andere funktionieren. Du brauchst kein teures Arsenal – manchmal reicht ein einfacher Body-Splash als Basis unter deinem Lieblingsduft.',
-      'Klingt kompliziert, ist es aber nicht. Mit ein paar einfachen Regeln gelingt es dir sofort und du entdeckst Kombinationen, die kein Parfümeur je so gebaut hat.'
+      'Layering bedeutet, zwei Düfte übereinander zu tragen und so deine eigene Duftkreation zu erschaffen. Das klingt nach Profi-Kunst, ist aber einfach und macht Spass beim Experimentieren – und am Ende hast du etwas, das niemand sonst genau so trägt.',
+      'Viele Nischenmarken empfehlen das ausdrücklich: Le Labo, Byredo und Maison Margiela verkaufen bewusst unisexe, „neutrale" Düfte, die als Schicht funktionieren. Du brauchst kein teures Arsenal – manchmal reicht ein einfacher Body-Splash als Basis.',
+      'Mit ein paar Grundregeln gelingt es dir sofort. Entdecke Kombinationen, die kein Parfümeur je so konzipiert hat.'
     ],
     sections: [
       {
-        heading: 'Die Grundregeln',
+        heading: 'Wie es funktioniert',
         body: [
-          'Kombiniere einen einfachen, „glatten" Duft mit einem charaktervollen, zum Beispiel eine Vanille- oder Moschus-Basis mit etwas Würzigem oder Holzigem.',
-          'Trag den schwereren Duft zuerst auf, dann den leichteren darüber.',
-          'Weniger ist mehr: ein Sprühstoss pro Duft genügt zum Ausprobieren.'
-        ]
-      },
-      {
-        heading: 'Was gut zusammenpasst',
-        body: [
-          'Vanille und Holz: warm und gemütlich.',
-          'Rose und Oud: edel und orientalisch.',
-          'Zitrus und Vanille: frisch startend, warm endend.',
-          'Moschus passt fast immer und macht jeden Duft weicher.'
+          'Kombiniere einen einfachen Duft mit einem charaktervollen – zum Beispiel eine Vanille- oder Moschus-Basis mit etwas Würzigem oder Holzigem. Trag den schwereren zuerst auf, dann den leichteren darüber. Weniger ist mehr: ein Sprühstoss pro Duft zum Ausprobieren reicht.',
+          'Gute Paarungen: Vanille + Holz (warm und gemütlich), Rose + Oud (edel und orientalisch), Zitrus + Vanille (frisch startend, warm endend). Moschus passt fast immer und macht jeden Duft weicher.'
         ]
       },
       {

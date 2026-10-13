@@ -664,9 +664,9 @@ export const guides: Guide[] = [
       'Welche Herrendüfte ziehen an? Unsere Liste der echten „Kompliment-Klassiker" für Männer: elegant, einladend und unvergessen. Die Düfte, die Frauen wirklich mag und lange erinnert.',
     heroImage: 'https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=1200&q=80&fit=crop',
     intro: [
-      'Es gibt Düfte, die sammeln Komplimente wie ein Magnet. Ein Mann trägt sie einmal, und Stunden später fragen Frauen in seiner Nähe: „Was riechst du?" Das sind nicht die lautesten Düfte, nicht die intensivsten, sondern Düfte, die eine bestimmte psychologische Wirkung haben: Sie wirken nahbar, vertrauenswürdig und sinnlich zugleich. Sie sagen ohne Worte: Hier ist jemand, der auf sich selbst achtet, der nicht aggressiv ist, sondern einladend. Das ist Anziehung auf chemischer Ebene.',
-      'Die Psychologie dahinter ist klar: Frauen werden tendenziell zu Düften hingezogen, die Wärme, Sauberkeit und Nähe ausstrahlen. Ein intensiver Oud-Duft kann elegant sein, wirkt aber oft zu dominant. Ein reiner Zitrus-Duft wirkt manchmal zu kühl. Die besten Männerdüfte für Frauen treffen eine bestimmte Balance: Sie haben eine warme Basis (Vanille, Amber, Moschus), aber vorne genug Frische (Zitrus, aromatische Noten) zum Balancieren. Das ist die Formel.',
-      'Hier sind unsere liebsten Männerdüfte, die bei Frauen garantiert gut ankommen. Das heißt nicht, dass der Mann den Duft für Frauen trägt, sondern dass er mit diesem Duft selbstbewusst wirkt und dadurch natürlich anziehend ist. Ein Duft ist immer eine Erweiterung der Persönlichkeit, nicht ein Manipulationsmittel.'
+      'Manche Düfte sammeln Komplimente wie ein Magnet. Ein Mann trägt sie, und Stunden später fragen Frauen: Was ist das? Das sind nicht die lautesten oder intensivsten – paradoxerweise sind es gerade die Düfte, die von Nähe aus wirken, die echte Anziehung schaffen. Sie kommunizieren etwas Subtiles: Hier ist jemand, der auf sich achtet, nicht aufdringlich, sondern einladend.',
+      'Was funktioniert, hat weniger mit Chemie als mit Balance zu tun. Düfte, auf die Frauen reagieren, kombinieren Wärme (Vanille, Amber, Moschus) mit Frische – sodass sie nicht erdrückend wirken, aber dennoch präsent sind. Ein reiner Oud-Duft kann elegant sein, wirkt aber oft zu dominant in Nähe. Ein reiner Zitrus zu unbeteiligt. Die besten liegen dazwischen.',
+      'Wichtig: Dieser Duft ist für dich, nicht für andere. Der beste Effekt entsteht, wenn du dich selbstbewusst fühlst – das ist echter Magnetismus. Ein Duft ist eine Erweiterung deiner Persönlichkeit, nicht ein Instrument der Manipulation.'
     ],
     sections: [
       {
@@ -686,20 +686,19 @@ export const guides: Guide[] = [
         ]
       },
       {
-        heading: 'Warum Frauen diese Düfte auf Männern lieben',
+        heading: 'Was funktioniert wirklich',
         body: [
-          'Die erfolgreichsten Männerdüfte haben ein psychologisches Muster. Sie beginnen mit Frische oder Frucht (macht den Duft nicht zu schwer), haben eine warme, süßliche oder würzige Herznote (wirkt sinnlich und sauber zugleich), und enden mit einer warmen Basis (Vanille, Amber, Moschus). Ein Duft, der mit dieser Formel gut gemacht ist, wirkt auf Frauen fast magisch anziehend.',
-          'Warme, würzige Noten wie Zimt, schwarzer Pfeffer und Ambroxan werden oft als besonders „männlich" und anziehend wahrgenommen. Aber nicht, weil sie aggressiv sind, sondern weil sie Wärme ausstrahlen. Ein würziger Duft auf einem Mann, der sich selbst kennt, wirkt selbstbewusst und elegant.',
-          'Süße Noten wie Vanille, Tonka oder Dattel gelten überraschenderweise nicht als weiblich oder unmännlich. Ein Mann, der einen Duft mit subtiler Vanille trägt, wirkt nicht unmännlich, sondern nachdenklich und sinnlich. Frauen finden das sehr anziehend.',
-          'Saubere, frische Düfte mit Zitrus und Moschus werden als besonders gepflegt wahrgenommen. Sie wirken wie frisch geduscht, energetisch und modern. Ein Duft, der nach sauberer Haut riecht, wirkt auf Frauen irresistibel anziehend.',
-          'Dosierung ist alles: Ein Kompliment entsteht, wenn eine Frau dich riechen kann, wenn sie näher kommt, aber nicht, wenn du vorbeigehen. Das ist Subtilität mit Wirkung. Ein Duft, der aus zwei Metern entfernt bereits projektion, kann auch aggressiv wirken.'
+          'Die Düfte auf dieser Liste funktionieren, weil sie eine bestimmte Architektur haben. Sie starten mit Frische – Zitrus, Gewürze – was sie zugänglich macht. Dann entwickeln sie Wärme (Vanille, Amber, Moschus), was Nähe schafft. Diese Balance zwischen Frische und Wärme ist das Geheimnis. Düfte, die nur warm sind, wirken schnell erdrückend. Düfte, die nur frisch sind, wirken oberflächlich.',
+          'Würzige Noten wie schwarzer Pfeffer oder Zimt wirken selbstbewusst und warm – aber nicht aggressiv, sondern kompetent. Das ist der Grund, warum Dior Sauvage funktioniert: Es riecht nach Kontrol und Eleganz, nicht nach Dominanz.',
+          'Interessanterweise reagieren Frauen auch auf Süße – aber nur, wenn sie mit Struktur kommt. Ein Duft mit reiner Vanille wirkt schnell eintönig. Vanille mit Holz oder Gewürzen (wie Versace Eros oder One Million) wirkt dagegen verführerisch und emotional. Das ist der Unterschied zwischen billig-süß und luxuriös-sinnlich.',
+          'Subtilität ist das Geheimnis. Ein Duft, den man aus zwei Metern riecht, wirkt schnell aufdringlich. Ein Duft, den man nur aus der Nähe wahrnimmt – das ist der Stoff, aus dem echte Komplimente entstehen. Das ist der Grund, warum intensive Düfte oft kontraproduktiv wirken.'
         ]
       },
       {
-        heading: 'Das Geheimnis: Es geht nicht um Lärm',
+        heading: 'Weniger ist mehr',
         body: [
-          'Viele Männer machen den Fehler, zu denken, dass ein intensiver, projektionsstarker Duft besser ankommt. Das ist falsch. Ein sehr intensiver Duft kann aufdringlich wirken, besonders in Innenräumen. Die größten Kompliment-Magneten sind Düfte, die elegant dosiert wirken, nicht wie eine Duftwolke, sondern wie ein Versprechen. Ein Duft, der nur aus der Nähe wahrnehmbar ist, wirkt sinnlich und intelligent. Ein Duft, der den ganzen Raum erfüllt, wirkt dominanz-bedürftig.',
-          'Das bedeutet: Der beste Männerduft ist ein Duft, den der Mann morgens aufträgt, und den Frauen den ganzen Tag über wahrnehmen, aber nicht als aufdringlich erleben. Das ist Balance.'
+          'Der häufigste Fehler: Männer denken, dass ein projektionsstarker, intensiver Duft besser ankommt. Das stimmt nicht. In Räumen wirkt das schnell erdrückend. Im Auto noch schlimmer. Die echten Komplimente entstehen aus Subtilität – ein Duft, der nur aus der Nähe riecht, wirkt intim und intelligent. Ein Duft, der den ganzen Raum erfüllt, wirkt eher unsicher.',
+          'Das bedeutet: Ein oder zwei Sprühstösse pro Tag. Dein Hals, eventuell dein Unterarm. Das ist genug. Wenn dich eine Frau riechen kann, wenn sie dir näher kommt – das ist der Moment, in dem Anziehung entsteht. Nicht beim Vorbeigehen, sondern in der Nähe.'
         ]
       },
       {

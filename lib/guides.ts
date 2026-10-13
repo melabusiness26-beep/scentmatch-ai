@@ -1162,34 +1162,44 @@ export const guides: Guide[] = [
   },
   {
     slug: 'die-besten-frischen-aquatischen-duefte',
-    title: 'Die besten frischen & aquatischen Düfte',
+    title: 'Die besten aquatischen Düfte: frisch wie eine Meeresbrise – zeitlos & universell',
     description:
-      'Aquatische Düfte wie eine Meeresbrise: sauber, frisch und unbeschwert. Unsere Favoriten für Sommer, Sport und heisse Tage.',
+      'Aquatische Düfte mit Meeresbrise, Zitrus und salziger Frische: erfrischend, elegant und universell. Von Sommer & Sport bis zum Alltag – unsere liebsten frischen Meisterwerke für Damen, Herren und Unisex.',
     heroImage: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1200&q=80&fit=crop',
     intro: [
-      'Aquatische Düfte riechen nach frischer Luft, Wasser und Sauberkeit, wie eine Meeresbrise an einem klaren Tag, salzig und erfrischend. Sie gehören zu den unkompliziertesten Duftkategorien: fast alle mögen sie, sie stören niemanden, und sie passen zu jedem Anlass.',
-      'Aquatische Düfte wurden in den 1990ern populär und sind seitdem nie wirklich weggegangen, aus gutem Grund. Die Kombination von Meeresbrise, Zitrus und sauberem Moschus wirkt einfach angenehm, ob im Sommer am See oder im Winter nach dem Sport.',
-      'Hier unsere frischsten Empfehlungen für Sommer, Sport und den Alltag, für alle, die es leicht und unaufdringlich mögen.'
+      'Aquatische Düfte sind das Gegenmittel gegen Hitze, Schwere und Unbehagen. Sie riechen nach frischer Luft, Meeresbrise und sauberer Energie – wie ein Sprung ins Wasser an einem klaren Sommertag. Diese Duftkategorie wurde in den 1990ern revolutioniert (Davidoff Cool Water, Armani Acqua di Gioia) und ist seitdem nie weggegangen, aus gutem Grund: Die Kombination aus aquatischen Noten, Zitrus und sauberer Haut-Wärme wirkt universell angenehm – fast niemand verweigert sich dieser Frische.',
+      'Das Faszinierende an aquatischen Düften ist ihre Ehrlichkeit und Klarheit. Sie versprechen keine Romantik, keine Verführung, keine tiefe Sinnlichkeit – sie versprechen Klarheit, Erleichterung und pure Lebensenergie. Im Gegensatz zu schweren, orientalischen Düften mit Oud oder Amber sind Aquatische unendlich leicht und präsent zugleich. Sie sind der perfekte Duft für alle, die sich nicht „verkleiden", sondern eine verbesserte Version ihrer selbst sein möchten.',
+      'Hier unsere liebsten aquatischen Düfte aus dem Katalog – von günstigen, alltäglichen Klassikern bis zu edlen, zeitlosen Meisterwerken, für Damen, Herren und alle dazwischen.'
     ],
     sections: [
       {
         perfumes: ['dior-sauvage', 'davidoff-cool-water', 'jo-malone-wood-sage-sea-salt', 'prada-luna-rossa-ocean', 'light-blue-homme', 'armani-acqua-di-gioia', 'creed-silver-mountain-water', 'adp-colonia']
       },
       {
-        heading: 'Frisch ist nicht gleich frisch',
+        heading: 'Die Frische-Familien: welche passt zu dir?',
         body: [
-          'Aquatisch: nach Meer, Wasser und Salz, wie eine Brise am Strand.',
-          'Zitrisch: spritzig nach Zitrone, Bergamotte und Grapefruit.',
-          'Grün: nach frisch geschnittenem Gras, Blättern und Kräutern.',
-          'Clean-Moschus: nach frisch gewaschener Wäsche und sauberer Haut.'
+          'Aquatisch: riechen nach Meer, Wasser und Salz. Es ist eine Illusion von Frische (chemisch-synthetisch), nicht das echte Meer – aber die Illusion ist wunderschön und das ist der Punkt. Meeresbrise-Düfte wie Luna Rossa Ocean oder Creed Silver Mountain Water sind intensiv, salzig und lebensfreudlich.',
+          'Zitrisch: die Klassiker mit Zitrone, Bergamotte, Grapefruit und Orange. Sie sind spritzig, hell und sofort erfrischend, aber auch am flüchtigsten. Perfekt für Morgens und für heiße Tage.',
+          'Grün & Herbaceous: riechen nach frisch geschnittenem Gras, grünen Blättern, Galbanum und Kräutern. Sie sind natürlicher, fast ländlich – nicht salzig, aber intensiv frisch. Jo Malone Wood Sage & Sea Salt verbindet Grün mit salziger Komponente wunderbar.',
+          'Clean-Moschus: die modernen „Wäsche-Düfte" mit sauberm Moschus und leichtem Holz. Sie riechen wie frisch gewaschene Haut, gepflegt und minimal. Diese Kategorie wächst und ist perfekt für alle, die „weniger ist mehr" mögen.'
         ]
       },
       {
-        heading: 'Worauf du bei frischen Düften achten solltest',
+        heading: 'Worauf du bei aquatischen Düften achten solltest',
         body: [
-          'Aquatische und zitrische Noten sind herrlich leicht, verfliegen aber schneller. Ein zweiter Sprühstoss am Mittag hält die Frische.',
-          'Ideal für heisse Tage, Sport und das Büro, weil sie nie schwer oder aufdringlich wirken.',
-          'Eine holzige oder moschusartige Basis macht frische Düfte langlebiger.'
+          'Haltbarkeit: Aquatische und zitrische Noten verfliegen schneller als schwere Düfte. Das ist normal. Ein zweiter, leichter Sprühstoss am Mittag hält die Frische den ganzen Tag.',
+          'Basis-Note ist entscheidend: Eine holzige, moschusartige oder musky-warme Basis macht aquatische Düfte langlebiger. Schau auf die Basis-Noten: Moschus, Sandelholz oder Zedernholz = länger anhaltend.',
+          'Dosierung: Frische Düfte können bei sparsamer Dosierung präsenter wirken als schwere Düfte. Ein bis zwei Sprühstösse auf Hals und Handgelenk genügen meist völlig.',
+          'Jahreszeit: Im Sommer, nach dem Sport, im Büro oder zur Erfrischung am Nachmittag unschlagbar. Im Winter können aquatische Düfte manchmal zu luftig wirken – hier braucht es eine moschusartige oder süße Basis.'
+        ]
+      },
+      {
+        heading: 'Aquatisch ist für jeden Tag – und jede Jahreszeit',
+        body: [
+          'Sommer & Hitze: Das klassische Anwendungsgebiet. Schwere Düfte wirken erdrückend, aber Aquatische sind pure Erleichterung. Sie kühlen nicht physikalisch, aber psychologisch – eine willkommene mentale Frische.',
+          'Sport & Bewegung: Nach dem Fitness, auf der Radtour oder beim Joggen: Aquatische Düfte unterstreichen das Gefühl von Aktivität und Energie. Sie riechen wie „Ich bin in Bewegung, ich bin am Leben".',
+          'Alltag & Büro: Weil Aquatische nie schwer oder aufdringlich wirken und fast keine Kopfschmerzen verursachen, sind sie perfekt für lange Arbeitstage und Meetings. Niemand wird von deinem Duft gestört.',
+          'Winter & Abend: Im Winter funktionieren Aquatische mit einer warmen, moschusartigen oder fruchtigen Basis wunderbar. Luna Rossa Ocean mit ihrer tieferen Basis oder eine aquatische Duft-Schicht über einem warmen Pullover – elegant und unerwartet.'
         ]
       }
     ]

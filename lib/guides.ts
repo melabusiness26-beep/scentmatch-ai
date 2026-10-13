@@ -1304,37 +1304,29 @@ export const guides: Guide[] = [
       'Holzige Düfte mit Sandelholz, Zedernholz, Oud und Vetiver: edel, warm, langanhaltend. Von frisch-holzig bis dunkel-cremig – unsere liebsten Holz-Kompositionen für Damen, Herren und Unisex.',
     heroImage: '/ratgeber/holzige-duefte-hero.png',
     intro: [
-      'Holzige Düfte sind der Inbegriff von Eleganz und Reife. Sandelholz, Zedernholz, Vetiver und Oud wirken warm, erwachsen und unglaublich tragefreundlich – ob im Büro, beim Date oder zu besonderen Anlässen. Sie sind zeitlos, verlässlich und passen zu fast jeder Jahreszeit.',
-      'Das Faszinierende an Holz ist seine Vielseitigkeit: Je nach Art und Begleitung kann Holz cremig und süsslich wirken (Sandelholz), klar und herb-elegant (Zedernholz), frisch-grün (Vetiver) oder dunkel und intensiv (Oud und Leder). Deshalb gibt es für jeden Geschmack ein perfektes Holz-Parfüm.',
-      'Hier unsere liebsten holzigen Düfte: von frisch-holzigen Klassikern bis zu dunklen, cremigen Meisterwerken. Jeder Duft wurde ausgewählt, weil er Tiefe, Wärme und echte Qualität ausstrahlt.'
+      'Holzige Düfte funktionieren, weil Holz warm, edel und extrem tragefreundlich wirkt. Sandelholz, Zedernholz, Vetiver, Oud – diese Materialien sind die Basis großartiger Düfte. Sie arbeiten im Hintergrund, aber ihre Präsenz ist absolut. Ein guter holziger Duft wirkt reif, selbstsicher und zeitlos.',
+      'Das Schöne an holzigen Düften: Sie sind unglaublich vielseitig. Sandelholz wirkt cremig und süßlich. Zedernholz wirkt klar und elegant. Vetiver wirkt erdig und grün. Oud wirkt dunkel und intensiv. Je nachdem, mit welchen Noten Holz kombiniert wird, kann der gleiche Holz-Duft völlig unterschiedlich wirken. Das macht Holz zu einer der faszinierendsten Duft-Grundlagen.',
+      'Hier sind unsere liebsten holzigen Düfte: von leicht und frisch bis dunkel und intensiv. Jeder wurde ausgewählt, weil er echte Qualität und Handwerk hat.'
     ],
     sections: [
       {
         perfumes: ['le-labo-santal-33', 'viktor-rolf-spicebomb', 'chanel-bleu-de-chanel', 'tom-ford-oud-wood', 'byredo-gypsy-water', 'club-de-nuit-intense', 'dior-homme', 'terre-dhermes']
       },
       {
-        heading: 'Welches Holz steckt in dir?',
+        heading: 'Die verschiedenen Holz-Charaktere',
         body: [
-          'Sandelholz: cremig, weich und leicht süsslich – der warme Klassiker. Sehr tragefreundlich, fast universell beliebt. Wirkt sowohl zu Tag als auch zu Nacht angenehm und einladend.',
-          'Zedernholz: trocken, klar und elegant – der frische Klassiker. Häufig in frisch-holzigen Düften, gibt Struktur und männlich-gepflegten Charakter. Passt perfekt ins Büro.',
-          'Vetiver: erdig-grün und rauchig – der aromatische Klassiker. Gibt Frische, Charakter und sofort erkennbare Persönlichkeit. Unglaublich vielseitig: von sportlich-frisch bis herb-elegant.',
-          'Oud & Leder: dunkel, intensiv und edel – die Luxus-Variante. Am schönsten am Abend, in der kühlen Jahreszeit und für besondere Anlässe. Ein Zeichen von Reife und Raffinesse.'
+          'Sandelholz ist cremig, weich und leicht süßlich – der warme Klassiker. Es ist fast universell tragefreundlich. Ein Sandelholz-Duft wirkt tagsüber angenehm und einladend, abends sinnlich. Das ist der Einstiegs-Holzduft für viele Menschen.',
+          'Zedernholz ist trocken, klar und elegant – es gibt Struktur und einen gepflegten Charakter. Häufig in frisch-holzigen Düften, wirkt es im Büro absolut perfekt. Es signal Kompetenz und Kontrolle, ohne aufdringlich zu wirken.',
+          'Vetiver ist erdig-grün und rauchig – es gibt Frische und sofort erkennbaren Charakter. Vetiver-Düfte sind unglaublich vielseitig: von sportlich-frisch bis herb-elegant. Für diejenigen, die Holz mit Tiefe und Persönlichkeit wollen.',
+          'Oud und Leder sind dunkel, intensiv und edel – die Luxus-Varianten. Diese Düfte sind am schönsten am Abend, im Winter und bei besonderen Anlässen. Sie sind ein Statement: Reife, Raffinesse, Kontrolle.'
         ]
       },
       {
-        heading: 'Holzige Düfte für dein Leben',
+        heading: 'Der Vorteil von Holz',
         body: [
-          'Für den Alltag: Wähle Sandelholz oder Zedernholz mit einer Spur Zitrus oder Kraut. Diese wirken gepflegt und diskret, ohne übertrieben zu wirken.',
-          'Für Meetings & das Büro: Frisch-holzige Düfte (mit Zedernholz, Vetiver oder Bergamotte) signalisieren Kompetenz und Sauberkeit. Ein guter Eindruck entsteht aus der Nähe.',
-          'Für Abende & besondere Anlässe: Dunklere Hölzer (Oud, Sandelholz mit Gewürzen, Leder) bekommen erst am Abend ihre volle Eleganz und Tiefe. Sie wirken sophistiziert und einprägsam.'
-        ]
-      },
-      {
-        heading: 'Worauf du bei holzigen Düften achten solltest',
-        body: [
-          'Holzige Noten gehören zur Basis und halten von Natur aus lange – ideal für den ganzen Tag, ohne nachspritzen zu müssen.',
-          'Frisch-holzige Düfte (mit Zitrus oder Vetiver) passen perfekt in den Alltag und wirken modern. Dunkle, cremige Hölzer wie Sandelholz oder Oud werden ihre volle Pracht erst am Abend oder in den kühleren Monaten entfalten.',
-          'Holz harmoniert wunderbar mit Gewürzen (Kardamom, schwarzer Pfeffer), Leder und süssen Noten (Vanille, Karamell). Das macht holzige Düfte zu echten Chamäleons – je nach Begleitung völlig unterschiedlich.'
+          'Holzige Noten sitzen in der Basis und halten von Natur aus lange – das ist einer der Gründe, warum Holzdüfte so praktisch sind. Einmal auftragen, den ganzen Tag Begleitung. Keine Überraschung um 15 Uhr, dass der Duft weg ist.',
+          'Frisch-holzige Düfte mit Zitrus oder Vetiver funktionieren tagsüber und im Alltag. Sie wirken modern und nicht zu intensiv. Dunkle, cremige Hölzer wie Sandelholz oder Oud zeigen ihre volle Kraft erst am Abend oder wenn es draußen kälter wird.',
+          'Das Faszinierende an Holz: Es kombiniert fantastisch mit anderen Materialien. Gewürze machen Holz würziger. Leder macht es raffiniert. Vanille macht es cremiger. Je nachdem, was „oben drauf" liegt, wird der gleiche Holz-Duft völlig unterschiedlich wahrgenommen. Das macht Holz zum Chamäleon der Duft-Welt.'
         ]
       }
     ]

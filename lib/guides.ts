@@ -1965,11 +1965,11 @@ export const guides: Guide[] = [
     sections: [
       {
         heading: 'Für Frauen: frisch-fruchtig & anziehend',
-        perfumes: ['lattafa-yara', 'ariana-cloud', 'sdj-cheirosa-62', 'narciso-for-her', 'ysl-mon-paris']
+        perfumes: ['coco-mademoiselle', 'sdj-cheirosa-62', 'lancome-la-vie-est-belle', 'ch-good-girl', 'dior-j-adore']
       },
       {
         heading: 'Für Männer: frisch mit Charakter',
-        perfumes: ['versace-eros', 'ea-stronger-with-you', 'versace-dylan-blue', 'allure-homme-sport', 'prada-luna-rossa-ocean']
+        perfumes: ['versace-eros', 'dior-sauvage', 'versace-dylan-blue', 'allure-homme-sport', 'prada-luna-rossa-ocean']
       },
       {
         heading: 'Tipps für den richtigen Date-Duft im Sommer',

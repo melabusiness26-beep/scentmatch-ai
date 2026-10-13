@@ -1169,7 +1169,7 @@ export const guides: Guide[] = [
     title: 'Die besten Büro-Düfte: Subtilität, Eleganz & Respekt – Professionelle Ausstrahlung',
     description:
       'Der perfekte Büro-Duft ist ein stilles Statement. Subtil, elegant und respektvoll – dein Duft sollte dich begleiten, nicht den Raum dominieren. Entdecke Düfte, die deine professionelle Ausstrahlung stärken, ohne zu aufdringlich zu wirken.',
-    heroImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80&fit=crop',
+    heroImage: '/images/guides/bueroduefte-hero.jpg',
     intro: [
       'Ein Büro-Duft ist nicht weniger wichtig als ein Abendduft, nur anders. Im Büro ist ein Duft ein subtiles Statement über deine Kultur und Aufmerksamkeit. Es ist eine Form der Eleganz, einen Duft zu tragen, der nicht dominiert. Ein großartiger Büro-Duft begleitet dich den ganzen Tag, ist für andere wahrnehmbar, wenn sie näher kommen, aber drängt sich nicht in den Vordergrund. Das ist schwieriger zu componieren als man denkt, weil Subtilität auch Charakter erfordert. Ein langweiliger Duft ist nicht subtil, er ist einfach schwach.',
       'Die Psychologie ist clear: Im Grossraumbüro teilst du einen kleinen Luftraum mit vielen Menschen, manche mit empfindlicheren Nasen, manche mit Allergiefaktoren. Ein intensiver, schwerer oder sehr süßer Duft kann schnell zum Thema werden, nicht zum positiven. Ein kluger Büro-Duft hingegen sagt: Ich bin hier, ich habe Geschmack, ich respektiere deine Nähe. Das schafft Vertrauen und Eleganz.',

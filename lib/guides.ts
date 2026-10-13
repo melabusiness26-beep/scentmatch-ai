@@ -222,9 +222,9 @@ export const guides: Guide[] = [
       'Die verführerischsten Gourmand-Düfte: Vanille, Schokolade, Karamell und Tonkabohne. Süße Düfte sind Komfortkompositionen – kuschelig, sinnlich, unvergesslich. Von cremig-pudrig bis würzig-intensiv, perfekt für Herbst, Winter und für Momente, die nach Wärme rufen.',
     heroImage: '/ratgeber/suesse-duefte-hero.jpg',
     intro: [
-      'Ein großartiger süßer Duft ist eines der vergnüglichsten Dinge, die du auf der Haut tragen kannst. Gourmand-Düfte, wie sie richtig heißen, riechen nach den besten Dingen des Lebens: Vanille aus Madagascar, dunkle Schokolade, Karamell-Salzigkeit, Tonkabohne, Kaffee, Dattel und manchmal sogar Praline. Sie wirken warm, einladend, nahbar und bleiben lange in Erinnerung. Historisch sind Gourmands eine relativ junge Erfindung in der Duft-Welt, aber sie haben sich schnell zu einer der beliebtesten Kategorien entwickelt, gerade weil sie universell funktionieren. Ein süßer Duft macht dich nicht nur riechen, sondern auch fühlen.',
-      'Die Intelligenz eines Gourmand-Dufts liegt in seinem Gleichgewicht. Das Gegenteil eines guten süßen Dufts ist nicht „zu süß", sondern „billig süß" – ein unausgewogenes, eintöniges Zucker-Monolith. Ein wirklich großartiger süßer Duft hat Tiefe, Struktur und manchmal sogar eine würzige oder bittere Ecke, die die Süße anspruchsvoll macht. Vanille mit einer Note schwarzem Pfeffer, Schokolade mit Tabak, Karamell mit einer Prise Salz – diese Kontraste machen Gourmands zu Kunstform. Sie funktionieren am wunderschönsten im Herbst und Winter, wenn die Kälte sie zu ihrer vollen Tiefe entfaltet. Aber auch im Sommer gibt es leichte, cremig-pudrige Varianten, die nicht aufdringlich wirken.',
-      'Hier findest du unsere liebsten Gourmand-Düfte aus dem Katalog, von erschwinglichen Schätzen bis zu Nischen-Juwelen, für jeden, der Süße liebt. Manche sind für alltägliche Momente, andere für spezielle Anlässe. Alle haben eines gemeinsam: Sie sind unvergessen.'
+      'Gute Gourmand-Düfte riechen nach den besten Dingen, die man essen würde: Vanille aus Madagascar, dunkle Schokolade, Karamell, Tonkabohne, Kaffee. Sie wirken warm, nahbar und bleiben in Erinnerung. Ein großartiger süßer Duft macht dich nicht nur riechen – er lässt dich fühlen.',
+      'Das Geheimnis liegt in der Balance. Ein schlechter süßer Duft ist nicht „zu süß", sondern billig-süß – ein eintöniges Zucker-Monolith ohne Struktur. Ein wirklich großartiger Gourmand hat Tiefe: Vanille mit schwarzem Pfeffer, Schokolade mit Tabak, Karamell mit einer Prise Salz. Diese Kontraste schaffen Eleganz statt Übertörtung. Im Herbst und Winter entfalten sich süße Düfte zu ihrer vollen Tiefe, aber auch im Sommer gibt es leichte, cremig-pudrige Varianten, die funktionieren.',
+      'Hier sind unsere liebsten Gourmand-Düfte, von erschwinglichen Schätzen bis zu Nischen-Favoriten. Manche für den Alltag, andere für besondere Abende. Alle authentisch und unvergessen.'
     ],
     sections: [
       {
@@ -244,37 +244,22 @@ export const guides: Guide[] = [
         ]
       },
       {
-        heading: 'Die Gourmand-Familien: Welche Süße spricht dich an?',
+        heading: 'Die verschiedenen Gourmand-Typen',
         body: [
-          'Reine Vanille-Düfte sind die Klassiker. Sie riechen nach hochwertigem Vanillepulver, manchmal mit einer cremigen, pudrigen Komponente. Diese Düfte sind zugänglich, anhaltend und wirken elegant, wenn sie nicht überzuckert sind. Kayali Vanilla 28 ist ein Paradebeispiel: süß, aber mit Tiefe. Vanille-Düfte funktionieren das ganze Jahr, sind aber im Winter am schönsten.',
-          'Schokolade und Kaffee-Düfte kombinieren Süße mit einer dunklen, leicht bitteren Komponente. Das schafft Komplexität und verhindert, dass der Duft sich zu oberflächlich anfühlt. Montale Intense Café und Black Opium sind großartig, weil sie Süße mit erwachsener Raffinesse paaren. Diese Düfte wirken niemals kindlich.',
-          'Würzige Gourmands verbinden Süße mit aromatischen Gewürzen wie Zimt, Nelke, schwarzem Pfeffer oder Kardamom. Khamrah beispielsweise verbindet Dattel-Süße mit orientalischen Gewürzen. Das Ergebnis ist edel, warmherzig und oft überraschend langlebig. Diese Düfte sind perfekt für diejenigen, die süß, aber gleichzeitig anspruchsvoll sein möchten.',
-          'Cremig-pudrige Gourmands haben eine weiche, fast pudriger Basis mit Noten wie Iris, Mandelblüte oder Vanille. Sie wirken kuschelig und feminin im besten Sinne, ohne jemals infantil zu sein. Burberry Goddess und Lattafa Yara sind wunderbare Beispiele. Diese Düfte wirken besonders in der kühlen Jahreszeit wunderbar.'
+          'Reine Vanille-Düfte sind zugänglich und elegant. Kayali Vanilla 28 zeigt, wie das funktioniert: süß, aber mit echter Tiefe. Vanille funktioniert das ganze Jahr, glänzt aber im Winter.',
+          'Schokolade und Kaffee schaffen Komplexität durch dunkle, leicht bittere Komponenten. Montale Intense Café hat Süße mit erwachsener Raffinesse – niemals kindlich. Das macht den Unterschied.',
+          'Würzige Gourmands verbinden Süße mit Zimt, Nelke, schwarzem Pfeffer oder Kardamom. Khamrah paart Dattel-Süße mit orientalischen Gewürzen – edel, warmherzig, langlebig. Das ist für diejenigen, die süß und anspruchsvoll zugleich sein wollen.',
+          'Cremig-pudrige Gourmands fühlen sich weich an – Iris, Mandelblüte, Vanille als weiche Basis. Sie wirken kuschelig ohne infantil zu sein. Burberry Goddess und Lattafa Yara sind wunderbar, besonders in der kalten Jahreszeit.'
         ]
       },
       {
-        heading: 'Warum Süße im Winter funktioniert, im Sommer aber richtig dosiert sein muss',
+        heading: 'Wann und wie du Gourmands trägst',
         body: [
-          'Im Winter sind süße Düfte dein Freund. Die Kälte macht sie nicht überwältigend, sondern elegant. Ein süßer Duft bei 15 Grad Außentemperatur wirkt tröstlich, nicht erdrückend. In geheizten Innenräumen entfaltet sich die Süße langsam und angenehm. Das ist, warum Gourmands so beliebt in der kalten Jahreszeit sind.',
-          'Im Sommer brauchen süße Düfte intelligente Dosierung. Ein Duft, der im Winter wunderschön ist, kann im Juli in geschlossenen Räumen schnell zu intensiv wirken. Das heißt nicht, dass du Gourmands im Sommer nicht tragen darfst, aber wähle leichtere Varianten oder starte mit einem Sprühstoss statt zwei. Auf der Haut, anstatt auf mehreren Stellen, reduziert auch die Intensität.',
-          'Trockene Haut und Gourmands: Süße Düfte wirken auf trockener Haut intensiver und halten gleichzeitig kürzer. Eine gute Feuchtigkeitspflege vorher verdoppelt die Haltbarkeit und macht den Duft angenehmer. Das ist besonders im Winter wichtig, wenn die Heizungsluft deine Haut austrocknet.'
-        ]
-      },
-      {
-        heading: 'Dosierung, Länge und Alltags-Tauglichkeit',
-        body: [
-          'Gourmand-Düfte sind präsent. Beginne mit nur einem Sprühstoss, besonders wenn du zum ersten Mal einen Gourmand trägst. Nach 15 Minuten wirst du sehen, wie präsent der Duft ist. Ein bis zwei Sprühstösse reichen für die meisten Kontexte völlig aus. Mehr brauchst du nicht, es sei denn, du bist draußen bei sehr kaltem Wetter.',
-          'Längeres Tragen ist kein Problem – Gourmands halten lange. Ein guter Vanille-Duft bleibt sechs bis acht Stunden auf der Haut, manchmal länger. Das macht sie perfekt für den Alltag: einmal morgens auftragen und dich den ganzen Tag von diesem angenehmen, warmen Duft begleitet fühlen.',
-          'Für alltags-Tauglichkeit: Wenn du Gourmands auch im Büro tragen möchtest, wähle eine Variante mit etwas Frische oder Holz, das die Süße ausgleicht. Ein reiner Schoko-Karamell-Duft könnte im geschlossenen Büroraum zu intensiv sein. Eine leichte, cremig-pudrige Variante oder ein würziger Gourmand funktioniert besser.'
-        ]
-      },
-      {
-        heading: 'Gourmands für verschiedene Momente',
-        body: [
-          'Morgens und im Alltag: Wähle eine leichtere oder cremig-pudrige Variante. Ein Duft mit etwas Frische oder Moschus wirkt weniger erdrückend in den Morgenstunden. Kayali Vanilla oder Burberry Goddess sind wunderbar für den Start in den Tag.',
-          'Beim Date oder abends zum Ausgehen: Das ist deine Gelegenheit, zu deinem liebsten Gourmand zu greifen. Ein tiefes, würziges oder dunkles süßes Duft wirkt verführerisch und elegant. Tobacco Vanille oder Khamrah sind perfekt für diese Momente.',
-          'Zu Hause, beim Entspannen: Ein cremiger, pudrig-süßer Duft ist wie eine Umarmung. Montale Intense Café oder Lattafa Yara schaffen eine Wohlfühl-Atmosphäre, die dich entspannen lässt.',
-          'Bei festlichen Anlässen: Ein intensiver, komplexer Gourmand zeigt Sicherheit und Geschmack. Kilian Angels Share, mit seiner Rum-Vanille-Komponente, wirkt festlich und elegant.'
+          'Im Winter sind süße Düfte der perfekte Begleiter. Die Kälte macht sie elegant statt überwältigend. Bei 15 Grad Außentemperatur wirkt ein Gourmand tröstlich, und in warmen Räumen entfaltet sich die Süße natürlich. Im Sommer brauchst du intelligente Dosierung: Beginne mit einem Sprühstoss statt zwei, oder wähle eine leichtere cremig-pudrige Variante.',
+          'Gourmand-Düfte sind präsent – starte mit nur einem Sprühstoss beim ersten Tragen. Nach 15 Minuten siehst du, wie wirksam dein Duft ist. Ein bis zwei Sprühstösse reichen für die meisten Momente. Haltbarkeit ist ihre Stärke: Ein guter Vanille-Duft bleibt sechs bis acht Stunden auf der Haut.',
+          'Im Büro: Wähle eine Variante mit etwas Frische oder Holz, das die Süße ausgleicht. Ein reiner Schoko-Karamell-Duft könnte intensiv wirken – eine cremig-pudrige oder würzige Variante funktioniert besser.',
+          'Für Dates und Abende: Das ist deine Gelegenheit, mutig zu sein. Ein tiefes, würziges oder dunkles süßes Duft wirkt verführerisch. Tobacco Vanille oder Khamrah sind perfekt.',
+          'Ein Hinweis: Trockene Haut lässt Gourmands intensiver wirken, aber kürzer halten. Feuchtigkeitspflege vorher verdoppelt die Haltbarkeit.'
         ]
       }
     ]

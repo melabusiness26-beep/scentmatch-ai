@@ -564,52 +564,65 @@ export const guides: Guide[] = [
     slug: 'parfum-geschenk-die-besten-duefte-zum-verschenken',
     title: 'Parfum als Geschenk: Der Weg zum perfekten Duft – Elegant, persönlich und unvergessen',
     description:
-      'Parfum ist eines der wertvollsten Geschenke überhaupt – wenn es stimmt. Erfahre, wie du Sicherheit und Eleganz kombinierst und garantiert die richtige Wahl triffst. Unsere liebsten Geschenk-Klassiker für jeden Geschmack und jeden Anlass.',
+      'Parfum verschenken ist eine Idee, die entweder perfekt landet oder im Schrank verstaubt. Erfahre, wie du sicher entscheidest – mit konkreten Empfehlungen für jedes Budget und jeden Anlass.',
     heroImage: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=1200&q=80&fit=crop',
     intro: [
-      'Ein Duft ist eines der persönlichsten Geschenke, die man machen kann. Körperwärme, Hautchemie, Lebensstil – sie verändern, wie ein Duft wirkt. Das macht ein Duft sowohl wertvoll als auch riskant als Geschenk. Die Kunst liegt in der Balance: Du willst etwas geben, das wirklich passt und geliebt wird, nicht etwas, das in einer Schublade endet, weil der Geschmack nicht stimmt. Ein durchdachtes Duft-Geschenk zeigt: Ich kenne dich, ich respektiere dich, ich schenke dir etwas, das zu dir gehört.',
-      'Die sicherste Strategie ist bekannt: Klassische, vielseitige Düfte funktionieren fast immer besser als spekulativ ausgewählte Nischen-Kreationen. Ein eleganter Dior, Chanel oder Lancôme kommt bei fast jedem an, weil diese Marken über Jahrzehnte gelernt haben, Düfte zu schaffen, die nicht polarisieren, sondern verführen. Das klingt konservativ, ist aber smart: Wer würde ein Coco Mademoiselle Geschenk zurückweisen? Wer lehnt einen Dior Sauvage ab? Klassisch heißt hier nicht spießig, sondern zeitlos intelligent.',
-      'Hier sind unsere liebsten Duft-Geschenke: Klassiker, die garantiert funktionieren, sortiert nach Persönlichkeit und Budget. Mit ein paar praktischen Tricks sparst du dir Fehlkäufe, und die beschenkte Person wird sich unvergessen fühlen.'
+      'Parfum verschenken ist eine Idee, die entweder perfekt landet oder im Schrank verstaubt. Der Unterschied liegt nicht im Preis, sondern im Wissen: Wer versteht, wie Düfte funktionieren und was der Mensch gegenüber wirklich trägt, wählt ein Geschenk, das jedes Mal, wenn es aufgesprüht wird, an einen denken lässt.',
+      'Dieser Guide zeigt dir, wie du sicher entscheidest — mit konkreten Empfehlungen für jedes Budget und jeden Anlass.'
     ],
     sections: [
       {
-        heading: 'Für Frauen: die sicheren Klassiker',
+        heading: 'Die wichtigste Frage zuerst',
         body: [
-          'Diese Düfte sind zeitlos elegant und funktionieren auf den meisten Frauen wunderbar. Sie sind nicht zu experimentell, aber auch nicht langweilig. Das ist die goldene Mitte des Duft-Schenkens: Eine Frau, die einen dieser Düfte trägt, wirkt gepflegt, kultiviert und elegant, ohne dass sie dich unter Druck setzt, genau ihren speziellen Nischen-Geschmack zu treffen.'
-        ],
-        perfumes: ['coco-mademoiselle', 'mugler-angel', 'black-opium', 'flowerbomb']
-      },
-      {
-        heading: 'Für Männer: zeitlose Favoriten',
-        body: [
-          'Männer-Düfte sind eine Balance zwischen Professionalität und Charakter. Die folgenden Düfte funktionieren im Büro, beim Date und beim Abenteuer gleich gut. Sie sind nicht zu intensiv, nicht zu experimentell, sondern zuverlässig schön.'
-        ],
-        perfumes: ['dior-sauvage', 'le-male', 'ea-stronger-with-you', 'versace-eros']
-      },
-      {
-        heading: 'Wie du die richtige Wahl triffst – ohne Fehlkauf',
-        body: [
-          'Erste Frage: Kennt die Person, die du beschenken möchtest, bereits andere Düfte, die sie liebt? Das ist deine wertvollste Information. Frag im Gespräch oder beobachte: Trägt sie etwas? Mag sie es frisch und leicht oder warm und süßlich? Wenn sie bereits einen liebsten Duft hat, hast du zwei sichere Optionen: entweder verschenkst du eine zweite Flasche davon, oder du wählst einen Duft, der in die gleiche Kategorie passt. Ein Treffer fast garantiert.',
-          'Zweite Frage: Welche Jahreszeit steht an? Im Sommer sind frische, leichte Düfte idealer, im Winter dürfen es wärmere sein. Ein winterlicher Duft im Juni wirkt fehl am Platz, auch wenn er schön ist. Passe das Geschenk an die kommende Jahreszeit an, damit die beschenkte Person es sofort tragen kann.',
-          'Dritte Frage: Was ist dein Budget? Ein Eau de Parfum in einer bekannten Marke zwischen 70 und 150 CHF ist oft eine gute Wahl. Es ist edel genug, um besonders zu wirken, aber nicht so teuer, dass die Person nervös wird, es zu tragen. Luxus-Nische (200+ CHF) ist nur für Leute mit bekanntem speziellen Geschmack geeignet.'
+          'Bevor du irgendein Parfum in die Hand nimmst: Trägt die Person bereits einen Duft, den sie liebt? Das ist die wertvollste Information, die du haben kannst. Frag beiläufig nach, schau auf den Badezimmertisch oder merk dir, was du an ihr wahrnimmst, wenn sie den Raum betritt.',
+          'Wenn du den Lieblingsduft kennst, hast du zwei sichere Wege: Du kaufst genau diesen Duft — als Ersatzflasche, die jeder braucht und niemand sich selbst kauft. Oder du wählst einen Duft aus derselben Familie: ähnlich frisch, ähnlich warm, ähnlich holzig — aber neu.',
+          'Kennst du den Lieblingsduft nicht, gilt: Lieber einen bekannten, vielgeliebten Klassiker wählen als ein Experiment. Ein Duft, den viele Menschen gut finden, landet seltener daneben als ein aussergewöhnlicher Nischenduft, der einen sehr spezifischen Geschmack braucht.'
         ]
       },
       {
-        heading: 'Praktische Tipps für das perfekte Duft-Geschenk',
+        heading: 'Für sie: Düfte die ankommen',
         body: [
-          'Eau de Parfum statt Eau de Toilette: Als Geschenk wirkt Eau de Parfum automatisch edler, hält länger und zeigt, dass du es ernst gemeint hast. Der Preisunterschied zu EdT ist oft nur 10 bis 20 Franken, aber der wahrgenommene Luxus ist deutlich höher.',
-          'Verpackung ist wichtig: Ein schön verpackter Duft wird sofort als Geschenk wahrgenommen, nicht als „zufälliger Kauf". Die meisten guten Düfte kommen bereits in hochwertiger Verpackung, aber eine zusätzliche Schleife, eine kleine Karte oder eine personalisierte Nachricht macht den Unterschied.',
-          'Mach es persönlich: Schreib eine kurze Notiz, warum du diesen Duft gewählt hast. Es muss nicht lang sein: „Dieser Duft erinnert mich an dich – elegant, warm und immer angenehm" macht einen großen Eindruck.',
-          'Fallback-Plan für totale Unsicherheit: Wenn du dir absolut nicht sicher bist, verschenk stattdessen einen edlen Duft-Gutschein oder mach einen Gutschein für eine Beratung in einer guten Parfümerie. Das klingt unkreativ, aber es ist besser, einen Gutschein zu geben, als einen Duft zu kaufen, der endet in der Schublade.'
+          'Frauen-Düfte als Geschenk folgen einer einfachen Regel: Wähle etwas, das als elegant gilt — nicht zu jung, nicht zu speziell, aber mit Charakter. Diese Düfte funktionieren zuverlässig.',
+          'Klassiker wie Coco Mademoiselle von Chanel sind zeitlos — elegant, bekannt und wirken auf fast jeder Frau wunderbar. La Vie Est Belle von Lancôme hat die perfekte Balance zwischen Süße und Eleganz. Chance Eau Tendre von Chanel ist frisch und romantisch. Mon Guerlain von Guerlain wirkt warm und würzig, ohne aggressive zu sein. Alle vier sind Düfte, die eine Frau gerne trägt und die nicht polarisieren.'
         ]
       },
       {
-        heading: 'Sonderfälle und spezielle Situationen',
+        heading: 'Für ihn: zeitlose Klassiker',
         body: [
-          'Ein Duft zum Jahrestag: Hier darfst du etwas mutiger sein. Ein Duft, den die Person schon hat und liebt, oder einen neuen in ihrer Lieblings-Familie, wird zu einem romantischen Geschenk, das tägliche Nähe bedeutet. Jedes Mal, wenn sie den Duft trägt, denkt sie an dich.',
-          'Ein Duft als Willkommensgeschenk: Wenn du jemanden gerade kennengelernt hast (neue Partnerin, neuer Freund), wähle einen sicheren Klassiker. Es darf nicht zu intim wirken, aber es sollte zeigen, dass du Geschmack hast. Ein Chanel, Dior oder Jo Malone funktioniert hier immer.',
-          'Ein Duft als Abschied oder Andenken: Wenn jemand wegzieht oder ihr euch trennt, kann ein Duft zum Erinnerungsstück werden. Wähle einen, der zeitlos ist und lange hält, damit die Person dich riechen kann, wenn sie den Duft trägt.',
-          'Duft-Sets für Neulinge: Einige Marken verkaufen Sets mit mehreren kleinen Flakons. Das ist ideal, wenn du jemanden beschenken möchtest, der noch nicht so viele Düfte kennt – die Person kann ausprobieren, ohne dich unter Druck zu setzen.'
+          'Bei Männerdüften als Geschenk gilt dasselbe Prinzip: keine Experimente, sondern Düfte mit Ruf. Diese vier sind Klassiker, die fast überall gut ankommen — im Büro, am Abend, und für Männer, die Parfum eher selten tragen.',
+          'Boss Bottled ist der Einsteigerklassiker — elegant, unkompliziert, wirkt immer gut. Le Male von Jean Paul Gaultier ist würzig-vanillig und ikonisch. Dior Homme ist dezent-elegant und modern. Stronger With You von Emporio Armani hat den perfekten Mix aus Frische und Wärme. Alle vier funktionieren auf den meisten Männern, ohne dass sie "viel Parfum-Erfahrung" brauchen.'
+        ],
+        perfumes: ['boss-bottled', 'le-male', 'dior-homme', 'ea-stronger-with-you']
+      },
+      {
+        heading: 'Für ein Budget unter 80 Franken',
+        body: [
+          'Ein gutes Parfum muss nicht teuer sein. In der Kategorie zwischen 50 und 80 CHF findest du echte Eau de Parfums von etablierten Marken — keine Kompromisse beim Duft, nur weniger Markenaufschlag.',
+          'Hugo Boss Bottled (ca. CHF 70), Stronger With You von Emporio Armani (ca. CHF 75) und Le Male von Jean Paul Gaultier (ca. CHF 80) sind alle in diesem Bereich und wirken trotzdem wie echte Geschenke.'
+        ]
+      },
+      {
+        heading: 'Für ein Budget über 120 Franken',
+        body: [
+          'Wer etwas Besonderes sucht und weiss, dass die Person Düfte liebt, darf mutiger sein. Coco Mademoiselle von Chanel (ca. CHF 130) ist ein Statement: zeitlos, bekannt, und trotzdem nicht langweilig.',
+          'Für echte Duft-Liebhaber lohnt sich auch ein Blick auf Maison Margiela Replica — "By the Fireplace" oder "Flower Market" sind Düfte, die Gespräche auslösen. Preisrahmen 130–160 CHF.'
+        ],
+        perfumes: ['coco-mademoiselle']
+      },
+      {
+        heading: 'Praktische Tipps für das perfekte Geschenk',
+        body: [
+          'Eau de Parfum statt Eau de Toilette: EdP hält länger, wirkt edler und kostet oft nur 10–20 CHF mehr. Bei einem Geschenk macht das einen spürbaren Unterschied — ohne dass es auffällt.',
+          'Die Verpackung zählt mehr als du denkst. Ein Parfum in seiner Originalbox, mit einer kurzen handgeschriebenen Notiz warum du genau diesen Duft gewählt hast, ist das Gegenteil von einem schnellen Kauf. "Dieser Duft hat mich sofort an dich erinnert" — kurz, persönlich, unvergessen.',
+          'Wenn du unsicher bist: Ein hochwertiger Duft-Gutschein ist besser als ein falscher Treffer. Kein Mensch, der Parfum liebt, findet einen Gutschein enttäuschend — weil er bedeutet: Ich weiss, dass du selbst am besten weisst, was zu dir passt.'
+        ]
+      },
+      {
+        heading: 'Besondere Anlässe',
+        body: [
+          'Zum Jahrestag: Hier darfst du mutiger sein. Ein Duft, den die Person schon hat und liebt, oder ein neuer in ihrer Lieblingsfamilie, wird zum romantischen Geschenk, das täglich an dich erinnert.',
+          'Als Willkommensgeschenk: Wähle etwas Neutrales und Elegantes — nichts zu Intimes, aber etwas das zeigt, dass du dir Gedanken gemacht hast. Boss Bottled oder Coco Mademoiselle funktionieren hier gut.',
+          'Als Duft-Set für Einsteiger: Einige Marken verkaufen Sets mit mehreren kleinen Flakons. Ideal für jemanden, der noch nicht weiss, was er mag — die Person kann ausprobieren, ohne dass du raten musst.'
         ]
       }
     ]

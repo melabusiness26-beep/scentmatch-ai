@@ -1938,11 +1938,11 @@ export const guides: Guide[] = [
     title: 'Date-Düfte im Sommer: frisch & anziehend',
     description:
       'Die besten Düfte fürs Sommer-Date: frisch genug für warme Tage, aber anziehend und in Erinnerung bleibend. Unsere Favoriten für Frauen und Männer.',
-    heroImage: 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=1200&q=80&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=80&fit=crop',
     intro: [
-      'Beim Sommer-Date ist die Kunst, frisch zu riechen, ohne langweilig zu wirken: leicht genug für warme Abende, aber mit einem anziehenden, warmen Unterton. Ein klassischer Sommer-Duft hilft, aber er reicht oft nicht allein. Wer beim Date in Erinnerung bleiben will, braucht etwas mit Persönlichkeit.',
-      'Die besten Date-Düfte für den Sommer kombinieren zwei scheinbar gegensätzliche Qualitäten: Sie sind frisch genug, um bei Hitze angenehm zu sein , aber warm und sinnlich genug, um nicht austauschbar zu wirken. Versace Eros oder Sol de Janeiro Cheirosa 62 sind gute Beispiele dafür.',
-      'Hier unsere liebsten Date-Düfte für den Sommer, für Frauen und Männer, mit Tipps zur richtigen Dosierung.'
+      'Beim Sommer-Date ist die Kunst, frisch zu riechen, ohne langweilig zu wirken: leicht genug für warme Abende, aber mit einem anziehenden Unterton. Ein klassischer Sommer-Duft allein reicht oft nicht – wer in Erinnerung bleiben will, braucht etwas mit Persönlichkeit.',
+      'Die besten Date-Düfte kombinieren zwei gegensätzliche Qualitäten: Sie sind frisch genug, um bei Hitze angenehm zu sein, aber warm und sinnlich genug, um nicht austauschbar zu wirken. Beispiele wie Versace Eros oder Sol de Janeiro Cheirosa 62 zeigen diesen perfekten Spagat.',
+      'Hier unsere liebsten Date-Düfte für den Sommer – für Frauen und Männer – mit Tipps zur richtigen Dosierung.'
     ],
     sections: [
       {
@@ -1956,10 +1956,10 @@ export const guides: Guide[] = [
       {
         heading: 'Tipps für den richtigen Date-Duft im Sommer',
         body: [
-          'Setz auf frische Düfte mit warmem Kern: Sie wirken sauber und nahbar, bleiben aber anziehend in Erinnerung.',
-          'Dezent dosieren: Komplimente erntet, wer aus der Nähe gut riecht, nicht, wer den ganzen Raum überduftet. Ein bis zwei Sprühstösse genügen.',
-          'Trag den Duft etwas vorher auf, damit sich die spritzige Kopfnote legt und der weichere Kern hervorkommt.',
-          'Bei Hitze lieber leichter: Schwere, süsse Abenddüfte können beim Sommer-Date schnell aufdringlich wirken.'
+          'Setz auf frische Düfte mit warmem Kern: Sie wirken sauber und nahbar, bleiben aber in Erinnerung.',
+          'Dezent dosieren: Komplimente erntet, wer aus der Nähe gut riecht, nicht wer den ganzen Raum überduftet. Ein bis zwei Sprühstösse genügen.',
+          'Timing: Trag den Duft 10–15 Minuten vor dem Date auf, damit sich die spritzige Kopfnote legt und der weichere Kern hervortritt.',
+          'Bei Hitze lieber leichter: Schwere, süsse Abenddüfte wirken beim Sommer-Date schnell aufdringlich.'
         ]
       },
       {

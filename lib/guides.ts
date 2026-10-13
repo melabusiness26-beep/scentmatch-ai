@@ -315,7 +315,7 @@ export const guides: Guide[] = [
           'nasomatto-black-afgano',
           'initio-oud-greatness',
           'xerjoff-naxos',
-          'lattafa-asad'
+          'khamrah'
         ]
       },
       {

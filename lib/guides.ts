@@ -1165,7 +1165,7 @@ export const guides: Guide[] = [
     title: 'Die besten aquatischen Düfte: frisch wie eine Meeresbrise – zeitlos & universell',
     description:
       'Aquatische Düfte mit Meeresbrise, Zitrus und salziger Frische: erfrischend, elegant und universell. Von Sommer & Sport bis zum Alltag – unsere liebsten frischen Meisterwerke für Damen, Herren und Unisex.',
-    heroImage: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/aquatische-duefte-hero.jpg',
     intro: [
       'Aquatische Düfte sind das Gegenmittel gegen Hitze, Schwere und Unbehagen. Sie riechen nach frischer Luft, Meeresbrise und sauberer Energie – wie ein Sprung ins Wasser an einem klaren Sommertag. Diese Duftkategorie wurde in den 1990ern revolutioniert (Davidoff Cool Water, Armani Acqua di Gioia) und ist seitdem nie weggegangen, aus gutem Grund: Die Kombination aus aquatischen Noten, Zitrus und sauberer Haut-Wärme wirkt universell angenehm – fast niemand verweigert sich dieser Frische.',
       'Das Faszinierende an aquatischen Düften ist ihre Ehrlichkeit und Klarheit. Sie versprechen keine Romantik, keine Verführung, keine tiefe Sinnlichkeit – sie versprechen Klarheit, Erleichterung und pure Lebensenergie. Im Gegensatz zu schweren, orientalischen Düften mit Oud oder Amber sind Aquatische unendlich leicht und präsent zugleich. Sie sind der perfekte Duft für alle, die sich nicht „verkleiden", sondern eine verbesserte Version ihrer selbst sein möchten.',

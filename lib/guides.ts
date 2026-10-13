@@ -989,9 +989,9 @@ export const guides: Guide[] = [
         heading: '♌ Löwe (23. Juli – 23. August)',
         body: [
           'Löwen strahlen, sind großzügig und wollen gesehen werden. Ein opulenter Signature-Duft mit guter Strahlkraft ist ihre Bühne.',
-          'Luxus-Pick: Maison Francis Kurkdjian Baccarat Rouge 540. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Yara Tous. Edel, strahlend und unverwechselbar. Ganz wie der Löwe.'
+          'Luxus-Pick: Maison Francis Kurkdjian Baccarat Rouge 540. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Ana Abiyedh Rouge. Edel, strahlend und unverwechselbar – mit derselben Amber-Opulenz wie das Original, aber für ein Bruchteil des Preises.'
         ],
-        perfumes: ['baccarat-rouge-540', 'lattafa-yara-tous']
+        perfumes: ['baccarat-rouge-540', 'lattafa-ana-abiyedh']
       },
       {
         heading: '♍ Jungfrau (24. August – 23. September)',

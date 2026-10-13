@@ -1938,7 +1938,7 @@ export const guides: Guide[] = [
     title: 'Date-Düfte im Sommer: frisch & anziehend',
     description:
       'Die besten Düfte fürs Sommer-Date: frisch genug für warme Tage, aber anziehend und in Erinnerung bleibend. Unsere Favoriten für Frauen und Männer.',
-    heroImage: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=80&fit=crop',
+    heroImage: '/images/date-duefte-hero.jpg',
     intro: [
       'Beim Sommer-Date ist die Kunst, frisch zu riechen, ohne langweilig zu wirken: leicht genug für warme Abende, aber mit einem anziehenden Unterton. Ein klassischer Sommer-Duft allein reicht oft nicht – wer in Erinnerung bleiben will, braucht etwas mit Persönlichkeit.',
       'Die besten Date-Düfte kombinieren zwei gegensätzliche Qualitäten: Sie sind frisch genug, um bei Hitze angenehm zu sein, aber warm und sinnlich genug, um nicht austauschbar zu wirken. Beispiele wie Versace Eros oder Sol de Janeiro Cheirosa 62 zeigen diesen perfekten Spagat.',

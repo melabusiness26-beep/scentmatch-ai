@@ -1209,7 +1209,7 @@ export const guides: Guide[] = [
     title: 'Die besten pudrigen & Moschus-Düfte: elegant, hautnah & zeitlos – seit Jahrhunderten beliebt',
     description:
       'Pudrige & Moschus-Düfte mit Iris, Veilchen und sauberer Haut-Wärme: elegant, sinnlich und universell. Von klassisch bis modern – unsere liebsten weichen Meisterwerke für Damen, Herren und Unisex.',
-    heroImage: 'https://images.unsplash.com/photo-1588776814546-ec7e0b65c5d5?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/pudrige-moschus-duefte-hero.png',
     intro: [
       'Pudrige und moschusartige Düfte sind das Gegenteil von lauter Präsenz – sie sind die Kunst der Subtilität. Sie riechen nach gepflegter Eleganz, nach frisch geduschter Haut, nach Iris und Veilchen, die dich sanft umhüllen wie eine Seide-Handschuhe. Diese Düfte haben eine lange Geschichte: Pudernoten existieren seit der Renaissance, als Puder und Parfüm noch Luxus-Privilegien waren. Heute sind sie moderner denn je – nicht altmodisch, sondern zeitlos elegant.',
       'Moderne pudrige Düfte sind nicht die süßlich-schweren Fruchtbomben von früher. Sie kombinieren Iris- und Veilchennoten (die klassischen „Puder-Noten") mit sauberem Moschus, leichtem Holz oder sogar frischen Zitrus-Akzenten. Das Ergebnis ist eine wunderbare Balance: elegant aus der Nähe, dezent aus der Ferne, und nirgendwo aufdringlich. Sie passen zu jedem Moment, von der Büroarbeit bis zum Dinner.',

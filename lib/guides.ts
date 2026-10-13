@@ -608,7 +608,7 @@ export const guides: Guide[] = [
     title: 'Parfum als Geschenk: Der Weg zum perfekten Duft – Elegant, persönlich und unvergessen',
     description:
       'Parfum ist eines der wertvollsten Geschenke überhaupt – wenn es stimmt. Erfahre, wie du Sicherheit und Eleganz kombinierst und garantiert die richtige Wahl triffst. Unsere liebsten Geschenk-Klassiker für jeden Geschmack und jeden Anlass.',
-    heroImage: '/ratgeber/parfum-geschenk-hero.jpg',
+    heroImage: 'https://images.unsplash.com/photo-1513506003901-1e6c229e2d15?w=1200&q=80&fit=crop',
     intro: [
       'Ein Duft ist eines der persönlichsten Geschenke überhaupt – aber auch eines der riskantesten. Ein durchdachter Duft zeigt: Ich kenne dich, ich respektiere dich, ich habe bedacht, was zu dir passt. Ein falscher Duft endet in der Schublade und signalisiert das Gegenteil.',
       'Das Geheimnis liegt bei Klassikern: Ein eleganter Chanel, Dior oder Lancôme funktioniert fast immer, weil diese Marken über Jahrzehnte gelernt haben, Düfte zu schaffen, die verführen, ohne zu polarisieren. Ein durchdachtes Geschenk mit einem zeitlosen Klassiker schlägt ein spekulatives Nischen-Abenteuer jedes Mal.',

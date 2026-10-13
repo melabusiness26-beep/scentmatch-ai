@@ -608,7 +608,7 @@ export const guides: Guide[] = [
     title: 'Parfum als Geschenk: Der Weg zum perfekten Duft – Elegant, persönlich und unvergessen',
     description:
       'Parfum ist eines der wertvollsten Geschenke überhaupt – wenn es stimmt. Erfahre, wie du Sicherheit und Eleganz kombinierst und garantiert die richtige Wahl triffst. Unsere liebsten Geschenk-Klassiker für jeden Geschmack und jeden Anlass.',
-    heroImage: '/ratgeber/parfum-geschenk-hero.jpg',
+    heroImage: '/ratgeber/parfum-geschenk-hero.png',
     intro: [
       'Ein Duft ist eines der persönlichsten Geschenke überhaupt – aber auch eines der riskantesten. Ein durchdachter Duft zeigt: Ich kenne dich, ich respektiere dich, ich habe bedacht, was zu dir passt. Ein falscher Duft endet in der Schublade und signalisiert das Gegenteil.',
       'Das Geheimnis liegt bei Klassikern: Ein eleganter Chanel, Dior oder Lancôme funktioniert fast immer, weil diese Marken über Jahrzehnte gelernt haben, Düfte zu schaffen, die verführen, ohne zu polarisieren. Ein durchdachtes Geschenk mit einem zeitlosen Klassiker schlägt ein spekulatives Nischen-Abenteuer jedes Mal.',
@@ -620,7 +620,7 @@ export const guides: Guide[] = [
         body: [
           'Diese Düfte sind zeitlos elegant und funktionieren auf den meisten Frauen wunderbar. Sie sind nicht zu experimentell, aber auch nicht langweilig. Das ist die goldene Mitte des Duft-Schenkens: Eine Frau, die einen dieser Düfte trägt, wirkt gepflegt, kultiviert und elegant, ohne dass sie dich unter Druck setzt, genau ihren speziellen Nischen-Geschmack zu treffen.'
         ],
-        perfumes: ['coco-mademoiselle', 'lancome-la-vie-est-belle', 'ysl-black-opium', 'ch-good-girl']
+        perfumes: ['coco-mademoiselle', 'la-vie-est-belle-guerlain', 'black-opium-ysl', 'good-girl-ch']
       },
       {
         heading: 'Für Männer: zeitlose Favoriten',

@@ -1774,20 +1774,20 @@ export const guides: Guide[] = [
         perfumes: [
           'dolce-gabbana-light-blue',
           'armani-acqua-di-gioia',
-          'lattafa-yara',
-          'ariana-cloud',
+          'chloe-edp',
+          'gucci-bloom',
           'marc-jacobs-daisy',
-          'sdj-cheirosa-62',
+          'lancome-idole',
           'dkny-be-delicious',
-          'lattafa-mayar'
+          'dior-miss-dior'
         ]
       },
       {
         heading: 'Welche Duftrichtung passt im Sommer zu dir?',
         body: [
           'Frisch & spritzig: aquatische und zitrische Düfte (z. B. Light Blue, Acqua di Gioia) wirken sauber und unbeschwert, ideal fürs Büro und für heisse Tage.',
-          'Fruchtig & fröhlich: leichte Frucht- und Blütendüfte (z. B. DKNY Be Delicious, Marc Jacobs Daisy) bringen sofort gute Laune.',
-          'Sonnig & cremig: Kokos, Pistazie oder weiche Vanille (z. B. Sol de Janeiro Cheirosa 62, Lattafa Yara) sind die kuscheligen Sommerlieblinge für Strand und laue Abende.'
+          'Blumig & elegant: leichte Blütendüfte (z. B. Chloé EDP, Gucci Bloom, Lancôme Idole, Miss Dior) wirken zeitlos romantisch, ohne dabei schwer zu sein. Perfekt für Alltag und abends.',
+          'Fruchtig & fröhlich: frische Frucht- und Blütenmischungen (z. B. DKNY Be Delicious, Marc Jacobs Daisy) bringen sofort gute Laune und wirken lebendig.'
         ]
       },
       {

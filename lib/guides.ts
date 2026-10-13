@@ -1120,9 +1120,9 @@ export const guides: Guide[] = [
       'Der perfekte Büro-Duft ist ein stilles Statement. Subtil, elegant und respektvoll – dein Duft sollte dich begleiten, nicht den Raum dominieren. Entdecke Düfte, die deine professionelle Ausstrahlung stärken, ohne zu aufdringlich zu wirken.',
     heroImage: '/images/guides/bueroduefte-hero.jpg',
     intro: [
-      'Ein Büro-Duft ist nicht weniger wichtig als ein Abendduft, nur anders. Im Büro ist ein Duft ein subtiles Statement über deine Kultur und Aufmerksamkeit. Es ist eine Form der Eleganz, einen Duft zu tragen, der nicht dominiert. Ein großartiger Büro-Duft begleitet dich den ganzen Tag, ist für andere wahrnehmbar, wenn sie näher kommen, aber drängt sich nicht in den Vordergrund. Das ist schwieriger zu componieren als man denkt, weil Subtilität auch Charakter erfordert. Ein langweiliger Duft ist nicht subtil, er ist einfach schwach.',
-      'Die Psychologie ist clear: Im Grossraumbüro teilst du einen kleinen Luftraum mit vielen Menschen, manche mit empfindlicheren Nasen, manche mit Allergiefaktoren. Ein intensiver, schwerer oder sehr süßer Duft kann schnell zum Thema werden, nicht zum positiven. Ein kluger Büro-Duft hingegen sagt: Ich bin hier, ich habe Geschmack, ich respektiere deine Nähe. Das schafft Vertrauen und Eleganz.',
-      'Hier findest du unsere besten Büro-Düfte, sorgfältig ausgewählt für ihre Balance zwischen Präsenz und Subtilität. Sie sind für Menschen, die verstehen, dass manchmal weniger wirklich mehr ist.'
+      'Ein Büro-Duft ist anders als ein Abendduft, aber genauso wichtig. Es ist ein subtiles Statement über deine Kultur und Aufmerksamkeit. Ein großartiger Büro-Duft begleitet dich den ganzen Tag – für andere wahrnehmbar, wenn sie näher kommen, aber nicht dominant. Das ist schwieriger zu componenteren als man denkt, weil Subtilität auch Charakter erfordert. Ein langweiliger Duft ist nicht subtil, er ist einfach schwach.',
+      'Im Grossraumbüro teilst du einen kleinen Luftraum mit vielen Menschen. Ein intensiver, schwerer oder sehr süßer Duft wird schnell zum Thema – nicht positiv. Ein kluger Büro-Duft sagt: Ich bin hier, ich habe Geschmack, ich respektiere deine Nähe. Das schafft Vertrauen und Eleganz.',
+      'Hier sind unsere besten Büro-Düfte, sorgfältig ausgewählt für ihre Balance zwischen Präsenz und Subtilität.'
     ],
     sections: [
       {
@@ -1133,39 +1133,21 @@ export const guides: Guide[] = [
         perfumes: ['chanel-bleu-de-chanel', 'ysl-y-edp', 'boss-bottled', 'le-labo-santal-33', 'jo-malone-wood-sage-sea-salt', 'coco-mademoiselle', 'narciso-for-her', 'dior-homme']
       },
       {
-        heading: 'Die Büro-Duft-Familien: Welche Subtilität passt zu dir?',
+        heading: 'Welche Düfte funktionieren im Büro',
         body: [
-          'Frische und aquatische Düfte sind die klassische Wahl für das Büro. Sie wirken sauber, angenehm und niemals erdrückend. Ein zitronig-frischer Duft oder ein aquatischer mit Salzigkeit sagt: Ich bin präsent, ich bin gepflegt, ich respektiere den gemeinsamen Luftraum. Diese Familie funktioniert das ganze Jahr.',
-          'Holzige Düfte mit Struktur sind eine elegante Wahl für diejenigen, die ein bisschen mehr Charakter mögen. Sandelholz, Zeder, Vetiver oder grüne, aromatische Noten wirken sophisticiert und professionell. Sie haben genug Substanz, um interessant zu sein, ohne aufdringlich zu werden.',
-          'Leicht blumige Düfte, besonders mit grünen oder aromatischen Elementen, funktionieren wunderbar im Büro. Eine leichte Rose mit Zitrus oder eine grüne Blume wirkt elegant und feminin, ohne saccharin zu sein. Das Wichtigste ist, dass es keine schwere, süßliche Blüte ist, sondern etwas mit Struktur.',
-          'Saubere, minimalistische Düfte sind die Königskategorie für Büro. Ein Duft, der wie hochwertige Haut-Konsistenz riecht, oder wie reines Weiß aussieht, ist perfekt. Diese Düfte sind so subtil, dass sie fast wie eine Hautpflege-Komposition wirken, aber mit feinen Duft-Noten darunter.'
+          'Frische & aquatische Düfte: Die klassische Wahl – sauber, angenehm, nie erdrückend. Ein zitronig-frischer oder salziger Duft sagt: Ich bin präsent, gepflegt und respektvoll. Funktioniert das ganze Jahr. Holzige Düfte mit Struktur: Sandelholz, Zeder, Vetiver oder grüne, aromatische Noten wirken sophisticiert und professionell – genug Substanz um interessant zu sein, ohne aufdringlich zu werden. Leicht blumig: Mit grünen oder aromatischen Elementen – eine leichte Rose mit Zitrus oder eine grüne Blume wirkt elegant und feminin ohne saccharin zu sein. Saubere, minimalistische Düfte: Die beste Kategorie. Ein Duft, der wie hochwertige Hautpflege riecht – subtil, aber mit feinen Duft-Noten darunter.'
         ]
       },
       {
-        heading: 'Was NICHT ins Büro gehört',
+        heading: 'Was nicht ins Büro gehört',
         body: [
-          'Intensive Gourmands mit dominanter Vanille, Karamell oder Schokolade sind im geschlossenen Büroraum oft zu überwältigend, besonders wenn du unter mehreren Menschen sitzt. Ein süßer Duft, der im Winter zu Hause wunderbar ist, kann im Büro schnell zu viel sein.',
-          'Schwere Oud- und Amber-Düfte, besonders die mit großer Projektion, gehören in den Abend, nicht an den Schreibtisch. Ein reicher, rauchiger Oud im 9-to-5 ist einfach fehl am Platz.',
-          'Ultra-intensive Beast-Mode-Düfte sind im Büro ein No-Go. Du brauchst nicht eine Duft-Wolke, um professionell zu wirken. Im Gegenteil, Subtilität wirkt intelligenter.',
-          'Exotische, stark-anisattige oder sehr ungewöhnliche Düfte können ablenkend wirken. Dein Büro-Duft sollte elegant und uncontroversial sein. Speichere dein experimentelles Duft-Abenteuer für Abende und Wochenenden.'
+          'Intensive Gourmands mit dominanter Vanille, Karamell oder Schokolade – oft zu überwältigend in geschlossenen Räumen, besonders wenn viele Menschen nah beieinander sitzen. Schwere Oud- & Amber-Düfte mit großer Projektion – gehören in den Abend, nicht an den Schreibtisch. Ultra-intensive Beast-Mode-Düfte – du brauchst keine Duft-Wolke, um professionell zu wirken. Im Gegenteil, Subtilität wirkt intelligenter. Exotische oder stark ungewöhnliche Düfte – können ablenkend wirken. Halte dein experimentelles Duft-Abenteuer für Abende und Wochenenden.'
         ]
       },
       {
-        heading: 'Die Kunst der Büro-Dosierung und des Auftrags',
+        heading: 'Dosierung und Kontext',
         body: [
-          'Im Büro brauchst du deutlich weniger als zuhause. Ein einzelner, gezielter Sprühstoss am Hals ist meist ideal. Bei manchen Düften genügt sogar ein halber Sprühstoss oder ein Duft-Tröpfchen auf der Kleidung. Das Ziel ist, dass andere dich wahrnehmen, wenn sie näher kommen, nicht dass dein Duft dich voraus ankündigt.',
-          'Trag den Duft lieber auf die Kleidung als auf die Haut. Ein Sprühstoss auf einem Hemd oder einer Jacke statt auf der Haut wirkt deutlich subtiler und länger, weil die Kleidung den Duft langsamer verdunsten lässt als deine Haut. Das ist ein Profi-Trick.',
-          'Morgens reicht ein einzelner Sprühstoss aus. Falls der Duft gegen Mittag nachlässt, ein leichtes Auffrischen im Bad, aber nicht mehr als ein kleiner Sprühstoss. Im Büro bedeutet „nachzulegen" nicht, neu anzufangen.',
-          'Im Sommer halte dich an ein Sprühstoss, maximal. Die Hitze und die Nähe zu anderen Menschen verlangen Zurückhaltung. Im Winter darfst du eventuell ein bisschen mehr machen, aber nicht exzessiv.'
-        ]
-      },
-      {
-        heading: 'Büro-Kontexte: Schreibtisch vs. offenes Büro vs. Meetings',
-        body: [
-          'Wenn du ein eigenes Büro oder einen geschlossenen Schreibtisch hast, darfst du etwas intensiver wählen. Ein schöner holziger oder blumiger Duft mit etwas mehr Charakter funktioniert, weil der Raum klein ist und dein Duft nicht andere beeinflusst.',
-          'Im Grossraumbüro oder Open Space ist Subtilität essentiell. Dein Duft sollte fast unsichtbar sein für Menschen, die zwei Meter entfernt sind. Ein Sprühstoss ist hier nicht zu wenig, es ist genau richtig.',
-          'Bei Meetings, besonders mit Kunden oder in formalen Kontexten, wähle einen Duft, der ruhig und professionell wirkt. Nichts Kontrovers, nichts Experimentelles. Ein klassischer, zeitloser Duft sagt: Ich bin zuverlässig und kultiviert.',
-          'Beim Homeoffice kannst du entspannter sein, aber etabliere eine Routine. Ein Duft zum Starten des Arbeitstages schafft Ritual und mentale Grenzziehung zwischen Privat- und Arbeitsmodus.'
+          'Dosierung: Ein einzelner, gezielter Sprühstoss am Hals ist meist ideal. Manche Düfte brauchen nur einen halben Sprühstoss. Das Ziel ist, dass andere dich wahrnehmen, wenn sie näher kommen – nicht, dass dein Duft dich ankündigt. Profi-Tipp: Trag den Duft lieber auf die Kleidung als auf die Haut – es wirkt subtiler und länger, weil Kleidung den Duft langsamer verdunsten lässt. Morgens ein Sprühstoss reicht. Wenn er gegen Mittag nachlässt, ein leichtes Auffrischen, aber nicht mehr als ein kleiner Sprühstoss. Im Sommer: ein Sprühstoss maximal. Im Winter darfst du eventuell ein bisschen mehr, aber nicht exzessiv. Eigenständiges Büro: Du darfst intensiver wählen. Grossraumbüro: Subtilität ist essentiell – dein Duft sollte fast unsichtbar sein für Menschen zwei Meter weg. Meetings: Wähle ruhig und professionell – nichts Kontrovers, nichts Experimentelles. Homeoffice: Entspannter, aber etabliere eine Routine – es schafft mentale Grenzen zwischen Privat und Arbeit.'
         ]
       }
     ]

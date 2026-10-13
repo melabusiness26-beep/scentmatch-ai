@@ -1133,7 +1133,7 @@ export const guides: Guide[] = [
           'dior-miss-dior',
           'dkny-be-delicious',
           'armani-acqua-di-gioia',
-          'lattafa-yara'
+          'lancome-idole'
         ]
       },
       {

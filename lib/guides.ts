@@ -1123,7 +1123,7 @@ export const guides: Guide[] = [
     title: 'Die besten blumigen Düfte: feminin, elegant & zeitlos – seit Jahrtausenden die Klassiker',
     description:
       'Blumige Düfte mit Rose, Jasmin, Pfingstrose und Orangenblüte: romantisch, elegant und zeitlos. Von zart-frisch bis opulent-sinnlich – unsere liebsten floralen Meisterwerke für Damen, Herren und Unisex.',
-    heroImage: '/ratgeber/blumige-duefte-hero.jpg',
+    heroImage: '/ratgeber/blumige-duefte-hero-neu.png',
     intro: [
       'Blumige Düfte sind der Inbegriff von Eleganz und Weiblichkeit. Rose, Jasmin, Pfingstrose, Orangenblüte – diese Blüten wirken zeitlos feminin, romantisch und unglaublich vielseitig. Florale Düfte sind die grösste und älteste Duftkategorie überhaupt. Kein Wunder: echte Blütenöle gehören zu den kostbarsten Rohstoffen der Parfümerie, und ihre Schönheit ist seit Jahrtausenden unerreicht.',
       'Moderne Florals haben sich dramatisch entwickelt: Weg von der klassischen „Blumenvase" hin zu komplexen Kompositionen. Heute kombinieren die besten Florals zarte Blüten mit Frucht, Moschus, Holz oder sogar Gourmand-Noten – das macht sie vielseitiger, moderner und trotzdem unglaublich romantisch.',

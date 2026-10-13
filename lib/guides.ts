@@ -892,9 +892,9 @@ export const guides: Guide[] = [
       'Welche Frauendüfte ziehen auf Männer an? Unsere Liste der echten „Anziehungs-Klassiker": süß, sinnlich und zeitlos. Düfte, die im Gedächtnis bleiben und echte Komplimente bringen.',
     heroImage: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1200&q=80&fit=crop',
     intro: [
-      'Es gibt Frauendüfte, die scheinen auf Männer wie ein Magnet zu wirken. Lange nachdem die Frau vorbei ist, erinnert sich ein Mann noch an den Duft, und er wirkt unbewusst attraktiv auf ihn ein. Aber nicht wegen eines Tricks oder einer Manipulation, sondern weil gute Düfte die Psychologie verstehen. Die erfolgreichsten Frauendüfte kombinieren warmth, Sinnlichkeit und leichte Rätselhaftigkeit. Sie riechen nicht nach „Mädchen", sondern nach einer reifen, intelligenten Frau, die weiß, was sie will.',
-      'Was diese Düfte alle gemeinsam haben: Sie beginnen oft mit leichtem Fruchtig oder Blüte (macht den Duft nicht zu schwer), haben eine sinnliche Herznote (warme Blüten wie Rose, Orchidee oder exotische Frucht), und enden mit einer warmen, subtil süßlich-sinnlichen Basis (Vanille, Moschus, Amber). Ein Duft, der dieses Dreieck schafft, wirkt magisch anziehend, weil er Eleganz mit Verführung verbindet.',
-      'Hier sind die Klassiker, die bei Männern garantiert gut ankommen. Das ist nicht «für Männer geschrieben», sondern eine Beobachtung dessen, was psychologisch funktioniert. Eine Frau, die sich in einem dieser Düfte wohlfühlt, trägt ihn mit echtem Selbstvertrauen – und das ist die eigentliche Anziehung.'
+      'Manche Frauendüfte bleiben im Gedächtnis. Stunden nach einer Begegnung erinnert sich ein Mann noch an den Duft, und er wirkt unbewusst attraktiv. Das ist nicht Manipulation oder Tricks, sondern das Ergebnis von guter Parfümerie. Die Düfte, die bei Männern wirklich funktionieren, teilen ein bestimmtes Muster: Sie balancieren zwischen Eleganz und Sinnlichkeit, zwischen Nähe und Mysterium. Sie riechen nicht nach „Mädchen", sondern nach einer Frau, die sich selbst kennt.',
+      'Was diese Düfte gemeinsam haben: Sie starten mit etwas Leichtem – Fruchtig oder Blüte – damit der Duft nicht sofort erdrückend wirkt. In der Mitte entwickelt sich etwas Wärmeres, Sinnlicheres: Rose, Orchidee, exotische Fruchtnoten. Und am Ende liegt ein warmer, subtil süßlich-sinnlicher Grund: Vanille, Moschus, Amber. Diese Architektur funktioniert, weil sie den Trick versteht: nicht zu viel Lärm, aber präsent. Nicht aufdringlich, aber unvergesslich.',
+      'Hier sind die Düfte, die wir immer wieder bei Männern erfolgreich sehen. Das ist keine Geheimwaffe, sondern eine Beobachtung dessen, was tatsächlich funktioniert.'
     ],
     sections: [
       {
@@ -914,28 +914,21 @@ export const guides: Guide[] = [
         ]
       },
       {
-        heading: 'Die psychologische Formel: Warum Männer diese Düfte anziehend finden',
+        heading: 'Was funktioniert wirklich',
         body: [
-          'Süße und Wärme gelten unbewusst als Zeichen von Femininität und Sinnlichkeit. Noten wie Vanille, Tonka und Karamell wirken auf der unbewussten Ebene vertrauenswürdig und einladend. Sie sind nicht aggressiv, sondern zieht. Das ist auch, warum viele traditionelle Verführungs-Düfte süße Basis-Noten haben.',
-          'Blumige Noten wie Rose, Jasmin und Orchidee werden mit Romantik und Weiblichkeit assoziiert. Sie wirken nicht hart, sondern elegant-weich. Eine Rose mit Vanille ist die klassische «Verführungs-Formel» in der Parfümerie – und sie funktioniert auch heute noch, weil Männer diese Kombination psychologisch als attraktiv wahrnehmen.',
-          'Amber und Moschus wirken nach gepflegter, warmer Haut. Sie riechen nach Nähe und Zärtlichkeit, nicht nach chemikalischen Dingen. Das ist, warum pudrige, moschus-artige Frauendüfte auf Männer hypnotisierend wirken.',
-          'Das Geheimnis ist Balance: Der Duft darf nicht zu aufdringlich sein, nicht zu laut. Ein Frauenduft, der sehr intensiv ist, kann überwältigend wirken. Die besten Anziehungs-Düfte sind solche, die nur aus der Nähe zu riechen sind, die aber dann intensiv wirken. Das schafft Anziehung auf unbewusster Ebene.',
-          'Süßlichkeit ohne Infantilität: Ein guter süßer Frauenduft ist niemals niedlich oder mädchenhaft. Er ist reif, sinnlich und intelligent. Das ist der Unterschied zwischen «verspielte Süße» (wirkt jung) und «sinnliche Süße» (wirkt reif). Die guten Düfte haben diese Reife.'
+          'Vanille, Tonka, Karamell: Diese Noten wirken nicht wegen irgendwelcher psychologischen Tricks, sondern weil sie natürlicherweise warm und nahbar riechen. Ein Mann riecht diese Noten und assoziiert sie mit Gemütlichkeit, Nähe, Sicherheit. Das ist echt, nicht konstruiert. Deshalb haben traditionelle Verführungs-Düfte solche Basis-Noten.',
+          'Rosen und Jasmin funktionieren, weil sie elegant riechen. Sie wirken nicht kitschig oder übertrieben – sie wirken reif und kultiviert. Eine Rose mit etwas Vanille ist eine zeitlose Kombination, nicht weil sie „Verführung erzeugt", sondern weil sie einfach schön riecht.',
+          'Moschus und Amber riechen nach warmer Haut. Sie sind subtil, nicht chemisch. Das ist auch, warum eine Frau, die einen moschusartigen Duft trägt, näher zu wirken scheint – der Duft wirkt wie eine natürliche Duftentwicklung ihres Körpers, nicht wie etwas, das von außen aufgebracht wurde.',
+          'Die wichtigste Regel: weniger ist mehr. Ein Frauenduft, der zu intensiv ist, wird erdrückend. Die Düfte auf dieser Liste sind solche, die nur aus der Nähe richtig zu riechen sind, aber dann langanhaltend wirken. Das ist Balance. In Räumen wirkt ein intensiver Duft schnell erdrückend. Aber wenn ein Mann dich umarmt und deinen Duft entdeckt – das ist stark.',
+          'Reife statt Niedlichkeit: Ein guter Frauenduft ist intelligent. Er ist nicht „niedlich" oder „verspielt", sondern reif und sinnlich. Das ist der Unterschied zwischen einer Frau, die „süß riechen möchte" und einer Frau, die „sexy und kultiviert riechen möchte". Die Düfte hier sind in der zweiten Kategorie.'
         ]
       },
       {
-        heading: 'Für verschiedene Kontexte und Ziele',
+        heading: 'Der wichtigste Punkt',
         body: [
-          'Für das erste Date: Ein Duft, der nicht zu dominant ist, aber sinnlich wirkt. YSL Black Opium oder Lancôme La Vie Est Belle haben diese Balance perfekt. Sie wirken sexy ohne aufdringlich zu sein.',
-          'Für etablierte Beziehungen: Ein Duft, den der Partner kennt und liebt, wird zu eurem «gemeinsamen Duft». Coco Mademoiselle oder Mon Paris werden zu Düften, die sofort mit dir verbunden sind. Das ist Langzeit-Anziehung.',
-          'Für alltägliche Anziehung: Ein pudrig-moschusartiger Duft wie Lattafa Yara oder Gisada Ambassadora wirkt im Alltag, beim Einkaufen oder im Büro, immer noch subtil anziehend. Es ist nicht aufdringlich, aber man bemerkt es.',
-          'Für intensive Momente: Ein sehr sinnlicher, warmer Duft wie Black Opium mit mehr Dosierung wirkt am Abend oder in intimen Kontexten magisch anziehend. Hier darf der Duft sinnlich und full-bodied sein.',
-          'Wichtig in allen Kontexten: Dosierung und Selbstvertrauen sind wichtiger als der Duft selbst. Eine Frau, die sich in einem Duft wohlfühlt und ihn mit Selbstvertrauen trägt, wird immer attraktiver wirken als eine Frau, die sich unwohl fühlt, aber einen «anziehenden» Duft trägt.'
-        ]
-      },
-      {
-        body: [
-          'Das wichtigste Geheimnis: Es geht nicht darum, für Männer zu fallen oder dich zu manipulieren. Es geht darum, einen Duft zu tragen, der du liebst, in dem du dich selbstbewusst und elegant fühlst. Diese echte Sicherheit ist die größte Anziehung. Mach das Quiz und finde deine eigene Lieblingsrichtung. Dann trage sie mit voller Überzeugung – das ist was wirklich anziehend ist.'
+          'Die erfolgreichsten Frauendüfte – und das ist ehrlich – sind nicht die mit der „besten Formel", sondern die, in denen sich eine Frau selbstbewusst fühlt. Ein Duft kann alle psychologischen Zutaten haben, aber wenn du dich darin unwohl fühlst, wird das ein Mann riechen. Die authentische Selbstsicherheit ist immer attraktiver als der perfekteste Duft ohne Überzeugung.',
+          'Dosierung ist ein praktisches Thema. Einige dieser Düfte – wie Black Opium – sind konzentriert. Eine Sprühung reicht oft. Bei extremem Selbstvertrauen und intimem Kontext kannst du mehr nehmen. Aber für den Alltag, besonders im Büro oder in öffentlichen Räumen, weniger ist eleganter. Männer mögen, dass sie einen Duft entdecken müssen, wenn sie dich näher kommen – das wirkt rätselhafter.',
+          'Im Endeffekt ist die Wahrheit simpel: Trag einen dieser Düfte, der dir selbst gefällt, in dem du dich gut fühlst. Das ist alles, was du brauchst.'
         ]
       }
     ]

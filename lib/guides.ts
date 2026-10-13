@@ -1346,37 +1346,29 @@ export const guides: Guide[] = [
       'Blumige Düfte mit Rose, Jasmin, Pfingstrose und Orangenblüte: romantisch, elegant und zeitlos. Von zart-frisch bis opulent-sinnlich – unsere liebsten floralen Meisterwerke für Damen, Herren und Unisex.',
     heroImage: '/ratgeber/blumige-duefte-hero-neu.png',
     intro: [
-      'Blumige Düfte sind der Inbegriff von Eleganz und Weiblichkeit. Rose, Jasmin, Pfingstrose, Orangenblüte – diese Blüten wirken zeitlos feminin, romantisch und unglaublich vielseitig. Florale Düfte sind die grösste und älteste Duftkategorie überhaupt. Kein Wunder: echte Blütenöle gehören zu den kostbarsten Rohstoffen der Parfümerie, und ihre Schönheit ist seit Jahrtausenden unerreicht.',
-      'Moderne Florals haben sich dramatisch entwickelt: Weg von der klassischen „Blumenvase" hin zu komplexen Kompositionen. Heute kombinieren die besten Florals zarte Blüten mit Frucht, Moschus, Holz oder sogar Gourmand-Noten – das macht sie vielseitiger, moderner und trotzdem unglaublich romantisch.',
-      'Hier unsere liebsten floralen Düfte: von hauchzart und frisch über elegant-klassisch bis hin zu opulent und sinnlich. Für Damen, für Herren, für alle, die Blüten lieben.'
+      'Blumige Düfte wirken zeitlos feminin und elegant. Rose, Jasmin, Pfingstrose, Orangenblüte – diese Blüten funktionieren, weil sie wirklich wunderschön riechen. Echte Blütenöle sind teuer – Rose aus Bulgarien, Jasmin aus Grasse – und das hat einen Grund: Ihre Komplexität ist unerreicht. Ein großartiger floraler Duft riecht nicht nach „Blumenvase", sondern nach echtem Anbau, Tiefe, Struktur.',
+      'Das Schöne an modernen floralen Düften: Sie sind nicht simpel. Die besten kombinieren zarte Blüten mit Frucht, Moschus, Holz oder sogar Vanille. Das macht sie vielseitiger und moderner, ohne dass sie ihre Eleganz verlieren. Ein floraler Duft von heute kann würzig, frisch oder sinnlich sein – die Blüte ist nur der Anfang.',
+      'Hier sind unsere liebsten floralen Düfte: von zart und frisch über klassisch-elegant bis intensiv und sinnlich. Für alle, die echte Blüten lieben.'
     ],
     sections: [
       {
         perfumes: ['coco-mademoiselle', 'chloe-edp', 'gucci-bloom', 'ysl-libre', 'dior-miss-dior', 'chanel-no-5', 'lancome-idole', 'pdm-delina']
       },
       {
-        heading: 'Welche Blüte steckt in dir?',
+        heading: 'Die verschiedenen floralen Charaktere',
         body: [
-          'Rose: zeitlos, romantisch und unendlich vielseitig – mal klassisch und opulent, mal modern mit Frucht, Moschus oder sogar Oud kombiniert. Die Königin unter den Blüten.',
-          'Jasmin & Orangenblüte: warm, sinnlich und leicht betörend. Sie wirken intim und sinnlich, besonders schön am Abend oder in der kühlen Jahreszeit.',
-          'Pfingstrose & Maiglöckchen: frisch, leicht und zart – das ist Frühling im Duft. Perfekt für alle, die es romantisch, aber nicht schwer mögen.',
-          'Iris & Veilchen: pudrig-elegant und fein. Für alle, die Blüten lieben, aber subtiler und eleganter als andere Florals mögen.'
+          'Rose ist die Klassikerin und die vielseitigste Blüte. Sie kann sehr klassisch und opulent wirken – Chanel No. 5 ist ein Paradebeispiel. Oder modern und frisch, kombiniert mit Frucht oder Moschus. Rose ist die Königin der Blüten, weil sie mit allem funktioniert.',
+          'Jasmin und Orangenblüte sind sinnlich und betörend. Sie wirken warm und intim – nicht zart, sondern intensiv. Diese Blüten sind perfekt für Abende oder die kühle Jahreszeit, wenn du etwas mit echtem Charakter tragen möchtest.',
+          'Pfingstrose und Maiglöckchen sind das Gegenteil: zart, frisch und leicht – das ist Frühling im Glas. Perfekt für diejenigen, die Romantik ohne Schwere mögen, tagsüber und im Alltag.',
+          'Iris und Veilchen sind subtiler und pudrig-elegant. Sie wirken nicht so sofort erkennbar „blumig", sondern eleganter und feiner. Für diejenigen, die Blüten lieben, aber sie lieber unterschwellig haben.'
         ]
       },
       {
-        heading: 'Blumig ist nicht altmodisch',
+        heading: 'Was moderne Florals unterscheidet',
         body: [
-          'Moderne Florals kombinieren Blüten geschickt mit Frucht, Moschus, Holz oder sogar Vanille und wirken dadurch komplett aktuell – alles andere als Omas Parfüm.',
-          'Zarte, frische Florals (mit grünen oder fruchtigen Noten) passen perfekt in Frühling und Alltag. Opulente, süsse Blütendüfte entfalten ihre volle Schönheit am Abend und in der kühlen Jahreszeit.',
-          'Florale Düfte mit einer Holz-Komponente wirken erwachsener und moderner. Eine Moschus-Basis macht Blütendüfte eleganter und langlebiger.'
-        ]
-      },
-      {
-        heading: 'Worauf du bei blumigen Düften achten solltest',
-        body: [
-          'Echte, hochwertige Blütenöle sind teuer – das sieht man am Preis. Synthetic Florals können auch schön sein, echte Öle haben aber eine Tiefe, die synthetische Versionen nicht erreichen.',
-          'Manche Menschen finden Blütendüfte zu „süss" oder „dicht". Das ist normal – wähle dann zarte, frische Florals statt opulente, oder achte auf Florals mit einer holzigen Note.',
-          'Florals halten von Natur aus lange, weil die Blüten in der Basis landen. Ideal für den ganzen Tag und für besondere Anlässe.'
+          'Moderne Florals sind nicht altmodisch. Sie kombinieren Blüten mit Frucht, Moschus, Holz oder Vanille und wirken dadurch aktuell und vielseitig. Ein floraler Duft von heute kann würzig, grün, frisch oder sogar süßlich sein – nicht einfach nur „Blumenvase".',
+          'Der Unterschied zwischen zarten und opulenten Florals ist jahreszeit- und anlass-abhängig. Ein frischer, grüner Floral funktioniert tagsüber. Ein opulenter, süßer Floral ist wunderschön am Abend oder im Winter. Eine holzige Komponente macht Florals erwachsener. Eine Moschus-Basis macht sie eleganter und langlebiger.',
+          'Qualität zeigt sich am Preis. Echte Blütenöle – besonders Rose und Jasmin – sind teuer. Ein hochwertiger Floral mit echten Ölen hat eine Tiefe und Komplexität, die synthetische Versionen nicht erreichen. Das ist kein Snobbismus, sondern Handwerk.'
         ]
       }
     ]

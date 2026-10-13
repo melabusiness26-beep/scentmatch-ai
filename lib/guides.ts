@@ -1277,11 +1277,11 @@ export const guides: Guide[] = [
     title: 'Hochzeitsdüfte: die schönsten Parfums für die Braut',
     description:
       'Der Duft zum schönsten Tag: elegante, romantische Parfums für die Braut, zeitlos, fein und voller guter Erinnerungen.',
-    heroImage: 'https://images.unsplash.com/photo-1519741347686-c1e331fcf8fc?w=1200&q=80&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1548691528-6164ff1c64e0?w=1200&q=80&fit=crop',
     intro: [
-      'Ein Duft wird zum Souvenir deines grossen Tages: Jahre später erinnert dich ein Hauch davon sofort an die Hochzeit. Das Gehirn verknüpft Erinnerungen eng mit Gerüchen: Der Hochzeitsduft wird für immer mit diesem Tag verbunden bleiben. Deshalb darf er besonders sein.',
-      'Als Braut wählst du am besten einen Duft, der zeitlos und elegant ist, nicht der aktuellste Trend, sondern etwas, das du auch in zehn Jahren noch schön findest. Etwas Blumiges, Weiss-Weiches oder leicht Pudrig-Romantisches hat bei Hochzeiten seit Jahrzehnten seinen Platz.',
-      'Hier elegante, romantische Düfte, die zu einer Braut wunderbar passen , zeitlos statt trendig, mit Tipps, wie du die richtige Wahl triffst.'
+      'Ein Duft wird zum Souvenir deines grössten Tages: Jahre später reicht ein Hauch davon aus, und du bist sofort zurück bei all den Emotionen, den Umarmungen, dem Lachen. Das Gehirn verknüpft Erinnerungen eng mit Gerüchen – dein Hochzeitsduft wird für immer mit diesem Moment verbunden bleiben. Deshalb muss er wirklich besonders sein.',
+      'Die beste Wahl für eine Braut ist etwas Zeitloses und Elegantes – nicht die Mode von heute, sondern etwas, das du auch in zehn Jahren noch mit Liebe trägst. Ein zartes Blumiges, ein cremig-Weiches oder ein sanft Pudrig-Romantisches hat seit Jahrzehnten seinen Platz bei Hochzeiten – aus gutem Grund.',
+      'Hier unsere liebsten Hochzeitsdüfte: romantisch, elegant, zeitlos – mit Tipps, wie du deinen perfekten Duft findest.'
     ],
     sections: [
       {
@@ -1298,9 +1298,9 @@ export const guides: Guide[] = [
       {
         heading: 'Tipps für den Hochzeitsduft',
         body: [
-          'Wähle etwas Zeitloses, das du auch in Jahren noch schön findest, nicht den lautesten Trend.',
-          'Trag den Duft schon ein paar Mal vorher, damit du sicher bist, dass er sich auf deiner Haut richtig anfühlt.',
-          'Ein dezenter, eleganter Duft passt meist besser als ein sehr schwerer. Du möchtest umarmt werden, ohne andere zu überduften.'
+          'Zeitlos statt trendig: Wähle einen Duft, der über die Jahre Bestand hat. In zehn Jahren soll er dich noch genauso glücklich machen wie heute – nicht wie eine vorübergehende Modeerscheinung wirken.',
+          'Teste vorher mehrmals: Trag den Kandidaten zwei bis drei Wochen vor der Hochzeit an verschiedenen Tagen. So merkst du, wie er sich auf deiner Haut anfühlt und ob du ihn den ganzen Tag tragen möchtest.',
+          'Eleganz statt Überdosis: Ein dezenter, eleganter Duft passt besser als ein sehr schwerer. Du möchtest in Umarmungen erkannt werden, nicht nur am Duft. Weniger ist mehr – gerade bei einem so persönlichen Moment.'
         ]
       }
     ]

@@ -828,7 +828,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
   'date-duefte-sommer': [
     {
       q: 'Welcher Duft kommt beim Date gut an?',
-      a: 'Frische Düfte mit warmem Kern – sauber und nahbar, aber anziehend. Für Frauen z. B. Lattafa Yara, für Männer Versace Eros oder Stronger With You.'
+      a: 'Frische Düfte mit warmem Kern – sauber und nahbar, aber anziehend. Für Frauen z. B. Chloé EDP, für Männer Versace Eros oder Dior Sauvage.'
     },
     {
       q: 'Wie viel Parfum trage ich beim Date auf?',
@@ -840,7 +840,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Was ist ein guter günstiger Date-Duft?',
-      a: 'Lattafa Yara für Frauen und Versace Eros (günstig im Handel) oder Lattafa Asad für Männer. Alle drei kommen bei anderen gut an, ohne viel Geld zu kosten.'
+      a: 'DKNY Be Delicious für Frauen und Versace Eros oder Dior Sauvage für Männer. Alle drei kommen bei anderen gut an und sind erschwinglich.'
     },
     {
       q: 'Wann soll ich den Duft für ein Date auftragen?',

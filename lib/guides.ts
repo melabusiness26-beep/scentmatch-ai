@@ -1958,8 +1958,8 @@ export const guides: Guide[] = [
       'Die besten Düfte fürs Sommer-Date: frisch genug für warme Tage, aber anziehend und in Erinnerung bleibend. Unsere Favoriten für Frauen und Männer.',
     heroImage: 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=1200&q=80&fit=crop',
     intro: [
-      'Beim Sommer-Date ist die Kunst, frisch zu riechen, ohne langweilig zu wirken: leicht genug für warme Abende, aber mit einem anziehenden, warmen Unterton. Ein klassischer Sommer-Duft hilft, aber er reicht oft nicht allein. Wer beim Date in Erinnerung bleiben will, braucht etwas mit Persönlichkeit.',
-      'Die besten Date-Düfte für den Sommer kombinieren zwei scheinbar gegensätzliche Qualitäten: Sie sind frisch genug, um bei Hitze angenehm zu sein, aber warm und sinnlich genug, um nicht austauschbar zu wirken. Coco Mademoiselle oder Versace Eros sind gute Beispiele dafür.',
+      'Beim Sommer-Date ist die Balance zwischen Frische und Anziehung alles: leicht genug, um bei Wärme angenehm zu sein, aber mit genug Charakter, um in Erinnerung zu bleiben. Ein klassischer Sommer-Duft ist ein guter Anfang, aber das Besondere braucht mehr – es braucht dich selbst darin.',
+      'Die besten Date-Düfte schaffen das Unmögliche: Sie starten frisch und werden im Laufe des Abends immer sinnlicher. Du riechst angenehm, ohne zu überwältigen – und es gibt einen Grund, warum Menschen dich fragen werden, was du trägst. Coco Mademoiselle und Versace Eros machen genau das.',
       'Hier unsere liebsten Date-Düfte für den Sommer, für Frauen und Männer, mit Tipps zur richtigen Dosierung.'
     ],
     sections: [
@@ -1974,10 +1974,10 @@ export const guides: Guide[] = [
       {
         heading: 'Tipps für den richtigen Date-Duft im Sommer',
         body: [
-          'Setz auf frische Düfte mit warmem Kern: Sie wirken sauber und nahbar, bleiben aber anziehend in Erinnerung.',
-          'Dezent dosieren: Komplimente erntet, wer aus der Nähe gut riecht, nicht, wer den ganzen Raum überduftet. Ein bis zwei Sprühstösse genügen.',
-          'Trag den Duft etwas vorher auf, damit sich die spritzige Kopfnote legt und der weichere Kern hervorkommt.',
-          'Bei Hitze lieber leichter: Schwere, süsse Abenddüfte können beim Sommer-Date schnell aufdringlich wirken.'
+          'Frische mit Seele: Düfte mit warmem Kern fühlen sich nicht nur sauber und verlässlich an – sie schaffen auch eine intime Nähe, ohne zu ersticken. Das ist es, was beim Date zählt.',
+          'Das Geheimnis der richtigen Menge: Großzügig dosieren ist das größte Fehler beim Date. Der beste Moment ist, wenn jemand seinen Kopf deinem Nacken nähert – und dann deinen Duft entdeckt. Ein bis zwei Sprühstösse, zentral auf Brust oder Nacken, genügt vollkommen.',
+          'Der richtige Zeitpunkt: Trag deinen Duft 10–15 Minuten vor dem Losfahren auf. So legt sich die spritzige Kopfnote und der volle, weichere Kern kommt zum Vorschein – das ist dein bester Eindruck.',
+          'Im Sommer weniger ist mehr: Schwere, zuckersüße Abenddüfte fühlen sich in der Hitze schnell klebrig und erdrückend an. Dein Date wird eher fragen „Was ist das?" als sich unwohl fühlen wollen.'
         ]
       },
       {

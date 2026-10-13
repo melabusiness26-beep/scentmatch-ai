@@ -1164,26 +1164,6 @@ export const guides: Guide[] = [
       }
     ]
   },
-      {
-        heading: 'Worauf du beim Kauf achten solltest',
-        body: [
-          'Konzentration: Eau de Toilette (EdT) ist für den Frühling meist die beste Wahl, leichter, luftiger und günstiger als Eau de Parfum. Bei milderen Frühlingstagen kann ein EdP jedoch angenehm sein.',
-          'Dosierung: Im Frühling reichen 1–2 Sprühstösse. Mit steigenden Temperaturen wirkt ein Duft intensiver als gewohnt.',
-          'Noten im Fokus: Achte auf Kopfnoten wie Bergamotte, Zitrone, grünen Tee, Maiglöckchen oder Iris. Diese Noten wirken im Frühling besonders lebendig.',
-          'Was du vermeiden solltest: Sehr schwere Basis-Noten wie Oud, Tabak oder dicke Vanille passen eher in den Herbst und Winter.',
-          'Probiere zuerst: Bestelle wenn möglich eine Probe, bevor du einen ganzen Flakon kaufst. Auf der Haut riecht ein Duft immer anders als im Laden.'
-        ]
-      },
-      {
-        heading: 'Die typischen Noten eines Frühlingsdufts',
-        body: [
-          'Kopfnoten (erster Eindruck): Bergamotte, Zitrone, grüner Apfel, Grapefruit, Mandarine. Frisch und lebendig.',
-          'Herznoten (der eigentliche Charakter): Rose, Maiglöckchen, Pfingstrose, Jasmin, Iris, Veilchen – blumig und feminin. Oder für Herren: Lavendel, grünes Gras, Kardamom.',
-          'Basisnoten (bleibt auf der Haut): Weisser Moschus, sanftes Holz, Zedernholz, leichte Amber. Gibt Wärme ohne Schwere.'
-        ]
-      }
-    ]
-  },
   {
     slug: 'die-besten-bueroduefte',
     title: 'Die besten Büro-Düfte: Subtilität, Eleganz & Respekt – Professionelle Ausstrahlung',

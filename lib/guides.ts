@@ -1277,7 +1277,7 @@ export const guides: Guide[] = [
     title: 'Hochzeitsdüfte: die schönsten Parfums für die Braut',
     description:
       'Der Duft zum schönsten Tag: elegante, romantische Parfums für die Braut, zeitlos, fein und voller guter Erinnerungen.',
-    heroImage: 'https://images.unsplash.com/photo-1548691528-6164ff1c64e0?w=1200&q=80&fit=crop',
+    heroImage: '/images/hochzeitsduefte-hero.jpg',
     intro: [
       'Ein Duft wird zum Souvenir deines grössten Tages: Jahre später reicht ein Hauch davon aus, und du bist sofort zurück bei all den Emotionen, den Umarmungen, dem Lachen. Das Gehirn verknüpft Erinnerungen eng mit Gerüchen – dein Hochzeitsduft wird für immer mit diesem Moment verbunden bleiben. Deshalb muss er wirklich besonders sein.',
       'Die beste Wahl für eine Braut ist etwas Zeitloses und Elegantes – nicht die Mode von heute, sondern etwas, das du auch in zehn Jahren noch mit Liebe trägst. Ein zartes Blumiges, ein cremig-Weiches oder ein sanft Pudrig-Romantisches hat seit Jahrzehnten seinen Platz bei Hochzeiten – aus gutem Grund.',

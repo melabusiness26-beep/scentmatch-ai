@@ -697,7 +697,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
           )}
 
           {/* Charakter & Persönlichkeit */}
-          {(currentAnalysis.characterTags || currentAnalysis.personalityType || currentAnalysis.mood) && (
+          {(currentAnalysis.characterTags?.length || currentAnalysis.personalityType?.trim() || currentAnalysis.mood?.trim()) && (
             <section style={{ marginBottom: '2.5rem' }}>
               <SectionHeading>Charakter & Persönlichkeit</SectionHeading>
               <div style={{
@@ -706,13 +706,13 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                 padding: '1.75rem 2rem',
                 borderRadius: '14px',
               }}>
-                {currentAnalysis.personalityType && (
+                {currentAnalysis.personalityType?.trim() && (
                   <div style={{ marginBottom: '1rem' }}>
                     <div style={{ fontSize: '0.72rem', color: C.gold, fontWeight: '700', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>Persönlichkeitstyp</div>
                     <p style={{ fontSize: '1rem', color: C.cream, margin: 0, lineHeight: 1.5 }}>{currentAnalysis.personalityType}</p>
                   </div>
                 )}
-                {currentAnalysis.mood && (
+                {currentAnalysis.mood?.trim() && (
                   <div style={{ marginBottom: '1rem' }}>
                     <div style={{ fontSize: '0.72rem', color: C.gold, fontWeight: '700', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>Stimmung</div>
                     <p style={{ fontSize: '1rem', color: C.cream, margin: 0 }}>{currentAnalysis.mood}</p>

@@ -205,21 +205,38 @@ PFLICHTREGELN:
     });
 
     if (!response.ok) {
-      const errorData = await response.json();
-      console.error('[anthropic-analyzer] API-Fehler:', errorData);
+      try {
+        const errorData = await response.json();
+        console.error('[anthropic-analyzer] API-Fehler:', response.status, errorData);
+        return {
+          success: false,
+          error: `API-Fehler ${response.status}: ${errorData?.error?.message || 'Unbekannter Fehler'}`,
+        };
+      } catch {
+        console.error('[anthropic-analyzer] API-Fehler (Text):', response.status, await response.text());
+        return {
+          success: false,
+          error: `API-Fehler ${response.status}`,
+        };
+      }
+    }
+
+    let data;
+    try {
+      data = await response.json();
+    } catch (e) {
+      console.error('[anthropic-analyzer] JSON-Parse-Fehler in API-Response:', e);
       return {
         success: false,
-        error: `API-Fehler: ${response.status}`,
+        error: 'API-Response konnte nicht gelesen werden',
       };
     }
 
-    const data = await response.json();
-
     if (!data.content || !data.content[0] || data.content[0].type !== 'text') {
-      console.error('[anthropic-analyzer] Unerwartete Antwort:', data);
+      console.error('[anthropic-analyzer] Unerwartete Antwort:', JSON.stringify(data).slice(0, 200));
       return {
         success: false,
-        error: 'Unerwartete API-Antwort',
+        error: `Unerwartete API-Antwort: ${data.content ? 'Kein Text' : 'Kein Content'}`,
       };
     }
 
@@ -237,10 +254,20 @@ PFLICHTREGELN:
     try {
       analysis = JSON.parse(analysisText);
     } catch (parseError) {
-      console.error('[anthropic-analyzer] JSON-Parse-Fehler:', analysisText);
+      console.error('[anthropic-analyzer] JSON-Parse-Fehler:', analysisText.slice(0, 300));
+      console.error('[anthropic-analyzer] Parse-Error Details:', parseError);
       return {
         success: false,
-        error: 'Analyse konnte nicht verarbeitet werden',
+        error: `JSON-Parse-Fehler: ${(parseError as Error).message}`,
+      };
+    }
+
+    // Validiere mindestens perfumeName und brandName
+    if (!analysis.perfumeName || !analysis.brandName) {
+      console.error('[anthropic-analyzer] Fehlende kritische Felder:', { perfumeName: analysis.perfumeName, brandName: analysis.brandName });
+      return {
+        success: false,
+        error: 'KI konnte Duft nicht identifizieren (fehlende Marke/Name)',
       };
     }
 

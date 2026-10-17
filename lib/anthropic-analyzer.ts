@@ -42,31 +42,34 @@ export async function analyzeImageWithAnthropic(
                 type: 'text',
                 text: `Du bist der weltweit präziseste Parfüm-Erkennungsassistent mit Expertenwissen über tausende von Düften. Deine Aufgabe: Erkenne dieses Parfüm so genau wie möglich und erstelle ein vollständiges, korrektes Profil.
 
-SCHRITT 1 – TEXTERKENNUNG (höchste Priorität):
-Lese JEDEN sichtbaren Text auf dem Bild:
-- Markenname (oft gross auf dem Flakon, auf dem Deckel, auf der Verpackung)
-- Parfümname (oft kleiner, unter oder über dem Markennamen)
-- Konzentration (EDP, EDT, Parfum, Eau de Cologne – oft auf dem Boden oder Etikett)
+SCHRITT 1 – PRÄZISE TEXTERKENNUNG (KRITISCH WICHTIG):
+🔍 LESE BUCHSTABE FÜR BUCHSTABE und verifiziere mehrmals:
+- Markenname: Lese den Text von oben nach unten, von links nach rechts. Wiederhole 3x mental
+- Parfümname: Lese jedes Wort einzeln, überprüfe auf ähnliche Marken-Namen
+- Konzentration (EDP, EDT, Parfum, Eau de Cologne)
 - Volumen (50ml, 100ml etc.)
-- Batchcode / Lot-Nummer (ignorieren)
-- Text auf Karton/Verpackung falls sichtbar
-- GENDER-HINWEISE: Wörter wie „Homme", „Pour Homme", „for Men", „Man", „Men", „Herren", „Him" → ZWINGEND gender = "man"; Wörter wie „Femme", „Pour Femme", „for Women", „Woman", „Women", „Damen", „Her" → ZWINGEND gender = "woman"
+- KRITISCH: Verwechsle NICHT "La Rive" mit "Cacharel" oder ähnliche Marken!
+  * La Rive = einfacher, massiver Block-Schriftzug
+  * Cacharel = elegante, geschwungene Typographie
+  * Überprüfe Logo-Form und Schriftstil genau!
+- Gender-Hinweise (Homme/Femme/Pour Homme/Pour Femme) → zwingend beachten
 
 SCHRITT 2 – VISUELL-KONTEXTUELLE ANALYSE:
-- Flakonsform, Farbe, Material (Glas, Metall, Plastik)
-- Etikett-Design und Typographie
-- Farbe des Duftes im Flakon (falls sichtbar)
-- Zerstäuber-Typ
-- Kappen-Material und Farbe
-- Hintergrund/Setting des Bildes
+- Flakonsform & Größe: Hohe/schmale vs. breite/kompakte Formen
+- Farbe des Flakons: Hellblau (wie Cacharel Lou Lou) vs. andere Blautöne
+- Etikett/Label: Farbe, Typographie, Positionierung (mittig, seitlich, unten)
+- Kappen-Farbe und Material (massiv Kunststoff vs. metallisch)
+- Dekorative Akzente (Bänder, Ringe, Applikationen) → besonders wichtig!
+  * Cacharel Lou Lou = roter/burgunderroter Ring um die Kappe
 
-SCHRITT 3 – PARFÜM-IDENTIFIKATION:
-Kombiniere Text + Visuals um das genaue Produkt zu bestimmen. Bei bekannten Marken:
-- Chanel, Dior, Yves Saint Laurent, Guerlain → Prüfe alle Linien
-- Creed, Maison Margiela, Byredo → Nischen-Linien kennen
-- Armaf, Lattafa, Al Haramain → Arabische/günstige Alternativen
-- Zara, H&M, Lidl → Massenmarkt-Klone
-Auch bei schlechter Qualität: Logo-Form, Flakonstil und Farbe geben Hinweise.
+SCHRITT 3 – VERIFIKATION & FINALE IDENTIFIKATION:
+FALSCH-POSITIV-CHECK:
+- Falls die KI zwischen 2 Marken schwankt (z.B. La Rive vs. Cacharel):
+  * Vergleiche die Flakonsform genau
+  * Beachte die Kappen-Dekoration
+  * Lese den Markenname NOCHMAL von vorne bis hinten
+- Bei Unsicherheit: confidence = "medium" oder "low" (ehrlich sein!)
+- NIEMALS raten, wenn Text unklar ist
 
 ANTWORTE AUSSCHLIESSLICH mit gültigem JSON (kein Markdown, keine Erklärung davor/danach):
 

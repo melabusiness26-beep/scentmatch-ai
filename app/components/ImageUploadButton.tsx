@@ -16,6 +16,44 @@ export default function ImageUploadButton({
   const cameraInputRef = useRef<HTMLInputElement>(null);
   const galleryInputRef = useRef<HTMLInputElement>(null);
 
+  // Komprimiere Bild auf max 2MB für schnellere API-Anfrage
+  const compressImage = (dataUrl: string): Promise<string> => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        let width = img.width;
+        let height = img.height;
+
+        // Skaliere Bild auf max 1280px
+        const maxDim = 1280;
+        if (width > height) {
+          if (width > maxDim) {
+            height = Math.round((height * maxDim) / width);
+            width = maxDim;
+          }
+        } else {
+          if (height > maxDim) {
+            width = Math.round((width * maxDim) / height);
+            height = maxDim;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.drawImage(img, 0, 0, width, height);
+          // Komprimiere mit 70% Qualität
+          resolve(canvas.toDataURL('image/jpeg', 0.7));
+        } else {
+          resolve(dataUrl); // Fallback
+        }
+      };
+      img.src = dataUrl;
+    });
+  };
+
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -33,9 +71,11 @@ export default function ImageUploadButton({
     }
 
     const reader = new FileReader();
-    reader.onload = () => {
+    reader.onload = async () => {
       const result = reader.result as string;
-      onImageSelected(result);
+      // Komprimiere Bild für schnelleren Upload
+      const compressed = await compressImage(result);
+      onImageSelected(compressed);
     };
     reader.readAsDataURL(file);
   };

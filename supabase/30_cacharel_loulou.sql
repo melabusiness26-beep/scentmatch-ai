@@ -15,9 +15,7 @@ INSERT INTO public.perfumes (
   scentmatch_score,
   season,
   occasion,
-  description,
-  image_url,
-  affiliate_url
+  description
 ) VALUES (
   (SELECT id FROM public.brands WHERE name = 'Cacharel'),
   'Lou Lou',
@@ -33,5 +31,5 @@ INSERT INTO public.perfumes (
   82,
   'Ganzjährig',
   'Alltag, Date, Büro',
-  'Ein frischer, mädchenhafter Duft mit fruchtigen Noten, die in florale Herznoten übergehen. Lou Lou ist verspielt, jugendlich und leicht – perfekt für den Alltag und romantische Momente. Der charakteristische Moschus-Sandelholz-Basisnoten geben dem Duft Eleganz und Haltbarkeit.'
+  'Ein frischer, mädchenhafter Duft mit fruchtigen Noten in florale Herznoten. Lou Lou ist verspielt, jugendlich und leicht - perfekt für Alltag und romantische Momente. Moschus und Sandelholz geben dem Duft Eleganz und Haltbarkeit.'
 );

@@ -427,7 +427,16 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 .grid { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
 
 @media (max-width: 900px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 800px) { .hero, .detail-hero { grid-template-columns: 1fr; } }
+@media (max-width: 900px) {
+  h1 { font-size: clamp(36px, 6vw, 66px); }
+  .section h2 { font-size: clamp(24px, 3vw, 36px); }
+}
+
+@media (max-width: 800px) {
+  .hero, .detail-hero { grid-template-columns: 1fr; }
+  .hero-stage { padding: 44px 32px; }
+  .card { padding: 24px; }
+}
 @media (max-width: 720px) {
   .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
   .header-inner { flex-wrap: wrap; }

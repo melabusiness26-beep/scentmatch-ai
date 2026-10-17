@@ -176,7 +176,7 @@ button, .button { display: inline-block; max-width: 100%; white-space: normal; t
 .quiz { margin-top: 28px; }
 .question { font-size: clamp(22px, 5vw, 28px); color: var(--brown); margin-bottom: 20px; }
 .answers { display:grid; gap: 12px; }
-.answer { display:flex; align-items:center; justify-content:space-between; gap:14px; width:100%; text-align:left; background:rgba(255,255,255,.85); color:var(--text); border:1px solid var(--line); border-radius:12px; padding:18px 20px; letter-spacing:0; font-size:16px; transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 4px 12px rgba(50,32,20,.05); }
+.answer { display:flex; align-items:center; justify-content:space-between; gap:clamp(10px, 3vw, 14px); width:100%; text-align:left; background:rgba(255,255,255,.85); color:var(--text); border:1px solid var(--line); border-radius:12px; padding:clamp(16px, 4vw, 18px) clamp(16px, 5vw, 20px); letter-spacing:0; font-size:clamp(14px, 2.2vw, 16px); transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 4px 12px rgba(50,32,20,.05); }
 /* Dezenter Pfeil rechts – signalisiert „führt weiter" und wirkt hochwertiger.
    Im Ruhezustand blass, beim Überfahren/Antippen wandert er sanft nach rechts. */
 .answer::after { content:'›'; font-family: var(--font-display), Georgia, serif; font-size:22px; line-height:1; color: rgba(201,168,76,.45); flex:none; transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.25s ease; }
@@ -184,7 +184,7 @@ button, .button { display: inline-block; max-width: 100%; white-space: normal; t
 .result { margin-top:20px; }
 .scorebar { height:10px; background:#eadfce; border-radius:99px; overflow:hidden; margin-top:7px; }
 .scorebar span { display:block; height:100%; background:var(--gold); }
-.search { width:100%; padding:16px 18px; border-radius:10px; border:1px solid rgba(67,48,31,.22); font-size:16px; background:white; }
+.search { width:100%; padding:clamp(12px, 3vw, 16px) clamp(14px, 4vw, 18px); border-radius:10px; border:1px solid rgba(67,48,31,.22); font-size:clamp(14px, 2.4vw, 16px); background:white; }
 .perfume-list { display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; margin-top:16px; }
 .small { font-family:var(--font-sans), Arial, sans-serif; color:#6d5a4d; font-size:clamp(12px, 2vw, 14px); line-height:1.45; }
 a.logo { text-decoration:none; color:inherit; }
@@ -202,7 +202,7 @@ a.logo { text-decoration:none; color:inherit; }
 /* Wow-Moment: grosser, hochzählender Match-Score + Erscheinen */
 .match-score-big { display:flex; align-items:baseline; gap:6px; margin:2px 0 8px; }
 .match-score-num { font-family:var(--font-display), Georgia, serif; font-size:clamp(52px, 11vw, 80px); line-height:1; font-weight:700; color:var(--gold); }
-.match-score-pct { font-family:var(--font-sans), Arial, sans-serif; font-size:18px; font-weight:600; color:var(--brown); }
+.match-score-pct { font-family:var(--font-sans), Arial, sans-serif; font-size:clamp(14px, 3vw, 18px); font-weight:600; color:var(--brown); }
 @media (prefers-reduced-motion: no-preference) {
   .top-pick { animation: popIn .6s cubic-bezier(.2,.8,.2,1) both; }
   @keyframes popIn { from { opacity:0; transform: translateY(16px) scale(.98); } to { opacity:1; transform:none; } }
@@ -451,9 +451,11 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 }
 @media (max-width: 560px) {
   .why-grid { grid-template-columns: 1fr; }
-  .perfume-list { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
-  .tile h3 { font-size: clamp(16px, 3vw, 20px); }
-  .tile { padding: 16px; }
+  .perfume-list { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  .tile h3 { font-size: clamp(14px, 3vw, 20px); }
+  .tile { padding: 14px; }
+  .tile-meta { gap: 5px; margin-top: 10px; }
 }
 /* Auf dem Handy eine saubere einspaltige Karten-Darstellung (geprüft bei 375px) */
 @media (max-width: 480px) {
@@ -463,6 +465,11 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
   .card { padding: 18px; }
   .hero-stat strong { font-size: 28px; }
   p.lead { font-size: 15px; }
+  .answers { gap: 10px; }
+  .answer::after { font-size: 18px; }
+  .quiz-hint { font-size: 13px; }
+  .top-pick { padding: 16px 18px; }
+  .search { padding: 12px 14px; font-size: 14px; }
 }
 
 /* Hero-Bildbereich – echtes Foto (Querformat), in Auressa-Tokens gerahmt */

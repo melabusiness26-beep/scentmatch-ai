@@ -7,10 +7,12 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
+  const startTime = Date.now();
   try {
     console.log('[image-analyzer] POST-Request empfangen');
     const body = await request.json();
     const { imageBase64 } = body;
+    console.log(`[image-analyzer] Body geparst: ${Date.now() - startTime}ms`);
 
     if (!imageBase64 || typeof imageBase64 !== 'string') {
       console.error('[image-analyzer] Ungültige Bildanfrage');
@@ -28,11 +30,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log('[image-analyzer] Bild validiert, starte Anthropic-Analyse...');
+    console.log(`[image-analyzer] Bild validiert: ${Date.now() - startTime}ms`);
     const mimeType = extractMimeTypeFromDataUri(imageBase64);
     const base64Data = extractBase64FromDataUri(imageBase64);
     const result = await analyzeImageWithAnthropic(base64Data, mimeType);
-    console.log('[image-analyzer] Analyse abgeschlossen:', result.success ? 'erfolgreich' : 'fehlgeschlagen');
+    console.log(`[image-analyzer] Analyse fertig: ${Date.now() - startTime}ms`);
+    console.log('[image-analyzer] Ergebnis:', result.success ? 'erfolgreich' : 'fehlgeschlagen');
 
     return NextResponse.json(result);
   } catch (error) {

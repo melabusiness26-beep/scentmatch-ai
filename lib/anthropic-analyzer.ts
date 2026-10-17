@@ -15,7 +15,14 @@ export async function analyzeImageWithAnthropic(
     };
   }
 
+  const startTime = Date.now();
+  const logTime = (stage: string) => {
+    const elapsed = Date.now() - startTime;
+    console.log(`[anthropic-analyzer] ${stage}: ${elapsed}ms`);
+  };
+
   try {
+    logTime('Start');
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -84,6 +91,8 @@ REGELN:
       }),
     });
 
+    logTime('API Response received');
+
     if (!response.ok) {
       const errorData = await response.json();
       console.error('[anthropic-analyzer] API-Fehler:', errorData);
@@ -94,6 +103,7 @@ REGELN:
     }
 
     const data = await response.json();
+    logTime('JSON parsed');
 
     if (!data.content || !data.content[0] || data.content[0].type !== 'text') {
       console.error('[anthropic-analyzer] Unerwartete Antwort:', data);
@@ -251,6 +261,7 @@ REGELN:
       }
     }
 
+    logTime('Complete');
     return {
       success: true,
       data: analysis,

@@ -72,10 +72,21 @@ export default function ImageUploadButton({
 
     const reader = new FileReader();
     reader.onload = async () => {
-      const result = reader.result as string;
-      // Komprimiere Bild für schnelleren Upload
-      const compressed = await compressImage(result);
-      onImageSelected(compressed);
+      try {
+        const result = reader.result as string;
+        // Komprimiere Bild für schnelleren Upload
+        const compressed = await compressImage(result);
+        console.log(`[ImageUploadButton] Original: ${result.length}, Komprimiert: ${compressed.length}`);
+        onImageSelected(compressed);
+      } catch (err) {
+        console.error('[ImageUploadButton] Komprimierungs-Fehler:', err);
+        // Fallback: nutze Original wenn Komprimierung fehlschlägt
+        onImageSelected(reader.result as string);
+      }
+    };
+    reader.onerror = () => {
+      console.error('[ImageUploadButton] Fehler beim Lesen der Datei');
+      alert('Fehler beim Lesen der Datei');
     };
     reader.readAsDataURL(file);
   };

@@ -164,11 +164,11 @@ button, .button { display: inline-block; max-width: 100%; white-space: normal; t
 .site-footer { margin-top: 100px; background: radial-gradient(120% 130% at 100% 0%, #422d1a 0%, #2a1a0e 50%, #1a0f07 100%); color: #f3e9da; padding: 52px 0 28px; border-top: 1px solid rgba(201,168,76,.25); }
 .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 28px; flex-wrap: wrap; }
 .site-footer .logo { color: #fbf3e6; }
-.footer-tag { color: rgba(243,233,218,.82); margin-top: 10px; max-width: 360px; }
+.footer-tag { color: rgba(243,233,218,.82); margin-top: 10px; max-width: 360px; font-size: clamp(13px, 2.2vw, 15px); }
 .footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
-.footer-links a { color: #f3e9da; text-decoration: none; font-family: var(--font-sans), Arial, sans-serif; font-size: 15px; transition: color .15s ease; }
+.footer-links a { color: #f3e9da; text-decoration: none; font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(13px, 2.4vw, 15px); transition: color .15s ease; }
 .footer-links a:hover { color: var(--gold); }
-.footer-bottom { margin-top: 30px; color: rgba(243,233,218,.6); border-top: 1px solid rgba(243,233,218,.15); padding-top: 18px; }
+.footer-bottom { margin-top: 30px; color: rgba(243,233,218,.6); border-top: 1px solid rgba(243,233,218,.15); padding-top: 18px; font-size: clamp(12px, 2vw, 14px); }
 .grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .tile { padding: 20px; border-radius: var(--radius); background: rgba(255,255,255,.75); border: 1px solid var(--line); transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 8px 16px rgba(50,32,20,.06); }
 .tile:hover { box-shadow: 0 14px 32px rgba(50,32,20,.12); transform: translateY(-2px); }
@@ -408,19 +408,19 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 .header-inner { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .header-inner .logo { font-size: 24px; }
 .main-nav { display: flex; align-items: center; gap: 24px; }
-.main-nav a { color: var(--brown); text-decoration: none; font-family: var(--font-sans), Arial, sans-serif; font-size: 15px; transition: color .15s ease; }
+.main-nav a { color: var(--brown); text-decoration: none; font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(13px, 2.4vw, 15px); transition: color .15s ease; }
 .main-nav a:hover { color: var(--gold); }
-.nav-cta { color: #2a1d12 !important; background: linear-gradient(180deg, #d8b277, #b1894f); padding: 10px 18px; }
+.nav-cta { color: #2a1d12 !important; background: linear-gradient(180deg, #d8b277, #b1894f); padding: clamp(8px, 2vw, 10px) clamp(14px, 3vw, 18px); }
 .nav-cta:hover { color: #2a1d12 !important; }
 .nav-toggle { display: none; background: rgba(255,255,255,.5); border: 1px solid rgba(75,53,40,.2); color: var(--brown); width: 46px; height: 46px; border-radius: 13px; font-size: 20px; line-height: 1; cursor: pointer; padding: 0; }
 
 /* „Warum"-Bereich */
 .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 22px; }
-.why-card { background: rgba(255,255,255,.80); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 10px 24px rgba(50,32,20,.08); }
+.why-card { background: rgba(255,255,255,.80); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(18px, 4vw, 26px); transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 10px 24px rgba(50,32,20,.08); }
 .why-card:hover { transform: translateY(-4px); box-shadow: 0 24px 56px rgba(50,32,20,.14); border-color: rgba(201,168,76,.35); }
 .why-icon { width: 50px; height: 50px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--brown); background: linear-gradient(135deg, rgba(201,168,76,.14), rgba(201,168,76,.08)); border: 1px solid rgba(201,168,76,.32); margin-bottom: 14px; box-shadow: 0 4px 12px rgba(201,168,76,.08); transition: all 0.2s ease; }
 .why-icon:hover { background: linear-gradient(135deg, rgba(201,168,76,.20), rgba(201,168,76,.12)); border-color: rgba(201,168,76,.5); }
-.why-card h3 { margin: 0 0 8px; color: var(--brown); font-size: 19px; }
+.why-card h3 { margin: 0 0 8px; color: var(--brown); font-size: clamp(16px, 3vw, 19px); }
 
 /* Responsive Raster: passt sich automatisch an die Bildschirmbreite an */
 .perfume-list { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }

@@ -42,9 +42,47 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 .eyebrow { display: inline-flex; align-items: center; gap: 11px; font-family: var(--font-sans), Arial, sans-serif; text-transform: uppercase; letter-spacing: .24em; font-size: 12px; font-weight: 600; color: #a07c43; margin: 0 0 14px; }
 .eyebrow::before { content: ''; width: 26px; height: 1px; background: var(--gold); display: inline-block; }
 .hero-stage .eyebrow { color: var(--gold); }
-.hero-stage { position: relative; overflow: hidden; margin-top: 8px; padding: 88px 64px; border-radius: var(--radius-lg); color: var(--brown); background: radial-gradient(115% 120% at 100% 0%, rgba(201,168,76,.18) 0%, rgba(201,168,76,0) 56%), radial-gradient(110% 120% at 0% 100%, rgba(201,168,76,.12) 0%, rgba(201,168,76,0) 55%), linear-gradient(155deg, #FFFDF8 0%, #F5EFDF 100%); border: 1px solid rgba(201,168,76,.25); box-shadow: 0 40px 100px rgba(50,32,20,.12); }
-.hero-stage::before { content: ''; position: absolute; top: -28%; right: -8%; width: 540px; height: 540px; background: radial-gradient(circle, rgba(185,152,99,.40), rgba(185,152,99,0) 62%); pointer-events: none; z-index: 0; }
-.hero-stage::after { content: ''; position: absolute; bottom: -32%; left: -12%; width: 480px; height: 480px; background: radial-gradient(circle, rgba(216,178,119,.26), rgba(216,178,119,0) 64%); pointer-events: none; z-index: 0; }
+.hero-stage {
+  position: relative;
+  overflow: hidden;
+  margin-top: 8px;
+  padding: clamp(64px, 8vw, 120px) clamp(40px, 10vw, 80px);
+  border-radius: var(--radius-lg);
+  color: var(--brown);
+  background:
+    radial-gradient(115% 120% at 100% 0%, rgba(201,168,76,.22) 0%, rgba(201,168,76,0) 56%),
+    radial-gradient(110% 120% at 0% 100%, rgba(201,168,76,.16) 0%, rgba(201,168,76,0) 55%),
+    linear-gradient(155deg, #FFFEF9 0%, #F8F1E8 100%);
+  border: 1px solid rgba(201,168,76,.28);
+  box-shadow: 0 48px 120px rgba(50,32,20,.16);
+  transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.hero-stage:hover {
+  box-shadow: 0 56px 140px rgba(50,32,20,.22);
+  border-color: rgba(201,168,76,.38);
+}
+.hero-stage::before {
+  content: '';
+  position: absolute;
+  top: -28%;
+  right: -8%;
+  width: clamp(480px, 60vw, 660px);
+  height: clamp(480px, 60vw, 660px);
+  background: radial-gradient(circle, rgba(185,152,99,.50), rgba(185,152,99,0) 62%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-stage::after {
+  content: '';
+  position: absolute;
+  bottom: -32%;
+  left: -12%;
+  width: clamp(420px, 55vw, 600px);
+  height: clamp(420px, 55vw, 600px);
+  background: radial-gradient(circle, rgba(216,178,119,.35), rgba(216,178,119,0) 64%);
+  pointer-events: none;
+  z-index: 0;
+}
 /* Foto-Hero (echtes Stimmungsbild als Vollflächen-Hintergrund). */
 .hero-stage.hero-photo {
   display: flex; align-items: center;
@@ -56,12 +94,43 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 }
 .hero-photo::before, .hero-photo::after { display: none; }
 .hero-photo-inner { position: relative; z-index: 1; max-width: 500px; }
-.hero-photo h1 { font-size: clamp(36px, 4.6vw, 60px); }
-.hero-photo p.lead { max-width: 430px; }
-.hero-stats-row { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 26px; }
-.hero-stat-mini { display: flex; flex-direction: column; gap: 2px; }
-.hero-stat-mini strong { font-family: var(--font-display), Georgia, serif; font-size: clamp(24px, 5vw, 30px); color: #a07c43; line-height: 1; }
-.hero-stat-mini span { font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(11px, 2vw, 13px); color: #6d5a4d; }
+.hero-photo h1 {
+  font-size: clamp(42px, 5.8vw, 72px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+.hero-photo p.lead {
+  max-width: 480px;
+  font-size: clamp(15px, 2vw, 18px);
+  line-height: 1.5;
+}
+.hero-stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(28px, 5vw, 48px);
+  margin-top: clamp(32px, 6vw, 52px);
+  align-items: flex-start;
+}
+.hero-stat-mini {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hero-stat-mini strong {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(28px, 6vw, 42px);
+  color: var(--gold);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.hero-stat-mini span {
+  font-family: var(--font-sans), Arial, sans-serif;
+  font-size: clamp(12px, 2.2vw, 14px);
+  color: #7d6b5e;
+  font-weight: 500;
+}
 @media (max-width: 800px) {
   /* Handy: Foto als knackiges Banner oben (volle Farbe), Text darunter auf
      cleanem Creme – kein verwaschener Überzug mehr. */

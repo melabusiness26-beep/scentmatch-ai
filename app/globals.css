@@ -135,7 +135,8 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 h1 { font-size: clamp(44px, 7vw, 88px); line-height: 1.0; margin: 0 0 22px; letter-spacing: -0.01em; color: var(--brown); }
 p.lead { font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(16px, 4vw, 20px); line-height: 1.55; max-width: 650px; color: #5d4b40; }
 .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
-button, .button { display: inline-block; max-width: 100%; white-space: normal; text-align: center; border: 0; border-radius: 8px; padding: clamp(12px, 3vw, 15px) clamp(24px, 5vw, 30px); background: var(--ink); color: #fdf7ec; font-weight: 600; font-size: clamp(14px, 2.4vw, 15px); letter-spacing: .05em; cursor: pointer; text-decoration: none; font-family: var(--font-sans), Arial, sans-serif; transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); }
+button, .button { display: inline-block; max-width: 100%; white-space: normal; text-align: center; border: 0; border-radius: 8px; padding: clamp(12px, 3vw, 15px) clamp(24px, 5vw, 30px); background: var(--ink); color: #fdf7ec; font-weight: 600; font-size: clamp(14px, 2.4vw, 15px); letter-spacing: .05em; cursor: pointer; text-decoration: none; font-family: var(--font-sans), Arial, sans-serif; transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); outline: 2px solid transparent; outline-offset: 2px; }
+button:focus, .button:focus { outline: 2px solid var(--gold); outline-offset: 2px; }
 .secondary { background: transparent; color: var(--brown); border: 1px solid rgba(67,48,31,.32); }
 .secondary:hover { background: rgba(67,48,31,.04); }
 .buy-button { display:inline-block; text-align:center; background: var(--gold); color: #2a1d12; margin-top: 16px; }
@@ -166,7 +167,8 @@ button, .button { display: inline-block; max-width: 100%; white-space: normal; t
 .site-footer .logo { color: #fbf3e6; }
 .footer-tag { color: rgba(243,233,218,.82); margin-top: 10px; max-width: 360px; font-size: clamp(13px, 2.2vw, 15px); }
 .footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
-.footer-links a { color: #f3e9da; text-decoration: none; font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(13px, 2.4vw, 15px); transition: color .15s ease; }
+.footer-links a { color: #f3e9da; text-decoration: none; font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(13px, 2.4vw, 15px); transition: color .15s ease; outline: 2px solid transparent; outline-offset: 2px; border-radius: 2px; }
+.footer-links a:focus { outline: 2px solid var(--gold); outline-offset: 2px; }
 .footer-links a:hover { color: var(--gold); }
 .footer-bottom { margin-top: 30px; color: rgba(243,233,218,.6); border-top: 1px solid rgba(243,233,218,.15); padding-top: 18px; font-size: clamp(12px, 2vw, 14px); }
 .grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -176,7 +178,8 @@ button, .button { display: inline-block; max-width: 100%; white-space: normal; t
 .quiz { margin-top: 28px; }
 .question { font-size: clamp(22px, 5vw, 28px); color: var(--brown); margin-bottom: 20px; }
 .answers { display:grid; gap: 12px; }
-.answer { display:flex; align-items:center; justify-content:space-between; gap:clamp(10px, 3vw, 14px); width:100%; text-align:left; background:rgba(255,255,255,.85); color:var(--text); border:1px solid var(--line); border-radius:12px; padding:clamp(16px, 4vw, 18px) clamp(16px, 5vw, 20px); letter-spacing:0; font-size:clamp(14px, 2.2vw, 16px); transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 4px 12px rgba(50,32,20,.05); }
+.answer { display:flex; align-items:center; justify-content:space-between; gap:clamp(10px, 3vw, 14px); width:100%; text-align:left; background:rgba(255,255,255,.85); color:var(--text); border:1px solid var(--line); border-radius:12px; padding:clamp(16px, 4vw, 18px) clamp(16px, 5vw, 20px); letter-spacing:0; font-size:clamp(14px, 2.2vw, 16px); transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 4px 12px rgba(50,32,20,.05); outline: 2px solid transparent; outline-offset: 2px; }
+.answer:focus { outline: 2px solid var(--gold); outline-offset: 2px; }
 /* Dezenter Pfeil rechts – signalisiert „führt weiter" und wirkt hochwertiger.
    Im Ruhezustand blass, beim Überfahren/Antippen wandert er sanft nach rechts. */
 .answer::after { content:'›'; font-family: var(--font-display), Georgia, serif; font-size:22px; line-height:1; color: rgba(201,168,76,.45); flex:none; transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.25s ease; }
@@ -408,7 +411,8 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 .header-inner { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .header-inner .logo { font-size: 24px; }
 .main-nav { display: flex; align-items: center; gap: 24px; }
-.main-nav a { color: var(--brown); text-decoration: none; font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(13px, 2.4vw, 15px); transition: color .15s ease; }
+.main-nav a { color: var(--brown); text-decoration: none; font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(13px, 2.4vw, 15px); transition: color .15s ease; outline: 2px solid transparent; outline-offset: 2px; border-radius: 2px; }
+.main-nav a:focus { outline: 2px solid var(--gold); outline-offset: 2px; }
 .main-nav a:hover { color: var(--gold); }
 .nav-cta { color: #2a1d12 !important; background: linear-gradient(180deg, #d8b277, #b1894f); padding: clamp(8px, 2vw, 10px) clamp(14px, 3vw, 18px); }
 .nav-cta:hover { color: #2a1d12 !important; }

@@ -108,6 +108,40 @@ export default function AdminPage() {
     if (!session) return;
     loadBrands();
     loadPerfumes();
+
+    // Load research data if coming from research page
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('research') === 'true') {
+      const stored = sessionStorage.getItem('researchData');
+      if (stored) {
+        try {
+          const data = JSON.parse(stored);
+          setForm({
+            perfume_name: data.perfume_name || '',
+            brand: data.brand || '',
+            fragrance_family: data.fragrance_family || 'clean',
+            gender: data.gender || 'Unisex',
+            price_chf: data.price_chf || '',
+            longevity: data.longevity?.toString() || '',
+            sillage: data.sillage?.toString() || '',
+            scentmatch_score: data.scentmatch_score?.toString() || '',
+            season: data.season || 'Ganzjährig',
+            occasion: data.occasion || 'Alltag',
+            top_notes: data.top_notes || '',
+            heart_notes: data.heart_notes || '',
+            base_notes: data.base_notes || '',
+            image_url: data.image_url || '',
+            affiliate_url: data.affiliate_url || ''
+          });
+          setMessage(`✅ Daten recherchiert! Überprüfe die Werte und speichere.`);
+          sessionStorage.removeItem('researchData');
+          // Scroll to form
+          if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (err) {
+          console.error('Error loading research data:', err);
+        }
+      }
+    }
   }, [session]);
 
   function setField(key: keyof typeof emptyForm, value: string) {
@@ -302,6 +336,16 @@ export default function AdminPage() {
           <Link className="logo" href="/">Auressa</Link>
           <button className="button secondary" onClick={logout}>Abmelden</button>
         </nav>
+
+        <section className="section card" style={{ backgroundColor: '#f5f1e8', borderLeft: '4px solid #d4af37' }}>
+          <h2>🚀 Schnelle Recherche (Neu!)</h2>
+          <p className="small">
+            Gib die Marke und den Duft-Namen ein — Claude recherchiert automatisch alle Daten von Fragrantica, Parfumo, Douglas.ch und weiteren Quellen!
+          </p>
+          <Link className="button" href="/admin/research" style={{ display: 'inline-block' }}>
+            🔍 Duft recherchieren
+          </Link>
+        </section>
 
         <section className="section card">
           <h2>Bestehenden Duft bearbeiten</h2>

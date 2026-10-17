@@ -190,7 +190,13 @@ export default function AdminPage() {
       heart_notes: (p.heart_notes || []).join(', '),
       base_notes: (p.base_notes || []).join(', '),
       image_url: p.image_url || '',
-      affiliate_url: p.affiliate_url || ''
+      affiliate_url: p.affiliate_url || '',
+      concentration: p.concentration || 'EDP',
+      long_description: p.long_description || '',
+      bottle_description: p.bottle_description || '',
+      intensity: p.intensity || 'Mittel',
+      scent_dna: (p.scent_dna || []).join(', '),
+      rating: p.rating?.toString() ?? ''
     });
     setMessage('');
     if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });

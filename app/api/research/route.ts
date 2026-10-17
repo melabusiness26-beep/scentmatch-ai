@@ -135,18 +135,7 @@ PRIORITÄT: Wahrheit > Vollständigkeit. Lieber null als erfunden.`;
         tools: [
           {
             type: 'web_search_20250305',
-            name: 'web_search',
-            description: 'Search the web for information',
-            input_schema: {
-              type: 'object' as const,
-              properties: {
-                query: {
-                  type: 'string',
-                  description: 'The search query'
-                }
-              },
-              required: ['query']
-            }
+            name: 'web_search'
           }
         ],
         messages

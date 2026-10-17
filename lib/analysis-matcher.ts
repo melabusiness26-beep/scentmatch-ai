@@ -11,17 +11,60 @@ function slugify(text: string): string {
     .trim();
 }
 
+// Levenshtein distance für präzisere Zeichenebenen-Ähnlichkeit
+function levenshteinDistance(a: string, b: string): number {
+  const matrix: number[][] = [];
+  for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+  for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      if (b[i - 1] === a[j - 1]) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j - 1] + 1,
+          matrix[i][j - 1] + 1,
+          matrix[i - 1][j] + 1
+        );
+      }
+    }
+  }
+  return matrix[b.length][a.length];
+}
+
+function calculateCharacterSimilarity(a: string, b: string): number {
+  const longer = a.length > b.length ? a : b;
+  const shorter = a.length > b.length ? b : a;
+  if (longer.length === 0) return 1.0;
+  const distance = levenshteinDistance(longer, shorter);
+  return (longer.length - distance) / longer.length;
+}
+
 function nameSimilarity(a: string, b: string): number {
   const sa = slugify(a);
   const sb = slugify(b);
   if (sa === sb) return 1;
-  if (sa.includes(sb) || sb.includes(sa)) return 0.85;
-  // Levenshtein-ähnliche Heuristik: Zeichenüberlappung
+
+  // Exakte Substring-Matches sind sehr wertvoll
+  if (sa.includes(sb) || sb.includes(sa)) return 0.90;
+
+  // Nutze Levenshtein-Ähnlichkeit auf Character-Ebene für präzisere Matches
+  const charSimilarity = calculateCharacterSimilarity(sa, sb);
+
+  // Falls Character-Ähnlichkeit hoch ist, verwende sie
+  if (charSimilarity >= 0.75) {
+    return charSimilarity;
+  }
+
+  // Fallback: Word-Level-Matching nur wenn Character-Level zu niedrig ist
   const setA = new Set(sa.split(' '));
   const setB = new Set(sb.split(' '));
   const intersection = [...setA].filter(w => setB.has(w)).length;
   const union = new Set([...setA, ...setB]).size;
-  return union > 0 ? intersection / union : 0;
+  const jaccardScore = union > 0 ? intersection / union : 0;
+
+  // Kombiniere beide Methoden, aber bevorzuge Character-Level
+  return Math.max(charSimilarity, jaccardScore * 0.7);
 }
 
 export interface PerfumeMatch {
@@ -49,7 +92,7 @@ export function findPerfumeInDB(
 ): PerfumeMatch[] {
   const matches: PerfumeMatch[] = [];
 
-  // Stufe 1: Name+Marke Matching
+  // Stufe 1: Name+Marke Matching – STRENG
   const nameMatches: Array<{ perfume: Perfume; score: number }> = [];
 
   for (const p of allPerfumes) {
@@ -57,7 +100,8 @@ export function findPerfumeInDB(
     const brandScore = nameSimilarity(brandName, p.brands?.name || '');
     const combined = nameScore * 0.65 + brandScore * 0.35;
 
-    if (combined >= 0.65) {
+    // Erhöht von 0.65 auf 0.72 – nur sehr gute Matches zulassen
+    if (combined >= 0.72) {
       nameMatches.push({ perfume: p, score: combined });
       matches.push({
         perfume: p,
@@ -79,11 +123,12 @@ export function findPerfumeInDB(
   if (matches.length > 0) {
     // Ergänze mit anderen Match-Typen falls nötig
 
-    // Stufe 2: Nur Name sehr gut (KI hat Marke falsch geschrieben)
+    // Stufe 2: Nur Name sehr gut – NOCH STRIKTER (von 0.85 auf 0.90)
     const nameOnlyMatches: Array<{ perfume: Perfume; score: number }> = [];
     for (const p of allPerfumes) {
       const s = nameSimilarity(perfumeName, p.perfume_name);
-      if (s >= 0.85 && !matches.some(m => m.perfume.id === p.id)) {
+      // Erhöht von 0.85 auf 0.90 – nur near-perfect Name-Matches
+      if (s >= 0.90 && !matches.some(m => m.perfume.id === p.id)) {
         nameOnlyMatches.push({ perfume: p, score: s });
       }
     }
@@ -94,7 +139,7 @@ export function findPerfumeInDB(
     }
   }
 
-  // Stufe 3: Marke passt gut + Noten-Overlap hoch
+  // Stufe 3: Marke passt gut + Noten-Overlap hoch – FALLBACK (wird selten verwendet)
   if (matches.length < 3) {
     const allAnalysisNotes = [
       ...analysisNotes.top,
@@ -108,7 +153,8 @@ export function findPerfumeInDB(
       if (matches.some(m => m.perfume.id === p.id)) continue;
 
       const brandScore = nameSimilarity(brandName, p.brands?.name || '');
-      if (brandScore < 0.55) continue;
+      // Erhöht von 0.55 auf 0.65 – Marke muss besser matchen
+      if (brandScore < 0.65) continue;
 
       const dbNotes = [
         ...(p.top_notes || []),
@@ -124,7 +170,8 @@ export function findPerfumeInDB(
       const noteOverlap = matchedNotes / Math.max(allAnalysisNotes.length, 1);
       const combined = brandScore * 0.5 + noteOverlap * 0.5;
 
-      if (combined >= 0.55) {
+      // Erhöht von 0.55 auf 0.65 – nur starke Brand+Notes-Kombinationen
+      if (combined >= 0.65) {
         noteMatches.push({ perfume: p, score: combined });
       }
     }

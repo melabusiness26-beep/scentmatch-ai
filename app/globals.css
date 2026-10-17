@@ -133,9 +133,9 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 .badge:hover { background: rgba(201,168,76,.16); border-color: rgba(201,168,76,.6); }
 .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 36px; align-items: center; }
 h1 { font-size: clamp(44px, 7vw, 88px); line-height: 1.0; margin: 0 0 22px; letter-spacing: -0.01em; color: var(--brown); }
-p.lead { font-family: var(--font-sans), Arial, sans-serif; font-size: 20px; line-height: 1.55; max-width: 650px; color: #5d4b40; }
+p.lead { font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(16px, 4vw, 20px); line-height: 1.55; max-width: 650px; color: #5d4b40; }
 .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
-button, .button { display: inline-block; max-width: 100%; white-space: normal; text-align: center; border: 0; border-radius: 8px; padding: 15px 30px; background: var(--ink); color: #fdf7ec; font-weight: 600; font-size: 15px; letter-spacing: .05em; cursor: pointer; text-decoration: none; font-family: var(--font-sans), Arial, sans-serif; transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); }
+button, .button { display: inline-block; max-width: 100%; white-space: normal; text-align: center; border: 0; border-radius: 8px; padding: clamp(12px, 3vw, 15px) clamp(24px, 5vw, 30px); background: var(--ink); color: #fdf7ec; font-weight: 600; font-size: clamp(14px, 2.4vw, 15px); letter-spacing: .05em; cursor: pointer; text-decoration: none; font-family: var(--font-sans), Arial, sans-serif; transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .secondary { background: transparent; color: var(--brown); border: 1px solid rgba(67,48,31,.32); }
 .secondary:hover { background: rgba(67,48,31,.04); }
 .buy-button { display:inline-block; text-align:center; background: var(--gold); color: #2a1d12; margin-top: 16px; }
@@ -174,7 +174,7 @@ button, .button { display: inline-block; max-width: 100%; white-space: normal; t
 .tile:hover { box-shadow: 0 14px 32px rgba(50,32,20,.12); transform: translateY(-2px); }
 .tile h3 { margin: 0 0 8px; color: var(--brown); }
 .quiz { margin-top: 28px; }
-.question { font-size: 28px; color: var(--brown); margin-bottom: 20px; }
+.question { font-size: clamp(22px, 5vw, 28px); color: var(--brown); margin-bottom: 20px; }
 .answers { display:grid; gap: 12px; }
 .answer { display:flex; align-items:center; justify-content:space-between; gap:14px; width:100%; text-align:left; background:rgba(255,255,255,.85); color:var(--text); border:1px solid var(--line); border-radius:12px; padding:18px 20px; letter-spacing:0; font-size:16px; transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 4px 12px rgba(50,32,20,.05); }
 /* Dezenter Pfeil rechts – signalisiert „führt weiter" und wirkt hochwertiger.
@@ -186,7 +186,7 @@ button, .button { display: inline-block; max-width: 100%; white-space: normal; t
 .scorebar span { display:block; height:100%; background:var(--gold); }
 .search { width:100%; padding:16px 18px; border-radius:10px; border:1px solid rgba(67,48,31,.22); font-size:16px; background:white; }
 .perfume-list { display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; margin-top:16px; }
-.small { font-family:var(--font-sans), Arial, sans-serif; color:#6d5a4d; font-size:14px; line-height:1.45; }
+.small { font-family:var(--font-sans), Arial, sans-serif; color:#6d5a4d; font-size:clamp(12px, 2vw, 14px); line-height:1.45; }
 a.logo { text-decoration:none; color:inherit; }
 .top-pick { background:rgba(176,139,79,.12); border:1px solid rgba(176,139,79,.38); border-radius:14px; padding:20px 22px; margin:18px 0 24px; }
 .top-pick h3 { margin:4px 0 14px; color:var(--brown); }
@@ -449,9 +449,21 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
   .hero-stage { padding: 36px 22px; }
   .card { padding: 22px; border-radius: 22px; }
 }
-@media (max-width: 560px) { .why-grid { grid-template-columns: 1fr; } .perfume-list { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } }
+@media (max-width: 560px) {
+  .why-grid { grid-template-columns: 1fr; }
+  .perfume-list { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .tile h3 { font-size: clamp(16px, 3vw, 20px); }
+  .tile { padding: 16px; }
+}
 /* Auf dem Handy eine saubere einspaltige Karten-Darstellung (geprüft bei 375px) */
-@media (max-width: 480px) { .perfume-list { grid-template-columns: 1fr; } }
+@media (max-width: 480px) {
+  .perfume-list { grid-template-columns: 1fr; }
+  .container { padding: 16px 12px 40px; }
+  .hero-stage { padding: 28px 16px; }
+  .card { padding: 18px; }
+  .hero-stat strong { font-size: 28px; }
+  p.lead { font-size: 15px; }
+}
 
 /* Hero-Bildbereich – echtes Foto (Querformat), in Auressa-Tokens gerahmt */
 .hero-media { margin: 0 0 22px; border-radius: 24px; overflow: hidden; border: 1px solid rgba(185,152,99,.45); box-shadow: 0 20px 50px rgba(36,25,18,.35); background: linear-gradient(135deg, #fbf6ee, #e6d6bf); aspect-ratio: 1600 / 864; }

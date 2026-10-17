@@ -1,8 +1,171 @@
 import { ImageAnalysisResult } from '@/types/image-analysis';
+import { getPerfumes } from './perfumes';
 
 const ANTHROPIC_API_KEY = (process.env.ANTHROPIC_API_KEY || '').trim();
 
 export const isAnthropicConfigured = ANTHROPIC_API_KEY.length > 0;
+
+export async function extractTextFromImage(
+  base64Image: string,
+  mediaType: string = 'image/jpeg'
+): Promise<{ brandName: string; perfumeName: string } | null> {
+  if (!isAnthropicConfigured) {
+    return null;
+  }
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 100,
+        messages: [
+          {
+            role: 'user',
+            content: [
+              {
+                type: 'image',
+                source: {
+                  type: 'base64',
+                  media_type: mediaType,
+                  data: base64Image,
+                },
+              },
+              {
+                type: 'text',
+                text: `Lese ALLEN sichtbaren Text auf dieser Parfüm-Flasche oder Verpackung.
+Antworte NUR mit JSON:
+{
+  "brandName": "Markenname",
+  "perfumeName": "Produktname"
+}
+Keine Erklärung, nur JSON.`,
+              },
+            ],
+          },
+        ],
+      }),
+    });
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const data = await response.json();
+    if (!data.content || !data.content[0] || data.content[0].type !== 'text') {
+      return null;
+    }
+
+    let textContent = data.content[0].text.trim();
+
+    if (textContent.startsWith('```')) {
+      const jsonMatch = textContent.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
+      if (jsonMatch) {
+        textContent = jsonMatch[1].trim();
+      }
+    }
+
+    const extracted = JSON.parse(textContent);
+    if (extracted.brandName && extracted.perfumeName) {
+      return {
+        brandName: extracted.brandName,
+        perfumeName: extracted.perfumeName,
+      };
+    }
+
+    return null;
+  } catch (err) {
+    console.error('[extractTextFromImage] Fehler:', err);
+    return null;
+  }
+}
+
+export async function findPerfumeByExtractedText(
+  brandName: string,
+  perfumeName: string
+): Promise<ImageAnalysisResult> {
+  try {
+    const allPerfumes = await getPerfumes();
+
+    const brandNameLower = brandName.toLowerCase();
+    const perfumeNameLower = perfumeName.toLowerCase();
+
+    const matches = allPerfumes.filter((p) => {
+      const pBrandName = p.brands?.name || '';
+      const pBrandNameLower = pBrandName.toLowerCase();
+      const pPerfumeNameLower = p.perfume_name.toLowerCase();
+
+      return (
+        pPerfumeNameLower.includes(perfumeNameLower) ||
+        perfumeNameLower.includes(pPerfumeNameLower) ||
+        (pBrandNameLower.includes(brandNameLower) &&
+          pPerfumeNameLower.includes(perfumeNameLower.split(' ')[0]))
+      );
+    });
+
+    if (matches.length === 0) {
+      return {
+        success: false,
+        error: `Duft nicht in der Datenbank gefunden: ${brandName} ${perfumeName}`,
+      };
+    }
+
+    const topMatch = matches[0];
+    const brandDisplayName = topMatch.brands?.name || brandName;
+
+    const poeticDescription = `Ein ${topMatch.gender === 'Women' ? 'eleganter Damenduft' : topMatch.gender === 'Men' ? 'klassischer Herrenduft' : 'vielseitiger Unisex-Duft'} mit ${topMatch.heart_notes && topMatch.heart_notes[0] ? topMatch.heart_notes[0].toLowerCase() : 'soften Noten'}.`;
+
+    return {
+      success: true,
+      data: {
+        perfumeName: topMatch.perfume_name,
+        brandName: brandDisplayName,
+        confidence: matches.length === 1 ? 'high' : 'medium',
+        concentration: null,
+        gender: (topMatch.gender as 'woman' | 'man' | 'unisex') || 'unisex',
+        notes: {
+          top: (topMatch.top_notes || []) as string[],
+          heart: (topMatch.heart_notes || []) as string[],
+          base: (topMatch.base_notes || []) as string[],
+        },
+        development: {
+          opening: (topMatch.top_notes || [''])[0] || 'Frische Öffnung',
+          middleGame: (topMatch.heart_notes || [''])[0] || 'Warme Herznote',
+          drydown: (topMatch.base_notes || [''])[0] || 'Eleganter Abgang',
+        },
+        family: topMatch.fragrance_family || 'Klassisch',
+        usageRecommendations: {
+          occasions: topMatch.occasion ? [topMatch.occasion] : ['Alltag'],
+          seasons: topMatch.season ? [topMatch.season] : ['Ganzjährig'],
+          timeOfDay: ['Tagsüber', 'Abends'],
+          skinType: [],
+        },
+        intensity: 'medium',
+        poeticDescription,
+        generalDescription: topMatch.description || '',
+        rating: topMatch.scentmatch_score ? topMatch.scentmatch_score / 10 : 7,
+        sillage: topMatch.sillage || 6,
+        longevity: topMatch.longevity || 7,
+        occasionList: (topMatch.occasion ? [topMatch.occasion] : []) as string[],
+        characterTags: [],
+        mood: '',
+        seasonRecommendation: topMatch.season || 'Ganzjährig',
+        bottleDescription: topMatch.image_url ? 'Flakon aus Datenbank' : '',
+      },
+    };
+  } catch (error) {
+    console.error('[findPerfumeByExtractedText] Fehler:', error);
+    return {
+      success: false,
+      error: 'Fehler bei der Datenbankabfrage',
+    };
+  }
+}
 
 export async function analyzeImageWithAnthropic(
   base64Image: string,

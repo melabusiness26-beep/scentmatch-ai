@@ -13,6 +13,7 @@ import { findSimilarPerfumesV2, findCheaperAlternativesV2 } from '@/lib/similari
 import { noteHref } from '@/lib/notes-glossary';
 import { getCuratedLink } from '@/lib/curated-links';
 import { AffiliateButton } from '@/app/AffiliateButton';
+import { AmazonButton } from '@/app/AmazonButton';
 
 const genderLabels: Record<string, string> = {
   Women: 'Damenduft',
@@ -374,7 +375,10 @@ export default async function PerfumeDetailPage({
               label="Richtpreis"
               value={perfume.price_chf != null ? `ca. CHF ${perfume.price_chf}` : '–'}
             />
-            <AffiliateButton perfume={perfume} />
+            <div style={{ marginTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <AffiliateButton perfume={perfume} />
+              <AmazonButton perfume={perfume} />
+            </div>
           </div>
         </section>
 

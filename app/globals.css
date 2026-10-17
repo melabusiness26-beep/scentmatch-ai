@@ -10,6 +10,12 @@
   --line: rgba(50,32,20,.12); /* feine Haarlinie, subtil */
   --radius: 14px;          /* ruhiger, crisper Radius (Boutique statt App) */
   --radius-lg: 20px;
+
+  /* Duftfamilien-Farben für elegante Platzhalter */
+  --family-clean: linear-gradient(135deg, #a8d5d9 0%, #7ec8d0 100%);
+  --family-gourmand: linear-gradient(135deg, #d4a574 0%, #c27d47 100%);
+  --family-woody: linear-gradient(135deg, #6b5344 0%, #3a2a1e 100%);
+  --family-floral: linear-gradient(135deg, #d4a4c8 0%, #b87db8 100%);
 }
 * { box-sizing: border-box; }
 /* Verhindert horizontales Verschieben auf dem Handy, falls ein Element zu breit ist.
@@ -148,8 +154,52 @@ button:focus, .button:focus { outline: 2px solid var(--gold); outline-offset: 2p
 .pairing { margin-bottom: 18px; }
 .pairing .perfume-list { margin-top: 12px; }
 .card { background: rgba(255,255,255,.85); border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(50,32,20,.10); border-radius: var(--radius); padding: 32px; backdrop-filter: blur(4px); transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
-.perfume-card { min-height: 420px; display:flex; flex-direction:column; justify-content:space-between; transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 10px 30px rgba(50,32,20,.08); }
-.bottle { height: 240px; border-radius: 28px; background: linear-gradient(135deg, #f6eadb, #d5b98d); display: grid; place-items:center; font-size: clamp(48px, 10vw, 72px); }
+.perfume-card {
+  min-height: 420px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(50,32,20,.08);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.perfume-card:hover {
+  box-shadow: 0 16px 48px rgba(50,32,20,.16);
+  transform: translateY(-4px);
+}
+
+/* Elegante Duftfamilien-Platzhalter */
+.bottle {
+  height: 280px;
+  border-radius: 0;
+  display: grid;
+  place-items: center;
+  font-size: clamp(48px, 10vw, 72px);
+  position: relative;
+  overflow: hidden;
+}
+.bottle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  opacity: 0.85;
+}
+.bottle::after {
+  content: '🧴';
+  position: relative;
+  z-index: 1;
+  opacity: 0.6;
+  font-size: clamp(56px, 12vw, 88px);
+}
+
+/* Family-spezifische Farben */
+.bottle.family-clean { background: var(--family-clean); }
+.bottle.family-gourmand { background: var(--family-gourmand); }
+.bottle.family-woody { background: var(--family-woody); }
+.bottle.family-floral { background: var(--family-floral); }
 .section { margin-top: 96px; }
 .section h2 { font-size: clamp(26px, 3.2vw, 38px); letter-spacing: -0.01em; margin: 0 0 8px; color: var(--brown); }
 
@@ -225,7 +275,24 @@ a.logo { text-decoration:none; color:inherit; }
 .match-badge { display:inline-block; background:var(--brown); color:#fff; font-family:var(--font-sans), Arial, sans-serif; font-size:clamp(11px, 2vw, 13px); font-weight:700; padding:clamp(4px, 1vw, 5px) clamp(10px, 2vw, 12px); border-radius:999px; margin-bottom:10px; }
 
 /* Duft-Bilder & elegante Platzhalter (nach Duftfamilie eingefärbt) */
-.cover { position:relative; height:200px; border-radius:12px; margin-bottom:14px; background: radial-gradient(ellipse 70% 60% at 75% 20%, rgba(255,248,220,0.6) 0%, transparent 60%), radial-gradient(ellipse 55% 65% at 20% 80%, rgba(201,168,76,0.35) 0%, transparent 65%), linear-gradient(145deg, #d4b576 0%, #efd9a8 35%, #f5ead0 65%, #e0c9a0 100%); background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,.5), inset 0 -30px 60px rgba(50,32,20,.10), 0 8px 20px rgba(50,32,20,.08); transition: all 0.3s ease; }
+.cover {
+  position:relative;
+  height: clamp(200px, 28vw, 280px);
+  border-radius: 12px;
+  margin-bottom:14px;
+  background: radial-gradient(ellipse 70% 60% at 75% 20%, rgba(255,248,220,0.6) 0%, transparent 60%), radial-gradient(ellipse 55% 65% at 20% 80%, rgba(201,168,76,0.35) 0%, transparent 65%), linear-gradient(145deg, #d4b576 0%, #efd9a8 35%, #f5ead0 65%, #e0c9a0 100%);
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5), inset 0 -30px 60px rgba(50,32,20,.10), 0 12px 28px rgba(50,32,20,.12);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.cover:hover {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5), inset 0 -30px 60px rgba(50,32,20,.10), 0 16px 40px rgba(50,32,20,.18);
+}
 /* Echte Bilder (z. B. Duftnoten-Fotos) als <img> statt CSS-Hintergrund –
    so werden sie von der Google-Bildersuche indexiert und laden effizient. */
 img.cover { display:block; width:100%; object-fit:cover; height:100%; }

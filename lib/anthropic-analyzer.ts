@@ -42,34 +42,82 @@ export async function analyzeImageWithAnthropic(
                 type: 'text',
                 text: `Du bist der weltweit präziseste Parfüm-Erkennungsassistent mit Expertenwissen über tausende von Düften. Deine Aufgabe: Erkenne dieses Parfüm so genau wie möglich und erstelle ein vollständiges, korrektes Profil.
 
-SCHRITT 1 – PRÄZISE TEXTERKENNUNG (KRITISCH WICHTIG):
-🔍 LESE BUCHSTABE FÜR BUCHSTABE und verifiziere mehrmals:
-- Markenname: Lese den Text von oben nach unten, von links nach rechts. Wiederhole 3x mental
-- Parfümname: Lese jedes Wort einzeln, überprüfe auf ähnliche Marken-Namen
-- Konzentration (EDP, EDT, Parfum, Eau de Cologne)
-- Volumen (50ml, 100ml etc.)
-- KRITISCH: Verwechsle NICHT "La Rive" mit "Cacharel" oder ähnliche Marken!
-  * La Rive = einfacher, massiver Block-Schriftzug
-  * Cacharel = elegante, geschwungene Typographie
-  * Überprüfe Logo-Form und Schriftstil genau!
-- Gender-Hinweise (Homme/Femme/Pour Homme/Pour Femme) → zwingend beachten
+SCHRITT 1 – PRÄZISE TEXTERKENNUNG VOM FLAKON (KEINE VERPACKUNG NÖTIG):
+🔍 NUR VOM FLAKON LESEN – Das ist der kritische Fokus:
+- Etiketten-Text auf dem Glas: SEHR SORGFÄLTIG Buchstabe für Buchstabe lesen
+- Text unter dem Etikett oder seitlich eingraviert/gedruckt
+- Markenname: Oft oben großflächig sichtbar (z.B. "Cacharel", "La Rive")
+- Produktname: Direkt unter oder über der Marke
+- Konzentration: Oft unten auf dem Etikett oder Flakonboden
+- Volumen: 50ml, 100ml etc. auf dem Label
 
-SCHRITT 2 – VISUELL-KONTEXTUELLE ANALYSE:
-- Flakonsform & Größe: Hohe/schmale vs. breite/kompakte Formen
-- Farbe des Flakons: Hellblau (wie Cacharel Lou Lou) vs. andere Blautöne
-- Etikett/Label: Farbe, Typographie, Positionierung (mittig, seitlich, unten)
-- Kappen-Farbe und Material (massiv Kunststoff vs. metallisch)
-- Dekorative Akzente (Bänder, Ringe, Applikationen) → besonders wichtig!
-  * Cacharel Lou Lou = roter/burgunderroter Ring um die Kappe
+KRITISCH – MARKEN NICHT VERWECHSELN (diese sind optisch ähnlich):
+1. Cacharel Lou Lou:
+   - Label: Elegante, sanfte Typographie mit „Cacharel" Premium-Look
+   - Kappe: HELLBLAU mit ROTEM/BURGUNDROTEM dekorativen Ring
+   - Flakon: Hellblau, konisch/klassische Form
+   - Größe: Mittlere Flaschengröße
+2. La Rive Blue Line:
+   - Label: Einfachere, technischere Typographie
+   - Kappe: Schlicht, einfarbig
+   - Flakon: Hellblau aber verschiedene Form
+   - Größe: Kompaktere Form
 
-SCHRITT 3 – VERIFIKATION & FINALE IDENTIFIKATION:
-FALSCH-POSITIV-CHECK:
-- Falls die KI zwischen 2 Marken schwankt (z.B. La Rive vs. Cacharel):
-  * Vergleiche die Flakonsform genau
-  * Beachte die Kappen-Dekoration
-  * Lese den Markenname NOCHMAL von vorne bis hinten
-- Bei Unsicherheit: confidence = "medium" oder "low" (ehrlich sein!)
-- NIEMALS raten, wenn Text unklar ist
+VERIFIZIERUNGSMETHODE:
+- Lese Markenname 3x hintereinander von links nach rechts
+- Lese Produktname 2x, achte auf alle Buchstaben
+- Vergleiche mit bekannten ähnlichen Marken
+- Bei Zweifel: Nenne beide Kandidaten mit confidence "medium"
+
+Gender-Hinweise (Homme/Femme/Pour Homme/Pour Femme) → SOFORT erkennen
+
+SCHRITT 2 – FLAKON-DESIGN (VISUELL-IDENTIFIKATION OHNE VERPACKUNG):
+Diese visuellen Merkmale sind bei ähnlich aussehenden Flakons kritisch:
+
+A) KAPPE/VERSCHLUSS:
+- Material: Kunststoff, Metall, Holz
+- Farbe: Exakte Farbe, Metallic ja/nein
+- Dekorative Elemente: Bänder, Ringe, Gravuren
+  * CACHAREL LOU LOU: Hellblaue Kappe mit dickem ROTEM/BURGUNDROTEM Ring
+  * LA RIVE: Einfache, schlichte Kappe
+
+B) FLAKONSFORM:
+- Silhouette: Konisch, zylindrisch, bauchig, kantig
+- Größe relativ zur Hand/Umgebung
+- Schulter-Form: Breit, eng, abgerundet, eckig
+- Basisform: Quadratisch, rund, sechseckig
+
+C) FARBE & MATERIAL:
+- Exakte Blauton (helles Hellblau vs. tieferes Blau vs. Petrol)
+- Transparent vs. opak
+- Glanz: Matt, halbmatt, hochglänzend
+
+D) ETIKETT-POSITION & STIL:
+- Oben, Mitte, unten auf dem Flakon
+- Eingedruckt, aufgeklebt, eingraviert
+- Farbe des Etiketts (weiß, beige, farbig)
+
+SCHRITT 3 – FINALE VERIFIKATION (KRITISCH):
+VIER-PUNKT-CHECK vor dem Antworten:
+1. TEXT-VERIFIKATION: Markenname + Produktname 2x laut „lesen"
+   ✓ La Rive Blue Line: "La" + "Rive" + "Blue" + "Line"
+   ✓ Cacharel Lou Lou: "Cacharel" + "Lou" + "Lou"
+   → Welches passt zum Bild?
+
+2. KAPPEN-CHECK: Dekorative Elemente?
+   ✓ Ist ein roter/burgunderroter RING sichtbar? → Cacharel Lou Lou
+   ✓ Ist die Kappe schlicht? → Wahrscheinlich La Rive oder anderes
+
+3. FORMVERGLEICH: Flakonsform korrekt identifiziert?
+   - Konisch/spitz vs. kompakt?
+   - Größe im Verhältnis zu Hand/Umgebung?
+
+4. CONFIDENCE-BESTIMMUNG:
+   - "high" (90-100%): Text völlig klar lesbar, Kappe + Form + Marke passen perfekt zusammen
+   - "medium" (60-89%): Text lesbar aber ein Detail unklar, oder zwei Features passen sehr gut
+   - "low" (<60%): Text verschwommen, oder mehrere Features passen nicht zusammen → NIEMALS raten!
+
+⚠️ WICHTIG: Lieber confidence=low sagen, als falsch zu identifizieren!
 
 ANTWORTE AUSSCHLIESSLICH mit gültigem JSON (kein Markdown, keine Erklärung davor/danach):
 

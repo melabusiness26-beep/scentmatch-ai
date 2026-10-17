@@ -226,14 +226,14 @@ a.logo { text-decoration:none; color:inherit; }
    so werden sie von der Google-Bildersuche indexiert und laden effizient. */
 img.cover { display:block; width:100%; object-fit:cover; height:100%; }
 .cover-large { height:350px; margin-bottom:24px; border-radius:14px; }
-.cover-glyph { font-size:38px; color:rgba(75,53,40,.5); }
+.cover-glyph { font-size:clamp(28px, 6vw, 38px); color:rgba(75,53,40,.5); }
 /* Edle „Etiketten-Karte" als Platzhalter, solange kein echtes Foto da ist */
 .cover-label { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:4px; max-width:84%; padding:10px 14px; background:rgba(255,255,255,.5); border:1px solid rgba(255,255,255,.55); border-radius:14px; box-shadow:0 6px 18px rgba(75,53,40,.10); backdrop-filter:saturate(1.1); }
 .cover-label-brand { font-family:var(--font-sans), Arial, sans-serif; text-transform:uppercase; letter-spacing:.16em; font-size:9px; font-weight:700; color:#6b5443; }
-.cover-label-name { font-family:var(--font-display), Georgia, serif; font-size:17px; line-height:1.15; color:var(--brown); }
+.cover-label-name { font-family:var(--font-display), Georgia, serif; font-size:clamp(14px, 2.5vw, 17px); line-height:1.15; color:var(--brown); }
 .cover-large .cover-label { padding:16px 22px; gap:6px; max-width:78%; }
 .cover-large .cover-label-brand { font-size:12px; }
-.cover-large .cover-label-name { font-size:26px; }
+.cover-large .cover-label-name { font-size:clamp(20px, 4vw, 26px); }
 /* Premium-Gradienten pro Duftfamilie – mehrschichtig für Tiefe */
 .cover-clean {
   background:
@@ -307,7 +307,7 @@ img.cover { display:block; width:100%; object-fit:cover; height:100%; }
 .detail-hero { display:grid; grid-template-columns: 1.3fr .7fr; gap:36px; align-items:start; margin-top:24px; }
 
 /* Foto-Hero-Banner (echtes Stimmungsbild mit dunklem Verlauf für Lesbarkeit). */
-.media-hero { position:relative; overflow:hidden; margin-top:24px; padding:76px 60px; border-radius:20px; color:#f3e9da; background-image: linear-gradient(120deg, rgba(26,15,7,.87) 0%, rgba(26,15,7,.60) 52%, rgba(26,15,7,.32) 100%), url('/hero-auressa-2.jpg'); background-size:cover; background-position:center; border:1px solid rgba(201,168,76,.25); box-shadow:0 50px 130px rgba(50,32,20,.40); }
+.media-hero { position:relative; overflow:hidden; margin-top:24px; padding:clamp(40px, 8vw, 76px) clamp(24px, 6vw, 60px); border-radius:20px; color:#f3e9da; background-image: linear-gradient(120deg, rgba(26,15,7,.87) 0%, rgba(26,15,7,.60) 52%, rgba(26,15,7,.32) 100%), url('/hero-auressa-2.jpg'); background-size:cover; background-position:center; border:1px solid rgba(201,168,76,.25); box-shadow:0 50px 130px rgba(50,32,20,.40); }
 .media-hero-inner { position:relative; z-index:1; }
 .media-hero .eyebrow { color: var(--gold); }
 .media-hero h1 { color:#fbf3e6; }
@@ -332,19 +332,19 @@ img.cover { display:block; width:100%; object-fit:cover; height:100%; }
 .stat-row strong { color:var(--brown); font-family:var(--font-sans), Arial, sans-serif; }
 .notes-block { margin-bottom:18px; }
 .note-pills { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
-.note-pill { background:rgba(185,152,99,.18); border:1px solid rgba(185,152,99,.4); color:var(--brown); border-radius:999px; padding:7px 14px; font-family:var(--font-sans), Arial, sans-serif; font-size:14px; }
+.note-pill { background:rgba(185,152,99,.18); border:1px solid rgba(185,152,99,.4); color:var(--brown); border-radius:999px; padding:7px 14px; font-family:var(--font-sans), Arial, sans-serif; font-size:clamp(12px, 2vw, 14px); }
 a.note-pill { text-decoration:none; cursor:pointer; transition: background .15s ease, border-color .15s ease, transform .12s ease; }
 a.note-pill:hover { background:rgba(185,152,99,.3); border-color:var(--gold); transform: translateY(-1px); }
 
 /* FAQ-Block auf der Duftseite */
 .faq-item { padding:14px 0; border-bottom:1px solid rgba(75,53,40,.1); }
 .faq-item:last-child { border-bottom:0; padding-bottom:0; }
-.faq-item h3 { margin:0 0 6px; color:var(--brown); font-size:18px; }
+.faq-item h3 { margin:0 0 6px; color:var(--brown); font-size:clamp(16px, 3vw, 18px); }
 /* Anklickbare Familien-Kacheln (filtern die Datenbank) */
-.tile-family { display:block; text-decoration:none; cursor:pointer; text-align:left; background:rgba(255,255,255,.62); color:var(--text); border:1px solid var(--line); border-radius:var(--radius); padding:24px; font-family:var(--font-sans), Arial, sans-serif; font-weight:400; letter-spacing:0; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+.tile-family { display:block; text-decoration:none; cursor:pointer; text-align:left; background:rgba(255,255,255,.62); color:var(--text); border:1px solid var(--line); border-radius:var(--radius); padding:clamp(16px, 4vw, 24px); font-family:var(--font-sans), Arial, sans-serif; font-weight:400; letter-spacing:0; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
 .tile-family:hover { transform: translateY(-3px); box-shadow:0 18px 50px rgba(75,53,40,.16); border-color: rgba(185,152,99,.6); }
 .tile-family.tile-active { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold) inset, 0 18px 50px rgba(75,53,40,.16); }
-.tile-family h3 { display:flex; align-items:center; gap:9px; margin:0 0 8px; color:var(--brown); font-size:22px; }
+.tile-family h3 { display:flex; align-items:center; gap:9px; margin:0 0 8px; color:var(--brown); font-size:clamp(18px, 3.5vw, 22px); }
 .tile-family h3::before { content:''; width:8px; height:8px; border-radius:50%; background: var(--gold); flex:none; }
 
 /* Filter-Hinweis */
@@ -354,7 +354,7 @@ a.note-pill:hover { background:rgba(185,152,99,.3); border-color:var(--gold); tr
 
 /* Filter-Leiste auf der Duftseite */
 .filter-row { display:flex; flex-wrap:wrap; gap:10px; margin:16px 0 6px; }
-.filter-pill { background:rgba(255,255,255,.6); color:var(--brown); border:1px solid rgba(75,53,40,.2); border-radius:999px; padding:9px 18px; font-family:var(--font-sans), Arial, sans-serif; font-size:14px; font-weight:600; cursor:pointer; transition: border-color .15s ease, background .15s ease, color .15s ease; }
+.filter-pill { background:rgba(255,255,255,.6); color:var(--brown); border:1px solid rgba(75,53,40,.2); border-radius:999px; padding:clamp(7px, 2vw, 9px) clamp(14px, 4vw, 18px); font-family:var(--font-sans), Arial, sans-serif; font-size:clamp(12px, 2.2vw, 14px); font-weight:600; cursor:pointer; transition: border-color .15s ease, background .15s ease, color .15s ease; }
 .filter-pill:hover { border-color: var(--gold); }
 .filter-pill-active { background:var(--brown); color:#fff; border-color:var(--brown); }
 .catalog-count { margin:10px 0 18px; }

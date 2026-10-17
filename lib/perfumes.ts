@@ -24,6 +24,7 @@ export type Perfume = {
   top_notes: string[] | null;
   heart_notes: string[] | null;
   base_notes: string[] | null;
+  ean_code?: string | null;
   brands?: PerfumeBrand | null;
 };
 

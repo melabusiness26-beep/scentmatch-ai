@@ -291,6 +291,23 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
 
       <ScrollProgressBar />
 
+      {/* DEBUG: Timing-Panel */}
+      {(analysis as any)._timing && (
+        <div style={{
+          padding: '0.75rem 1rem',
+          backgroundColor: '#f5f5f5',
+          border: '1px solid #ddd',
+          borderRadius: '8px',
+          marginBottom: '1rem',
+          fontSize: '12px',
+          color: '#666',
+          fontFamily: 'monospace',
+          textAlign: 'center',
+        }}>
+          ⏱️ Erkennungszeit: <strong>{(analysis as any)._timing}ms</strong>
+        </div>
+      )}
+
       <ScanCorrectionBanner
         analysis={currentAnalysis}
         onCorrected={(updated) => setCurrentAnalysis(updated)}

@@ -24,8 +24,30 @@ export default function ScanCorrectionBanner({ analysis, onCorrected }: ScanCorr
   const [brand, setBrand] = useState(analysis.brandName);
   const [saved, setSaved] = useState(false);
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!name.trim() || !brand.trim()) return;
+
+    try {
+      // Speichere in Supabase
+      const response = await fetch('/api/scan-correction', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          originalPerfumeName: analysis.perfumeName,
+          originalBrandName: analysis.brandName,
+          correctedPerfumeName: name.trim(),
+          correctedBrandName: brand.trim(),
+          confidence: analysis.confidence,
+        }),
+      });
+
+      if (!response.ok) {
+        console.error('Fehler beim Speichern der Korrektur');
+      }
+    } catch (error) {
+      console.error('Fehler bei Korrektur-API:', error);
+    }
+
     onCorrected({ ...analysis, perfumeName: name.trim(), brandName: brand.trim() });
     setSaved(true);
     setOpen(false);

@@ -24,8 +24,8 @@ export async function analyzeImageWithAnthropic(
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-3-5-sonnet-20241022',
-        max_tokens: 1000,
+        model: 'claude-opus-4-1-20250805',
+        max_tokens: 800,
         messages: [
           {
             role: 'user',

@@ -24,13 +24,21 @@ function nameSimilarity(a: string, b: string): number {
   return union > 0 ? intersection / union : 0;
 }
 
+export interface PerfumeMatch {
+  perfume: Perfume;
+  score: number;
+  matchType: 'exact' | 'name' | 'brand+notes';
+}
+
 /**
  * Sucht nach dem gescannten Duft in der Auressa-DB.
  *
+ * Returniert Top 3 Matches mit detaillierter Scoring-Info.
+ *
  * Strategie (mehrere Stufen):
  * 1. Exakter Name+Marke Match (slugified)
- * 2. Name allein mit hoher Übereinstimmung (>= 0.8) — deckt Schreibfehler ab
- * 3. Marke allein mit hoher Übereinstimmung + Noten-Overlap >= 50 %
+ * 2. Name allein mit hoher Übereinstimmung (>= 0.85) — deckt Schreibfehler ab
+ * 3. Marke allein mit hoher Übereinstimmung + Noten-Overlap >= 60 %
  *    — deckt den Fall ab, wo KI den Parfüm-Namen falsch erkennt
  */
 export function findPerfumeInDB(
@@ -38,78 +46,111 @@ export function findPerfumeInDB(
   brandName: string,
   analysisNotes: { top: string[]; heart: string[]; base: string[] },
   allPerfumes: Perfume[]
-): Perfume | null {
-  // Stufe 1 & 2: Name+Marke Matching
-  let bestMatch: Perfume | null = null;
-  let bestScore = 0;
+): PerfumeMatch[] {
+  const matches: PerfumeMatch[] = [];
+
+  // Stufe 1: Name+Marke Matching
+  const nameMatches: Array<{ perfume: Perfume; score: number }> = [];
 
   for (const p of allPerfumes) {
     const nameScore = nameSimilarity(perfumeName, p.perfume_name);
     const brandScore = nameSimilarity(brandName, p.brands?.name || '');
-    const combined = nameScore * 0.6 + brandScore * 0.4;
-    if (combined > bestScore) {
-      bestScore = combined;
-      bestMatch = p;
+    const combined = nameScore * 0.65 + brandScore * 0.35;
+
+    if (combined >= 0.65) {
+      nameMatches.push({ perfume: p, score: combined });
+      matches.push({
+        perfume: p,
+        score: combined,
+        matchType: 'exact'
+      });
     }
   }
 
+  // Sortiere Name+Marke Matches nach Score
+  nameMatches.sort((a, b) => b.score - a.score);
+
   if (process.env.NODE_ENV !== 'production') {
-    console.log(`[scanner-matcher] Best name+brand match: "${bestMatch?.perfume_name}" by "${bestMatch?.brands?.name}" (score: ${bestScore.toFixed(2)})`);
+    console.log(`[scanner-matcher] Name+Brand matches: ${nameMatches.slice(0, 3).map(m => `"${m.perfume.perfume_name}" (${m.score.toFixed(2)})`).join(', ')}`);
   }
 
-  // Stufe 1: Guter Name+Marke Match
-  if (bestScore >= 0.6) return bestMatch;
+  // Wenn gute Name+Marke Matches gefunden: Top 3 zurückgeben
+  if (matches.length >= 3) return matches.slice(0, 3);
+  if (matches.length > 0) {
+    // Ergänze mit anderen Match-Typen falls nötig
 
-  // Stufe 2: Nur Name sehr gut (KI hat Marke falsch geschrieben)
-  let bestNameOnly: Perfume | null = null;
-  let bestNameScore = 0;
-  for (const p of allPerfumes) {
-    const s = nameSimilarity(perfumeName, p.perfume_name);
-    if (s > bestNameScore) { bestNameScore = s; bestNameOnly = p; }
+    // Stufe 2: Nur Name sehr gut (KI hat Marke falsch geschrieben)
+    const nameOnlyMatches: Array<{ perfume: Perfume; score: number }> = [];
+    for (const p of allPerfumes) {
+      const s = nameSimilarity(perfumeName, p.perfume_name);
+      if (s >= 0.85 && !matches.some(m => m.perfume.id === p.id)) {
+        nameOnlyMatches.push({ perfume: p, score: s });
+      }
+    }
+
+    nameOnlyMatches.sort((a, b) => b.score - a.score);
+    for (const m of nameOnlyMatches.slice(0, 3 - matches.length)) {
+      matches.push({ perfume: m.perfume, score: m.score, matchType: 'name' });
+    }
   }
-  if (bestNameScore >= 0.8) return bestNameOnly;
 
   // Stufe 3: Marke passt gut + Noten-Overlap hoch
-  // (deckt den Fall ab: Marke erkannt, aber Name falsch z.B. "Comotù" → "Comoró")
-  const allAnalysisNotes = [
-    ...analysisNotes.top,
-    ...analysisNotes.heart,
-    ...analysisNotes.base,
-  ].map(n => n.toLowerCase().trim());
-
-  let bestNoteMatch: Perfume | null = null;
-  let bestNoteScore = 0;
-
-  for (const p of allPerfumes) {
-    const brandScore = nameSimilarity(brandName, p.brands?.name || '');
-    if (brandScore < 0.5) continue; // Marke muss halbwegs passen
-
-    const dbNotes = [
-      ...(p.top_notes || []),
-      ...(p.heart_notes || []),
-      ...(p.base_notes || []),
+  if (matches.length < 3) {
+    const allAnalysisNotes = [
+      ...analysisNotes.top,
+      ...analysisNotes.heart,
+      ...analysisNotes.base,
     ].map(n => n.toLowerCase().trim());
 
-    if (dbNotes.length === 0) continue;
+    const noteMatches: Array<{ perfume: Perfume; score: number }> = [];
 
-    const matches = allAnalysisNotes.filter(an =>
-      dbNotes.some(dn => dn.includes(an) || an.includes(dn))
-    ).length;
-    const noteOverlap = matches / Math.max(allAnalysisNotes.length, 1);
-    const combined = brandScore * 0.5 + noteOverlap * 0.5;
+    for (const p of allPerfumes) {
+      if (matches.some(m => m.perfume.id === p.id)) continue;
 
-    if (combined > bestNoteScore) {
-      bestNoteScore = combined;
-      bestNoteMatch = p;
+      const brandScore = nameSimilarity(brandName, p.brands?.name || '');
+      if (brandScore < 0.55) continue;
+
+      const dbNotes = [
+        ...(p.top_notes || []),
+        ...(p.heart_notes || []),
+        ...(p.base_notes || []),
+      ].map(n => n.toLowerCase().trim());
+
+      if (dbNotes.length === 0) continue;
+
+      const matchedNotes = allAnalysisNotes.filter(an =>
+        dbNotes.some(dn => dn.includes(an) || an.includes(dn))
+      ).length;
+      const noteOverlap = matchedNotes / Math.max(allAnalysisNotes.length, 1);
+      const combined = brandScore * 0.5 + noteOverlap * 0.5;
+
+      if (combined >= 0.55) {
+        noteMatches.push({ perfume: p, score: combined });
+      }
+    }
+
+    noteMatches.sort((a, b) => b.score - a.score);
+    for (const m of noteMatches.slice(0, 3 - matches.length)) {
+      matches.push({ perfume: m.perfume, score: m.score, matchType: 'brand+notes' });
+    }
+
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`[scanner-matcher] Brand+Notes matches: ${noteMatches.slice(0, 3).map(m => `"${m.perfume.perfume_name}" (${m.score.toFixed(2)})`).join(', ')}`);
     }
   }
 
-  if (process.env.NODE_ENV !== 'production') {
-    console.log(`[scanner-matcher] Best brand+notes match: "${bestNoteMatch?.perfume_name}" (score: ${bestNoteScore.toFixed(2)})`);
-  }
+  return matches.slice(0, 3);
+}
 
-  // Nur zurückgeben bei ausreichendem Combined-Score
-  return bestNoteScore >= 0.45 ? bestNoteMatch : null;
+// Hilfsfunktion für Rückwärtskompatibilität
+export function findPerfumeInDBFirst(
+  perfumeName: string,
+  brandName: string,
+  analysisNotes: { top: string[]; heart: string[]; base: string[] },
+  allPerfumes: Perfume[]
+): Perfume | null {
+  const matches = findPerfumeInDB(perfumeName, brandName, analysisNotes, allPerfumes);
+  return matches.length > 0 ? matches[0].perfume : null;
 }
 
 // Hilfsfunktion: Noten-Strings normalisieren für Vergleich

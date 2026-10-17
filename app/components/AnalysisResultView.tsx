@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Perfume } from '@/lib/perfumes';
 import { ImageAnalysisResult } from '@/types/image-analysis';
+import { type PerfumeMatch } from '@/lib/analysis-matcher';
 import ScanCorrectionBanner from './ScanCorrectionBanner';
 
 interface AnalysisResultViewProps {
@@ -12,6 +13,8 @@ interface AnalysisResultViewProps {
   similarPerfumes: Perfume[];
   onNewSearch: () => void;
   dbMatch?: Perfume | null;
+  dbMatches?: PerfumeMatch[];
+  onSelectDbMatch?: (perfume: Perfume) => void;
 }
 
 // ─── Design Tokens ───────────────────────────────────────────────────────────
@@ -253,7 +256,7 @@ const ShareButtons = ({ name, brand }: { name: string; brand: string }) => {
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
-export default function AnalysisResultView({ analysis, similarPerfumes, onNewSearch, dbMatch }: AnalysisResultViewProps) {
+export default function AnalysisResultView({ analysis, similarPerfumes, onNewSearch, dbMatch, dbMatches = [], onSelectDbMatch }: AnalysisResultViewProps) {
   const [currentAnalysis, setCurrentAnalysis] = useState(analysis);
   const [activeTab, setActiveTab] = useState<Tab>('profil');
   const [priceFilter, setPriceFilter] = useState<number | null>(null);
@@ -292,6 +295,46 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
         analysis={currentAnalysis}
         onCorrected={(updated) => setCurrentAnalysis(updated)}
       />
+
+      {/* ── TOP 3 MATCHES (Falls mehrere Optionen) ──────────────────────── */}
+      {dbMatches && dbMatches.length > 1 && (
+        <div style={{
+          backgroundColor: 'rgba(212,175,55,0.08)',
+          borderRadius: '12px',
+          padding: '1rem',
+          marginBottom: '1.5rem',
+          border: `1px solid rgba(212,175,55,0.2)`,
+        }}>
+          <p style={{ fontSize: '0.85rem', color: C.textMuted, marginBottom: '0.75rem', fontWeight: '600', marginTop: 0 }}>
+            🔍 Top-Treffer gefunden:
+          </p>
+          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+            {dbMatches.map((match, idx) => (
+              <button
+                key={idx}
+                onClick={() => onSelectDbMatch?.(match.perfume)}
+                style={{
+                  padding: '0.5rem 0.9rem',
+                  borderRadius: '8px',
+                  border: dbMatch?.id === match.perfume.id ? `2px solid ${C.gold}` : `1px solid rgba(212,175,55,0.3)`,
+                  backgroundColor: dbMatch?.id === match.perfume.id ? 'rgba(212,175,55,0.2)' : 'transparent',
+                  color: C.text,
+                  fontSize: '0.8rem',
+                  fontWeight: '500',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                }}
+                title={`${match.perfume.brands?.name || 'Marke offen'} ${match.perfume.perfume_name} (${(match.score * 100).toFixed(0)}%)`}
+              >
+                {match.perfume.perfume_name} {idx === 0 ? '⭐' : ''}
+              </button>
+            ))}
+          </div>
+          <p style={{ fontSize: '0.7rem', color: C.textLight, marginTop: '0.5rem', marginBottom: 0 }}>
+            Klicke auf einen Duft, um Details zu aktualisieren
+          </p>
+        </div>
+      )}
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section style={{

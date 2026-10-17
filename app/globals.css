@@ -460,16 +460,21 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 /* Auf dem Handy eine saubere einspaltige Karten-Darstellung (geprüft bei 375px) */
 @media (max-width: 480px) {
   .perfume-list { grid-template-columns: 1fr; }
-  .container { padding: 16px 12px 40px; }
-  .hero-stage { padding: 28px 16px; }
-  .card { padding: 18px; }
-  .hero-stat strong { font-size: 28px; }
-  p.lead { font-size: 15px; }
+  .container { padding: 14px 10px 36px; }
+  .hero-stage { padding: 24px 14px; }
+  .card { padding: 16px; }
+  .hero-stat strong { font-size: 24px; }
+  p.lead { font-size: 14px; }
   .answers { gap: 10px; }
-  .answer::after { font-size: 18px; }
-  .quiz-hint { font-size: 13px; }
-  .top-pick { padding: 16px 18px; }
-  .search { padding: 12px 14px; font-size: 14px; }
+  .answer::after { font-size: 16px; }
+  .quiz-hint { font-size: 12px; }
+  .top-pick { padding: 14px 16px; }
+  .search { padding: 11px 12px; font-size: 13px; }
+  .footer-inner { gap: 16px; }
+  .footer-links { gap: 14px; }
+  .footer-tag { margin-top: 6px; }
+  .why-card { padding: 16px; }
+  .footer-bottom { padding-top: 12px; margin-top: 18px; }
 }
 
 /* Hero-Bildbereich – echtes Foto (Querformat), in Auressa-Tokens gerahmt */

@@ -187,7 +187,8 @@ button:focus, .button:focus { outline: 2px solid var(--gold); outline-offset: 2p
 .result { margin-top:20px; }
 .scorebar { height:10px; background:#eadfce; border-radius:99px; overflow:hidden; margin-top:7px; }
 .scorebar span { display:block; height:100%; background:var(--gold); }
-.search { width:100%; padding:clamp(12px, 3vw, 16px) clamp(14px, 4vw, 18px); border-radius:10px; border:1px solid rgba(67,48,31,.22); font-size:clamp(14px, 2.4vw, 16px); background:white; }
+.search { width:100%; padding:clamp(12px, 3vw, 16px) clamp(14px, 4vw, 18px); border-radius:10px; border:1px solid rgba(67,48,31,.22); font-size:clamp(14px, 2.4vw, 16px); background:white; outline: 2px solid transparent; outline-offset: 2px; transition: border-color .15s ease, outline-color .15s ease; }
+.search:focus { outline: 2px solid var(--gold); outline-offset: 2px; border-color: var(--gold); }
 .perfume-list { display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; margin-top:16px; }
 .small { font-family:var(--font-sans), Arial, sans-serif; color:#6d5a4d; font-size:clamp(12px, 2vw, 14px); line-height:1.45; }
 a.logo { text-decoration:none; color:inherit; }
@@ -600,7 +601,8 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
 .option-btn strong { color: var(--brown); display: block; }
 .option-btn span { font-size: 13px; color: rgba(38,29,24,.6); }
 .quiz-datalist { margin-top: 18px; }
-.quiz-datalist input { width: 100%; padding: 14px 16px; border: 1px solid rgba(75,53,40,.16); border-radius: 12px; font-size: 15px; font-family: inherit; }
+.quiz-datalist input { width: 100%; padding: 14px 16px; border: 1px solid rgba(75,53,40,.16); border-radius: 12px; font-size: 15px; font-family: inherit; outline: 2px solid transparent; outline-offset: 2px; transition: border-color .15s ease, outline-color .15s ease; }
+.quiz-datalist input:focus { outline: 2px solid var(--gold); outline-offset: 2px; border-color: var(--gold); }
 
 /* Gift Finder Ergebnisse */
 .gift-finder-results { padding: 40px 20px; max-width: 720px; margin: 0 auto; }

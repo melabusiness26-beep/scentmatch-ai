@@ -348,8 +348,32 @@ export default async function PerfumeDetailPage({
             ) : (
               <p className="small">{brandName}</p>
             )}
-            <h1 className="detail-title">{perfume.perfume_name}</h1>
-            <p className="lead">{perfume.description || describePerfume(perfume)}</p>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem', marginBottom: '0.5rem' }}>
+              <h1 className="detail-title">{perfume.perfume_name}</h1>
+              {perfume.confidence_level && (
+                <div style={{
+                  padding: '8px 16px',
+                  backgroundColor: perfume.confidence_level === 'high' ? '#D4AF37' : perfume.confidence_level === 'medium' ? '#FFD700' : '#E0E0E0',
+                  color: '#333',
+                  borderRadius: 20,
+                  fontSize: 12,
+                  fontWeight: 'bold',
+                  whiteSpace: 'nowrap'
+                }}>
+                  {perfume.confidence_level === 'high' && '⭐ HOHE KONFIDENZ'}
+                  {perfume.confidence_level === 'medium' && '⭐ MITTLERE KONFIDENZ'}
+                  {perfume.confidence_level === 'low' && '⚠️ BEGRENZT'}
+                </div>
+              )}
+            </div>
+            {perfume.rating != null && (
+              <div style={{ marginBottom: '0.75rem', fontSize: '1.1rem' }}>
+                {'★'.repeat(Math.floor(perfume.rating))}
+                {perfume.rating % 1 >= 0.5 && '½'}
+                {'☆'.repeat(5 - Math.ceil(perfume.rating))} <strong>{perfume.rating.toFixed(1)}/10</strong>
+              </div>
+            )}
+            <p className="lead">{perfume.long_description || perfume.description || describePerfume(perfume)}</p>
             <div className="badge-row">
               <span className="badge">{familyLabel(perfume.fragrance_family)}</span>
               {perfume.gender && (
@@ -382,12 +406,71 @@ export default async function PerfumeDetailPage({
           </div>
         </section>
 
+        {(perfume.concentration || perfume.intensity || perfume.bottle_description) && (
+          <section className="section card">
+            <h2>Steckbrief</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15, fontSize: 14, marginBottom: 20 }}>
+              {perfume.concentration && (
+                <div style={{ padding: 12, backgroundColor: '#f5f5f5', borderRadius: 8 }}>
+                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 4 }}>KONZENTRATION</div>
+                  <div>{perfume.concentration}</div>
+                </div>
+              )}
+              {perfume.fragrance_family && (
+                <div style={{ padding: 12, backgroundColor: '#f5f5f5', borderRadius: 8 }}>
+                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 4 }}>DUFTFAMILIE</div>
+                  <div>{familyLabel(perfume.fragrance_family)}</div>
+                </div>
+              )}
+              {perfume.gender && (
+                <div style={{ padding: 12, backgroundColor: '#f5f5f5', borderRadius: 8 }}>
+                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 4 }}>GESCHLECHT</div>
+                  <div>{genderBadge[perfume.gender] || perfume.gender}</div>
+                </div>
+              )}
+              {perfume.intensity && (
+                <div style={{ padding: 12, backgroundColor: '#f5f5f5', borderRadius: 8 }}>
+                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 4 }}>INTENSITÄT</div>
+                  <div>{perfume.intensity}</div>
+                </div>
+              )}
+            </div>
+            {perfume.bottle_description && (
+              <div>
+                <h3 style={{ fontSize: '1rem', marginBottom: 8 }}>🏺 Flakon</h3>
+                <p style={{ color: '#555', lineHeight: 1.6, fontSize: 14 }}>
+                  {perfume.bottle_description}
+                </p>
+              </div>
+            )}
+          </section>
+        )}
+
         {hasNotes && (
           <section className="section card">
-            <h2>Duftnoten</h2>
+            <h2>Duft-Pyramide</h2>
             <Notes title="Kopfnoten" notes={perfume.top_notes} />
             <Notes title="Herznoten" notes={perfume.heart_notes} />
             <Notes title="Basisnoten" notes={perfume.base_notes} />
+          </section>
+        )}
+
+        {perfume.scent_dna && perfume.scent_dna.length > 0 && (
+          <section className="section card">
+            <h2>🧬 Duft-DNA (ähnliche Düfte)</h2>
+            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+              {perfume.scent_dna.map((duft, i) => (
+                <div key={i} style={{
+                  padding: '8px 16px',
+                  backgroundColor: '#f5f5f5',
+                  borderRadius: 6,
+                  fontSize: 13,
+                  border: '1px solid #ddd'
+                }}>
+                  {duft}
+                </div>
+              ))}
+            </div>
           </section>
         )}
 

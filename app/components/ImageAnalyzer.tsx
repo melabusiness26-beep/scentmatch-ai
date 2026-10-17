@@ -43,7 +43,12 @@ export default function ImageAnalyzer({ onAnalysisComplete }: ImageAnalyzerProps
       }
 
       setIsLoading(false);
-      onAnalysisComplete(data.data);
+      // Timing-Info in die Daten einbinden
+      const analysisWithTiming = {
+        ...data.data,
+        _timing: (data as any)._timing,
+      };
+      onAnalysisComplete(analysisWithTiming);
     } catch (err) {
       console.error('[ImageAnalyzer] Fehler:', err);
       setError('Fehler bei Bildanalyse. Bitte versuche es später erneut.');

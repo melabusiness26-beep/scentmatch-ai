@@ -34,10 +34,15 @@ export async function POST(request: NextRequest) {
     const mimeType = extractMimeTypeFromDataUri(imageBase64);
     const base64Data = extractBase64FromDataUri(imageBase64);
     const result = await analyzeImageWithAnthropic(base64Data, mimeType);
-    console.log(`[image-analyzer] Analyse fertig: ${Date.now() - startTime}ms`);
+    const totalTime = Date.now() - startTime;
+    console.log(`[image-analyzer] Analyse fertig: ${totalTime}ms`);
     console.log('[image-analyzer] Ergebnis:', result.success ? 'erfolgreich' : 'fehlgeschlagen');
 
-    return NextResponse.json(result);
+    // Add timing info to response
+    return NextResponse.json({
+      ...result,
+      _timing: totalTime,
+    });
   } catch (error) {
     console.error('[image-analyzer] Fehler:', error);
     return NextResponse.json(

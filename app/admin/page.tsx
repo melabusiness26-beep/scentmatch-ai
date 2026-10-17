@@ -13,6 +13,8 @@ const FAMILIES: [string, string][] = [
 const GENDERS = ['Women', 'Men', 'Unisex'];
 const SEASONS = ['Frühling', 'Sommer', 'Herbst/Winter', 'Winter', 'Ganzjährig'];
 const OCCASIONS = ['Alltag', 'Büro', 'Date', 'Abend'];
+const CONCENTRATIONS = ['EDP', 'EDT', 'Extrait', 'Cologne', 'EDC', 'Spray'];
+const INTENSITIES = ['Leicht', 'Mittel', 'Intensiv'];
 
 const emptyForm = {
   perfume_name: '',
@@ -29,7 +31,14 @@ const emptyForm = {
   heart_notes: '',
   base_notes: '',
   image_url: '',
-  affiliate_url: ''
+  affiliate_url: '',
+  // Pro Status Fields
+  concentration: 'EDP',
+  long_description: '',
+  bottle_description: '',
+  intensity: 'Mittel',
+  scent_dna: '',
+  rating: ''
 };
 
 function slugify(value: string): string {
@@ -60,10 +69,17 @@ type AdminPerfume = {
   base_notes: string[] | null;
   image_url: string | null;
   affiliate_url: string | null;
+  // Pro Status
+  concentration?: string | null;
+  long_description?: string | null;
+  bottle_description?: string | null;
+  intensity?: string | null;
+  scent_dna?: string[] | null;
+  rating?: number | null;
 };
 
 const PERFUME_EDIT_FIELDS =
-  'id, perfume_name, brand_id, fragrance_family, gender, price_chf, longevity, sillage, scentmatch_score, season, occasion, top_notes, heart_notes, base_notes, image_url, affiliate_url';
+  'id, perfume_name, brand_id, fragrance_family, gender, price_chf, longevity, sillage, scentmatch_score, season, occasion, top_notes, heart_notes, base_notes, image_url, affiliate_url, concentration, long_description, bottle_description, intensity, scent_dna, rating';
 
 export default function AdminPage() {
   const [checking, setChecking] = useState(true);
@@ -108,6 +124,47 @@ export default function AdminPage() {
     if (!session) return;
     loadBrands();
     loadPerfumes();
+
+    // Load research data if coming from research page
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('research') === 'true') {
+      const stored = sessionStorage.getItem('researchData');
+      if (stored) {
+        try {
+          const data = JSON.parse(stored);
+          setForm({
+            perfume_name: data.perfume_name || '',
+            brand: data.brand || '',
+            fragrance_family: data.fragrance_family || 'clean',
+            gender: data.gender || 'Unisex',
+            price_chf: data.price_chf || '',
+            longevity: data.longevity?.toString() || '',
+            sillage: data.sillage?.toString() || '',
+            scentmatch_score: data.scentmatch_score?.toString() || '',
+            season: data.season || 'Ganzjährig',
+            occasion: data.occasion || 'Alltag',
+            top_notes: data.top_notes || '',
+            heart_notes: data.heart_notes || '',
+            base_notes: data.base_notes || '',
+            image_url: data.image_url || '',
+            affiliate_url: data.affiliate_url || '',
+            // Pro fields from research
+            concentration: data.concentration || 'EDP',
+            long_description: data.long_description || '',
+            bottle_description: data.bottle_description || '',
+            intensity: data.intensity || 'Mittel',
+            scent_dna: (data.scent_dna && Array.isArray(data.scent_dna)) ? data.scent_dna.join(', ') : '',
+            rating: data.rating?.toString() || ''
+          });
+          setMessage(`✅ Daten recherchiert! Überprüfe die Werte und speichere.`);
+          sessionStorage.removeItem('researchData');
+          // Scroll to form
+          if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (err) {
+          console.error('Error loading research data:', err);
+        }
+      }
+    }
   }, [session]);
 
   function setField(key: keyof typeof emptyForm, value: string) {
@@ -202,8 +259,6 @@ export default function AdminPage() {
       const toArray = (s: string) => s.split(',').map(x => x.trim()).filter(Boolean);
       const toNumber = (s: string) => (s === '' ? null : Number(s));
 
-      // Gemeinsame Felder. Beim Bearbeiten lassen wir slug und description
-      // bewusst unangetastet (Links bleiben gleich, manuelle Texte erhalten).
       const fields = {
         perfume_name: name,
         brand_id: brandId,
@@ -219,7 +274,14 @@ export default function AdminPage() {
         heart_notes: toArray(form.heart_notes),
         base_notes: toArray(form.base_notes),
         image_url: form.image_url.trim() || null,
-        affiliate_url: form.affiliate_url.trim() || null
+        affiliate_url: form.affiliate_url.trim() || null,
+        // Pro Status Fields
+        concentration: form.concentration || 'EDP',
+        long_description: form.long_description.trim() || null,
+        bottle_description: form.bottle_description.trim() || null,
+        intensity: form.intensity || 'Mittel',
+        scent_dna: form.scent_dna ? toArray(form.scent_dna) : null,
+        rating: toNumber(form.rating)
       };
 
       if (editingId) {
@@ -302,6 +364,16 @@ export default function AdminPage() {
           <Link className="logo" href="/">Auressa</Link>
           <button className="button secondary" onClick={logout}>Abmelden</button>
         </nav>
+
+        <section className="section card" style={{ backgroundColor: '#f5f1e8', borderLeft: '4px solid #d4af37' }}>
+          <h2>🚀 Schnelle Recherche (Neu!)</h2>
+          <p className="small">
+            Gib die Marke und den Duft-Namen ein — Claude recherchiert automatisch alle Daten von Fragrantica, Parfumo, Douglas.ch und weiteren Quellen!
+          </p>
+          <Link className="button" href="/admin/research" style={{ display: 'inline-block' }}>
+            🔍 Duft recherchieren
+          </Link>
+        </section>
 
         <section className="section card">
           <h2>Bestehenden Duft bearbeiten</h2>
@@ -404,6 +476,59 @@ export default function AdminPage() {
             <div className="field">
               <label>Affiliate-Link / Shop-URL (optional)</label>
               <input value={form.affiliate_url} onChange={e => setField('affiliate_url', e.target.value)} placeholder="https://… (dein persönlicher Partner-Link zum Shop)" />
+            </div>
+
+            {/* Pro Status Fields */}
+            <hr style={{ margin: '30px 0', border: 'none', borderTop: '2px solid #D4AF37' }} />
+            <h3 style={{ color: '#D4AF37', marginBottom: 15 }}>⭐ Pro-Status Felder (optional aber empfohlen)</h3>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15 }}>
+              <div className="field">
+                <label>Konzentration</label>
+                <select value={form.concentration} onChange={e => setField('concentration', e.target.value)}>
+                  {CONCENTRATIONS.map(c => <option value={c} key={c}>{c}</option>)}
+                </select>
+              </div>
+              <div className="field">
+                <label>Intensität</label>
+                <select value={form.intensity} onChange={e => setField('intensity', e.target.value)}>
+                  {INTENSITIES.map(i => <option value={i} key={i}>{i}</option>)}
+                </select>
+              </div>
+            </div>
+
+            <div className="field">
+              <label>Bewertung (0-10, z.B. 7.5)</label>
+              <input type="number" step="0.1" min="0" max="10" value={form.rating} onChange={e => setField('rating', e.target.value)} placeholder="7.5" />
+            </div>
+
+            <div className="field">
+              <label>Ausführliche Beschreibung (3-4 Sätze, deutsch, poetic)</label>
+              <textarea
+                value={form.long_description}
+                onChange={e => setField('long_description', e.target.value)}
+                placeholder="Ein frischer Duft, der Eleganz und Modernität vereint. Die Kopfnoten öffnen mit zitronigen Akkorden, während die Herznoten subtile Blütennoten zeigen..."
+                style={{ minHeight: 100 }}
+              />
+            </div>
+
+            <div className="field">
+              <label>Flakon-Beschreibung (Aussehen, Design)</label>
+              <textarea
+                value={form.bottle_description}
+                onChange={e => setField('bottle_description', e.target.value)}
+                placeholder="Ein klassischer Flakon mit klarem, rechteckigem Design. Das durchsichtige Glas zeigt die helle Flüssigkeit. Die weiße Kappe kontrastiert elegant..."
+                style={{ minHeight: 80 }}
+              />
+            </div>
+
+            <div className="field">
+              <label>Duft-DNA (3 ähnliche Düfte, Komma-getrennt)</label>
+              <input
+                value={form.scent_dna}
+                onChange={e => setField('scent_dna', e.target.value)}
+                placeholder="Bleu de Chanel, Sauvage, Acqua di Parma Colonia"
+              />
             </div>
 
             {message && <p className="admin-msg" style={{ color: message.startsWith('Fehler') ? '#b3261e' : '#1b7a3d' }}>{message}</p>}

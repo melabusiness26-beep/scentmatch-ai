@@ -3,9 +3,8 @@
 import { useState, useEffect } from 'react';
 import { Perfume } from '@/lib/perfumes';
 import { ImageAnalysisResult } from '@/types/image-analysis';
-import { findSimilarPerfumes } from '@/lib/analysis-matcher';
+import { findSimilarPerfumes, findPerfumeInDB, type PerfumeMatch } from '@/lib/analysis-matcher';
 import { getScanHistory, addScanToHistory, clearScanHistory, ScanHistoryEntry, formatRelativeTime } from '@/lib/scan-history';
-import { findPerfumeInDB } from '@/lib/analysis-matcher';
 import ImageAnalyzer from '@/app/components/ImageAnalyzer';
 import AnalysisResultView from '@/app/components/AnalysisResultView';
 import LoadingAnimation from '@/app/components/LoadingAnimation';
@@ -31,7 +30,8 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
   const [stage, setStage] = useState<Stage>('scanner');
   const [analysis, setAnalysis] = useState<ImageAnalysisResult['data'] | null>(null);
   const [similarPerfumes, setSimilarPerfumes] = useState<Perfume[]>([]);
-  const [dbMatch, setDbMatch] = useState<Perfume | null>(null);
+  const [dbMatches, setDbMatches] = useState<PerfumeMatch[]>([]);
+  const [selectedDbMatch, setSelectedDbMatch] = useState<Perfume | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [history, setHistory] = useState<ScanHistoryEntry[]>([]);
   const [showHistory, setShowHistory] = useState(false);
@@ -45,9 +45,12 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
     setAnalysis(analysisData);
     setIsLoading(true);
 
-    // DB-Lookup: Ist der Duft in Auressa? (Name + Marke + Noten)
-    const found = findPerfumeInDB(analysisData.perfumeName, analysisData.brandName, analysisData.notes, allPerfumes);
-    setDbMatch(found);
+    // DB-Lookup: Ist der Duft in Auressa? (Name + Marke + Noten) – Top 3 Matches
+    const matches = findPerfumeInDB(analysisData.perfumeName, analysisData.brandName, analysisData.notes, allPerfumes);
+    setDbMatches(matches);
+    if (matches.length > 0) {
+      setSelectedDbMatch(matches[0].perfume);
+    }
 
     const similar = findSimilarPerfumes(analysisData, allPerfumes, 40, 7);
 
@@ -65,16 +68,20 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
     setStage('scanner');
     setAnalysis(null);
     setSimilarPerfumes([]);
-    setDbMatch(null);
+    setDbMatches([]);
+    setSelectedDbMatch(null);
   };
 
   const handleLoadFromHistory = (entry: ScanHistoryEntry) => {
-    const found = findPerfumeInDB(entry.analysis.perfumeName, entry.analysis.brandName, entry.analysis.notes, allPerfumes);
+    const matches = findPerfumeInDB(entry.analysis.perfumeName, entry.analysis.brandName, entry.analysis.notes, allPerfumes);
     const similar = findSimilarPerfumes(entry.analysis, allPerfumes, 40, 7);
     setAnalysis(entry.analysis);
     setSimilarPerfumes(similar);
-    setDbMatch(found);
-    setStage(similar.length > 0 || found ? 'results' : 'not-found');
+    setDbMatches(matches);
+    if (matches.length > 0) {
+      setSelectedDbMatch(matches[0].perfume);
+    }
+    setStage(similar.length > 0 || matches.length > 0 ? 'results' : 'not-found');
     setShowHistory(false);
   };
 
@@ -93,7 +100,9 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
         analysis={analysis}
         similarPerfumes={similarPerfumes}
         onNewSearch={handleNewSearch}
-        dbMatch={dbMatch}
+        dbMatch={selectedDbMatch}
+        dbMatches={dbMatches}
+        onSelectDbMatch={setSelectedDbMatch}
       />
     );
   }

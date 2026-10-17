@@ -54,8 +54,8 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 .hero-photo p.lead { max-width: 430px; }
 .hero-stats-row { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 26px; }
 .hero-stat-mini { display: flex; flex-direction: column; gap: 2px; }
-.hero-stat-mini strong { font-family: var(--font-display), Georgia, serif; font-size: 30px; color: #a07c43; line-height: 1; }
-.hero-stat-mini span { font-family: var(--font-sans), Arial, sans-serif; font-size: 13px; color: #6d5a4d; }
+.hero-stat-mini strong { font-family: var(--font-display), Georgia, serif; font-size: clamp(24px, 5vw, 30px); color: #a07c43; line-height: 1; }
+.hero-stat-mini span { font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(11px, 2vw, 13px); color: #6d5a4d; }
 @media (max-width: 800px) {
   /* Handy: Foto als knackiges Banner oben (volle Farbe), Text darunter auf
      cleanem Creme – kein verwaschener Überzug mehr. */
@@ -102,14 +102,14 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 .hero-stage .bottle { background: linear-gradient(135deg, rgba(216,183,170,.4), rgba(185,152,99,.16)); color: #fbf3e6; }
 .hero-stage .hero { gap: 44px; }
 .hero-stage p.lead { max-width: 560px; }
-.hero-trust { margin-top: 22px; font-family: var(--font-sans), Arial, sans-serif; font-size: 14px; color: #6d5a4d; }
+.hero-trust { margin-top: 22px; font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(12px, 2.2vw, 14px); color: #6d5a4d; }
 .hero-trust .stars { color: var(--gold); letter-spacing: 2px; margin-right: 6px; }
 .hero-stats { display: flex; flex-direction: column; gap: 0; width: 100%; }
 .hero-stat { display: flex; align-items: baseline; gap: 14px; border-top: 1px solid rgba(243,233,218,.18); padding: 16px 0; }
 .hero-stat:first-child { border-top: 0; padding-top: 4px; }
 .hero-stat:last-child { padding-bottom: 4px; }
-.hero-stat strong { font-family: var(--font-display), Georgia, serif; font-size: 36px; color: var(--gold); line-height: 1; min-width: 70px; }
-.hero-stat span { font-family: var(--font-sans), Arial, sans-serif; font-size: 14px; color: rgba(243,233,218,.86); }
+.hero-stat strong { font-family: var(--font-display), Georgia, serif; font-size: clamp(28px, 5.5vw, 36px); color: var(--gold); line-height: 1; min-width: 70px; }
+.hero-stat span { font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(12px, 2.2vw, 14px); color: rgba(243,233,218,.86); }
 @media (max-width: 800px) {
   .hero-stage { padding: 38px 24px; }
   .hero-stage .lead { font-size: 17px; }
@@ -195,7 +195,7 @@ a.logo { text-decoration:none; color:inherit; }
 
 /* Duft-Detektiv Progress Bar – explizit Gold */
 .duft-detektiv-progress-bar { background: #b08b4f !important; }
-.footer-kicker { font-family: var(--font-sans), Arial, sans-serif; text-transform: uppercase; letter-spacing: .26em; font-size: 11px; font-weight: 600; color: var(--gold); margin: 10px 0 4px; }
+.footer-kicker { font-family: var(--font-sans), Arial, sans-serif; text-transform: uppercase; letter-spacing: .26em; font-size: clamp(9px, 1.8vw, 11px); font-weight: 600; color: var(--gold); margin: 10px 0 4px; }
 .quiz-hint { margin:-6px 0 14px; font-style:italic; }
 .quiz-back { margin-top:14px; background:none; border:0; color:var(--brown); cursor:pointer; font-family:var(--font-sans), Arial, sans-serif; font-size:14px; padding:6px 0; }
 .quiz-back:hover { text-decoration:underline; }
@@ -218,7 +218,7 @@ a.logo { text-decoration:none; color:inherit; }
 
 .share-box { margin-top:26px; padding-top:22px; border-top:1px solid rgba(185,152,99,.35); }
 .share-msg { margin-top:12px; color:var(--gold); font-weight:600; word-break:break-all; }
-.match-badge { display:inline-block; background:var(--brown); color:#fff; font-family:var(--font-sans), Arial, sans-serif; font-size:13px; font-weight:700; padding:5px 12px; border-radius:999px; margin-bottom:10px; }
+.match-badge { display:inline-block; background:var(--brown); color:#fff; font-family:var(--font-sans), Arial, sans-serif; font-size:clamp(11px, 2vw, 13px); font-weight:700; padding:clamp(4px, 1vw, 5px) clamp(10px, 2vw, 12px); border-radius:999px; margin-bottom:10px; }
 
 /* Duft-Bilder & elegante Platzhalter (nach Duftfamilie eingefärbt) */
 .cover { position:relative; height:200px; border-radius:12px; margin-bottom:14px; background: radial-gradient(ellipse 70% 60% at 75% 20%, rgba(255,248,220,0.6) 0%, transparent 60%), radial-gradient(ellipse 55% 65% at 20% 80%, rgba(201,168,76,0.35) 0%, transparent 65%), linear-gradient(145deg, #d4b576 0%, #efd9a8 35%, #f5ead0 65%, #e0c9a0 100%); background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,.5), inset 0 -30px 60px rgba(50,32,20,.10), 0 8px 20px rgba(50,32,20,.08); transition: all 0.3s ease; }

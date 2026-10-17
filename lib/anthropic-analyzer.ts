@@ -24,8 +24,8 @@ export async function analyzeImageWithAnthropic(
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-5',
-        max_tokens: 4096,
+        model: 'claude-3-5-sonnet-20241022',
+        max_tokens: 1000,
         messages: [
           {
             role: 'user',
@@ -40,112 +40,43 @@ export async function analyzeImageWithAnthropic(
               },
               {
                 type: 'text',
-                text: `Du bist der weltweit präziseste Parfüm-Erkennungsassistent mit Expertenwissen über tausende von Düften. Deine Aufgabe: Erkenne dieses Parfüm so genau wie möglich und erstelle ein vollständiges, korrektes Profil.
+                text: `Erkenne diesen Parfüm-Flakon schnell und genau.
 
-SCHRITT 1 – TEXTERKENNUNG (höchste Priorität):
-Lese JEDEN sichtbaren Text auf dem Bild:
-- Markenname (oft gross auf dem Flakon, auf dem Deckel, auf der Verpackung)
-- Parfümname (oft kleiner, unter oder über dem Markennamen)
-- Konzentration (EDP, EDT, Parfum, Eau de Cologne – oft auf dem Boden oder Etikett)
-- Volumen (50ml, 100ml etc.)
-- Batchcode / Lot-Nummer (ignorieren)
-- Text auf Karton/Verpackung falls sichtbar
-- GENDER-HINWEISE: Wörter wie „Homme", „Pour Homme", „for Men", „Man", „Men", „Herren", „Him" → ZWINGEND gender = "man"; Wörter wie „Femme", „Pour Femme", „for Women", „Woman", „Women", „Damen", „Her" → ZWINGEND gender = "woman"
-
-SCHRITT 2 – VISUELL-KONTEXTUELLE ANALYSE:
-- Flakonsform, Farbe, Material (Glas, Metall, Plastik)
-- Etikett-Design und Typographie
-- Farbe des Duftes im Flakon (falls sichtbar)
-- Zerstäuber-Typ
-- Kappen-Material und Farbe
-- Hintergrund/Setting des Bildes
-
-SCHRITT 3 – PARFÜM-IDENTIFIKATION:
-Kombiniere Text + Visuals um das genaue Produkt zu bestimmen. Bei bekannten Marken:
-- Chanel, Dior, Yves Saint Laurent, Guerlain → Prüfe alle Linien
-- Creed, Maison Margiela, Byredo → Nischen-Linien kennen
-- Armaf, Lattafa, Al Haramain → Arabische/günstige Alternativen
-- Zara, H&M, Lidl → Massenmarkt-Klone
-Auch bei schlechter Qualität: Logo-Form, Flakonstil und Farbe geben Hinweise.
-
-ANTWORTE AUSSCHLIESSLICH mit gültigem JSON (kein Markdown, keine Erklärung davor/danach):
+1. Lese ALLE sichtbaren Texte: Markenname, Produktname, Konzentration (EDP/EDT/Parfum)
+2. Achte auf Geschlechtshints: "Pour Homme"→man, "Pour Femme"→woman, sonst unisex
+3. Analysiere Form, Farbe und Design des Flakons
+4. Antworte NUR mit gültigem JSON (keine Erklärung):
 
 {
-  "perfumeName": "exakter Produktname wie auf dem Flakon",
+  "perfumeName": "Produktname vom Flakon",
   "brandName": "Markenname",
   "confidence": "high|medium|low",
-  "confidenceReason": "Kurze Begründung: was hat die Erkennung erschwert oder erleichtert",
-  "year": null,
-  "parfumeur": null,
-  "originCountry": "Land",
-  "concentration": "Parfum|EDP|EDT|Eau de Cologne|null",
-  "family": "Duftfamilie auf Deutsch (z.B. Blumig-Fruchtig, Holzig-Orientalisch, Frisch-Aquatisch)",
-  "gender": "woman|man|unisex — PFLICHT: Wenn 'Homme', 'Pour Homme', 'for Men', 'Man' auf dem Flakon steht → IMMER 'man'. Wenn 'Femme', 'Pour Femme', 'for Women', 'Woman' steht → IMMER 'woman'. Kein Raten: Falls kein Hinweis sichtbar → 'unisex'.",
-  "intensity": "very_light|light|medium|strong|very_strong",
-  "rating": 7.5,
+  "concentration": "EDP|EDT|Parfum|null",
+  "gender": "woman|man|unisex",
+  "notes": {
+    "top": ["Bergamotte", "Zitrone"],
+    "heart": ["Rose", "Jasmin"],
+    "base": ["Sandelholz", "Moschus"]
+  },
+  "poeticDescription": "Kurze emotionale Beschreibung",
+  "generalDescription": "Sachliche 1-2 Satz Einführung",
+  "rating": 7,
   "sillage": 6,
   "longevity": 7,
-  "projection": 6,
-  "uniqueness": 5,
-  "priceValue": 8,
-  "notes": {
-    "top": ["Deutsche Notennamen", "z.B. Bergamotte", "Zitrone"],
-    "heart": ["Rose", "Jasmin"],
-    "base": ["Sandelholz", "Moschus", "Vanille"]
-  },
-  "duftDNA": {"blumig": 35, "holzig": 20, "frisch": 25, "süss": 15, "würzig": 5},
-  "poeticDescription": "2-3 emotionale Sätze auf Deutsch die den Duft lebendig beschreiben",
-  "generalDescription": "1-2 sachliche Sätze zur Einführung",
-  "duftJourney": {
-    "morgen": "Wie trägt sich der Duft am Morgen?",
-    "mittag": "Wie entwickelt er sich über den Tag?",
-    "abend": "Abendliche Transformation",
-    "nacht": "Nachtcharakter"
-  },
-  "development": {
-    "opening": "Erste 10-30 Minuten auf der Haut",
-    "middleGame": "Nach 1-2 Stunden",
-    "drydown": "Trockene Basis nach mehreren Stunden"
-  },
-  "characterTags": ["5 bis 6 prägnante Schlagwörter"],
-  "personalityType": "Welche Persönlichkeit passt zu diesem Duft?",
-  "mood": "Stimmung in 2-3 Wörtern",
-  "seasonRecommendation": "Frühling|Sommer|Herbst|Winter|Ganzjährig",
-  "occasionList": ["Alltag", "Büro", "Date", "Abendessen", "Party"],
-  "climate": ["warm", "kalt", "tropisch", "gemässigt"],
-  "perfectMoment": "Eine kurze emotionale Geschichte: wann ist dieser Duft perfekt?",
-  "bottleDescription": "Beschreibung des Flakons: Form, Farbe, Material, Besonderheiten",
-  "comparisonPerfumes": [
-    {"name": "Bekannter Duft 1", "reason": "Warum ähnlich"},
-    {"name": "Bekannter Duft 2", "reason": "Warum ähnlich"},
-    {"name": "Bekannter Duft 3", "reason": "Warum ähnlich"}
-  ],
-  "similarPerfumes": [
-    {"name": "Empfehlung 1", "reason": "Warum empfohlen"},
-    {"name": "Empfehlung 2", "reason": "Warum empfohlen"},
-    {"name": "Empfehlung 3", "reason": "Warum empfohlen"},
-    {"name": "Empfehlung 4", "reason": "Warum empfohlen"},
-    {"name": "Empfehlung 5", "reason": "Warum empfohlen"}
-  ],
-  "funFacts": ["Interessanter Fakt 1", "Fakt 2", "Fakt 3"],
-  "famouswearers": ["Prominente Person die diesen Duft trägt oder getragen hat"],
-  "history": "Geschichte des Parfüms: Entstehung, Besonderheiten, kulturelle Bedeutung",
-  "usageRecommendations": {
-    "occasions": ["Anlass 1", "Anlass 2"],
-    "seasons": ["Saison 1"],
-    "timeOfDay": ["Morgen", "Abend"],
-    "skinType": ["Trockene Haut", "Normale Haut"]
-  }
+  "occasionList": ["Alltag", "Büro"],
+  "characterTags": ["Frisch", "Elegant", "Leicht"],
+  "mood": "Beschreibung der Stimmung",
+  "seasonRecommendation": "Ganzjährig|Sommer|Winter|Frühling|Herbst",
+  "bottleDescription": "Farbe und Form des Flakons"
 }
 
-PFLICHTREGELN:
-- perfumeName und brandName: IMMER ausfüllen, auch wenn es nur ein educated guess ist
-- Alle Duft-Noten (top/heart/base) IMMER auf Deutsch: "Bergamotte" nicht "Bergamot", "Vanille" nicht "Vanilla", "Moschus" nicht "Musk", "Zitrone" nicht "Lemon", "Rose" statt "Rosa"
-- Jede Note NUR EINMAL (keine Duplikate zwischen top/heart/base)
-- occasionList: IMMER als Array, nie null
-- duftDNA-Werte müssen sich auf ~100 summieren
-- confidence "high" = Text klar lesbar + Duft bekannt; "medium" = Duft erkannt aber unsicher; "low" = nur visueller Guess möglich
-- Antworte NUR mit dem JSON-Objekt, kein Text davor oder danach`,
+REGELN:
+- perfumeName & brandName: IMMER, auch educated guess
+- Noten NUR auf Deutsch
+- Keine Duplikate zwischen top/heart/base
+- occasionList: IMMER Array
+- gender: "high"→voll lesbar, "medium"→unsicher, "low"→visueller Guess
+- NUR JSON, kein Text`,
               },
             ],
           },

@@ -30,7 +30,28 @@ interface ResearchResult {
   sources: string[];
   notes_confidence: 'high' | 'medium' | 'low';
   data_quality?: DataQuality;
+  concentration?: string | null;
+  long_description?: string | null;
+  bottle_description?: string | null;
+  intensity?: string | null;
+  scent_dna?: string[];
+  rating?: number | null;
+  confidence_level?: string | null;
+  data_sources?: Record<string, boolean>;
   error?: string;
+}
+
+function StarRating({ rating }: { rating: number | null | undefined }) {
+  if (!rating) return <span style={{ color: '#999' }}>–</span>;
+  const fullStars = Math.floor(rating);
+  const hasHalf = rating % 1 >= 0.5;
+  return (
+    <span>
+      {'★'.repeat(fullStars)}
+      {hasHalf && '½'}
+      {'☆'.repeat(5 - Math.ceil(rating))} {rating.toFixed(1)}/10
+    </span>
+  );
 }
 
 export default function ResearchPage() {
@@ -70,7 +91,6 @@ export default function ResearchPage() {
 
   function useThisData() {
     if (!result) return;
-    // Store in sessionStorage for admin page to pick up
     sessionStorage.setItem('researchData', JSON.stringify(result));
     window.location.href = '/admin?research=true';
   }
@@ -91,18 +111,18 @@ export default function ResearchPage() {
       <div className="container">
         <nav className="nav">
           <Link className="logo" href="/">Auressa</Link>
-          <div className="badge">Duft recherchieren</div>
+          <div className="badge">Professionelle Duft-Recherche (Pro Status)</div>
         </nav>
 
         <section className="section card" style={{ maxWidth: 600 }}>
-          <h2>Automatische Duft-Recherche</h2>
+          <h2>🚀 Automated Pro Research</h2>
           <p className="small">
-            Gib die Marke und den Duft-Namen ein. Claude recherchiert automatisch alle Daten von Fragrantica, Parfumo, Douglas.ch und anderen Quellen.
+            Recherchiere jeden Duft mit vollständigem Profi-Status: Noten, Beschreibung, Flakon, Intensität, Duft-DNA.
           </p>
 
           <form onSubmit={research}>
             <div className="field">
-              <label>Marke (z.B. "Jardin Bohème")</label>
+              <label>Marke (z.B. "Davidoff")</label>
               <input
                 type="text"
                 value={brand}
@@ -112,7 +132,7 @@ export default function ResearchPage() {
               />
             </div>
             <div className="field">
-              <label>Duftname (z.B. "Épisode Romantique Orchidée Sublime")</label>
+              <label>Duftname (z.B. "Cool Water")</label>
               <input
                 type="text"
                 value={name}
@@ -122,7 +142,7 @@ export default function ResearchPage() {
               />
             </div>
             <button className="button" type="submit" disabled={loading}>
-              {loading ? '🔍 Recherchiere...' : '🔍 Recherchieren'}
+              {loading ? '🔍 Recherchiere Pro-Status...' : '🔍 Recherchieren'}
             </button>
           </form>
 
@@ -130,42 +150,109 @@ export default function ResearchPage() {
         </section>
 
         {result && !result.error && (
-          <section className="section card" style={{ maxWidth: 900 }}>
-            <h2>✅ Recherche-Ergebnisse</h2>
+          <section className="section card" style={{ maxWidth: 1000 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
+              <div>
+                <h2>{result.perfume_name}</h2>
+                <p style={{ fontSize: 14, color: '#999', marginTop: 5 }}>{result.brand}</p>
+              </div>
+              {result.confidence_level === 'high' && (
+                <div style={{
+                  padding: '8px 16px',
+                  backgroundColor: '#D4AF37',
+                  color: '#333',
+                  borderRadius: 20,
+                  fontSize: 12,
+                  fontWeight: 'bold'
+                }}>
+                  ⭐ HOHE KONFIDENZ
+                </div>
+              )}
+              {result.confidence_level === 'medium' && (
+                <div style={{
+                  padding: '8px 16px',
+                  backgroundColor: '#FFD700',
+                  color: '#333',
+                  borderRadius: 20,
+                  fontSize: 12,
+                  fontWeight: 'bold'
+                }}>
+                  ⭐ MITTLERE KONFIDENZ
+                </div>
+              )}
+              {result.confidence_level === 'low' && (
+                <div style={{
+                  padding: '8px 16px',
+                  backgroundColor: '#E0E0E0',
+                  color: '#333',
+                  borderRadius: 20,
+                  fontSize: 12,
+                  fontWeight: 'bold'
+                }}>
+                  ⚠️ BEGRENZT
+                </div>
+              )}
+            </div>
 
-            <div style={{ fontSize: 14, lineHeight: 2, marginBottom: 20 }}>
+            {/* Rating */}
+            {result.rating !== null && result.rating !== undefined && (
+              <div style={{ marginBottom: 25, paddingBottom: 20, borderBottom: '1px solid #eee' }}>
+                <h3 style={{ marginBottom: 10 }}>Bewertung</h3>
+                <div style={{ fontSize: 20 }}>
+                  <StarRating rating={result.rating} />
+                </div>
+              </div>
+            )}
+
+            {/* Langbeschreibung */}
+            {result.long_description && (
+              <div style={{ marginBottom: 25, paddingBottom: 20, borderBottom: '1px solid #eee' }}>
+                <h3 style={{ marginBottom: 10 }}>Beschreibung</h3>
+                <p style={{ fontStyle: 'italic', lineHeight: 1.6, color: '#555' }}>
+                  {result.long_description}
+                </p>
+              </div>
+            )}
+
+            {/* Steckbrief */}
+            <div style={{ marginBottom: 25, paddingBottom: 20, borderBottom: '1px solid #eee' }}>
+              <h3 style={{ marginBottom: 15 }}>Steckbrief</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15, fontSize: 14 }}>
+                <div style={{ padding: 12, backgroundColor: '#f5f5f5', borderRadius: 8 }}>
+                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 4 }}>KONZENTRATION</div>
+                  <div>{result.concentration || '–'}</div>
+                </div>
+                <div style={{ padding: 12, backgroundColor: '#f5f5f5', borderRadius: 8 }}>
+                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 4 }}>DUFTFAMILIE</div>
+                  <div style={{ textTransform: 'capitalize' }}>{result.fragrance_family || '–'}</div>
+                </div>
+                <div style={{ padding: 12, backgroundColor: '#f5f5f5', borderRadius: 8 }}>
+                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 4 }}>GESCHLECHT</div>
+                  <div>{result.gender || '–'}</div>
+                </div>
+                <div style={{ padding: 12, backgroundColor: '#f5f5f5', borderRadius: 8 }}>
+                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 4 }}>INTENSITÄT</div>
+                  <div>{result.intensity || '–'}</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Flakon */}
+            {result.bottle_description && (
+              <div style={{ marginBottom: 25, paddingBottom: 20, borderBottom: '1px solid #eee' }}>
+                <h3 style={{ marginBottom: 10 }}>🏺 Flakon</h3>
+                <p style={{ color: '#555', lineHeight: 1.6 }}>
+                  {result.bottle_description}
+                </p>
+              </div>
+            )}
+
+            {/* Basis-Tabelle */}
+            <div style={{ marginBottom: 25, paddingBottom: 20, borderBottom: '1px solid #eee', fontSize: 14, lineHeight: 2 }}>
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <tbody>
                   <tr style={{ borderBottom: '1px solid #eee' }}>
-                    <td style={{ fontWeight: 'bold', width: '30%', paddingRight: 20 }}>Duftname:</td>
-                    <td>{result.perfume_name || <span style={{ color: '#999' }}>–</span>}</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid #eee' }}>
-                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Marke:</td>
-                    <td>{result.brand || <span style={{ color: '#999' }}>–</span>}</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid #eee' }}>
-                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Familie:</td>
-                    <td>{result.fragrance_family || <span style={{ color: '#999' }}>–</span>}</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid #eee' }}>
-                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Geschlecht:</td>
-                    <td>{result.gender || <span style={{ color: '#999' }}>–</span>}</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid #eee' }}>
-                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Preis CHF:</td>
-                    <td>{result.price_chf || <span style={{ color: '#999' }}>–</span>}</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid #eee' }}>
-                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Haltbarkeit (1-10):</td>
-                    <td>{result.longevity ? `${result.longevity}/10` : <span style={{ color: '#999' }}>–</span>}</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid #eee' }}>
-                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Sillage (1-10):</td>
-                    <td>{result.sillage ? `${result.sillage}/10` : <span style={{ color: '#999' }}>–</span>}</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid #eee' }}>
-                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Saison:</td>
+                    <td style={{ fontWeight: 'bold', width: '30%', paddingRight: 20 }}>Saison:</td>
                     <td>{result.season || <span style={{ color: '#999' }}>–</span>}</td>
                   </tr>
                   <tr style={{ borderBottom: '1px solid #eee' }}>
@@ -173,14 +260,35 @@ export default function ResearchPage() {
                     <td>{result.occasion || <span style={{ color: '#999' }}>–</span>}</td>
                   </tr>
                   <tr style={{ borderBottom: '1px solid #eee' }}>
-                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Kopfnoten:</td>
+                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Preis CHF:</td>
+                    <td>{result.price_chf || <span style={{ color: '#999' }}>–</span>}</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid #eee' }}>
+                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Haltbarkeit:</td>
+                    <td>{result.longevity ? `${result.longevity}/10` : <span style={{ color: '#999' }}>–</span>}</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid #eee' }}>
+                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Sillage:</td>
+                    <td>{result.sillage ? `${result.sillage}/10` : <span style={{ color: '#999' }}>–</span>}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            {/* Noten */}
+            <div style={{ marginBottom: 25, paddingBottom: 20, borderBottom: '1px solid #eee' }}>
+              <h3 style={{ marginBottom: 15 }}>Duft-Pyramide</h3>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+                <tbody>
+                  <tr style={{ borderBottom: '1px solid #eee' }}>
+                    <td style={{ fontWeight: 'bold', width: '25%', paddingRight: 20 }}>Kopfnoten:</td>
                     <td>{result.top_notes || <span style={{ color: '#999' }}>–</span>}</td>
                   </tr>
                   <tr style={{ borderBottom: '1px solid #eee' }}>
                     <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Herznoten:</td>
                     <td>{result.heart_notes || <span style={{ color: '#999' }}>–</span>}</td>
                   </tr>
-                  <tr style={{ borderBottom: '1px solid #eee' }}>
+                  <tr>
                     <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Basisnoten:</td>
                     <td>{result.base_notes || <span style={{ color: '#999' }}>–</span>}</td>
                   </tr>
@@ -188,21 +296,32 @@ export default function ResearchPage() {
               </table>
             </div>
 
-            <hr style={{ margin: '30px 0', border: 'none', borderTop: '2px solid #ddd' }} />
+            {/* Duft-DNA */}
+            {result.scent_dna && result.scent_dna.length > 0 && (
+              <div style={{ marginBottom: 25, paddingBottom: 20, borderBottom: '1px solid #eee' }}>
+                <h3 style={{ marginBottom: 10 }}>🧬 Duft-DNA (ähnliche Düfte)</h3>
+                <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                  {result.scent_dna.map((duft, i) => (
+                    <div key={i} style={{
+                      padding: '8px 16px',
+                      backgroundColor: '#f5f5f5',
+                      borderRadius: 6,
+                      fontSize: 13,
+                      border: '1px solid #ddd'
+                    }}>
+                      {duft}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
-            <h3 style={{ marginTop: 30, marginBottom: 15 }}>📊 Daten-Qualität & Quellen</h3>
-            <div style={{ fontSize: 13, color: '#555', lineHeight: 1.8 }}>
-              <p style={{ marginBottom: 10 }}>
-                <strong>Zuverlässigkeit:</strong>{' '}
-                {result.notes_confidence === 'high'
-                  ? '✅ ⭐⭐⭐ Sehr zuverlässig (3+ verifizierte Quellen)'
-                  : result.notes_confidence === 'medium'
-                  ? '⚠️ ⭐⭐ Teilweise zuverlässig (2 Quellen)'
-                  : '⚠️ ⭐ Begrenzt verfügbar (1 Quelle)'}
-              </p>
+            {/* Data Quality */}
+            <div style={{ marginBottom: 25 }}>
+              <h3 style={{ marginBottom: 15 }}>📊 Datenqualität & Quellen</h3>
 
               {result.data_quality && (
-                <>
+                <div style={{ fontSize: 13, color: '#555', lineHeight: 1.8, marginBottom: 15 }}>
                   <p style={{ marginBottom: 8 }}>
                     <strong>Noten verifiziert:</strong> {result.data_quality.noten_verifiziert ? '✅ Ja' : '❌ Nein'}
                   </p>
@@ -214,27 +333,22 @@ export default function ResearchPage() {
                       <strong>Haltbarkeit-Quelle:</strong> {result.data_quality.longevity_quelle}
                     </p>
                   )}
-                  {result.data_quality.fehlende_daten.length > 0 && (
-                    <p style={{ marginBottom: 8, color: '#999' }}>
-                      <strong>Fehlende Daten:</strong> {result.data_quality.fehlende_daten.join(', ')}
-                    </p>
-                  )}
-                </>
+                </div>
               )}
 
-              <p style={{ marginTop: 15, fontSize: 12, color: '#777' }}>
+              <div style={{ fontSize: 12, color: '#777', lineHeight: 1.8 }}>
                 <strong>Quellen:</strong><br />
                 {result.sources.map((source, i) => (
                   <span key={i}>
                     • {source}<br />
                   </span>
                 )) || 'Keine'}
-              </p>
+              </div>
             </div>
 
             <div className="cta" style={{ marginTop: 30 }}>
               <button className="button" onClick={useThisData}>
-                ✅ Diese Daten verwenden
+                ✅ Diese Pro-Daten verwenden
               </button>
               <button className="button secondary" onClick={() => setResult(null)}>
                 🔄 Neu recherchieren

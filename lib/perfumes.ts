@@ -26,6 +26,15 @@ export type Perfume = {
   base_notes: string[] | null;
   ean_code?: string | null;
   brands?: PerfumeBrand | null;
+  // Pro Status Fields (Scanner)
+  concentration?: string | null;
+  long_description?: string | null;
+  bottle_description?: string | null;
+  intensity?: string | null;
+  scent_dna?: string[] | null;
+  rating?: number | null;
+  confidence_level?: string | null;
+  data_sources?: Record<string, boolean> | null;
 };
 
 // Felder, die wir aus Supabase laden. Zentral definiert, damit Startseite und

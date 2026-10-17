@@ -18,17 +18,26 @@ interface ResearchResult {
   price_chf: string | null;
   longevity: number | null;
   sillage: number | null;
-  scentmatch_score: null; // Always null, admin calculates
+  scentmatch_score: null;
   season: string | null;
   occasion: string | null;
   top_notes: string | null;
   heart_notes: string | null;
   base_notes: string | null;
-  image_url: null; // Always null, user adds
-  affiliate_url: null; // Always null, user adds
+  image_url: null;
+  affiliate_url: null;
   sources: string[];
   notes_confidence: 'high' | 'medium' | 'low';
   data_quality?: DataQuality;
+  // Pro Status Fields (Scanner)
+  concentration?: string | null;
+  long_description?: string | null;
+  bottle_description?: string | null;
+  intensity?: string | null;
+  scent_dna?: string[];
+  rating?: number | null;
+  confidence_level?: string | null;
+  data_sources?: Record<string, boolean>;
   error?: string;
 }
 
@@ -43,59 +52,72 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const searchPrompt = `Du recherchierst das Parfum "${brand} - ${name}" für auressa.ch — eine Premium-Duft-Beratungsplattform.
+    const searchPrompt = `Du recherchierst das Parfum "${brand} - ${name}" für auressa.ch — eine Premium-Duft-Beratungsplattform mit professionellem Scanner-Status.
 
-MISSION: Extrahiere ALLE verfügbaren, wahrheitsgemässen Informationen aus den besten Quellen.
+MISSION: Extrahiere ALLE verfügbaren, wahrheitsgemässen Informationen für PROFI-STATUS-Daten.
 
-QUELLEN (in dieser Priorität):
-1. **Fragrantica.com** → Offizielle Noten (Top/Heart/Base), Community-Scores (Longevity 1-10, Sillage 1-10), Userbewertungen
-2. **Parfumo.com** → Verifizierte Community-Bewertungen, durchschnittliche Longevity/Sillage
-3. **Douglas.ch** → Schweizer Preis CHF (aktuell)
-4. **Flaconi.de / Notino.ch** → Preis EUR (für Vergleich/Umrechnung)
-5. **Basenotes.net / Perfume Society** → Expertenbewertungen, Duftfamilie-Kategorisierung
-6. **Offizieller Hersteller** → Korrekte Schreibweise, Launch-Jahr, offizielle Familie
+QUELLEN (Priorität):
+1. **Fragrantica.com** → Noten, Community-Scores, Flakon-Bilder, Bewertungen
+2. **Parfumo.com** → Verifizierte Bewertungen, Longevity/Sillage
+3. **Douglas.ch** → Schweizer Preis CHF, Konzentration
+4. **Notino.ch / Flaconi.de** → Alternative Preise, Konzentration
+5. **Basenotes.net** → Experten-Bewertung, Intensität
+6. **Offizieller Hersteller** → Korrekte Info, Flakon-Design, Launch-Jahr
 
 OUTPUT: Vollständiges JSON mit dieser EXAKTEN Struktur:
+
 {
-  "perfume_name": "Exakte offizielle Schreibweise (z.B. 'Épisode Romantique Orchidée Sublime')",
+  "perfume_name": "Exakte offizielle Schreibweise",
   "brand": "Korrekte Marke",
-  "fragrance_family": "MUSS SEIN: clean | gourmand | woody | floral (Singular, kleinbuchstaben)",
-  "gender": "Women | Men | Unisex (genau diese Schreibweise)",
-  "top_notes": "Bergamotte, Mandarine, Magnolie (DEUTSCH, Komma-getrennt, mind. 2 Noten)",
-  "heart_notes": "Jasmin, Orchidee (DEUTSCH, Komma-getrennt, mind. 2 Noten)",
-  "base_notes": "Patchouli, Amberholz, Vanille, Moschusduft (DEUTSCH, Komma-getrennt, mind. 2 Noten)",
-  "longevity": 6 oder null (1-10 Skala, nur wenn Community/Fragrantica verfügbar)",
-  "sillage": 7 oder null (1-10 Skala, nur wenn Community/Fragrantica verfügbar)",
-  "season": "Frühling | Sommer | Herbst/Winter | Winter | Ganzjährig (genau diese Optionen)",
-  "occasion": "Alltag | Büro | Date | Abend (nur diese, Komma-getrennt wenn mehrere)",
-  "price_chf": "46.50" oder null (ZAHL nur, . statt , Trennzeichen, CHF)",
-  "sources": [
-    "Fragrantica: Top/Heart/Base Notes, Longevity 6/10, Sillage 7/10",
-    "Douglas.ch: CHF 46.50",
-    "Notino.ch: EUR 55.00 (als Vergleich)"
-  ],
+  "fragrance_family": "clean | gourmand | woody | floral",
+  "gender": "Women | Men | Unisex",
+  "concentration": "EDP | EDT | Extrait | Cologne | oder null",
+  "top_notes": "Bergamotte, Grapefruit, Zitrone (DEUTSCH, Komma-getrennt)",
+  "heart_notes": "Jasmin, Veilchen, Gardenie (DEUTSCH, Komma-getrennt)",
+  "base_notes": "Zedernholz, Moschus, Sandelholz (DEUTSCH, Komma-getrennt)",
+  "longevity": 6 oder null (1-10),
+  "sillage": 7 oder null (1-10),
+  "intensity": "Leicht | Mittel | Intensiv (basierend auf Sillage + Community)",
+  "season": "Frühling | Sommer | Herbst/Winter | Winter | Ganzjährig",
+  "occasion": "Alltag | Büro | Date | Abend (Komma-getrennt)",
+  "price_chf": "39.50" oder null,
+  "rating": 7.5 oder null (0-10 basierend auf Community oder berechnet)",
+  "long_description": "Ausführliche, poetic deutsche Beschreibung (3-4 Sätze). Beispiel: 'Ein frischer Duft, der Eleganz und Modernität vereint. Die Kopfnoten öffnen mit zitronigen Akkorden, während die Herznoten subtile Blütennoten zeigen. Im Basisakkord sorgen holzige Noten für Tiefe und Standfestigkeit.'",
+  "bottle_description": "Beschreibung des Flakons und Design. Beispiel: 'Ein klassischer Flakon mit klarem, rechteckigem Design. Das durchsichtige Glas zeigt die helle, bernsteinfarbene Flüssigkeit. Die weiße Kappe kontrastiert elegant mit dem Glas.'",
+  "scent_dna": ["Ähnlicher Duft 1", "Ähnlicher Duft 2", "Ähnlicher Duft 3"],
+  "sources": ["Fragrantica: ...", "Douglas.ch: ...", ...],
   "notes_confidence": "high | medium | low",
+  "confidence_level": "high | medium | low",
+  "data_sources": {
+    "fragrantica": true,
+    "parfumo": false,
+    "douglas": true,
+    "notino": false,
+    "basenotes": true,
+    "official": false
+  },
   "data_quality": {
     "noten_verifiziert": true,
     "preis_aktuell": true,
-    "longevity_quelle": "Fragrantica Community (40+ Bewertungen)",
-    "fehlende_daten": ["Bild-URL", "Affiliate-Link"]
+    "longevity_quelle": "Fragrantica Community (100+ Bewertungen)",
+    "fehlende_daten": []
   }
 }
 
 REGELN (NICHT VERHANDELBAR):
 ✅ Nur ECHTE Daten aus verifizierten Quellen
 ✅ Noten MÜSSEN auf Deutsch sein (Bergamotte, nicht Bergamot)
-✅ Bei unsicherem Wert → null (NICHT erfunden/geschätzt)
-✅ Longevity/Sillage NUR von Fragrantica/Parfumo Community (nicht erfunden)
-✅ Saison/Occasion NUR aus der angegebenen Liste
-✅ Preis: Schweiz bevorzugt, sonst EUR→CHF (aktueller Rate ~1.05)
-✅ Alle Noten Komma+Leerzeichen getrennt
-✅ Quellen dokumentieren (welche Informationen woher)
-✅ Confidence-Level ehrlich bewerten: high (3+ Quellen), medium (2 Quellen), low (1 Quelle)
+✅ Concentration: EDP ist Standard, sonst recherchieren
+✅ Intensity: Berechne aus Sillage (≤3=Leicht, 4-7=Mittel, ≥8=Intensiv)
+✅ Rating: Von Community oder Durchschnitt von Fragrantica/Parfumo (0-10)
+✅ long_description: Poetisch, natürlich, 3-4 Sätze, auf Deutsch
+✅ bottle_description: Faktisch, Design-fokussiert
+✅ scent_dna: Max 3 ähnliche Düfte (Names mit exakter Schreibweise)
+✅ Bei unsicherem Wert → null (NICHT erfunden)
+✅ data_sources: Nur true für recherchierte Quellen
 
 WENN DUFT NICHT GEFUNDEN:
-→ Gib leeres/null-Objekt zurück mit error: "Duft nicht auf Fragrantica/Parfumo verfügbar"
+→ error: "Duft nicht auf Fragrantica/Parfumo verfügbar"
 
 PRIORITÄT: Wahrheit > Vollständigkeit. Lieber null als erfunden.`;
 
@@ -106,7 +128,6 @@ PRIORITÄT: Wahrheit > Vollständigkeit. Lieber null als erfunden.`;
     let result_text = '';
     let stop_reason = '';
 
-    // Agentic loop for tool use
     while (true) {
       const response = await client.messages.create({
         model: 'claude-opus-4-5',
@@ -133,23 +154,19 @@ PRIORITÄT: Wahrheit > Vollständigkeit. Lieber null als erfunden.`;
 
       stop_reason = response.stop_reason;
 
-      // Collect text from response
       for (const block of response.content) {
         if (block.type === 'text') {
           result_text += block.text;
         }
       }
 
-      // If not tool use, we're done
       if (stop_reason !== 'tool_use') {
         break;
       }
 
-      // Process tool uses and add to messages
       const toolResults: Anthropic.Messages.ToolResultBlockParam[] = [];
       for (const block of response.content) {
         if (block.type === 'tool_use') {
-          // Web search results are handled by Claude automatically
           toolResults.push({
             type: 'tool_result',
             tool_use_id: block.id,
@@ -158,20 +175,17 @@ PRIORITÄT: Wahrheit > Vollständigkeit. Lieber null als erfunden.`;
         }
       }
 
-      // Add assistant response and tool results
       messages.push({ role: 'assistant', content: response.content });
       if (toolResults.length > 0) {
         messages.push({ role: 'user', content: toolResults });
       }
     }
 
-    // Parse JSON from response
     const jsonMatch = result_text.match(/\{[\s\S]*\}/);
     if (!jsonMatch) {
       return NextResponse.json(
         {
           error: 'No valid JSON found in response',
-          raw_response: result_text.substring(0, 500),
           perfume_name: null,
           brand: null,
           fragrance_family: null,
@@ -196,18 +210,32 @@ PRIORITÄT: Wahrheit > Vollständigkeit. Lieber null als erfunden.`;
 
     const rawData = JSON.parse(jsonMatch[0]) as any;
 
-    // Validate and normalize family
+    // Validate fragrance family
     const validFamilies = ['clean', 'gourmand', 'woody', 'floral'];
     let family = rawData.fragrance_family?.toLowerCase() || null;
     if (family && !validFamilies.includes(family)) {
-      family = null; // Invalid, set to null
+      family = null;
     }
 
-    // Validate and normalize gender
+    // Validate gender
     const validGenders = ['Women', 'Men', 'Unisex'];
     let gender = rawData.gender || null;
     if (gender && !validGenders.includes(gender)) {
       gender = null;
+    }
+
+    // Validate concentration
+    const validConcentrations = ['EDP', 'EDT', 'Extrait', 'Cologne', 'EDC', 'Spray'];
+    let concentration = rawData.concentration || 'EDP';
+    if (concentration && !validConcentrations.includes(concentration)) {
+      concentration = null;
+    }
+
+    // Validate intensity
+    const validIntensities = ['Leicht', 'Mittel', 'Intensiv'];
+    let intensity = rawData.intensity || null;
+    if (intensity && !validIntensities.includes(intensity)) {
+      intensity = null;
     }
 
     // Validate season
@@ -225,7 +253,7 @@ PRIORITÄT: Wahrheit > Vollständigkeit. Lieber null als erfunden.`;
       occasion = occasions.filter((o: string) => validOccasions.includes(o)).join(', ') || null;
     }
 
-    // Validate longevity/sillage (1-10)
+    // Validate longevity/sillage
     let longevity: number | null = null;
     if (rawData.longevity && typeof rawData.longevity === 'number') {
       longevity = Math.max(1, Math.min(10, rawData.longevity));
@@ -236,7 +264,19 @@ PRIORITÄT: Wahrheit > Vollständigkeit. Lieber null als erfunden.`;
       sillage = Math.max(1, Math.min(10, rawData.sillage));
     }
 
-    // Normalize response to match admin form
+    // Validate rating
+    let rating: number | null = null;
+    if (rawData.rating && typeof rawData.rating === 'number') {
+      rating = Math.max(0, Math.min(10, rawData.rating));
+    }
+
+    // Parse scent_dna
+    let scent_dna: string[] = [];
+    if (Array.isArray(rawData.scent_dna)) {
+      scent_dna = rawData.scent_dna.filter((s: any) => typeof s === 'string').slice(0, 3);
+    }
+
+    // Build result
     const result: ResearchResult = {
       perfume_name: (rawData.perfume_name && typeof rawData.perfume_name === 'string') ? rawData.perfume_name.trim() : null,
       brand: (rawData.brand && typeof rawData.brand === 'string') ? rawData.brand.trim() : null,
@@ -245,22 +285,31 @@ PRIORITÄT: Wahrheit > Vollständigkeit. Lieber null als erfunden.`;
       price_chf: (rawData.price_chf && typeof rawData.price_chf === 'string') ? rawData.price_chf.trim() : null,
       longevity: longevity,
       sillage: sillage,
-      scentmatch_score: null, // Always null, admin calculates
+      scentmatch_score: null,
       season: season,
       occasion: occasion,
       top_notes: (rawData.top_notes && typeof rawData.top_notes === 'string') ? rawData.top_notes.trim() : null,
       heart_notes: (rawData.heart_notes && typeof rawData.heart_notes === 'string') ? rawData.heart_notes.trim() : null,
       base_notes: (rawData.base_notes && typeof rawData.base_notes === 'string') ? rawData.base_notes.trim() : null,
-      image_url: null, // User adds later
-      affiliate_url: null, // User adds later
+      image_url: null,
+      affiliate_url: null,
       sources: Array.isArray(rawData.sources) ? rawData.sources.filter((s: any) => typeof s === 'string') : [],
       notes_confidence: ['high', 'medium', 'low'].includes(rawData.notes_confidence) ? rawData.notes_confidence : 'low',
       data_quality: rawData.data_quality || {
         noten_verifiziert: !!rawData.top_notes && !!rawData.heart_notes && !!rawData.base_notes,
         preis_aktuell: !!rawData.price_chf,
         longevity_quelle: rawData.data_quality?.longevity_quelle || undefined,
-        fehlende_daten: rawData.data_quality?.fehlende_daten || ['Bild-URL', 'Affiliate-Link']
-      }
+        fehlende_daten: rawData.data_quality?.fehlende_daten || []
+      },
+      // Pro fields
+      concentration: concentration,
+      long_description: (rawData.long_description && typeof rawData.long_description === 'string') ? rawData.long_description.trim() : null,
+      bottle_description: (rawData.bottle_description && typeof rawData.bottle_description === 'string') ? rawData.bottle_description.trim() : null,
+      intensity: intensity,
+      scent_dna: scent_dna.length > 0 ? scent_dna : undefined,
+      rating: rating,
+      confidence_level: ['high', 'medium', 'low'].includes(rawData.confidence_level) ? rawData.confidence_level : 'low',
+      data_sources: rawData.data_sources || {}
     };
 
     return NextResponse.json(result);

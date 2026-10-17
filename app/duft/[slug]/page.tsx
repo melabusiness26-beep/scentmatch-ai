@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SiteHeader from '@/app/SiteHeader';
+import { ScenePyramid } from '@/app/ScenePyramid';
 import {
   getPerfumeBySlug,
   getAllPerfumeSlugs,
@@ -152,22 +153,6 @@ function ScoreBar({ label, value, max = 10 }: { label: string; value: number | n
           borderRadius: '3px',
           transition: 'width 0.6s ease',
         }} />
-      </div>
-    </div>
-  );
-}
-
-function Notes({ title, notes }: { title: string; notes: string[] | null }) {
-  if (!notes || notes.length === 0) return null;
-  return (
-    <div className="notes-block">
-      <div className="small">{title}</div>
-      <div className="note-pills">
-        {notes.map((note) => (
-          <Link className="note-pill note-pill-link" href={noteHref(note)} key={note}>
-            {note}
-          </Link>
-        ))}
       </div>
     </div>
   );
@@ -449,9 +434,11 @@ export default async function PerfumeDetailPage({
         {hasNotes && (
           <section className="section card">
             <h2>Duft-Pyramide</h2>
-            <Notes title="Kopfnoten" notes={perfume.top_notes} />
-            <Notes title="Herznoten" notes={perfume.heart_notes} />
-            <Notes title="Basisnoten" notes={perfume.base_notes} />
+            <ScenePyramid
+              topNotes={perfume.top_notes}
+              heartNotes={perfume.heart_notes}
+              baseNotes={perfume.base_notes}
+            />
           </section>
         )}
 

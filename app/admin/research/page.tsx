@@ -4,6 +4,13 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 
+interface DataQuality {
+  noten_verifiziert: boolean;
+  preis_aktuell: boolean;
+  longevity_quelle?: string;
+  fehlende_daten: string[];
+}
+
 interface ResearchResult {
   perfume_name: string | null;
   brand: string | null;
@@ -22,6 +29,7 @@ interface ResearchResult {
   affiliate_url: string | null;
   sources: string[];
   notes_confidence: 'high' | 'medium' | 'low';
+  data_quality?: DataQuality;
   error?: string;
 }
 
@@ -122,30 +130,105 @@ export default function ResearchPage() {
         </section>
 
         {result && !result.error && (
-          <section className="section card" style={{ maxWidth: 800 }}>
+          <section className="section card" style={{ maxWidth: 900 }}>
             <h2>✅ Recherche-Ergebnisse</h2>
 
-            <div style={{ fontSize: 14, lineHeight: 1.8 }}>
-              <p><strong>Duftname:</strong> {result.perfume_name || '–'}</p>
-              <p><strong>Marke:</strong> {result.brand || '–'}</p>
-              <p><strong>Familie:</strong> {result.fragrance_family || '–'}</p>
-              <p><strong>Geschlecht:</strong> {result.gender || '–'}</p>
-              <p><strong>Preis CHF:</strong> {result.price_chf || '–'}</p>
-              <p><strong>Haltbarkeit (1-10):</strong> {result.longevity || '–'}</p>
-              <p><strong>Sillage (1-10):</strong> {result.sillage || '–'}</p>
-              <p><strong>Saison:</strong> {result.season || '–'}</p>
-              <p><strong>Anlass:</strong> {result.occasion || '–'}</p>
-              <p><strong>Kopfnoten:</strong> {result.top_notes || '–'}</p>
-              <p><strong>Herznoten:</strong> {result.heart_notes || '–'}</p>
-              <p><strong>Basisnoten:</strong> {result.base_notes || '–'}</p>
+            <div style={{ fontSize: 14, lineHeight: 2, marginBottom: 20 }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <tbody>
+                  <tr style={{ borderBottom: '1px solid #eee' }}>
+                    <td style={{ fontWeight: 'bold', width: '30%', paddingRight: 20 }}>Duftname:</td>
+                    <td>{result.perfume_name || <span style={{ color: '#999' }}>–</span>}</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid #eee' }}>
+                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Marke:</td>
+                    <td>{result.brand || <span style={{ color: '#999' }}>–</span>}</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid #eee' }}>
+                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Familie:</td>
+                    <td>{result.fragrance_family || <span style={{ color: '#999' }}>–</span>}</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid #eee' }}>
+                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Geschlecht:</td>
+                    <td>{result.gender || <span style={{ color: '#999' }}>–</span>}</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid #eee' }}>
+                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Preis CHF:</td>
+                    <td>{result.price_chf || <span style={{ color: '#999' }}>–</span>}</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid #eee' }}>
+                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Haltbarkeit (1-10):</td>
+                    <td>{result.longevity ? `${result.longevity}/10` : <span style={{ color: '#999' }}>–</span>}</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid #eee' }}>
+                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Sillage (1-10):</td>
+                    <td>{result.sillage ? `${result.sillage}/10` : <span style={{ color: '#999' }}>–</span>}</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid #eee' }}>
+                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Saison:</td>
+                    <td>{result.season || <span style={{ color: '#999' }}>–</span>}</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid #eee' }}>
+                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Anlass:</td>
+                    <td>{result.occasion || <span style={{ color: '#999' }}>–</span>}</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid #eee' }}>
+                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Kopfnoten:</td>
+                    <td>{result.top_notes || <span style={{ color: '#999' }}>–</span>}</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid #eee' }}>
+                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Herznoten:</td>
+                    <td>{result.heart_notes || <span style={{ color: '#999' }}>–</span>}</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid #eee' }}>
+                    <td style={{ fontWeight: 'bold', paddingRight: 20 }}>Basisnoten:</td>
+                    <td>{result.base_notes || <span style={{ color: '#999' }}>–</span>}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-              <hr style={{ margin: '20px 0', border: 'none', borderTop: '1px solid #ddd' }} />
+            <hr style={{ margin: '30px 0', border: 'none', borderTop: '2px solid #ddd' }} />
 
-              <p style={{ fontSize: 12, color: '#666' }}>
-                <strong>Quellen:</strong> {result.sources.join(', ') || 'Keine'}
+            <h3 style={{ marginTop: 30, marginBottom: 15 }}>📊 Daten-Qualität & Quellen</h3>
+            <div style={{ fontSize: 13, color: '#555', lineHeight: 1.8 }}>
+              <p style={{ marginBottom: 10 }}>
+                <strong>Zuverlässigkeit:</strong>{' '}
+                {result.notes_confidence === 'high'
+                  ? '✅ ⭐⭐⭐ Sehr zuverlässig (3+ verifizierte Quellen)'
+                  : result.notes_confidence === 'medium'
+                  ? '⚠️ ⭐⭐ Teilweise zuverlässig (2 Quellen)'
+                  : '⚠️ ⭐ Begrenzt verfügbar (1 Quelle)'}
               </p>
-              <p style={{ fontSize: 12, color: '#666' }}>
-                <strong>Daten-Qualität:</strong> {result.notes_confidence === 'high' ? '⭐⭐⭐ Sehr zuverlässig' : result.notes_confidence === 'medium' ? '⭐⭐ Teilweise zuverlässig' : '⭐ Begrenzt verfügbar'}
+
+              {result.data_quality && (
+                <>
+                  <p style={{ marginBottom: 8 }}>
+                    <strong>Noten verifiziert:</strong> {result.data_quality.noten_verifiziert ? '✅ Ja' : '❌ Nein'}
+                  </p>
+                  <p style={{ marginBottom: 8 }}>
+                    <strong>Preis aktuell:</strong> {result.data_quality.preis_aktuell ? '✅ Ja' : '❌ Nein'}
+                  </p>
+                  {result.data_quality.longevity_quelle && (
+                    <p style={{ marginBottom: 8 }}>
+                      <strong>Haltbarkeit-Quelle:</strong> {result.data_quality.longevity_quelle}
+                    </p>
+                  )}
+                  {result.data_quality.fehlende_daten.length > 0 && (
+                    <p style={{ marginBottom: 8, color: '#999' }}>
+                      <strong>Fehlende Daten:</strong> {result.data_quality.fehlende_daten.join(', ')}
+                    </p>
+                  )}
+                </>
+              )}
+
+              <p style={{ marginTop: 15, fontSize: 12, color: '#777' }}>
+                <strong>Quellen:</strong><br />
+                {result.sources.map((source, i) => (
+                  <span key={i}>
+                    • {source}<br />
+                  </span>
+                )) || 'Keine'}
               </p>
             </div>
 

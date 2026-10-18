@@ -697,7 +697,9 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
           )}
 
           {/* Charakter & Persönlichkeit */}
-          {(currentAnalysis.characterTags || currentAnalysis.personalityType || currentAnalysis.mood) && (
+          {((Array.isArray(currentAnalysis.characterTags) && currentAnalysis.characterTags.length > 0) ||
+            (currentAnalysis.personalityType?.trim?.()) ||
+            (currentAnalysis.mood?.trim?.())) && (
             <section style={{ marginBottom: '2.5rem' }}>
               <SectionHeading>Charakter & Persönlichkeit</SectionHeading>
               <div style={{

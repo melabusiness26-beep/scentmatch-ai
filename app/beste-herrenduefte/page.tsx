@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SiteHeader from '@/app/SiteHeader';
+import Breadcrumb from '@/app/Breadcrumb';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import { getPerfumes, type Perfume } from '@/lib/perfumes';
 
@@ -164,6 +165,7 @@ export default async function BesteHerrenduefte() {
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
       <SiteHeader />
+      <Breadcrumb items={[{ label: 'Die besten Herrendüfte', href: '/beste-herrenduefte' }]} />
 
       <section style={{
         background: 'linear-gradient(145deg, #12181e 0%, #1e2d3d 50%, #2d4157 100%)',

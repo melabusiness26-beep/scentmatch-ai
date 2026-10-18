@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import SiteHeader from '@/app/SiteHeader';
+import Breadcrumb from '@/app/Breadcrumb';
 import { destinationsByCategory, CATEGORY_LABELS, CATEGORY_INTRO } from '@/lib/destinations';
 
 export const metadata: Metadata = {
@@ -23,6 +24,7 @@ export default function ReisedueftePage() {
   return (
     <main>
       <SiteHeader />
+      <Breadcrumb items={[{ label: 'Reisedüfte', href: '/reiseduefte' }]} />
       <div className="container">
         <section className="section">
           <p className="eyebrow">Reise & Duft</p>

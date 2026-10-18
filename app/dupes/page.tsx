@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import SiteHeader from '@/app/SiteHeader';
+import Breadcrumb from '@/app/Breadcrumb';
 import DupeFinder, { type CuratedDupes } from './DupeFinder';
 import { getPerfumes } from '@/lib/perfumes';
 import { guides } from '@/lib/guides';
@@ -60,6 +61,7 @@ export default async function DupesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <SiteHeader />
+      <Breadcrumb items={[{ label: 'Dupe-Finder', href: '/dupes' }]} />
       <div className="container">
         <section className="detail-hero">
           <div>

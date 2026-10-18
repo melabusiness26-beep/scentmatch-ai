@@ -145,6 +145,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/ratgeber">Ratgeber</Link>
               <Link href="/faq">FAQ</Link>
               <Link href="/testing-und-transparenz">Testing & Transparenz</Link>
+              <Link href="/wie-auressa-funktioniert">Wie Auressa funktioniert</Link>
               <Link href="/ueber-uns">Über uns</Link>
               <Link href="/impressum">Impressum</Link>
               <Link href="/datenschutz">Datenschutz</Link>

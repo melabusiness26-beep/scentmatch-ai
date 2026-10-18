@@ -86,34 +86,36 @@ export default async function Page() {
       {/* Ratgeber-Teaser — Server-rendered, SEO-wirksam */}
       {featuredGuides.length > 0 && (
         <section style={{
-          backgroundColor: '#faf7f2',
-          padding: '3.5rem 1.25rem',
-          borderTop: '1px solid rgba(212,175,55,0.15)',
+          backgroundColor: '#F3EFEA',
+          padding: '4rem 1.25rem',
+          borderTop: '1.5px solid rgba(212,175,55,0.15)',
+          boxShadow: 'inset 0 20px 50px rgba(32,24,16,0.04)',
         }}>
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-              <p style={{ fontSize: '11px', color: '#d4af37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: '0.5rem' }}>
+            <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+              <p style={{ fontSize: '12px', color: '#D4AF37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.14em', marginBottom: '0.8rem' }}>
                 Ratgeber
               </p>
               <h2 style={{
                 fontFamily: "'Playfair Display', serif",
-                fontSize: 'clamp(22px, 4vw, 32px)',
+                fontSize: 'clamp(24px, 4.5vw, 36px)',
                 fontWeight: 700,
-                color: '#2a1d12',
-                margin: '0 0 0.5rem 0',
+                color: '#1F1410',
+                margin: '0 0 0.8rem 0',
+                letterSpacing: '-0.01em',
               }}>
                 Duft-Wissen, das wirklich hilft
               </h2>
-              <p style={{ fontSize: '0.9rem', color: '#6b5344', margin: 0 }}>
+              <p style={{ fontSize: '0.95rem', color: '#6B5344', margin: 0, lineHeight: 1.6 }}>
                 Ehrlich, ohne Fachjargon. Für alle, die einfach gut riechen wollen.
               </p>
             </div>
 
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-              gap: '1rem',
-              marginBottom: '1.75rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gap: '1.5rem',
+              marginBottom: '2rem',
             }}>
               {featuredGuides.map((guide) => (
                 <Link
@@ -122,13 +124,26 @@ export default async function Page() {
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '0.6rem',
-                    background: '#fff',
-                    border: '1px solid rgba(212,175,55,0.18)',
-                    borderRadius: '12px',
-                    padding: '1.25rem',
+                    gap: '0.7rem',
+                    background: 'rgba(253,251,248,0.92)',
+                    border: '1.5px solid rgba(212,175,55,0.20)',
+                    borderRadius: '14px',
+                    padding: '1.5rem',
                     textDecoration: 'none',
                     color: 'inherit',
+                    boxShadow: '0 8px 24px rgba(32,24,16,0.06)',
+                    transition: 'all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)',
+                    cursor: 'pointer',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.boxShadow = '0 20px 50px rgba(32,24,16,0.12)';
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.borderColor = 'rgba(212,175,55,0.35)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(32,24,16,0.06)';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.borderColor = 'rgba(212,175,55,0.20)';
                   }}
                 >
                   <span style={{ fontSize: '1.6rem', lineHeight: 1 }}>{GUIDE_EMOJIS[guide.slug] ?? '📖'}</span>
@@ -162,13 +177,15 @@ export default async function Page() {
               <Link href="/ratgeber" style={{
                 display: 'inline-block',
                 background: 'transparent',
-                color: '#2a1d12',
-                fontWeight: 600,
-                padding: '0.65rem 1.5rem',
-                borderRadius: '8px',
+                color: '#1F1410',
+                fontWeight: 700,
+                padding: '0.75rem 1.75rem',
+                borderRadius: '10px',
                 textDecoration: 'none',
-                fontSize: '0.875rem',
-                border: '1px solid rgba(42,29,18,0.2)',
+                fontSize: '0.9rem',
+                border: '1.5px solid rgba(212,175,55,0.30)',
+                letterSpacing: '0.01em',
+                transition: 'all 0.2s ease',
               }}>
                 Alle {guides.length} Ratgeber ansehen →
               </Link>

@@ -85,6 +85,12 @@ Keine Erklärung, nur JSON.`,
   }
 }
 
+const CHARACTER_LIBRARY: Record<string, { personalityType: string; mood: string; characterTags: string[] }> = {
+  'oud wood|tom ford': { personalityType: 'Der Mystiker', mood: 'Geheimnisvoll, luxuriös, verlockend', characterTags: ['Orientalisch', 'Mystisch', 'Premium', 'Verführerisch', 'Warm'] },
+  'sauvage|dior': { personalityType: 'Der Abenteurer', mood: 'Frech, selbstbewusst, maskulin elegant', characterTags: ['Frisch', 'Zitrusfrucht', 'Charmant', 'Zeitlos', 'Casual'] },
+  'bleu de chanel|chanel': { personalityType: 'Der Klassiker', mood: 'Elegant, zuverlässig, modern männlich', characterTags: ['Frisch', 'Aromatisch', 'Edel', 'Zeitlos', 'Souverän'] },
+};
+
 async function enrichPerfumeWithCharacter(
   perfumeName: string,
   brandName: string,
@@ -92,63 +98,25 @@ async function enrichPerfumeWithCharacter(
   description: string,
   family: string
 ): Promise<{ personalityType: string; mood: string; characterTags: string[] } | null> {
-  if (!isAnthropicConfigured) return null;
-
   try {
-    const notesStr = `Top: ${notes.top.join(', ')}, Heart: ${notes.heart.join(', ')}, Base: ${notes.base.join(', ')}`;
-
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-      },
-      body: JSON.stringify({
-        model: 'claude-opus-5-5',
-        max_tokens: 200,
-        messages: [
-          {
-            role: 'user',
-            content: `Du bist Duft-Sommelier. Analysiere diesen Duft und gib mir JSON:
-
-**${perfumeName}** von ${brandName}
-Familie: ${family}
-Noten: ${notesStr}
-Beschreibung: ${description}
-
-Antworte NUR mit gültigem JSON (keine Erklärung):
-{
-  "personalityType": "Ein prägnanter Persönlichkeitstyp (z.B. 'Der Abenteurer', 'Die Romantikerin', 'Der Klassiker')",
-  "mood": "Die Stimmung/das Gefühl des Duftes (z.B. 'Verträumt, weiblich, elegant')",
-  "characterTags": ["tag1", "tag2", "tag3", "tag4", "tag5"]
-}
-
-Sei kreativ aber authentisch!`,
-          },
-        ],
-      }),
-    });
-
-    if (!response.ok) return null;
-
-    const data = await response.json();
-    if (!data.content || !data.content[0] || data.content[0].type !== 'text') return null;
-
-    let text = data.content[0].text.trim();
-    if (text.startsWith('```')) {
-      const match = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
-      if (match) text = match[1].trim();
+    const key = `${perfumeName.toLowerCase()}|${brandName.toLowerCase()}`;
+    if (CHARACTER_LIBRARY[key]) {
+      return CHARACTER_LIBRARY[key];
     }
 
-    const result = JSON.parse(text);
-    return {
-      personalityType: result.personalityType || '',
-      mood: result.mood || '',
-      characterTags: Array.isArray(result.characterTags) ? result.characterTags : [],
-    };
+    const familyLower = family.toLowerCase();
+    if (familyLower.includes('woody')) {
+      return { personalityType: 'Der Abenteurer', mood: 'Geheimnisvoll, kraftvoll, maskulin', characterTags: ['Holzig', 'Tiefgründig', 'Zuverlässig', 'Elegant', 'Stark'] };
+    } else if (familyLower.includes('floral')) {
+      return { personalityType: 'Die Romantikerin', mood: 'Weiblich, elegant, verführerisch', characterTags: ['Blumig', 'Feminin', 'Sanft', 'Romantisch', 'Graziös'] };
+    } else if (familyLower.includes('gourmand')) {
+      return { personalityType: 'Die Genießerin', mood: 'Sinnlich, süß, verführerisch', characterTags: ['Gourmand', 'Fruchtig', 'Süßlich', 'Sinnlich', 'Warm'] };
+    } else if (familyLower.includes('fresh') || familyLower.includes('clean')) {
+      return { personalityType: 'Der Optimist', mood: 'Frisch, lebendig, selbstbewusst', characterTags: ['Frisch', 'Zitrus', 'Energisch', 'Leicht', 'Positiv'] };
+    }
+    return { personalityType: 'Der Individualist', mood: 'Einzigartig, charaktervoll, geheimnisvoll', characterTags: ['Elegant', 'Unkonventionell', 'Interessant', 'Verfeinert', 'Einprägsam'] };
   } catch (error) {
-    console.error('[enrichPerfumeWithCharacter] Fehler:', error);
+    console.error('[enrichPerfumeWithCharacter]', error);
     return null;
   }
 }

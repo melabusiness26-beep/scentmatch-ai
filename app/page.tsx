@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import HomeClient from './HomeClient';
+import GuideTile from './GuideTile';
 import { getPerfumes, getPerfumeCount, getBrandCount } from '@/lib/perfumes';
 import { PerfumeTile } from '@/app/PerfumeTile';
 import { guides } from '@/lib/guides';
@@ -83,94 +84,93 @@ export default async function Page() {
 
       <HomeClient initialCatalogCount={catalogCount} initialBrandCount={brandCount} initialHighlights={highlightPerfumes} />
 
-      {/* Ratgeber-Teaser — Server-rendered, SEO-wirksam */}
+      {/* Ratgeber-Teaser — Premium Section mit Top Content */}
       {featuredGuides.length > 0 && (
         <section style={{
-          backgroundColor: '#faf7f2',
-          padding: '3.5rem 1.25rem',
-          borderTop: '1px solid rgba(212,175,55,0.15)',
+          background: 'linear-gradient(180deg, #F3EFEA 0%, #FBF7F2 100%)',
+          padding: 'clamp(3rem, 8vw, 5.5rem) 1.25rem',
+          borderTop: '2px solid rgba(212,175,55,0.2)',
+          boxShadow: 'inset 0 40px 80px rgba(32,24,16,0.04), inset 0 -40px 80px rgba(32,24,16,0.02)',
+          position: 'relative',
+          overflow: 'hidden',
         }}>
-          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-              <p style={{ fontSize: '11px', color: '#d4af37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: '0.5rem' }}>
-                Ratgeber
+          {/* Subtle Background Element */}
+          <div style={{
+            position: 'absolute',
+            top: '-20%',
+            right: '-10%',
+            width: '400px',
+            height: '400px',
+            background: 'radial-gradient(circle, rgba(212,175,55,0.08), transparent 70%)',
+            borderRadius: '50%',
+            pointerEvents: 'none',
+          }} />
+
+          <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+            <div style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 5vw, 3rem)' }}>
+              <p style={{
+                fontSize: 'clamp(11px, 2vw, 13px)',
+                color: '#D4AF37',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: '0.16em',
+                marginBottom: '1rem',
+                margin: '0 0 1rem 0'
+              }}>
+                ✨ Duft-Expertise ✨
               </p>
               <h2 style={{
                 fontFamily: "'Playfair Display', serif",
-                fontSize: 'clamp(22px, 4vw, 32px)',
+                fontSize: 'clamp(32px, 5vw, 44px)',
                 fontWeight: 700,
-                color: '#2a1d12',
-                margin: '0 0 0.5rem 0',
+                color: '#1F1410',
+                margin: '0 0 1.2rem 0',
+                letterSpacing: '-0.02em',
+                lineHeight: 1.2,
               }}>
-                Duft-Wissen, das wirklich hilft
+                Wissen, das deinen Duft verändert
               </h2>
-              <p style={{ fontSize: '0.9rem', color: '#6b5344', margin: 0 }}>
-                Ehrlich, ohne Fachjargon. Für alle, die einfach gut riechen wollen.
+              <p style={{
+                fontSize: 'clamp(15px, 2.5vw, 17px)',
+                color: '#6B5344',
+                margin: 0,
+                lineHeight: 1.7,
+                maxWidth: '600px',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+              }}>
+                Von Noten-Pairing bis günstige Dupes: Alles was du brauchst, um deinen Signature-Duft zu finden und zu lieben.
               </p>
             </div>
 
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-              gap: '1rem',
-              marginBottom: '1.75rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: 'clamp(1.5rem, 3vw, 2rem)',
+              marginBottom: 'clamp(2.5rem, 5vw, 3.5rem)',
             }}>
               {featuredGuides.map((guide) => (
-                <Link
-                  key={guide.slug}
-                  href={`/ratgeber/${guide.slug}`}
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '0.6rem',
-                    background: '#fff',
-                    border: '1px solid rgba(212,175,55,0.18)',
-                    borderRadius: '12px',
-                    padding: '1.25rem',
-                    textDecoration: 'none',
-                    color: 'inherit',
-                  }}
-                >
-                  <span style={{ fontSize: '1.6rem', lineHeight: 1 }}>{GUIDE_EMOJIS[guide.slug] ?? '📖'}</span>
-                  <h3 style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontSize: '0.95rem',
-                    fontWeight: 700,
-                    color: '#2a1d12',
-                    margin: 0,
-                    lineHeight: 1.35,
-                  }}>{guide.title}</h3>
-                  <p style={{
-                    fontSize: '0.8rem',
-                    color: '#6b5344',
-                    lineHeight: 1.55,
-                    margin: '0 0 auto 0',
-                  }}>{guide.description}</p>
-                  <span style={{
-                    fontSize: '0.72rem',
-                    fontWeight: 700,
-                    color: '#d4af37',
-                    letterSpacing: '0.04em',
-                    textTransform: 'uppercase',
-                    marginTop: '0.5rem',
-                  }}>Lesen →</span>
-                </Link>
+                <GuideTile key={guide.slug} guide={guide} emoji={GUIDE_EMOJIS[guide.slug]} />
               ))}
             </div>
 
             <div style={{ textAlign: 'center' }}>
               <Link href="/ratgeber" style={{
                 display: 'inline-block',
-                background: 'transparent',
-                color: '#2a1d12',
-                fontWeight: 600,
-                padding: '0.65rem 1.5rem',
-                borderRadius: '8px',
+                background: 'linear-gradient(135deg, #D4AF37 0%, #E5C158 100%)',
+                color: '#1F1410',
+                fontWeight: 700,
+                padding: 'clamp(12px, 2.5vw, 15px) clamp(24px, 5vw, 32px)',
+                borderRadius: '12px',
                 textDecoration: 'none',
-                fontSize: '0.875rem',
-                border: '1px solid rgba(42,29,18,0.2)',
+                fontSize: 'clamp(14px, 2.2vw, 16px)',
+                letterSpacing: '0.05em',
+                transition: 'all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                boxShadow: '0 8px 24px rgba(212,175,55,0.2)',
+                border: 'none',
+                cursor: 'pointer',
               }}>
-                Alle {guides.length} Ratgeber ansehen →
+                Alle {guides.length} Premium-Ratgeber →
               </Link>
             </div>
           </div>

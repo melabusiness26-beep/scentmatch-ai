@@ -169,9 +169,9 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
   display: inline-flex;
   width: 44px; height: 44px; border-radius: 12px; flex: none;
   background:
-    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='1.7' stroke-linejoin='round' stroke-linecap='round'><path d='M6 18.5 L12 5 L18 18.5 M8.4 13.6 H15.6 M4.8 18.5 H7.4 M16.6 18.5 H19.2'/></svg>") center / 26px 26px no-repeat,
-    linear-gradient(180deg, #E5C158, #D4AF37);
-  box-shadow: 0 12px 32px rgba(212,175,55,.2), inset 0 -1px 3px rgba(255,255,255,.3);
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C4A968' stroke-width='1.7' stroke-linejoin='round' stroke-linecap='round'><path d='M6 18.5 L12 5 L18 18.5 M8.4 13.6 H15.6 M4.8 18.5 H7.4 M16.6 18.5 H19.2'/></svg>") center / 26px 26px no-repeat,
+    linear-gradient(180deg, #D4B896, #C4A968);
+  box-shadow: 0 12px 32px rgba(196,169,104,.2), inset 0 -1px 3px rgba(255,255,255,.3);
   transition: all 0.2s ease;
 }
 .logo::before:hover { box-shadow: 0 16px 40px rgba(212,175,55,.3), inset 0 -1px 3px rgba(255,255,255,.4); }

@@ -54,6 +54,7 @@ export default function SiteHeader() {
           <Link href="/duefte" onClick={close}>Düfte</Link>
           <Link href="/marke" onClick={close}>Marken</Link>
           <Link href="/vergleich" onClick={close}>Vergleich</Link>
+          <Link href="/mein-profil" onClick={close}>👤 Profil</Link>
           <Link href="/wunschliste" onClick={close}>♥ Wunschliste</Link>
 
           {/* Top-Listen Dropdown */}

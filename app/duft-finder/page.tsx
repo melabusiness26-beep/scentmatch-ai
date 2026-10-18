@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getPerfumes, getPerfumeCount } from '@/lib/perfumes';
 import DuftFinder from '@/app/components/DuftFinder';
 import SiteHeader from '@/app/SiteHeader';
+import Breadcrumb from '@/app/Breadcrumb';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
@@ -32,6 +33,7 @@ export default async function DuftFinderPage() {
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
       <SiteHeader />
+      <Breadcrumb items={[{ label: 'Duft-Finder', href: '/duft-finder' }]} />
       <section
         style={{
           backgroundImage: 'linear-gradient(rgba(26,18,9,0.85), rgba(26,18,9,0.85)), url(/hero-auressa-2.jpg)',

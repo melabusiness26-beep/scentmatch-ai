@@ -5,6 +5,7 @@ import Link from 'next/link';
 import ConsentedAnalytics from '@/app/ConsentedAnalytics';
 import CookieBanner from '@/app/CookieBanner';
 import FooterNewsletter from '@/app/FooterNewsletter';
+import { FavoritesProvider } from '@/app/FavoritesContext';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -88,8 +89,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
-        {children}
-        {/* Trust-Bar: Vertrauens-Signale vor dem Footer */}
+        <FavoritesProvider>
+          {children}
+          {/* Trust-Bar: Vertrauens-Signale vor dem Footer */}
         <div style={{
           backgroundColor: '#1F1410',
           borderTop: '1.5px solid rgba(212,175,55,0.15)',
@@ -131,15 +133,41 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/#quiz">Quiz</Link>
               <Link href="/duefte">Düfte</Link>
               <Link href="/marke">Marken</Link>
+              <Link href="/vergleich">Vergleich</Link>
+              <Link href="/wunschliste">Wunschliste</Link>
               <Link href="/duft-finder">Duft-Finder</Link>
               <Link href="/duft-detektiv">Duft-Detektiv</Link>
               <Link href="/duft-scanner">Duft-Scanner</Link>
               <Link href="/geschenk-finder">Geschenk-Finder</Link>
               <Link href="/stimmungen">Stimmungen</Link>
               <Link href="/reiseduefte">Reisedüfte</Link>
+              <Link href="/saisonal">Saisonale Empfehlungen</Link>
+              <Link href="/dufte-fuer-die-arbeit">Düfte für die Arbeit</Link>
               <Link href="/duftnoten">Duftnoten</Link>
+              <Link href="/duftchemie-grundlagen">Duftchemie Grundlagen</Link>
+              <Link href="/duftlaenge">Duftlänge & Sillage</Link>
+              <Link href="/dufte-nach-hauttyp">Düfte nach Hauttyp</Link>
+              <Link href="/duft-lagerung">Duft-Lagerung</Link>
+              <Link href="/parfum-auftragen">Parfum richtig auftragen</Link>
+              <Link href="/duefte-kombinieren">Duftkombinationen</Link>
+              <Link href="/duft-mythen">Duft-Mythen & Fakten</Link>
+              <Link href="/duftarten">Duftarten erklärt</Link>
+              <Link href="/nische-mainstream">Nische vs. Mainstream</Link>
+              <Link href="/duftsammlung">Duftsammlung aufbauen</Link>
+              <Link href="/duftkollektion-minimal">Minimalistische Kollektion</Link>
+              <Link href="/herren-parfueme">Herren-Parfüme</Link>
+              <Link href="/damen-parfueme">Damen-Parfüme</Link>
+              <Link href="/duftnoten-guide">Duftnoten verstehen</Link>
+              <Link href="/koerperchemie-duft">Körperchemie & Duft</Link>
+              <Link href="/duftpersoenlichkeit">Duftpersönlichkeit</Link>
+              <Link href="/duft-waehlen">Duft wählen – Anleitung</Link>
+              <Link href="/duft-geschenk">Duft als Geschenk</Link>
+              <Link href="/guenstige-alternativen">Budget-Klone & Alternativen</Link>
               <Link href="/ratgeber">Ratgeber</Link>
               <Link href="/faq">FAQ</Link>
+              <Link href="/testing-und-transparenz">Testing & Transparenz</Link>
+              <Link href="/wie-auressa-funktioniert">Wie Auressa funktioniert</Link>
+              <Link href="/anleitung">Anleitung</Link>
               <Link href="/ueber-uns">Über uns</Link>
               <Link href="/impressum">Impressum</Link>
               <Link href="/datenschutz">Datenschutz</Link>
@@ -152,6 +180,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </p>
           <div className="container footer-bottom small">© {year} Auressa · Preise &amp; Angaben ohne Gewähr.</div>
         </footer>
+        </FavoritesProvider>
         <CookieBanner />
         <ConsentedAnalytics />
       </body>

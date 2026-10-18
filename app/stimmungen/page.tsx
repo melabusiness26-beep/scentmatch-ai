@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import SiteHeader from '@/app/SiteHeader';
+import Breadcrumb from '@/app/Breadcrumb';
 import MoodIcon from '@/app/MoodIcon';
 import { MOODS } from '@/lib/perfumes';
 
@@ -22,6 +23,7 @@ export default function StimmungenPage() {
   return (
     <main>
       <SiteHeader />
+      <Breadcrumb items={[{ label: 'Duft nach Stimmung', href: '/stimmungen' }]} />
       <div className="container">
         <section className="section">
           <p className="eyebrow">Duft nach Gefühl</p>

@@ -11,21 +11,42 @@ const FAMILY_TILES: { code: string; label: string }[] = [
   { code: 'floral', label: 'Floral' }
 ];
 
-// Wie viele Düfte pro „Seite" angezeigt werden, bevor „Mehr laden" erscheint.
-// Hält die Seite auch bei hunderten Düften schnell – vor allem auf dem Handy.
+const GENDER_OPTIONS = [
+  { code: 'Women', label: '♀ Damen' },
+  { code: 'Men', label: '♂ Herren' },
+  { code: 'Unisex', label: '⚥ Unisex' }
+];
+
+const SEASON_OPTIONS = [
+  { code: 'Frühling', label: '🌸 Frühling' },
+  { code: 'Sommer', label: '☀️ Sommer' },
+  { code: 'Herbst', label: '🍂 Herbst' },
+  { code: 'Winter', label: '❄️ Winter' },
+  { code: 'Ganzjährig', label: '⭐ Ganzjährig' }
+];
+
+const OCCASION_OPTIONS = [
+  { code: 'Alltag', label: 'Alltag' },
+  { code: 'Büro', label: 'Büro' },
+  { code: 'Date', label: 'Date' },
+  { code: 'Abend', label: 'Abend' }
+];
+
 const PAGE_SIZE = 24;
 
-// Die Düfte kommen jetzt server-seitig vorgerendert herein (initialPerfumes).
-// So stehen sie samt Links direkt im HTML (gut für Google) und es gibt kein
-// Nachladen/Flackern mehr. Suche und Filter laufen weiterhin im Browser.
 export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: Perfume[] }) {
   const perfumes = initialPerfumes;
   const [query, setQuery] = useState('');
   const [familyFilter, setFamilyFilter] = useState('');
+  const [genderFilters, setGenderFilters] = useState<string[]>([]);
+  const [seasonFilters, setSeasonFilters] = useState<string[]>([]);
+  const [occasionFilters, setOccasionFilters] = useState<string[]>([]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 500]);
+  const [sillageRange, setSillageRange] = useState<[number, number]>([0, 10]);
+  const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
   const [shownCount, setShownCount] = useState(PAGE_SIZE);
 
   useEffect(() => {
-    // Vorauswahl aus der URL übernehmen (z. B. von den Duftrichtungs-Kacheln).
     const sp = new URLSearchParams(window.location.search);
     const fam = sp.get('family');
     if (fam) setFamilyFilter(fam);
@@ -33,19 +54,42 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
     if (q) setQuery(q);
   }, []);
 
-  // Bei jeder neuen Suche oder Filter-Auswahl wieder oben mit PAGE_SIZE beginnen.
   useEffect(() => {
     setShownCount(PAGE_SIZE);
-  }, [query, familyFilter]);
+  }, [query, familyFilter, genderFilters, seasonFilters, occasionFilters, priceRange, sillageRange]);
+
+  const maxPrice = Math.max(...perfumes.map(p => p.price_chf || 0), 200);
 
   const sorted = [...perfumes].sort((a, b) =>
     (a.perfume_name || '').localeCompare(b.perfume_name || '', 'de', { sensitivity: 'base' })
   );
-  const visible = sorted.filter(
-    (p) => (!familyFilter || p.fragrance_family === familyFilter) && matchesQuery(p, query)
-  );
+
+  const visible = sorted.filter(p => {
+    if (!matchesQuery(p, query)) return false;
+    if (familyFilter && p.fragrance_family !== familyFilter) return false;
+    if (genderFilters.length > 0 && !genderFilters.includes(p.gender || '')) return false;
+    if (seasonFilters.length > 0 && !seasonFilters.includes(p.season || '')) return false;
+    if (occasionFilters.length > 0 && !occasionFilters.includes(p.occasion || '')) return false;
+    if (p.price_chf && (p.price_chf < priceRange[0] || p.price_chf > priceRange[1])) return false;
+    if (p.sillage && (p.sillage < sillageRange[0] || p.sillage > sillageRange[1])) return false;
+    return true;
+  });
+
   const shown = visible.slice(0, shownCount);
   const hasMore = visible.length > shown.length;
+
+  const activeFilterCount = (familyFilter ? 1 : 0) + genderFilters.length + seasonFilters.length +
+    occasionFilters.length + (priceRange[0] > 0 || priceRange[1] < maxPrice ? 1 : 0) +
+    (sillageRange[0] > 0 || sillageRange[1] < 10 ? 1 : 0);
+
+  const resetFilters = () => {
+    setFamilyFilter('');
+    setGenderFilters([]);
+    setSeasonFilters([]);
+    setOccasionFilters([]);
+    setPriceRange([0, maxPrice]);
+    setSillageRange([0, 10]);
+  };
 
   return (
     <section className="section">
@@ -76,11 +120,199 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
             {t.label}
           </button>
         ))}
+        <button
+          type="button"
+          style={{
+            marginLeft: 'auto',
+            background: showAdvancedFilters ? '#D4AF37' : 'rgba(212,175,55,0.15)',
+            color: showAdvancedFilters ? '#1F1410' : '#6B5344',
+            border: 'none',
+            borderRadius: '20px',
+            padding: '0.4rem 0.9rem',
+            fontSize: '0.8rem',
+            fontWeight: 600,
+            cursor: 'pointer',
+            transition: 'all 0.2s',
+          }}
+          onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
+        >
+          ⚙️ Erweiterte Filter {activeFilterCount > 0 && `(${activeFilterCount})`}
+        </button>
       </div>
+
+      {showAdvancedFilters && (
+        <div style={{
+          background: 'linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.03))',
+          borderRadius: '12px',
+          padding: '1.5rem',
+          marginBottom: '1.5rem',
+          border: '1px solid rgba(212,175,55,0.15)',
+        }}>
+          {/* Geschlecht */}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={{ display: 'block', fontWeight: 600, color: '#D4AF37', marginBottom: '0.6rem', fontSize: '0.9rem' }}>
+              Geschlecht
+            </label>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+              {GENDER_OPTIONS.map(opt => (
+                <button
+                  key={opt.code}
+                  onClick={() => setGenderFilters(prev =>
+                    prev.includes(opt.code) ? prev.filter(g => g !== opt.code) : [...prev, opt.code]
+                  )}
+                  style={{
+                    padding: '0.5rem 0.8rem',
+                    background: genderFilters.includes(opt.code) ? '#D4AF37' : 'white',
+                    color: genderFilters.includes(opt.code) ? '#1F1410' : '#6B5344',
+                    border: '1px solid rgba(212,175,55,0.2)',
+                    borderRadius: '8px',
+                    fontSize: '0.85rem',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    transition: 'all 0.15s',
+                  }}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Jahreszeit */}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={{ display: 'block', fontWeight: 600, color: '#D4AF37', marginBottom: '0.6rem', fontSize: '0.9rem' }}>
+              Jahreszeit
+            </label>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+              {SEASON_OPTIONS.map(opt => (
+                <button
+                  key={opt.code}
+                  onClick={() => setSeasonFilters(prev =>
+                    prev.includes(opt.code) ? prev.filter(s => s !== opt.code) : [...prev, opt.code]
+                  )}
+                  style={{
+                    padding: '0.5rem 0.8rem',
+                    background: seasonFilters.includes(opt.code) ? '#D4AF37' : 'white',
+                    color: seasonFilters.includes(opt.code) ? '#1F1410' : '#6B5344',
+                    border: '1px solid rgba(212,175,55,0.2)',
+                    borderRadius: '8px',
+                    fontSize: '0.85rem',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    transition: 'all 0.15s',
+                  }}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Anlass */}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={{ display: 'block', fontWeight: 600, color: '#D4AF37', marginBottom: '0.6rem', fontSize: '0.9rem' }}>
+              Anlass
+            </label>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+              {OCCASION_OPTIONS.map(opt => (
+                <button
+                  key={opt.code}
+                  onClick={() => setOccasionFilters(prev =>
+                    prev.includes(opt.code) ? prev.filter(o => o !== opt.code) : [...prev, opt.code]
+                  )}
+                  style={{
+                    padding: '0.5rem 0.8rem',
+                    background: occasionFilters.includes(opt.code) ? '#D4AF37' : 'white',
+                    color: occasionFilters.includes(opt.code) ? '#1F1410' : '#6B5344',
+                    border: '1px solid rgba(212,175,55,0.2)',
+                    borderRadius: '8px',
+                    fontSize: '0.85rem',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    transition: 'all 0.15s',
+                  }}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Preis */}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={{ display: 'block', fontWeight: 600, color: '#D4AF37', marginBottom: '0.6rem', fontSize: '0.9rem' }}>
+              Preis: CHF {priceRange[0]} – {priceRange[1]}
+            </label>
+            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+              <input
+                type="range"
+                min="0"
+                max={maxPrice}
+                value={priceRange[0]}
+                onChange={(e) => setPriceRange([Number(e.target.value), priceRange[1]])}
+                style={{ flex: 1 }}
+              />
+              <input
+                type="range"
+                min="0"
+                max={maxPrice}
+                value={priceRange[1]}
+                onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
+                style={{ flex: 1 }}
+              />
+            </div>
+          </div>
+
+          {/* Sillage */}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={{ display: 'block', fontWeight: 600, color: '#D4AF37', marginBottom: '0.6rem', fontSize: '0.9rem' }}>
+              Sillage (Projektion): {sillageRange[0]} – {sillageRange[1]}/10
+            </label>
+            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+              <input
+                type="range"
+                min="0"
+                max="10"
+                value={sillageRange[0]}
+                onChange={(e) => setSillageRange([Number(e.target.value), sillageRange[1]])}
+                style={{ flex: 1 }}
+              />
+              <input
+                type="range"
+                min="0"
+                max="10"
+                value={sillageRange[1]}
+                onChange={(e) => setSillageRange([sillageRange[0], Number(e.target.value)])}
+                style={{ flex: 1 }}
+              />
+            </div>
+          </div>
+
+          {/* Reset */}
+          {activeFilterCount > 0 && (
+            <button
+              onClick={resetFilters}
+              style={{
+                background: 'transparent',
+                color: '#D4AF37',
+                border: '1px solid #D4AF37',
+                borderRadius: '8px',
+                padding: '0.5rem 1rem',
+                fontWeight: 600,
+                cursor: 'pointer',
+                fontSize: '0.85rem',
+              }}
+            >
+              Alle Filter zurücksetzen
+            </button>
+          )}
+        </div>
+      )}
 
       <p className="small catalog-count">
         {visible.length} Düfte
         {familyFilter ? ` · ${familyDisplay[familyFilter]}` : ''}
+        {activeFilterCount > 0 && ` · ${activeFilterCount} Filter aktiv`}
       </p>
 
       <div className="perfume-list">

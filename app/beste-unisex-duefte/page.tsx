@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SiteHeader from '@/app/SiteHeader';
+import Breadcrumb from '@/app/Breadcrumb';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import { getPerfumes, type Perfume } from '@/lib/perfumes';
 
@@ -164,6 +165,7 @@ export default async function BesteUnisexDuefte() {
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
       <SiteHeader />
+      <Breadcrumb items={[{ label: 'Die besten Unisex-Düfte', href: '/beste-unisex-duefte' }]} />
 
       <section style={{
         background: 'linear-gradient(145deg, #1a1226 0%, #2d1f3d 50%, #4a3057 100%)',

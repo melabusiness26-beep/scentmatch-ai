@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import SiteHeader from '@/app/SiteHeader';
+import Breadcrumb from '@/app/Breadcrumb';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
@@ -171,6 +172,7 @@ export default function FaqPage() {
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
       <SiteHeader />
+      <Breadcrumb items={[{ label: 'FAQ', href: '/faq' }]} />
 
       <script
         type="application/ld+json"

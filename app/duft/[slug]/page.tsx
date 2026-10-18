@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SiteHeader from '@/app/SiteHeader';
+import { OlfactoryPyramid } from '@/app/OlfactoryPyramid';
 import {
   getPerfumeBySlug,
   getAllPerfumeSlugs,
@@ -448,10 +449,7 @@ export default async function PerfumeDetailPage({
 
         {hasNotes && (
           <section className="section card">
-            <h2>Duft-Pyramide</h2>
-            <Notes title="Kopfnoten" notes={perfume.top_notes} />
-            <Notes title="Herznoten" notes={perfume.heart_notes} />
-            <Notes title="Basisnoten" notes={perfume.base_notes} />
+            <OlfactoryPyramid perfume={perfume} />
           </section>
         )}
 

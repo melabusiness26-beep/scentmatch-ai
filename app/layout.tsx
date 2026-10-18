@@ -141,6 +141,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/geschenk-finder">Geschenk-Finder</Link>
               <Link href="/stimmungen">Stimmungen</Link>
               <Link href="/reiseduefte">Reisedüfte</Link>
+              <Link href="/saisonal">Saisonale Empfehlungen</Link>
               <Link href="/duftnoten">Duftnoten</Link>
               <Link href="/ratgeber">Ratgeber</Link>
               <Link href="/faq">FAQ</Link>

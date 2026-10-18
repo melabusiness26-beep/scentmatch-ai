@@ -146,6 +146,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/duftlaenge">Duftlänge & Sillage</Link>
               <Link href="/duft-lagerung">Duft-Lagerung</Link>
               <Link href="/parfum-auftragen">Parfum richtig auftragen</Link>
+              <Link href="/duefte-kombinieren">Duftkombinationen</Link>
               <Link href="/ratgeber">Ratgeber</Link>
               <Link href="/faq">FAQ</Link>
               <Link href="/testing-und-transparenz">Testing & Transparenz</Link>

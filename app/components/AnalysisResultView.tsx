@@ -697,57 +697,62 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
           )}
 
           {/* Charakter & Persönlichkeit */}
-          {(currentAnalysis.characterTags?.length || currentAnalysis.personalityType?.trim() || currentAnalysis.mood?.trim()) && (
-            <section style={{ marginBottom: '2.5rem' }}>
-              <SectionHeading>Charakter & Persönlichkeit</SectionHeading>
-              <div style={{
-                background: `linear-gradient(135deg, ${C.dark} 0%, #3a2518 100%)`,
-                color: C.cream,
-                padding: '1.75rem 2rem',
-                borderRadius: '14px',
-              }}>
-                {currentAnalysis.personalityType?.trim() && (
-                  <div style={{ marginBottom: '1rem' }}>
-                    <div style={{ fontSize: '0.72rem', color: C.gold, fontWeight: '700', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>Persönlichkeitstyp</div>
-                    <p style={{ fontSize: '1rem', color: C.cream, margin: 0, lineHeight: 1.5 }}>{currentAnalysis.personalityType}</p>
-                  </div>
-                )}
-                {currentAnalysis.mood?.trim() && (
-                  <div style={{ marginBottom: '1rem' }}>
-                    <div style={{ fontSize: '0.72rem', color: C.gold, fontWeight: '700', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>Stimmung</div>
-                    <p style={{ fontSize: '1rem', color: C.cream, margin: 0 }}>{currentAnalysis.mood}</p>
-                  </div>
-                )}
-                {currentAnalysis.characterTags && currentAnalysis.characterTags.length > 0 && (
-                  <div>
-                    <div style={{ fontSize: '0.72rem', color: C.gold, fontWeight: '700', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>Charakter-Tags</div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                      {currentAnalysis.characterTags.map((tag, i) => {
-                        const tagSlug = tag.toLowerCase()
-                          .replace(/[äöü]/g, (c) => ({ ä: 'ae', ö: 'oe', ü: 'ue' }[c] || c))
-                          .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-                        return (
-                          <Link key={i} href={`/tag/${tagSlug}`} style={{
-                            backgroundColor: 'rgba(212,175,55,0.18)',
-                            border: `1px solid rgba(212,175,55,0.45)`,
-                            color: C.gold,
-                            padding: '0.28rem 0.8rem',
-                            borderRadius: '20px',
-                            fontSize: '0.82rem', fontWeight: '500', textDecoration: 'none', display: 'inline-block',
-                          }}
-                          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(212,175,55,0.35)'; }}
-                          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(212,175,55,0.18)'; }}
-                          >
-                            #{tag}
-                          </Link>
-                        );
-                      })}
+          {(() => {
+            const hasPersonality = currentAnalysis.personalityType && currentAnalysis.personalityType.trim().length > 0;
+            const hasMood = currentAnalysis.mood && currentAnalysis.mood.trim().length > 0;
+            const hasTags = currentAnalysis.characterTags && currentAnalysis.characterTags.length > 0;
+            return (hasPersonality || hasMood || hasTags) && (
+              <section style={{ marginBottom: '2.5rem' }}>
+                <SectionHeading>Charakter & Persönlichkeit</SectionHeading>
+                <div style={{
+                  background: `linear-gradient(135deg, ${C.dark} 0%, #3a2518 100%)`,
+                  color: C.cream,
+                  padding: '1.75rem 2rem',
+                  borderRadius: '14px',
+                }}>
+                  {hasPersonality && (
+                    <div style={{ marginBottom: '1rem' }}>
+                      <div style={{ fontSize: '0.72rem', color: C.gold, fontWeight: '700', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>Persönlichkeitstyp</div>
+                      <p style={{ fontSize: '1rem', color: C.cream, margin: 0, lineHeight: 1.5 }}>{currentAnalysis.personalityType}</p>
                     </div>
-                  </div>
-                )}
-              </div>
-            </section>
-          )}
+                  )}
+                  {hasMood && (
+                    <div style={{ marginBottom: '1rem' }}>
+                      <div style={{ fontSize: '0.72rem', color: C.gold, fontWeight: '700', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>Stimmung</div>
+                      <p style={{ fontSize: '1rem', color: C.cream, margin: 0 }}>{currentAnalysis.mood}</p>
+                    </div>
+                  )}
+                  {hasTags && (
+                    <div>
+                      <div style={{ fontSize: '0.72rem', color: C.gold, fontWeight: '700', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>Charakter-Tags</div>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                        {currentAnalysis.characterTags.map((tag, i) => {
+                          const tagSlug = tag.toLowerCase()
+                            .replace(/[äöü]/g, (c) => ({ ä: 'ae', ö: 'oe', ü: 'ue' }[c] || c))
+                            .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+                          return (
+                            <Link key={i} href={`/tag/${tagSlug}`} style={{
+                              backgroundColor: 'rgba(212,175,55,0.18)',
+                              border: `1px solid rgba(212,175,55,0.45)`,
+                              color: C.gold,
+                              padding: '0.28rem 0.8rem',
+                              borderRadius: '20px',
+                              fontSize: '0.82rem', fontWeight: '500', textDecoration: 'none', display: 'inline-block',
+                            }}
+                            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(212,175,55,0.35)'; }}
+                            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(212,175,55,0.18)'; }}
+                            >
+                              #{tag}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </section>
+            );
+          })()}
 
           {/* Wann tragen */}
           {(currentAnalysis.seasonRecommendation || currentAnalysis.occasionList?.length || currentAnalysis.climate?.length) && (

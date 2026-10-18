@@ -154,6 +154,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/duftarten">Duftarten erklärt</Link>
               <Link href="/nische-mainstream">Nische vs. Mainstream</Link>
               <Link href="/duftsammlung">Duftsammlung aufbauen</Link>
+              <Link href="/duftkollektion-minimal">Minimalistische Kollektion</Link>
               <Link href="/herren-parfueme">Herren-Parfüme</Link>
               <Link href="/damen-parfueme">Damen-Parfüme</Link>
               <Link href="/duftnoten-guide">Duftnoten verstehen</Link>

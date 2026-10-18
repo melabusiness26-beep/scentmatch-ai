@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import SiteHeader from '@/app/SiteHeader';
+import Breadcrumb from '@/app/Breadcrumb';
 import { guides, guideCategories, getGuide, type Guide } from '@/lib/guides';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
@@ -148,6 +149,7 @@ export default function RatgeberIndex() {
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
       <SiteHeader />
+      <Breadcrumb items={[{ label: 'Ratgeber', href: '/ratgeber' }]} />
 
       {/* Hero */}
       <section

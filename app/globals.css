@@ -185,7 +185,7 @@ button:focus, .button:focus { outline: 2px solid var(--gold); outline-offset: 2p
 .tile h3 { font-size: clamp(16px, 3.5vw, 20px); }
 
 /* Edler Fussbereich – Premium dunkel mit neuer Farbpalette */
-.site-footer { margin-top: 120px; background: radial-gradient(125% 135% at 100% 0%, #3D2A1C 0%, #251509 50%, #0F0A07 100%); color: #EDE5DC; padding: 64px 0 36px; border-top: 1.5px solid rgba(212,175,55,.2); box-shadow: inset 0 40px 80px rgba(0,0,0,.08); }
+.site-footer { margin-top: 120px; color: #EDE5DC; }
 .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 28px; flex-wrap: wrap; }
 .site-footer .logo { color: #fbf3e6; }
 .footer-tag { color: rgba(243,233,218,.82); margin-top: 10px; max-width: 360px; font-size: clamp(13px, 2.2vw, 15px); }

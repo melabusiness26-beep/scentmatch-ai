@@ -82,10 +82,21 @@ const GUIDE_EMOJIS: Record<string, string> = {
   'parfum-und-hauttyp-was-passt-zu-meiner-haut': '🧴',
   'vegane-tierversuchsfreie-parfums': '🌿',
   'parfum-proben-abfuellungen-schweiz': '🧪',
+  'nische-mainstream': '💎',
+  'duftpersoenlichkeit': '🎭',
+  'duftchemie-grundlagen': '🧪',
+  'duftkollektion-minimal': '📚',
 };
 
 function getGuideEmoji(slug: string): string {
   return GUIDE_EMOJIS[slug] || '📄';
+}
+
+interface ExternalGuide {
+  slug: string;
+  title: string;
+  description: string;
+  href: string;
 }
 
 function GuideTiles({ items }: { items: Guide[] }) {
@@ -131,7 +142,78 @@ function GuideTiles({ items }: { items: Guide[] }) {
   );
 }
 
+function ExternalGuideTiles({ items }: { items: ExternalGuide[] }) {
+  return (
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+      gap: '1rem',
+    }}>
+      {items.map((guide) => (
+        <Link
+          key={guide.slug}
+          href={guide.href}
+          className="guide-tile"
+        >
+          <span style={{ fontSize: '1.75rem', lineHeight: 1 }}>{getGuideEmoji(guide.slug)}</span>
+          <h3 style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: '1rem',
+            fontWeight: 700,
+            color: '#2a1d12',
+            margin: 0,
+            lineHeight: 1.35,
+          }}>{guide.title}</h3>
+          <p style={{
+            fontSize: '0.8rem',
+            color: '#6b5344',
+            lineHeight: 1.55,
+            margin: 0,
+            flexGrow: 1,
+          }}>{guide.description}</p>
+          <span style={{
+            fontSize: '0.75rem',
+            fontWeight: 700,
+            color: '#d4af37',
+            letterSpacing: '0.04em',
+            textTransform: 'uppercase',
+            marginTop: 'auto',
+          }}>Lesen →</span>
+        </Link>
+      ))}
+    </div>
+  );
+}
+
 export default function RatgeberIndex() {
+  // Externe Guides (eigenständige Seiten)
+  const externalGuides: ExternalGuide[] = [
+    {
+      slug: 'nische-mainstream',
+      title: 'Nische vs. Mainstream Düfte',
+      description: 'Verstehe den Unterschied zwischen Niche-Parfümen und Mainstream-Düften – Qualität, Einzigartigkeit, Preis und Verfügbarkeit.',
+      href: '/nische-mainstream'
+    },
+    {
+      slug: 'duftpersoenlichkeit',
+      title: 'Duftpersönlichkeit: Dein Charakter im Duft',
+      description: 'Entdecke, wie deine Persönlichkeit deinen idealen Duft formt. Von klassischen bis modernen Typen – finde heraus, welche Duftfamilien zu dir passen.',
+      href: '/duftpersoenlichkeit'
+    },
+    {
+      slug: 'duftchemie-grundlagen',
+      title: 'Duftchemie & Physik: Wie Düfte wirklich funktionieren',
+      description: 'Lerne die Wissenschaft hinter Düften: Pyramide, Volatilität, Konzentration, Körperchemie und warum ein Duft auf dir anders riecht.',
+      href: '/duftchemie-grundlagen'
+    },
+    {
+      slug: 'duftkollektion-minimal',
+      title: 'Minimalistische Duftkollektion: Die intelligente 3er-Sammlung',
+      description: 'Baue dir eine perfekte Kollektion mit nur 3 Düften: Daily Driver, Special Occasion, Seasonal. Strategisch, flexibel, skalierbar.',
+      href: '/duftkollektion-minimal'
+    }
+  ];
+
   // Kategorien mit ihren Artikeln auflösen.
   const categorized = guideCategories.map((cat) => ({
     title: cat.title,
@@ -144,7 +226,7 @@ export default function RatgeberIndex() {
   const inCategory = new Set(guideCategories.flatMap((c) => c.slugs));
   const weitere = guides.filter((g) => !inCategory.has(g.slug));
 
-  const totalGuides = guides.length;
+  const totalGuides = guides.length + externalGuides.length;
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
@@ -243,6 +325,21 @@ export default function RatgeberIndex() {
             <GuideTiles items={weitere} />
           </section>
         )}
+
+        {/* Externe Guides */}
+        <section style={{ marginBottom: '3rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
+            <span style={{ fontSize: '1.25rem' }}>🧠</span>
+            <h2 style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: '1.4rem',
+              fontWeight: 700,
+              color: '#2a1d12',
+              margin: 0,
+            }}>Tiefgang: Wissen & Theorie</h2>
+          </div>
+          <ExternalGuideTiles items={externalGuides} />
+        </section>
 
         {/* CTA */}
         <section style={{

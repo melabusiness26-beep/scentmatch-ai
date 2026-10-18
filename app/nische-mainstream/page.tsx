@@ -41,7 +41,7 @@ export default function NischeMainstreamPage() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
             gap: '2rem',
             marginBottom: '2rem'
           }}>

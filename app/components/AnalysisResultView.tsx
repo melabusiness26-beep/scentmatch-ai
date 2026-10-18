@@ -505,7 +505,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
       {activeTab === 'profil' && (
         <div>
           {/* PREMIUM: Duft-Porträt (Die Duft-Geschichte) */}
-          {dbMatch && (
+          {(dbMatch || displayDescription) && (
             <section style={{ marginBottom: '3.5rem' }}>
               <SectionHeading isMajor>Die Duft-Geschichte</SectionHeading>
               <Card style={{
@@ -523,7 +523,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                   fontWeight: 500,
                   lineHeight: 1.9,
                 }}>
-                  {describePerfume(dbMatch)}
+                  {dbMatch ? describePerfume(dbMatch) : displayDescription}
                 </p>
               </Card>
             </section>

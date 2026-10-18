@@ -169,16 +169,6 @@ export default async function Page() {
                 boxShadow: '0 8px 24px rgba(212,175,55,0.2)',
                 border: 'none',
                 cursor: 'pointer',
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.transform = 'translateY(-3px)';
-                el.style.boxShadow = '0 16px 40px rgba(212,175,55,0.35)';
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.transform = 'translateY(0)';
-                el.style.boxShadow = '0 8px 24px rgba(212,175,55,0.2)';
               }}>
                 Alle {guides.length} Premium-Ratgeber →
               </Link>

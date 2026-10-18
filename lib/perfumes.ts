@@ -81,14 +81,12 @@ export function describePerfume(p: Perfume): string {
   const gender = p.gender ? GENDER_DESC[p.gender] || '' : '';
   const sentences: string[] = [];
 
-  // Premium Eröffnung
-  sentences.push(`**${p.perfume_name}**${brand} ist ein ${fam ? `${fam} ` : ''}Duft${gender}, der sich in die Welt der feinen Düfte einreiht.`);
+  sentences.push(`${p.perfume_name}${brand} ist ein ${fam ? `${fam} ` : ''}Duft${gender}, der sich in die Welt der feinen Düfte einreiht.`);
 
   if (p.fragrance_family && FAMILY_MOOD[p.fragrance_family]) {
     sentences.push(FAMILY_MOOD[p.fragrance_family]);
   }
 
-  // Ausführliche Noten-Beschreibung
   const top = notesList(p.top_notes);
   const heart = notesList(p.heart_notes);
   const base = notesList(p.base_notes);
@@ -99,7 +97,6 @@ export function describePerfume(p: Perfume): string {
   if (bits.length === 1) sentences.push(`Die Duftreise ${bits[0]}.`);
   else if (bits.length > 1) sentences.push(`Die Reise: ${bits.slice(0, -1).join(', ')} und ${bits[bits.length - 1]}.`);
 
-  // Performance Details (Haltbarkeit & Sillage)
   const perf: string[] = [];
   if (p.longevity != null) {
     const word = p.longevity >= 8 ? 'ausgezeichnet' : p.longevity >= 6 ? 'solide' : 'dezent';
@@ -113,14 +110,12 @@ export function describePerfume(p: Perfume): string {
     sentences.push(`Performance: ${perf.join(' • ')}.`);
   }
 
-  // Anlass & Stimmung
   if (p.occasion && OCCASION_MOOD[p.occasion]) {
     sentences.push(OCCASION_MOOD[p.occasion]);
   } else if (p.occasion) {
     sentences.push(`Perfekt für: ${p.occasion}.`);
   }
 
-  // Saison
   if (p.season) {
     sentences.push(
       p.season === 'Ganzjährig'
@@ -129,9 +124,8 @@ export function describePerfume(p: Perfume): string {
     );
   }
 
-  // Preis (Premium-Positionierung)
   if (p.price_chf != null) {
-    sentences.push(`💎 Richtpreis: **CHF ${p.price_chf}** – eine Investition in Qualität und Eleganz.`);
+    sentences.push(`Richtpreis: CHF ${p.price_chf} – eine Investition in Qualität und Eleganz.`);
   }
 
   return sentences.join(' ');

@@ -64,7 +64,6 @@ export default function GuideTile({ guide, emoji }: { guide: Guide; emoji?: stri
         fontFamily: "'Playfair Display', serif",
         fontSize: '1.1rem',
         fontWeight: 700,
-        color: '#1F1410',
         margin: 0,
         lineHeight: 1.35,
         letterSpacing: '-0.01em',
@@ -76,7 +75,6 @@ export default function GuideTile({ guide, emoji }: { guide: Guide; emoji?: stri
 
       <p style={{
         fontSize: '0.9rem',
-        color: '#6b5344',
         lineHeight: 1.6,
         margin: '0 0 auto 0',
         transition: 'color 0.3s ease',

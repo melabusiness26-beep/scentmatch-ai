@@ -5,6 +5,7 @@ import Link from 'next/link';
 import ConsentedAnalytics from '@/app/ConsentedAnalytics';
 import CookieBanner from '@/app/CookieBanner';
 import FooterNewsletter from '@/app/FooterNewsletter';
+import { FavoritesProvider } from '@/app/FavoritesContext';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -88,8 +89,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
-        {children}
-        {/* Trust-Bar: Vertrauens-Signale vor dem Footer */}
+        <FavoritesProvider>
+          {children}
+          {/* Trust-Bar: Vertrauens-Signale vor dem Footer */}
         <div style={{
           backgroundColor: '#1F1410',
           borderTop: '1.5px solid rgba(212,175,55,0.15)',
@@ -152,6 +154,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </p>
           <div className="container footer-bottom small">© {year} Auressa · Preise &amp; Angaben ohne Gewähr.</div>
         </footer>
+        </FavoritesProvider>
         <CookieBanner />
         <ConsentedAnalytics />
       </body>

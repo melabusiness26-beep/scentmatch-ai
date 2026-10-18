@@ -21,6 +21,18 @@
   --gradient-subtle: linear-gradient(135deg, rgba(212,175,55,.1), rgba(212,175,55,.05));
   --transition-smooth: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   --transition-fast: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Duftfamilien Farbverläufe */
+  --family-clean: linear-gradient(135deg, #E8F4F8 0%, #C8E6F0 100%);
+  --family-gourmand: linear-gradient(135deg, #F8E8D8 0%, #F0D4B8 100%);
+  --family-woody: linear-gradient(135deg, #E8D8C8 0%, #D4B894 100%);
+  --family-floral: linear-gradient(135deg, #F0E8F4 0%, #E8D4F0 100%);
+
+  /* Duftfamilien Akzentfarben */
+  --accent-clean: #0088BB;
+  --accent-gourmand: #C86B2A;
+  --accent-woody: #8B6F47;
+  --accent-floral: #BB4A8A;
 }
 * { box-sizing: border-box; }
 /* Verhindert horizontales Verschieben auf dem Handy, falls ein Element zu breit ist.

@@ -28,6 +28,7 @@ const CATEGORY_ICONS: Record<string, string> = {
   'Marken & Besonderes': '✨',
   'Wissen & Tipps': '📖',
   'Weitere Ratgeber': '📚',
+  'Persönlichkeit & Stil': '🎭',
 };
 
 // Pro Guide-Slug ein passendes Emoji vergeben
@@ -82,6 +83,10 @@ const GUIDE_EMOJIS: Record<string, string> = {
   'parfum-und-hauttyp-was-passt-zu-meiner-haut': '🧴',
   'vegane-tierversuchsfreie-parfums': '🌿',
   'parfum-proben-abfuellungen-schweiz': '🧪',
+  'duftpersoenlichkeit': '🎭',
+  'nische-mainstream': '💎',
+  'duftchemie-grundlagen': '🔬',
+  'duftkollektion-minimal': '✨',
 };
 
 function getGuideEmoji(slug: string): string {

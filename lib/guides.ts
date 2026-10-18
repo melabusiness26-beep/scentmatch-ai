@@ -2270,7 +2270,47 @@ export const guides: Guide[] = [
         ]
       }
     ]
-  }
+  },
+  {
+    slug: 'duftpersoenlichkeit',
+    title: 'Duftpersönlichkeit: Welcher Duft passt zu deinem Charakter?',
+    description: 'Dein Duft ist eine Erweiterung deiner Persönlichkeit. Lerne, wie dein Charakter deine ideale Duftfamilie formt – und welcher der 8 Duftpersönlichkeitstypen du bist.',
+    heroImage: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=1200&q=80&fit=crop',
+    intro: [
+      'Es gibt einen tiefen Grund, warum manche Menschen Creed Aventus lieben und andere Xerjoff Naxos bevorzugen. Ein Duft ist nicht nur Chemie – er ist eine subtile Aussage über wer du bist. Diese Seite zeigt die acht Duftpersönlichkeitstypen und welche Düfte sie typischerweise bevorzugen.',
+    ],
+    sections: [],
+  },
+  {
+    slug: 'nische-mainstream',
+    title: 'Nische vs. Mainstream Düfte: Was ist der Unterschied?',
+    description: 'Nischendüfte vs. Designer-Düfte: Wann lohnt sich der Aufpreis? Ein ehrlicher Vergleich von Qualität, Einzigartigkeit und Preis.',
+    heroImage: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=1200&q=80&fit=crop',
+    intro: [
+      'Nischendüfte kosten oft das Dreifache eines Designer-Duftes. Aber sind sie dreimal so gut? Die Wahrheit ist differenzierter. Hier der ehrliche Vergleich.',
+    ],
+    sections: [],
+  },
+  {
+    slug: 'duftchemie-grundlagen',
+    title: 'Duftchemie Grundlagen: Wie Düfte wirklich funktionieren',
+    description: 'Warum hält ein Duft auf deiner Haut 8 Stunden, auf einem anderen nur 2? Die Wissenschaft hinter Düften einfach erklärt.',
+    heroImage: 'https://images.unsplash.com/photo-1616401784845-180882ba9ba8?w=1200&q=80&fit=crop',
+    intro: [
+      'Ein Parfüm ist kein Zaubertrank – es ist Chemie. Und wenn du die Grundlagen verstehst, kannst du bessere Entscheidungen treffen: welcher Duft zu deiner Haut passt, warum er sich verändert, und wie du ihn optimal trägst.',
+    ],
+    sections: [],
+  },
+  {
+    slug: 'duftkollektion-minimal',
+    title: 'Minimalistische Duftkollektion: Das 3er-Framework',
+    description: 'Du brauchst keine 30 Düfte um gut zu riechen. Das 3er-Framework zeigt, wie du mit drei Düften jede Situation abdeckst.',
+    heroImage: 'https://images.unsplash.com/photo-1575783970733-1aaedde1db74?w=1200&q=80&fit=crop',
+    intro: [
+      'Mehr ist nicht besser, wenn es um Düfte geht. Mit drei gut gewählten Düften deckst du 95% aller Situationen ab – besser als mit 20 Flakons, von denen du nur 3 wirklich trägst.',
+    ],
+    sections: [],
+  },
 ];
 
 export function getGuide(slug: string): Guide | undefined {
@@ -2426,7 +2466,16 @@ export const guideCategories: GuideCategory[] = [
       'parfum-und-hauttyp-was-passt-zu-meiner-haut',
       'vegane-tierversuchsfreie-parfums',
       'parfum-proben-abfuellungen-schweiz',
-      'parfum-im-handgepaeck-reise-tipps'
+      'parfum-im-handgepaeck-reise-tipps',
+      'duftchemie-grundlagen',
+      'duftkollektion-minimal'
+    ]
+  },
+  {
+    title: 'Persönlichkeit & Stil',
+    slugs: [
+      'duftpersoenlichkeit',
+      'nische-mainstream',
     ]
   }
 ];

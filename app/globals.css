@@ -165,12 +165,16 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 .logo { display: inline-flex; align-items: center; gap: 11px; font-size: 28px; font-weight: 700; letter-spacing: -0.02em; transition: opacity 0.2s ease; }
 .logo:hover { opacity: 0.85; }
 .logo::before {
-  content: '';
+  content: 'A';
   display: inline-flex;
-  width: 44px; height: 44px; border-radius: 12px; flex: none;
-  background:
-    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C4A968' stroke-width='1.7' stroke-linejoin='round' stroke-linecap='round'><path d='M6 18.5 L12 5 L18 18.5 M8.4 13.6 H15.6 M4.8 18.5 H7.4 M16.6 18.5 H19.2'/></svg>") center / 26px 26px no-repeat,
-    linear-gradient(180deg, #D4B896, #C4A968);
+  align-items: center;
+  justify-content: center;
+  width: 44px; height: 44px; border-radius: 16px; flex: none;
+  background: #C4A968;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
   box-shadow: 0 12px 32px rgba(196,169,104,.2), inset 0 -1px 3px rgba(255,255,255,.3);
   transition: all 0.2s ease;
 }

@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Perfume } from '@/lib/perfumes';
+import { Perfume, describePerfume } from '@/lib/perfumes';
 import { ImageAnalysisResult } from '@/types/image-analysis';
 import { type PerfumeMatch } from '@/lib/analysis-matcher';
 import ScanCorrectionBanner from './ScanCorrectionBanner';
@@ -43,20 +43,21 @@ type Tab = 'profil' | 'noten' | 'erlebnis' | 'kaufen';
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
-const SectionHeading = ({ children }: { children: React.ReactNode }) => (
+const SectionHeading = ({ children, isMajor = false }: { children: React.ReactNode; isMajor?: boolean }) => (
   <h2 style={{
-    fontSize: '1.5rem',
+    fontSize: isMajor ? '2.2rem' : '1.5rem',
     fontFamily: "'Playfair Display', serif",
     fontWeight: 700,
     color: C.darkText,
-    marginBottom: '1.5rem',
-    marginTop: '2.5rem',
-    paddingBottom: '0.75rem',
-    borderBottom: `3px solid ${C.gold}`,
+    marginBottom: isMajor ? '2rem' : '1.5rem',
+    marginTop: isMajor ? '0rem' : '2.5rem',
+    paddingBottom: isMajor ? '1.2rem' : '0.75rem',
+    borderBottom: `${isMajor ? '4px' : '3px'} solid ${C.gold}`,
     background: `linear-gradient(90deg, ${C.darkText} 0%, ${C.goldMuted} 100%)`,
     backgroundClip: 'text',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
+    letterSpacing: isMajor ? '-0.5px' : '0px',
   }}>
     {children}
   </h2>
@@ -65,15 +66,15 @@ const SectionHeading = ({ children }: { children: React.ReactNode }) => (
 const Card = ({ children, style = {} }: { children: React.ReactNode; style?: React.CSSProperties }) => (
   <div style={{
     backgroundColor: C.cream,
-    borderRadius: '16px',
-    padding: '1.75rem 2rem',
-    border: `1px solid ${C.sand}`,
+    borderRadius: '18px',
+    padding: '2rem 2.2rem',
+    border: `2px solid ${C.sand}`,
     boxShadow: C.shadowMd,
-    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+    transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
     ...style,
   }}
-  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = C.shadowLg; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
-  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = C.shadowMd; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}>
+  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = C.shadowLg; (e.currentTarget as HTMLElement).style.transform = 'translateY(-3px)'; (e.currentTarget as HTMLElement).style.borderColor = C.gold; }}
+  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = C.shadowMd; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; (e.currentTarget as HTMLElement).style.borderColor = C.sand; }}>
     {children}
   </div>
 );
@@ -82,15 +83,15 @@ const BarRow = ({ label, value, max = 10, suffix = '/10' }: { label: string; val
   if (!value) return null;
   const pct = Math.min(100, (value / max) * 100);
   return (
-    <div style={{ marginBottom: '1.25rem' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-        <span style={{ fontSize: '0.95rem', fontWeight: '600', color: C.darkText, letterSpacing: '0.3px' }}>{label}</span>
-        <span style={{ fontSize: '0.9rem', color: C.gold, fontVariantNumeric: 'tabular-nums', fontWeight: '700' }}>
+    <div style={{ marginBottom: '1.6rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.65rem' }}>
+        <span style={{ fontSize: '0.98rem', fontWeight: '600', color: C.darkText, letterSpacing: '0.4px' }}>{label}</span>
+        <span style={{ fontSize: '1rem', color: C.gold, fontVariantNumeric: 'tabular-nums', fontWeight: '800' }}>
           {value}{suffix}
         </span>
       </div>
-      <div style={{ height: '8px', backgroundColor: C.sand, borderRadius: '6px', overflow: 'hidden', boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.05)' }}>
-        <div style={{ height: '100%', width: `${pct}%`, background: `linear-gradient(90deg, ${C.goldMuted} 0%, ${C.gold} 100%)`, borderRadius: '6px', transition: 'width 0.8s cubic-bezier(0.4, 0, 0.2, 1)', boxShadow: `0 0 12px rgba(212, 175, 55, 0.4)` }} />
+      <div style={{ height: '10px', backgroundColor: C.sand, borderRadius: '8px', overflow: 'hidden', boxShadow: 'inset 0 3px 6px rgba(0,0,0,0.08)' }}>
+        <div style={{ height: '100%', width: `${pct}%`, background: `linear-gradient(90deg, ${C.goldMuted} 0%, ${C.gold} 80%, ${C.goldLight} 100%)`, borderRadius: '8px', transition: 'width 0.8s cubic-bezier(0.4, 0, 0.2, 1)', boxShadow: `0 0 16px rgba(212, 175, 55, 0.5), inset 0 -1px 2px rgba(0,0,0,0.1)` }} />
       </div>
     </div>
   );
@@ -503,10 +504,35 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
       {/* ═══════════════════════════════════════════════════════════════════ */}
       {activeTab === 'profil' && (
         <div>
+          {/* PREMIUM: Duft-Porträt (Die Duft-Geschichte) */}
+          {dbMatch && (
+            <section style={{ marginBottom: '3.5rem' }}>
+              <SectionHeading isMajor>Die Duft-Geschichte</SectionHeading>
+              <Card style={{
+                backgroundColor: C.journeyBg,
+                border: `2px solid ${C.gold}`,
+                boxShadow: `0 0 20px rgba(212, 175, 55, 0.15)`,
+                padding: '2.5rem',
+                lineHeight: 1.85,
+              }}>
+                <p style={{
+                  fontSize: '1.05rem',
+                  color: C.goldMuted,
+                  margin: '0 0 1.25rem 0',
+                  fontStyle: 'italic',
+                  fontWeight: 500,
+                  lineHeight: 1.9,
+                }}>
+                  {describePerfume(dbMatch)}
+                </p>
+              </Card>
+            </section>
+          )}
+
           {/* Steckbrief */}
-          <section style={{ marginBottom: '2.5rem' }}>
+          <section style={{ marginBottom: '3rem' }}>
             <SectionHeading>Steckbrief</SectionHeading>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '0.75rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '1.25rem' }}>
               {[
                 currentAnalysis.concentration && { icon: '🧴', label: 'Konzentration', value: currentAnalysis.concentration },
                 currentAnalysis.family        && { icon: '🌸', label: 'Duftfamilie',   value: currentAnalysis.family },
@@ -523,28 +549,30 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                 return (
                   <div key={it.label} style={{
                     backgroundColor: C.cream,
-                    border: `1px solid ${C.sand}`,
-                    borderRadius: '14px',
-                    padding: '1rem 1.1rem',
+                    border: `2px solid ${C.sand}`,
+                    borderRadius: '16px',
+                    padding: '1.4rem 1.3rem',
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '0.35rem',
-                    boxShadow: C.shadowSm,
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    gap: '0.6rem',
+                    boxShadow: C.shadowMd,
+                    transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
                     cursor: 'pointer',
                   }}
                   onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.boxShadow = C.shadowMd;
-                    (e.currentTarget as HTMLElement).style.transform = 'translateY(-3px)';
+                    (e.currentTarget as HTMLElement).style.boxShadow = C.shadowLg;
+                    (e.currentTarget as HTMLElement).style.transform = 'translateY(-5px)';
+                    (e.currentTarget as HTMLElement).style.borderColor = C.gold;
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.boxShadow = C.shadowSm;
+                    (e.currentTarget as HTMLElement).style.boxShadow = C.shadowMd;
                     (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
+                    (e.currentTarget as HTMLElement).style.borderColor = C.sand;
                   }}>
-                    <div style={{ fontSize: '0.65rem', color: C.gold, fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                    <div style={{ fontSize: '0.7rem', color: C.gold, fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
                       {it.icon} {it.label}
                     </div>
-                    <div style={{ fontSize: '0.95rem', color: C.darkText, fontWeight: '700', letterSpacing: '-0.3px' }}>{it.value}</div>
+                    <div style={{ fontSize: '1rem', color: C.darkText, fontWeight: '700', letterSpacing: '-0.3px' }}>{it.value}</div>
                   </div>
                 );
               })}
@@ -552,9 +580,9 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
           </section>
 
           {/* Bewertungen + Duft-DNA */}
-          <section style={{ marginBottom: '2.5rem' }}>
+          <section style={{ marginBottom: '3rem' }}>
             <SectionHeading>Bewertungen & Duft-DNA</SectionHeading>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
               {(currentAnalysis.longevity || currentAnalysis.sillage || currentAnalysis.projection || currentAnalysis.uniqueness || currentAnalysis.priceValue) && (
                 <Card>
                   <div style={{ fontSize: '0.75rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1rem' }}>Performance</div>

@@ -154,6 +154,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/koerperchemie-duft">Körperchemie & Duft</Link>
               <Link href="/duft-waehlen">Duft wählen – Anleitung</Link>
               <Link href="/duft-geschenk">Duft als Geschenk</Link>
+              <Link href="/guenstige-alternativen">Budget-Klone & Alternativen</Link>
               <Link href="/ratgeber">Ratgeber</Link>
               <Link href="/faq">FAQ</Link>
               <Link href="/testing-und-transparenz">Testing & Transparenz</Link>

@@ -133,6 +133,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/#quiz">Quiz</Link>
               <Link href="/duefte">Düfte</Link>
               <Link href="/marke">Marken</Link>
+              <Link href="/vergleich">Vergleich</Link>
+              <Link href="/wunschliste">Wunschliste</Link>
               <Link href="/duft-finder">Duft-Finder</Link>
               <Link href="/duft-detektiv">Duft-Detektiv</Link>
               <Link href="/duft-scanner">Duft-Scanner</Link>

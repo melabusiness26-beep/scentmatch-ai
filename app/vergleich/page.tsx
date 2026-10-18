@@ -5,12 +5,6 @@ import Link from 'next/link';
 import { getPerfumes, type Perfume } from '@/lib/perfumes';
 import SiteHeader from '@/app/SiteHeader';
 import { PerfumeTile } from '@/app/PerfumeTile';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Duft-Vergleich – Perfumes Side-by-Side',
-  description: 'Vergleiche bis zu 3 Düfte direkt nebeneinander. Sillage, Haltbarkeit, Noten, Familie – alle Details auf einen Blick.'
-};
 
 export default function PerfumeComparePage() {
   const [perfumes, setPerfumes] = useState<Perfume[]>([]);

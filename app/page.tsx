@@ -84,39 +84,70 @@ export default async function Page() {
 
       <HomeClient initialCatalogCount={catalogCount} initialBrandCount={brandCount} initialHighlights={highlightPerfumes} />
 
-      {/* Ratgeber-Teaser — Server-rendered, SEO-wirksam */}
+      {/* Ratgeber-Teaser — Premium Section mit Top Content */}
       {featuredGuides.length > 0 && (
         <section style={{
-          backgroundColor: '#F3EFEA',
-          padding: '4rem 1.25rem',
-          borderTop: '1.5px solid rgba(212,175,55,0.15)',
-          boxShadow: 'inset 0 20px 50px rgba(32,24,16,0.04)',
+          background: 'linear-gradient(180deg, #F3EFEA 0%, #FBF7F2 100%)',
+          padding: 'clamp(3rem, 8vw, 5.5rem) 1.25rem',
+          borderTop: '2px solid rgba(212,175,55,0.2)',
+          boxShadow: 'inset 0 40px 80px rgba(32,24,16,0.04), inset 0 -40px 80px rgba(32,24,16,0.02)',
+          position: 'relative',
+          overflow: 'hidden',
         }}>
-          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-              <p style={{ fontSize: '12px', color: '#D4AF37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.14em', marginBottom: '0.8rem' }}>
-                Ratgeber
+          {/* Subtle Background Element */}
+          <div style={{
+            position: 'absolute',
+            top: '-20%',
+            right: '-10%',
+            width: '400px',
+            height: '400px',
+            background: 'radial-gradient(circle, rgba(212,175,55,0.08), transparent 70%)',
+            borderRadius: '50%',
+            pointerEvents: 'none',
+          }} />
+
+          <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+            <div style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 5vw, 3rem)' }}>
+              <p style={{
+                fontSize: 'clamp(11px, 2vw, 13px)',
+                color: '#D4AF37',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: '0.16em',
+                marginBottom: '1rem',
+                margin: '0 0 1rem 0'
+              }}>
+                ✨ Duft-Expertise ✨
               </p>
               <h2 style={{
                 fontFamily: "'Playfair Display', serif",
-                fontSize: 'clamp(24px, 4.5vw, 36px)',
+                fontSize: 'clamp(32px, 5vw, 44px)',
                 fontWeight: 700,
                 color: '#1F1410',
-                margin: '0 0 0.8rem 0',
-                letterSpacing: '-0.01em',
+                margin: '0 0 1.2rem 0',
+                letterSpacing: '-0.02em',
+                lineHeight: 1.2,
               }}>
-                Duft-Wissen, das wirklich hilft
+                Wissen, das deinen Duft verändert
               </h2>
-              <p style={{ fontSize: '0.95rem', color: '#6B5344', margin: 0, lineHeight: 1.6 }}>
-                Ehrlich, ohne Fachjargon. Für alle, die einfach gut riechen wollen.
+              <p style={{
+                fontSize: 'clamp(15px, 2.5vw, 17px)',
+                color: '#6B5344',
+                margin: 0,
+                lineHeight: 1.7,
+                maxWidth: '600px',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+              }}>
+                Von Noten-Pairing bis günstige Dupes: Alles was du brauchst, um deinen Signature-Duft zu finden und zu lieben.
               </p>
             </div>
 
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-              gap: '1.5rem',
-              marginBottom: '2rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: 'clamp(1.5rem, 3vw, 2rem)',
+              marginBottom: 'clamp(2.5rem, 5vw, 3.5rem)',
             }}>
               {featuredGuides.map((guide) => (
                 <GuideTile key={guide.slug} guide={guide} emoji={GUIDE_EMOJIS[guide.slug]} />
@@ -126,18 +157,30 @@ export default async function Page() {
             <div style={{ textAlign: 'center' }}>
               <Link href="/ratgeber" style={{
                 display: 'inline-block',
-                background: 'transparent',
+                background: 'linear-gradient(135deg, #D4AF37 0%, #E5C158 100%)',
                 color: '#1F1410',
                 fontWeight: 700,
-                padding: '0.75rem 1.75rem',
-                borderRadius: '10px',
+                padding: 'clamp(12px, 2.5vw, 15px) clamp(24px, 5vw, 32px)',
+                borderRadius: '12px',
                 textDecoration: 'none',
-                fontSize: '0.9rem',
-                border: '1.5px solid rgba(212,175,55,0.30)',
-                letterSpacing: '0.01em',
-                transition: 'all 0.2s ease',
+                fontSize: 'clamp(14px, 2.2vw, 16px)',
+                letterSpacing: '0.05em',
+                transition: 'all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                boxShadow: '0 8px 24px rgba(212,175,55,0.2)',
+                border: 'none',
+                cursor: 'pointer',
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.transform = 'translateY(-3px)';
+                el.style.boxShadow = '0 16px 40px rgba(212,175,55,0.35)';
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.transform = 'translateY(0)';
+                el.style.boxShadow = '0 8px 24px rgba(212,175,55,0.2)';
               }}>
-                Alle {guides.length} Ratgeber ansehen →
+                Alle {guides.length} Premium-Ratgeber →
               </Link>
             </div>
           </div>

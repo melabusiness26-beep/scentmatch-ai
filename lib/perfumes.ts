@@ -56,19 +56,19 @@ const GENDER_DESC: Record<string, string> = {
   Men: ' für Herren',
   Unisex: ', unisex tragbar'
 };
-// Geschmackvolle, bildhafte Stimmungssätze – emotional, aber nicht kitschig.
+// Premium-Stimmungssätze – emotional, luxuriös, inspirierend.
 const FAMILY_MOOD: Record<string, string> = {
-  clean: 'Er fühlt sich an wie ein frisch gelüfteter Morgen – klar, leicht und unbeschwert.',
-  gourmand: 'Er legt sich warm und weich um dich, süß und vertraut wie ein gemütlicher Abend.',
-  woody: 'Er umgibt dich mit ruhiger, selbstbewusster Eleganz – tief, edel und souverän.',
-  floral: 'Er blüht zart auf der Haut auf – romantisch, weich und voller Charme.'
+  clean: 'Ein erfrischender, kristallklarer Duft – wie ein frisch gelüfteter Morgen voller Klarheit und Energie. Leicht, transparent und unbeschwert.',
+  gourmand: 'Warmer, süßer Luxus, der sich wie ein beruhigendes Geheimnis um dich legt. Vertraut, sinnlich und unwiderstehlich verführerisch.',
+  woody: 'Tiefe, Eleganz, Kraft – ein ruhiger, selbstbewusster Duft mit würzigen und hölzernen Noten. Souverän, reif und unvergesslich.',
+  floral: 'Romantisch, elegant und zeitlos – wie der Duft eines verfälschten Gartens. Weich, feingliedrig und voller subtiler Schönheit.'
 };
-// Kleine „Szene" je Anlass – macht die Beschreibung greifbarer.
+// Premium-Szenen je Anlass – macht jeden Moment besonders.
 const OCCASION_MOOD: Record<string, string> = {
-  Date: 'Wie geschaffen für Momente, in denen du in Erinnerung bleiben möchtest.',
-  Abend: 'Gemacht für besondere Abende, an denen du auffallen darfst.',
-  Alltag: 'Ein verlässlicher Begleiter, der dich unaufdringlich durch den Tag trägt.',
-  'Büro': 'Dezent genug fürs Büro – und gepflegt genug, um Eindruck zu hinterlassen.'
+  Date: 'Der perfekte Begleiter für Momente, in denen du unvergesslich sein möchtest. Verführerisch genug, um in Erinnerung zu bleiben.',
+  Abend: 'Für besondere Nächte, an denen du glänzen darfst. Elegant, selbstbewusst und voller Präsenz.',
+  Alltag: 'Dein treuer Begleiter durch alle Momente – zuverlässig, subtil und immer perfekt. Der ideale Signature-Duft für dich selbst.',
+  'Büro': 'Gepflegt und professionell, ohne je langweilig zu sein. Der Duft für Erfolg und subtiles Selbstvertrauen.'
 };
 
 function notesList(notes: string[] | null): string {
@@ -81,48 +81,58 @@ export function describePerfume(p: Perfume): string {
   const gender = p.gender ? GENDER_DESC[p.gender] || '' : '';
   const sentences: string[] = [];
 
-  sentences.push(`${p.perfume_name}${brand} ist ein ${fam ? `${fam} ` : ''}Duft${gender}.`);
+  // Premium Eröffnung
+  sentences.push(`**${p.perfume_name}**${brand} ist ein ${fam ? `${fam} ` : ''}Duft${gender}, der sich in die Welt der feinen Düfte einreiht.`);
 
   if (p.fragrance_family && FAMILY_MOOD[p.fragrance_family]) {
     sentences.push(FAMILY_MOOD[p.fragrance_family]);
   }
 
+  // Ausführliche Noten-Beschreibung
   const top = notesList(p.top_notes);
   const heart = notesList(p.heart_notes);
   const base = notesList(p.base_notes);
   const bits: string[] = [];
-  if (top) bits.push(`öffnet mit ${top}`);
-  if (heart) bits.push(`entfaltet im Herzen ${heart}`);
-  if (base) bits.push(`klingt mit ${base} aus`);
-  if (bits.length === 1) sentences.push(`Er ${bits[0]}.`);
-  else if (bits.length > 1) sentences.push(`Er ${bits.slice(0, -1).join(', ')} und ${bits[bits.length - 1]}.`);
+  if (top) bits.push(`öffnet mit den frischen Noten ${top}`);
+  if (heart) bits.push(`entfaltet sich im Herzen mit ${heart}`);
+  if (base) bits.push(`klingt elegant mit ${base} aus`);
+  if (bits.length === 1) sentences.push(`Die Duftreise ${bits[0]}.`);
+  else if (bits.length > 1) sentences.push(`Die Reise: ${bits.slice(0, -1).join(', ')} und ${bits[bits.length - 1]}.`);
 
+  // Performance Details (Haltbarkeit & Sillage)
   const perf: string[] = [];
   if (p.longevity != null) {
-    const word = p.longevity >= 8 ? 'sehr gut' : p.longevity >= 6 ? 'solide' : 'eher dezent';
-    perf.push(`die Haltbarkeit ist ${word} (${p.longevity}/10)`);
+    const word = p.longevity >= 8 ? 'ausgezeichnet' : p.longevity >= 6 ? 'solide' : 'dezent';
+    perf.push(`Haltbarkeit: ${word} (${p.longevity}/10)`);
   }
   if (p.sillage != null) {
-    const word = p.sillage >= 8 ? 'kräftig' : p.sillage >= 6 ? 'ausgewogen' : 'nah an der Haut';
-    perf.push(`die Sillage ist ${word} (${p.sillage}/10)`);
+    const word = p.sillage >= 8 ? 'kräftig & präsent' : p.sillage >= 6 ? 'ausgewogen' : 'hautah & intim';
+    perf.push(`Sillage: ${word} (${p.sillage}/10)`);
   }
   if (perf.length) {
-    const joined = perf.join(' und ');
-    sentences.push(`${joined.charAt(0).toUpperCase()}${joined.slice(1)}.`);
+    sentences.push(`Performance: ${perf.join(' • ')}.`);
   }
 
-  if (p.occasion && OCCASION_MOOD[p.occasion]) sentences.push(OCCASION_MOOD[p.occasion]);
-  else if (p.occasion) sentences.push(`Ideal für ${p.occasion}.`);
+  // Anlass & Stimmung
+  if (p.occasion && OCCASION_MOOD[p.occasion]) {
+    sentences.push(OCCASION_MOOD[p.occasion]);
+  } else if (p.occasion) {
+    sentences.push(`Perfekt für: ${p.occasion}.`);
+  }
 
+  // Saison
   if (p.season) {
     sentences.push(
       p.season === 'Ganzjährig'
-        ? 'Am schönsten trägt er sich das ganze Jahr über.'
-        : `Am schönsten in der Saison ${p.season}.`
+        ? 'Ein Duft, der das ganze Jahr über glänzt – zeitlos und vielseitig.'
+        : `Besonders schön: ${p.season}.`
     );
   }
 
-  if (p.price_chf != null) sentences.push(`Richtpreis: ca. CHF ${p.price_chf}.`);
+  // Preis (Premium-Positionierung)
+  if (p.price_chf != null) {
+    sentences.push(`💎 Richtpreis: **CHF ${p.price_chf}** – eine Investition in Qualität und Eleganz.`);
+  }
 
   return sentences.join(' ');
 }

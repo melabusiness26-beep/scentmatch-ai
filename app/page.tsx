@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import HomeClient from './HomeClient';
 import GuideTile from './GuideTile';
+import { FeaturedPerfumes } from '@/app/FeaturedPerfumes';
 import { getPerfumes, getPerfumeCount, getBrandCount } from '@/lib/perfumes';
 import { PerfumeTile } from '@/app/PerfumeTile';
 import { guides } from '@/lib/guides';
@@ -83,6 +84,17 @@ export default async function Page() {
       )}
 
       <HomeClient initialCatalogCount={catalogCount} initialBrandCount={brandCount} initialHighlights={highlightPerfumes} />
+
+      {/* Top-Rated Perfumes Section */}
+      <FeaturedPerfumes
+        perfumes={perfumes
+          .filter(p => p.scentmatch_score && p.scentmatch_score >= 75)
+          .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
+          .slice(0, 8)}
+        title="Die besten Düfte"
+        description="Düfte mit hoher Auressa-Bewertung – empfohlen für ihren ausgezeichneten Charakter, ihre Langlebigkeit und ihren Wert."
+        viewMoreLink="/duefte"
+      />
 
       {/* Ratgeber-Teaser — Premium Section mit Top Content */}
       {featuredGuides.length > 0 && (

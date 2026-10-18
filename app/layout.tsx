@@ -144,6 +144,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/saisonal">Saisonale Empfehlungen</Link>
               <Link href="/dufte-fuer-die-arbeit">Düfte für die Arbeit</Link>
               <Link href="/duftnoten">Duftnoten</Link>
+              <Link href="/duftchemie-grundlagen">Duftchemie Grundlagen</Link>
               <Link href="/duftlaenge">Duftlänge & Sillage</Link>
               <Link href="/dufte-nach-hauttyp">Düfte nach Hauttyp</Link>
               <Link href="/duft-lagerung">Duft-Lagerung</Link>

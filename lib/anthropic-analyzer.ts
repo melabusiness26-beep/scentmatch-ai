@@ -85,6 +85,74 @@ Keine Erklärung, nur JSON.`,
   }
 }
 
+async function enrichPerfumeWithCharacter(
+  perfumeName: string,
+  brandName: string,
+  notes: { top: string[]; heart: string[]; base: string[] },
+  description: string,
+  family: string
+): Promise<{ personalityType: string; mood: string; characterTags: string[] } | null> {
+  if (!isAnthropicConfigured) return null;
+
+  try {
+    const notesStr = `Top: ${notes.top.join(', ')}, Heart: ${notes.heart.join(', ')}, Base: ${notes.base.join(', ')}`;
+
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({
+        model: 'claude-opus-5-5',
+        max_tokens: 200,
+        messages: [
+          {
+            role: 'user',
+            content: `Du bist Duft-Sommelier. Analysiere diesen Duft und gib mir JSON:
+
+**${perfumeName}** von ${brandName}
+Familie: ${family}
+Noten: ${notesStr}
+Beschreibung: ${description}
+
+Antworte NUR mit gültigem JSON (keine Erklärung):
+{
+  "personalityType": "Ein prägnanter Persönlichkeitstyp (z.B. 'Der Abenteurer', 'Die Romantikerin', 'Der Klassiker')",
+  "mood": "Die Stimmung/das Gefühl des Duftes (z.B. 'Verträumt, weiblich, elegant')",
+  "characterTags": ["tag1", "tag2", "tag3", "tag4", "tag5"]
+}
+
+Sei kreativ aber authentisch!`,
+          },
+        ],
+      }),
+    });
+
+    if (!response.ok) return null;
+
+    const data = await response.json();
+    if (!data.content || !data.content[0] || data.content[0].type !== 'text') return null;
+
+    let text = data.content[0].text.trim();
+    if (text.startsWith('```')) {
+      const match = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
+      if (match) text = match[1].trim();
+    }
+
+    const result = JSON.parse(text);
+    return {
+      personalityType: result.personalityType || '',
+      mood: result.mood || '',
+      characterTags: Array.isArray(result.characterTags) ? result.characterTags : [],
+    };
+  } catch (error) {
+    console.error('[enrichPerfumeWithCharacter] Fehler:', error);
+    return null;
+  }
+}
+
 export async function findPerfumeByExtractedText(
   brandName: string,
   perfumeName: string
@@ -120,6 +188,21 @@ export async function findPerfumeByExtractedText(
 
     const poeticDescription = `Ein ${topMatch.gender === 'Women' ? 'eleganter Damenduft' : topMatch.gender === 'Men' ? 'klassischer Herrenduft' : 'vielseitiger Unisex-Duft'} mit ${topMatch.heart_notes && topMatch.heart_notes[0] ? topMatch.heart_notes[0].toLowerCase() : 'soften Noten'}.`;
 
+    const notes = {
+      top: (topMatch.top_notes || []) as string[],
+      heart: (topMatch.heart_notes || []) as string[],
+      base: (topMatch.base_notes || []) as string[],
+    };
+
+    // Charakter-Anreicherung mit Opus (Premium)
+    const characterData = await enrichPerfumeWithCharacter(
+      topMatch.perfume_name,
+      brandDisplayName,
+      notes,
+      topMatch.description || '',
+      topMatch.fragrance_family || 'Klassisch'
+    );
+
     return {
       success: true,
       data: {
@@ -128,15 +211,11 @@ export async function findPerfumeByExtractedText(
         confidence: matches.length === 1 ? 'high' : 'medium',
         concentration: null,
         gender: (topMatch.gender as 'woman' | 'man' | 'unisex') || 'unisex',
-        notes: {
-          top: (topMatch.top_notes || []) as string[],
-          heart: (topMatch.heart_notes || []) as string[],
-          base: (topMatch.base_notes || []) as string[],
-        },
+        notes,
         development: {
-          opening: (topMatch.top_notes || [''])[0] || 'Frische Öffnung',
-          middleGame: (topMatch.heart_notes || [''])[0] || 'Warme Herznote',
-          drydown: (topMatch.base_notes || [''])[0] || 'Eleganter Abgang',
+          opening: notes.top[0] || 'Frische Öffnung',
+          middleGame: notes.heart[0] || 'Warme Herznote',
+          drydown: notes.base[0] || 'Eleganter Abgang',
         },
         family: topMatch.fragrance_family || 'Klassisch',
         usageRecommendations: {
@@ -152,8 +231,9 @@ export async function findPerfumeByExtractedText(
         sillage: topMatch.sillage || 6,
         longevity: topMatch.longevity || 7,
         occasionList: (topMatch.occasion ? [topMatch.occasion] : []) as string[],
-        characterTags: [],
-        mood: '',
+        characterTags: characterData?.characterTags || [],
+        mood: characterData?.mood || '',
+        personalityType: characterData?.personalityType || '',
         seasonRecommendation: topMatch.season || 'Ganzjährig',
         bottleDescription: topMatch.image_url ? 'Flakon aus Datenbank' : '',
       },

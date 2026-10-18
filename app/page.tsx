@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import HomeClient from './HomeClient';
+import GuideTile from './GuideTile';
 import { getPerfumes, getPerfumeCount, getBrandCount } from '@/lib/perfumes';
 import { PerfumeTile } from '@/app/PerfumeTile';
 import { guides } from '@/lib/guides';
@@ -118,58 +119,7 @@ export default async function Page() {
               marginBottom: '2rem',
             }}>
               {featuredGuides.map((guide) => (
-                <Link
-                  key={guide.slug}
-                  href={`/ratgeber/${guide.slug}`}
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '0.7rem',
-                    background: 'rgba(253,251,248,0.92)',
-                    border: '1.5px solid rgba(212,175,55,0.20)',
-                    borderRadius: '14px',
-                    padding: '1.5rem',
-                    textDecoration: 'none',
-                    color: 'inherit',
-                    boxShadow: '0 8px 24px rgba(32,24,16,0.06)',
-                    transition: 'all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)',
-                    cursor: 'pointer',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.boxShadow = '0 20px 50px rgba(32,24,16,0.12)';
-                    e.currentTarget.style.transform = 'translateY(-4px)';
-                    e.currentTarget.style.borderColor = 'rgba(212,175,55,0.35)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(32,24,16,0.06)';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.borderColor = 'rgba(212,175,55,0.20)';
-                  }}
-                >
-                  <span style={{ fontSize: '1.6rem', lineHeight: 1 }}>{GUIDE_EMOJIS[guide.slug] ?? '📖'}</span>
-                  <h3 style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontSize: '0.95rem',
-                    fontWeight: 700,
-                    color: '#2a1d12',
-                    margin: 0,
-                    lineHeight: 1.35,
-                  }}>{guide.title}</h3>
-                  <p style={{
-                    fontSize: '0.8rem',
-                    color: '#6b5344',
-                    lineHeight: 1.55,
-                    margin: '0 0 auto 0',
-                  }}>{guide.description}</p>
-                  <span style={{
-                    fontSize: '0.72rem',
-                    fontWeight: 700,
-                    color: '#d4af37',
-                    letterSpacing: '0.04em',
-                    textTransform: 'uppercase',
-                    marginTop: '0.5rem',
-                  }}>Lesen →</span>
-                </Link>
+                <GuideTile key={guide.slug} guide={guide} emoji={GUIDE_EMOJIS[guide.slug]} />
               ))}
             </div>
 

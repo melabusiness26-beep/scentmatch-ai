@@ -750,43 +750,58 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
             <section style={{ marginBottom: '2.5rem' }}>
               <SectionHeading>Charakter & Persönlichkeit</SectionHeading>
               <div style={{
-                background: `linear-gradient(135deg, ${C.dark} 0%, #3a2518 100%)`,
+                background: `linear-gradient(165deg, #0f0b06 0%, #1a1108 40%, #2a1d12 100%)`,
                 color: C.cream,
-                padding: '1.75rem 2rem',
-                borderRadius: '14px',
-              }}>
+                padding: '2.25rem 2.5rem',
+                borderRadius: '18px',
+                boxShadow: C.shadowLg,
+                border: `1px solid rgba(212, 175, 55, 0.2)`,
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = C.shadowXl; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(212, 175, 55, 0.3)'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = C.shadowLg; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(212, 175, 55, 0.2)'; }}>
                 {currentAnalysis.personalityType && (
-                  <div style={{ marginBottom: '1rem' }}>
-                    <div style={{ fontSize: '0.72rem', color: C.gold, fontWeight: '700', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>Persönlichkeitstyp</div>
-                    <p style={{ fontSize: '1rem', color: C.cream, margin: 0, lineHeight: 1.5 }}>{currentAnalysis.personalityType}</p>
+                  <div style={{ marginBottom: '1.5rem' }}>
+                    <div style={{ fontSize: '0.7rem', color: C.goldLight, fontWeight: '700', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.5rem', opacity: 0.95 }}>Persönlichkeitstyp</div>
+                    <p style={{ fontSize: '1.15rem', color: C.cream, margin: 0, lineHeight: 1.6, fontWeight: '600' }}>{currentAnalysis.personalityType}</p>
                   </div>
                 )}
                 {currentAnalysis.mood && (
-                  <div style={{ marginBottom: '1rem' }}>
-                    <div style={{ fontSize: '0.72rem', color: C.gold, fontWeight: '700', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>Stimmung</div>
-                    <p style={{ fontSize: '1rem', color: C.cream, margin: 0 }}>{currentAnalysis.mood}</p>
+                  <div style={{ marginBottom: '1.5rem' }}>
+                    <div style={{ fontSize: '0.7rem', color: C.goldLight, fontWeight: '700', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.5rem', opacity: 0.95 }}>Stimmung</div>
+                    <p style={{ fontSize: '1.05rem', color: 'rgba(249, 246, 241, 0.95)', margin: 0, lineHeight: 1.65 }}>{currentAnalysis.mood}</p>
                   </div>
                 )}
                 {currentAnalysis.characterTags && currentAnalysis.characterTags.length > 0 && (
                   <div>
-                    <div style={{ fontSize: '0.72rem', color: C.gold, fontWeight: '700', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>Charakter-Tags</div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                    <div style={{ fontSize: '0.7rem', color: C.goldLight, fontWeight: '700', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.85rem', opacity: 0.95 }}>Charakter-Tags</div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
                       {currentAnalysis.characterTags.map((tag, i) => {
                         const tagSlug = tag.toLowerCase()
                           .replace(/[äöü]/g, (c) => ({ ä: 'ae', ö: 'oe', ü: 'ue' }[c] || c))
                           .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
                         return (
                           <Link key={i} href={`/tag/${tagSlug}`} style={{
-                            backgroundColor: 'rgba(212,175,55,0.18)',
-                            border: `1px solid rgba(212,175,55,0.45)`,
-                            color: C.gold,
-                            padding: '0.28rem 0.8rem',
-                            borderRadius: '20px',
-                            fontSize: '0.82rem', fontWeight: '500', textDecoration: 'none', display: 'inline-block',
+                            backgroundColor: 'rgba(212, 175, 55, 0.15)',
+                            border: `1.5px solid rgba(212, 175, 55, 0.4)`,
+                            color: C.goldLight,
+                            padding: '0.4rem 1rem',
+                            borderRadius: '24px',
+                            fontSize: '0.85rem', fontWeight: '600', textDecoration: 'none', display: 'inline-block',
+                            transition: 'all 0.2s ease',
                           }}
-                          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(212,175,55,0.35)'; }}
-                          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(212,175,55,0.18)'; }}
-                          >
+                          onMouseEnter={(e) => {
+                            (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(212, 175, 55, 0.3)';
+                            (e.currentTarget as HTMLElement).style.borderColor = 'rgba(212, 175, 55, 0.6)';
+                            (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
+                            (e.currentTarget as HTMLElement).style.boxShadow = '0 6px 16px rgba(212, 175, 55, 0.2)';
+                          }}
+                          onMouseLeave={(e) => {
+                            (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(212, 175, 55, 0.15)';
+                            (e.currentTarget as HTMLElement).style.borderColor = 'rgba(212, 175, 55, 0.4)';
+                            (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
+                            (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+                          }}>
                             #{tag}
                           </Link>
                         );

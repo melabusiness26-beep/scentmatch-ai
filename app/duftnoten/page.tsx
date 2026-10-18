@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import SiteHeader from '@/app/SiteHeader';
+import Breadcrumb from '@/app/Breadcrumb';
 import { scentNotes } from '@/lib/notes-glossary';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
@@ -23,6 +24,7 @@ export default function DuftnotenPage() {
   return (
     <main>
       <SiteHeader />
+      <Breadcrumb items={[{ label: 'Duftnoten-Lexikon', href: '/duftnoten' }]} />
       <div className="container">
         <section className="section">
           <p className="eyebrow">Wissen</p>

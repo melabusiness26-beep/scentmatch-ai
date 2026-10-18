@@ -149,6 +149,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/duefte-kombinieren">Duftkombinationen</Link>
               <Link href="/duft-mythen">Duft-Mythen & Fakten</Link>
               <Link href="/duftarten">Duftarten erklärt</Link>
+              <Link href="/duftsammlung">Duftsammlung aufbauen</Link>
               <Link href="/duftnoten-guide">Duftnoten verstehen</Link>
               <Link href="/koerperchemie-duft">Körperchemie & Duft</Link>
               <Link href="/duft-waehlen">Duft wählen – Anleitung</Link>

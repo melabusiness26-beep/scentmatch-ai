@@ -138,8 +138,8 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
   transition: all 0.2s ease;
 }
 .logo::before:hover { box-shadow: 0 16px 40px rgba(212,175,55,.32), inset 0 -1px 3px rgba(255,255,255,.4); }
-.badge { border: 1px solid rgba(201,168,76,.38); padding: 10px 16px; border-radius: 999px; background: rgba(201,168,76,.10); color: var(--brown); font-family: var(--font-sans), Arial, sans-serif; font-size: 13px; letter-spacing: .02em; font-weight: 500; transition: all 0.2s ease; }
-.badge:hover { background: rgba(201,168,76,.16); border-color: rgba(201,168,76,.6); }
+.badge { border: 1.5px solid rgba(212,175,55,.35); padding: 11px 18px; border-radius: 999px; background: rgba(212,175,55,.08); color: var(--brown); font-family: var(--font-sans), Arial, sans-serif; font-size: 13px; letter-spacing: .03em; font-weight: 600; transition: all 0.2s ease; box-shadow: var(--shadow-sm); }
+.badge:hover { background: rgba(212,175,55,.14); border-color: rgba(212,175,55,.6); }
 .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 36px; align-items: center; }
 h1 { font-size: clamp(44px, 7vw, 88px); line-height: 1.0; margin: 0 0 22px; letter-spacing: -0.01em; color: var(--brown); }
 p.lead { font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(16px, 4vw, 20px); line-height: 1.55; max-width: 650px; color: #5d4b40; }
@@ -165,8 +165,8 @@ button:focus, .button:focus { outline: 2px solid var(--gold); outline-offset: 2p
 /* Verfeinerte Duft-Karten – Meta-Infos untereinander, damit nichts quetscht */
 .tile-meta { display: flex; flex-direction: column; align-items: flex-start; gap: 7px; margin-top: 14px; }
 .tile-meta .small { white-space: normal; overflow-wrap: anywhere; }
-.score-pill { background: rgba(185,152,99,.16); border: 1px solid rgba(185,152,99,.45); color: var(--brown); border-radius: 999px; padding: clamp(3px, 1vw, 4px) clamp(8px, 2vw, 11px); font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(11px, 2vw, 13px); font-weight: 600; white-space: nowrap; }
-.gender-pill { display: inline-flex; align-items: center; gap: 6px; background: rgba(75,53,40,.06); border: 1px solid rgba(185,152,99,.40); color: var(--brown); border-radius: 999px; padding: clamp(3px, 1vw, 4px) clamp(8px, 2vw, 11px); font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(11px, 2vw, 13px); font-weight: 600; white-space: nowrap; }
+.score-pill { background: rgba(212,175,55,.14); border: 1.5px solid rgba(212,175,55,.40); color: var(--brown); border-radius: 999px; padding: clamp(4px, 1.1vw, 5px) clamp(10px, 2.2vw, 13px); font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(11px, 2vw, 13px); font-weight: 700; white-space: nowrap; }
+.gender-pill { display: inline-flex; align-items: center; gap: 7px; background: rgba(212,175,55,.10); border: 1.5px solid rgba(212,175,55,.38); color: var(--brown); border-radius: 999px; padding: clamp(4px, 1.1vw, 5px) clamp(10px, 2.2vw, 13px); font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(11px, 2vw, 13px); font-weight: 700; white-space: nowrap; }
 .gender-pill .gender-symbol { font-size: 15px; line-height: 1; }
 .tile h3 { font-size: clamp(16px, 3.5vw, 20px); }
 
@@ -187,12 +187,12 @@ button:focus, .button:focus { outline: 2px solid var(--gold); outline-offset: 2p
 .quiz { margin-top: 28px; }
 .question { font-size: clamp(22px, 5vw, 28px); color: var(--brown); margin-bottom: 20px; }
 .answers { display:grid; gap: 12px; }
-.answer { display:flex; align-items:center; justify-content:space-between; gap:clamp(10px, 3vw, 14px); width:100%; text-align:left; background:rgba(255,255,255,.85); color:var(--text); border:1px solid var(--line); border-radius:12px; padding:clamp(16px, 4vw, 18px) clamp(16px, 5vw, 20px); letter-spacing:0; font-size:clamp(14px, 2.2vw, 16px); transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 4px 12px rgba(50,32,20,.05); outline: 2px solid transparent; outline-offset: 2px; }
+.answer { display:flex; align-items:center; justify-content:space-between; gap:clamp(12px, 3.5vw, 16px); width:100%; text-align:left; background:rgba(253,251,248,.88); color:var(--text); border:1.5px solid rgba(212,175,55,.12); border-radius:12px; padding:clamp(18px, 4.5vw, 20px) clamp(18px, 5.5vw, 24px); letter-spacing:0.01em; font-size:clamp(14px, 2.2vw, 16px); transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: var(--shadow-sm); outline: 2px solid transparent; outline-offset: 2px; }
 .answer:focus { outline: 2px solid var(--gold); outline-offset: 2px; }
 /* Dezenter Pfeil rechts – signalisiert „führt weiter" und wirkt hochwertiger.
    Im Ruhezustand blass, beim Überfahren/Antippen wandert er sanft nach rechts. */
 .answer::after { content:'›'; font-family: var(--font-display), Georgia, serif; font-size:22px; line-height:1; color: rgba(201,168,76,.45); flex:none; transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.25s ease; }
-.answer:hover::after { color: var(--gold); transform: translateX(4px); }
+.answer:hover::after { color: #D4AF37; transform: translateX(6px); }
 .result { margin-top:20px; }
 .scorebar { height:10px; background:#eadfce; border-radius:99px; overflow:hidden; margin-top:7px; }
 .scorebar span { display:block; height:100%; background:var(--gold); }
@@ -234,7 +234,7 @@ a.logo { text-decoration:none; color:inherit; }
 .match-badge { display:inline-block; background:var(--brown); color:#fff; font-family:var(--font-sans), Arial, sans-serif; font-size:clamp(11px, 2vw, 13px); font-weight:700; padding:clamp(4px, 1vw, 5px) clamp(10px, 2vw, 12px); border-radius:999px; margin-bottom:10px; }
 
 /* Duft-Bilder & elegante Platzhalter (nach Duftfamilie eingefärbt) */
-.cover { position:relative; height:200px; border-radius:12px; margin-bottom:14px; background: radial-gradient(ellipse 70% 60% at 75% 20%, rgba(255,248,220,0.6) 0%, transparent 60%), radial-gradient(ellipse 55% 65% at 20% 80%, rgba(201,168,76,0.35) 0%, transparent 65%), linear-gradient(145deg, #d4b576 0%, #efd9a8 35%, #f5ead0 65%, #e0c9a0 100%); background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,.5), inset 0 -30px 60px rgba(50,32,20,.10), 0 8px 20px rgba(50,32,20,.08); transition: all 0.3s ease; }
+.cover { position:relative; height:220px; border-radius:14px; margin-bottom:16px; background: radial-gradient(ellipse 72% 62% at 76% 22%, rgba(255,250,225,0.7) 0%, transparent 58%), radial-gradient(ellipse 58% 68% at 22% 82%, rgba(212,175,55,0.32) 0%, transparent 62%), linear-gradient(145deg, #D9A877 0%, #EEE0B0 38%, #F5ECE0 66%, #E0C9A8 100%); background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow: inset 0 2px 0 rgba(255,255,255,.6), inset 0 -40px 80px rgba(32,24,16,.12), var(--shadow-md); transition: all 0.3s ease; border: 1px solid rgba(212,175,55,.08); }
 /* Echte Bilder (z. B. Duftnoten-Fotos) als <img> statt CSS-Hintergrund –
    so werden sie von der Google-Bildersuche indexiert und laden effizient. */
 img.cover { display:block; width:100%; object-fit:cover; height:100%; }
@@ -320,7 +320,7 @@ img.cover { display:block; width:100%; object-fit:cover; height:100%; }
 .detail-hero { display:grid; grid-template-columns: 1.3fr .7fr; gap:36px; align-items:start; margin-top:24px; }
 
 /* Foto-Hero-Banner (echtes Stimmungsbild mit dunklem Verlauf für Lesbarkeit). */
-.media-hero { position:relative; overflow:hidden; margin-top:24px; padding:clamp(40px, 8vw, 76px) clamp(24px, 6vw, 60px); border-radius:20px; color:#f3e9da; background-image: linear-gradient(120deg, rgba(26,15,7,.87) 0%, rgba(26,15,7,.60) 52%, rgba(26,15,7,.32) 100%), url('/hero-auressa-2.jpg'); background-size:cover; background-position:center; border:1px solid rgba(201,168,76,.25); box-shadow:0 50px 130px rgba(50,32,20,.40); }
+.media-hero { position:relative; overflow:hidden; margin-top:24px; padding:clamp(44px, 9vw, 84px) clamp(28px, 7vw, 68px); border-radius:20px; color:#EDE5DC; background-image: linear-gradient(125deg, rgba(15,10,7,.90) 0%, rgba(15,10,7,.65) 50%, rgba(15,10,7,.28) 100%), url('/hero-auressa-2.jpg'); background-size:cover; background-position:center; border:1.5px solid rgba(212,175,55,.2); box-shadow: var(--shadow-xl); }
 .media-hero-inner { position:relative; z-index:1; }
 .media-hero .eyebrow { color: var(--gold); }
 .media-hero h1 { color:#fbf3e6; }
@@ -345,18 +345,18 @@ img.cover { display:block; width:100%; object-fit:cover; height:100%; }
 .stat-row strong { color:var(--brown); font-family:var(--font-sans), Arial, sans-serif; }
 .notes-block { margin-bottom:18px; }
 .note-pills { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
-.note-pill { background:rgba(185,152,99,.18); border:1px solid rgba(185,152,99,.4); color:var(--brown); border-radius:999px; padding:7px 14px; font-family:var(--font-sans), Arial, sans-serif; font-size:clamp(12px, 2vw, 14px); }
-a.note-pill { text-decoration:none; cursor:pointer; transition: background .15s ease, border-color .15s ease, transform .12s ease; }
-a.note-pill:hover { background:rgba(185,152,99,.3); border-color:var(--gold); transform: translateY(-1px); }
+.note-pill { background:rgba(212,175,55,.12); border:1.5px solid rgba(212,175,55,.35); color:var(--brown); border-radius:999px; padding:8px 16px; font-family:var(--font-sans), Arial, sans-serif; font-size:clamp(12px, 2vw, 14px); font-weight:500; }
+a.note-pill { text-decoration:none; cursor:pointer; transition: background .15s ease, border-color .15s ease, transform .12s ease, box-shadow .15s ease; }
+a.note-pill:hover { background:rgba(212,175,55,.20); border-color:#D4AF37; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(212,175,55,.16); }
 
 /* FAQ-Block auf der Duftseite */
 .faq-item { padding:14px 0; border-bottom:1px solid rgba(75,53,40,.1); }
 .faq-item:last-child { border-bottom:0; padding-bottom:0; }
 .faq-item h3 { margin:0 0 6px; color:var(--brown); font-size:clamp(16px, 3vw, 18px); }
 /* Anklickbare Familien-Kacheln (filtern die Datenbank) */
-.tile-family { display:block; text-decoration:none; cursor:pointer; text-align:left; background:rgba(255,255,255,.62); color:var(--text); border:1px solid var(--line); border-radius:var(--radius); padding:clamp(16px, 4vw, 24px); font-family:var(--font-sans), Arial, sans-serif; font-weight:400; letter-spacing:0; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
-.tile-family:hover { transform: translateY(-3px); box-shadow:0 18px 50px rgba(75,53,40,.16); border-color: rgba(185,152,99,.6); }
-.tile-family.tile-active { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold) inset, 0 18px 50px rgba(75,53,40,.16); }
+.tile-family { display:block; text-decoration:none; cursor:pointer; text-align:left; background:rgba(253,251,248,.88); color:var(--text); border:1.5px solid rgba(212,175,55,.15); border-radius:var(--radius-lg); padding:clamp(18px, 4.5vw, 28px); font-family:var(--font-sans), Arial, sans-serif; font-weight:500; letter-spacing:0.01em; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+.tile-family:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: rgba(212,175,55,.45); }
+.tile-family.tile-active { border-color: #D4AF37; box-shadow: 0 0 0 2px #D4AF37 inset, var(--shadow-lg); background: rgba(212,175,55,.06); }
 .tile-family h3 { display:flex; align-items:center; gap:9px; margin:0 0 8px; color:var(--brown); font-size:clamp(18px, 3.5vw, 22px); }
 .tile-family h3::before { content:''; width:8px; height:8px; border-radius:50%; background: var(--gold); flex:none; }
 
@@ -366,10 +366,10 @@ a.note-pill:hover { background:rgba(185,152,99,.3); border-color:var(--gold); tr
 .filter-reset { padding:0 0 0 6px !important; }
 
 /* Filter-Leiste auf der Duftseite */
-.filter-row { display:flex; flex-wrap:wrap; gap:10px; margin:16px 0 6px; }
-.filter-pill { background:rgba(255,255,255,.6); color:var(--brown); border:1px solid rgba(75,53,40,.2); border-radius:999px; padding:clamp(7px, 2vw, 9px) clamp(14px, 4vw, 18px); font-family:var(--font-sans), Arial, sans-serif; font-size:clamp(12px, 2.2vw, 14px); font-weight:600; cursor:pointer; transition: border-color .15s ease, background .15s ease, color .15s ease; }
-.filter-pill:hover { border-color: var(--gold); }
-.filter-pill-active { background:var(--brown); color:#fff; border-color:var(--brown); }
+.filter-row { display:flex; flex-wrap:wrap; gap:12px; margin:18px 0 8px; }
+.filter-pill { background:rgba(253,251,248,.80); color:var(--brown); border:1.5px solid rgba(212,175,55,.2); border-radius:999px; padding:clamp(8px, 2.2vw, 10px) clamp(16px, 4.5vw, 20px); font-family:var(--font-sans), Arial, sans-serif; font-size:clamp(12px, 2.2vw, 14px); font-weight:600; cursor:pointer; transition: border-color .15s ease, background .15s ease, color .15s ease, box-shadow .15s ease; }
+.filter-pill:hover { border-color: #D4AF37; background: rgba(212,175,55,.08); }
+.filter-pill-active { background: var(--ink); color:#FDFBF8; border-color:var(--ink); box-shadow: var(--shadow-md); }
 .catalog-count { margin:10px 0 18px; }
 .catalog-more { justify-content:center; margin-top:24px; }
 

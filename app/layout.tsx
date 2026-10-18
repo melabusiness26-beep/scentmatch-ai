@@ -123,62 +123,84 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <footer className="site-footer">
           <FooterNewsletter />
-          <div className="container footer-inner">
-            <div>
-              <div className="logo">Auressa</div>
-              <p className="footer-kicker">Discovery · Fragrance · Boutique</p>
-              <p className="small footer-tag">Die moderne Duft-Findung – kuratiert in der Schweiz. Finde mit Quiz und intelligenter Match-Engine deinen Signature-Duft.</p>
+          <div style={{ backgroundColor: '#1F1410', padding: '3rem 1.25rem', borderTop: '1px solid rgba(212,175,55,0.1)' }}>
+            <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+              {/* Header */}
+              <div style={{ marginBottom: '2.5rem' }}>
+                <div style={{ fontSize: '1.8rem', fontWeight: 700, color: '#faf7f2', marginBottom: '0.3rem' }}>Auressa</div>
+                <p style={{ fontSize: '0.85rem', color: '#D4AF37', fontWeight: 600, margin: '0 0 0.5rem 0', letterSpacing: '0.05em' }}>DISCOVERY · FRAGRANCE · BOUTIQUE</p>
+                <p style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.65)', margin: 0, lineHeight: 1.6, maxWidth: '500px' }}>Die moderne Duft-Findung – kuratiert in der Schweiz. Finde deinen Signature-Duft mit Quiz und intelligenter Match-Engine.</p>
+              </div>
+
+              {/* 4-Spalten Grid */}
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gap: '2rem',
+                marginBottom: '2rem',
+              }}>
+                {/* Spalte 1: Tools */}
+                <div>
+                  <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Tools</h4>
+                  <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                    <Link href="/#quiz" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Quiz</Link>
+                    <Link href="/vergleich" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Vergleich</Link>
+                    <Link href="/wunschliste" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Wunschliste</Link>
+                    <Link href="/duft-scanner" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Duft-Scanner</Link>
+                    <Link href="/duft-detektiv" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Duft-Detektiv</Link>
+                    <Link href="/geschenk-finder" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Geschenk-Finder</Link>
+                  </nav>
+                </div>
+
+                {/* Spalte 2: Entdecken */}
+                <div>
+                  <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Entdecken</h4>
+                  <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                    <Link href="/duefte" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Düfte</Link>
+                    <Link href="/marke" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Marken</Link>
+                    <Link href="/ratgeber" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Ratgeber</Link>
+                    <Link href="/stimmungen" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Stimmungen</Link>
+                    <Link href="/reiseduefte" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Reisedüfte</Link>
+                    <Link href="/saisonal" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Saisonal</Link>
+                  </nav>
+                </div>
+
+                {/* Spalte 3: Wissen */}
+                <div>
+                  <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Wissen</h4>
+                  <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                    <Link href="/duftnoten" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Duftnoten</Link>
+                    <Link href="/duftchemie-grundlagen" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Duftchemie</Link>
+                    <Link href="/duftpersoenlichkeit" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Persönlichkeit</Link>
+                    <Link href="/nische-mainstream" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Nische vs. Mainstream</Link>
+                    <Link href="/faq" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>FAQ</Link>
+                    <Link href="/wie-auressa-funktioniert" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Wie es funktioniert</Link>
+                  </nav>
+                </div>
+
+                {/* Spalte 4: Über */}
+                <div>
+                  <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Über</h4>
+                  <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                    <Link href="/ueber-uns" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Über uns</Link>
+                    <Link href="/testing-und-transparenz" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Transparenz</Link>
+                    <Link href="/impressum" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Impressum</Link>
+                    <Link href="/datenschutz" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Datenschutz</Link>
+                  </nav>
+                </div>
+              </div>
+
+              {/* Affiliate Info */}
+              <p style={{ fontSize: '0.8rem', color: 'rgba(237,229,220,0.55)', margin: '1.5rem 0', paddingTop: '1.5rem', borderTop: '1px solid rgba(212,175,55,0.1)', lineHeight: 1.6 }}>
+                Auressa enthält Partner-Links zu ausgewählten Shops. Wenn du über einen solchen Link kaufst, erhalten wir ggf. eine Provision – für dich ohne Mehrkosten. Preise können abweichen; es gilt der jeweils aktuelle Preis im Shop.
+              </p>
+
+              {/* Bottom */}
+              <div style={{ fontSize: '0.8rem', color: 'rgba(237,229,220,0.5)', marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(212,175,55,0.08)' }}>
+                © {year} Auressa · Preise &amp; Angaben ohne Gewähr.
+              </div>
             </div>
-            <nav className="footer-links">
-              <Link href="/#quiz">Quiz</Link>
-              <Link href="/duefte">Düfte</Link>
-              <Link href="/marke">Marken</Link>
-              <Link href="/vergleich">Vergleich</Link>
-              <Link href="/wunschliste">Wunschliste</Link>
-              <Link href="/duft-finder">Duft-Finder</Link>
-              <Link href="/duft-detektiv">Duft-Detektiv</Link>
-              <Link href="/duft-scanner">Duft-Scanner</Link>
-              <Link href="/geschenk-finder">Geschenk-Finder</Link>
-              <Link href="/stimmungen">Stimmungen</Link>
-              <Link href="/reiseduefte">Reisedüfte</Link>
-              <Link href="/saisonal">Saisonale Empfehlungen</Link>
-              <Link href="/dufte-fuer-die-arbeit">Düfte für die Arbeit</Link>
-              <Link href="/duftnoten">Duftnoten</Link>
-              <Link href="/duftchemie-grundlagen">Duftchemie Grundlagen</Link>
-              <Link href="/duftlaenge">Duftlänge & Sillage</Link>
-              <Link href="/dufte-nach-hauttyp">Düfte nach Hauttyp</Link>
-              <Link href="/duft-lagerung">Duft-Lagerung</Link>
-              <Link href="/parfum-auftragen">Parfum richtig auftragen</Link>
-              <Link href="/duefte-kombinieren">Duftkombinationen</Link>
-              <Link href="/duft-mythen">Duft-Mythen & Fakten</Link>
-              <Link href="/duftarten">Duftarten erklärt</Link>
-              <Link href="/nische-mainstream">Nische vs. Mainstream</Link>
-              <Link href="/duftsammlung">Duftsammlung aufbauen</Link>
-              <Link href="/duftkollektion-minimal">Minimalistische Kollektion</Link>
-              <Link href="/herren-parfueme">Herren-Parfüme</Link>
-              <Link href="/damen-parfueme">Damen-Parfüme</Link>
-              <Link href="/duftnoten-guide">Duftnoten verstehen</Link>
-              <Link href="/koerperchemie-duft">Körperchemie & Duft</Link>
-              <Link href="/duftpersoenlichkeit">Duftpersönlichkeit</Link>
-              <Link href="/duft-waehlen">Duft wählen – Anleitung</Link>
-              <Link href="/duft-geschenk">Duft als Geschenk</Link>
-              <Link href="/guenstige-alternativen">Budget-Klone & Alternativen</Link>
-              <Link href="/ratgeber">Ratgeber</Link>
-              <Link href="/faq">FAQ</Link>
-              <Link href="/testing-und-transparenz">Testing & Transparenz</Link>
-              <Link href="/wie-auressa-funktioniert">Wie Auressa funktioniert</Link>
-              <Link href="/anleitung">Anleitung</Link>
-              <Link href="/ueber-uns">Über uns</Link>
-              <Link href="/impressum">Impressum</Link>
-              <Link href="/datenschutz">Datenschutz</Link>
-            </nav>
           </div>
-          <p className="container footer-affiliate small">
-            Auressa enthält Partner-Links zu ausgewählten Shops. Wenn du über einen solchen Link
-            kaufst, erhalten wir ggf. eine Provision – für dich ohne Mehrkosten. Preise können
-            abweichen; es gilt der jeweils aktuelle Preis im Shop.
-          </p>
-          <div className="container footer-bottom small">© {year} Auressa · Preise &amp; Angaben ohne Gewähr.</div>
         </footer>
         </FavoritesProvider>
         <CookieBanner />

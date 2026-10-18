@@ -91,16 +91,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         {/* Trust-Bar: Vertrauens-Signale vor dem Footer */}
         <div style={{
-          backgroundColor: '#2a1d12',
-          borderTop: '1px solid rgba(212,175,55,0.12)',
-          padding: '1.5rem 1.25rem',
+          backgroundColor: '#1F1410',
+          borderTop: '1.5px solid rgba(212,175,55,0.15)',
+          padding: '2rem 1.25rem',
+          boxShadow: 'inset 0 40px 80px rgba(0,0,0,0.08)',
         }}>
           <div style={{
             maxWidth: '1100px',
             margin: '0 auto',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '1rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gap: '2rem',
             textAlign: 'center',
           }}>
             {[
@@ -109,10 +110,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               { icon: '💸', label: 'Günstige Dupes', sub: 'Zu jedem Lieblingsduft' },
               { icon: '🔒', label: 'Kein Konto nötig', sub: 'Kein Newsletter-Zwang' },
             ].map((item) => (
-              <div key={item.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.25rem' }}>
-                <span style={{ fontSize: '1.4rem', lineHeight: 1 }}>{item.icon}</span>
-                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#d4af37' }}>{item.label}</span>
-                <span style={{ fontSize: '0.72rem', color: 'rgba(250,247,242,0.55)' }}>{item.sub}</span>
+              <div key={item.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.35rem' }}>
+                <span style={{ fontSize: '1.6rem', lineHeight: 1, marginBottom: '0.2rem' }}>{item.icon}</span>
+                <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#D4AF37', letterSpacing: '0.01em' }}>{item.label}</span>
+                <span style={{ fontSize: '0.75rem', color: 'rgba(237,229,220,0.60)', lineHeight: 1.5 }}>{item.sub}</span>
               </div>
             ))}
           </div>

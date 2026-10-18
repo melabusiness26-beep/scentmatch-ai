@@ -17,12 +17,14 @@ interface AnalysisResultViewProps {
   onSelectDbMatch?: (perfume: Perfume) => void;
 }
 
-// ─── Design Tokens ───────────────────────────────────────────────────────────
+// ─── Design Tokens (Premium Palette) ───────────────────────────────────────────
 const C = {
-  dark: '#2a1d12',
+  dark: '#1a1108',
+  darkText: '#2a1d12',
   gold: '#d4af37',
   goldLight: '#e8c84a',
   goldMuted: '#b08b4f',
+  goldSoft: 'rgba(212, 175, 55, 0.12)',
   cream: '#f9f6f1',
   creamDark: '#f0ebe1',
   sand: '#e8dcc8',
@@ -31,6 +33,10 @@ const C = {
   textLight: '#9a8a7e',
   journeyBg: '#fdf7e8',
   heroBg: '#1a1108',
+  shadowSm: '0 2px 8px rgba(0, 0, 0, 0.08)',
+  shadowMd: '0 4px 16px rgba(0, 0, 0, 0.12)',
+  shadowLg: '0 12px 32px rgba(0, 0, 0, 0.15)',
+  shadowXl: '0 20px 48px rgba(0, 0, 0, 0.18)',
 } as const;
 
 type Tab = 'profil' | 'noten' | 'erlebnis' | 'kaufen';
@@ -39,13 +45,18 @@ type Tab = 'profil' | 'noten' | 'erlebnis' | 'kaufen';
 
 const SectionHeading = ({ children }: { children: React.ReactNode }) => (
   <h2 style={{
-    fontSize: '1.35rem',
+    fontSize: '1.5rem',
     fontFamily: "'Playfair Display', serif",
-    color: C.dark,
-    marginBottom: '1rem',
-    marginTop: 0,
-    borderBottom: `2px solid ${C.sand}`,
-    paddingBottom: '0.45rem',
+    fontWeight: 700,
+    color: C.darkText,
+    marginBottom: '1.5rem',
+    marginTop: '2.5rem',
+    paddingBottom: '0.75rem',
+    borderBottom: `3px solid ${C.gold}`,
+    background: `linear-gradient(90deg, ${C.darkText} 0%, ${C.goldMuted} 100%)`,
+    backgroundClip: 'text',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
   }}>
     {children}
   </h2>
@@ -54,11 +65,15 @@ const SectionHeading = ({ children }: { children: React.ReactNode }) => (
 const Card = ({ children, style = {} }: { children: React.ReactNode; style?: React.CSSProperties }) => (
   <div style={{
     backgroundColor: C.cream,
-    borderRadius: '12px',
-    padding: '1.25rem 1.5rem',
+    borderRadius: '16px',
+    padding: '1.75rem 2rem',
     border: `1px solid ${C.sand}`,
+    boxShadow: C.shadowMd,
+    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
     ...style,
-  }}>
+  }}
+  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = C.shadowLg; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
+  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = C.shadowMd; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}>
     {children}
   </div>
 );
@@ -67,15 +82,15 @@ const BarRow = ({ label, value, max = 10, suffix = '/10' }: { label: string; val
   if (!value) return null;
   const pct = Math.min(100, (value / max) * 100);
   return (
-    <div style={{ marginBottom: '1rem' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
-        <span style={{ fontSize: '0.9rem', fontWeight: '600', color: C.text }}>{label}</span>
-        <span style={{ fontSize: '0.85rem', color: C.textLight, fontVariantNumeric: 'tabular-nums' }}>
+    <div style={{ marginBottom: '1.25rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+        <span style={{ fontSize: '0.95rem', fontWeight: '600', color: C.darkText, letterSpacing: '0.3px' }}>{label}</span>
+        <span style={{ fontSize: '0.9rem', color: C.gold, fontVariantNumeric: 'tabular-nums', fontWeight: '700' }}>
           {value}{suffix}
         </span>
       </div>
-      <div style={{ height: '6px', backgroundColor: C.sand, borderRadius: '4px', overflow: 'hidden' }}>
-        <div style={{ height: '100%', width: `${pct}%`, background: `linear-gradient(90deg, ${C.goldMuted}, ${C.gold})`, borderRadius: '4px', transition: 'width 0.6s ease' }} />
+      <div style={{ height: '8px', backgroundColor: C.sand, borderRadius: '6px', overflow: 'hidden', boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.05)' }}>
+        <div style={{ height: '100%', width: `${pct}%`, background: `linear-gradient(90deg, ${C.goldMuted} 0%, ${C.gold} 100%)`, borderRadius: '6px', transition: 'width 0.8s cubic-bezier(0.4, 0, 0.2, 1)', boxShadow: `0 0 12px rgba(212, 175, 55, 0.4)` }} />
       </div>
     </div>
   );
@@ -83,14 +98,19 @@ const BarRow = ({ label, value, max = 10, suffix = '/10' }: { label: string; val
 
 const Pill = ({ children }: { children: React.ReactNode }) => (
   <span style={{
-    backgroundColor: C.creamDark,
-    color: C.text,
-    border: `1px solid ${C.sand}`,
-    padding: '0.3rem 0.85rem',
-    borderRadius: '20px',
-    fontSize: '0.85rem',
-    fontWeight: '500',
-  }}>
+    backgroundColor: C.goldSoft,
+    color: C.darkText,
+    border: `1.5px solid ${C.gold}`,
+    padding: '0.45rem 1rem',
+    borderRadius: '24px',
+    fontSize: '0.9rem',
+    fontWeight: '600',
+    display: 'inline-block',
+    transition: 'all 0.2s ease',
+    cursor: 'pointer',
+  }}
+  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = C.gold; (e.currentTarget as HTMLElement).style.color = C.dark; }}
+  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = C.goldSoft; (e.currentTarget as HTMLElement).style.color = C.darkText; }}>
     {children}
   </span>
 );
@@ -159,7 +179,7 @@ const ScrollProgressBar = () => {
   );
 };
 
-// ─── Tab-Navigation ───────────────────────────────────────────────────────────
+// ─── Tab-Navigation (Premium) ───────────────────────────────────────────────────
 const TabNav = ({ active, onChange }: { active: Tab; onChange: (t: Tab) => void }) => {
   const tabs: { id: Tab; label: string; emoji: string }[] = [
     { id: 'profil',   label: 'Profil',   emoji: '📋' },
@@ -170,44 +190,54 @@ const TabNav = ({ active, onChange }: { active: Tab; onChange: (t: Tab) => void 
   return (
     <div style={{
       display: 'flex',
-      borderBottom: `2px solid ${C.sand}`,
-      marginBottom: '2rem',
-      gap: 0,
+      gap: '0.5rem',
+      marginBottom: '2.5rem',
+      padding: '0.75rem',
+      backgroundColor: C.goldSoft,
+      borderRadius: '16px',
+      backdropFilter: 'blur(10px)',
+      border: `1px solid rgba(212, 175, 55, 0.25)`,
+      boxShadow: C.shadowSm,
       overflowX: 'auto',
-      position: 'sticky',
-      top: 0,
-      backgroundColor: '#fdfaf5',
-      zIndex: 100,
-      borderRadius: '0',
       scrollbarWidth: 'none',
-    }}>
+    }} className="tabs-container">
       {tabs.map((t) => (
         <button
           key={t.id}
           onClick={() => onChange(t.id)}
           style={{
-            flex: '1 1 0',
-            minWidth: 0,
-            padding: '0.85rem 0.25rem',
+            flex: '1 1 auto',
+            minWidth: '0',
+            padding: '0.75rem 1rem',
             border: 'none',
-            borderBottom: active === t.id ? `3px solid ${C.gold}` : '3px solid transparent',
-            backgroundColor: 'transparent',
+            backgroundColor: active === t.id ? C.cream : 'transparent',
             color: active === t.id ? C.dark : C.textMuted,
-            fontWeight: active === t.id ? '700' : '500',
-            fontSize: '0.78rem',
+            fontWeight: active === t.id ? '700' : '600',
+            fontSize: '0.85rem',
             cursor: 'pointer',
             fontFamily: "'Inter', sans-serif",
-            transition: 'all 0.18s ease',
+            transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: '0.2rem',
-            marginBottom: '-2px',
+            gap: '0.35rem',
             whiteSpace: 'nowrap',
+            borderRadius: '12px',
+            boxShadow: active === t.id ? C.shadowMd : 'none',
+          }}
+          onMouseEnter={(e) => {
+            if (active !== t.id) {
+              (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(249, 246, 241, 0.5)';
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (active !== t.id) {
+              (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent';
+            }
           }}
         >
-          <span style={{ fontSize: '1rem', lineHeight: 1 }}>{t.emoji}</span>
-          {t.label}
+          <span style={{ fontSize: '1.1rem', lineHeight: 1 }}>{t.emoji}</span>
+          <span style={{ fontSize: '0.7rem', letterSpacing: '0.3px' }}>{t.label}</span>
         </button>
       ))}
     </div>
@@ -353,14 +383,16 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
         </div>
       )}
 
-      {/* ── HERO ──────────────────────────────────────────────────────────── */}
+      {/* ── HERO (Premium Design) ─────────────────────────────────────── */}
       <section style={{
-        background: `linear-gradient(160deg, #1a1108 0%, ${C.dark} 55%, #3a2518 100%)`,
+        background: `linear-gradient(165deg, #0a0503 0%, #1a1108 40%, #2a1d12 70%, #3a2518 100%)`,
         color: C.cream,
-        borderRadius: '16px',
-        marginBottom: '1.5rem',
+        borderRadius: '20px',
+        marginBottom: '2.5rem',
         overflow: 'hidden',
-        boxShadow: '0 10px 40px rgba(42,29,18,0.22)',
+        boxShadow: C.shadowXl,
+        position: 'relative',
+        border: `1px solid rgba(212, 175, 55, 0.15)`,
       }}>
         {displayImage && (
           <div style={{ position: 'relative', width: '100%', height: '220px', overflow: 'hidden' }}>
@@ -490,14 +522,29 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                 const it = item as { icon: string; label: string; value: string };
                 return (
                   <div key={it.label} style={{
-                    backgroundColor: C.cream, border: `1px solid ${C.sand}`,
-                    borderRadius: '10px', padding: '0.85rem 1rem',
-                    display: 'flex', flexDirection: 'column', gap: '0.25rem',
+                    backgroundColor: C.cream,
+                    border: `1px solid ${C.sand}`,
+                    borderRadius: '14px',
+                    padding: '1rem 1.1rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.35rem',
+                    boxShadow: C.shadowSm,
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: 'pointer',
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.boxShadow = C.shadowMd;
+                    (e.currentTarget as HTMLElement).style.transform = 'translateY(-3px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.boxShadow = C.shadowSm;
+                    (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
                   }}>
-                    <div style={{ fontSize: '0.7rem', color: C.goldMuted, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                    <div style={{ fontSize: '0.65rem', color: C.gold, fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                       {it.icon} {it.label}
                     </div>
-                    <div style={{ fontSize: '0.9rem', color: C.dark, fontWeight: '600' }}>{it.value}</div>
+                    <div style={{ fontSize: '0.95rem', color: C.darkText, fontWeight: '700', letterSpacing: '-0.3px' }}>{it.value}</div>
                   </div>
                 );
               })}

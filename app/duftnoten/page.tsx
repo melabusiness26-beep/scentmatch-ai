@@ -39,6 +39,23 @@ export default function DuftnotenPage() {
             sie kommen und welche Düfte aus unserem Katalog dazu passen.
           </p>
 
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.04))',
+            border: '1px solid rgba(212,175,55,0.15)',
+            borderRadius: '12px',
+            padding: '1.5rem',
+            marginBottom: '2rem',
+            marginTop: '1.5rem'
+          }}>
+            <p style={{ margin: '0 0 0.75rem 0', color: '#2a1d12', fontWeight: 600 }}>
+              🔺 <strong>Neu hier?</strong> Verstehe zuerst die Grundlagen:
+            </p>
+            <p style={{ margin: 0, color: '#6b5344', fontSize: '0.9rem', lineHeight: 1.6 }}>
+              Lerne, wie die Duftnoten-Pyramide funktioniert und warum ein Duft sich über den Tag verändert.
+              Lies unseren <Link href="/duftnoten-guide" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>umfassenden Duftnoten-Guide</Link>.
+            </p>
+          </div>
+
           <h2>Die wichtigsten Duftnoten im Überblick</h2>
           <div className="grid">
             {scentNotes.map((note) => (

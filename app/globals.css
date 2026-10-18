@@ -189,10 +189,12 @@ button:focus, .button:focus { outline: 2px solid var(--gold); outline-offset: 2p
 .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 28px; flex-wrap: wrap; }
 .site-footer .logo { color: #fbf3e6; }
 .footer-tag { color: rgba(243,233,218,.82); margin-top: 10px; max-width: 360px; font-size: clamp(13px, 2.2vw, 15px); }
-.footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
-.footer-links a { color: #f3e9da; text-decoration: none; font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(13px, 2.4vw, 15px); transition: color .15s ease; outline: 2px solid transparent; outline-offset: 2px; border-radius: 2px; }
-.footer-links a:focus { outline: 2px solid var(--gold); outline-offset: 2px; }
-.footer-links a:hover { color: var(--gold); }
+.footer-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.footer-col { display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-col-title { font-family: var(--font-sans), Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+.footer-col a { color: rgba(243,233,218,.75); text-decoration: none; font-family: var(--font-sans), Arial, sans-serif; font-size: 14px; line-height: 1.4; transition: color .15s ease; outline: 2px solid transparent; outline-offset: 2px; border-radius: 2px; }
+.footer-col a:focus { outline: 2px solid var(--gold); outline-offset: 2px; }
+.footer-col a:hover { color: #faf7f2; }
 .footer-bottom { margin-top: 30px; color: rgba(243,233,218,.6); border-top: 1px solid rgba(243,233,218,.15); padding-top: 18px; font-size: clamp(12px, 2vw, 14px); }
 .grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .tile { padding: 24px; border-radius: var(--radius-lg); background: rgba(253,251,248,.92); border: 1px solid var(--line); transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: var(--shadow-sm); }
@@ -499,7 +501,7 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
   .top-pick { padding: 14px 16px; }
   .search { padding: 11px 12px; font-size: 13px; }
   .footer-inner { gap: 16px; }
-  .footer-links { gap: 14px; }
+  .footer-cols { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
   .footer-tag { margin-top: 6px; }
   .why-card { padding: 16px; }
   .footer-bottom { padding-top: 12px; margin-top: 18px; }
@@ -876,6 +878,7 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(185,152,99
   /* Stack everything on mobile */
   .hero-stats { flex-direction: column; }
   .footer-inner { flex-direction: column; gap: 20px; }
+  .footer-cols { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
 
   /* Better mobile spacing */
   .section { margin-top: 60px; }

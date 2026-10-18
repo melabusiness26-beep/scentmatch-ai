@@ -129,49 +129,43 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <p className="footer-kicker">Discovery · Fragrance · Boutique</p>
               <p className="small footer-tag">Die moderne Duft-Findung – kuratiert in der Schweiz. Finde mit Quiz und intelligenter Match-Engine deinen Signature-Duft.</p>
             </div>
-            <nav className="footer-links">
-              <Link href="/#quiz">Quiz</Link>
-              <Link href="/duefte">Düfte</Link>
-              <Link href="/marke">Marken</Link>
-              <Link href="/vergleich">Vergleich</Link>
-              <Link href="/wunschliste">Wunschliste</Link>
-              <Link href="/duft-finder">Duft-Finder</Link>
-              <Link href="/duft-detektiv">Duft-Detektiv</Link>
-              <Link href="/duft-scanner">Duft-Scanner</Link>
-              <Link href="/geschenk-finder">Geschenk-Finder</Link>
-              <Link href="/stimmungen">Stimmungen</Link>
-              <Link href="/reiseduefte">Reisedüfte</Link>
-              <Link href="/saisonal">Saisonale Empfehlungen</Link>
-              <Link href="/dufte-fuer-die-arbeit">Düfte für die Arbeit</Link>
-              <Link href="/duftnoten">Duftnoten</Link>
-              <Link href="/duftchemie-grundlagen">Duftchemie Grundlagen</Link>
-              <Link href="/duftlaenge">Duftlänge & Sillage</Link>
-              <Link href="/dufte-nach-hauttyp">Düfte nach Hauttyp</Link>
-              <Link href="/duft-lagerung">Duft-Lagerung</Link>
-              <Link href="/parfum-auftragen">Parfum richtig auftragen</Link>
-              <Link href="/duefte-kombinieren">Duftkombinationen</Link>
-              <Link href="/duft-mythen">Duft-Mythen & Fakten</Link>
-              <Link href="/duftarten">Duftarten erklärt</Link>
-              <Link href="/nische-mainstream">Nische vs. Mainstream</Link>
-              <Link href="/duftsammlung">Duftsammlung aufbauen</Link>
-              <Link href="/duftkollektion-minimal">Minimalistische Kollektion</Link>
-              <Link href="/herren-parfueme">Herren-Parfüme</Link>
-              <Link href="/damen-parfueme">Damen-Parfüme</Link>
-              <Link href="/duftnoten-guide">Duftnoten verstehen</Link>
-              <Link href="/koerperchemie-duft">Körperchemie & Duft</Link>
-              <Link href="/duftpersoenlichkeit">Duftpersönlichkeit</Link>
-              <Link href="/duft-waehlen">Duft wählen – Anleitung</Link>
-              <Link href="/duft-geschenk">Duft als Geschenk</Link>
-              <Link href="/guenstige-alternativen">Budget-Klone & Alternativen</Link>
-              <Link href="/ratgeber">Ratgeber</Link>
-              <Link href="/faq">FAQ</Link>
-              <Link href="/testing-und-transparenz">Testing & Transparenz</Link>
-              <Link href="/wie-auressa-funktioniert">Wie Auressa funktioniert</Link>
-              <Link href="/anleitung">Anleitung</Link>
-              <Link href="/ueber-uns">Über uns</Link>
-              <Link href="/impressum">Impressum</Link>
-              <Link href="/datenschutz">Datenschutz</Link>
-            </nav>
+            <div className="footer-cols">
+              <div className="footer-col">
+                <span className="footer-col-title">Tools</span>
+                <Link href="/#quiz">Duft-Quiz</Link>
+                <Link href="/duft-detektiv">Duft-Detektiv</Link>
+                <Link href="/duft-finder">Duft-Finder</Link>
+                <Link href="/geschenk-finder">Geschenk-Finder</Link>
+                <Link href="/vergleich">Vergleich</Link>
+                <Link href="/wunschliste">Wunschliste</Link>
+              </div>
+              <div className="footer-col">
+                <span className="footer-col-title">Entdecken</span>
+                <Link href="/duefte">Alle Düfte</Link>
+                <Link href="/marke">Marken</Link>
+                <Link href="/saisonal">Saisonale Tipps</Link>
+                <Link href="/herren-parfueme">Herren-Parfüme</Link>
+                <Link href="/damen-parfueme">Damen-Parfüme</Link>
+                <Link href="/guenstige-alternativen">Günstige Dupes</Link>
+              </div>
+              <div className="footer-col">
+                <span className="footer-col-title">Ratgeber</span>
+                <Link href="/ratgeber">Alle Ratgeber</Link>
+                <Link href="/ratgeber/guenstige-alternativen-zu-teuren-dueften">Dupes & Alternativen</Link>
+                <Link href="/ratgeber/duftpersoenlichkeit">Duftpersönlichkeit</Link>
+                <Link href="/ratgeber/nische-mainstream">Nische vs. Mainstream</Link>
+                <Link href="/ratgeber/duftchemie-grundlagen">Duftchemie</Link>
+                <Link href="/ratgeber/duftkollektion-minimal">Minimalkollektion</Link>
+              </div>
+              <div className="footer-col">
+                <span className="footer-col-title">Über Auressa</span>
+                <Link href="/ueber-uns">Über uns</Link>
+                <Link href="/wie-auressa-funktioniert">Wie es funktioniert</Link>
+                <Link href="/faq">FAQ</Link>
+                <Link href="/impressum">Impressum</Link>
+                <Link href="/datenschutz">Datenschutz</Link>
+              </div>
+            </div>
           </div>
           <p className="container footer-affiliate small">
             Auressa enthält Partner-Links zu ausgewählten Shops. Wenn du über einen solchen Link

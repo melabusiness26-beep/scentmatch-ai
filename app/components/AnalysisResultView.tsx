@@ -17,7 +17,7 @@ interface AnalysisResultViewProps {
   onSelectDbMatch?: (perfume: Perfume) => void;
 }
 
-// ─── Design Tokens (Premium Palette) ───────────────────────────────────────────
+// ─── Design Tokens (Premium Palette - Luxury-Upgrade) ───────────────────────────────────────────
 const C = {
   dark: '#1a1108',
   darkText: '#2a1d12',
@@ -25,18 +25,22 @@ const C = {
   goldLight: '#e8c84a',
   goldMuted: '#b08b4f',
   goldSoft: 'rgba(212, 175, 55, 0.12)',
-  cream: '#f9f6f1',
-  creamDark: '#f0ebe1',
+  cream: '#faf8f5',
+  creamDark: '#f5f1eb',
+  creamLight: '#fffdf9',
   sand: '#e8dcc8',
-  text: '#3d2e22',
-  textMuted: '#7a6a5e',
+  text: '#2d1f15',
+  textMuted: '#6b5d52',
   textLight: '#9a8a7e',
-  journeyBg: '#fdf7e8',
+  journeyBg: '#fffbf2',
   heroBg: '#1a1108',
-  shadowSm: '0 2px 8px rgba(0, 0, 0, 0.08)',
-  shadowMd: '0 4px 16px rgba(0, 0, 0, 0.12)',
-  shadowLg: '0 12px 32px rgba(0, 0, 0, 0.15)',
-  shadowXl: '0 20px 48px rgba(0, 0, 0, 0.18)',
+  accentGold: '#e8c84a',
+  accentCream: '#fff9f0',
+  shadowSm: '0 2px 8px rgba(0, 0, 0, 0.06)',
+  shadowMd: '0 6px 20px rgba(0, 0, 0, 0.1)',
+  shadowLg: '0 16px 40px rgba(0, 0, 0, 0.12)',
+  shadowXl: '0 28px 64px rgba(0, 0, 0, 0.14)',
+  glowGold: '0 0 24px rgba(212, 175, 55, 0.4)',
 } as const;
 
 type Tab = 'profil' | 'noten' | 'erlebnis' | 'kaufen';
@@ -874,21 +878,112 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
 
           {/* Der perfekte Moment */}
           {currentAnalysis.perfectMoment && (
-            <section style={{ marginBottom: '2.5rem' }}>
+            <section style={{ marginBottom: '3.5rem' }}>
               <SectionHeading>Der perfekte Moment</SectionHeading>
               <div style={{
                 background: 'linear-gradient(135deg, #fdf7e8, #fef9ee)',
-                border: `1px solid #f0e0a0`,
-                borderLeft: `4px solid ${C.gold}`,
-                borderRadius: '10px',
-                padding: '1.5rem 1.75rem',
+                border: `2px solid ${C.gold}`,
+                borderRadius: '14px',
+                padding: '2rem',
+                boxShadow: `0 0 20px rgba(212, 175, 55, 0.15)`,
               }}>
-                <p style={{ fontSize: '1rem', lineHeight: 1.8, color: C.dark, margin: 0, fontStyle: 'italic' }}>
+                <p style={{ fontSize: '1.05rem', lineHeight: 1.85, color: C.darkText, margin: 0, fontStyle: 'italic', fontWeight: 500 }}>
                   ✨ {currentAnalysis.perfectMoment}
                 </p>
               </div>
             </section>
           )}
+
+          {/* ══════════════════════════════════════════════════════════════ */}
+          {/* ÄHNLICHE DÜFTE & LAYERING-TIPPS - PREMIUM SEKTION */}
+          {/* ══════════════════════════════════════════════════════════════ */}
+
+          {/* Ähnliche Düfte */}
+          {similarPerfumes && similarPerfumes.length > 0 && (
+            <section style={{ marginBottom: '3.5rem' }}>
+              <SectionHeading>Ähnliche Düfte entdecken</SectionHeading>
+              <p style={{ fontSize: '0.95rem', color: C.textMuted, marginBottom: '1.75rem', lineHeight: 1.65 }}>
+                Diese Düfte teilen ähnliche Noten, Charakter und Qualität. Perfekt, um dein Duft-Portfolio zu erweitern.
+              </p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '1rem' }}>
+                {similarPerfumes.slice(0, 6).map((perf, idx) => (
+                  <div key={idx} style={{
+                    backgroundColor: C.creamLight,
+                    border: `1.5px solid ${C.sand}`,
+                    borderRadius: '14px',
+                    padding: '1.25rem 1rem',
+                    textAlign: 'center',
+                    transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: 'pointer',
+                    boxShadow: C.shadowSm,
+                  }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = C.shadowMd; (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)'; (e.currentTarget as HTMLElement).style.borderColor = C.gold; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = C.shadowSm; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; (e.currentTarget as HTMLElement).style.borderColor = C.sand; }}>
+                    <div style={{ fontSize: '0.8rem', color: C.goldMuted, fontWeight: '700', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                      {perf.brands?.name || 'Marke'}
+                    </div>
+                    <div style={{ fontSize: '0.95rem', color: C.darkText, fontWeight: '600', marginBottom: '0.4rem', minHeight: '2.4rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      {perf.perfume_name}
+                    </div>
+                    {perf.price_chf && <div style={{ fontSize: '0.85rem', color: C.gold, fontWeight: '700' }}>CHF {perf.price_chf}</div>}
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Layering-Tipps */}
+          <section style={{ marginBottom: '3rem' }}>
+            <SectionHeading>Layering & Kombinationen</SectionHeading>
+            <p style={{ fontSize: '0.95rem', color: C.textMuted, marginBottom: '1.75rem', lineHeight: 1.65 }}>
+              Kombiniere diesen Duft mit anderen für personalisierte Duft-Kreationen. Verleihe deinem Signature-Duft eine neue Dimension.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem' }}>
+              <Card style={{ backgroundColor: C.accentCream }}>
+                <div style={{ fontSize: '0.75rem', color: C.gold, fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem' }}>💫 Mit Frische kombinieren</div>
+                <p style={{ fontSize: '0.95rem', color: C.darkText, margin: '0 0 0.75rem 0', fontWeight: 600 }}>Citrus + {displayName}</p>
+                <p style={{ fontSize: '0.85rem', color: C.textMuted, margin: 0, lineHeight: 1.6 }}>Frische Kopfnoten plus warmer Base für eine ausgewogene Komposition.</p>
+              </Card>
+              <Card style={{ backgroundColor: C.accentCream }}>
+                <div style={{ fontSize: '0.75rem', color: C.gold, fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem' }}>🌙 Abend-Intensivierung</div>
+                <p style={{ fontSize: '0.95rem', color: C.darkText, margin: '0 0 0.75rem 0', fontWeight: 600 }}>{displayName} + Oudh-Noten</p>
+                <p style={{ fontSize: '0.85rem', color: C.textMuted, margin: 0, lineHeight: 1.6 }}>Noch intensivere Sillage für abends. Kombiniere mit einem Oudh-Duft.</p>
+              </Card>
+              <Card style={{ backgroundColor: C.accentCream }}>
+                <div style={{ fontSize: '0.75rem', color: C.gold, fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem' }}>✨ Luxus-Stacking</div>
+                <p style={{ fontSize: '0.95rem', color: C.darkText, margin: '0 0 0.75rem 0', fontWeight: 600 }}>Premium-Layering mit ähnlichen Top-Notes</p>
+                <p style={{ fontSize: '0.85rem', color: C.textMuted, margin: 0, lineHeight: 1.6 }}>Verschichte mehrere Premium-Düfte für einen einzigartigen, persönlichen Signature-Duft.</p>
+              </Card>
+            </div>
+          </section>
+
+          {/* Häufig gefragt */}
+          <section style={{ marginBottom: '3rem' }}>
+            <SectionHeading>Häufig gefragt</SectionHeading>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1rem' }}>
+              {[
+                { q: 'Wie lange hält dieser Duft?', a: `Mit einer Haltbarkeit von ${currentAnalysis.longevity || 8}/10 hält dieser Duft etwa ${currentAnalysis.longevity && currentAnalysis.longevity >= 8 ? '8-12' : currentAnalysis.longevity && currentAnalysis.longevity >= 6 ? '5-8' : '3-5'} Stunden auf der Haut.` },
+                { q: 'Ist dieser Duft für jeden geeignet?', a: `Dieser ${genderLabel === 'Unisex' ? 'Unisex-Duft' : genderLabel === 'Damen' ? 'Damendüfte' : 'Herrenduft'} hat eine Sillage von ${currentAnalysis.sillage || 7}/10. Am besten für ${dbMatch?.occasion || 'elegante Anlässe'}.` },
+                { q: 'Unterschied zwischen Parfum und EdP?', a: 'Parfum (Extrait) hat 15-40% Duftkonzentration und hält länger. EdP hat 15-20% Konzentration. Dieser Duft ist hochwertig und langanhaltend in jeder Form.' },
+                { q: 'Wie trage ich ihn richtig auf?', a: 'Trage 2-3 Sprühstöße auf Pulse Points auf: Handgelenke, Hals, hinter den Ohren. Nicht reiben – das zerstört die Duftmoleküle. Für maximale Haltbarkeit auf feuchter, warmer Haut auftragen.' },
+              ].map((item, idx) => (
+                <div key={idx} style={{
+                  backgroundColor: C.creamLight,
+                  border: `1px solid ${C.sand}`,
+                  borderRadius: '12px',
+                  padding: '1.5rem',
+                  boxShadow: C.shadowSm,
+                }}>
+                  <div style={{ fontSize: '0.95rem', fontWeight: '700', color: C.darkText, marginBottom: '0.75rem' }}>
+                    ❓ {item.q}
+                  </div>
+                  <p style={{ fontSize: '0.9rem', color: C.textMuted, margin: 0, lineHeight: 1.65 }}>
+                    {item.a}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
         </div>
       )}
 

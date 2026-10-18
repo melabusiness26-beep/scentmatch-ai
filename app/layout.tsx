@@ -141,7 +141,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               }}>
                 {/* Spalte 1: Tools */}
                 <div>
-                  <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Tools</h4>
+                  <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block' }}>Tools</h4>
                   <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                     <Link href="/#quiz" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Quiz</Link>
                     <Link href="/vergleich" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Vergleich</Link>

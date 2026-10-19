@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
+// Schlankes Newsletter-Anmeldefeld. Sendet E-Mail an /api/newsletter/subscribe,
+// das die Einwilligung speichert. Einwilligung per Checkbox + Datenschutz-Link.
 export default function NewsletterForm({
   source = 'footer',
   title = 'Duft-Tipps per E-Mail',

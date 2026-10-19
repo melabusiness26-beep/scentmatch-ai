@@ -40,22 +40,25 @@ export async function POST(request: NextRequest) {
           REGISTRATION_DATE: new Date().toISOString().split('T')[0],
         },
         listIds: [parseInt(brevoListId, 10)],
-        updateEnabled: true, // Überschreibe Email-Adresse, falls sie bereits existiert
+        updateEnabled: true,
       };
 
-      const brevoResponse = await fetch('https://api.brevo.com/v3/contacts', {
-        method: 'POST',
-        headers: {
-          'api-key': brevoApiKey,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(contact),
-      });
+      try {
+        const brevoResponse = await fetch('https://api.brevo.com/v3/contacts', {
+          method: 'POST',
+          headers: {
+            'api-key': brevoApiKey,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(contact),
+        });
 
-      if (!brevoResponse.ok) {
-        const brevoError = await brevoResponse.text();
-        console.error('Brevo error:', brevoResponse.status, brevoError);
-        // Nicht abbrechen – Supabase-Speichern ist erfolgreich, Brevo ist optional
+        if (!brevoResponse.ok) {
+          const brevoError = await brevoResponse.text();
+          console.error('Brevo error:', brevoResponse.status, brevoError);
+        }
+      } catch (brevoErr) {
+        console.error('Brevo request error:', brevoErr);
       }
     }
 

@@ -17,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const perfumeUrls: MetadataRoute.Sitemap = perfumes.map((perfume) => ({
     url: `${SITE_URL}/duft/${perfume.slug}`,
-    lastModified: perfume.created_at ? new Date(perfume.created_at) : new Date(),
+    lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.7,
   }));

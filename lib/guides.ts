@@ -755,25 +755,10 @@ Ein Duft besteht aus **drei Schichten**:
 
 Lass uns **Tom Ford Black Orchid** durchgehen:
 
-```
-         🔺
-        / \
-       /   \
-      /TOP  \      15 min
-     /  5%   \
-    /_________ \
-    |HEART    |     1–4 Stunden
-    | 70%     |
-    |   Rose  |
-    | Zimt    |
-    |_________|
-    |BASE     |     4–24+ Stunden
-    |  20%    |
-    | Sandelh.|
-    | Vanille |
-    |_________|
-```
-
+**Duftpyramide-Struktur:**
+- **TOP (5%)**: Die ersten 15 Minuten
+- **HEART (70%)**: 1–4 Stunden mit Rose & Zimt
+- **BASE (20%)**: 4–24+ Stunden mit Sandelholz & Vanille
 ### Timeline:
 
 - **0–5 min:** Du riechst **Schwarze Orchidee, Fresia, Kardamom** (Top)

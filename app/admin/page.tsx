@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, ReactElement } from 'react';
 import Link from 'next/link';
-import { createClient } from '@/lib/supabase';
+import { supabase } from '@/lib/supabase';
 
 export default function AdminPage(): ReactElement {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -11,8 +11,6 @@ export default function AdminPage(): ReactElement {
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [perfumeCount, setPerfumeCount] = useState(0);
-
-  const supabase = createClient();
 
   useEffect(() => {
     checkAuth();

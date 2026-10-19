@@ -3,7 +3,7 @@
 import React, { useState, useEffect, ReactElement } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { createClient } from '@/lib/supabase';
+import { supabase } from '@/lib/supabase';
 
 export default function NewPerfumePage(): ReactElement {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -21,7 +21,7 @@ export default function NewPerfumePage(): ReactElement {
     price_chf: '',
     longevity: '7',
     sillage: '3',
-    season: 'Ganzjährig',
+    season: 'Ganzjaehrig',
     occasion: 'Alltag',
     description: '',
     image_url: '',
@@ -29,9 +29,8 @@ export default function NewPerfumePage(): ReactElement {
     top_notes: '',
     heart_notes: '',
     base_notes: '',
-  };
+  });
 
-  const supabase = createClient();
   const router = useRouter();
 
   useEffect(() => {
@@ -68,10 +67,10 @@ export default function NewPerfumePage(): ReactElement {
   const generateSlug = (name: string): string => {
     return name
       .toLowerCase()
-      .replace(/ä/g, 'ae')
-      .replace(/ö/g, 'oe')
-      .replace(/ü/g, 'ue')
-      .replace(/ß/g, 'ss')
+      .replace(/ae/g, 'ae')
+      .replace(/oe/g, 'oe')
+      .replace(/ue/g, 'ue')
+      .replace(/ss/g, 'ss')
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-|-$/g, '');
   };
@@ -114,11 +113,11 @@ export default function NewPerfumePage(): ReactElement {
 
       if (insertError) throw insertError;
 
-      setSuccess('Duft erfolgreich hinzugefügt!');
+      setSuccess('Duft erfolgreich hinzugefuegt!');
       setTimeout(() => router.push('/admin/perfumes'), 2000);
     } catch (err) {
       console.error('Save error:', err);
-      setError('Fehler beim Speichern. Versuche es später erneut.');
+      setError('Fehler beim Speichern. Versuche es spaeter erneut.');
     } finally {
       setIsSaving(false);
     }
@@ -147,8 +146,8 @@ export default function NewPerfumePage(): ReactElement {
     <article className="legal-page">
       <section className="page-hero">
         <div className="page-hero-inner">
-          <h1>Neuen Duft hinzufügen</h1>
-          <p className="lead">Füge einen neuen Duft zu deinem Katalog hinzu</p>
+          <h1>Neuen Duft hinzufuegen</h1>
+          <p className="lead">Fuege einen neuen Duft zu deinem Katalog hinzu</p>
         </div>
       </section>
 
@@ -180,7 +179,7 @@ export default function NewPerfumePage(): ReactElement {
               onChange={handleChange}
               required
             >
-              <option value="">— Marke wählen —</option>
+              <option value="">— Marke waehlen —</option>
               {brands.map((brand) => (
                 <option key={brand.id} value={brand.id}>
                   {brand.name}
@@ -254,11 +253,11 @@ export default function NewPerfumePage(): ReactElement {
             <div className="form-group">
               <label htmlFor="season">Saison</label>
               <select id="season" name="season" value={formData.season} onChange={handleChange}>
-                <option value="Frühling">Frühling</option>
+                <option value="Fruehling">Fruehling</option>
                 <option value="Sommer">Sommer</option>
                 <option value="Herbst">Herbst</option>
                 <option value="Winter">Winter</option>
-                <option value="Ganzjährig">Ganzjährig</option>
+                <option value="Ganzjaehrig">Ganzjaehrig</option>
               </select>
             </div>
 
@@ -266,7 +265,7 @@ export default function NewPerfumePage(): ReactElement {
               <label htmlFor="occasion">Anlass</label>
               <select id="occasion" name="occasion" value={formData.occasion} onChange={handleChange}>
                 <option value="Alltag">Alltag</option>
-                <option value="Büro">Büro</option>
+                <option value="Buero">Buero</option>
                 <option value="Party">Party</option>
                 <option value="Romantisch">Romantisch</option>
                 <option value="Sport">Sport</option>
@@ -318,7 +317,7 @@ export default function NewPerfumePage(): ReactElement {
               value={formData.description}
               onChange={handleChange}
               rows={4}
-              placeholder="Ausführliche Duftbeschreibung..."
+              placeholder="Ausfuehrliche Duftbeschreibung..."
             />
           </div>
 
@@ -351,7 +350,7 @@ export default function NewPerfumePage(): ReactElement {
 
           <div className="form-actions">
             <button type="submit" className="button button-primary" disabled={isSaving}>
-              {isSaving ? 'Wird gespeichert...' : 'Duft hinzufügen'}
+              {isSaving ? 'Wird gespeichert...' : 'Duft hinzufuegen'}
             </button>
             <Link href="/admin/perfumes" className="button button-secondary">
               Abbrechen

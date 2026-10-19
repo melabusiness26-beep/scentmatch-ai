@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, ReactElement } from 'react';
 import Link from 'next/link';
-import { createClient } from '@/lib/supabase';
+import { supabase } from '@/lib/supabase';
 import type { Perfume } from '@/lib/perfumes';
 
 export default function AdminPerfumesPage(): ReactElement {
@@ -11,8 +11,6 @@ export default function AdminPerfumesPage(): ReactElement {
   const [error, setError] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const supabase = createClient();
 
   useEffect(() => {
     checkAuthAndFetch();

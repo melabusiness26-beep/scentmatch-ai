@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { getBehavior, getPreferredInterest } from '@/lib/tracking';
 
 // Schlankes Newsletter-Anmeldefeld. Sendet E-Mail an /api/newsletter/subscribe,
 // das die Einwilligung speichert. Einwilligung per Checkbox + Datenschutz-Link.
@@ -21,6 +22,14 @@ export default function NewsletterForm({
   const [status, setStatus] = useState<'idle' | 'loading' | 'done'>('idle');
   const [error, setError] = useState('');
 
+  useEffect(() => {
+    // Auf Client-Seite: Lade getrackte Behavior und setze Default Interest
+    const preferredInterest = getPreferredInterest();
+    if (preferredInterest && !interest) {
+      setInterest(preferredInterest);
+    }
+  }, []);
+
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError('');
@@ -36,6 +45,7 @@ export default function NewsletterForm({
     }
     setStatus('loading');
     try {
+      const behavior = getBehavior();
       const response = await fetch('/api/newsletter/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -43,6 +53,11 @@ export default function NewsletterForm({
           email: clean,
           name: cleanName || undefined,
           interest: interest || undefined,
+          behavior: {
+            viewedPerfumeIds: behavior.viewedPerfumeIds.slice(0, 10),
+            viewedCategories: behavior.viewedCategories,
+            viewedFamilies: behavior.viewedFamilies.slice(0, 5),
+          },
           source
         }),
       });

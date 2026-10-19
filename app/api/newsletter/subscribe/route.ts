@@ -10,7 +10,7 @@ interface BrevoContact {
 
 export async function POST(request: NextRequest) {
   try {
-    const { email, name, interest, source = 'footer' } = await request.json();
+    const { email, name, interest, behavior, source = 'footer' } = await request.json();
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400 });
@@ -23,7 +23,14 @@ export async function POST(request: NextRequest) {
     // 1. Speichere in Supabase (subscriber tracking)
     const { error: dbError } = await supabase
       .from('subscribers')
-      .insert({ email: cleanEmail, name: cleanName, interest: cleanInterest, source, consent: true });
+      .insert({
+        email: cleanEmail,
+        name: cleanName,
+        interest: cleanInterest,
+        source,
+        consent: true,
+        behavior: behavior ? JSON.stringify(behavior) : null,
+      });
 
     if (dbError && dbError.code !== '23505') {
       console.error('Supabase error:', dbError);

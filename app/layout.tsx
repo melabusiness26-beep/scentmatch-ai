@@ -122,7 +122,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </div>
 
         <footer className="site-footer">
-          <h3>TEST: NEWSLETTER HIER</h3>
+          <FooterNewsletter />
           <div style={{ backgroundColor: '#1F1410', padding: '3rem 1.25rem', borderTop: '1px solid rgba(212,175,55,0.1)' }}>
             <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
               {/* Header */}

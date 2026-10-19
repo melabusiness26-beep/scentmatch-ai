@@ -8,26 +8,29 @@ import {
   rankPerfumes,
   perfumeHasTheme,
   NOTE_THEMES,
+  getQuizQuestions,
   type Perfume,
   type QuizAnswers,
-  type RankedPerfume
+  type RankedPerfume,
+  type QuizQuestionDB
 } from '@/lib/perfumes';
 import { PerfumeTile, familyDisplay } from '@/app/PerfumeTile';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import NewsletterForm from '@/app/NewsletterForm';
 
 type QuestionKind = 'gender' | 'anchor' | 'family' | 'occasion' | 'season' | 'sillage' | 'budget' | 'lovedNote' | 'dislikedNote' | 'longevity' | 'sweetness' | 'pricePref';
-type QuizQuestion = { q: string; hint?: string; kind: QuestionKind; a: [string, string][] };
+type QuizQuestion = { q: string; hint?: string; kind: QuestionKind; a: [string, string, string?][] }; // [label, value, emoji?]
 
-const questions: QuizQuestion[] = [
+// Fallback questions wenn DB nicht verfügbar
+const fallbackQuestions: QuizQuestion[] = [
   {
     q: 'Für wen suchen wir den perfekten Duft?',
     hint: 'So zeigen wir dir nur, was wirklich passt. Kein Suchen im Heuhaufen.',
     kind: 'gender',
     a: [
-      ['Für Damen', 'women'],
-      ['Für Herren', 'men'],
-      ['Egal, zeig mir alles', 'unisex']
+      ['Für Damen', 'women', '👩'],
+      ['Für Herren', 'men', '👨'],
+      ['Egal, zeig mir alles', 'unisex', '✨']
     ]
   },
   {
@@ -158,7 +161,24 @@ const questions: QuizQuestion[] = [
   }
 ];
 
-const familyQuestionCount = questions.filter(q => q.kind === 'family').length;
+// Convert DB questions to internal format
+function convertDbQuestions(dbQuestions: QuizQuestionDB[]): QuizQuestion[] {
+  return dbQuestions.map(q => ({
+    q: q.question_text,
+    hint: q.hint_text,
+    kind: q.question_type as QuestionKind,
+    a: q.answers.map(a => [a.label, a.value, ''] as [string, string, string])
+  }));
+}
+
+// Calculate how many family questions we have
+function getQuestionCount(questions: QuizQuestion[]): number {
+  return questions.length;
+}
+
+function getFamilyQuestionCount(questions: QuizQuestion[]): number {
+  return questions.filter(q => q.kind === 'family').length;
+}
 
 // Reihenfolge der Duftfamilien für das kompakte Kodieren im Teilen-Link.
 const FAMILY_ORDER = ['clean', 'gourmand', 'woody', 'floral'] as const;
@@ -331,16 +351,22 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
   const [loaded, setLoaded] = useState(false);
   const [shareMsg, setShareMsg] = useState('');
   const [revealScore, setRevealScore] = useState(0);
+  const [questions, setQuestions] = useState<QuizQuestion[]>(fallbackQuestions);
 
   useEffect(() => {
-    async function loadPerfumes() {
-      // Hoch genug, damit das Quiz immer den GANZEN Katalog beruecksichtigt,
-      // auch wenn er weiter waechst (vorher 500 – wir naehern uns dem Limit).
-      const data = await getPerfumes(2000);
-      if (data.length > 0) setPerfumes(data);
+    async function loadData() {
+      // Load perfumes
+      const perfumeData = await getPerfumes(2000);
+      if (perfumeData.length > 0) setPerfumes(perfumeData);
+
+      // Load quiz questions from database
+      const dbQuestions = await getQuizQuestions();
+      if (dbQuestions.length > 0) {
+        setQuestions(convertDbQuestions(dbQuestions));
+      }
       setLoaded(true);
     }
-    loadPerfumes();
+    loadData();
 
     // Aktuelle Jahreszeit bestimmen (im Browser, damit es immer aktuell ist).
     const m = new Date().getMonth();
@@ -459,9 +485,21 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
     advanceStep();
   }
 
+  // Skip optional question
+  function skipQuestion() {
+    pushHistory();
+    advanceStep();
+  }
+
   function advanceStep() {
     if (step + 1 >= questions.length) setShowResult(true);
     else setStep(step + 1);
+  }
+
+  // Check if current question is optional
+  function isOptionalQuestion(): boolean {
+    return questions[step]?.kind === 'anchor' ||
+           questions[step]?.a.some(a => a[1] === '');
   }
 
   // Einen Schritt zurück und die letzte Antwort wiederherstellen.
@@ -747,17 +785,65 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
                   <p className="small">Optional – du kannst diese Frage auch einfach überspringen.</p>
                   <button className="answer" onClick={advanceAnchor}>{anchorId ? 'Weiter' : 'Überspringen'}</button>
                 </div>
+              ) : questions[step].kind === 'family' ? (
+                // Visual Family Picker – colorful cards for family selection
+                <div className="family-picker">
+                  {questions[step].a.map(([label, code, emoji]) => (
+                    <button
+                      key={code}
+                      className="family-card"
+                      onClick={() => answer(questions[step].kind, code)}
+                      data-family={code}
+                    >
+                      {emoji && <span className="family-emoji">{emoji}</span>}
+                      <span className="family-label">{label}</span>
+                    </button>
+                  ))}
+                </div>
+              ) : questions[step].kind === 'sweetness' ? (
+                // Interactive Sweetness Slider
+                <div className="sweetness-slider">
+                  <div className="slider-labels">
+                    <span>Herb</span>
+                    <span>Balanced</span>
+                    <span>Süß</span>
+                  </div>
+                  <div className="slider-options">
+                    {questions[step].a.map(([label, code]) => (
+                      <button
+                        key={code}
+                        className={`slider-btn ${sweetnessPref === code ? 'active' : ''}`}
+                        onClick={() => answer(questions[step].kind, code)}
+                      >
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               ) : (
+                // Standard answers with emoji support
                 <div className="answers">
-                  {questions[step].a.map(([label, code]) => (
-                    <button className="answer" key={label} onClick={() => answer(questions[step].kind, code)}>{label}</button>
+                  {questions[step].a.map(([label, code, emoji]) => (
+                    <button
+                      className="answer"
+                      key={label}
+                      onClick={() => answer(questions[step].kind, code)}
+                    >
+                      {emoji && <span className="answer-emoji">{emoji}</span>}
+                      {label}
+                    </button>
                   ))}
                 </div>
               )}
               </div>
-              {history.length > 0 && (
-                <button className="quiz-back" onClick={goBack}>← Zurück</button>
-              )}
+              <div className="quiz-controls">
+                {history.length > 0 && (
+                  <button className="quiz-back" onClick={goBack}>← Zurück</button>
+                )}
+                {isOptionalQuestion() && questions[step]?.kind !== 'anchor' && (
+                  <button className="quiz-skip" onClick={skipQuestion}>⊘ Überspringen</button>
+                )}
+              </div>
             </>
           ) : (
             <div className="result">
@@ -810,7 +896,7 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
               {Object.entries(family).map(([key, value]) => (
                 <div key={key} style={{ marginBottom: 12 }}>
                   <div className="small">{profileText[key].title}: {value}</div>
-                  <div className="scorebar bar-reveal"><span style={{ width: `${Math.min(100, (value / familyQuestionCount) * 100)}%` }} /></div>
+                  <div className="scorebar bar-reveal"><span style={{ width: `${Math.min(100, (value / getFamilyQuestionCount(questions)) * 100)}%` }} /></div>
                 </div>
               ))}
 

@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
+import {
+  createOrUpdateContact,
+  generateBrevoAttributes,
+  updateContactAttributes,
+} from '@/lib/brevo';
 
-interface BrevoContact {
-  email: string;
-  attributes?: Record<string, string | number | boolean>;
-  listIds?: number[];
-  updateEnabled?: boolean;
-}
 
 export async function POST(request: NextRequest) {
   try {
@@ -37,39 +36,31 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Database error' }, { status: 500 });
     }
 
-    // 2. Sende zu Brevo (nur wenn API-Keys konfiguriert sind)
-    const brevoApiKey = process.env.BREVO_API_KEY;
+    // 2. Sende zu Brevo mit Personalisierung (nur wenn API-Keys konfiguriert sind)
     const brevoListId = process.env.BREVO_LIST_ID;
 
-    if (brevoApiKey && brevoListId) {
-      const attributes: Record<string, string | number | boolean> = {
-        REGISTRATION_SOURCE: source,
-        REGISTRATION_DATE: new Date().toISOString().split('T')[0],
-      };
-
-      if (cleanName) attributes.FIRSTNAME = cleanName;
-      if (cleanInterest) attributes.INTEREST = cleanInterest;
-
-      const contact: BrevoContact = {
-        email: cleanEmail,
-        attributes,
-        listIds: [parseInt(brevoListId, 10)],
-        updateEnabled: true,
-      };
+    if (brevoListId) {
+      // Generiere Brevo-Attribute basierend auf Behavior + Demographics
+      const brevoAttributes = generateBrevoAttributes({
+        name: cleanName || undefined,
+        interest: cleanInterest || undefined,
+        source,
+        viewedPerfumeIds: behavior?.viewedPerfumeIds?.slice(0, 10),
+        viewedFamilies: behavior?.viewedFamilies?.slice(0, 5),
+      });
 
       try {
-        const brevoResponse = await fetch('https://api.brevo.com/v3/contacts', {
-          method: 'POST',
-          headers: {
-            'api-key': brevoApiKey,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(contact),
-        });
+        // Erstelle oder aktualisiere Kontakt in Brevo
+        const brevoResult = await createOrUpdateContact(
+          cleanEmail,
+          brevoAttributes,
+          [parseInt(brevoListId, 10)]
+        );
 
-        if (!brevoResponse.ok) {
-          const brevoError = await brevoResponse.text();
-          console.error('Brevo error:', brevoResponse.status, brevoError);
+        if (brevoResult.success) {
+          console.log('Brevo contact created/updated successfully');
+        } else {
+          console.error('Brevo contact creation failed:', brevoResult.error);
         }
       } catch (brevoErr) {
         console.error('Brevo request error:', brevoErr);

@@ -52,9 +52,9 @@ export default function NewsletterForm({
 
   if (status === 'done') {
     return (
-      <div className="newsletter">
-        <h3 className="newsletter-title">Danke! 🌸</h3>
-        <p className="small">Du bist auf der Liste. Wir melden uns mit Duft-Tipps, versprochen ohne Spam.</p>
+      <div style={{ margin: 0, padding: 0 }}>
+        <h3 style={{ margin: '0 0 12px', fontFamily: 'var(--font-display), Georgia, serif', fontSize: 'clamp(28px, 5.5vw, 40px)', fontWeight: 700, letterSpacing: '-0.02em', color: '#1F1410', lineHeight: 1.2 }}>Danke! 🌸</h3>
+        <p style={{ fontSize: 'clamp(15px, 2.3vw, 17px)', lineHeight: 1.7, color: '#6B5344', margin: 0, fontWeight: 500 }}>Du bist auf der Liste. Wir melden uns mit Duft-Tipps, versprochen ohne Spam.</p>
       </div>
     );
   }

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import type { Perfume } from '@/lib/perfumes';
+import { FavoriteButton } from '@/app/FavoriteButton';
 
 // Anzeige-Namen der Duftfamilien.
 export const familyDisplay: Record<string, string> = {
@@ -58,7 +59,10 @@ export function PerfumeCover({ perfume, large }: { perfume: Perfume; large?: boo
 export function PerfumeTile({ perfume, matchPercent }: { perfume: Perfume; matchPercent?: number }) {
   const content = (
     <>
-      <PerfumeCover perfume={perfume} />
+      <div style={{ position: 'relative' }}>
+        <PerfumeCover perfume={perfume} />
+        <FavoriteButton slug={perfume.slug} />
+      </div>
       {matchPercent != null && <div className="match-badge">{matchPercent}% Match</div>}
       <h3>{perfume.perfume_name}</h3>
       <p className="small">{perfume.brands?.name || 'Marke offen'} · {familyDisplay[perfume.fragrance_family || ''] || 'Duftfamilie offen'}</p>

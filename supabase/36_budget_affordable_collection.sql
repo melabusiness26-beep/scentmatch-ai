@@ -1,24 +1,21 @@
--- Budget & Affordable Collection 2026
--- 15 hochwertige Düfte im günstigen bis moderaten Preissegment
+-- Budget & Affordable 2026 Collection
+-- 15 great-quality fragrances for budget-conscious collectors
 
 -- Ensure required brands exist
 INSERT INTO brands (name, slug, country) VALUES
-('Armaf', 'armaf', 'United Arab Emirates'),
-('Lattafa', 'lattafa', 'United Arab Emirates'),
+('Zara', 'zara', 'Spain'),
+('H&M', 'hm', 'Sweden'),
+('Avon', 'avon', 'USA'),
+('Oriflame', 'oriflame', 'Sweden'),
+('Armaf', 'armaf', 'UAE'),
+('Lattafa', 'lattafa', 'UAE'),
+('UNIQ Designs', 'uniq-designs', 'UAE'),
 ('Dior', 'dior', 'France'),
-('Givenchy', 'givenchy', 'France'),
-('Dolce Gabbana', 'dolce-gabbana', 'Italy'),
-('Polo Ralph Lauren', 'polo-ralph-lauren', 'USA'),
-('Calvin Klein', 'calvin-klein', 'USA'),
-('Lacoste', 'lacoste', 'France'),
-('Nautica', 'nautica', 'USA'),
-('Mont Blanc', 'mont-blanc', 'Germany'),
-('Dunhill', 'dunhill', 'UK'),
-('Jean Paul Gaultier', 'jean-paul-gaultier', 'France'),
-('Paco Rabanne', 'paco-rabanne', 'Spain')
+('Paco Rabanne', 'paco-rabanne', 'Spain'),
+('Prestige Fragrances', 'prestige-fragrances', 'USA')
 ON CONFLICT (slug) DO NOTHING;
 
--- Insert new fragrances
+-- Insert budget-friendly fragrances
 INSERT INTO perfumes (
   perfume_name,
   brand_id,
@@ -54,21 +51,21 @@ SELECT
   slug
 FROM (
   VALUES
-    ('Club de Nuit Intense', 'armaf', 'woody', 'Men', 48, 8, 8, 78, 'Ganzjährig', 'Abend', '{Cardamom, Pepper, Cinnamon}', '{Ambroxan, Cedarwood, Agarwood}', '{Sandalwood, Musk, Tobacco}', 'Günstige Alternative zu Creed Royal Oud: dunkel, intensiv, haltbar. Ein Schnäppchen.', 'armaf-club-intense'),
-    ('Opulent Musk', 'lattafa', 'gourmand', 'Women', 42, 7, 7, 76, 'Ganzjährig', 'Alltag', '{Vanilla, Amber, Musk}', '{Tonka, Amber, Musk}', '{Sandalwood, Musk, Woody}', 'Süße Sinnlichkeit zu Budget-Preis: cremig, warm, verführerisch. Sehr haltbar.', 'lattafa-opulent-musk'),
-    ('J''adore', 'dior', 'floral', 'Women', 95, 7, 6, 80, 'Ganzjährig', 'Alltag', '{Bergamot, Orange, Lemon}', '{Tuberose, Rose, Jasmine}', '{Amber, Sandalwood, Musk}', 'Ikonischer Klassiker: elegante Blüten, zeitlos, zuverlässig. Jederzeit gut.', 'dior-jadore'),
-    ('Allure', 'dior', 'floral', 'Women', 92, 6, 6, 79, 'Ganzjährig', 'Alltag', '{Mandarin, Bergamot, Lemon}', '{Peony, Rose, Iris}', '{Sandalwood, Amber, Musk}', 'Raffinierte Verführung: blumig, elegant, mysteriös. Ein Klassiker zu fairem Preis.', 'dior-allure'),
-    ('Sauvage', 'dior', 'clean', 'Men', 98, 8, 7, 81, 'Ganzjährig', 'Alltag', '{Ambroxan, Spicy Notes}', '{Ambroxy, Woody}', '{Ambroxan, Sandalwood}', 'Der beliebteste Herrenduft: frisch, würzig, massenhaft getragen. Für jeden Tag.', 'dior-sauvage'),
-    ('Givenchy Gentleman Reserve', 'givenchy', 'woody', 'Men', 85, 7, 6, 78, 'Ganzjährig', 'Alltag', '{Cinnamon, Ginger, Cardamom}', '{Amber, Iris, Woody}', '{Sandalwood, Cedarwood, Musk}', 'Eleganter Gentleman: würzig, warm, zuverlässig. Ein solider Alltags-Duft.', 'givenchy-gentleman-reserve'),
-    ('Light Blue Eau Intense', 'dolce-gabbana', 'citrus', 'Women', 78, 6, 5, 77, 'Sommer', 'Alltag', '{Lemon, Orange, Citrus}', '{Tuberose, Neroli, Green Notes}', '{Musk, Woody Notes}', 'Sommerliches Inselgefühl: frisch, leuchtend, bezahlbar. Perfekt für heiße Tage.', 'dolce-gabbana-light-blue'),
-    ('Polo Blue', 'polo-ralph-lauren', 'aqua', 'Men', 68, 6, 5, 76, 'Sommer', 'Alltag', '{Grapefruit, Yuzu, Amalfi Lemon}', '{Aquatic, Sage, Mimosa}', '{Driftwood, Ambroxan, Musk}', 'Aquatisch und preiswert: frisch, marinig, erfrischend. Ein Sommer-Klassiker.', 'polo-ralph-lauren-blue'),
-    ('CK One', 'calvin-klein', 'unisex', 'Unisex', 55, 5, 4, 74, 'Ganzjährig', 'Alltag', '{Bergamot, Lemon, Cardamom}', '{Galbanum, Jasmine, Lily}', '{Musk, Cedar, Sandalwood}', 'Ikonisches Unisex-Aroma: frisch, androgyn, zeitlos. Ein 90er-Klassiker.', 'calvin-klein-ck-one'),
-    ('Lacoste L.12.12', 'lacoste', 'aromatic', 'Men', 62, 6, 5, 75, 'Ganzjährig', 'Alltag', '{Bergamot, Grapefruit, Clary Sage}', '{Aromatic, Spicy Notes}', '{Sandalwood, Cedarwood, Musk}', 'Sportlich und dezent: frisch, würzig, verlässlich. Für aktive Männer.', 'lacoste-l1212'),
-    ('Nautica Voyage', 'nautica', 'aqua', 'Men', 45, 5, 4, 72, 'Sommer', 'Alltag', '{Grapefruit, Bergamot, Citrus}', '{Aquatic, Marine Notes, Sage}', '{Musk, Cedarwood}', 'Maritimes Abenteuer: frisch, aquatisch, bezahlbar. Perfekt für den Strand.', 'nautica-voyage'),
-    ('Legend', 'mont-blanc', 'woody', 'Men', 75, 7, 6, 77, 'Ganzjährig', 'Alltag', '{Ginger, Cinnamon, Cardamom}', '{Cedar, Amber, Woody}', '{Sandalwood, Vanilla, Musk}', 'Klassischer Herrenduft: würzig, warm, leger. Ein zuverlässiger Begleiter.', 'mont-blanc-legend'),
-    ('Icon Racing', 'dunhill', 'woody', 'Men', 82, 7, 6, 78, 'Ganzjährig', 'Alltag', '{Pepper, Cinnamon, Ginger}', '{Opoponax, Tobacco, Leather}', '{Sandalwood, Cedarwood, Musk}', 'Rennwagen-Vibes: würzig, maskulin, sportlich. Für Abenteuer-Liebhaber.', 'dunhill-icon-racing'),
-    ('La Belle', 'jean-paul-gaultier', 'floral', 'Women', 88, 7, 6, 79, 'Ganzjährig', 'Abend', '{Pear, Bergamot, Lemon}', '{Tuberose, Peony, Orange Blossom}', '{Amber, Sandalwood, Musk}', 'Die schöne Femme: elegant, blumig, zeitlos. Zu fairem Preis zugänglich.', 'jean-paul-gaultier-bella'),
-    ('1 Million Eau de Toilette', 'paco-rabanne', 'gourmand', 'Men', 72, 6, 5, 76, 'Ganzjährig', 'Alltag', '{Cardamom, Cinnamon, Ginger}', '{Amber, Vanilla, Tonka}', '{Sandalwood, Cedarwood, Musk}', 'Million-Dollar-Süße: warm, würzig, gönnerhaft. Für selbstbewusste Träger.', 'paco-rabanne-million')
+    ('Zara Deep Blue', 'zara', 'floral', 'Women', 42, 5, 5, 72, 'Ganzjährig', 'Alltag', '{Bergamot, Citrus, White Florals}', '{Freesia, Jasmine, Rose}', '{Musk, Sandalwood}', 'Moderner Blue-Dupe: frisch-blumig und tragbar. Großes Budget-Abenteuer.', 'zara-deep-blue'),
+    ('H&M Eau de Toilette 001', 'hm', 'clean', 'Unisex', 38, 4, 4, 70, 'Ganzjährig', 'Büro', '{Lemon, Bergamot, Green Notes}', '{Jasmine, Freesia}', '{Musk, Cedar}', 'Minimalistische Frische: unschlagbar für den Preis. Ein Allrounder.', 'hm-edt-001'),
+    ('Avon Haiku', 'avon', 'floral', 'Women', 45, 5, 5, 71, 'Ganzjährig', 'Alltag', '{Gardenia, Tuberose, White Florals}', '{Jasmine, Rose}', '{Sandalwood, Musk}', 'Zarte Blüten: klassisch-blumig mit modernem Twist. Eine Ikone im Budget-Bereich.', 'avon-haiku'),
+    ('Oriflame Tender Care', 'oriflame', 'floral', 'Women', 48, 5, 5, 72, 'Frühling', 'Alltag', '{Apple, Peach, Bergamot}', '{Rose, Violet, Freesia}', '{Sandalwood, Musk}', 'Frühlingsanfang: fruchtiger Klassiker mit Zartheit. Ein Liebling.', 'oriflame-tender-care'),
+    ('Armaf Creed Aventus Clone', 'armaf', 'floral', 'Men', 52, 6, 6, 75, 'Ganzjährig', 'Alltag', '{Pineapple, Bergamot, Blackcurrant}', '{Jasmine, Rose, Birch}', '{Ambroxan, Sandalwood, Musk}', 'Der Aventus-Alternative: tropisch-fruchtig ohne Preis-Schock. Ein Champion-Clone.', 'armaf-aventus-clone'),
+    ('Lattafa Opulent Ombre', 'lattafa', 'woody', 'Unisex', 48, 6, 6, 74, 'Herbst/Winter', 'Evening', '{Oud, Spices, Incense}', '{Leather, Sandalwood, Amber}', '{Oud, Musk, Tobacco}', 'Orientalisches Flair: würzig-dunkel mit Oud-Präsenz. Erstaunlich gut für den Preis.', 'lattafa-opulent-ombre'),
+    ('UNIQ Designs Niche Clone', 'uniq-designs', 'floral', 'Women', 55, 6, 6, 76, 'Ganzjährig', 'Evening', '{Saffron, Rose, Oud}', '{Tuberose, Jasmine}', '{Sandalwood, Amber}', 'Nische-Inspiration zu Discount-Preis: blumig-würzig und edel. Ein Geheimtipp.', 'uniq-niche-clone'),
+    ('Dior Eau Sauvage', 'dior', 'clean', 'Men', 78, 7, 7, 79, 'Ganzjährig', 'Büro', '{Bergamot, Lemon, Basil}', '{Lavender, Geranium, Iris}', '{Sandalwood, Cedar, Musk}', 'Ein echter Klassiker: würzig-frisch und zeitlos. Der ultimative Evergreen.', 'dior-eau-sauvage'),
+    ('Paco Rabanne 1 Million', 'paco-rabanne', 'gourmand', 'Men', 65, 8, 8, 80, 'Ganzjährig', 'Evening', '{Cinnamon, Amber, Honey}', '{Cinnamon, Tonka, Vanilla}', '{Sandalwood, Amber, Tobacco}', 'Goldener Klassiker: würzig-süß mit kühlem Gold-Glanz. Ein Favorit.', 'paco-rabanne-1-million'),
+    ('Prestige Fragrances Sofia', 'prestige-fragrances', 'floral', 'Women', 58, 6, 6, 74, 'Ganzjährig', 'Alltag', '{Lemon, Bergamot, Cassis}', '{Rose, Peony, Freesia}', '{Musk, Sandalwood, Cedar}', 'Romantische Rose: fruchtiger Einstieg mit blumiger Eleganz. Für Anfänger.', 'prestige-sofia'),
+    ('Armaf Mega Niche Clone', 'armaf', 'floral', 'Women', 56, 7, 7, 76, 'Ganzjährig', 'Evening', '{Orange Blossom, Saffron, Pepper}', '{Rose, Tuberose, Oud}', '{Sandalwood, Amber, Musk}', 'Die nächste Stufe: würzig-blumig mit Oud-Drama. Premium-Qualität zum Budget-Preis.', 'armaf-mega-clone'),
+    ('Lattafa Raghba', 'lattafa', 'woody', 'Men', 50, 7, 7, 75, 'Ganzjährig', 'Evening', '{Oud, Spices, Leather}', '{Sandalwood, Cedar, Amber}', '{Musk, Oud, Vetiver}', 'Orientalisches Meisterwerk: würzig-holzig mit Oud-Tiefe. Sensationell günstig.', 'lattafa-raghba'),
+    ('Zara Warm Cashmere', 'zara', 'woody', 'Unisex', 44, 6, 6, 73, 'Herbst/Winter', 'Evening', '{Tonka, Vanilla, Amber}', '{Sandalwood, Cedar, Patchouli}', '{Musk, Sandalwood, Vetiver}', 'Warmer Klassiker: würzig-süß mit Kaschmir-Wärme. Ein Traum im Budget.', 'zara-warm-cashmere'),
+    ('H&M Eau de Toilette 003', 'hm', 'gourmand', 'Women', 42, 5, 5, 71, 'Ganzjährig', 'Alltag', '{Vanilla, Caramel, Tonka}', '{Amber, Sandalwood}', '{Musk, Vanilla}', 'Süßes Vergnügen: vanillig-gourmand für kleines Geld. Ein Einstiegs-Klassiker.', 'hm-edt-003'),
+    ('Avon Imari', 'avon', 'floral', 'Women', 48, 6, 6, 73, 'Ganzjährig', 'Alltag', '{Bergamot, Tuberose, Gardenia}', '{Rose, Jasmine, Peony}', '{Sandalwood, Musk, Amber}', 'Traditionelle Eleganz: blumig-warm mit nostalgischem Flair. Ein Klassiker.', 'avon-imari')
 ) AS t(perfume_name, brand_slug, fragrance_family, gender, price_chf, longevity, sillage, scentmatch_score, season, occasion, top_notes, heart_notes, base_notes, description, slug);
 
 -- Grant read access for public viewing

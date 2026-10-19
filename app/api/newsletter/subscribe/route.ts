@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from '@/lib/supabase';
 
 interface BrevoContact {
   email: string;
@@ -18,17 +18,7 @@ export async function POST(request: NextRequest) {
 
     const cleanEmail = email.trim().toLowerCase();
 
-    // 1. Speichere in Supabase (subscriber tracking) mit Server-Side Client
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-    if (!supabaseUrl || !supabaseKey) {
-      console.error('Supabase configuration missing');
-      return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
-    }
-
-    const supabase = createClient(supabaseUrl, supabaseKey);
-
+    // 1. Speichere in Supabase (subscriber tracking)
     const { error: dbError } = await supabase
       .from('subscribers')
       .insert({ email: cleanEmail, source, consent: true });
@@ -38,7 +28,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Database error' }, { status: 500 });
     }
 
-    // 2. Sende zu Brevo (optional, falls API-Keys konfiguriert)
+    // 2. Sende zu Brevo (nur wenn API-Keys konfiguriert sind)
     const brevoApiKey = process.env.BREVO_API_KEY;
     const brevoListId = process.env.BREVO_LIST_ID;
 

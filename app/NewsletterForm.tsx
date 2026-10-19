@@ -60,30 +60,54 @@ export default function NewsletterForm({
   }
 
   return (
-    <form className="newsletter" onSubmit={onSubmit}>
-      <h3 className="newsletter-title">{title}</h3>
-      <p className="small">{text}</p>
-      <div className="newsletter-row">
+    <form style={{ margin: 0, padding: 0 }} onSubmit={onSubmit}>
+      <h3 style={{ margin: '0 0 12px', fontFamily: 'var(--font-display), Georgia, serif', fontSize: 'clamp(24px, 5vw, 36px)', fontWeight: 700, letterSpacing: '-0.02em', color: '#1F1410', lineHeight: 1.2 }}>{title}</h3>
+      <p style={{ fontSize: 'clamp(15px, 2.3vw, 17px)', lineHeight: 1.7, color: '#6B5344', margin: '0 0 20px', fontWeight: 500 }}>{text}</p>
+      <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '20px', alignItems: 'flex-start' }}>
         <input
           type="email"
-          className="search newsletter-input"
           placeholder="deine@email.ch"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           aria-label="E-Mail-Adresse"
+          style={{
+            flex: '1 1 240px',
+            minWidth: 0,
+            padding: 'clamp(13px, 2.5vw, 16px) clamp(16px, 3vw, 20px)',
+            border: '2px solid #D4AF37',
+            borderRadius: '10px',
+            background: '#FFFFFF',
+            color: '#1F1410',
+            fontSize: 'clamp(14px, 2.2vw, 16px)',
+            fontFamily: 'var(--font-sans), Arial, sans-serif',
+            transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+          }}
         />
-        <button type="submit" className="button" disabled={status === 'loading'}>
+        <button type="submit" disabled={status === 'loading'} style={{
+          background: 'linear-gradient(135deg, #D4AF37 0%, #E5C158 100%)',
+          color: '#1F1410',
+          fontWeight: 700,
+          letterSpacing: '.06em',
+          padding: 'clamp(13px, 2.5vw, 16px) clamp(28px, 6vw, 40px)',
+          borderRadius: '10px',
+          flex: '0 1 auto',
+          boxShadow: '0 8px 24px rgba(212,175,55,.3)',
+          transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+          border: 'none',
+          cursor: 'pointer',
+          fontSize: 'clamp(14px, 2.4vw, 16px)',
+        }}>
           {status === 'loading' ? 'Einen Moment…' : 'Anmelden'}
         </button>
       </div>
-      <label className="newsletter-consent small">
-        <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
+      <label style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', marginTop: '16px', cursor: 'pointer', lineHeight: 1.6, fontSize: 'clamp(13px, 2.1vw, 15px)', color: '#6B5344' }}>
+        <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} style={{ marginTop: '4px', flex: 'none', width: '18px', height: '18px', cursor: 'pointer', accentColor: '#D4AF37' }} />
         <span>
           Ich möchte den Auressa-Newsletter erhalten und stimme der{' '}
-          <Link href="/datenschutz">Datenschutzerklärung</Link> zu. Abmeldung jederzeit möglich.
+          <Link href="/datenschutz" style={{ color: '#D4AF37', textDecoration: 'underline', fontWeight: 600 }}>Datenschutzerklärung</Link> zu. Abmeldung jederzeit möglich.
         </span>
       </label>
-      {error && <p className="small newsletter-error">{error}</p>}
+      {error && <p style={{ color: '#EF4444', marginTop: '12px', fontSize: 'clamp(13px, 2.1vw, 14px)', fontWeight: 500 }}>{error}</p>}
     </form>
   );
 }

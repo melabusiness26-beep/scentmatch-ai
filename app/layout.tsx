@@ -122,8 +122,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </div>
 
         <footer className="site-footer">
-          <div className="container footer-newsletter" style={{ marginBottom: '30px', paddingBottom: '28px', borderBottom: '1px solid rgba(255,255,255,.15)' }}>
-            <h3 className="newsletter-title">✓ NEWSLETTER FUNKTIONIERT!</h3>
+          <div style={{ marginBottom: '30px', paddingBottom: '28px', borderBottom: '1px solid rgba(255,255,255,.15)', padding: '1.5rem 1.25rem', maxWidth: '1100px', margin: '0 auto 30px' }}>
+            <h3 style={{ margin: '0 0 6px', color: '#D4AF37', fontSize: '20px' }}>Duft-Tipps per E-Mail</h3>
+            <p style={{ margin: 0, fontSize: '13px', color: 'rgba(237,229,220,0.75)' }}>Neue Düfte, Spar-Tipps und Empfehlungen. Ab und zu, nie Spam.</p>
           </div>
           <div style={{ backgroundColor: '#1F1410', padding: '3rem 1.25rem', borderTop: '1px solid rgba(212,175,55,0.1)' }}>
             <div style={{ maxWidth: '1100px', margin: '0 auto' }}>

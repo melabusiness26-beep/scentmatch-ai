@@ -61,8 +61,8 @@ export default function NewsletterForm({
 
   return (
     <form className="newsletter" onSubmit={onSubmit}>
-      <h3 className="newsletter-title">{title}</h3>
-      <p className="small">{text}</p>
+      <h3 className="newsletter-title" style={{ color: '#1F1410', fontSize: 'clamp(24px, 5vw, 36px)' }}>{title}</h3>
+      <p className="small" style={{ color: '#6B5344', fontSize: 'clamp(15px, 2.3vw, 17px)', fontWeight: 500 }}>{text}</p>
       <div className="newsletter-row">
         <input
           type="email"
@@ -71,19 +71,24 @@ export default function NewsletterForm({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           aria-label="E-Mail-Adresse"
+          style={{
+            color: '#1F1410',
+            borderColor: '#D4AF37',
+            backgroundColor: '#FFFFFF',
+          }}
         />
         <button type="submit" className="button" disabled={status === 'loading'}>
           {status === 'loading' ? 'Einen Moment…' : 'Anmelden'}
         </button>
       </div>
-      <label className="newsletter-consent small">
+      <label className="newsletter-consent small" style={{ color: '#6B5344' }}>
         <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
         <span>
           Ich möchte den Auressa-Newsletter erhalten und stimme der{' '}
-          <Link href="/datenschutz">Datenschutzerklärung</Link> zu. Abmeldung jederzeit möglich.
+          <Link href="/datenschutz" style={{ color: '#D4AF37', fontWeight: 600 }}>Datenschutzerklärung</Link> zu. Abmeldung jederzeit möglich.
         </span>
       </label>
-      {error && <p className="small newsletter-error">{error}</p>}
+      {error && <p className="small newsletter-error" style={{ color: '#EF4444' }}>{error}</p>}
     </form>
   );
 }

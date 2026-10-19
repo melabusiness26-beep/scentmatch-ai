@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import { Playfair_Display, Inter } from 'next/font/google';
 import './globals.css';
 import SiteHeader from './components/SiteHeader';
+import SiteFooter from './components/SiteFooter';
+import CookieBanner from './components/CookieBanner';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -98,6 +100,8 @@ export default function RootLayout({
       <body>
         <SiteHeader />
         <main>{children}</main>
+        <SiteFooter />
+        <CookieBanner />
       </body>
     </html>
   );

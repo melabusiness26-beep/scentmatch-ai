@@ -1641,3 +1641,253 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(212,175,55
     flex-wrap: wrap;
   }
 }
+
+/* Cookie Banner */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  z-index: 999;
+  padding: 20px;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.cookie-banner-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.cookie-text {
+  color: white;
+  flex: 1;
+  min-width: 250px;
+}
+
+.cookie-text h3 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  color: var(--color-primary);
+}
+
+.cookie-text p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.cookie-text a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.cookie-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .cookie-banner-inner {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cookie-actions {
+    width: 100%;
+  }
+}
+
+/* Legal Pages */
+.legal-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.page-hero {
+  padding: 60px 20px 40px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+  margin: 0 -20px 40px -20px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.page-hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.page-hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 48px;
+}
+
+.page-hero .lead {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.page-content {
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+
+.page-content h2 {
+  margin-top: 40px;
+  margin-bottom: 15px;
+  font-size: 24px;
+  color: var(--color-text-primary);
+  border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+  padding-bottom: 10px;
+}
+
+.page-content h2:first-child {
+  margin-top: 0;
+}
+
+.page-content h4 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.page-content p {
+  margin: 15px 0;
+}
+
+.page-content ul,
+.page-content ol {
+  margin: 15px 0 15px 30px;
+}
+
+.page-content li {
+  margin-bottom: 8px;
+}
+
+.page-content address {
+  font-style: normal;
+  margin: 15px 0;
+  padding: 15px;
+  background: rgba(212, 175, 55, 0.08);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 4px;
+}
+
+.page-content code {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 14px;
+}
+
+.legal-footer {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+/* Site Footer */
+.site-footer {
+  background: linear-gradient(135deg, var(--color-bg-dark), rgba(17, 24, 39, 0.8));
+  color: white;
+  margin-top: 80px;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px 30px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  color: var(--color-primary);
+  margin: 0 0 15px 0;
+  font-size: 18px;
+}
+
+.footer-section p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer-section nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section nav li {
+  margin-bottom: 10px;
+}
+
+.footer-section nav a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-section nav a:hover {
+  color: var(--color-primary);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  padding-top: 20px;
+  text-align: center;
+}
+
+.copyright {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+  .page-hero h1 {
+    font-size: 32px;
+  }
+
+  .page-hero {
+    padding: 40px 20px;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}

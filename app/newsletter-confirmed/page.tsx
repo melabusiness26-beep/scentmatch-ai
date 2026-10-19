@@ -2,11 +2,6 @@
 
 import Link from 'next/link';
 
-export const metadata = {
-  title: 'Newsletter bestätigt | Auressa',
-  description: 'Dein Newsletter-Abo ist bestätigt! Schau rein in unsere Duft-Empfehlungen.',
-};
-
 export default function NewsletterConfirmedPage() {
   return (
     <main style={{

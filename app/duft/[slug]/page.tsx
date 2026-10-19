@@ -15,6 +15,7 @@ import { noteHref } from '@/lib/notes-glossary';
 import { getCuratedLink } from '@/lib/curated-links';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import { AmazonButton } from '@/app/AmazonButton';
+import { SocialShareButtons } from '@/app/SocialShareButtons';
 
 const genderLabels: Record<string, string> = {
   Women: 'Damenduft',
@@ -404,6 +405,10 @@ export default async function PerfumeDetailPage({
               <AffiliateButton perfume={perfume} />
               <AmazonButton perfume={perfume} />
             </div>
+            <SocialShareButtons
+              perfume={perfume}
+              url={`${SITE_URL}/duft/${slug}`}
+            />
           </div>
         </section>
 

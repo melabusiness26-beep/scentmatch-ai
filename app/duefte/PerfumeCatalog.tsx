@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { type Perfume } from '@/lib/perfumes';
 import { PerfumeTile, familyDisplay, matchesQuery } from '@/app/PerfumeTile';
+import { trackFamilyClick, trackCategoryClick } from '@/lib/tracking';
 
 const FAMILY_TILES: { code: string; label: string }[] = [
   { code: 'clean', label: 'Clean' },
@@ -115,7 +116,12 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
             key={t.code}
             type="button"
             className={`filter-pill${familyFilter === t.code ? ' filter-pill-active' : ''}`}
-            onClick={() => setFamilyFilter((prev) => (prev === t.code ? '' : t.code))}
+            onClick={() => {
+              setFamilyFilter((prev) => (prev === t.code ? '' : t.code));
+              if (familyFilter !== t.code) {
+                trackFamilyClick(t.code);
+              }
+            }}
           >
             {t.label}
           </button>
@@ -157,9 +163,15 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
               {GENDER_OPTIONS.map(opt => (
                 <button
                   key={opt.code}
-                  onClick={() => setGenderFilters(prev =>
-                    prev.includes(opt.code) ? prev.filter(g => g !== opt.code) : [...prev, opt.code]
-                  )}
+                  onClick={() => {
+                    const newGenders = genderFilters.includes(opt.code)
+                      ? genderFilters.filter(g => g !== opt.code)
+                      : [...genderFilters, opt.code];
+                    setGenderFilters(newGenders);
+                    if (!genderFilters.includes(opt.code)) {
+                      trackCategoryClick(opt.code as 'women' | 'men' | 'unisex');
+                    }
+                  }}
                   style={{
                     padding: '0.5rem 0.8rem',
                     background: genderFilters.includes(opt.code) ? '#D4AF37' : 'white',

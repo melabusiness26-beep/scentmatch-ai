@@ -1,5 +1,6 @@
 import React from 'react';
 import Quiz from './components/Quiz';
+import NewsletterSignup from './components/NewsletterSignup';
 
 export default function HomePage(): React.ReactElement {
   return (
@@ -34,6 +35,10 @@ export default function HomePage(): React.ReactElement {
 
       <section className="quiz-section">
         <Quiz />
+      </section>
+
+      <section className="container" style={{ marginTop: '4rem' }}>
+        <NewsletterSignup />
       </section>
     </div>
   );

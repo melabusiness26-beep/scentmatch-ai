@@ -1891,3 +1891,337 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(212,175,55
     gap: 30px;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GUIDES RATGEBER – Article Grid & Detail Page Styling
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.guides-content {
+  max-width: 900px;
+}
+
+.guides-category {
+  margin-bottom: 4rem;
+}
+
+.guides-category h2 {
+  font-size: 28px;
+  margin-bottom: 2rem;
+  color: var(--color-text-primary);
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: 1rem;
+}
+
+.guides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.guide-card {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-md);
+}
+
+.guide-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary);
+}
+
+.guide-card h3 {
+  margin: 0 0 1rem;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+}
+
+.guide-card a:not(.button) {
+  text-decoration: none;
+  color: inherit;
+}
+
+.guide-card a:not(.button):hover h3 {
+  color: var(--color-primary);
+}
+
+.guide-description {
+  flex-grow: 1;
+  margin: 0 0 1.5rem;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.guide-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+}
+
+.read-time,
+.published-date {
+  display: block;
+}
+
+.guide-meta-header {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.guide-page .page-content {
+  max-width: 800px;
+}
+
+.guide-body {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+
+.guide-body h1 {
+  font-size: 32px;
+  margin: 2.5rem 0 1.5rem;
+  color: var(--color-text-primary);
+}
+
+.guide-body h2 {
+  font-size: 24px;
+  margin: 2rem 0 1rem;
+  color: var(--color-text-primary);
+}
+
+.guide-body h3 {
+  font-size: 20px;
+  margin: 1.5rem 0 0.75rem;
+  color: var(--color-text-primary);
+}
+
+.guide-body p {
+  margin: 1rem 0;
+}
+
+.guide-body ul,
+.guide-body ol {
+  margin: 1rem 0;
+  margin-left: 2rem;
+}
+
+.guide-body li {
+  margin-bottom: 0.5rem;
+}
+
+.guide-body strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.guide-body a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.guide-body a:hover {
+  color: var(--color-primary-dark);
+}
+
+.guide-body code {
+  background-color: var(--color-bg-light);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+}
+
+.guide-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.guide-body table thead th {
+  background-color: var(--color-primary-lighter);
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.guide-body table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.guide-body table tr:hover {
+  background-color: var(--color-bg-light);
+}
+
+.guide-footer {
+  background: var(--color-primary-lighter);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  margin-top: 2rem;
+}
+
+.guide-footer p {
+  margin: 0.5rem 0;
+}
+
+.guide-footer strong {
+  color: var(--color-text-primary);
+}
+
+@media (max-width: 768px) {
+  .guides-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-card {
+    padding: 1.5rem;
+  }
+
+  .guide-body h1 {
+    font-size: 24px;
+  }
+
+  .guide-body h2 {
+    font-size: 20px;
+  }
+
+  .guide-body h3 {
+    font-size: 17px;
+  }
+
+  .guide-meta-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NEWSLETTER SIGNUP – Brevo Integration Styling
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.newsletter-signup {
+  background: linear-gradient(135deg, var(--color-primary-lighter) 0%, rgba(212, 175, 55, 0.08) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 5vw, 3rem);
+  margin: 3rem 0;
+}
+
+.newsletter-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.newsletter-text h3 {
+  margin: 0 0 0.5rem;
+  font-size: 22px;
+  color: var(--color-text-primary);
+}
+
+.newsletter-text p {
+  margin: 0 0 1.5rem;
+  color: var(--color-text-secondary);
+  font-size: 15px;
+}
+
+.newsletter-form {
+  margin-bottom: 1rem;
+}
+
+.newsletter-form .form-group {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.newsletter-form input {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.newsletter-form input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.newsletter-form input:disabled {
+  background-color: var(--color-bg-light);
+  cursor: not-allowed;
+}
+
+.newsletter-form button {
+  white-space: nowrap;
+}
+
+.newsletter-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-message {
+  font-size: 14px;
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 0;
+}
+
+.form-message.success {
+  background-color: rgba(34, 197, 94, 0.1);
+  color: #15803d;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.form-message.error {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #b91c1c;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.newsletter-disclaimer {
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+  text-align: center;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .newsletter-form .form-group {
+    flex-direction: column;
+  }
+
+  .newsletter-form input {
+    min-width: auto;
+  }
+
+  .newsletter-text h3 {
+    font-size: 20px;
+  }
+
+  .newsletter-signup {
+    padding: 1.5rem;
+  }
+}

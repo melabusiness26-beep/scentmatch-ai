@@ -3,9 +3,18 @@ import { supabase } from '@/lib/supabase';
 import {
   createOrUpdateContact,
   generateBrevoAttributes,
-  updateContactAttributes,
+  sendTransactionalEmail,
 } from '@/lib/brevo';
 
+function generateConfirmationToken(email: string): string {
+  return Buffer.from(`${email}:newsletter-confirm`).toString('base64');
+}
+
+function generateConfirmationLink(email: string): string {
+  const token = generateConfirmationToken(email);
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
+  return `${siteUrl}/api/newsletter/confirm?token=${token}&email=${encodeURIComponent(email)}`;
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -36,7 +45,36 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Database error' }, { status: 500 });
     }
 
-    // 2. Sende zu Brevo mit Personalisierung (nur wenn API-Keys konfiguriert sind)
+    // 2. Generiere Confirmation-Link
+    const confirmationLink = generateConfirmationLink(cleanEmail);
+
+    // 3. Sende Confirmation-Email über Brevo (wenn API-Key + Template-ID gesetzt)
+    const templateId = process.env.BREVO_TEMPLATE_CONFIRM;
+
+    if (templateId) {
+      try {
+        const result = await sendTransactionalEmail(
+          cleanEmail,
+          parseInt(templateId, 10),
+          {
+            FIRSTNAME: cleanName || 'Duft-Liebhaber',
+            CONFIRMATION_LINK: confirmationLink,
+          }
+        );
+
+        if (result.success) {
+          console.log(`Confirmation email sent to ${cleanEmail}, messageId: ${result.messageId}`);
+        } else {
+          console.error('Confirmation email send failed:', result.error);
+        }
+      } catch (emailErr) {
+        console.error('Email send error:', emailErr);
+      }
+    } else {
+      console.warn('BREVO_TEMPLATE_CONFIRM not configured, confirmation email not sent');
+    }
+
+    // 4. Erstelle/aktualisiere Kontakt in Brevo mit Personalisierung (nur wenn API-Keys konfiguriert sind)
     const brevoListId = process.env.BREVO_LIST_ID;
 
     if (brevoListId) {
@@ -68,7 +106,11 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { success: true, message: 'Successfully subscribed to newsletter' },
+      {
+        success: true,
+        message: 'Successfully subscribed to newsletter',
+        confirmationLink: templateId ? undefined : confirmationLink, // nur für Testing ohne API-Key
+      },
       { status: 200 }
     );
   } catch (error) {

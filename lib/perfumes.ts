@@ -880,3 +880,41 @@ export function rankPerfumes(perfumes: Perfume[], a: QuizAnswers): RankedPerfume
         : (y.perfume.scentmatch_score || 0) - (x.perfume.scentmatch_score || 0)
     );
 }
+
+// ===== QUIZ DB-GESTEUERT =====
+export type QuizQuestionDB = {
+  id: string;
+  position: number;
+  question_text: string;
+  hint_text: string | null;
+  question_type: string;
+  answers: { id: string; label: string; value: string }[];
+};
+
+// Lädt alle Quiz-Fragen aus der DB (in korrekter Reihenfolge)
+export async function getQuizQuestions(): Promise<QuizQuestionDB[]> {
+  if (!isSupabaseConfigured()) return [];
+
+  const { data, error } = await supabase
+    .from('quiz_questions')
+    .select('id, position, question_text, hint_text, question_type, quiz_answers(id, answer_label, answer_value)')
+    .order('position', { ascending: true });
+
+  if (error) {
+    console.error('Error loading quiz questions:', error);
+    return [];
+  }
+
+  return (data || []).map((q: any) => ({
+    id: q.id,
+    position: q.position,
+    question_text: q.question_text,
+    hint_text: q.hint_text,
+    question_type: q.question_type,
+    answers: (q.quiz_answers || []).map((a: any) => ({
+      id: a.id,
+      label: a.answer_label,
+      value: a.answer_value
+    }))
+  }));
+}

@@ -43,7 +43,7 @@ export default function Quiz(): ReactElement {
   };
 
   const handleLovedNotesSelect = (notes: string[]): void => {
-    dispatch({ type: 'SET_DISLIKED_NOTES', payload: notes });
+    dispatch({ type: 'SET_LOVED_NOTES', payload: notes });
     dispatch({ type: 'NEXT_STEP' });
   };
 
@@ -69,7 +69,10 @@ export default function Quiz(): ReactElement {
 
   const handleBudgetChange = (min: number, max: number): void => {
     dispatch({ type: 'SET_BUDGET', payload: { min, max } });
-    dispatch({ type: 'NEXT_STEP' });
+  };
+
+  const handleShowResults = (): void => {
+    dispatch({ type: 'COMPLETE_QUIZ' });
   };
 
   const handleNext = (): void => {
@@ -205,6 +208,14 @@ export default function Quiz(): ReactElement {
             onClick={handleNext}
           >
             Weiter
+          </button>
+        )}
+        {state.currentStep === 8 && (
+          <button
+            className="button button-primary"
+            onClick={handleShowResults}
+          >
+            Ergebnisse zeigen
           </button>
         )}
       </div>

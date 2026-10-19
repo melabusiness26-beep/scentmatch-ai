@@ -77,6 +77,7 @@ export type QuizAction =
   | { type: 'SET_GENDER'; payload: GenderValue }
   | { type: 'SET_ANCHOR'; payload: string | null }
   | { type: 'SET_FAMILIES'; payload: FragranceFamilyValue[] }
+  | { type: 'SET_LOVED_NOTES'; payload: string[] }
   | { type: 'ADD_LOVED_NOTE'; payload: string }
   | { type: 'REMOVE_LOVED_NOTE'; payload: string }
   | { type: 'SET_DISLIKED_NOTES'; payload: string[] }
@@ -106,6 +107,9 @@ export function quizReducer(
 
     case 'SET_FAMILIES':
       return { ...state, families: action.payload };
+
+    case 'SET_LOVED_NOTES':
+      return { ...state, lovedNotes: action.payload };
 
     case 'ADD_LOVED_NOTE':
       return {

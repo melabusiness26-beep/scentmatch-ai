@@ -54,7 +54,12 @@ async function getPerfumes(): Promise<Perfume[]> {
       return [];
     }
 
-    return (data as Perfume[]) || [];
+    // Normalize brands array to single object for each perfume
+    const normalized = (data as any[] | null)?.map((p: any) => ({
+      ...p,
+      brands: Array.isArray(p.brands) && p.brands.length > 0 ? p.brands[0] : null,
+    })) as Perfume[];
+    return normalized || [];
   } catch (err) {
     console.error('Error fetching perfumes:', err);
     return [];

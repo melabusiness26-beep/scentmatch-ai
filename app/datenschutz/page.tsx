@@ -1,132 +1,144 @@
 import type { Metadata } from 'next';
 import SiteHeader from '@/app/SiteHeader';
-import { OPERATOR } from '@/lib/operator';
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Datenschutzerklärung',
-  description: 'Wie Auressa mit deinen Daten umgeht – transparent und einfach erklärt.',
-  alternates: { canonical: '/datenschutz' }
+  title: 'Datenschutz | Auressa',
+  description: 'Datenschutzerklärung der Auressa Duft-Plattform. Wie wir deine Daten schützen.',
+  robots: 'noindex, follow',
 };
 
 export default function DatenschutzPage() {
+  const lastUpdated = '19. Oktober 2026';
+
   return (
     <main>
       <SiteHeader />
-      <div className="container">
-        <section className="detail-hero">
-          <div>
-            <p className="eyebrow">Rechtliches</p>
-            <h1 className="detail-title">Datenschutzerklärung</h1>
-            <p className="lead">
-              Der Schutz deiner Daten ist uns wichtig. Hier erklären wir einfach und transparent, welche
-              Daten beim Besuch von Auressa anfallen.
+      <div className="legal-container">
+        <article className="legal-content">
+          <h1>Datenschutzerklärung</h1>
+          <p className="last-updated">Zuletzt aktualisiert: {lastUpdated}</p>
+
+          <section>
+            <h2>1. Verantwortlicher und Kontakt</h2>
+            <p>
+              <strong>Melanie Viele</strong><br />
+              Neuenhof, AG<br />
+              Schweiz<br />
+              <a href="mailto:mela.business26@gmail.com">mela.business26@gmail.com</a>
             </p>
+          </section>
+
+          <section>
+            <h2>2. Geltungsbereich</h2>
+            <p>
+              Diese Datenschutzerklärung gilt für die Website <strong>auressa.ch</strong> und alle damit verbundenen
+              Dienste, einschließlich des Duft-Quizzes, des Duft-Katalogs und der Empfehlungsengine.
+            </p>
+            <p>
+              Wir beachten die Bestimmungen des Schweizer Datenschutzgesetzes (DSG) und der Europäischen
+              Datenschutz-Grundverordnung (GDPR), soweit anwendbar.
+            </p>
+          </section>
+
+          <section>
+            <h2>3. Arten von Daten, die wir erfassen</h2>
+
+            <h3>3.1 Daten, die du uns freiwillig mitteilst:</h3>
+            <ul>
+              <li><strong>Quiz-Antworten</strong>: Geschlecht, Duftfamilien-Vorlieben, Noten-Lieblings- und No-Go, Anlässe, Jahreszeiten, Budget</li>
+              <li><strong>Kontaktformulare</strong>: Name, E-Mail (wenn aktiviert)</li>
+              <li><strong>Newsletter</strong>: E-Mail-Adresse (wenn du dich anmeldest)</li>
+            </ul>
+
+            <h3>3.2 Daten, die automatisch erfasst werden:</h3>
+            <ul>
+              <li><strong>Server-Logs</strong>: IP-Adresse, Browser-Typ, Zugriffszeitpunkte, angeforderte Seiten</li>
+              <li><strong>Analytics</strong>: Seitenaufrufe, Verweildauer, Gerätetyp (falls Google Analytics 4 aktiv)</li>
+              <li><strong>Cookies</strong>: Session-IDs, Benutzer-Einstellungen (falls gespeichert)</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>4. Verwendung deiner Daten</h2>
+            <p>Wir nutzen deine Daten nur für:</p>
+            <ul>
+              <li>✅ <strong>Funktionalität</strong>: Duft-Quiz berechnen, Empfehlungen zeigen</li>
+              <li>✅ <strong>Website-Betrieb</strong>: Fehlersuche, Performance-Monitoring</li>
+              <li>✅ <strong>Marketing</strong> (falls du dich anmeldest): Newsletter, Neuigkeiten zu neuen Düften</li>
+              <li>✅ <strong>Rechtliche Pflichten</strong>: Sicherheit, Missbrauchsprävention</li>
+            </ul>
+            <p><strong>Wir verkaufen deine Daten NIEMALS an Dritte.</strong></p>
+          </section>
+
+          <section>
+            <h2>5. Speicherung und Datensicherheit</h2>
+            <ul>
+              <li><strong>Datenbank</strong>: Daten werden bei <strong>Supabase</strong> (EU-gehostet, PostgreSQL) gespeichert</li>
+              <li><strong>Verschlüsselung</strong>: Daten werden in Transit (HTTPS) und in Ruhe verschlüsselt</li>
+              <li><strong>Zugriff</strong>: Nur du (und optional, die Gründerin) können deine Daten einsehen</li>
+              <li><strong>Löschung</strong>: Du kannst jederzeit um Datenlöschung anfragen</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>6. Cookies und Tracking</h2>
+            <p>Auressa nutzt <strong>minimale Cookies</strong>:</p>
+            <ul>
+              <li><strong>Session-Cookies</strong>: Zur Funktionalität des Quiz notwendig (werden nicht gespeichert)</li>
+              <li><strong>Google Analytics 4</strong> (optional): Um zu verstehen, wie Besucher die Website nutzen</li>
+            </ul>
+            <p>Du kannst Cookies in deinen Browser-Einstellungen ablehnen. Das Quiz funktioniert auch ohne Analyse-Cookies.</p>
+          </section>
+
+          <section>
+            <h2>7. Affiliate-Links und Transparenz</h2>
+            <p>Auressa nutzt Affiliate-Links zu <strong>Notino.ch</strong> und <strong>Flaconi</strong>. Das heißt:</p>
+            <ul>
+              <li>🔗 Wenn du über unsere Links einkaufst, erhalten wir eine kleine Provision</li>
+              <li>💰 <strong>Für dich ändert sich der Preis NICHT</strong></li>
+              <li>📢 Links sind als <code>rel="sponsored"</code> gekennzeichnet (sichtbar im Quellcode)</li>
+            </ul>
+            <p>Diese Provisionen finanzieren die Website und ermöglichen es uns, den Service kostenlos anzubieten.</p>
+          </section>
+
+          <section>
+            <h2>8. Deine Rechte (GDPR / Schweizer DSG)</h2>
+            <p>Du hast das Recht auf:</p>
+            <ul>
+              <li>📖 <strong>Auskunft</strong>: Welche Daten speichern wir über dich?</li>
+              <li>✏️ <strong>Berichtigung</strong>: Falsche Daten korrigieren</li>
+              <li>🗑️ <strong>Löschung</strong>: „Recht auf Vergessenwerden"</li>
+              <li>📥 <strong>Datenportabilität</strong>: Deine Daten im Standard-Format herunterladen</li>
+              <li>❌ <strong>Widerspruch</strong>: Marketing abmelden</li>
+            </ul>
+            <p>Schreib uns unter <a href="mailto:mela.business26@gmail.com">mela.business26@gmail.com</a>, um eines dieser Rechte auszuüben. Wir antworten innerhalb von 30 Tagen.</p>
+          </section>
+
+          <section>
+            <h2>9. Externe Links</h2>
+            <p>Auressa verlinkt zu <strong>Notino.ch</strong>, <strong>Flaconi</strong> und anderen Duft-Shops. Wir sind nicht verantwortlich für deren Datenschutzerklärungen. Bitte lies deren Policies, wenn du dort einkaufst.</p>
+          </section>
+
+          <section>
+            <h2>10. Änderungen an dieser Richtlinie</h2>
+            <p>Wir können diese Datenschutzerklärung jederzeit aktualisieren. Die aktuelle Version ist immer auf dieser Seite verfügbar.</p>
+          </section>
+
+          <section>
+            <h2>11. Kontakt & Datenschutzanliegen</h2>
+            <p>Für Fragen zum Datenschutz kontaktiere uns:</p>
+            <p>
+              <strong>Melanie Viele</strong><br />
+              <a href="mailto:mela.business26@gmail.com">mela.business26@gmail.com</a><br />
+              Neuenhof, AG, Schweiz
+            </p>
+          </section>
+
+          <div className="legal-footer">
+            <p>← Zurück zur <Link href="/">Startseite</Link></p>
           </div>
-        </section>
-
-        <section className="section legal">
-          <h2>1. Verantwortliche Stelle</h2>
-          <p>
-            Verantwortlich für die Datenbearbeitung auf dieser Website ist:
-          </p>
-          <p>
-            {OPERATOR.name}<br />
-            {OPERATOR.street}<br />
-            {OPERATOR.zip} {OPERATOR.city}, {OPERATOR.country}<br />
-            <strong>E-Mail:</strong> {OPERATOR.email}
-          </p>
-
-          <h2>2. Grundsatz</h2>
-          <p>
-            Auressa ist eine reine Informations- und Empfehlungsplattform. Du kannst die Website nutzen,
-            ohne ein Konto anzulegen oder persönliche Daten anzugeben. Wir sammeln <strong>keine</strong>{' '}
-            Namen, Adressen oder Zahlungsdaten und betreiben <strong>kein</strong> Werbe-Tracking. Eine
-            anonyme Reichweiten-Messung (siehe Abschnitt 6) findet ausschliesslich statt, wenn du im
-            Cookie-Hinweis ausdrücklich zustimmst.
-          </p>
-
-          <h2>3. Server-Logdaten (Hosting)</h2>
-          <p>
-            Diese Website wird bei <strong>Vercel Inc.</strong> (USA) gehostet. Beim Aufruf der Seite werden
-            – wie bei jeder Website – automatisch technische Daten verarbeitet (z. B. IP-Adresse, Datum und
-            Uhrzeit des Zugriffs, abgerufene Seite, Browsertyp). Diese Daten dienen dem sicheren und
-            stabilen Betrieb der Website und werden nicht genutzt, um dich persönlich zu identifizieren.
-          </p>
-
-          <h2>4. Duftdatenbank</h2>
-          <p>
-            Die Düfte werden aus unserer Datenbank beim Anbieter <strong>Supabase</strong> geladen. Dabei
-            werden nur die zur Anzeige nötigen Inhalte abgerufen – es werden keine personenbezogenen Daten
-            von dir an Supabase übermittelt.
-          </p>
-
-          <h2>5. Speicherung im Browser (Quiz)</h2>
-          <p>
-            Wenn du das Duft-Quiz machst, werden deine Antworten ausschliesslich <strong>lokal in deinem
-            Browser bzw. in der Adresse (Link)</strong> verarbeitet, damit dir dein Ergebnis angezeigt und
-            das Teilen ermöglicht werden kann. Diese Daten landen <strong>nicht</strong> auf unseren Servern
-            und werden nicht ausgewertet.
-          </p>
-
-          <h2>6. Cookie-Einwilligung &amp; anonyme Statistik</h2>
-          <p>
-            Beim ersten Besuch zeigen wir dir einen kurzen Hinweis zu Cookies. Wir speichern deine
-            Cookie-Auswahl lokal in deinem Browser, damit der Hinweis nicht bei jedem Besuch erneut
-            erscheint. Eine anonyme Reichweiten-Statistik (<strong>Vercel Analytics</strong>) laden wir
-            erst, wenn du im Hinweis „Alle akzeptieren" wählst. Sie erfasst nur anonyme Nutzungsdaten
-            (z. B. aufgerufene Seiten) und keine persönlichen Profile. Wählst du „Nur notwendige", findet
-            keine solche Messung statt. Technisch notwendige Cookies, die für den sicheren Betrieb der
-            Seite nötig sind, kommen unabhängig davon zum Einsatz. Du kannst deine Auswahl jederzeit
-            zurücksetzen, indem du die gespeicherten Website-Daten in deinem Browser löschst.
-          </p>
-
-          <h2>7. Affiliate-Links</h2>
-          <p>
-            Auf den Duftseiten findest du Links zu Partner-Shops („Jetzt ansehen"). Klickst du darauf,
-            kann das jeweilige Partnernetzwerk (z. B. Commission Junction) ein Cookie setzen, um
-            einen möglichen Kauf der Empfehlung zuzuordnen. Diese Verarbeitung erfolgt durch den jeweiligen
-            Anbieter gemäss dessen Datenschutzbestimmungen. Für dich entstehen keine Mehrkosten.
-          </p>
-
-          <h2>8. Duft-Scanner (KI-Bilderkennung)</h2>
-          <p>
-            Wenn du den Duft-Scanner nutzt, wird das von dir aufgenommene oder hochgeladene Foto zur
-            Erkennung des Parfüms an die KI-API von <strong>Anthropic, Inc.</strong> (USA) übertragen.
-            Das Bild wird ausschliesslich für die einmalige Analyse verwendet und danach
-            <strong> nicht gespeichert</strong>. Anthropic verarbeitet die Daten gemäss seiner{' '}
-            <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">
-              Datenschutzrichtlinie
-            </a>. Die Nutzung des Scanners ist freiwillig.
-          </p>
-
-          <h2>9. Newsletter</h2>
-          <p>
-            Wenn du dich für unseren Newsletter anmeldest, speichern wir deine E-Mail-Adresse
-            ausschliesslich zu dem Zweck, dir Duft-Tipps und Empfehlungen zu senden. Die Anmeldung
-            erfolgt nur mit deiner ausdrücklichen Einwilligung (Häkchen im Formular). Deine Adresse
-            wird in unserer Datenbank beim Anbieter <strong>Supabase</strong> gespeichert und nicht an
-            Dritte verkauft. Du kannst dich jederzeit wieder abmelden – eine kurze Nachricht an die
-            oben genannte E-Mail-Adresse genügt, und wir löschen deine Daten.
-          </p>
-
-          <h2>10. Deine Rechte</h2>
-          <p>
-            Du hast im Rahmen der geltenden Datenschutzgesetze (insb. des Schweizer Datenschutzgesetzes,
-            revDSG) das Recht auf Auskunft über die zu deiner Person bearbeiteten Daten sowie auf
-            Berichtigung, Löschung oder Einschränkung der Bearbeitung. Wende dich dafür einfach an die oben
-            genannte E-Mail-Adresse.
-          </p>
-
-          <h2>11. Änderungen</h2>
-          <p>
-            Wir passen diese Datenschutzerklärung an, wenn sich Funktionen der Website ändern (z. B. falls
-            künftig ein Login oder weitere Dienste hinzukommen).
-          </p>
-
-          <p className="small legal-note">Stand: {OPERATOR.lastUpdated}</p>
-        </section>
+        </article>
       </div>
     </main>
   );

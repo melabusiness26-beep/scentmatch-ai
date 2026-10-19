@@ -122,7 +122,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </div>
 
         <footer className="site-footer">
-          <FooterNewsletter />
+          <div className="container footer-newsletter">
+            <h3 className="newsletter-title">Duft-Tipps per E-Mail</h3>
+            <p className="small">Neue Düfte, Spar-Tipps und Empfehlungen. Ab und zu, nie Spam.</p>
+            <form style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '12px' }}>
+              <input type="email" placeholder="deine@email.ch" style={{ flex: '1 1 220px', minWidth: 0 }} className="search newsletter-input" />
+              <button type="submit" className="button">Anmelden</button>
+            </form>
+          </div>
           <div style={{ backgroundColor: '#1F1410', padding: '3rem 1.25rem', borderTop: '1px solid rgba(212,175,55,0.1)' }}>
             <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
               {/* Header */}

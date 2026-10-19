@@ -6,6 +6,7 @@ import type { QuizState } from './quiz-types';
 export interface MatchScore {
   perfumeId: string;
   perfumeName: string;
+  perfumeSlug?: string | null;
   totalScore: number;
   scores: {
     family: number;
@@ -174,6 +175,7 @@ export function calculateMatchScore(
   return {
     perfumeId: perfume.id,
     perfumeName: perfume.perfume_name,
+    perfumeSlug: perfume.slug,
     totalScore,
     scores,
   };

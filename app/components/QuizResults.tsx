@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, ReactElement } from 'react';
+import Link from 'next/link';
 import { QuizState } from '@/lib/quiz-types';
 import type { MatchScore } from '@/lib/match-engine';
 
@@ -89,9 +90,18 @@ export default function QuizResults({
                     Score: {Math.round(match.totalScore)}/100
                   </p>
                 </div>
-                <button className="button button-primary small">
-                  Ansehen
-                </button>
+                {match.perfumeSlug ? (
+                  <Link
+                    href={`/duft/${match.perfumeSlug}`}
+                    className="button button-primary small"
+                  >
+                    Ansehen
+                  </Link>
+                ) : (
+                  <button className="button button-primary small" disabled>
+                    Ansehen
+                  </button>
+                )}
               </div>
             ))}
           </div>

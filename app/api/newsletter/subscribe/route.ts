@@ -20,14 +20,14 @@ export async function POST(request: NextRequest) {
 
     // 1. Speichere in Supabase (subscriber tracking) mit Server-Side Client
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-    if (!supabaseUrl || !supabaseServiceKey) {
+    if (!supabaseUrl || !supabaseKey) {
       console.error('Supabase configuration missing');
       return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
     }
 
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+    const supabase = createClient(supabaseUrl, supabaseKey);
 
     const { error: dbError } = await supabase
       .from('subscribers')

@@ -893,7 +893,7 @@ export type QuizQuestionDB = {
 
 // Lädt alle Quiz-Fragen aus der DB (in korrekter Reihenfolge)
 export async function getQuizQuestions(): Promise<QuizQuestionDB[]> {
-  if (!isSupabaseConfigured()) return [];
+  if (!isSupabaseConfigured) return [];
 
   const { data, error } = await supabase
     .from('quiz_questions')

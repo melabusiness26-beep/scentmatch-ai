@@ -559,60 +559,61 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(212,175,55
 .newsletter-title {
   margin: 0 0 12px;
   font-family: var(--font-display), Georgia, serif;
-  font-size: clamp(22px, 4vw, 32px);
+  font-size: clamp(24px, 5vw, 36px);
   font-weight: 700;
-  letter-spacing: -0.01em;
-  color: #faf7f2;
+  letter-spacing: -0.02em;
+  color: #1F1410;
   line-height: 1.2;
 }
 .newsletter-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; align-items: flex-start; }
 .newsletter-input {
   flex: 1 1 240px;
   min-width: 0;
-  padding: clamp(12px, 2.5vw, 16px) clamp(14px, 3vw, 18px);
-  border: 1.5px solid rgba(212,175,55,.2);
+  padding: clamp(13px, 2.5vw, 16px) clamp(16px, 3vw, 20px);
+  border: 2px solid #D4AF37;
   border-radius: 10px;
-  background: rgba(255,255,255,.08);
-  color: #faf7f2;
+  background: #FFFFFF;
+  color: #1F1410;
   font-size: clamp(14px, 2.2vw, 16px);
   font-family: var(--font-sans), Arial, sans-serif;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(4px);
 }
-.newsletter-input::placeholder { color: rgba(237,229,220,.5); }
+.newsletter-input::placeholder { color: #9CA3AF; }
 .newsletter-input:focus {
   outline: none;
-  border-color: rgba(212,175,55,.6);
-  background: rgba(255,255,255,.12);
-  box-shadow: 0 0 0 3px rgba(212,175,55,.15);
+  border-color: #B8941F;
+  background: #FFFAF0;
+  box-shadow: 0 0 0 4px rgba(212,175,55,.15);
 }
 .newsletter .button {
   background: linear-gradient(135deg, #D4AF37 0%, #E5C158 100%);
   color: #1F1410;
   font-weight: 700;
   letter-spacing: .06em;
-  padding: clamp(12px, 2.5vw, 16px) clamp(24px, 5vw, 32px);
+  padding: clamp(13px, 2.5vw, 16px) clamp(28px, 6vw, 40px);
   border-radius: 10px;
   flex: 0 1 auto;
-  box-shadow: 0 8px 24px rgba(212,175,55,.25);
+  box-shadow: 0 8px 24px rgba(212,175,55,.3);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  cursor: pointer;
 }
 .newsletter .button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(212,175,55,.35);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(212,175,55,.4);
 }
 .newsletter .button:active {
-  transform: translateY(0);
+  transform: translateY(-1px);
 }
 .newsletter-consent {
   display: flex;
   gap: 10px;
   align-items: flex-start;
-  margin-top: 14px;
+  margin-top: 16px;
   cursor: pointer;
   line-height: 1.6;
   font-size: clamp(13px, 2.1vw, 15px);
-  color: rgba(237,229,220,.85);
+  color: #6B5344;
 }
 .newsletter-consent input {
   margin-top: 4px;
@@ -625,19 +626,22 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(212,175,55
 .newsletter-consent a {
   color: #D4AF37;
   text-decoration: underline;
+  font-weight: 600;
   transition: color 0.2s ease;
 }
-.newsletter-consent a:hover { color: #E5C158; }
+.newsletter-consent a:hover { color: #B8941F; }
 .newsletter-error {
-  color: #FF9999;
+  color: #EF4444;
   margin-top: 12px;
   font-size: clamp(13px, 2.1vw, 14px);
+  font-weight: 500;
 }
 .newsletter .small {
-  font-size: clamp(14px, 2.2vw, 16px);
-  line-height: 1.6;
-  color: rgba(237,229,220,.8);
-  margin: 0 0 18px;
+  font-size: clamp(15px, 2.3vw, 17px);
+  line-height: 1.7;
+  color: #6B5344;
+  margin: 0 0 20px;
+  font-weight: 500;
 }
 /* Im dunklen Footer hell darstellen */
 .footer-newsletter {
@@ -646,8 +650,23 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(212,175,55
   border-bottom: 1px solid rgba(212,175,55,.15);
 }
 .footer-newsletter .newsletter-row { max-width: 600px; }
-.site-footer .newsletter-title { color: #faf7f2; }
-.site-footer .newsletter .small, .site-footer .newsletter-consent { color: rgba(237,229,220,.85); }
+.site-footer .newsletter-title {
+  color: #faf7f2;
+  font-size: clamp(24px, 5vw, 32px);
+}
+.site-footer .newsletter-input {
+  border-color: rgba(212,175,55,.3);
+  background: rgba(255,255,255,.08);
+  color: #faf7f2;
+}
+.site-footer .newsletter-input::placeholder { color: rgba(237,229,220,.5); }
+.site-footer .newsletter-input:focus {
+  border-color: rgba(212,175,55,.6);
+  background: rgba(255,255,255,.12);
+}
+.site-footer .newsletter .small, .site-footer .newsletter-consent {
+  color: rgba(237,229,220,.85);
+}
 
 /* Duft nach Stimmung – Auswahl-Kacheln.
    10 Stimmungen → sauberes 5×2-Raster (statt schiefer letzter Reihe). */

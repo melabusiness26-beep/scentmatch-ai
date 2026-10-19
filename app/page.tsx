@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   alternates: { canonical: SITE_URL }
 };
 
+// TEST: Dieser Text sollte auf der Startseite sichtbar sein
+const TEST_BANNER = true;
+
 // Die 3 aktuellsten / interessantesten Ratgeber für die Startseite
 const FEATURED_GUIDE_SLUGS = [
   'parfum-trends-2026',
@@ -71,6 +74,12 @@ export default async function Page() {
   return (
     <>
       <link rel="preload" as="image" href="/hero-auressa-2.jpg" fetchPriority="high" />
+
+      {TEST_BANNER && (
+        <div style={{ backgroundColor: '#FF0000', color: '#FFF', padding: '20px', margin: '20px', fontSize: '24px', fontWeight: 'bold', textAlign: 'center', zIndex: 9999 }}>
+          🚨 VERCEL HAT DEPLOYT! TEST BANNER SICHTBAR! 🚨
+        </div>
+      )}
 
       {/* Server-gerenderte Highlights für SEO */}
       {highlightPerfumes.length > 0 && (

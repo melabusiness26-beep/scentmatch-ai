@@ -1,87 +1,94 @@
+import React, { ReactElement } from 'react';
 import type { Metadata } from 'next';
-import SiteHeader from '@/app/SiteHeader';
-import Breadcrumb from '@/app/Breadcrumb';
-import PerfumeCatalog from './PerfumeCatalog';
-import { getPerfumeCount, getPerfumes } from '@/lib/perfumes';
+import { supabase, isSupabaseConfigured } from '@/lib/supabase';
+import type { Perfume } from '@/lib/perfumes';
+import PerfumeCatalog from '@/app/components/PerfumeCatalog';
 
-export const revalidate = 3600;
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
-
-// Auf 50 abgerundete „über X"-Zahl – so verspricht der Text nie mehr Düfte als wirklich vorhanden sind.
-function approxCount(count: number): number {
-  return Math.max(50, Math.floor(count / 50) * 50);
-}
-
-export async function generateMetadata(): Promise<Metadata> {
-  const approx = approxCount(await getPerfumeCount());
-  return {
-    title: 'Parfüm-Datenbank: alle Düfte durchsuchen (Schweiz)',
+export const metadata: Metadata = {
+  title: 'Duft-Katalog | Auressa',
+  description:
+    'Durchsuche unseren Duft-Katalog mit über 400 Parfümen. Filtere nach Familie, Preis, Geschlecht und mehr.',
+  openGraph: {
+    title: 'Duft-Katalog | Auressa',
     description:
-      `Die grosse Parfüm-Datenbank aus der Schweiz: über ${approx} Düfte von Bestsellern bis zu seltenen Nischenperlen – suchbar nach Name, Marke, Note, Geschlecht und Anlass.`,
-    alternates: { canonical: '/duefte' },
-    openGraph: {
-      title: 'Alle Düfte | Auressa',
-      description: `Die kuratierte Duftdatenbank – über ${approx} Düfte, suchbar und filterbar.`,
-      type: 'website',
-      url: `${SITE_URL}/duefte`
+      'Finde deinen perfekten Duft aus unserer riesigen Auswahl.',
+  },
+};
+
+async function getPerfumes(): Promise<Perfume[]> {
+  if (!isSupabaseConfigured) {
+    console.warn('Supabase not configured');
+    return [];
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from('perfumes')
+      .select(
+        `
+        id,
+        perfume_name,
+        slug,
+        gender,
+        fragrance_family,
+        price_chf,
+        longevity,
+        sillage,
+        scentmatch_score,
+        season,
+        occasion,
+        description,
+        image_url,
+        affiliate_url,
+        top_notes,
+        heart_notes,
+        base_notes,
+        brands(name, slug, country)
+      `
+      )
+      .order('perfume_name', { ascending: true })
+      .limit(500);
+
+    if (error) {
+      console.error('Failed to fetch perfumes:', error);
+      return [];
     }
-  };
+
+    // Normalize brands array to single object for each perfume
+    const normalized = (data as any[] | null)?.map((p: any) => ({
+      ...p,
+      brands: Array.isArray(p.brands) && p.brands.length > 0 ? p.brands[0] : null,
+    })) as Perfume[];
+    return normalized || [];
+  } catch (err) {
+    console.error('Error fetching perfumes:', err);
+    return [];
+  }
 }
 
-export default async function DueftePage() {
-  const [approx, perfumes] = await Promise.all([
-    getPerfumeCount().then(approxCount),
-    getPerfumes(2000)
-  ]);
-
-  // Strukturierte Daten: Brotkrümel + eine ItemList der ersten Düfte,
-  // damit Google die Katalogseite als Duftliste versteht (Rich Results).
-  const listed = perfumes.filter((p) => p.slug).slice(0, 24);
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Startseite', item: SITE_URL },
-      { '@type': 'ListItem', position: 2, name: 'Düfte', item: `${SITE_URL}/duefte` }
-    ]
-  };
-  const itemListJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    itemListElement: listed.map((p, i) => ({
-      '@type': 'ListItem',
-      position: i + 1,
-      name: p.perfume_name,
-      url: `${SITE_URL}/duft/${p.slug}`
-    }))
-  };
+export default async function DueftePage(): Promise<
+  ReactElement
+> {
+  const perfumes = await getPerfumes();
 
   return (
-    <main>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
-      />
-      <SiteHeader />
-      <Breadcrumb items={[{ label: 'Düfte', href: '/duefte' }]} />
-      <div className="container">
-        <section className="detail-hero">
-          <div>
-            <p className="eyebrow">Die Kollektion</p>
-            <h1 className="detail-title">Alle Düfte</h1>
-            <p className="lead">
-              Über {approx} kuratierte Düfte – von Bestsellern bis zu seltenen Nischenperlen. Suche nach Name,
-              Marke, Note (z. B. „Schokolade"), Geschlecht oder Anlass und klicke einen Duft für sein volles Profil.
-            </p>
-          </div>
-        </section>
-        <PerfumeCatalog initialPerfumes={perfumes} />
-      </div>
-    </main>
+    <div className="page-duefte">
+      {/* Hero */}
+      <section className="hero-stage hero-page">
+        <div className="hero-page-inner">
+          <div className="eyebrow">Unser Katalog</div>
+          <h1>Alle Düfte</h1>
+          <p className="lead">
+            Entdecke über 400 kuratierte Düfte für jeden
+            Geschmack und jedes Budget.
+          </p>
+        </div>
+      </section>
+
+      {/* Catalog */}
+      <section className="catalog-section">
+        <PerfumeCatalog perfumes={perfumes} />
+      </section>
+    </div>
   );
 }

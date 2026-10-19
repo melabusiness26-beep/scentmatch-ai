@@ -1,0 +1,386 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import SiteHeader from '@/app/SiteHeader';
+import Breadcrumb from '@/app/Breadcrumb';
+import { guides, guideCategories, getGuide, type Guide } from '@/lib/guides';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
+
+export const metadata: Metadata = {
+  title: 'Duft-Ratgeber: Tipps, Dupes & Empfehlungen | Auressa',
+  description:
+    'Ehrliche Duft-Ratgeber aus der Schweiz: günstige Alternativen zu teuren Parfüms, Saisonempfehlungen, Hauttyp-Tipps und welcher Duft zu welchem Anlass passt.',
+  alternates: { canonical: `${SITE_URL}/ratgeber` },
+  openGraph: {
+    title: 'Duft-Ratgeber | Auressa',
+    description: 'Günstige Dupes, Saisonempfehlungen, Hauttyp-Tipps und Duft-Wissen für jeden.',
+    type: 'website',
+    url: `${SITE_URL}/ratgeber`
+  }
+};
+
+// Emoji-Icon pro Kategorie
+const CATEGORY_ICONS: Record<string, string> = {
+  'Nach Jahreszeit': '🌸',
+  'Nach Duftart': '🌹',
+  'Für Anlass & Typ': '🎯',
+  'Günstig & Dupes': '💸',
+  'Marken & Besonderes': '✨',
+  'Wissen & Tipps': '📖',
+  'Weitere Ratgeber': '📚',
+};
+
+// Pro Guide-Slug ein passendes Emoji vergeben
+const GUIDE_EMOJIS: Record<string, string> = {
+  'guenstige-alternativen-zu-teuren-dueften': '💸',
+  'die-besten-sommerduefte': '☀️',
+  'die-besten-sommerduefte-frauen': '👗',
+  'die-besten-sommerduefte-maenner': '👔',
+  'die-besten-winterduefte': '❄️',
+  'die-besten-herbstduefte': '🍂',
+  'die-besten-fruehlingsduefte': '🌸',
+  'welcher-duft-zu-welchem-anlass': '🎯',
+  'suesse-duefte-vanille-schokolade-karamell': '🍫',
+  'die-besten-unisex-duefte': '⚖️',
+  'parfum-inhaltsstoffe-allergene': '🔬',
+  'die-besten-duefte-unter-50-franken': '💰',
+  'wie-lange-haelt-parfum-haltbarkeit': '⏱️',
+  'parfum-geschenk-die-besten-duefte-zum-verschenken': '🎁',
+  'maennerduefte-die-frauen-moegen': '💝',
+  'die-besten-vanille-duefte': '🍦',
+  'die-besten-oud-duefte': '🪵',
+  'die-besten-zitrus-duefte': '🍋',
+  'damenduefte-die-maenner-lieben': '💐',
+  'parfum-nach-sternzeichen': '⭐',
+  'parfum-fuer-einsteiger-erster-signature-duft': '🌟',
+  'die-besten-fruehlingsduefte-2024': '🌷',
+  'die-besten-bueroduefte': '💼',
+  'parfum-das-lange-haelt-beast-mode': '💪',
+  'die-besten-hochzeitsduefte-braut': '👰',
+  'die-besten-holzigen-duefte': '🌲',
+  'die-besten-blumigen-duefte': '🌺',
+  'die-besten-frischen-aquatischen-duefte': '🌊',
+  'die-besten-moschus-pudrigen-duefte': '☁️',
+  'parfum-layering-duefte-kombinieren': '🎨',
+  'edt-edp-parfum-unterschied': '📊',
+  'haeufige-parfum-fehler': '❌',
+  'parfums-mit-schweizer-bezug': '🇨🇭',
+  'die-besten-lattafa-duefte': '🏆',
+  'die-besten-armaf-duefte': '🥇',
+  'die-besten-herbstduefte-2024': '🍁',
+  'die-besten-nischenduefte': '💎',
+  'die-besten-sommerduefte-frauen-2026': '🌺',
+  'creed-aventus-guenstige-alternativen': '🔄',
+  'lattafa-dupes-welches-original': '🏷️',
+  'parfum-fuer-junge-leute-unter-60-franken': '🎓',
+  'date-duefte-sommer': '💞',
+  'zara-parfum-dupes-welches-original': '🛍️',
+  'die-besten-sommerduefte-maenner-2026': '🏄',
+  'parfum-trends-2026': '📈',
+  'die-besten-erdbeer-duefte': '🍓',
+  'parfum-im-handgepaeck-reise-tipps': '✈️',
+  'parfum-und-hauttyp-was-passt-zu-meiner-haut': '🧴',
+  'vegane-tierversuchsfreie-parfums': '🌿',
+  'parfum-proben-abfuellungen-schweiz': '🧪',
+  'nische-mainstream': '💎',
+  'duftpersoenlichkeit': '🎭',
+  'duftchemie-grundlagen': '🧪',
+  'duftkollektion-minimal': '📚',
+};
+
+function getGuideEmoji(slug: string): string {
+  return GUIDE_EMOJIS[slug] || '📄';
+}
+
+interface ExternalGuide {
+  slug: string;
+  title: string;
+  description: string;
+  href: string;
+}
+
+function GuideTiles({ items }: { items: Guide[] }) {
+  return (
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+      gap: '1rem',
+    }}>
+      {items.map((guide) => (
+        <Link
+          key={guide.slug}
+          href={`/ratgeber/${guide.slug}`}
+          className="guide-tile"
+        >
+          <span style={{ fontSize: '1.75rem', lineHeight: 1 }}>{getGuideEmoji(guide.slug)}</span>
+          <h3 style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: '1rem',
+            fontWeight: 700,
+            color: '#2a1d12',
+            margin: 0,
+            lineHeight: 1.35,
+          }}>{guide.title}</h3>
+          <p style={{
+            fontSize: '0.8rem',
+            color: '#6b5344',
+            lineHeight: 1.55,
+            margin: 0,
+            flexGrow: 1,
+          }}>{guide.description}</p>
+          <span style={{
+            fontSize: '0.75rem',
+            fontWeight: 700,
+            color: '#d4af37',
+            letterSpacing: '0.04em',
+            textTransform: 'uppercase',
+            marginTop: 'auto',
+          }}>Lesen →</span>
+        </Link>
+      ))}
+    </div>
+  );
+}
+
+function ExternalGuideTiles({ items }: { items: ExternalGuide[] }) {
+  return (
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+      gap: '1rem',
+    }}>
+      {items.map((guide) => (
+        <Link
+          key={guide.slug}
+          href={guide.href}
+          className="guide-tile"
+        >
+          <span style={{ fontSize: '1.75rem', lineHeight: 1 }}>{getGuideEmoji(guide.slug)}</span>
+          <h3 style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: '1rem',
+            fontWeight: 700,
+            color: '#2a1d12',
+            margin: 0,
+            lineHeight: 1.35,
+          }}>{guide.title}</h3>
+          <p style={{
+            fontSize: '0.8rem',
+            color: '#6b5344',
+            lineHeight: 1.55,
+            margin: 0,
+            flexGrow: 1,
+          }}>{guide.description}</p>
+          <span style={{
+            fontSize: '0.75rem',
+            fontWeight: 700,
+            color: '#d4af37',
+            letterSpacing: '0.04em',
+            textTransform: 'uppercase',
+            marginTop: 'auto',
+          }}>Lesen →</span>
+        </Link>
+      ))}
+    </div>
+  );
+}
+
+export default function RatgeberIndex() {
+  // Externe Guides (eigenständige Seiten)
+  const externalGuides: ExternalGuide[] = [
+    {
+      slug: 'nische-mainstream',
+      title: 'Nische vs. Mainstream Düfte',
+      description: 'Verstehe den Unterschied zwischen Niche-Parfümen und Mainstream-Düften – Qualität, Einzigartigkeit, Preis und Verfügbarkeit.',
+      href: '/nische-mainstream'
+    },
+    {
+      slug: 'duftpersoenlichkeit',
+      title: 'Duftpersönlichkeit: Dein Charakter im Duft',
+      description: 'Entdecke, wie deine Persönlichkeit deinen idealen Duft formt. Von klassischen bis modernen Typen – finde heraus, welche Duftfamilien zu dir passen.',
+      href: '/duftpersoenlichkeit'
+    },
+    {
+      slug: 'duftchemie-grundlagen',
+      title: 'Duftchemie & Physik: Wie Düfte wirklich funktionieren',
+      description: 'Lerne die Wissenschaft hinter Düften: Pyramide, Volatilität, Konzentration, Körperchemie und warum ein Duft auf dir anders riecht.',
+      href: '/duftchemie-grundlagen'
+    },
+    {
+      slug: 'duftkollektion-minimal',
+      title: 'Minimalistische Duftkollektion: Die intelligente 3er-Sammlung',
+      description: 'Baue dir eine perfekte Kollektion mit nur 3 Düften: Daily Driver, Special Occasion, Seasonal. Strategisch, flexibel, skalierbar.',
+      href: '/duftkollektion-minimal'
+    }
+  ];
+
+  // Kategorien mit ihren Artikeln auflösen.
+  const categorized = guideCategories.map((cat) => ({
+    title: cat.title,
+    items: cat.slugs
+      .map((s) => getGuide(s))
+      .filter((g): g is Guide => Boolean(g))
+  }));
+
+  // Artikel, die in keiner Kategorie stehen, sammeln (Sicherheitsnetz).
+  const inCategory = new Set(guideCategories.flatMap((c) => c.slugs));
+  const weitere = guides.filter((g) => !inCategory.has(g.slug));
+
+  const totalGuides = guides.length + externalGuides.length;
+
+  return (
+    <main style={{ backgroundColor: '#faf7f2' }}>
+      <SiteHeader />
+      <Breadcrumb items={[{ label: 'Ratgeber', href: '/ratgeber' }]} />
+
+      {/* Hero */}
+      <section
+        style={{
+          backgroundImage: 'linear-gradient(rgba(26,18,9,0.88), rgba(26,18,9,0.88)), url(/hero-auressa-2.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          minHeight: '260px',
+          padding: '2.5rem 1.25rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <div style={{ textAlign: 'center', maxWidth: '620px' }}>
+          <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.75rem' }}>
+            Ratgeber
+          </p>
+          <h1 style={{
+            fontSize: 'clamp(26px, 6vw, 42px)',
+            fontFamily: "'Playfair Display', serif",
+            fontWeight: 700,
+            marginBottom: '1rem',
+            lineHeight: 1.15,
+            color: '#faf7f2',
+          }}>
+            Duft-Ratgeber
+          </h1>
+          <p style={{ fontSize: '16px', color: 'rgba(250,247,242,0.72)', margin: '0 0 1.5rem 0' }}>
+            {totalGuides} ehrliche Ratgeber zu Düften, Dupes, Saisonempfehlungen und Parfüm-Wissen.
+            Kein Fachjargon, keine versteckte Werbung.
+          </p>
+          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <Link href="/#quiz" style={{
+              display: 'inline-block',
+              background: '#d4af37',
+              color: '#2a1d12',
+              fontWeight: 700,
+              padding: '0.65rem 1.35rem',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              fontSize: '0.875rem',
+            }}>Quiz starten</Link>
+            <Link href="/duft-detektiv" style={{
+              display: 'inline-block',
+              background: 'transparent',
+              color: '#faf7f2',
+              fontWeight: 600,
+              padding: '0.65rem 1.35rem',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              fontSize: '0.875rem',
+              border: '1px solid rgba(250,247,242,0.3)',
+            }}>Duft-Detektiv</Link>
+          </div>
+        </div>
+      </section>
+
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3rem 1.25rem' }}>
+
+        {categorized.map((cat) =>
+          cat.items.length > 0 ? (
+            <section key={cat.title} style={{ marginBottom: '3rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
+                <span style={{ fontSize: '1.25rem' }}>{CATEGORY_ICONS[cat.title] ?? '📚'}</span>
+                <h2 style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: '1.4rem',
+                  fontWeight: 700,
+                  color: '#2a1d12',
+                  margin: 0,
+                }}>{cat.title}</h2>
+              </div>
+              <GuideTiles items={cat.items} />
+            </section>
+          ) : null
+        )}
+
+        {weitere.length > 0 && (
+          <section style={{ marginBottom: '3rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
+              <span style={{ fontSize: '1.25rem' }}>📚</span>
+              <h2 style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: '1.4rem',
+                fontWeight: 700,
+                color: '#2a1d12',
+                margin: 0,
+              }}>Weitere Ratgeber</h2>
+            </div>
+            <GuideTiles items={weitere} />
+          </section>
+        )}
+
+        {/* Externe Guides */}
+        <section style={{ marginBottom: '3rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
+            <span style={{ fontSize: '1.25rem' }}>🧠</span>
+            <h2 style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: '1.4rem',
+              fontWeight: 700,
+              color: '#2a1d12',
+              margin: 0,
+            }}>Tiefgang: Wissen & Theorie</h2>
+          </div>
+          <ExternalGuideTiles items={externalGuides} />
+        </section>
+
+        {/* CTA */}
+        <section style={{
+          background: 'linear-gradient(135deg, #2a1d12 0%, #3d2b1a 100%)',
+          borderRadius: '16px',
+          padding: '2rem',
+          textAlign: 'center',
+          color: '#faf7f2',
+        }}>
+          <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>
+            Kein Ratgeber passend?
+          </p>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.4rem', fontWeight: 700, color: '#faf7f2', marginBottom: '0.75rem' }}>
+            Lass dich persönlich beraten
+          </h2>
+          <p style={{ color: 'rgba(250,247,242,0.7)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
+            Unser Duft-Quiz und der Duft-Detektiv finden deinen persönlichen Match, in unter 3 Minuten.
+          </p>
+          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <Link href="/#quiz" style={{
+              background: '#d4af37',
+              color: '#2a1d12',
+              fontWeight: 700,
+              padding: '0.75rem 1.5rem',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              fontSize: '0.9rem',
+            }}>Quiz starten</Link>
+            <Link href="/duft-detektiv" style={{
+              background: 'transparent',
+              color: '#faf7f2',
+              fontWeight: 600,
+              padding: '0.75rem 1.5rem',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              fontSize: '0.9rem',
+              border: '1px solid rgba(250,247,242,0.3)',
+            }}>Duft-Detektiv</Link>
+          </div>
+        </section>
+      </div>
+    </main>
+  );
+}

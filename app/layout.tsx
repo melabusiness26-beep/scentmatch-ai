@@ -1,210 +1,107 @@
-import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Playfair_Display, Inter } from 'next/font/google';
-import Link from 'next/link';
-import ConsentedAnalytics from '@/app/ConsentedAnalytics';
-import CookieBanner from '@/app/CookieBanner';
-import FooterNewsletter from '@/app/FooterNewsletter';
-import { FavoritesProvider } from '@/app/FavoritesContext';
+import './globals.css';
+import SiteHeader from './components/SiteHeader';
+import SiteFooter from './components/SiteFooter';
+import CookieBanner from './components/CookieBanner';
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['600', '700'],
+  variable: '--font-display',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#241912'
+  maximumScale: 5,
+  userScalable: true,
 };
 
-// Edle Schriftarten: Playfair Display (Serife) für Überschriften,
-// Inter (klar, modern) für Texte.
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['500', '600', '700'],
-  variable: '--font-display',
-  display: 'swap'
-});
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  display: 'swap'
-});
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
-
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Auressa – Finde deinen Signature-Duft',
-    template: '%s | Auressa'
+    default: 'Auressa – Dein persönlicher Duft Finder',
+    template: '%s | Auressa',
   },
   description:
-    'Auressa hilft dir, mit einem eleganten Duft-Quiz und einer intelligenten Empfehlungslogik den perfekten Parfum zu finden – Duftfamilie, Anlass, Saison und Stil inklusive.',
-  keywords: ['Parfum finden', 'Duft Quiz', 'Signature Duft', 'Duftberatung', 'Auressa'],
-  verification: {
-    google: 'hTy76EREclc_v_vWftD88u4tZ8VhsT630KvxJRRLdaw'
+    'Finde deinen perfekten Duft mit Auressa. Kostenlose Duft-Beratung, KI-Quiz und personalisierte Empfehlungen für Frauen und Herren.',
+  metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'de_CH',
-    siteName: 'Auressa',
     url: SITE_URL,
-    title: 'Auressa – Finde deinen Signature-Duft',
+    title: 'Auressa – Dein persönlicher Duft Finder',
     description:
-      'Finde mit Auressa deinen perfekten Duft – per Quiz und intelligenter Empfehlungslogik.'
+      'Finde deinen perfekten Duft mit Auressa. Kostenlose Duft-Beratung, KI-Quiz und personalisierte Empfehlungen.',
+    images: [
+      {
+        url: `${SITE_URL}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'Auressa – Dein Duft Finder',
+      },
+    ],
+    siteName: 'Auressa',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Auressa – Finde deinen Signature-Duft',
-    description:
-      'Finde mit Auressa deinen perfekten Duft – per Quiz und intelligenter Empfehlungslogik.'
-  }
+    title: 'Auressa – Dein persönlicher Duft Finder',
+    description: 'Finde deinen perfekten Duft mit unserem KI-Quiz.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  authors: [{ name: 'Auressa Team' }],
+  keywords: [
+    'Duft Finder',
+    'Parfüm Empfehlung',
+    'Duft Quiz',
+    'Fragrance',
+    'Parfum Schweiz',
+  ],
 };
 
-// Marken-Strukturdaten (hilft Google, „Auressa" als Marke/Website zu verstehen).
-const organizationJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Auressa',
-  url: SITE_URL,
-  description:
-    'Auressa ist die moderne Duft-Findungs-Plattform aus der Schweiz – mit Duft-Quiz, Match-Engine und Ratgebern.'
-};
-
-const websiteJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'Auressa',
-  url: SITE_URL,
-  inLanguage: 'de-CH'
-};
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const year = new Date().getFullYear();
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}): React.ReactElement {
   return (
-    <html lang="de-CH" className={`${playfair.variable} ${inter.variable}`}>
+    <html
+      lang="de"
+      className={`${playfair.variable} ${inter.variable}`}
+    >
+      <head>
+        <meta charSet="utf-8" />
+        <meta
+          name="theme-color"
+          content="#D4AF37"
+        />
+        <link
+          rel="icon"
+          href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23D4AF37' width='100' height='100'/><text x='50' y='65' font-size='70' font-family='Georgia' font-weight='700' text-anchor='middle' fill='%23FFFFFF'>A</text></svg>"
+        />
+      </head>
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-        />
-        <FavoritesProvider>
-          {children}
-          {/* Trust-Bar: Vertrauens-Signale vor dem Footer */}
-        <div style={{
-          backgroundColor: '#1F1410',
-          borderTop: '1.5px solid rgba(212,175,55,0.15)',
-          padding: '2rem 1.25rem',
-          boxShadow: 'inset 0 40px 80px rgba(0,0,0,0.08)',
-        }}>
-          <div style={{
-            maxWidth: '1100px',
-            margin: '0 auto',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-            gap: '2rem',
-            textAlign: 'center',
-          }}>
-            {[
-              { icon: '🇨🇭', label: 'Aus der Schweiz', sub: 'Ehrlich & unabhängig' },
-              { icon: '🎯', label: 'Echter Match-Score', sub: '0–100, kein Zufall' },
-              { icon: '💸', label: 'Günstige Dupes', sub: 'Zu jedem Lieblingsduft' },
-              { icon: '🔒', label: 'Kein Konto nötig', sub: 'Kein Newsletter-Zwang' },
-            ].map((item) => (
-              <div key={item.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.35rem' }}>
-                <span style={{ fontSize: '1.6rem', lineHeight: 1, marginBottom: '0.2rem' }}>{item.icon}</span>
-                <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#D4AF37', letterSpacing: '0.01em' }}>{item.label}</span>
-                <span style={{ fontSize: '0.75rem', color: 'rgba(237,229,220,0.60)', lineHeight: 1.5 }}>{item.sub}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <footer className="site-footer">
-          <FooterNewsletter />
-          <div style={{ backgroundColor: '#1F1410', padding: '3rem 1.25rem', borderTop: '1px solid rgba(212,175,55,0.1)' }}>
-            <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-              {/* Header */}
-              <div style={{ marginBottom: '2.5rem' }}>
-                <div style={{ fontSize: '1.8rem', fontWeight: 700, color: '#faf7f2', marginBottom: '0.3rem' }}>Auressa</div>
-                <p style={{ fontSize: '0.85rem', color: '#D4AF37', fontWeight: 600, margin: '0 0 0.5rem 0', letterSpacing: '0.05em' }}>DISCOVERY · FRAGRANCE · BOUTIQUE</p>
-                <p style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.65)', margin: 0, lineHeight: 1.6, maxWidth: '500px' }}>Die moderne Duft-Findung – kuratiert in der Schweiz. Finde deinen Signature-Duft mit Quiz und intelligenter Match-Engine.</p>
-              </div>
-
-              {/* 4-Spalten Grid */}
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                gap: '2rem',
-                marginBottom: '2rem',
-              }}>
-                {/* Spalte 1: Tools */}
-                <div>
-                  <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block' }}>Tools</h4>
-                  <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                    <Link href="/#quiz" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Quiz</Link>
-                    <Link href="/vergleich" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Vergleich</Link>
-                    <Link href="/wunschliste" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Wunschliste</Link>
-                    <Link href="/duft-scanner" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Duft-Scanner</Link>
-                    <Link href="/duft-detektiv" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Duft-Detektiv</Link>
-                    <Link href="/geschenk-finder" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Geschenk-Finder</Link>
-                  </nav>
-                </div>
-
-                {/* Spalte 2: Entdecken */}
-                <div>
-                  <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Entdecken</h4>
-                  <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                    <Link href="/duefte" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Düfte</Link>
-                    <Link href="/marke" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Marken</Link>
-                    <Link href="/ratgeber" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Ratgeber</Link>
-                    <Link href="/stimmungen" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Stimmungen</Link>
-                    <Link href="/reiseduefte" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Reisedüfte</Link>
-                    <Link href="/saisonal" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Saisonal</Link>
-                  </nav>
-                </div>
-
-                {/* Spalte 3: Wissen */}
-                <div>
-                  <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Wissen</h4>
-                  <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                    <Link href="/duftnoten" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Duftnoten</Link>
-                    <Link href="/duftchemie-grundlagen" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Duftchemie</Link>
-                    <Link href="/duftpersoenlichkeit" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Persönlichkeit</Link>
-                    <Link href="/nische-mainstream" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Nische vs. Mainstream</Link>
-                    <Link href="/faq" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>FAQ</Link>
-                    <Link href="/wie-auressa-funktioniert" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Wie es funktioniert</Link>
-                  </nav>
-                </div>
-
-                {/* Spalte 4: Über */}
-                <div>
-                  <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Über</h4>
-                  <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                    <Link href="/ueber-uns" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Über uns</Link>
-                    <Link href="/testing-und-transparenz" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Transparenz</Link>
-                    <Link href="/impressum" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Impressum</Link>
-                    <Link href="/datenschutz" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Datenschutz</Link>
-                  </nav>
-                </div>
-              </div>
-
-              {/* Affiliate Info */}
-              <p style={{ fontSize: '0.8rem', color: 'rgba(237,229,220,0.55)', margin: '1.5rem 0', paddingTop: '1.5rem', borderTop: '1px solid rgba(212,175,55,0.1)', lineHeight: 1.6 }}>
-                Auressa enthält Partner-Links zu ausgewählten Shops. Wenn du über einen solchen Link kaufst, erhalten wir ggf. eine Provision – für dich ohne Mehrkosten. Preise können abweichen; es gilt der jeweils aktuelle Preis im Shop.
-              </p>
-
-              {/* Bottom */}
-              <div style={{ fontSize: '0.8rem', color: 'rgba(237,229,220,0.5)', marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(212,175,55,0.08)' }}>
-                © {year} Auressa · Preise &amp; Angaben ohne Gewähr.
-              </div>
-            </div>
-          </div>
-        </footer>
-        </FavoritesProvider>
+        <SiteHeader />
+        <main>{children}</main>
+        <SiteFooter />
         <CookieBanner />
-        <ConsentedAnalytics />
       </body>
     </html>
   );

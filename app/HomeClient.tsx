@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import SiteHeader from '@/app/SiteHeader';
 import {
   getPerfumes,
   rankPerfumes,
@@ -615,7 +614,6 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
 
   return (
     <main>
-      <SiteHeader />
       {showGiftBanner && (
         <div className="gift-banner">
           <div className="container">

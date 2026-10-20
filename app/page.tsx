@@ -70,6 +70,14 @@ export default async function Page() {
     .map(slug => guides.find(g => g.slug === slug))
     .filter(Boolean);
 
+  // Hybrid featured highlights: manual first, then top-rated
+  const featured = perfumes.filter(p => p.is_featured);
+  const remaining = perfumes
+    .filter(p => !p.is_featured && p.scentmatch_score && p.scentmatch_score >= 75)
+    .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
+    .slice(0, Math.max(0, 8 - featured.length));
+  const allFeatured = [...featured, ...remaining].slice(0, 8);
+
   return (
     <>
       <link rel="preload" as="image" href="/hero-auressa-2.jpg" fetchPriority="high" />
@@ -92,22 +100,12 @@ export default async function Page() {
       <HomeClient initialCatalogCount={catalogCount} initialBrandCount={brandCount} initialHighlights={highlightPerfumes} />
 
       {/* Featured Perfumes Section (Manual + Auto-fill with Top-Rated) */}
-      {(() => {
-        // Get manually featured perfumes
-        const featured = perfumes.filter(p => p.is_featured);
-        // Fill remaining slots with top-rated if needed
-        const remaining = perfumes
-          .filter(p => !p.is_featured && p.scentmatch_score && p.scentmatch_score >= 75)
-          .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
-          .slice(0, Math.max(0, 8 - featured.length));
-        const allFeatured = [...featured, ...remaining].slice(0, 8);
-        return (
-          <FeaturedPerfumes
-            perfumes={allFeatured}
-            title={featured.length > 0 ? "Unsere Highlights" : "Die besten Düfte"}
-          />
-        );
-      })()}
+      {allFeatured.length > 0 && (
+        <FeaturedPerfumes
+          perfumes={allFeatured}
+          title={featured.length > 0 ? "Unsere Highlights" : "Die besten Düfte"}
+        />
+      )}
 
       {/* Ratgeber-Teaser — Premium Section mit Top Content */}
       {featuredGuides.length > 0 && (

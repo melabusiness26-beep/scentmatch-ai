@@ -46,7 +46,7 @@ export default function StimmungenPage() {
                   className="mood-icon"
                   style={{ background: `${m.tone}22`, borderColor: `${m.tone}55` }}
                 >
-                  <MoodIcon name={m.icon} />
+                  <MoodIcon name={m.icon} color={m.tone} />
                 </span>
                 <span className="mood-title">{m.title}</span>
                 <span className="small">{m.subtitle}</span>

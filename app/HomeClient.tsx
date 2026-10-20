@@ -626,19 +626,27 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
       )}
       <div className="container">
         <section className="hero-stage hero-photo">
+          {/* Floating Bottles Background */}
+          <div className="floating-bottles">
+            <div className="bottle-float">🧴</div>
+            <div className="bottle-float">🧴</div>
+            <div className="bottle-float">🧴</div>
+            <div className="bottle-float">🧴</div>
+          </div>
+
           <div className="hero-photo-inner">
-            <p className="eyebrow">Dein Signature-Duft · kuratiert in der Schweiz</p>
-            <h1>Finde deinen Signature-Duft in 1 Minute.</h1>
-            <p className="lead">Beantworte ein paar einfache Fragen. Wir finden Düfte, die wirklich zu dir passen. Ehrlich, verständlich und ganz auf deinen Geschmack abgestimmt.</p>
+            <p className="eyebrow">✦ Dein Signature-Duft ✦</p>
+            <h1>Finde deinen<br />Signature-Duft<br />in 1 Minute.</h1>
+            <p className="lead">Beantworte ein paar einfache Fragen. Unsere Künstliche Intelligenz findet Düfte, die wirklich zu dir passen – ehrlich, verständlich und ganz auf deinen Geschmack abgestimmt.</p>
             <div className="cta">
               <a className="button" href="#quiz">Quiz starten</a>
               <Link className="button secondary" href="/duefte">Alle Düfte ansehen</Link>
               <Link className="button secondary" href="/ratgeber">Ratgeber lesen</Link>
             </div>
             <div className="hero-stats-row">
-              <div className="hero-stat-mini"><strong>{catalogCount ?? '…'}</strong><span>{catalogCount === 1 ? 'kuratierter Duft' : 'kuratierte Düfte'}</span></div>
-              <div className="hero-stat-mini"><strong>{brandCount ?? '…'}</strong><span>{brandCount === 1 ? 'Marke weltweit' : 'Marken weltweit'}</span></div>
-              <div className="hero-stat-mini"><strong>0–100</strong><span>echter Match-Score</span></div>
+              <div className="hero-stat-mini"><strong>{catalogCount ?? '…'}</strong><span>kuratierte Düfte</span></div>
+              <div className="hero-stat-mini"><strong>{brandCount ?? '…'}</strong><span>Marken weltweit</span></div>
+              <div className="hero-stat-mini"><strong>0–100</strong><span>Match-Score</span></div>
             </div>
           </div>
         </section>

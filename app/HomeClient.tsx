@@ -695,20 +695,107 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
                     )}
                     <h3>{p.perfume_name} · {p.brands?.name || 'Marke offen'}</h3>
                     <p className="small">{meta}</p>
-                    <p className="small"><strong>Warum dieser Duft:</strong> {buildQuizReason(p, answers, winner, anchorId ? perfumes.find(a => a.id === anchorId)?.perfume_name : undefined)}</p>
+                    {/* Why this perfume - Bullet points */}
+                    <div className="why-section">
+                      <p className="small"><strong>Warum dieser Duft:</strong></p>
+                      <ul className="why-list">
+                        {(() => {
+                          const reasons: string[] = [];
+                          const familyName = profileText[family[Object.keys(family).sort((a, b) => family[b] - family[a])[0]] as keyof typeof profileText]?.title || 'deine Wahl';
+                          if (breakdown.family > 0) reasons.push(`Passt zu ${familyName}`);
+                          if (breakdown.lovedNote > 0) reasons.push(`Deine Lieblingsnote ist enthalten`);
+                          if (breakdown.budget > 0 && answers.budget) reasons.push(`Im Budget von CHF ${answers.budget}−200`);
+                          if (breakdown.occasion > 0 && answers.occasion) reasons.push(`Perfekt für ${answers.occasion}`);
+                          if (breakdown.season > 0 && answers.season) reasons.push(`Ideal für ${answers.season}`);
+                          return reasons.map((reason, i) => <li key={i}>{reason}</li>);
+                        })()}
+                      </ul>
+                    </div>
 
-                    {/* Score Breakdown */}
+                    {/* Score Breakdown with Progress Bars */}
                     <div className="score-breakdown">
                       <p className="small"><strong>Punkteaufschlüsselung:</strong></p>
-                      <div className="breakdown-grid">
-                        {breakdown.family > 0 && <div className="breakdown-item"><span className="label">Duftfamilie:</span><span className="points">{Math.round(breakdown.family)}</span></div>}
-                        {breakdown.lovedNote > 0 && <div className="breakdown-item"><span className="label">Lieblingsnote:</span><span className="points">{Math.round(breakdown.lovedNote)}</span></div>}
-                        {breakdown.budget > 0 && <div className="breakdown-item"><span className="label">Budget:</span><span className="points">{Math.round(breakdown.budget)}</span></div>}
-                        {breakdown.occasion > 0 && <div className="breakdown-item"><span className="label">Anlass:</span><span className="points">{Math.round(breakdown.occasion)}</span></div>}
-                        {breakdown.season > 0 && <div className="breakdown-item"><span className="label">Saison:</span><span className="points">{Math.round(breakdown.season)}</span></div>}
-                        {breakdown.sillage > 0 && <div className="breakdown-item"><span className="label">Intensität:</span><span className="points">{Math.round(breakdown.sillage)}</span></div>}
-                        {breakdown.longevity > 0 && <div className="breakdown-item"><span className="label">Haltbarkeit:</span><span className="points">{Math.round(breakdown.longevity)}</span></div>}
-                        {breakdown.dislikedNotePenalty > 0 && <div className="breakdown-item penalty"><span className="label">Nicht-gemochte Note:</span><span className="points">−{Math.round(breakdown.dislikedNotePenalty)}</span></div>}
+                      <div className="breakdown-list">
+                        {breakdown.family > 0 && (
+                          <div className="breakdown-factor family">
+                            <div className="factor-header">
+                              <span className="factor-icon">👃</span>
+                              <span className="factor-label">Duftfamilie</span>
+                              <span className="factor-points">{Math.round(breakdown.family)}/30</span>
+                            </div>
+                            <div className="progress-bar"><div className="progress-fill" style={{ width: `${(breakdown.family / 30) * 100}%` }} /></div>
+                          </div>
+                        )}
+                        {breakdown.lovedNote > 0 && (
+                          <div className="breakdown-factor lovedNote">
+                            <div className="factor-header">
+                              <span className="factor-icon">🎵</span>
+                              <span className="factor-label">Lieblingsnote</span>
+                              <span className="factor-points">{Math.round(breakdown.lovedNote)}/20</span>
+                            </div>
+                            <div className="progress-bar"><div className="progress-fill" style={{ width: `${(breakdown.lovedNote / 20) * 100}%` }} /></div>
+                          </div>
+                        )}
+                        {breakdown.budget > 0 && (
+                          <div className="breakdown-factor budget">
+                            <div className="factor-header">
+                              <span className="factor-icon">💰</span>
+                              <span className="factor-label">Budget</span>
+                              <span className="factor-points">{Math.round(breakdown.budget)}/15</span>
+                            </div>
+                            <div className="progress-bar"><div className="progress-fill" style={{ width: `${(breakdown.budget / 15) * 100}%` }} /></div>
+                          </div>
+                        )}
+                        {breakdown.occasion > 0 && (
+                          <div className="breakdown-factor occasion">
+                            <div className="factor-header">
+                              <span className="factor-icon">🎭</span>
+                              <span className="factor-label">Anlass</span>
+                              <span className="factor-points">{Math.round(breakdown.occasion)}/13</span>
+                            </div>
+                            <div className="progress-bar"><div className="progress-fill" style={{ width: `${(breakdown.occasion / 13) * 100}%` }} /></div>
+                          </div>
+                        )}
+                        {breakdown.season > 0 && (
+                          <div className="breakdown-factor season">
+                            <div className="factor-header">
+                              <span className="factor-icon">🌍</span>
+                              <span className="factor-label">Saison</span>
+                              <span className="factor-points">{Math.round(breakdown.season)}/12</span>
+                            </div>
+                            <div className="progress-bar"><div className="progress-fill" style={{ width: `${(breakdown.season / 12) * 100}%` }} /></div>
+                          </div>
+                        )}
+                        {breakdown.sillage > 0 && (
+                          <div className="breakdown-factor sillage">
+                            <div className="factor-header">
+                              <span className="factor-icon">✨</span>
+                              <span className="factor-label">Intensität</span>
+                              <span className="factor-points">{Math.round(breakdown.sillage)}/10</span>
+                            </div>
+                            <div className="progress-bar"><div className="progress-fill" style={{ width: `${(breakdown.sillage / 10) * 100}%` }} /></div>
+                          </div>
+                        )}
+                        {breakdown.longevity > 0 && (
+                          <div className="breakdown-factor longevity">
+                            <div className="factor-header">
+                              <span className="factor-icon">⏱️</span>
+                              <span className="factor-label">Haltbarkeit</span>
+                              <span className="factor-points">{Math.round(breakdown.longevity)}/8</span>
+                            </div>
+                            <div className="progress-bar"><div className="progress-fill" style={{ width: `${(breakdown.longevity / 8) * 100}%` }} /></div>
+                          </div>
+                        )}
+                        {breakdown.dislikedNotePenalty > 0 && (
+                          <div className="breakdown-factor dislikedNotePenalty">
+                            <div className="factor-header">
+                              <span className="factor-icon">⚠️</span>
+                              <span className="factor-label">Nicht-gemochte Note</span>
+                              <span className="factor-points">−{Math.round(breakdown.dislikedNotePenalty)}</span>
+                            </div>
+                            <div className="progress-bar"><div className="progress-fill" style={{ width: `100%` }} /></div>
+                          </div>
+                        )}
                       </div>
                     </div>
 

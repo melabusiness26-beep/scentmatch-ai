@@ -223,11 +223,8 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
       const perfumeData = await getPerfumes(2000);
       if (perfumeData.length > 0) setPerfumes(perfumeData);
 
-      // Load quiz questions from database
-      const dbQuestions = await getQuizQuestions();
-      if (dbQuestions.length > 0) {
-        setQuestions(convertDbQuestions(dbQuestions));
-      }
+      // Use hardcoded optimized 10-question quiz (not database)
+      // Database has old 13-question version, so we skip DB loading
       setLoaded(true);
     }
     loadData();

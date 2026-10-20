@@ -170,7 +170,7 @@ export default function AdminPage() {
     }
   }, [session]);
 
-  function setField(key: keyof typeof emptyForm, value: string) {
+  function setField(key: keyof typeof emptyForm, value: string | boolean) {
     setForm(prev => ({ ...prev, [key]: value }));
   }
 

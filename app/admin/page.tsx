@@ -32,6 +32,7 @@ const emptyForm = {
   base_notes: '',
   image_url: '',
   affiliate_url: '',
+  is_featured: false,
   // Pro Status Fields
   concentration: 'EDP',
   long_description: '',
@@ -69,6 +70,7 @@ type AdminPerfume = {
   base_notes: string[] | null;
   image_url: string | null;
   affiliate_url: string | null;
+  is_featured?: boolean | null;
   // Pro Status
   concentration?: string | null;
   long_description?: string | null;
@@ -79,7 +81,7 @@ type AdminPerfume = {
 };
 
 const PERFUME_EDIT_FIELDS =
-  'id, perfume_name, brand_id, fragrance_family, gender, price_chf, longevity, sillage, scentmatch_score, season, occasion, top_notes, heart_notes, base_notes, image_url, affiliate_url, concentration, long_description, bottle_description, intensity, scent_dna, rating';
+  'id, perfume_name, brand_id, fragrance_family, gender, price_chf, longevity, sillage, scentmatch_score, season, occasion, top_notes, heart_notes, base_notes, image_url, affiliate_url, is_featured, concentration, long_description, bottle_description, intensity, scent_dna, rating';
 
 export default function AdminPage() {
   const [checking, setChecking] = useState(true);
@@ -148,6 +150,7 @@ export default function AdminPage() {
             base_notes: data.base_notes || '',
             image_url: data.image_url || '',
             affiliate_url: data.affiliate_url || '',
+            is_featured: data.is_featured || false,
             // Pro fields from research
             concentration: data.concentration || 'EDP',
             long_description: data.long_description || '',
@@ -191,6 +194,7 @@ export default function AdminPage() {
       base_notes: (p.base_notes || []).join(', '),
       image_url: p.image_url || '',
       affiliate_url: p.affiliate_url || '',
+      is_featured: p.is_featured || false,
       concentration: p.concentration || 'EDP',
       long_description: p.long_description || '',
       bottle_description: p.bottle_description || '',
@@ -281,6 +285,7 @@ export default function AdminPage() {
         base_notes: toArray(form.base_notes),
         image_url: form.image_url.trim() || null,
         affiliate_url: form.affiliate_url.trim() || null,
+        is_featured: form.is_featured,
         // Pro Status Fields
         concentration: form.concentration || 'EDP',
         long_description: form.long_description.trim() || null,
@@ -482,6 +487,18 @@ export default function AdminPage() {
             <div className="field">
               <label>Affiliate-Link / Shop-URL (optional)</label>
               <input value={form.affiliate_url} onChange={e => setField('affiliate_url', e.target.value)} placeholder="https://… (dein persönlicher Partner-Link zum Shop)" />
+            </div>
+
+            <div className="field" style={{ marginTop: 20 }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={form.is_featured}
+                  onChange={e => setField('is_featured', e.target.checked ? true : false)}
+                  style={{ width: 18, height: 18, cursor: 'pointer' }}
+                />
+                <span>🌟 Auf der Startseite hervorheben (Manual Featured)</span>
+              </label>
             </div>
 
             {/* Pro Status Fields */}

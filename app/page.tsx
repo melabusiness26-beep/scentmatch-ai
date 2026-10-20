@@ -91,13 +91,24 @@ export default async function Page() {
 
       <HomeClient initialCatalogCount={catalogCount} initialBrandCount={brandCount} initialHighlights={highlightPerfumes} />
 
-      {/* Top-Rated Perfumes Section */}
-      <FeaturedPerfumes
-        perfumes={perfumes
-          .filter(p => p.scentmatch_score && p.scentmatch_score >= 75)
+      {/* Featured Perfumes Section (Manual + Auto-fill with Top-Rated) */}
+      {(() => {
+        // Get manually featured perfumes
+        const featured = perfumes.filter(p => p.is_featured);
+        // Fill remaining slots with top-rated if needed
+        const remaining = perfumes
+          .filter(p => !p.is_featured && p.scentmatch_score && p.scentmatch_score >= 75)
           .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
-          .slice(0, 8)}
-        title="Die besten Düfte"
+          .slice(0, Math.max(0, 8 - featured.length));
+        const allFeatured = [...featured, ...remaining].slice(0, 8);
+        return (
+          <FeaturedPerfumes
+            perfumes={allFeatured}
+            title={featured.length > 0 ? "Unsere Highlights" : "Die besten Düfte"}
+          />
+        );
+      })()}
+
         description="Düfte mit hoher Auressa-Bewertung – empfohlen für ihren ausgezeichneten Charakter, ihre Langlebigkeit und ihren Wert."
         viewMoreLink="/duefte"
       />

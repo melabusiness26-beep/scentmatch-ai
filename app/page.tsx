@@ -71,12 +71,15 @@ export default async function Page() {
     .filter(Boolean);
 
   // Hybrid featured highlights: manual first, then top-rated
-  const featured = perfumes.filter(p => p.is_featured === true);
-  const remaining = perfumes
-    .filter(p => p.is_featured !== true && p.scentmatch_score && p.scentmatch_score >= 75)
-    .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
+  // Fallback to score-based if is_featured not available
+  const featured = perfumes.filter(p => p.is_featured === true) || [];
+  const topScored = perfumes
+    .filter(p => p.scentmatch_score && p.scentmatch_score >= 75)
+    .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0));
+  const remaining = topScored
+    .filter(p => !featured.some(f => f.id === p.id))
     .slice(0, Math.max(0, 8 - featured.length));
-  const allFeatured = [...featured, ...remaining].slice(0, 8);
+  const allFeatured = featured.length > 0 ? [...featured, ...remaining].slice(0, 8) : topScored.slice(0, 8);
 
   return (
     <>

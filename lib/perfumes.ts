@@ -21,6 +21,7 @@ export type Perfume = {
   description: string | null;
   image_url: string | null;
   affiliate_url: string | null;
+  is_featured?: boolean | null;
   top_notes: string[] | null;
   heart_notes: string[] | null;
   base_notes: string[] | null;
@@ -40,7 +41,7 @@ export type Perfume = {
 // Felder, die wir aus Supabase laden. Zentral definiert, damit Startseite und
 // Detailseite garantiert dieselbe Struktur verwenden.
 const PERFUME_FIELDS =
-  'id, perfume_name, slug, gender, fragrance_family, price_chf, longevity, sillage, scentmatch_score, season, occasion, description, image_url, affiliate_url, top_notes, heart_notes, base_notes, brands(name, slug, country)';
+  'id, perfume_name, slug, gender, fragrance_family, price_chf, longevity, sillage, scentmatch_score, season, occasion, description, image_url, affiliate_url, is_featured, top_notes, heart_notes, base_notes, brands(name, slug, country)';
 
 // Erzeugt eine ausführliche, natürlich klingende Beschreibung aus den
 // vorhandenen Daten eines Dufts. Wird genutzt, wenn keine manuelle

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import HomeClient from './HomeClient';
+import HeroHome from './HeroHome';
+import ThreeWaysSection from './ThreeWaysSection';
 import GuideTile from './GuideTile';
 import { FeaturedPerfumes } from '@/app/FeaturedPerfumes';
 import { getPerfumes, getPerfumeCount, getBrandCount } from '@/lib/perfumes';
@@ -71,6 +73,10 @@ export default async function Page() {
   return (
     <>
       <link rel="preload" as="image" href="/hero-auressa-2.jpg" fetchPriority="high" />
+
+      {/* Neuer Hero + 3-Wege-Grid */}
+      <HeroHome />
+      <ThreeWaysSection />
 
       {/* Server-gerenderte Highlights für SEO */}
       {highlightPerfumes.length > 0 && (

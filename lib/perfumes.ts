@@ -21,6 +21,7 @@ export type Perfume = {
   description: string | null;
   image_url: string | null;
   affiliate_url: string | null;
+  is_featured?: boolean | null;
   top_notes: string[] | null;
   heart_notes: string[] | null;
   base_notes: string[] | null;

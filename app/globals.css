@@ -760,25 +760,25 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(212,175,55
 }
 /* Feiner Icon-Badge im gleichen Stil wie die „Warum Auressa?"-Icons. */
 .mood-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 13px;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: var(--brown);
-  background: rgba(212,175,55,.16);
-  border: 1.5px solid rgba(212,175,55,.4);
+  background: rgba(212,175,55,.22);
+  border: 1.5px solid rgba(212,175,55,.5);
   margin-bottom: 8px;
   transition: all 0.3s ease;
 }
 .mood-card:hover .mood-icon {
-  background: rgba(212,175,55,.26);
+  background: rgba(212,175,55,.32);
   border-color: var(--color-primary);
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(212,175,55,.2);
+  transform: scale(1.12);
+  box-shadow: 0 8px 20px rgba(212,175,55,.25);
 }
-.mood-icon svg { width: 24px; height: 24px; }
+.mood-icon svg { width: 36px; height: 36px; }
 .dest-emoji { font-size: 24px; line-height: 1; }
 .mood-icon-lg.dest-emoji { font-size: 30px; }
 .mood-title {

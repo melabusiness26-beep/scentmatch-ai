@@ -79,12 +79,12 @@ export default function MoodIcon({ name, className, color }: Props) {
   return (
     <svg
       className={className}
-      width="28"
-      height="28"
+      width="36"
+      height="36"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
+      strokeWidth="2.2"
       strokeLinecap="round"
       strokeLinejoin="round"
       style={{ color: color || 'currentColor' }}

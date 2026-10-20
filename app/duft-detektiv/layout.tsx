@@ -1,6 +1,5 @@
 import CookieBanner from '@/app/CookieBanner';
 import ConsentedAnalytics from '@/app/ConsentedAnalytics';
-import SiteHeader from '@/app/SiteHeader';
 
 export default function DuftDetektivLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -11,7 +10,6 @@ export default function DuftDetektivLayout({ children }: { children: React.React
           display: none !important;
         }
       `}</style>
-      <SiteHeader />
       {children}
       <CookieBanner />
       <ConsentedAnalytics />

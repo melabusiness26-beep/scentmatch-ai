@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { cache } from 'react';
-import SiteHeader from '@/app/SiteHeader';
 import { getGuide, guides, relatedGuides, type Guide } from '@/lib/guides';
 import { getGuideFaqs, type GuideFaq } from '@/lib/guide-faqs';
 import { getPerfumes, type Perfume } from '@/lib/perfumes';
@@ -125,7 +124,6 @@ export default async function GuidePage({
 
   return (
     <main>
-      <SiteHeader />
 
       {/* White Hero: Titel & Untertitel */}
       <div style={{

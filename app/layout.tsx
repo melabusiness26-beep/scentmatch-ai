@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Playfair_Display, Inter } from 'next/font/google';
 import Link from 'next/link';
+import SiteHeader from '@/app/SiteHeader';
 import ConsentedAnalytics from '@/app/ConsentedAnalytics';
 import CookieBanner from '@/app/CookieBanner';
 import FooterNewsletter from '@/app/FooterNewsletter';
@@ -90,6 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         <FavoritesProvider>
+          <SiteHeader />
           {children}
           {/* Trust-Bar: Vertrauens-Signale vor dem Footer */}
         <div style={{

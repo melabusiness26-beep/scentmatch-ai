@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import SiteHeader from '@/app/SiteHeader';
 import { OlfactoryPyramid } from '@/app/OlfactoryPyramid';
 import {
   getPerfumeBySlug,
@@ -330,7 +329,6 @@ export default async function PerfumeDetailPage({
 
   return (
     <main>
-      <SiteHeader />
       <div className="container">
         <nav className="breadcrumb small" aria-label="Brotkrümel-Navigation">
           <Link href="/">Start</Link>

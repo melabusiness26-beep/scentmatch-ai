@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { getPerfumes } from '@/lib/perfumes';
 import DuftScannerClient from './client';
-import SiteHeader from '@/app/SiteHeader';
 import Breadcrumb from '@/app/Breadcrumb';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
@@ -32,7 +31,6 @@ export default async function DuftScannerPage() {
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
-      <SiteHeader />
       <Breadcrumb items={[{ label: 'Duft-Scanner', href: '/duft-scanner' }]} />
       <section
         style={{

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import SiteHeader from '@/app/SiteHeader';
 import { PerfumeTile } from '@/app/PerfumeTile';
 import { getPerfumes, type Perfume } from '@/lib/perfumes';
 import { getScentNote, scentNotes, type ScentNote } from '@/lib/notes-glossary';
@@ -96,7 +95,6 @@ export default async function ScentNotePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <SiteHeader />
       <div className="container">
         <nav className="breadcrumb small" aria-label="Brotkrümel-Navigation">
           <Link href="/">Startseite</Link>

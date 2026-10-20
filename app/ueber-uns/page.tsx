@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import SiteHeader from '@/app/SiteHeader';
 import Breadcrumb from '@/app/Breadcrumb';
 import { OPERATOR } from '@/lib/operator';
 
@@ -31,7 +30,6 @@ const aboutJsonLd = {
 export default function UeberUnsPage() {
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
-      <SiteHeader />
       <Breadcrumb items={[{ label: 'Über Auressa', href: '/ueber-uns' }]} />
       <script
         type="application/ld+json"

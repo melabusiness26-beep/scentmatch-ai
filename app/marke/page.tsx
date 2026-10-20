@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import SiteHeader from '@/app/SiteHeader';
 import Breadcrumb from '@/app/Breadcrumb';
 import { getAllBrands, getPerfumes, type Brand } from '@/lib/perfumes';
 
@@ -48,7 +47,6 @@ export default async function MarkenIndex() {
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
-      <SiteHeader />
       <Breadcrumb items={[{ label: 'Parfum-Marken', href: '/marke' }]} />
 
       {/* Hero */}

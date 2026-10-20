@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import SiteHeader from '@/app/SiteHeader';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -13,7 +12,6 @@ export default function DatenschutzPage() {
 
   return (
     <main>
-      <SiteHeader />
       <div className="legal-container">
         <article className="legal-content">
           <h1>Datenschutzerklärung</h1>

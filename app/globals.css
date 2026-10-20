@@ -430,11 +430,12 @@ a.note-pill:hover { background: var(--color-primary-light); border-color: var(--
 .faq-item:last-child { border-bottom:0; padding-bottom:0; }
 .faq-item h3 { margin:0 0 6px; color: var(--color-text-primary); font-size:clamp(16px, 3vw, 18px); }
 /* Family filter tiles */
-.tile-family { display:block; text-decoration:none; cursor:pointer; text-align:left; background: var(--color-bg-white); color: var(--color-text-primary); border:1.5px solid var(--color-border); border-radius:var(--radius-lg); padding:clamp(18px, 4.5vw, 28px); font-family:var(--font-sans), Arial, sans-serif; font-weight:500; letter-spacing:0.01em; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+.tile-family { display:flex; flex-direction:column; align-items:center; text-decoration:none; cursor:pointer; text-align:center; background: var(--color-bg-white); color: var(--color-text-primary); border:1.5px solid var(--color-border); border-radius:var(--radius-lg); padding:clamp(18px, 4.5vw, 24px); font-family:var(--font-sans), Arial, sans-serif; font-weight:500; letter-spacing:0.01em; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; gap:clamp(12px, 3vw, 16px); }
 .tile-family:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-primary); }
 .tile-family.tile-active { border-color: var(--color-primary); box-shadow: 0 0 0 2px var(--color-primary) inset, var(--shadow-lg); background: var(--color-primary-lighter); }
-.tile-family h3 { display:flex; align-items:center; gap:9px; margin:0 0 8px; color: var(--color-text-primary); font-size:clamp(18px, 3.5vw, 22px); }
-.tile-family h3::before { content:''; width:8px; height:8px; border-radius:50%; background: var(--color-primary); flex:none; }
+.bottle-container { flex:0 0 auto; width:100%; max-width:120px; height:160px; display:flex; align-items:flex-end; justify-content:center; }
+.tile-family h3 { display:block; margin:0; color: var(--color-text-primary); font-size:clamp(18px, 3.5vw, 22px); }
+.tile-family h3::before { display:none; }
 
 /* Filter chip indicator */
 .filter-chip-row { display:flex; align-items:center; gap:6px; margin:14px 0 0; }
@@ -502,7 +503,10 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(212,175,55
 .main-nav a:hover { color: var(--gold); }
 .nav-cta { color: #0F0A07 !important; background: linear-gradient(180deg, #E5C158, #D4AF37); padding: clamp(9px, 2.2vw, 11px) clamp(16px, 3.2vw, 20px); border-radius: 9px; box-shadow: 0 6px 16px rgba(212,175,55,.24); font-weight: 700; }
 .nav-cta:hover { color: #0F0A07 !important; box-shadow: 0 10px 28px rgba(212,175,55,.32); transform: translateY(-1px); }
-.nav-toggle { display: none; background: rgba(255,255,255,.5); border: 1px solid rgba(17,24,39,.2); color: var(--brown); width: 46px; height: 46px; border-radius: 13px; font-size: 20px; line-height: 1; cursor: pointer; padding: 0; }
+.nav-toggle { display: none; -webkit-appearance: none !important; -moz-appearance: none !important; appearance: none !important; background: rgba(212,175,55,0.12) !important; border: 2px solid #d4af37 !important; color: #d4af37 !important; width: 50px !important; height: 50px !important; border-radius: 8px !important; font-size: 24px !important; line-height: 1 !important; cursor: pointer !important; padding: 0 !important; transition: all 0.2s ease !important; outline: 2px solid transparent !important; outline-offset: 0 !important; box-shadow: 0 2px 8px rgba(212,175,55,0.15) !important; -webkit-focus-ring-color: transparent !important; }
+.nav-toggle:hover { background: rgba(212,175,55,.2) !important; border-color: #b8941f !important; box-shadow: 0 4px 12px rgba(212,175,55,0.3) !important; }
+.nav-toggle:active { background: rgba(212,175,55,.25) !important; border-color: #b8941f !important; }
+.nav-toggle:focus-visible { outline: 2px solid #b8941f !important; outline-offset: 2px !important; }
 
 /* „Warum"-Bereich */
 .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 22px; }
@@ -528,7 +532,7 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(212,175,55
   .card { padding: 24px; }
 }
 @media (max-width: 720px) {
-  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  .nav-toggle { display: inline-flex !important; align-items: center !important; justify-content: center !important; }
   .header-inner { flex-wrap: wrap; }
   .main-nav { display: none; flex-direction: column; align-items: stretch; gap: 0; width: 100%; order: 3; margin-top: 8px; }
   .main-nav.open { display: flex; }

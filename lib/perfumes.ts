@@ -566,19 +566,40 @@ function pricePrefComponent(p: Perfume, a: QuizAnswers): number {
   return price >= 120 ? 5 : price >= 80 ? 3 : 1;
 }
 
+export type ScoreBreakdown = {
+  family: number;
+  lovedNote: number;
+  occasion: number;
+  season: number;
+  sillage: number;
+  budget: number;
+  longevity: number;
+  sweetness: number;
+  pricePreference: number;
+  dislikedNotePenalty: number;
+  total: number;
+};
+
+export function getScoreBreakdown(p: Perfume, a: QuizAnswers): ScoreBreakdown {
+  const family = familyComponent(p, a);
+  const lovedNote = lovedNoteComponent(p, a);
+  const occasion = occasionComponent(p, a);
+  const season = seasonComponent(p, a);
+  const sillage = sillageComponent(p, a);
+  const budget = budgetComponent(p, a);
+  const longevity = longevityComponent(p, a);
+  const sweetness = sweetnessComponent(p, a);
+  const pricePreference = pricePrefComponent(p, a);
+  const dislikedPenalty = dislikedNotePenalty(p, a);
+
+  const raw = family + lovedNote + occasion + season + sillage + budget + longevity + sweetness + pricePreference - dislikedPenalty;
+  const total = Math.round(Math.max(0, Math.min(100, raw)));
+
+  return { family, lovedNote, occasion, season, sillage, budget, longevity, sweetness, pricePreference, dislikedNotePenalty: dislikedPenalty, total };
+}
+
 export function matchScore(p: Perfume, a: QuizAnswers): number {
-  const raw =
-    familyComponent(p, a) +
-    lovedNoteComponent(p, a) +
-    occasionComponent(p, a) +
-    seasonComponent(p, a) +
-    sillageComponent(p, a) +
-    budgetComponent(p, a) +
-    longevityComponent(p, a) +
-    sweetnessComponent(p, a) +
-    pricePrefComponent(p, a) -
-    dislikedNotePenalty(p, a);
-  return Math.round(Math.max(0, Math.min(100, raw)));
+  return getScoreBreakdown(p, a).total;
 }
 
 export function matchesGender(p: Perfume, gender: QuizAnswers['gender']): boolean {

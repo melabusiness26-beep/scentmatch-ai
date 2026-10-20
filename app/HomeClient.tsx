@@ -8,158 +8,22 @@ import {
   perfumeHasTheme,
   NOTE_THEMES,
   getQuizQuestions,
+  getScoreBreakdown,
   type Perfume,
   type QuizAnswers,
   type RankedPerfume,
-  type QuizQuestionDB
+  type QuizQuestionDB,
+  type ScoreBreakdown
 } from '@/lib/perfumes';
+import { quizQuestions as newQuizQuestions, type QuizQuestion, type QuestionKind } from '@/lib/quizQuestions';
 import { PerfumeTile, familyDisplay } from '@/app/PerfumeTile';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import NewsletterForm from '@/app/NewsletterForm';
 import { BottleIllustration } from '@/app/FragranceBottles';
 
-type QuestionKind = 'gender' | 'anchor' | 'family' | 'occasion' | 'season' | 'sillage' | 'budget' | 'lovedNote' | 'dislikedNote' | 'longevity' | 'sweetness' | 'pricePref';
-type QuizQuestion = { q: string; hint?: string; kind: QuestionKind; a: [string, string, string?][] }; // [label, value, emoji?]
-
-// Fallback questions wenn DB nicht verfügbar
-const fallbackQuestions: QuizQuestion[] = [
-  {
-    q: 'Für wen suchen wir den perfekten Duft?',
-    hint: 'So zeigen wir dir nur, was wirklich passt. Kein Suchen im Heuhaufen.',
-    kind: 'gender',
-    a: [
-      ['Für Damen', 'women', '👩'],
-      ['Für Herren', 'men', '👨'],
-      ['Egal, zeig mir alles', 'unisex', '✨']
-    ]
-  },
-  {
-    q: 'Gibt es einen Duft, den du jetzt schon liebst? (optional)',
-    hint: 'Verrätst du uns deinen Liebling, finden wir gezielt Düfte, die ähnlich riechen – wie ein „mehr davon".',
-    kind: 'anchor',
-    a: []
-  },
-  {
-    q: 'Stell dir deinen Lieblingsmoment vor – welcher ist es?',
-    hint: 'Geh ganz nach Bauchgefühl. Es gibt kein Richtig oder Falsch.',
-    kind: 'family',
-    a: [
-      ['Frisch geduscht, weisses Hemd, Fenster weit auf', 'clean'],
-      ['Kerzenlicht, Vanille und eine warme Decke', 'gourmand'],
-      ['Dunkle Bar, edles Holz, ein Hauch Leder', 'woody'],
-      ['Blumenmarkt im Frühling, leichtes Kleid', 'floral']
-    ]
-  },
-  {
-    q: 'Wie soll sich dein Duft anfühlen?',
-    hint: 'Geh nach Bauchgefühl – welches Gefühl zieht dich sofort an?',
-    kind: 'family',
-    a: [
-      ['Leicht & frisch wie klare Luft', 'clean'],
-      ['Warm & weich wie eine Umarmung', 'gourmand'],
-      ['Kraftvoll & edel wie dunkles Holz', 'woody'],
-      ['Zart & lebendig wie frische Blüten', 'floral']
-    ]
-  },
-  {
-    q: 'Wie würden gute Freunde deinen Stil beschreiben?',
-    hint: 'Dein Stil verrät oft, welcher Duft sich richtig „nach dir" anfühlt.',
-    kind: 'family',
-    a: [
-      ['Natürlich, frisch und unkompliziert', 'clean'],
-      ['Warmherzig, gemütlich und verspielt', 'gourmand'],
-      ['Elegant, edel und zurückhaltend', 'woody'],
-      ['Romantisch, lebhaft und feminin', 'floral']
-    ]
-  },
-  {
-    q: 'Wie süss darf dein Duft sein?',
-    hint: 'Von frisch-herb bis dessertartig – wir gewichten das passend für dich.',
-    kind: 'sweetness',
-    a: [
-      ['Lieber gar nicht süss', 'low'],
-      ['Ein bisschen Süsse', 'medium'],
-      ['Richtig süss & gourmandig', 'high'],
-      ['Egal', '']
-    ]
-  },
-  {
-    q: 'Eine Note, die dein Herz höher schlagen lässt?',
-    hint: 'Diese Note gewichten wir bei deinem Match besonders stark.',
-    kind: 'lovedNote',
-    a: [['Keine bestimmte, überrasch mich', ''], ...NOTE_THEMES.map(t => [t.label, t.code] as [string, string])]
-  },
-  {
-    q: 'Und etwas, das für dich gar nicht geht?',
-    hint: 'Düfte mit dieser Note rutschen in deinem Ranking nach unten.',
-    kind: 'dislikedNote',
-    a: [['Keine – ich bin offen für alles', ''], ...NOTE_THEMES.map(t => [t.label, t.code] as [string, string])]
-  },
-  {
-    q: 'Wann soll dein Duft am meisten glänzen?',
-    hint: 'So treffen wir Charakter und Intensität noch besser.',
-    kind: 'occasion',
-    a: [
-      ['Im Alltag & Büro', 'daily'],
-      ['Bei Dates & zum Verlieben', 'date'],
-      ['Abends & zum Ausgehen', 'evening'],
-      ['Eigentlich überall', 'any']
-    ]
-  },
-  {
-    q: 'Für welche Jahreszeit suchst du ihn?',
-    hint: 'Viele Düfte entfalten sich je nach Wetter ganz anders.',
-    kind: 'season',
-    a: [
-      ['Frühling', 'Frühling'],
-      ['Sommer', 'Sommer'],
-      ['Herbst & Winter', 'Herbst/Winter'],
-      ['Das ganze Jahr', 'Ganzjährig']
-    ]
-  },
-  {
-    q: 'Wie präsent soll dein Duft sein?',
-    hint: 'Also: wie weit dein Duft im Raum wahrnehmbar sein soll.',
-    kind: 'sillage',
-    a: [
-      ['Dezent, nur wer mir nah kommt', 'low'],
-      ['Ausgewogen, angenehm präsent', 'medium'],
-      ['Auffällig, ich hinterlasse Eindruck', 'high']
-    ]
-  },
-  {
-    q: 'Wie lange soll dein Duft halten?',
-    hint: 'Manche Düfte begleiten dich ein paar Stunden, andere den ganzen Tag.',
-    kind: 'longevity',
-    a: [
-      ['Ein paar Stunden reichen', 'low'],
-      ['Solide durch den Tag', 'medium'],
-      ['Möglichst lange', 'high'],
-      ['Egal', '']
-    ]
-  },
-  {
-    q: 'Was darf dein neuer Liebling kosten?',
-    hint: 'Wir zeigen dir die besten Treffer in deinem Rahmen – ohne dich einzuengen.',
-    kind: 'budget',
-    a: [
-      ['Bis CHF 80', '80'],
-      ['CHF 80–150', '150'],
-      ['Auch Premium (über CHF 150)', 'premium'],
-      ['Budget ist mir egal', 'any']
-    ]
-  },
-  {
-    q: 'Lieber das Original oder eine günstige Alternative?',
-    hint: 'Viele teure Düfte haben erschwingliche Alternativen in ähnlicher Richtung.',
-    kind: 'pricePref',
-    a: [
-      ['Das Original darf es sein', 'original'],
-      ['Lieber eine günstige Alternative', 'alternative'],
-      ['Egal – Hauptsache, er passt', '']
-    ]
-  }
-];
+// Use new optimized 10-question quiz from lib/quizQuestions
+// Use optimized 10-question quiz
+const fallbackQuestions: QuizQuestion[] = newQuizQuestions;
 
 // Convert DB questions to internal format
 function convertDbQuestions(dbQuestions: QuizQuestionDB[]): QuizQuestion[] {
@@ -473,8 +337,6 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
     else if (kind === 'lovedNote') setLovedNote(code);
     else if (kind === 'dislikedNote') setDislikedNote(code);
     else if (kind === 'longevity') setLongevityPref(code as QuizAnswers['longevity']);
-    else if (kind === 'sweetness') setSweetnessPref(code as QuizAnswers['sweetness']);
-    else if (kind === 'pricePref') setPricePref(code as QuizAnswers['pricePref']);
 
     advanceStep();
   }
@@ -784,26 +646,6 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
                     </button>
                   ))}
                 </div>
-              ) : questions[step].kind === 'sweetness' ? (
-                // Interactive Sweetness Slider
-                <div className="sweetness-slider">
-                  <div className="slider-labels">
-                    <span>Herb</span>
-                    <span>Balanced</span>
-                    <span>Süß</span>
-                  </div>
-                  <div className="slider-options">
-                    {questions[step].a.map(([label, code]) => (
-                      <button
-                        key={code}
-                        className={`slider-btn ${sweetnessPref === code ? 'active' : ''}`}
-                        onClick={() => answer(questions[step].kind, code)}
-                      >
-                        {label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
               ) : (
                 // Standard answers with emoji support
                 <div className="answers">
@@ -842,6 +684,7 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
                 const meta = [familyDisplay[p.fragrance_family || ''] || 'Duftfamilie offen', p.season, p.occasion]
                   .filter(Boolean)
                   .join(' · ');
+                const breakdown = getScoreBreakdown(p, answers);
                 return (
                   <div className="top-pick" key={p.id}>
                     <p className="small">{recLabel}</p>
@@ -855,7 +698,23 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
                     )}
                     <h3>{p.perfume_name} · {p.brands?.name || 'Marke offen'}</h3>
                     <p className="small">{meta}</p>
-                    <p className="small">{buildQuizReason(p, answers, winner, anchorId ? perfumes.find(a => a.id === anchorId)?.perfume_name : undefined)}</p>
+                    <p className="small"><strong>Warum dieser Duft:</strong> {buildQuizReason(p, answers, winner, anchorId ? perfumes.find(a => a.id === anchorId)?.perfume_name : undefined)}</p>
+
+                    {/* Score Breakdown */}
+                    <div className="score-breakdown">
+                      <p className="small"><strong>Punkteaufschlüsselung:</strong></p>
+                      <div className="breakdown-grid">
+                        {breakdown.family > 0 && <div className="breakdown-item"><span className="label">Duftfamilie:</span><span className="points">{Math.round(breakdown.family)}</span></div>}
+                        {breakdown.lovedNote > 0 && <div className="breakdown-item"><span className="label">Lieblingsnote:</span><span className="points">{Math.round(breakdown.lovedNote)}</span></div>}
+                        {breakdown.budget > 0 && <div className="breakdown-item"><span className="label">Budget:</span><span className="points">{Math.round(breakdown.budget)}</span></div>}
+                        {breakdown.occasion > 0 && <div className="breakdown-item"><span className="label">Anlass:</span><span className="points">{Math.round(breakdown.occasion)}</span></div>}
+                        {breakdown.season > 0 && <div className="breakdown-item"><span className="label">Saison:</span><span className="points">{Math.round(breakdown.season)}</span></div>}
+                        {breakdown.sillage > 0 && <div className="breakdown-item"><span className="label">Intensität:</span><span className="points">{Math.round(breakdown.sillage)}</span></div>}
+                        {breakdown.longevity > 0 && <div className="breakdown-item"><span className="label">Haltbarkeit:</span><span className="points">{Math.round(breakdown.longevity)}</span></div>}
+                        {breakdown.dislikedNotePenalty > 0 && <div className="breakdown-item penalty"><span className="label">Nicht-gemochte Note:</span><span className="points">−{Math.round(breakdown.dislikedNotePenalty)}</span></div>}
+                      </div>
+                    </div>
+
                     <div className="cta">
                       {p.slug && (
                         <Link className="button secondary" href={`/duft/${p.slug}`}>Duftprofil ansehen</Link>

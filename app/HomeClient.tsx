@@ -16,7 +16,6 @@ import {
 import { PerfumeTile, familyDisplay } from '@/app/PerfumeTile';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import NewsletterForm from '@/app/NewsletterForm';
-import { BottleIllustration } from '@/app/FragranceBottles';
 
 type QuestionKind = 'gender' | 'anchor' | 'family' | 'occasion' | 'season' | 'sillage' | 'budget' | 'lovedNote' | 'dislikedNote' | 'longevity' | 'sweetness' | 'pricePref';
 type QuizQuestion = { q: string; hint?: string; kind: QuestionKind; a: [string, string, string?][] }; // [label, value, emoji?]
@@ -702,7 +701,7 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
                 href={`/duefte?family=${t.code}`}
               >
                 <div className="bottle-container">
-                  <BottleIllustration family={t.code as 'woody' | 'floral' | 'gourmand' | 'clean'} />
+                  <img src={`/bottles/${t.code}.png`} alt={`${t.label} Duftflasche`} style={{ width: '100%', height: 'auto', maxWidth: '140px' }} />
                 </div>
                 <h3>{t.label}</h3>
                 <p className="small">{t.desc}</p>

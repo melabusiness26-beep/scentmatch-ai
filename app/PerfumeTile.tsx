@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import type { Perfume } from '@/lib/perfumes';
 import { FavoriteButton } from '@/app/FavoriteButton';
+import { trackPerfumeView } from '@/lib/tracking';
 
 // Anzeige-Namen der Duftfamilien.
 export const familyDisplay: Record<string, string> = {
@@ -86,7 +87,11 @@ export function PerfumeTile({ perfume, matchPercent }: { perfume: Perfume; match
 
   if (perfume.slug) {
     return (
-      <Link className="tile tile-link" href={`/duft/${perfume.slug}`}>
+      <Link
+        className="tile tile-link"
+        href={`/duft/${perfume.slug}`}
+        onClick={() => trackPerfumeView(perfume.id, perfume.slug)}
+      >
         {content}
       </Link>
     );

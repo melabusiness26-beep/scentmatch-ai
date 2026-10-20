@@ -132,10 +132,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <p style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.65)', margin: 0, lineHeight: 1.6, maxWidth: '500px' }}>Die moderne Duft-Findung – kuratiert in der Schweiz. Finde deinen Signature-Duft mit Quiz und intelligenter Match-Engine.</p>
               </div>
 
-              {/* 4-Spalten Grid */}
+              {/* Sauberer Footer: Nur echte Links */}
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
                 gap: '2rem',
                 marginBottom: '2rem',
               }}>
@@ -144,45 +144,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block' }}>Tools</h4>
                   <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                     <Link href="/#quiz" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Quiz</Link>
-                    <Link href="/vergleich" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Vergleich</Link>
-                    <Link href="/wunschliste" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Wunschliste</Link>
-                    <Link href="/duft-scanner" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Duft-Scanner</Link>
-                    <Link href="/duft-detektiv" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Duft-Detektiv</Link>
-                    <Link href="/geschenk-finder" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Geschenk-Finder</Link>
+                    <Link href="/duefte" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Düfte durchsuchen</Link>
+                    <Link href="/wunschliste" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Meine Wunschliste</Link>
                   </nav>
                 </div>
 
-                {/* Spalte 2: Entdecken */}
+                {/* Spalte 2: Content */}
                 <div>
-                  <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Entdecken</h4>
+                  <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Content</h4>
                   <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                    <Link href="/duefte" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Düfte</Link>
-                    <Link href="/marke" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Marken</Link>
-                    <Link href="/ratgeber" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Ratgeber</Link>
-                    <Link href="/stimmungen" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Stimmungen</Link>
+                    <Link href="/ratgeber" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Ratgeber & Guides</Link>
                     <Link href="/reiseduefte" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Reisedüfte</Link>
-                    <Link href="/saisonal" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Saisonal</Link>
-                  </nav>
-                </div>
-
-                {/* Spalte 3: Wissen */}
-                <div>
-                  <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Wissen</h4>
-                  <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                    <Link href="/duftnoten" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Duftnoten</Link>
                     <Link href="/duftchemie-grundlagen" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Duftchemie</Link>
-                    <Link href="/duftpersoenlichkeit" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Persönlichkeit</Link>
-                    <Link href="/nische-mainstream" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Nische vs. Mainstream</Link>
-                    <Link href="/faq" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>FAQ</Link>
-                    <Link href="/wie-auressa-funktioniert" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Wie es funktioniert</Link>
                   </nav>
                 </div>
 
-                {/* Spalte 4: Über */}
+                {/* Spalte 3: Admin & Legal */}
                 <div>
-                  <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Über</h4>
+                  <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Über Auressa</h4>
                   <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                    <Link href="/ueber-uns" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Über uns</Link>
+                    <Link href="/admin" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Admin</Link>
                     <Link href="/testing-und-transparenz" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Transparenz</Link>
                     <Link href="/impressum" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Impressum</Link>
                     <Link href="/datenschutz" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Datenschutz</Link>

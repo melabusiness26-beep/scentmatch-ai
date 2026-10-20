@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import type { Guide } from '@/lib/guides';
+import { trackGuideView } from '@/lib/tracking';
 
 export default function GuideTile({ guide, emoji }: { guide: Guide; emoji?: string }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -10,6 +11,7 @@ export default function GuideTile({ guide, emoji }: { guide: Guide; emoji?: stri
   return (
     <Link
       href={`/ratgeber/${guide.slug}`}
+      onClick={() => trackGuideView(guide.slug)}
       style={{
         display: 'flex',
         flexDirection: 'column',

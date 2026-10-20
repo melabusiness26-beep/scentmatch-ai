@@ -411,6 +411,54 @@ export type QuizAnswers = {
 
 export type RankedPerfume = { perfume: Perfume; score: number };
 
+// ─── Quiz-Typen & Abfragen ──────────────────────────────────────────────────
+
+export type QuizQuestionDB = {
+  id: string;
+  position: number;
+  question_text: string;
+  hint_text: string | null;
+  question_type: string;
+  answers: Array<{
+    id: string;
+    label: string;
+    value: string;
+    position: number;
+  }>;
+};
+
+// Lädt alle Quiz-Fragen mit ihren Antworten von Supabase.
+export async function getQuizQuestions(): Promise<QuizQuestionDB[]> {
+  if (!isSupabaseConfigured) return [];
+  const { data, error } = await supabase
+    .from('quiz_questions')
+    .select(`
+      id,
+      position,
+      question_text,
+      hint_text,
+      question_type,
+      quiz_answers(id, answer_label, answer_value, position)
+    `)
+    .order('position', { ascending: true });
+  if (error) return [];
+
+  // Remap quiz_answers to answers, answer_label to label, answer_value to value
+  return ((data as any[]) || []).map((q: any) => ({
+    id: q.id,
+    position: q.position,
+    question_text: q.question_text,
+    hint_text: q.hint_text,
+    question_type: q.question_type,
+    answers: (q.quiz_answers || []).map((a: any) => ({
+      id: a.id,
+      label: a.answer_label,
+      value: a.answer_value,
+      position: a.position
+    }))
+  })) as QuizQuestionDB[];
+}
+
 const DAILY_OCCASIONS = ['Alltag', 'Büro'];
 
 // Duft-Themen für das Noten-Matching. Jede Auswahl deckt per Stichwort mehrere konkrete Noten ab.

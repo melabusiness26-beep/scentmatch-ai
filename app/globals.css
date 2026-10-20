@@ -430,11 +430,12 @@ a.note-pill:hover { background: var(--color-primary-light); border-color: var(--
 .faq-item:last-child { border-bottom:0; padding-bottom:0; }
 .faq-item h3 { margin:0 0 6px; color: var(--color-text-primary); font-size:clamp(16px, 3vw, 18px); }
 /* Family filter tiles */
-.tile-family { display:block; text-decoration:none; cursor:pointer; text-align:left; background: var(--color-bg-white); color: var(--color-text-primary); border:1.5px solid var(--color-border); border-radius:var(--radius-lg); padding:clamp(18px, 4.5vw, 28px); font-family:var(--font-sans), Arial, sans-serif; font-weight:500; letter-spacing:0.01em; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+.tile-family { display:flex; flex-direction:column; align-items:center; text-decoration:none; cursor:pointer; text-align:center; background: var(--color-bg-white); color: var(--color-text-primary); border:1.5px solid var(--color-border); border-radius:var(--radius-lg); padding:clamp(18px, 4.5vw, 24px); font-family:var(--font-sans), Arial, sans-serif; font-weight:500; letter-spacing:0.01em; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; gap:clamp(12px, 3vw, 16px); }
 .tile-family:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-primary); }
 .tile-family.tile-active { border-color: var(--color-primary); box-shadow: 0 0 0 2px var(--color-primary) inset, var(--shadow-lg); background: var(--color-primary-lighter); }
-.tile-family h3 { display:flex; align-items:center; gap:9px; margin:0 0 8px; color: var(--color-text-primary); font-size:clamp(18px, 3.5vw, 22px); }
-.tile-family h3::before { content:''; width:8px; height:8px; border-radius:50%; background: var(--color-primary); flex:none; }
+.bottle-container { flex:0 0 auto; width:100%; max-width:120px; height:160px; display:flex; align-items:flex-end; justify-content:center; }
+.tile-family h3 { display:block; margin:0; color: var(--color-text-primary); font-size:clamp(18px, 3.5vw, 22px); }
+.tile-family h3::before { display:none; }
 
 /* Filter chip indicator */
 .filter-chip-row { display:flex; align-items:center; gap:6px; margin:14px 0 0; }

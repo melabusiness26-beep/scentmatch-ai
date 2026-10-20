@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { getPerfumes } from '@/lib/perfumes';
 import DuftDetektiv from '@/app/components/DuftDetektiv';
-import SiteHeader from '@/app/SiteHeader';
 import Breadcrumb from '@/app/Breadcrumb';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
@@ -29,7 +28,6 @@ export default async function DuftDetektivPage() {
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
-      <SiteHeader />
       <Breadcrumb items={[{ label: 'Duft-Detektiv', href: '/duft-detektiv' }]} />
       <section
         style={{

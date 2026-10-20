@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import SiteHeader from '@/app/SiteHeader';
 import Breadcrumb from '@/app/Breadcrumb';
 
 export const revalidate = 3600;
@@ -23,7 +22,6 @@ export const metadata: Metadata = {
 export default function FragranceSelectionPage() {
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
-      <SiteHeader />
       <Breadcrumb items={[{ label: 'Duft wählen', href: '/duft-waehlen' }]} />
 
       {/* Hero */}

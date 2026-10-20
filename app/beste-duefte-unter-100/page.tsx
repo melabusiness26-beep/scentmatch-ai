@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import SiteHeader from '@/app/SiteHeader';
 import Breadcrumb from '@/app/Breadcrumb';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import { getPerfumes, type Perfume } from '@/lib/perfumes';
@@ -178,7 +177,6 @@ export default async function BesteDuefteUnter100() {
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
-      <SiteHeader />
       <Breadcrumb items={[{ label: 'Beste Düfte unter 100 CHF', href: '/beste-duefte-unter-100' }]} />
 
       <section style={{

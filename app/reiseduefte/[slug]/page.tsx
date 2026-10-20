@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import SiteHeader from '@/app/SiteHeader';
 import { getPerfumes, moodNoteProfile } from '@/lib/perfumes';
 import {
   DESTINATIONS,
@@ -115,7 +114,6 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <SiteHeader />
       <div className="container">
         <nav className="breadcrumb small" aria-label="Brotkrümel-Navigation">
           <Link href="/">Startseite</Link>

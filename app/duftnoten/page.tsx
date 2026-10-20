@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import SiteHeader from '@/app/SiteHeader';
 import Breadcrumb from '@/app/Breadcrumb';
 import { scentNotes } from '@/lib/notes-glossary';
 
@@ -23,7 +22,6 @@ export const metadata: Metadata = {
 export default function DuftnotenPage() {
   return (
     <main>
-      <SiteHeader />
       <Breadcrumb items={[{ label: 'Duftnoten-Lexikon', href: '/duftnoten' }]} />
       <div className="container">
         <section className="section">

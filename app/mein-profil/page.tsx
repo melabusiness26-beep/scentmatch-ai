@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import SiteHeader from '@/app/SiteHeader';
 
 interface ScentProfile {
   id: string;
@@ -102,7 +101,6 @@ export default function MyProfilePage() {
 
   return (
     <main style={{ background: '#FAF7F2' }}>
-      <SiteHeader />
 
       <div className="container" style={{ paddingTop: '40px' }}>
         <nav className="breadcrumb small" aria-label="Navigation">

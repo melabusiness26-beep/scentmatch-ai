@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { getPerfumes } from '@/lib/perfumes';
 import SavedPerfumes from '@/app/components/SavedPerfumes';
-import SiteHeader from '@/app/SiteHeader';
 
 export const metadata: Metadata = {
   robots: 'noindex, nofollow',
@@ -20,7 +19,6 @@ export default async function MeineDueftePage() {
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
-      <SiteHeader />
       <section
         style={{
           backgroundImage: 'linear-gradient(rgba(26,18,9,0.80), rgba(26,18,9,0.80))',

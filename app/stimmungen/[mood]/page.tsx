@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import SiteHeader from '@/app/SiteHeader';
 import MoodIcon from '@/app/MoodIcon';
 import { getPerfumes, rankByMood, moodNoteProfile, moodReason, getMood, MOOD_TIPS, MOODS } from '@/lib/perfumes';
 import MoodResults from './MoodResults';
@@ -116,7 +115,6 @@ export default async function MoodPage({ params }: { params: Promise<{ mood: str
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <SiteHeader />
       <div className="container">
         <nav className="breadcrumb small" aria-label="Brotkrümel-Navigation">
           <Link href="/">Startseite</Link>

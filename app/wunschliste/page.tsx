@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { getPerfumes, type Perfume } from '@/lib/perfumes';
-import SiteHeader from '@/app/SiteHeader';
 import { PerfumeTile } from '@/app/PerfumeTile';
 import { useFavorites } from '@/app/FavoritesContext';
 
@@ -27,7 +26,6 @@ export default function WishlistPage() {
 
   return (
     <main style={{ background: '#FAF7F2' }}>
-      <SiteHeader />
 
       <div className="container" style={{ paddingTop: '40px' }}>
         <nav className="breadcrumb small" aria-label="Navigation">

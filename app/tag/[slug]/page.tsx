@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import SiteHeader from '@/app/SiteHeader';
 import { getPerfumesByTag } from '@/lib/perfumes';
 import { PerfumeTile } from '@/app/PerfumeTile';
 
@@ -42,7 +41,6 @@ export default async function TagPage({ params }: { params: Promise<{ slug: stri
 
   return (
     <>
-      <SiteHeader />
       <main style={{ maxWidth: '1000px', margin: '0 auto', padding: '2rem 1rem 4rem' }}>
 
         {/* Breadcrumb */}

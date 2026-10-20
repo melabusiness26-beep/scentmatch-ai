@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import SiteHeader from '@/app/SiteHeader';
 import Breadcrumb from '@/app/Breadcrumb';
 import { getPerfumes } from '@/lib/perfumes';
 import { PerfumeTile } from '@/app/PerfumeTile';
@@ -82,7 +81,6 @@ export default async function SaisonalPage() {
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
-      <SiteHeader />
       <Breadcrumb items={[{ label: 'Saisonale Empfehlungen', href: '/saisonal' }]} />
 
       {/* Hero */}

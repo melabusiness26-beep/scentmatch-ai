@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import { getPerfumes } from '@/lib/perfumes';
 import GiftFinder from '@/app/components/GiftFinder';
-import SiteHeader from '@/app/SiteHeader';
 import Breadcrumb from '@/app/Breadcrumb';
 
 export const revalidate = 3600; // ISR: revalidate hourly
@@ -26,7 +25,6 @@ export default async function GiftFinderPage() {
 
   return (
     <main>
-      <SiteHeader />
       <Breadcrumb items={[{ label: 'Geschenk-Finder', href: '/geschenk-finder' }]} />
       <section className="page-hero gift-finder-hero">
         <div className="hero-content">

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import SiteHeader from '@/app/SiteHeader';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import {
   getBrandBySlug,
@@ -189,7 +188,6 @@ export default async function BrandPage({
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
-      <SiteHeader />
 
       {/* Hero */}
       <section style={{

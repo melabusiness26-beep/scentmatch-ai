@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import SiteHeader from '@/app/SiteHeader';
 import Breadcrumb from '@/app/Breadcrumb';
 import PerfumeCatalog from './PerfumeCatalog';
 import { getPerfumeCount, getPerfumes } from '@/lib/perfumes';
@@ -67,7 +66,6 @@ export default async function DueftePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
-      <SiteHeader />
       <Breadcrumb items={[{ label: 'Düfte', href: '/duefte' }]} />
       <div className="container">
         <section className="detail-hero">

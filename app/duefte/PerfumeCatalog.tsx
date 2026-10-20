@@ -45,13 +45,15 @@ const PAGE_SIZE = 24;
 
 type SortOption = 'name' | 'score' | 'price-low' | 'price-high';
 
-interface PerfumeCard {
+interface PerfumeCardProps {
   perfume: Perfume;
   isFavorite: boolean;
   isComparing: boolean;
+  onToggleFavorite: (id: string) => void;
+  onToggleCompare: (id: string) => void;
 }
 
-const PerfumeCard = ({ perfume, isFavorite, isComparing, onToggleFavorite, onToggleCompare }: PerfumeCard & { onToggleFavorite: (id: string) => void; onToggleCompare: (id: string) => void }) => {
+const PerfumeCard = ({ perfume, isFavorite, isComparing, onToggleFavorite, onToggleCompare }: PerfumeCardProps) => {
   const bgColor = FAMILY_COLORS[perfume.fragrance_family || ''] || '#FFF9F0';
   const isTopScore = (perfume.scentmatch_score ?? 0) >= 90;
   const isCheap = (perfume.price_chf ?? 0) <= 100 && perfume.price_chf !== null;

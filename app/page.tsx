@@ -109,10 +109,6 @@ export default async function Page() {
         );
       })()}
 
-        description="Düfte mit hoher Auressa-Bewertung – empfohlen für ihren ausgezeichneten Charakter, ihre Langlebigkeit und ihren Wert."
-        viewMoreLink="/duefte"
-      />
-
       {/* Ratgeber-Teaser — Premium Section mit Top Content */}
       {featuredGuides.length > 0 && (
         <section style={{

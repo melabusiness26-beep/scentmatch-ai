@@ -458,9 +458,9 @@ a.note-pill:hover { background: var(--color-primary-light); border-color: var(--
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(212,175,55,.15), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,.35), rgba(212,175,55,.55), rgba(212,175,55,.35), transparent);
   pointer-events: none;
-  animation: shimmer 4s infinite;
+  animation: shimmer 3s infinite;
 }
 .tile-family:hover {
   transform: translateY(-6px);
@@ -775,12 +775,13 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(212,175,55
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(212,175,55,.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,.4), rgba(212,175,55,.6), rgba(212,175,55,.4), transparent);
   pointer-events: none;
-  animation: shimmer 4s infinite;
+  animation: shimmer 3s infinite;
 }
 @keyframes shimmer {
   0% { left: -100%; }
+  50% { left: 0%; }
   100% { left: 100%; }
 }
 .mood-card:hover {

@@ -70,16 +70,11 @@ export default async function Page() {
     .map(slug => guides.find(g => g.slug === slug))
     .filter(Boolean);
 
-  // Hybrid featured highlights: manual first, then top-rated
-  // Fallback to score-based if is_featured not available
-  const featured = perfumes.filter(p => p.is_featured === true) || [];
-  const topScored = perfumes
+  // Featured highlights: Top-rated perfumes with high scores
+  const allFeatured = perfumes
     .filter(p => p.scentmatch_score && p.scentmatch_score >= 75)
-    .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0));
-  const remaining = topScored
-    .filter(p => !featured.some(f => f.id === p.id))
-    .slice(0, Math.max(0, 8 - featured.length));
-  const allFeatured = featured.length > 0 ? [...featured, ...remaining].slice(0, 8) : topScored.slice(0, 8);
+    .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
+    .slice(0, 8);
 
   return (
     <>
@@ -102,11 +97,11 @@ export default async function Page() {
 
       <HomeClient initialCatalogCount={catalogCount} initialBrandCount={brandCount} initialHighlights={highlightPerfumes} />
 
-      {/* Featured Perfumes Section (Manual + Auto-fill with Top-Rated) */}
+      {/* Featured Perfumes Section */}
       {allFeatured.length > 0 && (
         <FeaturedPerfumes
           perfumes={allFeatured}
-          title={featured.length > 0 ? "Unsere Highlights" : "Die besten Düfte"}
+          title="Die besten Düfte"
         />
       )}
 

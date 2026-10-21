@@ -226,6 +226,10 @@ button:focus, .button:focus { outline: 2px solid var(--color-primary); outline-o
 .tile:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
 .tile h3 { margin: 0 0 8px; color: var(--color-text-primary); }
 .quiz { margin-top: 28px; }
+.quiz-hero { background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.04) 100%); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 16px; padding: clamp(40px, 8vw, 60px) clamp(24px, 6vw, 40px); text-align: center; margin-top: 0 !important; }
+.quiz-hero h2 { margin-bottom: 12px; }
+.quiz-hero .lead { margin: 16px 0 28px; max-width: 600px; margin-left: auto; margin-right: auto; }
+.quiz-hero .cta { justify-content: center; }
 .question { font-size: clamp(22px, 5vw, 28px); color: var(--color-text-primary); margin-bottom: 20px; }
 .answers { display:grid; gap: 12px; }
 .answer { display:flex; align-items:center; justify-content:space-between; gap:clamp(12px, 3.5vw, 16px); width:100%; text-align:left; background: var(--color-bg-white); color: var(--color-text-primary); border:1.5px solid var(--color-border); border-radius:12px; padding:clamp(16px, 5vw, 24px) clamp(18px, 5.5vw, 24px); min-height:48px; letter-spacing:0.01em; font-size:clamp(14px, 2.2vw, 16px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-sm); outline: 2px solid transparent; outline-offset: 2px; }

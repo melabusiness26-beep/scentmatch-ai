@@ -199,7 +199,7 @@ export const guides: Guide[] = [
           'Die Dosierung beim Date ist die Balance zwischen „merklich, aber nicht dominant" und „nah, aber respektvoll". Zwei Sprühstösse sind meist das Optimum – einer auf den Hals, einer auf die Innenseite des Unterarms, damit er subtil nach oben diffundiert, wenn ihr näher zusammenkommt. Die leichte Wärmung deiner Haut verstärkt den Duft natürlich, also sei nicht überraschend vom „mehr" das an die Nase kommt.',
           'Erste Dates vs. etablierte Beziehungen: Bei einem ersten Date darfst du etwas mutiger sein – ein bleibender Eindruck ist das Ziel. In einer etablierten Beziehung darf dein Duft „dein Duft" sein, den der andere Person liebt und erkennt. Oft ist es das gleiche Duft, das ihr teilt.'
         ],
-        perfumes: ['ysl-black-opium', 'coco-mademoiselle', 'lancome-la-vie-est-belle', 'versace-eros', 'pdm-delina']
+        perfumes: ['ysl-black-opium', 'coco-mademoiselle', 'lancome-la-vie-est-belle', 'versace-eros', 'mugler-angel']
       },
       {
         heading: 'Für besondere Abende: mutig, intensiv & unverwechselbar',
@@ -209,7 +209,7 @@ export const guides: Guide[] = [
           'Dosierung am Abend: Hier kannst du grosszügiger sein. Zwei bis drei Sprühstösse sind völlig in Ordnung, besonders wenn du in geschlossenen Räumen (Restaurant, Club) bist, wo die Akustik den Duft in einem angenehmen Radius um dich verteilt. Die Körperwärme nach wenigen Minuten verstärkt intensive Abendduft noch – das ist beabsichtigt und schön. Behalte nur im Blick: In sehr engen Räumen oder bei sehr vielen Menschen genügen zwei Sprühstösse auch hier.',
           'Hybrid-Abende: Gehst du vom Büro direkt aus zum Abend, kannst du entweder deinen Büro-Duft behalten (er wird sich mit deiner Körperwärme bis dahin verändert haben, wird intensiver und wärmer) oder du macht eine komplette Wechsel und tauschst ihn gegen einen echten Abendduft. Ein kleines Duft-Tüchchen, das du im Büro sprühst und später wieder drüber wischst, oder ein komplett anderer Duft ist auch ok – abends darf es laut sein.'
         ],
-        perfumes: ['creed-aventus', 'tobacco-vanille', 'mugler-angel', 'tom-ford-oud-wood', 'baccarat-rouge-540']
+        perfumes: ['club-de-nuit-intense', 'khamrah', 'mugler-angel', 'lattafa-yara', 'lattafa-ana-abiyedh']
       },
       {
         heading: 'Die Intelligenz der Dosierung: das Regelwerk für jeden Moment',
@@ -244,14 +244,14 @@ export const guides: Guide[] = [
           'Ein Gourmand-Duft braucht Charakter, sonst wird er fade. Die folgenden acht Düfte repräsentieren die Bandbreite der Kategorie: von der reinen Süße bis zu würzigen, intensiven Varianten, die süße Noten mit dunkelerer Komponenten verbinden. Jeder ist langlebig, präsent und unvergessen.'
         ],
         perfumes: [
-          'tobacco-vanille',
-          'kayali-vanilla-28',
-          'montale-intense-cafe',
           'khamrah',
+          'lattafa-yara',
+          'montale-intense-cafe',
+          'lattafa-asad',
           'mugler-angel',
           'burberry-goddess',
-          'kilian-angels-share',
-          'lattafa-yara'
+          'lattafa-badee-amethyst',
+          'club-de-nuit-intense'
         ]
       },
       {
@@ -308,14 +308,14 @@ export const guides: Guide[] = [
           'Ein winterlicher Duft braucht Struktur und Tiefe. Die folgenden acht Düfte haben alle eines gemeinsam: Sie funktonieren im Winter wunderbar, halten lange, und sie geben dir das Gefühl, etwas Besonderes zu tragen. Manche sind warme Umarmungen, andere sind dunkle, tiefe Erlebnisse. Alle sind unvergessen.'
         ],
         perfumes: [
-          'tobacco-vanille',
-          'tom-ford-oud-wood',
-          'baccarat-rouge-540',
+          'khamrah',
+          'lattafa-oud-for-glory',
+          'lattafa-ana-abiyedh',
           'mugler-angel',
-          'nasomatto-black-afgano',
-          'initio-oud-greatness',
-          'xerjoff-naxos',
-          'khamrah'
+          'club-de-nuit-intense',
+          'lattafa-badee-amethyst',
+          'lattafa-yara',
+          'lattafa-asad'
         ]
       },
       {
@@ -959,7 +959,7 @@ export const guides: Guide[] = [
           'Stiere genießen mit allen Sinnen: Beständigkeit, Wärme und etwas Süße. Ein gourmandiger, behaglicher Duft trifft ihren Geschmack perfekt.',
           'Luxus-Pick: Tom Ford Tobacco Vanille. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Khamrah. Warme Vanille, Tabak und Dattel wirken sinnlich und genussvoll.'
         ],
-        perfumes: ['tobacco-vanille', 'khamrah']
+        perfumes: ['khamrah', 'lattafa-asad']
       },
       {
         heading: '♊ Zwillinge (21. Mai – 21. Juni)',
@@ -1244,7 +1244,7 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        perfumes: ['baccarat-rouge-540', 'tobacco-vanille', 'khamrah', 'mugler-angel', 'ysl-black-opium', 'nasomatto-black-afgano', 'jpg-ultra-male', 'lattafa-asad']
+        perfumes: ['lattafa-ana-abiyedh', 'khamrah', 'lattafa-yara', 'mugler-angel', 'ysl-black-opium', 'club-de-nuit-intense', 'jpg-ultra-male', 'lattafa-asad']
       },
       {
         heading: 'So dosierst du Beast-Mode-Düfte richtig',
@@ -1277,7 +1277,7 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        perfumes: ['coco-mademoiselle', 'chanel-no-5', 'chloe-edp', 'ysl-libre', 'pdm-delina', 'viktor-rolf-flowerbomb', 'dior-miss-dior', 'jo-malone-pear-freesia']
+        perfumes: ['coco-mademoiselle', 'chanel-no-5', 'chloe-edp', 'ysl-libre', 'mugler-angel', 'viktor-rolf-flowerbomb', 'dior-miss-dior', 'jo-malone-pear-freesia']
       },
       {
         heading: 'Wann du deinen Hochzeitsduft aussuchen solltest',
@@ -1310,7 +1310,7 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        perfumes: ['le-labo-santal-33', 'viktor-rolf-spicebomb', 'chanel-bleu-de-chanel', 'tom-ford-oud-wood', 'byredo-gypsy-water', 'club-de-nuit-intense', 'dior-homme', 'terre-dhermes']
+        perfumes: ['le-labo-santal-33', 'viktor-rolf-spicebomb', 'chanel-bleu-de-chanel', 'lattafa-oud-for-glory', 'byredo-gypsy-water', 'club-de-nuit-intense', 'dior-homme', 'terre-dhermes']
       },
       {
         heading: 'Die verschiedenen Holz-Charaktere',
@@ -1344,7 +1344,7 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        perfumes: ['coco-mademoiselle', 'chloe-edp', 'gucci-bloom', 'ysl-libre', 'dior-miss-dior', 'chanel-no-5', 'lancome-idole', 'pdm-delina']
+        perfumes: ['coco-mademoiselle', 'chloe-edp', 'gucci-bloom', 'ysl-libre', 'dior-miss-dior', 'chanel-no-5', 'lancome-idole', 'mugler-angel']
       },
       {
         heading: 'Die verschiedenen floralen Charaktere',
@@ -1484,7 +1484,7 @@ export const guides: Guide[] = [
       {
         heading: 'Gut zum Kombinieren',
         body: ['Diese vielseitigen Düfte eignen sich besonders als Basis zum Schichten:'],
-        perfumes: ['le-labo-santal-33', 'tobacco-vanille', 'khamrah', 'baccarat-rouge-540']
+        perfumes: ['le-labo-santal-33', 'khamrah', 'lattafa-yara', 'lattafa-ana-abiyedh']
       }
     ]
   },
@@ -1666,14 +1666,14 @@ export const guides: Guide[] = [
     sections: [
       {
         perfumes: [
-          'tobacco-vanille',
+          'khamrah',
           'montale-arabians-tonka',
           'ysl-la-nuit-de-lhomme',
-          'khamrah',
-          'guerlain-lhomme-ideal',
+          'lattafa-asad',
+          'club-de-nuit-intense',
           'mancera-red-tobacco',
           'boss-bottled-night',
-          'pdm-herod'
+          'lattafa-yara'
         ]
       },
       {
@@ -1706,14 +1706,14 @@ export const guides: Guide[] = [
     sections: [
       {
         perfumes: [
-          'baccarat-rouge-540',
+          'lattafa-ana-abiyedh',
           'le-labo-santal-33',
           'nishane-hacivat',
-          'xerjoff-naxos',
-          'initio-oud-greatness',
+          'lattafa-badee-amethyst',
+          'lattafa-oud-for-glory',
           'orto-megamare',
           'byredo-gypsy-water',
-          'kilian-angels-share'
+          'club-de-nuit-intense'
         ]
       },
       {

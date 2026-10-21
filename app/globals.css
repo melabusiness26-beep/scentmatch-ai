@@ -327,7 +327,7 @@ button:focus, .button:focus { outline: 2px solid var(--color-primary); outline-o
 }
 .question { font-size: clamp(22px, 5vw, 28px); color: var(--color-text-primary); margin-bottom: 20px; }
 .answers { display:grid; gap: 12px; }
-.answer { display:flex; align-items:center; justify-content:space-between; gap:clamp(12px, 3.5vw, 16px); width:100%; text-align:left; background: var(--color-bg-white); color: var(--color-text-primary); border:1.5px solid var(--color-border); border-radius:12px; padding:clamp(16px, 5vw, 24px) clamp(18px, 5.5vw, 24px); min-height:48px; letter-spacing:0.01em; font-size:clamp(14px, 2.2vw, 16px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-sm); outline: 2px solid transparent; outline-offset: 2px; }
+.answer { display:flex; align-items:center; justify-content:space-between; gap:clamp(12px, 3.5vw, 16px); width:100%; text-align:left; background: var(--color-bg-white); color: var(--color-text-primary); border:1.5px solid var(--color-border); border-radius:12px; padding:clamp(18px, 5vw, 28px) clamp(20px, 5.5vw, 28px); min-height:56px; letter-spacing:0.01em; font-size:clamp(14px, 2.2vw, 16px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-sm); outline: 2px solid transparent; outline-offset: 2px; }
 .answer:focus { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 /* Arrow indicator on answer cards */
 .answer::after { content:'›'; font-family: var(--font-display), Georgia, serif; font-size:22px; line-height:1; color: var(--color-text-tertiary); flex:none; transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s ease; }

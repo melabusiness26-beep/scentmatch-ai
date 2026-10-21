@@ -153,22 +153,22 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
             <div className="trust-item">
               <div className="trust-icon">✅</div>
               <div className="trust-text">
-                <p className="trust-stat"><strong>Über 500 Nutzer</strong></p>
-                <p className="small">fanden bereits ihren Signature Duft</p>
+                <p className="trust-stat"><strong>400+ Düfte</strong></p>
+                <p className="small">durchsuche unseren Katalog</p>
               </div>
             </div>
             <div className="trust-item">
               <div className="trust-icon">⭐</div>
               <div className="trust-text">
-                <p className="trust-stat"><strong>Transparent & Fair</strong></p>
-                <p className="small">Partnerschaften mit den Top-Shops (Notino, Flaconi)</p>
+                <p className="trust-stat"><strong>Quiz in 2 Min</strong></p>
+                <p className="small">finde deinen perfekten Duft blitzschnell</p>
               </div>
             </div>
             <div className="trust-item">
               <div className="trust-icon">🎯</div>
               <div className="trust-text">
-                <p className="trust-stat"><strong>Präzise Empfehlungen</strong></p>
-                <p className="small">Dank Match-Engine, nicht Zufall</p>
+                <p className="trust-stat"><strong>Sofort entdecken</strong></p>
+                <p className="small">keine Anmeldung zum Starten nötig</p>
               </div>
             </div>
           </div>

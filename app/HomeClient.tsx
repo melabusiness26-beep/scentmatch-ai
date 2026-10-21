@@ -97,10 +97,13 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
   const seasonMatch = SEASON_MATCH[currentSeason] || [];
   const seasonGuide = SEASON_GUIDE[currentSeason];
 
-  // Intelligenter Saison-Mix: Preis-Staffelung für Kundenfreundlichkeit
-  // Günstig → Mittel → Premium, damit Kunden einen Einstiegspunkt finden
+  // Intelligenter Saison-Mix: Zielgruppe 20–40 Jahre (Budget max CHF 150)
+  // Mix nach Preis UND Anlass: Alltag + Date + Abend (keine unrealistischen Preise)
   function pickSmartSeasonalMix(list: Perfume[], seasonMatches: string[]): Perfume[] {
-    const seasonal = list.filter(p => p.season && seasonMatches.includes(p.season));
+    // Filter: nur realistische Preise für Zielgruppe (max CHF 150)
+    const seasonal = list.filter(p =>
+      p.season && seasonMatches.includes(p.season) && p.price_chf && p.price_chf <= 150
+    );
     if (seasonal.length === 0) return [];
 
     const byScore = [...seasonal].sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0));
@@ -109,27 +112,35 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
     const picked = new Set<string>();
     const result: Perfume[] = [];
 
-    // 1. Billigster guter Duft – Einstiegspunkt (sorgt dafür, dass günstiger Duft immer dabei ist)
-    if (byPrice[0]) {
-      result.push(byPrice[0]);
-      picked.add(byPrice[0].id);
+    // 1. Billigster Duft (unter CHF 80) – Einstiegspunkt
+    const cheapest = byPrice.find(p => p.price_chf && p.price_chf < 80);
+    if (cheapest) {
+      result.push(cheapest);
+      picked.add(cheapest.id);
     }
 
-    // 2. Bestes Budget-Duft (CHF 60–100)
-    const bestMid = byScore.find(p => p.price_chf && p.price_chf > 60 && p.price_chf <= 100 && !picked.has(p.id));
-    if (bestMid) {
-      result.push(bestMid);
-      picked.add(bestMid.id);
+    // 2. Bestes Alltag/Büro-Duft
+    const bestDaily = byScore.find(p => (p.occasion === 'Alltag' || p.occasion === 'Büro') && !picked.has(p.id));
+    if (bestDaily) {
+      result.push(bestDaily);
+      picked.add(bestDaily.id);
     }
 
-    // 3. Bestes Premium-Duft (CHF 100+)
-    const bestPremium = byScore.find(p => p.price_chf && p.price_chf > 100 && !picked.has(p.id));
-    if (bestPremium) {
-      result.push(bestPremium);
-      picked.add(bestPremium.id);
+    // 3. Bestes Date-Duft
+    const bestDate = byScore.find(p => p.occasion === 'Date' && !picked.has(p.id));
+    if (bestDate) {
+      result.push(bestDate);
+      picked.add(bestDate.id);
     }
 
-    // 4–6. Weitere beste Düfte nach Score (bis zu 6 insgesamt)
+    // 4. Bestes Abend-Duft
+    const bestEvening = byScore.find(p => p.occasion === 'Abend' && !picked.has(p.id));
+    if (bestEvening) {
+      result.push(bestEvening);
+      picked.add(bestEvening.id);
+    }
+
+    // 5–6. Weitere beste Düfte nach Score (bis zu 6 insgesamt)
     for (const p of byScore) {
       if (result.length >= 6) break;
       if (!picked.has(p.id)) {

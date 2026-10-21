@@ -70,6 +70,12 @@ export default async function Page() {
     .map(slug => guides.find(g => g.slug === slug))
     .filter(Boolean);
 
+  // Featured highlights: Top-rated perfumes with high scores
+  const allFeatured = perfumes
+    .filter(p => p.scentmatch_score && p.scentmatch_score >= 75)
+    .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
+    .slice(0, 8);
+
   return (
     <>
       <link rel="preload" as="image" href="/hero-auressa-2.jpg" fetchPriority="high" />
@@ -91,16 +97,13 @@ export default async function Page() {
 
       <HomeClient initialCatalogCount={catalogCount} initialBrandCount={brandCount} initialHighlights={highlightPerfumes} />
 
-      {/* Top-Rated Perfumes Section */}
-      <FeaturedPerfumes
-        perfumes={perfumes
-          .filter(p => p.scentmatch_score && p.scentmatch_score >= 75)
-          .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
-          .slice(0, 8)}
-        title="Die besten Düfte"
-        description="Düfte mit hoher Auressa-Bewertung – empfohlen für ihren ausgezeichneten Charakter, ihre Langlebigkeit und ihren Wert."
-        viewMoreLink="/duefte"
-      />
+      {/* Featured Perfumes Section */}
+      {allFeatured.length > 0 && (
+        <FeaturedPerfumes
+          perfumes={allFeatured}
+          title="Die besten Düfte"
+        />
+      )}
 
       {/* Ratgeber-Teaser — Premium Section mit Top Content */}
       {featuredGuides.length > 0 && (

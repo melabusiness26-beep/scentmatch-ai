@@ -4,261 +4,13 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
   getPerfumes,
-  rankPerfumes,
-  perfumeHasTheme,
-  NOTE_THEMES,
-  getQuizQuestions,
-  type Perfume,
-  type QuizAnswers,
-  type RankedPerfume,
-  type QuizQuestionDB
+  type Perfume
 } from '@/lib/perfumes';
 import { PerfumeTile, familyDisplay } from '@/app/PerfumeTile';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import NewsletterForm from '@/app/NewsletterForm';
+import { BottleIllustration } from '@/app/FragranceBottles';
 
-type QuestionKind = 'gender' | 'anchor' | 'family' | 'occasion' | 'season' | 'sillage' | 'budget' | 'lovedNote' | 'dislikedNote' | 'longevity' | 'sweetness' | 'pricePref';
-type QuizQuestion = { q: string; hint?: string; kind: QuestionKind; a: [string, string, string?][] }; // [label, value, emoji?]
-
-// Fallback questions wenn DB nicht verfügbar
-const fallbackQuestions: QuizQuestion[] = [
-  {
-    q: 'Für wen suchen wir den perfekten Duft?',
-    hint: 'So zeigen wir dir nur, was wirklich passt. Kein Suchen im Heuhaufen.',
-    kind: 'gender',
-    a: [
-      ['Für Damen', 'women', '👩'],
-      ['Für Herren', 'men', '👨'],
-      ['Egal, zeig mir alles', 'unisex', '✨']
-    ]
-  },
-  {
-    q: 'Gibt es einen Duft, den du jetzt schon liebst? (optional)',
-    hint: 'Verrätst du uns deinen Liebling, finden wir gezielt Düfte, die ähnlich riechen – wie ein „mehr davon".',
-    kind: 'anchor',
-    a: []
-  },
-  {
-    q: 'Stell dir deinen Lieblingsmoment vor – welcher ist es?',
-    hint: 'Geh ganz nach Bauchgefühl. Es gibt kein Richtig oder Falsch.',
-    kind: 'family',
-    a: [
-      ['Frisch geduscht, weisses Hemd, Fenster weit auf', 'clean'],
-      ['Kerzenlicht, Vanille und eine warme Decke', 'gourmand'],
-      ['Dunkle Bar, edles Holz, ein Hauch Leder', 'woody'],
-      ['Blumenmarkt im Frühling, leichtes Kleid', 'floral']
-    ]
-  },
-  {
-    q: 'Wie soll sich dein Duft anfühlen?',
-    hint: 'Geh nach Bauchgefühl – welches Gefühl zieht dich sofort an?',
-    kind: 'family',
-    a: [
-      ['Leicht & frisch wie klare Luft', 'clean'],
-      ['Warm & weich wie eine Umarmung', 'gourmand'],
-      ['Kraftvoll & edel wie dunkles Holz', 'woody'],
-      ['Zart & lebendig wie frische Blüten', 'floral']
-    ]
-  },
-  {
-    q: 'Wie würden gute Freunde deinen Stil beschreiben?',
-    hint: 'Dein Stil verrät oft, welcher Duft sich richtig „nach dir" anfühlt.',
-    kind: 'family',
-    a: [
-      ['Natürlich, frisch und unkompliziert', 'clean'],
-      ['Warmherzig, gemütlich und verspielt', 'gourmand'],
-      ['Elegant, edel und zurückhaltend', 'woody'],
-      ['Romantisch, lebhaft und feminin', 'floral']
-    ]
-  },
-  {
-    q: 'Wie süss darf dein Duft sein?',
-    hint: 'Von frisch-herb bis dessertartig – wir gewichten das passend für dich.',
-    kind: 'sweetness',
-    a: [
-      ['Lieber gar nicht süss', 'low'],
-      ['Ein bisschen Süsse', 'medium'],
-      ['Richtig süss & gourmandig', 'high'],
-      ['Egal', '']
-    ]
-  },
-  {
-    q: 'Eine Note, die dein Herz höher schlagen lässt?',
-    hint: 'Diese Note gewichten wir bei deinem Match besonders stark.',
-    kind: 'lovedNote',
-    a: [['Keine bestimmte, überrasch mich', ''], ...NOTE_THEMES.map(t => [t.label, t.code] as [string, string])]
-  },
-  {
-    q: 'Und etwas, das für dich gar nicht geht?',
-    hint: 'Düfte mit dieser Note rutschen in deinem Ranking nach unten.',
-    kind: 'dislikedNote',
-    a: [['Keine – ich bin offen für alles', ''], ...NOTE_THEMES.map(t => [t.label, t.code] as [string, string])]
-  },
-  {
-    q: 'Wann soll dein Duft am meisten glänzen?',
-    hint: 'So treffen wir Charakter und Intensität noch besser.',
-    kind: 'occasion',
-    a: [
-      ['Im Alltag & Büro', 'daily'],
-      ['Bei Dates & zum Verlieben', 'date'],
-      ['Abends & zum Ausgehen', 'evening'],
-      ['Eigentlich überall', 'any']
-    ]
-  },
-  {
-    q: 'Für welche Jahreszeit suchst du ihn?',
-    hint: 'Viele Düfte entfalten sich je nach Wetter ganz anders.',
-    kind: 'season',
-    a: [
-      ['Frühling', 'Frühling'],
-      ['Sommer', 'Sommer'],
-      ['Herbst & Winter', 'Herbst/Winter'],
-      ['Das ganze Jahr', 'Ganzjährig']
-    ]
-  },
-  {
-    q: 'Wie präsent soll dein Duft sein?',
-    hint: 'Also: wie weit dein Duft im Raum wahrnehmbar sein soll.',
-    kind: 'sillage',
-    a: [
-      ['Dezent, nur wer mir nah kommt', 'low'],
-      ['Ausgewogen, angenehm präsent', 'medium'],
-      ['Auffällig, ich hinterlasse Eindruck', 'high']
-    ]
-  },
-  {
-    q: 'Wie lange soll dein Duft halten?',
-    hint: 'Manche Düfte begleiten dich ein paar Stunden, andere den ganzen Tag.',
-    kind: 'longevity',
-    a: [
-      ['Ein paar Stunden reichen', 'low'],
-      ['Solide durch den Tag', 'medium'],
-      ['Möglichst lange', 'high'],
-      ['Egal', '']
-    ]
-  },
-  {
-    q: 'Was darf dein neuer Liebling kosten?',
-    hint: 'Wir zeigen dir die besten Treffer in deinem Rahmen – ohne dich einzuengen.',
-    kind: 'budget',
-    a: [
-      ['Bis CHF 80', '80'],
-      ['CHF 80–150', '150'],
-      ['Auch Premium (über CHF 150)', 'premium'],
-      ['Budget ist mir egal', 'any']
-    ]
-  },
-  {
-    q: 'Lieber das Original oder eine günstige Alternative?',
-    hint: 'Viele teure Düfte haben erschwingliche Alternativen in ähnlicher Richtung.',
-    kind: 'pricePref',
-    a: [
-      ['Das Original darf es sein', 'original'],
-      ['Lieber eine günstige Alternative', 'alternative'],
-      ['Egal – Hauptsache, er passt', '']
-    ]
-  }
-];
-
-// Convert DB questions to internal format
-function convertDbQuestions(dbQuestions: QuizQuestionDB[]): QuizQuestion[] {
-  return dbQuestions.map(q => ({
-    q: q.question_text,
-    hint: q.hint_text,
-    kind: q.question_type as QuestionKind,
-    a: q.answers.map(a => [a.label, a.value, ''] as [string, string, string])
-  }));
-}
-
-// Calculate how many family questions we have
-function getQuestionCount(questions: QuizQuestion[]): number {
-  return questions.length;
-}
-
-function getFamilyQuestionCount(questions: QuizQuestion[]): number {
-  return questions.filter(q => q.kind === 'family').length;
-}
-
-// Reihenfolge der Duftfamilien für das kompakte Kodieren im Teilen-Link.
-const FAMILY_ORDER = ['clean', 'gourmand', 'woody', 'floral'] as const;
-
-const profileText: Record<string, { title: string; text: string }> = {
-  clean: { title: 'The Clean Slate', text: 'Du liebst frische, saubere Düfte. Deine Signatur wirkt gepflegt, leicht und modern.' },
-  gourmand: { title: 'The Soft Cashmere Vibe', text: 'Du passt zu warmen, weichen und leicht süssen Düften. Deine Duftsignatur wirkt gemütlich und sinnlich.' },
-  woody: { title: 'Midnight Tailoring', text: 'Du brauchst elegante, holzige und würzige Düfte. Deine Signatur wirkt hochwertig und selbstbewusst.' },
-  floral: { title: 'The Blooming Romance', text: 'Du passt zu blumigen, fruchtigen und femininen Düften. Deine Signatur wirkt charmant und weich.' }
-};
-
-const genderLabels: Record<string, string> = { women: 'Damen', men: 'Herren', unisex: 'Unisex' };
-
-// Persönliche, nachvollziehbare Begründung – nur aus den Quiz-Antworten und den
-// vorhandenen Duftdaten abgeleitet (kein Heilversprechen, keine erfundenen Fakten).
-// Berücksichtigt möglichst viele Antworten (Lieblingsduft, Note, Richtung,
-// Haltbarkeit, Präsenz, Saison, Anlass, Budget), damit die Empfehlung zeigt,
-// dass wirklich ALLE Angaben in den Match eingeflossen sind.
-function buildQuizReason(p: Perfume, answers: QuizAnswers, winner: string, anchorName?: string): string {
-  const reasons: string[] = [];
-
-  // 1. Ähnlichkeit zum genannten Lieblingsduft – der persönlichste Grund.
-  if (answers.anchorId && anchorName) {
-    reasons.push(`er ähnlich riecht wie ${anchorName}, den du schon magst`);
-  }
-
-  // 2. Deine Lieblingsnote kommt tatsächlich in diesem Duft vor.
-  if (answers.lovedNote && perfumeHasTheme(p, answers.lovedNote)) {
-    const label = NOTE_THEMES.find(t => t.code === answers.lovedNote)?.label.split(' – ')[0];
-    if (label) reasons.push(`er deine Lieblingsnote enthält (${label.toLowerCase()})`);
-  }
-
-  // 3. Bevorzugte Duftrichtung.
-  if (p.fragrance_family && p.fragrance_family === winner) {
-    reasons.push(`er deiner bevorzugten Duftrichtung entspricht (${familyDisplay[winner] || winner})`);
-  }
-
-  // 4. Gewünschte Haltbarkeit.
-  if (answers.longevity && p.longevity != null) {
-    if (answers.longevity === 'high' && p.longevity >= 7) reasons.push(`er lange hält (${p.longevity}/10)`);
-    else if (answers.longevity === 'low' && p.longevity <= 6) reasons.push('er angenehm dezent verfliegt');
-    else if (answers.longevity === 'medium' && p.longevity >= 5 && p.longevity <= 8) reasons.push('er solide durch den Tag trägt');
-  }
-
-  // 5. Gewünschte Präsenz (Sillage).
-  if (answers.sillage && p.sillage != null) {
-    if (answers.sillage === 'high' && p.sillage >= 7) reasons.push('er auffällig präsent ist');
-    else if (answers.sillage === 'low' && p.sillage <= 5) reasons.push('er dezent nah an der Haut bleibt');
-  }
-
-  // 6. Wunsch-Saison.
-  if (
-    answers.season &&
-    answers.season !== 'Ganzjährig' &&
-    p.season &&
-    (p.season === answers.season || p.season === 'Ganzjährig')
-  ) {
-    reasons.push(`er zu deiner Wunsch-Saison passt (${answers.season})`);
-  }
-
-  // 7. Anlass.
-  const occMap: Record<string, string[]> = { daily: ['Alltag', 'Büro'], date: ['Date'], evening: ['Abend'] };
-  const wanted = answers.occasion ? occMap[answers.occasion] : undefined;
-  if (wanted && p.occasion && wanted.includes(p.occasion)) {
-    reasons.push(`er zu deinem Anlass passt (${p.occasion})`);
-  }
-
-  // 8. Budget.
-  if (answers.budgetMax != null && p.price_chf != null && p.price_chf <= answers.budgetMax) {
-    reasons.push(`er in deinem Budget liegt (ca. CHF ${p.price_chf})`);
-  }
-
-  if (reasons.length === 0) {
-    return `Könnte zu dir passen, wenn du ${familyDisplay[p.fragrance_family || ''] || 'solche'} Düfte magst.`;
-  }
-
-  // Die drei stärksten Gründe genügen – mehr würde den Satz überladen.
-  const top = reasons.slice(0, 3);
-  const joined = top.length > 1 ? `${top.slice(0, -1).join(', ')} und ${top[top.length - 1]}` : top[0];
-  return `Passt gut, weil ${joined}.`;
-}
 
 // Anklickbare Familien-Kacheln (führen zur gefilterten Duftdatenbank).
 const FAMILY_TILES: { code: string; label: string; desc: string }[] = [
@@ -294,25 +46,6 @@ const SEASON_LABEL: Record<string, string> = { Sommer: 'Sommer', Frühling: 'Fr�
 const SEASON_MATCH: Record<string, string[]> = { Sommer: ['Sommer'], Frühling: ['Frühling'], 'Herbst/Winter': ['Herbst/Winter', 'Winter'] };
 const SEASON_GUIDE: Record<string, string> = { Sommer: '/ratgeber/die-besten-sommerduefte', 'Herbst/Winter': '/ratgeber/die-besten-winterduefte' };
 
-const emptyFamily = { clean: 0, gourmand: 0, woody: 0, floral: 0 };
-
-// Momentaufnahme des Quiz-Zustands – ermöglicht den „Zurück"-Knopf.
-type QuizSnapshot = {
-  step: number;
-  family: Record<string, number>;
-  genderPref: QuizAnswers['gender'];
-  occasion: QuizAnswers['occasion'];
-  season: QuizAnswers['season'];
-  sillage: QuizAnswers['sillage'];
-  budgetMax: number | null;
-  lovedNote: string;
-  dislikedNote: string;
-  anchorId: string;
-  longevityPref: QuizAnswers['longevity'];
-  sweetnessPref: QuizAnswers['sweetness'];
-  pricePref: QuizAnswers['pricePref'];
-};
-
 // Fallback, falls die Datenbank (noch) nicht erreichbar ist.
 // Diese Highlights werden dynamisch nach dem Load aus dem Katalog geholt,
 // aber wir brauchen Platzhalter für schnelles initiales Render.
@@ -330,112 +63,29 @@ interface HomeClientProps {
 }
 
 export default function Home({ initialCatalogCount, initialBrandCount, initialHighlights }: HomeClientProps = {}) {
-  const [step, setStep] = useState(0);
-  const [family, setFamily] = useState<Record<string, number>>({ ...emptyFamily });
-  const [genderPref, setGenderPref] = useState<QuizAnswers['gender']>('');
-  const [occasion, setOccasion] = useState<QuizAnswers['occasion']>('');
-  const [season, setSeason] = useState<QuizAnswers['season']>('');
-  const [sillage, setSillage] = useState<QuizAnswers['sillage']>('');
-  const [budgetMax, setBudgetMax] = useState<number | null>(null);
-  const [lovedNote, setLovedNote] = useState('');
-  const [dislikedNote, setDislikedNote] = useState('');
-  const [anchorId, setAnchorId] = useState('');
-  const [longevityPref, setLongevityPref] = useState<QuizAnswers['longevity']>('');
-  const [sweetnessPref, setSweetnessPref] = useState<QuizAnswers['sweetness']>('');
-  const [pricePref, setPricePref] = useState<QuizAnswers['pricePref']>('');
   const [currentSeason, setCurrentSeason] = useState('');
-  const [history, setHistory] = useState<QuizSnapshot[]>([]);
-  const [showResult, setShowResult] = useState(false);
   const [perfumes, setPerfumes] = useState<Perfume[]>(starterPerfumes);
   const [loaded, setLoaded] = useState(false);
-  const [shareMsg, setShareMsg] = useState('');
-  const [revealScore, setRevealScore] = useState(0);
-  const [questions, setQuestions] = useState<QuizQuestion[]>(fallbackQuestions);
 
   useEffect(() => {
     async function loadData() {
-      // Load perfumes
       const perfumeData = await getPerfumes(2000);
       if (perfumeData.length > 0) setPerfumes(perfumeData);
-
-      // Load quiz questions from database
-      const dbQuestions = await getQuizQuestions();
-      if (dbQuestions.length > 0) {
-        setQuestions(convertDbQuestions(dbQuestions));
-      }
       setLoaded(true);
     }
     loadData();
 
-    // Aktuelle Jahreszeit bestimmen (im Browser, damit es immer aktuell ist).
     const m = new Date().getMonth();
     if (m >= 5 && m <= 7) setCurrentSeason('Sommer');
     else if (m >= 2 && m <= 4) setCurrentSeason('Frühling');
     else setCurrentSeason('Herbst/Winter');
-
-    // Geteilten Ergebnis-Link auslesen: Liegen Quiz-Antworten in der URL,
-    // stellen wir das Ergebnis direkt wieder her (ohne erneutes Quiz).
-    const sp = new URLSearchParams(window.location.search);
-    if (sp.has('f')) {
-      setGenderPref((sp.get('g') || '') as QuizAnswers['gender']);
-      const fam = (sp.get('f') || '').split('-').map(n => parseInt(n, 10) || 0);
-      setFamily({ clean: fam[0] || 0, gourmand: fam[1] || 0, woody: fam[2] || 0, floral: fam[3] || 0 });
-      setOccasion((sp.get('o') || '') as QuizAnswers['occasion']);
-      setSeason((sp.get('s') || '') as QuizAnswers['season']);
-      setSillage((sp.get('si') || '') as QuizAnswers['sillage']);
-      const b = sp.get('b');
-      setBudgetMax(b ? parseInt(b, 10) : null);
-      setLovedNote(sp.get('l') || '');
-      setDislikedNote(sp.get('d') || '');
-      setAnchorId(sp.get('a') || '');
-      setLongevityPref((sp.get('lo') || '') as QuizAnswers['longevity']);
-      setSweetnessPref((sp.get('sw') || '') as QuizAnswers['sweetness']);
-      setPricePref((sp.get('pp') || '') as QuizAnswers['pricePref']);
-      setStep(questions.length - 1);
-      setShowResult(true);
-    }
   }, []);
-
-  const answers: QuizAnswers = { gender: genderPref, family, occasion, season, sillage, budgetMax, lovedNote, dislikedNote, anchorId, longevity: longevityPref, sweetness: sweetnessPref, pricePref };
-  const winner = Object.entries(family).sort((a, b) => b[1] - a[1])[0]?.[0] || 'clean';
-
-  // Personalisierte Rangliste – nur nach dem Quiz.
-  const ranked: RankedPerfume[] = showResult ? rankPerfumes(perfumes, answers) : [];
-  const topPick = showResult ? ranked[0] : undefined;
-  const top3 = ranked.slice(0, 3);
-  const topMatches = ranked.slice(3, 12);
-
-  // Wow-Moment: der Match-Score zählt beim Ergebnis von 0 hoch.
-  useEffect(() => {
-    if (!showResult || !topPick) {
-      setRevealScore(0);
-      return;
-    }
-    const target = topPick.score;
-    const reduce = typeof window !== 'undefined'
-      && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) {
-      setRevealScore(target);
-      return;
-    }
-    let raf = 0;
-    const start = performance.now();
-    const duration = 1100;
-    const tick = (now: number) => {
-      const t = Math.min(1, (now - start) / duration);
-      const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
-      setRevealScore(Math.round(target * eased));
-      if (t < 1) raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [showResult, topPick?.perfume.id, topPick?.score]);
 
   // Ausgewogene Highlight-Auswahl für die Startseite (vor dem Quiz).
   // Priorität: initialHighlights (vom Server SSR) → Fallback zur Client-Berechnung.
   const highlights = initialHighlights && initialHighlights.length > 0
-    ? initialHighlights
-    : pickHighlights(perfumes, 6);
+    ? initialHighlights.slice(0, 3)
+    : pickHighlights(perfumes, 3);
   // Echte Katalog-Kennzahlen aus den geladenen Düften – keine erfundenen Werte.
   // Priorität: initialCatalogCount (vom Server SSR) → Fallback zur Client-Berechnung.
   const catalogCount = initialCatalogCount ?? (loaded ? perfumes.length : null);
@@ -450,142 +100,8 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
     ? [...perfumes]
         .filter(p => p.season && seasonMatch.includes(p.season))
         .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
-        .slice(0, 6)
+        .slice(0, 4)
     : [];
-
-  // Aktuellen Zustand sichern, bevor wir eine Frage weitergehen (für „Zurück").
-  function pushHistory() {
-    setHistory(h => [
-      ...h,
-      { step, family: { ...family }, genderPref, occasion, season, sillage, budgetMax, lovedNote, dislikedNote, anchorId, longevityPref, sweetnessPref, pricePref }
-    ]);
-  }
-
-  function answer(kind: QuestionKind, code: string) {
-    pushHistory();
-    if (kind === 'gender') setGenderPref(code as QuizAnswers['gender']);
-    else if (kind === 'family') setFamily(prev => ({ ...prev, [code]: (prev[code] || 0) + 1 }));
-    else if (kind === 'occasion') setOccasion(code as QuizAnswers['occasion']);
-    else if (kind === 'season') setSeason(code as QuizAnswers['season']);
-    else if (kind === 'sillage') setSillage(code as QuizAnswers['sillage']);
-    else if (kind === 'budget') setBudgetMax(code === '80' ? 80 : code === '150' ? 150 : null);
-    else if (kind === 'lovedNote') setLovedNote(code);
-    else if (kind === 'dislikedNote') setDislikedNote(code);
-    else if (kind === 'longevity') setLongevityPref(code as QuizAnswers['longevity']);
-    else if (kind === 'sweetness') setSweetnessPref(code as QuizAnswers['sweetness']);
-    else if (kind === 'pricePref') setPricePref(code as QuizAnswers['pricePref']);
-
-    advanceStep();
-  }
-
-  // Anker-Frage (Dropdown) per Knopf weitergehen – Auswahl ist bereits gesetzt.
-  function advanceAnchor() {
-    pushHistory();
-    advanceStep();
-  }
-
-  // Skip optional question
-  function skipQuestion() {
-    pushHistory();
-    advanceStep();
-  }
-
-  function advanceStep() {
-    if (step + 1 >= questions.length) setShowResult(true);
-    else setStep(step + 1);
-  }
-
-  // Check if current question is optional
-  function isOptionalQuestion(): boolean {
-    return questions[step]?.kind === 'anchor' ||
-           questions[step]?.a.some(a => a[1] === '');
-  }
-
-  // Einen Schritt zurück und die letzte Antwort wiederherstellen.
-  function goBack() {
-    if (history.length === 0) return;
-    const prev = history[history.length - 1];
-    setStep(prev.step);
-    setFamily(prev.family);
-    setGenderPref(prev.genderPref);
-    setOccasion(prev.occasion);
-    setSeason(prev.season);
-    setSillage(prev.sillage);
-    setBudgetMax(prev.budgetMax);
-    setLovedNote(prev.lovedNote);
-    setDislikedNote(prev.dislikedNote);
-    setAnchorId(prev.anchorId);
-    setLongevityPref(prev.longevityPref);
-    setSweetnessPref(prev.sweetnessPref);
-    setPricePref(prev.pricePref);
-    setShowResult(false);
-    setHistory(history.slice(0, -1));
-  }
-
-  function restartQuiz() {
-    setStep(0);
-    setFamily({ ...emptyFamily });
-    setGenderPref('');
-    setOccasion('');
-    setSeason('');
-    setSillage('');
-    setBudgetMax(null);
-    setLovedNote('');
-    setDislikedNote('');
-    setAnchorId('');
-    setLongevityPref('');
-    setSweetnessPref('');
-    setPricePref('');
-    setHistory([]);
-    setShowResult(false);
-    setShareMsg('');
-    // Geteilte Antworten aus der URL entfernen, damit ein Neustart sauber ist.
-    if (typeof window !== 'undefined' && window.location.search) {
-      window.history.replaceState(null, '', window.location.pathname + '#quiz');
-    }
-  }
-
-  // Baut den teilbaren Link aus den aktuellen Quiz-Antworten.
-  function buildShareUrl(): string {
-    const p = new URLSearchParams();
-    if (genderPref) p.set('g', genderPref);
-    p.set('f', FAMILY_ORDER.map(k => family[k] || 0).join('-'));
-    if (occasion) p.set('o', occasion);
-    if (season) p.set('s', season);
-    if (sillage) p.set('si', sillage);
-    if (budgetMax != null) p.set('b', String(budgetMax));
-    if (lovedNote) p.set('l', lovedNote);
-    if (dislikedNote) p.set('d', dislikedNote);
-    if (anchorId) p.set('a', anchorId);
-    if (longevityPref) p.set('lo', longevityPref);
-    if (sweetnessPref) p.set('sw', sweetnessPref);
-    if (pricePref) p.set('pp', pricePref);
-    return `${window.location.origin}${window.location.pathname}?${p.toString()}#quiz`;
-  }
-
-  // Ergebnis teilen: nutzt das native Teilen-Menü (Handy) oder kopiert den Link.
-  async function shareResult() {
-    const url = buildShareUrl();
-    const title = `Mein Auressa-Duftprofil: ${profileText[winner].title}`;
-    const text = topPick
-      ? `Mein Top-Match ist ${topPick.perfume.perfume_name}. Finde mit dem Auressa-Quiz deinen:`
-      : 'Finde mit dem Auressa-Quiz deinen Signature-Duft:';
-    if (typeof navigator !== 'undefined' && navigator.share) {
-      try {
-        await navigator.share({ title, text, url });
-      } catch {
-        // Teilen abgebrochen – kein Fehler nötig.
-      }
-      return;
-    }
-    try {
-      await navigator.clipboard.writeText(url);
-      setShareMsg('Link kopiert! 📋 Du kannst ihn jetzt einfügen.');
-    } catch {
-      setShareMsg(url);
-    }
-    setTimeout(() => setShareMsg(''), 5000);
-  }
 
   // Weihnachts-Banner: Client-seitige Datumsprüfung (1. Nov – 24. Dez, Europe/Zurich)
   const [showGiftBanner, setShowGiftBanner] = useState(false);
@@ -623,6 +139,15 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
         </div>
       )}
       <div className="container">
+        <section className="section quiz-hero">
+          <p className="eyebrow">Duft-Quiz</p>
+          <h2>Finde deinen Signature Duft in 10 Fragen</h2>
+          <p className="lead">Beantworte ein paar einfache Fragen und lass unsere Match-Engine einen Duft finden, der wirklich zu dir passt. Personalisiert nach Geschmack, Budget, Saison und Anlass.</p>
+          <div className="cta">
+            <Link className="button" href="/quiz">Quiz starten</Link>
+          </div>
+        </section>
+
         <section className="section">
           <p className="eyebrow">Schritt für Schritt</p>
           <h2>So funktioniert es</h2>
@@ -641,33 +166,6 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
               <div className="why-icon">3</div>
               <h3>Düfte &amp; günstige Alternativen entdecken</h3>
               <p className="small">Du bekommst deine Top-Treffer – inklusive günstigerer Alternativen zu teuren Düften.</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="warum" className="section">
-          <p className="eyebrow">Warum Auressa?</p>
-          <h2>Duft finden, das sich nicht nach Glücksspiel anfühlt</h2>
-          <div className="why-grid">
-            <div className="why-card">
-              <div className="why-icon">✦</div>
-              <h3>Echter Match-Score</h3>
-              <p className="small">Jeder Duft wird gegen deine Antworten berechnet – kein Zufall, keine blinde TikTok-Empfehlung.</p>
-            </div>
-            <div className="why-card">
-              <div className="why-icon">❖</div>
-              <h3>Günstige Alternativen</h3>
-              <p className="small">Zu teuren Düften zeigen wir automatisch ähnlich riechende, günstigere Varianten.</p>
-            </div>
-            <div className="why-card">
-              <div className="why-icon">✿</div>
-              <h3>Kuratiert & ehrlich</h3>
-              <p className="small">Sorgfältig ausgewählte Düfte – von Bestsellern bis zu seltenen Nischenperlen.</p>
-            </div>
-            <div className="why-card">
-              <div className="why-icon">♡</div>
-              <h3>Schnell & persönlich</h3>
-              <p className="small">Dein Ergebnis in unter 1 Minute – abgestimmt auf deinen Geschmack, Anlass und Budget.</p>
             </div>
           </div>
         </section>
@@ -742,182 +240,6 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
           </div>
         </section>
 
-        <section id="quiz" className="section card quiz">
-          <p className="eyebrow">Duft-Quiz</p>
-          {!showResult ? (
-            <>
-              <p className="small">Frage {step + 1} von {questions.length}</p>
-              <div className="scorebar quiz-progress"><span style={{ width: `${((step + 1) / questions.length) * 100}%` }} /></div>
-              <div className="quiz-step" key={step}>
-              <div className="question">{questions[step].q}</div>
-              {questions[step].hint && <p className="small quiz-hint">{questions[step].hint}</p>}
-              {questions[step].kind === 'anchor' ? (
-                <div className="answers">
-                  <select className="search" value={anchorId} onChange={e => setAnchorId(e.target.value)}>
-                    <option value="">– Duft auswählen –</option>
-                    {[...perfumes]
-                      .sort((a, b) =>
-                        (a.perfume_name || '').localeCompare(b.perfume_name || '', 'de', { sensitivity: 'base' })
-                      )
-                      .map(p => (
-                        <option value={p.id} key={p.id}>
-                          {p.perfume_name}{p.brands?.name ? ` · ${p.brands.name}` : ''}
-                        </option>
-                      ))}
-                  </select>
-                  <p className="small">Optional – du kannst diese Frage auch einfach überspringen.</p>
-                  <button className="answer" onClick={advanceAnchor}>{anchorId ? 'Weiter' : 'Überspringen'}</button>
-                </div>
-              ) : questions[step].kind === 'family' ? (
-                // Visual Family Picker – colorful cards for family selection
-                <div className="family-picker">
-                  {questions[step].a.map(([label, code, emoji]) => (
-                    <button
-                      key={code}
-                      className="family-card"
-                      onClick={() => answer(questions[step].kind, code)}
-                      data-family={code}
-                    >
-                      {emoji && <span className="family-emoji">{emoji}</span>}
-                      <span className="family-label">{label}</span>
-                    </button>
-                  ))}
-                </div>
-              ) : questions[step].kind === 'sweetness' ? (
-                // Interactive Sweetness Slider
-                <div className="sweetness-slider">
-                  <div className="slider-labels">
-                    <span>Herb</span>
-                    <span>Balanced</span>
-                    <span>Süß</span>
-                  </div>
-                  <div className="slider-options">
-                    {questions[step].a.map(([label, code]) => (
-                      <button
-                        key={code}
-                        className={`slider-btn ${sweetnessPref === code ? 'active' : ''}`}
-                        onClick={() => answer(questions[step].kind, code)}
-                      >
-                        {label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                // Standard answers with emoji support
-                <div className="answers">
-                  {questions[step].a.map(([label, code, emoji]) => (
-                    <button
-                      className="answer"
-                      key={label}
-                      onClick={() => answer(questions[step].kind, code)}
-                    >
-                      {emoji && <span className="answer-emoji">{emoji}</span>}
-                      {label}
-                    </button>
-                  ))}
-                </div>
-              )}
-              </div>
-              <div className="quiz-controls">
-                {history.length > 0 && (
-                  <button className="quiz-back" onClick={goBack}>← Zurück</button>
-                )}
-                {isOptionalQuestion() && questions[step]?.kind !== 'anchor' && (
-                  <button className="quiz-skip" onClick={skipQuestion}>⊘ Überspringen</button>
-                )}
-              </div>
-            </>
-          ) : (
-            <div className="result">
-              <p className="small">Dein Duftprofil{genderPref ? ` · ${genderLabels[genderPref]}` : ''}{anchorId ? ` · ähnlich zu ${perfumes.find(p => p.id === anchorId)?.perfume_name || ''}` : ''}</p>
-              <h2>{profileText[winner].title}</h2>
-              <p className="lead">{profileText[winner].text}</p>
-
-              {top3.map((r, i) => {
-                const p = r.perfume;
-                const recLabel =
-                  i === 0 ? 'Beste Empfehlung' : i === 1 ? 'Zweite Empfehlung' : 'Dritte Empfehlung';
-                const meta = [familyDisplay[p.fragrance_family || ''] || 'Duftfamilie offen', p.season, p.occasion]
-                  .filter(Boolean)
-                  .join(' · ');
-                return (
-                  <div className="top-pick" key={p.id}>
-                    <p className="small">{recLabel}</p>
-                    {i === 0 ? (
-                      <div className="match-score-big">
-                        <span className="match-score-num">{revealScore}</span>
-                        <span className="match-score-pct">% passend</span>
-                      </div>
-                    ) : (
-                      <span className="match-badge">{r.score}% passend</span>
-                    )}
-                    <h3>{p.perfume_name} · {p.brands?.name || 'Marke offen'}</h3>
-                    <p className="small">{meta}</p>
-                    <p className="small">{buildQuizReason(p, answers, winner, anchorId ? perfumes.find(a => a.id === anchorId)?.perfume_name : undefined)}</p>
-                    <div className="cta">
-                      {p.slug && (
-                        <Link className="button secondary" href={`/duft/${p.slug}`}>Duftprofil ansehen</Link>
-                      )}
-                      <AffiliateButton perfume={p} showNote={false} />
-                    </div>
-                  </div>
-                );
-              })}
-
-              {top3.length === 0 && (
-                <div className="top-pick">
-                  <p className="lead">
-                    Für diese Kombination haben wir gerade keinen passenden Treffer gefunden.
-                    Versuch es mit etwas offeneren Angaben – oder{' '}
-                    <Link href="/duefte">stöber im ganzen Duftkatalog</Link>.
-                  </p>
-                </div>
-              )}
-
-              <p className="small" style={{ marginTop: 16 }}>Dein Duftprofil-Mix, so oft hast du welche Richtung gewählt:</p>
-              {Object.entries(family).map(([key, value]) => (
-                <div key={key} style={{ marginBottom: 12 }}>
-                  <div className="small">{profileText[key].title}: {value}</div>
-                  <div className="scorebar bar-reveal"><span style={{ width: `${Math.min(100, (value / getFamilyQuestionCount(questions)) * 100)}%` }} /></div>
-                </div>
-              ))}
-
-              <div className="share-box">
-                <p className="small">Möchtest du dein Ergebnis speichern oder einer Freundin schicken?</p>
-                <div className="cta">
-                  <button type="button" className="button" onClick={shareResult}>🔗 Ergebnis teilen / speichern</button>
-                  <button type="button" className="secondary" onClick={restartQuiz}>Quiz neu starten</button>
-                </div>
-                {shareMsg && <p className="small share-msg">{shareMsg}</p>}
-              </div>
-
-              <div className="share-box">
-                <NewsletterForm
-                  source="quiz"
-                  title="Verpass keine Duft-Tipps"
-                  text="Lass dir neue Empfehlungen, Spar-Tipps und passende Düfte per E-Mail schicken – ab und zu, nie Spam."
-                />
-              </div>
-            </div>
-          )}
-        </section>
-
-        {showResult && topMatches.length > 0 && (
-          <section id="ergebnisse" className="section">
-            <p className="eyebrow">Weitere Treffer</p>
-            <h2>Weitere passende Düfte{genderPref ? ` · ${genderLabels[genderPref]}` : ''}</h2>
-            <p className="small">Sortiert nach Match-Score für dein Profil. Klicke einen Duft für sein volles Profil.</p>
-            <div className="perfume-list">
-              {topMatches.map(({ perfume: p, score }) => (
-                <PerfumeTile perfume={p} matchPercent={score} key={p.id} />
-              ))}
-            </div>
-            <div className="cta">
-              <Link className="button secondary" href="/duefte">Alle Düfte durchstöbern</Link>
-            </div>
-          </section>
-        )}
       </div>
     </main>
   );

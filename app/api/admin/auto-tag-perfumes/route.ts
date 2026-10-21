@@ -1,7 +1,7 @@
 import { autoTagAllPerfumes } from '@/lib/perfumes';
 import { NextResponse } from 'next/server';
 
-export async function POST() {
+async function handleRequest() {
   try {
     console.log('🔄 Starting auto-tag-perfumes...');
     const result = await autoTagAllPerfumes();
@@ -18,4 +18,12 @@ export async function POST() {
       { status: 500 }
     );
   }
+}
+
+export async function GET() {
+  return handleRequest();
+}
+
+export async function POST() {
+  return handleRequest();
 }

@@ -226,6 +226,17 @@ button:focus, .button:focus { outline: 2px solid var(--color-primary); outline-o
 .tile:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
 .tile h3 { margin: 0 0 8px; color: var(--color-text-primary); }
 .quiz { margin-top: 28px; }
+.section.quiz-hero {
+  background: linear-gradient(135deg, #D4AF37 0%, #E5C158 50%, #D4AF37 100%) !important;
+  border-radius: 0 !important;
+  padding: clamp(80px, 12vw, 140px) clamp(24px, 6vw, 40px) !important;
+  text-align: center;
+  margin: 0 0 clamp(40px, 8vw, 60px) 0 !important;
+  position: relative;
+  overflow: hidden;
+  color: #FFFFFF;
+}
+
 .quiz-hero {
   background: linear-gradient(135deg, #D4AF37 0%, #E5C158 50%, #D4AF37 100%);
   border-radius: 0;

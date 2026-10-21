@@ -148,24 +148,28 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
           </div>
         </section>
 
-        <section className="section">
-          <p className="eyebrow">Schritt für Schritt</p>
-          <h2>So funktioniert es</h2>
-          <div className="steps-grid">
-            <div className="why-card">
-              <div className="why-icon">1</div>
-              <h3>Quiz beantworten</h3>
-              <p className="small">Ein paar Fragen zu Geschlecht, Duftrichtung, Anlass, Saison, Intensität und Budget.</p>
+        <section className="section trust-section">
+          <div className="trust-grid">
+            <div className="trust-item">
+              <div className="trust-icon">✅</div>
+              <div className="trust-text">
+                <p className="trust-stat"><strong>Über 500 Nutzer</strong></p>
+                <p className="small">fanden bereits ihren Signature Duft</p>
+              </div>
             </div>
-            <div className="why-card">
-              <div className="why-icon">2</div>
-              <h3>Match-Score berechnen</h3>
-              <p className="small">Unsere Match-Engine bewertet jeden Duft gegen deine Antworten – von 0 bis 100, kein Zufall.</p>
+            <div className="trust-item">
+              <div className="trust-icon">⭐</div>
+              <div className="trust-text">
+                <p className="trust-stat"><strong>Transparent & Fair</strong></p>
+                <p className="small">Partnerschaften mit den Top-Shops (Notino, Flaconi)</p>
+              </div>
             </div>
-            <div className="why-card">
-              <div className="why-icon">3</div>
-              <h3>Düfte &amp; günstige Alternativen entdecken</h3>
-              <p className="small">Du bekommst deine Top-Treffer – inklusive günstigerer Alternativen zu teuren Düften.</p>
+            <div className="trust-item">
+              <div className="trust-icon">🎯</div>
+              <div className="trust-text">
+                <p className="trust-stat"><strong>Präzise Empfehlungen</strong></p>
+                <p className="small">Dank Match-Engine, nicht Zufall</p>
+              </div>
             </div>
           </div>
         </section>

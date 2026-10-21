@@ -686,6 +686,19 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(212,175,55
 .why-icon:hover { background: linear-gradient(135deg, rgba(212,175,55,.22), rgba(212,175,55,.14)); border-color: rgba(212,175,55,.55); box-shadow: 0 8px 24px rgba(212,175,55,.16); }
 .why-card h3 { margin: 0 0 8px; color: var(--brown); font-size: clamp(16px, 3vw, 19px); }
 
+/* Trust Section – Social Proof & Credibility */
+.trust-section { background: linear-gradient(135deg, rgba(212,175,55,.08) 0%, rgba(212,175,55,.04) 100%); border-radius: var(--radius-lg); padding: clamp(40px, 8vw, 60px) clamp(24px, 6vw, 40px); }
+.trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 4vw, 32px); }
+.trust-item { display: flex; gap: clamp(16px, 3vw, 24px); align-items: flex-start; }
+.trust-icon { font-size: clamp(32px, 5vw, 40px); flex-shrink: 0; }
+.trust-text { flex: 1; }
+.trust-stat { font-size: clamp(16px, 2.5vw, 18px); margin: 0 0 4px; color: var(--color-text-primary); font-weight: 600; }
+.trust-text .small { margin: 0; color: var(--color-text-secondary); }
+
+@media (max-width: 768px) {
+  .trust-grid { grid-template-columns: 1fr; gap: 16px; }
+}
+
 /* Responsive Raster: passt sich automatisch an die Bildschirmbreite an */
 .perfume-list { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
 .grid { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }

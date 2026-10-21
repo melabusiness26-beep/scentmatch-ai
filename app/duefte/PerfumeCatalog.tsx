@@ -33,6 +33,20 @@ const OCCASION_OPTIONS = [
   { code: 'Abend', label: 'Abend' }
 ];
 
+const AGE_GROUP_OPTIONS = [
+  { code: '18-25', label: '18-25 Jahre' },
+  { code: '25-35', label: '25-35 Jahre' },
+  { code: '35-40', label: '35-40 Jahre' }
+];
+
+const LIFESTYLE_OPTIONS = [
+  { code: 'student', label: '👤 Student*in' },
+  { code: 'professional', label: '👔 Berufstätig' },
+  { code: 'party', label: '🎉 Party/Social' },
+  { code: 'casual', label: '😌 Casual' },
+  { code: 'sporty', label: '⚽ Sportlich' }
+];
+
 const PAGE_SIZE = 24;
 
 export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: Perfume[] }) {
@@ -42,6 +56,8 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
   const [genderFilters, setGenderFilters] = useState<string[]>([]);
   const [seasonFilters, setSeasonFilters] = useState<string[]>([]);
   const [occasionFilters, setOccasionFilters] = useState<string[]>([]);
+  const [ageGroupFilters, setAgeGroupFilters] = useState<string[]>([]);
+  const [lifestyleFilters, setLifestyleFilters] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 500]);
   const [sillageRange, setSillageRange] = useState<[number, number]>([0, 10]);
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
@@ -57,7 +73,7 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
 
   useEffect(() => {
     setShownCount(PAGE_SIZE);
-  }, [query, familyFilter, genderFilters, seasonFilters, occasionFilters, priceRange, sillageRange]);
+  }, [query, familyFilter, genderFilters, seasonFilters, occasionFilters, ageGroupFilters, lifestyleFilters, priceRange, sillageRange]);
 
   const maxPrice = Math.max(...perfumes.map(p => p.price_chf || 0), 200);
 
@@ -71,6 +87,8 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
     if (genderFilters.length > 0 && !genderFilters.includes(p.gender || '')) return false;
     if (seasonFilters.length > 0 && !seasonFilters.includes(p.season || '')) return false;
     if (occasionFilters.length > 0 && !occasionFilters.includes(p.occasion || '')) return false;
+    if (ageGroupFilters.length > 0 && !ageGroupFilters.includes(p.age_group || 'all')) return false;
+    if (lifestyleFilters.length > 0 && !lifestyleFilters.includes(p.lifestyle || 'all')) return false;
     if (p.price_chf && (p.price_chf < priceRange[0] || p.price_chf > priceRange[1])) return false;
     if (p.sillage && (p.sillage < sillageRange[0] || p.sillage > sillageRange[1])) return false;
     return true;
@@ -80,7 +98,8 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
   const hasMore = visible.length > shown.length;
 
   const activeFilterCount = (familyFilter ? 1 : 0) + genderFilters.length + seasonFilters.length +
-    occasionFilters.length + (priceRange[0] > 0 || priceRange[1] < maxPrice ? 1 : 0) +
+    occasionFilters.length + ageGroupFilters.length + lifestyleFilters.length +
+    (priceRange[0] > 0 || priceRange[1] < maxPrice ? 1 : 0) +
     (sillageRange[0] > 0 || sillageRange[1] < 10 ? 1 : 0);
 
   const resetFilters = () => {
@@ -88,6 +107,8 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
     setGenderFilters([]);
     setSeasonFilters([]);
     setOccasionFilters([]);
+    setAgeGroupFilters([]);
+    setLifestyleFilters([]);
     setPriceRange([0, maxPrice]);
     setSillageRange([0, 10]);
   };
@@ -144,6 +165,58 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
         >
           ⚙️ Erweiterte Filter {activeFilterCount > 0 && `(${activeFilterCount})`}
         </button>
+      </div>
+
+      {/* Age Group Filter */}
+      <div className="filter-row" style={{ marginTop: '1rem' }}>
+        <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#D4AF37', marginRight: '0.8rem' }}>
+          Altersgruppe:
+        </span>
+        <button
+          type="button"
+          className={`filter-pill${ageGroupFilters.length === 0 ? ' filter-pill-active' : ''}`}
+          onClick={() => setAgeGroupFilters([])}
+        >
+          Alle
+        </button>
+        {AGE_GROUP_OPTIONS.map((opt) => (
+          <button
+            key={opt.code}
+            type="button"
+            className={`filter-pill${ageGroupFilters.includes(opt.code) ? ' filter-pill-active' : ''}`}
+            onClick={() => setAgeGroupFilters((prev) =>
+              prev.includes(opt.code) ? prev.filter((a) => a !== opt.code) : [...prev, opt.code]
+            )}
+          >
+            {opt.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Lifestyle Filter */}
+      <div className="filter-row" style={{ marginTop: '0.5rem' }}>
+        <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#D4AF37', marginRight: '0.8rem' }}>
+          Lifestyle:
+        </span>
+        <button
+          type="button"
+          className={`filter-pill${lifestyleFilters.length === 0 ? ' filter-pill-active' : ''}`}
+          onClick={() => setLifestyleFilters([])}
+        >
+          Alle
+        </button>
+        {LIFESTYLE_OPTIONS.map((opt) => (
+          <button
+            key={opt.code}
+            type="button"
+            className={`filter-pill${lifestyleFilters.includes(opt.code) ? ' filter-pill-active' : ''}`}
+            onClick={() => setLifestyleFilters((prev) =>
+              prev.includes(opt.code) ? prev.filter((l) => l !== opt.code) : [...prev, opt.code]
+            )}
+          >
+            {opt.label}
+          </button>
+        ))}
       </div>
 
       {showAdvancedFilters && (

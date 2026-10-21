@@ -27,6 +27,11 @@ export type Perfume = {
   base_notes: string[] | null;
   ean_code?: string | null;
   brands?: PerfumeBrand | null;
+  // Age & Lifestyle Targeting
+  age_group?: string | null;
+  lifestyle?: string | null;
+  trend_vibe?: string | null;
+  gender_nuance?: string | null;
   // Pro Status Fields (Scanner)
   concentration?: string | null;
   long_description?: string | null;
@@ -949,4 +954,138 @@ export function rankPerfumes(perfumes: Perfume[], a: QuizAnswers): RankedPerfume
         ? y.score - x.score
         : (y.perfume.scentmatch_score || 0) - (x.perfume.scentmatch_score || 0)
     );
+}
+
+// Auto-Tagging Logik für Altersgruppen und Lifestyle
+type AgeGroupTags = {
+  age_group: string;
+  lifestyle: string;
+  trend_vibe: string;
+  gender_nuance: string | null;
+};
+
+export function autoTagPerfume(p: Perfume): AgeGroupTags {
+  const price = p.price_chf || 80;
+  const sillage = p.sillage || 6;
+  const family = (p.fragrance_family || '').toLowerCase();
+  const allNotes = [
+    ...(p.top_notes || []),
+    ...(p.heart_notes || []),
+    ...(p.base_notes || [])
+  ].map((n) => n.toLowerCase());
+
+  const tags: AgeGroupTags = {
+    age_group: 'all',
+    lifestyle: 'all',
+    trend_vibe: 'classic',
+    gender_nuance: null
+  };
+
+  // Intelligente Regeln für Altersgruppen
+  if (family === 'gourmand') {
+    if (
+      (allNotes.some((n) => n.includes('vanille') || n.includes('karamell')) && price >= 70 && price <= 150) ||
+      sillage >= 6
+    ) {
+      tags.age_group = '25-35';
+      tags.lifestyle = 'professional';
+      tags.trend_vibe = 'popular';
+    } else if (price <= 60) {
+      tags.age_group = '18-25';
+      tags.lifestyle = 'student';
+    }
+  } else if (family === 'woody') {
+    if (price >= 100) {
+      tags.age_group = '35-40';
+      tags.lifestyle = 'professional';
+      tags.trend_vibe = 'classic';
+    } else if (allNotes.some((n) => n.includes('zedernholz') || n.includes('sandelholz'))) {
+      tags.age_group = '25-35';
+      tags.lifestyle = 'professional';
+    } else {
+      tags.age_group = '18-25';
+      tags.lifestyle = 'casual';
+    }
+  } else if (family === 'clean') {
+    if (price <= 50) {
+      tags.age_group = '18-25';
+      tags.lifestyle = 'student';
+      tags.trend_vibe = 'trendy';
+    } else if (allNotes.some((n) => n.includes('zitrus') || n.includes('bergamotte'))) {
+      tags.age_group = '25-35';
+      tags.lifestyle = 'professional';
+      tags.trend_vibe = 'popular';
+    } else {
+      tags.age_group = '25-35';
+      tags.lifestyle = 'casual';
+    }
+  } else if (family === 'floral') {
+    if (sillage >= 8 && price >= 100) {
+      tags.age_group = '25-35';
+      tags.lifestyle = 'party';
+      tags.trend_vibe = 'trendy';
+    } else {
+      tags.age_group = '18-25';
+      tags.lifestyle = 'casual';
+    }
+  }
+
+  // Gender Nuance
+  if (p.gender === 'Women') {
+    tags.gender_nuance = 'feminine';
+  } else if (p.gender === 'Men') {
+    tags.gender_nuance = 'masculine';
+  } else if (p.gender === 'Unisex') {
+    tags.gender_nuance = 'androgynous';
+  }
+
+  return tags;
+}
+
+// Batch-Update für alle Düfte (wird vom Admin-Panel oder Backend aufgerufen)
+export async function autoTagAllPerfumes(): Promise<{
+  success: number;
+  failed: number;
+}> {
+  if (!isSupabaseConfigured) {
+    return { success: 0, failed: 0 };
+  }
+
+  const { data: perfumes, error: fetchError } = await supabase
+    .from('perfumes')
+    .select('*')
+    .limit(1000);
+
+  if (fetchError || !perfumes) {
+    console.error('Failed to fetch perfumes:', fetchError);
+    return { success: 0, failed: perfumes?.length || 0 };
+  }
+
+  let success = 0;
+  let failed = 0;
+
+  for (const p of perfumes) {
+    const tags = autoTagPerfume(p);
+    const { error } = await supabase
+      .from('perfumes')
+      .update({
+        age_group: tags.age_group,
+        lifestyle: tags.lifestyle,
+        trend_vibe: tags.trend_vibe,
+        gender_nuance: tags.gender_nuance
+      })
+      .eq('id', p.id);
+
+    if (error) {
+      failed++;
+      console.error(`Failed to tag perfume ${p.id}:`, error);
+    } else {
+      success++;
+    }
+  }
+
+  console.log(
+    `Auto-tagging complete: ${success} successful, ${failed} failed`
+  );
+  return { success, failed };
 }

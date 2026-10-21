@@ -700,10 +700,11 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
                       <ul className="why-list">
                         {(() => {
                           const reasons: string[] = [];
-                          const familyName = profileText[family[Object.keys(family).sort((a, b) => family[b] - family[a])[0]] as keyof typeof profileText]?.title || 'deine Wahl';
+                          const topFamilyKey = Object.keys(family).sort((a, b) => family[b as keyof typeof family] - family[a as keyof typeof family])[0];
+                          const familyName = profileText[topFamilyKey as keyof typeof profileText]?.title || 'deine Wahl';
                           if (breakdown.family > 0) reasons.push(`Passt zu ${familyName}`);
                           if (breakdown.lovedNote > 0) reasons.push(`Deine Lieblingsnote ist enthalten`);
-                          if (breakdown.budget > 0 && answers.budget) reasons.push(`Im Budget von CHF ${answers.budget}−200`);
+                          if (breakdown.budget > 0 && answers.budgetMax) reasons.push(`Im Budget von CHF ${answers.budgetMax}`);
                           if (breakdown.occasion > 0 && answers.occasion) reasons.push(`Perfekt für ${answers.occasion}`);
                           if (breakdown.season > 0 && answers.season) reasons.push(`Ideal für ${answers.season}`);
                           return reasons.map((reason, i) => <li key={i}>{reason}</li>);

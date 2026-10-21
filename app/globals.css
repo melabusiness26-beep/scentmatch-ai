@@ -624,26 +624,13 @@ a.note-pill:hover { background: var(--color-primary-light); border-color: var(--
   letter-spacing:0.01em;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   gap:clamp(12px, 3vw, 16px);
-  position: relative;
-  overflow: hidden;
-}
-.tile-family::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(212,175,55,.08), transparent);
-  transition: left 0.5s ease;
-  pointer-events: none;
+  box-shadow: var(--shadow-sm);
 }
 .tile-family:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
   border-color: var(--color-primary);
 }
-.tile-family:hover::before { left: 100%; }
 .tile-family.tile-active {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 2px var(--color-primary) inset, var(--shadow-lg);
@@ -731,6 +718,19 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(212,175,55
 .why-icon { width: 56px; height: 56px; border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 26px; color: var(--brown); background: linear-gradient(135deg, rgba(212,175,55,.16), rgba(212,175,55,.09)); border: 1.5px solid rgba(212,175,55,.35); margin-bottom: 16px; box-shadow: 0 6px 18px rgba(212,175,55,.10); transition: all 0.2s ease; }
 .why-icon:hover { background: linear-gradient(135deg, rgba(212,175,55,.22), rgba(212,175,55,.14)); border-color: rgba(212,175,55,.55); box-shadow: 0 8px 24px rgba(212,175,55,.16); }
 .why-card h3 { margin: 0 0 8px; color: var(--brown); font-size: clamp(16px, 3vw, 19px); }
+
+/* Trust Section – Social Proof & Credibility */
+.trust-section { background: linear-gradient(135deg, rgba(212,175,55,.08) 0%, rgba(212,175,55,.04) 100%); border-radius: var(--radius-lg); padding: clamp(40px, 8vw, 60px) clamp(24px, 6vw, 40px); }
+.trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 4vw, 32px); }
+.trust-item { display: flex; gap: clamp(16px, 3vw, 24px); align-items: flex-start; }
+.trust-icon { font-size: clamp(32px, 5vw, 40px); flex-shrink: 0; }
+.trust-text { flex: 1; }
+.trust-stat { font-size: clamp(16px, 2.5vw, 18px); margin: 0 0 4px; color: var(--color-text-primary); font-weight: 600; }
+.trust-text .small { margin: 0; color: var(--color-text-secondary); }
+
+@media (max-width: 768px) {
+  .trust-grid { grid-template-columns: 1fr; gap: 16px; }
+}
 
 /* Responsive Raster: passt sich automatisch an die Bildschirmbreite an */
 .perfume-list { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
@@ -941,47 +941,34 @@ a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(212,175,55
   border: 1.5px solid var(--color-border);
   cursor: pointer;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-.mood-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(212,175,55,.1), transparent);
-  transition: left 0.5s ease;
-  pointer-events: none;
+  box-shadow: var(--shadow-sm);
 }
 .mood-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
   border-color: var(--color-primary);
 }
-.mood-card:hover::before { left: 100%; }
 /* Feiner Icon-Badge im gleichen Stil wie die „Warum Auressa?"-Icons. */
 .mood-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 13px;
+  width: 68px;
+  height: 68px;
+  border-radius: 16px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: var(--brown);
-  background: rgba(212,175,55,.16);
-  border: 1.5px solid rgba(212,175,55,.4);
-  margin-bottom: 8px;
+  background: rgba(212,175,55,.26);
+  border: 2px solid rgba(212,175,55,.6);
+  margin-bottom: 10px;
   transition: all 0.3s ease;
 }
 .mood-card:hover .mood-icon {
-  background: rgba(212,175,55,.26);
+  background: rgba(212,175,55,.38);
   border-color: var(--color-primary);
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(212,175,55,.2);
+  transform: scale(1.15);
+  box-shadow: 0 10px 28px rgba(212,175,55,.3);
 }
-.mood-icon svg { width: 24px; height: 24px; }
+.mood-icon svg { width: 48px; height: 48px; }
 .dest-emoji { font-size: 24px; line-height: 1; }
 .mood-icon-lg.dest-emoji { font-size: 30px; }
 .mood-title {

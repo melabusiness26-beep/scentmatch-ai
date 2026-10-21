@@ -6,16 +6,18 @@ import {
   getPerfumes,
   type Perfume
 } from '@/lib/perfumes';
-import { PerfumeTile } from '@/app/PerfumeTile';
+import { PerfumeTile, familyDisplay } from '@/app/PerfumeTile';
+import { AffiliateButton } from '@/app/AffiliateButton';
+import NewsletterForm from '@/app/NewsletterForm';
 import { BottleIllustration } from '@/app/FragranceBottles';
 
 
 // Anklickbare Familien-Kacheln (führen zur gefilterten Duftdatenbank).
 const FAMILY_TILES: { code: string; label: string; desc: string }[] = [
-  { code: 'clean', label: 'Clean', desc: 'Frisch, sauber, weisser Moschus.' },
-  { code: 'gourmand', label: 'Gourmand', desc: 'Vanille, Amber, weiche Süsse.' },
-  { code: 'woody', label: 'Woody', desc: 'Holz, Leder, edle Tiefe.' },
-  { code: 'floral', label: 'Floral', desc: 'Rose, Jasmin, feminine Eleganz.' }
+  { code: 'clean', label: 'Clean', desc: 'Frisch & Rein' },
+  { code: 'gourmand', label: 'Gourmand', desc: 'Süß & Warm' },
+  { code: 'woody', label: 'Woody', desc: 'Holzig & Edel' },
+  { code: 'floral', label: 'Floral', desc: 'Blumig & Romantisch' }
 ];
 
 // Wählt eine ausgewogene Highlight-Auswahl: erst der bestbewertete Duft je
@@ -94,12 +96,63 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
   const seasonLabel = SEASON_LABEL[currentSeason] || '';
   const seasonMatch = SEASON_MATCH[currentSeason] || [];
   const seasonGuide = SEASON_GUIDE[currentSeason];
-  const seasonalPerfumes = currentSeason
-    ? [...perfumes]
-        .filter(p => p.season && seasonMatch.includes(p.season))
-        .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
-        .slice(0, 4)
-    : [];
+
+  // Intelligenter Saison-Mix: Zielgruppe 20–40 Jahre (Budget max CHF 150)
+  // Mix nach Preis UND Anlass: Alltag + Date + Abend (keine unrealistischen Preise)
+  function pickSmartSeasonalMix(list: Perfume[], seasonMatches: string[]): Perfume[] {
+    // Filter: nur realistische Preise für Zielgruppe (max CHF 150)
+    const seasonal = list.filter(p =>
+      p.season && seasonMatches.includes(p.season) && p.price_chf && p.price_chf <= 150
+    );
+    if (seasonal.length === 0) return [];
+
+    const byScore = [...seasonal].sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0));
+    const byPrice = [...seasonal].sort((a, b) => (a.price_chf || 0) - (b.price_chf || 0));
+
+    const picked = new Set<string>();
+    const result: Perfume[] = [];
+
+    // 1. Billigster Duft (unter CHF 80) – Einstiegspunkt
+    const cheapest = byPrice.find(p => p.price_chf && p.price_chf < 80);
+    if (cheapest) {
+      result.push(cheapest);
+      picked.add(cheapest.id);
+    }
+
+    // 2. Bestes Alltag/Büro-Duft
+    const bestDaily = byScore.find(p => (p.occasion === 'Alltag' || p.occasion === 'Büro') && !picked.has(p.id));
+    if (bestDaily) {
+      result.push(bestDaily);
+      picked.add(bestDaily.id);
+    }
+
+    // 3. Bestes Date-Duft
+    const bestDate = byScore.find(p => p.occasion === 'Date' && !picked.has(p.id));
+    if (bestDate) {
+      result.push(bestDate);
+      picked.add(bestDate.id);
+    }
+
+    // 4. Bestes Abend-Duft
+    const bestEvening = byScore.find(p => p.occasion === 'Abend' && !picked.has(p.id));
+    if (bestEvening) {
+      result.push(bestEvening);
+      picked.add(bestEvening.id);
+    }
+
+    // 5–6. Weitere beste Düfte nach Score (bis zu 6 insgesamt)
+    for (const p of byScore) {
+      if (result.length >= 6) break;
+      if (!picked.has(p.id)) {
+        result.push(p);
+        picked.add(p.id);
+      }
+    }
+
+    return result;
+  }
+
+  const seasonalPerfumes = currentSeason ? pickSmartSeasonalMix(perfumes, seasonMatch) : [];
 
   // Weihnachts-Banner: Client-seitige Datumsprüfung (1. Nov – 24. Dez, Europe/Zurich)
   const [showGiftBanner, setShowGiftBanner] = useState(false);
@@ -146,24 +199,28 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
           </div>
         </section>
 
-        <section className="section">
-          <p className="eyebrow">Schritt für Schritt</p>
-          <h2>So funktioniert es</h2>
-          <div className="steps-grid">
-            <div className="why-card">
-              <div className="why-icon">1</div>
-              <h3>Quiz beantworten</h3>
-              <p className="small">Ein paar Fragen zu Geschlecht, Duftrichtung, Anlass, Saison, Intensität und Budget.</p>
+        <section className="section trust-section">
+          <div className="trust-grid">
+            <div className="trust-item">
+              <div className="trust-icon">✅</div>
+              <div className="trust-text">
+                <p className="trust-stat"><strong>400+ Düfte</strong></p>
+                <p className="small">durchsuche unseren Katalog</p>
+              </div>
             </div>
-            <div className="why-card">
-              <div className="why-icon">2</div>
-              <h3>Match-Score berechnen</h3>
-              <p className="small">Unsere Match-Engine bewertet jeden Duft gegen deine Antworten – von 0 bis 100, kein Zufall.</p>
+            <div className="trust-item">
+              <div className="trust-icon">⭐</div>
+              <div className="trust-text">
+                <p className="trust-stat"><strong>Quiz in 2 Min</strong></p>
+                <p className="small">finde deinen perfekten Duft blitzschnell</p>
+              </div>
             </div>
-            <div className="why-card">
-              <div className="why-icon">3</div>
-              <h3>Düfte &amp; günstige Alternativen entdecken</h3>
-              <p className="small">Du bekommst deine Top-Treffer – inklusive günstigerer Alternativen zu teuren Düften.</p>
+            <div className="trust-item">
+              <div className="trust-icon">🎯</div>
+              <div className="trust-text">
+                <p className="trust-stat"><strong>Sofort entdecken</strong></p>
+                <p className="small">keine Anmeldung zum Starten nötig</p>
+              </div>
             </div>
           </div>
         </section>
@@ -175,7 +232,7 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
             <p className="small">Gerade ist {seasonLabel} – diese Düfte passen jetzt besonders gut.</p>
             <div className="perfume-list">
               {seasonalPerfumes.map(p => (
-                <PerfumeTile perfume={p} key={p.id} />
+                <PerfumeTile perfume={p} key={p.id} showOccasionDescription={true} />
               ))}
             </div>
             {seasonGuide && (
@@ -197,7 +254,7 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
                 href={`/duefte?family=${t.code}`}
               >
                 <div className="bottle-container">
-                  <BottleIllustration family={t.code as 'woody' | 'floral' | 'gourmand' | 'clean'} />
+                  <img src={`/bottles/${t.code}.png`} alt={`${t.label} Duftflasche`} style={{ width: '100%', height: 'auto', maxWidth: '140px' }} />
                 </div>
                 <h3>{t.label}</h3>
                 <p className="small">{t.desc}</p>

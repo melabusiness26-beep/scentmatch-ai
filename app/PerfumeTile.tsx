@@ -20,6 +20,14 @@ export const genderSearchTerms: Record<string, string> = {
   Unisex: 'unisex'
 };
 
+// Herzliche Descriptions für Gelegenheiten (Saison-Empfehlungen).
+export const occasionDescriptions: Record<string, string> = {
+  'Alltag': '☀️ Perfekt für jeden Tag – frisch & zuverlässig',
+  'Büro': '👔 Ideal für die Arbeit – elegant & diskret',
+  'Date': '💕 Für romantische Momente – verführerisch & charmant',
+  'Abend': '✨ Für spezielle Anlässe – intensiv & unvergesslich'
+};
+
 // Deutsche Anzeige-Labels für das Geschlecht (Werte sind englisch gespeichert).
 export const genderDisplay: Record<string, string> = {
   Women: 'Weiblich',
@@ -57,7 +65,7 @@ export function PerfumeCover({ perfume, large }: { perfume: Perfume; large?: boo
   );
 }
 
-export function PerfumeTile({ perfume, matchPercent }: { perfume: Perfume; matchPercent?: number }) {
+export function PerfumeTile({ perfume, matchPercent, showOccasionDescription }: { perfume: Perfume; matchPercent?: number; showOccasionDescription?: boolean }) {
   const content = (
     <>
       <div style={{ position: 'relative' }}>
@@ -70,6 +78,11 @@ export function PerfumeTile({ perfume, matchPercent }: { perfume: Perfume; match
       {perfume.price_chf != null && (
         <p className="price-display" style={{ fontSize: '0.95rem', fontWeight: 600, color: '#D4AF37', marginBottom: '0.5rem' }}>
           CHF {perfume.price_chf.toFixed(0)}
+        </p>
+      )}
+      {showOccasionDescription && perfume.occasion && (
+        <p className="small" style={{ color: '#D4AF37', fontWeight: 500, marginBottom: '0.5rem' }}>
+          {occasionDescriptions[perfume.occasion] || perfume.occasion}
         </p>
       )}
       <div className="tile-meta">

@@ -153,18 +153,18 @@ export default function DupeFinder({
 
   return (
     <section className="section">
-      <div className=”card”>
+      <div className="card">
         <h2>Welchen Lieblingsduft liebst du?</h2>
-        <p className=”small”>
-          Tipp den Namen ein (z. B. „Creed Aventus” oder „Black Opium”) und wähle
+        <p className="small">
+          Tipp den Namen ein (z. B. "Creed Aventus" oder "Black Opium") und wähle
           deinen Duft aus – wir zeigen dir sofort ähnlich riechende, günstigere
           Alternativen aus unserem Katalog.
         </p>
         <input
-          className=”search”
-          type=”search”
-          aria-label=”Lieblingsduft eingeben, um günstige Alternativen zu finden”
-          placeholder={'z. B. „Aventus” oder „Black Opium”'}
+          className="search"
+          type="search"
+          aria-label="Lieblingsduft eingeben, um günstige Alternativen zu finden"
+          placeholder={'z. B. "Aventus" oder "Black Opium"'}
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);

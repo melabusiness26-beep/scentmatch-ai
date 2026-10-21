@@ -82,8 +82,8 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
   // Ausgewogene Highlight-Auswahl für die Startseite (vor dem Quiz).
   // Priorität: initialHighlights (vom Server SSR) → Fallback zur Client-Berechnung.
   const highlights = initialHighlights && initialHighlights.length > 0
-    ? initialHighlights
-    : pickHighlights(perfumes, 6);
+    ? initialHighlights.slice(0, 3)
+    : pickHighlights(perfumes, 3);
   // Echte Katalog-Kennzahlen aus den geladenen Düften – keine erfundenen Werte.
   // Priorität: initialCatalogCount (vom Server SSR) → Fallback zur Client-Berechnung.
   const catalogCount = initialCatalogCount ?? (loaded ? perfumes.length : null);
@@ -98,7 +98,7 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
     ? [...perfumes]
         .filter(p => p.season && seasonMatch.includes(p.season))
         .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
-        .slice(0, 6)
+        .slice(0, 4)
     : [];
 
   // Weihnachts-Banner: Client-seitige Datumsprüfung (1. Nov – 24. Dez, Europe/Zurich)
@@ -164,33 +164,6 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
               <div className="why-icon">3</div>
               <h3>Düfte &amp; günstige Alternativen entdecken</h3>
               <p className="small">Du bekommst deine Top-Treffer – inklusive günstigerer Alternativen zu teuren Düften.</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="warum" className="section">
-          <p className="eyebrow">Warum Auressa?</p>
-          <h2>Duft finden, das sich nicht nach Glücksspiel anfühlt</h2>
-          <div className="why-grid">
-            <div className="why-card">
-              <div className="why-icon">✦</div>
-              <h3>Echter Match-Score</h3>
-              <p className="small">Jeder Duft wird gegen deine Antworten berechnet – kein Zufall, keine blinde TikTok-Empfehlung.</p>
-            </div>
-            <div className="why-card">
-              <div className="why-icon">❖</div>
-              <h3>Günstige Alternativen</h3>
-              <p className="small">Zu teuren Düften zeigen wir automatisch ähnlich riechende, günstigere Varianten.</p>
-            </div>
-            <div className="why-card">
-              <div className="why-icon">✿</div>
-              <h3>Kuratiert & ehrlich</h3>
-              <p className="small">Sorgfältig ausgewählte Düfte – von Bestsellern bis zu seltenen Nischenperlen.</p>
-            </div>
-            <div className="why-card">
-              <div className="why-icon">♡</div>
-              <h3>Schnell & persönlich</h3>
-              <p className="small">Dein Ergebnis in unter 1 Minute – abgestimmt auf deinen Geschmack, Anlass und Budget.</p>
             </div>
           </div>
         </section>

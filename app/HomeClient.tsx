@@ -96,12 +96,49 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
   const seasonLabel = SEASON_LABEL[currentSeason] || '';
   const seasonMatch = SEASON_MATCH[currentSeason] || [];
   const seasonGuide = SEASON_GUIDE[currentSeason];
-  const seasonalPerfumes = currentSeason
-    ? [...perfumes]
-        .filter(p => p.season && seasonMatch.includes(p.season))
-        .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
-        .slice(0, 4)
-    : [];
+
+  // Intelligenter Saison-Mix: vielfältige Auswahl statt nur Top-nach-Score
+  function pickSmartSeasonalMix(list: Perfume[], seasonMatches: string[]): Perfume[] {
+    const seasonal = list.filter(p => p.season && seasonMatches.includes(p.season));
+    if (seasonal.length === 0) return [];
+
+    const byScore = [...seasonal].sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0));
+    const picked = new Set<string>();
+    const result: Perfume[] = [];
+
+    // 1. Top 1 nach Score (immer der beste)
+    if (byScore[0]) {
+      result.push(byScore[0]);
+      picked.add(byScore[0].id);
+    }
+
+    // 2. Best Budget: höchster Score unter CHF 140
+    const bestBudget = byScore.find(p => p.price_chf && p.price_chf < 140 && !picked.has(p.id));
+    if (bestBudget) {
+      result.push(bestBudget);
+      picked.add(bestBudget.id);
+    }
+
+    // 3. Best Daily: höchster Score mit Anlass "Alltag"
+    const bestDaily = byScore.find(p => p.occasion === 'Alltag' && !picked.has(p.id));
+    if (bestDaily) {
+      result.push(bestDaily);
+      picked.add(bestDaily.id);
+    }
+
+    // 4–6. Nächste beste nach Score (bis zu 6 insgesamt)
+    for (const p of byScore) {
+      if (result.length >= 6) break;
+      if (!picked.has(p.id)) {
+        result.push(p);
+        picked.add(p.id);
+      }
+    }
+
+    return result;
+  }
+
+  const seasonalPerfumes = currentSeason ? pickSmartSeasonalMix(perfumes, seasonMatch) : [];
 
   // Weihnachts-Banner: Client-seitige Datumsprüfung (1. Nov – 24. Dez, Europe/Zurich)
   const [showGiftBanner, setShowGiftBanner] = useState(false);

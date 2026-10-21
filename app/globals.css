@@ -341,7 +341,33 @@ button:focus, .button:focus { outline: 2px solid var(--color-primary); outline-o
 .small { font-family:var(--font-sans), Arial, sans-serif; color: var(--color-text-secondary); font-size:clamp(12px, 2vw, 14px); line-height:1.45; }
 a.logo { text-decoration:none; color:inherit; }
 .top-pick { background: var(--color-primary-lighter); border:1px solid var(--color-primary-light); border-radius:14px; padding:20px 22px; margin:18px 0 24px; }
-.top-pick h3 { margin:4px 0 14px; color: var(--color-text-primary); }
+.top-pick h3 { margin:4px 0 14px; color: var(--color-text-primary); font-size: clamp(18px, 4vw, 22px); }
+
+/* Top Pick Winner (Beste Empfehlung) */
+.top-pick-winner { background: linear-gradient(135deg, var(--color-primary-lighter) 0%, rgba(229, 193, 88, 0.15) 100%); border: 2px solid var(--color-primary); padding: clamp(20px, 5vw, 28px) clamp(22px, 5vw, 28px); margin: 0 0 32px 0; }
+.top-pick-winner h3 { font-size: clamp(20px, 5vw, 26px); margin: 12px 0 18px; }
+
+/* Duft Cover in Top Pick */
+.top-pick-cover { width: clamp(140px, 30vw, 200px); height: clamp(140px, 30vw, 200px); margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: rgba(255, 255, 255, 0.6); box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15); }
+
+/* Top Pick Price */
+.top-pick-price { font-family: var(--font-display), Georgia, serif; font-size: clamp(18px, 4vw, 24px); color: var(--color-primary); font-weight: 700; margin: 12px 0 18px !important; }
+
+/* CTA Buttons in Winner */
+.cta-winner { display: grid; gap: 12px; }
+.cta-winner .button { padding: clamp(14px, 3vw, 18px) clamp(24px, 5vw, 32px); font-size: clamp(14px, 2.5vw, 16px); height: auto; min-height: 48px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%); font-weight: 600; border: none; }
+.cta-winner .button:hover { box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4); transform: translateY(-2px); }
+.cta-winner .buy-button { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%); color: white; }
+.cta-winner .buy-button:hover { box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4); }
+
+/* Günstige Alternative Box */
+.cheaper-alternative { background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 12px; padding: clamp(14px, 3vw, 18px); margin-top: 16px; }
+.cheaper-alternative p { margin: 6px 0; }
+.button-mini { display: inline-block; margin-top: 8px; padding: clamp(10px, 2vw, 12px) clamp(16px, 3vw, 20px); background: rgba(16, 185, 129, 0.15); color: #059669; border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; font-size: clamp(12px, 2vw, 13px); font-weight: 600; text-decoration: none; transition: all 0.2s ease; }
+.button-mini:hover { background: rgba(16, 185, 129, 0.25); border-color: rgba(16, 185, 129, 0.5); transform: translateX(2px); }
+
+/* Smaller text */
+.smaller { font-size: clamp(11px, 1.8vw, 12px) !important; color: var(--color-text-secondary); line-height: 1.4; }
 
 /* Score Breakdown Styling */
 .score-breakdown { background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 10px; padding: clamp(12px, 3vw, 16px); margin: 16px 0 12px; }
@@ -434,6 +460,13 @@ a.logo { text-decoration:none; color:inherit; }
   /* Why section mobile */
   .why-list { gap: 5px; }
   .why-list li { font-size: clamp(12px, 2.2vw, 13px); padding-left: 18px; }
+
+  /* Top pick mobile */
+  .top-pick { padding: 16px 18px; margin: 12px 0 18px; }
+  .top-pick-winner { padding: 18px 16px; margin: 0 0 24px 0; }
+  .top-pick-cover { width: 120px; height: 120px; margin: 0 auto 14px; }
+  .cta-winner { gap: 10px; }
+  .cheaper-alternative { padding: 12px; margin-top: 12px; }
 }
 /* Match score display */
 .match-score-big { display:flex; align-items:baseline; gap:6px; margin:2px 0 8px; }

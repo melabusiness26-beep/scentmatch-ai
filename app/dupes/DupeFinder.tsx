@@ -154,17 +154,17 @@ export default function DupeFinder({
   return (
     <section className="section">
       <div className="card">
-        <h2>Welchen teuren Duft liebst du?</h2>
+        <h2>Welchen Lieblingsduft liebst du?</h2>
         <p className="small">
-          Tipp den Namen ein (z. B. „Creed Aventus" oder „Black Opium") und wähle
-          deinen Duft aus – wir zeigen dir sofort ähnlich riechende, deutlich
-          günstigere Alternativen aus unserem Katalog.
+          Tipp den Namen ein (z. B. "Creed Aventus" oder "Black Opium") und wähle
+          deinen Duft aus – wir zeigen dir sofort ähnlich riechende, günstigere
+          Alternativen aus unserem Katalog.
         </p>
         <input
           className="search"
           type="search"
-          aria-label="Teuren Duft suchen, um günstige Alternativen zu finden"
-          placeholder={'Duft oder Marke eingeben, z. B. „Baccarat Rouge“…'}
+          aria-label="Lieblingsduft eingeben, um günstige Alternativen zu finden"
+          placeholder={'z. B. "Aventus" oder "Black Opium"'}
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
@@ -197,7 +197,7 @@ export default function DupeFinder({
 
         {!selected && (
           <>
-            <p className="small">Oder wähle einen der meistgesuchten Düfte:</p>
+            <p className="small">Oder wähle einen der beliebten Beispiele:</p>
             <div className="filter-row">
               {quickPicks.map((p) => (
                 <button
@@ -222,8 +222,9 @@ export default function DupeFinder({
             {selected.price_chf != null ? ` (ca. CHF ${selected.price_chf})` : ''}
           </h2>
           <p className="small">
-            Ehrlich gesagt: Keine Alternative ist eine exakte Kopie, aber diese
-            Düfte gehen in eine sehr ähnliche Richtung und kosten deutlich weniger.
+            Diese Düfte haben die gleiche Familie + Geschlecht und kosten weniger.
+            Keine Alternative ist eine exakte Kopie – sie teilen aber ähnliche Noten
+            und gehen in eine sehr ähnliche Richtung.
           </p>
 
           {(curatedResults.length > 0 || algoResults.length > 0) && (

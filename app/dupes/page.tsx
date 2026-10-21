@@ -67,8 +67,8 @@ export default async function DupesPage() {
             <h1 className="detail-title">Der Dupe-Finder</h1>
             <p className="lead">
               Du liebst einen Duft, aber nicht seinen Preis? Gib ihn ein. Wir zeigen
-              dir sofort ähnlich riechende Alternativen, die oft hunderte Franken
-              weniger kosten. Ehrlich eingeordnet, mit Duftprofil zu jedem Treffer.
+              dir sofort ähnlich riechende Alternativen, die oft CHF 50–200 weniger
+              kosten. Nach Duftfamilie & Preis sortiert – mit Duftprofil zu jedem Treffer.
             </p>
           </div>
         </section>

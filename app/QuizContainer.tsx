@@ -14,7 +14,7 @@ import {
   type ScoreBreakdown
 } from '@/lib/perfumes';
 import { quizQuestions as newQuizQuestions, type QuizQuestion, type QuestionKind } from '@/lib/quizQuestions';
-import { PerfumeTile, familyDisplay } from '@/app/PerfumeTile';
+import { PerfumeTile, familyDisplay, PerfumeCover } from '@/app/PerfumeTile';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import NewsletterForm from '@/app/NewsletterForm';
 
@@ -342,19 +342,38 @@ export default function QuizContainer() {
                 .filter(Boolean)
                 .join(' · ');
               const breakdown = getScoreBreakdown(p, answers);
+
+              // Finde günstige Alternative (für Top-1 nur)
+              let cheaperAlt: Perfume | undefined;
+              if (i === 0 && p.price_chf && ranked.length > 1) {
+                cheaperAlt = ranked.slice(1).find(alt =>
+                  alt.perfume.price_chf &&
+                  alt.perfume.price_chf < p.price_chf * 0.8 &&
+                  alt.perfume.fragrance_family === p.fragrance_family
+                )?.perfume;
+              }
+
               return (
-                <div className="top-pick" key={p.id}>
+                <div className={`top-pick ${i === 0 ? 'top-pick-winner' : ''}`} key={p.id}>
                   <p className="small">{recLabel}</p>
+
+                  {i === 0 && (
+                    <div className="top-pick-cover">
+                      <PerfumeCover perfume={p} large={true} />
+                    </div>
+                  )}
+
                   {i === 0 ? (
                     <div className="match-score-big">
                       <span className="match-score-num">{revealScore}</span>
-                      <span className="match-score-pct">% passend</span>
+                      <span className="match-score-pct">% Match</span>
                     </div>
                   ) : (
-                    <span className="match-badge">{r.score}% passend</span>
+                    <span className="match-badge">{r.score}% Match</span>
                   )}
-                  <h3>{p.perfume_name} · {p.brands?.name || 'Marke offen'}</h3>
+                  <h3>{p.perfume_name}{p.brands?.name ? ` · ${p.brands.name}` : ''}</h3>
                   <p className="small">{meta}</p>
+                  {p.price_chf && <p className="top-pick-price">CHF {p.price_chf.toFixed(0)}</p>}
                   {/* Why this perfume */}
                   <div className="why-section">
                     <p className="small"><strong>Warum dieser Duft:</strong></p>
@@ -450,12 +469,23 @@ export default function QuizContainer() {
                     </div>
                   </div>
 
-                  <div className="cta">
+                  <div className={`cta ${i === 0 ? 'cta-winner' : ''}`}>
                     {p.slug && (
-                      <Link className="button secondary" href={`/duft/${p.slug}`}>Duftprofil ansehen</Link>
+                      <Link className={i === 0 ? 'button' : 'button secondary'} href={`/duft/${p.slug}`}>Duftprofil ansehen</Link>
                     )}
                     <AffiliateButton perfume={p} showNote={false} />
                   </div>
+
+                  {cheaperAlt && (
+                    <div className="cheaper-alternative">
+                      <p className="small"><strong>💡 Günstigere Alternative:</strong></p>
+                      <p className="smaller"><strong>{cheaperAlt.perfume_name}</strong> · {cheaperAlt.brands?.name}</p>
+                      <p className="smaller" style={{ color: 'var(--color-primary)', fontWeight: 600 }}>CHF {cheaperAlt.price_chf?.toFixed(0)} (statt CHF {p.price_chf?.toFixed(0)})</p>
+                      {cheaperAlt.slug && (
+                        <Link className="button-mini" href={`/duft/${cheaperAlt.slug}`}>Jetzt ansehen →</Link>
+                      )}
+                    </div>
+                  )}
                 </div>
               );
             })}

@@ -104,17 +104,18 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
     if (seasonal.length === 0) return [];
 
     const byScore = [...seasonal].sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0));
+    const byPrice = [...seasonal].sort((a, b) => (a.price_chf || 0) - (b.price_chf || 0));
+
     const picked = new Set<string>();
     const result: Perfume[] = [];
 
-    // 1. Bestes Budget-Duft (CHF 20–60) – Einstiegspunkt
-    const bestCheap = byScore.find(p => p.price_chf && p.price_chf >= 20 && p.price_chf <= 60 && !picked.has(p.id));
-    if (bestCheap) {
-      result.push(bestCheap);
-      picked.add(bestCheap.id);
+    // 1. Billigster guter Duft – Einstiegspunkt (sorgt dafür, dass günstiger Duft immer dabei ist)
+    if (byPrice[0]) {
+      result.push(byPrice[0]);
+      picked.add(byPrice[0].id);
     }
 
-    // 2. Bestes Mittel-Duft (CHF 60–100)
+    // 2. Bestes Budget-Duft (CHF 60–100)
     const bestMid = byScore.find(p => p.price_chf && p.price_chf > 60 && p.price_chf <= 100 && !picked.has(p.id));
     if (bestMid) {
       result.push(bestMid);

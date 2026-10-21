@@ -232,7 +232,7 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
             <p className="small">Gerade ist {seasonLabel} – diese Düfte passen jetzt besonders gut.</p>
             <div className="perfume-list">
               {seasonalPerfumes.map(p => (
-                <PerfumeTile perfume={p} key={p.id} />
+                <PerfumeTile perfume={p} key={p.id} showOccasionDescription={true} />
               ))}
             </div>
             {seasonGuide && (

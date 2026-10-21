@@ -97,7 +97,8 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
   const seasonMatch = SEASON_MATCH[currentSeason] || [];
   const seasonGuide = SEASON_GUIDE[currentSeason];
 
-  // Intelligenter Saison-Mix: vielfältige Auswahl statt nur Top-nach-Score
+  // Intelligenter Saison-Mix: Preis-Staffelung für Kundenfreundlichkeit
+  // Günstig → Mittel → Premium, damit Kunden einen Einstiegspunkt finden
   function pickSmartSeasonalMix(list: Perfume[], seasonMatches: string[]): Perfume[] {
     const seasonal = list.filter(p => p.season && seasonMatches.includes(p.season));
     if (seasonal.length === 0) return [];
@@ -106,27 +107,28 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
     const picked = new Set<string>();
     const result: Perfume[] = [];
 
-    // 1. Top 1 nach Score (immer der beste)
-    if (byScore[0]) {
-      result.push(byScore[0]);
-      picked.add(byScore[0].id);
+    // 1. Bestes Budget-Duft (CHF 20–60) – Einstiegspunkt
+    const bestCheap = byScore.find(p => p.price_chf && p.price_chf >= 20 && p.price_chf <= 60 && !picked.has(p.id));
+    if (bestCheap) {
+      result.push(bestCheap);
+      picked.add(bestCheap.id);
     }
 
-    // 2. Best Budget: höchster Score unter CHF 140
-    const bestBudget = byScore.find(p => p.price_chf && p.price_chf < 140 && !picked.has(p.id));
-    if (bestBudget) {
-      result.push(bestBudget);
-      picked.add(bestBudget.id);
+    // 2. Bestes Mittel-Duft (CHF 60–100)
+    const bestMid = byScore.find(p => p.price_chf && p.price_chf > 60 && p.price_chf <= 100 && !picked.has(p.id));
+    if (bestMid) {
+      result.push(bestMid);
+      picked.add(bestMid.id);
     }
 
-    // 3. Best Daily: höchster Score mit Anlass "Alltag"
-    const bestDaily = byScore.find(p => p.occasion === 'Alltag' && !picked.has(p.id));
-    if (bestDaily) {
-      result.push(bestDaily);
-      picked.add(bestDaily.id);
+    // 3. Bestes Premium-Duft (CHF 100+)
+    const bestPremium = byScore.find(p => p.price_chf && p.price_chf > 100 && !picked.has(p.id));
+    if (bestPremium) {
+      result.push(bestPremium);
+      picked.add(bestPremium.id);
     }
 
-    // 4–6. Nächste beste nach Score (bis zu 6 insgesamt)
+    // 4–6. Weitere beste Düfte nach Score (bis zu 6 insgesamt)
     for (const p of byScore) {
       if (result.length >= 6) break;
       if (!picked.has(p.id)) {

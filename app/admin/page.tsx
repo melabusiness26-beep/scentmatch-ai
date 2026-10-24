@@ -182,7 +182,8 @@ export default function AdminPage() {
             availability_status: data.availability_status || 'available',
             gender_nuance: data.gender_nuance || '',
             comparable_fragrances: data.comparable_fragrances || '',
-            concentration_detail: data.concentration_detail || ''
+            concentration_detail: data.concentration_detail || '',
+            fragrance_progression: data.fragrance_progression || ''
           });
           setMessage(`✅ Daten recherchiert! Überprüfe die Werte und speichere.`);
           sessionStorage.removeItem('researchData');
@@ -235,7 +236,8 @@ export default function AdminPage() {
       availability_status: (p as any).availability_status || 'available',
       gender_nuance: (p as any).gender_nuance || '',
       comparable_fragrances: (p as any).comparable_fragrances || '',
-      concentration_detail: (p as any).concentration_detail || ''
+      concentration_detail: (p as any).concentration_detail || '',
+      fragrance_progression: (p as any).fragrance_progression || ''
     });
     setMessage('');
     if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -326,7 +328,8 @@ export default function AdminPage() {
         availability_status: data.availability_status || prev.availability_status,
         gender_nuance: data.gender_nuance || prev.gender_nuance,
         comparable_fragrances: data.comparable_fragrances || prev.comparable_fragrances,
-        concentration_detail: data.concentration_detail || prev.concentration_detail
+        concentration_detail: data.concentration_detail || prev.concentration_detail,
+        fragrance_progression: data.fragrance_progression || prev.fragrance_progression
       }));
 
       setMessage(`✓ Auto-Recherchiere erfolgreich! ${data.perfume_name || 'Duft'} gefunden.`);

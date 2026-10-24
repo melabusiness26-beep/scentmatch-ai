@@ -99,6 +99,7 @@ export default function AdminPage() {
   const [message, setMessage] = useState('');
   const [saving, setSaving] = useState(false);
   const [deletingAll, setDeletingAll] = useState(false);
+  const [deletingBrands, setDeletingBrands] = useState(false);
   const [researching, setResearching] = useState(false);
   const [researchBrand, setResearchBrand] = useState('');
   const [researchName, setResearchName] = useState('');
@@ -254,6 +255,36 @@ export default function AdminPage() {
       setMessage(`Fehler: ${error.message}`);
     } finally {
       setDeletingAll(false);
+    }
+  }
+
+  async function deleteAllBrands() {
+    if (!confirm('⚠️ ACHTUNG! Alle Marken werden gelöscht! Das kann nicht rückgängig gemacht werden. Bist du sicher?')) {
+      return;
+    }
+    if (!confirm('Zweite Bestätigung: Alle Marken WIRKLICH löschen?')) {
+      return;
+    }
+
+    setDeletingBrands(true);
+    try {
+      const response = await fetch('/api/admin/delete-all-brands', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ confirm: 'DELETE_ALL_BRANDS' })
+      });
+
+      if (response.ok) {
+        setMessage('✅ Alle Marken wurden gelöscht!');
+        setTimeout(() => window.location.reload(), 1000);
+      } else {
+        const data = await response.json();
+        setMessage(`Fehler: ${data.error}`);
+      }
+    } catch (error: any) {
+      setMessage(`Fehler: ${error.message}`);
+    } finally {
+      setDeletingBrands(false);
     }
   }
 
@@ -702,6 +733,28 @@ export default function AdminPage() {
                 }}
               >
                 {deletingAll ? 'Löscht alle Düfte…' : '🗑️ Alle Düfte löschen'}
+              </button>
+              <p style={{ fontSize: '12px', color: '#666', marginTop: '8px' }}>
+                ⚠️ Diese Aktion kann NICHT rückgängig gemacht werden!
+              </p>
+
+              <button
+                type="button"
+                onClick={deleteAllBrands}
+                disabled={deletingBrands}
+                style={{
+                  background: '#ff6b6b',
+                  color: '#fff',
+                  border: 'none',
+                  padding: '10px 20px',
+                  borderRadius: '4px',
+                  cursor: deletingBrands ? 'not-allowed' : 'pointer',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  marginTop: '15px'
+                }}
+              >
+                {deletingBrands ? 'Löscht alle Marken…' : '🗑️ Alle Marken löschen'}
               </button>
               <p style={{ fontSize: '12px', color: '#666', marginTop: '8px' }}>
                 ⚠️ Diese Aktion kann NICHT rückgängig gemacht werden!

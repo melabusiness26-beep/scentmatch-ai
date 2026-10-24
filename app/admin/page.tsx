@@ -438,7 +438,7 @@ export default function AdminPage() {
         <section className="section card" style={{ backgroundColor: '#f5f1e8', borderLeft: '4px solid #d4af37' }}>
           <h2>🚀 Auto-Recherchiere</h2>
           <p className="small">
-            Gib Marke und Duftname ein – das System recherchiert automatisch alle Daten und füllt das Formular!
+            Gib die Marke und den Duftname ein – das System recherchiert automatisch alle Daten und füllt das Formular sofort aus!
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, alignItems: 'flex-end' }}>
             <div className="field">

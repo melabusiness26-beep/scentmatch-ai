@@ -170,7 +170,17 @@ export default function AdminPage() {
             bottle_description: data.bottle_description || '',
             intensity: data.intensity || 'Mittel',
             scent_dna: (data.scent_dna && Array.isArray(data.scent_dna)) ? data.scent_dna.join(', ') : '',
-            rating: data.rating?.toString() || ''
+            rating: data.rating?.toString() || '',
+            // EXTENDED FIELDS
+            launch_year: data.launch_year?.toString() || '',
+            volume_ml: data.volume_ml?.toString() || '',
+            niche_vs_mass_market: data.niche_vs_mass_market || 'mass_market',
+            awards: data.awards || '',
+            official_website: data.official_website || '',
+            availability_status: data.availability_status || 'available',
+            gender_nuance: data.gender_nuance || '',
+            comparable_fragrances: data.comparable_fragrances || '',
+            concentration_detail: data.concentration_detail || ''
           });
           setMessage(`✅ Daten recherchiert! Überprüfe die Werte und speichere.`);
           sessionStorage.removeItem('researchData');
@@ -213,7 +223,17 @@ export default function AdminPage() {
       bottle_description: p.bottle_description || '',
       intensity: p.intensity || 'Mittel',
       scent_dna: (p.scent_dna || []).join(', '),
-      rating: p.rating?.toString() ?? ''
+      rating: p.rating?.toString() ?? '',
+      // EXTENDED FIELDS
+      launch_year: (p as any).launch_year?.toString() ?? '',
+      volume_ml: (p as any).volume_ml?.toString() ?? '',
+      niche_vs_mass_market: (p as any).niche_vs_mass_market || 'mass_market',
+      awards: (p as any).awards || '',
+      official_website: (p as any).official_website || '',
+      availability_status: (p as any).availability_status || 'available',
+      gender_nuance: (p as any).gender_nuance || '',
+      comparable_fragrances: (p as any).comparable_fragrances || '',
+      concentration_detail: (p as any).concentration_detail || ''
     });
     setMessage('');
     if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });

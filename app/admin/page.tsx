@@ -110,6 +110,7 @@ export default function AdminPage() {
   const [form, setForm] = useState({ ...emptyForm });
   const [message, setMessage] = useState('');
   const [saving, setSaving] = useState(false);
+  const [deletingAll, setDeletingAll] = useState(false);
   const [researching, setResearching] = useState(false);
   const [researchBrand, setResearchBrand] = useState('');
   const [researchName, setResearchName] = useState('');
@@ -258,6 +259,36 @@ export default function AdminPage() {
 
   async function logout() {
     await supabase.auth.signOut();
+  }
+
+  async function deleteAllPerfumes() {
+    if (!confirm('⚠️ ACHTUNG! Alle Düfte werden gelöscht! Das kann nicht rückgängig gemacht werden. Bist du sicher?')) {
+      return;
+    }
+    if (!confirm('Zweite Bestätigung: Alle Düfte WIRKLICH löschen?')) {
+      return;
+    }
+
+    setDeletingAll(true);
+    try {
+      const response = await fetch('/api/admin/delete-all-perfumes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ confirm: 'DELETE_ALL_PERFUMES' })
+      });
+
+      if (response.ok) {
+        setMessage('✅ Alle Düfte wurden gelöscht!');
+        setTimeout(() => window.location.reload(), 1000);
+      } else {
+        const data = await response.json();
+        setMessage(`Fehler: ${data.error}`);
+      }
+    } catch (error: any) {
+      setMessage(`Fehler: ${error.message}`);
+    } finally {
+      setDeletingAll(false);
+    }
   }
 
   async function resetPassword() {
@@ -685,6 +716,7 @@ export default function AdminPage() {
               />
             </div>
 
+<<<<<<< HEAD
             {/* EXTENDED FIELDS */}
             <hr style={{ margin: '30px 0', border: 'none', borderTop: '2px solid #D4AF37' }} />
             <h3 style={{ color: '#D4AF37', marginBottom: 15 }}>🔬 Erweiterte Recherche-Felder</h3>
@@ -755,7 +787,7 @@ export default function AdminPage() {
               />
             </div>
 
-            {message && <p className="admin-msg" style={{ color: message.startsWith('Fehler') ? '#b3261e' : '#1b7a3d' }}>{message}</p>}
+            {message && <p className="admin-msg" style={{ color: message.startsWith('Fehler') ? '#b3261e' : message.startsWith('✅') ? '#1b7a3d' : '#f57c00' }}>{message}</p>}
 
             <div className="cta">
               <button className="button" type="submit" disabled={saving}>
@@ -766,6 +798,30 @@ export default function AdminPage() {
                   Abbrechen / neuer Duft
                 </button>
               )}
+            </div>
+
+            <div style={{ marginTop: '40px', paddingTop: '20px', borderTop: '2px solid #ff6b6b' }}>
+              <h3 style={{ color: '#ff6b6b', marginBottom: '10px' }}>🗑️ Datenbank-Verwaltung</h3>
+              <button
+                type="button"
+                onClick={deleteAllPerfumes}
+                disabled={deletingAll}
+                style={{
+                  background: '#ff6b6b',
+                  color: '#fff',
+                  border: 'none',
+                  padding: '10px 20px',
+                  borderRadius: '4px',
+                  cursor: deletingAll ? 'not-allowed' : 'pointer',
+                  fontSize: '14px',
+                  fontWeight: '600'
+                }}
+              >
+                {deletingAll ? 'Löscht alle Düfte…' : '🗑️ Alle Düfte löschen'}
+              </button>
+              <p style={{ fontSize: '12px', color: '#666', marginTop: '8px' }}>
+                ⚠️ Diese Aktion kann NICHT rückgängig gemacht werden!
+              </p>
             </div>
           </form>
         </section>

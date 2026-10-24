@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   alternates: { canonical: SITE_URL }
 };
 
+// Cache for 60 seconds (fast updates when data changes)
+export const revalidate = 60;
+
 // Die 3 aktuellsten / interessantesten Ratgeber für die Startseite
 const FEATURED_GUIDE_SLUGS = [
   'parfum-trends-2026',

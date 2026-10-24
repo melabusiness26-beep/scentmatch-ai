@@ -39,7 +39,17 @@ const emptyForm = {
   bottle_description: '',
   intensity: 'Mittel',
   scent_dna: '',
-  rating: ''
+  rating: '',
+  // EXTENDED FIELDS
+  launch_year: '',
+  volume_ml: '',
+  niche_vs_mass_market: 'mass_market',
+  awards: '',
+  official_website: '',
+  availability_status: 'available',
+  gender_nuance: '',
+  comparable_fragrances: '',
+  concentration_detail: ''
 };
 
 function slugify(value: string): string {
@@ -264,7 +274,7 @@ export default function AdminPage() {
         return;
       }
 
-      // Füllt die Form-Felder mit den recherchierten Daten
+      // Füllt die Form-Felder mit den recherchierten Daten (ALLE Felder!)
       setForm(prev => ({
         ...prev,
         perfume_name: data.perfume_name || prev.perfume_name,
@@ -284,7 +294,17 @@ export default function AdminPage() {
         bottle_description: data.bottle_description || prev.bottle_description,
         intensity: data.intensity || prev.intensity,
         scent_dna: data.scent_dna ? data.scent_dna.join(', ') : prev.scent_dna,
-        rating: data.rating ? String(data.rating) : prev.rating
+        rating: data.rating ? String(data.rating) : prev.rating,
+        // EXTENDED FIELDS
+        launch_year: data.launch_year ? String(data.launch_year) : prev.launch_year,
+        volume_ml: data.volume_ml ? String(data.volume_ml) : prev.volume_ml,
+        niche_vs_mass_market: data.niche_vs_mass_market || prev.niche_vs_mass_market,
+        awards: data.awards || prev.awards,
+        official_website: data.official_website || prev.official_website,
+        availability_status: data.availability_status || prev.availability_status,
+        gender_nuance: data.gender_nuance || prev.gender_nuance,
+        comparable_fragrances: data.comparable_fragrances || prev.comparable_fragrances,
+        concentration_detail: data.concentration_detail || prev.concentration_detail
       }));
 
       setMessage(`✓ Auto-Recherchiere erfolgreich! ${data.perfume_name || 'Duft'} gefunden.`);

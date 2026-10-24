@@ -3,13 +3,6 @@ import Anthropic from '@anthropic-ai/sdk';
 
 const client = new Anthropic();
 
-interface DataQuality {
-  noten_verifiziert: boolean;
-  preis_aktuell: boolean;
-  longevity_quelle?: string;
-  fehlende_daten: string[];
-}
-
 interface ResearchResult {
   perfume_name: string | null;
   brand: string | null;
@@ -28,8 +21,7 @@ interface ResearchResult {
   affiliate_url: null;
   sources: string[];
   notes_confidence: 'high' | 'medium' | 'low';
-  data_quality?: DataQuality;
-  // Pro Status Fields (Scanner)
+  // Pro Status Fields
   concentration?: string | null;
   long_description?: string | null;
   bottle_description?: string | null;
@@ -38,6 +30,16 @@ interface ResearchResult {
   rating?: number | null;
   confidence_level?: string | null;
   data_sources?: Record<string, boolean>;
+  // EXTENDED FIELDS
+  launch_year?: number | null;
+  volume_ml?: number | null;
+  niche_vs_mass_market?: string | null;
+  awards?: string | null;
+  official_website?: string | null;
+  availability_status?: string | null;
+  gender_nuance?: string | null;
+  comparable_fragrances?: string | null;
+  concentration_detail?: string | null;
   error?: string;
 }
 
@@ -52,40 +54,50 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const searchPrompt = `Du recherchierst das Parfum "${brand} - ${name}" für auressa.ch — eine Premium-Duft-Beratungsplattform mit professionellem Scanner-Status.
+    const searchPrompt = `Du recherchierst das Parfum "${brand} - ${name}" für auressa.ch — eine Premium-Duft-Beratungsplattform.
 
-MISSION: Extrahiere ALLE verfügbaren, wahrheitsgemässen Informationen für PROFI-STATUS-Daten.
+MISSION: Extrahiere ALLE verfügbaren, 100% KORREKT verifizierten Informationen.
 
 QUELLEN (Priorität):
-1. **Fragrantica.com** → Noten, Community-Scores, Flakon-Bilder, Bewertungen
-2. **Parfumo.com** → Verifizierte Bewertungen, Longevity/Sillage
-3. **Douglas.ch** → Schweizer Preis CHF, Konzentration
-4. **Notino.ch / Flaconi.de** → Alternative Preise, Konzentration
-5. **Basenotes.net** → Experten-Bewertung, Intensität
-6. **Offizieller Hersteller** → Korrekte Info, Flakon-Design, Launch-Jahr
+1. **Fragrantica.com** → Noten, Launch-Jahr, Community-Scores, Bewertungen, Awards
+2. **Parfumo.com** → Verifizierte Bewertungen, Longevity/Sillage, Launch-Info
+3. **Douglas.ch / Notino.ch** → Schweizer Preise CHF, Konzentration, Größe/ml
+4. **Basenotes.net** → Experten-Info, Intensität, Vergleiche
+5. **Offizielle Hersteller-Website** → Launch-Jahr, Volume, Niche/Mass-Info, Awards
 
-OUTPUT: Vollständiges JSON mit dieser EXAKTEN Struktur:
+WICHTIG: **Nur 100% KORREKTE Daten recherchieren. Lieber null als falsch!**
+
+OUTPUT: Vollständiges JSON mit DIESER STRUKTUR:
 
 {
   "perfume_name": "Exakte offizielle Schreibweise",
   "brand": "Korrekte Marke",
   "fragrance_family": "clean | gourmand | woody | floral",
   "gender": "Women | Men | Unisex",
-  "concentration": "EDP | EDT | Extrait | Cologne | oder null",
+  "gender_nuance": "feminine | masculine | androgynous | sporty-feminine | oder null",
+  "concentration": "EDP | EDT | Extrait | Cologne | EDC | Spray | oder null",
+  "concentration_detail": "z.B. 'Eau de Toilette Spray 100ml' - präzise Angabe",
   "top_notes": "Bergamotte, Grapefruit, Zitrone (DEUTSCH, Komma-getrennt)",
   "heart_notes": "Jasmin, Veilchen, Gardenie (DEUTSCH, Komma-getrennt)",
   "base_notes": "Zedernholz, Moschus, Sandelholz (DEUTSCH, Komma-getrennt)",
-  "longevity": 6 oder null (1-10),
-  "sillage": 7 oder null (1-10),
-  "intensity": "Leicht | Mittel | Intensiv (basierend auf Sillage + Community)",
+  "longevity": 6 oder null (1-10, verifiziert von Community),
+  "sillage": 7 oder null (1-10, verifiziert von Community),
+  "intensity": "Leicht | Mittel | Intensiv (basierend auf Sillage + Bewertungen)",
   "season": "Frühling | Sommer | Herbst/Winter | Winter | Ganzjährig",
   "occasion": "Alltag | Büro | Date | Abend (Komma-getrennt)",
-  "price_chf": "39.50" oder null,
-  "rating": 7.5 oder null (0-10 basierend auf Community oder berechnet)",
-  "long_description": "Ausführliche, poetic deutsche Beschreibung (3-4 Sätze). Beispiel: 'Ein frischer Duft, der Eleganz und Modernität vereint. Die Kopfnoten öffnen mit zitronigen Akkorden, während die Herznoten subtile Blütennoten zeigen. Im Basisakkord sorgen holzige Noten für Tiefe und Standfestigkeit.'",
-  "bottle_description": "Beschreibung des Flakons und Design. Beispiel: 'Ein klassischer Flakon mit klarem, rechteckigem Design. Das durchsichtige Glas zeigt die helle, bernsteinfarbene Flüssigkeit. Die weiße Kappe kontrastiert elegant mit dem Glas.'",
-  "scent_dna": ["Ähnlicher Duft 1", "Ähnlicher Duft 2", "Ähnlicher Duft 3"],
-  "sources": ["Fragrantica: ...", "Douglas.ch: ...", ...],
+  "price_chf": "74.92" oder null (aktueller Schweizer Preis),
+  "rating": 7.5 oder null (0-10, Community-Durchschnitt oder Fragrantica-Score),
+  "launch_year": 2001 oder null (JAHR der Lancierung, nicht null wenn auffindbar!),
+  "volume_ml": 100 oder null (Größe des Standard-Flakons in ml),
+  "niche_vs_mass_market": "niche | mass_market | prestige | direct_distribution",
+  "awards": "Best Fragrance 2020, Fragrantica Award, oder null (Komma-getrennt)",
+  "official_website": "https://www.dolceandgabbana.com/... oder null",
+  "availability_status": "available | discontinued | limited_edition",
+  "comparable_fragrances": "Versace Bright Crystal, Giorgio Armani Acqua di Gioia, oder null (Komma-getrennt, max 5)",
+  "long_description": "Ausführliche, poetische deutsche Beschreibung (3-4 Sätze, 100-150 Wörter). Beispiel: 'Light Blue von Dolce & Gabbana ist ein sommerfrisches Eau de Toilette, das Eleganz und Leichtigkeit verkörpert. Die Kopfnoten öffnen mit zitronigen Akkorden, während die Herznoten subtile Blütennoten zeigen. Im Basisakkord sorgen holzige Noten für Tiefe. Der Duft ist zeitlos und perfekt für warme Jahreszeiten.'",
+  "bottle_description": "Beschreibung des Flakons (Farbe, Material, Form). Beispiel: 'Ein ikonischer, rechteckiger Flakon aus klarem Glas. Die hellblaue Flüssigkeit ist sichtbar. Die weiße Kappe mit Aufschrift kontrastiert elegant. Das Design ist minimalistisch und modern.'",
+  "scent_dna": ["Duft 1", "Duft 2", "Duft 3"] (max 3, exakte Namen),
+  "sources": ["Fragrantica: ...", "Douglas.ch: ...", ...] (Quellen mit Links/Info),
   "notes_confidence": "high | medium | low",
   "confidence_level": "high | medium | low",
   "data_sources": {
@@ -95,31 +107,19 @@ OUTPUT: Vollständiges JSON mit dieser EXAKTEN Struktur:
     "notino": false,
     "basenotes": true,
     "official": false
-  },
-  "data_quality": {
-    "noten_verifiziert": true,
-    "preis_aktuell": true,
-    "longevity_quelle": "Fragrantica Community (100+ Bewertungen)",
-    "fehlende_daten": []
   }
 }
 
 REGELN (NICHT VERHANDELBAR):
-✅ Nur ECHTE Daten aus verifizierten Quellen
-✅ Noten MÜSSEN auf Deutsch sein (Bergamotte, nicht Bergamot)
-✅ Concentration: EDP ist Standard, sonst recherchieren
-✅ Intensity: Berechne aus Sillage (≤3=Leicht, 4-7=Mittel, ≥8=Intensiv)
-✅ Rating: Von Community oder Durchschnitt von Fragrantica/Parfumo (0-10)
-✅ long_description: Poetisch, natürlich, 3-4 Sätze, auf Deutsch
-✅ bottle_description: Faktisch, Design-fokussiert
-✅ scent_dna: Max 3 ähnliche Düfte (Names mit exakter Schreibweise)
-✅ Bei unsicherem Wert → null (NICHT erfunden)
-✅ data_sources: Nur true für recherchierte Quellen
-
-WENN DUFT NICHT GEFUNDEN:
-→ error: "Duft nicht auf Fragrantica/Parfumo verfügbar"
-
-PRIORITÄT: Wahrheit > Vollständigkeit. Lieber null als erfunden.`;
+✅ Nur ECHTE, verifizierte Daten aus Fragrantica, Parfumo, Douglas, Notino, Basenotes
+✅ Noten MÜSSEN auf Deutsch sein
+✅ launch_year: PRIORITÄT HOCH - searchiere Official Websites + Fragrantica!
+✅ volume_ml: Der Standard-Flakon (meist 100ml, aber 75ml/50ml prüfen!)
+✅ Bewertung (rating): Von Fragrantica Community-Score oder Parfumo-Durchschnitt
+✅ Bei unsicheren Werten → null (NICHT erfunden!)
+✅ comparable_fragrances: Nur bekannte, ähnliche Düfte
+✅ availability_status: Aktueller Status - still selling oder discontinued?
+✅ KRITISCH: Alle Daten 100% korrekt oder null!`;
 
     const messages: Anthropic.Messages.MessageParam[] = [
       { role: 'user', content: searchPrompt }
@@ -242,6 +242,20 @@ PRIORITÄT: Wahrheit > Vollständigkeit. Lieber null als erfunden.`;
       occasion = occasions.filter((o: string) => validOccasions.includes(o)).join(', ') || null;
     }
 
+    // Validate niche_vs_mass_market
+    const validMarketTypes = ['niche', 'mass_market', 'prestige', 'direct_distribution'];
+    let niche_vs_mass = rawData.niche_vs_mass_market || null;
+    if (niche_vs_mass && !validMarketTypes.includes(niche_vs_mass.toLowerCase())) {
+      niche_vs_mass = null;
+    }
+
+    // Validate availability_status
+    const validAvailability = ['available', 'discontinued', 'limited_edition'];
+    let availability = rawData.availability_status || 'available';
+    if (availability && !validAvailability.includes(availability.toLowerCase())) {
+      availability = 'available';
+    }
+
     // Validate longevity/sillage
     let longevity: number | null = null;
     if (rawData.longevity && typeof rawData.longevity === 'number') {
@@ -251,6 +265,22 @@ PRIORITÄT: Wahrheit > Vollständigkeit. Lieber null als erfunden.`;
     let sillage: number | null = null;
     if (rawData.sillage && typeof rawData.sillage === 'number') {
       sillage = Math.max(1, Math.min(10, rawData.sillage));
+    }
+
+    // Validate launch_year
+    let launch_year: number | null = null;
+    if (rawData.launch_year && typeof rawData.launch_year === 'number') {
+      if (rawData.launch_year > 1900 && rawData.launch_year <= new Date().getFullYear()) {
+        launch_year = rawData.launch_year;
+      }
+    }
+
+    // Validate volume_ml
+    let volume_ml: number | null = null;
+    if (rawData.volume_ml && typeof rawData.volume_ml === 'number') {
+      if (rawData.volume_ml > 0 && rawData.volume_ml <= 500) {
+        volume_ml = rawData.volume_ml;
+      }
     }
 
     // Validate rating
@@ -284,12 +314,6 @@ PRIORITÄT: Wahrheit > Vollständigkeit. Lieber null als erfunden.`;
       affiliate_url: null,
       sources: Array.isArray(rawData.sources) ? rawData.sources.filter((s: any) => typeof s === 'string') : [],
       notes_confidence: ['high', 'medium', 'low'].includes(rawData.notes_confidence) ? rawData.notes_confidence : 'low',
-      data_quality: rawData.data_quality || {
-        noten_verifiziert: !!rawData.top_notes && !!rawData.heart_notes && !!rawData.base_notes,
-        preis_aktuell: !!rawData.price_chf,
-        longevity_quelle: rawData.data_quality?.longevity_quelle || undefined,
-        fehlende_daten: rawData.data_quality?.fehlende_daten || []
-      },
       // Pro fields
       concentration: concentration,
       long_description: (rawData.long_description && typeof rawData.long_description === 'string') ? rawData.long_description.trim() : null,
@@ -298,7 +322,17 @@ PRIORITÄT: Wahrheit > Vollständigkeit. Lieber null als erfunden.`;
       scent_dna: scent_dna.length > 0 ? scent_dna : undefined,
       rating: rating,
       confidence_level: ['high', 'medium', 'low'].includes(rawData.confidence_level) ? rawData.confidence_level : 'low',
-      data_sources: rawData.data_sources || {}
+      data_sources: rawData.data_sources || {},
+      // Extended fields
+      launch_year: launch_year,
+      volume_ml: volume_ml,
+      niche_vs_mass_market: niche_vs_mass,
+      awards: (rawData.awards && typeof rawData.awards === 'string') ? rawData.awards.trim() : null,
+      official_website: (rawData.official_website && typeof rawData.official_website === 'string') ? rawData.official_website.trim() : null,
+      availability_status: availability,
+      gender_nuance: (rawData.gender_nuance && typeof rawData.gender_nuance === 'string') ? rawData.gender_nuance.trim() : null,
+      comparable_fragrances: (rawData.comparable_fragrances && typeof rawData.comparable_fragrances === 'string') ? rawData.comparable_fragrances.trim() : null,
+      concentration_detail: (rawData.concentration_detail && typeof rawData.concentration_detail === 'string') ? rawData.concentration_detail.trim() : null
     };
 
     return NextResponse.json(result);

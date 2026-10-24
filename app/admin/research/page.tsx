@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { supabase, isSupabaseConfigured } from '@/lib/supabase';
+import { isSupabaseConfigured } from '@/lib/supabase';
 
 interface DataQuality {
   noten_verifiziert: boolean;
@@ -74,9 +74,16 @@ export default function ResearchPage() {
         body: JSON.stringify({ brand: brand.trim(), name: name.trim() })
       });
 
+      if (!res.ok) {
+        const errorText = await res.text().catch(() => 'Unbekannter Fehler');
+        setError(`API-Fehler ${res.status}: ${errorText.substring(0, 200)}`);
+        setLoading(false);
+        return;
+      }
+
       const data: ResearchResult = await res.json();
 
-      if (!res.ok) {
+      if (data.error) {
         setError(data.error || 'Recherche fehlgeschlagen');
         setLoading(false);
         return;
@@ -84,7 +91,8 @@ export default function ResearchPage() {
 
       setResult(data);
     } catch (err: any) {
-      setError(err?.message || 'Fehler bei der Recherche');
+      setError(`Fehler: ${err?.message || 'Unbekannter Fehler'}`);
+      console.error('Research error:', err);
     }
     setLoading(false);
   }

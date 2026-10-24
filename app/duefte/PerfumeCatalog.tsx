@@ -98,8 +98,15 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
     if (genderFilters.length > 0 && !genderFilters.includes(p.gender || '')) return false;
     if (seasonFilters.length > 0 && !seasonFilters.includes(p.season || '')) return false;
     if (occasionFilters.length > 0 && !occasionFilters.includes(p.occasion || '')) return false;
-    if (ageGroupFilters.length > 0 && !ageGroupFilters.includes(p.age_group || 'all')) return false;
-    if (lifestyleFilters.length > 0 && !lifestyleFilters.includes(p.lifestyle || 'all')) return false;
+    // Only apply filter if field exists and is not 'all'
+    if (ageGroupFilters.length > 0) {
+      const pAgeGroup = p.age_group || 'all';
+      if (pAgeGroup === 'all' || !ageGroupFilters.includes(pAgeGroup)) return false;
+    }
+    if (lifestyleFilters.length > 0) {
+      const pLifestyle = p.lifestyle || 'all';
+      if (pLifestyle === 'all' || !lifestyleFilters.includes(pLifestyle)) return false;
+    }
     if (p.price_chf && (p.price_chf < priceRange[0] || p.price_chf > priceRange[1])) return false;
     if (p.sillage && (p.sillage < sillageRange[0] || p.sillage > sillageRange[1])) return false;
     return true;

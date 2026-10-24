@@ -51,6 +51,17 @@ const PAGE_SIZE = 24;
 
 export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: Perfume[] }) {
   const perfumes = initialPerfumes;
+
+  // DEBUG: Log first perfume to check if age_group/lifestyle are loaded
+  if (perfumes.length > 0) {
+    console.log('🔍 DEBUG: First perfume:', {
+      name: perfumes[0].perfume_name,
+      age_group: perfumes[0].age_group,
+      lifestyle: perfumes[0].lifestyle,
+      allKeys: Object.keys(perfumes[0]).filter(k => k.includes('age') || k.includes('life') || k.includes('trend'))
+    });
+  }
+
   const [query, setQuery] = useState('');
   const [familyFilter, setFamilyFilter] = useState('');
   const [genderFilters, setGenderFilters] = useState<string[]>([]);

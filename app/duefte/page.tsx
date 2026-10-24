@@ -3,7 +3,7 @@ import Breadcrumb from '@/app/Breadcrumb';
 import PerfumeCatalog from './PerfumeCatalog';
 import { getPerfumeCount, getPerfumes } from '@/lib/perfumes';
 
-export const revalidate = 3600;
+export const revalidate = 0;
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 

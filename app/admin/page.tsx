@@ -49,7 +49,9 @@ const emptyForm = {
   availability_status: 'available',
   gender_nuance: '',
   comparable_fragrances: '',
-  concentration_detail: ''
+  concentration_detail: '',
+  // PROGRESSION FIELD
+  fragrance_progression: ''
 };
 
 function slugify(value: string): string {
@@ -738,6 +740,16 @@ export default function AdminPage() {
             <div className="field">
               <label>Konzentrations-Detail</label>
               <input value={form.concentration_detail} onChange={e => setField('concentration_detail', e.target.value)} placeholder="z.B. Eau de Toilette Spray 100ml" />
+            </div>
+
+            <div className="field">
+              <label>Duft-Entwicklung / Progression</label>
+              <textarea
+                value={form.fragrance_progression}
+                onChange={e => setField('fragrance_progression', e.target.value)}
+                placeholder="Wie sich der Duft entwickelt: Öffnet frisch mit Zitrone → wird blumig mit Jasmin → trocknet zu holzigen Noten ab. (Opening 0-15min, Heart 15min-4h, Dry-Down 4h+)"
+                style={{ minHeight: 60 }}
+              />
             </div>
 
             {message && <p className="admin-msg" style={{ color: message.startsWith('Fehler') ? '#b3261e' : '#1b7a3d' }}>{message}</p>}

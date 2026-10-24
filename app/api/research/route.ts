@@ -40,6 +40,8 @@ interface ResearchResult {
   gender_nuance?: string | null;
   comparable_fragrances?: string | null;
   concentration_detail?: string | null;
+  // PROGRESSION FIELD
+  fragrance_progression?: string | null;
   error?: string;
 }
 

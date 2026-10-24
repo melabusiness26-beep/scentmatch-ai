@@ -467,7 +467,7 @@ export default function AdminPage() {
               onClick={autoResearch}
               disabled={researching || !researchBrand.trim() || !researchName.trim()}
             >
-              {researching ? '⏳ Läuft...' : '🔍 Recherchier'}
+              {researching ? '⏳ Läuft...' : '🔍 Recherchieren'}
             </button>
           </div>
         </section>

@@ -436,14 +436,15 @@ export default function AdminPage() {
         </nav>
 
         <section className="section card" style={{ backgroundColor: '#f5f1e8', borderLeft: '4px solid #d4af37' }}>
-          <h2>🚀 Auto-Recherchiere</h2>
+          <h2>🔬 Intelligente Duft-Recherche</h2>
           <p className="small">
-            Gib die Marke und den Duftname ein – das System recherchiert automatisch alle Daten und füllt das Formular sofort aus!
+            Gib Brand und Duftname ein → Claude recherchiert automatisch alle Daten von Fragrantica, Parfumo, Douglas, Notino und anderen Quellen und füllt alle Felder!
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, alignItems: 'flex-end' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr auto', gap: 12, alignItems: 'flex-end', maxWidth: '600px' }}>
             <div className="field">
-              <label>Marke</label>
+              <label htmlFor="research-brand">Brand / Marke *</label>
               <input
+                id="research-brand"
                 type="text"
                 value={researchBrand}
                 onChange={e => setResearchBrand(e.target.value)}
@@ -451,8 +452,9 @@ export default function AdminPage() {
               />
             </div>
             <div className="field">
-              <label>Duftname</label>
+              <label htmlFor="research-name">Duft Name *</label>
               <input
+                id="research-name"
                 type="text"
                 value={researchName}
                 onChange={e => setResearchName(e.target.value)}
@@ -465,7 +467,7 @@ export default function AdminPage() {
               onClick={autoResearch}
               disabled={researching || !researchBrand.trim() || !researchName.trim()}
             >
-              {researching ? '🔍 Recherchiert...' : '🔍 Auto-Recherchiere'}
+              {researching ? '⏳ Läuft...' : '🔍 Recherchier'}
             </button>
           </div>
         </section>

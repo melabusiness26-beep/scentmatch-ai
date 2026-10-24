@@ -680,6 +680,66 @@ export default function AdminPage() {
               />
             </div>
 
+            {/* EXTENDED FIELDS */}
+            <hr style={{ margin: '30px 0', border: 'none', borderTop: '2px solid #D4AF37' }} />
+            <h3 style={{ color: '#D4AF37', marginBottom: 15 }}>🔬 Erweiterte Recherche-Felder</h3>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15 }}>
+              <div className="field">
+                <label>Launch-Jahr (Erscheinungsjahr)</label>
+                <input type="number" min="1900" max={new Date().getFullYear()} value={form.launch_year} onChange={e => setField('launch_year', e.target.value)} placeholder="2001" />
+              </div>
+              <div className="field">
+                <label>Volumen (ml)</label>
+                <input type="number" min="1" max="500" value={form.volume_ml} onChange={e => setField('volume_ml', e.target.value)} placeholder="100" />
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15 }}>
+              <div className="field">
+                <label>Niche vs Mass-Market</label>
+                <select value={form.niche_vs_mass_market} onChange={e => setField('niche_vs_mass_market', e.target.value)}>
+                  <option value="mass_market">Mass-Market</option>
+                  <option value="prestige">Prestige</option>
+                  <option value="niche">Nische</option>
+                  <option value="direct_distribution">Direct Distribution</option>
+                </select>
+              </div>
+              <div className="field">
+                <label>Verfügbarkeitsstatus</label>
+                <select value={form.availability_status} onChange={e => setField('availability_status', e.target.value)}>
+                  <option value="available">Verfügbar</option>
+                  <option value="discontinued">Eingestellt</option>
+                  <option value="limited_edition">Limited Edition</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="field">
+              <label>Auszeichnungen / Awards (Komma-getrennt)</label>
+              <input value={form.awards} onChange={e => setField('awards', e.target.value)} placeholder="Best Fragrance 2020, Fragrantica Award" />
+            </div>
+
+            <div className="field">
+              <label>Offizielle Website</label>
+              <input value={form.official_website} onChange={e => setField('official_website', e.target.value)} placeholder="https://www.dolceandgabbana.com/..." />
+            </div>
+
+            <div className="field">
+              <label>Geschlechts-Nuance</label>
+              <input value={form.gender_nuance} onChange={e => setField('gender_nuance', e.target.value)} placeholder="masculine, feminine, androgynous" />
+            </div>
+
+            <div className="field">
+              <label>Vergleichbare Düfte (Komma-getrennt)</label>
+              <input value={form.comparable_fragrances} onChange={e => setField('comparable_fragrances', e.target.value)} placeholder="Versace Bright Crystal, Giorgio Armani Acqua di Gioia" />
+            </div>
+
+            <div className="field">
+              <label>Konzentrations-Detail</label>
+              <input value={form.concentration_detail} onChange={e => setField('concentration_detail', e.target.value)} placeholder="z.B. Eau de Toilette Spray 100ml" />
+            </div>
+
             {message && <p className="admin-msg" style={{ color: message.startsWith('Fehler') ? '#b3261e' : '#1b7a3d' }}>{message}</p>}
 
             <div className="cta">

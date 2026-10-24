@@ -98,6 +98,9 @@ export default function AdminPage() {
   const [form, setForm] = useState({ ...emptyForm });
   const [message, setMessage] = useState('');
   const [saving, setSaving] = useState(false);
+  const [researching, setResearching] = useState(false);
+  const [researchBrand, setResearchBrand] = useState('');
+  const [researchName, setResearchName] = useState('');
 
   useEffect(() => {
     if (!isSupabaseConfigured) {
@@ -235,6 +238,62 @@ export default function AdminPage() {
     });
     if (error) setAuthError(error.message);
     else setResetSent(true);
+  }
+
+  async function autoResearch() {
+    if (!researchBrand.trim() || !researchName.trim()) {
+      setMessage('Bitte Marke und Duftname eingeben');
+      return;
+    }
+
+    setResearching(true);
+    setMessage('');
+
+    try {
+      const res = await fetch('/api/research', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ brand: researchBrand.trim(), name: researchName.trim() })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || data.error) {
+        setMessage(`Recherche-Fehler: ${data.error || 'unbekannt'}`);
+        setResearching(false);
+        return;
+      }
+
+      // Füllt die Form-Felder mit den recherchierten Daten
+      setForm(prev => ({
+        ...prev,
+        perfume_name: data.perfume_name || prev.perfume_name,
+        brand: data.brand || prev.brand,
+        fragrance_family: data.fragrance_family || prev.fragrance_family,
+        gender: data.gender || prev.gender,
+        price_chf: data.price_chf ? String(data.price_chf) : prev.price_chf,
+        longevity: data.longevity ? String(data.longevity) : prev.longevity,
+        sillage: data.sillage ? String(data.sillage) : prev.sillage,
+        season: data.season || prev.season,
+        occasion: data.occasion || prev.occasion,
+        top_notes: data.top_notes || prev.top_notes,
+        heart_notes: data.heart_notes || prev.heart_notes,
+        base_notes: data.base_notes || prev.base_notes,
+        concentration: data.concentration || prev.concentration,
+        long_description: data.long_description || prev.long_description,
+        bottle_description: data.bottle_description || prev.bottle_description,
+        intensity: data.intensity || prev.intensity,
+        scent_dna: data.scent_dna ? data.scent_dna.join(', ') : prev.scent_dna,
+        rating: data.rating ? String(data.rating) : prev.rating
+      }));
+
+      setMessage(`✓ Auto-Recherchiere erfolgreich! ${data.perfume_name || 'Duft'} gefunden.`);
+      setResearchBrand('');
+      setResearchName('');
+    } catch (err: any) {
+      setMessage(`Fehler: ${err?.message || 'unbekannt'}`);
+    }
+    setResearching(false);
   }
 
   async function save(e: React.FormEvent) {
@@ -377,13 +436,40 @@ export default function AdminPage() {
         </nav>
 
         <section className="section card" style={{ backgroundColor: '#f5f1e8', borderLeft: '4px solid #d4af37' }}>
-          <h2>🚀 Schnelle Recherche (Neu!)</h2>
+          <h2>🔬 Intelligente Duft-Recherche</h2>
           <p className="small">
-            Gib die Marke und den Duft-Namen ein — Claude recherchiert automatisch alle Daten von Fragrantica, Parfumo, Douglas.ch und weiteren Quellen!
+            Gib Brand und Duftname ein → Claude recherchiert automatisch alle Daten von Fragrantica, Parfumo, Douglas, Notino und anderen Quellen und füllt alle Felder!
           </p>
-          <Link className="button" href="/admin/research" style={{ display: 'inline-block' }}>
-            🔍 Duft recherchieren
-          </Link>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr auto', gap: 12, alignItems: 'flex-end', maxWidth: '600px' }}>
+            <div className="field">
+              <label htmlFor="research-brand">Brand / Marke *</label>
+              <input
+                id="research-brand"
+                type="text"
+                value={researchBrand}
+                onChange={e => setResearchBrand(e.target.value)}
+                placeholder="z.B. Dolce & Gabbana"
+              />
+            </div>
+            <div className="field">
+              <label htmlFor="research-name">Duft Name *</label>
+              <input
+                id="research-name"
+                type="text"
+                value={researchName}
+                onChange={e => setResearchName(e.target.value)}
+                placeholder="z.B. Light Blue"
+              />
+            </div>
+            <button
+              className="button"
+              type="button"
+              onClick={autoResearch}
+              disabled={researching || !researchBrand.trim() || !researchName.trim()}
+            >
+              {researching ? '⏳ Läuft...' : '🔍 Recherchier'}
+            </button>
+          </div>
         </section>
 
         <section className="section card">

@@ -716,7 +716,6 @@ export default function AdminPage() {
               />
             </div>
 
-<<<<<<< HEAD
             {/* EXTENDED FIELDS */}
             <hr style={{ margin: '30px 0', border: 'none', borderTop: '2px solid #D4AF37' }} />
             <h3 style={{ color: '#D4AF37', marginBottom: 15 }}>🔬 Erweiterte Recherche-Felder</h3>

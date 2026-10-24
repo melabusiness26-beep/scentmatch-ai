@@ -25,11 +25,9 @@ export async function POST(request: NextRequest) {
 
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    // Delete all perfumes
-    const { error, count } = await supabase
-      .from('perfumes')
-      .delete()
-      .neq('id', '00000000-0000-0000-0000-000000000000');
+    // Call the delete_all_perfumes SQL function (SECURITY DEFINER)
+    const { data, error } = await supabase
+      .rpc('delete_all_perfumes', {});
 
     if (error) {
       console.error('Delete error:', error);
@@ -41,8 +39,8 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: `Deleted all perfumes from database`,
-      deleted: count,
+      message: data || 'Deleted all perfumes from database',
+      deleted: true,
     });
   } catch (error: any) {
     console.error('Error:', error);

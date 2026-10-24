@@ -1,8 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { isSupabaseConfigured } from '@/lib/supabase';
 
 interface DataQuality {
   noten_verifiziert: boolean;
@@ -60,6 +59,11 @@ export default function ResearchPage() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<ResearchResult | null>(null);
   const [error, setError] = useState('');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   async function research(e: React.FormEvent) {
     e.preventDefault();
@@ -103,15 +107,8 @@ export default function ResearchPage() {
     window.location.href = '/admin?research=true';
   }
 
-  if (!isSupabaseConfigured) {
-    return (
-      <main>
-        <div className="container">
-          <p className="lead">Supabase nicht konfiguriert.</p>
-          <Link className="button" href="/admin">Zurück</Link>
-        </div>
-      </main>
-    );
+  if (!mounted) {
+    return null;
   }
 
   return (

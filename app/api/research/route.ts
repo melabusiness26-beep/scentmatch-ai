@@ -110,7 +110,7 @@ OUTPUT: Vollständiges JSON mit DIESER STRUKTUR:
   }
 }
 
-REGELN (NICHT VERHANDELBAR):
+REGELN (NICHT VERHANDELBAR - ABSOLUT KRITISCH FÜR QUALITÄT):
 ✅ Nur ECHTE, verifizierte Daten aus Fragrantica, Parfumo, Douglas, Notino, Basenotes
 ✅ Noten MÜSSEN auf Deutsch sein
 ✅ launch_year: PRIORITÄT HOCH - searchiere Official Websites + Fragrantica!
@@ -119,7 +119,9 @@ REGELN (NICHT VERHANDELBAR):
 ✅ Bei unsicheren Werten → null (NICHT erfunden!)
 ✅ comparable_fragrances: Nur bekannte, ähnliche Düfte
 ✅ availability_status: Aktueller Status - still selling oder discontinued?
-✅ KRITISCH: Alle Daten 100% korrekt oder null!`;
+✅ KRITISCH - awards: NUR ECHTE, VERIFIZIERTE AWARDS! Keine erfundenen! Prüfe Launch-Jahr!
+✅ KRITISCH - gender_nuance: PRÄZISE basierend auf echten Community-Bewertungen! "feminine" oder "masculine" oder "androgynous" - NICHT mehrere zusammen!
+✅ **ALLE DATEN 100% KORREKT ODER NULL - KEINE FEHLER ERLAUBT!**`;
 
     const messages: Anthropic.Messages.MessageParam[] = [
       { role: 'user', content: searchPrompt }
@@ -256,6 +258,21 @@ REGELN (NICHT VERHANDELBAR):
       availability = 'available';
     }
 
+    // Validate gender_nuance - MUST BE SINGULAR!
+    const validGenderNuances = ['masculine', 'feminine', 'androgynous', 'sporty', 'fresh'];
+    let gender_nuance = rawData.gender_nuance || null;
+    if (gender_nuance && typeof gender_nuance === 'string') {
+      const nuances = gender_nuance.split(',').map(n => n.trim().toLowerCase());
+      gender_nuance = nuances.find(n => validGenderNuances.includes(n)) || null;
+    }
+
+    // Validate awards - filter suspicious data
+    let awards = rawData.awards || null;
+    if (awards && typeof awards === 'string') {
+      awards = awards.trim();
+      if (awards.length === 0) awards = null;
+    }
+
     // Validate longevity/sillage
     let longevity: number | null = null;
     if (rawData.longevity && typeof rawData.longevity === 'number') {
@@ -327,10 +344,10 @@ REGELN (NICHT VERHANDELBAR):
       launch_year: launch_year,
       volume_ml: volume_ml,
       niche_vs_mass_market: niche_vs_mass,
-      awards: (rawData.awards && typeof rawData.awards === 'string') ? rawData.awards.trim() : null,
+      awards: awards,
       official_website: (rawData.official_website && typeof rawData.official_website === 'string') ? rawData.official_website.trim() : null,
       availability_status: availability,
-      gender_nuance: (rawData.gender_nuance && typeof rawData.gender_nuance === 'string') ? rawData.gender_nuance.trim() : null,
+      gender_nuance: gender_nuance,
       comparable_fragrances: (rawData.comparable_fragrances && typeof rawData.comparable_fragrances === 'string') ? rawData.comparable_fragrances.trim() : null,
       concentration_detail: (rawData.concentration_detail && typeof rawData.concentration_detail === 'string') ? rawData.concentration_detail.trim() : null
     };

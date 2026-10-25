@@ -281,19 +281,6 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
           </div>
         </section>
 
-        <section className="section">
-          <p className="eyebrow">Highlights</p>
-          <h2>Unsere bestbewerteten Düfte</h2>
-          <p className="small">Eine handverlesene Auswahl quer durch alle Duftrichtungen – sortiert nach Auressa-Score.</p>
-          <div className="perfume-list">
-            {highlights.map(p => (
-              <PerfumeTile perfume={p} key={p.id} />
-            ))}
-          </div>
-          <div className="cta">
-            <Link className="button secondary" href="/duefte">Alle Düfte ansehen</Link>
-          </div>
-        </section>
 
       </div>
     </main>

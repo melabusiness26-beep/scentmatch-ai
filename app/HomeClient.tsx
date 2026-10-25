@@ -69,7 +69,8 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
 
   useEffect(() => {
     async function loadData() {
-      const perfumeData = await getPerfumes(2000);
+      // Database is empty - don't load any perfumes
+      const perfumeData: any[] = [];
       if (perfumeData.length > 0) setPerfumes(perfumeData);
       setLoaded(true);
     }

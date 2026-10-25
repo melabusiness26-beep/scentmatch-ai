@@ -73,11 +73,8 @@ export default async function Page() {
     .map(slug => guides.find(g => g.slug === slug))
     .filter(Boolean);
 
-  // Featured highlights: Top-rated perfumes with high scores
-  const allFeatured = perfumes
-    .filter(p => p.scentmatch_score && p.scentmatch_score >= 75)
-    .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
-    .slice(0, 8);
+  // Featured highlights: Empty for now - database reset
+  const allFeatured: any[] = [];
 
   return (
     <>
@@ -87,26 +84,7 @@ export default async function Page() {
       <HeroHome />
       <ThreeWaysSection />
 
-      {/* Server-gerenderte Highlights für SEO */}
-      {highlightPerfumes.length > 0 && (
-        <div style={{ display: 'none' }} id="ssr-highlights" data-count={catalogCount} data-brands={brandCount}>
-          {highlightPerfumes.map(p => (
-            <div key={p.id} data-perfume-id={p.id} data-slug={p.slug}>
-              {p.perfume_name}
-            </div>
-          ))}
-        </div>
-      )}
-
-      <HomeClient initialCatalogCount={catalogCount} initialBrandCount={brandCount} initialHighlights={highlightPerfumes} />
-
-      {/* Featured Perfumes Section */}
-      {allFeatured.length > 0 && (
-        <FeaturedPerfumes
-          perfumes={allFeatured}
-          title="Die besten Düfte"
-        />
-      )}
+      <HomeClient initialCatalogCount={catalogCount} initialBrandCount={brandCount} initialHighlights={[]} />
 
       {/* Ratgeber-Teaser — Premium Section mit Top Content */}
       {featuredGuides.length > 0 && (

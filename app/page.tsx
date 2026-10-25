@@ -78,6 +78,17 @@ export default async function Page() {
 
   return (
     <>
+      <div style={{
+        background: '#ff0000',
+        color: '#fff',
+        padding: '20px',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: '24px',
+        marginBottom: '20px'
+      }}>
+        🚨 NEW CODE DEPLOYED - DATENBANK LEER 🚨
+      </div>
       <link rel="preload" as="image" href="/hero-auressa-2.jpg" fetchPriority="high" />
 
       {/* Neuer Hero + 3-Wege-Grid */}

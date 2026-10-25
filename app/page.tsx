@@ -31,7 +31,7 @@ const GUIDE_EMOJIS: Record<string, string> = {
   'parfum-und-hauttyp-was-passt-zu-meiner-haut': '🧴',
 };
 
-const HIGHLIGHT_SLUGS = ['baccarat-rouge-540', 'black-opium', 'tobacco-vanille', '1-million'];
+const HIGHLIGHT_SLUGS: string[] = []; // Empty - database reset, no highlights
 
 export default async function Page() {
   // Server-seitiger Daten-Fetch für SEO & Social Media.

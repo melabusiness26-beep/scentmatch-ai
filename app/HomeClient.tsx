@@ -54,7 +54,7 @@ const starterPerfumes: Perfume[] = [];
 
 // Echte Homepage-Highlights – diese Slugs sind eindeutig und werden
 // bei der Katalog-Abfrage automatisch matcht mit den echten Duft-Daten.
-const HIGHLIGHT_SLUGS = ['baccarat-rouge-540', 'black-opium', 'tobacco-vanille', '1-million'];
+const HIGHLIGHT_SLUGS: string[] = []; // Empty - database reset, no highlights
 
 interface HomeClientProps {
   initialCatalogCount?: number | null;

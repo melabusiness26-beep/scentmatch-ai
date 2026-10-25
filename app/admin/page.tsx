@@ -333,6 +333,29 @@ export default function AdminPage() {
     setDeletingAll(false);
   }
 
+  async function deleteAllBrands() {
+    if (!confirm('⚠️ ALLE MARKEN LÖSCHEN?')) return;
+    if (!confirm('Zweite Bestätigung erforderlich!')) return;
+
+    setDeletingBrands(true);
+    try {
+      const response = await fetch('/api/admin/delete-all-brands', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ confirm: 'DELETE_ALL_BRANDS' })
+      });
+      if (response.ok) {
+        setMessage('✅ Alle Marken gelöscht!');
+        setTimeout(() => window.location.reload(), 1000);
+      } else {
+        setMessage('❌ Fehler');
+      }
+    } catch (error: any) {
+      setMessage(`❌ ${error.message}`);
+    }
+    setDeletingBrands(false);
+  }
+
   async function save(e: React.FormEvent) {
     e.preventDefault();
     setSaving(true);

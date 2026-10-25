@@ -4,66 +4,18 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 
-const FAMILIES: [string, string][] = [
-  ['clean', 'Clean / Frisch'],
-  ['gourmand', 'Gourmand / Süß'],
-  ['woody', 'Woody / Holzig'],
-  ['floral', 'Floral / Blumig']
-];
-const GENDERS = ['Women', 'Men', 'Unisex'];
-const SEASONS = ['Frühling', 'Sommer', 'Herbst/Winter', 'Winter', 'Ganzjährig'];
-const OCCASIONS = ['Alltag', 'Büro', 'Date', 'Abend'];
-const CONCENTRATIONS = ['EDP', 'EDT', 'Extrait', 'Cologne', 'EDC', 'Spray'];
-const INTENSITIES = ['Leicht', 'Mittel', 'Intensiv'];
+const FAMILIES = [['clean', 'Clean / Frisch'], ['gourmand', 'Gourmand / Süß'], ['woody', 'Woody / Holzig'], ['floral', 'Floral / Blumig']] as const;
+const GENDERS = ['Women', 'Men', 'Unisex'] as const;
+const SEASONS = ['Frühling', 'Sommer', 'Herbst/Winter', 'Winter', 'Ganzjährig'] as const;
+const OCCASIONS = ['Alltag', 'Büro', 'Date', 'Abend'] as const;
+const CONCENTRATIONS = ['EdP', 'EdT', 'EdC', 'Extrait', 'Cologne', 'Spray'] as const;
+const INTENSITIES = ['Zart', 'Ausgewogen', 'Kräftig'] as const;
+const AGE_GROUPS = ['18-25', '25-35', '35-40', 'all'] as const;
+const LIFESTYLES = ['student', 'professional', 'party', 'casual', 'sporty'] as const;
+const TREND_VIBES = ['trendy', 'classic', 'niche', 'popular'] as const;
 
-const emptyForm = {
-  perfume_name: '',
-  brand: '',
-  fragrance_family: 'clean',
-  gender: 'Unisex',
-  price_chf: '',
-  longevity: '',
-  sillage: '',
-  scentmatch_score: '',
-  season: 'Ganzjährig',
-  occasion: 'Alltag',
-  top_notes: '',
-  heart_notes: '',
-  base_notes: '',
-  image_url: '',
-  affiliate_url: '',
-  is_featured: false,
-  // Pro Status Fields
-  concentration: 'EDP',
-  long_description: '',
-  bottle_description: '',
-  intensity: 'Mittel',
-  scent_dna: '',
-  rating: '',
-  // EXTENDED FIELDS
-  launch_year: '',
-  volume_ml: '',
-  niche_vs_mass_market: 'mass_market',
-  awards: '',
-  official_website: '',
-  availability_status: 'available',
-  gender_nuance: '',
-  comparable_fragrances: '',
-  concentration_detail: '',
-  // PROGRESSION FIELD
-  fragrance_progression: ''
-};
-
-function slugify(value: string): string {
-  return value
-    .toLowerCase()
-    .replace(/ä/g, 'ae')
-    .replace(/ö/g, 'oe')
-    .replace(/ü/g, 'ue')
-    .replace(/ß/g, 'ss')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
+const PERFUME_EDIT_FIELDS =
+  'id, perfume_name, brand_id, fragrance_family, gender, price_chf, longevity, sillage, scentmatch_score, season, occasion, top_notes, heart_notes, base_notes, image_url, affiliate_url, concentration, release_year, volume_ml, rating, flacon_description, similar_perfumes, age_group, lifestyle, trend_vibe, gender_nuance, description, created_at';
 
 type AdminPerfume = {
   id: string;
@@ -72,8 +24,8 @@ type AdminPerfume = {
   fragrance_family: string | null;
   gender: string | null;
   price_chf: number | null;
-  longevity: number | null;
-  sillage: number | null;
+  longevity: string | null;
+  sillage: string | null;
   scentmatch_score: number | null;
   season: string | null;
   occasion: string | null;
@@ -82,23 +34,59 @@ type AdminPerfume = {
   base_notes: string[] | null;
   image_url: string | null;
   affiliate_url: string | null;
-  is_featured?: boolean | null;
-  // Pro Status
   concentration?: string | null;
-  long_description?: string | null;
-  bottle_description?: string | null;
-  intensity?: string | null;
-  scent_dna?: string[] | null;
+  release_year?: number | null;
+  volume_ml?: number | null;
   rating?: number | null;
+  flacon_description?: string | null;
+  similar_perfumes?: string[] | null;
+  age_group?: string | null;
+  lifestyle?: string | null;
+  trend_vibe?: string | null;
+  gender_nuance?: string | null;
+  description?: string | null;
 };
 
-const PERFUME_EDIT_FIELDS =
-  'id, perfume_name, brand_id, fragrance_family, gender, price_chf, longevity, sillage, scentmatch_score, season, occasion, top_notes, heart_notes, base_notes, image_url, affiliate_url, is_featured, concentration, long_description, bottle_description, intensity, scent_dna, rating';
+const emptyForm = {
+  perfume_name: '',
+  brand: '',
+  fragrance_family: 'clean' as const,
+  gender: 'Unisex' as const,
+  price_chf: '',
+  longevity: 'Ausgewogen',
+  sillage: 'Ausgewogen',
+  scentmatch_score: '',
+  season: 'Ganzjährig' as const,
+  occasion: 'Alltag' as const,
+  top_notes: '',
+  heart_notes: '',
+  base_notes: '',
+  image_url: '',
+  affiliate_url: '',
+  concentration: 'EdP' as const,
+  release_year: '',
+  volume_ml: '',
+  rating: '',
+  flacon_description: '',
+  similar_perfumes: '',
+  age_group: 'all' as const,
+  lifestyle: 'casual' as const,
+  trend_vibe: 'classic' as const,
+  gender_nuance: '',
+  description: ''
+};
+
+function slugify(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
 
 export default function AdminPage() {
   const [checking, setChecking] = useState(true);
   const [session, setSession] = useState<any>(null);
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [authError, setAuthError] = useState('');
@@ -110,11 +98,9 @@ export default function AdminPage() {
   const [form, setForm] = useState({ ...emptyForm });
   const [message, setMessage] = useState('');
   const [saving, setSaving] = useState(false);
+  const [activeTab, setActiveTab] = useState<'basic' | 'notes' | 'details' | 'media' | 'advanced'>('basic');
   const [deletingAll, setDeletingAll] = useState(false);
-  const [deletingBrands, setDeletingBrands] = useState(false);
-  const [researching, setResearching] = useState(false);
-  const [researchBrand, setResearchBrand] = useState('');
-  const [researchName, setResearchName] = useState('');
+  const [deletingBrands, setDeleteingBrands] = useState(false);
 
   useEffect(() => {
     if (!isSupabaseConfigured) {
@@ -143,62 +129,9 @@ export default function AdminPage() {
     if (!session) return;
     loadBrands();
     loadPerfumes();
-
-    // Load research data if coming from research page
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('research') === 'true') {
-      const stored = sessionStorage.getItem('researchData');
-      if (stored) {
-        try {
-          const data = JSON.parse(stored);
-          setForm({
-            perfume_name: data.perfume_name || '',
-            brand: data.brand || '',
-            fragrance_family: data.fragrance_family || 'clean',
-            gender: data.gender || 'Unisex',
-            price_chf: data.price_chf || '',
-            longevity: data.longevity?.toString() || '',
-            sillage: data.sillage?.toString() || '',
-            scentmatch_score: data.scentmatch_score?.toString() || '',
-            season: data.season || 'Ganzjährig',
-            occasion: data.occasion || 'Alltag',
-            top_notes: data.top_notes || '',
-            heart_notes: data.heart_notes || '',
-            base_notes: data.base_notes || '',
-            image_url: data.image_url || '',
-            affiliate_url: data.affiliate_url || '',
-            is_featured: data.is_featured || false,
-            // Pro fields from research
-            concentration: data.concentration || 'EDP',
-            long_description: data.long_description || '',
-            bottle_description: data.bottle_description || '',
-            intensity: data.intensity || 'Mittel',
-            scent_dna: (data.scent_dna && Array.isArray(data.scent_dna)) ? data.scent_dna.join(', ') : '',
-            rating: data.rating?.toString() || '',
-            // EXTENDED FIELDS
-            launch_year: data.launch_year?.toString() || '',
-            volume_ml: data.volume_ml?.toString() || '',
-            niche_vs_mass_market: data.niche_vs_mass_market || 'mass_market',
-            awards: data.awards || '',
-            official_website: data.official_website || '',
-            availability_status: data.availability_status || 'available',
-            gender_nuance: data.gender_nuance || '',
-            comparable_fragrances: data.comparable_fragrances || '',
-            concentration_detail: data.concentration_detail || '',
-            fragrance_progression: data.fragrance_progression || ''
-          });
-          setMessage(`✅ Daten recherchiert! Überprüfe die Werte und speichere.`);
-          sessionStorage.removeItem('researchData');
-          // Scroll to form
-          if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
-        } catch (err) {
-          console.error('Error loading research data:', err);
-        }
-      }
-    }
   }, [session]);
 
-  function setField(key: keyof typeof emptyForm, value: string | boolean) {
+  function setField(key: keyof typeof emptyForm, value: any) {
     setForm(prev => ({ ...prev, [key]: value }));
   }
 
@@ -209,46 +142,39 @@ export default function AdminPage() {
     setForm({
       perfume_name: p.perfume_name || '',
       brand: brands.find(b => b.id === p.brand_id)?.name || '',
-      fragrance_family: p.fragrance_family || 'clean',
-      gender: p.gender || 'Unisex',
+      fragrance_family: (p.fragrance_family || 'clean') as any,
+      gender: (p.gender || 'Unisex') as any,
       price_chf: p.price_chf?.toString() ?? '',
-      longevity: p.longevity?.toString() ?? '',
-      sillage: p.sillage?.toString() ?? '',
+      longevity: p.longevity || 'Ausgewogen',
+      sillage: p.sillage || 'Ausgewogen',
       scentmatch_score: p.scentmatch_score?.toString() ?? '',
-      season: p.season || 'Ganzjährig',
-      occasion: p.occasion || 'Alltag',
+      season: (p.season || 'Ganzjährig') as any,
+      occasion: (p.occasion || 'Alltag') as any,
       top_notes: (p.top_notes || []).join(', '),
       heart_notes: (p.heart_notes || []).join(', '),
       base_notes: (p.base_notes || []).join(', '),
       image_url: p.image_url || '',
       affiliate_url: p.affiliate_url || '',
-      is_featured: p.is_featured || false,
-      concentration: p.concentration || 'EDP',
-      long_description: p.long_description || '',
-      bottle_description: p.bottle_description || '',
-      intensity: p.intensity || 'Mittel',
-      scent_dna: (p.scent_dna || []).join(', '),
+      concentration: (p.concentration || 'EdP') as any,
+      release_year: p.release_year?.toString() ?? '',
+      volume_ml: p.volume_ml?.toString() ?? '',
       rating: p.rating?.toString() ?? '',
-      // EXTENDED FIELDS
-      launch_year: (p as any).launch_year?.toString() ?? '',
-      volume_ml: (p as any).volume_ml?.toString() ?? '',
-      niche_vs_mass_market: (p as any).niche_vs_mass_market || 'mass_market',
-      awards: (p as any).awards || '',
-      official_website: (p as any).official_website || '',
-      availability_status: (p as any).availability_status || 'available',
-      gender_nuance: (p as any).gender_nuance || '',
-      comparable_fragrances: (p as any).comparable_fragrances || '',
-      concentration_detail: (p as any).concentration_detail || '',
-      fragrance_progression: (p as any).fragrance_progression || ''
+      flacon_description: p.flacon_description || '',
+      similar_perfumes: (p.similar_perfumes || []).join(', '),
+      age_group: (p.age_group || 'all') as any,
+      lifestyle: (p.lifestyle || 'casual') as any,
+      trend_vibe: (p.trend_vibe || 'classic') as any,
+      gender_nuance: p.gender_nuance || '',
+      description: p.description || ''
     });
-    setMessage('');
-    if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
+    setActiveTab('basic');
   }
 
   function cancelEdit() {
     setEditingId(null);
     setForm({ ...emptyForm });
     setMessage('');
+    setActiveTab('basic');
   }
 
   async function login(e: React.FormEvent) {
@@ -263,12 +189,8 @@ export default function AdminPage() {
   }
 
   async function deleteAllPerfumes() {
-    if (!confirm('⚠️ ACHTUNG! Alle Düfte werden gelöscht! Das kann nicht rückgängig gemacht werden. Bist du sicher?')) {
-      return;
-    }
-    if (!confirm('Zweite Bestätigung: Alle Düfte WIRKLICH löschen?')) {
-      return;
-    }
+    if (!confirm('⚠️ ACHTUNG! Alle Düfte löschen?')) return;
+    if (!confirm('Zweite Bestätigung erforderlich!')) return;
 
     setDeletingAll(true);
     try {
@@ -277,140 +199,50 @@ export default function AdminPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ confirm: 'DELETE_ALL_PERFUMES' })
       });
-
       if (response.ok) {
-        setMessage('✅ Alle Düfte wurden gelöscht!');
+        setMessage('✅ Alle Düfte gelöscht!');
         setTimeout(() => window.location.reload(), 1000);
       } else {
-        const data = await response.json();
-        setMessage(`Fehler: ${data.error}`);
+        setMessage('Fehler beim Löschen');
       }
     } catch (error: any) {
       setMessage(`Fehler: ${error.message}`);
-    } finally {
-      setDeletingAll(false);
     }
+    setDeletingAll(false);
   }
 
   async function deleteAllBrands() {
-    if (!confirm('⚠️ ACHTUNG! Alle Marken werden gelöscht! Das kann nicht rückgängig gemacht werden. Bist du sicher?')) {
-      return;
-    }
-    if (!confirm('Zweite Bestätigung: Alle Marken WIRKLICH löschen?')) {
-      return;
-    }
+    if (!confirm('⚠️ ACHTUNG! Alle Marken löschen?')) return;
+    if (!confirm('Zweite Bestätigung erforderlich!')) return;
 
-    setDeletingBrands(true);
+    setDeleteingBrands(true);
     try {
       const response = await fetch('/api/admin/delete-all-brands', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ confirm: 'DELETE_ALL_BRANDS' })
       });
-
       if (response.ok) {
-        setMessage('✅ Alle Marken wurden gelöscht!');
+        setMessage('✅ Alle Marken gelöscht!');
         setTimeout(() => window.location.reload(), 1000);
       } else {
-        const data = await response.json();
-        setMessage(`Fehler: ${data.error}`);
+        setMessage('Fehler beim Löschen');
       }
     } catch (error: any) {
       setMessage(`Fehler: ${error.message}`);
-    } finally {
-      setDeletingBrands(false);
     }
-  }
-
-  async function resetPassword() {
-    setAuthError('');
-    setResetSent(false);
-    if (!email) {
-      setAuthError('Bitte zuerst deine E-Mail oben eingeben.');
-      return;
-    }
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/admin/reset`
-    });
-    if (error) setAuthError(error.message);
-    else setResetSent(true);
-  }
-
-  async function autoResearch() {
-    if (!researchBrand.trim() || !researchName.trim()) {
-      setMessage('Bitte Marke und Duftname eingeben');
-      return;
-    }
-
-    setResearching(true);
-    setMessage('');
-
-    try {
-      const res = await fetch('/api/research', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ brand: researchBrand.trim(), name: researchName.trim() })
-      });
-
-      const data = await res.json();
-
-      if (!res.ok || data.error) {
-        setMessage(`Recherche-Fehler: ${data.error || 'unbekannt'}`);
-        setResearching(false);
-        return;
-      }
-
-      // Füllt die Form-Felder mit den recherchierten Daten (ALLE Felder!)
-      setForm(prev => ({
-        ...prev,
-        perfume_name: data.perfume_name || prev.perfume_name,
-        brand: data.brand || prev.brand,
-        fragrance_family: data.fragrance_family || prev.fragrance_family,
-        gender: data.gender || prev.gender,
-        price_chf: data.price_chf ? String(data.price_chf) : prev.price_chf,
-        longevity: data.longevity ? String(data.longevity) : prev.longevity,
-        sillage: data.sillage ? String(data.sillage) : prev.sillage,
-        season: data.season || prev.season,
-        occasion: data.occasion || prev.occasion,
-        top_notes: data.top_notes || prev.top_notes,
-        heart_notes: data.heart_notes || prev.heart_notes,
-        base_notes: data.base_notes || prev.base_notes,
-        concentration: data.concentration || prev.concentration,
-        long_description: data.long_description || prev.long_description,
-        bottle_description: data.bottle_description || prev.bottle_description,
-        intensity: data.intensity || prev.intensity,
-        scent_dna: data.scent_dna ? data.scent_dna.join(', ') : prev.scent_dna,
-        rating: data.rating ? String(data.rating) : prev.rating,
-        // EXTENDED FIELDS
-        launch_year: data.launch_year ? String(data.launch_year) : prev.launch_year,
-        volume_ml: data.volume_ml ? String(data.volume_ml) : prev.volume_ml,
-        niche_vs_mass_market: data.niche_vs_mass_market || prev.niche_vs_mass_market,
-        awards: data.awards || prev.awards,
-        official_website: data.official_website || prev.official_website,
-        availability_status: data.availability_status || prev.availability_status,
-        gender_nuance: data.gender_nuance || prev.gender_nuance,
-        comparable_fragrances: data.comparable_fragrances || prev.comparable_fragrances,
-        concentration_detail: data.concentration_detail || prev.concentration_detail,
-        fragrance_progression: data.fragrance_progression || prev.fragrance_progression
-      }));
-
-      setMessage(`✓ Auto-Recherchiere erfolgreich! ${data.perfume_name || 'Duft'} gefunden.`);
-      setResearchBrand('');
-      setResearchName('');
-    } catch (err: any) {
-      setMessage(`Fehler: ${err?.message || 'unbekannt'}`);
-    }
-    setResearching(false);
+    setDeleteingBrands(false);
   }
 
   async function save(e: React.FormEvent) {
     e.preventDefault();
     setSaving(true);
     setMessage('');
+
     try {
       const name = form.perfume_name.trim();
       if (!name) {
-        setMessage('Bitte einen Duftnamen eingeben.');
+        setMessage('❌ Duftname erforderlich');
         setSaving(false);
         return;
       }
@@ -441,8 +273,8 @@ export default function AdminPage() {
         fragrance_family: form.fragrance_family,
         gender: form.gender,
         price_chf: toNumber(form.price_chf),
-        longevity: toNumber(form.longevity),
-        sillage: toNumber(form.sillage),
+        longevity: form.longevity,
+        sillage: form.sillage,
         scentmatch_score: toNumber(form.scentmatch_score),
         season: form.season,
         occasion: form.occasion,
@@ -451,57 +283,42 @@ export default function AdminPage() {
         base_notes: toArray(form.base_notes),
         image_url: form.image_url.trim() || null,
         affiliate_url: form.affiliate_url.trim() || null,
-        is_featured: form.is_featured,
-        // Pro Status Fields
-        concentration: form.concentration || 'EDP',
-        long_description: form.long_description.trim() || null,
-        bottle_description: form.bottle_description.trim() || null,
-        intensity: form.intensity || 'Mittel',
-        scent_dna: form.scent_dna ? toArray(form.scent_dna) : null,
-        rating: toNumber(form.rating)
+        concentration: form.concentration,
+        release_year: toNumber(form.release_year),
+        volume_ml: toNumber(form.volume_ml),
+        rating: toNumber(form.rating),
+        flacon_description: form.flacon_description.trim() || null,
+        similar_perfumes: toArray(form.similar_perfumes),
+        age_group: form.age_group,
+        lifestyle: form.lifestyle,
+        trend_vibe: form.trend_vibe,
+        gender_nuance: form.gender_nuance.trim() || null,
+        description: form.description.trim() || null
       };
 
       if (editingId) {
         const { error } = await supabase.from('perfumes').update(fields).eq('id', editingId);
         if (error) throw error;
-        setMessage(`✓ Duft aktualisiert: ${name}`);
+        setMessage(`✅ ${name} aktualisiert`);
       } else {
         const { error } = await supabase.from('perfumes').insert({ ...fields, slug: slugify(name) });
         if (error) throw error;
-        setMessage(`✓ Duft gespeichert: ${name}`);
+        setMessage(`✅ ${name} gespeichert`);
       }
 
       setEditingId(null);
       setForm({ ...emptyForm });
+      setActiveTab('basic');
       await loadBrands();
       await loadPerfumes();
     } catch (err: any) {
-      setMessage(`Fehler: ${err?.message || 'unbekannt'}`);
+      setMessage(`❌ ${err?.message || 'Fehler'}`);
     }
     setSaving(false);
   }
 
-  if (checking) {
-    return (
-      <main>
-        <div className="container">
-          <p className="small">Lädt…</p>
-        </div>
-      </main>
-    );
-  }
-
-  if (!isSupabaseConfigured) {
-    return (
-      <main>
-        <div className="container">
-          <h1>Admin</h1>
-          <p className="lead">Supabase ist noch nicht konfiguriert. Bitte die Umgebungsvariablen in Vercel setzen.</p>
-          <Link className="button" href="/">Zurück zur Startseite</Link>
-        </div>
-      </main>
-    );
-  }
+  if (checking) return <main><div className="container"><p>Lädt…</p></div></main>;
+  if (!isSupabaseConfigured) return <main><div className="container"><h1>Admin</h1><p>Supabase nicht konfiguriert</p></div></main>;
 
   if (!session) {
     return (
@@ -509,11 +326,10 @@ export default function AdminPage() {
         <div className="container">
           <nav className="nav">
             <Link className="logo" href="/">Auressa</Link>
-            <div className="badge">Admin-Login</div>
+            <div className="badge">Admin</div>
           </nav>
           <section className="section card" style={{ maxWidth: 460 }}>
-            <h2>Anmelden</h2>
-            <p className="small">Nur für Administratoren. Melde dich mit deinem Supabase-Login an.</p>
+            <h2>🔐 Admin-Login</h2>
             <form onSubmit={login}>
               <div className="field">
                 <label>E-Mail</label>
@@ -523,11 +339,11 @@ export default function AdminPage() {
                 <label>Passwort</label>
                 <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
               </div>
-              {authError && <p className="admin-msg" style={{ color: '#b3261e' }}>{authError}</p>}
-              {resetSent && <p className="admin-msg" style={{ color: '#1b7a3d' }}>E-Mail zum Zurücksetzen wurde gesendet. Schau in dein Postfach (auch im Spam-Ordner).</p>}
+              {authError && <p style={{ color: '#b3261e' }}>❌ {authError}</p>}
+              {resetSent && <p style={{ color: '#1b7a3d' }}>✅ Link zum Zurücksetzen gesendet</p>}
               <button className="button" type="submit">Anmelden</button>
             </form>
-            <button type="button" onClick={resetPassword} className="link-button">Passwort vergessen?</button>
+            <button type="button" onClick={() => resetPassword()} className="link-button" style={{ marginTop: 15 }}>Passwort vergessen?</button>
           </section>
         </div>
       </main>
@@ -542,342 +358,135 @@ export default function AdminPage() {
           <button className="button secondary" onClick={logout}>Abmelden</button>
         </nav>
 
-        <section className="section card" style={{ backgroundColor: '#f5f1e8', borderLeft: '4px solid #d4af37' }}>
-          <h2>🔬 Intelligente Duft-Recherche</h2>
-          <p className="small">
-            Gib Brand und Duftname ein → Claude recherchiert automatisch alle Daten von Fragrantica, Parfumo, Douglas, Notino und anderen Quellen und füllt alle Felder!
-          </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr auto', gap: 12, alignItems: 'flex-end', maxWidth: '600px' }}>
-            <div className="field">
-              <label htmlFor="research-brand">Brand / Marke *</label>
-              <input
-                id="research-brand"
-                type="text"
-                value={researchBrand}
-                onChange={e => setResearchBrand(e.target.value)}
-                placeholder="z.B. Dolce & Gabbana"
-              />
-            </div>
-            <div className="field">
-              <label htmlFor="research-name">Duft Name *</label>
-              <input
-                id="research-name"
-                type="text"
-                value={researchName}
-                onChange={e => setResearchName(e.target.value)}
-                placeholder="z.B. Light Blue"
-              />
-            </div>
+        {/* TAB-NAVIGATION */}
+        <div style={{
+          display: 'flex',
+          gap: 10,
+          marginBottom: 30,
+          borderBottom: '2px solid #D4AF37',
+          paddingBottom: 0,
+          overflowX: 'auto'
+        }}>
+          {['basic', 'notes', 'details', 'media', 'advanced'].map(tab => (
             <button
-              className="button"
-              type="button"
-              onClick={autoResearch}
-              disabled={researching || !researchBrand.trim() || !researchName.trim()}
+              key={tab}
+              onClick={() => setActiveTab(tab as any)}
+              style={{
+                padding: '10px 20px',
+                background: activeTab === tab ? '#D4AF37' : 'transparent',
+                color: activeTab === tab ? '#1F1410' : '#6B5344',
+                border: 'none',
+                cursor: 'pointer',
+                fontWeight: activeTab === tab ? '700' : '400',
+                textTransform: 'uppercase',
+                fontSize: '12px',
+                letterSpacing: '0.1em',
+                borderBottom: activeTab === tab ? '3px solid #D4AF37' : 'none'
+              }}
             >
-              {researching ? '⏳ Läuft...' : '🔍 Recherchieren'}
+              {['Basis', 'Noten', 'Details', 'Media', 'Advanced'][['basic', 'notes', 'details', 'media', 'advanced'].indexOf(tab)]}
             </button>
-          </div>
-        </section>
+          ))}
+        </div>
 
         <section className="section card">
-          <h2>Bestehenden Duft bearbeiten</h2>
-          <p className="small">
-            Wähle einen Duft aus, um seine Daten zu prüfen und zu korrigieren. Der Link (slug) und
-            eine eventuell vorhandene eigene Beschreibung bleiben dabei erhalten.
-          </p>
+          <h2>{editingId ? '✏️ Duft bearbeiten' : '➕ Neuen Duft hinzufügen'}</h2>
           <select
             className="search"
             value={editingId || ''}
             onChange={e => (e.target.value ? startEdit(e.target.value) : cancelEdit())}
+            style={{ marginBottom: 20 }}
           >
-            <option value="">– Duft zum Bearbeiten wählen ({perfumes.length}) –</option>
+            <option value="">– Duft bearbeiten ({perfumes.length}) –</option>
             {perfumes.map(p => (
-              <option value={p.id} key={p.id}>
-                {p.perfume_name}
-              </option>
+              <option value={p.id} key={p.id}>{p.perfume_name}</option>
             ))}
           </select>
-        </section>
-
-        <section className="section card">
-          <h2>{editingId ? 'Duft bearbeiten' : 'Neuen Duft hinzufügen'}</h2>
-          <p className="small">
-            Mehrere Noten mit Komma trennen (z. B. „Bergamotte, Zitrone, Neroli"). Pflichtfeld ist nur der Name.
-            {editingId && ' Du bearbeitest gerade einen bestehenden Duft.'}
-          </p>
 
           <form onSubmit={save}>
-            <div className="admin-grid">
-              <div className="field">
-                <label>Duftname *</label>
-                <input value={form.perfume_name} onChange={e => setField('perfume_name', e.target.value)} required />
+            {/* TAB: BASIC */}
+            {activeTab === 'basic' && (
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15 }}>
+                <div className="field"><label>Duftname *</label><input value={form.perfume_name} onChange={e => setField('perfume_name', e.target.value)} required /></div>
+                <div className="field"><label>Marke</label><input list="brand-list" value={form.brand} onChange={e => setField('brand', e.target.value)} /><datalist id="brand-list">{brands.map(b => <option value={b.name} key={b.id} />)}</datalist></div>
+                <div className="field"><label>Duftfamilie</label><select value={form.fragrance_family} onChange={e => setField('fragrance_family', e.target.value)}>{FAMILIES.map(([k, v]) => <option value={k} key={k}>{v}</option>)}</select></div>
+                <div className="field"><label>Geschlecht</label><select value={form.gender} onChange={e => setField('gender', e.target.value)}>{GENDERS.map(g => <option value={g} key={g}>{g}</option>)}</select></div>
               </div>
-              <div className="field">
-                <label>Marke</label>
-                <input list="brand-list" value={form.brand} onChange={e => setField('brand', e.target.value)} placeholder="bestehende wählen oder neue tippen" />
-                <datalist id="brand-list">
-                  {brands.map(b => <option value={b.name} key={b.id} />)}
-                </datalist>
+            )}
+
+            {/* TAB: NOTES */}
+            {activeTab === 'notes' && (
+              <div>
+                <div className="field"><label>📌 Kopfnoten (Komma-getrennt)</label><input value={form.top_notes} onChange={e => setField('top_notes', e.target.value)} placeholder="Bergamotte, Zitrone, Neroli" /></div>
+                <div className="field"><label>💚 Herznoten (Komma-getrennt)</label><input value={form.heart_notes} onChange={e => setField('heart_notes', e.target.value)} placeholder="Jasmin, Rose, Ylang-Ylang" /></div>
+                <div className="field"><label>🌳 Basisnoten (Komma-getrennt)</label><input value={form.base_notes} onChange={e => setField('base_notes', e.target.value)} placeholder="Sandelholz, Moschus, Vanille" /></div>
               </div>
-              <div className="field">
-                <label>Duftfamilie</label>
-                <select value={form.fragrance_family} onChange={e => setField('fragrance_family', e.target.value)}>
-                  {FAMILIES.map(([code, label]) => <option value={code} key={code}>{label}</option>)}
-                </select>
+            )}
+
+            {/* TAB: DETAILS */}
+            {activeTab === 'details' && (
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15 }}>
+                <div className="field"><label>Preis (CHF)</label><input type="number" value={form.price_chf} onChange={e => setField('price_chf', e.target.value)} /></div>
+                <div className="field"><label>Auressa-Score (0-100)</label><input type="number" value={form.scentmatch_score} onChange={e => setField('scentmatch_score', e.target.value)} /></div>
+                <div className="field"><label>Haltbarkeit</label><select value={form.longevity} onChange={e => setField('longevity', e.target.value)}>{INTENSITIES.map(i => <option value={i} key={i}>{i}</option>)}</select></div>
+                <div className="field"><label>Sillage</label><select value={form.sillage} onChange={e => setField('sillage', e.target.value)}>{INTENSITIES.map(i => <option value={i} key={i}>{i}</option>)}</select></div>
+                <div className="field"><label>Saison</label><select value={form.season} onChange={e => setField('season', e.target.value)}>{SEASONS.map(s => <option value={s} key={s}>{s}</option>)}</select></div>
+                <div className="field"><label>Anlass</label><select value={form.occasion} onChange={e => setField('occasion', e.target.value)}>{OCCASIONS.map(o => <option value={o} key={o}>{o}</option>)}</select></div>
               </div>
-              <div className="field">
-                <label>Geschlecht</label>
-                <select value={form.gender} onChange={e => setField('gender', e.target.value)}>
-                  {GENDERS.map(g => <option value={g} key={g}>{g}</option>)}
-                </select>
+            )}
+
+            {/* TAB: MEDIA */}
+            {activeTab === 'media' && (
+              <div>
+                <div className="field"><label>🖼️ Bild-URL</label><input value={form.image_url} onChange={e => setField('image_url', e.target.value)} placeholder="https://..." /></div>
+                <div className="field"><label>🛒 Affiliate-Link</label><input value={form.affiliate_url} onChange={e => setField('affiliate_url', e.target.value)} placeholder="https://www.notino.ch/..." /></div>
+                <div className="field"><label>📝 Beschreibung</label><textarea value={form.description} onChange={e => setField('description', e.target.value)} placeholder="Ausführliche Duft-Beschreibung..." style={{ minHeight: 100 }} /></div>
               </div>
-              <div className="field">
-                <label>Preis (CHF)</label>
-                <input type="number" value={form.price_chf} onChange={e => setField('price_chf', e.target.value)} />
+            )}
+
+            {/* TAB: ADVANCED */}
+            {activeTab === 'advanced' && (
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15 }}>
+                <div className="field"><label>Konzentration</label><select value={form.concentration} onChange={e => setField('concentration', e.target.value)}>{CONCENTRATIONS.map(c => <option value={c} key={c}>{c}</option>)}</select></div>
+                <div className="field"><label>Jahr</label><input type="number" min="1900" max={new Date().getFullYear()} value={form.release_year} onChange={e => setField('release_year', e.target.value)} /></div>
+                <div className="field"><label>Volumen (ml)</label><input type="number" min="1" max="500" value={form.volume_ml} onChange={e => setField('volume_ml', e.target.value)} /></div>
+                <div className="field"><label>Bewertung (0-10)</label><input type="number" step="0.1" min="0" max="10" value={form.rating} onChange={e => setField('rating', e.target.value)} /></div>
+                <div className="field"><label>Altersgruppe</label><select value={form.age_group} onChange={e => setField('age_group', e.target.value)}>{AGE_GROUPS.map(a => <option value={a} key={a}>{a}</option>)}</select></div>
+                <div className="field"><label>Lifestyle</label><select value={form.lifestyle} onChange={e => setField('lifestyle', e.target.value)}>{LIFESTYLES.map(l => <option value={l} key={l}>{l}</option>)}</select></div>
+                <div className="field"><label>Trend-Vibe</label><select value={form.trend_vibe} onChange={e => setField('trend_vibe', e.target.value)}>{TREND_VIBES.map(t => <option value={t} key={t}>{t}</option>)}</select></div>
+                <div className="field"><label>Gender-Nuance</label><input value={form.gender_nuance} onChange={e => setField('gender_nuance', e.target.value)} placeholder="masculine, feminine, androgynous" /></div>
+                <div style={{ gridColumn: '1 / -1' }} className="field"><label>Flakon-Beschreibung</label><textarea value={form.flacon_description} onChange={e => setField('flacon_description', e.target.value)} placeholder="Beschreibung des Flakons..." style={{ minHeight: 80 }} /></div>
+                <div style={{ gridColumn: '1 / -1' }} className="field"><label>Ähnliche Düfte (Komma-getrennt)</label><input value={form.similar_perfumes} onChange={e => setField('similar_perfumes', e.target.value)} placeholder="Aventus, Sauvage, Bleu de Chanel" /></div>
               </div>
-              <div className="field">
-                <label>Auressa-Score (0–100)</label>
-                <input type="number" value={form.scentmatch_score} onChange={e => setField('scentmatch_score', e.target.value)} />
-              </div>
-              <div className="field">
-                <label>Haltbarkeit (1–10)</label>
-                <input type="number" value={form.longevity} onChange={e => setField('longevity', e.target.value)} />
-              </div>
-              <div className="field">
-                <label>Sillage (1–10)</label>
-                <input type="number" value={form.sillage} onChange={e => setField('sillage', e.target.value)} />
-              </div>
-              <div className="field">
-                <label>Saison</label>
-                <select value={form.season} onChange={e => setField('season', e.target.value)}>
-                  {SEASONS.map(s => <option value={s} key={s}>{s}</option>)}
-                </select>
-              </div>
-              <div className="field">
-                <label>Anlass</label>
-                <select value={form.occasion} onChange={e => setField('occasion', e.target.value)}>
-                  {OCCASIONS.map(o => <option value={o} key={o}>{o}</option>)}
-                </select>
-              </div>
+            )}
+
+            {message && <p style={{ color: message.startsWith('✅') ? '#1b7a3d' : '#b3261e', marginTop: 20 }}>{message}</p>}
+
+            <div className="cta" style={{ marginTop: 30 }}>
+              <button className="button" type="submit" disabled={saving}>{saving ? '⏳ Speichert...' : editingId ? '💾 Speichern' : '➕ Hinzufügen'}</button>
+              {editingId && <button className="button secondary" type="button" onClick={cancelEdit} disabled={saving}>❌ Abbrechen</button>}
             </div>
 
-            <div className="field">
-              <label>Kopfnoten (mit Komma getrennt)</label>
-              <input value={form.top_notes} onChange={e => setField('top_notes', e.target.value)} />
-            </div>
-            <div className="field">
-              <label>Herznoten (mit Komma getrennt)</label>
-              <input value={form.heart_notes} onChange={e => setField('heart_notes', e.target.value)} />
-            </div>
-            <div className="field">
-              <label>Basisnoten (mit Komma getrennt)</label>
-              <input value={form.base_notes} onChange={e => setField('base_notes', e.target.value)} />
-            </div>
-            <div className="field">
-              <label>Bild-Link (URL, optional)</label>
-              <input value={form.image_url} onChange={e => setField('image_url', e.target.value)} placeholder="https://… (nur Bilder, die du verwenden darfst)" />
-            </div>
-            <div className="field">
-              <label>Affiliate-Link / Shop-URL (optional)</label>
-              <input value={form.affiliate_url} onChange={e => setField('affiliate_url', e.target.value)} placeholder="https://… (dein persönlicher Partner-Link zum Shop)" />
-            </div>
-
-            <div className="field" style={{ marginTop: 20 }}>
-              <label style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer' }}>
-                <input
-                  type="checkbox"
-                  checked={form.is_featured}
-                  onChange={e => setField('is_featured', e.target.checked ? true : false)}
-                  style={{ width: 18, height: 18, cursor: 'pointer' }}
-                />
-                <span>🌟 Auf der Startseite hervorheben (Manual Featured)</span>
-              </label>
-            </div>
-
-            {/* Pro Status Fields */}
-            <hr style={{ margin: '30px 0', border: 'none', borderTop: '2px solid #D4AF37' }} />
-            <h3 style={{ color: '#D4AF37', marginBottom: 15 }}>⭐ Pro-Status Felder (optional aber empfohlen)</h3>
-
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15 }}>
-              <div className="field">
-                <label>Konzentration</label>
-                <select value={form.concentration} onChange={e => setField('concentration', e.target.value)}>
-                  {CONCENTRATIONS.map(c => <option value={c} key={c}>{c}</option>)}
-                </select>
-              </div>
-              <div className="field">
-                <label>Intensität</label>
-                <select value={form.intensity} onChange={e => setField('intensity', e.target.value)}>
-                  {INTENSITIES.map(i => <option value={i} key={i}>{i}</option>)}
-                </select>
-              </div>
-            </div>
-
-            <div className="field">
-              <label>Bewertung (0-10, z.B. 7.5)</label>
-              <input type="number" step="0.1" min="0" max="10" value={form.rating} onChange={e => setField('rating', e.target.value)} placeholder="7.5" />
-            </div>
-
-            <div className="field">
-              <label>Ausführliche Beschreibung (3-4 Sätze, deutsch, poetic)</label>
-              <textarea
-                value={form.long_description}
-                onChange={e => setField('long_description', e.target.value)}
-                placeholder="Ein frischer Duft, der Eleganz und Modernität vereint. Die Kopfnoten öffnen mit zitronigen Akkorden, während die Herznoten subtile Blütennoten zeigen..."
-                style={{ minHeight: 100 }}
-              />
-            </div>
-
-            <div className="field">
-              <label>Flakon-Beschreibung (Aussehen, Design)</label>
-              <textarea
-                value={form.bottle_description}
-                onChange={e => setField('bottle_description', e.target.value)}
-                placeholder="Ein klassischer Flakon mit klarem, rechteckigem Design. Das durchsichtige Glas zeigt die helle Flüssigkeit. Die weiße Kappe kontrastiert elegant..."
-                style={{ minHeight: 80 }}
-              />
-            </div>
-
-            <div className="field">
-              <label>Duft-DNA (3 ähnliche Düfte, Komma-getrennt)</label>
-              <input
-                value={form.scent_dna}
-                onChange={e => setField('scent_dna', e.target.value)}
-                placeholder="Bleu de Chanel, Sauvage, Acqua di Parma Colonia"
-              />
-            </div>
-
-            {/* EXTENDED FIELDS */}
-            <hr style={{ margin: '30px 0', border: 'none', borderTop: '2px solid #D4AF37' }} />
-            <h3 style={{ color: '#D4AF37', marginBottom: 15 }}>🔬 Erweiterte Recherche-Felder</h3>
-
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15 }}>
-              <div className="field">
-                <label>Launch-Jahr (Erscheinungsjahr)</label>
-                <input type="number" min="1900" max={new Date().getFullYear()} value={form.launch_year} onChange={e => setField('launch_year', e.target.value)} placeholder="2001" />
-              </div>
-              <div className="field">
-                <label>Volumen (ml)</label>
-                <input type="number" min="1" max="500" value={form.volume_ml} onChange={e => setField('volume_ml', e.target.value)} placeholder="100" />
-              </div>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15 }}>
-              <div className="field">
-                <label>Niche vs Mass-Market</label>
-                <select value={form.niche_vs_mass_market} onChange={e => setField('niche_vs_mass_market', e.target.value)}>
-                  <option value="mass_market">Mass-Market</option>
-                  <option value="prestige">Prestige</option>
-                  <option value="niche">Nische</option>
-                  <option value="direct_distribution">Direct Distribution</option>
-                </select>
-              </div>
-              <div className="field">
-                <label>Verfügbarkeitsstatus</label>
-                <select value={form.availability_status} onChange={e => setField('availability_status', e.target.value)}>
-                  <option value="available">Verfügbar</option>
-                  <option value="discontinued">Eingestellt</option>
-                  <option value="limited_edition">Limited Edition</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="field">
-              <label>Auszeichnungen / Awards (Komma-getrennt)</label>
-              <input value={form.awards} onChange={e => setField('awards', e.target.value)} placeholder="Best Fragrance 2020, Fragrantica Award" />
-            </div>
-
-            <div className="field">
-              <label>Offizielle Website</label>
-              <input value={form.official_website} onChange={e => setField('official_website', e.target.value)} placeholder="https://www.dolceandgabbana.com/..." />
-            </div>
-
-            <div className="field">
-              <label>Geschlechts-Nuance</label>
-              <input value={form.gender_nuance} onChange={e => setField('gender_nuance', e.target.value)} placeholder="masculine, feminine, androgynous" />
-            </div>
-
-            <div className="field">
-              <label>Vergleichbare Düfte (Komma-getrennt)</label>
-              <input value={form.comparable_fragrances} onChange={e => setField('comparable_fragrances', e.target.value)} placeholder="Versace Bright Crystal, Giorgio Armani Acqua di Gioia" />
-            </div>
-
-            <div className="field">
-              <label>Konzentrations-Detail</label>
-              <input value={form.concentration_detail} onChange={e => setField('concentration_detail', e.target.value)} placeholder="z.B. Eau de Toilette Spray 100ml" />
-            </div>
-
-            <div className="field">
-              <label>Duft-Entwicklung / Progression</label>
-              <textarea
-                value={form.fragrance_progression}
-                onChange={e => setField('fragrance_progression', e.target.value)}
-                placeholder="Wie sich der Duft entwickelt: Öffnet frisch mit Zitrone → wird blumig mit Jasmin → trocknet zu holzigen Noten ab. (Opening 0-15min, Heart 15min-4h, Dry-Down 4h+)"
-                style={{ minHeight: 60 }}
-              />
-            </div>
-
-            {message && <p className="admin-msg" style={{ color: message.startsWith('Fehler') ? '#b3261e' : message.startsWith('✅') ? '#1b7a3d' : '#f57c00' }}>{message}</p>}
-
-            <div className="cta">
-              <button className="button" type="submit" disabled={saving}>
-                {saving ? 'Speichert…' : editingId ? 'Änderungen speichern' : 'Duft speichern'}
-              </button>
-              {editingId && (
-                <button className="button secondary" type="button" onClick={cancelEdit} disabled={saving}>
-                  Abbrechen / neuer Duft
-                </button>
-              )}
-            </div>
-
-            <div style={{ marginTop: '40px', paddingTop: '20px', borderTop: '2px solid #ff6b6b' }}>
-              <h3 style={{ color: '#ff6b6b', marginBottom: '10px' }}>🗑️ Datenbank-Verwaltung</h3>
-              <button
-                type="button"
-                onClick={deleteAllPerfumes}
-                disabled={deletingAll}
-                style={{
-                  background: '#ff6b6b',
-                  color: '#fff',
-                  border: 'none',
-                  padding: '10px 20px',
-                  borderRadius: '4px',
-                  cursor: deletingAll ? 'not-allowed' : 'pointer',
-                  fontSize: '14px',
-                  fontWeight: '600'
-                }}
-              >
-                {deletingAll ? 'Löscht alle Düfte…' : '🗑️ Alle Düfte löschen'}
-              </button>
-              <p style={{ fontSize: '12px', color: '#666', marginTop: '8px' }}>
-                ⚠️ Diese Aktion kann NICHT rückgängig gemacht werden!
-              </p>
-
-              <button
-                type="button"
-                onClick={deleteAllBrands}
-                disabled={deletingBrands}
-                style={{
-                  background: '#ff6b6b',
-                  color: '#fff',
-                  border: 'none',
-                  padding: '10px 20px',
-                  borderRadius: '4px',
-                  cursor: deletingBrands ? 'not-allowed' : 'pointer',
-                  fontSize: '14px',
-                  fontWeight: '600',
-                  marginTop: '15px'
-                }}
-              >
-                {deletingBrands ? 'Löscht alle Marken…' : '🗑️ Alle Marken löschen'}
-              </button>
-              <p style={{ fontSize: '12px', color: '#666', marginTop: '8px' }}>
-                ⚠️ Diese Aktion kann NICHT rückgängig gemacht werden!
-              </p>
-            </div>
+            <hr style={{ margin: '40px 0', border: 'none', borderTop: '2px solid #ff6b6b' }} />
+            <h3 style={{ color: '#ff6b6b' }}>🗑️ Datenbank-Verwaltung</h3>
+            <button type="button" onClick={deleteAllPerfumes} disabled={deletingAll} style={{ background: '#ff6b6b', color: '#fff', padding: '10px 20px', border: 'none', borderRadius: '4px', cursor: 'pointer', marginRight: 10 }}>
+              {deletingAll ? '⏳ Löscht...' : '🗑️ Alle Düfte löschen'}
+            </button>
+            <button type="button" onClick={deleteAllBrands} disabled={deletingBrands} style={{ background: '#ff6b6b', color: '#fff', padding: '10px 20px', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+              {deletingBrands ? '⏳ Löscht...' : '🗑️ Alle Marken löschen'}
+            </button>
           </form>
         </section>
       </div>
     </main>
   );
+
+  function resetPassword() {
+    if (!email) {
+      setAuthError('E-Mail eingeben');
+      return;
+    }
+    supabase.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/admin/reset` });
+    setResetSent(true);
+  }
 }

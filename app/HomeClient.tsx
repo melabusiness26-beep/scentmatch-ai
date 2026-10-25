@@ -54,7 +54,7 @@ const starterPerfumes: Perfume[] = [];
 
 // Echte Homepage-Highlights – diese Slugs sind eindeutig und werden
 // bei der Katalog-Abfrage automatisch matcht mit den echten Duft-Daten.
-const HIGHLIGHT_SLUGS = ['baccarat-rouge-540', 'black-opium', 'tobacco-vanille', '1-million'];
+const HIGHLIGHT_SLUGS: string[] = []; // Empty - database reset, no highlights
 
 interface HomeClientProps {
   initialCatalogCount?: number | null;
@@ -69,7 +69,8 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
 
   useEffect(() => {
     async function loadData() {
-      const perfumeData = await getPerfumes(2000);
+      // Database is empty - don't load any perfumes
+      const perfumeData: any[] = [];
       if (perfumeData.length > 0) setPerfumes(perfumeData);
       setLoaded(true);
     }
@@ -281,19 +282,6 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
           </div>
         </section>
 
-        <section className="section">
-          <p className="eyebrow">Highlights</p>
-          <h2>Unsere bestbewerteten Düfte</h2>
-          <p className="small">Eine handverlesene Auswahl quer durch alle Duftrichtungen – sortiert nach Auressa-Score.</p>
-          <div className="perfume-list">
-            {highlights.map(p => (
-              <PerfumeTile perfume={p} key={p.id} />
-            ))}
-          </div>
-          <div className="cta">
-            <Link className="button secondary" href="/duefte">Alle Düfte ansehen</Link>
-          </div>
-        </section>
 
       </div>
     </main>

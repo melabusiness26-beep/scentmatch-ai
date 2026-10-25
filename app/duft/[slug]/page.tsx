@@ -418,29 +418,12 @@ export default async function PerfumeDetailPage({
               {perfume.scentmatch_score != null && (
                 <span className="badge">✨ Auressa {perfume.scentmatch_score}/100</span>
               )}
-            </div>
-          </div>
-
-          <div className="card detail-stats">
-            <h2>Auf einen Blick</h2>
-            <ScoreBar label="Auressa-Score" value={perfume.scentmatch_score} max={100} />
-            <ScoreBar label="Haltbarkeit" value={perfume.longevity} max={10} />
-            <ScoreBar label="Sillage (Projektion)" value={perfume.sillage} max={10} />
-            <StatRow label="Saison" value={perfume.season || 'ganzjährig'} />
-            <StatRow label="Anlass" value={perfume.occasion || 'flexibel'} />
-            <StatRow
-              label="Richtpreis"
-              value={perfume.price_chf != null ? `ca. CHF ${perfume.price_chf}` : '–'}
-            />
-            <div style={{ marginTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <div style={{ marginTop: '32px', display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
               <AffiliateButton perfume={perfume} />
               <AmazonButton perfume={perfume} />
             </div>
-            <SocialShareButtons
-              perfume={perfume}
-              url={`${SITE_URL}/duft/${slug}`}
-            />
-          </div>
+            <SocialShareButtons perfume={perfume} url={`${SITE_URL}/duft/${slug}`} />
+            </div>
         </section>
 
         {(perfume.concentration || perfume.intensity || perfume.bottle_description) && (

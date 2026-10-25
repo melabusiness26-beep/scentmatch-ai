@@ -339,8 +339,8 @@ export default async function PerfumeDetailPage({
         </nav>
 
         <section className="detail-hero">
-          <div style={{ flex: 1 }}>
-            <Cover perfume={perfume} large style={{ borderRadius: '20px', boxShadow: '0 20px 60px rgba(0,0,0,0.15)', width: '100%' }} />
+          <div style={{ flex: 1, borderRadius: '20px', overflow: 'hidden', boxShadow: '0 20px 60px rgba(0,0,0,0.15)' }}>
+            <Cover perfume={perfume} large />
           </div>
 
           <div style={{ flex: 1 }}>

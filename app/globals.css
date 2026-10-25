@@ -183,7 +183,7 @@ h1, h2, h3, h4, .logo, .detail-title, .question { font-family: var(--font-displa
 .badge:hover { background: var(--color-primary-light); border-color: var(--color-primary); }
 .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 36px; align-items: center; }
 h1 { font-size: clamp(44px, 7vw, 88px); line-height: 1.0; margin: 0 0 22px; letter-spacing: -0.01em; color: var(--color-text-primary); }
-p.lead { font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(16px, 4vw, 20px); line-height: 1.55; max-width: 650px; color: var(--color-text-secondary); }
+p.lead { font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(17px, 4vw, 21px); line-height: 1.7; max-width: 700px; color: #444; font-weight: 500; }
 .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
 button, .button { display: inline-block; max-width: 100%; white-space: normal; text-align: center; border: 0; border-radius: 10px; padding: clamp(13px, 3.2vw, 16px) clamp(28px, 5.5vw, 36px); background: var(--color-text-primary); color: white; font-weight: 600; font-size: clamp(14px, 2.4vw, 16px); letter-spacing: .06em; cursor: pointer; text-decoration: none; font-family: var(--font-sans), Arial, sans-serif; transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); outline: 2px solid transparent; outline-offset: 2px; box-shadow: var(--shadow-sm); }
 button:focus, .button:focus { outline: 2px solid var(--color-primary); outline-offset: 2px; }
@@ -200,8 +200,9 @@ button:focus, .button:focus { outline: 2px solid var(--color-primary); outline-o
 .card { background: var(--color-bg-white); border: 1px solid var(--color-border); box-shadow: var(--shadow-lg); border-radius: var(--radius-lg); padding: 40px; backdrop-filter: blur(8px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 .perfume-card { min-height: 420px; display:flex; flex-direction:column; justify-content:space-between; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-md); border: 1px solid var(--color-border); background: var(--color-bg-white); }
 .bottle { height: 240px; border-radius: 28px; background: linear-gradient(135deg, #F5F3FF, #E9E7FF); display: grid; place-items:center; font-size: clamp(48px, 10vw, 72px); }
-.section { margin-top: 96px; }
-.section h2 { font-size: clamp(26px, 3.2vw, 38px); letter-spacing: -0.01em; margin: 0 0 8px; color: var(--color-text-primary); }
+.section { margin-top: 120px; }
+.section.card { background: linear-gradient(135deg, #FFFFFF 0%, #FBF7F2 100%); padding: 50px; border: 2px solid #E8DDCE; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
+.section h2 { font-size: clamp(28px, 4.5vw, 40px); letter-spacing: -0.015em; margin: 0 0 28px; color: #1F1410; font-weight: 700; }
 
 /* Perfume card meta info */
 .tile-meta { display: flex; flex-direction: column; align-items: flex-start; gap: 7px; margin-top: 14px; }
@@ -570,7 +571,9 @@ img.cover { display:block; width:100%; object-fit:cover; height:100%; }
 .breadcrumb a:hover { opacity:1; text-decoration:underline; }
 .breadcrumb-sep { color: var(--color-primary); }
 .breadcrumb-current { color: var(--color-text-primary); font-weight:600; }
-.detail-hero { display:grid; grid-template-columns: 1.3fr .7fr; gap:36px; align-items:start; margin-top:24px; }
+.detail-hero { display:grid; grid-template-columns: 1.1fr .9fr; gap:60px; align-items:start; margin-top:48px; }
+.detail-hero > div:first-child { }
+.detail-hero .cover { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
 
 /* Photo hero banner */
 .media-hero { position:relative; overflow:hidden; margin-top:24px; padding:clamp(44px, 9vw, 84px) clamp(28px, 7vw, 68px); border-radius:20px; color: white; background-image: linear-gradient(125deg, rgba(17,24,39,.85) 0%, rgba(17,24,39,.6) 50%, rgba(17,24,39,.2) 100%), url('/hero-auressa-2.jpg'); background-size:cover; background-position:center; border:1.5px solid var(--color-border); box-shadow: var(--shadow-xl); }
@@ -581,6 +584,10 @@ img.cover { display:block; width:100%; object-fit:cover; height:100%; }
 @media (max-width: 800px) {
   .media-hero { padding:40px 24px; background-image: linear-gradient(180deg, rgba(17,24,39,.87) 0%, rgba(17,24,39,.72) 55%, rgba(17,24,39,.55) 100%), url('/hero-auressa-2.jpg'); }
   .media-hero .lead { max-width:none; }
+  .detail-hero { grid-template-columns: 1fr; gap: 40px; padding: 0; }
+  .detail-stats { padding: 36px 24px; position: static; margin-top: 40px; }
+  .faq-item { padding: 16px; margin-bottom: 12px; }
+  .section.card { padding: 32px 24px; }
 }
 
 /* Magazine-Style Ratgeber-Hero: volles Bild unter Titel */
@@ -590,12 +597,13 @@ img.cover { display:block; width:100%; object-fit:cover; height:100%; }
   .guide-hero-simple { margin: 24px 0 22px; }
 }
 
-.detail-title { font-size: clamp(38px, 6vw, 70px); line-height:1.02; margin:6px 0 18px; letter-spacing:-0.01em; color: var(--color-text-primary); }
+.detail-title { font-size: clamp(42px, 7vw, 72px); line-height: 1; margin: 20px 0 24px; letter-spacing: -0.02em; color: #1F1410; font-weight: 800; font-family: 'Playfair Display', serif; }
 .badge-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
-.detail-stats h2 { margin-top:0; }
-.stat-row { display:flex; justify-content:space-between; align-items:baseline; gap:16px; padding:11px 0; border-bottom:1px solid var(--color-border); }
-.stat-row:last-child { border-bottom:0; }
-.stat-row strong { color: var(--color-text-primary); font-family:var(--font-sans), Arial, sans-serif; }
+.detail-stats { background: linear-gradient(135deg, #FBF7F2 0%, #F5EEE8 100%); padding: 48px; border: 2px solid #E8DDCE; border-radius: 20px; position: sticky; top: 100px; }
+.detail-stats h2 { margin-top: 0; margin-bottom: 32px; font-size: clamp(24px, 4vw, 28px); color: #1F1410; }
+.stat-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; padding: 18px 0; border-bottom: 1px solid rgba(212,175,55,0.3); }
+.stat-row:last-child { border-bottom: 0; }
+.stat-row strong { color: var(--color-primary); font-weight: 700; font-size: 18px; }
 .notes-block { margin-bottom:18px; }
 .note-pills { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
 .note-pill { background: var(--color-primary-lighter); border:1.5px solid var(--color-primary-light); color: var(--color-text-primary); border-radius:999px; padding:8px 16px; font-family:var(--font-sans), Arial, sans-serif; font-size:clamp(12px, 2vw, 14px); font-weight:500; }
@@ -603,9 +611,11 @@ a.note-pill { text-decoration:none; cursor:pointer; transition: background .15s 
 a.note-pill:hover { background: var(--color-primary-light); border-color: var(--color-primary); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(212,175,55,.2); }
 
 /* FAQ items */
-.faq-item { padding:14px 0; border-bottom:1px solid var(--color-border); }
-.faq-item:last-child { border-bottom:0; padding-bottom:0; }
-.faq-item h3 { margin:0 0 6px; color: var(--color-text-primary); font-size:clamp(16px, 3vw, 18px); }
+.faq-item { padding:20px; margin-bottom:16px; border:1.5px solid var(--color-border); border-radius:12px; background:linear-gradient(135deg, rgba(255,255,255,0.8), rgba(245,240,235,0.5)); transition:all 0.3s ease; }
+.faq-item:hover { border-color:var(--color-primary); box-shadow:0 8px 24px rgba(212,175,55,0.12); }
+.faq-item:last-child { margin-bottom:0; }
+.faq-item h3 { margin:0 0 8px; color: var(--color-text-primary); font-size:clamp(16px, 3vw, 18px); display:flex; align-items:center; gap:12px; }
+.faq-item h3::before { content:'✓'; color:var(--color-primary); font-weight:700; font-size:20px; flex:0 0 auto; }
 /* Family filter tiles */
 .tile-family {
   display:flex;
@@ -654,8 +664,8 @@ a.note-pill:hover { background: var(--color-primary-light); border-color: var(--
 .catalog-more { justify-content:center; margin-top:24px; }
 
 /* Button transitions */
-.button { transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), filter 0.2s ease, border-color 0.2s ease, background 0.2s ease; }
-.button:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(212,175,55,.2); filter: brightness(0.95); }
+.button { transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), filter 0.2s ease, border-color 0.2s ease, background 0.2s ease; background: linear-gradient(135deg, var(--color-primary) 0%, #E5C158 100%); color: #1F1410; font-weight: 700; border-radius: 12px; padding: clamp(12px, 2.5vw, 16px) clamp(24px, 5vw, 32px); font-size: clamp(14px, 2.2vw, 16px); letter-spacing: 0.05em; }
+.button:hover { transform: translateY(-3px); box-shadow: 0 20px 48px rgba(212,175,55,.25); filter: brightness(0.92); }
 .secondary:hover { border-color: var(--color-primary); color: var(--color-text-primary); }
 .answer { transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease, background .12s ease; }
 .answer:hover { transform: translateY(-2px); background: var(--color-primary-lighter); border-color: var(--color-primary); box-shadow: inset 3px 0 0 var(--color-primary), 0 12px 32px rgba(212,175,55,.12); }
@@ -663,8 +673,8 @@ a.note-pill:hover { background: var(--color-primary-light); border-color: var(--
 .answer:focus-visible { outline:none; border-color: var(--gold); box-shadow: inset 3px 0 0 var(--gold), 0 0 0 3px rgba(212,175,55,.18); }
 .search { transition: border-color .15s ease, box-shadow .15s ease; }
 .search:focus { outline:none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,175,55,.18); }
-.badge { transition: background .15s ease, border-color .15s ease; }
-a.badge:hover { background: rgba(255,255,255,.85); border-color: rgba(212,175,55,.5); }
+.badge { background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.08)); border: 2px solid var(--color-primary); color: #1F1410; padding: 10px 16px; border-radius: 12px; font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; }
+.badge:hover { background: linear-gradient(135deg, rgba(212,175,55,0.25), rgba(212,175,55,0.15)); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(212,175,55,0.2); }
 .cover { transition: transform .2s ease; }
 .tile-link:hover .cover { transform: scale(1.02); }
 .tile-link { transition: transform .18s ease, box-shadow .18s ease; }

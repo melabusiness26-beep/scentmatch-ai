@@ -367,23 +367,30 @@ export default async function PerfumeDetailPage({
               )}
             </div>
             {perfume.rating != null && (
-              <div style={{ marginBottom: '0.75rem', fontSize: '1.1rem' }}>
-                {'★'.repeat(Math.floor(perfume.rating))}
-                {perfume.rating % 1 >= 0.5 && '½'}
-                {'☆'.repeat(5 - Math.ceil(perfume.rating))} <strong>{perfume.rating.toFixed(1)}/10</strong>
+              <div style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ fontSize: '1.4rem', fontWeight: 'bold', color: '#D4AF37' }}>
+                  {'★'.repeat(Math.floor(perfume.rating))}
+                  {perfume.rating % 1 >= 0.5 && '½'}
+                  {'☆'.repeat(5 - Math.ceil(perfume.rating))}
+                </div>
+                <div style={{ fontSize: '16px', fontWeight: '600', color: '#1F1410' }}>
+                  <strong>{perfume.rating.toFixed(1)}</strong>/10 · Auressa Rating
+                </div>
               </div>
             )}
             <p className="lead">{perfume.long_description || perfume.description || describePerfume(perfume)}</p>
             <div className="badge-row">
-              <span className="badge">{familyLabel(perfume.fragrance_family)}</span>
+              <span className="badge">👃 {familyLabel(perfume.fragrance_family)}</span>
               {perfume.gender && (
                 <span className="badge">
-                  {genderSymbol[perfume.gender] ? `${genderSymbol[perfume.gender]} ` : ''}
+                  {perfume.gender === 'Women' && '👩'}
+                  {perfume.gender === 'Men' && '👨'}
+                  {perfume.gender === 'Unisex' && '⚥'}
                   {genderBadge[perfume.gender] || perfume.gender}
                 </span>
               )}
               {perfume.scentmatch_score != null && (
-                <span className="badge">Auressa {perfume.scentmatch_score}/100</span>
+                <span className="badge">✨ Auressa {perfume.scentmatch_score}/100</span>
               )}
             </div>
           </div>
@@ -412,37 +419,37 @@ export default async function PerfumeDetailPage({
 
         {(perfume.concentration || perfume.intensity || perfume.bottle_description) && (
           <section className="section card">
-            <h2>Steckbrief</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15, fontSize: 14, marginBottom: 20 }}>
+            <h2>📋 Produktdetails</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, fontSize: 15, marginBottom: 32 }}>
               {perfume.concentration && (
-                <div style={{ padding: 12, backgroundColor: '#f5f5f5', borderRadius: 8 }}>
-                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 4 }}>KONZENTRATION</div>
-                  <div>{perfume.concentration}</div>
+                <div style={{ padding: 20, backgroundColor: 'linear-gradient(135deg, rgba(212,175,55,0.08), transparent)', border: '2px solid rgba(212,175,55,0.2)', borderRadius: 12 }}>
+                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 8, fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>💧 Konzentration</div>
+                  <div style={{ fontSize: '18px', fontWeight: '600', color: '#1F1410' }}>{perfume.concentration}</div>
                 </div>
               )}
               {perfume.fragrance_family && (
-                <div style={{ padding: 12, backgroundColor: '#f5f5f5', borderRadius: 8 }}>
-                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 4 }}>DUFTFAMILIE</div>
-                  <div>{familyLabel(perfume.fragrance_family)}</div>
+                <div style={{ padding: 20, backgroundColor: 'linear-gradient(135deg, rgba(212,175,55,0.08), transparent)', border: '2px solid rgba(212,175,55,0.2)', borderRadius: 12 }}>
+                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 8, fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>👃 Duftfamilie</div>
+                  <div style={{ fontSize: '18px', fontWeight: '600', color: '#1F1410' }}>{familyLabel(perfume.fragrance_family)}</div>
                 </div>
               )}
               {perfume.gender && (
-                <div style={{ padding: 12, backgroundColor: '#f5f5f5', borderRadius: 8 }}>
-                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 4 }}>GESCHLECHT</div>
-                  <div>{genderBadge[perfume.gender] || perfume.gender}</div>
+                <div style={{ padding: 20, backgroundColor: 'linear-gradient(135deg, rgba(212,175,55,0.08), transparent)', border: '2px solid rgba(212,175,55,0.2)', borderRadius: 12 }}>
+                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 8, fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>👫 Zielgruppe</div>
+                  <div style={{ fontSize: '18px', fontWeight: '600', color: '#1F1410' }}>{genderBadge[perfume.gender] || perfume.gender}</div>
                 </div>
               )}
               {perfume.intensity && (
-                <div style={{ padding: 12, backgroundColor: '#f5f5f5', borderRadius: 8 }}>
-                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 4 }}>INTENSITÄT</div>
-                  <div>{perfume.intensity}</div>
+                <div style={{ padding: 20, backgroundColor: 'linear-gradient(135deg, rgba(212,175,55,0.08), transparent)', border: '2px solid rgba(212,175,55,0.2)', borderRadius: 12 }}>
+                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 8, fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>🔥 Intensität</div>
+                  <div style={{ fontSize: '18px', fontWeight: '600', color: '#1F1410' }}>{perfume.intensity}</div>
                 </div>
               )}
             </div>
             {perfume.bottle_description && (
-              <div>
-                <h3 style={{ fontSize: '1rem', marginBottom: 8 }}>🏺 Flakon</h3>
-                <p style={{ color: '#555', lineHeight: 1.6, fontSize: 14 }}>
+              <div style={{ backgroundColor: '#FBF7F2', padding: '24px', borderRadius: '12px', border: '1px solid #E8DDCE' }}>
+                <h3 style={{ fontSize: '18px', marginBottom: 12, color: '#1F1410', fontWeight: '700' }}>🏺 Flakon-Design</h3>
+                <p style={{ color: '#333', lineHeight: 1.8, fontSize: 16 }}>
                   {perfume.bottle_description}
                 </p>
               </div>
@@ -477,16 +484,31 @@ export default async function PerfumeDetailPage({
 
         {(perfume.gender || whenText) && (
           <section className="section card">
-            <h2>Für wen &amp; wann passt {perfume.perfume_name}?</h2>
-            {perfume.gender && (
-              <p className="lead">
-                {perfume.perfume_name} ist als {genderLabels[perfume.gender] || perfume.gender}{' '}
-                eingeordnet und gehört zur Duftfamilie {familyLabel(perfume.fragrance_family)}.
-              </p>
-            )}
-            {whenText && (
-              <p className="lead">Besonders gut passt der Duft {whenText}.</p>
-            )}
+            <h2>❤️ Ideal für wen & wann?</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, marginTop: 28 }}>
+              {perfume.gender && (
+                <div style={{ backgroundColor: '#FBF7F2', padding: '24px', borderRadius: '14px', border: '2px solid rgba(212,175,55,0.2)' }}>
+                  <div style={{ fontSize: '28px', marginBottom: '12px' }}>
+                    {perfume.gender === 'Women' && '👩'}
+                    {perfume.gender === 'Men' && '👨'}
+                    {perfume.gender === 'Unisex' && '⚥'}
+                  </div>
+                  <h3 style={{ color: '#1F1410', marginBottom: '8px', fontSize: '18px', fontWeight: '700' }}>Für {genderLabels[perfume.gender] || perfume.gender}</h3>
+                  <p style={{ color: '#555', lineHeight: 1.7, fontSize: '15px' }}>
+                    {perfume.perfume_name} gehört zur Duftfamilie <strong>{familyLabel(perfume.fragrance_family)}</strong> und ist perfekt für {genderLabels[perfume.gender] || perfume.gender}.
+                  </p>
+                </div>
+              )}
+              {whenText && (
+                <div style={{ backgroundColor: '#FBF7F2', padding: '24px', borderRadius: '14px', border: '2px solid rgba(212,175,55,0.2)' }}>
+                  <div style={{ fontSize: '28px', marginBottom: '12px' }}>📅</div>
+                  <h3 style={{ color: '#1F1410', marginBottom: '8px', fontSize: '18px', fontWeight: '700' }}>Beste Jahreszeit</h3>
+                  <p style={{ color: '#555', lineHeight: 1.7, fontSize: '15px' }}>
+                    Dieser Duft passt besonders {whenText}.
+                  </p>
+                </div>
+              )}
+            </div>
           </section>
         )}
 
@@ -593,20 +615,27 @@ export default async function PerfumeDetailPage({
 
         {faqs.length > 0 && (
           <section className="section card">
-            <h2>Häufige Fragen zu {perfume.perfume_name}</h2>
+            <h2>❓ Häufige Fragen</h2>
             {faqs.map((f, i) => (
               <div className="faq-item" key={i}>
-                <h3>{f.q}</h3>
-                <p className="small">{f.a}</p>
+                <h3 style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <span style={{ fontSize: '20px', color: '#D4AF37' }}>Q</span>
+                  {f.q}
+                </h3>
+                <p className="small" style={{ marginLeft: '32px', paddingLeft: '0', color: '#555' }}>{f.a}</p>
               </div>
             ))}
           </section>
         )}
 
-        <section className="section">
-          <Link className="button" href="/#quiz">
-            Passt dieser Duft zu dir? Mach das Quiz
-          </Link>
+        <section className="section" style={{ textAlign: 'center', marginTop: '100px' }}>
+          <div style={{ backgroundColor: 'linear-gradient(135deg, #D4AF37, #E5C158)', padding: '60px 40px', borderRadius: '20px', color: '#1F1410' }}>
+            <h2 style={{ color: '#1F1410', marginBottom: '16px', fontSize: '32px' }}>🎯 Passt dieser Duft zu dir?</h2>
+            <p style={{ fontSize: '18px', marginBottom: '32px', color: '#2A2A2A' }}>Mach unser Duft-Quiz und finde heraus, ob {perfume.perfume_name} dein neuer Lieblingsduft wird!</p>
+            <Link className="button" href="/#quiz" style={{ background: 'white', color: '#D4AF37', fontWeight: '700', fontSize: '18px', padding: '16px 48px' }}>
+              🚀 Quiz starten
+            </Link>
+          </div>
         </section>
       </div>
 

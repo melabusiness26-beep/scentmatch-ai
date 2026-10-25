@@ -24,8 +24,8 @@ type AdminPerfume = {
   fragrance_family: string | null;
   gender: string | null;
   price_chf: number | null;
-  longevity: string | null;
-  sillage: string | null;
+  longevity: number | null;
+  sillage: number | null;
   scentmatch_score: number | null;
   season: string | null;
   occasion: string | null;
@@ -55,8 +55,8 @@ const emptyForm = {
   fragrance_family: 'clean' as const,
   gender: 'Unisex' as const,
   price_chf: '',
-  longevity: 'Ausgewogen',
-  sillage: 'Ausgewogen',
+  longevity: '5',
+  sillage: '6',
   scentmatch_score: '',
   season: 'Ganzjährig' as const,
   occasion: 'Alltag' as const,
@@ -201,8 +201,8 @@ export default function AdminPage() {
       fragrance_family: (p.fragrance_family || 'clean') as any,
       gender: (p.gender || 'Unisex') as any,
       price_chf: p.price_chf?.toString() ?? '',
-      longevity: p.longevity || 'Ausgewogen',
-      sillage: p.sillage || 'Ausgewogen',
+      longevity: p.longevity?.toString() || '5',
+      sillage: p.sillage?.toString() || '6',
       scentmatch_score: p.scentmatch_score?.toString() ?? '',
       season: (p.season || 'Ganzjährig') as any,
       occasion: (p.occasion || 'Alltag') as any,
@@ -406,8 +406,8 @@ export default function AdminPage() {
         fragrance_family: form.fragrance_family,
         gender: form.gender,
         price_chf: toNumber(form.price_chf),
-        longevity: form.longevity,
-        sillage: form.sillage,
+        longevity: toNumber(form.longevity),
+        sillage: toNumber(form.sillage),
         scentmatch_score: toNumber(form.scentmatch_score),
         season: form.season,
         occasion: form.occasion,
@@ -675,8 +675,8 @@ export default function AdminPage() {
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15 }}>
                   <div className="field"><label>Preis (CHF)</label><input type="number" value={form.price_chf} onChange={e => setField('price_chf', e.target.value)} /></div>
                   <div className="field"><label>Auressa-Score (0-100)</label><input type="number" value={form.scentmatch_score} onChange={e => setField('scentmatch_score', e.target.value)} /></div>
-                  <div className="field"><label>Haltbarkeit</label><select value={form.longevity} onChange={e => setField('longevity', e.target.value)}>{INTENSITIES.map(i => <option value={i} key={i}>{i}</option>)}</select></div>
-                  <div className="field"><label>Sillage</label><select value={form.sillage} onChange={e => setField('sillage', e.target.value)}>{INTENSITIES.map(i => <option value={i} key={i}>{i}</option>)}</select></div>
+                  <div className="field"><label>Haltbarkeit (0-10)</label><input type="number" min="0" max="10" value={form.longevity} onChange={e => setField('longevity', e.target.value)} /></div>
+                  <div className="field"><label>Sillage (0-10)</label><input type="number" min="0" max="10" value={form.sillage} onChange={e => setField('sillage', e.target.value)} /></div>
                   <div className="field"><label>Saison</label><select value={form.season} onChange={e => setField('season', e.target.value)}>{SEASONS.map(s => <option value={s} key={s}>{s}</option>)}</select></div>
                   <div className="field"><label>Anlass</label><select value={form.occasion} onChange={e => setField('occasion', e.target.value)}>{OCCASIONS.map(o => <option value={o} key={o}>{o}</option>)}</select></div>
                 </div>

@@ -15,8 +15,8 @@ export const metadata: Metadata = {
   alternates: { canonical: SITE_URL }
 };
 
-// Cache for 60 seconds (fast updates when data changes)
-export const revalidate = 60;
+// No cache - always fresh (revalidate = 0)
+export const revalidate = 0;
 
 // Die 3 aktuellsten / interessantesten Ratgeber für die Startseite
 const FEATURED_GUIDE_SLUGS = [

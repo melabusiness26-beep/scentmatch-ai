@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { OlfactoryPyramid } from '@/app/OlfactoryPyramid';
+import { OlfactoryPyramide } from '@/app/OlfactoryPyramid';
 import {
   getPerfumeBySlug,
   getAllPerfumeSlugs,
@@ -459,7 +459,7 @@ export default async function PerfumeDetailPage({
 
         {hasNotes && (
           <section className="section card">
-            <OlfactoryPyramid perfume={perfume} />
+            <OlfactoryPyramide perfume={perfume} />
           </section>
         )}
 

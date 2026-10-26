@@ -272,7 +272,7 @@ export default function DuftlaengePage() {
             Nutze unser Quiz, um Düfte zu finden, die zu deinen Longevity- und Sillage-Anforderungen passen.
           </p>
           <Link
-            href="/#quiz"
+            href="/quiz"
             style={{
               display: 'inline-block',
               background: '#d4af37',

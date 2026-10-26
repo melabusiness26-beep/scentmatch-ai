@@ -101,7 +101,7 @@ export default function HeroHome() {
           flexWrap: 'wrap',
           animation: isLoaded ? 'fadeInUp 0.8s ease-out 0.65s both' : 'none',
         }}>
-          <a href="/#quiz" style={{
+          <a href="/quiz" style={{
             display: 'inline-block',
             background: 'linear-gradient(135deg, #D4AF37 0%, #E5C158 100%)',
             color: '#1F1410',

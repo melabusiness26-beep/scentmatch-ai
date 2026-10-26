@@ -154,13 +154,13 @@ export default async function ScentNotePage({
             <p className="small">
               Aktuell sind noch keine Düfte mit {note.name} im Katalog erfasst.{' '}
               <Link href="/duefte">Stöbere im gesamten Duftkatalog</Link> oder mach das{' '}
-              <Link href="/#quiz">Duft-Quiz</Link>.
+              <Link href="/quiz">Duft-Quiz</Link>.
             </p>
           )}
         </section>
 
         <section className="section">
-          <Link className="button" href="/#quiz">
+          <Link className="button" href="/quiz">
             Welcher Duft passt zu dir? Mach das Quiz
           </Link>
         </section>

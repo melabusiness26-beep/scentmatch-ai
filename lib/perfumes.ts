@@ -55,99 +55,27 @@ export function isWithinPriceCap(p: Pick<Perfume, 'price_chf'>): boolean {
   return p.price_chf != null && p.price_chf > 0 && p.price_chf <= MAX_PRICE_CHF;
 }
 
+// Ausgeschriebene Konzentration (im Admin als Kürzel gespeichert).
+const CONCENTRATION_LABELS: Record<string, string> = {
+  EdP: 'Eau de Parfum',
+  EdT: 'Eau de Toilette',
+  EdC: 'Eau de Cologne',
+  Cologne: 'Eau de Cologne',
+  Extrait: 'Extrait de Parfum'
+};
+
+export function concentrationLabel(code: string | null | undefined): string | null {
+  if (!code) return null;
+  return CONCENTRATION_LABELS[code] || null;
+}
+
 // Felder, die wir aus Supabase laden. Zentral definiert, damit Startseite und
 // Detailseite garantiert dieselbe Struktur verwenden.
 const PERFUME_FIELDS =
-  'id, perfume_name, slug, gender, fragrance_family, price_chf, longevity, sillage, scentmatch_score, season, occasion, description, image_url, affiliate_url, top_notes, heart_notes, base_notes, age_group, lifestyle, trend_vibe, gender_nuance, brands(name, slug, country)';
+  'id, perfume_name, slug, gender, fragrance_family, price_chf, longevity, sillage, scentmatch_score, season, occasion, description, image_url, affiliate_url, concentration, top_notes, heart_notes, base_notes, age_group, lifestyle, trend_vibe, gender_nuance, brands(name, slug, country)';
 
-// Erzeugt eine ausführliche, natürlich klingende Beschreibung aus den
-// vorhandenen Daten eines Dufts. Wird genutzt, wenn keine manuelle
-// Beschreibung hinterlegt ist – so wirkt jede Duftseite vollständig.
-const FAMILY_DESC: Record<string, string> = {
-  clean: 'frischer, sauberer',
-  gourmand: 'warmer, süßlicher',
-  woody: 'holziger, eleganter',
-  floral: 'blumiger, femininer'
-};
-const GENDER_DESC: Record<string, string> = {
-  Women: ' für Damen',
-  Men: ' für Herren',
-  Unisex: ', unisex tragbar'
-};
-// Premium-Stimmungssätze – emotional, luxuriös, inspirierend.
-const FAMILY_MOOD: Record<string, string> = {
-  clean: 'Ein erfrischender, kristallklarer Duft – wie ein frisch gelüfteter Morgen voller Klarheit und Energie. Leicht, transparent und unbeschwert.',
-  gourmand: 'Warmer, süßer Luxus, der sich wie ein beruhigendes Geheimnis um dich legt. Vertraut, sinnlich und unwiderstehlich verführerisch.',
-  woody: 'Tiefe, Eleganz, Kraft – ein ruhiger, selbstbewusster Duft mit würzigen und hölzernen Noten. Souverän, reif und unvergesslich.',
-  floral: 'Romantisch, elegant und zeitlos – wie der Duft eines verfälschten Gartens. Weich, feingliedrig und voller subtiler Schönheit.'
-};
-// Premium-Szenen je Anlass – macht jeden Moment besonders.
-const OCCASION_MOOD: Record<string, string> = {
-  Date: 'Der perfekte Begleiter für Momente, in denen du unvergesslich sein möchtest. Verführerisch genug, um in Erinnerung zu bleiben.',
-  Abend: 'Für besondere Nächte, an denen du glänzen darfst. Elegant, selbstbewusst und voller Präsenz.',
-  Alltag: 'Dein treuer Begleiter durch alle Momente – zuverlässig, subtil und immer perfekt. Der ideale Signature-Duft für dich selbst.',
-  'Büro': 'Gepflegt und professionell, ohne je langweilig zu sein. Der Duft für Erfolg und subtiles Selbstvertrauen.'
-};
-
-function notesList(notes: string[] | null): string {
-  return notes && notes.length ? notes.join(', ') : '';
-}
-
-export function describePerfume(p: Perfume): string {
-  const brand = p.brands?.name ? ` von ${p.brands.name}` : '';
-  const fam = p.fragrance_family ? FAMILY_DESC[p.fragrance_family] || '' : '';
-  const gender = p.gender ? GENDER_DESC[p.gender] || '' : '';
-  const sentences: string[] = [];
-
-  sentences.push(`${p.perfume_name}${brand} ist ein ${fam ? `${fam} ` : ''}Duft${gender}, der sich in die Welt der feinen Düfte einreiht.`);
-
-  if (p.fragrance_family && FAMILY_MOOD[p.fragrance_family]) {
-    sentences.push(FAMILY_MOOD[p.fragrance_family]);
-  }
-
-  const top = notesList(p.top_notes);
-  const heart = notesList(p.heart_notes);
-  const base = notesList(p.base_notes);
-  const bits: string[] = [];
-  if (top) bits.push(`öffnet mit den frischen Noten ${top}`);
-  if (heart) bits.push(`entfaltet sich im Herzen mit ${heart}`);
-  if (base) bits.push(`klingt elegant mit ${base} aus`);
-  if (bits.length === 1) sentences.push(`Die Duftreise ${bits[0]}.`);
-  else if (bits.length > 1) sentences.push(`Die Reise: ${bits.slice(0, -1).join(', ')} und ${bits[bits.length - 1]}.`);
-
-  const perf: string[] = [];
-  if (p.longevity != null) {
-    const word = p.longevity >= 8 ? 'ausgezeichnet' : p.longevity >= 6 ? 'solide' : 'dezent';
-    perf.push(`Haltbarkeit: ${word} (${p.longevity}/10)`);
-  }
-  if (p.sillage != null) {
-    const word = p.sillage >= 8 ? 'kräftig & präsent' : p.sillage >= 6 ? 'ausgewogen' : 'hautah & intim';
-    perf.push(`Sillage: ${word} (${p.sillage}/10)`);
-  }
-  if (perf.length) {
-    sentences.push(`Performance: ${perf.join(' • ')}.`);
-  }
-
-  if (p.occasion && OCCASION_MOOD[p.occasion]) {
-    sentences.push(OCCASION_MOOD[p.occasion]);
-  } else if (p.occasion) {
-    sentences.push(`Perfekt für: ${p.occasion}.`);
-  }
-
-  if (p.season) {
-    sentences.push(
-      p.season === 'Ganzjährig'
-        ? 'Ein Duft, der das ganze Jahr über glänzt – zeitlos und vielseitig.'
-        : `Besonders schön: ${p.season}.`
-    );
-  }
-
-  if (p.price_chf != null) {
-    sentences.push(`Richtpreis: CHF ${p.price_chf} – eine Investition in Qualität und Eleganz.`);
-  }
-
-  return sentences.join(' ');
-}
+// Redaktionelle Duftbeschreibung – siehe lib/perfume-text.ts.
+export { describePerfume } from './perfume-text';
 
 // Ziel-Link für den „Jetzt ansehen"-Button. Liegt ein Affiliate-Link vor,
 // wird dieser genutzt; sonst eine neutrale Such-Verlinkung (nie ein toter Button).

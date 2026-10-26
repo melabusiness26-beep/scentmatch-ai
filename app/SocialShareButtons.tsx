@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { Perfume } from '@/lib/perfumes';
 
 interface SocialShareButtonsProps {
@@ -7,176 +8,78 @@ interface SocialShareButtonsProps {
   url: string;
 }
 
+// Teilen: Auf dem Handy öffnet ein Knopf das eingebaute Teilen-Menü des
+// Telefons (dort erscheinen WhatsApp, Instagram, Nachrichten usw. von selbst).
+// Wo das nicht geht (meist am Computer), gibt es beschriftete Knöpfe.
 export function SocialShareButtons({ perfume, url }: SocialShareButtonsProps) {
   const title = `${perfume.perfume_name}${perfume.brands?.name ? ` von ${perfume.brands.name}` : ''}`;
-  const text = `Entdecke "${title}" auf Auressa – mit Bewertung, Noten & Affiliate-Links.`;
+  const text = `Schau dir „${title}" auf Auressa an:`;
+  const [canNativeShare, setCanNativeShare] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    setCanNativeShare(typeof navigator !== 'undefined' && typeof navigator.share === 'function');
+  }, []);
+
+  async function nativeShare() {
+    try {
+      await navigator.share({ title, text, url });
+    } catch {
+      // Abgebrochen – nichts zu tun.
+    }
+  }
+
+  async function copyLink() {
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.prompt('Link kopieren:', url);
+    }
+  }
+
   const encodedUrl = encodeURIComponent(url);
-  const encodedText = encodeURIComponent(text);
+  const encodedText = encodeURIComponent(`${text} ${url}`);
 
   return (
-    <div style={{
-      display: 'flex',
-      gap: '0.75rem',
-      marginTop: '1.5rem',
-      alignItems: 'center',
-      flexWrap: 'wrap'
-    }}>
-      <span style={{ fontSize: '0.85rem', color: '#8c7060', fontWeight: 600 }}>
-        Teilen:
-      </span>
-
-      {/* WhatsApp */}
-      <a
-        href={`https://wa.me/?text=${encodedText}%20${encodedUrl}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '40px',
-          height: '40px',
-          borderRadius: '50%',
-          background: '#25D366',
-          color: '#fff',
-          textDecoration: 'none',
-          fontSize: '18px',
-          transition: 'all 0.2s ease',
-        }}
-        title="Auf WhatsApp teilen"
-        onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-        onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-      >
-        💬
-      </a>
-
-      {/* Instagram */}
-      <a
-        href={`https://www.instagram.com/?url=${encodedUrl}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '40px',
-          height: '40px',
-          borderRadius: '50%',
-          background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)',
-          color: '#fff',
-          textDecoration: 'none',
-          fontSize: '18px',
-          transition: 'all 0.2s ease',
-        }}
-        title="Auf Instagram teilen"
-        onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-        onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-      >
-        📷
-      </a>
-
-      {/* Facebook */}
-      <a
-        href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '40px',
-          height: '40px',
-          borderRadius: '50%',
-          background: '#1877F2',
-          color: '#fff',
-          textDecoration: 'none',
-          fontSize: '18px',
-          transition: 'all 0.2s ease',
-        }}
-        title="Auf Facebook teilen"
-        onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-        onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-      >
-        👥
-      </a>
-
-      {/* Twitter/X */}
-      <a
-        href={`https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '40px',
-          height: '40px',
-          borderRadius: '50%',
-          background: '#000',
-          color: '#fff',
-          textDecoration: 'none',
-          fontSize: '18px',
-          transition: 'all 0.2s ease',
-        }}
-        title="Auf X (Twitter) teilen"
-        onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-        onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-      >
-        𝕏
-      </a>
-
-      {/* Pinterest */}
-      <a
-        href={`https://pinterest.com/pin/create/button/?url=${encodedUrl}&description=${encodedText}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '40px',
-          height: '40px',
-          borderRadius: '50%',
-          background: '#E60023',
-          color: '#fff',
-          textDecoration: 'none',
-          fontSize: '18px',
-          transition: 'all 0.2s ease',
-        }}
-        title="Auf Pinterest speichern"
-        onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-        onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-      >
-        📌
-      </a>
-
-      {/* Copy Link */}
-      <button
-        onClick={() => {
-          navigator.clipboard.writeText(url);
-          alert('Link kopiert! 📋');
-        }}
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '40px',
-          height: '40px',
-          borderRadius: '50%',
-          background: '#D4AF37',
-          color: '#1F1410',
-          border: 'none',
-          textDecoration: 'none',
-          fontSize: '18px',
-          cursor: 'pointer',
-          transition: 'all 0.2s ease',
-        }}
-        title="Link kopieren"
-        onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-        onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-      >
-        🔗
+    <div className="share">
+      {canNativeShare ? (
+        <button type="button" className="share-main" onClick={nativeShare}>
+          <ShareIcon /> Duft teilen
+        </button>
+      ) : (
+        <>
+          <span className="share-label">Teilen:</span>
+          <a className="share-pill" href={`https://wa.me/?text=${encodedText}`} target="_blank" rel="noopener noreferrer">
+            WhatsApp
+          </a>
+          <a
+            className="share-pill"
+            href={`https://pinterest.com/pin/create/button/?url=${encodedUrl}&description=${encodeURIComponent(text)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Pinterest
+          </a>
+          <a className="share-pill" href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`} target="_blank" rel="noopener noreferrer">
+            Facebook
+          </a>
+        </>
+      )}
+      <button type="button" className="share-pill share-copy" onClick={copyLink} aria-live="polite">
+        {copied ? '✓ Link kopiert' : 'Link kopieren'}
       </button>
     </div>
+  );
+}
+
+function ShareIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7" />
+      <path d="M16 6l-4-4-4 4" />
+      <path d="M12 2v13" />
+    </svg>
   );
 }

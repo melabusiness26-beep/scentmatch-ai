@@ -332,7 +332,7 @@ export default function FaqPage() {
             Das Duft-Quiz findet in unter 1 Minute deinen persönlichen Match. Oder schreib uns direkt – wir antworten gern.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link href="/#quiz" style={{
+            <Link href="/quiz" style={{
               background: '#d4af37',
               color: '#2a1d12',
               fontWeight: 700,

@@ -54,7 +54,7 @@ export default function NotFound() {
 
           {/* Schnell-Links */}
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link href="/#quiz" style={{
+            <Link href="/quiz" style={{
               background: '#d4af37',
               color: '#2a1d12',
               fontWeight: 700,
@@ -100,7 +100,7 @@ export default function NotFound() {
           gap: '1rem',
         }}>
           {[
-            { href: '/#quiz',          icon: '🎯', label: 'Duft-Quiz',       sub: 'In 2 Minuten zum Match' },
+            { href: '/quiz',          icon: '🎯', label: 'Duft-Quiz',       sub: 'In 2 Minuten zum Match' },
             { href: '/duft-detektiv',  icon: '🔍', label: 'Duft-Detektiv',   sub: 'Duft identifizieren' },
             { href: '/ratgeber',       icon: '📖', label: 'Ratgeber',         sub: '50+ Duft-Artikel' },
             { href: '/marke',          icon: '✦',  label: 'Marken',           sub: 'Alle Marken A–Z' },

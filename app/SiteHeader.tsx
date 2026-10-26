@@ -131,7 +131,7 @@ export default function SiteHeader() {
           <Link href="/duft-scanner" onClick={close}>Duft-Scanner</Link>
           <Link href="/duft-detektiv" onClick={close}>Duft-Detektiv</Link>
           <Link href="/ratgeber" onClick={close}>Ratgeber</Link>
-          <Link className="button nav-cta" href="/#quiz" onClick={close}>Quiz starten</Link>
+          <Link className="button nav-cta" href="/quiz" onClick={close}>Quiz starten</Link>
         </nav>
       </div>
     </header>

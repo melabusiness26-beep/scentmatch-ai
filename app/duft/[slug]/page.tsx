@@ -1,26 +1,28 @@
 import type { Metadata } from 'next';
+import type React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { OlfactoryPyramide } from '@/app/OlfactoryPyramid';
 import {
   getPerfumeBySlug,
   getAllPerfumeSlugs,
   getPerfumes,
   describePerfume,
+  concentrationLabel,
   type Perfume
 } from '@/lib/perfumes';
 import { findSimilarPerfumesV2, findCheaperAlternativesV2 } from '@/lib/similarity';
-import { noteHref } from '@/lib/notes-glossary';
+import { noteHref, noteImage } from '@/lib/notes-glossary';
 import { getCuratedLink } from '@/lib/curated-links';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import { AmazonButton } from '@/app/AmazonButton';
 import { SocialShareButtons } from '@/app/SocialShareButtons';
-
-const genderLabels: Record<string, string> = {
-  Women: 'Damenduft',
-  Men: 'Herrenduft',
-  Unisex: 'Unisex-Duft'
-};
+import { PerfumeTile } from '@/app/PerfumeTile';
+import { PerfumeVisual } from '@/app/components/PerfumeVisual';
+import { Reveal } from '@/app/components/Reveal';
+import { StickyBuyBar } from '@/app/components/StickyBuyBar';
+import { computeAccords } from '@/lib/accords';
+import { computeAuressaScore } from '@/lib/score';
+import { fitAdvice } from '@/lib/perfume-text';
 
 // Kurzes Geschlechts-Label + Symbol für die Badge (passend zu den Duft-Kacheln).
 const genderBadge: Record<string, string> = {
@@ -99,80 +101,67 @@ export async function generateMetadata({
   };
 }
 
-function Cover({ perfume, large }: { perfume: Perfume; large?: boolean }) {
-  const className = `cover${large ? ' cover-large' : ''} cover-${perfume.fragrance_family || ''}`;
-  if (perfume.image_url) {
-    return (
-      <div
-        className={className}
-        role="img"
-        aria-label={`${perfume.perfume_name}${perfume.brands?.name ? ` von ${perfume.brands.name}` : ''} – Duftflakon`}
-        style={{ backgroundImage: `url(${perfume.image_url})` }}
-      />
-    );
-  }
-  return (
-    <div className={className}>
-      <div className="cover-label">
-        {perfume.brands?.name && <span className="cover-label-brand">{perfume.brands.name}</span>}
-        <span className="cover-label-name">{perfume.perfume_name}</span>
-      </div>
-    </div>
-  );
-}
+// Kurze Stimmung je Duftfamilie – eine Zeile unter dem Namen.
+const familyMood: Record<string, string> = {
+  clean: 'Klar, frisch und unkompliziert – wie frische Wäsche und Morgenluft.',
+  gourmand: 'Warm, süss und verführerisch – ein Duft zum Anlehnen.',
+  woody: 'Ruhig, edel und selbstbewusst – mit Tiefe und Wärme.',
+  floral: 'Blumig, elegant und zeitlos – weich und strahlend.'
+};
 
-function StatRow({ label, value }: { label: string; value: string }) {
+// Haltbarkeit/Sillage (0–10) als 5 Punkte – auf einen Blick lesbar.
+function Meter({ label, value, hint }: { label: string; value: number | null; hint: string }) {
+  if (value == null) return null;
+  const filled = Math.max(0, Math.min(5, Math.round(value / 2)));
   return (
-    <div className="stat-row">
-      <span className="small">{label}</span>
-      <strong>{value}</strong>
-    </div>
-  );
-}
-
-// Visueller Balken für Scores (0–10 oder 0–100)
-function ScoreBar({ label, value, max = 10 }: { label: string; value: number | null | undefined; max?: number }) {
-  if (value == null) return <StatRow label={label} value="–" />;
-  const pct = Math.min(100, Math.round((value / max) * 100));
-  return (
-    <div style={{ marginBottom: '0.75rem' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.3rem' }}>
-        <span style={{ fontSize: '0.78rem', color: '#6b5344' }}>{label}</span>
-        <strong style={{ fontSize: '0.85rem', color: '#2a1d12' }}>{value}/{max}</strong>
-      </div>
-      <div style={{
-        height: '6px',
-        background: 'rgba(212,175,55,0.15)',
-        borderRadius: '3px',
-        overflow: 'hidden',
-      }}>
-        <div style={{
-          height: '100%',
-          width: `${pct}%`,
-          background: 'linear-gradient(90deg, #d4af37, #c9a227)',
-          borderRadius: '3px',
-          transition: 'width 0.6s ease',
-        }} />
-      </div>
-    </div>
-  );
-}
-
-function Notes({ title, notes }: { title: string; notes: string[] | null }) {
-  if (!notes || notes.length === 0) return null;
-  return (
-    <div className="notes-block">
-      <div className="small">{title}</div>
-      <div className="note-pills">
-        {notes.map((note) => (
-          <Link className="note-pill note-pill-link" href={noteHref(note)} key={note}>
-            {note}
-          </Link>
+    <div className="dp-fact">
+      <span className="dp-fact-label">{label}</span>
+      <span className="dp-meter" aria-label={`${label}: ${value} von 10`}>
+        {[0, 1, 2, 3, 4].map((i) => (
+          <span key={i} className={i < filled ? 'on' : ''} style={{ animationDelay: `${i * 90}ms` }} />
         ))}
-      </div>
+      </span>
+      <span className="dp-fact-hint">{hint}</span>
     </div>
   );
 }
+
+function longevityHint(v: number): string {
+  if (v >= 8) return 'den ganzen Tag';
+  if (v >= 6) return 'mehrere Stunden';
+  if (v >= 4) return 'einige Stunden';
+  return 'eher kurz';
+}
+
+function sillageHint(v: number): string {
+  if (v >= 8) return 'füllt den Raum';
+  if (v >= 6) return 'gut wahrnehmbar';
+  if (v >= 4) return 'ausgewogen';
+  return 'hautnah';
+}
+
+const seasonIcon: Record<string, string> = {
+  'Frühling': '🌸',
+  Sommer: '☀️',
+  Herbst: '🍂',
+  Winter: '❄️',
+  'Ganzjährig': '🗓️'
+};
+
+function seasonDisplay(season: string): string {
+  const icons = season
+    .split(/[\/,]/)
+    .map((s) => seasonIcon[s.trim()])
+    .filter(Boolean)
+    .join(' ');
+  return icons ? `${icons} ${season}` : season;
+}
+
+const LAYERS: { key: 'top_notes' | 'heart_notes' | 'base_notes'; title: string; time: string }[] = [
+  { key: 'top_notes', title: 'Kopfnoten', time: 'die ersten Minuten' },
+  { key: 'heart_notes', title: 'Herznoten', time: 'nach ca. 30 Minuten' },
+  { key: 'base_notes', title: 'Basisnoten', time: 'bleibt stundenlang' }
+];
 
 function jsonLd(perfume: Perfume) {
   return {
@@ -187,25 +176,22 @@ function jsonLd(perfume: Perfume) {
       perfume.description ||
       `${perfume.perfume_name} – Duftprofil auf Auressa.`,
     image: perfume.image_url || undefined,
-    // Redaktionelle Einschätzung von Auressa (kein vorgetäuschtes Nutzer-Rating).
-    review: perfume.scentmatch_score
-      ? {
-          '@type': 'Review',
-          author: { '@type': 'Organization', name: 'Auressa' },
-          reviewRating: {
-            '@type': 'Rating',
-            ratingValue: (perfume.scentmatch_score / 20).toFixed(1),
-            bestRating: '5'
-          }
-        }
-      : undefined,
+    // Berechneter Auressa-Score (lib/score.ts) – kein vorgetäuschtes Nutzer-Rating.
+    review: {
+      '@type': 'Review',
+      author: { '@type': 'Organization', name: 'Auressa' },
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: (computeAuressaScore(perfume).total / 20).toFixed(1),
+        bestRating: '5'
+      }
+    },
     offers:
       perfume.price_chf != null
         ? {
             '@type': 'Offer',
             price: perfume.price_chf,
             priceCurrency: 'CHF',
-            availability: 'https://schema.org/InStock',
             url: `${SITE_URL}/duft/${perfume.slug}`
           }
         : undefined
@@ -320,15 +306,26 @@ export default async function PerfumeDetailPage({
     .slice(0, 4);
 
   const faqs = buildFaqs(perfume);
-  const whenText = [
-    perfume.season ? `in der Saison ${perfume.season}` : '',
-    perfume.occasion ? `zu Anlässen wie ${perfume.occasion}` : ''
-  ]
-    .filter(Boolean)
-    .join(' und ');
+
+  const accords = computeAccords(perfume);
+  const score = computeAuressaScore(perfume);
+  const fit = fitAdvice(perfume);
+  const noteImageMap: Record<string, string> = {};
+  for (const note of [...(perfume.top_notes || []), ...(perfume.heart_notes || []), ...(perfume.base_notes || [])]) {
+    const img = noteImage(note);
+    if (img) noteImageMap[note] = img;
+  }
+  const description = perfume.description || describePerfume(perfume);
+  const occasions = (perfume.occasion || '')
+    .split(',')
+    .map((o) => o.trim())
+    .filter(Boolean);
 
   return (
-    <main>
+    <main className="dp">
+      <noscript>
+        <style>{'.reveal{opacity:1!important;transform:none!important}'}</style>
+      </noscript>
       <div className="container">
         <nav className="breadcrumb small" aria-label="Brotkrümel-Navigation">
           <Link href="/">Start</Link>
@@ -338,329 +335,312 @@ export default async function PerfumeDetailPage({
           <span className="breadcrumb-current" aria-current="page">{perfume.perfume_name}</span>
         </nav>
 
-        <section className="detail-hero">
-          {/* LINKE SEITE: Großes Produktbild */}
-          <div style={{ flex: 1, borderRadius: '20px', overflow: 'hidden', boxShadow: '0 20px 60px rgba(0,0,0,0.15)' }}>
-            <Cover perfume={perfume} large />
+        {/* ── HERO ─────────────────────────────────────────────── */}
+        <section className={`dp-hero dp-hero-${perfume.fragrance_family || 'none'}`}>
+          <div className="dp-hero-visual">
+            <PerfumeVisual perfume={perfume} size="hero" noteImages={noteImageMap} />
           </div>
 
-          {/* RECHTE SEITE: Info + Preis + Rating + Buttons */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            {/* Marke */}
+          <div className="dp-hero-info">
             {perfume.brands?.slug ? (
-              <Link href={`/marke/${perfume.brands.slug}`} className="small" style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '14px', fontWeight: '600' }}>
-                {brandName}
-              </Link>
+              <Link href={`/marke/${perfume.brands.slug}`} className="dp-brand">{brandName}</Link>
             ) : (
-              <p className="small" style={{ color: '#D4AF37', fontSize: '14px', fontWeight: '600', margin: '0' }}>{brandName}</p>
+              <p className="dp-brand">{brandName}</p>
             )}
+            <h1 className="dp-title">{perfume.perfume_name}</h1>
 
-            {/* Titel */}
-            <h1 className="detail-title" style={{ marginTop: '0', marginBottom: '0' }}>{perfume.perfume_name}</h1>
-
-            {/* PREIS - PROMINENT! */}
-            {perfume.price_chf != null && (
-              <div style={{ fontSize: '36px', fontWeight: '800', color: '#D4AF37' }}>
-                CHF {perfume.price_chf}
-              </div>
-            )}
-
-            {/* RATING MIT STERNEN */}
-            {perfume.rating != null && (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-                <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#D4AF37' }}>
-                  {'★'.repeat(Math.floor(perfume.rating))}
-                  {perfume.rating % 1 >= 0.5 && '½'}
-                  {'☆'.repeat(5 - Math.ceil(perfume.rating))}
-                </div>
-                <div style={{ fontSize: '14px', fontWeight: '600', color: '#666' }}>
-                  {perfume.rating.toFixed(1)}/10 · 1.247 Bewertungen
-                </div>
-              </div>
-            )}
-
-            {/* VERFÜGBARKEITS-BADGE */}
-            <div style={{ padding: '12px', backgroundColor: '#E8F5E9', borderRadius: '8px', color: '#2E7D32', fontSize: '14px', fontWeight: '600', border: '1px solid #4CAF50' }}>
-              ✅ Verfügbar · Kostenloser Versand ab CHF 50
+            <div className="dp-chips">
+              {perfume.fragrance_family && (
+                <span className={`chip chip-family chip-${perfume.fragrance_family}`}>{familyLabel(perfume.fragrance_family)}</span>
+              )}
+              {perfume.gender && (
+                <span className="chip">{genderSymbol[perfume.gender] || ''} {genderBadge[perfume.gender] || perfume.gender}</span>
+              )}
+              {concentrationLabel(perfume.concentration) && <span className="chip">{concentrationLabel(perfume.concentration)}</span>}
             </div>
 
-            {/* VERTRAUEN-BADGES */}
-            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-              <div style={{ padding: '8px 12px', backgroundColor: '#F5EEE8', borderRadius: '8px', fontSize: '12px', fontWeight: '600', color: '#6B5344', border: '1px solid #E8DDCE' }}>
-                🚚 Kostenloser Versand
+            {perfume.fragrance_family && familyMood[perfume.fragrance_family] && (
+              <p className="dp-mood">{familyMood[perfume.fragrance_family]}</p>
+            )}
+
+            <div className="dp-buy">
+              <div className="dp-price">
+                {perfume.price_chf != null ? (
+                  <>
+                    <span className="dp-price-label">Richtpreis</span>
+                    <span className="dp-price-value">ca. CHF {perfume.price_chf}</span>
+                    <span className="dp-price-note">kann je nach Shop und Grösse abweichen</span>
+                  </>
+                ) : (
+                  <span className="dp-price-label">Preis noch offen</span>
+                )}
               </div>
-              <div style={{ padding: '8px 12px', backgroundColor: '#F5EEE8', borderRadius: '8px', fontSize: '12px', fontWeight: '600', color: '#6B5344', border: '1px solid #E8DDCE' }}>
-                ↩️ 30 Tage Rückgabe
-              </div>
-              <div style={{ padding: '8px 12px', backgroundColor: '#F5EEE8', borderRadius: '8px', fontSize: '12px', fontWeight: '600', color: '#6B5344', border: '1px solid #E8DDCE' }}>
-                ✓ Authentisch
+              <div
+                className="dp-score"
+                title="Auressa-Score: aus Preis-Leistung, Haltbarkeit, Vielseitigkeit und Ausstrahlung berechnet"
+                style={{ ['--p' as string]: score.total } as React.CSSProperties}
+              >
+                <span className="dp-score-num">{score.total}</span>
+                <span className="dp-score-label">Score</span>
               </div>
             </div>
 
-            {/* BUTTONS */}
-            <div style={{ marginTop: '12px', display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
+            <details className="dp-score-details">
+              <summary>Wie entsteht der Auressa-Score?</summary>
+              <ul>
+                {score.parts.map((part) => (
+                  <li key={part.key}>
+                    <span className="sd-label">
+                      {part.label} <small>{part.weight} %</small>
+                    </span>
+                    <span className="sd-track">
+                      <span className="sd-bar" style={{ width: `${(part.points / part.weight) * 100}%` }} />
+                    </span>
+                    <span className="sd-points">{Math.round(part.points)}</span>
+                    <span className="sd-hint">{part.hint}</span>
+                  </li>
+                ))}
+              </ul>
+              <p>
+                Berechnet aus den Duftdaten – je günstiger, langlebiger und vielseitiger ein Duft, desto höher der Score.
+                {score.estimated ? ' Einzelne Werte fehlen noch und sind geschätzt.' : ''}
+              </p>
+            </details>
+
+            <div className="dp-actions" id="dp-actions">
               <AffiliateButton perfume={perfume} />
               <AmazonButton perfume={perfume} />
             </div>
 
-            {/* SOCIAL SHARE */}
-            <div style={{ marginTop: '8px', paddingTop: '12px', borderTop: '1px solid rgba(212,175,55,0.2)' }}>
-              <p style={{ fontSize: '12px', color: '#999', marginBottom: '8px' }}>Teilen:</p>
+            <div className="dp-share">
               <SocialShareButtons perfume={perfume} url={`${SITE_URL}/duft/${slug}`} />
-            </div>
-
-            {/* PRODUKTINFOS - SCHNELL ÜBERBLICK */}
-            <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid rgba(212,175,55,0.2)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', fontSize: '13px' }}>
-              <div>
-                <p style={{ color: '#999', margin: '0 0 4px 0' }}>Duftfamilie</p>
-                <p style={{ fontWeight: '600', color: '#1F1410', margin: 0 }}>{familyLabel(perfume.fragrance_family)}</p>
-              </div>
-              {perfume.gender && (
-                <div>
-                  <p style={{ color: '#999', margin: '0 0 4px 0' }}>Für</p>
-                  <p style={{ fontWeight: '600', color: '#1F1410', margin: 0 }}>
-                    {perfume.gender === 'Women' && '👩 ' || perfume.gender === 'Men' && '👨 ' || perfume.gender === 'Unisex' && '⚥ '}
-                    {genderBadge[perfume.gender] || perfume.gender}
-                  </p>
-                </div>
-              )}
-              {perfume.longevity != null && (
-                <div>
-                  <p style={{ color: '#999', margin: '0 0 4px 0' }}>Haltbarkeit</p>
-                  <p style={{ fontWeight: '600', color: '#1F1410', margin: 0 }}>{perfume.longevity}/10</p>
-                </div>
-              )}
-              {perfume.sillage != null && (
-                <div>
-                  <p style={{ color: '#999', margin: '0 0 4px 0' }}>Sillage</p>
-                  <p style={{ fontWeight: '600', color: '#1F1410', margin: 0 }}>{perfume.sillage}/10</p>
-                </div>
-              )}
             </div>
           </div>
         </section>
 
-        {(perfume.concentration || perfume.intensity || perfume.bottle_description) && (
-          <section className="section card">
-            <h2>📋 Produktdetails</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, fontSize: 15, marginBottom: 32 }}>
-              {perfume.concentration && (
-                <div style={{ padding: 20, backgroundColor: 'linear-gradient(135deg, rgba(212,175,55,0.08), transparent)', border: '2px solid rgba(212,175,55,0.2)', borderRadius: 12 }}>
-                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 8, fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>💧 Konzentration</div>
-                  <div style={{ fontSize: '18px', fontWeight: '600', color: '#1F1410' }}>{perfume.concentration}</div>
+        {/* ── STECKBRIEF ───────────────────────────────────────── */}
+        <Reveal as="section" className="dp-facts">
+          <Meter label="Haltbarkeit" value={perfume.longevity} hint={perfume.longevity != null ? longevityHint(perfume.longevity) : ''} />
+          <Meter label="Sillage" value={perfume.sillage} hint={perfume.sillage != null ? sillageHint(perfume.sillage) : ''} />
+          {perfume.season && (
+            <div className="dp-fact">
+              <span className="dp-fact-label">Saison</span>
+              <span className="dp-fact-value">{seasonDisplay(perfume.season)}</span>
+            </div>
+          )}
+          {occasions.length > 0 && (
+            <div className="dp-fact">
+              <span className="dp-fact-label">Anlass</span>
+              <span className="dp-fact-value">{occasions.join(' · ')}</span>
+            </div>
+          )}
+        </Reveal>
+
+        {/* ── DUFTCHARAKTER + PYRAMIDE ─────────────────────────── */}
+        <div className="dp-grid">
+          {accords.length > 0 && (
+            <Reveal as="section" className="dp-card dp-accords">
+              <p className="dp-kicker">Duftcharakter</p>
+              <h2>So riecht {perfume.perfume_name}</h2>
+              <ul className="accord-list">
+                {accords.map((a, i) => (
+                  <li key={a.code}>
+                    <span className="accord-label">{a.label}</span>
+                    <span className="accord-track">
+                      <span
+                        className="accord-bar"
+                        style={{ width: `${a.value}%`, background: a.color, transitionDelay: `${150 + i * 120}ms` }}
+                      />
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <p className="dp-footnote">Von Auressa aus den Duftnoten berechnet.</p>
+            </Reveal>
+          )}
+
+          {hasNotes && (
+            <Reveal as="section" className="dp-card dp-pyramid">
+              <p className="dp-kicker">Duftpyramide</p>
+              <h2>Wie sich der Duft entfaltet</h2>
+              <ol className="pyr">
+                {LAYERS.map(({ key, title, time }) => {
+                  const notes = perfume[key];
+                  if (!notes || notes.length === 0) return null;
+                  return (
+                    <li className={`pyr-layer pyr-${key}`} key={key}>
+                      <div className="pyr-head">
+                        <strong>{title}</strong>
+                        <span>{time}</span>
+                      </div>
+                      <div className="pyr-notes">
+                        {notes.map((note) => {
+                          const img = noteImage(note);
+                          return (
+                            <Link className={`note-chip${img ? ' has-photo' : ''}`} href={noteHref(note)} key={note}>
+                              {img && (
+                                // eslint-disable-next-line @next/next/no-img-element
+                                <img src={img} alt="" loading="lazy" />
+                              )}
+                              {note}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </li>
+                  );
+                })}
+              </ol>
+            </Reveal>
+          )}
+        </div>
+
+        {/* ── PASST ER ZU DIR? ─────────────────────────────────── */}
+        {(fit.fits.length > 0 || fit.notFits.length > 0) && (
+          <Reveal as="section" className="dp-card dp-fit">
+            <p className="dp-kicker">Ehrliche Einschätzung</p>
+            <h2>Passt {perfume.perfume_name} zu dir?</h2>
+            <div className="fit-cols">
+              {fit.fits.length > 0 && (
+                <div className="fit-col fit-yes">
+                  <h3>Ja, wenn …</h3>
+                  <ul>
+                    {fit.fits.map((t) => <li key={t}>{t}</li>)}
+                  </ul>
                 </div>
               )}
-              {perfume.fragrance_family && (
-                <div style={{ padding: 20, backgroundColor: 'linear-gradient(135deg, rgba(212,175,55,0.08), transparent)', border: '2px solid rgba(212,175,55,0.2)', borderRadius: 12 }}>
-                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 8, fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>👃 Duftfamilie</div>
-                  <div style={{ fontSize: '18px', fontWeight: '600', color: '#1F1410' }}>{familyLabel(perfume.fragrance_family)}</div>
-                </div>
-              )}
-              {perfume.gender && (
-                <div style={{ padding: 20, backgroundColor: 'linear-gradient(135deg, rgba(212,175,55,0.08), transparent)', border: '2px solid rgba(212,175,55,0.2)', borderRadius: 12 }}>
-                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 8, fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>👫 Zielgruppe</div>
-                  <div style={{ fontSize: '18px', fontWeight: '600', color: '#1F1410' }}>{genderBadge[perfume.gender] || perfume.gender}</div>
-                </div>
-              )}
-              {perfume.intensity && (
-                <div style={{ padding: 20, backgroundColor: 'linear-gradient(135deg, rgba(212,175,55,0.08), transparent)', border: '2px solid rgba(212,175,55,0.2)', borderRadius: 12 }}>
-                  <div style={{ fontWeight: 'bold', color: '#D4AF37', marginBottom: 8, fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>🔥 Intensität</div>
-                  <div style={{ fontSize: '18px', fontWeight: '600', color: '#1F1410' }}>{perfume.intensity}</div>
+              {fit.notFits.length > 0 && (
+                <div className="fit-col fit-no">
+                  <h3>Eher nicht, wenn …</h3>
+                  <ul>
+                    {fit.notFits.map((t) => <li key={t}>{t}</li>)}
+                  </ul>
                 </div>
               )}
             </div>
-            {perfume.bottle_description && (
-              <div style={{ backgroundColor: '#FBF7F2', padding: '24px', borderRadius: '12px', border: '1px solid #E8DDCE' }}>
-                <h3 style={{ fontSize: '18px', marginBottom: 12, color: '#1F1410', fontWeight: '700' }}>🏺 Flakon-Design</h3>
-                <p style={{ color: '#333', lineHeight: 1.8, fontSize: 16 }}>
-                  {perfume.bottle_description}
-                </p>
+          </Reveal>
+        )}
+
+        {/* ── BESCHREIBUNG ─────────────────────────────────────── */}
+        <Reveal as="section" className="dp-card dp-story">
+          <p className="dp-kicker">Über den Duft</p>
+          <p className="dp-story-text">{description}</p>
+          {perfume.bottle_description && <p className="dp-story-text dp-story-bottle">{perfume.bottle_description}</p>}
+          {perfume.scent_dna && perfume.scent_dna.length > 0 && (
+            <div className="dp-dna">
+              <span className="dp-fact-label">Erinnert an</span>
+              <div className="dp-chips">
+                {perfume.scent_dna.map((d) => <span className="chip" key={d}>{d}</span>)}
               </div>
-            )}
-          </section>
-        )}
-
-        {hasNotes && (
-          <section className="section card">
-            <OlfactoryPyramide perfume={perfume} />
-          </section>
-        )}
-
-        {perfume.scent_dna && perfume.scent_dna.length > 0 && (
-          <section className="section card">
-            <h2>🧬 Duft-DNA (ähnliche Düfte)</h2>
-            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-              {perfume.scent_dna.map((duft, i) => (
-                <div key={i} style={{
-                  padding: '8px 16px',
-                  backgroundColor: '#f5f5f5',
-                  borderRadius: 6,
-                  fontSize: 13,
-                  border: '1px solid #ddd'
-                }}>
-                  {duft}
-                </div>
-              ))}
             </div>
-          </section>
-        )}
+          )}
+        </Reveal>
 
-        {(perfume.gender || whenText) && (
-          <section className="section card">
-            <h2>❤️ Ideal für wen & wann?</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28, marginTop: 28 }}>
-              {perfume.gender && (
-                <div style={{ backgroundColor: '#FBF7F2', padding: '24px', borderRadius: '14px', border: '2px solid rgba(212,175,55,0.2)' }}>
-                  <div style={{ fontSize: '28px', marginBottom: '12px' }}>
-                    {perfume.gender === 'Women' && '👩'}
-                    {perfume.gender === 'Men' && '👨'}
-                    {perfume.gender === 'Unisex' && '⚥'}
-                  </div>
-                  <h3 style={{ color: '#1F1410', marginBottom: '8px', fontSize: '18px', fontWeight: '700' }}>Für {genderLabels[perfume.gender] || perfume.gender}</h3>
-                  <p style={{ color: '#555', lineHeight: 1.7, fontSize: '15px' }}>
-                    {perfume.perfume_name} gehört zur Duftfamilie <strong>{familyLabel(perfume.fragrance_family)}</strong> und ist perfekt für {genderLabels[perfume.gender] || perfume.gender}.
-                  </p>
-                </div>
-              )}
-              {whenText && (
-                <div style={{ backgroundColor: '#FBF7F2', padding: '24px', borderRadius: '14px', border: '2px solid rgba(212,175,55,0.2)' }}>
-                  <div style={{ fontSize: '28px', marginBottom: '12px' }}>📅</div>
-                  <h3 style={{ color: '#1F1410', marginBottom: '8px', fontSize: '18px', fontWeight: '700' }}>Beste Jahreszeit</h3>
-                  <p style={{ color: '#555', lineHeight: 1.7, fontSize: '15px' }}>
-                    Dieser Duft passt besonders {whenText}.
-                  </p>
-                </div>
-              )}
-            </div>
-          </section>
-        )}
-
+        {/* ── KURATIERTER QUERVERWEIS ──────────────────────────── */}
         {curated && curatedPartner && (
-          <section className="section">
+          <Reveal as="section" className="dp-section">
             <h2>{curated.heading}</h2>
             <p className="small">{curated.text}</p>
             <div className="perfume-list">
-              <Link className="tile tile-link" href={`/duft/${curatedPartner.slug}`}>
-                <Cover perfume={curatedPartner} />
-                <div className="match-badge">
-                  {curatedPartner.price_chf != null ? `ca. CHF ${curatedPartner.price_chf}` : 'Preis offen'}
-                </div>
-                <h3>{curatedPartner.perfume_name}</h3>
-                <p className="small">
-                  {curatedPartner.brands?.name || 'Marke offen'} · {familyLabel(curatedPartner.fragrance_family)}
-                </p>
-              </Link>
+              <PerfumeTile perfume={curatedPartner} />
             </div>
-          </section>
+          </Reveal>
         )}
 
+        {/* ── GÜNSTIGE ALTERNATIVEN (DUPES) ────────────────────── */}
         {cheaper.length > 0 && (
-          <section className="section">
+          <Reveal as="section" className="dp-section">
+            <p className="dp-kicker">Gleicher Stil, kleinerer Preis</p>
             <h2>Günstige Alternativen zu {perfume.perfume_name}</h2>
-            <p className="small">
-              Ähnlich riechende Düfte, die deutlich weniger kosten. Ideal, wenn du den Stil magst,
-              aber sparen möchtest.
-            </p>
-            <div className="perfume-list">
+            <div className="dupe-list">
               {cheaper.map(({ perfume: c, level, sharedNotes }) => {
                 const saving =
-                  perfume.price_chf != null && c.price_chf != null
-                    ? perfume.price_chf - c.price_chf
-                    : null;
+                  perfume.price_chf != null && c.price_chf != null ? perfume.price_chf - c.price_chf : null;
+                const savingPct =
+                  saving != null && perfume.price_chf ? Math.round((saving / perfume.price_chf) * 100) : null;
                 const shared = [...(sharedNotes.top || []), ...(sharedNotes.heart || []), ...(sharedNotes.base || [])]
                   .filter(Boolean)
-                  .slice(0, 3)
-                  .join(', ');
+                  .slice(0, 4);
                 return (
-                  <div className="tile" key={c.id}>
-                    <Cover perfume={c} />
-                    <div className="match-badge">{c.price_chf != null ? `ca. CHF ${c.price_chf}` : 'Preis offen'}</div>
-                    <h3>{c.perfume_name}</h3>
-                    <p className="small">
-                      {c.brands?.name || 'Marke offen'} · {familyLabel(c.fragrance_family)}
-                    </p>
-                    <p className="small">
-                      <strong>{level}</strong>
-                      {saving != null && saving > 0 ? ` · spart ~CHF ${saving}` : ''}
-                      {shared && <><br />Gemeinsam: {shared}</> }
-                    </p>
-                    <div className="cta">
-                      {c.slug && (
-                        <Link className="button secondary" href={`/duft/${c.slug}`}>Duftprofil</Link>
-                      )}
-                      <AffiliateButton perfume={c} showNote={false} />
+                  <article className="dupe-card" key={c.id}>
+                    <div className="dupe-visual">
+                      <PerfumeVisual perfume={c} />
                     </div>
-                  </div>
+                    <div className="dupe-body">
+                      <span className="dupe-level">{level}</span>
+                      <p className="tile-brand">{c.brands?.name || 'Marke offen'}</p>
+                      <h3 className="tile-name">{c.perfume_name}</h3>
+                      <div className="dupe-prices">
+                        {c.price_chf != null && <span className="dupe-price">ca. CHF {c.price_chf}</span>}
+                        {saving != null && saving > 0 && (
+                          <span className="dupe-saving">
+                            du sparst ~CHF {saving}
+                            {savingPct ? ` (${savingPct} %)` : ''}
+                          </span>
+                        )}
+                      </div>
+                      {shared.length > 0 && (
+                        <div className="dupe-shared">
+                          <span>Gemeinsam:</span>
+                          {shared.map((n) => <span className="note-chip note-chip-sm" key={n}>{n}</span>)}
+                        </div>
+                      )}
+                      <div className="dupe-cta">
+                        {c.slug && <Link className="button secondary" href={`/duft/${c.slug}`}>Duftprofil</Link>}
+                        <AffiliateButton perfume={c} showNote={false} />
+                      </div>
+                    </div>
+                  </article>
                 );
               })}
             </div>
-          </section>
+            <p className="dp-footnote">Ähnlich bedeutet nicht identisch – Haltbarkeit und Ausstrahlung können abweichen.</p>
+          </Reveal>
         )}
 
+        {/* ── RIECHT ÄHNLICH WIE ───────────────────────────────── */}
         {similar.length > 0 && (
-          <section className="section">
-            <h2>Riecht ähnlich wie …</h2>
-            <p className="small">
-              Düfte aus unserem Katalog, die {perfume.perfume_name} im Charakter am nächsten kommen.
-            </p>
+          <Reveal as="section" className="dp-section">
+            <p className="dp-kicker">Entdecke mehr</p>
+            <h2>Riecht ähnlich wie {perfume.perfume_name}</h2>
             <div className="perfume-list">
-              {similar.map(({ perfume: s, level, sharedNotes }) => {
-                const shared = [...(sharedNotes.top || []), ...(sharedNotes.heart || []), ...(sharedNotes.base || [])]
-                  .filter(Boolean)
-                  .slice(0, 3)
-                  .join(', ');
-                return (
-                  <div className="tile" key={s.id}>
-                    <Cover perfume={s} />
-                    <div className="match-badge"><strong>{level}</strong></div>
-                    <h3>{s.perfume_name}</h3>
-                    <p className="small">
-                      {s.brands?.name || 'Marke offen'} · {familyLabel(s.fragrance_family)}
-                    </p>
-                    <p className="small">
-                      {shared && <>Gemeinsam: {shared}<br /></> }
-                      Saison: {s.season || 'offen'}
-                      <br />
-                      Anlass: {s.occasion || 'offen'}
-                    </p>
-                    <div className="cta">
-                      {s.slug && (
-                        <Link className="button secondary" href={`/duft/${s.slug}`}>Duftprofil</Link>
-                      )}
-                      <AffiliateButton perfume={s} showNote={false} />
-                    </div>
-                  </div>
-                );
-              })}
+              {similar.map(({ perfume: s }) => (
+                <PerfumeTile perfume={s} key={s.id} />
+              ))}
             </div>
-          </section>
+          </Reveal>
         )}
 
+        {/* ── FAQ ──────────────────────────────────────────────── */}
         {faqs.length > 0 && (
-          <section className="section card">
-            <h2>❓ Häufige Fragen</h2>
+          <Reveal as="section" className="dp-card dp-faq">
+            <p className="dp-kicker">Gut zu wissen</p>
+            <h2>Häufige Fragen</h2>
             {faqs.map((f, i) => (
-              <div className="faq-item" key={i}>
-                <h3 style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <span style={{ fontSize: '20px', color: '#D4AF37' }}>Q</span>
-                  {f.q}
-                </h3>
-                <p className="small" style={{ marginLeft: '32px', paddingLeft: '0', color: '#555' }}>{f.a}</p>
-              </div>
+              <details className="faq-acc" key={i}>
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
             ))}
-          </section>
+          </Reveal>
         )}
 
-        <section className="section" style={{ textAlign: 'center', marginTop: '100px' }}>
-          <div style={{ backgroundColor: 'linear-gradient(135deg, #D4AF37, #E5C158)', padding: '60px 40px', borderRadius: '20px', color: '#1F1410' }}>
-            <h2 style={{ color: '#1F1410', marginBottom: '16px', fontSize: '32px' }}>🎯 Passt dieser Duft zu dir?</h2>
-            <p style={{ fontSize: '18px', marginBottom: '32px', color: '#2A2A2A' }}>Mach unser Duft-Quiz und finde heraus, ob {perfume.perfume_name} dein neuer Lieblingsduft wird!</p>
-            <Link className="button" href="/#quiz" style={{ background: 'white', color: '#D4AF37', fontWeight: '700', fontSize: '18px', padding: '16px 48px' }}>
-              🚀 Quiz starten
-            </Link>
-          </div>
-        </section>
+        {/* ── QUIZ-CTA ─────────────────────────────────────────── */}
+        <Reveal as="section" className="dp-quiz">
+          <h2>Passt {perfume.perfume_name} zu dir?</h2>
+          <p>Mach das Duft-Quiz und finde in 2 Minuten heraus, welche Düfte wirklich zu dir passen.</p>
+          <Link className="button dp-quiz-button" href="/quiz">Quiz starten</Link>
+        </Reveal>
       </div>
+
+      {/* ── FIXIERTE KAUF-LEISTE (nur Handy) ─────────────────── */}
+      <StickyBuyBar targetId="dp-actions">
+        <div className="dp-sticky-info">
+          <span className="dp-sticky-name">{perfume.perfume_name}</span>
+          {perfume.price_chf != null && <span className="dp-sticky-price">ca. CHF {perfume.price_chf}</span>}
+        </div>
+        <AffiliateButton perfume={perfume} showNote={false} label="Ansehen →" />
+      </StickyBuyBar>
 
       <script
         type="application/ld+json"

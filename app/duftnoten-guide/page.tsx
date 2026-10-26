@@ -451,7 +451,7 @@ export default function FragranceNotesGuidePage() {
               fontSize: '0.95rem',
               display: 'inline-block',
             }}>Duftnoten durchsuchen</Link>
-            <Link href="/#quiz" style={{
+            <Link href="/quiz" style={{
               background: 'transparent',
               color: '#faf7f2',
               fontWeight: 600,

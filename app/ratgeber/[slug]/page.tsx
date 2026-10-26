@@ -242,7 +242,7 @@ export default async function GuidePage({
           )}
 
           <section className="section">
-            <Link className="button" href="/#quiz">
+            <Link className="button" href="/quiz">
               Welcher Duft passt zu dir? Mach das Quiz
             </Link>
           </section>

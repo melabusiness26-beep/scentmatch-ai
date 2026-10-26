@@ -301,7 +301,7 @@ export default function DamenParfuemePage() {
               👃 Finde deinen Damen-Duft
             </p>
             <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
-              Nutze <Link href="/#quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> und filtriere nach
+              Nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> und filtriere nach
               „Frauendüfte" um personalisierte Empfehlungen zu bekommen. Oder durchsuche <Link href="/duefte" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>unseren Katalog</Link> nach
               deiner bevorzugten Duftfamilie (Floral, Fruity, Oriental, Gourmand).
             </p>

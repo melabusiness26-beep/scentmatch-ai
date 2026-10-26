@@ -309,7 +309,7 @@ export default function NischeMainstreamPage() {
               🔍 Finde deinen idealen Duft: Mainstream oder Nische?
             </p>
             <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
-              Nutze <Link href="/#quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> und
+              Nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> und
               teste BEIDE Kategorien. Manchmal liebt man einen Mainstream-Klassiker, manchmal einen unbekannten Niche-Duft.
               Die beste Strategie ist zu experimentieren & zu entdecken, nicht zu urteilen.
             </p>

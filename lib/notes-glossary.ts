@@ -26,6 +26,8 @@ export type ScentNote = {
   pairsWith: string;
   /** Zusätzliche Schreibweisen, um Katalog-Düfte zu dieser Note zu finden. */
   synonyms?: string[];
+  /** Schreibweisen, die ein Synonym enthalten, aber eine andere Note sind. */
+  exclude?: string[];
 };
 
 export const scentNotes: ScentNote[] = [
@@ -423,7 +425,8 @@ export const scentNotes: ScentNote[] = [
       'Pfeffer wirkt energiegeladen, modern und anregend. Er eignet sich ganzjährig und für viele Anlässe und gibt Düften gleich zu Beginn Spannung und Charakter.',
     pairsWith:
       'Pfeffer harmoniert mit Bergamotte und Zitrus für frische Würze, mit Rose und Geranie für moderne florale Würze sowie mit Zedernholz, Vetiver und Amber für eine holzig-warme Basis.',
-    synonyms: ['pfeffer', 'pepper', 'rosa pfeffer', 'pink pfeffer', 'pink pepper', 'schwarzer pfeffer']
+    synonyms: ['pfeffer', 'pepper', 'rosa pfeffer', 'pink pfeffer', 'pink pepper', 'schwarzer pfeffer'],
+    exclude: ['pfefferminz', 'peppermint']
   },
   {
     slug: 'zimt',
@@ -480,7 +483,9 @@ export function getScentNote(slug: string): ScentNote | undefined {
 export function findScentNote(note: string): ScentNote | undefined {
   const n = note.toLowerCase().trim();
   return scentNotes.find(
-    (s) => s.name.toLowerCase() === n || s.synonyms?.some((syn) => n.includes(syn))
+    (s) =>
+      s.name.toLowerCase() === n ||
+      (s.synonyms?.some((syn) => n.includes(syn)) && !s.exclude?.some((x) => n.includes(x)))
   );
 }
 

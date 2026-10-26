@@ -8,7 +8,8 @@ export const NOTE_PHOTOS: { image: string; keywords: string[]; exclude?: string[
   { image: '/notes/bambus.jpg', keywords: ['bambus', 'bamboo'] },
   { image: '/notes/mandarine.jpg', keywords: ['mandarine', 'mandarin', 'clementine', 'klementine', 'tangerine'] },
   { image: '/notes/grapefruit.jpg', keywords: ['grapefruit', 'pampelmuse', 'pomelo'] },
-  { image: '/notes/birne.jpg', keywords: ['birne', 'pear'] }
+  { image: '/notes/birne.jpg', keywords: ['birne', 'pear'] },
+  { image: '/notes/pfirsich.jpg', keywords: ['pfirsich', 'peach'] }
 ];
 
 export function extraNotePhoto(note: string): string | null {

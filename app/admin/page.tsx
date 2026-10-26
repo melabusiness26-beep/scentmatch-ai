@@ -689,7 +689,7 @@ export default function AdminPage() {
                   <div>
                     <div style={{ fontWeight: 600 }}>{p.perfume_name}</div>
                     <div style={{ fontSize: 12, color: '#6B5344' }}>
-                      {brands.find(b => b.id === p.brand_id)?.name} • {p.fragrance_family} • {p.gender} • {p.price_chf ? `${p.price_chf} CHF` : 'N/A'}
+                      {brands.find(b => b.id === p.brand_id)?.name} • {p.concentration || '–'} • {p.fragrance_family} • {p.gender} • {p.price_chf ? `${p.price_chf} CHF` : 'N/A'}{p.volume_ml ? ` / ${p.volume_ml} ml` : ''}
                     </div>
                   </div>
                   <button className="button secondary" onClick={() => startEdit(p.id)} style={{ padding: '5px 10px', fontSize: 12 }}>✏️ Edit</button>

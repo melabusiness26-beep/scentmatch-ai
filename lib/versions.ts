@@ -126,3 +126,12 @@ export function compareVersion(current: Perfume, other: Perfume): string {
   }
   return text;
 }
+
+// Anzeigename für Auswahllisten: bei gleichnamigen Düften kommt die Version dazu
+// („Light Blue (Eau de Parfum)"), damit man sie unterscheiden kann.
+export function listName(p: Perfume, all: Perfume[]): string {
+  const same = all.filter((o) => o.perfume_name.toLowerCase() === p.perfume_name.toLowerCase());
+  if (same.length < 2) return p.perfume_name;
+  const label = concentrationLabel(p.concentration);
+  return label ? `${p.perfume_name} (${label})` : p.perfume_name;
+}

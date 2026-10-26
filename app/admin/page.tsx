@@ -46,6 +46,8 @@ type AdminPerfume = {
   trend_vibe?: string | null;
   gender_nuance?: string | null;
   description?: string | null;
+  perfumer?: string | null;
+  inspiration?: string | null;
 };
 
 type Brand = { id: string; name: string };
@@ -76,7 +78,9 @@ const emptyForm = {
   lifestyle: 'casual' as const,
   trend_vibe: 'classic' as const,
   gender_nuance: '',
-  description: ''
+  description: '',
+  perfumer: '',
+  inspiration: ''
 };
 
 function slugify(value: string): string {
@@ -128,6 +132,7 @@ export default function AdminPage() {
 
   const [brands, setBrands] = useState<Brand[]>([]);
   const [perfumes, setPerfumes] = useState<AdminPerfume[]>([]);
+  const [hasBackground, setHasBackground] = useState(true);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState({ ...emptyForm });
   const [message, setMessage] = useState('');
@@ -162,6 +167,14 @@ export default function AdminPage() {
   }
 
   async function loadPerfumes() {
+    // Parfümeur/Inspiration gibt es erst nach SQL 58 – vorher ohne diese Felder laden.
+    const full = await supabase.from('perfumes').select(`${PERFUME_EDIT_FIELDS}, perfumer, inspiration`).order('perfume_name');
+    if (!full.error) {
+      setHasBackground(true);
+      setPerfumes((full.data as AdminPerfume[]) || []);
+      return;
+    }
+    setHasBackground(false);
     const { data } = await supabase.from('perfumes').select(PERFUME_EDIT_FIELDS).order('perfume_name');
     setPerfumes((data as AdminPerfume[]) || []);
   }
@@ -253,7 +266,9 @@ export default function AdminPage() {
       lifestyle: (p.lifestyle || 'casual') as any,
       trend_vibe: (p.trend_vibe || 'classic') as any,
       gender_nuance: p.gender_nuance || '',
-      description: p.description || ''
+      description: p.description || '',
+      perfumer: p.perfumer || '',
+      inspiration: p.inspiration || ''
     });
     setActiveTab('basic');
   }
@@ -468,7 +483,10 @@ export default function AdminPage() {
         lifestyle: form.lifestyle,
         trend_vibe: form.trend_vibe,
         gender_nuance: form.gender_nuance.trim() || null,
-        description: form.description.trim() || null
+        description: form.description.trim() || null,
+        ...(hasBackground
+          ? { perfumer: form.perfumer.trim() || null, inspiration: form.inspiration.trim() || null }
+          : {})
       };
 
       if (editingId) {
@@ -750,14 +768,27 @@ export default function AdminPage() {
                 <div>
                   <div className="field"><label>🖼️ Bild-URL</label><input value={form.image_url} onChange={e => setField('image_url', e.target.value)} placeholder="https://..." /></div>
                   <div className="field"><label>🛒 Affiliate-Link</label><input value={form.affiliate_url} onChange={e => setField('affiliate_url', e.target.value)} placeholder="https://www.notino.ch/..." /></div>
-                  <div className="field"><label>📝 Beschreibung</label><textarea value={form.description} onChange={e => setField('description', e.target.value)} placeholder="Ausführliche Duft-Beschreibung..." style={{ minHeight: 100 }} /></div>
+                  <h3 style={{ margin: '24px 0 4px', fontSize: 16 }}>📖 Hintergrund (freiwillig)</h3>
+                  <p className="small" style={{ margin: '0 0 12px', color: '#6B5344' }}>
+                    Fliesst automatisch in den Duft-Text ein. Nur eintragen, was sicher stimmt (offizielle Quelle).
+                  </p>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 15 }}>
+                    <div className="field"><label>Erscheinungsjahr</label><input type="number" min="1900" max={new Date().getFullYear()} value={form.release_year} onChange={e => setField('release_year', e.target.value)} placeholder="2001" /></div>
+                    <div className="field"><label>Parfümeur / Parfümeurin</label><input value={form.perfumer} onChange={e => setField('perfumer', e.target.value)} placeholder="Olivier Cresp" disabled={!hasBackground} /></div>
+                  </div>
+                  <div className="field"><label>Inspiration (kurz, am besten mit „inspiriert von …")</label><input value={form.inspiration} onChange={e => setField('inspiration', e.target.value)} placeholder="inspiriert vom Sommer am Mittelmeer" disabled={!hasBackground} /></div>
+                  {!hasBackground && (
+                    <p className="small" style={{ margin: '0 0 12px', color: '#b3261e' }}>
+                      Parfümeur und Inspiration sind erst nach dem SQL „58_perfume_background.sql" in Supabase verfügbar.
+                    </p>
+                  )}
+                  <div className="field"><label>📝 Eigene Beschreibung (ersetzt den automatischen Text – meist leer lassen)</label><textarea value={form.description} onChange={e => setField('description', e.target.value)} placeholder="Leer lassen = automatischer Text aus den Daten" style={{ minHeight: 100 }} /></div>
                 </div>
               )}
 
               {activeTab === 'advanced' && (
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15 }}>
                   <div className="field"><label>Konzentration</label><select value={form.concentration} onChange={e => setField('concentration', e.target.value)}>{CONCENTRATIONS.map(c => <option value={c} key={c}>{c}</option>)}</select></div>
-                  <div className="field"><label>Jahr</label><input type="number" min="1900" max={new Date().getFullYear()} value={form.release_year} onChange={e => setField('release_year', e.target.value)} /></div>
                   <div className="field"><label>Volumen (ml)</label><input type="number" min="1" max="500" value={form.volume_ml} onChange={e => setField('volume_ml', e.target.value)} /></div>
                   <div className="field"><label>Bewertung (0-10)</label><input type="number" step="0.1" min="0" max="10" value={form.rating} onChange={e => setField('rating', e.target.value)} /></div>
                   <div className="field"><label>Altersgruppe</label><select value={form.age_group} onChange={e => setField('age_group', e.target.value)}>{AGE_GROUPS.map(a => <option value={a} key={a}>{a}</option>)}</select></div>

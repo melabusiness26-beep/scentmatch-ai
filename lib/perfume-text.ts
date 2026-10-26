@@ -7,6 +7,8 @@ import { computeAccords } from './accords';
 // Schweizer Schreibweise (ss) und je Duft eine eigene, aber stabile Wortwahl.
 
 const MAX_PRICE = 180;
+// Platzhalter für einen Absatzwechsel im Duft-Text.
+const PARAGRAPH = '\u0000';
 
 // Stabile „Zufallszahl" je Duft: gleicher Duft = gleicher Text, aber
 // verschiedene Düfte bekommen verschiedene Formulierungen.
@@ -241,50 +243,123 @@ function priceSentence(p: Perfume, s: number): string | null {
   if (price > MAX_PRICE) {
     return `Mit rund CHF ${price} liegt er über unserer Empfehlungsgrenze von CHF ${MAX_PRICE}. Günstigere Düfte mit ähnlichem Charakter findest du weiter unten.`;
   }
-  if (price <= 60) return pick([`Für rund CHF ${price} bekommt man hier erstaunlich viel Duft fürs Geld.`, `Bei rund CHF ${price} ist er ein Duft, den man ohne schlechtes Gewissen täglich tragen kann.`], s);
+  if (price <= 60) {
+    // „Viel Duft fürs Geld" nur, wenn er auch lange hält – sonst wäre es übertrieben.
+    if ((p.longevity ?? 0) >= 7) {
+      return pick([`Für rund CHF ${price} bekommt man hier erstaunlich viel Duft fürs Geld.`, `Bei rund CHF ${price} und dieser Haltbarkeit stimmt das Preis-Leistungs-Verhältnis.`], s);
+    }
+    return `Bei rund CHF ${price} ist er ein Duft, den man ohne schlechtes Gewissen täglich tragen kann.`;
+  }
   if (price <= 110) return `Mit rund CHF ${price} liegt er im mittleren Preisbereich.`;
   return `Mit rund CHF ${price} gehört er zu den edleren Düften in unserer Auswahl.`;
 }
 
+// Hintergrund aus den freiwilligen Feldern Jahr, Parfümeur und Inspiration.
+// „komponiert von" statt „Parfümeur/in", damit nichts über die Person angenommen wird.
+function backgroundSentences(p: Perfume, who: string): string[] {
+  const year = p.release_year && p.release_year > 1800 ? p.release_year : null;
+  const perfumer = p.perfumer?.trim() || null;
+  const inspiration = p.inspiration?.trim().replace(/[.!]+$/, '') || null;
+  if (!year && !perfumer && !inspiration) return [];
+  // „inspiriert von …" passt direkt in den Satz, alles andere bekommt einen eigenen.
+  const inline = inspiration && /^inspiriert\b/i.test(inspiration) ? inspiration.charAt(0).toLowerCase() + inspiration.slice(1) : null;
+  const facts: string[] = [];
+  if (year) facts.push(`kam ${year} auf den Markt`);
+  if (perfumer) facts.push(`wurde von ${perfumer} komponiert`);
+  const out: string[] = [];
+  if (facts.length) {
+    out.push(`${who} ${facts.join(' und ')}${inline ? `, ${inline}` : ''}.`);
+  } else if (inline) {
+    out.push(`${who} ist ${inline}.`);
+  }
+  if (inspiration && !inline) {
+    out.push(`Die Idee dahinter: ${inspiration.charAt(0).toUpperCase() + inspiration.slice(1)}.`);
+  }
+  return out;
+}
+
 // ── Beschreibung ─────────────────────────────────────────────────────────
 
-export function describePerfume(p: Perfume): string {
+export type DescribeOptions = {
+  /** Andere Versionen desselben Duftes, z. B. { name: 'Light Blue', labels: ['Eau de Parfum', 'Eau Intense'] }. */
+  versions?: { name: string; labels: string[] };
+};
+
+export function describePerfume(p: Perfume, opts: DescribeOptions = {}): string {
   const s = seed(p);
   const name = p.perfume_name;
   const brand = p.brands?.name;
   const sentences: string[] = [];
 
-  // 1) Charakter aus den stärksten Akkorden
+  // 1) Hintergrund (falls eingetragen) und Charakter aus den stärksten Akkorden
   const accords = computeAccords(p, 2);
   const adjectives = accords.map((a) => ACCORD_ADJ[a.code]).filter(Boolean);
   const character = adjectives.length === 2 ? `${adjectives[0]}, ${adjectives[1]}` : adjectives[0];
   const gender = p.gender && GENDER_PHRASE[p.gender] ? pick(GENDER_PHRASE[p.gender], s) : null;
+  const g = gender ? ` ${gender}` : '';
   const who = brand ? `${name} von ${brand}` : name;
-  if (character) {
-    const g = gender ? ` ${gender}` : '';
+  const intro = backgroundSentences(p, who);
+  if (intro.length) {
+    sentences.push(...intro);
+    if (character) {
+      sentences.push(pick([`Herausgekommen ist ein ${character} Duft${g}.`, `Das Ergebnis ist ein ${character} Duft${g}.`], s));
+    }
+  } else if (character) {
     sentences.push(
-      pick([`${who} ist ein ${character} Duft${g}.`, `Ein ${character} Duft${g}: das ist ${who}.`], s)
+      pick(
+        [`${who} ist ein ${character} Duft${g}.`, `Ein ${character} Duft${g}: das ist ${who}.`, `Mit ${who} bekommt man einen ${character.replace(/r$/, 'n').replace(/r, /, 'n, ')} Duft${g}.`],
+        s
+      )
     );
   } else {
-    sentences.push(`${who} ist ein Duft${gender ? ` ${gender}` : ''}.`);
+    sentences.push(`${who} ist ein Duft${g}.`);
   }
 
   // 2) Stimmungsbild passend zum Charakter
   const mood = moodKey(p);
   if (mood) sentences.push(pick(MOOD[mood], s, 1));
 
-  // 3) Verlauf der Noten
-  const top = clean(p.top_notes);
-  const heart = clean(p.heart_notes);
-  const base = clean(p.base_notes);
+  // 3) Verlauf der Noten (neuer Absatz)
+  sentences.push(PARAGRAPH);
+  // Jede Note nur einmal nennen (z. B. Zedernholz in Kopf- und Basisnote).
+  const seen = new Set<string>();
+  const firstTime = (notes: string[] | null) =>
+    (notes || []).filter((n) => {
+      const key = n.trim().toLowerCase();
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  const top = clean(firstTime(p.top_notes));
+  const heart = clean(firstTime(p.heart_notes));
+  const base = clean(firstTime(p.base_notes));
   if (top.length || heart.length || base.length) {
     const parts: string[] = [];
-    if (top.length) parts.push(pick([`Zu Beginn riecht man vor allem ${joinList(top)}`, `Er öffnet mit ${joinList(top)}`], s, 2));
+    // Nur Satzbauten, in denen die Noten im Nominativ stehen – so stimmen auch
+    // Adjektive („sizilianische Zitrone", „grüner Apfel") ohne Deklination.
+    if (top.length) {
+      const one = top.length === 1;
+      parts.push(
+        pick(
+          [
+            `den Auftakt ${one ? 'macht' : 'machen'} ${joinList(top)}`,
+            `zu Beginn ${one ? 'duftet' : 'duften'} vor allem ${joinList(top)}`,
+            `am Anfang ${one ? 'ist' : 'sind'} vor allem ${joinList(top)} zu riechen`
+          ],
+          s,
+          2
+        )
+      );
+    }
     if (heart.length) {
       const one = heart.length === 1;
       parts.push(
         pick(
-          [`danach ${one ? 'tritt' : 'treten'} ${joinList(heart)} in den Vordergrund`, `im Herzen ${one ? 'zeigt' : 'zeigen'} sich ${joinList(heart)}`],
+          [
+            `danach ${one ? 'tritt' : 'treten'} ${joinList(heart)} in den Vordergrund`,
+            `im Herzen ${one ? 'zeigt' : 'zeigen'} sich ${joinList(heart)}`,
+            `nach einer Weile ${one ? 'kommt' : 'kommen'} ${joinList(heart)} dazu`
+          ],
           s,
           3
         )
@@ -292,7 +367,9 @@ export function describePerfume(p: Perfume): string {
     }
     if (base.length) {
       const verb = base.length === 1 ? 'bleibt' : 'bleiben';
-      parts.push(pick([`auf der Haut ${verb} am Ende ${joinList(base)}`, `zum Schluss ${verb} ${joinList(base)} zurück`], s, 4));
+      parts.push(
+        pick([`auf der Haut ${verb} am Ende ${joinList(base)}`, `zum Schluss ${verb} ${joinList(base)} zurück`, `später ${verb} ${joinList(base)} auf der Haut`], s, 4)
+      );
     }
     const first = parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
     if (parts.length === 1) sentences.push(`${first}.`);
@@ -305,7 +382,19 @@ export function describePerfume(p: Perfume): string {
   const occasions = occasionPhrases(p.occasion);
   if (season || occasions.length) {
     const where = occasions.length ? joinList(occasions) : '';
-    if (season && where) sentences.push(pick([`Am schönsten trägt er sich ${season}, besonders ${where}.`, `Er passt ${season} und macht sich ${where} besonders gut.`], s, 5));
+    if (season && where) {
+      sentences.push(
+        pick(
+          [
+            `Am schönsten trägt er sich ${season}, besonders ${where}.`,
+            `Er passt ${season} und macht sich ${where} besonders gut.`,
+            `Seine Stärken zeigt er ${season}, vor allem ${where}.`
+          ],
+          s,
+          5
+        )
+      );
+    }
     else if (season) sentences.push(`Am schönsten trägt er sich ${season}.`);
     else sentences.push(`Er macht sich ${where} besonders gut.`);
   }
@@ -314,11 +403,33 @@ export function describePerfume(p: Perfume): string {
   const perf = performanceSentence(p, s);
   if (perf) sentences.push(perf);
 
-  // 6) Preis-Einordnung
+  // 6) Preis-Einordnung (neuer Absatz)
   const price = priceSentence(p, s);
+  sentences.push(PARAGRAPH);
   if (price) sentences.push(price);
 
-  return sentences.join(' ');
+  // 7) Weitere Versionen
+  if (opts.versions && opts.versions.labels.length) {
+    const als = joinList(opts.versions.labels.map((l) => `als ${l}`));
+    sentences.push(
+      pick(
+        [
+          `${opts.versions.name} gibt es auch ${als}; die Unterschiede zeigt der Versionen-Vergleich.`,
+          `Übrigens: ${opts.versions.name} gibt es auch ${als}.`
+        ],
+        s,
+        8
+      )
+    );
+  }
+
+  // Absätze mit Leerzeile trennen; leere Absätze entfallen.
+  return sentences
+    .join(' ')
+    .split(PARAGRAPH)
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .join('\n\n');
 }
 
 // ── Passt zu dir / Eher nicht ────────────────────────────────────────────

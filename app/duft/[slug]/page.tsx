@@ -6,6 +6,7 @@ import {
   getPerfumeBySlug,
   getAllPerfumeSlugs,
   getPerfumes,
+  getPerfumeBackground,
   describePerfume,
   concentrationLabel,
   type Perfume
@@ -327,7 +328,16 @@ export default async function PerfumeDetailPage({
     const img = noteImage(note);
     if (img) noteImageMap[note] = img;
   }
-  const description = perfume.description || describePerfume(perfume);
+  const background = perfume.description ? {} : await getPerfumeBackground(perfume.id);
+  const otherVersions = versions.filter((v) => v.id !== perfume.id).map(versionLabel);
+  const description =
+    perfume.description ||
+    describePerfume(
+      { ...perfume, ...background },
+      otherVersions.length
+        ? { versions: { name: baseTitle(perfume.perfume_name, versionLabel(perfume)), labels: otherVersions } }
+        : {}
+    );
   const occasions = (perfume.occasion || '')
     .split(',')
     .map((o) => o.trim())
@@ -607,7 +617,15 @@ export default async function PerfumeDetailPage({
         {/* ── BESCHREIBUNG ─────────────────────────────────────── */}
         <Reveal as="section" className="dp-card dp-story">
           <p className="dp-kicker">Über den Duft</p>
-          <p className="dp-story-text">{description}</p>
+          {description
+            .split(/\n\s*\n/)
+            .map((para) => para.trim())
+            .filter(Boolean)
+            .map((para, i) => (
+              <p className="dp-story-text" key={i}>
+                {para}
+              </p>
+            ))}
           {perfume.bottle_description && <p className="dp-story-text dp-story-bottle">{perfume.bottle_description}</p>}
           {perfume.scent_dna && perfume.scent_dna.length > 0 && (
             <div className="dp-dna">

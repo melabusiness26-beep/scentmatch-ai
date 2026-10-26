@@ -1873,10 +1873,11 @@ a.dp-version:hover { border-color: var(--gold-500); background: #FFFBF1; color: 
 .season-fit-list a:hover { border-color: var(--gold-500); }
 .season-fit-list a span { font-weight: 400; color: var(--ink-500); }
 
-.dp-tips-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 22px; margin-bottom: 22px; }
-.dp-tips-grid.dp-tips-single { grid-template-columns: minmax(0, 1fr); }
-.dp-wear ul, .dp-know ul { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 10px; }
-.dp-wear li, .dp-know li { position: relative; padding-left: 28px; font-family: var(--font-sans), Arial, sans-serif; font-size: 15px; line-height: 1.5; color: var(--ink-700); }
+.dp-wear { margin-bottom: 22px; }
+.dp-wear ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px 22px; }
+.dp-wear li { position: relative; padding-left: 26px; font-family: var(--font-sans), Arial, sans-serif; font-size: 15px; line-height: 1.5; color: var(--ink-700); }
 .dp-wear li::before { content: '✦'; position: absolute; left: 4px; top: 0; color: var(--gold-500); }
-.dp-know li::before { content: '💡'; position: absolute; left: 0; top: 0; font-size: 15px; }
-@media (max-width: 760px) { .dp-tips-grid { grid-template-columns: minmax(0, 1fr); } }
+.dp-know { margin: 18px 0 0; max-width: 760px; padding: 14px 18px; border-left: 3px solid var(--gold-500); border-radius: 0 14px 14px 0; background: #FFFBF1; }
+.dp-know-title { margin: 0 0 6px; font-family: var(--font-sans), Arial, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--ink-900); }
+.dp-know ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.dp-know li { font-family: var(--font-sans), Arial, sans-serif; font-size: 15px; line-height: 1.5; color: var(--ink-700); }

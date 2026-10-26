@@ -644,8 +644,8 @@ export default async function PerfumeDetailPage({
           </Reveal>
         )}
 
-        {/* ── SO TRÄGST DU IHN + GUT ZU WISSEN ─────────────────── */}
-        <div className={`dp-tips-grid${facts.length ? '' : ' dp-tips-single'}`}>
+        {/* ── SO TRÄGST DU IHN ─────────────────────────────────── */}
+        {tips.length > 0 && (
           <Reveal as="section" className="dp-card dp-wear">
             <p className="dp-kicker">So trägst du ihn</p>
             <ul>
@@ -654,17 +654,7 @@ export default async function PerfumeDetailPage({
               ))}
             </ul>
           </Reveal>
-          {facts.length > 0 && (
-            <Reveal as="section" className="dp-card dp-know">
-              <p className="dp-kicker">Gut zu wissen</p>
-              <ul>
-                {facts.map((f) => (
-                  <li key={f}>{f}</li>
-                ))}
-              </ul>
-            </Reveal>
-          )}
-        </div>
+        )}
 
         {/* ── BESCHREIBUNG ─────────────────────────────────────── */}
         <Reveal as="section" className="dp-card dp-story">
@@ -679,6 +669,16 @@ export default async function PerfumeDetailPage({
               </p>
             ))}
           {perfume.bottle_description && <p className="dp-story-text dp-story-bottle">{perfume.bottle_description}</p>}
+          {facts.length > 0 && (
+            <aside className="dp-know" aria-label="Gut zu wissen">
+              <p className="dp-know-title">💡 Gut zu wissen</p>
+              <ul>
+                {facts.map((f) => (
+                  <li key={f}>{f}</li>
+                ))}
+              </ul>
+            </aside>
+          )}
           {perfume.scent_dna && perfume.scent_dna.length > 0 && (
             <div className="dp-dna">
               <span className="dp-fact-label">Erinnert an</span>

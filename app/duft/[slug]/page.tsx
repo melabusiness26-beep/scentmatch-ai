@@ -21,6 +21,7 @@ import { PerfumeVisual } from '@/app/components/PerfumeVisual';
 import { Reveal } from '@/app/components/Reveal';
 import { StickyBuyBar } from '@/app/components/StickyBuyBar';
 import { computeAccords } from '@/lib/accords';
+import { computeAuressaScore } from '@/lib/score';
 
 // Kurzes Geschlechts-Label + Symbol für die Badge (passend zu den Duft-Kacheln).
 const genderBadge: Record<string, string> = {
@@ -174,18 +175,16 @@ function jsonLd(perfume: Perfume) {
       perfume.description ||
       `${perfume.perfume_name} – Duftprofil auf Auressa.`,
     image: perfume.image_url || undefined,
-    // Redaktionelle Einschätzung von Auressa (kein vorgetäuschtes Nutzer-Rating).
-    review: perfume.scentmatch_score
-      ? {
-          '@type': 'Review',
-          author: { '@type': 'Organization', name: 'Auressa' },
-          reviewRating: {
-            '@type': 'Rating',
-            ratingValue: (perfume.scentmatch_score / 20).toFixed(1),
-            bestRating: '5'
-          }
-        }
-      : undefined,
+    // Berechneter Auressa-Score (lib/score.ts) – kein vorgetäuschtes Nutzer-Rating.
+    review: {
+      '@type': 'Review',
+      author: { '@type': 'Organization', name: 'Auressa' },
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: (computeAuressaScore(perfume).total / 20).toFixed(1),
+        bestRating: '5'
+      }
+    },
     offers:
       perfume.price_chf != null
         ? {
@@ -308,6 +307,7 @@ export default async function PerfumeDetailPage({
   const faqs = buildFaqs(perfume);
 
   const accords = computeAccords(perfume);
+  const score = computeAuressaScore(perfume);
   const description = perfume.description || describePerfume(perfume);
   const occasions = (perfume.occasion || '')
     .split(',')
@@ -368,17 +368,37 @@ export default async function PerfumeDetailPage({
                   <span className="dp-price-label">Preis noch offen</span>
                 )}
               </div>
-              {perfume.scentmatch_score != null && (
-                <div
-                  className="dp-score"
-                  title="Redaktionelle Auressa-Einschätzung (0–100)"
-                  style={{ ['--p' as string]: perfume.scentmatch_score } as React.CSSProperties}
-                >
-                  <span className="dp-score-num">{perfume.scentmatch_score}</span>
-                  <span className="dp-score-label">Score</span>
-                </div>
-              )}
+              <div
+                className="dp-score"
+                title="Auressa-Score: aus Preis-Leistung, Haltbarkeit, Vielseitigkeit und Ausstrahlung berechnet"
+                style={{ ['--p' as string]: score.total } as React.CSSProperties}
+              >
+                <span className="dp-score-num">{score.total}</span>
+                <span className="dp-score-label">Score</span>
+              </div>
             </div>
+
+            <details className="dp-score-details">
+              <summary>Wie entsteht der Auressa-Score?</summary>
+              <ul>
+                {score.parts.map((part) => (
+                  <li key={part.key}>
+                    <span className="sd-label">
+                      {part.label} <small>{part.weight} %</small>
+                    </span>
+                    <span className="sd-track">
+                      <span className="sd-bar" style={{ width: `${(part.points / part.weight) * 100}%` }} />
+                    </span>
+                    <span className="sd-points">{Math.round(part.points)}</span>
+                    <span className="sd-hint">{part.hint}</span>
+                  </li>
+                ))}
+              </ul>
+              <p>
+                Berechnet aus den Duftdaten – je günstiger, langlebiger und vielseitiger ein Duft, desto höher der Score.
+                {score.estimated ? ' Einzelne Werte fehlen noch und sind geschätzt.' : ''}
+              </p>
+            </details>
 
             <div className="dp-actions" id="dp-actions">
               <AffiliateButton perfume={perfume} />

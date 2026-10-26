@@ -37,6 +37,10 @@ export function PerfumeVisual({
   const brandSize = brand.length <= 10 ? 7 : brand.length <= 14 ? 5.6 : 4.6;
   const brandText = brand.length > 20 ? `${brand.slice(0, 19)}…` : brand;
   const sub = concentrationLabel(perfume.concentration)?.toUpperCase();
+  // Für die grosse Ansicht: bis zu 4 Noten, die sanft um den Flakon schweben.
+  const floatingNotes = [...(perfume.top_notes || []), ...(perfume.heart_notes || []), ...(perfume.base_notes || [])]
+    .filter((n, i, all) => all.indexOf(n) === i)
+    .slice(0, 4);
   // Eindeutige IDs je Duft, damit mehrere SVGs auf einer Seite sich nicht stören.
   const uid = (perfume.slug || perfume.id).replace(/[^a-z0-9-]/gi, '');
 
@@ -44,6 +48,12 @@ export function PerfumeVisual({
     <div className={`pv pv-${size} pv-${fam}`} role="img" aria-label={`${label} – Auressa-Duftkarte`}>
       <span className="pv-glow pv-glow-a" aria-hidden="true" />
       <span className="pv-glow pv-glow-b" aria-hidden="true" />
+      {size === 'hero' &&
+        floatingNotes.map((note, i) => (
+          <span className={`pv-note pv-note-${i}`} key={note} aria-hidden="true">
+            {note}
+          </span>
+        ))}
       <svg className="pv-flacon" viewBox="0 0 120 170" aria-hidden="true">
         <defs>
           <linearGradient id={`g-${uid}`} x1="0" y1="0" x2="1" y2="1">
@@ -70,6 +80,9 @@ export function PerfumeVisual({
         <rect x="14" y="44" width="92" height="118" rx="20" fill={`url(#g-${uid})`} stroke="rgba(120,96,60,.28)" strokeWidth="1.2" />
         <g clipPath={`url(#b-${uid})`}>
           <path className="pv-liquid" d="M0 92 Q30 84 60 92 T120 92 V170 H0 Z" fill={`url(#l-${uid})`} />
+          <g className="pv-shine">
+            <rect x="-40" y="30" width="26" height="160" fill="#fff" opacity="0.45" transform="skewX(-18)" />
+          </g>
         </g>
         {/* Glanzlicht */}
         <rect x="22" y="54" width="8" height="90" rx="4" fill="#fff" opacity="0.55" />

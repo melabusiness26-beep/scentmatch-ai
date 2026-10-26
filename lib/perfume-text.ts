@@ -51,28 +51,75 @@ const ACCORD_ADJ: Record<string, string> = {
   warm: 'warmer'
 };
 
-const FAMILY_IMAGE: Record<string, string[]> = {
-  clean: [
+// Stimmungsbilder: passend zum stärksten Duftcharakter innerhalb der Familie,
+// damit z. B. ein zitrischer Sommerduft nicht wie „frische Wäsche" beschrieben wird.
+const MOOD: Record<string, string[]> = {
+  citrus: [
+    'Er riecht nach Zitrusschale und Sommerluft, ein bisschen wie Ferien am Meer.',
+    'Hell und spritzig, wie frisch aufgeschnittene Zitrusfrüchte an einem warmen Tag.'
+  ],
+  summer: [
+    'Er riecht nach Sonne auf der Haut und einem leichten Wind im Sommer.',
+    'Leicht und hell, genau das Richtige, wenn es draussen warm ist.'
+  ],
+  cotton: [
     'Er erinnert an frisch gewaschene Baumwolle und ein offenes Fenster am Morgen.',
-    'Er riecht nach klarer Luft und sauberer Haut, ohne aufdringlich zu sein.',
-    'Ein Duft, der eher nach Sommerwind als nach Parfümerie riecht.'
+    'Er riecht nach klarer Luft und sauberer Haut, ohne aufdringlich zu sein.'
   ],
-  gourmand: [
+  spicedSweet: [
+    'Die Süsse wird von warmen Gewürzen getragen, ein bisschen wie Weihnachtsgebäck und Kaminfeuer.',
+    'Süss, aber nicht zuckrig: Die Gewürze geben ihm Wärme und Tiefe.'
+  ],
+  dessert: [
     'Er hat etwas Tröstliches, fast wie ein warmes Dessert an einem kalten Abend.',
-    'Man denkt an Vanille, warme Haut und lange Abende.',
-    'Er riecht weich und einladend, eher Kuschelpullover als Abendkleid.'
+    'Man denkt an Vanille, warme Haut und lange Abende.'
   ],
-  woody: [
+  warmWood: [
+    'Warm und umhüllend, wie ein Kaschmirschal an einem kühlen Abend.',
+    'Die Hölzer wirken hier weich und warm statt trocken.'
+  ],
+  dryWood: [
     'Er wirkt ruhig und selbstsicher, ohne laut zu werden.',
-    'Er hat diese trockene, edle Tiefe, die man von guten Hölzern kennt.',
-    'Ein Duft mit Ruhe und Haltung, der nicht gefallen will, sondern einfach da ist.'
+    'Er hat diese trockene, edle Tiefe, die man von guten Hölzern kennt.'
+  ],
+  fruityFloral: [
+    'Die Blüten werden von saftigen Früchten begleitet, das macht ihn fröhlich und leicht.',
+    'Blumig mit einem fruchtigen Lächeln, verspielt, aber nicht kindlich.'
+  ],
+  powderyFloral: [
+    'Die Blumen wirken weich und pudrig, wie ein Hauch von Puder auf warmer Haut.',
+    'Elegant und sanft, mit einem pudrigen Schleier über den Blüten.'
   ],
   floral: [
     'Die Blumen wirken dabei modern und leicht, nicht altmodisch.',
-    'Er riecht nach einem frischen Strauss, nicht nach Grossmutters Kommode.',
-    'Feminin und weich, aber mit genug Charakter, um nicht beliebig zu sein.'
+    'Er riecht nach einem frischen Strauss, nicht nach Grossmutters Kommode.'
   ]
 };
+
+function moodKey(p: Perfume): string | null {
+  // Gleiche Grundlage wie der erste Satz („ein frischer, blumiger Duft"),
+  // damit sich Charakter und Stimmungsbild nie widersprechen.
+  const all = computeAccords(p, 9);
+  const top2 = all.slice(0, 2).map((a) => a.code as string);
+  const has = (code: string) => top2.includes(code);
+  const citrus = has('zitrisch') || (all.find((a) => a.code === 'zitrisch')?.value || 0) >= 50;
+  const summer = /sommer/i.test(p.season || '');
+  switch (p.fragrance_family) {
+    case 'clean':
+      if (citrus) return 'citrus';
+      return summer ? 'summer' : 'cotton';
+    case 'gourmand':
+      return has('wuerzig') ? 'spicedSweet' : 'dessert';
+    case 'woody':
+      return has('warm') || has('suess') ? 'warmWood' : 'dryWood';
+    case 'floral':
+      if (has('fruchtig')) return 'fruityFloral';
+      if (has('pudrig')) return 'powderyFloral';
+      return 'floral';
+    default:
+      return null;
+  }
+}
 
 const GENDER_PHRASE: Record<string, string[]> = {
   Women: ['für Damen', 'für Frauen'],
@@ -203,9 +250,9 @@ export function describePerfume(p: Perfume): string {
     sentences.push(`${who} ist ein Duft${gender ? ` ${gender}` : ''}.`);
   }
 
-  // 2) Bild/Stimmung der Familie
-  const images = FAMILY_IMAGE[p.fragrance_family || ''];
-  if (images) sentences.push(pick(images, s, 1));
+  // 2) Stimmungsbild passend zum Charakter
+  const mood = moodKey(p);
+  if (mood) sentences.push(pick(MOOD[mood], s, 1));
 
   // 3) Verlauf der Noten
   const top = clean(p.top_notes);

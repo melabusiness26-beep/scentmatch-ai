@@ -286,3 +286,22 @@ gender → anchor (optional, Dropdown) → 3× family → lovedNote → disliked
 ### Amazon
 - Gründerin ist Amazon-Partnerin (SiteStripe sichtbar). Tag im Code: `auressa-2-21` –
   von ihr noch zu bestätigen („Link abrufen" in SiteStripe).
+
+## 13. Update (26. Oktober 2026, Abend): Duftnoten-Fotos, Versionen, besserer Duft-Text
+
+- **Duftnoten-Fotos**: 19 eigene Fotos (ChatGPT, Satin-Stil) in `/public/notes`, Zuordnung in
+  `lib/note-photos.ts` (Stichworte + `exclude`; `priority` = Vorrang vor Lexikon-Foto, z. B. Neroli = Blüte
+  statt Orange). Lexikon-Einträge können `exclude` haben (Pfefferminze ≠ Pfeffer).
+- **Versionen** (`lib/versions.ts`): gleiche Marke + gleiches Geschlecht + gleicher Name ohne
+  Konzentrations-Zusatz = Versionen (z. B. Light Blue EdT / EdP / Eau Intense). Detailseite zeigt
+  Umschalter + Vergleich (Preis pro 100 ml, wenn Grössen verschieden). Admin erlaubt gleichen Namen mit
+  anderer Konzentration; Slug wird automatisch eindeutig. Beim Eintragen: Marke/Geschlecht exakt gleich,
+  Konzentration + Volumen (ml) setzen.
+- **Duft-Text** (`lib/perfume-text.ts`): freiwillige Felder Erscheinungsjahr, Parfümeur, Inspiration
+  (SQL `58_perfume_background.sql` + `59_background_read_access.sql` ausgeführt – anon hat Spalten-Rechte,
+  neue Spalten brauchen eigenes `GRANT SELECT (...)`!). Drei Absätze, Noten nur im Nominativ.
+- **Eigene Texte gratis im Chat** schreiben (kein API-Knopf – Gründerin will keine API-Kosten); bei
+  vielen Düften als SQL-Datei liefern.
+- Admin aktualisiert nach dem Speichern die Duft-Seite sofort (`/api/revalidate`).
+- **Offen** (Priorität): Newsletter-Bestätigung reparieren (Token fälschbar), Amazon-Tag bestätigen,
+  Katalog aus Backup neu aufbauen (mit Texten), „Sillage" → „Ausstrahlung", Score pro 100 ml.

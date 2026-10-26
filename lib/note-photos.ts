@@ -14,7 +14,8 @@ export const NOTE_PHOTOS: { image: string; keywords: string[]; exclude?: string[
   { image: '/notes/himbeere.jpg', keywords: ['himbeer', 'raspberr', 'framboise'] },
   { image: '/notes/kokos.jpg', keywords: ['kokos', 'coconut', 'noix de coco'] },
   { image: '/notes/feige.jpg', keywords: ['feige', 'fig'] },
-  { image: '/notes/koriander.jpg', keywords: ['koriander', 'coriander', 'cilantro'] }
+  { image: '/notes/koriander.jpg', keywords: ['koriander', 'coriander', 'cilantro'] },
+  { image: '/notes/minze.jpg', keywords: ['minze', 'mint', 'menthe'] }
 ];
 
 export function extraNotePhoto(note: string): string | null {

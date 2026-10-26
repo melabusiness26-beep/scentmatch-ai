@@ -395,7 +395,9 @@ export default async function PerfumeDetailPage({
                   <>
                     <span className="dp-price-label">Richtpreis</span>
                     <span className="dp-price-value">ca. CHF {perfume.price_chf}</span>
-                    <span className="dp-price-note">kann je nach Shop und Grösse abweichen</span>
+                    <span className="dp-price-note">
+                      {perfume.volume_ml ? `für ${perfume.volume_ml} ml · kann je nach Shop abweichen` : 'kann je nach Shop und Grösse abweichen'}
+                    </span>
                   </>
                 ) : (
                   <span className="dp-price-label">Preis noch offen</span>
@@ -491,7 +493,10 @@ export default async function PerfumeDetailPage({
                       </th>
                       <td>{v.longevity != null ? `${v.longevity}/10` : '–'}</td>
                       <td>{v.sillage != null ? `${v.sillage}/10` : '–'}</td>
-                      <td>{v.price_chf != null ? `CHF ${v.price_chf}` : '–'}</td>
+                      <td>
+                        {v.price_chf != null ? `CHF ${v.price_chf}` : '–'}
+                        {v.price_chf != null && v.volume_ml ? <small className="dp-compare-ml">{v.volume_ml} ml</small> : null}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

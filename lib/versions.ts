@@ -96,8 +96,16 @@ export function compareVersion(current: Perfume, other: Perfume): string {
     parts.push(other.sillage > current.sillage ? 'strahlt stärker aus' : 'bleibt näher an der Haut');
   }
   if (current.price_chf != null && other.price_chf != null) {
-    const diff = Math.round(other.price_chf - current.price_chf);
-    if (Math.abs(diff) >= 3) parts.push(`ca. CHF ${Math.abs(diff)} ${diff > 0 ? 'teurer' : 'günstiger'}`);
+    const a = current.volume_ml;
+    const b = other.volume_ml;
+    if (a && b && a !== b) {
+      // Verschiedene Flaschengrössen: fair über den Preis pro 100 ml vergleichen.
+      const diff = Math.round((other.price_chf / b - current.price_chf / a) * 100);
+      if (Math.abs(diff) >= 3) parts.push(`pro 100 ml ca. CHF ${Math.abs(diff)} ${diff > 0 ? 'teurer' : 'günstiger'}`);
+    } else if (a === b || (!a && !b)) {
+      const diff = Math.round(other.price_chf - current.price_chf);
+      if (Math.abs(diff) >= 3) parts.push(`ca. CHF ${Math.abs(diff)} ${diff > 0 ? 'teurer' : 'günstiger'}`);
+    }
   }
   const notesOf = (p: Perfume) => [...(p.top_notes || []), ...(p.heart_notes || []), ...(p.base_notes || [])];
   // „Zitrone" und „Sizilianische Zitrone" gelten als dieselbe Note.

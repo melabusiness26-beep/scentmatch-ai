@@ -13,6 +13,8 @@ export type Perfume = {
   gender: string | null;
   fragrance_family: string | null;
   price_chf: number | null;
+  /** Flaschengrösse in ml, auf die sich price_chf bezieht. */
+  volume_ml?: number | null;
   longevity: number | null;
   sillage: number | null;
   scentmatch_score: number | null;
@@ -72,7 +74,7 @@ export function concentrationLabel(code: string | null | undefined): string | nu
 // Felder, die wir aus Supabase laden. Zentral definiert, damit Startseite und
 // Detailseite garantiert dieselbe Struktur verwenden.
 const PERFUME_FIELDS =
-  'id, perfume_name, slug, gender, fragrance_family, price_chf, longevity, sillage, scentmatch_score, season, occasion, description, image_url, affiliate_url, concentration, top_notes, heart_notes, base_notes, age_group, lifestyle, trend_vibe, gender_nuance, brands(name, slug, country)';
+  'id, perfume_name, slug, gender, fragrance_family, price_chf, volume_ml, longevity, sillage, scentmatch_score, season, occasion, description, image_url, affiliate_url, concentration, top_notes, heart_notes, base_notes, age_group, lifestyle, trend_vibe, gender_nuance, brands(name, slug, country)';
 
 // Redaktionelle Duftbeschreibung – siehe lib/perfume-text.ts.
 export { describePerfume } from './perfume-text';

@@ -360,7 +360,7 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
           {/* Sillage */}
           <div style={{ marginBottom: '1.5rem' }}>
             <label style={{ display: 'block', fontWeight: 600, color: '#D4AF37', marginBottom: '0.6rem', fontSize: '0.9rem' }}>
-              Sillage (Projektion): {sillageRange[0]} – {sillageRange[1]}/10
+              Ausstrahlung: {sillageRange[0]} – {sillageRange[1]}/10
             </label>
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
               <input

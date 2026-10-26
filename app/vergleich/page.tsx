@@ -170,7 +170,7 @@ export default function PerfumeComparePage() {
                         </span>
                       </div>
                       <div>
-                        <span style={{ fontWeight: 600, color: '#D4AF37' }}>Sillage:</span>
+                        <span style={{ fontWeight: 600, color: '#D4AF37' }}>Ausstrahlung:</span>
                         <span style={{ marginLeft: '8px', color: '#5d4b40' }}>
                           {p.sillage ? `${p.sillage}/10` : '–'}
                         </span>

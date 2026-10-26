@@ -135,3 +135,39 @@ export function listName(p: Perfume, all: Perfume[]): string {
   const label = concentrationLabel(p.concentration);
   return label ? `${p.perfume_name} (${label})` : p.perfume_name;
 }
+
+// Gegenstück für das andere Geschlecht (z. B. Light Blue ↔ Light Blue Pour Homme):
+// gleiche Marke, gleicher Name ohne Geschlechts- und Versions-Zusatz.
+const GENDER_SUFFIXES = ['pour homme', 'pour femme', 'for men', 'for women', 'for him', 'for her', 'homme', 'femme', 'uomo', 'donna', 'men', 'women', 'man', 'woman', 'him', 'her'];
+
+function lineName(name: string): string {
+  let n = baseName(name);
+  let changed = true;
+  while (changed) {
+    changed = false;
+    for (const suffix of GENDER_SUFFIXES) {
+      if (n.endsWith(` ${suffix}`)) {
+        n = baseName(n.slice(0, -suffix.length - 1));
+        changed = true;
+      }
+    }
+  }
+  return n;
+}
+
+export function findCounterpart(perfume: Perfume, pool: Perfume[]): Perfume | null {
+  const other = perfume.gender === 'Women' ? 'Men' : perfume.gender === 'Men' ? 'Women' : null;
+  if (!other) return null;
+  const line = lineName(perfume.perfume_name);
+  const brand = norm(perfume.brands?.name);
+  if (!line || !brand) return null;
+  const matches = pool.filter(
+    (p) => p.slug && p.gender === other && norm(p.brands?.name) === brand && lineName(p.perfume_name) === line
+  );
+  if (!matches.length) return null;
+  // Bevorzugt dieselbe Konzentration, sonst die kürzeste Bezeichnung (meist das Original).
+  return (
+    matches.find((p) => p.concentration && p.concentration === perfume.concentration) ||
+    [...matches].sort((a, b) => a.perfume_name.length - b.perfume_name.length)[0]
+  );
+}

@@ -61,7 +61,7 @@ export function computeAuressaScore(p: Perfume): AuressaScore {
       points: versatility * 20,
       hint: `${seasons === 4 ? 'ganzjährig' : `${seasons} Jahreszeit${seasons === 1 ? '' : 'en'}`}, ${occasions} Anlass${occasions === 1 ? '' : 'e'}`
     },
-    { key: 'projection', label: 'Ausstrahlung', weight: 15, points: projection * 15, hint: `Sillage ${p.sillage ?? '–'}/10` }
+    { key: 'projection', label: 'Ausstrahlung', weight: 15, points: projection * 15, hint: `${p.sillage ?? '–'}/10` }
   ];
 
   const total = Math.round(parts.reduce((sum, part) => sum + part.points, 0));

@@ -22,7 +22,7 @@ import { Reveal } from '@/app/components/Reveal';
 import { StickyBuyBar } from '@/app/components/StickyBuyBar';
 import { computeAccords } from '@/lib/accords';
 import { computeAuressaScore } from '@/lib/score';
-import { fitAdvice } from '@/lib/perfume-text';
+import { fitAdvice, perfumeTagline } from '@/lib/perfume-text';
 
 // Kurzes Geschlechts-Label + Symbol für die Badge (passend zu den Duft-Kacheln).
 const genderBadge: Record<string, string> = {
@@ -100,14 +100,6 @@ export async function generateMetadata({
     }
   };
 }
-
-// Kurze Stimmung je Duftfamilie – eine Zeile unter dem Namen.
-const familyMood: Record<string, string> = {
-  clean: 'Klar, frisch und unkompliziert – wie frische Wäsche und Morgenluft.',
-  gourmand: 'Warm, süss und verführerisch – ein Duft zum Anlehnen.',
-  woody: 'Ruhig, edel und selbstbewusst – mit Tiefe und Wärme.',
-  floral: 'Blumig, elegant und zeitlos – weich und strahlend.'
-};
 
 // Haltbarkeit/Sillage (0–10) als 5 Punkte – auf einen Blick lesbar.
 function Meter({ label, value, hint }: { label: string; value: number | null; hint: string }) {
@@ -359,9 +351,7 @@ export default async function PerfumeDetailPage({
               {concentrationLabel(perfume.concentration) && <span className="chip">{concentrationLabel(perfume.concentration)}</span>}
             </div>
 
-            {perfume.fragrance_family && familyMood[perfume.fragrance_family] && (
-              <p className="dp-mood">{familyMood[perfume.fragrance_family]}</p>
-            )}
+            {perfumeTagline(perfume) && <p className="dp-mood">{perfumeTagline(perfume)}</p>}
 
             <div className="dp-buy">
               <div className="dp-price">

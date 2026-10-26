@@ -339,29 +339,36 @@ export default async function PerfumeDetailPage({
         </nav>
 
         <section className="detail-hero">
-          <div style={{ flex: 1 }}>
-            <Cover perfume={perfume} large style={{ borderRadius: '20px', boxShadow: '0 20px 60px rgba(0,0,0,0.15)', width: '100%' }} />
+          {/* LINKE SEITE: Großes Produktbild */}
+          <div style={{ flex: 1, borderRadius: '20px', overflow: 'hidden', boxShadow: '0 20px 60px rgba(0,0,0,0.15)' }}>
+            <Cover perfume={perfume} large />
           </div>
 
-          <div style={{ flex: 1 }}>
+          {/* RECHTE SEITE: Info + Preis + Rating + Buttons */}
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            {/* Marke */}
             {perfume.brands?.slug ? (
               <Link href={`/marke/${perfume.brands.slug}`} className="small" style={{ color: '#D4AF37', textDecoration: 'none', fontSize: '14px', fontWeight: '600' }}>
                 {brandName}
               </Link>
             ) : (
-              <p className="small" style={{ color: '#D4AF37', fontSize: '14px', fontWeight: '600', margin: '0 0 8px 0' }}>{brandName}</p>
+              <p className="small" style={{ color: '#D4AF37', fontSize: '14px', fontWeight: '600', margin: '0' }}>{brandName}</p>
             )}
-            <h1 className="detail-title" style={{ marginTop: '12px', marginBottom: '24px' }}>{perfume.perfume_name}</h1>
 
+            {/* Titel */}
+            <h1 className="detail-title" style={{ marginTop: '0', marginBottom: '0' }}>{perfume.perfume_name}</h1>
+
+            {/* PREIS - PROMINENT! */}
             {perfume.price_chf != null && (
-              <div style={{ fontSize: '32px', fontWeight: '800', color: '#D4AF37', marginBottom: '8px' }}>
+              <div style={{ fontSize: '36px', fontWeight: '800', color: '#D4AF37' }}>
                 CHF {perfume.price_chf}
               </div>
             )}
 
+            {/* RATING MIT STERNEN */}
             {perfume.rating != null && (
-              <div style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#D4AF37' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#D4AF37' }}>
                   {'★'.repeat(Math.floor(perfume.rating))}
                   {perfume.rating % 1 >= 0.5 && '½'}
                   {'☆'.repeat(5 - Math.ceil(perfume.rating))}
@@ -372,58 +379,65 @@ export default async function PerfumeDetailPage({
               </div>
             )}
 
-            <div style={{ padding: '12px', backgroundColor: '#E8F5E9', borderRadius: '8px', marginBottom: '24px', color: '#2E7D32', fontSize: '14px', fontWeight: '600' }}>
+            {/* VERFÜGBARKEITS-BADGE */}
+            <div style={{ padding: '12px', backgroundColor: '#E8F5E9', borderRadius: '8px', color: '#2E7D32', fontSize: '14px', fontWeight: '600', border: '1px solid #4CAF50' }}>
               ✅ Verfügbar · Kostenloser Versand ab CHF 50
             </div>
 
-              {perfume.confidence_level && (
-                <div style={{
-                  padding: '8px 16px',
-                  backgroundColor: perfume.confidence_level === 'high' ? '#D4AF37' : perfume.confidence_level === 'medium' ? '#FFD700' : '#E0E0E0',
-                  color: '#333',
-                  borderRadius: 20,
-                  fontSize: 12,
-                  fontWeight: 'bold',
-                  whiteSpace: 'nowrap'
-                }}>
-                  {perfume.confidence_level === 'high' && '⭐ HOHE KONFIDENZ'}
-                  {perfume.confidence_level === 'medium' && '⭐ MITTLERE KONFIDENZ'}
-                  {perfume.confidence_level === 'low' && '⚠️ BEGRENZT'}
-                </div>
-              )}
-            </div>
-            {perfume.rating != null && (
-              <div style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <div style={{ fontSize: '1.4rem', fontWeight: 'bold', color: '#D4AF37' }}>
-                  {'★'.repeat(Math.floor(perfume.rating))}
-                  {perfume.rating % 1 >= 0.5 && '½'}
-                  {'☆'.repeat(5 - Math.ceil(perfume.rating))}
-                </div>
-                <div style={{ fontSize: '16px', fontWeight: '600', color: '#1F1410' }}>
-                  <strong>{perfume.rating.toFixed(1)}</strong>/10 · Auressa Rating
-                </div>
+            {/* VERTRAUEN-BADGES */}
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              <div style={{ padding: '8px 12px', backgroundColor: '#F5EEE8', borderRadius: '8px', fontSize: '12px', fontWeight: '600', color: '#6B5344', border: '1px solid #E8DDCE' }}>
+                🚚 Kostenloser Versand
               </div>
-            )}
-            <p className="lead">{perfume.long_description || perfume.description || describePerfume(perfume)}</p>
-            <div className="badge-row">
-              <span className="badge">👃 {familyLabel(perfume.fragrance_family)}</span>
-              {perfume.gender && (
-                <span className="badge">
-                  {perfume.gender === 'Women' && '👩'}
-                  {perfume.gender === 'Men' && '👨'}
-                  {perfume.gender === 'Unisex' && '⚥'}
-                  {genderBadge[perfume.gender] || perfume.gender}
-                </span>
-              )}
-              {perfume.scentmatch_score != null && (
-                <span className="badge">✨ Auressa {perfume.scentmatch_score}/100</span>
-              )}
-            <div style={{ marginTop: '32px', display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
+              <div style={{ padding: '8px 12px', backgroundColor: '#F5EEE8', borderRadius: '8px', fontSize: '12px', fontWeight: '600', color: '#6B5344', border: '1px solid #E8DDCE' }}>
+                ↩️ 30 Tage Rückgabe
+              </div>
+              <div style={{ padding: '8px 12px', backgroundColor: '#F5EEE8', borderRadius: '8px', fontSize: '12px', fontWeight: '600', color: '#6B5344', border: '1px solid #E8DDCE' }}>
+                ✓ Authentisch
+              </div>
+            </div>
+
+            {/* BUTTONS */}
+            <div style={{ marginTop: '12px', display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
               <AffiliateButton perfume={perfume} />
               <AmazonButton perfume={perfume} />
             </div>
-            <SocialShareButtons perfume={perfume} url={`${SITE_URL}/duft/${slug}`} />
+
+            {/* SOCIAL SHARE */}
+            <div style={{ marginTop: '8px', paddingTop: '12px', borderTop: '1px solid rgba(212,175,55,0.2)' }}>
+              <p style={{ fontSize: '12px', color: '#999', marginBottom: '8px' }}>Teilen:</p>
+              <SocialShareButtons perfume={perfume} url={`${SITE_URL}/duft/${slug}`} />
             </div>
+
+            {/* PRODUKTINFOS - SCHNELL ÜBERBLICK */}
+            <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid rgba(212,175,55,0.2)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', fontSize: '13px' }}>
+              <div>
+                <p style={{ color: '#999', margin: '0 0 4px 0' }}>Duftfamilie</p>
+                <p style={{ fontWeight: '600', color: '#1F1410', margin: 0 }}>{familyLabel(perfume.fragrance_family)}</p>
+              </div>
+              {perfume.gender && (
+                <div>
+                  <p style={{ color: '#999', margin: '0 0 4px 0' }}>Für</p>
+                  <p style={{ fontWeight: '600', color: '#1F1410', margin: 0 }}>
+                    {perfume.gender === 'Women' && '👩 ' || perfume.gender === 'Men' && '👨 ' || perfume.gender === 'Unisex' && '⚥ '}
+                    {genderBadge[perfume.gender] || perfume.gender}
+                  </p>
+                </div>
+              )}
+              {perfume.longevity != null && (
+                <div>
+                  <p style={{ color: '#999', margin: '0 0 4px 0' }}>Haltbarkeit</p>
+                  <p style={{ fontWeight: '600', color: '#1F1410', margin: 0 }}>{perfume.longevity}/10</p>
+                </div>
+              )}
+              {perfume.sillage != null && (
+                <div>
+                  <p style={{ color: '#999', margin: '0 0 4px 0' }}>Sillage</p>
+                  <p style={{ fontWeight: '600', color: '#1F1410', margin: 0 }}>{perfume.sillage}/10</p>
+                </div>
+              )}
+            </div>
+          </div>
         </section>
 
         {(perfume.concentration || perfume.intensity || perfume.bottle_description) && (

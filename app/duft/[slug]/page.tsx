@@ -23,6 +23,7 @@ import { StickyBuyBar } from '@/app/components/StickyBuyBar';
 import { computeAccords } from '@/lib/accords';
 import { computeAuressaScore } from '@/lib/score';
 import { fitAdvice, perfumeTagline } from '@/lib/perfume-text';
+import { findVersions, versionLabel, compareVersion } from '@/lib/versions';
 
 // Kurzes Geschlechts-Label + Symbol für die Badge (passend zu den Duft-Kacheln).
 const genderBadge: Record<string, string> = {
@@ -81,9 +82,17 @@ export async function generateMetadata({
   }
 
   const brand = perfume.brands?.name ? ` von ${perfume.brands.name}` : '';
+  // Gibt es mehrere Versionen (z. B. EdT und EdP), kommt die Version in den Titel,
+  // damit die Seiten bei Google unterscheidbar sind.
+  const hasVersions = findVersions(perfume, await getPerfumes(2000)).length > 0;
+  const version = hasVersions ? versionLabel(perfume) : '';
+  const nameWithVersion =
+    version && !perfume.perfume_name.toLowerCase().includes(version.toLowerCase())
+      ? `${perfume.perfume_name} ${version}`
+      : perfume.perfume_name;
   // Haupttitel ohne „| Auressa" – die Marke haengt das globale Titel-Template
   // (%s | Auressa) automatisch an. So entsteht kein doppeltes „| Auressa".
-  const title = `${perfume.perfume_name}${brand} – Duftprofil & Bewertung`;
+  const title = `${nameWithVersion}${brand} – Duftprofil & Bewertung`;
   // Abwechslungsreiche Beschreibung aus echten Duftdaten (statt gleicher Schablone
   // auf hunderten Seiten) – gut gegen „dünnen/doppelten Inhalt".
   const description = metaTrim(perfume.description || describePerfume(perfume));
@@ -188,6 +197,11 @@ function jsonLd(perfume: Perfume) {
           }
         : undefined
   };
+}
+
+// Name ohne Versions-Zusatz für Überschriften („Light Blue Eau Intense" → „Light Blue").
+function baseTitle(name: string, label: string): string {
+  return name.toLowerCase().endsWith(` ${label.toLowerCase()}`) ? name.slice(0, -label.length - 1) : name;
 }
 
 type Faq = { q: string; a: string };
@@ -298,6 +312,7 @@ export default async function PerfumeDetailPage({
     .slice(0, 4);
 
   const faqs = buildFaqs(perfume);
+  const versions = findVersions(perfume, pool);
 
   const accords = computeAccords(perfume);
   const score = computeAuressaScore(perfume);
@@ -348,8 +363,29 @@ export default async function PerfumeDetailPage({
               {perfume.gender && (
                 <span className="chip">{genderSymbol[perfume.gender] || ''} {genderBadge[perfume.gender] || perfume.gender}</span>
               )}
-              {concentrationLabel(perfume.concentration) && <span className="chip">{concentrationLabel(perfume.concentration)}</span>}
+              {versions.length <= 1 && concentrationLabel(perfume.concentration) && (
+                <span className="chip">{concentrationLabel(perfume.concentration)}</span>
+              )}
             </div>
+
+            {versions.length > 1 && (
+              <nav className="dp-versions" aria-label="Versionen dieses Duftes">
+                <span className="dp-versions-label">Version</span>
+                <div className="dp-versions-list">
+                  {versions.map((v) =>
+                    v.id === perfume.id ? (
+                      <span key={v.id} className="dp-version is-active" aria-current="page">
+                        {versionLabel(v)}
+                      </span>
+                    ) : (
+                      <Link key={v.id} href={`/duft/${v.slug}`} className="dp-version">
+                        {versionLabel(v)}
+                      </Link>
+                    )
+                  )}
+                </div>
+              </nav>
+            )}
 
             {perfumeTagline(perfume) && <p className="dp-mood">{perfumeTagline(perfume)}</p>}
 
@@ -425,6 +461,53 @@ export default async function PerfumeDetailPage({
             </div>
           )}
         </Reveal>
+
+        {/* ── VERSIONEN IM VERGLEICH ───────────────────────────── */}
+        {versions.length > 1 && (
+          <Reveal as="section" className="dp-card dp-compare">
+            <p className="dp-kicker">Versionen im Vergleich</p>
+            <h2>Welche Version von {baseTitle(perfume.perfume_name, versionLabel(perfume))} passt zu dir?</h2>
+            <div className="dp-compare-scroll">
+              <table className="dp-compare-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Version</th>
+                    <th scope="col">Haltbarkeit</th>
+                    <th scope="col">Sillage</th>
+                    <th scope="col">Richtpreis</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {versions.map((v) => (
+                    <tr key={v.id} className={v.id === perfume.id ? 'is-current' : ''}>
+                      <th scope="row">
+                        {v.id === perfume.id ? (
+                          <>
+                            {versionLabel(v)} <small>diese Seite</small>
+                          </>
+                        ) : (
+                          <Link href={`/duft/${v.slug}`}>{versionLabel(v)}</Link>
+                        )}
+                      </th>
+                      <td>{v.longevity != null ? `${v.longevity}/10` : '–'}</td>
+                      <td>{v.sillage != null ? `${v.sillage}/10` : '–'}</td>
+                      <td>{v.price_chf != null ? `CHF ${v.price_chf}` : '–'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <ul className="dp-compare-notes">
+              {versions
+                .filter((v) => v.id !== perfume.id)
+                .map((v) => (
+                  <li key={v.id}>
+                    <strong>{versionLabel(v)}:</strong> {compareVersion(perfume, v)}.
+                  </li>
+                ))}
+            </ul>
+          </Reveal>
+        )}
 
         {/* ── DUFTCHARAKTER + PYRAMIDE ─────────────────────────── */}
         <div className="dp-grid">

@@ -94,6 +94,8 @@ export function buyUrl(p: Perfume): string {
 // WICHTIG: Das Geschlecht gehört bewusst in den Schlüssel. So bleiben eine
 // Herren- und eine Damen-Version desselben Dufts (gleicher Name, aber „Men" vs.
 // „Women") als ZWEI eigenständige Einträge erhalten – sie sind keine Duplikate.
+// Ebenso die Konzentration: Light Blue als Eau de Toilette und als Eau de
+// Parfum sind zwei Versionen (siehe lib/versions.ts), keine Duplikate.
 //
 // Behalten wird der „beste" Eintrag: bevorzugt der mit einem slug (damit die
 // Detailseite verlinkbar bleibt), sonst der mit dem höheren Auressa-Score. Da
@@ -107,7 +109,7 @@ function dedupeKey(p: Perfume): string {
       .replace(/[̀-ͯ]/g, '') // Kombinierende Akzentzeichen entfernen
       .replace(/\s+/g, ' ')
       .trim();
-  return `${norm(p.brands?.name)}|||${norm(p.perfume_name)}|||${norm(p.gender)}`;
+  return `${norm(p.brands?.name)}|||${norm(p.perfume_name)}|||${norm(p.gender)}|||${norm(p.concentration)}`;
 }
 
 export function dedupePerfumes(perfumes: Perfume[]): Perfume[] {

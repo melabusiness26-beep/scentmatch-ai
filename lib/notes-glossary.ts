@@ -1,3 +1,5 @@
+import { extraNotePhoto } from './note-photos';
+
 // Duftnoten-Lexikon: redaktionelle Daten für die /duftnoten-Seiten.
 // Alle Texte sind eigenständig formuliert (keine externen Kopien) und rein
 // informativ. Keine Produkt-, Preis- oder Bewertungsdaten.
@@ -492,5 +494,5 @@ export function noteHref(note: string): string {
 
 // Foto zur Duftnote (aus /public/notes), falls vorhanden.
 export function noteImage(note: string): string | null {
-  return findScentNote(note)?.image ?? null;
+  return findScentNote(note)?.image ?? extraNotePhoto(note);
 }

@@ -133,6 +133,7 @@ export default function AdminPage() {
   const [brands, setBrands] = useState<Brand[]>([]);
   const [perfumes, setPerfumes] = useState<AdminPerfume[]>([]);
   const [hasBackground, setHasBackground] = useState(true);
+  const [suggesting, setSuggesting] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState({ ...emptyForm });
   const [message, setMessage] = useState('');
@@ -271,6 +272,34 @@ export default function AdminPage() {
       inspiration: p.inspiration || ''
     });
     setActiveTab('basic');
+  }
+
+  // Claude schreibt einen Vorschlag aus den Formulardaten; gespeichert wird erst beim Klick auf Speichern.
+  async function suggestDescription() {
+    if (form.description.trim() && !confirm('Die vorhandene Beschreibung wird durch den Vorschlag ersetzt. Fortfahren?')) return;
+    setSuggesting(true);
+    setMessage('');
+    try {
+      const response = await fetch('/api/admin/describe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${session?.access_token ?? ''}`
+        },
+        body: JSON.stringify(form)
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok || !data.text) {
+        setMessage(`❌ ${data.error || 'Vorschlag fehlgeschlagen'}`);
+        return;
+      }
+      setField('description', data.text);
+      setMessage('✅ Vorschlag eingefügt – bitte lesen, bei Bedarf anpassen und dann speichern.');
+    } catch {
+      setMessage('❌ Keine Verbindung – bitte nochmals versuchen.');
+    } finally {
+      setSuggesting(false);
+    }
   }
 
   function cancelEdit() {
@@ -782,7 +811,18 @@ export default function AdminPage() {
                       Parfümeur und Inspiration sind erst nach dem SQL „58_perfume_background.sql" in Supabase verfügbar.
                     </p>
                   )}
-                  <div className="field"><label>📝 Eigene Beschreibung (ersetzt den automatischen Text – meist leer lassen)</label><textarea value={form.description} onChange={e => setField('description', e.target.value)} placeholder="Leer lassen = automatischer Text aus den Daten" style={{ minHeight: 100 }} /></div>
+                  <div className="field">
+                    <label>📝 Eigene Beschreibung (ersetzt den automatischen Text)</label>
+                    <textarea value={form.description} onChange={e => setField('description', e.target.value)} placeholder="Leer lassen = automatischer Text aus den Daten" style={{ minHeight: 220 }} />
+                  </div>
+                  <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap', marginBottom: 8 }}>
+                    <button className="button secondary" type="button" onClick={suggestDescription} disabled={suggesting || !form.perfume_name.trim()}>
+                      {suggesting ? '⏳ Claude schreibt …' : '✨ Text vorschlagen'}
+                    </button>
+                    <span className="small" style={{ color: '#6B5344' }}>
+                      Schreibt einen Vorschlag nur aus den eingetragenen Daten. Erst lesen, dann speichern.
+                    </span>
+                  </div>
                 </div>
               )}
 

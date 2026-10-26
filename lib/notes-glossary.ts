@@ -46,7 +46,8 @@ export const scentNotes: ScentNote[] = [
     effect:
       'Bergamotte wirkt frisch, sauber und aufhellend. Sie macht einen Duft leichter und zugänglicher und eignet sich besonders für Frühling und Sommer sowie für Tag und Büro.',
     pairsWith:
-      'Bergamotte harmoniert mit fast allem: mit Lavendel und weiteren Zitrusnoten für Frische, mit Vetiver und Zedernholz für holzige Tiefe und mit Jasmin und Rose für florale Eleganz.'
+      'Bergamotte harmoniert mit fast allem: mit Lavendel und weiteren Zitrusnoten für Frische, mit Vetiver und Zedernholz für holzige Tiefe und mit Jasmin und Rose für florale Eleganz.',
+    synonyms: ['bergamotte', 'bergamot']
   },
   {
     slug: 'iris',
@@ -67,7 +68,8 @@ export const scentNotes: ScentNote[] = [
     effect:
       'Iris wirkt elegant, zurückhaltend und erwachsen. Sie verleiht Düften Tiefe und einen feinen, pudrigen Schleier und eignet sich ganzjährig, besonders für gehobene Anlässe.',
     pairsWith:
-      'Iris passt wunderbar zu Veilchen, Ambroxan und Zedernholz sowie zu Vanille und Tonkabohne, die ihre kühle Art angenehm wärmen.'
+      'Iris passt wunderbar zu Veilchen, Ambroxan und Zedernholz sowie zu Vanille und Tonkabohne, die ihre kühle Art angenehm wärmen.',
+    synonyms: ['iris', 'orris', 'veilchenwurzel']
   },
   {
     slug: 'oud',
@@ -110,7 +112,8 @@ export const scentNotes: ScentNote[] = [
     effect:
       'Vanille wirkt behaglich, sinnlich und einladend. Sie eignet sich besonders für Herbst und Winter sowie für gemütliche Abende und gilt als ausgesprochen tragefreundlich.',
     pairsWith:
-      'Vanille passt zu Tonkabohne, Karamell und Kakao für süsse Düfte, zu Tabak und Amber für warme orientalische und rundet holzige sowie florale Kompositionen weich ab.'
+      'Vanille passt zu Tonkabohne, Karamell und Kakao für süsse Düfte, zu Tabak und Amber für warme orientalische und rundet holzige sowie florale Kompositionen weich ab.',
+    synonyms: ['vanille', 'vanilla', 'vanilleschote']
   },
   {
     slug: 'ambroxan',
@@ -153,7 +156,8 @@ export const scentNotes: ScentNote[] = [
     effect:
       'Vetiver wirkt natürlich, souverän und gepflegt. Es eignet sich ganzjährig, besonders für Frühling und Sommer, und gibt Düften eine erdige, erwachsene Note.',
     pairsWith:
-      'Vetiver passt zu Zitrus und Bergamotte für Frische, zu Zedernholz und Leder für Tiefe sowie zu Tonkabohne und Amber für eine wärmere Ausrichtung.'
+      'Vetiver passt zu Zitrus und Bergamotte für Frische, zu Zedernholz und Leder für Tiefe sowie zu Tonkabohne und Amber für eine wärmere Ausrichtung.',
+    synonyms: ['vetiver']
   },
   {
     slug: 'jasmin',
@@ -174,7 +178,8 @@ export const scentNotes: ScentNote[] = [
     effect:
       'Jasmin wirkt elegant, sinnlich und warm. Er eignet sich ganzjährig, besonders für Frühling und laue Abende, und gibt Düften Fülle und Strahlkraft.',
     pairsWith:
-      'Jasmin harmoniert mit Rose und Tuberose für opulente Blütensträuße, mit Bergamotte für Frische und mit Sandelholz, Vanille und Moschus für eine warme Basis.'
+      'Jasmin harmoniert mit Rose und Tuberose für opulente Blütensträuße, mit Bergamotte für Frische und mit Sandelholz, Vanille und Moschus für eine warme Basis.',
+    synonyms: ['jasmin', 'jasmine', 'sambac']
   },
   {
     slug: 'rose',
@@ -195,7 +200,8 @@ export const scentNotes: ScentNote[] = [
     effect:
       'Rose wirkt je nach Komposition romantisch und klassisch oder modern und kraftvoll. Sie funktioniert ganzjährig und passt zu fast jedem Anlass.',
     pairsWith:
-      'Rose harmoniert mit Oud (der berühmte Rose-Oud-Akkord), mit Patchouli und Pfeffer für Würze, mit Litchi und Himbeere für eine fruchtige Note sowie mit Jasmin für volle Blütigkeit.'
+      'Rose harmoniert mit Oud (der berühmte Rose-Oud-Akkord), mit Patchouli und Pfeffer für Würze, mit Litchi und Himbeere für eine fruchtige Note sowie mit Jasmin für volle Blütigkeit.',
+    synonyms: ['weisse rose', 'weiße rose', 'türkische rose', 'damaszener rose', 'bulgarische rose', 'rose de mai', 'rosenblätter', 'rosenblüte', 'rosenessenz', 'rosa centifolia']
   },
   {
     slug: 'sandelholz',

@@ -767,7 +767,7 @@ export default async function PerfumeDetailPage({
         {/* ── FAQ ──────────────────────────────────────────────── */}
         {faqs.length > 0 && (
           <Reveal as="section" className="dp-card dp-faq">
-            <p className="dp-kicker">Gut zu wissen</p>
+            <p className="dp-kicker">Fragen &amp; Antworten</p>
             <h2>Häufige Fragen</h2>
             {faqs.map((f, i) => (
               <details className="faq-acc" key={i}>

@@ -1,11 +1,8 @@
 import Link from 'next/link';
-import SiteHeader from '@/app/SiteHeader';
 
 export default function NotFound() {
   return (
     <main style={{ backgroundColor: '#faf7f2', minHeight: '100vh' }}>
-      <SiteHeader />
-
       {/* Hero */}
       <section style={{
         background: 'linear-gradient(145deg, #241912 0%, #4a3020 50%, #7a5535 100%)',

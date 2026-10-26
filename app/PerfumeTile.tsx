@@ -4,6 +4,7 @@ import Link from 'next/link';
 import type { Perfume } from '@/lib/perfumes';
 import { FavoriteButton } from '@/app/FavoriteButton';
 import { trackPerfumeView } from '@/lib/tracking';
+import { PerfumeVisual } from '@/app/components/PerfumeVisual';
 
 // Anzeige-Namen der Duftfamilien.
 export const familyDisplay: Record<string, string> = {
@@ -42,58 +43,48 @@ export const genderSymbol: Record<string, string> = {
   Unisex: '⚥'
 };
 
+// Duft-Bild: echtes Produktbild (falls hinterlegt) oder die Auressa-Duftkarte.
 export function PerfumeCover({ perfume, large }: { perfume: Perfume; large?: boolean }) {
-  const fam = perfume.fragrance_family || '';
-  const className = `cover${large ? ' cover-large' : ''} cover-${fam}`;
-  if (perfume.image_url) {
-    return (
-      <div
-        className={className}
-        role="img"
-        aria-label={`${perfume.perfume_name}${perfume.brands?.name ? ` von ${perfume.brands.name}` : ''} – Duftflakon`}
-        style={{ backgroundImage: `url(${perfume.image_url})` }}
-      />
-    );
-  }
-  return (
-    <div className={className}>
-      <div className="cover-label">
-        {perfume.brands?.name && <span className="cover-label-brand">{perfume.brands.name}</span>}
-        <span className="cover-label-name">{perfume.perfume_name}</span>
-      </div>
-    </div>
-  );
+  return <PerfumeVisual perfume={perfume} size={large ? 'hero' : 'tile'} />;
 }
 
 export function PerfumeTile({ perfume, matchPercent, showOccasionDescription }: { perfume: Perfume; matchPercent?: number; showOccasionDescription?: boolean }) {
+  const notes = [...(perfume.top_notes || []), ...(perfume.heart_notes || []), ...(perfume.base_notes || [])];
+  const keyNotes = notes.slice(0, 3);
   const content = (
     <>
-      <div style={{ position: 'relative' }}>
+      <div className="tile-visual">
         <PerfumeCover perfume={perfume} />
         <FavoriteButton slug={perfume.slug} />
+        {matchPercent != null && <span className="tile-match">{matchPercent}% Match</span>}
       </div>
-      {matchPercent != null && <div className="match-badge">{matchPercent}% Match</div>}
-      <h3>{perfume.perfume_name}</h3>
-      <p className="small">{perfume.brands?.name || 'Marke offen'} · {familyDisplay[perfume.fragrance_family || ''] || 'Duftfamilie offen'}</p>
-      {perfume.price_chf != null && (
-        <p className="price-display" style={{ fontSize: '0.95rem', fontWeight: 600, color: '#D4AF37', marginBottom: '0.5rem' }}>
-          CHF {perfume.price_chf.toFixed(0)}
-        </p>
-      )}
-      {showOccasionDescription && perfume.occasion && (
-        <p className="small" style={{ color: '#D4AF37', fontWeight: 500, marginBottom: '0.5rem' }}>
-          {occasionDescriptions[perfume.occasion] || perfume.occasion}
-        </p>
-      )}
-      <div className="tile-meta">
-        <span className="score-pill">Score {perfume.scentmatch_score ?? 80}</span>
-        {perfume.gender && (
-          <span className="gender-pill" aria-label={genderDisplay[perfume.gender] || perfume.gender}>
-            <span className="gender-symbol" aria-hidden="true">{genderSymbol[perfume.gender] || ''}</span>
-            {genderDisplay[perfume.gender] || perfume.gender}
-          </span>
+      <div className="tile-body">
+        <p className="tile-brand">{perfume.brands?.name || 'Marke offen'}</p>
+        <h3 className="tile-name">{perfume.perfume_name}</h3>
+        <div className="tile-chips">
+          {perfume.fragrance_family && (
+            <span className={`chip chip-family chip-${perfume.fragrance_family}`}>
+              {familyDisplay[perfume.fragrance_family] || perfume.fragrance_family}
+            </span>
+          )}
+          {perfume.gender && (
+            <span className="chip" aria-label={genderDisplay[perfume.gender] || perfume.gender}>
+              <span aria-hidden="true">{genderSymbol[perfume.gender] || ''}</span> {genderDisplay[perfume.gender] || perfume.gender}
+            </span>
+          )}
+        </div>
+        {keyNotes.length > 0 && <p className="tile-notes">{keyNotes.join(' · ')}</p>}
+        {showOccasionDescription && perfume.occasion && (
+          <p className="tile-occasion">{occasionDescriptions[perfume.occasion] || perfume.occasion}</p>
         )}
-        <span className="small">{perfume.season || 'Ganzjährig'} · {perfume.occasion || 'flexibel'}</span>
+        <div className="tile-footer">
+          {perfume.price_chf != null ? (
+            <span className="tile-price">CHF {perfume.price_chf.toFixed(0)}</span>
+          ) : (
+            <span className="tile-price tile-price-open">Preis offen</span>
+          )}
+          <span className="tile-arrow" aria-hidden="true">→</span>
+        </div>
       </div>
     </>
   );
@@ -101,7 +92,7 @@ export function PerfumeTile({ perfume, matchPercent, showOccasionDescription }: 
   if (perfume.slug) {
     return (
       <Link
-        className="tile tile-link"
+        className="tile tile-link tile-v2"
         href={`/duft/${perfume.slug}`}
         onClick={() => trackPerfumeView(perfume.id, perfume.slug)}
       >
@@ -109,7 +100,7 @@ export function PerfumeTile({ perfume, matchPercent, showOccasionDescription }: 
       </Link>
     );
   }
-  return <div className="tile">{content}</div>;
+  return <div className="tile tile-v2">{content}</div>;
 }
 
 // Filtert Düfte anhand eines Suchbegriffs (Name, Marke, Note, Geschlecht, Saison, Anlass).

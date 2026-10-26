@@ -30,6 +30,10 @@ export function FavoriteButton({ slug }: { slug: string | null | undefined }) {
         justifyContent: 'center',
         cursor: 'pointer',
         fontSize: '18px',
+        // Globale Button-Regeln (weisse Schrift, grosses Padding) hier aufheben
+        color: favorite ? '#fff' : '#B8923A',
+        padding: 0,
+        lineHeight: 1,
         transition: 'all 0.25s ease',
         zIndex: 10,
         backdropFilter: 'blur(4px)',

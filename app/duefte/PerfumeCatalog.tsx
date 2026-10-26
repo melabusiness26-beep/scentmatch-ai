@@ -52,16 +52,6 @@ const PAGE_SIZE = 24;
 export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: Perfume[] }) {
   const perfumes = initialPerfumes;
 
-  // DEBUG: Log first perfume to check if age_group/lifestyle are loaded
-  if (perfumes.length > 0) {
-    console.log('🔍 DEBUG: First perfume:', {
-      name: perfumes[0].perfume_name,
-      age_group: perfumes[0].age_group,
-      lifestyle: perfumes[0].lifestyle,
-      allKeys: Object.keys(perfumes[0]).filter(k => k.includes('age') || k.includes('life') || k.includes('trend'))
-    });
-  }
-
   const [query, setQuery] = useState('');
   const [familyFilter, setFamilyFilter] = useState('');
   const [genderFilters, setGenderFilters] = useState<string[]>([]);
@@ -167,6 +157,7 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
         ))}
         <button
           type="button"
+          className="filter-more"
           style={{
             marginLeft: 'auto',
             background: showAdvancedFilters ? '#D4AF37' : 'rgba(212,175,55,0.15)',
@@ -185,8 +176,16 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
         </button>
       </div>
 
+      {showAdvancedFilters && (
+        <div style={{
+          background: 'linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.03))',
+          borderRadius: '12px',
+          padding: '1.5rem',
+          marginBottom: '1.5rem',
+          border: '1px solid rgba(212,175,55,0.15)',
+        }}>
       {/* Age Group Filter */}
-      <div className="filter-row" style={{ marginTop: '1rem' }}>
+      <div className="filter-row" style={{ marginTop: 0 }}>
         <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#D4AF37', marginRight: '0.8rem' }}>
           Altersgruppe:
         </span>
@@ -237,14 +236,6 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
         ))}
       </div>
 
-      {showAdvancedFilters && (
-        <div style={{
-          background: 'linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.03))',
-          borderRadius: '12px',
-          padding: '1.5rem',
-          marginBottom: '1.5rem',
-          border: '1px solid rgba(212,175,55,0.15)',
-        }}>
           {/* Geschlecht */}
           <div style={{ marginBottom: '1.5rem' }}>
             <label style={{ display: 'block', fontWeight: 600, color: '#D4AF37', marginBottom: '0.6rem', fontSize: '0.9rem' }}>

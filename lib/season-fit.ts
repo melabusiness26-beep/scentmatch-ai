@@ -15,7 +15,7 @@ export function perfumeSeasons(season: string | null): Season[] {
 }
 
 // Bis zu drei Düfte je Jahreszeit: passend zum Geschlecht, bis CHF 180,
-// gleiche Duftfamilie zuerst, dann nach Auressa-Score.
+// gleiche Duftfamilie zuerst, dann gleiches Geschlecht, dann nach Auressa-Score.
 export function seasonPicks(perfume: Perfume, pool: Perfume[], exclude: Set<string>): Record<Season, SeasonPick[]> {
   const genderOk = (p: Perfume) =>
     !perfume.gender || perfume.gender === 'Unisex' || p.gender === perfume.gender || p.gender === 'Unisex';
@@ -24,7 +24,10 @@ export function seasonPicks(perfume: Perfume, pool: Perfume[], exclude: Set<stri
     .map((p) => ({
       p,
       seasons: perfumeSeasons(p.season),
-      rank: (p.fragrance_family === perfume.fragrance_family ? 1000 : 0) + computeAuressaScore(p).total
+      rank:
+        (p.fragrance_family === perfume.fragrance_family ? 1000 : 0) +
+        (p.gender === perfume.gender ? 500 : 0) +
+        computeAuressaScore(p).total
     }))
     .sort((a, b) => b.rank - a.rank);
   const out = {} as Record<Season, SeasonPick[]>;

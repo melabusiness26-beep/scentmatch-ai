@@ -7,6 +7,8 @@ export function wearTips(p: Perfume): string[] {
   const si = p.sillage;
   const lo = p.longevity;
   const occasion = (p.occasion || '').toLowerCase();
+  // Ohne Werte gäbe es nur den allgemeinen Tipp – dann lieber keinen Kasten.
+  if (si == null && lo == null) return [];
 
   if (si != null) {
     if (si >= 8) tips.push('1–2 Sprühstösse reichen, er strahlt deutlich aus.');

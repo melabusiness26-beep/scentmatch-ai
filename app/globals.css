@@ -1865,3 +1865,19 @@ a.note-pill:hover { background: var(--color-primary-light); border-color: var(--
 .dupe-cta .button.secondary { background: #fff; color: var(--ink-900); border: 1px solid rgba(31,23,18,.18); box-shadow: none; }
 .dupe-cta .button.secondary:hover { border-color: var(--gold-500); background: #FFFBF1; }
 .dupe-cta .buy-button { background: var(--ink-900); color: #fff; }
+
+/* Passt er zu dir? */
+.dp-fit { margin-bottom: 22px; }
+.fit-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.fit-col { border-radius: 18px; padding: 18px 20px; }
+.fit-yes { background: #EFF6F0; }
+.fit-no { background: #F8F0EC; }
+.fit-col h3 { margin: 0 0 10px; font-family: var(--font-sans), Arial, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .02em; }
+.fit-yes h3 { color: #2F6B45; }
+.fit-no h3 { color: #9A4A33; }
+.fit-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+.fit-col li { position: relative; padding-left: 26px; font-family: var(--font-sans), Arial, sans-serif; font-size: 15px; line-height: 1.45; color: var(--ink-900); }
+.fit-col li::before { position: absolute; left: 0; top: 1px; width: 18px; height: 18px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; color: #fff; }
+.fit-yes li::before { content: '✓'; background: #2F6B45; }
+.fit-no li::before { content: '–'; background: #C27A63; }
+@media (max-width: 640px) { .fit-cols { grid-template-columns: 1fr; } }

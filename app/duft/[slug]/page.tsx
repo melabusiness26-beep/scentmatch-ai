@@ -22,6 +22,7 @@ import { Reveal } from '@/app/components/Reveal';
 import { StickyBuyBar } from '@/app/components/StickyBuyBar';
 import { computeAccords } from '@/lib/accords';
 import { computeAuressaScore } from '@/lib/score';
+import { fitAdvice } from '@/lib/perfume-text';
 
 // Kurzes Geschlechts-Label + Symbol für die Badge (passend zu den Duft-Kacheln).
 const genderBadge: Record<string, string> = {
@@ -308,6 +309,7 @@ export default async function PerfumeDetailPage({
 
   const accords = computeAccords(perfume);
   const score = computeAuressaScore(perfume);
+  const fit = fitAdvice(perfume);
   const noteImageMap: Record<string, string> = {};
   for (const note of [...(perfume.top_notes || []), ...(perfume.heart_notes || []), ...(perfume.base_notes || [])]) {
     const img = noteImage(note);
@@ -492,6 +494,32 @@ export default async function PerfumeDetailPage({
             </Reveal>
           )}
         </div>
+
+        {/* ── PASST ER ZU DIR? ─────────────────────────────────── */}
+        {(fit.fits.length > 0 || fit.notFits.length > 0) && (
+          <Reveal as="section" className="dp-card dp-fit">
+            <p className="dp-kicker">Ehrliche Einschätzung</p>
+            <h2>Passt {perfume.perfume_name} zu dir?</h2>
+            <div className="fit-cols">
+              {fit.fits.length > 0 && (
+                <div className="fit-col fit-yes">
+                  <h3>Ja, wenn …</h3>
+                  <ul>
+                    {fit.fits.map((t) => <li key={t}>{t}</li>)}
+                  </ul>
+                </div>
+              )}
+              {fit.notFits.length > 0 && (
+                <div className="fit-col fit-no">
+                  <h3>Eher nicht, wenn …</h3>
+                  <ul>
+                    {fit.notFits.map((t) => <li key={t}>{t}</li>)}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </Reveal>
+        )}
 
         {/* ── BESCHREIBUNG ─────────────────────────────────────── */}
         <Reveal as="section" className="dp-card dp-story">

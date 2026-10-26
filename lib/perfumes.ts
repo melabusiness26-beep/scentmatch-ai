@@ -13,6 +13,8 @@ export type Perfume = {
   gender: string | null;
   fragrance_family: string | null;
   price_chf: number | null;
+  /** Flaschengrösse in ml, auf die sich price_chf bezieht. */
+  volume_ml?: number | null;
   longevity: number | null;
   sillage: number | null;
   scentmatch_score: number | null;
@@ -72,7 +74,7 @@ export function concentrationLabel(code: string | null | undefined): string | nu
 // Felder, die wir aus Supabase laden. Zentral definiert, damit Startseite und
 // Detailseite garantiert dieselbe Struktur verwenden.
 const PERFUME_FIELDS =
-  'id, perfume_name, slug, gender, fragrance_family, price_chf, longevity, sillage, scentmatch_score, season, occasion, description, image_url, affiliate_url, concentration, top_notes, heart_notes, base_notes, age_group, lifestyle, trend_vibe, gender_nuance, brands(name, slug, country)';
+  'id, perfume_name, slug, gender, fragrance_family, price_chf, volume_ml, longevity, sillage, scentmatch_score, season, occasion, description, image_url, affiliate_url, concentration, top_notes, heart_notes, base_notes, age_group, lifestyle, trend_vibe, gender_nuance, brands(name, slug, country)';
 
 // Redaktionelle Duftbeschreibung – siehe lib/perfume-text.ts.
 export { describePerfume } from './perfume-text';
@@ -94,6 +96,8 @@ export function buyUrl(p: Perfume): string {
 // WICHTIG: Das Geschlecht gehört bewusst in den Schlüssel. So bleiben eine
 // Herren- und eine Damen-Version desselben Dufts (gleicher Name, aber „Men" vs.
 // „Women") als ZWEI eigenständige Einträge erhalten – sie sind keine Duplikate.
+// Ebenso die Konzentration: Light Blue als Eau de Toilette und als Eau de
+// Parfum sind zwei Versionen (siehe lib/versions.ts), keine Duplikate.
 //
 // Behalten wird der „beste" Eintrag: bevorzugt der mit einem slug (damit die
 // Detailseite verlinkbar bleibt), sonst der mit dem höheren Auressa-Score. Da
@@ -107,7 +111,7 @@ function dedupeKey(p: Perfume): string {
       .replace(/[̀-ͯ]/g, '') // Kombinierende Akzentzeichen entfernen
       .replace(/\s+/g, ' ')
       .trim();
-  return `${norm(p.brands?.name)}|||${norm(p.perfume_name)}|||${norm(p.gender)}`;
+  return `${norm(p.brands?.name)}|||${norm(p.perfume_name)}|||${norm(p.gender)}|||${norm(p.concentration)}`;
 }
 
 export function dedupePerfumes(perfumes: Perfume[]): Perfume[] {

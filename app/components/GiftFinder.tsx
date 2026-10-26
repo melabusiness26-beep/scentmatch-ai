@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Perfume } from '@/lib/perfumes';
 import { GIFT_FINDER_STYLES } from '@/lib/gift-finder-styles';
 import { consolidateNotes, findSimilarPerfumesV2, findCheaperAlternativesV2 } from '@/lib/similarity';
+import { listName } from '@/lib/versions';
 import GiftFinderResults from './GiftFinderResults';
 
 type Gender = 'female' | 'male' | 'any';
@@ -317,13 +318,13 @@ export default function GiftFinder({ allPerfumes }: { allPerfumes: Perfume[] }) 
               type="text"
               placeholder="Name eingeben (z. B. Creed Aventus)"
               onChange={(e) => {
-                const found = allPerfumes.find((p) => p.perfume_name === e.target.value);
+                const found = allPerfumes.find((p) => listName(p, allPerfumes) === e.target.value);
                 if (found) setState((prev) => ({ ...prev, favoriteSlug: found.slug }));
               }}
             />
             <datalist id="perfume-list">
               {allPerfumes.map((p) => (
-                <option key={p.id} value={p.perfume_name} />
+                <option key={p.id} value={listName(p, allPerfumes)} />
               ))}
             </datalist>
           </div>

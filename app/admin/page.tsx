@@ -87,6 +87,37 @@ function slugify(value: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
+const CONCENTRATION_SLUG: Record<string, string> = {
+  EdP: 'eau de parfum',
+  EdT: 'eau de toilette',
+  EdC: 'eau de cologne',
+  Extrait: 'extrait de parfum',
+  Cologne: 'cologne',
+  Spray: 'spray'
+};
+
+// Eindeutige Adresse für einen neuen Duft: zuerst nur der Name; ist der schon
+// vergeben (z. B. eine andere Version), kommt die Konzentration dazu, dann die Marke.
+async function uniquePerfumeSlug(name: string, brand: string, concentration: string): Promise<string> {
+  const conc = CONCENTRATION_SLUG[concentration] || concentration;
+  const candidates = [
+    slugify(name),
+    slugify(`${name} ${conc}`),
+    slugify(`${brand} ${name} ${conc}`)
+  ].filter((s, i, all) => s && all.indexOf(s) === i);
+  const { data, error } = await supabase.from('perfumes').select('slug').in('slug', candidates);
+  if (error) throw error;
+  const taken = new Set((data as { slug: string }[] | null)?.map(r => r.slug));
+  const free = candidates.find(c => !taken.has(c));
+  if (free) return free;
+  const last = candidates[candidates.length - 1];
+  for (let i = 2; ; i++) {
+    const { data: hit, error: e } = await supabase.from('perfumes').select('slug').eq('slug', `${last}-${i}`).maybeSingle();
+    if (e) throw e;
+    if (!hit) return `${last}-${i}`;
+  }
+}
+
 export default function AdminPage() {
   const [checking, setChecking] = useState(true);
   const [session, setSession] = useState<any>(null);
@@ -376,13 +407,17 @@ export default function AdminPage() {
         return;
       }
 
-      // Duplikat-Check
+      // Duplikat-Check: gleicher Name, gleiche Marke und gleiche Konzentration.
+      // Andere Konzentrationen (z. B. Light Blue als EdT und EdP) sind eigene Versionen.
+      const brandLower = form.brand.trim().toLowerCase();
       const isDuplicate = perfumes.some(p =>
         p.perfume_name.toLowerCase() === name.toLowerCase() &&
+        (brands.find(b => b.id === p.brand_id)?.name.toLowerCase() || '') === brandLower &&
+        (p.concentration || 'EdP') === form.concentration &&
         p.id !== editingId
       );
       if (isDuplicate) {
-        setMessage('⚠️ Duft mit diesem Namen existiert schon!');
+        setMessage(`⚠️ ${name} gibt es als ${form.concentration} schon!`);
         setSaving(false);
         return;
       }
@@ -441,7 +476,8 @@ export default function AdminPage() {
         if (error) throw error;
         setMessage(`✅ ${name} aktualisiert`);
       } else {
-        const { error } = await supabase.from('perfumes').insert({ ...fields, slug: slugify(name) });
+        const slug = await uniquePerfumeSlug(name, brandName, form.concentration);
+        const { error } = await supabase.from('perfumes').insert({ ...fields, slug });
         if (error) throw error;
         setMessage(`✅ ${name} hinzugefügt`);
       }
@@ -653,7 +689,7 @@ export default function AdminPage() {
                   <div>
                     <div style={{ fontWeight: 600 }}>{p.perfume_name}</div>
                     <div style={{ fontSize: 12, color: '#6B5344' }}>
-                      {brands.find(b => b.id === p.brand_id)?.name} • {p.fragrance_family} • {p.gender} • {p.price_chf ? `${p.price_chf} CHF` : 'N/A'}
+                      {brands.find(b => b.id === p.brand_id)?.name} • {p.concentration || '–'} • {p.fragrance_family} • {p.gender} • {p.price_chf ? `${p.price_chf} CHF` : 'N/A'}{p.volume_ml ? ` / ${p.volume_ml} ml` : ''}
                     </div>
                   </div>
                   <button className="button secondary" onClick={() => startEdit(p.id)} style={{ padding: '5px 10px', fontSize: 12 }}>✏️ Edit</button>

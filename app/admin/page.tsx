@@ -16,11 +16,12 @@ const LIFESTYLES = ['student', 'professional', 'party', 'casual', 'sporty'] as c
 const TREND_VIBES = ['trendy', 'classic', 'niche', 'popular'] as const;
 
 const PERFUME_EDIT_FIELDS =
-  'id, perfume_name, brand_id, fragrance_family, gender, price_chf, longevity, sillage, scentmatch_score, season, occasion, top_notes, heart_notes, base_notes, image_url, affiliate_url, concentration, release_year, volume_ml, rating, flacon_description, similar_perfumes, age_group, lifestyle, trend_vibe, gender_nuance, description, created_at';
+  'id, perfume_name, slug, brand_id, fragrance_family, gender, price_chf, longevity, sillage, scentmatch_score, season, occasion, top_notes, heart_notes, base_notes, image_url, affiliate_url, concentration, release_year, volume_ml, rating, flacon_description, similar_perfumes, age_group, lifestyle, trend_vibe, gender_nuance, description, created_at';
 
 type AdminPerfume = {
   id: string;
   perfume_name: string;
+  slug?: string | null;
   brand_id: string | null;
   fragrance_family: string | null;
   gender: string | null;
@@ -273,6 +274,21 @@ export default function AdminPage() {
     setActiveTab('basic');
   }
 
+  async function refreshPage(path: string) {
+    try {
+      await fetch('/api/revalidate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${session?.access_token ?? ''}`
+        },
+        body: JSON.stringify({ path })
+      });
+    } catch {
+      // Nicht schlimm: Die Seite aktualisiert sich spätestens nach einer Stunde von selbst.
+    }
+  }
+
   function cancelEdit() {
     setEditingId(null);
     setForm({ ...emptyForm });
@@ -489,16 +505,21 @@ export default function AdminPage() {
           : {})
       };
 
+      let savedSlug: string | null = null;
       if (editingId) {
         const { error } = await supabase.from('perfumes').update(fields).eq('id', editingId);
         if (error) throw error;
+        savedSlug = perfumes.find(p => p.id === editingId)?.slug || null;
         setMessage(`✅ ${name} aktualisiert`);
       } else {
         const slug = await uniquePerfumeSlug(name, brandName, form.concentration);
         const { error } = await supabase.from('perfumes').insert({ ...fields, slug });
         if (error) throw error;
+        savedSlug = slug;
         setMessage(`✅ ${name} hinzugefügt`);
       }
+      // Duft-Seite sofort neu erzeugen, statt bis zu einer Stunde auf den Zwischenspeicher zu warten.
+      if (savedSlug) await refreshPage(`/duft/${savedSlug}`);
 
       setEditingId(null);
       setForm({ ...emptyForm });

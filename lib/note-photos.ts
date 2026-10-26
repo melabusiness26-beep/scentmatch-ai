@@ -2,7 +2,8 @@
 // keinen eigenen Lexikon-Eintrag haben. Wird von noteImage() genutzt.
 // Erkennung über Stichworte im Notennamen (kleingeschrieben).
 export const NOTE_PHOTOS: { image: string; keywords: string[]; exclude?: string[] }[] = [
-  { image: '/notes/zitrone.jpg', keywords: ['zitrone', 'lemon', 'limone'], exclude: ['zitronengras', 'zitronenmelisse'] }
+  { image: '/notes/zitrone.jpg', keywords: ['zitrone', 'lemon', 'limone'], exclude: ['zitronengras', 'zitronenmelisse'] },
+  { image: '/notes/apfel.jpg', keywords: ['apfel', 'apple'], exclude: ['apfelblüte', 'granatapfel'] }
 ];
 
 export function extraNotePhoto(note: string): string | null {

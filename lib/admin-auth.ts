@@ -1,10 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase, isSupabaseConfigured } from './supabase';
+import { isAdminUser } from './admin-role';
 
-// Schützt Admin-API-Routen: Nur wer im Admin-Bereich eingeloggt ist, darf sie
-// aufrufen. Der Browser schickt dafür das Supabase-Login-Token im Header
+// Schützt Admin-API-Routen. Ein Login allein reicht NICHT: Das Konto braucht
+// zusätzlich die Admin-Rolle in den app_metadata ({"role":"admin"}). Diese
+// kann nur per SQL / Service-Role gesetzt werden, nie vom Nutzer selbst
+// (siehe supabase/56_security_lockdown.sql). Dieselbe Regel prüft die
+// Datenbank in ihren Policies über public.is_admin().
+// Der Browser schickt das Supabase-Login-Token im Header
 // "Authorization: Bearer <token>" mit; hier wird es bei Supabase geprüft.
-// Öffentliche Sign-ups sind deaktiviert → jeder gültige Login ist die Gründerin.
 // Optional: ADMIN_EMAILS (kommagetrennt) in Vercel setzen, um zusätzlich auf
 // bestimmte E-Mail-Adressen einzuschränken.
 //
@@ -23,6 +27,10 @@ export async function requireAdmin(request: NextRequest): Promise<NextResponse |
   const { data, error } = await supabase.auth.getUser(token);
   if (error || !data.user) {
     return NextResponse.json({ error: 'Anmeldung ungültig oder abgelaufen' }, { status: 401 });
+  }
+
+  if (!isAdminUser(data.user)) {
+    return NextResponse.json({ error: 'Keine Admin-Berechtigung' }, { status: 403 });
   }
 
   const allowed = (process.env.ADMIN_EMAILS || '')

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
+import { isAdminUser } from '@/lib/admin-role';
 
 const FAMILIES = [['clean', 'Clean / Frisch'], ['gourmand', 'Gourmand / Süß'], ['woody', 'Woody / Holzig'], ['floral', 'Floral / Blumig']] as const;
 const GENDERS = ['Women', 'Men', 'Unisex'] as const;
@@ -483,6 +484,27 @@ export default function AdminPage() {
               <button className="button" type="submit">Anmelden</button>
             </form>
             <button type="button" onClick={() => resetPassword()} className="link-button" style={{ marginTop: 15 }}>Passwort vergessen?</button>
+          </section>
+        </div>
+      </main>
+    );
+  }
+
+  if (!isAdminUser(session.user)) {
+    return (
+      <main>
+        <div className="container">
+          <nav className="nav">
+            <Link className="logo" href="/">Auressa</Link>
+            <button className="button secondary" onClick={logout}>Abmelden</button>
+          </nav>
+          <section className="section card" style={{ maxWidth: 560 }}>
+            <h2>⛔ Keine Admin-Berechtigung</h2>
+            <p>
+              Du bist angemeldet, aber dieses Konto hat keine Admin-Rolle. Die Rolle wird
+              einmalig in Supabase gesetzt (Skript <code>supabase/56_security_lockdown.sql</code>,
+              Schritt 1). Danach abmelden und neu anmelden.
+            </p>
           </section>
         </div>
       </main>

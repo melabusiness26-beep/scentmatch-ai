@@ -1529,8 +1529,8 @@ a.note-pill:hover { background: var(--color-primary-light); border-color: var(--
 .pv-floral .pv-glow-b { background: radial-gradient(circle, rgba(199,122,158,.45), transparent 70%); }
 .pv-flacon { width: 46%; height: auto; filter: drop-shadow(0 18px 22px rgba(60,40,20,.22)); transition: transform .5s var(--ease-out); }
 .pv-hero .pv-flacon { width: 42%; }
-.pv-label-brand { font-family: var(--font-sans), Arial, sans-serif; font-size: 7px; font-weight: 700; letter-spacing: .14em; fill: var(--ink-900); }
-.pv-label-sub { font-family: var(--font-sans), Arial, sans-serif; font-size: 4.2px; letter-spacing: .3em; fill: var(--ink-500); }
+.pv-label-brand { font-family: var(--font-sans), Arial, sans-serif; font-weight: 700; letter-spacing: .14em; fill: var(--ink-900); }
+.pv-label-sub { font-family: var(--font-sans), Arial, sans-serif; font-size: 4.2px; letter-spacing: .22em; fill: var(--ink-500); }
 .pv-img { width: 100%; height: 100%; object-fit: contain; padding: 8%; mix-blend-mode: multiply; }
 
 /* ── Chips ─────────────────────────────────────────────────────────────── */

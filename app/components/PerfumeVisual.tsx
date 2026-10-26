@@ -1,4 +1,4 @@
-import type { Perfume } from '@/lib/perfumes';
+import { concentrationLabel, type Perfume } from '@/lib/perfumes';
 
 // Eigene Auressa-Duftkarte: Farbwelt je Duftfamilie + gezeichneter Flakon.
 // Wird gezeigt, solange kein echtes (lizenziertes) Produktbild in image_url
@@ -32,7 +32,11 @@ export function PerfumeVisual({
   }
 
   const tint = FAMILY_TINT[fam] || DEFAULT_TINT;
-  const brand = (perfume.brands?.name || '').toUpperCase();
+  const brand = (perfume.brands?.name || '').toUpperCase() || 'AURESSA';
+  // Lange Markennamen kleiner setzen statt abschneiden.
+  const brandSize = brand.length <= 10 ? 7 : brand.length <= 14 ? 5.6 : 4.6;
+  const brandText = brand.length > 20 ? `${brand.slice(0, 19)}…` : brand;
+  const sub = concentrationLabel(perfume.concentration)?.toUpperCase();
   // Eindeutige IDs je Duft, damit mehrere SVGs auf einer Seite sich nicht stören.
   const uid = (perfume.slug || perfume.id).replace(/[^a-z0-9-]/gi, '');
 
@@ -70,14 +74,18 @@ export function PerfumeVisual({
         {/* Glanzlicht */}
         <rect x="22" y="54" width="8" height="90" rx="4" fill="#fff" opacity="0.55" />
         {/* Etikett */}
-        <rect x="30" y="98" width="60" height="34" rx="4" fill="#FFFDF8" opacity="0.92" />
-        <text x="60" y="113" textAnchor="middle" className="pv-label-brand">
-          {brand.length > 14 ? `${brand.slice(0, 13)}…` : brand || 'AURESSA'}
+        <rect x="26" y="98" width="68" height="34" rx="4" fill="#FFFDF8" opacity="0.92" />
+        <text x="60" y={sub ? 113 : 117} textAnchor="middle" className="pv-label-brand" style={{ fontSize: brandSize }}>
+          {brandText}
         </text>
-        <line x1="44" y1="120" x2="76" y2="120" stroke="#C9A86A" strokeWidth="0.8" />
-        <text x="60" y="127" textAnchor="middle" className="pv-label-sub">
-          EAU DE PARFUM
-        </text>
+        {sub && (
+          <>
+            <line x1="44" y1="120" x2="76" y2="120" stroke="#C9A86A" strokeWidth="0.8" />
+            <text x="60" y="127" textAnchor="middle" className="pv-label-sub">
+              {sub}
+            </text>
+          </>
+        )}
       </svg>
     </div>
   );

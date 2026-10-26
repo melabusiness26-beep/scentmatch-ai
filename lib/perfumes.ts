@@ -55,10 +55,24 @@ export function isWithinPriceCap(p: Pick<Perfume, 'price_chf'>): boolean {
   return p.price_chf != null && p.price_chf > 0 && p.price_chf <= MAX_PRICE_CHF;
 }
 
+// Ausgeschriebene Konzentration (im Admin als Kürzel gespeichert).
+const CONCENTRATION_LABELS: Record<string, string> = {
+  EdP: 'Eau de Parfum',
+  EdT: 'Eau de Toilette',
+  EdC: 'Eau de Cologne',
+  Cologne: 'Eau de Cologne',
+  Extrait: 'Extrait de Parfum'
+};
+
+export function concentrationLabel(code: string | null | undefined): string | null {
+  if (!code) return null;
+  return CONCENTRATION_LABELS[code] || null;
+}
+
 // Felder, die wir aus Supabase laden. Zentral definiert, damit Startseite und
 // Detailseite garantiert dieselbe Struktur verwenden.
 const PERFUME_FIELDS =
-  'id, perfume_name, slug, gender, fragrance_family, price_chf, longevity, sillage, scentmatch_score, season, occasion, description, image_url, affiliate_url, top_notes, heart_notes, base_notes, age_group, lifestyle, trend_vibe, gender_nuance, brands(name, slug, country)';
+  'id, perfume_name, slug, gender, fragrance_family, price_chf, longevity, sillage, scentmatch_score, season, occasion, description, image_url, affiliate_url, concentration, top_notes, heart_notes, base_notes, age_group, lifestyle, trend_vibe, gender_nuance, brands(name, slug, country)';
 
 // Erzeugt eine ausführliche, natürlich klingende Beschreibung aus den
 // vorhandenen Daten eines Dufts. Wird genutzt, wenn keine manuelle
@@ -121,7 +135,7 @@ export function describePerfume(p: Perfume): string {
     perf.push(`Haltbarkeit: ${word} (${p.longevity}/10)`);
   }
   if (p.sillage != null) {
-    const word = p.sillage >= 8 ? 'kräftig & präsent' : p.sillage >= 6 ? 'ausgewogen' : 'hautah & intim';
+    const word = p.sillage >= 8 ? 'kräftig & präsent' : p.sillage >= 6 ? 'ausgewogen' : 'hautnah & intim';
     perf.push(`Sillage: ${word} (${p.sillage}/10)`);
   }
   if (perf.length) {

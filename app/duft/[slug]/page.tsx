@@ -7,6 +7,7 @@ import {
   getAllPerfumeSlugs,
   getPerfumes,
   describePerfume,
+  concentrationLabel,
   type Perfume
 } from '@/lib/perfumes';
 import { findSimilarPerfumesV2, findCheaperAlternativesV2 } from '@/lib/similarity';
@@ -348,7 +349,7 @@ export default async function PerfumeDetailPage({
               {perfume.gender && (
                 <span className="chip">{genderSymbol[perfume.gender] || ''} {genderBadge[perfume.gender] || perfume.gender}</span>
               )}
-              {perfume.concentration && <span className="chip">{perfume.concentration}</span>}
+              {concentrationLabel(perfume.concentration) && <span className="chip">{concentrationLabel(perfume.concentration)}</span>}
             </div>
 
             {perfume.fragrance_family && familyMood[perfume.fragrance_family] && (

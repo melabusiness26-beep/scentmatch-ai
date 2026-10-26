@@ -15,6 +15,10 @@ export type Perfume = {
   price_chf: number | null;
   /** Flaschengrösse in ml, auf die sich price_chf bezieht. */
   volume_ml?: number | null;
+  // Hintergrund für den automatischen Text (nur auf der Detailseite geladen).
+  release_year?: number | null;
+  perfumer?: string | null;
+  inspiration?: string | null;
   longevity: number | null;
   sillage: number | null;
   scentmatch_score: number | null;
@@ -236,6 +240,20 @@ export async function getPerfumeBySlug(slug: string): Promise<Perfume | null> {
     .maybeSingle();
   if (error) return null;
   return (data as unknown as Perfume) || null;
+}
+
+// Hintergrund-Infos (Jahr, Parfümeur, Inspiration) für den Duft-Text.
+// Bewusst separat geladen: Fehlen die Spalten noch (SQL 58 nicht ausgeführt),
+// bleibt der Rest der Seite unberührt – es fehlt nur dieser Satz.
+export async function getPerfumeBackground(
+  id: string
+): Promise<Pick<Perfume, 'release_year' | 'perfumer' | 'inspiration'>> {
+  if (!isSupabaseConfigured) return {};
+  const full = await supabase.from('perfumes').select('release_year, perfumer, inspiration').eq('id', id).maybeSingle();
+  if (!full.error) return (full.data as Pick<Perfume, 'release_year' | 'perfumer' | 'inspiration'>) || {};
+  const year = await supabase.from('perfumes').select('release_year').eq('id', id).maybeSingle();
+  if (!year.error) return (year.data as Pick<Perfume, 'release_year'>) || {};
+  return {};
 }
 
 // Alle slugs – für die Sitemap und das Vorab-Generieren der Detailseiten.

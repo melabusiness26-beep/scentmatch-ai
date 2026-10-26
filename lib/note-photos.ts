@@ -21,6 +21,7 @@ export const NOTE_PHOTOS: { image: string; keywords: string[]; exclude?: string[
   { image: '/notes/gruene-noten.jpg', keywords: ['grüne note', 'gruene note', 'green note', 'grünnote', 'gras', 'grass', 'blätter', 'leaves'], exclude: ['grasse'] },
   { image: '/notes/rosmarin.jpg', keywords: ['rosmarin', 'rosemary', 'romarin'] },
   { image: '/notes/geranie.jpg', keywords: ['geranie', 'geranium', 'pelargonie', 'pelargonium'] },
+  { image: '/notes/eichenmoos.jpg', keywords: ['eichenmoos', 'oakmoss', 'oak moss', 'mousse de chêne', 'moos', 'moss'] },
   {
     image: '/notes/neroli.jpg',
     keywords: ['neroli', 'orangenblüte', 'orangenblute', 'orange blossom', "fleur d'oranger"],

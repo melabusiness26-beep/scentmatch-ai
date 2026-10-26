@@ -467,14 +467,24 @@ export function getScentNote(slug: string): ScentNote | undefined {
   return scentNotes.find((n) => n.slug === slug);
 }
 
-// Liefert für eine Duftnote (aus der perfumes-Tabelle) das passende Ziel:
-// die Lexikon-Seite, falls die Note dort beschrieben ist, sonst die
-// Katalog-Suche, die bereits nach Noten filtert.
-export function noteHref(note: string): string {
+// Sucht zu einer Duftnote (aus der perfumes-Tabelle) den Lexikon-Eintrag –
+// über den Namen oder eine der Schreibweisen (z. B. „Sizilianische Bergamotte").
+export function findScentNote(note: string): ScentNote | undefined {
   const n = note.toLowerCase().trim();
-  const match = scentNotes.find(
+  return scentNotes.find(
     (s) => s.name.toLowerCase() === n || s.synonyms?.some((syn) => n.includes(syn))
   );
+}
+
+// Liefert für eine Duftnote das passende Ziel: die Lexikon-Seite, falls die
+// Note dort beschrieben ist, sonst die Katalog-Suche, die bereits nach Noten filtert.
+export function noteHref(note: string): string {
+  const match = findScentNote(note);
   if (match) return `/duftnoten/${match.slug}`;
   return `/duefte?q=${encodeURIComponent(note)}`;
+}
+
+// Foto zur Duftnote (aus /public/notes), falls vorhanden.
+export function noteImage(note: string): string | null {
+  return findScentNote(note)?.image ?? null;
 }

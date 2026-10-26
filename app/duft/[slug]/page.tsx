@@ -11,7 +11,7 @@ import {
   type Perfume
 } from '@/lib/perfumes';
 import { findSimilarPerfumesV2, findCheaperAlternativesV2 } from '@/lib/similarity';
-import { noteHref } from '@/lib/notes-glossary';
+import { noteHref, noteImage } from '@/lib/notes-glossary';
 import { getCuratedLink } from '@/lib/curated-links';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import { AmazonButton } from '@/app/AmazonButton';
@@ -308,6 +308,11 @@ export default async function PerfumeDetailPage({
 
   const accords = computeAccords(perfume);
   const score = computeAuressaScore(perfume);
+  const noteImageMap: Record<string, string> = {};
+  for (const note of [...(perfume.top_notes || []), ...(perfume.heart_notes || []), ...(perfume.base_notes || [])]) {
+    const img = noteImage(note);
+    if (img) noteImageMap[note] = img;
+  }
   const description = perfume.description || describePerfume(perfume);
   const occasions = (perfume.occasion || '')
     .split(',')
@@ -331,7 +336,7 @@ export default async function PerfumeDetailPage({
         {/* ── HERO ─────────────────────────────────────────────── */}
         <section className={`dp-hero dp-hero-${perfume.fragrance_family || 'none'}`}>
           <div className="dp-hero-visual">
-            <PerfumeVisual perfume={perfume} size="hero" />
+            <PerfumeVisual perfume={perfume} size="hero" noteImages={noteImageMap} />
           </div>
 
           <div className="dp-hero-info">
@@ -467,9 +472,18 @@ export default async function PerfumeDetailPage({
                         <span>{time}</span>
                       </div>
                       <div className="pyr-notes">
-                        {notes.map((note) => (
-                          <Link className="note-chip" href={noteHref(note)} key={note}>{note}</Link>
-                        ))}
+                        {notes.map((note) => {
+                          const img = noteImage(note);
+                          return (
+                            <Link className={`note-chip${img ? ' has-photo' : ''}`} href={noteHref(note)} key={note}>
+                              {img && (
+                                // eslint-disable-next-line @next/next/no-img-element
+                                <img src={img} alt="" loading="lazy" />
+                              )}
+                              {note}
+                            </Link>
+                          );
+                        })}
                       </div>
                     </li>
                   );

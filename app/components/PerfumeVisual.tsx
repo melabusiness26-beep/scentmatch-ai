@@ -14,10 +14,13 @@ const DEFAULT_TINT = { glass: '#F1ECE4', liquid: '#C9A86A' };
 
 export function PerfumeVisual({
   perfume,
-  size = 'tile'
+  size = 'tile',
+  noteImages = {}
 }: {
   perfume: Perfume;
   size?: 'tile' | 'hero';
+  /** Optional: Fotos zu Duftnoten (Name → Bild), nur für die grosse Ansicht. */
+  noteImages?: Record<string, string>;
 }) {
   const fam = perfume.fragrance_family || '';
   const label = `${perfume.perfume_name}${perfume.brands?.name ? ` von ${perfume.brands.name}` : ''}`;
@@ -51,6 +54,10 @@ export function PerfumeVisual({
       {size === 'hero' &&
         floatingNotes.map((note, i) => (
           <span className={`pv-note pv-note-${i}`} key={note} aria-hidden="true">
+            {noteImages[note] && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={noteImages[note]} alt="" />
+            )}
             {note}
           </span>
         ))}

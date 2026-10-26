@@ -243,3 +243,44 @@ gender → anchor (optional, Dropdown) → 3× family → lovedNote → disliked
 4. Sobald echte Affiliate-Links da sind (Notino/CJ oder Flaconi/Awin) → pro Duft im
    **Admin** ins Feld „Affiliate-Link / Shop-URL" eintragen (Button nutzt ihn automatisch).
 
+
+## 12. Update (26. Oktober 2026): Sicherheit, neues Duft-Design, Score
+
+### Sicherheit (erledigt, live)
+- Lücke geschlossen: Jeder konnte den Katalog löschen (Admin-API ohne Login +
+  `delete_all_*` für `anon` freigegeben). Code-Fix (PR #214) live; SQL
+  `55_security_diagnose.sql` → `56_security_lockdown.sql` → `57_security_test.sql`
+  in Supabase ausgeführt, Test bestanden.
+- **Admin = Rolle `admin` in `app_metadata`** (gesetzt für `mela.business26@gmail.com`).
+  Website prüft sie (`lib/admin-auth.ts`, `lib/admin-role.ts`), Datenbank über
+  `public.is_admin()` in allen Schreib-Policies von `perfumes`/`brands`.
+  Neue Admins nur per SQL (app_metadata), nie per Sign-up.
+
+### Katalog-Stand
+- Gründerin hat `perfumes` und `brands` geleert (wollte neues Design). Backup:
+  Tabelle `perfumes_backup_2026_10_04` (409 Düfte, nur `brand_id`, keine Markennamen)
+  + CSV-Export lokal bei der Gründerin. Light Blue (D&G) als erster Test-Duft neu eingetragen.
+- Offen: Katalog neu aufbauen (bereinigt: Doppelte, Familien nur clean/gourmand/woody/floral,
+  Preise prüfen, Flaschengrösse).
+
+### Grundsätze im Code
+- **Preisgrenze CHF 180** (`MAX_PRICE_CHF`, `isWithinPriceCap` in `lib/perfumes.ts`):
+  Empfehlungen nur bis CHF 180; teurere Düfte bleiben als Referenz (Dupe-Ausgangsduft).
+- **Auressa-Score wird berechnet** (`lib/score.ts`): Preis-Leistung 40 %, Haltbarkeit 25 %,
+  Vielseitigkeit 20 %, Ausstrahlung 15 %. Das Admin-Feld „Auressa-Score" ist dafür nicht mehr nötig.
+- **Duftbeschreibung** automatisch (`lib/perfume-text.ts`), natürlich formuliert, Schweizer
+  Schreibweise, keine Floskeln; plus „Passt zu dir, wenn … / Eher nicht, wenn …".
+  Eigene Beschreibung im Admin hat Vorrang.
+- **Duftcharakter-Balken** aus den Noten (`lib/accords.ts`).
+- Keine erfundenen Angaben (Bewertungsanzahl, Versand, Verfügbarkeit) – Auressa verkauft nicht selbst.
+
+### Design (Duft-Darstellung)
+- `PerfumeVisual`: gezeichneter Flakon je Duftfamilie (bis echte, lizenzierte Produktfotos
+  in `image_url` kommen). Duftnoten-Fotos aus `/public/notes` über `noteImage()`.
+- Duftkachel v2, neue Detailseite (`dp-*` Klassen), Filter als Chip-Leiste, neues Menü (`hd-*`).
+- **Startseite bleibt wie sie ist** (Wunsch der Gründerin, Foto `hero-auressa-main.png`).
+- Lokale Vorschau mit Beispiel-Düften: Fixture-Daten nur temporär, nie committen.
+
+### Amazon
+- Gründerin ist Amazon-Partnerin (SiteStripe sichtbar). Tag im Code: `auressa-2-21` –
+  von ihr noch zu bestätigen („Link abrufen" in SiteStripe).

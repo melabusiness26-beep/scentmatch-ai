@@ -297,7 +297,13 @@ export default async function PerfumeDetailPage({
   const curatedPartner = curated ? pool.find((p) => p.slug === curated.partnerSlug) : undefined;
   const curatedSlug = curatedPartner?.slug;
 
-  const cheaper = findCheaperAlternativesV2(perfume, pool, 3).filter(
+  // Andere Versionen desselben Duftes stehen im Versionen-Vergleich – nicht
+  // zusätzlich als „ähnlich" oder „günstige Alternative".
+  const versions = findVersions(perfume, pool);
+  const versionIds = new Set(versions.map((v) => v.id));
+  const altPool = pool.filter((p) => !versionIds.has(p.id));
+
+  const cheaper = findCheaperAlternativesV2(perfume, altPool, 3).filter(
     (c) => c.perfume.slug !== curatedSlug
   );
   const cheaperIds = new Set(cheaper.map((c) => c.perfume.id));
@@ -305,14 +311,13 @@ export default async function PerfumeDetailPage({
   // Zuerst großzügig holen und filtern, DANN auf 4 kürzen – sonst würde das Kürzen auf 4
   // vor dem Filtern den Abschnitt oft fälschlich leeren (die günstigen Alternativen riechen
   // per Definition ähnlich und belegen sonst die Top-Plätze).
-  const similar = findSimilarPerfumesV2(perfume, pool)
+  const similar = findSimilarPerfumesV2(perfume, altPool)
     .filter(
       (s) => !cheaperIds.has(s.perfume.id) && s.perfume.slug !== curatedSlug
     )
     .slice(0, 4);
 
   const faqs = buildFaqs(perfume);
-  const versions = findVersions(perfume, pool);
 
   const accords = computeAccords(perfume);
   const score = computeAuressaScore(perfume);

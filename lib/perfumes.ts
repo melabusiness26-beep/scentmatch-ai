@@ -19,6 +19,7 @@ export type Perfume = {
   release_year?: number | null;
   perfumer?: string | null;
   inspiration?: string | null;
+  good_to_know?: string | null;
   longevity: number | null;
   sillage: number | null;
   scentmatch_score: number | null;
@@ -242,17 +243,21 @@ export async function getPerfumeBySlug(slug: string): Promise<Perfume | null> {
   return (data as unknown as Perfume) || null;
 }
 
-// Hintergrund-Infos (Jahr, Parfümeur, Inspiration) für den Duft-Text.
-// Bewusst separat geladen: Fehlen die Spalten noch (SQL 58 nicht ausgeführt),
-// bleibt der Rest der Seite unberührt – es fehlt nur dieser Satz.
-export async function getPerfumeBackground(
-  id: string
-): Promise<Pick<Perfume, 'release_year' | 'perfumer' | 'inspiration'>> {
+// Hintergrund-Infos (Jahr, Parfümeur, Inspiration, „Gut zu wissen") für die Detailseite.
+// Bewusst separat geladen: Fehlen Spalten noch (SQL 58/60 nicht ausgeführt),
+// bleibt der Rest der Seite unberührt – es fehlen nur diese Angaben.
+export type PerfumeBackground = Pick<Perfume, 'release_year' | 'perfumer' | 'inspiration' | 'good_to_know'>;
+
+export async function getPerfumeBackground(id: string): Promise<PerfumeBackground> {
   if (!isSupabaseConfigured) return {};
-  const full = await supabase.from('perfumes').select('release_year, perfumer, inspiration').eq('id', id).maybeSingle();
-  if (!full.error) return (full.data as Pick<Perfume, 'release_year' | 'perfumer' | 'inspiration'>) || {};
-  const year = await supabase.from('perfumes').select('release_year').eq('id', id).maybeSingle();
-  if (!year.error) return (year.data as Pick<Perfume, 'release_year'>) || {};
+  for (const fields of [
+    'release_year, perfumer, inspiration, good_to_know',
+    'release_year, perfumer, inspiration',
+    'release_year'
+  ]) {
+    const { data, error } = await supabase.from('perfumes').select(fields).eq('id', id).maybeSingle();
+    if (!error) return (data as PerfumeBackground) || {};
+  }
   return {};
 }
 

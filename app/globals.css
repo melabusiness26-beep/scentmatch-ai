@@ -1856,3 +1856,28 @@ a.dp-version:hover { border-color: var(--gold-500); background: #FFFBF1; color: 
   .dp-compare-table thead th { font-size: 10px; letter-spacing: .04em; }
 }
 .dp-compare-ml { display: block; margin-top: 2px; font-size: 12px; color: var(--ink-500); }
+
+/* Duft-Seite: Gegenstück, „Passt jetzt", So trägst du ihn, Gut zu wissen */
+.dp-fact-help { font-family: var(--font-sans), Arial, sans-serif; font-size: 12px; line-height: 1.4; color: var(--ink-500); }
+.dp-counterpart { display: flex; align-items: center; gap: 10px; width: fit-content; max-width: 100%; margin: 0 0 16px; padding: 9px 14px; border-radius: 12px; background: #FFFBF1; border: 1px solid var(--gold-300); font-family: var(--font-sans), Arial, sans-serif; font-size: 14px; color: var(--ink-700); text-decoration: none; transition: border-color .2s, transform .2s; }
+.dp-counterpart:hover { border-color: var(--gold-500); transform: translateY(-1px); }
+.dp-counterpart strong { color: var(--ink-900); }
+
+.season-fit { display: flex; gap: 14px; align-items: flex-start; margin: 0 0 22px; padding: 16px 20px; border-radius: 18px; font-family: var(--font-sans), Arial, sans-serif; font-size: 15px; line-height: 1.5; color: var(--ink-900); }
+.season-fit p { margin: 0; }
+.season-fit-yes { background: #EFF6F0; }
+.season-fit-no { background: #FBF3E8; }
+.season-fit-icon { font-size: 22px; line-height: 1.2; }
+.season-fit-list { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.season-fit-list a { display: inline-block; padding: 6px 12px; border-radius: 999px; background: #fff; border: 1px solid rgba(31,23,18,.12); font-size: 14px; font-weight: 600; color: var(--ink-900); text-decoration: none; transition: border-color .2s; }
+.season-fit-list a:hover { border-color: var(--gold-500); }
+.season-fit-list a span { font-weight: 400; color: var(--ink-500); }
+
+.dp-wear { margin-bottom: 22px; }
+.dp-wear ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px 22px; }
+.dp-wear li { position: relative; padding-left: 26px; font-family: var(--font-sans), Arial, sans-serif; font-size: 15px; line-height: 1.5; color: var(--ink-700); }
+.dp-wear li::before { content: '✦'; position: absolute; left: 4px; top: 0; color: var(--gold-500); }
+.dp-know { margin: 18px 0 0; max-width: 760px; padding: 14px 18px; border-left: 3px solid var(--gold-500); border-radius: 0 14px 14px 0; background: #FFFBF1; }
+.dp-know-title { margin: 0 0 6px; font-family: var(--font-sans), Arial, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--ink-900); }
+.dp-know ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.dp-know li { font-family: var(--font-sans), Arial, sans-serif; font-size: 15px; line-height: 1.5; color: var(--ink-700); }

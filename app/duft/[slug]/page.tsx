@@ -24,7 +24,10 @@ import { StickyBuyBar } from '@/app/components/StickyBuyBar';
 import { computeAccords } from '@/lib/accords';
 import { computeAuressaScore } from '@/lib/score';
 import { fitAdvice, perfumeTagline } from '@/lib/perfume-text';
-import { findVersions, versionLabel, compareVersion } from '@/lib/versions';
+import { findVersions, versionLabel, compareVersion, findCounterpart } from '@/lib/versions';
+import { wearTips } from '@/lib/wear';
+import { perfumeSeasons, seasonPicks } from '@/lib/season-fit';
+import { SeasonFit } from '@/app/components/SeasonFit';
 
 // Kurzes Geschlechts-Label + Symbol für die Badge (passend zu den Duft-Kacheln).
 const genderBadge: Record<string, string> = {
@@ -112,7 +115,7 @@ export async function generateMetadata({
 }
 
 // Haltbarkeit/Sillage (0–10) als 5 Punkte – auf einen Blick lesbar.
-function Meter({ label, value, hint }: { label: string; value: number | null; hint: string }) {
+function Meter({ label, value, hint, help }: { label: string; value: number | null; hint: string; help?: string }) {
   if (value == null) return null;
   const filled = Math.max(0, Math.min(5, Math.round(value / 2)));
   return (
@@ -124,6 +127,7 @@ function Meter({ label, value, hint }: { label: string; value: number | null; hi
         ))}
       </span>
       <span className="dp-fact-hint">{hint}</span>
+      {help && <span className="dp-fact-help">{help}</span>}
     </div>
   );
 }
@@ -219,8 +223,8 @@ function buildFaqs(perfume: Perfume): Faq[] {
   }
   if (perfume.sillage != null) {
     faqs.push({
-      q: `Wie stark ist die Sillage von ${name}?`,
-      a: `Die Sillage (Projektion) von ${name} liegt bei ${perfume.sillage}/10.`
+      q: `Wie stark ist die Ausstrahlung von ${name}?`,
+      a: `Die Ausstrahlung (Sillage) von ${name} liegt in unserer Einschätzung bei ${perfume.sillage}/10.`
     });
   }
   if (perfume.season) {
@@ -303,6 +307,10 @@ export default async function PerfumeDetailPage({
   const versions = findVersions(perfume, pool);
   const versionIds = new Set(versions.map((v) => v.id));
   const altPool = pool.filter((p) => !versionIds.has(p.id));
+  const counterpart = findCounterpart(perfume, pool);
+  const seasons = perfumeSeasons(perfume.season);
+  const picks = seasonPicks(perfume, pool, versionIds);
+  const tips = wearTips(perfume);
 
   const cheaper = findCheaperAlternativesV2(perfume, altPool, 3).filter(
     (c) => c.perfume.slug !== curatedSlug
@@ -328,7 +336,12 @@ export default async function PerfumeDetailPage({
     const img = noteImage(note);
     if (img) noteImageMap[note] = img;
   }
-  const background = perfume.description ? {} : await getPerfumeBackground(perfume.id);
+  const background = await getPerfumeBackground(perfume.id);
+  const facts = (background.good_to_know || '')
+    .split('\n')
+    .map((f) => f.trim())
+    .filter(Boolean)
+    .slice(0, 3);
   const otherVersions = versions.filter((v) => v.id !== perfume.id).map(versionLabel);
   const description =
     perfume.description ||
@@ -404,6 +417,16 @@ export default async function PerfumeDetailPage({
 
             {perfumeTagline(perfume) && <p className="dp-mood">{perfumeTagline(perfume)}</p>}
 
+            {counterpart && (
+              <Link href={`/duft/${counterpart.slug}`} className="dp-counterpart">
+                <span aria-hidden="true">{counterpart.gender === 'Men' ? '♂' : '♀'}</span>
+                <span>
+                  Das Gegenstück für {counterpart.gender === 'Men' ? 'Herren' : 'Damen'}: <strong>{counterpart.perfume_name}</strong>
+                </span>
+                <span aria-hidden="true">→</span>
+              </Link>
+            )}
+
             <div className="dp-buy">
               <div className="dp-price">
                 {perfume.price_chf != null ? (
@@ -464,7 +487,12 @@ export default async function PerfumeDetailPage({
         {/* ── STECKBRIEF ───────────────────────────────────────── */}
         <Reveal as="section" className="dp-facts">
           <Meter label="Haltbarkeit" value={perfume.longevity} hint={perfume.longevity != null ? longevityHint(perfume.longevity) : ''} />
-          <Meter label="Sillage" value={perfume.sillage} hint={perfume.sillage != null ? sillageHint(perfume.sillage) : ''} />
+          <Meter
+            label="Ausstrahlung"
+            value={perfume.sillage}
+            hint={perfume.sillage != null ? sillageHint(perfume.sillage) : ''}
+            help="Wie stark man den Duft in deiner Nähe riecht (Fachwort: Sillage)."
+          />
           {perfume.season && (
             <div className="dp-fact">
               <span className="dp-fact-label">Saison</span>
@@ -479,6 +507,8 @@ export default async function PerfumeDetailPage({
           )}
         </Reveal>
 
+        <SeasonFit seasons={seasons} picks={picks} />
+
         {/* ── VERSIONEN IM VERGLEICH ───────────────────────────── */}
         {versions.length > 1 && (
           <Reveal as="section" className="dp-card dp-compare">
@@ -490,7 +520,7 @@ export default async function PerfumeDetailPage({
                   <tr>
                     <th scope="col">Version</th>
                     <th scope="col">Haltbarkeit</th>
-                    <th scope="col">Sillage</th>
+                    <th scope="col">Ausstrahlung</th>
                     <th scope="col">Richtpreis</th>
                   </tr>
                 </thead>
@@ -614,6 +644,18 @@ export default async function PerfumeDetailPage({
           </Reveal>
         )}
 
+        {/* ── SO TRÄGST DU IHN ─────────────────────────────────── */}
+        {tips.length > 0 && (
+          <Reveal as="section" className="dp-card dp-wear">
+            <p className="dp-kicker">So trägst du ihn</p>
+            <ul>
+              {tips.map((t) => (
+                <li key={t}>{t}</li>
+              ))}
+            </ul>
+          </Reveal>
+        )}
+
         {/* ── BESCHREIBUNG ─────────────────────────────────────── */}
         <Reveal as="section" className="dp-card dp-story">
           <p className="dp-kicker">Über den Duft</p>
@@ -627,6 +669,16 @@ export default async function PerfumeDetailPage({
               </p>
             ))}
           {perfume.bottle_description && <p className="dp-story-text dp-story-bottle">{perfume.bottle_description}</p>}
+          {facts.length > 0 && (
+            <aside className="dp-know" aria-label="Gut zu wissen">
+              <p className="dp-know-title">💡 Gut zu wissen</p>
+              <ul>
+                {facts.map((f) => (
+                  <li key={f}>{f}</li>
+                ))}
+              </ul>
+            </aside>
+          )}
           {perfume.scent_dna && perfume.scent_dna.length > 0 && (
             <div className="dp-dna">
               <span className="dp-fact-label">Erinnert an</span>

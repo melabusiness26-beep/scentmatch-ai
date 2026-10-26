@@ -49,6 +49,7 @@ type AdminPerfume = {
   description?: string | null;
   perfumer?: string | null;
   inspiration?: string | null;
+  good_to_know?: string | null;
 };
 
 type Brand = { id: string; name: string };
@@ -81,7 +82,8 @@ const emptyForm = {
   gender_nuance: '',
   description: '',
   perfumer: '',
-  inspiration: ''
+  inspiration: '',
+  good_to_know: ''
 };
 
 function slugify(value: string): string {
@@ -134,6 +136,7 @@ export default function AdminPage() {
   const [brands, setBrands] = useState<Brand[]>([]);
   const [perfumes, setPerfumes] = useState<AdminPerfume[]>([]);
   const [hasBackground, setHasBackground] = useState(true);
+  const [hasGoodToKnow, setHasGoodToKnow] = useState(true);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState({ ...emptyForm });
   const [message, setMessage] = useState('');
@@ -168,7 +171,16 @@ export default function AdminPage() {
   }
 
   async function loadPerfumes() {
-    // Parfümeur/Inspiration gibt es erst nach SQL 58 – vorher ohne diese Felder laden.
+    // Parfümeur/Inspiration gibt es erst nach SQL 58, „Gut zu wissen" nach SQL 60 –
+    // fehlen Spalten noch, ohne diese Felder laden.
+    const all = await supabase.from('perfumes').select(`${PERFUME_EDIT_FIELDS}, perfumer, inspiration, good_to_know`).order('perfume_name');
+    if (!all.error) {
+      setHasBackground(true);
+      setHasGoodToKnow(true);
+      setPerfumes((all.data as AdminPerfume[]) || []);
+      return;
+    }
+    setHasGoodToKnow(false);
     const full = await supabase.from('perfumes').select(`${PERFUME_EDIT_FIELDS}, perfumer, inspiration`).order('perfume_name');
     if (!full.error) {
       setHasBackground(true);
@@ -269,7 +281,8 @@ export default function AdminPage() {
       gender_nuance: p.gender_nuance || '',
       description: p.description || '',
       perfumer: p.perfumer || '',
-      inspiration: p.inspiration || ''
+      inspiration: p.inspiration || '',
+      good_to_know: p.good_to_know || ''
     });
     setActiveTab('basic');
   }
@@ -502,7 +515,8 @@ export default function AdminPage() {
         description: form.description.trim() || null,
         ...(hasBackground
           ? { perfumer: form.perfumer.trim() || null, inspiration: form.inspiration.trim() || null }
-          : {})
+          : {}),
+        ...(hasGoodToKnow ? { good_to_know: form.good_to_know.trim() || null } : {})
       };
 
       let savedSlug: string | null = null;
@@ -779,7 +793,7 @@ export default function AdminPage() {
                   <div className="field"><label>Preis (CHF)</label><input type="number" value={form.price_chf} onChange={e => setField('price_chf', e.target.value)} /></div>
                   <div className="field"><label>Auressa-Score (0-100)</label><input type="number" value={form.scentmatch_score} onChange={e => setField('scentmatch_score', e.target.value)} /></div>
                   <div className="field"><label>Haltbarkeit (0-10)</label><input type="number" min="0" max="10" value={form.longevity} onChange={e => setField('longevity', e.target.value)} /></div>
-                  <div className="field"><label>Sillage (0-10)</label><input type="number" min="0" max="10" value={form.sillage} onChange={e => setField('sillage', e.target.value)} /></div>
+                  <div className="field"><label>Ausstrahlung / Sillage (0-10)</label><input type="number" min="0" max="10" value={form.sillage} onChange={e => setField('sillage', e.target.value)} /></div>
                   <div className="field"><label>Saison</label><select value={form.season} onChange={e => setField('season', e.target.value)}>{SEASONS.map(s => <option value={s} key={s}>{s}</option>)}</select></div>
                   <div className="field"><label>Anlass</label><select value={form.occasion} onChange={e => setField('occasion', e.target.value)}>{OCCASIONS.map(o => <option value={o} key={o}>{o}</option>)}</select></div>
                 </div>
@@ -803,6 +817,13 @@ export default function AdminPage() {
                       Parfümeur und Inspiration sind erst nach dem SQL „58_perfume_background.sql" in Supabase verfügbar.
                     </p>
                   )}
+                  <div className="field">
+                    <label>💡 Gut zu wissen (1–2 echte Fakten, je Zeile einer – nur mit sicherer Quelle)</label>
+                    <textarea value={form.good_to_know} onChange={e => setField('good_to_know', e.target.value)} placeholder="Light Blue gibt es auch nachfüllbar." style={{ minHeight: 70 }} disabled={!hasGoodToKnow} />
+                    {!hasGoodToKnow && (
+                      <p className="small" style={{ margin: '4px 0 0', color: '#b3261e' }}>Erst nach dem SQL „60_good_to_know.sql" in Supabase verfügbar.</p>
+                    )}
+                  </div>
                   <div className="field"><label>📝 Eigene Beschreibung (ersetzt den automatischen Text – meist leer lassen)</label><textarea value={form.description} onChange={e => setField('description', e.target.value)} placeholder="Leer lassen = automatischer Text aus den Daten" style={{ minHeight: 100 }} /></div>
                 </div>
               )}

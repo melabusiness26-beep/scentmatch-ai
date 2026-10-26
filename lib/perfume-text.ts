@@ -121,6 +121,25 @@ function moodKey(p: Perfume): string | null {
   }
 }
 
+// Kurze Zeile unter dem Duftnamen – gleiche Grundlage wie das Stimmungsbild.
+const TAGLINE: Record<string, string> = {
+  citrus: 'Spritzig, hell und sommerlich.',
+  summer: 'Leicht, hell und sommerlich.',
+  cotton: 'Klar, frisch und unkompliziert.',
+  spicedSweet: 'Warm, süss und würzig.',
+  dessert: 'Warm, süss und gemütlich.',
+  warmWood: 'Weich, warm und holzig.',
+  dryWood: 'Ruhig, edel und holzig.',
+  fruityFloral: 'Blumig, fruchtig und fröhlich.',
+  powderyFloral: 'Blumig, pudrig und elegant.',
+  floral: 'Blumig, elegant und zeitlos.'
+};
+
+export function perfumeTagline(p: Perfume): string | null {
+  const key = moodKey(p);
+  return key ? TAGLINE[key] : null;
+}
+
 const GENDER_PHRASE: Record<string, string[]> = {
   Women: ['für Damen', 'für Frauen'],
   Men: ['für Herren', 'für Männer'],

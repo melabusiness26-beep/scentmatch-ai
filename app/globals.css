@@ -1743,3 +1743,10 @@ a.note-pill:hover { background: var(--color-primary-light); border-color: var(--
 .top-pick-cover .pv { aspect-ratio: auto; width: 100%; height: 100%; border-radius: 12px; }
 .mood-top .pv-hero { border-radius: 14px; max-height: 260px; }
 .tile:not(.tile-v2) > .pv { margin-bottom: 14px; }
+
+/* Teilen: ein klarer Knopf statt rätselhafter Symbole */
+.share { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.share-label { font-family: var(--font-sans), Arial, sans-serif; font-size: 13px; font-weight: 600; color: var(--ink-500); margin-right: 2px; }
+.share-main, .share-pill { display: inline-flex; align-items: center; gap: 7px; width: auto; margin: 0; padding: 9px 15px; border-radius: 999px; border: 1px solid rgba(31,23,18,.14); background: #fff; color: var(--ink-900); font-family: var(--font-sans), Arial, sans-serif; font-size: 13.5px; font-weight: 600; letter-spacing: 0; text-decoration: none; box-shadow: none; cursor: pointer; transition: border-color .2s, background .2s, transform .2s var(--ease-out); }
+.share-main:hover, .share-pill:hover { border-color: var(--gold-500); background: #FFFBF1; transform: translateY(-1px); }
+.share-copy { color: var(--ink-700); }

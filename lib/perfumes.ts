@@ -43,6 +43,18 @@ export type Perfume = {
   data_sources?: Record<string, boolean> | null;
 };
 
+// ─── Preisgrenze ────────────────────────────────────────────────────────────
+// Auressa-Grundsatz: Kein EMPFOHLENES Parfüm kostet mehr als CHF 180.–.
+// Teurere Düfte dürfen im Katalog bleiben – als Referenz ("Dupe von …",
+// "riecht ähnlich wie …") –, tauchen aber nie als Empfehlung auf.
+// Düfte ohne Preisangabe werden nicht empfohlen, weil die Grenze für sie
+// nicht garantiert werden kann.
+export const MAX_PRICE_CHF = 180;
+
+export function isWithinPriceCap(p: Pick<Perfume, 'price_chf'>): boolean {
+  return p.price_chf != null && p.price_chf > 0 && p.price_chf <= MAX_PRICE_CHF;
+}
+
 // Felder, die wir aus Supabase laden. Zentral definiert, damit Startseite und
 // Detailseite garantiert dieselbe Struktur verwenden.
 const PERFUME_FIELDS =
@@ -635,6 +647,7 @@ export type SimilarPerfume = { perfume: Perfume; similarity: number };
 export function findSimilarPerfumes(target: Perfume, pool: Perfume[], limit = 4): SimilarPerfume[] {
   return pool
     .filter((p) => p.id !== target.id)
+    .filter(isWithinPriceCap)
     .map((p) => ({ perfume: p, similarity: noteSimilarity(target, p) }))
     .sort((a, b) => b.similarity - a.similarity)
     .slice(0, limit);
@@ -647,7 +660,7 @@ export function findCheaperAlternatives(target: Perfume, pool: Perfume[], limit 
   if (targetPrice == null) return [];
   return pool
     .filter((p) => p.id !== target.id)
-    .filter((p) => p.price_chf != null && p.price_chf <= targetPrice * 0.8)
+    .filter((p) => isWithinPriceCap(p) && p.price_chf! <= targetPrice * 0.8)
     .map((p) => ({ perfume: p, similarity: noteSimilarity(target, p) }))
     .filter((s) => s.similarity >= 25)
     .sort((a, b) => b.similarity - a.similarity)
@@ -933,6 +946,7 @@ export function rankByMood(
 ): Perfume[] {
   return perfumes
     .filter((p) => matchesGender(p, gender))
+    .filter(isWithinPriceCap)
     .map((p) => ({ p, s: moodScore(p, mood) }))
     .sort((a, b) => b.s - a.s)
     .slice(0, limit)
@@ -943,6 +957,7 @@ export function rankPerfumes(perfumes: Perfume[], a: QuizAnswers): RankedPerfume
   const anchor = a.anchorId ? perfumes.find((p) => p.id === a.anchorId) || null : null;
   return perfumes
     .filter((p) => matchesGender(p, a.gender))
+    .filter(isWithinPriceCap)
     .filter((p) => !anchor || p.id !== anchor.id)
     .map((p) => {
       const base = matchScore(p, a);

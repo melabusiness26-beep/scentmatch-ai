@@ -1,4 +1,4 @@
-import { Perfume } from './perfumes';
+import { Perfume, isWithinPriceCap } from './perfumes';
 
 interface MatchResult {
   perfume: Perfume;
@@ -179,7 +179,7 @@ export function matchPerfumesByDescription(
 
   const results: MatchResult[] = [];
 
-  for (const perfume of perfumes) {
+  for (const perfume of perfumes.filter(isWithinPriceCap)) {
     let score = 0;
     const { matched, score: noteScore } = matchNotesInPerfume(perfume, keywords, normalizedKws);
     score += noteScore;

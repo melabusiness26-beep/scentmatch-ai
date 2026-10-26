@@ -318,7 +318,10 @@ export default function AdminPage() {
     try {
       const response = await fetch('/api/admin/delete-all-perfumes', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${session?.access_token ?? ''}`
+        },
         body: JSON.stringify({ confirm: 'DELETE_ALL_PERFUMES' })
       });
       if (response.ok) {
@@ -341,7 +344,10 @@ export default function AdminPage() {
     try {
       const response = await fetch('/api/admin/delete-all-brands', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${session?.access_token ?? ''}`
+        },
         body: JSON.stringify({ confirm: 'DELETE_ALL_BRANDS' })
       });
       if (response.ok) {

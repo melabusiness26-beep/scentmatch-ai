@@ -1,4 +1,4 @@
-import { Perfume } from './perfumes';
+import { Perfume, isWithinPriceCap } from './perfumes';
 import { DetektivAnswers } from './duft-detektiv-storage';
 
 interface MatchResult {
@@ -138,7 +138,7 @@ export function matchPerfumesDetektiv(
   const normalizedGender = normalizeGender(answers.gender as any);
   const results: MatchResult[] = [];
 
-  for (const perfume of perfumes) {
+  for (const perfume of perfumes.filter(isWithinPriceCap)) {
     let score = 0;
     const reasons: string[] = [];
 

@@ -1,4 +1,4 @@
-import { Perfume } from '@/lib/perfumes';
+import { Perfume, isWithinPriceCap } from '@/lib/perfumes';
 import { ImageAnalysisResult } from '@/types/image-analysis';
 
 // ─── DB-Lookup: Ist der gescannte Duft in der Auressa-DB? ─────────────────────
@@ -323,7 +323,7 @@ export function findSimilarPerfumes(
   minScore: number = 40,
   maxResults: number = 7
 ): Perfume[] {
-  const scores = allPerfumes.map((perfume) => ({
+  const scores = allPerfumes.filter(isWithinPriceCap).map((perfume) => ({
     perfume,
     score: calculateSimilarityScore(analysis, perfume),
   }));

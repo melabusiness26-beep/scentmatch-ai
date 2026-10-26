@@ -1,9 +1,14 @@
 import { autoTagAllPerfumes } from '@/lib/perfumes';
-import { NextResponse } from 'next/server';
+import { requireAdmin } from '@/lib/admin-auth';
+import { NextRequest, NextResponse } from 'next/server';
 
-async function handleRequest() {
+// Nur per POST und nur für eingeloggte Admins – ein GET (z. B. von einem
+// Crawler) darf keine Datenbank-Änderungen auslösen.
+export async function POST(request: NextRequest) {
+  const denied = await requireAdmin(request);
+  if (denied) return denied;
+
   try {
-    console.log('🔄 Starting auto-tag-perfumes...');
     const result = await autoTagAllPerfumes();
 
     return NextResponse.json({
@@ -18,12 +23,4 @@ async function handleRequest() {
       { status: 500 }
     );
   }
-}
-
-export async function GET() {
-  return handleRequest();
-}
-
-export async function POST() {
-  return handleRequest();
 }

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
+import { requireAdmin } from '@/lib/admin-auth';
 
 const client = new Anthropic();
 
@@ -47,6 +48,9 @@ interface ResearchResult {
 
 export async function POST(req: NextRequest) {
   try {
+    const denied = await requireAdmin(req);
+    if (denied) return denied;
+
     const { brand, name } = await req.json();
 
     if (!brand || !name) {

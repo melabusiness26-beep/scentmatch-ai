@@ -1,7 +1,9 @@
 // Zusätzliche Duftnoten-Fotos (in /public/notes) für Noten, die (noch)
 // keinen eigenen Lexikon-Eintrag haben. Wird von noteImage() genutzt.
 // Erkennung über Stichworte im Notennamen (kleingeschrieben).
-export const NOTE_PHOTOS: { image: string; keywords: string[]; exclude?: string[] }[] = [
+// priority: Foto hat Vorrang vor dem Lexikon-Foto (z. B. Neroli gehört im
+// Lexikon zu „Orange", ist aber eine Blüte und braucht ein eigenes Bild).
+export const NOTE_PHOTOS: { image: string; keywords: string[]; exclude?: string[]; priority?: boolean }[] = [
   { image: '/notes/zitrone.jpg', keywords: ['zitrone', 'lemon', 'limone'], exclude: ['zitronengras', 'zitronenmelisse'] },
   { image: '/notes/apfel.jpg', keywords: ['apfel', 'apple'], exclude: ['apfelblüte', 'granatapfel'] },
   { image: '/notes/glockenblume.jpg', keywords: ['glockenblume', 'bluebell', 'campanula'] },
@@ -17,13 +19,21 @@ export const NOTE_PHOTOS: { image: string; keywords: string[]; exclude?: string[
   { image: '/notes/koriander.jpg', keywords: ['koriander', 'coriander', 'cilantro'] },
   { image: '/notes/minze.jpg', keywords: ['minze', 'mint', 'menthe'] },
   { image: '/notes/gruene-noten.jpg', keywords: ['grüne note', 'gruene note', 'green note', 'grünnote', 'gras', 'grass', 'blätter', 'leaves'], exclude: ['grasse'] },
-  { image: '/notes/rosmarin.jpg', keywords: ['rosmarin', 'rosemary', 'romarin'] }
+  { image: '/notes/rosmarin.jpg', keywords: ['rosmarin', 'rosemary', 'romarin'] },
+  {
+    image: '/notes/neroli.jpg',
+    keywords: ['neroli', 'orangenblüte', 'orangenblute', 'orange blossom', "fleur d'oranger"],
+    priority: true
+  }
 ];
 
-export function extraNotePhoto(note: string): string | null {
+export function extraNotePhoto(note: string, priorityOnly = false): string | null {
   const n = note.toLowerCase();
   const hit = NOTE_PHOTOS.find(
-    (p) => p.keywords.some((k) => n.includes(k)) && !p.exclude?.some((x) => n.includes(x))
+    (p) =>
+      (!priorityOnly || p.priority) &&
+      p.keywords.some((k) => n.includes(k)) &&
+      !p.exclude?.some((x) => n.includes(x))
   );
   return hit?.image ?? null;
 }

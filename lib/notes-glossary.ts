@@ -499,5 +499,5 @@ export function noteHref(note: string): string {
 
 // Foto zur Duftnote (aus /public/notes), falls vorhanden.
 export function noteImage(note: string): string | null {
-  return findScentNote(note)?.image ?? extraNotePhoto(note);
+  return extraNotePhoto(note, true) ?? findScentNote(note)?.image ?? extraNotePhoto(note);
 }

@@ -214,7 +214,7 @@ export default function UeberUnsPage() {
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <Link
-              href="/#quiz"
+              href="/quiz"
               style={{
                 background: '#d4af37',
                 color: '#2a1d12',

@@ -339,7 +339,7 @@ export default function DuefteFuerDieArbeitPage() {
               💼 Finde deinen perfekten Office-Duft
             </p>
             <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
-              Du kennst jetzt, welche Düfte im Büro funktionieren. Nutze <Link href="/#quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> und
+              Du kennst jetzt, welche Düfte im Büro funktionieren. Nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> und
               filtering nach „Arbeit/Office" um die perfekten Büro-Düfte für deinen Stil zu finden. Oder durchsuche <Link href="/duefte" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>unseren Katalog</Link> nach
               freshen, subtilen Düften in EdT-Konzentrationen.
             </p>

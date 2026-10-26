@@ -240,7 +240,7 @@ export default async function SaisonalPage() {
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link
-              href="/#quiz"
+              href="/quiz"
               style={{
                 display: 'inline-block',
                 background: '#d4af37',

@@ -320,7 +320,7 @@ export default function DufteNachHauttypPage() {
               🔍 Nächster Schritt: Finde den perfekten Duft für deine Haut
             </p>
             <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
-              Jetzt, da du deinen Hauttyp kennst und weißt, welche Düfte dafür ideal sind, nutze <Link href="/#quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> –
+              Jetzt, da du deinen Hauttyp kennst und weißt, welche Düfte dafür ideal sind, nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> –
               es berücksichtigt deine Duftpräferenzen UND Haut-Gegebenheiten für den perfekten Match.
               Oder durchsuche <Link href="/duefte" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>unseren Katalog</Link> nach Düften, die für deinen Hauttyp gedacht sind.
             </p>

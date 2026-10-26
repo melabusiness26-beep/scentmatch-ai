@@ -461,7 +461,7 @@ export default function GuenstigeAlternativenPage() {
             <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
               Du willst eine Sammlung mit kleinerem Budget aufbauen? Lese unseren <Link href="/duftsammlung" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>Duftsammlung-Ratgeber</Link> –
               dort lernst du Strategien, wie du für 200–300€ eine großartige Sammlung bekommst.
-              Oder nutze <Link href="/#quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link>, um Düfte zu finden, die zu dir passen – wir zeigen dir auch günstige Alternativen an.
+              Oder nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link>, um Düfte zu finden, die zu dir passen – wir zeigen dir auch günstige Alternativen an.
             </p>
           </div>
 

@@ -428,7 +428,7 @@ export default function Duftpersoenlichkeit() {
 
         {/* CTA */}
         <section style={{ marginBottom: '2rem', textAlign: 'center' }}>
-          <Link href="/#quiz" style={{
+          <Link href="/quiz" style={{
             display: 'inline-block',
             background: 'linear-gradient(135deg, #D4AF37 0%, #E5C158 100%)',
             color: '#1F1410',

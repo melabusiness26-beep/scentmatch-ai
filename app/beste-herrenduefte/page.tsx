@@ -209,7 +209,7 @@ export default async function BesteHerrenduefte() {
             Top-Parfums für Herren — von frisch-aquatisch bis dunkel-holzig.
             Bewertet nach Langlebigkeit, Sillage und Preis-Leistung.
           </p>
-          <Link href="/#quiz" style={{
+          <Link href="/quiz" style={{
             display: 'inline-block',
             background: '#d4af37',
             color: '#2a1d12',
@@ -246,7 +246,7 @@ export default async function BesteHerrenduefte() {
             der Langlebigkeit, Sillage, Vielseitigkeit und Preis-Leistung vereint.
             Herren- und Unisex-Düfte werden gemeinsam bewertet. Für deinen persönlichen
             Top-Duft empfehlen wir das{' '}
-            <Link href="/#quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>
+            <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>
               Duft-Quiz
             </Link>.
           </p>
@@ -276,7 +276,7 @@ export default async function BesteHerrenduefte() {
             Unser Quiz berücksichtigt deinen Stil, deine Lieblingsmomente und dein Budget.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link href="/#quiz" style={{
+            <Link href="/quiz" style={{
               background: '#d4af37', color: '#2a1d12', fontWeight: 700,
               padding: '0.75rem 1.5rem', borderRadius: '8px', textDecoration: 'none', fontSize: '0.9rem',
             }}>Quiz starten</Link>

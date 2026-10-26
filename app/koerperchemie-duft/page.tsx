@@ -281,7 +281,7 @@ export default function KoerperchemieDuftPage() {
             </p>
             <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
               Du kennst jetzt deine Körperchemie besser. Der nächste Schritt ist, Düfte zu finden, die speziell auf deinem pH-Wert und deinem Hauttyp großartig wirken.
-              Nutze <Link href="/#quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> – es berücksichtigt deine
+              Nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> – es berücksichtigt deine
               Duftpräferenzen und findet Matches, die speziell für dich funktionieren. Oder <Link href="/duefte" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>durchsuche unseren Katalog</Link> nach Düften,
               die du testen kannst.
             </p>

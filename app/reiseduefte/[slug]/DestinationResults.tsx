@@ -119,7 +119,7 @@ export default function DestinationResults({ items, dest }: { items: Item[]; des
       <div className="cta">
         <button type="button" className="button" onClick={share}>🔗 Dieses Reiseziel teilen</button>
         <Link className="button secondary" href="/reiseduefte">Andere Reiseziele</Link>
-        <Link className="button secondary" href="/#quiz">Noch genauer? Mach das Quiz</Link>
+        <Link className="button secondary" href="/quiz">Noch genauer? Mach das Quiz</Link>
       </div>
       {shareMsg && <p className="small share-msg">{shareMsg}</p>}
     </section>

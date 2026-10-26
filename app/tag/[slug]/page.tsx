@@ -129,7 +129,7 @@ export default async function TagPage({ params }: { params: Promise<{ slug: stri
             <p style={{ fontSize: '0.95rem', color: '#7a6a5e', marginBottom: '1rem' }}>
               Den perfekten Duft für dich finden?
             </p>
-            <Link href="/#quiz" style={{
+            <Link href="/quiz" style={{
               display: 'inline-block',
               padding: '0.75rem 2rem',
               backgroundColor: '#d4af37',

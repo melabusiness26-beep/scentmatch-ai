@@ -587,7 +587,7 @@ export default async function PerfumeDetailPage({
         <Reveal as="section" className="dp-quiz">
           <h2>Passt {perfume.perfume_name} zu dir?</h2>
           <p>Mach das Duft-Quiz und finde in 2 Minuten heraus, welche Düfte wirklich zu dir passen.</p>
-          <Link className="button dp-quiz-button" href="/#quiz">Quiz starten</Link>
+          <Link className="button dp-quiz-button" href="/quiz">Quiz starten</Link>
         </Reveal>
       </div>
 

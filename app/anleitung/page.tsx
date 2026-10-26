@@ -110,7 +110,7 @@ export default function AnleitungPage() {
             Wenn möglich, teste den Duft an deiner Haut. Alle Haut ist unterschiedlich – ein Duft kann bei dir ganz anders riechen als bei der Verkäuferin. Sprüh ein wenig auf dein Handgelenk, warte 10 Minuten (bis die Top-Noten verfliegen), und rieche dann nochmal. Hier entsteht die echte Duftsignatur.
           </p>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginTop: '1rem' }}>
-            Keine Zeit? Nutze unser <Link href="/#quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>Duft-Quiz</Link> – es berücksichtigt Duftfamilie, Budget, Anlass und persönliche Vorlieben.
+            Keine Zeit? Nutze unser <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>Duft-Quiz</Link> – es berücksichtigt Duftfamilie, Budget, Anlass und persönliche Vorlieben.
           </p>
         </section>
 
@@ -243,7 +243,7 @@ export default function AnleitungPage() {
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link
-              href="/#quiz"
+              href="/quiz"
               style={{
                 display: 'inline-block',
                 background: '#d4af37',

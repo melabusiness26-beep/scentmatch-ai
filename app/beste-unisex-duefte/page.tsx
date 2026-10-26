@@ -209,7 +209,7 @@ export default async function BesteUnisexDuefte() {
             Geschlechtsneutrale Düfte für alle — von holzig-rauchig bis frisch-clean.
             Perfekt zum Teilen oder als Signatur-Duft.
           </p>
-          <Link href="/#quiz" style={{
+          <Link href="/quiz" style={{
             display: 'inline-block',
             background: '#d4af37',
             color: '#2a1d12',
@@ -247,7 +247,7 @@ export default async function BesteUnisexDuefte() {
             Unsere Rangliste basiert auf dem <strong>Auressa-Score</strong> (Langlebigkeit,
             Sillage, Vielseitigkeit, Preis-Leistung). Für deine persönliche Empfehlung:
             {' '}
-            <Link href="/#quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>
+            <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>
               Duft-Quiz starten
             </Link>.
           </p>
@@ -277,7 +277,7 @@ export default async function BesteUnisexDuefte() {
             Unser Quiz findet in 2 Minuten den Duft, der wirklich zu dir passt.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link href="/#quiz" style={{
+            <Link href="/quiz" style={{
               background: '#d4af37', color: '#2a1d12', fontWeight: 700,
               padding: '0.75rem 1.5rem', borderRadius: '8px', textDecoration: 'none', fontSize: '0.9rem',
             }}>Quiz starten</Link>

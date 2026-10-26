@@ -117,7 +117,7 @@ export default function SiteHeader() {
           <Link href="/mein-profil" className="hd-icon hd-icon-profile" aria-label="Mein Duftprofil" title="Mein Duftprofil">
             <UserIcon />
           </Link>
-          <Link href="/#quiz" className="hd-cta">Quiz starten</Link>
+          <Link href="/quiz" className="hd-cta">Quiz starten</Link>
           <button
             type="button"
             className="hd-burger"
@@ -134,7 +134,7 @@ export default function SiteHeader() {
 
       {/* Handy-Menü */}
       <div className="hd-sheet" aria-hidden={!menuOpen}>
-        <Link href="/#quiz" className="hd-sheet-cta" onClick={() => setMenuOpen(false)}>
+        <Link href="/quiz" className="hd-sheet-cta" onClick={() => setMenuOpen(false)}>
           <span>Finde deinen Duft</span>
           <strong>Quiz starten →</strong>
         </Link>

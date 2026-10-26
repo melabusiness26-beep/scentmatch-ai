@@ -78,7 +78,7 @@ export default async function MarkenIndex() {
             {brandsWithPerfumes.length} Marken im Katalog. Vom Luxus-Original bis zum günstigen Dupe.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link href="/#quiz" style={{
+            <Link href="/quiz" style={{
               display: 'inline-block',
               background: '#d4af37',
               color: '#2a1d12',
@@ -224,7 +224,7 @@ export default async function MarkenIndex() {
           <p style={{ color: 'rgba(250,247,242,0.7)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
             Unser Duft-Quiz findet deinen perfekten Signature-Duft in unter 3 Minuten.
           </p>
-          <Link href="/#quiz" style={{
+          <Link href="/quiz" style={{
             background: '#d4af37',
             color: '#2a1d12',
             fontWeight: 700,

@@ -322,7 +322,7 @@ export default function WieAuressaFunktioniert() {
           <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', marginBottom: '1.5rem' }}>
             12 Fragen, 2 Minuten, 400+ Düfte. Dein persönlicher Match wartet.
           </p>
-          <Link href="/#quiz" style={{
+          <Link href="/quiz" style={{
             display: 'inline-block',
             background: '#d4af37',
             color: '#2a1d12',

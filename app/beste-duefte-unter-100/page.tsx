@@ -295,7 +295,7 @@ export default async function BesteDuefteUnter100() {
               background: '#d4af37', color: '#2a1d12', fontWeight: 700,
               padding: '0.75rem 1.5rem', borderRadius: '8px', textDecoration: 'none', fontSize: '0.9rem',
             }}>Alle Dupes</Link>
-            <Link href="/#quiz" style={{
+            <Link href="/quiz" style={{
               background: 'transparent', color: '#faf7f2', fontWeight: 600,
               padding: '0.75rem 1.5rem', borderRadius: '8px', textDecoration: 'none', fontSize: '0.9rem',
               border: '1px solid rgba(250,247,242,0.3)',

@@ -213,7 +213,7 @@ export default async function BesteDamenduefte() {
             Unsere Top-Empfehlungen für Damen-Parfums – kuratiert nach Duftprofil,
             Langlebigkeit und Preis-Leistung. Von blumig-romantisch bis modern-holzig.
           </p>
-          <Link href="/#quiz" style={{
+          <Link href="/quiz" style={{
             display: 'inline-block',
             background: '#d4af37',
             color: '#2a1d12',
@@ -252,7 +252,7 @@ export default async function BesteDamenduefte() {
             der Langlebigkeit, Sillage, Vielseitigkeit und Preis-Leistung zusammenfasst.
             Damen- und Unisex-Düfte werden gemeinsam bewertet. Für deinen persönlichen
             Top-Duft empfehlen wir zusätzlich das{' '}
-            <Link href="/#quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>
+            <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>
               Duft-Quiz
             </Link>.
           </p>
@@ -284,7 +284,7 @@ export default async function BesteDamenduefte() {
             Unser Quiz berücksichtigt deinen Stil, deine Lieblingsmomente und dein Budget.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link href="/#quiz" style={{
+            <Link href="/quiz" style={{
               background: '#d4af37', color: '#2a1d12', fontWeight: 700,
               padding: '0.75rem 1.5rem', borderRadius: '8px', textDecoration: 'none', fontSize: '0.9rem',
             }}>Quiz starten</Link>

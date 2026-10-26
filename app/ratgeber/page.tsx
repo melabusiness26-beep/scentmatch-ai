@@ -263,7 +263,7 @@ export default function RatgeberIndex() {
             Kein Fachjargon, keine versteckte Werbung.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link href="/#quiz" style={{
+            <Link href="/quiz" style={{
               display: 'inline-block',
               background: '#d4af37',
               color: '#2a1d12',
@@ -357,7 +357,7 @@ export default function RatgeberIndex() {
             Unser Duft-Quiz und der Duft-Detektiv finden deinen persönlichen Match, in unter 3 Minuten.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link href="/#quiz" style={{
+            <Link href="/quiz" style={{
               background: '#d4af37',
               color: '#2a1d12',
               fontWeight: 700,

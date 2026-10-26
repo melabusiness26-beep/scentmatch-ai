@@ -383,7 +383,7 @@ export default function FragranceGiftPage() {
             Nutze unser Quiz oder stöbere durch unseren Katalog.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/#quiz" style={{
+            <Link href="/quiz" style={{
               background: '#d4af37',
               color: '#2a1d12',
               fontWeight: 700,

@@ -241,7 +241,13 @@ function priceSentence(p: Perfume, s: number): string | null {
   if (price > MAX_PRICE) {
     return `Mit rund CHF ${price} liegt er über unserer Empfehlungsgrenze von CHF ${MAX_PRICE}. Günstigere Düfte mit ähnlichem Charakter findest du weiter unten.`;
   }
-  if (price <= 60) return pick([`Für rund CHF ${price} bekommt man hier erstaunlich viel Duft fürs Geld.`, `Bei rund CHF ${price} ist er ein Duft, den man ohne schlechtes Gewissen täglich tragen kann.`], s);
+  if (price <= 60) {
+    // „Viel Duft fürs Geld" nur, wenn er auch lange hält – sonst wäre es übertrieben.
+    if ((p.longevity ?? 0) >= 7) {
+      return pick([`Für rund CHF ${price} bekommt man hier erstaunlich viel Duft fürs Geld.`, `Bei rund CHF ${price} und dieser Haltbarkeit stimmt das Preis-Leistungs-Verhältnis.`], s);
+    }
+    return `Bei rund CHF ${price} ist er ein Duft, den man ohne schlechtes Gewissen täglich tragen kann.`;
+  }
   if (price <= 110) return `Mit rund CHF ${price} liegt er im mittleren Preisbereich.`;
   return `Mit rund CHF ${price} gehört er zu den edleren Düften in unserer Auswahl.`;
 }

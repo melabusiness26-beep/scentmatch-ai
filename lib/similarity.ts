@@ -1,4 +1,4 @@
-import { Perfume } from './perfumes';
+import { Perfume, isWithinPriceCap } from './perfumes';
 
 // Sammelbegriffe, die nur halbes Gewicht zählen (wenig aussagekräftig)
 const GENERIC_NOTES = new Set(['holz', 'hölzer', 'holznoten', 'fruchtnoten', 'früchte', 'beeren',
@@ -328,6 +328,7 @@ export function findSimilarPerfumesV2(target: Perfume, pool: Perfume[], limit = 
 
   return pool
     .filter((p) => p.id !== target.id)
+    .filter(isWithinPriceCap) // Empfehlungen nur bis CHF 180 (Pool bleibt für Noten-Häufigkeit komplett)
     .map((p) => {
       const sim = computeSimilarity(target, p, pool, frequencies);
       return { perfume: p, ...sim };
@@ -352,7 +353,7 @@ export function findCheaperAlternativesV2(target: Perfume, pool: Perfume[], limi
 
   return pool
     .filter((p) => p.id !== target.id)
-    .filter((p) => p.price_chf != null && p.price_chf <= targetPrice * 0.7) // 30% günstiger
+    .filter((p) => isWithinPriceCap(p) && p.price_chf! <= targetPrice * 0.7) // 30% günstiger, max. CHF 180
     .map((p) => {
       const sim = computeSimilarity(target, p, pool, frequencies);
       return { perfume: p, ...sim };

@@ -277,7 +277,9 @@ gender → anchor (optional, Dropdown) → 3× family → lovedNote → disliked
 ### Design (Duft-Darstellung)
 - `PerfumeVisual`: gezeichneter Flakon je Duftfamilie (bis echte, lizenzierte Produktfotos
   in `image_url` kommen). Duftnoten-Fotos aus `/public/notes` über `noteImage()`.
-- Duftkachel v2, neue Detailseite (`dp-*` Klassen), Filter als Chip-Leiste, neues Menü (`hd-*`).
+- Duftkachel v2, neue Detailseite (`dp-*` Klassen), Filter als Chip-Leiste.
+- **Menü (SiteHeader) bleibt wie es ist** (Wunsch der Gründerin; ein aufgeräumter Entwurf
+  „Düfte · Dupes · Ratgeber · Entdecken" liegt in Commit 1b6dbf0, falls später gewünscht).
 - **Startseite bleibt wie sie ist** (Wunsch der Gründerin, Foto `hero-auressa-main.png`).
 - Lokale Vorschau mit Beispiel-Düften: Fixture-Daten nur temporär, nie committen.
 

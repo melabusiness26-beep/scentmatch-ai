@@ -9,7 +9,8 @@ export const NOTE_PHOTOS: { image: string; keywords: string[]; exclude?: string[
   { image: '/notes/mandarine.jpg', keywords: ['mandarine', 'mandarin', 'clementine', 'klementine', 'tangerine'] },
   { image: '/notes/grapefruit.jpg', keywords: ['grapefruit', 'pampelmuse', 'pomelo'] },
   { image: '/notes/birne.jpg', keywords: ['birne', 'pear'] },
-  { image: '/notes/pfirsich.jpg', keywords: ['pfirsich', 'peach'] }
+  { image: '/notes/pfirsich.jpg', keywords: ['pfirsich', 'peach'] },
+  { image: '/notes/cassis.jpg', keywords: ['johannisbeere', 'cassis', 'blackcurrant', 'black currant'], exclude: ['rote johannisbeere', 'weisse johannisbeere', 'weiße johannisbeere', 'redcurrant', 'red currant'] }
 ];
 
 export function extraNotePhoto(note: string): string | null {

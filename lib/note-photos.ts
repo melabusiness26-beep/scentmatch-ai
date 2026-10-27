@@ -29,6 +29,13 @@ export const NOTE_PHOTOS: { image: string; keywords: string[]; exclude?: string[
   { image: '/notes/wacholder.jpg', keywords: ['wacholder', 'juniper', 'genièvre', 'genievre'] },
   { image: '/notes/meersalz.jpg', keywords: ['meersalz', 'meerwasser', 'sea salt', 'sea water', 'seawater', 'marine', 'aquatisch', 'aquatic', 'ozean', 'ocean'] },
   { image: '/notes/eichenmoos.jpg', keywords: ['eichenmoos', 'oakmoss', 'oak moss', 'mousse de chêne', 'moos', 'moss'] },
+  // Amberholz ist im Lexikon bei Ambroxan eingeordnet, bekommt aber ein eigenes Foto
+  // (Holz + Harz statt weisser Kristalle, die wie Meersalz wirkten).
+  {
+    image: '/notes/amberholz.jpg',
+    keywords: ['amberholz', 'amber-holz', 'amberwood', 'amber wood', 'ambery wood', 'ambraholz', 'amberbaum'],
+    priority: true
+  },
   {
     image: '/notes/neroli.jpg',
     keywords: ['neroli', 'orangenblüte', 'orangenblute', 'orange blossom', "fleur d'oranger"],

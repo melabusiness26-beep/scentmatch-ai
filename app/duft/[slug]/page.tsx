@@ -520,8 +520,8 @@ export default async function PerfumeDetailPage({
                 <thead>
                   <tr>
                     <th scope="col">Version</th>
-                    <th scope="col">Haltbarkeit</th>
-                    <th scope="col">Ausstrahlung</th>
+                    {versions.some((v) => v.longevity != null) && <th scope="col">Haltbarkeit</th>}
+                    {versions.some((v) => v.sillage != null) && <th scope="col">Ausstrahlung</th>}
                     <th scope="col">Richtpreis</th>
                   </tr>
                 </thead>
@@ -537,8 +537,13 @@ export default async function PerfumeDetailPage({
                           <Link href={`/duft/${v.slug}`}>{versionLabel(v)}</Link>
                         )}
                       </th>
-                      <td>{v.longevity != null ? `${v.longevity}/10` : '–'}</td>
-                      <td>{v.sillage != null ? `${v.sillage}/10` : '–'}</td>
+                      {/* Spalte nur, wenn mindestens eine Version einen getesteten Wert hat; fehlende Werte ehrlich als „noch offen". */}
+                      {versions.some((o) => o.longevity != null) && (
+                        <td>{v.longevity != null ? `${v.longevity}/10` : <span className="dp-compare-open">noch offen</span>}</td>
+                      )}
+                      {versions.some((o) => o.sillage != null) && (
+                        <td>{v.sillage != null ? `${v.sillage}/10` : <span className="dp-compare-open">noch offen</span>}</td>
+                      )}
                       <td>
                         {v.price_chf != null ? `CHF ${v.price_chf}` : '–'}
                         {v.price_chf != null && v.volume_ml ? <small className="dp-compare-ml">{v.volume_ml} ml</small> : null}

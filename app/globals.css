@@ -1884,3 +1884,6 @@ a.dp-version:hover { border-color: var(--gold-500); background: #FFFBF1; color: 
 
 /* Konzentration unter dem Duftnamen (unterscheidet Versionen wie Light Blue EdT/EdP). */
 .tile-conc { margin: 2px 0 0; font-size: 12px; color: var(--ink-500, #7a6a5c); letter-spacing: 0.02em; }
+
+/* Versionsvergleich: noch nicht getesteter Wert */
+.dp-compare-open { font-size: 12px; color: var(--ink-500); font-style: italic; }

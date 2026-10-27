@@ -304,6 +304,20 @@ export default function AdminPage() {
     }
   }
 
+  // Damit klar ist, welcher bestehende Duft gerade überschrieben wird.
+  const editingPerfume = editingId ? perfumes.find(p => p.id === editingId) : null;
+  const editingLabel = editingPerfume
+    ? `${editingPerfume.perfume_name}${editingPerfume.concentration ? ` (${editingPerfume.concentration}${editingPerfume.volume_ml ? `, ${editingPerfume.volume_ml} ml` : ''})` : ''}`
+    : '';
+
+  // Neuer Duft = immer ein leeres Formular, auch wenn vorher ein Duft bearbeitet wurde.
+  function startNew() {
+    setEditingId(null);
+    setForm({ ...emptyForm });
+    setMessage('');
+    setActiveTab('basic');
+  }
+
   function cancelEdit() {
     setEditingId(null);
     setForm({ ...emptyForm });
@@ -762,7 +776,7 @@ export default function AdminPage() {
             </div>
 
             <div className="cta">
-              <button className="button" onClick={() => setActiveTab('basic')}>➕ Neuer Duft</button>
+              <button className="button" onClick={startNew}>➕ Neuer Duft</button>
               <button className="button secondary" onClick={() => setActiveTab('dashboard')}>← Zurück</button>
             </div>
           </section>
@@ -771,7 +785,7 @@ export default function AdminPage() {
         {/* FORM TABS (basic, notes, details, media, advanced) */}
         {['basic', 'notes', 'details', 'media', 'advanced'].includes(activeTab) && (
           <section className="section card">
-            <h2>{editingId ? '✏️ Duft bearbeiten' : '➕ Neuen Duft hinzufügen'}</h2>
+            <h2>{editingId ? `✏️ Duft bearbeiten: ${editingLabel}` : '➕ Neuen Duft hinzufügen'}</h2>
             <form onSubmit={save}>
               {activeTab === 'basic' && (
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15 }}>

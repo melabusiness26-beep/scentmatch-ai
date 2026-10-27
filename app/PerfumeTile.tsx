@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import type { Perfume } from '@/lib/perfumes';
+import { concentrationLabel, type Perfume } from '@/lib/perfumes';
 import { FavoriteButton } from '@/app/FavoriteButton';
 import { trackPerfumeView } from '@/lib/tracking';
 import { PerfumeVisual } from '@/app/components/PerfumeVisual';
@@ -61,6 +61,8 @@ export function PerfumeTile({ perfume, matchPercent, showOccasionDescription }: 
       <div className="tile-body">
         <p className="tile-brand">{perfume.brands?.name || 'Marke offen'}</p>
         <h3 className="tile-name">{perfume.perfume_name}</h3>
+        {/* Konzentration, damit Versionen gleichen Namens (Light Blue EdT/EdP) unterscheidbar sind. */}
+        {concentrationLabel(perfume.concentration) && <p className="tile-conc">{concentrationLabel(perfume.concentration)}</p>}
         <div className="tile-chips">
           {perfume.fragrance_family && (
             <span className={`chip chip-family chip-${perfume.fragrance_family}`}>

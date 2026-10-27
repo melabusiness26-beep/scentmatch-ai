@@ -824,10 +824,10 @@ export default function AdminPage() {
                     Fliesst automatisch in den Duft-Text ein. Nur eintragen, was sicher stimmt (offizielle Quelle).
                   </p>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 15 }}>
-                    <div className="field"><label>Erscheinungsjahr</label><input type="number" min="1900" max={new Date().getFullYear()} value={form.release_year} onChange={e => setField('release_year', e.target.value)} placeholder="2001" /></div>
-                    <div className="field"><label>Parfümeur / Parfümeurin</label><input value={form.perfumer} onChange={e => setField('perfumer', e.target.value)} placeholder="Olivier Cresp" disabled={!hasBackground} /></div>
+                    <div className="field"><label>Erscheinungsjahr</label><input type="number" min="1900" max={new Date().getFullYear()} value={form.release_year} onChange={e => setField('release_year', e.target.value)} placeholder="z. B. 1995" /></div>
+                    <div className="field"><label>Parfümeur / Parfümeurin</label><input value={form.perfumer} onChange={e => setField('perfumer', e.target.value)} placeholder="Name aus offizieller Quelle" disabled={!hasBackground} /></div>
                   </div>
-                  <div className="field"><label>Inspiration (kurz, am besten mit „inspiriert von …")</label><input value={form.inspiration} onChange={e => setField('inspiration', e.target.value)} placeholder="inspiriert vom Sommer am Mittelmeer" disabled={!hasBackground} /></div>
+                  <div className="field"><label>Inspiration (kurz, am besten mit „inspiriert von …")</label><input value={form.inspiration} onChange={e => setField('inspiration', e.target.value)} placeholder="z. B. inspiriert von …" disabled={!hasBackground} /></div>
                   {!hasBackground && (
                     <p className="small" style={{ margin: '0 0 12px', color: '#b3261e' }}>
                       Parfümeur und Inspiration sind erst nach dem SQL „58_perfume_background.sql" in Supabase verfügbar.
@@ -835,7 +835,7 @@ export default function AdminPage() {
                   )}
                   <div className="field">
                     <label>💡 Gut zu wissen (bis 5 echte Fakten, je Zeile einer – nur mit sicherer Quelle)</label>
-                    <textarea value={form.good_to_know} onChange={e => setField('good_to_know', e.target.value)} placeholder="Light Blue gibt es auch nachfüllbar." style={{ width: '100%', minHeight: 120 }} disabled={!hasGoodToKnow} />
+                    <textarea value={form.good_to_know} onChange={e => setField('good_to_know', e.target.value)} placeholder="Ein Fakt pro Zeile" style={{ width: '100%', minHeight: 120 }} disabled={!hasGoodToKnow} />
                     {!hasGoodToKnow && (
                       <p className="small" style={{ margin: '4px 0 0', color: '#b3261e' }}>Erst nach dem SQL „60_good_to_know.sql" in Supabase verfügbar.</p>
                     )}

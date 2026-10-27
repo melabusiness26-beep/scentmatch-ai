@@ -24,6 +24,7 @@ export const NOTE_PHOTOS: { image: string; keywords: string[]; exclude?: string[
   { image: '/notes/frangipani.jpg', keywords: ['frangipani', 'plumeria'] },
   { image: '/notes/ringelblume.jpg', keywords: ['ringelblume', 'calendula', 'marigold', 'souci'] },
   { image: '/notes/benzoe.jpg', keywords: ['benzoe', 'benzoin', 'benjoin'] },
+  { image: '/notes/rosenholz.jpg', keywords: ['rosenholz', 'rosewood', 'bois de rose', 'palisander'] },
   { image: '/notes/eichenmoos.jpg', keywords: ['eichenmoos', 'oakmoss', 'oak moss', 'mousse de chêne', 'moos', 'moss'] },
   {
     image: '/notes/neroli.jpg',

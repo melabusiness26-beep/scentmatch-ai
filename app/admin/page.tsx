@@ -820,13 +820,13 @@ export default function AdminPage() {
                     </p>
                   )}
                   <div className="field">
-                    <label>💡 Gut zu wissen (1–2 echte Fakten, je Zeile einer – nur mit sicherer Quelle)</label>
-                    <textarea value={form.good_to_know} onChange={e => setField('good_to_know', e.target.value)} placeholder="Light Blue gibt es auch nachfüllbar." style={{ minHeight: 70 }} disabled={!hasGoodToKnow} />
+                    <label>💡 Gut zu wissen (bis 5 echte Fakten, je Zeile einer – nur mit sicherer Quelle)</label>
+                    <textarea value={form.good_to_know} onChange={e => setField('good_to_know', e.target.value)} placeholder="Light Blue gibt es auch nachfüllbar." style={{ width: '100%', minHeight: 120 }} disabled={!hasGoodToKnow} />
                     {!hasGoodToKnow && (
                       <p className="small" style={{ margin: '4px 0 0', color: '#b3261e' }}>Erst nach dem SQL „60_good_to_know.sql" in Supabase verfügbar.</p>
                     )}
                   </div>
-                  <div className="field"><label>📝 Eigene Beschreibung (ersetzt den automatischen Text – meist leer lassen)</label><textarea value={form.description} onChange={e => setField('description', e.target.value)} placeholder="Leer lassen = automatischer Text aus den Daten" style={{ minHeight: 100 }} /></div>
+                  <div className="field"><label>📝 Eigene Beschreibung (ersetzt den automatischen Text – meist leer lassen)</label><textarea value={form.description} onChange={e => setField('description', e.target.value)} placeholder="Leer lassen = automatischer Text aus den Daten" style={{ width: '100%', minHeight: 140 }} /></div>
                 </div>
               )}
 
@@ -839,7 +839,7 @@ export default function AdminPage() {
                   <div className="field"><label>Lifestyle</label><select value={form.lifestyle} onChange={e => setField('lifestyle', e.target.value)}>{LIFESTYLES.map(l => <option value={l} key={l}>{l}</option>)}</select></div>
                   <div className="field"><label>Trend-Vibe</label><select value={form.trend_vibe} onChange={e => setField('trend_vibe', e.target.value)}>{TREND_VIBES.map(t => <option value={t} key={t}>{t}</option>)}</select></div>
                   <div className="field"><label>Gender-Nuance</label><input value={form.gender_nuance} onChange={e => setField('gender_nuance', e.target.value)} placeholder="masculine, feminine, androgynous" /></div>
-                  <div style={{ gridColumn: '1 / -1' }} className="field"><label>Flakon-Beschreibung</label><textarea value={form.flacon_description} onChange={e => setField('flacon_description', e.target.value)} placeholder="Beschreibung des Flakons..." style={{ minHeight: 80 }} /></div>
+                  <div style={{ gridColumn: '1 / -1' }} className="field"><label>Flakon-Beschreibung</label><textarea value={form.flacon_description} onChange={e => setField('flacon_description', e.target.value)} placeholder="Beschreibung des Flakons..." style={{ width: '100%', minHeight: 80 }} /></div>
                   <div style={{ gridColumn: '1 / -1' }} className="field"><label>Ähnliche Düfte</label><input value={form.similar_perfumes} onChange={e => setField('similar_perfumes', e.target.value)} placeholder="Aventus, Sauvage, Bleu de Chanel" /></div>
                 </div>
               )}

@@ -341,7 +341,8 @@ export default async function PerfumeDetailPage({
     .split('\n')
     .map((f) => f.trim())
     .filter(Boolean)
-    .slice(0, 3);
+    // Bis zu 5 Fakten – mehr würde den Kasten auf dem Handy zu lang machen.
+    .slice(0, 5);
   const otherVersions = versions.filter((v) => v.id !== perfume.id).map(versionLabel);
   const description =
     perfume.description ||

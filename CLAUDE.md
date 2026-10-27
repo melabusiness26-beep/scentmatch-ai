@@ -303,5 +303,7 @@ gender → anchor (optional, Dropdown) → 3× family → lovedNote → disliked
 - **Eigene Texte gratis im Chat** schreiben (kein API-Knopf – Gründerin will keine API-Kosten); bei
   vielen Düften als SQL-Datei liefern.
 - Admin aktualisiert nach dem Speichern die Duft-Seite sofort (`/api/revalidate`).
+- **Zielgruppe 16–40** (Entscheid 27.10.2026; vorher 18–40, 13 verworfen wegen Datenschutz/Affiliate-
+  Regeln). Altersfilter zeigt „16-25"; DB-Code bleibt `18-25` (kompatibel mit Backup).
 - **Offen** (Priorität): Newsletter-Bestätigung reparieren (Token fälschbar), Amazon-Tag bestätigen,
   Katalog aus Backup neu aufbauen (mit Texten), „Sillage" → „Ausstrahlung", Score pro 100 ml.

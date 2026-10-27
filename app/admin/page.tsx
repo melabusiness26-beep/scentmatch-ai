@@ -12,6 +12,8 @@ const OCCASIONS = ['Alltag', 'Büro', 'Date', 'Abend'] as const;
 const CONCENTRATIONS = ['EdP', 'EdT', 'EdC', 'Extrait', 'Cologne', 'Spray'] as const;
 const INTENSITIES = ['Zart', 'Ausgewogen', 'Kräftig'] as const;
 const AGE_GROUPS = ['18-25', '25-35', '35-40', 'all'] as const;
+// Anzeige im Admin; „18-25" ist der bestehende Datenbank-Code für die Gruppe 16–25.
+const AGE_GROUP_LABELS: Record<string, string> = { '18-25': '16-25', '25-35': '25-35', '35-40': '35-40', all: 'alle (16-40)' };
 const LIFESTYLES = ['student', 'professional', 'party', 'casual', 'sporty'] as const;
 const TREND_VIBES = ['trendy', 'classic', 'niche', 'popular'] as const;
 
@@ -833,7 +835,7 @@ export default function AdminPage() {
                   <div className="field"><label>Konzentration</label><select value={form.concentration} onChange={e => setField('concentration', e.target.value)}>{CONCENTRATIONS.map(c => <option value={c} key={c}>{c}</option>)}</select></div>
                   <div className="field"><label>Volumen (ml)</label><input type="number" min="1" max="500" value={form.volume_ml} onChange={e => setField('volume_ml', e.target.value)} /></div>
                   <div className="field"><label>Bewertung (0-10)</label><input type="number" step="0.1" min="0" max="10" value={form.rating} onChange={e => setField('rating', e.target.value)} /></div>
-                  <div className="field"><label>Altersgruppe</label><select value={form.age_group} onChange={e => setField('age_group', e.target.value)}>{AGE_GROUPS.map(a => <option value={a} key={a}>{a}</option>)}</select></div>
+                  <div className="field"><label>Altersgruppe</label><select value={form.age_group} onChange={e => setField('age_group', e.target.value)}>{AGE_GROUPS.map(a => <option value={a} key={a}>{AGE_GROUP_LABELS[a]}</option>)}</select></div>
                   <div className="field"><label>Lifestyle</label><select value={form.lifestyle} onChange={e => setField('lifestyle', e.target.value)}>{LIFESTYLES.map(l => <option value={l} key={l}>{l}</option>)}</select></div>
                   <div className="field"><label>Trend-Vibe</label><select value={form.trend_vibe} onChange={e => setField('trend_vibe', e.target.value)}>{TREND_VIBES.map(t => <option value={t} key={t}>{t}</option>)}</select></div>
                   <div className="field"><label>Gender-Nuance</label><input value={form.gender_nuance} onChange={e => setField('gender_nuance', e.target.value)} placeholder="masculine, feminine, androgynous" /></div>

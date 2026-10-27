@@ -92,6 +92,10 @@ const MOOD: Record<string, string[]> = {
     'Die Blumen wirken weich und pudrig, wie ein Hauch von Puder auf warmer Haut.',
     'Elegant und sanft, mit einem pudrigen Schleier über den Blüten.'
   ],
+  warmFloral: [
+    'Die Blüten liegen auf einer warmen, leicht süssen Basis, sonnig statt kühl.',
+    'Blumig und warm zugleich, wie Blüten in der Abendsonne.'
+  ],
   floral: [
     'Die Blumen wirken dabei modern und leicht, nicht altmodisch.',
     'Er riecht nach einem frischen Strauss, nicht nach Grossmutters Kommode.'
@@ -117,6 +121,7 @@ function moodKey(p: Perfume): string | null {
     case 'floral':
       if (has('fruchtig')) return 'fruityFloral';
       if (has('pudrig')) return 'powderyFloral';
+      if (has('warm') || has('suess')) return 'warmFloral';
       return 'floral';
     default:
       return null;
@@ -134,6 +139,7 @@ const TAGLINE: Record<string, string> = {
   dryWood: 'Ruhig, edel und holzig.',
   fruityFloral: 'Blumig, fruchtig und fröhlich.',
   powderyFloral: 'Blumig, pudrig und elegant.',
+  warmFloral: 'Blumig, warm und sonnig.',
   floral: 'Blumig, elegant und zeitlos.'
 };
 
@@ -512,7 +518,7 @@ export function fitAdvice(p: Perfume): FitAdvice {
   if (p.longevity != null && p.longevity >= 8) fits.push('er den ganzen Tag halten soll');
   else if (p.sillage != null && p.sillage <= 4) fits.push('du es dezent magst');
   else if (p.sillage != null && p.sillage >= 8) fits.push('man dich ruhig bemerken darf');
-  if (p.price_chf != null && p.price_chf <= 70 && fits.length < 3) fits.push('du nicht viel ausgeben möchtest');
+  if (p.price_chf != null && p.price_chf <= 60 && fits.length < 3) fits.push('du nicht viel ausgeben möchtest');
 
   // 1) Welche seiner Noten jemanden stören könnten – nie dieselben Noten wie oben,
   //    sonst widerspräche sich die Einschätzung.

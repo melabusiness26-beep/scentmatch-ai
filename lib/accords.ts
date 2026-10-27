@@ -80,6 +80,9 @@ const KEYWORDS: [string, AccordCode[]][] = [
   ['ylang', ['blumig']],
   ['freesie', ['blumig']],
   ['maigl', ['blumig']],
+  ['frangipani', ['blumig']],
+  ['blume', ['blumig']],
+  ['blute', ['blumig']],
   ['gardenie', ['blumig']],
   ['lilie', ['blumig']],
   ['veilchen', ['blumig', 'pudrig']],
@@ -152,8 +155,14 @@ function fold(text: string): string {
 
 const FOLDED_KEYWORDS = KEYWORDS.map(([kw, codes]) => [fold(kw), codes] as const);
 
+// Eigenschaftswörter auf „-anisch" (sizilianisch, toskanisch, marokkanisch …)
+// enthalten „anis", sind aber keine Anis-Note.
+function withoutAdjectives(n: string): string {
+  return n.replace(/anisch/g, '');
+}
+
 function matchNote(note: string): AccordCode[] {
-  const n = fold(note);
+  const n = withoutAdjectives(fold(note));
   const hits = new Set<AccordCode>();
   for (const [kw, codes] of FOLDED_KEYWORDS) {
     if (n.includes(kw)) codes.forEach((c) => hits.add(c));

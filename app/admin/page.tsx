@@ -469,10 +469,10 @@ export default function AdminPage() {
 
       // Duplikat-Check: gleicher Name, gleiche Marke und gleiche Konzentration.
       // Andere Konzentrationen (z. B. Light Blue als EdT und EdP) sind eigene Versionen.
-      const brandLower = form.brand.trim().toLowerCase();
+      const brandKey = slugify(form.brand);
       const isDuplicate = perfumes.some(p =>
         p.perfume_name.toLowerCase() === name.toLowerCase() &&
-        (brands.find(b => b.id === p.brand_id)?.name.toLowerCase() || '') === brandLower &&
+        slugify(brands.find(b => b.id === p.brand_id)?.name || '') === brandKey &&
         (p.concentration || 'EdP') === form.concentration &&
         p.id !== editingId
       );
@@ -485,7 +485,9 @@ export default function AdminPage() {
       let brandId: string | null = null;
       const brandName = form.brand.trim();
       if (brandName) {
-        const existing = brands.find(b => b.name.toLowerCase() === brandName.toLowerCase());
+        // Über den Slug vergleichen: „Dolce & Gabbana ·" oder „dolce&gabbana" ist dieselbe
+        // Marke – sonst würde eine zweite Marke mit gleichem Slug angelegt (Datenbankfehler).
+        const existing = brands.find(b => slugify(b.name) === slugify(brandName));
         if (existing) {
           brandId = existing.id;
         } else {

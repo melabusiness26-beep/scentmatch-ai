@@ -52,6 +52,7 @@ type AdminPerfume = {
   perfumer?: string | null;
   inspiration?: string | null;
   good_to_know?: string | null;
+  created_at?: string | null;
 };
 
 type Brand = { id: string; name: string };
@@ -87,6 +88,21 @@ const emptyForm = {
   inspiration: '',
   good_to_know: ''
 };
+
+// „27.10.2026, 20:15" in Schweizer Zeit.
+function formatSavedAt(iso: string | null | undefined): string | null {
+  if (!iso) return null;
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return null;
+  return d.toLocaleString('de-CH', {
+    timeZone: 'Europe/Zurich',
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+}
 
 function slugify(value: string): string {
   return value
@@ -139,6 +155,8 @@ export default function AdminPage() {
   const [perfumes, setPerfumes] = useState<AdminPerfume[]>([]);
   const [hasBackground, setHasBackground] = useState(true);
   const [hasGoodToKnow, setHasGoodToKnow] = useState(true);
+  // Wann ein Duft zuletzt gespeichert wurde (Spalte gibt es erst nach SQL 61).
+  const [savedAt, setSavedAt] = useState<Record<string, string>>({});
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState({ ...emptyForm });
   const [message, setMessage] = useState('');
@@ -172,7 +190,18 @@ export default function AdminPage() {
     setBrands((data as Brand[]) || []);
   }
 
+  async function loadSavedAt() {
+    const { data, error } = await supabase.from('perfumes').select('id, updated_at');
+    if (error || !data) return;
+    const map: Record<string, string> = {};
+    for (const row of data as { id: string; updated_at: string | null }[]) {
+      if (row.updated_at) map[row.id] = row.updated_at;
+    }
+    setSavedAt(map);
+  }
+
   async function loadPerfumes() {
+    loadSavedAt();
     // Parfümeur/Inspiration gibt es erst nach SQL 58, „Gut zu wissen" nach SQL 60 –
     // fehlen Spalten noch, ohne diese Felder laden.
     const all = await supabase.from('perfumes').select(`${PERFUME_EDIT_FIELDS}, perfumer, inspiration, good_to_know`).order('perfume_name');
@@ -762,6 +791,11 @@ export default function AdminPage() {
                     <div style={{ fontSize: 12, color: '#6B5344' }}>
                       {brands.find(b => b.id === p.brand_id)?.name} • {p.concentration || '–'} • {p.fragrance_family} • {p.gender} • {p.price_chf ? `${p.price_chf} CHF` : 'N/A'}{p.volume_ml ? ` / ${p.volume_ml} ml` : ''}
                     </div>
+                    {formatSavedAt(savedAt[p.id] || p.created_at) && (
+                      <div style={{ fontSize: 11, color: '#9A8574', marginTop: 2 }}>
+                        🕒 {savedAt[p.id] ? 'Zuletzt gespeichert' : 'Angelegt'}: {formatSavedAt(savedAt[p.id] || p.created_at)}
+                      </div>
+                    )}
                   </div>
                   <button className="button secondary" onClick={() => startEdit(p.id)} style={{ padding: '5px 10px', fontSize: 12 }}>✏️ Edit</button>
                   <button
@@ -788,6 +822,11 @@ export default function AdminPage() {
         {['basic', 'notes', 'details', 'media', 'advanced'].includes(activeTab) && (
           <section className="section card">
             <h2>{editingId ? `✏️ Duft bearbeiten: ${editingLabel}` : '➕ Neuen Duft hinzufügen'}</h2>
+            {editingId && formatSavedAt(savedAt[editingId] || editingPerfume?.created_at) && (
+              <p className="small" style={{ marginTop: -8, color: '#9A8574' }}>
+                🕒 {savedAt[editingId] ? 'Zuletzt gespeichert' : 'Angelegt'}: {formatSavedAt(savedAt[editingId] || editingPerfume?.created_at)}
+              </p>
+            )}
             <form onSubmit={save}>
               {activeTab === 'basic' && (
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15 }}>

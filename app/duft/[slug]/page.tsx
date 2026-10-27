@@ -306,8 +306,15 @@ export default async function PerfumeDetailPage({
   // zusätzlich als „ähnlich" oder „günstige Alternative".
   const versions = findVersions(perfume, pool);
   const versionIds = new Set(versions.map((v) => v.id));
-  const altPool = pool.filter((p) => !versionIds.has(p.id));
   const counterpart = findCounterpart(perfume, pool);
+  // Das Gegenstück (und seine Versionen) hat einen eigenen Hinweis oben. Vorschläge
+  // nur fürs passende Geschlecht – wie im Quiz: Damen → Damen + Unisex, Herren → Herren + Unisex.
+  const counterpartIds = new Set(
+    counterpart ? [counterpart.id, ...findVersions(counterpart, pool).map((v) => v.id)] : []
+  );
+  const genderFits = (p: Perfume) =>
+    perfume.gender === 'Unisex' || !perfume.gender || p.gender === perfume.gender || p.gender === 'Unisex';
+  const altPool = pool.filter((p) => !versionIds.has(p.id) && !counterpartIds.has(p.id) && genderFits(p));
   const seasons = perfumeSeasons(perfume.season);
   const picks = seasonPicks(perfume, pool, versionIds);
   const tips = wearTips(perfume);

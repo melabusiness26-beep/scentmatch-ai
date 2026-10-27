@@ -26,6 +26,8 @@ export const NOTE_PHOTOS: { image: string; keywords: string[]; exclude?: string[
   { image: '/notes/benzoe.jpg', keywords: ['benzoe', 'benzoin', 'benjoin'] },
   { image: '/notes/rosenholz.jpg', keywords: ['rosenholz', 'rosewood', 'bois de rose', 'palisander'] },
   { image: '/notes/weihrauch.jpg', keywords: ['weihrauch', 'olibanum', 'frankincense', 'incense', 'encens'] },
+  { image: '/notes/wacholder.jpg', keywords: ['wacholder', 'juniper', 'genièvre', 'genievre'] },
+  { image: '/notes/meersalz.jpg', keywords: ['meersalz', 'meerwasser', 'sea salt', 'sea water', 'seawater', 'marine', 'aquatisch', 'aquatic', 'ozean', 'ocean'] },
   { image: '/notes/eichenmoos.jpg', keywords: ['eichenmoos', 'oakmoss', 'oak moss', 'mousse de chêne', 'moos', 'moss'] },
   {
     image: '/notes/neroli.jpg',

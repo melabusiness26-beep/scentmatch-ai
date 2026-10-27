@@ -33,8 +33,10 @@ const OCCASION_OPTIONS = [
   { code: 'Abend', label: 'Abend' }
 ];
 
+// Zielgruppe 16–40: Der Datenbank-Code bleibt „18-25" (kompatibel mit Backup und
+// bestehenden Düften), angezeigt wird „16–25 Jahre".
 const AGE_GROUP_OPTIONS = [
-  { code: '18-25', label: '18-25 Jahre' },
+  { code: '18-25', label: '16-25 Jahre' },
   { code: '25-35', label: '25-35 Jahre' },
   { code: '35-40', label: '35-40 Jahre' }
 ];

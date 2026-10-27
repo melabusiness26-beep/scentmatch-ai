@@ -165,9 +165,18 @@ export function findCounterpart(perfume: Perfume, pool: Perfume[]): Perfume | nu
     (p) => p.slug && p.gender === other && norm(p.brands?.name) === brand && lineName(p.perfume_name) === line
   );
   if (!matches.length) return null;
-  // Bevorzugt dieselbe Konzentration, sonst die kürzeste Bezeichnung (meist das Original).
+  // Bevorzugt dieselbe Linie (Eau Intense ↔ Eau Intense, Original ↔ Original), darin
+  // dieselbe Konzentration; sonst die kürzeste Bezeichnung (meist das Original).
+  const own = versionSuffix(perfume.perfume_name);
+  const sameLine = matches.filter((p) => versionSuffix(p.perfume_name) === own);
   return (
-    matches.find((p) => p.concentration && p.concentration === perfume.concentration) ||
+    sameLine.find((p) => p.concentration && p.concentration === perfume.concentration) ||
+    sameLine[0] ||
     [...matches].sort((a, b) => a.perfume_name.length - b.perfume_name.length)[0]
   );
+}
+
+// Namenszusatz nach dem Grundnamen, z. B. „eau intense" – leer beim Original.
+function versionSuffix(name: string): string {
+  return norm(name).slice(baseName(name).length).trim();
 }

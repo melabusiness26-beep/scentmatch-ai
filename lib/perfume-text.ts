@@ -1,5 +1,5 @@
 import type { Perfume } from './perfumes';
-import { computeAccords } from './accords';
+import { computeAccords, notesForAccord, type AccordCode } from './accords';
 
 // Redaktionelle Texte für Duftseiten – aus den Duftdaten zusammengesetzt.
 // Ziel: so klingen wie eine Duft-Redakteurin, nicht wie eine Vorlage.
@@ -450,28 +450,90 @@ const NOT_FAMILY: Record<string, string> = {
 
 export type FitAdvice = { fits: string[]; notFits: string[] };
 
+// Akkord → Wortgruppe für „… wie X und Y". Die Noten stehen im Nominativ
+// („dir Zitrusnoten wie sizilianische Zitrone gefallen"), damit Adjektive stimmen.
+const ACCORD_GROUP: Record<AccordCode, string> = {
+  zitrisch: 'Zitrusnoten',
+  frisch: 'frische Noten',
+  fruchtig: 'fruchtige Noten',
+  blumig: 'Blumennoten',
+  pudrig: 'weiche, pudrige Noten',
+  suess: 'süsse Noten',
+  wuerzig: 'würzige Noten',
+  holzig: 'Hölzer',
+  warm: 'warme Noten'
+};
+
+// Akkorde, die manche Menschen bewusst meiden – geeignet für „Eher nicht, wenn …".
+const POLARIZING: AccordCode[] = ['blumig', 'suess', 'wuerzig', 'holzig', 'warm', 'pudrig'];
+
+// Verwandte Richtungen: Wer die eine mag, stört sich kaum an der anderen
+// (z. B. süss und warm bei Vanille/Tonka) – darum nie gegeneinander ausspielen.
+const RELATED: Partial<Record<AccordCode, AccordCode[]>> = {
+  zitrisch: ['frisch'],
+  frisch: ['zitrisch'],
+  suess: ['warm'],
+  warm: ['suess', 'holzig'],
+  holzig: ['warm'],
+  blumig: ['pudrig'],
+  pudrig: ['blumig']
+};
+
+function exampleNotes(p: Perfume, code: AccordCode, skip: string[] = []): string[] {
+  const lower = skip.map((n) => n.toLowerCase());
+  return notesForAccord(p, code)
+    // Sammelbegriffe wie „Holznoten" taugen nicht als Beispiel („Hölzer wie Holznoten").
+    .filter((n) => !lower.includes(n.toLowerCase()) && !/noten$/i.test(n.trim()))
+    .slice(0, 2);
+}
+
 export function fitAdvice(p: Perfume): FitAdvice {
   const fits: string[] = [];
   const notFits: string[] = [];
   const fam = p.fragrance_family || '';
   const season = (p.season || '').toLowerCase();
   const occasions = occasionPurposes(p.occasion);
+  const accords = computeAccords(p, 5).map((a) => a.code);
 
-  if (FITS_FAMILY[fam]) fits.push(FITS_FAMILY[fam]);
+  // 1) Was man an ihm mögen muss – mit seinen eigenen Noten.
+  let main: AccordCode | undefined = accords[0];
+  if ((main === 'frisch' || main === 'zitrisch') && notesForAccord(p, 'zitrisch').length) main = 'zitrisch';
+  const mainNotes = main ? exampleNotes(p, main) : [];
+  if (main && mainNotes.length) fits.push(`dir ${ACCORD_GROUP[main]} wie ${joinList(mainNotes.map(inSentence))} gefallen`);
+  else if (FITS_FAMILY[fam]) fits.push(FITS_FAMILY[fam]);
+
+  // 2) Wofür – „leicht", wenn er wenig ausstrahlt.
+  const light = p.sillage != null && p.sillage <= 5;
   const seasonText = seasonPhrase(p.season);
-  if (occasions.length) fits.push(`du einen Duft ${joinList(occasions)} suchst`);
-  else if (seasonText) fits.push(`du einen Duft ${seasonText} suchst`);
+  if (occasions.length) fits.push(`du einen ${light ? 'leichten ' : ''}Duft ${joinList(occasions)} suchst`);
+  else if (seasonText) fits.push(`du einen ${light ? 'leichten ' : ''}Duft ${seasonText} suchst`);
+
+  // 3) Leistung oder Preis.
   if (p.longevity != null && p.longevity >= 8) fits.push('er den ganzen Tag halten soll');
   else if (p.sillage != null && p.sillage <= 4) fits.push('du es dezent magst');
   else if (p.sillage != null && p.sillage >= 8) fits.push('man dich ruhig bemerken darf');
   if (p.price_chf != null && p.price_chf <= 70 && fits.length < 3) fits.push('du nicht viel ausgeben möchtest');
 
-  if (NOT_FAMILY[fam]) notFits.push(NOT_FAMILY[fam]);
+  // 1) Welche seiner Noten jemanden stören könnten – nie dieselben Noten wie oben,
+  //    sonst widerspräche sich die Einschätzung.
+  const other = accords.find(
+    (c) =>
+      c !== main &&
+      POLARIZING.includes(c) &&
+      !(main && RELATED[main]?.includes(c)) &&
+      exampleNotes(p, c, mainNotes).length > 0
+  );
+  if (other) notFits.push(`dich ${ACCORD_GROUP[other]} wie ${joinList(exampleNotes(p, other, mainNotes).map(inSentence))} stören`);
+  else if (NOT_FAMILY[fam]) notFits.push(NOT_FAMILY[fam]);
+
+  // 2) Jahreszeit.
   if (season.includes('sommer') && !season.includes('winter') && !season.includes('ganzj')) {
     notFits.push('du einen Duft für kalte Wintertage suchst');
   } else if ((season.includes('winter') || season.includes('herbst')) && !season.includes('sommer') && !season.includes('ganzj')) {
     notFits.push('du etwas für heisse Sommertage suchst');
   }
+
+  // 3) Ausstrahlung, Haltbarkeit, Preis.
   if (p.sillage != null && p.sillage >= 8) notFits.push('du im Büro oder im Zug dezent bleiben willst');
   else if (p.sillage != null && p.sillage <= 4) notFits.push('der Duft den ganzen Raum füllen soll');
   if (p.longevity != null && p.longevity <= 5 && notFits.length < 3) notFits.push('er ohne Nachsprühen den ganzen Tag halten soll');

@@ -186,3 +186,10 @@ export function computeAccords(p: Perfume, limit = 5): Accord[] {
       value: Math.max(18, Math.round((v / max) * 100))
     }));
 }
+
+// Die Noten eines Dufts, die zu einem Akkord beitragen (Kopf → Basis, ohne Doppelte).
+// Für persönliche Texte wie „Zitrusnoten wie Zitrone und Apfel".
+export function notesForAccord(p: Perfume, code: AccordCode): string[] {
+  const all = [...(p.top_notes || []), ...(p.heart_notes || []), ...(p.base_notes || [])].map((n) => n.trim()).filter(Boolean);
+  return all.filter((n, i) => all.findIndex((m) => m.toLowerCase() === n.toLowerCase()) === i && matchNote(n).includes(code));
+}

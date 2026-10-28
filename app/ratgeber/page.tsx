@@ -208,7 +208,7 @@ export default function RatgeberIndex() {
     {
       slug: 'duftkollektion-minimal',
       title: 'Minimalistische Duftkollektion: Die intelligente 3er-Sammlung',
-      description: 'Baue dir eine perfekte Kollektion mit nur 3 Düften: Daily Driver, Special Occasion, Seasonal. Strategisch, flexibel, skalierbar.',
+      description: 'Baue dir eine perfekte Kollektion mit nur 3 Düften: Alltags-Duft, Abend-Duft, Saison-Duft. Strategisch, flexibel, skalierbar.',
       href: '/duftkollektion-minimal'
     }
   ];

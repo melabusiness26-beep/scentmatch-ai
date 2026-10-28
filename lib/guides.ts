@@ -101,7 +101,7 @@ export const guides: Guide[] = [
         heading: 'Der intelligente Weg: Dupes als Einstieg',
         body: [
           'Hier ist ein Geheimnis der Duft-Community: Viele Dupe-Nutzer sind nicht arme Menschen, die sich das Original nicht leisten können. Sie sind intelligente Menschen, die verstanden haben, dass Duft-Qualität von der Komposition kommt, nicht vom Namen. Sie vergleichen ein Club de Nuit Intense mit Creed Aventus und sagen: Der Dupe ist grossartig für den Preis, und ich spare CHF 200 für weitere Experimente.',
-          'Ein Dupe ist auch ein perfekter Einstieg. Du magst die Idee von Creed Aventus, aber du willst nicht CHF 250 auf einen Blind-Buy riskieren. Club de Nuit Intense ist CHF 35 und du wirst wissen, ob dir diese Duft-Familie gefällt. Das ist klug.',
+          'Ein Dupe ist auch ein perfekter Einstieg. Du magst die Idee von Creed Aventus, aber du willst nicht CHF 250 für einen Blindkauf riskieren. Club de Nuit Intense ist CHF 35 und du wirst wissen, ob dir diese Duft-Familie gefällt. Das ist klug.',
           'Unser Tipp: Mach zuerst unser Duft-Quiz, um deine Richtung herauszufinden. Danach nutze Dupes, um diese Richtung günstig zu erkunden. Wenn dir eine Familie gefällt, investiere in das Original später, wenn du wirklich sicher bist. Das ist die intelligenteste Dupe-Strategie.'
         ]
       }
@@ -148,8 +148,8 @@ export const guides: Guide[] = [
         heading: 'Dosierung im Sommer: Das erste Problem',
         body: [
           'Hitze verstärkt Düfte. Das ist nicht subjektiv – deine Haut ist wärmer, Moleküle verdampfen schneller, jede Note wirkt intensiver. Ein Sprühstoss Dior Sauvage im Mai ist dezent. Der gleiche Sprühstoss im Juli ist präsent. Das bedeutet: Starte konservativ. Ein Sprühstoss – auf den Hals oder die Innenseiten der Unterarme – ist ein guter Test. Wenn du merkst, dass du mehr brauchst, steigerst du beim nächsten Mal. Im Sommer brauchen die meisten Menschen eins bis zwei Sprühstösse.',
-          'Die Haltbarkeit ist ein anderes Thema. Sommerdüfte halten kürzer als Winterdüfte – das ist normal. Ein Sommerduft, der vier bis fünf Stunden hält, ist gut dimensioniert. Das ist ausreichend für den Alltag. Frische Eau de Toilettes sind im Sommer oft die bessere Wahl als schwere Eau de Parfums, weil Sie sie nicht so schwer wirken, und die Hitze verstärkt die Projection ohnehin.',
-          'Ein praktischer Hack: Ein kleines Duft-Zerstäuber in der Tasche hilft. Nach dem Mittagessen, nach dem Pool, wenn du merkst, dass der Duft weg ist – ein kurzer Sprühstoss. Das ist auch eine mentale Erfrischung, nicht nur eine olfaktorische.'
+          'Die Haltbarkeit ist ein anderes Thema. Sommerdüfte halten kürzer als Winterdüfte – das ist normal. Ein Sommerduft, der vier bis fünf Stunden hält, ist gut dimensioniert. Das ist ausreichend für den Alltag. Frische Eau de Toilettes sind im Sommer oft die bessere Wahl als schwere Eau de Parfums, weil Sie sie nicht so schwer wirken, und die Hitze verstärkt die Ausstrahlung ohnehin.',
+          'Ein praktischer Tipp: Ein kleiner Duft-Zerstäuber in der Tasche hilft. Nach dem Mittagessen, nach dem Pool, wenn du merkst, dass der Duft weg ist – ein kurzer Sprühstoss. Das ist auch eine mentale Erfrischung, nicht nur eine olfaktorische.'
         ]
       },
       {
@@ -164,7 +164,7 @@ export const guides: Guide[] = [
       {
         heading: 'Der Übergang zum Herbst: Es gibt keine Regeln',
         body: [
-          'Es gibt keinen Punkt, an dem du sagen musst: „Jetzt ist Schluss mit Sommerdüften." Manche Menschen tragen Sommerdüfte bis Oktober, wenn es noch warm ist. Andere wechseln Anfang September, weil psychologisch ein Schnittwechsel gut tut – die Nächte werden kälter, die Energie ändert sich. Die praktische Lösung ist einfach: Keep your best summer fragrances aber nutze auch schon erste Herbstdüfte. Das ist nicht entweder-oder, sondern hybrid. Wenn es tagsüber noch 25 Grad ist, trägt du einen Sommerduft. Wenn es abends kühl wird, schaltest du auf etwas Warmeres um. Das ist eleganter als streng nach Datum zu wechseln.'
+          'Es gibt keinen Punkt, an dem du sagen musst: „Jetzt ist Schluss mit Sommerdüften." Manche Menschen tragen Sommerdüfte bis Oktober, wenn es noch warm ist. Andere wechseln Anfang September, weil psychologisch ein Schnittwechsel gut tut – die Nächte werden kälter, die Energie ändert sich. Die praktische Lösung ist einfach: Behalte deine liebsten Sommerdüfte, aber nutze auch schon erste Herbstdüfte. Das ist nicht entweder-oder, sondern hybrid. Wenn es tagsüber noch 25 Grad ist, trägt du einen Sommerduft. Wenn es abends kühl wird, schaltest du auf etwas Warmeres um. Das ist eleganter als streng nach Datum zu wechseln.'
         ]
       }
     ]
@@ -215,12 +215,12 @@ export const guides: Guide[] = [
         heading: 'Die Intelligenz der Dosierung: das Regelwerk für jeden Moment',
         body: [
           'Dosierung ist nicht arbitrary – es ist die zentrale Fähigkeit, damit dein Duft brilliert. Hier das praktische Regelwerk:',
-          '**Büro / Grossraum:** 1–1,5 Sprühstösse (ein Sprühstoss Hals, ggf. kleine Auffrischung am Nachmittag). Konzentrationen: EdT ideal, EdP sparing.',
-          '**Date / Nähe:** 2 Sprühstösse (Hals + Innenseite Unterarm), EdT oder EdP beide ok. Die leichte Körperwärme macht den Rest.',
-          '**Festlicher Abend / Restaurant:** 2–3 Sprühstösse, EdP ideal. Geschlossene Räume verstärken natürlich, also eher 2, wenn du unsicher bist.',
-          '**Hybrid-Tag (Büro → Abend):** Entweder Büro-Duft behalten (wird durch Körperwärme intensiver) oder kompletter Wechsel. Ein tragbares Duft-Tüchchen für unterwegs hilft.',
-          '**Warme Jahreszeit:** −1 Sprühstoss überall. Hitze verstärkt Düfte dramatisch – weniger ist mehr bei 25+ °C.',
-          '**Kalte Jahreszeit:** +1 Sprühstoss möglich. Kälte schluckt Projektion – intensive Düfte brauchen etwas mehr Platz.',
+          'Büro / Grossraum: 1–1,5 Sprühstösse (ein Sprühstoss Hals, ggf. kleine Auffrischung am Nachmittag). Konzentrationen: EdT ideal, EdP sparsam.',
+          'Date / Nähe: 2 Sprühstösse (Hals + Innenseite Unterarm), EdT oder EdP beide ok. Die leichte Körperwärme macht den Rest.',
+          'Festlicher Abend / Restaurant: 2–3 Sprühstösse, EdP ideal. Geschlossene Räume verstärken natürlich, also eher 2, wenn du unsicher bist.',
+          'Hybrid-Tag (Büro → Abend): Entweder Büro-Duft behalten (wird durch Körperwärme intensiver) oder kompletter Wechsel. Ein tragbares Duft-Tüchchen für unterwegs hilft.',
+          'Warme Jahreszeit: −1 Sprühstoss überall. Hitze verstärkt Düfte dramatisch – weniger ist mehr bei 25+ °C.',
+          'Kalte Jahreszeit: +1 Sprühstoss möglich. Kälte schluckt Ausstrahlung – intensive Düfte brauchen etwas mehr Platz.',
           'Die goldene Regel: Beginne mit einem Sprühstoss weniger, als du denkst, brauchst zu sein. Deine Nase desensibilisiert sich (das heisst: du riechst deinen Duft nach 15 Minuten selbst nicht mehr), aber andere Menschen riechen ihn noch sehr deutlich. Starte dezent und dosiere beim nächsten Mal höher, wenn nötig.'
         ]
       }
@@ -1206,7 +1206,7 @@ export const guides: Guide[] = [
         heading: 'Was NICHT ins Büro gehört',
         body: [
           'Intensive Gourmands mit dominanter Vanille, Karamell oder Schokolade sind im geschlossenen Büroraum oft zu überwältigend, besonders wenn du unter mehreren Menschen sitzt. Ein süsser Duft, der im Winter zu Hause wunderbar ist, kann im Büro schnell zu viel sein.',
-          'Schwere Oud- und Amber-Düfte, besonders die mit grosser Projektion, gehören in den Abend, nicht an den Schreibtisch. Ein reicher, rauchiger Oud im 9-to-5 ist einfach fehl am Platz.',
+          'Schwere Oud- und Amber-Düfte, besonders die mit grosser Projektion, gehören in den Abend, nicht an den Schreibtisch. Ein reicher, rauchiger Oud im Büroalltag ist einfach fehl am Platz.',
           'Ultra-intensive Beast-Mode-Düfte sind im Büro ein No-Go. Du brauchst nicht eine Duft-Wolke, um professionell zu wirken. Im Gegenteil, Subtilität wirkt intelligenter.',
           'Exotische, stark-anisattige oder sehr ungewöhnliche Düfte können ablenkend wirken. Dein Büro-Duft sollte elegant und uncontroversial sein. Speichere dein experimentelles Duft-Abenteuer für Abende und Wochenenden.'
         ]

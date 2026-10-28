@@ -187,7 +187,7 @@ export default function Duftpersoenlichkeit() {
               <strong>Persönlichkeit:</strong> Für dich ist ein Duft eine subtile Ergänzung, keine Aussage. Du magst Understatement und legst Wert darauf, dass dein Duft nicht aufdringlich ist. Ein zu starker oder zu süsser Duft ist für dich unmöglich. Du brauchst etwas Transparentes, Luftiges, kaum Wahrnehmbar für andere, aber präsent für dich.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              <strong>Lieblingsfamilien:</strong> Aquatische, grüne, zitrus-basierte Düfte. Jo Malone-Style (unisex, leicht, transparent). Minimal Sillage.
+              <strong>Lieblingsfamilien:</strong> Aquatische, grüne, zitrus-basierte Düfte. Im Stil von Jo Malone (unisex, leicht, transparent). Dezente Ausstrahlung.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
               <strong>Ikonische Düfte:</strong> Jo Malone (alle), Heeley Sel Marin, Davidoff Cool Water, Acqua di Parma Blu Mediterraneo, L'Eau de Tisserand.

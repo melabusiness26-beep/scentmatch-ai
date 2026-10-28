@@ -44,7 +44,7 @@ export default function DamenParfuemePage() {
           }}>
             {[
               {
-                familie: 'Floral / Blumig',
+                familie: 'Blumig',
                 beschreibung: 'Die klassische Frauenduft-Familie. Von subtil bis dramatisch – Rosen, Pfirsich, Lilie, Tuberose.',
                 charaktere: 'Rose, Pfirsich, Gardenie, Lilie, Violett, Hibiskus',
                 occasions: 'Überall. Formal, casual, tagsüber, abends – Floral ist universell.',
@@ -54,7 +54,7 @@ export default function DamenParfuemePage() {
                 preis: 'CHF 60–150'
               },
               {
-                familie: 'Fruity / Fruchtig',
+                familie: 'Fruchtig',
                 beschreibung: 'Süsslich, verspielt, jung. Peach, Aprikose, Erdbeere, Kirsche kombiniert mit floralen Noten.',
                 charaktere: 'Pfirsich, Aprikose, Erdbeere, Kirsche, manchmal Zitrus',
                 occasions: 'Tagsüber, casual, Sommer, jung & frech',
@@ -64,7 +64,7 @@ export default function DamenParfuemePage() {
                 preis: 'CHF 60–130'
               },
               {
-                familie: 'Fruity Floral',
+                familie: 'Fruchtig-blumig',
                 beschreibung: 'Die moderne Mischung: Fruchtig + Blumig. Das beste aus beiden Welten.',
                 charaktere: 'Frucht + Blüten, oft mit Vanille unten',
                 occasions: 'Tagsüber & Abends, Sommer & Frühling, jung & elegant zugleich',
@@ -74,7 +74,7 @@ export default function DamenParfuemePage() {
                 preis: 'CHF 70–120'
               },
               {
-                familie: 'Oriental / Amber',
+                familie: 'Orientalisch / Amber',
                 beschreibung: 'Warm, sinnlich, würzig. Die Drama-Queen Duft-Familie. Vanilla, Amber, Moschus, würzige Noten.',
                 charaktere: 'Vanilla, Amber, Moschus, würzige Gewürze, Zedernholz',
                 occasions: 'Abends, formal, Herbst & Winter, sinnlich',
@@ -84,7 +84,7 @@ export default function DamenParfuemePage() {
                 preis: 'CHF 80–180'
               },
               {
-                familie: 'Gourmand / Dessert',
+                familie: 'Gourmand / süss',
                 beschreibung: 'Essbar, süss, verführerisch. Karamell, Schokolade, Toffee, Kekse – riecht wie Nachtisch.',
                 charaktere: 'Vanille, Karamell, Schokolade, Toffee, Zucker, Mandel',
                 occasions: 'Abends, Flirten, Herbst & Winter, sinnlich & verspielt',
@@ -233,7 +233,7 @@ export default function DamenParfuemePage() {
                 lösung: 'Preis ist nicht alles. Ein günstiger Duft kann auf deiner Haut besser sein als ein Luxus-Duft. Teste immer zuerst.'
               },
               {
-                fehler: 'Den gleichen Duft immer tragen (Olfactory Adaptation)',
+                fehler: 'Immer den gleichen Duft tragen (Duftgewöhnung)',
                 lösung: 'Nach 2–3 Wochen merkst du den Duft nicht mehr. Wechsel regelmässig, sonst brauchst du mehr Menge.'
               }
             ].map((item, i) => (

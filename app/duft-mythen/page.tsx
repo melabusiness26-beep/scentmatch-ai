@@ -77,7 +77,7 @@ export default function FragranceMythsPage() {
               },
               {
                 myth: '👃 Mythos: Du wirst „abhängig" von deinem Lieblingsduft',
-                fact: 'FALSCH (aber verständlich). Das, was du erlebst, heisst „Olfactory Adaptation" (Duftgewöhnung) – deine Nase gewöhnt sich an konstante Reize. Das ist biologisch normal, nicht Abhängigkeit. Andere riechen deinen Duft weiterhin deutlich.',
+                fact: 'FALSCH (aber verständlich). Das, was du erlebst, heisst Duftgewöhnung (Fachwort: olfaktorische Adaptation) – deine Nase gewöhnt sich an konstante Reize. Das ist biologisch normal, nicht Abhängigkeit. Andere riechen deinen Duft weiterhin deutlich.',
                 praktisch: 'Wechsle gelegentlich deine Düfte oder mache Duft-Pausen. Nach 2–3 Tagen ohne Duft wird deine Nase wieder empfindlich.'
               },
               {
@@ -92,7 +92,7 @@ export default function FragranceMythsPage() {
               },
               {
                 myth: '👃 Mythos: Wenn du deinen Duft nicht mehr riechen kannst, ist er leer',
-                fact: 'FALSCH. Das ist wieder Olfactory Adaptation. Deine Nase ist gewöhnt – andere riechen ihn deutlich. Mach eine Duft-Pause für ein paar Stunden und du riechst ihn wieder.',
+                fact: 'FALSCH. Das ist wieder die Duftgewöhnung. Deine Nase ist gewöhnt – andere riechen ihn deutlich. Mach eine Duft-Pause für ein paar Stunden und du riechst ihn wieder.',
                 praktisch: 'Bitte einen Freund, zu sagen, ob er/sie dich noch riecht. Das ist der beste Test – nicht deine eigene Nase.'
               },
               {

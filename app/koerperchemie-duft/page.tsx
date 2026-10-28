@@ -152,7 +152,7 @@ export default function KoerperchemieDuftPage() {
               </li>
               <li style={{ marginBottom: 0 }}>
                 <strong>Gib einem Duft eine echte Chance – mindestens 1–2 Wochen Tragezeit.</strong>
-                In den ersten Tagen duftet deine Nase nicht genau (Olfactory Adaptation). Nach einer Woche merkst du, wie der Duft wirklich auf dir ist.
+                In den ersten Tagen duftet deine Nase nicht genau (Duftgewöhnung). Nach einer Woche merkst du, wie der Duft wirklich auf dir ist.
               </li>
             </ol>
           </div>

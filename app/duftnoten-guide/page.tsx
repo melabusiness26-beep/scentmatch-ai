@@ -335,7 +335,7 @@ export default function FragranceNotesGuidePage() {
             {[
               {
                 question: 'Du magst einen Duft – wie findest du Ähnliches?',
-                answer: 'Achte auf die Duftnoten deines Lieblings. Magst du die Kopfnoten (Frische)? Suche andere Düfte mit ähnlichen Top-Noten. Magst du die Wärme (Heart/Base)? Suche nach ähnlichen Holz- oder Gewürz-Basen. Ähnliche Noten = ähnliche Vibe.'
+                answer: 'Achte auf die Duftnoten deines Lieblings. Magst du die Kopfnoten (Frische)? Suche andere Düfte mit ähnlichen Top-Noten. Magst du die Wärme (Heart/Base)? Suche nach ähnlichen Holz- oder Gewürz-Basen. Ähnliche Noten = ähnliche Wirkung.'
               },
               {
                 question: 'Du kennst deinen liebsten „Duft-Typ", aber nicht den Namen?',

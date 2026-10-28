@@ -80,10 +80,10 @@ export default function DufteNachHauttypPage() {
 
           <h4>💡 Pro-Tipps für trockene Haut:</h4>
           <ul style={{ marginBottom: '1.5rem' }}>
-            <li>**Feuchte deine Haut vor dem Auftragen:** Wende eine leichte Feuchtigkeitscreme an, bevor du Duft sprühst. Das gibt dem Duft mehr „Grip".</li>
-            <li>**Duft auf Haare sprühen:** Haare halten Düfte länger als Haut. Ideal für deine Trockenhaut.</li>
-            <li>**Duft auf Kleidung:** Auch Stoff hält länger als deine Haut. Spray auf die Innenseite des Ärmels.</li>
-            <li>**Kauf grosse Flakons:** Du brauchst mehrere Sprüher statt einen. Mit 2–3 Sprühern werden auch leichte Düfte auf dir ok.</li>
+            <li><strong>Feuchte deine Haut vor dem Auftragen:</strong> Wende eine leichte Feuchtigkeitscreme an, bevor du Duft sprühst. Das gibt dem Duft mehr „Grip".</li>
+            <li><strong>Duft auf Haare sprühen:</strong> Haare halten Düfte länger als Haut. Ideal für deine Trockenhaut.</li>
+            <li><strong>Duft auf Kleidung:</strong> Auch Stoff hält länger als deine Haut. Spray auf die Innenseite des Ärmels.</li>
+            <li><strong>Kauf grosse Flakons:</strong> Du brauchst mehrere Sprüher statt einen. Mit 2–3 Sprühern werden auch leichte Düfte auf dir ok.</li>
           </ul>
 
           <h3>2. Normale Haut: Alles funktioniert</h3>
@@ -107,9 +107,9 @@ export default function DufteNachHauttypPage() {
 
           <h4>💡 Pro-Tipps für normale Haut:</h4>
           <ul style={{ marginBottom: '1.5rem' }}>
-            <li>**Nutze deine Flexibilität:** Teste auch Düfte, die sich riskant anhören. Bei normaler Haut funktionieren sie vielleicht grossartig.</li>
-            <li>**Experimentiere mit Konzentrationen:** Kaufe den gleichen Duft in EdP UND EdT. Nutze beide je nach Situation.</li>
-            <li>**Profitiere von Sales:** Wenn ein Duft gegenüber grossartig aussieht, probiere ihn – deine Haut wird ihn fair bewerten.</li>
+            <li><strong>Nutze deine Flexibilität:</strong> Teste auch Düfte, die sich riskant anhören. Bei normaler Haut funktionieren sie vielleicht grossartig.</li>
+            <li><strong>Experimentiere mit Konzentrationen:</strong> Kaufe den gleichen Duft in EdP UND EdT. Nutze beide je nach Situation.</li>
+            <li><strong>Profitiere von Aktionen:</strong> Wenn ein Duft im Angebot ist und dich reizt, probiere ihn – deine Haut zeigt ihn so, wie er wirklich ist.</li>
           </ul>
 
           <h3>3. Ölige Haut: Leichte, frische Düfte</h3>
@@ -132,15 +132,15 @@ export default function DufteNachHauttypPage() {
           <ul style={{ marginBottom: '1.5rem' }}>
             <li><strong>Schwere Orientalisch-Düfte</strong> – Sie werden auf dir überwältigend nach 4 Stunden.</li>
             <li><strong>Sehr süsse Gourmand-Düfte</strong> – Vanille, Karamell, Schokolade werden zu intensiv & klebrig.</li>
-            <li>**Sehr starke Konzentrationen (EdP+)** – Es sei denn, du magst wirklich kopflastige Düfte.</li>
+            <li><strong>Sehr starke Konzentrationen (EdP+)</strong> – Es sei denn, du magst wirklich kopflastige Düfte.</li>
           </ul>
 
           <h4>💡 Pro-Tipps für ölige Haut:</h4>
           <ul style={{ marginBottom: '1.5rem' }}>
-            <li>**Nutze deine Superkraft – Haltbarkeit:** Bei dir halten 4-Stunden-Düfte den ganzen Tag. Kaufe clevere, günstiger Dufte & sie wirken Premium.</li>
-            <li>**Experimentiere mit EdT/EdC:** Das sind deine Freunde. EdT auf ölige Haut = EdP auf normaler Haut. Spare 50% ohne Qualitätsverlust.</li>
-            <li>**Fewer is More:** Du brauchst weniger Sprüher. 1–2 Sprüher auf ölige Haut = 3–4 auf normaler Haut.</li>
-            <li>**Probiere Unisex & male Düfte:** Sie sind oft frischer, zitroniger, würziger. Bei ölige Haut sind die grossartig.</li>
+            <li><strong>Nutze deine Superkraft – Haltbarkeit:</strong> Bei dir halten 4-Stunden-Düfte den ganzen Tag. Auch günstige Düfte wirken bei dir hochwertig.</li>
+            <li><strong>Experimentiere mit EdT/EdC:</strong> Das sind deine Freunde. EdT auf ölige Haut = EdP auf normaler Haut. Spare 50% ohne Qualitätsverlust.</li>
+            <li><strong>Weniger ist mehr:</strong> Du brauchst weniger Sprüher. 1–2 Sprüher auf ölige Haut = 3–4 auf normaler Haut.</li>
+            <li><strong>Probiere Unisex & male Düfte:</strong> Sie sind oft frischer, zitroniger, würziger. Bei ölige Haut sind die grossartig.</li>
           </ul>
 
           <h3>4. Sensible Haut: Vorsicht, richtige Auswahl</h3>
@@ -168,10 +168,10 @@ export default function DufteNachHauttypPage() {
 
           <h4>💡 Pro-Tipps für sensible Haut:</h4>
           <ul style={{ marginBottom: '1.5rem' }}>
-            <li>**Immer testen:** Teste 2–3 Tage, bevor du kaufst. Sensible Haut hat verzögerte Reaktionen manchmal.</li>
-            <li>**Trage Duft auf Kleidung, nicht auf Haut:** Das minimiert Kontakt und damit Reizungsrisiko.</li>
-            <li>**Finde deine persönlichen Trigger-Noten:** Manche sensible Haut mag keine Musks, andere haben kein Problem. Merke dir, was dich reizt.</li>
-            <li>**Nutze Duftöle statt Spray:** Duftöle haben weniger Alkohol, daher weniger trocknend und reizend. Verdünne in Trägeröl (Jojoba, Kokosnuss).</li>
+            <li><strong>Immer testen:</strong> Teste 2–3 Tage, bevor du kaufst. Sensible Haut hat verzögerte Reaktionen manchmal.</li>
+            <li><strong>Trage Duft auf Kleidung, nicht auf Haut:</strong> Das minimiert Kontakt und damit Reizungsrisiko.</li>
+            <li><strong>Finde deine persönlichen Trigger-Noten:</strong> Manche sensible Haut mag keine Musks, andere haben kein Problem. Merke dir, was dich reizt.</li>
+            <li><strong>Nutze Duftöle statt Spray:</strong> Duftöle haben weniger Alkohol, daher weniger trocknend und reizend. Verdünne in Trägeröl (Jojoba, Kokosnuss).</li>
           </ul>
 
           <h2>Spezielle Herausforderungen & Lösungen</h2>
@@ -223,7 +223,7 @@ export default function DufteNachHauttypPage() {
 
           <h3>Für trockene Haut – Die besten Düfte:</h3>
           <ul style={{ marginBottom: '2rem', fontSize: '0.95rem' }}>
-            <li><strong>Tom Ford Black Orchid</strong> – Schwer, würzig, warm. Perfect für Trockenhaut. Hält 8+ Stunden.</li>
+            <li><strong>Tom Ford Black Orchid</strong> – Schwer, würzig, warm. Ideal für trockene Haut. Hält 8+ Stunden.</li>
             <li><strong>Yves Saint Laurent Opium</strong> – Klassisch, würzig, orientalisch, cremig. Designed für Langzeittrags.</li>
             <li><strong>Estée Lauder Beautiful</strong> – Floral süss, warm. Leicht schwer, hält lange auf trockener Haut.</li>
             <li><strong>Carolina Herrera Bad Boy (Herren)</strong> – Warm, würzig, holzig. Auch für Frauen grossartig auf Trockenhaut.</li>
@@ -239,7 +239,7 @@ export default function DufteNachHauttypPage() {
 
           <h3>Für ölige Haut – Die besten Düfte:</h3>
           <ul style={{ marginBottom: '2rem', fontSize: '0.95rem' }}>
-            <li><strong>Hermès Eau de Gentiane Blanche</strong> – Frisch, würzig, leicht. Perfect für ölige Haut.</li>
+            <li><strong>Hermès Eau de Gentiane Blanche</strong> – Frisch, würzig, leicht. Ideal für ölige Haut.</li>
             <li><strong>Acqua di Gioia (Giorgio Armani)</strong> – Marine, frisch, leicht. 100% für ölige Haut designed.</li>
             <li><strong>L'Artisan Parfumeur Nuit de Tubérose</strong> – Blumig, nicht süss, frisch. Wunderbar auf ölige Haut.</li>
             <li><strong>Heeley Sel Marin (Niche)</strong> – Meerwasser, zedernholz, frisch. Ideal für ölige Haut, günstiger Preis.</li>

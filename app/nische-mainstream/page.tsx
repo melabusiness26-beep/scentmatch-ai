@@ -124,7 +124,7 @@ export default function NischeMainstreamPage() {
               {
                 kriterium: 'Marketing & Hype',
                 mainstream: 'Masiv. Ads überall, Celebrity-Endorsements, Social Media Kampagnen. Das Hype ist Teil des Kaufs.',
-                nische: 'Minimal. Oft kaum Marketing, Wachstum durch Word-of-Mouth & Nische-Community.',
+                nische: 'Minimal. Oft kaum Marketing, Wachstum durch Mundpropaganda & Nischen-Community.',
                 urteil: 'Vorteil: Nische (authentischer)'
               },
               {

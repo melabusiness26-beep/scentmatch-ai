@@ -29,7 +29,7 @@ export default function DuftnotenPage() {
           <h1 className="detail-title">Duftnoten-Lexikon</h1>
           <p className="lead">
             Ein Parfum besteht aus vielen einzelnen Duftnoten – sie bestimmen, ob ein Duft
-            frisch, süß, holzig oder blumig wirkt. Wer die wichtigsten Noten kennt, versteht
+            frisch, süss, holzig oder blumig wirkt. Wer die wichtigsten Noten kennt, versteht
             schneller, warum ein Duft gefällt und welche anderen Düfte ähnlich riechen.
           </p>
           <p className="lead">

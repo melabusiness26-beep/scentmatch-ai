@@ -92,7 +92,7 @@ export default function FragranceGiftPage() {
               {
                 q: 'Wer erhält das Geschenk?',
                 answer: [
-                  '👩 Frau/Feminin: Klassisch floraler oder süßer Dufte. Sie tragen auch Unisex-Düfte.',
+                  '👩 Frau/Feminin: Klassisch floraler oder süsser Dufte. Sie tragen auch Unisex-Düfte.',
                   '👨 Mann/Maskulin: Klassisch holzig oder würzig. Sie tragen auch Unisex-Düfte.',
                   '🌈 Unisex/Keine Annahme: Unisex-Düfte sind die sicherste Wahl – sie funktionieren für alle.',
                   '👵 Alter: Älter → klassisch und konservativ. Jung → experimentell und trendy.'
@@ -167,7 +167,7 @@ export default function FragranceGiftPage() {
             {[
               {
                 person: 'Für die Freundin / Ehefrau',
-                top: 'Floral, Süß oder Würzig',
+                top: 'Floral, Süss oder Würzig',
                 popular: 'Dior Miss Dior, Yves Saint Laurent Black Opium, Lancôme La Vie Est Belle',
                 preis: '€€–€€€€ (60€–150€)',
                 extra: 'Körpercreme oder Dusch-Set dazu machen es persönlicher.'
@@ -181,13 +181,13 @@ export default function FragranceGiftPage() {
               },
               {
                 person: 'Für die beste Freundin',
-                top: 'Was sie mag – Frage nach, wenn du nicht weißt',
+                top: 'Was sie mag – Frage nach, wenn du nicht weisst',
                 popular: 'Ihr Lieblingsduft in EdT-Form (günstiger), oder ein ähnlicher von günstiger Marke',
                 preis: '€–€€ (20€–60€)',
-                extra: 'Persönliche Note: "Ich weiß, du liebst X – hier ist etwas Ähnliches"'
+                extra: 'Persönliche Note: "Ich weiss, du liebst X – hier ist etwas Ähnliches"'
               },
               {
-                person: 'Für die Mutter / Großmutter',
+                person: 'Für die Mutter / Grossmutter',
                 top: 'Klassisch, elegant, zeitlos',
                 popular: 'Chanel No. 5, Dior J\'adore, Lancôme Trésor',
                 preis: '€€–€€€ (60€–120€)',
@@ -270,13 +270,13 @@ export default function FragranceGiftPage() {
                 lösung: 'Frag die Person oder wähle einen Unisex-Duft (funktioniert für alle).'
               },
               {
-                fehler: 'Die leere Flasche als \"großzügig\" verpacken',
+                fehler: 'Die leere Flasche als \"grosszügig\" verpacken',
                 resultat: 'Wirkt billig und gedankenlos – auch wenn das nicht so gemeint ist.',
                 lösung: 'Verpacke schön, oder erkläre in einer Notiz, warum du diesen Duft wählst.'
               },
               {
-                fehler: 'Einen Online-Duft kaufen, ohne die Größe zu prüfen',
-                resultat: 'Zu kleine Flasche → wirkt nicht wie ein echtes Geschenk. Zu große → kann nicht verwendet werden.',
+                fehler: 'Einen Online-Duft kaufen, ohne die Grösse zu prüfen',
+                resultat: 'Zu kleine Flasche → wirkt nicht wie ein echtes Geschenk. Zu grosse → kann nicht verwendet werden.',
                 lösung: 'Kaufe 30–50ml für ein \"echtes\" Geschenk. 5–10ml ist zu klein.'
               }
             ].map((item, idx) => (

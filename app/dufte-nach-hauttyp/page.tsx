@@ -49,7 +49,7 @@ export default function DufteNachHauttypPage() {
             </p>
             <div style={{ fontSize: '0.85rem', color: '#5b4d40', lineHeight: 1.8 }}>
               <p><strong>🌵 Trockene Haut:</strong> Düfte halten kürzer, wirken intensiv. → Wähle stärkere Konzentrationen (EdP), schwere & cremige Düfte.</p>
-              <p><strong>😊 Normale Haut:</strong> Düfte wirken ausgewogen. → Alle Duftarten funktionieren gut. Du hast die größte Auswahl.</p>
+              <p><strong>😊 Normale Haut:</strong> Düfte wirken ausgewogen. → Alle Duftarten funktionieren gut. Du hast die grösste Auswahl.</p>
               <p><strong>💧 Ölige Haut:</strong> Düfte halten länger, wirken sehr intensiv. → Wähle leichte Konzentrationen (EdT), frische & zitronige Düfte.</p>
               <p><strong>🪶 Sensible Haut:</strong> Düfte können reizend wirken. → Nutze leichte EdT, teste zuerst, vermeide sehr starke Konzentrationen.</p>
             </div>
@@ -83,7 +83,7 @@ export default function DufteNachHauttypPage() {
             <li>**Feuchte deine Haut vor dem Auftragen:** Wende eine leichte Feuchtigkeitscreme an, bevor du Duft sprühst. Das gibt dem Duft mehr „Grip".</li>
             <li>**Duft auf Haare sprühen:** Haare halten Düfte länger als Haut. Ideal für deine Trockenhaut.</li>
             <li>**Duft auf Kleidung:** Auch Stoff hält länger als deine Haut. Spray auf die Innenseite des Ärmels.</li>
-            <li>**Kauf große Flakons:** Du brauchst mehrere Sprüher statt einen. Mit 2–3 Sprühern werden auch leichte Düfte auf dir ok.</li>
+            <li>**Kauf grosse Flakons:** Du brauchst mehrere Sprüher statt einen. Mit 2–3 Sprühern werden auch leichte Düfte auf dir ok.</li>
           </ul>
 
           <h3>2. Normale Haut: Alles funktioniert</h3>
@@ -107,9 +107,9 @@ export default function DufteNachHauttypPage() {
 
           <h4>💡 Pro-Tipps für normale Haut:</h4>
           <ul style={{ marginBottom: '1.5rem' }}>
-            <li>**Nutze deine Flexibilität:** Teste auch Düfte, die sich riskant anhören. Bei normaler Haut funktionieren sie vielleicht großartig.</li>
+            <li>**Nutze deine Flexibilität:** Teste auch Düfte, die sich riskant anhören. Bei normaler Haut funktionieren sie vielleicht grossartig.</li>
             <li>**Experimentiere mit Konzentrationen:** Kaufe den gleichen Duft in EdP UND EdT. Nutze beide je nach Situation.</li>
-            <li>**Profitiere von Sales:** Wenn ein Duft gegenüber großartig aussieht, probiere ihn – deine Haut wird ihn fair bewerten.</li>
+            <li>**Profitiere von Sales:** Wenn ein Duft gegenüber grossartig aussieht, probiere ihn – deine Haut wird ihn fair bewerten.</li>
           </ul>
 
           <h3>3. Ölige Haut: Leichte, frische Düfte</h3>
@@ -125,13 +125,13 @@ export default function DufteNachHauttypPage() {
             <li><strong>Frische Zitrus-Düfte</strong> – Bergamotte, Zitrone, Orange, Grapefruit. Sie wirken ausgewogen und nicht kopflastig.</li>
             <li><strong>Grüne, marine, kühle Düfte</strong> – Rasenduft, Ozean, Minze – Sie sind perfekt für ölige Haut.</li>
             <li><strong>Düfte mit kürzerer Haltbarkeit</strong> (4–6 Stunden) – Bei dir werden das 6–8, was perfekt ist.</li>
-            <li><strong>Sehr blumig & frisch</strong> – Weiße Blüten, Wildrose – Sie werden intensiver, aber nicht schwer.</li>
+            <li><strong>Sehr blumig & frisch</strong> – Weisse Blüten, Wildrose – Sie werden intensiver, aber nicht schwer.</li>
           </ul>
 
           <h4>Was du vermeiden solltest:</h4>
           <ul style={{ marginBottom: '1.5rem' }}>
             <li><strong>Schwere Orientalisch-Düfte</strong> – Sie werden auf dir überwältigend nach 4 Stunden.</li>
-            <li><strong>Sehr süße Gourmand-Düfte</strong> – Vanille, Karamell, Schokolade werden zu intensiv & klebrig.</li>
+            <li><strong>Sehr süsse Gourmand-Düfte</strong> – Vanille, Karamell, Schokolade werden zu intensiv & klebrig.</li>
             <li>**Sehr starke Konzentrationen (EdP+)** – Es sei denn, du magst wirklich kopflastige Düfte.</li>
           </ul>
 
@@ -140,7 +140,7 @@ export default function DufteNachHauttypPage() {
             <li>**Nutze deine Superkraft – Haltbarkeit:** Bei dir halten 4-Stunden-Düfte den ganzen Tag. Kaufe clevere, günstiger Dufte & sie wirken Premium.</li>
             <li>**Experimentiere mit EdT/EdC:** Das sind deine Freunde. EdT auf ölige Haut = EdP auf normaler Haut. Spare 50% ohne Qualitätsverlust.</li>
             <li>**Fewer is More:** Du brauchst weniger Sprüher. 1–2 Sprüher auf ölige Haut = 3–4 auf normaler Haut.</li>
-            <li>**Probiere Unisex & male Düfte:** Sie sind oft frischer, zitroniger, würziger. Bei ölige Haut sind die großartig.</li>
+            <li>**Probiere Unisex & male Düfte:** Sie sind oft frischer, zitroniger, würziger. Bei ölige Haut sind die grossartig.</li>
           </ul>
 
           <h3>4. Sensible Haut: Vorsicht, richtige Auswahl</h3>
@@ -225,8 +225,8 @@ export default function DufteNachHauttypPage() {
           <ul style={{ marginBottom: '2rem', fontSize: '0.95rem' }}>
             <li><strong>Tom Ford Black Orchid</strong> – Schwer, würzig, warm. Perfect für Trockenhaut. Hält 8+ Stunden.</li>
             <li><strong>Yves Saint Laurent Opium</strong> – Klassisch, würzig, orientalisch, cremig. Designed für Langzeittrags.</li>
-            <li><strong>Estée Lauder Beautiful</strong> – Floral süß, warm. Leicht schwer, hält lange auf trockener Haut.</li>
-            <li><strong>Carolina Herrera Bad Boy (Herren)</strong> – Warm, würzig, holzig. Auch für Frauen großartig auf Trockenhaut.</li>
+            <li><strong>Estée Lauder Beautiful</strong> – Floral süss, warm. Leicht schwer, hält lange auf trockener Haut.</li>
+            <li><strong>Carolina Herrera Bad Boy (Herren)</strong> – Warm, würzig, holzig. Auch für Frauen grossartig auf Trockenhaut.</li>
           </ul>
 
           <h3>Für normale Haut – Die meisten Düfte funktionieren:</h3>
@@ -241,7 +241,7 @@ export default function DufteNachHauttypPage() {
           <ul style={{ marginBottom: '2rem', fontSize: '0.95rem' }}>
             <li><strong>Hermès Eau de Gentiane Blanche</strong> – Frisch, würzig, leicht. Perfect für ölige Haut.</li>
             <li><strong>Acqua di Gioia (Giorgio Armani)</strong> – Marine, frisch, leicht. 100% für ölige Haut designed.</li>
-            <li><strong>L'Artisan Parfumeur Nuit de Tubérose</strong> – Blumig, nicht süß, frisch. Wunderbar auf ölige Haut.</li>
+            <li><strong>L'Artisan Parfumeur Nuit de Tubérose</strong> – Blumig, nicht süss, frisch. Wunderbar auf ölige Haut.</li>
             <li><strong>Heeley Sel Marin (Niche)</strong> – Meerwasser, zedernholz, frisch. Ideal für ölige Haut, günstiger Preis.</li>
           </ul>
 
@@ -320,7 +320,7 @@ export default function DufteNachHauttypPage() {
               🔍 Nächster Schritt: Finde den perfekten Duft für deine Haut
             </p>
             <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
-              Jetzt, da du deinen Hauttyp kennst und weißt, welche Düfte dafür ideal sind, nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> –
+              Jetzt, da du deinen Hauttyp kennst und weisst, welche Düfte dafür ideal sind, nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> –
               es berücksichtigt deine Duftpräferenzen UND Haut-Gegebenheiten für den perfekten Match.
               Oder durchsuche <Link href="/duefte" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>unseren Katalog</Link> nach Düften, die für deinen Hauttyp gedacht sind.
             </p>

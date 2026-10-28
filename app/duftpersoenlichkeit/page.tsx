@@ -131,7 +131,7 @@ export default function Duftpersoenlichkeit() {
               <strong>Persönlichkeit:</strong> Für dich ist ein Duft nicht rational – er muss ein Gefühl erzeugen. Du wählst Düfte basierend auf Nostalgie, Erinnerungen oder emotionalen Assoziationen. Ein Duft kann dich an einen Moment, einen Menschen, einen Ort zurückbringen – und das ist wertvoll.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              <strong>Lieblingsfamilien:</strong> Floral (Rosen, Orchideen, Gardenias), Gourmand, Leicht-Holzige mit weichen Noten. Süße Nuancen ohne Aufdringlichkeit.
+              <strong>Lieblingsfamilien:</strong> Floral (Rosen, Orchideen, Gardenias), Gourmand, Leicht-Holzige mit weichen Noten. Süsse Nuancen ohne Aufdringlichkeit.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
               <strong>Ikonische Düfte:</strong> Hypnotic Poison, L'Artisan Parfumeur Timbuktu, Diptyque L'Eau Rose, Juicy Couture, Chloe.
@@ -184,7 +184,7 @@ export default function Duftpersoenlichkeit() {
               Schlicht, funktional, dezent
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              <strong>Persönlichkeit:</strong> Für dich ist ein Duft eine subtile Ergänzung, keine Aussage. Du magst Understatement und legst Wert darauf, dass dein Duft nicht aufdringlich ist. Ein zu starker oder zu süßer Duft ist für dich unmöglich. Du brauchst etwas Transparentes, Luftiges, kaum Wahrnehmbar für andere, aber präsent für dich.
+              <strong>Persönlichkeit:</strong> Für dich ist ein Duft eine subtile Ergänzung, keine Aussage. Du magst Understatement und legst Wert darauf, dass dein Duft nicht aufdringlich ist. Ein zu starker oder zu süsser Duft ist für dich unmöglich. Du brauchst etwas Transparentes, Luftiges, kaum Wahrnehmbar für andere, aber präsent für dich.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
               <strong>Lieblingsfamilien:</strong> Aquatische, grüne, zitrus-basierte Düfte. Jo Malone-Style (unisex, leicht, transparent). Minimal Sillage.
@@ -212,7 +212,7 @@ export default function Duftpersoenlichkeit() {
               Sinnlich, intensiv, verführerisch
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              <strong>Persönlichkeit:</strong> Du liebst intensive, reichhaltige Düfte, die dich umhüllen und deine Sinne erobern. Für dich ist ein Duft ein sinnliches Erlebnis – am liebsten warm, süß, orientalisch oder würzig. Subtilität ist nicht dein Ding; du möchtest, dass der Duft präsent ist, auch 8 Stunden später.
+              <strong>Persönlichkeit:</strong> Du liebst intensive, reichhaltige Düfte, die dich umhüllen und deine Sinne erobern. Für dich ist ein Duft ein sinnliches Erlebnis – am liebsten warm, süss, orientalisch oder würzig. Subtilität ist nicht dein Ding; du möchtest, dass der Duft präsent ist, auch 8 Stunden später.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
               <strong>Lieblingsfamilien:</strong> Gourmand, Orientalisch, Amber, Oud, würzig-warme Noten. Vanille, Moschus, Karamell, Schokolade.
@@ -358,7 +358,7 @@ export default function Duftpersoenlichkeit() {
               3. Nutze das Auressa-Quiz strategisch
             </h3>
             <p style={{ fontSize: '0.95rem', lineHeight: 1.7, color: '#4a3728', margin: 0 }}>
-              Das Auressa-Quiz ist so gestaltet, dass es deine Vorlieben mathematisch abbildet, nicht deine Persönlichkeit zu erraten versucht. Aber jetzt, da du weißt, wer du bist, kannst du die Quiz-Antworten gezielter geben. Ein Klassiker wählt „bewährte Duftfamilien"; ein Abenteurer wählt „alle unkonventionellen Optionen".
+              Das Auressa-Quiz ist so gestaltet, dass es deine Vorlieben mathematisch abbildet, nicht deine Persönlichkeit zu erraten versucht. Aber jetzt, da du weisst, wer du bist, kannst du die Quiz-Antworten gezielter geben. Ein Klassiker wählt „bewährte Duftfamilien"; ein Abenteurer wählt „alle unkonventionellen Optionen".
             </p>
           </div>
           <div style={{ background: '#fff', border: '1px solid rgba(212,175,55,0.15)', borderRadius: '14px', padding: '1.8rem' }}>
@@ -412,7 +412,7 @@ export default function Duftpersoenlichkeit() {
               Ist meine Duftpersönlichkeit geschlechtsspezifisch?
             </summary>
             <p style={{ fontSize: '0.9rem', color: '#4a3728', lineHeight: 1.7, marginTop: '0.8rem', margin: '0.8rem 0 0 0' }}>
-              Nein. Ein Mann kann ein Romantiker sein (und trägt dann floral-süßliche Düfte), eine Frau kann ein Klassiker sein (und trägt zeitlose Woody-Düfte). Duftpersönlichkeit ist völlig orthogonal zu Geschlecht. Die beste Guideline: Ignoriere das Marketing. Wenn deine Persönlichkeit sagt, dass du einen Duft magst, trag ihn – unabhängig davon, wie er vermarktet wird.
+              Nein. Ein Mann kann ein Romantiker sein (und trägt dann floral-süssliche Düfte), eine Frau kann ein Klassiker sein (und trägt zeitlose Woody-Düfte). Duftpersönlichkeit ist völlig orthogonal zu Geschlecht. Die beste Guideline: Ignoriere das Marketing. Wenn deine Persönlichkeit sagt, dass du einen Duft magst, trag ihn – unabhängig davon, wie er vermarktet wird.
             </p>
           </details>
 
@@ -421,7 +421,7 @@ export default function Duftpersoenlichkeit() {
               Wie nutze ich das für das Auressa-Quiz?
             </summary>
             <p style={{ fontSize: '0.9rem', color: '#4a3728', lineHeight: 1.7, marginTop: '0.8rem', margin: '0.8rem 0 0 0' }}>
-              Nimm das Quiz und beantworte die Fragen ehrlich – nicht basierend auf dieser Seite, sondern basierend auf deinen echten Vorlieben. Nachdem du dein Ergebnis bekommst, nutze dein Verständnis der Duftpersönlichkeit, um die Ergebnisse zu interpretieren. Wenn das Top-Match zu deiner Persönlichkeit passt, großartig. Wenn nicht, versuche, die Alternative zu verstehen, die besser passt.
+              Nimm das Quiz und beantworte die Fragen ehrlich – nicht basierend auf dieser Seite, sondern basierend auf deinen echten Vorlieben. Nachdem du dein Ergebnis bekommst, nutze dein Verständnis der Duftpersönlichkeit, um die Ergebnisse zu interpretieren. Wenn das Top-Match zu deiner Persönlichkeit passt, grossartig. Wenn nicht, versuche, die Alternative zu verstehen, die besser passt.
             </p>
           </details>
         </section>

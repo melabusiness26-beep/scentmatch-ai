@@ -28,7 +28,7 @@ export default function DamenParfuemePage() {
           <h1 className="detail-title">Damen-Parfüme: Der komplette Guide</h1>
           <p className="lead">
             Frauendüfte sind vielfältiger, frecher und experimentierfreudiger als Herrendüfte. Die Palette reicht von
-            klassisch-elegant über verspielt-süß bis zu sinnlich-orientalisch – und es gibt viel Raum für Persönlichkeit.
+            klassisch-elegant über verspielt-süss bis zu sinnlich-orientalisch – und es gibt viel Raum für Persönlichkeit.
           </p>
           <p className="lead">
             Ob du klassisch, modern, wild oder romantisch sein möchtest – dieser Guide hilft dir, einen Frauenduft zu
@@ -55,7 +55,7 @@ export default function DamenParfuemePage() {
               },
               {
                 familie: 'Fruity / Fruchtig',
-                beschreibung: 'Süßlich, verspielt, jung. Peach, Aprikose, Erdbeere, Kirsche kombiniert mit floralen Noten.',
+                beschreibung: 'Süsslich, verspielt, jung. Peach, Aprikose, Erdbeere, Kirsche kombiniert mit floralen Noten.',
                 charaktere: 'Pfirsich, Aprikose, Erdbeere, Kirsche, manchmal Zitrus',
                 occasions: 'Tagsüber, casual, Sommer, jung & frech',
                 beispiele: 'Viktor & Rolf Bonbon, Lancôme La Vie Est Belle, Prada Candy',
@@ -78,14 +78,14 @@ export default function DamenParfuemePage() {
                 beschreibung: 'Warm, sinnlich, würzig. Die Drama-Queen Duft-Familie. Vanilla, Amber, Moschus, würzige Noten.',
                 charaktere: 'Vanilla, Amber, Moschus, würzige Gewürze, Zedernholz',
                 occasions: 'Abends, formal, Herbst & Winter, sinnlich',
-                beispiele: 'Yves Saint Laurent Opium, Tom Ford Black Orchid, Givenchy Gentleman (ja, auch für Frauen großartig)',
+                beispiele: 'Yves Saint Laurent Opium, Tom Ford Black Orchid, Givenchy Gentleman (ja, auch für Frauen grossartig)',
                 intensitaet: 'Stark bis sehr stark',
                 haltbarkeit: '7–10+ Stunden',
                 preis: '€80–180'
               },
               {
                 familie: 'Gourmand / Dessert',
-                beschreibung: 'Essbar, süß, verführerisch. Karamell, Schokolade, Toffee, Kekse – riecht wie Nachtisch.',
+                beschreibung: 'Essbar, süss, verführerisch. Karamell, Schokolade, Toffee, Kekse – riecht wie Nachtisch.',
                 charaktere: 'Vanille, Karamell, Schokolade, Toffee, Zucker, Mandel',
                 occasions: 'Abends, Flirten, Herbst & Winter, sinnlich & verspielt',
                 beispiele: 'Prada Candy, Viktor & Rolf Bonbon, Carolina Herrera Seduction',
@@ -139,7 +139,7 @@ export default function DamenParfuemePage() {
                 beschreibung: 'Zeitlos, elegant, traditionell. Du magst bewährte, klassische Düfte.',
                 ideal: 'Floral klassisch (Rose, Gardenie) oder Chypré. Düfte, die es seit Jahren gibt.',
                 empfehlung: 'Chanel No. 5, Dior J\'adore, Chloé, Lancôme Trésor',
-                vermeiden: 'Zu modern, zu experimentell, zu süß'
+                vermeiden: 'Zu modern, zu experimentell, zu süss'
               },
               {
                 typ: 'Die Modern Woman',
@@ -150,8 +150,8 @@ export default function DamenParfuemePage() {
               },
               {
                 typ: 'Die Verspieldte',
-                beschreibung: 'Jung, frech, unbeschwert. Du magst süßliche, verspielte Düfte.',
-                ideal: 'Fruity, Gourmand oder leichte Fruity Floral. Süßlich & jung.',
+                beschreibung: 'Jung, frech, unbeschwert. Du magst süssliche, verspielte Düfte.',
+                ideal: 'Fruity, Gourmand oder leichte Fruity Floral. Süsslich & jung.',
                 empfehlung: 'Prada Candy, Viktor & Rolf Bonbon, Marc Jacobs Daisy, Tommy Hilfiger Tommy Girl',
                 vermeiden: 'Zu schwer, zu orientalisch, zu ernstaft'
               },
@@ -167,7 +167,7 @@ export default function DamenParfuemePage() {
                 beschreibung: 'Einfach, clean, subtil. Du magst leichte, elegante Düfte.',
                 ideal: 'Chypré, leichte Floral oder frische Citrus. Subtil & raffiniert.',
                 empfehlung: 'Jo Malone, Hermès Eau de Gentiane, L\'Artisan Parfumeur Nuit de Tubérose, Acqua di Parma',
-                vermeiden: 'Zu schwer, zu süß, zu intensiv'
+                vermeiden: 'Zu schwer, zu süss, zu intensiv'
               }
             ].map((item, i) => (
               <div key={i} style={{
@@ -197,10 +197,10 @@ export default function DamenParfuemePage() {
 
           <ol style={{ marginBottom: '2rem', fontSize: '0.95rem', lineHeight: 2 }}>
             <li><strong>Chanel No. 5</strong> – Der Klassiker. Über 100 Jahre, jede Frau kennt ihn.</li>
-            <li><strong>Dior J'adore</strong> – Modern-klassisch, zeitlos, auf jeder Haut großartig.</li>
+            <li><strong>Dior J'adore</strong> – Modern-klassisch, zeitlos, auf jeder Haut grossartig.</li>
             <li><strong>Chloé</strong> – Elegant, frisch-warm, universell geliebt.</li>
             <li><strong>Lancôme Trésor</strong> – Warm, blumig, elegant. Ein Klassiker mit Gewicht.</li>
-            <li><strong>Prada Candy</strong> – Süß, verführerisch, modern. Die Gourmand-Königin.</li>
+            <li><strong>Prada Candy</strong> – Süss, verführerisch, modern. Die Gourmand-Königin.</li>
             <li><strong>Dolce & Gabbana Light Blue</strong> – Frisch, fruity-floral, für jeden Tag perfekt.</li>
             <li><strong>Estée Lauder Beautiful</strong> – Klassisch, elegant, warm-blumig.</li>
             <li><strong>Tom Ford Black Orchid</strong> – Sinnlich, exotisch, für mutige Frauen.</li>
@@ -217,7 +217,7 @@ export default function DamenParfuemePage() {
           }}>
             {[
               {
-                fehler: 'Zu süß gehen, ohne zu testen',
+                fehler: 'Zu süss gehen, ohne zu testen',
                 lösung: 'Gourmand-Düfte riechen zu Hause wunderbar, aber im Körper- & Hormonkontext ganz anders. IMMER zuerst testen.'
               },
               {
@@ -234,7 +234,7 @@ export default function DamenParfuemePage() {
               },
               {
                 fehler: 'Den gleichen Duft immer tragen (Olfactory Adaptation)',
-                lösung: 'Nach 2–3 Wochen merkst du den Duft nicht mehr. Wechsel regelmäßig, sonst brauchst du mehr Menge.'
+                lösung: 'Nach 2–3 Wochen merkst du den Duft nicht mehr. Wechsel regelmässig, sonst brauchst du mehr Menge.'
               }
             ].map((item, i) => (
               <div key={i} style={{
@@ -260,14 +260,14 @@ export default function DamenParfuemePage() {
             <li><strong>Dolce & Gabbana Light Blue</strong> – Frisch, fruity, perfekt für wärme.</li>
             <li><strong>Jo Malone Lime Basil & Mandarin</strong> – Zitronig, grün, erfrischend.</li>
             <li><strong>Acqua di Gioia</strong> – Marine, wassrig, wie Ozean.</li>
-            <li><strong>Lancôme La Vie Est Belle Soleil Cristal</strong> – Fruity-floral, sommerlich-süß.</li>
+            <li><strong>Lancôme La Vie Est Belle Soleil Cristal</strong> – Fruity-floral, sommerlich-süss.</li>
           </ul>
 
           <h3>Herbst & Winter</h3>
           <ul style={{ marginBottom: '1.5rem' }}>
             <li><strong>Tom Ford Black Orchid</strong> – Sinnlich, würzig, warm – ideal für Herbst/Winter.</li>
             <li><strong>Yves Saint Laurent Opium</strong> – Warm, würzig, dramatisch – klassisch Winter.</li>
-            <li><strong>Prada Candy</strong> – Warm, süß, kuschelnd – wie Karamell.</li>
+            <li><strong>Prada Candy</strong> – Warm, süss, kuschelnd – wie Karamell.</li>
             <li><strong>Chloé Nomade</strong> – Warm, holzig, elegant – für reife Eleganz.</li>
           </ul>
 

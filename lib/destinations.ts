@@ -2,7 +2,7 @@ import { type Perfume, type QuizAnswers, matchesGender } from './perfumes';
 
 // ---------- Reise-Düfte ("Welcher Duft passt zu deinem Reiseziel?") ----------
 // Jedes Reiseziel bekommt einen Duft-Charakter: bevorzugte Duftfamilien, typische
-// Noten und – als Herzstück – kuratierte, wahrheitsgemäß geprüfte Top-Treffer aus
+// Noten und – als Herzstück – kuratierte, wahrheitsgemäss geprüfte Top-Treffer aus
 // dem eigenen Katalog (per slug). Die Ergebnisliste zeigt diese Picks zuerst und
 // füllt danach automatisch mit weiteren, algorithmisch passenden Düften auf.
 // Bewusst faktenbasiert: Die Noten unten stammen aus den echten Duftpyramiden.
@@ -110,7 +110,7 @@ export const DESTINATIONS: Destination[] = [
     tagline: 'Urban, modern & cool',
     character: 'urban, modern und selbstbewusst',
     intro:
-      'New York ist urban, modern und rastlos – klare Linien, kühles Holz und ein grüner Apfel. Diese Düfte riechen nach Großstadt und Selbstbewusstsein.',
+      'New York ist urban, modern und rastlos – klare Linien, kühles Holz und ein grüner Apfel. Diese Düfte riechen nach Grossstadt und Selbstbewusstsein.',
     tone: '#7f8a99',
     families: { woody: 28, clean: 16 },
     noteKeywords: ['Apfel', 'Zedernholz', 'Iso E', 'Moschus', 'Ambrette'],
@@ -260,9 +260,9 @@ export const DESTINATIONS: Destination[] = [
     name: 'Winterchalet',
     region: 'Après-Ski',
     tagline: 'Kaminfeuer & Vanille',
-    character: 'gemütlich, süß und behaglich',
+    character: 'gemütlich, süss und behaglich',
     intro:
-      'Ein Chalet nach dem Skitag: Kaminfeuer, Kastanien und warme Vanille. Diese Düfte sind gemütlich, süß und behaglich.',
+      'Ein Chalet nach dem Skitag: Kaminfeuer, Kastanien und warme Vanille. Diese Düfte sind gemütlich, süss und behaglich.',
     tone: '#b07a52',
     families: { gourmand: 34, woody: 10 },
     noteKeywords: ['Kastanie', 'Vanille', 'Gewürznelke', 'Zimt', 'Tonkabohne'],
@@ -278,9 +278,9 @@ export const DESTINATIONS: Destination[] = [
     name: 'Karibik',
     region: 'Traumstrand',
     tagline: 'Kokos & Sonnencreme',
-    character: 'tropisch, süß und sommerlich',
+    character: 'tropisch, süss und sommerlich',
     intro:
-      'Die Karibik riecht nach Kokos, Sonnencreme und warmem Sand. Diese Düfte sind tropisch, süß und sommerlich.',
+      'Die Karibik riecht nach Kokos, Sonnencreme und warmem Sand. Diese Düfte sind tropisch, süss und sommerlich.',
     tone: '#3fb8c4',
     families: { floral: 22, gourmand: 20 },
     noteKeywords: ['Kokosnuss', 'Vanille', 'Amber', 'Monoi', 'Tiaré'],
@@ -328,7 +328,7 @@ export const DESTINATIONS: Destination[] = [
     tagline: 'Reines Wasser & Sand',
     character: 'sauber, luftig und luxuriös',
     intro:
-      'Die Malediven sind reines, türkisfarbenes Wasser und weißer Sand. Diese Düfte sind sauber, luftig und luxuriös.',
+      'Die Malediven sind reines, türkisfarbenes Wasser und weisser Sand. Diese Düfte sind sauber, luftig und luxuriös.',
     tone: '#4fc4c0',
     families: { clean: 38 },
     noteKeywords: ['Salz', 'Meeresalge', 'Moschus', 'Neroli', 'Mineralnoten'],
@@ -374,9 +374,9 @@ export const DESTINATIONS: Destination[] = [
     name: 'Brasilien & Rio',
     region: 'Copacabana',
     tagline: 'Salzkaramell am Strand',
-    character: 'süß, sonnig und einladend',
+    character: 'süss, sonnig und einladend',
     intro:
-      'Rio ist warme Haut am Strand, Salzkaramell und pure Lebensfreude. Diese Düfte sind süß, sonnig und einladend.',
+      'Rio ist warme Haut am Strand, Salzkaramell und pure Lebensfreude. Diese Düfte sind süss, sonnig und einladend.',
     tone: '#d98f6a',
     families: { gourmand: 34 },
     noteKeywords: ['Salzkaramell', 'Pistazie', 'Vanille', 'Kokosnuss', 'Amber'],
@@ -457,7 +457,7 @@ export function destinationScore(p: Perfume, dest: Destination): number {
 
 const FAMILY_WORD: Record<string, string> = {
   clean: 'Frische, klare Noten',
-  gourmand: 'Warme, süße Noten',
+  gourmand: 'Warme, süsse Noten',
   woody: 'Holzige, tiefe Noten',
   floral: 'Blumige, zarte Noten'
 };

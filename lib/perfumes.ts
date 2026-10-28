@@ -337,7 +337,7 @@ export async function getPerfumesByTag(tag: string, limit = 40): Promise<Perfume
     .order('scentmatch_score', { ascending: false })
     .limit(limit);
 
-  // Parallel: Array-Felder mit cs (contains) – jeder Begriff in Varianten (klein + Großschreibung)
+  // Parallel: Array-Felder mit cs (contains) – jeder Begriff in Varianten (klein + Grossschreibung)
   // cs ist case-sensitive → wir suchen sowohl 'bergamotte' als auch 'Bergamotte'
   const arrayTermVariants = terms.flatMap((t) => [
     t,
@@ -378,7 +378,7 @@ export type QuizAnswers = {
   dislikedNote: string; // Theme-Code aus NOTE_THEMES, '' = keine
   anchorId: string; // ID eines bereits geliebten Dufts, '' = keiner
   longevity: 'low' | 'medium' | 'high' | ''; // gewünschte Haltbarkeit, '' = egal
-  sweetness: 'low' | 'medium' | 'high' | ''; // gewünschte Süße, '' = egal
+  sweetness: 'low' | 'medium' | 'high' | ''; // gewünschte Süsse, '' = egal
   pricePref: 'original' | 'alternative' | ''; // Original vs. günstige Alternative, '' = egal
 };
 
@@ -436,7 +436,7 @@ const DAILY_OCCASIONS = ['Alltag', 'Büro'];
 
 // Duft-Themen für das Noten-Matching. Jede Auswahl deckt per Stichwort mehrere konkrete Noten ab.
 export const NOTE_THEMES: { code: string; label: string; keywords: string[] }[] = [
-  { code: 'vanille', label: 'Süß & gemütlich – Vanille, Karamell, Schokolade', keywords: ['Vanille', 'Karamell', 'Praline', 'Schokolade', 'Kakao', 'Honig', 'Tonkabohne'] },
+  { code: 'vanille', label: 'Süss & gemütlich – Vanille, Karamell, Schokolade', keywords: ['Vanille', 'Karamell', 'Praline', 'Schokolade', 'Kakao', 'Honig', 'Tonkabohne'] },
   { code: 'zitrus', label: 'Frisch & spritzig – Zitrone, Bergamotte, Minze', keywords: ['Zitrone', 'Bergamotte', 'Grapefruit', 'Mandarine', 'Orange', 'Neroli', 'Minze', 'Apfel'] },
   { code: 'holz', label: 'Holzig & erdig – Sandelholz, Vetiver, Patchouli', keywords: ['Holz', 'Vetiver', 'Patchouli', 'Sandel', 'Zedern'] },
   { code: 'blumig', label: 'Blumig & zart – Rose, Jasmin, Veilchen', keywords: ['Rose', 'Jasmin', 'Tuberose', 'Veilchen', 'Orangenblüte', 'Maiglöckchen', 'Freesie', 'Pfingstrose', 'Magnolie', 'Gardenie', 'Ylang', 'Iris'] },
@@ -523,7 +523,7 @@ function longevityComponent(p: Perfume, a: QuizAnswers): number {
 
 function sweetnessComponent(p: Perfume, a: QuizAnswers): number {
   if (!a.sweetness) return 0;
-  // Süße-Schätzwert des Dufts: gourmand = sehr süß, Vanille-Thema = mittel.
+  // Süsse-Schätzwert des Dufts: gourmand = sehr süss, Vanille-Thema = mittel.
   const sweetVal = p.fragrance_family === 'gourmand' ? 9 : perfumeHasTheme(p, 'vanille') ? 6 : 2;
   const target = a.sweetness === 'low' ? 2 : a.sweetness === 'high' ? 9 : 5;
   return 6 * (1 - Math.abs(sweetVal - target) / 9);
@@ -656,8 +656,8 @@ export const MOODS: Mood[] = [
     title: 'Ich will mich verwöhnen',
     phrase: 'wenn dir nach Trost und Wärme ist',
     subtitle: 'Vanille & Trost – wenn dir nach Kuscheln ist.',
-    result: 'Warme, süße Düfte wie eine Umarmung – Vanille, Karamell, Tonka. Sie schaffen sofort Geborgenheit und Wärme.',
-    intro: 'Schwerer Tag? Ruhiger Moment? Dann holst du dir Comfort: Vanille (süß, beruhigend), Karamell (warm, einladend), Tonka (samtig, wärmend). Ein Parfüm löst keine Probleme – aber diese Noten sind wie Tee und Decke: Sie tun einfach gut.',
+    result: 'Warme, süsse Düfte wie eine Umarmung – Vanille, Karamell, Tonka. Sie schaffen sofort Geborgenheit und Wärme.',
+    intro: 'Schwerer Tag? Ruhiger Moment? Dann holst du dir Comfort: Vanille (süss, beruhigend), Karamell (warm, einladend), Tonka (samtig, wärmend). Ein Parfüm löst keine Probleme – aber diese Noten sind wie Tee und Decke: Sie tun einfach gut.',
     tone: '#d8a48f',
     families: { gourmand: 40, floral: 10 },
     noteThemes: ['vanille', 'moschus'],
@@ -727,7 +727,7 @@ export const MOODS: Mood[] = [
     phrase: 'wenn du auffallen und in Erinnerung bleiben willst',
     subtitle: 'Amber & Oud – dein Glanz für besondere Nächte.',
     result: 'Warme, intensive Düfte die Aufmerksamkeit erregen und hängen bleiben – Oud, Amber, Vanille. Sie machen dich unvergesslich.',
-    intro: 'Du möchtest im Gedächtnis bleiben? Dann brauchst du Kraft: Oud (exotisch, intensiv), Amber (warm, sinnlich), Vanille (süß, luxuriös). Ein bis zwei Sprüher reichen – diese Düfte brauchen keine Menge, um zu wirken.',
+    intro: 'Du möchtest im Gedächtnis bleiben? Dann brauchst du Kraft: Oud (exotisch, intensiv), Amber (warm, sinnlich), Vanille (süss, luxuriös). Ein bis zwei Sprüher reichen – diese Düfte brauchen keine Menge, um zu wirken.',
     tone: '#9b6a8f',
     families: { woody: 25, gourmand: 25 },
     noteThemes: ['orient', 'vanille'],
@@ -768,11 +768,11 @@ export const MOODS: Mood[] = [
     code: 'abend',
     emoji: '🌙',
     icon: 'moon',
-    title: 'Ich will den Abend genießen',
+    title: 'Ich will den Abend geniessen',
     phrase: 'wenn du den Abend gemütlich ausklingen lassen willst',
     subtitle: 'Vanille & Moschus – deine Gemütlichkeit im Flacon.',
     result: 'Warme, weiche Düfte wie ein Moment nur für dich – Vanille, Moschus, ein Hauch Holz. Sie machen den Abend geborgen.',
-    intro: 'Der Feierabend ist für dich: warme, süße Düfte mit Vanille (behaglich, beruhigend), Moschus (sanft, sauber), ein Hauch Holz (warm, reif). Zünde eine Kerze an, mach es dir bequem – dieser Duft tut das Gleiche.',
+    intro: 'Der Feierabend ist für dich: warme, süsse Düfte mit Vanille (behaglich, beruhigend), Moschus (sanft, sauber), ein Hauch Holz (warm, reif). Zünde eine Kerze an, mach es dir bequem – dieser Duft tut das Gleiche.',
     tone: '#6b5b8a',
     families: { gourmand: 30, woody: 15 },
     noteThemes: ['vanille', 'moschus'],
@@ -800,7 +800,7 @@ export const MOODS: Mood[] = [
 // Bewusst nützlich statt Fülltext – gut für Leser UND für Google.
 export const MOOD_TIPS: Record<string, string> = {
   verwoehnen:
-    'Achte auf Gourmand-Düfte mit Vanille, Tonka oder Karamell. Trag sie eher sparsam auf – warme, süße Noten wirken schnell intensiv. Für tagsüber reicht ein Sprüher, abends darf es etwas mehr sein.',
+    'Achte auf Gourmand-Düfte mit Vanille, Tonka oder Karamell. Trag sie eher sparsam auf – warme, süsse Noten wirken schnell intensiv. Für tagsüber reicht ein Sprüher, abends darf es etwas mehr sein.',
   stark:
     'Holzige Düfte mit Vetiver, Zedernholz oder einem Hauch Leder wirken souverän. Sie entfalten sich oft erst nach 10–15 Minuten – gib ihnen Zeit. Ein bis zwei Sprüher genügen, um präsent zu sein.',
   runterkommen:
@@ -812,7 +812,7 @@ export const MOOD_TIPS: Record<string, string> = {
   strahlen:
     'Für besondere Abende sind intensive Düfte mit Amber, Oud oder Vanille gemacht. Sie halten lang und tragen weit – ein, zwei Sprüher reichen völlig. Am besten ca. 20 Minuten vor dem Rausgehen auftragen.',
   job:
-    'Im Büro gilt: dezent auftragen – lieber ein Sprüher auf die Kleidung als mehrere auf die Haut. Frische, klare Düfte mit wenig Sillage stören niemanden im Meeting. Schwere, süße Düfte hebst du dir besser für die Freizeit auf.',
+    'Im Büro gilt: dezent auftragen – lieber ein Sprüher auf die Kleidung als mehrere auf die Haut. Frische, klare Düfte mit wenig Sillage stören niemanden im Meeting. Schwere, süsse Düfte hebst du dir besser für die Freizeit auf.',
   urlaub:
     'Leichte Zitrus- und Blütendüfte passen perfekt zu Hitze – schwere Düfte wirken in der Sonne schnell zu viel. Sie halten kürzer, also ruhig nachsprühen. Auf eingecremter Haut duften sie besonders lang.',
   abend:
@@ -830,12 +830,12 @@ export function getMood(code: string): Mood | undefined {
 // Nutzt nur vorhandene Daten (Notenthema oder Duftfamilie) – kein Heilversprechen.
 const MOOD_FAMILY_WORDS: Record<string, string> = {
   clean: 'Frische, klare Noten',
-  gourmand: 'Warme, süße Noten',
+  gourmand: 'Warme, süsse Noten',
   woody: 'Holzige, tiefe Noten',
   floral: 'Blumige, zarte Noten'
 };
 const MOOD_THEME_WORDS: Record<string, string> = {
-  vanille: 'Süße Vanille-Noten',
+  vanille: 'Süsse Vanille-Noten',
   zitrus: 'Spritzige Zitrus-Noten',
   holz: 'Edle Holznoten',
   blumig: 'Zarte Blütennoten',
@@ -860,7 +860,7 @@ export function moodNoteProfile(
   if (!perfumes.length) return [];
   const counts = NOTE_THEMES.map((t) => ({
     code: t.code,
-    label: t.label.split(' – ')[0], // Kurzform, z. B. "Süß & gemütlich"
+    label: t.label.split(' – ')[0], // Kurzform, z. B. "Süss & gemütlich"
     count: perfumes.filter((p) => perfumeHasTheme(p, t.code)).length
   })).filter((c) => c.count > 0);
   const max = Math.max(1, ...counts.map((c) => c.count));

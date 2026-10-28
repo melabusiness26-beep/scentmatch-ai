@@ -3,7 +3,7 @@ import { Perfume, isWithinPriceCap } from './perfumes';
 // Sammelbegriffe, die nur halbes Gewicht zählen (wenig aussagekräftig)
 const GENERIC_NOTES = new Set(['holz', 'hölzer', 'holznoten', 'fruchtnoten', 'früchte', 'beeren',
   'grüne noten', 'grüne note', 'wässrige noten', 'wassernoten', 'harze', 'rote früchte',
-  'rote beeren', 'tropische früchte', 'blüten', 'weisse blüten', 'weiße blüten']);
+  'rote beeren', 'tropische früchte', 'blüten', 'weisse blüten', 'weisse blüten']);
 
 // Synonym-Gruppen: Schreibvarianten derselben Note
 const NOTE_SYNONYMS: Record<string, string[]> = {
@@ -25,7 +25,7 @@ const NOTE_SYNONYMS: Record<string, string[]> = {
 
   jasmin: ['jasmin', 'jasmine', 'jasminblüte', 'sambac-jasmin', 'jasmin sambac', 'wasserjasmin'],
   rose: ['rose', 'rosa', 'rosenblüte', 'türkische rose', 'bulgarische rose', 'damaszener rose',
-    'grasse-rose', 'weiße rose', 'wildrose'],
+    'grasse-rose', 'weisse rose', 'wildrose'],
   tuberose: ['tuberose', 'tuberose-blüte', 'tuberose-note'],
   ylang: ['ylang-ylang', 'ylang'],
   iris: ['iris', 'irispulver', 'orris-wurzel', 'iriswurzel'],
@@ -67,7 +67,7 @@ const RELATED_NOTES: Array<[string, string]> = [
   ['rosa_pfeffer', 'schwarzer_pfeffer'],
 ];
 
-// Normalisierung: Groß-/Kleinschreibung, ß→ss, Leerzeichen
+// Normalisierung: Gross-/Kleinschreibung, ss→ss, Leerzeichen
 function normalizeNote(note: string): string {
   return note
     .toLowerCase()

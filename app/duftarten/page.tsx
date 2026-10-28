@@ -146,8 +146,8 @@ export default function FragranceTypesPage() {
                 haltbar: '8–24 Stunden',
                 intensität: 'Extrem intensiv',
                 preis: '€€€€€ (oft 150€+)',
-                wann: 'Für spezielle Anlässe, abends, formale Events. Ideal für Liebhaber, die nicht regelmäßig nachsprühen wollen.',
-                achtung: '⚠️ Vorsicht: Wegen der hohen Konzentration genügen 1–2 Sprühstöße. Zu viel wirkt schnell überwältigend. Auch teuer – man möchte es nicht verschwenden.',
+                wann: 'Für spezielle Anlässe, abends, formale Events. Ideal für Liebhaber, die nicht regelmässig nachsprühen wollen.',
+                achtung: '⚠️ Vorsicht: Wegen der hohen Konzentration genügen 1–2 Sprühstösse. Zu viel wirkt schnell überwältigend. Auch teuer – man möchte es nicht verschwenden.',
                 beispiele: 'Creed Royal Oud, Heeley Sel Marin, Jo Malone Extrait-Serie'
               },
               {
@@ -182,7 +182,7 @@ export default function FragranceTypesPage() {
                 haltbar: '1–2 Stunden',
                 intensität: 'Sehr leicht – kaum zu riechen nach kurzer Zeit',
                 preis: '€ (10€–30€)',
-                wann: 'Eine schnelle Erfrischung, nicht als Hauptduft. Ideal für heiße Tage oder wenn du viel schwitzest.',
+                wann: 'Eine schnelle Erfrischung, nicht als Hauptduft. Ideal für heisse Tage oder wenn du viel schwitzest.',
                 achtung: '⚠️ Kurze Haltbarkeit – nicht ideal als Alltagsduft. Aber sehr erfrischend und wirtschaftlich.',
                 beispiele: '4711 Eau de Cologne, Hermès Eau de Gentiane Blanche (Cologne-Konzentration)'
               },
@@ -347,7 +347,7 @@ export default function FragranceTypesPage() {
               },
               {
                 title: 'Retouch-Spray kaufen',
-                tip: 'Bei EdT oder Cologne: Kaufe einen günstigen Retouch-Spray (oder die gleiche EdT in mini). Nach 3–4 Stunden ein Sprühstoß = neuer Duft den ganzen Tag.'
+                tip: 'Bei EdT oder Cologne: Kaufe einen günstigen Retouch-Spray (oder die gleiche EdT in mini). Nach 3–4 Stunden ein Sprühstoss = neuer Duft den ganzen Tag.'
               }
             ].map((pro, idx) => (
               <div
@@ -387,11 +387,11 @@ export default function FragranceTypesPage() {
             {[
               {
                 q: 'Kann ich EdP wie EdT auftragen?',
-                a: 'Ja, aber sparsamer. EdP ist konzentrierter – 2–3 Sprühstöße statt 4–5. Zu viel EdP wirkt aufdringlich.'
+                a: 'Ja, aber sparsamer. EdP ist konzentrierter – 2–3 Sprühstösse statt 4–5. Zu viel EdP wirkt aufdringlich.'
               },
               {
                 q: 'Ist EdT wirklich billig-Duft?',
-                a: 'Nein. Viele Premium-EdT-Düfte sind großartig. Der Unterschied ist Haltbarkeit, nicht Qualität. EdT braucht nur häufiger Retouch.'
+                a: 'Nein. Viele Premium-EdT-Düfte sind grossartig. Der Unterschied ist Haltbarkeit, nicht Qualität. EdT braucht nur häufiger Retouch.'
               },
               {
                 q: 'Sollte ich immer die teuerste Konzentration kaufen?',
@@ -403,7 +403,7 @@ export default function FragranceTypesPage() {
               },
               {
                 q: 'Kann ich EdP und EdT mischen?',
-                a: 'Nicht ideal. EdP + EdP = super intensiv. EdP + EdT = mittelmäßig. Besser: Layering mit verschiedenen Düften.'
+                a: 'Nicht ideal. EdP + EdP = super intensiv. EdP + EdT = mittelmässig. Besser: Layering mit verschiedenen Düften.'
               }
             ].map((faq, idx) => (
               <div

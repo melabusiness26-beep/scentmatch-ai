@@ -66,7 +66,7 @@ export default function DuftchemieGrundlagen() {
             Warum Chemie deine Duftentscheidungen beeinflusst
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3728', marginBottom: '1.2rem' }}>
-            Ein Duft ist eine chemische Mischung aus flüchtigen aromatischen Molekülen, die mit deinen Olfaktor-Rezeptoren interagieren. Das ist nicht Mystik – es ist Chemie. Die gleiche Wissenschaft, die erklärt, warum Zucker süß schmeckt, erklärt auch, warum Vanille warm riecht.
+            Ein Duft ist eine chemische Mischung aus flüchtigen aromatischen Molekülen, die mit deinen Olfaktor-Rezeptoren interagieren. Das ist nicht Mystik – es ist Chemie. Die gleiche Wissenschaft, die erklärt, warum Zucker süss schmeckt, erklärt auch, warum Vanille warm riecht.
           </p>
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3728', marginBottom: '1.2rem' }}>
             Das Verständnis dieser Grundlagen hilft dir, bessere Duftentscheidungen zu treffen. Du wirst verstehen, warum manche Düfte schnell verdampfen (flüchtige Noten), während andere stundenlang bleiben (schwere Basen). Du wirst wissen, warum ein Duft im Winter anders riecht als im Sommer. Du wirst erkennen, warum zwei Düfte sehr ähnlich riechen können, aber unterschiedlich lange halten.
@@ -104,13 +104,13 @@ export default function DuftchemieGrundlagen() {
               Flüchtig, frisch, schnell vorbei (5–15 Minuten)
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              Die ersten Sekunden nach dem Sprühen – das ist, was dich anzieht oder abstoßt. Kopfnoten sind die leichtesten, flüchtigsten Moleküle: Zitrus (Bergamotte, Zitrone), Minze, Grapefruit, Ananas. Sie verdampfen schnell, weil ihre Moleküle klein sind und niedrige Siedepunkte haben.
+              Die ersten Sekunden nach dem Sprühen – das ist, was dich anzieht oder abstosst. Kopfnoten sind die leichtesten, flüchtigsten Moleküle: Zitrus (Bergamotte, Zitrone), Minze, Grapefruit, Ananas. Sie verdampfen schnell, weil ihre Moleküle klein sind und niedrige Siedepunkte haben.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
               <strong>Die Chemie:</strong> Kleine Moleküle mit hoher Flüchtigkeit. Der Dampfdruck ist hoch – die Moleküle wollen verdampfen. In wenigen Minuten sind sie in der Luft, und dein Duft riecht anders.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#6b5344' }}>
-              <strong>Warum das wichtig ist:</strong> Kopfnoten sind oft „Köder". Eine großartige Top-Note zieht dich an, aber sie ist nicht das echte Aroma des Dufts. Nach 10 Minuten verschwindet sie, und der Duft entfaltet sich vollständig. Das ist völlig normal – nicht jeder Duft muss in den ersten Sekunden gut riechen.
+              <strong>Warum das wichtig ist:</strong> Kopfnoten sind oft „Köder". Eine grossartige Top-Note zieht dich an, aber sie ist nicht das echte Aroma des Dufts. Nach 10 Minuten verschwindet sie, und der Duft entfaltet sich vollständig. Das ist völlig normal – nicht jeder Duft muss in den ersten Sekunden gut riechen.
             </p>
           </div>
 
@@ -132,7 +132,7 @@ export default function DuftchemieGrundlagen() {
               Das ist der echte Duft. Nach die Kopfnoten weg sind, was bleibt, sind die Herznoten – die Blüten, Gewürze, Früchte, Aromen. Rose, Jasmin, Nelke, Pfeffer, Kardamom. Das sind mittelschwere Moleküle, die länger bleiben als die Top-Notes, aber noch verdampfen.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              <strong>Die Chemie:</strong> Mittlere Molekülgröße, mittlere Flüchtigkeit. Langsamer verdampfend als Top-Notes, aber immer noch flüchtig. Diese Noten geben einem Duft seinen Charakter.
+              <strong>Die Chemie:</strong> Mittlere Molekülgrösse, mittlere Flüchtigkeit. Langsamer verdampfend als Top-Notes, aber immer noch flüchtig. Diese Noten geben einem Duft seinen Charakter.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#6b5344' }}>
               <strong>Warum das wichtig ist:</strong> Die Herznoten sind, wofür du einen Duft kaufst. Der erste Eindruck ist schön, aber wenn die Herznoten nicht gut riechen, ist es nichts wert. Immer mindestens 10–20 Minuten warten, bevor du über einen Duft entscheidest.
@@ -154,7 +154,7 @@ export default function DuftchemieGrundlagen() {
               Der Anker, der Duft, der bleibt (4–24+ Stunden)
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              Die schwersten Moleküle – Sandelholz, Vetiver, Moschus, Ambra, Vanille. Diese Noten verdampfen kaum. Sie bleiben an deiner Haut, in deinen Haaren, auf deiner Kleidung. Ein großartiger Duft braucht eine großartige Basis – ohne sie ist alles nur Marketing.
+              Die schwersten Moleküle – Sandelholz, Vetiver, Moschus, Ambra, Vanille. Diese Noten verdampfen kaum. Sie bleiben an deiner Haut, in deinen Haaren, auf deiner Kleidung. Ein grossartiger Duft braucht eine grossartige Basis – ohne sie ist alles nur Marketing.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
               <strong>Die Chemie:</strong> Schwere Moleküle mit niedrigem Dampfdruck. Sie wollen nicht verdampfen. Die Seitenketten sind lang, die Molekulargewichte sind hoch. Das ist, warum Moschus oder Ambra noch nach 12 Stunden auf deiner Haut sind.
@@ -238,7 +238,7 @@ export default function DuftchemieGrundlagen() {
           </h2>
 
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3728', marginBottom: '1.5rem' }}>
-            Die Flüchtigkeit einer Duftmolekül ist nicht Zufall – es ist reine Chemie. Kleine, leichte Moleküle verdampfen schnell. Große, schwere Moleküle bleiben.
+            Die Flüchtigkeit einer Duftmolekül ist nicht Zufall – es ist reine Chemie. Kleine, leichte Moleküle verdampfen schnell. Grosse, schwere Moleküle bleiben.
           </p>
 
           <div style={{
@@ -267,12 +267,12 @@ export default function DuftchemieGrundlagen() {
               Sandelholz (Basisnote)
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              Große, schwere Moleküle (Santol, Alpha-Santalol). Niedriger Dampfdruck. Wollen nicht verdampfen. Bleiben an deiner Haut, in deinen Haaren – 12+ Stunden später ist immer noch da. Das ist, warum holzige Düfte so „klebrig" sind. Die Chemie zwingt diese Noten, zu bleiben.
+              Grosse, schwere Moleküle (Santol, Alpha-Santalol). Niedriger Dampfdruck. Wollen nicht verdampfen. Bleiben an deiner Haut, in deinen Haaren – 12+ Stunden später ist immer noch da. Das ist, warum holzige Düfte so „klebrig" sind. Die Chemie zwingt diese Noten, zu bleiben.
             </p>
           </div>
 
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3728', marginBottom: '1.2rem' }}>
-            <strong>Praktischer Hinweis:</strong> Ein großartiger Duft braucht Balance. Nur Kopfnoten = 10 Minuten Spaß und dann weg. Nur Basisnoten = ein schwerer Duft, der dich stundenlang verfolgst. Ein gutes Gleichgewicht = mehrere Stunden angenehmes Riechen.
+            <strong>Praktischer Hinweis:</strong> Ein grossartiger Duft braucht Balance. Nur Kopfnoten = 10 Minuten Spass und dann weg. Nur Basisnoten = ein schwerer Duft, der dich stundenlang verfolgst. Ein gutes Gleichgewicht = mehrere Stunden angenehmes Riechen.
           </p>
         </section>
 
@@ -300,7 +300,7 @@ export default function DuftchemieGrundlagen() {
               Olfactory Fatigue (Duft-Gewöhnung)
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              Nach 15–30 Minuten „riechst" du deinen eigenen Duft nicht mehr. Deine Nase ist daran gewöhnt. Der Duft ist immer noch da – biochemisch verdampft – aber psychologisch hast du ihn nicht mehr wahrgenommen. Das ist, warum Freunde dir sagen können „hey, du riechst großartig", aber du selbst es nicht merkst. Deine Nase hat sich daran gewöhnt.
+              Nach 15–30 Minuten „riechst" du deinen eigenen Duft nicht mehr. Deine Nase ist daran gewöhnt. Der Duft ist immer noch da – biochemisch verdampft – aber psychologisch hast du ihn nicht mehr wahrgenommen. Das ist, warum Freunde dir sagen können „hey, du riechst grossartig", aber du selbst es nicht merkst. Deine Nase hat sich daran gewöhnt.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#6b5344' }}>
               <strong>Tipp:</strong> Das ist völlig normal und ein Zeichen, dass der Duft gut dosiert ist. Ein zu starker Duft kann dieser Gewöhnung nicht unterliegen – du bleibst geruchlich überfordert.
@@ -336,7 +336,7 @@ export default function DuftchemieGrundlagen() {
               Körperwärme und Haut-pH
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              Der gleiche Duft riecht auf jedem Menschen anders – nicht weil der Duft unterschiedlich ist, sondern weil deine Haut-Chemie es verändert. Höhere Körpertemperatur = schnellere Verdampfung = intensiverer Duft. Höherer pH-Wert der Haut = andere chemische Reaktion mit den Duftmolekülen. Ein Duft auf Person A kann süßer sein, auf Person B würziger.
+              Der gleiche Duft riecht auf jedem Menschen anders – nicht weil der Duft unterschiedlich ist, sondern weil deine Haut-Chemie es verändert. Höhere Körpertemperatur = schnellere Verdampfung = intensiverer Duft. Höherer pH-Wert der Haut = andere chemische Reaktion mit den Duftmolekülen. Ein Duft auf Person A kann süsser sein, auf Person B würziger.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#6b5344' }}>
               <strong>Tipp:</strong> Wenn ein Duft auf deinem Freund fantastisch riecht, aber auf dir seltsam, ist nicht einer von euch „falsch". Das ist nur Chemie.
@@ -368,7 +368,7 @@ export default function DuftchemieGrundlagen() {
               Sommer (Hitze)
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              Higher Temperatur = schnellere Verdampfung. Die Duftmoleküle verdampfen schneller. Das heißt: Der Duft wird intensiver und kürzer. Ein Duft, der im März subtil ist, wird im Juli laut. Die leichten Noten (Kopfnoten) verdampfen noch schneller, und die Basisnoten werden prominenter. Ein schwerer Duft wird unerträglich.
+              Higher Temperatur = schnellere Verdampfung. Die Duftmoleküle verdampfen schneller. Das heisst: Der Duft wird intensiver und kürzer. Ein Duft, der im März subtil ist, wird im Juli laut. Die leichten Noten (Kopfnoten) verdampfen noch schneller, und die Basisnoten werden prominenter. Ein schwerer Duft wird unerträglich.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#6b5344' }}>
               <strong>Konsequenz:</strong> Im Sommer brauchst du leichtere Düfte oder weniger Sprühstösse desselben Dufts.
@@ -385,7 +385,7 @@ export default function DuftchemieGrundlagen() {
               Winter (Kälte)
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              Niedrigere Temperatur = langsamere Verdampfung. Der Duft bleibt näher an deiner Haut. Das heißt: Ein Duft wird subtiler, aber auch länger. Eine leichte Kopfnote kann in der Kälte kaum wahrnehmbar sein. Du brauchst oft einen stärkeren Duft im Winter.
+              Niedrigere Temperatur = langsamere Verdampfung. Der Duft bleibt näher an deiner Haut. Das heisst: Ein Duft wird subtiler, aber auch länger. Eine leichte Kopfnote kann in der Kälte kaum wahrnehmbar sein. Du brauchst oft einen stärkeren Duft im Winter.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#6b5344' }}>
               <strong>Konsequenz:</strong> Im Winter ist ein schwererer, intensiverer Duft ideal.
@@ -417,7 +417,7 @@ export default function DuftchemieGrundlagen() {
               Sillage ist nicht gleich Qualität
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', margin: 0 }}>
-              Ein Duft, der dich und den ganzen Raum umgibt, ist nicht automatisch besser. Ein großartiger Duft hat Balance – präsent, aber nicht überwältigend. Ein billiger Duft mit schlechtem Akkord versucht oft, laut zu sein, um aufzufallen. Ein qualitativ hochwertiger Duft braucht nicht zu schreien.
+              Ein Duft, der dich und den ganzen Raum umgibt, ist nicht automatisch besser. Ein grossartiger Duft hat Balance – präsent, aber nicht überwältigend. Ein billiger Duft mit schlechtem Akkord versucht oft, laut zu sein, um aufzufallen. Ein qualitativ hochwertiger Duft braucht nicht zu schreien.
             </p>
           </div>
 
@@ -465,7 +465,7 @@ export default function DuftchemieGrundlagen() {
               Ist natürlicher Duft besser als synthetischer?
             </summary>
             <p style={{ fontSize: '0.9rem', color: '#4a3728', lineHeight: 1.7, marginTop: '0.8rem', margin: '0.8rem 0 0 0' }}>
-              Chemisch? Nein. Ein synthetisches Duftmolekül ist identisch mit einem natürlichen – gleiche Struktur, gleiche Funktion. Der Unterschied ist der Preis und die Nachhaltigkeit. Natürliche Düfte sind teurer und schwächer. Synthetische sind konsistent und stärker. Beide können großartig sein.
+              Chemisch? Nein. Ein synthetisches Duftmolekül ist identisch mit einem natürlichen – gleiche Struktur, gleiche Funktion. Der Unterschied ist der Preis und die Nachhaltigkeit. Natürliche Düfte sind teurer und schwächer. Synthetische sind konsistent und stärker. Beide können grossartig sein.
             </p>
           </details>
 
@@ -492,7 +492,7 @@ export default function DuftchemieGrundlagen() {
               Ist Designer-Duft wirklich besser als Niche-Duft?
             </summary>
             <p style={{ fontSize: '0.9rem', color: '#4a3728', lineHeight: 1.7, marginTop: '0.8rem', margin: '0.8rem 0 0 0' }}>
-              Chemisch: nein. Ein Designer-Duft ist oft einfacher – breite Anziehung. Ein Niche-Duft ist oft komplexer – tiefere Komposition. Beide können großartig sein. Designer ist besser im Marketing, Niche oft besser in Komplexität. Aber es gibt Ausnahmen in beide Richtungen.
+              Chemisch: nein. Ein Designer-Duft ist oft einfacher – breite Anziehung. Ein Niche-Duft ist oft komplexer – tiefere Komposition. Beide können grossartig sein. Designer ist besser im Marketing, Niche oft besser in Komplexität. Aber es gibt Ausnahmen in beide Richtungen.
             </p>
           </details>
         </section>

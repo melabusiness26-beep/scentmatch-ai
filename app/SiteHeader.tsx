@@ -24,7 +24,7 @@ export default function SiteHeader() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Dropdown schließen beim Klick außerhalb
+  // Dropdown schliessen beim Klick ausserhalb
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       if (dropRef.current && !dropRef.current.contains(e.target as Node)) {
@@ -44,7 +44,7 @@ export default function SiteHeader() {
         <button
           type="button"
           className="nav-toggle"
-          aria-label="Menü öffnen oder schließen"
+          aria-label="Menü öffnen oder schliessen"
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(o => !o)}
         >

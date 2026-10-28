@@ -32,7 +32,7 @@ export default function KoerperchemieDuftPage() {
           </p>
           <p className="lead">
             Der gleiche Duft riecht auf zehn verschiedenen Menschen zehn verschiedene Arten. Was auf deiner Freundin
-            blumig und frisch wirkt, kann auf dir süßlich und schwer werden. Das ist nicht schlecht – es ist Chemie.
+            blumig und frisch wirkt, kann auf dir süsslich und schwer werden. Das ist nicht schlecht – es ist Chemie.
           </p>
 
           <h2>Die 5 Faktoren, die beeinflussen, wie ein Duft auf dir riecht</h2>
@@ -86,7 +86,7 @@ export default function KoerperchemieDuftPage() {
           </p>
           <ul style={{ marginBottom: '1.5rem' }}>
             <li>Stark gewürzte Speisen (Knoblauch, Zwiebel, Curry) und Alkohol ändern temporär deinen Körpergeruch → Düfte riechen anders</li>
-            <li>Vitamin B12-Mangel und bestimmte Diäten können einen „süßlicheren" oder „saueren" Gesamteindruck erzeugen</li>
+            <li>Vitamin B12-Mangel und bestimmte Diäten können einen „süsslicheren" oder „saueren" Gesamteindruck erzeugen</li>
             <li>Niedriger Blutdruck/Stresslevel ändert Körpertemperatur und damit die Duftentwicklung</li>
           </ul>
           <p style={{ fontSize: '0.9rem', color: '#6b5344', marginBottom: '1.5rem' }}>
@@ -101,7 +101,7 @@ export default function KoerperchemieDuftPage() {
           <ul style={{ marginBottom: '1.5rem' }}>
             <li><strong>Südeuropäer / Afrikanische Abstammung</strong> – typisch saurere Haut → stärkere Basisnoten, schwerer wirkende Düfte</li>
             <li><strong>Nordeuropäer</strong> – tendenziell etwas alkalischere Haut → obere Noten bleiben länger präsent</li>
-            <li><strong>Menschen mit Apokriner Schweißdrüsen-Aktivität</strong> (höher in tropischen Gegenden) – intensivere Körperchemie-Reaktion auf Duftmoleküle</li>
+            <li><strong>Menschen mit Apokriner Schweissdrüsen-Aktivität</strong> (höher in tropischen Gegenden) – intensivere Körperchemie-Reaktion auf Duftmoleküle</li>
           </ul>
           <p style={{ fontSize: '0.9rem', color: '#6b5344', marginBottom: '1.5rem' }}>
             💡 <strong>Praktisch:</strong> Das bedeutet nicht „dieser Duft ist nicht für dich da". Es bedeutet nur:
@@ -117,7 +117,7 @@ export default function KoerperchemieDuftPage() {
             <li><strong>Andere Hautoberfläche</strong> – Sie tragen vielleicht andere Körpercremes, die mit dem Duft interagieren</li>
             <li><strong>Andere Anwendung</strong> – Menge, Anwendungsort, Zeit seit dem Auftragen – alles ändert den Eindruck</li>
             <li><strong>Andere Umgebung</strong> – Temperatur, Luftfeuchtigkeit, Licht beeinflussen die Wahrnehmung</li>
-            <li><strong>Andere Erwartung</strong> – Du erwartest, dass er wie in der Video riecht. Das ist die größte Falle.</li>
+            <li><strong>Andere Erwartung</strong> – Du erwartest, dass er wie in der Video riecht. Das ist die grösste Falle.</li>
           </ol>
 
           <h2>6 praktische Tipps: Deinen perfekten Duft trotz Körperchemie finden</h2>
@@ -280,7 +280,7 @@ export default function KoerperchemieDuftPage() {
               🎯 Nächster Schritt: Finde den perfekten Duft für DEINE Körperchemie
             </p>
             <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
-              Du kennst jetzt deine Körperchemie besser. Der nächste Schritt ist, Düfte zu finden, die speziell auf deinem pH-Wert und deinem Hauttyp großartig wirken.
+              Du kennst jetzt deine Körperchemie besser. Der nächste Schritt ist, Düfte zu finden, die speziell auf deinem pH-Wert und deinem Hauttyp grossartig wirken.
               Nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> – es berücksichtigt deine
               Duftpräferenzen und findet Matches, die speziell für dich funktionieren. Oder <Link href="/duefte" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>durchsuche unseren Katalog</Link> nach Düften,
               die du testen kannst.

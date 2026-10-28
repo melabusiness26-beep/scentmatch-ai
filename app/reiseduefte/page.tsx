@@ -6,7 +6,7 @@ import { destinationsByCategory, CATEGORY_LABELS, CATEGORY_INTRO } from '@/lib/d
 export const metadata: Metadata = {
   title: 'Welcher Duft passt zu deinem Reiseziel?',
   description:
-    'Rom, Karibik oder Schweizer Alpen? Finde den Duft, der zu deinem Traumziel passt. Passende Parfüms für Städtereisen, Berge und Strände – wahrheitsgemäß nach echten Duftnoten.',
+    'Rom, Karibik oder Schweizer Alpen? Finde den Duft, der zu deinem Traumziel passt. Passende Parfüms für Städtereisen, Berge und Strände – wahrheitsgemäss nach echten Duftnoten.',
   alternates: { canonical: 'https://auressa.ch/reiseduefte' },
   openGraph: {
     title: 'Welcher Duft passt zu deinem Reiseziel? | Auressa',

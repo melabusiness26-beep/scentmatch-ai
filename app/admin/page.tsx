@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { isAdminUser } from '@/lib/admin-role';
 
-const FAMILIES = [['clean', 'Clean / Frisch'], ['gourmand', 'Gourmand / Süß'], ['woody', 'Woody / Holzig'], ['floral', 'Floral / Blumig']] as const;
+const FAMILIES = [['clean', 'Clean / Frisch'], ['gourmand', 'Gourmand / Süss'], ['woody', 'Woody / Holzig'], ['floral', 'Floral / Blumig']] as const;
 const GENDERS = ['Women', 'Men', 'Unisex'] as const;
 const SEASONS = ['Frühling', 'Sommer', 'Herbst/Winter', 'Winter', 'Ganzjährig'] as const;
 const OCCASIONS = ['Alltag', 'Büro', 'Date', 'Abend'] as const;

@@ -50,7 +50,7 @@ export default function DuftkolektionMinimal() {
             Minimalistische Duftkollektion
           </h1>
           <p style={{ fontSize: '16px', color: 'rgba(250,247,242,0.75)', margin: 0, lineHeight: 1.6 }}>
-            Du brauchst nicht 50 Düfte, um gut zu riechen. Drei großartige Düfte reichen aus – wenn du weißt, welche drei. Das 3er-Framework.
+            Du brauchst nicht 50 Düfte, um gut zu riechen. Drei grossartige Düfte reichen aus – wenn du weisst, welche drei. Das 3er-Framework.
           </p>
         </div>
       </section>
@@ -66,13 +66,13 @@ export default function DuftkolektionMinimal() {
             Warum weniger besser ist
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3728', marginBottom: '1.2rem' }}>
-            Es gibt zwei Arten von Duft-Sammlern: Minimalisten und Enthusiasten. Ein Enthusiast hat 20+ Düfte – eine für jede Stimmung, jeden Tag, jede Jahreszeit. Ein Minimalist hat 3. Beide sind vollkommen valide. Aber der Minimalist hat einen großen Vorteil: Er kennt seine Düfte wirklich. Er weiß, wann welcher Duft passt. Er hat nicht zu viele, um sie regelmäßig zu tragen.
+            Es gibt zwei Arten von Duft-Sammlern: Minimalisten und Enthusiasten. Ein Enthusiast hat 20+ Düfte – eine für jede Stimmung, jeden Tag, jede Jahreszeit. Ein Minimalist hat 3. Beide sind vollkommen valide. Aber der Minimalist hat einen grossen Vorteil: Er kennt seine Düfte wirklich. Er weiss, wann welcher Duft passt. Er hat nicht zu viele, um sie regelmässig zu tragen.
           </p>
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3728', marginBottom: '1.2rem' }}>
-            Die Realität: Die meisten Menschen haben zu viele Düfte und tragen sie nicht. Du kaufst einen neuen Duft, bist begeistert, trägst ihn zwei Wochen lang, dann kommt eine neue Obsession, und der erste Duft sitzt in der Ecke. Nach zwei Jahren hast du 20 Flakons, von denen du vielleicht 3 regelmäßig trägst.
+            Die Realität: Die meisten Menschen haben zu viele Düfte und tragen sie nicht. Du kaufst einen neuen Duft, bist begeistert, trägst ihn zwei Wochen lang, dann kommt eine neue Obsession, und der erste Duft sitzt in der Ecke. Nach zwei Jahren hast du 20 Flakons, von denen du vielleicht 3 regelmässig trägst.
           </p>
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3728' }}>
-            Ein minimalistisches 3er-Framework bedeutet: Du hast genug für jeden Kontext, aber nicht so viel, dass es überwältigend wird. Du brauchst nicht mehr auszuwählen. Du weißt einfach: Montag im Büro = Duft #1. Freitagabend = Duft #2. Juli = Duft #3. Das ist Klarheit.
+            Ein minimalistisches 3er-Framework bedeutet: Du hast genug für jeden Kontext, aber nicht so viel, dass es überwältigend wird. Du brauchst nicht mehr auszuwählen. Du weisst einfach: Montag im Büro = Duft #1. Freitagabend = Duft #2. Juli = Duft #3. Das ist Klarheit.
           </p>
         </section>
 
@@ -100,7 +100,7 @@ export default function DuftkolektionMinimal() {
               Büro, Einkaufen, Alltag – 80% deines Lebens
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              Das ist der Duft, den du am häufigsten trägst. Der sollte dezent, angenehm und nicht zu auffällig sein. Er sollte 6-8 Stunden halten und in jedem Kontext funktionieren: Büro, Coffee-Shop, Supermarkt. Nicht zu süß, nicht zu würzig – einfach immer richtig.
+              Das ist der Duft, den du am häufigsten trägst. Der sollte dezent, angenehm und nicht zu auffällig sein. Er sollte 6-8 Stunden halten und in jedem Kontext funktionieren: Büro, Coffee-Shop, Supermarkt. Nicht zu süss, nicht zu würzig – einfach immer richtig.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
               <strong>Frauen-Beispiele:</strong> Allure von Chanel, Dolce Gabbana Light Blue, Jo Malone Wood Sage Sea Salt.
@@ -195,7 +195,7 @@ export default function DuftkolektionMinimal() {
             </p>
             <div style={{ marginBottom: '1rem' }}>
               <p style={{ fontSize: '0.9rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.2rem' }}>
-                Alltag: Allure Sensuelle (klassisch, süß, zeitlos)
+                Alltag: Allure Sensuelle (klassisch, süss, zeitlos)
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: '0.2rem 0 0 0' }}>
                 Warum: Dezent, angenehm, funktioniert überall. Tägliches Rückgrat.
@@ -317,7 +317,7 @@ export default function DuftkolektionMinimal() {
               ❌ Alle drei sind ähnlich
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', margin: 0 }}>
-              Drei süße Florals = Redundanz. Du trägst den ersten und vergisst die anderen zwei. Die beste 3er-Kollektion hat Kontrast.
+              Drei süsse Florals = Redundanz. Du trägst den ersten und vergisst die anderen zwei. Die beste 3er-Kollektion hat Kontrast.
             </p>
           </div>
 
@@ -361,7 +361,7 @@ export default function DuftkolektionMinimal() {
               ❌ Du fragst nicht nach deinem Typ
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', margin: 0 }}>
-              Männlich, weiblich, unisex sind Marketing-Kategorien. Ein großartiger Duft funktioniert für dich, unabhängig davon, wie er vermarktet wird. Ignoriere das Geschlecht und wähle nach Charakter.
+              Männlich, weiblich, unisex sind Marketing-Kategorien. Ein grossartiger Duft funktioniert für dich, unabhängig davon, wie er vermarktet wird. Ignoriere das Geschlecht und wähle nach Charakter.
             </p>
           </div>
         </section>
@@ -389,7 +389,7 @@ export default function DuftkolektionMinimal() {
               Kann der Alltags-Duft auch der Abend-Duft sein?
             </summary>
             <p style={{ fontSize: '0.9rem', color: '#4a3728', lineHeight: 1.7, marginTop: '0.8rem', margin: '0.8rem 0 0 0' }}>
-              Technisch ja, aber nicht ideal. Ein großartiger Alltags-Duft ist dezent. Im Abend möchtest du oft präsenter sein. Wenn du sparen möchtest, könnte der Alltags-Duft in Eau de Parfum (intensiver dosiert) auch abends funktionieren. Aber ideal ist, sie zu separieren.
+              Technisch ja, aber nicht ideal. Ein grossartiger Alltags-Duft ist dezent. Im Abend möchtest du oft präsenter sein. Wenn du sparen möchtest, könnte der Alltags-Duft in Eau de Parfum (intensiver dosiert) auch abends funktionieren. Aber ideal ist, sie zu separieren.
             </p>
           </details>
 
@@ -407,7 +407,7 @@ export default function DuftkolektionMinimal() {
               Was ist, wenn ich nur einen Duft mag?
             </summary>
             <p style={{ fontSize: '0.9rem', color: '#4a3728', lineHeight: 1.7, marginTop: '0.8rem', margin: '0.8rem 0 0 0' }}>
-              Das ist großartig. Manche Menschen haben einen „Signature-Duft" – einen, den sie immer tragen. Wenn das dich glücklich macht, brauchst du nicht mehr. Das 3er-Framework ist für Menschen, die Vielfalt mögen, aber keine Überflutung.
+              Das ist grossartig. Manche Menschen haben einen „Signature-Duft" – einen, den sie immer tragen. Wenn das dich glücklich macht, brauchst du nicht mehr. Das 3er-Framework ist für Menschen, die Vielfalt mögen, aber keine Überflutung.
             </p>
           </details>
 

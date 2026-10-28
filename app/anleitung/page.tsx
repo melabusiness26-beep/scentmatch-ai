@@ -63,7 +63,7 @@ export default function AnleitungPage() {
             Schritt 1: Lerne die vier Duftfamilien
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>
-            Alle Düfte lassen sich in vier Kategorien einteilen. Wenn du weißt, welche dir gefällt, sparst du 80% der Auswahl:
+            Alle Düfte lassen sich in vier Kategorien einteilen. Wenn du weisst, welche dir gefällt, sparst du 80% der Auswahl:
           </p>
           <div style={{ display: 'grid', gap: '1rem' }}>
             {[
@@ -73,7 +73,7 @@ export default function AnleitungPage() {
               },
               {
                 title: '🍫 Gourmand / Süss',
-                desc: 'Warm, verführerisch, angenehm. Für Menschen, die süße Noten mögen. Beispiel: Vanille, Karamell, Schokolade.'
+                desc: 'Warm, verführerisch, angenehm. Für Menschen, die süsse Noten mögen. Beispiel: Vanille, Karamell, Schokolade.'
               },
               {
                 title: '🌲 Woody / Holzig',
@@ -145,7 +145,7 @@ export default function AnleitungPage() {
             Schritt 4: Wähle dein Budget weise
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>
-            Nicht immer heißt teuer = besser. Hier eine realistische Übersicht:
+            Nicht immer heisst teuer = besser. Hier eine realistische Übersicht:
           </p>
           <div style={{ display: 'grid', gap: '1rem' }}>
             {[
@@ -185,7 +185,7 @@ export default function AnleitungPage() {
           <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
             {[
               'Sich sofort in den Top-Noten verlieben – die verschwinden nach 5 Minuten!',
-              'Zu viel auftragen – weniger ist mehr. Ein bis zwei Sprühstöße reichen.',
+              'Zu viel auftragen – weniger ist mehr. Ein bis zwei Sprühstösse reichen.',
               'Den Duft aufs Klopapier sprühen – sprüh ihn auf deine Haut!',
               'Mehrere Düfte hintereinander testen – warte zwischen den Tests 5–10 Min.',
               'Einen teuren Duft zu Hause nicht testen dürfen (online kaufen) – zu riskant.',

@@ -124,7 +124,7 @@ export default async function SaisonalPage() {
             Warum die Jahreszeit wichtig ist
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', maxWidth: '600px', margin: '0 auto' }}>
-            Ein warmer, intensiver Duft an heißen Sommertagen wirkt erdrückend. Ein frischer, leichter Duft im tiefsten Winter wirkt dünn. Die beste Strategie: Nimm mehrere Düfte, die zusammen die ganze Jahr passen.
+            Ein warmer, intensiver Duft an heissen Sommertagen wirkt erdrückend. Ein frischer, leichter Duft im tiefsten Winter wirkt dünn. Die beste Strategie: Nimm mehrere Düfte, die zusammen die ganze Jahr passen.
           </p>
         </section>
 

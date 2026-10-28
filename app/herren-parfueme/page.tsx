@@ -150,7 +150,7 @@ export default function HerrenParfuemePage() {
                 beschreibung: 'Einfach, clean, unauffällig. Weniger ist mehr.',
                 ideal: 'Fresh, leichte Citrus, Aromatic leicht. Subtil & elegant.',
                 empfehlung: 'Hermès Eau de Gentiane, Jo Malone Grapefruit, Acqua di Parma',
-                vermeiden: 'Schwer, würzig, intensiv, sehr süß'
+                vermeiden: 'Schwer, würzig, intensiv, sehr süss'
               },
               {
                 typ: 'Der Intensiver',
@@ -235,8 +235,8 @@ export default function HerrenParfuemePage() {
                 lösung: 'Herren-Düfte wirken auf männlicher Haut oft intensiver. 2 Sprüher reichen. Nicht mehr.'
               },
               {
-                fehler: 'Zu süß / zu mädchenhaft gehen',
-                lösung: 'Viele moderne Herren-Düfte haben Vanille oder Süße. Das ist ok. Aber wenn du es hässt, wähle würziger/frischer.'
+                fehler: 'Zu süss / zu mädchenhaft gehen',
+                lösung: 'Viele moderne Herren-Düfte haben Vanille oder Süsse. Das ist ok. Aber wenn du es hässt, wähle würziger/frischer.'
               },
               {
                 fehler: 'Nur einen Duft haben',
@@ -266,7 +266,7 @@ export default function HerrenParfuemePage() {
             <li><strong>Dior Sauvage</strong> – Der Klassiker. Jede:r trägt ihn, jede:r akzeptiert ihn.</li>
             <li><strong>Creed Aventus</strong> – Premium, modern, elegant. Der Status-Duft.</li>
             <li><strong>Acqua di Gioia</strong> – Marine, frisch, leicht. Perfekt für entspannt.</li>
-            <li><strong>Tom Ford Ombré Leather</strong> – Sinnlich, maskulin, warm. Für Abends großartig.</li>
+            <li><strong>Tom Ford Ombré Leather</strong> – Sinnlich, maskulin, warm. Für Abends grossartig.</li>
             <li><strong>Versace Pour Homme</strong> – Klassisch, warm, würzig. Ein Klassiker seit Jahren.</li>
             <li><strong>Hermès Eau de Gentiane Blanche</strong> – Frisch, würzig, elegant. Für formal.</li>
             <li><strong>Yves Saint Laurent La Nuit</strong> – Warm, würzig, elegant. Der Abend-Klassiker.</li>
@@ -278,10 +278,10 @@ export default function HerrenParfuemePage() {
 
           <ul style={{ marginBottom: '2rem' }}>
             <li><strong>EdT statt EdP:</strong> Gleicher Duft, aber 40–50% günstiger & perfekt für alltäglich.</li>
-            <li><strong>Budget-Marken:</strong> Armaf, Lattafa haben große Creed/Tom Ford Klone für €20–30.</li>
+            <li><strong>Budget-Marken:</strong> Armaf, Lattafa haben grosse Creed/Tom Ford Klone für €20–30.</li>
             <li><strong>Nische-Marken testen:</strong> Heeley, Maison Margiela sind oft besser & günstiger als Luxus-Marken.</li>
             <li><strong>Outlet / Sales:</strong> Notino, Flaconi – oft 30–50% Rabatt auf Premium-Marken.</li>
-            <li><strong>Größere Flakons kaufen:</strong> 100ml ist günstiger pro ml als 50ml.</li>
+            <li><strong>Grössere Flakons kaufen:</strong> 100ml ist günstiger pro ml als 50ml.</li>
           </ul>
 
           <div style={{

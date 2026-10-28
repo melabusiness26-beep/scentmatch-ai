@@ -106,7 +106,7 @@ export default function FragranceSelectionPage() {
                 questions: [
                   'Frisch & leicht → Zitrus, Minz, Bergamotte (Top-Noten-fokussiert)',
                   'Blumig & elegant → Rose, Jasmin, Nelke (Heart-Noten-fokussiert)',
-                  'Warm & süß → Vanille, Karamell, Amber (Heart/Base-Noten)',
+                  'Warm & süss → Vanille, Karamell, Amber (Heart/Base-Noten)',
                   'Holzig & maskulin → Oud, Sandelholz, Zedernholz (Base-Noten-fokussiert)',
                   'Gewürzig & würzig → Zimt, Pfeffer, Kardamom (intensiv und präsent)'
                 ],
@@ -142,7 +142,7 @@ export default function FragranceSelectionPage() {
                   'Finde 2–3 Düfte, die zu deinem Profil passen (Budget + Typ + Konzentration + Saison)',
                   'Probe: Bestelle online oder kaufe eine 5–10ml Miniatur',
                   'Test: Trag die Probe für 3–5 Tage täglich. Nicht täglich in einem Geschäft riechen.',
-                  'Regel: Nach 5 Tagen: Liebst du ihn noch? Ja → Kaufe die große Flasche. Nein → Weiter suchen.'
+                  'Regel: Nach 5 Tagen: Liebst du ihn noch? Ja → Kaufe die grosse Flasche. Nein → Weiter suchen.'
                 ],
                 action: 'Die 5-Tage-Regel ist Gold. Nicht im Geschäft kaufen – Zuhause testen.',
                 link: 'Unser Quiz starten →'
@@ -152,7 +152,7 @@ export default function FragranceSelectionPage() {
                 title: 'Lagerung & Anwendung optimieren',
                 questions: [
                   '🌡️ Lagerung: Kühl, dunkel, stabil (nicht im Kühlschrank, nicht auf der Fensterbank)',
-                  '🎯 Anwendung: Nach dem Duschen auftragen. 2–3 Sprühstöße auf Puls-Punkte.',
+                  '🎯 Anwendung: Nach dem Duschen auftragen. 2–3 Sprühstösse auf Puls-Punkte.',
                   '⏰ Retouch: Nach 4–5 Stunden wenn nötig (der Duft hält länger mit richtigem Auftrag)',
                   '🧴 Sorge für: Richtige Lagerung verdoppelt die Duft-Lebensdauer'
                 ],
@@ -166,7 +166,7 @@ export default function FragranceSelectionPage() {
                   '👑 Signature-Duft: Dein 1. Duft ist dein Lieblings-Duft – den trägst du überall',
                   '📚 Sammlung: Mit Zeit kaufst du 2–3 weitere Düfte für verschiedene Jahreszeiten/Anlässe',
                   '🎨 Layering: Du kombinierst Düfte für persönliche Kreativität und Längere Haltbarkeit',
-                  '💰 Smart kaufen: Nutze Proben/Miniaturen für neue Entdeckungen – nicht sofort große Flaschen'
+                  '💰 Smart kaufen: Nutze Proben/Miniaturen für neue Entdeckungen – nicht sofort grosse Flaschen'
                 ],
                 action: 'Beginne mit 1. Dann, wenn du ihn liebst, erweitere deine Sammlung langsam.'
               }
@@ -248,8 +248,8 @@ export default function FragranceSelectionPage() {
               },
               {
                 error: 'Zu viel Duft auftragen',
-                why: 'Wenn du zu viel aufträgst, kann deine Nase den Duft nicht genießen. Es wirkt aufdringlich und hält künstlich kurz.',
-                solution: '2–3 Sprühstöße auf Puls-Punkte reichen. Weniger ist mehr.'
+                why: 'Wenn du zu viel aufträgst, kann deine Nase den Duft nicht geniessen. Es wirkt aufdringlich und hält künstlich kurz.',
+                solution: '2–3 Sprühstösse auf Puls-Punkte reichen. Weniger ist mehr.'
               },
               {
                 error: 'Teuer = Besser',

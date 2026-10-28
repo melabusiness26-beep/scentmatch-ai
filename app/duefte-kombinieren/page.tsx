@@ -160,7 +160,7 @@ export default function FragranceLayeringPage() {
                 strategy: 'Basis + Akzent (das „Pedant-Rezept")',
                 desc: 'Wähle einen starken Basis-Duft (deine Lieblingsduft) und einen kleinen Akzent-Duft (20 % Anteil).',
                 why: 'Der Basis-Duft bleibt erkennbar, der Akzent verleiht ihm eine neue Facette – kontrolliert und elegant.',
-                example: '💡 Beispiel: Black Opium (deine Lieblingsduft) + ein leichter Zitrus-Spritz (Neroli/Zitrone) = süß-frisch.'
+                example: '💡 Beispiel: Black Opium (deine Lieblingsduft) + ein leichter Zitrus-Spritz (Neroli/Zitrone) = süss-frisch.'
               },
               {
                 strategy: 'Jahreszeit-Layering',
@@ -243,7 +243,7 @@ export default function FragranceLayeringPage() {
               {
                 step: 4,
                 title: 'Akzent hinzufügen',
-                desc: 'Sprüh den Akzent-Duft LEICHT (nur 1 Sprühstoß) auf die gleiche Stelle oder ein anderes Pulse Point. Weniger ist mehr!'
+                desc: 'Sprüh den Akzent-Duft LEICHT (nur 1 Sprühstoss) auf die gleiche Stelle oder ein anderes Pulse Point. Weniger ist mehr!'
               },
               {
                 step: 5,
@@ -304,10 +304,10 @@ export default function FragranceLayeringPage() {
           <div style={{ display: 'grid', gap: '1.5rem' }}>
             {[
               {
-                combo: 'Süß & Minz (sommerlich)',
-                basis: 'Black Opium oder ähnlich süß',
+                combo: 'Süss & Minz (sommerlich)',
+                basis: 'Black Opium oder ähnlich süss',
                 accent: 'Leichter Minz-Duft oder Zitrus',
-                result: 'Frische Süße – perfekt für warme Tage'
+                result: 'Frische Süsse – perfekt für warme Tage'
               },
               {
                 combo: 'Holz & Oud (elegant)',
@@ -319,7 +319,7 @@ export default function FragranceLayeringPage() {
                 combo: 'Floral & Vanille (klassisch)',
                 basis: 'Rosenduft oder floraler Duft',
                 accent: 'Vanille oder Amber-Duft',
-                result: 'Warme, feminine Süße – zeitlos'
+                result: 'Warme, feminine Süsse – zeitlos'
               },
               {
                 combo: 'Zitrus & Gewürz (lebendig)',
@@ -331,7 +331,7 @@ export default function FragranceLayeringPage() {
                 combo: 'Sanfte Gourmand (Herbst)',
                 basis: 'Gourmand-Duft (Karamell, Schokolade)',
                 accent: 'Leichter Vanille oder Mandel-Duft',
-                result: 'Köstlicher Herbstduft – warm und süß'
+                result: 'Köstlicher Herbstduft – warm und süss'
               }
             ].map((item, idx) => (
               <div

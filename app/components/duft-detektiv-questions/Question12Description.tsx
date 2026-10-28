@@ -23,7 +23,7 @@ export default function Question12Description({ answers, handleAnswer }: Questio
       <textarea
         value={answers.description}
         onChange={(e) => handleAnswer('description', e.target.value)}
-        placeholder="z. B. frisch, zitronig, vanillig, würzig, holzig, blumig, süßlich..."
+        placeholder="z. B. frisch, zitronig, vanillig, würzig, holzig, blumig, süsslich..."
         style={{
           width: '100%',
           minHeight: '120px',

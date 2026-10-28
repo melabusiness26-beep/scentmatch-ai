@@ -246,7 +246,7 @@ export default function WieAuressaFunktioniert() {
                 Hassnote-Abzug: −25
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: 0 }}>
-                Wenn der Duft deine Hassnote enthält: großer Abzug.
+                Wenn der Duft deine Hassnote enthält: grosser Abzug.
               </p>
             </div>
           </div>

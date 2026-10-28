@@ -63,7 +63,7 @@ export default function FragranceNotesGuidePage() {
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3020', marginBottom: '1.5rem' }}>
             Jeder Duft besteht aus <strong>drei Ebenen von Noten</strong>, die sich im Laufe des Tages offenbaren.
             Dies nennt sich die <strong>Duftnoten-Pyramide</strong>. Wenn du verstehst, wie diese Noten funktionieren,
-            wirst du nicht nur deinen Duft besser genießen – du wirst auch WARUM ein Duft an dir riecht, wie er riecht.
+            wirst du nicht nur deinen Duft besser geniessen – du wirst auch WARUM ein Duft an dir riecht, wie er riecht.
           </p>
         </section>
 
@@ -107,7 +107,7 @@ export default function FragranceNotesGuidePage() {
                   Dauer: 5–15 Minuten | Intensität: Sehr frisch & lebhaft
                 </p>
                 <p style={{ color: '#6b5344', margin: 0, lineHeight: 1.6, fontSize: '0.95rem' }}>
-                  Die ersten Eindrücke, die deine Nase nach dem Auftragen riecht. Top-Noten sind flüchtig und verdampfen schnell – aber sie sind der „Hook", der dich sofort anzieht oder abstoßt.
+                  Die ersten Eindrücke, die deine Nase nach dem Auftragen riecht. Top-Noten sind flüchtig und verdampfen schnell – aber sie sind der „Hook", der dich sofort anzieht oder abstosst.
                 </p>
               </div>
 
@@ -181,25 +181,25 @@ export default function FragranceNotesGuidePage() {
               {
                 time: '8:00 AM - Gerade aufgetragen',
                 notes: 'Top-Noten',
-                desc: 'Coffee & Almond – frisch, belebend, leicht süß. Das erste, was du und andere riechen.',
+                desc: 'Coffee & Almond – frisch, belebend, leicht süss. Das erste, was du und andere riechen.',
                 intensity: '⭐⭐⭐⭐⭐'
               },
               {
                 time: '8:15 AM - Nach 15 Minuten',
                 notes: 'Top-Noten verabschieden sich',
-                desc: 'Der Coffee-Punch verschwindet. Der süße, warme Kern tritt hervor.',
+                desc: 'Der Coffee-Punch verschwindet. Der süsse, warme Kern tritt hervor.',
                 intensity: '⭐⭐⭐⭐'
               },
               {
                 time: '8:30 AM–1:00 PM - 30 Min – 5 Stunden',
                 notes: 'Heart-Noten (die beste Stunde)',
-                desc: 'Vanilla, Licorice & Bourbon – warm, süß, sinnlich. Das ist der Peak – warum du den Duft liebst.',
+                desc: 'Vanilla, Licorice & Bourbon – warm, süss, sinnlich. Das ist der Peak – warum du den Duft liebst.',
                 intensity: '⭐⭐⭐⭐⭐'
               },
               {
                 time: '1:00 PM–4:00 PM - 5–8 Stunden',
                 notes: 'Heart-Noten langsam verdunkelnd',
-                desc: 'Die Süße wird subtiler. Holz- und Moschus-Noten treten auf. Der Duft wird älter, erwachsener.',
+                desc: 'Die Süsse wird subtiler. Holz- und Moschus-Noten treten auf. Der Duft wird älter, erwachsener.',
                 intensity: '⭐⭐⭐⭐'
               },
               {
@@ -270,7 +270,7 @@ export default function FragranceNotesGuidePage() {
               {
                 category: 'HEART-NOTEN (Gewürz)',
                 examples: ['Zimt', 'Vanille', 'Amber', 'Karamell', 'Kakao'],
-                desc: 'Warm, süß, würzig. Geben Weichheit und Wärme. Halten lange.'
+                desc: 'Warm, süss, würzig. Geben Weichheit und Wärme. Halten lange.'
               },
               {
                 category: 'BASE-NOTEN (Holz)',
@@ -343,11 +343,11 @@ export default function FragranceNotesGuidePage() {
               },
               {
                 question: 'Du möchtest einen Duft, der sich tagsüber verändert?',
-                answer: 'Wähle einen Duft mit unterschiedlichen Noten-Schichten. Ein Duft mit starken Top-, Heart- und Base-Noten bietet eine „Reise" über den Tag – nicht monoton. Ideal zum Entdecken: Düfte mit kontrastreichen Noten (z. B. Zitrus-Top + süßer Heart + würziger Base).'
+                answer: 'Wähle einen Duft mit unterschiedlichen Noten-Schichten. Ein Duft mit starken Top-, Heart- und Base-Noten bietet eine „Reise" über den Tag – nicht monoton. Ideal zum Entdecken: Düfte mit kontrastreichen Noten (z. B. Zitrus-Top + süsser Heart + würziger Base).'
               },
               {
                 question: 'Du willst immer den gleichen Duft, ohne Veränderung?',
-                answer: 'Suche Düfte, wo alle Ebenen ähnlich sind – z. B. komplett süß (süße Top + süße Heart + süße Base). Oder komplett holzig (bergamotte-Top + waldiger Heart + tiefholziger Base). Konsistenz in den Noten = konsistenter Duft über den Tag.'
+                answer: 'Suche Düfte, wo alle Ebenen ähnlich sind – z. B. komplett süss (süsse Top + süsse Heart + süsse Base). Oder komplett holzig (bergamotte-Top + waldiger Heart + tiefholziger Base). Konsistenz in den Noten = konsistenter Duft über den Tag.'
               }
             ].map((item, idx) => (
               <div key={idx}>
@@ -386,7 +386,7 @@ export default function FragranceNotesGuidePage() {
               },
               {
                 title: 'Top-Noten überspringen?',
-                tip: 'Manche Düfte haben nicht-großartige Top-Noten. Tipp: Frag im Geschäft, ob du eine Probe nehmen kannst und diese 15 Min zu Hause probierst – so erlebst du direkt die Heart-Noten und sparst Zeit.'
+                tip: 'Manche Düfte haben nicht-grossartige Top-Noten. Tipp: Frag im Geschäft, ob du eine Probe nehmen kannst und diese 15 Min zu Hause probierst – so erlebst du direkt die Heart-Noten und sparst Zeit.'
               },
               {
                 title: 'Duftnoten-Jahreszeiten',

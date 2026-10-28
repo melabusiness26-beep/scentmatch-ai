@@ -28,7 +28,7 @@ export default function DuefteFuerDieArbeitPage() {
           <h1 className="detail-title">Düfte für die Arbeit</h1>
           <p className="lead">
             Der Duft, der am Wochenende perfekt ist – zu Hause oder auf der Party – kann im Büro problematisch werden.
-            Im engen Raum mit Kolleg:innen ist ein zu schwerer, zu starker oder zu süßer Duft nicht nur aufdringlich,
+            Im engen Raum mit Kolleg:innen ist ein zu schwerer, zu starker oder zu süsser Duft nicht nur aufdringlich,
             sondern kann auch Kopfschmerzen verursachen.
           </p>
           <p className="lead">
@@ -51,7 +51,7 @@ export default function DuefteFuerDieArbeitPage() {
                 aber nicht, wenn du den Raum verlässt. Nicht mehr als 2–3 Meter Radius.
               </li>
               <li style={{ marginBottom: '1rem' }}>
-                <strong>Sauber & frisch:</strong> Schwere, würzige oder sehr süße Düfte wirken im Büro schnell überwältigend.
+                <strong>Sauber & frisch:</strong> Schwere, würzige oder sehr süsse Düfte wirken im Büro schnell überwältigend.
                 Frische, helle, neutrale Düfte wirken professionell.
               </li>
               <li style={{ marginBottom: '1rem' }}>
@@ -83,7 +83,7 @@ export default function DuefteFuerDieArbeitPage() {
                 beispiele: 'Chanel No. 5, Dior J\'adore, Bleu de Chanel, Hermès eau de Gentiane Blanche',
                 intensitaet: 'EdT oder sehr sparsam EdP (1–2 Sprüher)',
                 noten: 'Citrus, leichte Floral, grüne Noten, klassische Holzer',
-                vermeiden: 'Sehr süß, sehr würzig, sehr modern (Nischemarken), Gourmand'
+                vermeiden: 'Sehr süss, sehr würzig, sehr modern (Nischemarken), Gourmand'
               },
               {
                 typ: 'Kreatives / Modernes Büro',
@@ -92,7 +92,7 @@ export default function DuefteFuerDieArbeitPage() {
                 beispiele: 'Diptyque L\'Eau Rose, Byredo Gypsy Floral, Heeley Sel Marin, Maison Francis Kurkdjian A la Rose',
                 intensitaet: 'EdT oder moderate EdP (2–3 Sprüher)',
                 noten: 'Frische Blüten, grüne Noten, würzig-floral, marine Noten',
-                vermeiden: 'Sehr schwere Orientalisch, sehr Nischig (die Kollegen kennen die Marke nicht), sehr süß'
+                vermeiden: 'Sehr schwere Orientalisch, sehr Nischig (die Kollegen kennen die Marke nicht), sehr süss'
               },
               {
                 typ: 'Casual / Remote-Büro',
@@ -231,7 +231,7 @@ export default function DuefteFuerDieArbeitPage() {
               {
                 fehler: 'Zu viel Duft auftragen (3+ Sprüher)',
                 warum: 'Im kleinen Büro wird das schnell erdrückend. Deine Kolleg:innen fahren Kopfschmerzen. Reputationsschaden.',
-                lösung: 'Max 1–2 Sprüher. Teste mit einer Kollegin: „Ist das ok?" Die Antwort ist dein Maßstab.'
+                lösung: 'Max 1–2 Sprüher. Teste mit einer Kollegin: „Ist das ok?" Die Antwort ist dein Massstab.'
               },
               {
                 fehler: 'EdP statt EdT tragen',
@@ -239,7 +239,7 @@ export default function DuefteFuerDieArbeitPage() {
                 lösung: 'Nutz EdT (4–6 Stunden). Perfect für Büro. Der Duft verfliegt bis Feierabend.'
               },
               {
-                fehler: 'Sehr süße oder sehr würzige Düfte tragen',
+                fehler: 'Sehr süsse oder sehr würzige Düfte tragen',
                 warum: 'Gourmand (Vanille, Karamell) & starke Orientalisch wirken im Büro schnell überwältigend & ablenkend.',
                 lösung: 'Wähle frische, saubere Düfte. Zitrus, grüne Noten, leichte Blüte. Bewährt im Büro.'
               },

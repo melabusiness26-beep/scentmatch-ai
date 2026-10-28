@@ -94,7 +94,7 @@ export const scentNotes: ScentNote[] = [
     effect:
       'Oud wirkt luxuriös, warm und selbstbewusst. Es entfaltet sich am besten in kühleren Monaten und am Abend und sorgt für lange Haltbarkeit und kräftige Projektion.',
     pairsWith:
-      'Oud harmoniert mit Rose (der klassische Rose-Oud-Akkord), mit Safran, Amber, Leder sowie süßen Noten wie Vanille und Dattel.',
+      'Oud harmoniert mit Rose (der klassische Rose-Oud-Akkord), mit Safran, Amber, Leder sowie süssen Noten wie Vanille und Dattel.',
     synonyms: ['oud', 'agarholz']
   },
   {
@@ -104,7 +104,7 @@ export const scentNotes: ScentNote[] = [
     short: 'Warm, süss und cremig – die wohl beliebteste Basisnote für gemütliche Düfte.',
     metaTitle: 'Vanille in Parfums: Duft, Wirkung und passende Düfte | Auressa',
     metaDescription:
-      'Vanille in Parfums: Wie riecht die warme, süße Note, woher kommt sie und welche Düfte mit Vanille passen zu dir?',
+      'Vanille in Parfums: Wie riecht die warme, süsse Note, woher kommt sie und welche Düfte mit Vanille passen zu dir?',
     intro:
       'Vanille ist eine der beliebtesten und vertrautesten Duftnoten und das Herzstück vieler süsser, gourmandiger Parfums.',
     smell:
@@ -167,14 +167,14 @@ export const scentNotes: ScentNote[] = [
     slug: 'jasmin',
     image: '/notes/jasmin.jpg',
     name: 'Jasmin',
-    short: 'Üppig, weiß-blumig und sinnlich – eine der wichtigsten Blütennoten der Parfümerie.',
+    short: 'Üppig, weiss-blumig und sinnlich – eine der wichtigsten Blütennoten der Parfümerie.',
     metaTitle: 'Jasmin in Parfums: Duft, Wirkung und passende Düfte | Auressa',
     metaDescription:
-      'Jasmin in Parfums: Wie riecht die sinnliche weiße Blütennote, woher kommt sie und welche Düfte mit Jasmin passen zu dir?',
+      'Jasmin in Parfums: Wie riecht die sinnliche weisse Blütennote, woher kommt sie und welche Düfte mit Jasmin passen zu dir?',
     intro:
       'Jasmin gilt als „König der Blüten" und ist eine der wichtigsten und edelsten floralen Noten der Parfümerie.',
     smell:
-      'Jasmin riecht intensiv weiß-blumig, süß und sinnlich, mit einer warmen, leicht animalisch-indolischen Facette, die ihn lebendig und verführerisch macht.',
+      'Jasmin riecht intensiv weiss-blumig, süss und sinnlich, mit einer warmen, leicht animalisch-indolischen Facette, die ihn lebendig und verführerisch macht.',
     origin:
       'Die Blüten werden von Hand gepflückt, meist früh am Morgen, wenn der Duft am stärksten ist. Wichtige Anbaugebiete sind Indien, Ägypten und das südfranzösische Grasse. Da sehr viele Blüten für wenig Öl nötig sind, ist Jasmin kostbar.',
     family:
@@ -182,7 +182,7 @@ export const scentNotes: ScentNote[] = [
     effect:
       'Jasmin wirkt elegant, sinnlich und warm. Er eignet sich ganzjährig, besonders für Frühling und laue Abende, und gibt Düften Fülle und Strahlkraft.',
     pairsWith:
-      'Jasmin harmoniert mit Rose und Tuberose für opulente Blütensträuße, mit Bergamotte für Frische und mit Sandelholz, Vanille und Moschus für eine warme Basis.',
+      'Jasmin harmoniert mit Rose und Tuberose für opulente Blütensträusse, mit Bergamotte für Frische und mit Sandelholz, Vanille und Moschus für eine warme Basis.',
     synonyms: ['jasmin', 'jasmine', 'sambac']
   },
   {
@@ -194,13 +194,13 @@ export const scentNotes: ScentNote[] = [
     metaDescription:
       'Rose in Parfums: Wie riecht die vielschichtige Blütennote, woher kommt sie und welche Düfte mit Rose passen zu dir?',
     intro:
-      'Rose ist die wohl bekannteste Blütennote überhaupt und reicht von frisch-grün bis tief und marmeladig-süß.',
+      'Rose ist die wohl bekannteste Blütennote überhaupt und reicht von frisch-grün bis tief und marmeladig-süss.',
     smell:
       'Rose riecht blumig und vielschichtig: mal frisch und zitrisch-grün, mal samtig, honigartig und tief. Echte Rose hat zudem eine leicht würzige, fast pfeffrige Facette.',
     origin:
       'Zwei Rosenarten sind besonders wichtig: die Damaszener-Rose (vor allem aus Bulgarien und der Türkei) und die Mai-Rose (Centifolia) aus Grasse. Für ein einziges Gramm Rosenöl sind sehr viele Blüten nötig, was Rose wertvoll macht.',
     family:
-      'Rose gehört zur floralen Duftfamilie, ist aber äußerst wandelbar und Bestandteil floraler, würziger, fruchtiger und orientalischer Düfte – für Damen wie für Herren.',
+      'Rose gehört zur floralen Duftfamilie, ist aber äusserst wandelbar und Bestandteil floraler, würziger, fruchtiger und orientalischer Düfte – für Damen wie für Herren.',
     effect:
       'Rose wirkt je nach Komposition romantisch und klassisch oder modern und kraftvoll. Sie funktioniert ganzjährig und passt zu fast jedem Anlass.',
     pairsWith:
@@ -218,7 +218,7 @@ export const scentNotes: ScentNote[] = [
     intro:
       'Sandelholz zählt zu den edelsten und vertrautesten Holznoten der Parfümerie und gibt vielen Düften ihre warme, cremige Tiefe.',
     smell:
-      'Sandelholz riecht weich, cremig und leicht milchig, mit einer warmen, holzig-balsamischen und dezent süßen Facette. Es wirkt rund und beruhigend, niemals scharf oder kratzig.',
+      'Sandelholz riecht weich, cremig und leicht milchig, mit einer warmen, holzig-balsamischen und dezent süssen Facette. Es wirkt rund und beruhigend, niemals scharf oder kratzig.',
     origin:
       'Das wertvolle Öl stammt aus dem Kernholz des Sandelbaums, traditionell aus Mysore in Indien, heute auch nachhaltig aus Australien. Weil die Bäume viele Jahre wachsen müssen, ist echtes Sandelholz selten und kostbar; oft kommen hochwertige Sandelholz-Akkorde zum Einsatz.',
     family:
@@ -226,43 +226,43 @@ export const scentNotes: ScentNote[] = [
     effect:
       'Sandelholz wirkt warm, sinnlich und ausgleichend. Es eignet sich ganzjährig, besonders für Herbst und Winter sowie für ruhige Abende, und sorgt für gute Haltbarkeit und einen hautnahen, einhüllenden Charakter.',
     pairsWith:
-      'Sandelholz harmoniert mit Rose und Jasmin für florale Wärme, mit Vanille und Tonkabohne für cremige Süße sowie mit Zedernholz und Vetiver für holzige Tiefe.',
+      'Sandelholz harmoniert mit Rose und Jasmin für florale Wärme, mit Vanille und Tonkabohne für cremige Süsse sowie mit Zedernholz und Vetiver für holzige Tiefe.',
     synonyms: ['sandelholz', 'sandalwood', 'santal']
   },
   {
     slug: 'tonkabohne',
     image: '/notes/tonkabohne.jpg',
     name: 'Tonkabohne',
-    short: 'Warm, süß und mandelig – eine gemütliche Basisnote zwischen Vanille und Karamell.',
+    short: 'Warm, süss und mandelig – eine gemütliche Basisnote zwischen Vanille und Karamell.',
     metaTitle: 'Tonkabohne in Parfums: Duft, Wirkung und passende Düfte | Auressa',
     metaDescription:
-      'Tonkabohne in Parfums: Wie riecht die warme, süße Note, woher kommt sie und welche Düfte mit Tonkabohne passen zu dir?',
+      'Tonkabohne in Parfums: Wie riecht die warme, süsse Note, woher kommt sie und welche Düfte mit Tonkabohne passen zu dir?',
     intro:
-      'Die Tonkabohne ist eine der beliebtesten warmen Basisnoten und das gemütliche Herz vieler süßer und orientalischer Düfte.',
+      'Die Tonkabohne ist eine der beliebtesten warmen Basisnoten und das gemütliche Herz vieler süsser und orientalischer Düfte.',
     smell:
-      'Tonkabohne riecht warm und süß, mit Facetten von Vanille, Mandel, Karamell und Heu sowie einem leicht würzigen, mandelig-balsamischen Unterton. Der Eindruck ist behaglich und einhüllend.',
+      'Tonkabohne riecht warm und süss, mit Facetten von Vanille, Mandel, Karamell und Heu sowie einem leicht würzigen, mandelig-balsamischen Unterton. Der Eindruck ist behaglich und einhüllend.',
     origin:
-      'Gewonnen wird sie aus dem Samen des südamerikanischen Tonkabaums. Der charakteristische Duft entsteht durch den Inhaltsstoff Cumarin, der den typisch warmen, heuartig-süßen Charakter ausmacht.',
+      'Gewonnen wird sie aus dem Samen des südamerikanischen Tonkabaums. Der charakteristische Duft entsteht durch den Inhaltsstoff Cumarin, der den typisch warmen, heuartig-süssen Charakter ausmacht.',
     family:
-      'Tonkabohne gehört zur gourmandigen und orientalischen Duftfamilie und rundet viele süße, holzige und würzige Kompositionen weich ab.',
+      'Tonkabohne gehört zur gourmandigen und orientalischen Duftfamilie und rundet viele süsse, holzige und würzige Kompositionen weich ab.',
     effect:
       'Tonkabohne wirkt gemütlich, sinnlich und tröstlich. Sie eignet sich besonders für Herbst und Winter sowie für gemütliche Abende und macht Düfte tragefreundlich und einladend.',
     pairsWith:
-      'Tonkabohne passt zu Vanille und Karamell für süße Gourmands, zu Lavendel und Tabak für klassische Wärme sowie zu Sandelholz und Amber für eine weiche, orientalische Basis.',
+      'Tonkabohne passt zu Vanille und Karamell für süsse Gourmands, zu Lavendel und Tabak für klassische Wärme sowie zu Sandelholz und Amber für eine weiche, orientalische Basis.',
     synonyms: ['tonkabohne', 'tonka', 'tonka bean']
   },
   {
     slug: 'patchouli',
     image: '/notes/patchouli.jpg',
     name: 'Patchouli',
-    short: 'Erdig, dunkel und leicht süßlich – eine charaktervolle, langlebige Basisnote.',
+    short: 'Erdig, dunkel und leicht süsslich – eine charaktervolle, langlebige Basisnote.',
     metaTitle: 'Patchouli in Parfums: Duft, Wirkung und passende Düfte | Auressa',
     metaDescription:
       'Patchouli in Parfums: Wie riecht die erdig-holzige Note, woher kommt sie und welche Düfte mit Patchouli passen zu dir?',
     intro:
       'Patchouli ist eine unverwechselbare, charakterstarke Note, die modernen wie klassischen Düften Tiefe und Halt verleiht.',
     smell:
-      'Patchouli riecht erdig und dunkel, mit holzigen, leicht süßlichen und kampferartigen Facetten. In moderner, „aufgeräumter" Form (oft als Patchouli-Herz) wirkt es schokoladig-samtig und weniger rustikal als das klassische Patchouli-Öl.',
+      'Patchouli riecht erdig und dunkel, mit holzigen, leicht süsslichen und kampferartigen Facetten. In moderner, „aufgeräumter" Form (oft als Patchouli-Herz) wirkt es schokoladig-samtig und weniger rustikal als das klassische Patchouli-Öl.',
     origin:
       'Gewonnen wird Patchouli aus den getrockneten und fermentierten Blättern einer tropischen Pflanze aus der Familie der Lippenblütler, vor allem aus Indonesien. Die Blätter werden destilliert; das Öl reift mit der Zeit nach und wird runder.',
     family:
@@ -270,7 +270,7 @@ export const scentNotes: ScentNote[] = [
     effect:
       'Patchouli wirkt sinnlich, erdverbunden und souverän. Es sorgt für sehr gute Haltbarkeit, eignet sich besonders für Herbst und Winter sowie für den Abend und gibt Düften einen unverwechselbaren Charakter.',
     pairsWith:
-      'Patchouli harmoniert mit Rose für moderne Chypre-Düfte, mit Vanille und Karamell für süße „Gourmand-Patchouli", mit Zitrus für Frische sowie mit Amber und Leder für Tiefe.',
+      'Patchouli harmoniert mit Rose für moderne Chypre-Düfte, mit Vanille und Karamell für süsse „Gourmand-Patchouli", mit Zitrus für Frische sowie mit Amber und Leder für Tiefe.',
     synonyms: ['patchouli', 'patchuli']
   },
   {
@@ -284,15 +284,15 @@ export const scentNotes: ScentNote[] = [
     intro:
       'Moschus ist eine der wichtigsten Basisnoten der Parfümerie – oft kaum bewusst wahrgenommen, aber prägend für den weichen, „sauberen" Eindruck vieler Düfte.',
     smell:
-      'Moschus riecht weich, warm und hautnah, je nach Art sauber-pudrig (weißer Moschus), cremig oder leicht animalisch-sinnlich. Er wirkt einhüllend und gibt Düften einen vertrauten Wäsche-frisch-Charakter.',
+      'Moschus riecht weich, warm und hautnah, je nach Art sauber-pudrig (weisser Moschus), cremig oder leicht animalisch-sinnlich. Er wirkt einhüllend und gibt Düften einen vertrauten Wäsche-frisch-Charakter.',
     origin:
-      'Früher stammte Moschus von Tieren – das ist heute aus Tierschutzgründen verboten. Moderner Moschus wird ausschließlich synthetisch und tierfrei hergestellt; verschiedene Moschus-Moleküle erzeugen saubere, cremige oder fruchtige Nuancen.',
+      'Früher stammte Moschus von Tieren – das ist heute aus Tierschutzgründen verboten. Moderner Moschus wird ausschliesslich synthetisch und tierfrei hergestellt; verschiedene Moschus-Moleküle erzeugen saubere, cremige oder fruchtige Nuancen.',
     family:
       'Moschus prägt die saubere, pudrige und ambrierte Duftfamilie und ist Bestandteil nahezu jeder modernen Duftbasis.',
     effect:
       'Moschus wirkt sanft, sinnlich und nahbar. Er verlängert die Haltbarkeit, verbindet die übrigen Noten zu einem harmonischen Ganzen und eignet sich ganzjährig sowie für jeden Anlass.',
     pairsWith:
-      'Moschus harmoniert mit Zitrus und weißen Blüten für Frische, mit Vanille und Tonkabohne für Wärme sowie mit Sandelholz und Ambroxan für eine moderne, cremige Basis.',
+      'Moschus harmoniert mit Zitrus und weissen Blüten für Frische, mit Vanille und Tonkabohne für Wärme sowie mit Sandelholz und Ambroxan für eine moderne, cremige Basis.',
     synonyms: ['moschus', 'musk', 'weisser moschus', 'white musk']
   },
   {
@@ -328,7 +328,7 @@ export const scentNotes: ScentNote[] = [
     intro:
       'Lavendel ist eine der klassischsten aromatischen Noten und das vertraute Herz vieler Fougère- und Herrendüfte.',
     smell:
-      'Lavendel riecht frisch und krautig-aromatisch, mit einer blumigen, leicht kampferartigen und süßlichen Facette. Er wirkt sauber und beruhigend und kann je nach Komposition sportlich-frisch oder warm-süß ausfallen.',
+      'Lavendel riecht frisch und krautig-aromatisch, mit einer blumigen, leicht kampferartigen und süsslichen Facette. Er wirkt sauber und beruhigend und kann je nach Komposition sportlich-frisch oder warm-süss ausfallen.',
     origin:
       'Gewonnen wird Lavendel aus den Blütenständen der Lavendelpflanze, klassisch aus der Provence in Südfrankreich. Die Blüten werden destilliert; besonders fein gilt der höher gelegene Feinlavendel (Lavandin und echter Lavendel).',
     family:
@@ -343,22 +343,22 @@ export const scentNotes: ScentNote[] = [
     slug: 'amber',
     image: '/notes/amber.jpg',
     name: 'Amber',
-    short: 'Warm, harzig und süß-pudrig – das goldene Herz unzähliger orientalischer Düfte.',
+    short: 'Warm, harzig und süss-pudrig – das goldene Herz unzähliger orientalischer Düfte.',
     metaTitle: 'Amber in Parfums: Duft, Wirkung und passende Düfte | Auressa',
     metaDescription:
-      'Amber in Parfums: Wie riecht die warme, harzig-süße Amber-Note, woher kommt sie und welche Düfte mit Amber passen zu dir?',
+      'Amber in Parfums: Wie riecht die warme, harzig-süsse Amber-Note, woher kommt sie und welche Düfte mit Amber passen zu dir?',
     intro:
       'Amber (auch Bernstein-Akkord) ist eine der prägendsten warmen Noten der Parfümerie und das goldene Fundament vieler orientalischer Düfte.',
     smell:
-      'Amber riecht warm, harzig und süß-pudrig, mit balsamischen, leicht vanilligen und animalisch-weichen Facetten. Der Eindruck ist gemütlich, einhüllend und sinnlich.',
+      'Amber riecht warm, harzig und süss-pudrig, mit balsamischen, leicht vanilligen und animalisch-weichen Facetten. Der Eindruck ist gemütlich, einhüllend und sinnlich.',
     origin:
       'Amber ist kein einzelner Rohstoff, sondern ein Akkord – klassisch komponiert aus Harzen wie Labdanum und Benzoe zusammen mit Vanille. (Nicht zu verwechseln mit Ambra/Ambergris vom Wal oder dem modernen Molekül Ambroxan.)',
     family:
-      'Amber ist die namensgebende Note der ambrierten und orientalischen Duftfamilie und Grundlage vieler warmer, süßer Kompositionen.',
+      'Amber ist die namensgebende Note der ambrierten und orientalischen Duftfamilie und Grundlage vieler warmer, süsser Kompositionen.',
     effect:
       'Amber wirkt warm, behaglich und verführerisch. Es eignet sich besonders für Herbst und Winter sowie für den Abend, sorgt für gute Haltbarkeit und eine weiche, hautnahe Wärme.',
     pairsWith:
-      'Amber harmoniert mit Vanille und Tonkabohne für süße Wärme, mit Weihrauch und Patchouli für orientalische Tiefe sowie mit Rose und Sandelholz für eine elegante Basis.',
+      'Amber harmoniert mit Vanille und Tonkabohne für süsse Wärme, mit Weihrauch und Patchouli für orientalische Tiefe sowie mit Rose und Sandelholz für eine elegante Basis.',
     synonyms: ['amber', 'ambra', 'bernstein']
   },
   {
@@ -372,7 +372,7 @@ export const scentNotes: ScentNote[] = [
     intro:
       'Orange ist eine fröhliche, sonnige Zitrusnote und sorgt – allein oder neben Bergamotte und Zitrone – für einen saftig-frischen ersten Eindruck.',
     smell:
-      'Orange riecht süß, saftig und sonnig-fruchtig, mit spritziger Zitrus-Frische und einer leicht herben Schalen-Facette. Süßorange wirkt rund und fröhlich, Bitterorange herber und eleganter; Blutorange fügt eine beerige Tiefe hinzu.',
+      'Orange riecht süss, saftig und sonnig-fruchtig, mit spritziger Zitrus-Frische und einer leicht herben Schalen-Facette. Süssorange wirkt rund und fröhlich, Bitterorange herber und eleganter; Blutorange fügt eine beerige Tiefe hinzu.',
     origin:
       'Das Orangenöl wird aus der Schale der Frucht kaltgepresst; wichtige Anbaugebiete sind der Mittelmeerraum und Brasilien. Vom selben Bitterorangenbaum stammen übrigens auch Neroli und Orangenblüte (aus der Blüte) sowie Petitgrain (aus Blättern und Zweigen).',
     family:
@@ -432,44 +432,44 @@ export const scentNotes: ScentNote[] = [
     slug: 'zimt',
     image: '/notes/zimt.jpg',
     name: 'Zimt',
-    short: 'Warm, süß-würzig und gemütlich – das Gewürz für behagliche Herbst- und Winterdüfte.',
+    short: 'Warm, süss-würzig und gemütlich – das Gewürz für behagliche Herbst- und Winterdüfte.',
     metaTitle: 'Zimt in Parfums: Duft, Wirkung und passende Düfte | Auressa',
     metaDescription:
-      'Zimt in Parfums: Wie riecht die warme, süß-würzige Note, woher kommt sie und welche Düfte mit Zimt passen zu dir?',
+      'Zimt in Parfums: Wie riecht die warme, süss-würzige Note, woher kommt sie und welche Düfte mit Zimt passen zu dir?',
     intro:
       'Zimt ist eine der wärmsten und gemütlichsten Gewürznoten und gibt vielen orientalischen und gourmandigen Düften ihren behaglichen Charakter.',
     smell:
-      'Zimt riecht warm, süß und würzig, mit einer leicht holzigen, prickelnden und balsamischen Facette. Er wirkt einladend und gemütlich, in höherer Dosierung kräftig und feurig.',
+      'Zimt riecht warm, süss und würzig, mit einer leicht holzigen, prickelnden und balsamischen Facette. Er wirkt einladend und gemütlich, in höherer Dosierung kräftig und feurig.',
     origin:
       'Gewonnen wird Zimt aus der getrockneten Rinde des Zimtbaums, vor allem aus Sri Lanka und Indonesien. Für Parfums werden Zimtrinde und Zimtblatt destilliert; das Öl wird oft mit anderen Gewürzen kombiniert.',
     family:
-      'Zimt gehört zur würzigen und orientalischen Duftfamilie und prägt warme, süße sowie gourmandige Kompositionen.',
+      'Zimt gehört zur würzigen und orientalischen Duftfamilie und prägt warme, süsse sowie gourmandige Kompositionen.',
     effect:
       'Zimt wirkt warm, sinnlich und festlich. Er eignet sich besonders für Herbst und Winter sowie für gemütliche Abende und gibt Düften eine behagliche, gewürzige Tiefe.',
     pairsWith:
-      'Zimt harmoniert mit Vanille und Tonkabohne für süße Wärme, mit Apfel und Nelke für würzig-fruchtige Akkorde sowie mit Amber, Weihrauch und Patchouli für orientalische Fülle.',
+      'Zimt harmoniert mit Vanille und Tonkabohne für süsse Wärme, mit Apfel und Nelke für würzig-fruchtige Akkorde sowie mit Amber, Weihrauch und Patchouli für orientalische Fülle.',
     synonyms: ['zimt', 'cinnamon', 'kassia']
   },
   {
     slug: 'tabak',
     image: '/notes/tabak.jpg',
     name: 'Tabak',
-    short: 'Warm, süßlich-würzig und rauchig – eine sinnliche, nostalgische Basisnote.',
+    short: 'Warm, süsslich-würzig und rauchig – eine sinnliche, nostalgische Basisnote.',
     metaTitle: 'Tabak in Parfums: Duft, Wirkung und passende Düfte | Auressa',
     metaDescription:
-      'Tabak in Parfums: Wie riecht die warme, süßlich-rauchige Note, woher kommt sie und welche Düfte mit Tabak passen zu dir?',
+      'Tabak in Parfums: Wie riecht die warme, süsslich-rauchige Note, woher kommt sie und welche Düfte mit Tabak passen zu dir?',
     intro:
       'Tabak ist eine warme, charaktervolle Note, die vielen Düften eine sinnliche, gemütliche und leicht nostalgische Tiefe verleiht.',
     smell:
-      'Tabak riecht warm und süßlich-würzig, mit honigartigen, heuigen und dezent rauchigen Facetten. Der Eindruck ist weich und einhüllend, niemals so scharf wie brennender Tabak, sondern eher wie edler, getrockneter Tabakblatt-Duft.',
+      'Tabak riecht warm und süsslich-würzig, mit honigartigen, heuigen und dezent rauchigen Facetten. Der Eindruck ist weich und einhüllend, niemals so scharf wie brennender Tabak, sondern eher wie edler, getrockneter Tabakblatt-Duft.',
     origin:
-      'Verwendet werden Extrakte aus getrockneten und fermentierten Tabakblättern. Der typisch süße, heuartige Charakter geht – wie bei der Tonkabohne – auch auf Cumarin zurück; oft wird Tabak mit Vanille und Gewürzen abgerundet.',
+      'Verwendet werden Extrakte aus getrockneten und fermentierten Tabakblättern. Der typisch süsse, heuartige Charakter geht – wie bei der Tonkabohne – auch auf Cumarin zurück; oft wird Tabak mit Vanille und Gewürzen abgerundet.',
     family:
       'Tabak gehört zur orientalischen und würzigen Duftfamilie und prägt warme, gemütliche Herbst- und Winterdüfte für Herren wie für Damen.',
     effect:
       'Tabak wirkt sinnlich, warm und souverän. Er eignet sich besonders für Herbst und Winter sowie für den Abend und gibt Düften eine gemütliche, langlebige Tiefe.',
     pairsWith:
-      'Tabak harmoniert mit Vanille und Tonkabohne für süße Wärme, mit Honig und Zimt für würzige Fülle sowie mit Leder, Amber und Oud für dunkle, edle Tiefe.',
+      'Tabak harmoniert mit Vanille und Tonkabohne für süsse Wärme, mit Honig und Zimt für würzige Fülle sowie mit Leder, Amber und Oud für dunkle, edle Tiefe.',
     synonyms: ['tabak', 'tobacco']
   }
 ];

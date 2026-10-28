@@ -211,7 +211,7 @@ function baseTitle(name: string, label: string): string {
 
 type Faq = { q: string; a: string };
 
-// Baut FAQ-Einträge ausschließlich aus echten, vorhandenen Feldern – keine erfundenen Werte.
+// Baut FAQ-Einträge ausschliesslich aus echten, vorhandenen Feldern – keine erfundenen Werte.
 function buildFaqs(perfume: Perfume): Faq[] {
   const name = perfume.perfume_name;
   const faqs: Faq[] = [];
@@ -324,7 +324,7 @@ export default async function PerfumeDetailPage({
   );
   const cheaperIds = new Set(cheaper.map((c) => c.perfume.id));
   // In den allgemeinen "ähnlich"-Vorschlägen die guenstigen Alternativen nicht doppelt zeigen.
-  // Zuerst großzügig holen und filtern, DANN auf 4 kürzen – sonst würde das Kürzen auf 4
+  // Zuerst grosszügig holen und filtern, DANN auf 4 kürzen – sonst würde das Kürzen auf 4
   // vor dem Filtern den Abschnitt oft fälschlich leeren (die günstigen Alternativen riechen
   // per Definition ähnlich und belegen sonst die Top-Plätze).
   const similar = findSimilarPerfumesV2(perfume, altPool)

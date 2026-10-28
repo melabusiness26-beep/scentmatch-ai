@@ -71,10 +71,10 @@ export default function DuftsammlungPage() {
               {
                 count: '1 Duft',
                 typ: 'Der Anfänger',
-                beschreibung: 'Du weißt, dass dich dieser Duft liebt – und du magst alles damit. Perfect.',
+                beschreibung: 'Du weisst, dass dich dieser Duft liebt – und du magst alles damit. Perfect.',
                 min: '€30–80',
                 max: '€150+',
-                tipp: 'Das ist völlig ok. Ein großartiger Lieblingsduft ist besser als 10 mittelmäßige. Keine Pflicht, mehr zu haben.'
+                tipp: 'Das ist völlig ok. Ein grossartiger Lieblingsduft ist besser als 10 mittelmässige. Keine Pflicht, mehr zu haben.'
               },
               {
                 count: '3 Düfte',
@@ -137,7 +137,7 @@ export default function DuftsammlungPage() {
               {
                 strategie: 'Nach Jahreszeiten organisieren',
                 warum: 'Sommer ≠ Winter. Ein Duft, der im Juli perfekt ist, wirkt im Januar dünn. Vier Düfte (einen pro Jahreszeit) sind a good starting point.',
-                wie: 'Duft 1 = Zitrus, Grün (Frühling). Duft 2 = Leicht, Blütenweiß (Sommer). Duft 3 = Warm, Würzig (Herbst). Duft 4 = Tief, Holzig (Winter).',
+                wie: 'Duft 1 = Zitrus, Grün (Frühling). Duft 2 = Leicht, Blütenweiss (Sommer). Duft 3 = Warm, Würzig (Herbst). Duft 4 = Tief, Holzig (Winter).',
                 best_for: 'Anfänger bis Intermediate'
               },
               {
@@ -210,7 +210,7 @@ export default function DuftsammlungPage() {
               {
                 fehler: 'Teuer verwechseln mit Qualität',
                 warum: 'Du denkst „Teurere Düfte sind besser", kaufst Duft X für 180€, magst ihn aber nicht. Deine Körperchemie passt nicht dazu.',
-                lösung: 'Teste immer zuerst (Probe, Sample, Tester). Günstige Düfte können großartig sein. Preis = Marke + Flakon + Konzentration, nicht automatisch Qualität.'
+                lösung: 'Teste immer zuerst (Probe, Sample, Tester). Günstige Düfte können grossartig sein. Preis = Marke + Flakon + Konzentration, nicht automatisch Qualität.'
               },
               {
                 fehler: 'Zu viele ähnliche Düfte kaufen',
@@ -251,7 +251,7 @@ export default function DuftsammlungPage() {
 
           <p style={{ marginBottom: '1.5rem' }}>
             Du willst eine Sammlung, hast aber nicht 1000€ zum Ausgeben? Kein Problem. Mit den richtigen Strategien
-            baust du eine großartige Sammlung für unter 300€.
+            baust du eine grossartige Sammlung für unter 300€.
           </p>
 
           <ol style={{ marginBottom: '2rem' }}>
@@ -265,7 +265,7 @@ export default function DuftsammlungPage() {
               <strong>Kauf EdT statt EdP</strong> – Gleicher Duft, aber EdT kostet 40–60% weniger. Haltbarkeit ist 4–6 Stunden statt 8+ – für den Job völlig ok.
             </li>
             <li style={{ marginBottom: '1rem' }}>
-              <strong>Warte auf Sales</strong> – Notino.ch, Flaconi, Breuninger haben regelmäßig 30–50% Rabatt. Black Friday ist goldwert.
+              <strong>Warte auf Sales</strong> – Notino.ch, Flaconi, Breuninger haben regelmässig 30–50% Rabatt. Black Friday ist goldwert.
             </li>
             <li style={{ marginBottom: '1rem' }}>
               <strong>Mixe Preisklassen</strong> – 1–2 teurer Lieblingsdüfte + 3–4 Budget-Düfte = vielfalt mit kleinerem Budget.
@@ -302,9 +302,9 @@ export default function DuftsammlungPage() {
           <ul style={{ marginBottom: '1.5rem' }}>
             <li>Nach Jahreszeit (separate Boxen)</li>
             <li>Nach Familie (Floral zusammen, Zitrus zusammen)</li>
-            <li>Nach Größe (große Flakons unten, Samples oben)</li>
+            <li>Nach Grösse (grosse Flakons unten, Samples oben)</li>
             <li>Im **Kühlschrank** (für Langzeitlagerung)</li>
-            <li>Mit **Etiketten** – Kaufdatum, damit du weißt, wann es anfängt zu altern</li>
+            <li>Mit **Etiketten** – Kaufdatum, damit du weisst, wann es anfängt zu altern</li>
           </ul>
 
           <h3>Option 3: Rotation & Testing</h3>
@@ -331,7 +331,7 @@ export default function DuftsammlungPage() {
               },
               {
                 frage: 'Ist eine Sammlung mit 20+ Düften sinnvoll?',
-                antwort: 'Ja – wenn du sie alle wirklich trägst. Nein – wenn du sie sammelt wie Briefmarken. Eine große Sammlung braucht ein System und Discipline. Überleg zuerst: Trage ich wirklich 20 verschiedene Düfte?'
+                antwort: 'Ja – wenn du sie alle wirklich trägst. Nein – wenn du sie sammelt wie Briefmarken. Eine grosse Sammlung braucht ein System und Discipline. Überleg zuerst: Trage ich wirklich 20 verschiedene Düfte?'
               },
               {
                 frage: 'Sollte ich die gleichen Düfte in verschiedenen Konzentrationen kaufen?',
@@ -339,7 +339,7 @@ export default function DuftsammlungPage() {
               },
               {
                 frage: 'Wie lange hält ein Duft im Schrank?',
-                antwort: 'Bei richtiger Lagerung (kühl, dunkel, vertikal): 3–5 Jahre. Mit OK-Lagerung: 1–2 Jahre. Im heißen Badezimmer: 6 Monate. Lagere richtig und deine Sammlung hält lange.'
+                antwort: 'Bei richtiger Lagerung (kühl, dunkel, vertikal): 3–5 Jahre. Mit OK-Lagerung: 1–2 Jahre. Im heissen Badezimmer: 6 Monate. Lagere richtig und deine Sammlung hält lange.'
               },
               {
                 frage: 'Sollte ich teure oder günstige Düfte kaufen?',
@@ -369,8 +369,8 @@ export default function DuftsammlungPage() {
               🎯 <strong>Die perfekte Sammlung für dich</strong>
             </p>
             <p style={{ margin: 0, color: '#6b5344', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              Es gibt keine universelle Antwort: Die richtige Sammlung ist die, die DU wirklich trägst. Drei großartige Düfte
-              sind besser als zehn mittelmäßige. Beginne mit einem Lieblingduft, baue dann systematisch auf (Jahreszeiten,
+              Es gibt keine universelle Antwort: Die richtige Sammlung ist die, die DU wirklich trägst. Drei grossartige Düfte
+              sind besser als zehn mittelmässige. Beginne mit einem Lieblingduft, baue dann systematisch auf (Jahreszeiten,
               Anlässe, Duftfamilien), und bewahre deine Sammlung richtig auf. Eine gut gepflegte Sammlung wird dir
               Jahre lang Freude bereiten.
             </p>
@@ -387,7 +387,7 @@ export default function DuftsammlungPage() {
               💌 Nächster Schritt: Baue deine persönliche Sammlung auf
             </p>
             <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
-              Du weißt jetzt, wie eine gute Sammlung aussieht. Brauchst du Hilfe bei der Auswahl? Nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> –
+              Du weisst jetzt, wie eine gute Sammlung aussieht. Brauchst du Hilfe bei der Auswahl? Nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> –
               es hilft dir, Düfte zu finden, die zusammenpassen und auf deiner Körperchemie funktionieren.
               Oder <Link href="/duft-waehlen" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>lies unseren Ratgeber zur Duftwahl</Link> für einen systematischen Ansatz zum perfekten Duft.
             </p>

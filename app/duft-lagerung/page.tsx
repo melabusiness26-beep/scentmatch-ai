@@ -82,7 +82,7 @@ export default function DuftLagerungPage() {
               {
                 emoji: '☀️',
                 title: 'Licht (besonders UV-Strahlung)',
-                desc: 'UV-Strahlung baut Duftmoleküle ab. Deshalb sind viele Flakons dunkel getönt. Lagere im Original-Karton oder in einem dunklen Schrank – direkte Sonne ist Gift. Durchsichtige Gläser können über Zeit erblassen (das heißt nicht, dass der Duft schlecht ist, aber die Qualität kann leiden).'
+                desc: 'UV-Strahlung baut Duftmoleküle ab. Deshalb sind viele Flakons dunkel getönt. Lagere im Original-Karton oder in einem dunklen Schrank – direkte Sonne ist Gift. Durchsichtige Gläser können über Zeit erblassen (das heisst nicht, dass der Duft schlecht ist, aber die Qualität kann leiden).'
               },
               {
                 emoji: '💧',

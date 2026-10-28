@@ -125,7 +125,7 @@ export default function TestingPage() {
             </div>
           </div>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728' }}>
-            <em>Wichtig:</em> Ein hoher Score heißt nicht, dass dir der Duft automatisch gefällt.
+            <em>Wichtig:</em> Ein hoher Score heisst nicht, dass dir der Duft automatisch gefällt.
             Ein Duft mit Score 50 kann dir persönlich besser gefallen als einer mit 85 – das ist vollkommen normal.
             Der Score ist ein objektives Qualitäts-Werkzeug, nicht dein persönlicher Geschmack.
             Für deinen persönlichen Geschmack nutze das Quiz – das ist dafür da.
@@ -179,7 +179,7 @@ export default function TestingPage() {
                 ✓ Preise sind Richtpreise – die gültige Version im Shop entscheidet
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6 }}>
-                Ich aktualisiere Preise regelmäßig, aber der letzte gültige Preis im Schweizer Shop ist entscheidend.
+                Ich aktualisiere Preise regelmässig, aber der letzte gültige Preis im Schweizer Shop ist entscheidend.
                 Ich habe keinen Einfluss auf Shop-Preise.
               </p>
             </div>
@@ -195,7 +195,7 @@ export default function TestingPage() {
             Du liest meine echten Gedanken, nicht KI-Text
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1rem' }}>
-            Ich schreibe persönlich. Das heißt: Das sind meine Meinungen, meine Perspektive, meine Art zu sprechen.
+            Ich schreibe persönlich. Das heisst: Das sind meine Meinungen, meine Perspektive, meine Art zu sprechen.
             Du findest auf Auressa gelegentlich Gedankenstrich – die mögen Sprachmodelle nicht besonders.
             Du findest Klammern (für Nebensätze), Umgangssprache und echte Persönlichkeit.
             Du findest <strong>nicht</strong> jeden Satz mit einem Keywords-Trigger optimiert.

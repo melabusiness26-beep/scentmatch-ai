@@ -33,7 +33,7 @@ export default function GuenstigeAlternativenPage() {
           </p>
           <p className="lead">
             Dieser Guide erklärt dir, wie du legitime Duft-Klone erkennst, wo du sie kaufst und wie du
-            großartige Düfte für ein Drittel des Preises bekommst – ohne Qualität oder Gewissen zu opfern.
+            grossartige Düfte für ein Drittel des Preises bekommst – ohne Qualität oder Gewissen zu opfern.
           </p>
 
           <h2>Was ist ein Duft-Klon? Und ist das legal?</h2>
@@ -107,7 +107,7 @@ export default function GuenstigeAlternativenPage() {
               {
                 titel: '4. Outlet & Sale-Düfte (Glücksspiel)',
                 beschreibung: 'Originalmarken-Düfte auf Sale, aus früheren Serien, oder in Outlet-Stores massiv reduziert.',
-                beispiele: 'Notino.ch, Flaconi, Breuninger – regelmäßig 30–60% Rabatt auf Premium-Marken.',
+                beispiele: 'Notino.ch, Flaconi, Breuninger – regelmässig 30–60% Rabatt auf Premium-Marken.',
                 preis: '€30–70 (je nach Sale)',
                 haltbarkeit: '6–10+ Stunden',
                 qualitaet: '100% authentisch',
@@ -168,7 +168,7 @@ export default function GuenstigeAlternativenPage() {
               },
               {
                 marke: 'Fragrance Oil House (Unabhängig)',
-                spezialisierung: 'Inspirierende Düfte in mini-Größen; gut zum Testen vor großem Kauf',
+                spezialisierung: 'Inspirierende Düfte in mini-Grössen; gut zum Testen vor grossem Kauf',
                 populaer: '5ml Minis von populären Klonen, Natur-Düfte',
                 preis: '€2–5 pro Sample',
                 qualitaet: '⭐⭐⭐ (okay für Tests, nicht für Alltag)'
@@ -224,7 +224,7 @@ export default function GuenstigeAlternativenPage() {
               {
                 shop: 'FragranceBuy.de / FragranceBuy.com',
                 schwerpunkt: 'Spezialist für Budget-Marken (Armaf, Lattafa) in der Schweiz/EU',
-                vorteile: 'Große Auswahl, günstig, oft Bundles',
+                vorteile: 'Grosse Auswahl, günstig, oft Bundles',
                 nachteil: 'Versand kann teuer sein',
                 tipp: 'Beste Wahl für Schweizer'
               },
@@ -366,7 +366,7 @@ export default function GuenstigeAlternativenPage() {
           }}>
             <ol style={{ marginBottom: 0 }}>
               <li style={{ marginBottom: '1.2rem' }}>
-                <strong>Teste IMMER zuerst mit einer kleinen Größe.</strong>
+                <strong>Teste IMMER zuerst mit einer kleinen Grösse.</strong>
                 Ein 50ml Klon (€20) dir nicht passt, verlierst du 20€.
                 Wenn der Original (€150) dir nicht passt, verlierst du 150€. Die Risikominderung lohnt sich.
               </li>
@@ -379,12 +379,12 @@ export default function GuenstigeAlternativenPage() {
                 Ein legitimer Klon kostet €12–30. Alles darunter ist wahrscheinlich gefälscht.
               </li>
               <li style={{ marginBottom: '1.2rem' }}>
-                <strong>Vergleiche nicht bloß Preis – vergleiche auch Haltbarkeit & Sillage.</strong>
+                <strong>Vergleiche nicht bloss Preis – vergleiche auch Haltbarkeit & Sillage.</strong>
                 Ein 4-Stunden-Klon ist nicht das gleiche wie ein 8-Stunden-Original. Manchmal ist es ok, manchmal brauchst du den Original.
               </li>
               <li style={{ marginBottom: 0 }}>
                 <strong>Mixe: Kauf zwei gute Klone + einen Original-Favoriten.</strong>
-                Du bekommst Vielfalt & Qualität ohne riesiges Budget. 2× €20 + 1× €100 = große Sammlung für weniger Geld.
+                Du bekommst Vielfalt & Qualität ohne riesiges Budget. 2× €20 + 1× €100 = grosse Sammlung für weniger Geld.
               </li>
             </ol>
           </div>
@@ -460,7 +460,7 @@ export default function GuenstigeAlternativenPage() {
             </p>
             <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
               Du willst eine Sammlung mit kleinerem Budget aufbauen? Lese unseren <Link href="/duftsammlung" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>Duftsammlung-Ratgeber</Link> –
-              dort lernst du Strategien, wie du für 200–300€ eine großartige Sammlung bekommst.
+              dort lernst du Strategien, wie du für 200–300€ eine grossartige Sammlung bekommst.
               Oder nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link>, um Düfte zu finden, die zu dir passen – wir zeigen dir auch günstige Alternativen an.
             </p>
           </div>
@@ -470,7 +470,7 @@ export default function GuenstigeAlternativenPage() {
           <div style={{ marginTop: '2rem' }}>
             <h3 style={{ marginTop: 0 }}>Weitere Ratgeber zum Budget & Auswahl</h3>
             <ul style={{ fontSize: '0.95rem', lineHeight: 1.8 }}>
-              <li><Link href="/duftsammlung" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Duftsammlung aufbauen</Link> – Strategien zum günstigen Aufbau einer großen Sammlung</li>
+              <li><Link href="/duftsammlung" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Duftsammlung aufbauen</Link> – Strategien zum günstigen Aufbau einer grossen Sammlung</li>
               <li><Link href="/duft-waehlen" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Duft wählen – Anleitung</Link> – Schritt-für-Schritt zum perfekten Duft</li>
               <li><Link href="/duftarten" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Duftarten erklärt</Link> – EdP, EdT, Cologne: Was kostet was und warum</li>
               <li><Link href="/koerperchemie-duft" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Körperchemie & Duft</Link> – Warum ein Duft auf dir anders riecht</li>

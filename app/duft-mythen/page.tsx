@@ -77,7 +77,7 @@ export default function FragranceMythsPage() {
               },
               {
                 myth: '👃 Mythos: Du wirst „abhängig" von deinem Lieblingsduft',
-                fact: 'FALSCH (aber verständlich). Das, was du erlebst, heißt „Olfactory Adaptation" (Duftgewöhnung) – deine Nase gewöhnt sich an konstante Reize. Das ist biologisch normal, nicht Abhängigkeit. Andere riechen deinen Duft weiterhin deutlich.',
+                fact: 'FALSCH (aber verständlich). Das, was du erlebst, heisst „Olfactory Adaptation" (Duftgewöhnung) – deine Nase gewöhnt sich an konstante Reize. Das ist biologisch normal, nicht Abhängigkeit. Andere riechen deinen Duft weiterhin deutlich.',
                 praktisch: 'Wechsle gelegentlich deine Düfte oder mache Duft-Pausen. Nach 2–3 Tagen ohne Duft wird deine Nase wieder empfindlich.'
               },
               {
@@ -102,7 +102,7 @@ export default function FragranceMythsPage() {
               },
               {
                 myth: '🧴 Mythos: Duft in den Haaren auftragen ist schlecht',
-                fact: 'FALSCH (aber mit Bedacht). Haare sind ideal für schwache Düfte – sie verlängern die Duftentwicklung. Aber: Nur leicht sprühen (1–2 Sprühstöße max), da manche Düfte Haare austrocknen können. Auch Schweiß + Duft in den Haaren kann unangenehm werden.',
+                fact: 'FALSCH (aber mit Bedacht). Haare sind ideal für schwache Düfte – sie verlängern die Duftentwicklung. Aber: Nur leicht sprühen (1–2 Sprühstösse max), da manche Düfte Haare austrocknen können. Auch Schweiss + Duft in den Haaren kann unangenehm werden.',
                 praktisch: 'Sprüh leicht ins Haar am Haaransatz, nicht direkt in die Strähnen. Trockenöl danach hilft gegen Austrocknung.'
               },
               {
@@ -117,7 +117,7 @@ export default function FragranceMythsPage() {
               },
               {
                 myth: '🌡️ Mythos: Körpertemperatur und Körperchemie spielen keine Rolle',
-                fact: 'FALSCH. Deine Körpertemperatur (normal 36,5°C+) verstärkt Duftmoleküle. Menschen mit höherer Temperatur riechen intensiver. Auch Körperchemie (pH, Schweiß, Hormone) beeinflußt, wie ein Duft an dir riecht. Zwei Menschen riechen den gleichen Duft unterschiedlich.',
+                fact: 'FALSCH. Deine Körpertemperatur (normal 36,5°C+) verstärkt Duftmoleküle. Menschen mit höherer Temperatur riechen intensiver. Auch Körperchemie (pH, Schweiss, Hormone) beeinflusst, wie ein Duft an dir riecht. Zwei Menschen riechen den gleichen Duft unterschiedlich.',
                 praktisch: 'Teste Düfte immer an deiner Haut, nicht aus dem Tester im Geschäft. Deine Körperwärme ändert alles.'
               },
               {
@@ -132,7 +132,7 @@ export default function FragranceMythsPage() {
               },
               {
                 myth: '💄 Mythos: Frauen-Düfte riechen besser bei Frauen, Herren-Düfte bei Herren',
-                fact: 'FALSCH. Das ist reine Vermarktung. Viele „Herren-Düfte" riechen großartig an Frauen, und umgekehrt. Deine Körperchemie spielt die Rolle, nicht dein Geschlecht. Unisex-Kategorisierung ist am sinnvollsten.',
+                fact: 'FALSCH. Das ist reine Vermarktung. Viele „Herren-Düfte" riechen grossartig an Frauen, und umgekehrt. Deine Körperchemie spielt die Rolle, nicht dein Geschlecht. Unisex-Kategorisierung ist am sinnvollsten.',
                 praktisch: 'Ignoriere die Gender-Labels. Wenn dir ein Duft gefällt, trag ihn – unabhängig vom Marketing-Label.'
               },
               {
@@ -157,12 +157,12 @@ export default function FragranceMythsPage() {
               },
               {
                 myth: '🔒 Mythos: Teuer = Exklusiv und nur für Reiche',
-                fact: 'FALSCH. Viele großartige Düfte kosten 20–50€. Exklusivität kommt von Qualität und Design, nicht von Preis. Auch gibt es gratis Ratgeber und Quiz (wie Auressa!), um den perfekten Duft zu finden – unabhängig von Preisklasse.',
-                praktisch: 'Suche nach deinem persönlichen Match, nicht nach Prestige. Der beste Duft ist derjenige, der an DIR großartig riecht.'
+                fact: 'FALSCH. Viele grossartige Düfte kosten 20–50€. Exklusivität kommt von Qualität und Design, nicht von Preis. Auch gibt es gratis Ratgeber und Quiz (wie Auressa!), um den perfekten Duft zu finden – unabhängig von Preisklasse.',
+                praktisch: 'Suche nach deinem persönlichen Match, nicht nach Prestige. Der beste Duft ist derjenige, der an DIR grossartig riecht.'
               },
               {
                 myth: '📱 Mythos: Online-Bewertungen sind alle echt',
-                fact: 'VORSICHT. Manche Reviews sind gefälscht (von Konkurrenten oder Duft-Häusern). Achte auf Konkretheit – „riecht süß" ist weniger aussagekräftig als „erinnert an Vanille und Karamell mit feuchtem Holz-Ausklang". Verified-Purchase ist ein gutes Zeichen.',
+                fact: 'VORSICHT. Manche Reviews sind gefälscht (von Konkurrenten oder Duft-Häusern). Achte auf Konkretheit – „riecht süss" ist weniger aussagekräftig als „erinnert an Vanille und Karamell mit feuchtem Holz-Ausklang". Verified-Purchase ist ein gutes Zeichen.',
                 praktisch: 'Lese lange, detaillierte Reviews von Verified Purchases. Kurze, vage Reviews ignorieren.'
               },
               {

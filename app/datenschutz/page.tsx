@@ -31,7 +31,7 @@ export default function DatenschutzPage() {
             <h2>2. Geltungsbereich</h2>
             <p>
               Diese Datenschutzerklärung gilt für die Website <strong>auressa.ch</strong> und alle damit verbundenen
-              Dienste, einschließlich des Duft-Quizzes, des Duft-Katalogs und der Empfehlungsengine.
+              Dienste, einschliesslich des Duft-Quizzes, des Duft-Katalogs und der Empfehlungsengine.
             </p>
             <p>
               Wir beachten die Bestimmungen des Schweizer Datenschutzgesetzes (DSG) und der Europäischen
@@ -91,7 +91,7 @@ export default function DatenschutzPage() {
 
           <section>
             <h2>7. Affiliate-Links und Transparenz</h2>
-            <p>Auressa nutzt Affiliate-Links zu <strong>Notino.ch</strong> und <strong>Flaconi</strong>. Das heißt:</p>
+            <p>Auressa nutzt Affiliate-Links zu <strong>Notino.ch</strong> und <strong>Flaconi</strong>. Das heisst:</p>
             <ul>
               <li>🔗 Wenn du über unsere Links einkaufst, erhalten wir eine kleine Provision</li>
               <li>💰 <strong>Für dich ändert sich der Preis NICHT</strong></li>

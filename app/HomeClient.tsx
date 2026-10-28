@@ -15,7 +15,7 @@ import { BottleIllustration } from '@/app/FragranceBottles';
 // Anklickbare Familien-Kacheln (führen zur gefilterten Duftdatenbank).
 const FAMILY_TILES: { code: string; label: string; desc: string }[] = [
   { code: 'clean', label: 'Clean', desc: 'Frisch & Rein' },
-  { code: 'gourmand', label: 'Gourmand', desc: 'Süß & Warm' },
+  { code: 'gourmand', label: 'Gourmand', desc: 'Süss & Warm' },
   { code: 'woody', label: 'Woody', desc: 'Holzig & Edel' },
   { code: 'floral', label: 'Floral', desc: 'Blumig & Romantisch' }
 ];

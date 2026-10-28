@@ -77,7 +77,7 @@ export default function DuftlaengePage() {
                 { range: '1–2h', score: '1–2', title: 'Eau de Cologne', desc: 'Sehr kurz. Angenehm für zwischendurch, aber schnell weg.' },
                 { range: '2–4h', score: '3–4', title: 'Eau de Toilette', desc: 'Kurz. Beliebte Einsteiger-Option. Brauchst mehrmals täglich auftragen.' },
                 { range: '4–8h', score: '5–6', title: 'Eau de Parfum / EdP', desc: 'Mittel bis lang. Der Standard. Hält den ganzen Tag mit 1–2 Anwendungen.' },
-                { range: '8–12h+', score: '7–8', title: 'Extrait / Parfum', desc: 'Sehr lange. Premium-Option. Ein Sprühstoß am Morgen, oft noch am Abend.' },
+                { range: '8–12h+', score: '7–8', title: 'Extrait / Parfum', desc: 'Sehr lange. Premium-Option. Ein Sprühstoss am Morgen, oft noch am Abend.' },
                 { range: '12h+', score: '9–10', title: 'Beast-Mode', desc: 'Extremes Monster. Duftköpfe lieben es. Kann erdrückend wirken.' }
               ].map((item) => (
                 <div key={item.title} style={{
@@ -199,7 +199,7 @@ export default function DuftlaengePage() {
               { situation: 'Reisen/Mobile', longevity: '7–8', sillage: '5–6', warum: 'Must-have: Lange Haltbarkeit, damit du nicht mehrmals täglich auftragen musst.' },
               { situation: 'Abendparty', longevity: '6–8', sillage: '6–8', warum: 'Hier darfst du stärker sein. Lust auf Projektion.' },
               { situation: 'Heimwerkertag', longevity: '3–4', sillage: '3–4', warum: 'Kurz und leise. Du wäschst dich sowieso am Ende des Tages ab.' },
-              { situation: 'Sporttag', longevity: '4–5', sillage: '3–4', warum: 'Nicht zu lang, weil Schweiß den Duft verändert. Leise ist besser.' }
+              { situation: 'Sporttag', longevity: '4–5', sillage: '3–4', warum: 'Nicht zu lang, weil Schweiss den Duft verändert. Leise ist besser.' }
             ].map((combo) => (
               <div key={combo.situation} style={{
                 background: '#fff',

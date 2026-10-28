@@ -100,11 +100,11 @@ export default function PerfumeApplicationPage() {
               {
                 icon: '🌡️',
                 title: 'Weniger ist mehr',
-                desc: '2–4 Sprühstöße genügen. Zu viel Duft wirkt aufdringlich und verkürzt die empfundene Haltbarkeit.'
+                desc: '2–4 Sprühstösse genügen. Zu viel Duft wirkt aufdringlich und verkürzt die empfundene Haltbarkeit.'
               },
               {
                 icon: '⏰',
-                title: 'Regelmäßigkeit',
+                title: 'Regelmässigkeit',
                 desc: 'Morgens nach dem Duschen auftragen. Deine feuchte Haut hilft, den Duft länger zu halten.'
               }
             ].map((rule, idx) => (
@@ -174,7 +174,7 @@ export default function PerfumeApplicationPage() {
               },
               {
                 location: 'Brust & Dekolleté',
-                why: 'Große, warme Fläche. Besonders für Damen ideal. Der Duft verteilt sich natürlich.',
+                why: 'Grosse, warme Fläche. Besonders für Damen ideal. Der Duft verteilt sich natürlich.',
                 intensity: '⭐⭐⭐⭐'
               },
               {
@@ -246,7 +246,7 @@ export default function PerfumeApplicationPage() {
               {
                 step: 4,
                 title: 'Sprühen',
-                desc: 'Einmal auf den Hals, einmal auf jeder Innenseite des Unterarms oder eine Stelle am Ohr. Das sind 2–4 Sprühstöße – mehr nicht!'
+                desc: 'Einmal auf den Hals, einmal auf jeder Innenseite des Unterarms oder eine Stelle am Ohr. Das sind 2–4 Sprühstösse – mehr nicht!'
               },
               {
                 step: 5,
@@ -323,7 +323,7 @@ export default function PerfumeApplicationPage() {
               },
               {
                 title: 'Haare – ja oder nein?',
-                tip: 'Haare sind ideal für schwache Düfte. Ein leichter Sprüh ins Haar hilft dem Duft, den ganzen Tag zu „diffundieren". Aber nur 1 Sprühstoß – zu viel wirkt aufdringlich.'
+                tip: 'Haare sind ideal für schwache Düfte. Ein leichter Sprüh ins Haar hilft dem Duft, den ganzen Tag zu „diffundieren". Aber nur 1 Sprühstoss – zu viel wirkt aufdringlich.'
               },
               {
                 title: 'Warmes Licht nutzen',
@@ -335,7 +335,7 @@ export default function PerfumeApplicationPage() {
               },
               {
                 title: 'Übertragungs-Trick',
-                tip: 'Nach dem Auftragen: Wende sanft die inneren Unterarme aneinander (ohne zu reiben). Das verteilt den Duft gleichmäßig und verstärkt die Duftentwicklung.'
+                tip: 'Nach dem Auftragen: Wende sanft die inneren Unterarme aneinander (ohne zu reiben). Das verteilt den Duft gleichmässig und verstärkt die Duftentwicklung.'
               }
             ].map((pro, idx) => (
               <div key={idx}>
@@ -367,7 +367,7 @@ export default function PerfumeApplicationPage() {
             {[
               {
                 q: 'Wie oft sollte ich den Duft auftragen?',
-                a: 'Einmal morgens reicht. Je nach Dufttyp und Haltbarkeit kann ein Retouch am Nachmittag nötig sein. Starte mit 2–4 Sprühstößen – du kannst immer noch nachlegen, aber nicht weniger werden.'
+                a: 'Einmal morgens reicht. Je nach Dufttyp und Haltbarkeit kann ein Retouch am Nachmittag nötig sein. Starte mit 2–4 Sprühstössen – du kannst immer noch nachlegen, aber nicht weniger werden.'
               },
               {
                 q: 'Ist es schlecht, den Duft mehrmals täglich aufzutragen?',

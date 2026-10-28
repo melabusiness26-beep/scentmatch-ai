@@ -110,7 +110,7 @@ async function enrichPerfumeWithCharacter(
     } else if (familyLower.includes('floral')) {
       return { personalityType: 'Die Romantikerin', mood: 'Weiblich, elegant, verführerisch', characterTags: ['Blumig', 'Feminin', 'Sanft', 'Romantisch', 'Graziös'] };
     } else if (familyLower.includes('gourmand')) {
-      return { personalityType: 'Die Genießerin', mood: 'Sinnlich, süß, verführerisch', characterTags: ['Gourmand', 'Fruchtig', 'Süßlich', 'Sinnlich', 'Warm'] };
+      return { personalityType: 'Die Geniesserin', mood: 'Sinnlich, süss, verführerisch', characterTags: ['Gourmand', 'Fruchtig', 'Süsslich', 'Sinnlich', 'Warm'] };
     } else if (familyLower.includes('fresh') || familyLower.includes('clean')) {
       return { personalityType: 'Der Optimist', mood: 'Frisch, lebendig, selbstbewusst', characterTags: ['Frisch', 'Zitrus', 'Energisch', 'Leicht', 'Positiv'] };
     }

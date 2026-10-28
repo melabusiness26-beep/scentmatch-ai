@@ -27,7 +27,7 @@ export default function NischeMainstreamPage() {
           <p className="eyebrow">Wissen</p>
           <h1 className="detail-title">Nische vs. Mainstream Düfte</h1>
           <p className="lead">
-            Der Duft-Markt ist aufgeteilt: Es gibt die großen Mainstream-Marken (Chanel, Dior, Guerlain)
+            Der Duft-Markt ist aufgeteilt: Es gibt die grossen Mainstream-Marken (Chanel, Dior, Guerlain)
             und die kleineren Nische-Perfumiers (Heeley, Maison Margiela, L'Artisan). Welcher ist besser?
             Das ist nicht einfach zu beantworten – es kommt darauf an, was du willst.
           </p>
@@ -51,7 +51,7 @@ export default function NischeMainstreamPage() {
             }}>
               <h3 style={{ margin: '0 0 1rem 0', fontSize: '0.95rem' }}>📊 MAINSTREAM</h3>
               <p style={{ margin: '0 0 0.75rem 0', fontSize: '0.9rem', fontWeight: 600, color: '#2a1d12' }}>
-                Große, bekannte Luxus-Marken
+                Grosse, bekannte Luxus-Marken
               </p>
               <ul style={{ margin: 0, fontSize: '0.85rem', color: '#5b4d40' }}>
                 <li><strong>Marken:</strong> Chanel, Dior, Guerlain, Tom Ford, YSL, Calvin Klein, Prada</li>
@@ -99,7 +99,7 @@ export default function NischeMainstreamPage() {
               },
               {
                 kriterium: 'Einzigartigkeit',
-                mainstream: 'Weniger. Mainstream-Düfte sind designt, um großen Appeal zu haben. Daher sind sie ähnlicher untereinander.',
+                mainstream: 'Weniger. Mainstream-Düfte sind designt, um grossen Appeal zu haben. Daher sind sie ähnlicher untereinander.',
                 nische: 'Höher. Nische-Marken experimentieren & trauen sich unkonventionell zu sein. Jeder Duft ist eigenwillig.',
                 urteil: 'Vorteil: Nische'
               },
@@ -117,7 +117,7 @@ export default function NischeMainstreamPage() {
               },
               {
                 kriterium: 'Preis',
-                mainstream: '€60–200 (meist €80–150). Massenproduktes, daher günstiger trotz großer Marken.',
+                mainstream: '€60–200 (meist €80–150). Massenproduktes, daher günstiger trotz grosser Marken.',
                 nische: 'Often €100–250+. Kleinere Mengen, hochwertigere Zutaten, höhere Kosten.',
                 urteil: 'Vorteil: Mainstream (günstiger)'
               },
@@ -175,7 +175,7 @@ export default function NischeMainstreamPage() {
               {
                 duft: 'Bleu de Chanel',
                 typ: 'Mainstream',
-                beschreibung: 'Der Klassiker. Auf jeder Haut großartig. 8+ Stunden. Überall verfügbar. €120.'
+                beschreibung: 'Der Klassiker. Auf jeder Haut grossartig. 8+ Stunden. Überall verfügbar. €120.'
               },
               {
                 duft: 'Heeley Sel Marin',
@@ -272,15 +272,15 @@ export default function NischeMainstreamPage() {
             {[
               {
                 frage: 'Sind Niche-Düfte immer besser?',
-                antwort: 'Nein. Besser ist subjektiv. Niche-Düfte haben andere Qualitäten (Einzigartigkeit, Künstlerischer), aber nicht unbedingt bessere Qualität. Ein großartiger Mainstream-Duft kann besser für DICH sein.'
+                antwort: 'Nein. Besser ist subjektiv. Niche-Düfte haben andere Qualitäten (Einzigartigkeit, Künstlerischer), aber nicht unbedingt bessere Qualität. Ein grossartiger Mainstream-Duft kann besser für DICH sein.'
               },
               {
                 frage: 'Sind Mainstream-Düfte immer schlechter?',
-                antwort: 'Nein. Mainstream-Klassiker wie Bleu de Chanel oder Dior Sauvage sind großartig. Große Marken haben perfektionierte ihre Formulierungen über Jahrzehnte. Das ist keine schlechte Sache.'
+                antwort: 'Nein. Mainstream-Klassiker wie Bleu de Chanel oder Dior Sauvage sind grossartig. Grosse Marken haben perfektionierte ihre Formulierungen über Jahrzehnte. Das ist keine schlechte Sache.'
               },
               {
                 frage: 'Warum sind Niche-Düfte so teuer?',
-                antwort: 'Weil: kleinere Produktion, höherer Overhead, keine Massenproduktion, hochwertigere Zutaten, kein großes Marketing-Budget. Die Kosten sind real, nicht nur Hype.'
+                antwort: 'Weil: kleinere Produktion, höherer Overhead, keine Massenproduktion, hochwertigere Zutaten, kein grosses Marketing-Budget. Die Kosten sind real, nicht nur Hype.'
               },
               {
                 frage: 'Sollte ich einen Niche-Duft kaufen, wenn ich ein Budget habe?',

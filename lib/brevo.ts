@@ -173,13 +173,13 @@ export async function generateRecommendedPerfumes(
     // Scoring-Logik:
     // 1. Bevorzugte Familien höher bewerten
     // 2. Hohe scentmatch_score bevorzugen
-    // 3. Schon angesehene Düfte ausschließen
+    // 3. Schon angesehene Düfte ausschliessen
 
     const viewedIds = new Set(behavior.viewedPerfumeIds || []);
     const preferredFamilies = new Set(behavior.viewedFamilies || []);
 
     const scored = allPerfumes
-      .filter((p) => !viewedIds.has(p.slug)) // Schließe angesehene aus
+      .filter((p) => !viewedIds.has(p.slug)) // Schliesse angesehene aus
       .map((p) => {
         let score = p.scentmatch_score || 70;
 

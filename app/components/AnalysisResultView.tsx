@@ -965,7 +965,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                 { q: 'Wie lange hält dieser Duft?', a: `Mit einer Haltbarkeit von ${currentAnalysis.longevity || 8}/10 hält dieser Duft etwa ${currentAnalysis.longevity && currentAnalysis.longevity >= 8 ? '8-12' : currentAnalysis.longevity && currentAnalysis.longevity >= 6 ? '5-8' : '3-5'} Stunden auf der Haut.` },
                 { q: 'Ist dieser Duft für jeden geeignet?', a: `Dieser ${genderLabel === 'Unisex' ? 'Unisex-Duft' : genderLabel === 'Damen' ? 'Damendüfte' : 'Herrenduft'} hat eine Sillage von ${currentAnalysis.sillage || 7}/10. Am besten für ${dbMatch?.occasion || 'elegante Anlässe'}.` },
                 { q: 'Unterschied zwischen Parfum und EdP?', a: 'Parfum (Extrait) hat 15-40% Duftkonzentration und hält länger. EdP hat 15-20% Konzentration. Dieser Duft ist hochwertig und langanhaltend in jeder Form.' },
-                { q: 'Wie trage ich ihn richtig auf?', a: 'Trage 2-3 Sprühstöße auf Pulse Points auf: Handgelenke, Hals, hinter den Ohren. Nicht reiben – das zerstört die Duftmoleküle. Für maximale Haltbarkeit auf feuchter, warmer Haut auftragen.' },
+                { q: 'Wie trage ich ihn richtig auf?', a: 'Trage 2-3 Sprühstösse auf Pulse Points auf: Handgelenke, Hals, hinter den Ohren. Nicht reiben – das zerstört die Duftmoleküle. Für maximale Haltbarkeit auf feuchter, warmer Haut auftragen.' },
               ].map((item, idx) => (
                 <div key={idx} style={{
                   backgroundColor: C.creamLight,

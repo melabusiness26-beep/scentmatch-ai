@@ -87,10 +87,10 @@ export default function WieAuressaFunktioniert() {
             Das Quiz
           </p>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.25rem' }}>
-            12 Fragen, 11 Dimensionen
+            10 Fragen, 10 Kriterien
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>
-            Das Quiz sammelt 11 Datenpunkte über deine Duft-Vorlieben:
+            Das Quiz sammelt 10 Angaben über deine Duft-Vorlieben:
           </p>
           <div style={{
             background: '#fff',
@@ -117,15 +117,15 @@ export default function WieAuressaFunktioniert() {
             </div>
             <div style={{ marginBottom: '1rem' }}>
               <p style={{ fontSize: '0.9rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.3rem' }}>
-                3–5. Duftfamilie (3× Fragen aus verschiedenen Blickwinkeln)
+                3. Duftfamilie (Clean, Gourmand, Woody, Floral)
               </p>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>
-                Wir fragen 3 Mal nach Vorlieben (Clean, Gourmand, Woody, Floral), um sicher zu sein, dass wir deine echte Familie treffen.
+                Du wählst deine Lieblingsrichtung. Sie ist der wichtigste Faktor für deinen Match.
               </p>
             </div>
             <div style={{ marginBottom: '1rem' }}>
               <p style={{ fontSize: '0.9rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.3rem' }}>
-                6. Lieblingsnote
+                4. Lieblingsnote
               </p>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>
                 Düfte mit dieser Note bekommen einen Bonus im Ranking. Wenn du „Vanille" sagst, gewinnen Vanille-Düfte.
@@ -133,7 +133,7 @@ export default function WieAuressaFunktioniert() {
             </div>
             <div style={{ marginBottom: '1rem' }}>
               <p style={{ fontSize: '0.9rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.3rem' }}>
-                7. Hassnote (Abzug-Note)
+                5. No-Go-Note
               </p>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>
                 Düfte mit dieser Note werden nach unten gewichtet. Wenn du „Moschus" nicht magst, wird das respektiert.
@@ -141,7 +141,7 @@ export default function WieAuressaFunktioniert() {
             </div>
             <div style={{ marginBottom: '1rem' }}>
               <p style={{ fontSize: '0.9rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.3rem' }}>
-                8. Anlass (Alltag, Date, Abend)
+                6. Anlass (Alltag, Date, Abend)
               </p>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>
                 Düfte werden je nach Intensität/Charakter bewertet. Ein Abend-Duft ist nicht für Büro gemacht.
@@ -149,7 +149,7 @@ export default function WieAuressaFunktioniert() {
             </div>
             <div style={{ marginBottom: '1rem' }}>
               <p style={{ fontSize: '0.9rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.3rem' }}>
-                9. Jahreszeit
+                7. Jahreszeit
               </p>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>
                 Sommerdüfte im Winter funktionieren anders. Ein schwerer Oud im Juli ist erdrückend.
@@ -157,18 +157,26 @@ export default function WieAuressaFunktioniert() {
             </div>
             <div style={{ marginBottom: '1rem' }}>
               <p style={{ fontSize: '0.9rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.3rem' }}>
-                10. Sillage (Projektion/Präsenz)
+                8. Ausstrahlung (Sillage)
               </p>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>
-                Wie weit soll der Duft dich umgeben? Hautnahh oder im ganzen Raum?
+                Wie weit soll der Duft dich umgeben? Hautnah oder im ganzen Raum?
               </p>
             </div>
             <div>
               <p style={{ fontSize: '0.9rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.3rem' }}>
-                11. Budget
+                9. Budget
               </p>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>
                 Keine Verschwendung auf Düfte, die du dir nicht leisten möchtest.
+              </p>
+            </div>
+            <div style={{ marginBottom: '1rem' }}>
+              <p style={{ fontSize: '0.9rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.3rem' }}>
+                10. Haltbarkeit
+              </p>
+              <p style={{ fontSize: '0.9rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>
+                Ein paar Stunden, solide durch den Tag oder möglichst lange? Das fliesst leicht in deine Empfehlung ein.
               </p>
             </div>
           </div>
@@ -243,10 +251,10 @@ export default function WieAuressaFunktioniert() {
             </div>
             <div>
               <p style={{ fontSize: '0.9rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.3rem' }}>
-                Hassnote-Abzug: −25
+                No-Go-Note: −25
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: 0 }}>
-                Wenn der Duft deine Hassnote enthält: grosser Abzug.
+                Wenn der Duft deine No-Go-Note enthält: grosser Abzug.
               </p>
             </div>
           </div>
@@ -320,7 +328,7 @@ export default function WieAuressaFunktioniert() {
             Mach das Quiz und finde deinen Match
           </h2>
           <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', marginBottom: '1.5rem' }}>
-            12 Fragen, 2 Minuten, 400+ Düfte. Dein persönlicher Match wartet.
+            10 Fragen, 2 Minuten. Dein persönlicher Match wartet.
           </p>
           <Link href="/quiz" style={{
             display: 'inline-block',

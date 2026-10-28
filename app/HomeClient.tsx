@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
+  catalogCountLabel,
   getPerfumes,
   type Perfume
 } from '@/lib/perfumes';
@@ -90,6 +91,7 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
   // Echte Katalog-Kennzahlen aus den geladenen Düften – keine erfundenen Werte.
   // Priorität: initialCatalogCount (vom Server SSR) → Fallback zur Client-Berechnung.
   const catalogCount = initialCatalogCount ?? (loaded ? perfumes.length : null);
+  const countLabel = catalogCountLabel(catalogCount);
   const brandCount = initialBrandCount ?? (loaded
     ? new Set(perfumes.map((p) => p.brands?.name).filter(Boolean)).size
     : null);
@@ -205,7 +207,7 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
             <div className="trust-item">
               <div className="trust-icon">✅</div>
               <div className="trust-text">
-                <p className="trust-stat"><strong>400+ Düfte</strong></p>
+                <p className="trust-stat"><strong>{countLabel ? `${countLabel.replace('über', 'Über')} Düfte` : 'Geprüfte Düfte'}</strong></p>
                 <p className="small">durchsuche unseren Katalog</p>
               </div>
             </div>

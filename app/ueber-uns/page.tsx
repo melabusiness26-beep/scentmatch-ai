@@ -61,7 +61,7 @@ export default function UeberUnsPage() {
             lineHeight: 1.15,
             color: '#faf7f2',
           }}>
-            Eine Schweizerin. Hunderte Düfte. Eine ehrliche Plattform.
+            Eine Schweizerin. Eine Leidenschaft für Düfte. Eine ehrliche Plattform.
           </h1>
           <p style={{ fontSize: '16px', color: 'rgba(250,247,242,0.7)', margin: 0 }}>
             Auressa entstand nicht im Büro, sondern aus echter Frustration beim Parfüm-Kauf.
@@ -105,7 +105,7 @@ export default function UeberUnsPage() {
           </h2>
           <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
             {[
-              { icon: '🎯', title: 'Duft-Quiz', text: 'Beantworte 11 Fragen – wir berechnen deinen persönlichen Match-Score aus über 400 Düften.' },
+              { icon: '🎯', title: 'Duft-Quiz', text: 'Beantworte 10 Fragen – wir berechnen deinen persönlichen Match-Score für jeden Duft im Katalog.' },
               { icon: '🕵️', title: 'Duft-Detektiv', text: '12 tiefe Fragen zu Persönlichkeit, Stil und Anlass. Für Menschen, die ihren Signature Duft noch nicht kennen.' },
               { icon: '📸', title: 'Duft-Scanner', text: 'Foto hochladen, Parfüm erkennen lassen – KI identifiziert Flakon, Noten und Charakter in Sekunden.' },
               { icon: '💸', title: 'Günstige Dupes', text: 'Keine Lust auf 200-Franken-Flakons? Wir zeigen dir Alternativen, die ähnlich riechen – für einen Bruchteil des Preises.' },

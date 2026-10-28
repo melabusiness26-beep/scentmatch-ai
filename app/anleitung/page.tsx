@@ -239,7 +239,7 @@ export default function AnleitungPage() {
             Bereit, deinen Signature-Duft zu finden?
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>
-            Nutze unser Quiz oder durchstöber unseren Duft-Katalog mit über 400 kuratierten Düften.
+            Nutze unser Quiz oder durchstöbere unseren kuratierten Duft-Katalog.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link

@@ -82,7 +82,7 @@ export default async function Page() {
 
       {/* Neuer Hero + 3-Wege-Grid */}
       <HeroHome />
-      <ThreeWaysSection />
+      <ThreeWaysSection catalogCount={catalogCount} />
 
       <HomeClient initialCatalogCount={catalogCount} initialBrandCount={brandCount} initialHighlights={[]} />
 

@@ -28,7 +28,7 @@ const faqGroups: {
     faqs: [
       {
         q: 'Was ist Auressa und wie funktioniert die Plattform?',
-        a: 'Auressa ist eine unabhängige Duft-Findungs-Plattform aus der Schweiz. Mit unserem Quiz (11 kurze Fragen zu Duftvorlieben, Anlass, Saison und Budget) berechnen wir einen persönlichen Match-Score für jeden Duft im Katalog – von 0 bis 100. So findest du Düfte, die wirklich zu dir passen, ohne stundenlang in Parfümerien zu suchen.'
+        a: 'Auressa ist eine unabhängige Duft-Findungs-Plattform aus der Schweiz. Mit unserem Quiz (10 kurze Fragen zu Duftvorlieben, Anlass, Saison und Budget) berechnen wir einen persönlichen Match-Score für jeden Duft im Katalog – von 0 bis 100. So findest du Düfte, die wirklich zu dir passen, ohne stundenlang in Parfümerien zu suchen.'
       },
       {
         q: 'Brauche ich ein Konto, um Auressa zu nutzen?',

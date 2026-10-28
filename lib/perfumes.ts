@@ -151,6 +151,12 @@ export async function getPerfumes(limit = 60): Promise<Perfume[]> {
 }
 
 // Anzahl der Düfte im Katalog – für dynamische Texte wie „über X Düfte".
+// „über 50", „über 100" … – erst ab 50 Düften, auf 50 abgerundet. So verspricht
+// ein Text nie mehr Düfte, als wirklich im Katalog sind (darunter: null).
+export function catalogCountLabel(count: number | null | undefined): string | null {
+  return count != null && count >= 50 ? `über ${Math.floor(count / 50) * 50}` : null;
+}
+
 export async function getPerfumeCount(): Promise<number> {
   if (!isSupabaseConfigured) return 0;
   const { count, error } = await supabase

@@ -9,6 +9,7 @@ import type { Perfume } from './perfumes';
 export type AccordCode =
   | 'zitrisch'
   | 'frisch'
+  | 'aromatisch'
   | 'fruchtig'
   | 'blumig'
   | 'pudrig'
@@ -22,6 +23,7 @@ export type Accord = { code: AccordCode; label: string; color: string; value: nu
 const ACCORD_META: Record<AccordCode, { label: string; color: string }> = {
   zitrisch: { label: 'Zitrisch', color: '#E3B53C' },
   frisch: { label: 'Frisch', color: '#6FA8BF' },
+  aromatisch: { label: 'Aromatisch', color: '#7D8F5A' },
   fruchtig: { label: 'Fruchtig', color: '#D9776A' },
   blumig: { label: 'Blumig', color: '#C77A9E' },
   pudrig: { label: 'Pudrig', color: '#B9A0C4' },
@@ -47,10 +49,16 @@ const KEYWORDS: [string, AccordCode[]][] = [
   ['wasser', ['frisch']],
   ['aquat', ['frisch']],
   ['ozon', ['frisch']],
-  ['minze', ['frisch']],
-  ['lavendel', ['frisch', 'blumig']],
-  ['rosmarin', ['frisch', 'wuerzig']],
-  ['salbei', ['frisch', 'wuerzig']],
+  ['minze', ['frisch', 'aromatisch']],
+  // Lavendel, Rosmarin & Co. riechen kräuterig-aromatisch, nicht blumig.
+  ['lavendel', ['aromatisch', 'frisch']],
+  ['rosmarin', ['aromatisch', 'frisch']],
+  ['salbei', ['aromatisch', 'frisch']],
+  ['thymian', ['aromatisch']],
+  ['basilikum', ['aromatisch', 'frisch']],
+  ['wacholder', ['aromatisch', 'frisch']],
+  ['koriander', ['wuerzig', 'aromatisch']],
+  ['geranie', ['blumig', 'aromatisch']],
   ['tee', ['frisch']],
   ['gruen', ['frisch']],
   ['galbanum', ['frisch']],

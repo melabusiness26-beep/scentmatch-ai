@@ -1,5 +1,5 @@
 import { supabase } from './supabase';
-import type { Perfume } from './perfumes';
+import { withAuressaScore, type Perfume } from './perfumes';
 
 interface AnalysisNotes {
   top?: string[];
@@ -47,7 +47,7 @@ export async function findPerfumeInDB(
     }
 
     console.log(`[scanner-matcher] Loaded ${data.length} perfumes from DB`);
-    const perfumes = data as unknown as Perfume[];
+    const perfumes = (data as unknown as Perfume[]).map(withAuressaScore);
 
     // Stage 1: Exact name + brand match
     for (const perfume of perfumes) {

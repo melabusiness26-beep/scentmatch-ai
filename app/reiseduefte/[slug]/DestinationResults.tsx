@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { matchesGender, type Perfume, type QuizAnswers } from '@/lib/perfumes';
 import { PerfumeCover, familyDisplay } from '@/app/PerfumeTile';
 import { AffiliateButton } from '@/app/AffiliateButton';
+import { computeAuressaScore } from '@/lib/score';
 
 // Geschlechts-Filter für die Ergebnisliste.
 const GENDERS: [string, QuizAnswers['gender']][] = [
@@ -80,7 +81,7 @@ export default function DestinationResults({ items, dest }: { items: Item[]; des
               <p className="small">Dein Top-Treffer für {dest.name}</p>
               <h3>{top.perfume.perfume_name}</h3>
               <p className="small">{top.perfume.brands?.name || 'Marke offen'} · {meta(top.perfume)}</p>
-              <span className="score-pill">Auressa-Score {top.perfume.scentmatch_score ?? 80}</span>
+              <span className="score-pill">Auressa-Score {computeAuressaScore(top.perfume).total}</span>
               <p className="mood-reason">{top.reason}</p>
               <div className="tile-actions">
                 {top.perfume.slug && (
@@ -99,7 +100,7 @@ export default function DestinationResults({ items, dest }: { items: Item[]; des
                   <PerfumeCover perfume={p} />
                   <h3>{p.perfume_name}</h3>
                   <p className="small">{p.brands?.name || 'Marke offen'} · {familyDisplay[p.fragrance_family || ''] || 'Duftfamilie offen'}</p>
-                  <span className="score-pill">Score {p.scentmatch_score ?? 80}</span>
+                  <span className="score-pill">Score {computeAuressaScore(p).total}</span>
                   <p className="mood-reason small">{reason}</p>
                   <div className="tile-actions">
                     {p.slug && (
@@ -113,7 +114,11 @@ export default function DestinationResults({ items, dest }: { items: Item[]; des
           )}
         </>
       ) : (
-        <p className="small">Für diese Auswahl gerade keine Treffer. Probier «Für alle».</p>
+        <p className="small">
+          {gender && items.length > 0
+            ? 'Für diese Auswahl gerade keine Treffer – probier „Für alle".'
+            : 'Passende Düfte dafür sind bald im Katalog – unser Katalog wächst laufend. Bis dahin findest du im Quiz deinen persönlichen Match.'}
+        </p>
       )}
 
       <div className="cta">

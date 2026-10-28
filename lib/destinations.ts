@@ -1,4 +1,5 @@
-import { type Perfume, type QuizAnswers, matchesGender } from './perfumes';
+import { type Perfume, type QuizAnswers, matchesGender, noteHasKeyword } from './perfumes';
+import { computeAuressaScore } from './score';
 
 // ---------- Reise-Düfte ("Welcher Duft passt zu deinem Reiseziel?") ----------
 // Jedes Reiseziel bekommt einen Duft-Charakter: bevorzugte Duftfamilien, typische
@@ -437,7 +438,13 @@ function notesOf(p: Perfume): string[] {
 // Welche der typischen Orts-Noten kommen im Duft vor? (für Bewertung & Begründung)
 function noteHits(p: Perfume, dest: Destination): string[] {
   const notes = notesOf(p);
-  return dest.noteKeywords.filter((kw) => notes.some((n) => n.includes(kw.toLowerCase())));
+  return dest.noteKeywords.filter((kw) => notes.some((n) => noteHasKeyword(n, kw)));
+}
+
+// Wie viele verschiedene Noten des Dufts zu den typischen Orts-Noten passen
+// („Amberholz" zählt einmal, auch wenn es „Amber" und „Amberholz" trifft).
+function matchedNoteCount(p: Perfume, dest: Destination): number {
+  return notesOf(p).filter((n) => dest.noteKeywords.some((kw) => noteHasKeyword(n, kw))).length;
 }
 
 // Bewertet, wie gut ein Duft zu einem Reiseziel passt (höher = besser).
@@ -451,7 +458,7 @@ export function destinationScore(p: Perfume, dest: Destination): number {
   if (dest.season && p.season === dest.season) s += 8;
   else if (p.season === 'Ganzjährig') s += 4;
   // Leichter Qualitäts-Tiebreaker über den Auressa-Score (bis 5)
-  s += ((p.scentmatch_score ?? 80) / 100) * 5;
+  s += (computeAuressaScore(p).total / 100) * 5;
   return s;
 }
 
@@ -465,7 +472,11 @@ const FAMILY_WORD: Record<string, string> = {
 // Kurze, ehrliche Begründung, warum ein Duft zum Reiseziel passt.
 // Nutzt nur echte Daten (getroffene Noten oder Duftfamilie).
 export function destinationReason(p: Perfume, dest: Destination): string {
-  const hits = noteHits(p, dest);
+  // Die getroffenen Noten des Dufts selbst (nicht die Stichwörter) – so steht dort
+  // „Zedernholz" statt doppelt „Zedernholz, Holz".
+  const hits = [...(p.top_notes || []), ...(p.heart_notes || []), ...(p.base_notes || [])]
+    .map((n) => n.trim())
+    .filter((n, i, all) => n && all.indexOf(n) === i && dest.noteKeywords.some((kw) => noteHasKeyword(n, kw)));
   if (hits.length) return `${hits.slice(0, 3).join(', ')} – passt zu ${dest.name}.`;
   const fam = FAMILY_WORD[p.fragrance_family || ''];
   if (fam) return `${fam} – passt zur Stimmung von ${dest.name}.`;
@@ -487,10 +498,13 @@ export function rankByDestination(
     .filter((p): p is Perfume => Boolean(p));
   const pickIds = new Set(picks.map((p) => p.id));
 
+  // Nur Düfte mit passender Duftfamilie oder mindestens zwei typischen Noten des Ortes
+  // (eine einzelne Note wie Amber oder Moschus steckt in vielen Düften).
   const rest = perfumes
     .filter((p) => !pickIds.has(p.id))
+    .filter((p) => (dest.families[p.fragrance_family || ''] || 0) > 0 || matchedNoteCount(p, dest) >= 2)
     .map((p) => ({ p, s: destinationScore(p, dest) }))
-    .sort((a, b) => (b.s !== a.s ? b.s - a.s : (b.p.scentmatch_score || 0) - (a.p.scentmatch_score || 0)))
+    .sort((a, b) => (b.s !== a.s ? b.s - a.s : computeAuressaScore(b.p).total - computeAuressaScore(a.p).total))
     .map((x) => x.p);
 
   return [...picks, ...rest].filter((p) => matchesGender(p, gender)).slice(0, limit);

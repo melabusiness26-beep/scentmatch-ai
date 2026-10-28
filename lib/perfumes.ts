@@ -1,4 +1,5 @@
 import { supabase, isSupabaseConfigured } from './supabase';
+import { computeAuressaScore } from './score';
 
 export type PerfumeBrand = {
   name: string | null;
@@ -138,6 +139,17 @@ export function dedupePerfumes(perfumes: Perfume[]): Perfume[] {
   return out;
 }
 
+// Der Auressa-Score wird aus den Duftdaten berechnet (lib/score.ts) und nicht mehr in
+// der Datenbank gepflegt. Hier wird er beim Laden gesetzt, damit jede Seite denselben
+// Wert zeigt wie die Duft-Detailseite.
+export function withAuressaScore<T extends Perfume>(p: T): T {
+  return { ...p, scentmatch_score: computeAuressaScore(p).total };
+}
+
+function withScores(perfumes: Perfume[]): Perfume[] {
+  return perfumes.map(withAuressaScore).sort((a, b) => (b.scentmatch_score ?? 0) - (a.scentmatch_score ?? 0));
+}
+
 // Liste der Düfte, nach Auressa-Score sortiert (beste zuerst).
 export async function getPerfumes(limit = 60): Promise<Perfume[]> {
   if (!isSupabaseConfigured) return [];
@@ -147,7 +159,7 @@ export async function getPerfumes(limit = 60): Promise<Perfume[]> {
     .order('scentmatch_score', { ascending: false })
     .limit(limit);
   if (error) return [];
-  return dedupePerfumes((data as unknown as Perfume[]) || []);
+  return withScores(dedupePerfumes((data as unknown as Perfume[]) || []));
 }
 
 // Anzahl der Düfte im Katalog – für dynamische Texte wie „über X Düfte".
@@ -222,7 +234,7 @@ export async function getPerfumesByBrand(brandSlug: string): Promise<Perfume[]> 
   if (error || !data) return [];
   // Filter client-side, weil Supabase den Join-Filter nicht immer korrekt umsetzt
   const all = (data as unknown as Perfume[]);
-  return dedupePerfumes(all.filter((p) => p.brands?.slug === brandSlug));
+  return withScores(dedupePerfumes(all.filter((p) => p.brands?.slug === brandSlug)));
 }
 
 // ─── Brand-Statistiken ───────────────────────────────────────────────────────
@@ -246,7 +258,7 @@ export async function getPerfumeBySlug(slug: string): Promise<Perfume | null> {
     .eq('slug', slug)
     .maybeSingle();
   if (error) return null;
-  return (data as unknown as Perfume) || null;
+  return data ? withAuressaScore(data as unknown as Perfume) : null;
 }
 
 // Hintergrund-Infos (Jahr, Parfümeur, Inspiration, „Gut zu wissen") für die Detailseite.
@@ -367,7 +379,7 @@ export async function getPerfumesByTag(tag: string, limit = 40): Promise<Perfume
   }
 
   if (allData.length === 0) return [];
-  return dedupePerfumes(allData).slice(0, limit);
+  return withScores(dedupePerfumes(allData)).slice(0, limit);
 }
 
 // ---------- Matching-Engine ----------
@@ -454,12 +466,27 @@ function perfumeNotes(p: Perfume): string[] {
   return [...(p.top_notes || []), ...(p.heart_notes || []), ...(p.base_notes || [])].map((n) => n.toLowerCase());
 }
 
+// Noten, die ein Stichwort nur zufällig enthalten: „Rosenholz" ist keine Rose,
+// „Pfefferminze" kein Pfeffer, „Orangenblüte" keine Orange.
+const FALSE_FRIENDS: Record<string, string[]> = {
+  rose: ['rosenholz', 'rosengeranie', 'tuberose'],
+  pfeffer: ['pfefferminz'],
+  orange: ['orangenblüte', 'orangenbluete']
+};
+
+export function noteHasKeyword(note: string, keyword: string): boolean {
+  const n = note.toLowerCase();
+  const kw = keyword.toLowerCase();
+  if (!n.includes(kw)) return false;
+  return !(FALSE_FRIENDS[kw] || []).some((f) => n.includes(f));
+}
+
 export function perfumeHasTheme(p: Perfume, code: string): boolean {
   if (!code) return false;
   const theme = NOTE_THEMES.find((t) => t.code === code);
   if (!theme) return false;
   const notes = perfumeNotes(p);
-  return theme.keywords.some((kw) => notes.some((n) => n.includes(kw.toLowerCase())));
+  return theme.keywords.some((kw) => notes.some((n) => noteHasKeyword(n, kw)));
 }
 
 // Gewichte (Summe 100): Duftrichtung 30, Lieblingsnote 20, Budget 15, Anlass 13, Saison 12, Intensität 10.
@@ -894,8 +921,14 @@ export function moodScore(p: Perfume, mood: Mood): number {
     s += 10 * (1 - Math.abs(sill - target) / 9);
   }
   // Leichter Qualitäts-Tiebreaker über den Auressa-Score (bis 5)
-  s += ((p.scentmatch_score ?? 80) / 100) * 5;
+  s += (computeAuressaScore(p).total / 100) * 5;
   return s;
+}
+
+// Passt ein Duft überhaupt? Nur mit passender Duftfamilie – einzelne Noten wie Moschus
+// oder Zedernholz stecken in fast jedem Duft und würden sonst jeden Duft zulassen.
+export function fitsMood(p: Perfume, mood: Mood): boolean {
+  return (mood.families[p.fragrance_family || ''] || 0) > 0;
 }
 
 // Liefert die am besten zur Stimmung passenden Düfte – optional nach Geschlecht gefiltert.
@@ -908,6 +941,7 @@ export function rankByMood(
   return perfumes
     .filter((p) => matchesGender(p, gender))
     .filter(isWithinPriceCap)
+    .filter((p) => fitsMood(p, mood))
     .map((p) => ({ p, s: moodScore(p, mood) }))
     .sort((a, b) => b.s - a.s)
     .slice(0, limit)

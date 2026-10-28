@@ -184,7 +184,7 @@ export default async function BrandPage({
   const description =
     brand.description ||
     `${brand.name} steht für hochwertige Parfums${brand.country ? ` aus ${brand.country}` : ''}. ` +
-    `Bei Auressa findest du ${perfumes.length} ${brand.name}-Düfte mit vollständigen Duftprofilen, Noten und Preisangaben.`;
+    `Bei Auressa findest du ${perfumes.length} ${brand.name}-${perfumes.length === 1 ? 'Duft' : 'Düfte'} mit vollständigen Duftprofilen, Noten und Preisangaben.`;
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
@@ -242,7 +242,7 @@ export default async function BrandPage({
           {/* Statistik-Chips */}
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             {[
-              { label: `${perfumes.length} Düfte`, icon: '✦' },
+              { label: `${perfumes.length} ${perfumes.length === 1 ? 'Duft' : 'Düfte'}`, icon: '✦' },
               ...(damen > 0 ? [{ label: `${damen} Damen`, icon: '♀' }] : []),
               ...(herren > 0 ? [{ label: `${herren} Herren`, icon: '♂' }] : []),
               ...(unisex > 0 ? [{ label: `${unisex} Unisex`, icon: '⚥' }] : []),

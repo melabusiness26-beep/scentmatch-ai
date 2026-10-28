@@ -27,7 +27,7 @@ export default function GuenstigeAlternativenPage() {
           <p className="eyebrow">Wissen</p>
           <h1 className="detail-title">Günstige Duft-Alternativen & Klone</h1>
           <p className="lead">
-            Du liebst Chanel No. 5, Dior Sauvage oder Tom Ford Black Orchid – magst aber nicht 150€+ dafür zahlen?
+            Du liebst Chanel No. 5, Dior Sauvage oder Tom Ford Black Orchid – magst aber nicht CHF 150+ dafür zahlen?
             Gute Nachricht: Es gibt legale, qualitativ hochwertige Alternativen, die 70–80% günstiger sind
             und fast genauso riechen.
           </p>
@@ -65,7 +65,7 @@ export default function GuenstigeAlternativenPage() {
             <ul style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
               <li>Fälschungen (Fake-Chanel mit Chanel-Logo) – das ist Betrug</li>
               <li>Dufte, die sagen „Dies ist ein Chanel No. 5 Clone" (Namensmissbrauch)</li>
-              <li>Schnäppchen-Websites, die „Original Chanel für 20€" verkaufen – das sind 100% Fakes</li>
+              <li>Schnäppchen-Websites, die „Original Chanel für CHF 20" verkaufen – das sind 100% Fakes</li>
             </ul>
           </div>
 
@@ -81,7 +81,7 @@ export default function GuenstigeAlternativenPage() {
                 titel: '1. Legitime Budget-Klone (die besten)',
                 beschreibung: 'Marken wie Armaf, Lattafa, Fragrance du Bois kreieren Düfte, die bekannten Luxus-Düften ähneln – aber unter ihrem eigenen Namen und mit guter Qualität.',
                 beispiele: 'Armaf Club de Nuit Intense (wie Creed Aventus), Lattafa Intense Dream (wie Tom Ford Black Orchid), Maison Anthony Marwood (wie Dior Sauvage)',
-                preis: '€15–35',
+                preis: 'CHF 15–35',
                 haltbarkeit: '4–8 Stunden',
                 qualitaet: '80–90% des Original, dafür 70–80% günstiger',
                 tipp: 'Das ist dein Sweet Spot. Legitim, günstig, gut. Kaufe hier zuerst.'
@@ -90,7 +90,7 @@ export default function GuenstigeAlternativenPage() {
                 titel: '2. Nische-Brands mit ähnlicher DNA',
                 beschreibung: 'Unabhängige Parfümeure & Nische-Marken, die nicht versuchen, einen bekannten Duft zu klonen – aber die ähnliche Noten & Charaktere haben.',
                 beispiele: 'Wenn du Creed Aventus liebst (Pfirsich, Zeder) → probiere Heeley Sel Marin (maritime Zeder). Wenn du Tom Ford Black Orchid magst (würzig, warm) → probiere Miu Miu L\'Eau Rosée (würzig, floral)',
-                preis: '€40–80',
+                preis: 'CHF 40–80',
                 haltbarkeit: '5–8 Stunden',
                 qualitaet: '85–95% (oft unterschätzte Marken)',
                 tipp: 'Weniger bekannt, oft bessere Qualität. Probiere diese für Entdeckungen.'
@@ -98,8 +98,8 @@ export default function GuenstigeAlternativenPage() {
               {
                 titel: '3. EdT-Versionen von Luxus-Düften',
                 beschreibung: 'Der gleiche Duft vom Original-Hersteller – aber in EdT (eau de toilette) statt EdP. Gleiche Zusammensetzung, aber leichter & billiger.',
-                beispiele: 'Chanel No. 5 EdP (€90) vs. Chanel No. 5 EdT (€65). Dior Sauvage EdP (€110) vs. Dior Sauvage EdT (€75)',
-                preis: '€40–80',
+                beispiele: 'Chanel No. 5 EdP (CHF 90) vs. Chanel No. 5 EdT (CHF 65). Dior Sauvage EdP (CHF 110) vs. Dior Sauvage EdT (CHF 75)',
+                preis: 'CHF 40–80',
                 haltbarkeit: '4–6 Stunden',
                 qualitaet: '100% (es ist das echte Ding, nur leichter)',
                 tipp: 'Bester Kompromiss: Original-Qualität, niedrigerer Preis, etwas kürzere Haltbarkeit.'
@@ -108,7 +108,7 @@ export default function GuenstigeAlternativenPage() {
                 titel: '4. Outlet & Sale-Düfte (Glücksspiel)',
                 beschreibung: 'Originalmarken-Düfte auf Sale, aus früheren Serien, oder in Outlet-Stores massiv reduziert.',
                 beispiele: 'Notino.ch, Flaconi, Breuninger – regelmässig 30–60% Rabatt auf Premium-Marken.',
-                preis: '€30–70 (je nach Sale)',
+                preis: 'CHF 30–70 (je nach Sale)',
                 haltbarkeit: '6–10+ Stunden',
                 qualitaet: '100% authentisch',
                 tipp: 'Black Friday, Summer Sales – hier lohnt es sich, zu warten. Aber weniger vorhersehbar.'
@@ -149,42 +149,42 @@ export default function GuenstigeAlternativenPage() {
                 marke: 'Armaf (Dubai)',
                 spezialisierung: 'Orientalische & würzige Düfte; sehr beliebte Creed-Aventus-Klone',
                 populaer: 'Club de Nuit Intense, Club de Nuit Milestone, Craze Pour Homme',
-                preis: '€15–25',
+                preis: 'CHF 15–25',
                 qualitaet: '⭐⭐⭐⭐⭐ (sehr hochwertig, viele schwören drauf statt Creed)'
               },
               {
                 marke: 'Lattafa (Kuwait)',
                 spezialisierung: 'Oud, Blüten, orientalisch; bekannt für Tom Ford & Dior Klone',
                 populaer: 'Intense Dream, Qaa\'eed, Salaam',
-                preis: '€12–28',
+                preis: 'CHF 12–28',
                 qualitaet: '⭐⭐⭐⭐ (günstig + gut, weniger „exact" als Armaf, aber nah dran)'
               },
               {
                 marke: 'Maison Anthony Marwood (Frankreich)',
                 spezialisierung: 'Klassiker & zeitlose Düfte; sehr Dior Sauvage & Bleu de Chanel Nähe',
                 populaer: 'Dior Sauvage Inspired, Bleu de Chanel Inspired',
-                preis: '€20–35',
+                preis: 'CHF 20–35',
                 qualitaet: '⭐⭐⭐⭐ (französische Qualität, etwas teurer aber auch besser)'
               },
               {
                 marke: 'Fragrance Oil House (Unabhängig)',
                 spezialisierung: 'Inspirierende Düfte in mini-Grössen; gut zum Testen vor grossem Kauf',
                 populaer: '5ml Minis von populären Klonen, Natur-Düfte',
-                preis: '€2–5 pro Sample',
+                preis: 'CHF 2–5 pro Sample',
                 qualitaet: '⭐⭐⭐ (okay für Tests, nicht für Alltag)'
               },
               {
                 marke: 'Jasamalı (Türkei)',
                 spezialisierung: 'Oud & orientalische Düfte; bekannt für Niche-Düfte',
                 populaer: 'Oud-Kreationen, TOM FORD Black Orchid Inspired',
-                preis: '€8–20',
+                preis: 'CHF 8–20',
                 qualitaet: '⭐⭐⭐⭐ (überraschend gut für den Preis)'
               },
               {
                 marke: 'MFK (Parfum König – verschiedene Länder)',
                 spezialisierung: 'Vielfalt; bekannt für „Inspired by" Versionen von allem',
                 populaer: 'Mehrere hundert Klone & Inspirationen',
-                preis: '€10–30',
+                preis: 'CHF 10–30',
                 qualitaet: '⭐⭐⭐ (sehr variabel, manche Hits, manche Misses)'
               }
             ].map((item, i) => (
@@ -291,38 +291,38 @@ export default function GuenstigeAlternativenPage() {
           }}>
             {[
               {
-                original: 'Creed Aventus (€300–450)',
+                original: 'Creed Aventus (CHF 300–450)',
                 charaktere: 'Pfirsich, Zeder, würzig, maskulin',
-                klon: 'Armaf Club de Nuit Intense (€20)',
-                kostet: '€280 Ersparnis',
+                klon: 'Armaf Club de Nuit Intense (CHF 20)',
+                kostet: 'CHF 280 Ersparnis',
                 aendigkeit: '85–90% gleich – viele schwören darauf',
               },
               {
-                original: 'Tom Ford Black Orchid (€150–200)',
+                original: 'Tom Ford Black Orchid (CHF 150–200)',
                 charaktere: 'Würzig, dunkle Orchidee, warm, sinnlich',
-                klon: 'Lattafa Intense Dream (€18)',
-                kostet: '€132 Ersparnis',
+                klon: 'Lattafa Intense Dream (CHF 18)',
+                kostet: 'CHF 132 Ersparnis',
                 aendigkeit: '80–85% ähnlich – sehr populärer Klon',
               },
               {
-                original: 'Dior Sauvage (€110–130)',
+                original: 'Dior Sauvage (CHF 110–130)',
                 charaktere: 'Ambroxan, Pepper, sauber, frisch',
-                klon: 'Maison Anthony Marwood Sauvage Inspired (€28)',
-                kostet: '€82 Ersparnis',
+                klon: 'Maison Anthony Marwood Sauvage Inspired (CHF 28)',
+                kostet: 'CHF 82 Ersparnis',
                 aendigkeit: '80–88% ähnlich – gut zum Testen',
               },
               {
-                original: 'Bleu de Chanel (€100–140)',
+                original: 'Bleu de Chanel (CHF 100–140)',
                 charaktere: 'Zitrus, Zedernholz, muskulin, zeitlos',
-                klon: 'Lattafa Blue Uranos (€15)',
-                kostet: '€85 Ersparnis',
+                klon: 'Lattafa Blue Uranos (CHF 15)',
+                kostet: 'CHF 85 Ersparnis',
                 aendigkeit: '75–80% ähnlich – etwas leichter',
               },
               {
-                original: 'Chanel No. 5 (€80–120)',
+                original: 'Chanel No. 5 (CHF 80–120)',
                 charaktere: 'Klassisch, blumig, aldehydisch, zeitlos',
-                klon: 'Armaf Aristocrat (€22)',
-                kostet: '€58 Ersparnis',
+                klon: 'Armaf Aristocrat (CHF 22)',
+                kostet: 'CHF 58 Ersparnis',
                 aendigkeit: '70–75% ähnlich – charakteristisch anders, aber gut',
               }
             ].map((item, i) => (
@@ -367,16 +367,16 @@ export default function GuenstigeAlternativenPage() {
             <ol style={{ marginBottom: 0 }}>
               <li style={{ marginBottom: '1.2rem' }}>
                 <strong>Teste IMMER zuerst mit einer kleinen Grösse.</strong>
-                Ein 50ml Klon (€20) dir nicht passt, verlierst du 20€.
-                Wenn der Original (€150) dir nicht passt, verlierst du 150€. Die Risikominderung lohnt sich.
+                Wenn dir ein Klon mit 50 ml (CHF 20) nicht passt, verlierst du CHF 20.
+                Wenn das Original (CHF 150) dir nicht passt, verlierst du CHF 150. Die Risikominderung lohnt sich.
               </li>
               <li style={{ marginBottom: '1.2rem' }}>
                 <strong>Kauf nicht die „exakteste" Kopie – kauf die, die DIR am meisten gefällt.</strong>
                 Vielleicht magst du den Klon sogar besser als das Original. Das ist ok! Deine Nase entscheidet, nicht die Ähnlichkeitsquote.
               </li>
               <li style={{ marginBottom: '1.2rem' }}>
-                <strong>Erkenne Fakes: Preise unter €5, unglaubliche Namen, Schreibfehler = FAKE.</strong>
-                Ein legitimer Klon kostet €12–30. Alles darunter ist wahrscheinlich gefälscht.
+                <strong>Erkenne Fakes: Preise unter CHF 5, unglaubliche Namen, Schreibfehler = FAKE.</strong>
+                Ein legitimer Klon kostet CHF 12–30. Alles darunter ist wahrscheinlich gefälscht.
               </li>
               <li style={{ marginBottom: '1.2rem' }}>
                 <strong>Vergleiche nicht bloss Preis – vergleiche auch Haltbarkeit & Sillage.</strong>
@@ -384,7 +384,7 @@ export default function GuenstigeAlternativenPage() {
               </li>
               <li style={{ marginBottom: 0 }}>
                 <strong>Mixe: Kauf zwei gute Klone + einen Original-Favoriten.</strong>
-                Du bekommst Vielfalt & Qualität ohne riesiges Budget. 2× €20 + 1× €100 = grosse Sammlung für weniger Geld.
+                Du bekommst Vielfalt & Qualität ohne riesiges Budget. 2× CHF 20 + 1× CHF 100 = grosse Sammlung für weniger Geld.
               </li>
             </ol>
           </div>
@@ -411,7 +411,7 @@ export default function GuenstigeAlternativenPage() {
               },
               {
                 frage: 'Kann ich Fakes erkennen?',
-                antwort: 'Ja: Preis <€5 = Fake. Seller aus unglaubwürdiger Quelle = Fake. Schlechte Verpackung/Schreibfehler = wahrscheinlich Fake. Legitime Budget-Marken haben professionelle Verpackung.'
+                antwort: 'Ja: Preis unter CHF 5 = Fake. Seller aus unglaubwürdiger Quelle = Fake. Schlechte Verpackung/Schreibfehler = wahrscheinlich Fake. Legitime Budget-Marken haben professionelle Verpackung.'
               },
               {
                 frage: 'Warum sollte ich nicht immer einen Klon kaufen?',
@@ -443,7 +443,7 @@ export default function GuenstigeAlternativenPage() {
             <p style={{ margin: 0, color: '#6b5344', fontSize: '0.9rem', lineHeight: 1.6 }}>
               Düfte zu finden, die dir gefallen, ist wichtiger als Geld auszugeben. Legale Budget-Klone (Armaf, Lattafa) sind
               intelligente Wahl: Sie halten was sie versprechen, kosten 80% weniger, und du kannst experimentieren, ohne dein
-              Budget zu sprengen. Starte mit einem 20€-Klon, nicht mit einem 150€-Original. Wenn der Duft dir passt, kaufe
+              Budget zu sprengen. Starte mit einem 20-Franken-Klon, nicht mit einem 150-Franken-Original. Wenn der Duft dir passt, kaufe
               dann vielleicht später den Original – oder bleib beim Klon. Beide sind ok.
             </p>
           </div>
@@ -460,7 +460,7 @@ export default function GuenstigeAlternativenPage() {
             </p>
             <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
               Du willst eine Sammlung mit kleinerem Budget aufbauen? Lese unseren <Link href="/duftsammlung" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>Duftsammlung-Ratgeber</Link> –
-              dort lernst du Strategien, wie du für 200–300€ eine grossartige Sammlung bekommst.
+              dort lernst du Strategien, wie du für CHF 200–300 eine grossartige Sammlung bekommst.
               Oder nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link>, um Düfte zu finden, die zu dir passen – wir zeigen dir auch günstige Alternativen an.
             </p>
           </div>

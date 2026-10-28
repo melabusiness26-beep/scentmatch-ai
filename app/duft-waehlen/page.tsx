@@ -93,10 +93,10 @@ export default function FragranceSelectionPage() {
                 step: 1,
                 title: 'Budget bestimmen',
                 questions: [
-                  '€ Einsteiger: 20–50€ → Nutze günstige Premium-Marken wie Lattafa oder Armaf',
-                  '€€ Mittel: 50–100€ → Beste Preis-Leistungs-Verhältnis für EdP-Qualität',
-                  '€€€ Premium: 100–150€ → Designer-Düfte mit exzellenter Haltbarkeit',
-                  '€€€€ Luxus: 150€+ → Nischendüfte und Extraits – das Beste vom Besten'
+                  '💰 Einsteiger: CHF 20–50 → Nutze günstige Premium-Marken wie Lattafa oder Armaf',
+                  '💰💰 Mittel: CHF 50–100 → Beste Preis-Leistungs-Verhältnis für EdP-Qualität',
+                  '💰💰💰 Premium: CHF 100–150 → Designer-Düfte mit exzellenter Haltbarkeit',
+                  '💰💰💰💰 Luxus: CHF 150+ → Nischendüfte und Extraits – das Beste vom Besten'
                 ],
                 action: 'Entscheide dich für eine Kategorie. Nicht überschreiten – das erspart Überraschungen beim Checkout.'
               },
@@ -253,7 +253,7 @@ export default function FragranceSelectionPage() {
               },
               {
                 error: 'Teuer = Besser',
-                why: 'Ein 20€-Duft kann genauso gut riechen wie ein 150€-Duft. Der Preis ist oft Marketing, nicht Qualität.',
+                why: 'Ein 20-Franken-Duft kann genauso gut riechen wie ein 150-Franken-Duft. Der Preis ist oft Marketing, nicht Qualität.',
                 solution: 'Vertrau auf Bewertungen und Duftprofil, nicht auf Preis. Kauf smart.'
               },
               {

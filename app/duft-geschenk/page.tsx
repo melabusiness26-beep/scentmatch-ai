@@ -101,10 +101,10 @@ export default function FragranceGiftPage() {
               {
                 q: 'Was ist mein Budget?',
                 answer: [
-                  '€ 20–40€: Günstige, aber gute Marken (Lattafa, Armaf, Zara). Klein aber durchdacht.',
-                  '€€ 40–80€: Solides Mittelfeld. Designer-Düfte mit guter Qualität.',
-                  '€€€ 80–150€: Premium-Düfte. Shows, dass dir die Person wichtig ist.',
-                  '€€€€ 150€+: Luxus-Nischendüfte. Für echte Duft-Liebhaber oder spezielle Anlässe.'
+                  '💰 CHF 20–40: Günstige, aber gute Marken (Lattafa, Armaf, Zara). Klein aber durchdacht.',
+                  '💰💰 CHF 40–80: Solides Mittelfeld. Designer-Düfte mit guter Qualität.',
+                  '💰💰💰 CHF 80–150: Premium-Düfte. Shows, dass dir die Person wichtig ist.',
+                  '💰💰💰💰 CHF 150+: Luxus-Nischendüfte. Für echte Duft-Liebhaber oder spezielle Anlässe.'
                 ]
               },
               {
@@ -169,42 +169,42 @@ export default function FragranceGiftPage() {
                 person: 'Für die Freundin / Ehefrau',
                 top: 'Floral, Süss oder Würzig',
                 popular: 'Dior Miss Dior, Yves Saint Laurent Black Opium, Lancôme La Vie Est Belle',
-                preis: '€€–€€€€ (60€–150€)',
+                preis: '💰💰–💰💰💰💰 (CHF 60–150)',
                 extra: 'Körpercreme oder Dusch-Set dazu machen es persönlicher.'
               },
               {
                 person: 'Für den Freund / Ehemann',
                 top: 'Woody, Würzig oder Frisch',
                 popular: 'Creed Aventus, Dior Sauvage, Tom Ford Black Opium Men',
-                preis: '€€–€€€ (60€–120€)',
+                preis: '💰💰–💰💰💰 (CHF 60–120)',
                 extra: 'Ein klassischer, zeitloser Duft is eine sichere Wahl.'
               },
               {
                 person: 'Für die beste Freundin',
                 top: 'Was sie mag – Frage nach, wenn du nicht weisst',
                 popular: 'Ihr Lieblingsduft in EdT-Form (günstiger), oder ein ähnlicher von günstiger Marke',
-                preis: '€–€€ (20€–60€)',
+                preis: '💰–💰💰 (CHF 20–60)',
                 extra: 'Persönliche Note: "Ich weiss, du liebst X – hier ist etwas Ähnliches"'
               },
               {
                 person: 'Für die Mutter / Grossmutter',
                 top: 'Klassisch, elegant, zeitlos',
                 popular: 'Chanel No. 5, Dior J\'adore, Lancôme Trésor',
-                preis: '€€–€€€ (60€–120€)',
+                preis: '💰💰–💰💰💰 (CHF 60–120)',
                 extra: 'Klassische Düfte sind zeitlos – sie werden geliebt und lange getragen.'
               },
               {
                 person: 'Für einen jungen Partner (16–25)',
                 top: 'Trendy, modern, Social-Media-kompatibel',
                 popular: 'Billie Eilish Eau de Parfum, Celine Dion Colour Me, Urban Decay All Nighter',
-                preis: '€€–€€€ (40€–100€)',
+                preis: '💰💰–💰💰💰 (CHF 40–100)',
                 extra: 'Der Duft sollte cool und Instagram-würdig sein.'
               },
               {
                 person: 'Für einen Duft-Sammler (schwierig!)',
                 top: 'Ein seltener oder Nischen-Duft, den er/sie noch nicht hat',
                 popular: 'Heeley, Frapin, Penhaligons – Nischendüfte mit Geschichte',
-                preis: '€€€–€€€€ (100€–200€+)',
+                preis: '💰💰💰–💰💰💰💰 (CHF 100–200+)',
                 extra: 'Recherchiere, welche Marken und Noten sie mögen. Ein Fehler ist teuer.'
               }
             ].map((item, idx) => (

@@ -51,7 +51,7 @@ export default function HerrenParfuemePage() {
                 beispiele: 'Acqua di Parma, Hermès Eau de Gentiane, Creed Green Irish Tweed',
                 intensitaet: 'Leicht bis moderat (EdT ist Standard)',
                 haltbarkeit: '4–6 Stunden',
-                preis: '€40–120'
+                preis: 'CHF 40–120'
               },
               {
                 familie: 'Aromatic / Herbs',
@@ -61,7 +61,7 @@ export default function HerrenParfuemePage() {
                 beispiele: 'Bleu de Chanel, Dior Sauvage, Acqua di Gio (Herren)',
                 intensitaet: 'Moderat (EdT bis EdP)',
                 haltbarkeit: '5–8 Stunden',
-                preis: '€70–140'
+                preis: 'CHF 70–140'
               },
               {
                 familie: 'Woody / Sandalwood',
@@ -71,7 +71,7 @@ export default function HerrenParfuemePage() {
                 beispiele: 'Tom Ford Ombré Leather, Creed Royal Oud, Givenchy Gentleman',
                 intensitaet: 'Moderat bis stark (EdP)',
                 haltbarkeit: '6–10 Stunden',
-                preis: '€100–200'
+                preis: 'CHF 100–200'
               },
               {
                 familie: 'Oriental / Amber',
@@ -81,7 +81,7 @@ export default function HerrenParfuemePage() {
                 beispiele: 'Yves Saint Laurent La Nuit, Giorgio Armani Code, Calvin Klein Obsession',
                 intensitaet: 'Stark (EdP, oft sehr intensiv)',
                 haltbarkeit: '8+ Stunden',
-                preis: '€60–150'
+                preis: 'CHF 60–150'
               },
               {
                 familie: 'Fougère / Aromatic Spicy',
@@ -91,7 +91,7 @@ export default function HerrenParfuemePage() {
                 beispiele: 'Brut (Classic), Paco Rabanne 1 Million, Versace Pour Homme',
                 intensitaet: 'Moderat bis stark',
                 haltbarkeit: '5–8 Stunden',
-                preis: '€20–80'
+                preis: 'CHF 20–80'
               }
             ].map((item, i) => (
               <div key={i} style={{
@@ -278,7 +278,7 @@ export default function HerrenParfuemePage() {
 
           <ul style={{ marginBottom: '2rem' }}>
             <li><strong>EdT statt EdP:</strong> Gleicher Duft, aber 40–50% günstiger & perfekt für alltäglich.</li>
-            <li><strong>Budget-Marken:</strong> Armaf, Lattafa haben grosse Creed/Tom Ford Klone für €20–30.</li>
+            <li><strong>Budget-Marken:</strong> Armaf, Lattafa haben grosse Creed/Tom Ford Klone für CHF 20–30.</li>
             <li><strong>Nische-Marken testen:</strong> Heeley, Maison Margiela sind oft besser & günstiger als Luxus-Marken.</li>
             <li><strong>Outlet / Sales:</strong> Notino, Flaconi – oft 30–50% Rabatt auf Premium-Marken.</li>
             <li><strong>Grössere Flakons kaufen:</strong> 100ml ist günstiger pro ml als 50ml.</li>

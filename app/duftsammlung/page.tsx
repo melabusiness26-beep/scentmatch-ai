@@ -72,32 +72,32 @@ export default function DuftsammlungPage() {
                 count: '1 Duft',
                 typ: 'Der Anfänger',
                 beschreibung: 'Du weisst, dass dich dieser Duft liebt – und du magst alles damit. Perfect.',
-                min: '€30–80',
-                max: '€150+',
+                min: 'CHF 30–80',
+                max: 'CHF 150+',
                 tipp: 'Das ist völlig ok. Ein grossartiger Lieblingsduft ist besser als 10 mittelmässige. Keine Pflicht, mehr zu haben.'
               },
               {
                 count: '3 Düfte',
                 typ: 'Die goldene Mitte',
                 beschreibung: 'Du hast einen für Tag (frisch), einen für Abend (intensiv) und einen für Wochenende (dein Favorit).',
-                min: '€150–250',
-                max: '€400–600',
+                min: 'CHF 150–250',
+                max: 'CHF 400–600',
                 tipp: 'Das ist für die meisten das ideale Setup. Du hast Abwechslung, aber es bleibt überschaubar. Ein Duft pro Jahreszeit ist auch eine gute Strategie.'
               },
               {
                 count: '5–7 Düfte',
                 typ: 'Der Enthusiast',
                 beschreibung: 'Ein Duft pro Jahreszeit, plus deine absoluten Favoriten + ein Office-Duft + ein Statement-Duft.',
-                min: '€400–800',
-                max: '€1000+',
+                min: 'CHF 400–800',
+                max: 'CHF 1000+',
                 tipp: 'Gute Balance zwischen Auswahl und Pflege. Du brauchst aber ein System (Kategorien, Rotation), sonst vergisst du die Hälfte.'
               },
               {
                 count: '10+ Düfte',
                 typ: 'Der Collector',
                 beschreibung: 'Du hast für jede Mood, Jahreszeit, jeden Tag und jede Stunde den perfekten Duft. Das ist eine echte Hobby-Sammlung.',
-                min: '€1000+',
-                max: '€3000+',
+                min: 'CHF 1000+',
+                max: 'CHF 3000+',
                 tipp: 'Jetzt brauchst du ein Lagersystem (cool, dunkel, vertikal) und eine Tracking-Liste. Sonst hast du einen Duft, merkst es aber nach 2 Jahren nicht.'
               }
             ].map((item, i) => (
@@ -160,8 +160,8 @@ export default function DuftsammlungPage() {
               },
               {
                 strategie: 'Nach Budget aufbauen',
-                warum: 'Statt ein 200€-Duft zu kaufen – kauf vier 50€-Düfte. Du gewinnst Abwechslung und lernst schneller, was dir gefällt.',
-                wie: 'Budget 200€ = vier 50€-Düfte (oder: zwei 70€ + zwei 30€ günstige Klone). So hast du 4 komplett verschiedene Charaktere.',
+                warum: 'Statt einen 200-Franken-Duft zu kaufen – kauf vier 50-Franken-Düfte. Du gewinnst Abwechslung und lernst schneller, was dir gefällt.',
+                wie: 'Budget CHF 200 = vier 50-Franken-Düfte (oder: zwei CHF 70 + zwei CHF 30 günstige Klone). So hast du 4 komplett verschiedene Charaktere.',
                 best_for: 'Anfänger, die herauskommen wollen, was ihnen gefällt'
               },
               {
@@ -209,7 +209,7 @@ export default function DuftsammlungPage() {
               },
               {
                 fehler: 'Teuer verwechseln mit Qualität',
-                warum: 'Du denkst „Teurere Düfte sind besser", kaufst Duft X für 180€, magst ihn aber nicht. Deine Körperchemie passt nicht dazu.',
+                warum: 'Du denkst „Teurere Düfte sind besser", kaufst Duft X für CHF 180, magst ihn aber nicht. Deine Körperchemie passt nicht dazu.',
                 lösung: 'Teste immer zuerst (Probe, Sample, Tester). Günstige Düfte können grossartig sein. Preis = Marke + Flakon + Konzentration, nicht automatisch Qualität.'
               },
               {
@@ -250,16 +250,16 @@ export default function DuftsammlungPage() {
           <h2>Budgettipps: Wie man eine Sammlung mit kleinerem Budget aufbaut</h2>
 
           <p style={{ marginBottom: '1.5rem' }}>
-            Du willst eine Sammlung, hast aber nicht 1000€ zum Ausgeben? Kein Problem. Mit den richtigen Strategien
-            baust du eine grossartige Sammlung für unter 300€.
+            Du willst eine Sammlung, hast aber nicht CHF 1000 zum Ausgeben? Kein Problem. Mit den richtigen Strategien
+            baust du eine grossartige Sammlung für unter CHF 300.
           </p>
 
           <ol style={{ marginBottom: '2rem' }}>
             <li style={{ marginBottom: '1rem' }}>
-              <strong>Kauf Samples & Tester</strong> – 2–5€ für eine kleine Flasche. So testest du 10 Düfte für 30€ statt 10 × 80€.
+              <strong>Kauf Samples & Tester</strong> – CHF 2–5 für eine kleine Flasche. So testest du 10 Düfte für CHF 30 statt 10 × CHF 80.
             </li>
             <li style={{ marginBottom: '1rem' }}>
-              <strong>Nutze günstige Klone</strong> – Brands wie Armaf, Lattafa (20–30€) duplizieren teure Düfte zu 75% der Qualität. Legale Alternative.
+              <strong>Nutze günstige Klone</strong> – Brands wie Armaf, Lattafa (CHF 20–30) duplizieren teure Düfte zu 75% der Qualität. Legale Alternative.
             </li>
             <li style={{ marginBottom: '1rem' }}>
               <strong>Kauf EdT statt EdP</strong> – Gleicher Duft, aber EdT kostet 40–60% weniger. Haltbarkeit ist 4–6 Stunden statt 8+ – für den Job völlig ok.

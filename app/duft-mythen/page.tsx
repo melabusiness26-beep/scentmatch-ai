@@ -72,7 +72,7 @@ export default function FragranceMythsPage() {
             {[
               {
                 myth: '💰 Mythos: Teure Düfte sind immer besser als günstige',
-                fact: 'FALSCH. Der Preis hängt von Marketing, Verpackung und Marke ab – nicht von der Duftqualität. Ein 20€-Duft von Lattafa kann genauso gut riechen wie ein 150€ Designer-Duft. Blind getestet können Menschen teure und günstige Düfte oft nicht unterscheiden.',
+                fact: 'FALSCH. Der Preis hängt von Marketing, Verpackung und Marke ab – nicht von der Duftqualität. Ein 20-Franken-Duft von Lattafa kann genauso gut riechen wie ein CHF 150 Designer-Duft. Blind getestet können Menschen teure und günstige Düfte oft nicht unterscheiden.',
                 praktisch: 'Kaufe nach Duftprofil und Haltbarkeit, nicht nach Preis. Viele günstige Dufthäuser machen hervorragende Qualität.'
               },
               {
@@ -157,7 +157,7 @@ export default function FragranceMythsPage() {
               },
               {
                 myth: '🔒 Mythos: Teuer = Exklusiv und nur für Reiche',
-                fact: 'FALSCH. Viele grossartige Düfte kosten 20–50€. Exklusivität kommt von Qualität und Design, nicht von Preis. Auch gibt es gratis Ratgeber und Quiz (wie Auressa!), um den perfekten Duft zu finden – unabhängig von Preisklasse.',
+                fact: 'FALSCH. Viele grossartige Düfte kosten CHF 20–50. Exklusivität kommt von Qualität und Design, nicht von Preis. Auch gibt es gratis Ratgeber und Quiz (wie Auressa!), um den perfekten Duft zu finden – unabhängig von Preisklasse.',
                 praktisch: 'Suche nach deinem persönlichen Match, nicht nach Prestige. Der beste Duft ist derjenige, der an DIR grossartig riecht.'
               },
               {

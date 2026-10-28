@@ -58,7 +58,7 @@ export default function NischeMainstreamPage() {
                 <li><strong>Distribution:</strong> Überall (Kaufhäuser, Flughafen, Online)</li>
                 <li><strong>Marketing:</strong> Massive Ad-Kampagnen, Influencer, TV</li>
                 <li><strong>Produktion:</strong> In Massenmengen, oft mit kleineren Labs</li>
-                <li><strong>Preis:</strong> €60–200 (Standard)</li>
+                <li><strong>Preis:</strong> CHF 60–200 (Standard)</li>
                 <li><strong>Charaktere:</strong> Breit designt, mainstream Appeal</li>
               </ul>
             </div>
@@ -77,7 +77,7 @@ export default function NischeMainstreamPage() {
                 <li><strong>Distribution:</strong> Spezialisierte Shops, Online, begrenzt</li>
                 <li><strong>Marketing:</strong> Wenig oder gar nicht, Niche-Community</li>
                 <li><strong>Produktion:</strong> In kleinen Mengen, oft von Hand</li>
-                <li><strong>Preis:</strong> €80–250 (oft höher, aber qualitätsberechtigt)</li>
+                <li><strong>Preis:</strong> CHF 80–250 (oft höher, aber qualitätsberechtigt)</li>
                 <li><strong>Charaktere:</strong> Experimentell, künstlerisch, unkonventionell</li>
               </ul>
             </div>
@@ -117,8 +117,8 @@ export default function NischeMainstreamPage() {
               },
               {
                 kriterium: 'Preis',
-                mainstream: '€60–200 (meist €80–150). Massenproduktes, daher günstiger trotz grosser Marken.',
-                nische: 'Often €100–250+. Kleinere Mengen, hochwertigere Zutaten, höhere Kosten.',
+                mainstream: 'CHF 60–200 (meist CHF 80–150). Massenprodukte, daher günstiger trotz grosser Marken.',
+                nische: 'Oft CHF 100–250+. Kleinere Mengen, hochwertigere Zutaten, höhere Kosten.',
                 urteil: 'Vorteil: Mainstream (günstiger)'
               },
               {
@@ -175,22 +175,22 @@ export default function NischeMainstreamPage() {
               {
                 duft: 'Bleu de Chanel',
                 typ: 'Mainstream',
-                beschreibung: 'Der Klassiker. Auf jeder Haut grossartig. 8+ Stunden. Überall verfügbar. €120.'
+                beschreibung: 'Der Klassiker. Auf jeder Haut grossartig. 8+ Stunden. Überall verfügbar. CHF 120.'
               },
               {
                 duft: 'Heeley Sel Marin',
                 typ: 'Nische',
-                beschreibung: 'Marine, subtil, artistisch. Auf manchen Haut GRANDIOS, auf anderen ok. 5–6 Stunden. Schwer zu finden. €150. Aber einzigartig.'
+                beschreibung: 'Marine, subtil, artistisch. Auf mancher Haut grandios, auf anderen ok. 5–6 Stunden. Schwer zu finden. CHF 150. Aber einzigartig.'
               },
               {
                 duft: 'Tom Ford Black Orchid',
                 typ: 'Mainstream Luxury',
-                beschreibung: 'Maskulin-sinnlich. 9+ Stunden. Überall verfügbar. €180. Jeder kennt ihn.'
+                beschreibung: 'Maskulin-sinnlich. 9+ Stunden. Überall verfügbar. CHF 180. Jeder kennt ihn.'
               },
               {
                 duft: 'Maison Margiela Replica Beach Walk',
                 typ: 'Nische',
-                beschreibung: 'Unkonventionell, wie ein Strandspaziergag. Auf dir anders. 5–7 Stunden. Spezialisierte Shops. €120. Einzigartig.'
+                beschreibung: 'Unkonventionell, wie ein Strandspaziergang. Auf dir anders. 5–7 Stunden. Spezialisierte Shops. CHF 120. Einzigartig.'
               }
             ].map((item, i) => (
               <div key={i} style={{

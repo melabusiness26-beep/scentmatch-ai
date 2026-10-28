@@ -100,11 +100,11 @@ export default function FragranceTypesPage() {
               </thead>
               <tbody>
                 {[
-                  ['Extrait / Parfum', '20–40%', '8–24h', '⭐⭐⭐⭐⭐', '€€€€€'],
-                  ['Eau de Parfum (EdP)', '15–20%', '6–12h', '⭐⭐⭐⭐', '€€€'],
-                  ['Eau de Toilette (EdT)', '5–15%', '3–6h', '⭐⭐⭐', '€€'],
-                  ['Eau de Cologne', '2–5%', '1–2h', '⭐⭐', '€'],
-                  ['Eau Fraîche', '1–3%', '30min–1h', '⭐', '€']
+                  ['Extrait / Parfum', '20–40%', '8–24h', '⭐⭐⭐⭐⭐', '💰💰💰💰💰'],
+                  ['Eau de Parfum (EdP)', '15–20%', '6–12h', '⭐⭐⭐⭐', '💰💰💰'],
+                  ['Eau de Toilette (EdT)', '5–15%', '3–6h', '⭐⭐⭐', '💰💰'],
+                  ['Eau de Cologne', '2–5%', '1–2h', '⭐⭐', '💰'],
+                  ['Eau Fraîche', '1–3%', '30min–1h', '⭐', '💰']
                 ].map((row, idx) => (
                   <tr key={idx} style={{ borderBottom: '1px solid rgba(212,175,55,0.1)' }}>
                     {row.map((cell, cidx) => (
@@ -145,7 +145,7 @@ export default function FragranceTypesPage() {
                 desc: 'Dies ist das teuerste und intensivste Format. Ein Tropfen Extrait ist oft genug für den ganzen Tag. Die Haltbarkeit ist legendär – 8–24 Stunden oder sogar mehr.',
                 haltbar: '8–24 Stunden',
                 intensität: 'Extrem intensiv',
-                preis: '€€€€€ (oft 150€+)',
+                preis: '💰💰💰💰💰 (oft CHF 150+)',
                 wann: 'Für spezielle Anlässe, abends, formale Events. Ideal für Liebhaber, die nicht regelmässig nachsprühen wollen.',
                 achtung: '⚠️ Vorsicht: Wegen der hohen Konzentration genügen 1–2 Sprühstösse. Zu viel wirkt schnell überwältigend. Auch teuer – man möchte es nicht verschwenden.',
                 beispiele: 'Creed Royal Oud, Heeley Sel Marin, Jo Malone Extrait-Serie'
@@ -157,7 +157,7 @@ export default function FragranceTypesPage() {
                 desc: 'Der Standard für hochwertige Düfte. EdP bietet ein perfektes Gleichgewicht zwischen Intensität und Preis. Das Beste für den Alltag und formale Anlässe.',
                 haltbar: '6–12 Stunden',
                 intensität: 'Stark – deutlich spürbar',
-                preis: '€€€ (60€–150€)',
+                preis: '💰💰💰 (CHF 60–150)',
                 wann: 'Der Allrounder. Ideal für täglich, spezielle Events, längere Ereignisse (Arbeitstag, Abend).',
                 achtung: '✅ Das beliebteste Format für Qualitäts-Düfte. Gutes Preis-Leistungs-Verhältnis. Meist nach 4–5 Stunden ein Retouch empfohlen.',
                 beispiele: 'Creed Aventus, Tom Ford Black Opium, Dior Sauvage'
@@ -169,7 +169,7 @@ export default function FragranceTypesPage() {
                 desc: 'Leichter, frischer und günstiger. Ideal für warme Jahreszeiten und subtile Duftwirkung. Hält kürzer, darum braucht man häufiger Retouches.',
                 haltbar: '3–6 Stunden',
                 intensität: 'Moderat – subtil und frisch',
-                preis: '€€ (20€–80€)',
+                preis: '💰💰 (CHF 20–80)',
                 wann: 'Sommer, warme Tage, Büro/subtile Umgebung, leichte tägliche Anwendung. Wenn du nicht intensiv riechen möchtest.',
                 achtung: '💡 EdT verdampft schneller – es ist die häufigste Kaufoption. Nach 3–4 Stunden ist oft ein Retouch nötig.',
                 beispiele: 'Acqua di Parma Blu Mediterraneo, Hermès Eau de Gentiane Blanche, Issey Miyake L\'Eau d\'Issey'
@@ -181,7 +181,7 @@ export default function FragranceTypesPage() {
                 desc: 'Ein historisches Format mit starker Tradition. Sehr leicht und frisch, ideal für schnelle „Erfrischungen". Sehr kurze Haltbarkeit.',
                 haltbar: '1–2 Stunden',
                 intensität: 'Sehr leicht – kaum zu riechen nach kurzer Zeit',
-                preis: '€ (10€–30€)',
+                preis: '💰 (CHF 10–30)',
                 wann: 'Eine schnelle Erfrischung, nicht als Hauptduft. Ideal für heisse Tage oder wenn du viel schwitzest.',
                 achtung: '⚠️ Kurze Haltbarkeit – nicht ideal als Alltagsduft. Aber sehr erfrischend und wirtschaftlich.',
                 beispiele: '4711 Eau de Cologne, Hermès Eau de Gentiane Blanche (Cologne-Konzentration)'
@@ -193,7 +193,7 @@ export default function FragranceTypesPage() {
                 desc: 'Das leichteste Format. Kaum wahrnehmbar, aber sehr erfrischend. Fast wie duftiertes Wasser. Praktisch keine Haltbarkeit.',
                 haltbar: '30 Minuten–1 Stunde',
                 intensität: 'Kaum spürbar – Hauch von Duft',
-                preis: '€ (5€–20€)',
+                preis: '💰 (CHF 5–20)',
                 wann: 'Schnelle Erfrischung im Büro, nach dem Duschen, als „Duftwasser" zwischendurch.',
                 achtung: '⚠️ Sehr kurze Haltbarkeit – nicht als Hauptduft. Eher ein Erfrischungs-Spray.',
                 beispiele: 'Viele „Duft-Sprays" von günstigen Marken, auch Körper-Sprays von Premium-Häusern'
@@ -292,7 +292,7 @@ export default function FragranceTypesPage() {
                 </p>
                 <p style={{ margin: 0, paddingBottom: '0.75rem', borderBottom: '1px solid rgba(212,175,55,0.1)' }}>
                   <strong style={{ color: '#2a1d12' }}>Frage 3: Was ist dein Budget?</strong><br/>
-                  Unlimited → Extrait. Premium (60€+) → EdP. Budget (20€–60€) → EdT. Sparen → Cologne.
+                  Unlimited → Extrait. Premium (CHF 60+) → EdP. Budget (CHF 20–60) → EdT. Sparen → Cologne.
                 </p>
                 <p style={{ margin: 0, paddingBottom: '0.75rem', borderBottom: '1px solid rgba(212,175,55,0.1)' }}>
                   <strong style={{ color: '#2a1d12' }}>Frage 4: Jahreszeit & Klima?</strong><br/>

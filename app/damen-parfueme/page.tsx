@@ -51,7 +51,7 @@ export default function DamenParfuemePage() {
                 beispiele: 'Chanel No. 5, Dior J\'adore, Lancôme Trésor, Estée Lauder Beautiful',
                 intensitaet: 'Leicht bis sehr stark (variabel)',
                 haltbarkeit: '5–8 Stunden',
-                preis: '€60–150'
+                preis: 'CHF 60–150'
               },
               {
                 familie: 'Fruity / Fruchtig',
@@ -61,7 +61,7 @@ export default function DamenParfuemePage() {
                 beispiele: 'Viktor & Rolf Bonbon, Lancôme La Vie Est Belle, Prada Candy',
                 intensitaet: 'Moderat bis stark',
                 haltbarkeit: '4–7 Stunden',
-                preis: '€60–130'
+                preis: 'CHF 60–130'
               },
               {
                 familie: 'Fruity Floral',
@@ -71,7 +71,7 @@ export default function DamenParfuemePage() {
                 beispiele: 'Dolce & Gabbana Light Blue, Miu Miu L\'Eau Rosée, Marc Jacobs Daisy',
                 intensitaet: 'Moderat',
                 haltbarkeit: '5–8 Stunden',
-                preis: '€70–120'
+                preis: 'CHF 70–120'
               },
               {
                 familie: 'Oriental / Amber',
@@ -81,7 +81,7 @@ export default function DamenParfuemePage() {
                 beispiele: 'Yves Saint Laurent Opium, Tom Ford Black Orchid, Givenchy Gentleman (ja, auch für Frauen grossartig)',
                 intensitaet: 'Stark bis sehr stark',
                 haltbarkeit: '7–10+ Stunden',
-                preis: '€80–180'
+                preis: 'CHF 80–180'
               },
               {
                 familie: 'Gourmand / Dessert',
@@ -91,7 +91,7 @@ export default function DamenParfuemePage() {
                 beispiele: 'Prada Candy, Viktor & Rolf Bonbon, Carolina Herrera Seduction',
                 intensitaet: 'Moderat bis sehr stark',
                 haltbarkeit: '5–8 Stunden',
-                preis: '€60–140'
+                preis: 'CHF 60–140'
               },
               {
                 familie: 'Chypre / Moschus',
@@ -101,7 +101,7 @@ export default function DamenParfuemePage() {
                 beispiele: 'Chloé, Lancôme Poème, Calvin Klein Euphoria',
                 intensitaet: 'Leicht bis moderat',
                 haltbarkeit: '5–7 Stunden',
-                preis: '€70–120'
+                preis: 'CHF 70–120'
               }
             ].map((item, i) => (
               <div key={i} style={{

@@ -31,8 +31,8 @@ const faqGroups: {
         a: 'Auressa ist eine unabhängige Duft-Findungs-Plattform aus der Schweiz. Mit unserem Quiz (11 kurze Fragen zu Duftvorlieben, Anlass, Saison und Budget) berechnen wir einen persönlichen Match-Score für jeden Duft im Katalog – von 0 bis 100. So findest du Düfte, die wirklich zu dir passen, ohne stundenlang in Parfümerien zu suchen.'
       },
       {
-        q: 'Ist Auressa kostenlos?',
-        a: 'Das Quiz, der Dupe-Finder, der Duft-Scanner, alle Ratgeber und der gesamte Duft-Katalog sind zugänglich – ohne Konto oder App. Einige Links zu Shops sind Affiliate-Links (erkennbar an „Jetzt ansehen"-Buttons); wenn du darüber kaufst, erhalten wir eine kleine Provision, ohne dass du mehr bezahlst.'
+        q: 'Brauche ich ein Konto, um Auressa zu nutzen?',
+        a: 'Nein. Das Quiz, der Dupe-Finder, der Duft-Scanner, alle Ratgeber und der gesamte Duft-Katalog sind ohne Konto oder App zugänglich. Einige Links zu Shops sind Affiliate-Links (erkennbar an „Jetzt ansehen"-Buttons); wenn du darüber kaufst, erhalten wir eine kleine Provision, ohne dass du mehr bezahlst.'
       },
       {
         q: 'Wer steht hinter Auressa?',

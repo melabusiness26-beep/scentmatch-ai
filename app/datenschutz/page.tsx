@@ -97,7 +97,7 @@ export default function DatenschutzPage() {
               <li>💰 <strong>Für dich ändert sich der Preis NICHT</strong></li>
               <li>📢 Links sind als <code>rel="sponsored"</code> gekennzeichnet (sichtbar im Quellcode)</li>
             </ul>
-            <p>Diese Provisionen finanzieren die Website und ermöglichen es uns, den Service kostenlos anzubieten.</p>
+            <p>Diese Provisionen finanzieren die Website und ermöglichen es uns, den Service anzubieten und weiterzuentwickeln.</p>
           </section>
 
           <section>

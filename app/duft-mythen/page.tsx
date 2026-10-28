@@ -157,7 +157,7 @@ export default function FragranceMythsPage() {
               },
               {
                 myth: '🔒 Mythos: Teuer = Exklusiv und nur für Reiche',
-                fact: 'FALSCH. Viele grossartige Düfte kosten CHF 20–50. Exklusivität kommt von Qualität und Design, nicht von Preis. Auch gibt es gratis Ratgeber und Quiz (wie Auressa!), um den perfekten Duft zu finden – unabhängig von Preisklasse.',
+                fact: 'FALSCH. Viele grossartige Düfte kosten CHF 20–50. Exklusivität kommt von Qualität und Design, nicht vom Preis. Ausserdem helfen Ratgeber und Quiz (wie bei Auressa!), den passenden Duft zu finden – unabhängig von der Preisklasse.',
                 praktisch: 'Suche nach deinem persönlichen Match, nicht nach Prestige. Der beste Duft ist derjenige, der an DIR grossartig riecht.'
               },
               {

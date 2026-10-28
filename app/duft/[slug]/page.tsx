@@ -211,6 +211,26 @@ function baseTitle(name: string, label: string): string {
 
 type Faq = { q: string; a: string };
 
+function splitList(value: string): string[] {
+  return value.split(/\s*[,/&]\s*|\s+und\s+/).map((v) => v.trim()).filter(Boolean);
+}
+
+function joinAnd(items: string[]): string {
+  return items.length > 1 ? `${items.slice(0, -1).join(', ')} und ${items[items.length - 1]}` : items[0] || '';
+}
+
+// „Sommer" → „im Sommer", „Frühling, Sommer" → „im Frühling und im Sommer".
+function seasonAnswer(name: string, season: string): string {
+  const list = splitList(season);
+  if (list.some((s) => s.toLowerCase().startsWith('ganzj'))) return `${name} passt das ganze Jahr.`;
+  return `${name} passt besonders gut ${joinAnd(list.map((s) => `im ${s}`))}.`;
+}
+
+function occasionAnswer(name: string, occasion: string): string {
+  const list = splitList(occasion);
+  return `${name} passt besonders gut zu ${list.length > 1 ? 'diesen Anlässen' : 'diesem Anlass'}: ${joinAnd(list)}.`;
+}
+
 // Baut FAQ-Einträge ausschliesslich aus echten, vorhandenen Feldern – keine erfundenen Werte.
 function buildFaqs(perfume: Perfume): Faq[] {
   const name = perfume.perfume_name;
@@ -218,25 +238,25 @@ function buildFaqs(perfume: Perfume): Faq[] {
   if (perfume.longevity != null) {
     faqs.push({
       q: `Wie lange hält ${name}?`,
-      a: `In unserer Einschätzung erreicht ${name} eine Haltbarkeit von ${perfume.longevity}/10.`
+      a: `Nach unserer Einschätzung hält ${name} ${longevityHint(perfume.longevity)} (Haltbarkeit ${perfume.longevity}/10).`
     });
   }
   if (perfume.sillage != null) {
     faqs.push({
       q: `Wie stark ist die Ausstrahlung von ${name}?`,
-      a: `Die Ausstrahlung (Sillage) von ${name} liegt in unserer Einschätzung bei ${perfume.sillage}/10.`
+      a: `Die Ausstrahlung (Sillage) von ${name} liegt nach unserer Einschätzung bei ${perfume.sillage}/10, also ${sillageHint(perfume.sillage)}.`
     });
   }
   if (perfume.season) {
     faqs.push({
       q: `Für welche Jahreszeit eignet sich ${name}?`,
-      a: `${name} passt besonders gut in die Saison ${perfume.season}.`
+      a: seasonAnswer(name, perfume.season)
     });
   }
   if (perfume.occasion) {
     faqs.push({
       q: `Zu welchem Anlass passt ${name}?`,
-      a: `${name} eignet sich besonders für Anlässe wie ${perfume.occasion}.`
+      a: occasionAnswer(name, perfume.occasion)
     });
   }
   if (perfume.price_chf != null) {

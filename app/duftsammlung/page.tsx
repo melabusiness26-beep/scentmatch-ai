@@ -389,7 +389,7 @@ export default function DuftsammlungPage() {
             <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
               Du weißt jetzt, wie eine gute Sammlung aussieht. Brauchst du Hilfe bei der Auswahl? Nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> –
               es hilft dir, Düfte zu finden, die zusammenpassen und auf deiner Körperchemie funktionieren.
-              Oder <Link href="/dueft-waehlen" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>lese unseren Duft-Wählen-Guide</Link> für einen systematischen Ansatz zum perfekten Duft.
+              Oder <Link href="/duft-waehlen" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>lies unseren Ratgeber zur Duftwahl</Link> für einen systematischen Ansatz zum perfekten Duft.
             </p>
           </div>
 

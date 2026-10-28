@@ -109,7 +109,7 @@ export default function UeberUnsPage() {
               { icon: '🕵️', title: 'Duft-Detektiv', text: '12 tiefe Fragen zu Persönlichkeit, Stil und Anlass. Für Menschen, die ihren Signature Duft noch nicht kennen.' },
               { icon: '📸', title: 'Duft-Scanner', text: 'Foto hochladen, Parfüm erkennen lassen – KI identifiziert Flakon, Noten und Charakter in Sekunden.' },
               { icon: '💸', title: 'Günstige Dupes', text: 'Keine Lust auf 200-Franken-Flakons? Wir zeigen dir Alternativen, die ähnlich riechen – für einen Bruchteil des Preises.' },
-              { icon: '📖', title: 'Ehrliche Ratgeber', text: 'Kein Fachjargon. Klare Erklärungen zu Duftnoten, Sillage, Longevity und saisonalen Empfehlungen.' },
+              { icon: '📖', title: 'Ehrliche Ratgeber', text: 'Kein Fachjargon. Klare Erklärungen zu Duftnoten, Ausstrahlung, Haltbarkeit und saisonalen Empfehlungen.' },
               { icon: '🇨🇭', title: 'Schweizer Perspektive', text: 'Alle Preise in CHF, Bezugsquellen in der Schweiz, Verfügbarkeit bei Schweizer Shops.' },
             ].map(item => (
               <div key={item.title} style={{

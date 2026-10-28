@@ -117,7 +117,7 @@ export default function AnleitungPage() {
         {/* Schritt 3 */}
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
-            Schritt 3: Achte auf Sillage (Projektion) und Longevity (Haltbarkeit)
+            Schritt 3: Achte auf Ausstrahlung (Sillage) und Haltbarkeit
           </h2>
           <div style={{ background: 'linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.03))', borderRadius: '12px', padding: '1.5rem', marginBottom: '1.5rem' }}>
             <div style={{ marginBottom: '1rem' }}>
@@ -130,7 +130,7 @@ export default function AnleitungPage() {
             </div>
             <div>
               <p style={{ fontSize: '0.9rem', fontWeight: 600, color: '#2a1d12', marginBottom: '0.5rem' }}>
-                ⏱️ Longevity (Haltbarkeit): Wie lange hält der Duft?
+                ⏱️ Haltbarkeit: Wie lange hält der Duft?
               </p>
               <p style={{ fontSize: '0.95rem', color: '#4a3728', lineHeight: 1.6, margin: 0 }}>
                 1–4h: Kurz (z. B. Eau de Cologne). 5–8h: Mittel (Eau de Toilette). 8–12h+: Lang (Eau de Parfum). Investier mehr in einen langlebigen Duft – am Ende sparst du.

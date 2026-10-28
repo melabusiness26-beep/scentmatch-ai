@@ -40,7 +40,7 @@ const faqGroups: {
       },
       {
         q: 'Woher stammen die Duftbeschreibungen und -daten?',
-        a: 'Alle Duftdaten (Noten, Longevity, Sillage, Saison, Anlass) werden sorgfältig recherchiert und kuratiert – aus offiziellen Markenangaben, Fachquellen und redaktioneller Einschätzung. Wir erfinden keine Bewertungen und verweisen klar darauf, wenn es sich um eine Einschätzung handelt.'
+        a: 'Alle Duftdaten (Noten, Haltbarkeit, Ausstrahlung, Saison, Anlass) werden sorgfältig recherchiert und kuratiert – aus offiziellen Markenangaben, Fachquellen und redaktioneller Einschätzung. Wir erfinden keine Bewertungen und verweisen klar darauf, wenn es sich um eine Einschätzung handelt.'
       }
     ]
   },

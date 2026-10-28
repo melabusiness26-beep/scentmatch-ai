@@ -9,7 +9,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 export const metadata: Metadata = {
   title: 'Duft-Mythen und Fakten: Was stimmt wirklich? | Auressa',
   description:
-    'Wir debunken die 20 häufigsten Duft-Mythen: Warum teure Düfte nicht automatisch besser sind, ob du abhängig wirst, wie deine Nase funktioniert und mehr.',
+    'Wir prüfen die 20 häufigsten Duft-Mythen: Warum teure Düfte nicht automatisch besser sind, ob du abhängig wirst, wie deine Nase funktioniert und mehr.',
   alternates: { canonical: `${SITE_URL}/duft-mythen` },
   openGraph: {
     title: 'Duft-Mythen und Fakten | Auressa',
@@ -50,7 +50,7 @@ export default function FragranceMythsPage() {
             Duft-Mythen und Fakten – Was stimmt wirklich?
           </h1>
           <p style={{ fontSize: '16px', color: 'rgba(250,247,242,0.8)', margin: 0 }}>
-            Wir debunken die 20 häufigsten Mythen über Parfum – von Duft-Abhängigkeit bis zur „Teuer = Besser"-Lüge.
+            Wir prüfen die 20 häufigsten Mythen über Parfum – von Duft-Abhängigkeit bis zur „Teuer = Besser"-Lüge.
           </p>
         </div>
       </section>
@@ -61,7 +61,7 @@ export default function FragranceMythsPage() {
         <section style={{ marginBottom: '3rem' }}>
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3020', marginBottom: '1.5rem' }}>
             Die Duftindustrie ist voll von Mythen und Halbwahrheiten. Manche entstehen durch Marketingversprechen,
-            andere durch schlicht falsche Informationen. In dieser umfassenden Liste debunken wir die 20 häufigsten
+            andere durch schlicht falsche Informationen. In dieser umfassenden Liste entlarven wir die 20 häufigsten
             Duft-Mythen – mit wissenschaftlichen Fakten und praktischen Konsequenzen für dich.
           </p>
         </section>
@@ -167,7 +167,7 @@ export default function FragranceMythsPage() {
               },
               {
                 myth: '🎁 Mythos: Je teuer das Geschenk-Set, desto überraschter ist der Empfänger',
-                fact: 'FALSCH. Der beste Duft-Gift ist einer, der zum EMPFÄNGER passt – unabhängig von Preis. Ein günstiger, perfekt gewählter Duft freut mehr als ein teurer, falscher. Personalisierung schlägt Prestige.',
+                fact: 'FALSCH. Das beste Duft-Geschenk ist eines, das zur beschenkten Person passt – unabhängig von Preis. Ein günstiger, perfekt gewählter Duft freut mehr als ein teurer, falscher. Personalisierung schlägt Prestige.',
                 praktisch: 'Nutze Quiz und Ratgeber (wie Auressa!), um einen perfekten Duft zu finden – egal welche Preisklasse. Das macht das beste Geschenk.'
               }
             ].map((item, idx) => (

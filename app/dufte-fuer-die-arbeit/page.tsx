@@ -211,7 +211,7 @@ export default function DuefteFuerDieArbeitPage() {
                 Frag deine Kolleg:innen, ob der Duft ok ist. Ihre Antwort ist deine Realität.
               </li>
               <li style={{ marginBottom: '1rem' }}>
-                <strong>Habe einen „neutralen" Duft als Backup:</strong> Jo Malone, unscented Deos – für Tage, an denen du nicht sicher bist.
+                <strong>Habe einen dezenten Duft als Reserve:</strong> etwas sehr Leichtes oder ein unparfümiertes Deo – für Tage, an denen du nicht sicher bist.
                 Besser subtil als ein Fehler.
               </li>
               <li>
@@ -291,7 +291,7 @@ export default function DuefteFuerDieArbeitPage() {
               },
               {
                 frage: 'Was, wenn Kolleg:innen allergisch auf Düfte reagieren?',
-                antwort: 'Dann: kein Duft. Oder unscented Alternatives (Jo Malone ohne Duft, Eau de Cologne sehr leicht). Respekt vor Health > dein Lieblingsduft.'
+                antwort: 'Dann lieber gar kein Duft – oder höchstens ein unparfümiertes Deo. Die Gesundheit deiner Kolleg:innen geht vor deinem Lieblingsduft.'
               },
               {
                 frage: 'Kann ich im Homeoffice jeden Duft tragen?',

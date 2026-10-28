@@ -200,7 +200,7 @@ export default function DuftDetektiv({ allPerfumes, prefilledAnswers }: DuftDete
           marginBottom: '3rem',
           marginTop: '2rem',
         }}>
-          <h1 style={{
+          <h2 style={{
             fontSize: 'clamp(32px, 7vw, 48px)',
             fontFamily: "'Playfair Display', serif",
             fontWeight: 700,
@@ -209,7 +209,7 @@ export default function DuftDetektiv({ allPerfumes, prefilledAnswers }: DuftDete
             color: '#2a1d12',
           }}>
             Duft-Detektiv
-          </h1>
+          </h2>
           <p style={{
             fontSize: 'clamp(16px, 3vw, 18px)',
             color: '#6b5a4e',

@@ -7,7 +7,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 export const metadata: Metadata = {
   title: 'Haltbarkeit und Sillage: Wie lange hält ein Parfum? | Auressa',
   description:
-    'Verstehe Longevity und Sillage: Wie lange hält ein Duft, wie weit trägt er, und wie wählst du den richtigen für deine Situation.',
+    'Haltbarkeit und Ausstrahlung verstehen: Wie lange hält ein Duft, wie weit trägt er, und wie wählst du den richtigen für deine Situation.',
   alternates: { canonical: `${SITE_URL}/duftlaenge` },
   openGraph: {
     title: 'Haltbarkeit und Sillage erklärt | Auressa',
@@ -60,17 +60,17 @@ export default function DuftlaengePage() {
         {/* Longevity */}
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.5rem' }}>
-            ⏱️ Longevity: Wie lange hält der Duft?
+            ⏱️ Haltbarkeit: Wie lange hält der Duft?
           </h2>
 
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>
-            Longevity ist die wichtigste Frage beim Duftkauf. Es ist frustrierend, wenn ein CHF 100-Duft nach 2 Stunden weg ist. Hier erfährst du, wie lange verschiedene Dufttypen halten.
+            Die Haltbarkeit ist die wichtigste Frage beim Duftkauf. Es ist frustrierend, wenn ein CHF 100-Duft nach 2 Stunden weg ist. Hier erfährst du, wie lange verschiedene Dufttypen halten.
           </p>
 
           {/* Longevity Scale */}
           <div style={{ marginBottom: '2rem' }}>
             <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: '#2a1d12', marginBottom: '1rem' }}>
-              Die Longevity-Skala (0–10)
+              Die Haltbarkeits-Skala (0–10)
             </h3>
             <div style={{ display: 'grid', gap: '0.75rem' }}>
               {[
@@ -190,7 +190,7 @@ export default function DuftlaengePage() {
           </h2>
 
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>
-            Der beste Duft kombiniert die richtige Longevity UND Sillage für deine Situation:
+            Der beste Duft kombiniert die richtige Haltbarkeit UND Ausstrahlung für deine Situation:
           </p>
 
           <div style={{ display: 'grid', gap: '1rem' }}>
@@ -236,12 +236,12 @@ export default function DuftlaengePage() {
 
           {[
             {
-              q: 'Kann ich Sillage und Longevity erhöhen?',
-              a: 'Ja! Mehr auftragen (aber nicht zu viel – Overkill wirkt billig). Auf feuchte Haut sprühen. Sillage sinkt mit der Zeit, Longevity auch. Nach 4–5 Stunden ist die Projektion meist halber.'
+              q: 'Kann ich Ausstrahlung und Haltbarkeit erhöhen?',
+              a: 'Ja! Mehr auftragen (aber nicht zu viel – zu viel wirkt schnell billig). Auf feuchte Haut sprühen. Die Ausstrahlung lässt mit der Zeit nach. Nach 4–5 Stunden ist die Ausstrahlung meist nur noch halb so stark.'
             },
             {
               q: 'Warum hält mein teurer Duft nur kurz?',
-              a: 'Teure heißt nicht automatisch länger haltbar. Manche High-End-Düfte sind bewusst leise und kurz (Nische-Appeal). Schau auf die Longevity-Bewertung, nicht den Preis.'
+              a: 'Teuer heisst nicht automatisch länger haltbar. Manche High-End-Düfte sind bewusst leise und kurz (typisch für Nischendüfte). Schau auf die Haltbarkeit, nicht auf den Preis.'
             },
             {
               q: 'Ist ein Duft mit hoher Sillage immer besser?',
@@ -269,7 +269,7 @@ export default function DuftlaengePage() {
             Die richtigen Düfte für dich finden
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>
-            Nutze unser Quiz, um Düfte zu finden, die zu deinen Longevity- und Sillage-Anforderungen passen.
+            Nutze unser Quiz, um Düfte zu finden, die zu deinen Wünschen bei Haltbarkeit und Ausstrahlung passen.
           </p>
           <Link
             href="/quiz"

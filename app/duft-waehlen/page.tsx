@@ -346,7 +346,7 @@ export default function FragranceSelectionPage() {
                 },
                 {
                   title: '❌ Mythen & Fakten',
-                  desc: '20 Duft-Mythen debunked',
+                  desc: '20 Duft-Mythen im Faktencheck',
                   href: '/duft-mythen'
                 }
               ].map((resource, idx) => (

@@ -383,7 +383,7 @@ export default function PerfumeApplicationPage() {
               },
               {
                 q: 'Sollte ich den Duft mit Deodorant kombinieren?',
-                a: 'Ja, aber nutze zuerst ein unscented Deo/Antitranspirant. Dann den Duft auftragen. Manche Deos können mit Duftölen reagieren – teste es vorher an einer kleinen Stelle.'
+                a: 'Ja, aber nutze zuerst ein unparfümiertes Deo/Antitranspirant. Dann den Duft auftragen. Manche Deos können mit Duftölen reagieren – teste es vorher an einer kleinen Stelle.'
               },
               {
                 q: 'Was ist besser: EdP, EdT oder Parfum?',

@@ -24,9 +24,9 @@ export type Guide = {
 export const guides: Guide[] = [
   {
     slug: 'guenstige-alternativen-zu-teuren-dueften',
-    title: 'Parfüm-Dupes: Intelligente Alternatives für die Schweiz – Luxus muss nicht teuer sein',
+    title: 'Parfüm-Dupes: clevere Alternativen für die Schweiz – Luxus muss nicht teuer sein',
     description:
-      'Große Düfte muss nicht teuer kosten. Ein Dupe ist ein intelligenter Duft in ähnlicher Richtung zum Luxus-Original, aber für einen Bruchteil des Preises. Creed Aventus, Dior Sauvage, Baccarat Rouge – für alle gibt es großartige Alternativen. Hier unsere ehrlichsten Empfehlungen.',
+      'Ein grossartiger Duft muss nicht teuer sein. Ein Dupe riecht ähnlich wie ein Luxus-Original, kostet aber nur einen Bruchteil. Creed Aventus, Dior Sauvage, Baccarat Rouge – für alle gibt es großartige Alternativen. Hier unsere ehrlichsten Empfehlungen.',
     heroImage: 'https://images.unsplash.com/photo-1541643600914-78b084683702?w=1200&q=80&fit=crop',
     intro: [
       'Ein „Dupe" ist nicht ein billiger Klon, sondern eine intelligente Alternative. Ein Duft in ähnlicher Richtung, von einer seriösen Marke, zu einem Bruchteil des Preises. Die Geschichte der Dupes ist eine Geschichte von Demokratisierung. Vor 15 Jahren war Creed Aventus ein Duft nur für diejenigen mit echtem Geld. Heute kannst du in ähnliche Richtung für CHF 25 statt CHF 250 sprühen. Das hat die arabischen Duft-Häuser wie Lattafa, Armaf und Al Haramain möglich gemacht. Sie haben verstanden, dass es möglich ist, großartige Düfte zu machen, ohne Marken-Luxe-Preismarke zu haben.',
@@ -838,9 +838,9 @@ export const guides: Guide[] = [
   },
   {
     slug: 'die-besten-zitrus-duefte',
-    title: 'Die besten Zitrus-Düfte: frisch, spritztig und voller Energie',
+    title: 'Die besten Zitrus-Düfte: frisch, spritzig und voller Energie',
     description:
-      'Zitrus-Düfte mit Bergamotte, Zitrone, Grapefruit und Orange: frisch, leicht und full of joy. Perfekt für Sommer, Büro und heisse Tage – garantiert gute Laune.',
+      'Zitrus-Düfte mit Bergamotte, Zitrone, Grapefruit und Orange: frisch, leicht und gut gelaunt. Perfekt für Sommer, Büro und heisse Tage – garantiert gute Laune.',
     heroImage: '/ratgeber/zitrus-duefte-hero.jpg',
     intro: [
       'Zitrus-Düfte sind das Gegenmittel gegen schwere, dunkle Momente. Zitrone, Bergamotte, Grapefruit und Orange riechen sauber, unbeschwert und strahlend – jeder Sprühstoss hebt die Stimmung. Sie sind leicht, luftig und wirken sofort erfrischend, perfekt für alle, die es unkompliziert und energiegeladen mögen.',
@@ -2243,7 +2243,7 @@ export const guides: Guide[] = [
       'Parfüms, die herrlich nach reifen Erdbeeren duften: süß, fruchtig und sommerlich. Unsere besten Erdbeer-Düfte von günstig bis edel.',
     heroImage: '/ratgeber/erdbeer-duefte-hero.png',
     intro: [
-      'Erdbeer-Düfte sind fruchtig, süss und sorgen sofort für gute Laune. Sie wirken jung und verspielt, mal frisch-spritztig, mal kombiniert mit Sahne, Vanille oder weissen Blüten. Sie gehören zu den beliebtesten und zugänglichsten Duftrichtungen überhaupt – perfekt für alle, die es unkompliziert und fröhlich mögen.',
+      'Erdbeer-Düfte sind fruchtig, süss und sorgen sofort für gute Laune. Sie wirken jung und verspielt, mal frisch-spritzig, mal kombiniert mit Sahne, Vanille oder weissen Blüten. Sie gehören zu den beliebtesten und zugänglichsten Duftrichtungen überhaupt – perfekt für alle, die es unkompliziert und fröhlich mögen.',
       'In der Parfümwelt ist Erdbeere fast immer eine Kombination aus verschiedenen synthetischen Fruchtmolekülen. Echter Erdbeerextrakt ist zu flüchtig und schwierig zu verarbeiten. Das Ergebnis riecht aber verblüffend echt – oft sogar schöner und runder als die echte Frucht selbst. Die besten Erdbeer-Kompositionen verbinden die Süsse mit einer stabilen Basis, damit der Duft nicht sofort verfliegt.',
       'Hier unsere liebsten Erdbeer-Düfte aus dem Katalog – von frisch und leicht bis warm und cremig. Für Sommer, Dates und alle Momente, in denen du es fruchtig-süss und beschwingt magst.'
     ],

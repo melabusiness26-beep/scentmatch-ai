@@ -14,6 +14,8 @@ export const metadata: Metadata = {
 export default function QuizPage() {
   return (
     <main>
+      {/* Hauptüberschrift für Google & Screenreader; das Quiz zeigt seine Fragen selbst. */}
+      <h1 className="sr-only">Duft-Quiz: Finde deinen Duft</h1>
       <QuizContainer />
     </main>
   );

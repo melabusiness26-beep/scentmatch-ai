@@ -7,7 +7,7 @@ export const revalidate = 3600;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Parfum richtig auftragen: Anleitung für maximale Wirkung | Auressa',
+  title: 'Parfum richtig auftragen: Anleitung für maximale Wirkung',
   description:
     'Lerne, wie du Parfum richtig aufträgst, damit es länger hält und besser wirkt. Sprühtechniken, Auftrags-Punkte, Häufigkeit und Tipps für optimale Duftentwicklung.',
   alternates: { canonical: `${SITE_URL}/parfum-auftragen` },

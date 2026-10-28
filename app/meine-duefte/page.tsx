@@ -4,7 +4,7 @@ import SavedPerfumes from '@/app/components/SavedPerfumes';
 
 export const metadata: Metadata = {
   robots: 'noindex, nofollow',
-  title: 'Meine Düfte – Gespeicherte Favoriten | Auressa',
+  title: 'Meine Düfte – Gespeicherte Favoriten',
   description: 'Deine gesammelten und favorisierten Düfte an einem Ort.',
 };
 

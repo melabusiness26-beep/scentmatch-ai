@@ -7,7 +7,7 @@ export const revalidate = 3600;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Duftkombinationen: Wie du Parfüme richtig kombinierst | Auressa',
+  title: 'Duftkombinationen: Wie du Parfüme richtig kombinierst',
   description:
     'Lerne, wie du mehrere Düfte layerst und kombinierst – für einen einzigartigen, längeren und intensiveren Duft. Regeln, Techniken und professionelle Tipps.',
   alternates: { canonical: `${SITE_URL}/duefte-kombinieren` },

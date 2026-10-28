@@ -5,7 +5,7 @@ import Breadcrumb from '@/app/Breadcrumb';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Wie Auressa funktioniert – Die Matching-Philosophie | Auressa',
+  title: 'Wie Auressa funktioniert – Die Matching-Philosophie',
   description:
     'Verstehe die Logik hinter Auressa: Wie das Quiz deine Vorlieben erkennt und wie der Match-Score berechnet wird – ohne Zauberei, mit echter Mathematik.',
   alternates: { canonical: `${SITE_URL}/wie-auressa-funktioniert` },

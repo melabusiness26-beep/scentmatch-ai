@@ -7,7 +7,7 @@ import { PerfumeTile } from '@/app/PerfumeTile';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Saisonale Duft-Empfehlungen: Frühling, Sommer, Herbst, Winter | Auressa',
+  title: 'Saisonale Duft-Empfehlungen: Frühling, Sommer, Herbst, Winter',
   description:
     'Düfte, die zu jeder Jahreszeit passen: frische Sommerdüfte, warme Winterdüfte, blumige Frühlingsdüfte und gemütliche Herbstdüfte – alle kuratiert und getestet.',
   alternates: { canonical: `${SITE_URL}/saisonal` },

@@ -6,7 +6,7 @@ import { OPERATOR } from '@/lib/operator';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Über Auressa – Die Geschichte hinter der Plattform | Auressa',
+  title: 'Über Auressa – Die Geschichte hinter der Plattform',
   description:
     'Auressa entstand aus einer persönlichen Frustration: Zu viele Parfüms gekauft, die nicht gepasst haben. Melanie aus der Schweiz hat das geändert – ehrlich, auf Deutsch, mit echten Empfehlungen.',
   alternates: { canonical: `${SITE_URL}/ueber-uns` },

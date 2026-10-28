@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Datenschutz | Auressa',
+  title: 'Datenschutz',
   description: 'Datenschutzerklärung der Auressa Duft-Plattform. Wie wir deine Daten schützen.',
   robots: 'noindex, follow',
 };

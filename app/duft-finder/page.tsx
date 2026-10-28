@@ -6,7 +6,7 @@ import Breadcrumb from '@/app/Breadcrumb';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Duft-Finder – Parfüm suchen und finden | Auressa',
+  title: 'Duft-Finder – Parfüm suchen und finden',
   description: 'Beschreib den Duft, den du suchst – wir finden ihn aus hunderten Parfüms. Nach Name, Note, Stimmung oder Beschreibung suchen.',
   alternates: { canonical: `${SITE_URL}/duft-finder` },
   openGraph: {

@@ -6,7 +6,7 @@ import Breadcrumb from '@/app/Breadcrumb';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Duft-Scanner – Parfüm per Foto erkennen | Auressa',
+  title: 'Duft-Scanner – Parfüm per Foto erkennen',
   description: 'Fotografiere einen Parfümflakon und lass die KI den Duft sofort identifizieren: Noten, Sillage, Charakter, Geschichte und ähnliche Düfte – alles in Sekunden.',
   keywords: ['Parfüm erkennen', 'Duft Scanner', 'Parfüm Foto', 'Duft identifizieren', 'KI Parfüm', 'Parfüm App'],
   openGraph: {

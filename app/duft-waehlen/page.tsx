@@ -7,7 +7,7 @@ export const revalidate = 3600;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Wie wählt man einen Parfum? Der komplette Guide für deine Wahl | Auressa',
+  title: 'Wie wählt man einen Parfum? Der komplette Guide für deine Wahl',
   description:
     'Dein umfassender Guide zur Auswahl des perfekten Parfums: Budget, Dufttyp, Konzentration, Saison, Anlass und deine persönlichen Vorlieben – Schritt für Schritt.',
   alternates: { canonical: `${SITE_URL}/duft-waehlen` },

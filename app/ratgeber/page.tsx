@@ -6,7 +6,7 @@ import { guides, guideCategories, getGuide, type Guide } from '@/lib/guides';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Duft-Ratgeber: Tipps, Dupes & Empfehlungen | Auressa',
+  title: 'Duft-Ratgeber: Tipps, Dupes & Empfehlungen',
   description:
     'Ehrliche Duft-Ratgeber aus der Schweiz: günstige Alternativen zu teuren Parfüms, Saisonempfehlungen, Hauttyp-Tipps und welcher Duft zu welchem Anlass passt.',
   alternates: { canonical: `${SITE_URL}/ratgeber` },

@@ -5,7 +5,7 @@ import Breadcrumb from '@/app/Breadcrumb';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Häufige Fragen (FAQ) zu Parfüm & Auressa | Auressa',
+  title: 'Häufige Fragen (FAQ) zu Parfüm & Auressa',
   description:
     'Antworten auf die häufigsten Fragen rund um Parfüm, Duft-Findung und Auressa: Was ist ein Auressa-Score? Wie funktioniert das Quiz? Was sind Dupes? Ehrliche Antworten, kein Fachjargon.',
   alternates: { canonical: `${SITE_URL}/faq` },

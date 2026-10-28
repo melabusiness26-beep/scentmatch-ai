@@ -10,12 +10,12 @@ export const revalidate = 3600;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Die 15 besten Damendüfte 2025 – Parfum-Empfehlungen',
+  title: 'Die besten Damendüfte – Parfum-Empfehlungen',
   description:
     'Die besten Damen-Parfums im Überblick: Von klassisch-floral bis modern-holzig. Mit Duftprofil, Noten, Preisen und günstigen Alternativen.',
   alternates: { canonical: `${SITE_URL}/beste-damenduefte` },
   openGraph: {
-    title: 'Die 15 besten Damendüfte | Auressa',
+    title: 'Die besten Damendüfte | Auressa',
     description: 'Unsere Top-Empfehlungen für Damen-Parfums – mit Duftprofil, Noten und Preisen.',
     type: 'website',
     url: `${SITE_URL}/beste-damenduefte`,
@@ -143,7 +143,7 @@ export default async function BesteDamenduefte() {
   const listJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Die 15 besten Damendüfte',
+    name: 'Die besten Damendüfte',
     description: 'Top-Damendüfte nach Auressa-Score: Duftprofil, Noten und Preise im Überblick.',
     url: `${SITE_URL}/beste-damenduefte`,
     numberOfItems: top.length,

@@ -7,7 +7,7 @@ export const revalidate = 3600;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Duftarten erklärt: EdP, EdT, Parfum und Cologne – Was ist der Unterschied? | Auressa',
+  title: 'Duftarten erklärt: EdP, EdT, Parfum und Cologne – Was ist der Unterschied?',
   description:
     'Verstehe den Unterschied zwischen Eau de Parfum, Eau de Toilette, Extrait und Cologne: Konzentration, Haltbarkeit, Intensität und Preis im direkten Vergleich.',
   alternates: { canonical: `${SITE_URL}/duftarten` },

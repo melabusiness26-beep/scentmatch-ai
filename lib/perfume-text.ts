@@ -468,7 +468,7 @@ const ACCORD_GROUP: Record<AccordCode, string> = {
   pudrig: 'weiche, pudrige Noten',
   suess: 'süsse Noten',
   wuerzig: 'würzige Noten',
-  holzig: 'Hölzer',
+  holzig: 'holzige Noten',
   warm: 'warme Noten'
 };
 
@@ -491,7 +491,7 @@ const RELATED: Partial<Record<AccordCode, AccordCode[]>> = {
 function exampleNotes(p: Perfume, code: AccordCode, skip: string[] = []): string[] {
   const lower = skip.map((n) => n.toLowerCase());
   return notesForAccord(p, code)
-    // Sammelbegriffe wie „Holznoten" taugen nicht als Beispiel („Hölzer wie Holznoten").
+    // Sammelbegriffe wie „Holznoten" taugen nicht als Beispiel („holzige Noten wie Holznoten").
     .filter((n) => !lower.includes(n.toLowerCase()) && !/noten$/i.test(n.trim()))
     .slice(0, 2);
 }

@@ -206,7 +206,7 @@ export default function DuftkolektionMinimal() {
                 Abend: Black Opium (intensiv, gourmand, mutig)
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: '0.2rem 0 0 0' }}>
-                Warum: Völlig anders – würzig, kaffeeig, sinnlich. Perfect für Abend. Keine Überlappung mit Allure.
+                Warum: Völlig anders – würzig, kaffeeig, sinnlich. Perfekt für den Abend. Keine Überlappung mit Allure.
               </p>
             </div>
             <div>

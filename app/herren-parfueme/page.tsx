@@ -44,7 +44,7 @@ export default function HerrenParfuemePage() {
           }}>
             {[
               {
-                familie: 'Fresh / Citrus',
+                familie: 'Frisch / Zitrus',
                 beschreibung: 'Zitrus-basiert, leicht, energisierend. Ideal für Anfänger und alltägliches Tragen.',
                 charaktere: 'Bergamotte, Zitrone, Grapefruit, manchmal Minze oder Gras-Noten',
                 occasions: 'Arbeit, Gym, Sommer, tagsüber, casual',
@@ -54,8 +54,8 @@ export default function HerrenParfuemePage() {
                 preis: 'CHF 40–120'
               },
               {
-                familie: 'Aromatic / Herbs',
-                beschreibung: 'Würzig, aromatisch, herbig. Klassisch, elegant, zeitlos – der „Herren-Klassiker".',
+                familie: 'Aromatisch / Kräuter',
+                beschreibung: 'Würzig, aromatisch, herb. Klassisch, elegant, zeitlos – der „Herren-Klassiker".',
                 charaktere: 'Lavendel, Salbei, Rosmarin, würzige Gewürze, Zedernholz',
                 occasions: 'Überall. Büro, Freizeit, formal, casual – passt überall.',
                 beispiele: 'Bleu de Chanel, Dior Sauvage, Acqua di Gio (Herren)',
@@ -64,7 +64,7 @@ export default function HerrenParfuemePage() {
                 preis: 'CHF 70–140'
               },
               {
-                familie: 'Woody / Sandalwood',
+                familie: 'Holzig / Sandelholz',
                 beschreibung: 'Warm, holzig, elegant. Für reife Männer oder solche, die Tiefe suchen.',
                 charaktere: 'Sandelholz, Vetiver, Zeder, Oud, Tabak',
                 occasions: 'Abends, smart-casual, Herbst/Winter, formell',
@@ -74,7 +74,7 @@ export default function HerrenParfuemePage() {
                 preis: 'CHF 100–200'
               },
               {
-                familie: 'Oriental / Amber',
+                familie: 'Orientalisch / Amber',
                 beschreibung: 'Warm, würzig, sinnlich. Für Männer, die es intensiver mögen.',
                 charaktere: 'Vanille, Amber, Moschus, würzige Noten, Zedernholz',
                 occasions: 'Abends, Ausgehen, formell, Winter',
@@ -84,7 +84,7 @@ export default function HerrenParfuemePage() {
                 preis: 'CHF 60–150'
               },
               {
-                familie: 'Fougère / Aromatic Spicy',
+                familie: 'Fougère / aromatisch-würzig',
                 beschreibung: 'Lavendel + Moschus + würzige Noten. Ein Klassiker, den viele kennen.',
                 charaktere: 'Lavendel, Moschus, Coumarin, würzige Noten',
                 occasions: 'Alltag, Arbeit, casual, Übergangsjahreszeiten',

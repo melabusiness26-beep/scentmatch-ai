@@ -297,7 +297,7 @@ export default function DuftchemieGrundlagen() {
             marginBottom: '1.5rem',
           }}>
             <h3 style={{ fontSize: '1.2rem', color: '#2a1d12', fontWeight: 700, marginBottom: '1rem' }}>
-              Olfactory Fatigue (Duft-Gewöhnung)
+              Duftgewöhnung (olfaktorische Ermüdung)
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
               Nach 15–30 Minuten „riechst" du deinen eigenen Duft nicht mehr. Deine Nase ist daran gewöhnt. Der Duft ist immer noch da – biochemisch verdampft – aber psychologisch hast du ihn nicht mehr wahrgenommen. Das ist, warum Freunde dir sagen können „hey, du riechst grossartig", aber du selbst es nicht merkst. Deine Nase hat sich daran gewöhnt.

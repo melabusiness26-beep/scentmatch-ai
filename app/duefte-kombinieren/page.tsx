@@ -99,7 +99,7 @@ export default function FragranceLayeringPage() {
               {
                 icon: '🎨',
                 title: 'Einzigartigkeit',
-                desc: 'Schaffe einen persönlichen Duft, den es kein zweites Mal gibt – dein eigener Signature-Scent.'
+                desc: 'Schaffe einen persönlichen Duft, den es kein zweites Mal gibt – dein eigener Signature-Duft.'
               },
               {
                 icon: '💡',

@@ -146,7 +146,7 @@ export default function HeroHome() {
             e.currentTarget.style.background = 'rgba(245,241,232,0.15)';
             e.currentTarget.style.transform = 'translateY(0)';
           }}>
-            📷 Scanner (Coming)
+            📷 Scanner (bald)
           </a>
         </div>
       </div>

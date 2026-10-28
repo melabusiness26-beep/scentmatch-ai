@@ -27,7 +27,7 @@ export default function DuftsammlungPage() {
           <p className="eyebrow">Wissen</p>
           <h1 className="detail-title">Duftsammlung aufbauen</h1>
           <p className="lead">
-            Dein erstes Lieblingsduft ist gefunden – und jetzt? Sollen es 2 Düfte sein oder 20? Wie baust du eine
+            Dein erster Lieblingsduft ist gefunden – und jetzt? Sollen es 2 Düfte sein oder 20? Wie baust du eine
             Sammlung auf, ohne blind rumzukaufen und später Düfte zu haben, die du nie trägst?
           </p>
           <p className="lead">
@@ -39,7 +39,7 @@ export default function DuftsammlungPage() {
 
           <ul style={{ marginBottom: '2rem' }}>
             <li style={{ marginBottom: '1rem' }}>
-              <strong>Olfactory Adaptation:</strong> Nach 15–30 Minuten riechst du deinen eigenen Duft nicht mehr
+              <strong>Duftgewöhnung:</strong> Nach 15–30 Minuten riechst du deinen eigenen Duft nicht mehr
               (aber andere tun es noch). Mit mehreren Düften vermeidest du, dass du dich an einen gewöhnst.
             </li>
             <li style={{ marginBottom: '1rem' }}>
@@ -52,11 +52,11 @@ export default function DuftsammlungPage() {
             </li>
             <li style={{ marginBottom: '1rem' }}>
               <strong>Körperchemie-Variabilität:</strong> Manchmal passt dir ein Duft, manchmal nicht – je nach Tageszeit,
-              Hormonzyklus oder was du gegessen hast. Mit mehreren hast du Backup.
+              Hormonzyklus oder was du gegessen hast. Mit mehreren hast du eine Alternative.
             </li>
             <li>
-              <strong>Abwechslung ist gut für die Nase:</strong> Die menschliche Nase braucht Vielfalt, um länger engagiert
-              zu bleiben. Das ist auch warum Perfumeurs mehrere Düfte in einer Serie machen.
+              <strong>Abwechslung ist gut für die Nase:</strong> Die menschliche Nase braucht Vielfalt, um aufmerksam
+              zu bleiben. Das ist auch der Grund, warum Parfümeure mehrere Düfte in einer Serie machen.
             </li>
           </ul>
 
@@ -71,7 +71,7 @@ export default function DuftsammlungPage() {
               {
                 count: '1 Duft',
                 typ: 'Der Anfänger',
-                beschreibung: 'Du weisst, dass dich dieser Duft liebt – und du magst alles damit. Perfect.',
+                beschreibung: 'Du hast den einen Duft gefunden, den du liebst – und er passt zu allem. Perfekt.',
                 min: 'CHF 30–80',
                 max: 'CHF 150+',
                 tipp: 'Das ist völlig ok. Ein grossartiger Lieblingsduft ist besser als 10 mittelmässige. Keine Pflicht, mehr zu haben.'
@@ -303,8 +303,8 @@ export default function DuftsammlungPage() {
             <li>Nach Jahreszeit (separate Boxen)</li>
             <li>Nach Familie (Floral zusammen, Zitrus zusammen)</li>
             <li>Nach Grösse (grosse Flakons unten, Samples oben)</li>
-            <li>Im **Kühlschrank** (für Langzeitlagerung)</li>
-            <li>Mit **Etiketten** – Kaufdatum, damit du weisst, wann es anfängt zu altern</li>
+            <li>Im <strong>Kühlschrank</strong> (für Langzeitlagerung)</li>
+            <li>Mit <strong>Etiketten</strong> – Kaufdatum, damit du weisst, wann es anfängt zu altern</li>
           </ul>
 
           <h3>Option 3: Rotation & Testing</h3>

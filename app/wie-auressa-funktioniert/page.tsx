@@ -259,7 +259,7 @@ export default function WieAuressaFunktioniert() {
             </div>
           </div>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728' }}>
-            <strong>Wichtig:</strong> Das ist mathematisch – kein Zauberei, kein KI-Voodoo.
+            <strong>Wichtig:</strong> Das ist mathematisch – keine Zauberei, kein KI-Hokuspokus.
             Die Ergebnisse funktionieren überraschend gut, weil diese Faktoren echte Geschmack-Prädiktoren sind.
           </p>
         </section>

@@ -256,7 +256,7 @@ export default function PerfumeApplicationPage() {
               {
                 step: 6,
                 title: 'Zweischicht-Trick (Optional)',
-                desc: 'Bei schwachen Düften oder für den ganzen Tag: Nach 2–3 Stunden eine zusätzliche leichte Schicht auf den Hals sprühen – sorgt für einen Duft-Boost am Nachmittag.'
+                desc: 'Bei schwachen Düften oder für den ganzen Tag: Nach 2–3 Stunden eine zusätzliche leichte Schicht auf den Hals sprühen – frischt den Duft am Nachmittag auf.'
               }
             ].map((item) => (
               <div key={item.step} style={{ display: 'flex', gap: '1.5rem' }}>

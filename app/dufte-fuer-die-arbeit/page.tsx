@@ -131,9 +131,9 @@ export default function DuefteFuerDieArbeitPage() {
 
           <h2>5 Kategorien von Office-Düften</h2>
 
-          <h3>1. Der Klassiker – Timeless & Safe</h3>
+          <h3>1. Der Klassiker – zeitlos & sicher</h3>
           <p style={{ marginBottom: '1rem' }}>
-            Der „Keine-Fehler-Duft". Jede:r Kolleg:in kennt ihn, akzeptiert ihn. Langweiling? Ja. Effektiv? Absolut.
+            Der „Keine-Fehler-Duft". Jede:r Kolleg:in kennt ihn, akzeptiert ihn. Langweilig? Ja. Effektiv? Absolut.
           </p>
           <ul style={{ marginBottom: '2rem' }}>
             <li><strong>Chanel No. 5</strong> – DER Klassiker. Über 100 Jahre, jede:r kennt ihn. Für formale Büros perfekt.</li>
@@ -236,7 +236,7 @@ export default function DuefteFuerDieArbeitPage() {
               {
                 fehler: 'EdP statt EdT tragen',
                 warum: 'EdP hält 8–10+ Stunden. Nach 6 Stunden Büro riechst du falsch & intensiv. Das ist unangenehm.',
-                lösung: 'Nutz EdT (4–6 Stunden). Perfect für Büro. Der Duft verfliegt bis Feierabend.'
+                lösung: 'Nimm ein EdT (4–6 Stunden). Perfekt fürs Büro: Der Duft ist bis zum Feierabend verflogen.'
               },
               {
                 fehler: 'Sehr süsse oder sehr würzige Düfte tragen',

@@ -43,11 +43,19 @@ export function SeasonFit({ seasons, picks }: { seasons: Season[]; picks: Record
   const alternatives = picks[now] || [];
   return (
     <div className="season-fit season-fit-no">
-      <span className="season-fit-icon" aria-hidden="true">{ICON[now]}</span>
+      <span className="season-fit-icon" aria-hidden="true">{ICON[seasons[0]]}</span>
       <div>
         <p>
-          <strong>Eher {seasonPhrase(seasons)}.</strong>
-          {alternatives.length > 0 ? ` ${IM[now].charAt(0).toUpperCase() + IM[now].slice(1)} passen diese besser:` : ''}
+          {alternatives.length > 0 ? (
+            <>
+              <strong>Eher {seasonPhrase(seasons)}.</strong> Jetzt {IM[now]} passen diese besser:
+            </>
+          ) : (
+            <>
+              <strong>Jetzt {IM[now]} eher nicht die erste Wahl.</strong> Am schönsten trägst du ihn{' '}
+              {seasons.map((x) => IM[x]).join(' und ')}.
+            </>
+          )}
         </p>
         {alternatives.length > 0 && (
           <ul className="season-fit-list">

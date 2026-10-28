@@ -379,6 +379,15 @@ export default async function PerfumeDetailPage({
         ? { versions: { name: baseTitle(perfume.perfume_name, versionLabel(perfume)), labels: otherVersions } }
         : {}
     );
+  // Steckbrief „Auf einen Blick" – nur Angaben, die wirklich erfasst sind.
+  const profile = [
+    ['Marke', perfume.brands?.name ? `${perfume.brands.name}${perfume.brands.country ? ` (${perfume.brands.country})` : ''}` : null],
+    ['Duftfamilie', perfume.fragrance_family ? familyLabel(perfume.fragrance_family) : null],
+    ['Konzentration', concentrationLabel(perfume.concentration)],
+    ['Flakon', perfume.volume_ml ? `${perfume.volume_ml} ml` : null],
+    ['Erschienen', background.release_year ? String(background.release_year) : null],
+    ['Parfümeur', background.perfumer || null]
+  ].filter((row): row is [string, string] => Boolean(row[1]));
   const occasions = (perfume.occasion || '')
     .split(',')
     .map((o) => o.trim())
@@ -612,6 +621,19 @@ export default async function PerfumeDetailPage({
                 ))}
               </ul>
               <p className="dp-footnote">Von Auressa aus den Duftnoten berechnet.</p>
+              {profile.length > 0 && (
+                <>
+                  <p className="dp-kicker dp-profile-kicker">Auf einen Blick</p>
+                  <dl className="dp-profile">
+                    {profile.map(([label, value]) => (
+                      <div key={label}>
+                        <dt>{label}</dt>
+                        <dd>{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </>
+              )}
             </Reveal>
           )}
 

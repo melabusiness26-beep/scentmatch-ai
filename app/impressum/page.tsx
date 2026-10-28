@@ -102,7 +102,7 @@ export default function ImpressumPage() {
               Das bedeutet: Wenn du über Auressa-Links einkaufst, erhalten wir eine kleine Provision vom Shop. <strong>Dir entstehen keine zusätzlichen Kosten</strong> – du zahlst denselben Preis wie direkt.
             </p>
             <p>
-              Diese Provisionen finanzieren die Website und ermöglichen es uns, Duft-Beratung kostenlos anzubieten.
+              Diese Provisionen finanzieren die Website und ermöglichen es uns, unabhängige Duft-Beratung anzubieten.
             </p>
             <p>
               <strong>Transparenz:</strong> Links zu Partner-Shops sind mit <code>rel="sponsored"</code> gekennzeichnet.

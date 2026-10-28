@@ -91,7 +91,7 @@ export default function HeroHome() {
           animation: isLoaded ? 'fadeInUp 0.8s ease-out 0.5s both' : 'none',
           maxWidth: '500px',
         }}>
-          Mit Quiz, Duft-Scanner und unserer intelligenten Match-Engine. Kostenlos, ohne Newsletter-Pflicht.
+          Mit Quiz, Duft-Scanner und unserer intelligenten Match-Engine. Ohne Konto, ohne Newsletter-Pflicht.
         </p>
 
         {/* CTAs */}

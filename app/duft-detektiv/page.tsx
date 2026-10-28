@@ -7,11 +7,11 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
   title: 'Duft-Detektiv – Finde deinen Signature Duft | Auressa',
-  description: 'Beantworte 12 einfache Fragen und finde den perfekten Duft aus über 400 kuratierten Parfüms. Dein persönlicher Duft-Detektiv.',
+  description: 'Beantworte 12 einfache Fragen und finde den passenden Duft aus unserem kuratierten Katalog. Dein persönlicher Duft-Detektiv.',
   alternates: { canonical: `${SITE_URL}/duft-detektiv` },
   openGraph: {
     title: 'Duft-Detektiv | Auressa',
-    description: 'Beantworte 12 Fragen und finde deinen Signature Duft – aus hunderten kuratierten Parfüms.',
+    description: 'Beantworte 12 Fragen und finde deinen Signature Duft – aus unserem kuratierten Katalog.',
     url: `${SITE_URL}/duft-detektiv`,
     type: 'website',
   },
@@ -60,7 +60,7 @@ export default async function DuftDetektivPage() {
             color: 'rgba(250,247,242,0.65)',
             margin: 0,
           }}>
-            Beantworte 12 einfache Fragen – wir finden deinen Signature Duft aus über 400 Düften.
+            Beantworte 12 einfache Fragen – wir finden deinen Signature Duft in unserem Katalog.
           </p>
         </div>
       </section>

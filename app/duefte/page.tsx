@@ -1,27 +1,23 @@
 import type { Metadata } from 'next';
 import Breadcrumb from '@/app/Breadcrumb';
 import PerfumeCatalog from './PerfumeCatalog';
-import { getPerfumeCount, getPerfumes } from '@/lib/perfumes';
+import { catalogCountLabel, getPerfumeCount, getPerfumes } from '@/lib/perfumes';
 
 export const revalidate = 0;
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
-// Auf 50 abgerundete „über X"-Zahl – so verspricht der Text nie mehr Düfte als wirklich vorhanden sind.
-function approxCount(count: number): number {
-  return Math.max(50, Math.floor(count / 50) * 50);
-}
 
 export async function generateMetadata(): Promise<Metadata> {
-  const approx = approxCount(await getPerfumeCount());
+  const approx = catalogCountLabel(await getPerfumeCount());
   return {
     title: 'Parfüm-Datenbank: alle Düfte durchsuchen (Schweiz)',
     description:
-      `Die grosse Parfüm-Datenbank aus der Schweiz: über ${approx} Düfte von Bestsellern bis zu seltenen Nischenperlen – suchbar nach Name, Marke, Note, Geschlecht und Anlass.`,
+      `Die Parfüm-Datenbank aus der Schweiz: ${approx ? `${approx} Düfte` : 'geprüfte Düfte'} von Bestsellern bis zu seltenen Nischenperlen – suchbar nach Name, Marke, Note, Geschlecht und Anlass.`,
     alternates: { canonical: '/duefte' },
     openGraph: {
       title: 'Alle Düfte | Auressa',
-      description: `Die kuratierte Duftdatenbank – über ${approx} Düfte, suchbar und filterbar.`,
+      description: `Die kuratierte Duftdatenbank – ${approx ? `${approx} Düfte, ` : ''}suchbar und filterbar.`,
       type: 'website',
       url: `${SITE_URL}/duefte`
     }
@@ -30,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function DueftePage() {
   const [approx, perfumes] = await Promise.all([
-    getPerfumeCount().then(approxCount),
+    getPerfumeCount().then(catalogCountLabel),
     getPerfumes(2000)
   ]);
 
@@ -73,7 +69,7 @@ export default async function DueftePage() {
             <p className="eyebrow">Die Kollektion</p>
             <h1 className="detail-title">Alle Düfte</h1>
             <p className="lead">
-              Über {approx} kuratierte Düfte – von Bestsellern bis zu seltenen Nischenperlen. Suche nach Name,
+              {approx ? `${approx.replace('über', 'Über')} kuratierte Düfte – von Bestsellern bis zu seltenen Nischenperlen.` : 'Sorgfältig geprüfte Düfte – unser Katalog wächst laufend.'} Suche nach Name,
               Marke, Note (z. B. „Schokolade"), Geschlecht oder Anlass und klicke einen Duft für sein volles Profil.
             </p>
           </div>

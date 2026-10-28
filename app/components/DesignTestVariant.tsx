@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Perfume } from '@/lib/perfumes';
+import { Perfume, catalogCountLabel } from '@/lib/perfumes';
 import SiteHeader from '@/app/SiteHeader';
 import { PerfumeTile } from '@/app/PerfumeTile';
 import GiftFinder from './GiftFinder';
@@ -105,7 +105,7 @@ export default function DesignTestVariant({
           <div className="eyebrow">Discovery · Fragrance · Boutique</div>
           <h1>Finde deinen Signatur Duft</h1>
           <p className="hero-subtitle">
-            Mit unserem Quiz und Duft-Finder in 4 Fragen zum passenden Parfüm. Über {initialCatalogCount} Düfte von {initialBrandCount} Marken – ehrliche Bewertungen, Schweizer Preise.
+            Mit unserem Quiz und Duft-Finder in 4 Fragen zum passenden Parfüm. {catalogCountLabel(initialCatalogCount) ? `${catalogCountLabel(initialCatalogCount)!.replace('über', 'Über')} Düfte von ${initialBrandCount} Marken – ` : ''}Ehrliche Bewertungen, Schweizer Preise.
           </p>
           <Link href="#quiz" className="button">
             Zum Quiz
@@ -159,7 +159,7 @@ export default function DesignTestVariant({
               <p className="small">Quiz oder Dupe-Finder – in wenigen Klicks zum passenden Duft.</p>
             </div>
             <div>
-              <h3>Über 400 Düfte</h3>
+              <h3>Geprüfte Düfte</h3>
               <p className="small">Klassiker, Nischen, Geheimtipps – für jedes Budget und jeden Stil.</p>
             </div>
           </div>

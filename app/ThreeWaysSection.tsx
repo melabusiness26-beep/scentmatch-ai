@@ -1,8 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { catalogCountLabel } from '@/lib/perfumes';
 
-export default function ThreeWaysSection() {
+export default function ThreeWaysSection({ catalogCount }: { catalogCount?: number | null }) {
+  const countLabel = catalogCountLabel(catalogCount);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   const cards = [
@@ -21,7 +23,7 @@ export default function ThreeWaysSection() {
       id: 'quiz',
       icon: '🎯',
       title: 'Duft-Quiz',
-      description: 'Beantworte 12 Fragen → wir berechnen deinen perfekten Match',
+      description: 'Beantworte 10 Fragen → wir berechnen deinen perfekten Match',
       gradient: 'linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%)',
       borderColor: 'rgba(239, 68, 68, 0.3)',
       textColor: '#DC2626',
@@ -32,7 +34,7 @@ export default function ThreeWaysSection() {
       id: 'database',
       icon: '🔍',
       title: 'Datenbank durchsuchen',
-      description: 'Durchstöbere 400+ Düfte, filtere nach Familie, Saison und mehr',
+      description: `Durchstöbere ${countLabel ? `${countLabel} Düfte` : 'unseren Katalog'}, filtere nach Familie, Saison und mehr`,
       gradient: 'linear-gradient(135deg, #F5E6D3 0%, #E8D4B8 100%)',
       borderColor: 'rgba(146, 64, 14, 0.3)',
       textColor: '#92400E',

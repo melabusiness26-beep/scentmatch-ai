@@ -79,8 +79,8 @@ export default function TestingPage() {
           </p>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728' }}>
             Ich mache keine „schnelle Noten-Recherche" und gebe dann ein Score ab. Ich teste wirklich.
-            Das ist zeitaufwändig. Das ist auch der Grund, warum Auressa „nur" über 400 Düfte hat,
-            nicht zehntausende wie kommerzielle Plattformen. Qualität vor Quantität.
+            Das ist zeitaufwändig. Das ist auch der Grund, warum der Katalog von Auressa Schritt für Schritt wächst
+            und nicht zehntausende Düfte hat wie kommerzielle Plattformen. Qualität vor Quantität.
           </p>
         </section>
 

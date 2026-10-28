@@ -5,7 +5,7 @@ import Breadcrumb from '@/app/Breadcrumb';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Parfum richtig lagern: Anleitung für lange Haltbarkeit | Auressa',
+  title: 'Parfum richtig lagern: Anleitung für lange Haltbarkeit',
   description:
     'Wie lagert man Parfum richtig? Temperatur, Licht, Feuchtigkeit – alle Tipps für optimale Lagerung und maximal lange Haltbarkeit deines Lieblingsdufts.',
   alternates: { canonical: `${SITE_URL}/duft-lagerung` },

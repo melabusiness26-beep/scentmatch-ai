@@ -12,8 +12,9 @@ const FavoritesContext = createContext<FavoritesContextType | undefined>(undefin
 
 export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   const [favorites, setFavorites] = useState<string[]>([]);
-  const [isLoaded, setIsLoaded] = useState(false);
 
+  // Gespeicherte Favoriten erst im Browser laden. Die Seite selbst wird trotzdem sofort
+  // (auch auf dem Server) angezeigt – sonst sähe Google nur eine leere Seite.
   useEffect(() => {
     try {
       const saved = localStorage.getItem('auressa-favorites');
@@ -23,7 +24,6 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
     } catch (error) {
       console.error('Failed to load favorites:', error);
     }
-    setIsLoaded(true);
   }, []);
 
   const toggleFavorite = (slug: string) => {
@@ -46,7 +46,7 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <FavoritesContext.Provider value={{ favorites, toggleFavorite, isFavorite }}>
-      {isLoaded && children}
+      {children}
     </FavoritesContext.Provider>
   );
 }

@@ -7,7 +7,7 @@ export const revalidate = 3600;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Duft als Geschenk: Der ultimative Guide für das perfekte Parfum-Geschenk | Auressa',
+  title: 'Duft als Geschenk: Der ultimative Guide für das perfekte Parfum-Geschenk',
   description:
     'Wie wählst du ein Duft-Geschenk richtig? Guide für alle Gelegenheiten: Budget, Geschlecht, Alter, Dufttyp und was Duft-Empfänger wirklich wollen.',
   alternates: { canonical: `${SITE_URL}/duft-geschenk` },

@@ -5,7 +5,7 @@ import Breadcrumb from '@/app/Breadcrumb';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Haltbarkeit und Sillage: Wie lange hält ein Parfum? | Auressa',
+  title: 'Haltbarkeit und Sillage: Wie lange hält ein Parfum?',
   description:
     'Haltbarkeit und Ausstrahlung verstehen: Wie lange hält ein Duft, wie weit trägt er, und wie wählst du den richtigen für deine Situation.',
   alternates: { canonical: `${SITE_URL}/duftlaenge` },

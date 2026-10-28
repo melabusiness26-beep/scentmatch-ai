@@ -5,7 +5,7 @@ import Breadcrumb from '@/app/Breadcrumb';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Anleitung: Wie wählt man ein Parfum? Schritt für Schritt erklärt | Auressa',
+  title: 'Anleitung: Wie wählt man ein Parfum? Schritt für Schritt erklärt',
   description:
     'Lerne, wie du das richtige Parfum für dich wählst: Duftfamilien verstehen, Haltbarkeit beurteilen, dein Budget planen und Fehlkäufe vermeiden.',
   alternates: { canonical: `${SITE_URL}/anleitung` },

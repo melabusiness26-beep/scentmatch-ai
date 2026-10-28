@@ -5,7 +5,7 @@ import Breadcrumb from '@/app/Breadcrumb';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Testing & Transparenz – So arbeitet Auressa | Auressa',
+  title: 'Testing & Transparenz – So arbeitet Auressa',
   description:
     'Melanie testet jeden Duft persönlich. Lerne, wie Auressa arbeitet, welche Düfte wirklich getestet sind und wie wir absolut ehrlich bleiben – ohne Kompromisse.',
   alternates: { canonical: `${SITE_URL}/testing-und-transparenz` },

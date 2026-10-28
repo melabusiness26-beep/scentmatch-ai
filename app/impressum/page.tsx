@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Impressum | Auressa',
+  title: 'Impressum',
   description: 'Impressum und rechtliche Informationen von Auressa – Duft-Beratung aus der Schweiz.',
   robots: 'noindex, follow',
 };

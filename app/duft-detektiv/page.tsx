@@ -6,7 +6,7 @@ import Breadcrumb from '@/app/Breadcrumb';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Duft-Detektiv – Finde deinen Signature Duft | Auressa',
+  title: 'Duft-Detektiv – Finde deinen Signature Duft',
   description: 'Beantworte 12 einfache Fragen und finde den passenden Duft aus unserem kuratierten Katalog. Dein persönlicher Duft-Detektiv.',
   alternates: { canonical: `${SITE_URL}/duft-detektiv` },
   openGraph: {

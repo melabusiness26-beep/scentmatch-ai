@@ -10,12 +10,12 @@ export const revalidate = 3600;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Die 15 besten Herrendüfte 2025 – Parfum-Empfehlungen',
+  title: 'Die besten Herrendüfte – Parfum-Empfehlungen',
   description:
     'Die besten Herren-Parfums im Überblick: Von frisch-aquatisch bis dunkel-holzig. Mit Duftprofil, Noten, Preisen und günstigen Alternativen.',
   alternates: { canonical: `${SITE_URL}/beste-herrenduefte` },
   openGraph: {
-    title: 'Die 15 besten Herrendüfte | Auressa',
+    title: 'Die besten Herrendüfte | Auressa',
     description: 'Unsere Top-Empfehlungen für Herren-Parfums – mit Duftprofil, Noten und Preisen.',
     type: 'website',
     url: `${SITE_URL}/beste-herrenduefte`,
@@ -140,7 +140,7 @@ export default async function BesteHerrenduefte() {
   const listJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Die 15 besten Herrendüfte',
+    name: 'Die besten Herrendüfte',
     description: 'Top-Herrendüfte nach Auressa-Score: Duftprofil, Noten und Preise im Überblick.',
     url: `${SITE_URL}/beste-herrenduefte`,
     numberOfItems: top.length,

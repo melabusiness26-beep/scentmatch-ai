@@ -10,7 +10,7 @@ export const revalidate = 3600;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Die besten Parfums unter CHF 100 – Top-Liste 2025',
+  title: 'Die besten Parfums unter CHF 100 – Top-Liste',
   description:
     'Die besten Parfums unter CHF 100: Günstige Düfte mit grosser Wirkung. Mit Duftprofil, Noten und dem Auressa-Qualitätsscore.',
   alternates: { canonical: `${SITE_URL}/beste-duefte-unter-100` },

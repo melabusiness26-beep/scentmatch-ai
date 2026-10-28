@@ -7,7 +7,7 @@ export const revalidate = 3600;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Duft-Mythen und Fakten: Was stimmt wirklich? | Auressa',
+  title: 'Duft-Mythen und Fakten: Was stimmt wirklich?',
   description:
     'Wir prüfen die 20 häufigsten Duft-Mythen: Warum teure Düfte nicht automatisch besser sind, ob du abhängig wirst, wie deine Nase funktioniert und mehr.',
   alternates: { canonical: `${SITE_URL}/duft-mythen` },

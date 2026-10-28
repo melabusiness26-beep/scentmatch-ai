@@ -10,12 +10,12 @@ export const revalidate = 3600;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Die 15 besten Unisex-Düfte 2025 – Parfum-Empfehlungen',
+  title: 'Die besten Unisex-Düfte – Parfum-Empfehlungen',
   description:
     'Die besten Unisex-Parfums: Geschlechtsneutrale Düfte für alle. Mit Duftprofil, Noten, Preisen und günstigen Alternativen.',
   alternates: { canonical: `${SITE_URL}/beste-unisex-duefte` },
   openGraph: {
-    title: 'Die 15 besten Unisex-Düfte | Auressa',
+    title: 'Die besten Unisex-Düfte | Auressa',
     description: 'Top-Unisex-Parfums für alle – mit Duftprofil, Noten und Preisen.',
     type: 'website',
     url: `${SITE_URL}/beste-unisex-duefte`,
@@ -140,7 +140,7 @@ export default async function BesteUnisexDuefte() {
   const listJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Die 15 besten Unisex-Düfte',
+    name: 'Die besten Unisex-Düfte',
     description: 'Top-Unisex-Parfums nach Auressa-Score: Duftprofil, Noten und Preise im Überblick.',
     url: `${SITE_URL}/beste-unisex-duefte`,
     numberOfItems: top.length,

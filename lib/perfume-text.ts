@@ -44,6 +44,7 @@ function clean(notes: string[] | null, max = 3): string[] {
 const ACCORD_ADJ: Record<string, string> = {
   zitrisch: 'zitrischer',
   frisch: 'frischer',
+  aromatisch: 'aromatischer',
   fruchtig: 'fruchtiger',
   blumig: 'blumiger',
   pudrig: 'pudriger',
@@ -461,6 +462,7 @@ export type FitAdvice = { fits: string[]; notFits: string[] };
 const ACCORD_GROUP: Record<AccordCode, string> = {
   zitrisch: 'Zitrusnoten',
   frisch: 'frische Noten',
+  aromatisch: 'Kräuternoten',
   fruchtig: 'fruchtige Noten',
   blumig: 'Blumennoten',
   pudrig: 'weiche, pudrige Noten',
@@ -477,7 +479,8 @@ const POLARIZING: AccordCode[] = ['blumig', 'suess', 'wuerzig', 'holzig', 'warm'
 // (z. B. süss und warm bei Vanille/Tonka) – darum nie gegeneinander ausspielen.
 const RELATED: Partial<Record<AccordCode, AccordCode[]>> = {
   zitrisch: ['frisch'],
-  frisch: ['zitrisch'],
+  frisch: ['zitrisch', 'aromatisch'],
+  aromatisch: ['frisch'],
   suess: ['warm'],
   warm: ['suess', 'holzig'],
   holzig: ['warm'],
@@ -503,7 +506,10 @@ export function fitAdvice(p: Perfume): FitAdvice {
 
   // 1) Was man an ihm mögen muss – mit seinen eigenen Noten.
   let main: AccordCode | undefined = accords[0];
-  if ((main === 'frisch' || main === 'zitrisch') && notesForAccord(p, 'zitrisch').length) main = 'zitrisch';
+  // „Frisch" mit Zitrusnoten lieber konkret als Zitrus benennen – aber nur, wenn Zitrus
+  // den Duft auch prägt (sonst würde z. B. Cool Water über Neroli beschrieben).
+  if (main === 'frisch' && accords.slice(0, 3).includes('zitrisch') && notesForAccord(p, 'zitrisch').length) main = 'zitrisch';
+  if (main === 'frisch' && accords[1] === 'aromatisch') main = 'aromatisch';
   const mainNotes = main ? exampleNotes(p, main) : [];
   if (main && mainNotes.length) fits.push(`dir ${ACCORD_GROUP[main]} wie ${joinList(mainNotes.map(inSentence))} gefallen`);
   else if (FITS_FAMILY[fam]) fits.push(FITS_FAMILY[fam]);

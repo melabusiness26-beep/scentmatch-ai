@@ -952,8 +952,15 @@ export function moodScore(p: Perfume, mood: Mood): number {
 
 // Passt ein Duft überhaupt? Nur mit passender Duftfamilie – einzelne Noten wie Moschus
 // oder Zedernholz stecken in fast jedem Duft und würden sonst jeden Duft zulassen.
+// Passt nur, wenn die Duftfamilie eine Hauptfamilie der Stimmung ist – oder eine
+// Nebenfamilie und der Duft zusätzlich passende Noten hat. Sonst landet z. B. ein
+// frisch-blumiger Duft als „Top-Treffer" bei „Vanille & Trost".
 export function fitsMood(p: Perfume, mood: Mood): boolean {
-  return (mood.families[p.fragrance_family || ''] || 0) > 0;
+  const weight = mood.families[p.fragrance_family || ''] || 0;
+  if (weight <= 0) return false;
+  const top = Math.max(...Object.values(mood.families).map((w) => w || 0));
+  if (weight >= 15 || weight === top) return true;
+  return mood.noteThemes.some((code) => perfumeHasTheme(p, code));
 }
 
 // Liefert die am besten zur Stimmung passenden Düfte – optional nach Geschlecht gefiltert.

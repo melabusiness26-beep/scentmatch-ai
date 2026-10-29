@@ -92,7 +92,7 @@ export default function DuftLagerungPage() {
               {
                 emoji: '👃',
                 title: 'Starke Gerüche in der Nähe',
-                desc: 'Obwohl weniger bekannt: Dufte können Gerüche von anderen Flakons oder Materialien aufnehmen. Lagere Parfüms in einem eigenen Bereich, nicht neben Reinigungsmitteln oder anderen Kosmetika mit starkem Duft.'
+                desc: 'Obwohl weniger bekannt: Düfte können Gerüche von anderen Flakons oder Materialien aufnehmen. Lagere Parfüms in einem eigenen Bereich, nicht neben Reinigungsmitteln oder anderen Kosmetika mit starkem Duft.'
               }
             ].map((factor) => (
               <div key={factor.title} style={{

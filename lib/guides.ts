@@ -689,7 +689,7 @@ export const guides: Guide[] = [
         heading: 'Was funktioniert wirklich',
         body: [
           'Die Düfte auf dieser Liste funktionieren, weil sie eine bestimmte Architektur haben. Sie starten mit Frische – Zitrus, Gewürze – was sie zugänglich macht. Dann entwickeln sie Wärme (Vanille, Amber, Moschus), was Nähe schafft. Diese Balance zwischen Frische und Wärme ist das Geheimnis. Düfte, die nur warm sind, wirken schnell erdrückend. Düfte, die nur frisch sind, wirken oberflächlich.',
-          'Würzige Noten wie schwarzer Pfeffer oder Zimt wirken selbstbewusst und warm – aber nicht aggressiv, sondern kompetent. Das ist der Grund, warum Dior Sauvage funktioniert: Es riecht nach Kontrol und Eleganz, nicht nach Dominanz.',
+          'Würzige Noten wie schwarzer Pfeffer oder Zimt wirken selbstbewusst und warm – aber nicht aggressiv, sondern kompetent. Das ist der Grund, warum Dior Sauvage funktioniert: Es riecht nach Kontrolle und Eleganz, nicht nach Dominanz.',
           'Interessanterweise reagieren Frauen auch auf Süsse – aber nur, wenn sie mit Struktur kommt. Ein Duft mit reiner Vanille wirkt schnell eintönig. Vanille mit Holz oder Gewürzen (wie Versace Eros oder One Million) wirkt dagegen verführerisch und emotional. Das ist der Unterschied zwischen billig-süss und luxuriös-sinnlich.',
           'Subtilität ist das Geheimnis. Ein Duft, den man aus zwei Metern riecht, wirkt schnell aufdringlich. Ein Duft, den man nur aus der Nähe wahrnimmt – das ist der Stoff, aus dem echte Komplimente entstehen. Das ist der Grund, warum intensive Düfte oft kontraproduktiv wirken.'
         ]
@@ -880,7 +880,7 @@ export const guides: Guide[] = [
         heading: 'Warum Zitrus immer funktioniert',
         body: [
           'Zitrus ist demokratisch: Es gefällt fast allen, wirkt elegant und nie aufdringlich. Ein Zitrus-Duft im Schrank ist wie ein zuverlässiger Freund – du brauchst ihn vielleicht nicht jeden Tag, aber wenn du ihn brauchst, ist er genau richtig.',
-          'Perfekt fürs erste Mal: Wenn du gerade dein erstes Parfüm kaufst oder jemandem etwas schenken möchtest, der Dufte noch nicht kennt – Zitrus ist immer eine sichere Wahl.'
+          'Perfekt fürs erste Mal: Wenn du gerade dein erstes Parfüm kaufst oder jemandem etwas schenken möchtest, der Düfte noch nicht kennt – Zitrus ist immer eine sichere Wahl.'
         ]
       }
     ]

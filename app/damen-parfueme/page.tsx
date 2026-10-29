@@ -46,7 +46,7 @@ export default function DamenParfuemePage() {
               {
                 familie: 'Blumig',
                 beschreibung: 'Die klassische Frauenduft-Familie. Von subtil bis dramatisch – Rosen, Pfirsich, Lilie, Tuberose.',
-                charaktere: 'Rose, Pfirsich, Gardenie, Lilie, Violett, Hibiskus',
+                charaktere: 'Rose, Pfirsich, Gardenie, Lilie, Veilchen, Hibiskus',
                 occasions: 'Überall. Formal, casual, tagsüber, abends – Floral ist universell.',
                 beispiele: 'Chanel No. 5, Dior J\'adore, Lancôme Trésor, Estée Lauder Beautiful',
                 intensitaet: 'Leicht bis sehr stark (variabel)',
@@ -116,7 +116,7 @@ export default function DamenParfuemePage() {
                 </p>
                 <div style={{ fontSize: '0.85rem', color: '#5b4d40', marginTop: '0.75rem' }}>
                   <p style={{ margin: '0.5rem 0' }}><strong>Charaktere:</strong> {item.charaktere}</p>
-                  <p style={{ margin: '0.5rem 0' }}><strong>Best for:</strong> {item.occasions}</p>
+                  <p style={{ margin: '0.5rem 0' }}><strong>Passt zu:</strong> {item.occasions}</p>
                   <p style={{ margin: '0.5rem 0' }}><strong>Klassische Beispiele:</strong> {item.beispiele}</p>
                   <p style={{ margin: '0.5rem 0' }}><strong>Intensität:</strong> {item.intensitaet}</p>
                   <p style={{ margin: '0.5rem 0' }}><strong>Haltbarkeit:</strong> {item.haltbarkeit}</p>

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { isAdminUser } from '@/lib/admin-role';
+import { parseImport, type ImportEntry } from '@/lib/admin-import';
 
 const FAMILIES = [['clean', 'Clean / Frisch'], ['gourmand', 'Gourmand / Süss'], ['woody', 'Woody / Holzig'], ['floral', 'Floral / Blumig']] as const;
 const GENDERS = ['Women', 'Men', 'Unisex'] as const;
@@ -171,6 +172,10 @@ export default function AdminPage() {
   const [newBrandName, setNewBrandName] = useState('');
   const [editingBrandId, setEditingBrandId] = useState<string | null>(null);
   const [editingBrandName, setEditingBrandName] = useState('');
+  const [importText, setImportText] = useState('');
+  const [importEntries, setImportEntries] = useState<ImportEntry[]>([]);
+  const [importError, setImportError] = useState('');
+  const [importLoaded, setImportLoaded] = useState<string[]>([]);
 
   useEffect(() => {
     if (!isSupabaseConfigured) {
@@ -345,6 +350,35 @@ export default function AdminPage() {
     setForm({ ...emptyForm });
     setMessage('');
     setActiveTab('basic');
+  }
+
+  // Import-Block aus dem Chat lesen (ein Duft oder mehrere Versionen).
+  function readImport() {
+    const result = parseImport(importText);
+    setImportError(result.error || '');
+    setImportEntries(result.entries);
+    setImportLoaded([]);
+    if (result.entries.length === 1) loadImportEntry(result.entries[0]);
+  }
+
+  // Füllt das Formular mit einem Eintrag. Beim Bearbeiten werden nur die Felder aus
+  // dem Import ersetzt, sonst startet ein leeres Formular (neuer Duft).
+  function loadImportEntry(entry: ImportEntry) {
+    setForm(prev => ({ ...(editingId ? prev : emptyForm), ...entry.fields }) as typeof prev);
+    setImportLoaded(prev => (prev.includes(entry.label) ? prev : [...prev, entry.label]));
+    setMessage('');
+    setActiveTab('basic');
+  }
+
+  // Gibt es diesen Duft (gleiche Marke, gleicher Name, gleiche Konzentration) schon?
+  function existingForImport(entry: ImportEntry): AdminPerfume | undefined {
+    const name = slugify(entry.fields.perfume_name || '');
+    const brand = slugify(entry.fields.brand || '');
+    return perfumes.find(p =>
+      slugify(p.perfume_name) === name &&
+      slugify(brands.find(b => b.id === p.brand_id)?.name || '') === brand &&
+      (p.concentration || '') === (entry.fields.concentration || '')
+    );
   }
 
   function cancelEdit() {
@@ -827,6 +861,60 @@ export default function AdminPage() {
                 🕒 {savedAt[editingId] ? 'Zuletzt gespeichert' : 'Angelegt'}: {formatSavedAt(savedAt[editingId] || editingPerfume?.created_at)}
               </p>
             )}
+            <details className="field" open={!editingId} style={{ background: '#FBF6EC', border: '1px solid rgba(212,175,55,.35)', borderRadius: 12, padding: '12px 16px', margin: '0 0 20px' }}>
+              <summary style={{ cursor: 'pointer', fontWeight: 600 }}>📋 Import aus dem Chat – alle Felder auf einmal ausfüllen</summary>
+              <p className="small" style={{ margin: '10px 0', color: '#6B5344' }}>
+                Den geprüften Block aus dem Chat hier einfügen und auf „Übernehmen“ klicken. Danach kurz kontrollieren und speichern.
+              </p>
+              <textarea
+                value={importText}
+                onChange={e => setImportText(e.target.value)}
+                placeholder='[{"perfume_name": "Cool Water", "brand": "Davidoff", …}]'
+                style={{ width: '100%', minHeight: 110, fontFamily: 'monospace', fontSize: 13 }}
+              />
+              <div className="cta" style={{ marginTop: 10 }}>
+                <button className="button" type="button" onClick={readImport} disabled={!importText.trim()}>⬇️ Übernehmen</button>
+                {(importText || importEntries.length > 0) && (
+                  <button className="button secondary" type="button" onClick={() => { setImportText(''); setImportEntries([]); setImportError(''); setImportLoaded([]); }}>Leeren</button>
+                )}
+              </div>
+              {importError && <p className="small" style={{ color: '#b3261e', margin: '10px 0 0' }}>{importError}</p>}
+              {importEntries.length > 0 && (
+                <div style={{ marginTop: 12 }}>
+                  {importEntries.length > 1 && (
+                    <p className="small" style={{ margin: '0 0 8px' }}>
+                      {importEntries.length} Versionen im Block – eine laden, speichern, dann die nächste:
+                    </p>
+                  )}
+                  {importEntries.map(entry => {
+                    const existing = existingForImport(entry);
+                    const loaded = importLoaded.includes(entry.label);
+                    return (
+                      <div key={entry.label} style={{ borderTop: '1px solid rgba(31,23,18,.08)', padding: '8px 0' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+                          {importEntries.length > 1 && (
+                            <button className="button secondary" type="button" onClick={() => loadImportEntry(entry)} style={{ padding: '5px 12px', fontSize: 13 }}>
+                              {loaded ? '✓ Geladen' : 'Laden'}
+                            </button>
+                          )}
+                          <strong>{entry.label}</strong>
+                          {importEntries.length === 1 && loaded && <span className="small" style={{ color: '#1b7a3d' }}>✓ ins Formular übernommen</span>}
+                        </div>
+                        {existing && !editingId && (
+                          <p className="small" style={{ color: '#b3261e', margin: '6px 0 0' }}>
+                            ⚠️ Diesen Duft gibt es schon. Bitte nicht nochmals hinzufügen, sondern{' '}
+                            <button type="button" className="link-button" onClick={() => startEdit(existing.id)}>den bestehenden bearbeiten</button>.
+                          </p>
+                        )}
+                        {entry.warnings.map(w => (
+                          <p key={w} className="small" style={{ color: '#8a5a00', margin: '4px 0 0' }}>• {w}</p>
+                        ))}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </details>
             <form onSubmit={save}>
               {activeTab === 'basic' && (
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15 }}>

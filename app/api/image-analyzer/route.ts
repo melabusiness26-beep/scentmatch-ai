@@ -6,7 +6,19 @@ export async function GET() {
   return NextResponse.json({ ok: true, version: '1.0.2' });
 }
 
+// Die Bild-Analyse ruft die kostenpflichtige Anthropic-API auf. Solange der Scanner
+// nicht offiziell gestartet ist, bleibt sie gesperrt – so entstehen keine Kosten.
+// Zum Einschalten in Vercel SCANNER_ENABLED=true setzen.
+const SCANNER_ENABLED = process.env.SCANNER_ENABLED === 'true';
+
 export async function POST(request: NextRequest) {
+  if (!SCANNER_ENABLED) {
+    return NextResponse.json(
+      { success: false, error: 'Der Foto-Scanner ist bald verfügbar. Bis dahin findest du deinen Duft über die Suche oder das Quiz.' },
+      { status: 503 }
+    );
+  }
+
   const startTime = Date.now();
   try {
     console.log('[image-analyzer] POST-Request empfangen');

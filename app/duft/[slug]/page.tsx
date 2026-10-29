@@ -178,9 +178,7 @@ function jsonLd(perfume: Perfume) {
       ? { '@type': 'Brand', name: perfume.brands.name }
       : undefined,
     category: familyLabel(perfume.fragrance_family),
-    description:
-      perfume.description ||
-      `${perfume.perfume_name} – Duftprofil auf Auressa.`,
+    description: metaTrim(perfume.description || describePerfume(perfume), 300),
     image: perfume.image_url || undefined,
     // Berechneter Auressa-Score (lib/score.ts) – kein vorgetäuschtes Nutzer-Rating.
     review: {
@@ -191,16 +189,9 @@ function jsonLd(perfume: Perfume) {
         ratingValue: (computeAuressaScore(perfume).total / 20).toFixed(1),
         bestRating: '5'
       }
-    },
-    offers:
-      perfume.price_chf != null
-        ? {
-            '@type': 'Offer',
-            price: perfume.price_chf,
-            priceCurrency: 'CHF',
-            url: `${SITE_URL}/duft/${perfume.slug}`
-          }
-        : undefined
+    }
+    // Kein „offers": Auressa verkauft (noch) nicht selbst. Ein Angebot mit Preis würde
+    // Google einen Shop vortäuschen. Beim Start eines eigenen Shops hier ergänzen.
   };
 }
 

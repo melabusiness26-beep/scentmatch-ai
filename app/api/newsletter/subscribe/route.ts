@@ -5,15 +5,14 @@ import {
   generateBrevoAttributes,
   sendTransactionalEmail,
 } from '@/lib/brevo';
+import { createConfirmationToken, normalizeEmail } from '@/lib/newsletter-token';
 
-function generateConfirmationToken(email: string): string {
-  return Buffer.from(`${email}:newsletter-confirm`).toString('base64');
-}
-
-function generateConfirmationLink(email: string): string {
-  const token = generateConfirmationToken(email);
+// Signierter Bestätigungs-Link (siehe lib/newsletter-token.ts). null ohne Server-Schlüssel.
+function generateConfirmationLink(email: string): string | null {
+  const token = createConfirmationToken(email);
+  if (!token) return null;
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
-  return `${siteUrl}/api/newsletter/confirm?token=${token}&email=${encodeURIComponent(email)}`;
+  return `${siteUrl}/api/newsletter/confirm?token=${encodeURIComponent(token)}&email=${encodeURIComponent(email)}`;
 }
 
 export async function POST(request: NextRequest) {
@@ -24,7 +23,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400 });
     }
 
-    const cleanEmail = email.trim().toLowerCase();
+    const cleanEmail = normalizeEmail(email);
     const cleanName = name ? name.trim() : null;
     const cleanInterest = interest && ['women', 'men', 'unisex'].includes(interest) ? interest : null;
 
@@ -51,7 +50,7 @@ export async function POST(request: NextRequest) {
     // 3. Sende Confirmation-Email über Brevo (wenn API-Key + Template-ID gesetzt)
     const templateId = process.env.BREVO_TEMPLATE_CONFIRM;
 
-    if (templateId) {
+    if (templateId && confirmationLink) {
       try {
         const result = await sendTransactionalEmail(
           cleanEmail,
@@ -71,13 +70,13 @@ export async function POST(request: NextRequest) {
         console.error('Email send error:', emailErr);
       }
     } else {
-      console.warn('BREVO_TEMPLATE_CONFIRM not configured, confirmation email not sent');
+      console.warn('BREVO_TEMPLATE_CONFIRM or confirmation secret not configured, confirmation email not sent');
     }
 
-    // 4. Erstelle/aktualisiere Kontakt in Brevo mit Personalisierung (nur wenn API-Keys konfiguriert sind)
-    const brevoListId = process.env.BREVO_LIST_ID;
-
-    if (brevoListId) {
+    // 4. Kontakt in Brevo anlegen (mit Personalisierung) – aber noch NICHT in die
+    // Newsletter-Liste: Das passiert erst nach dem Klick auf den Bestätigungs-Link
+    // (Double-Opt-in, siehe /api/newsletter/confirm).
+    if (process.env.BREVO_API_KEY) {
       // Generiere Brevo-Attribute basierend auf Behavior + Demographics
       const brevoAttributes = generateBrevoAttributes({
         name: cleanName || undefined,
@@ -88,12 +87,7 @@ export async function POST(request: NextRequest) {
       });
 
       try {
-        // Erstelle oder aktualisiere Kontakt in Brevo
-        const brevoResult = await createOrUpdateContact(
-          cleanEmail,
-          brevoAttributes,
-          [parseInt(brevoListId, 10)]
-        );
+        const brevoResult = await createOrUpdateContact(cleanEmail, { ...brevoAttributes, CONFIRMED: false });
 
         if (brevoResult.success) {
           console.log('Brevo contact created/updated successfully');
@@ -106,11 +100,9 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      {
-        success: true,
-        message: 'Successfully subscribed to newsletter',
-        confirmationLink: templateId ? undefined : confirmationLink, // nur für Testing ohne API-Key
-      },
+      // Der Bestätigungs-Link geht nur per E-Mail raus – nie in der Antwort,
+      // sonst könnte jemand fremde Adressen selbst bestätigen.
+      { success: true, message: 'Successfully subscribed to newsletter' },
       { status: 200 }
     );
   } catch (error) {

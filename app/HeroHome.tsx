@@ -17,7 +17,7 @@ export default function HeroHome() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundImage: 'url(/hero-auressa-main.png)',
+      backgroundImage: 'url(/hero-auressa-main.jpg)',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed',

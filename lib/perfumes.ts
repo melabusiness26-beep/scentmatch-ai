@@ -70,6 +70,7 @@ const CONCENTRATION_LABELS: Record<string, string> = {
   EdT: 'Eau de Toilette',
   EdC: 'Eau de Cologne',
   Cologne: 'Eau de Cologne',
+  Parfum: 'Parfum',
   Extrait: 'Extrait de Parfum'
 };
 

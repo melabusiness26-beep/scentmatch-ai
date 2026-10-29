@@ -15,7 +15,7 @@ export const IMPORT_FAMILIES = ['clean', 'gourmand', 'woody', 'floral'] as const
 export const IMPORT_GENDERS = ['Women', 'Men', 'Unisex'] as const;
 export const IMPORT_SEASONS = ['Frühling', 'Sommer', 'Herbst/Winter', 'Winter', 'Ganzjährig'] as const;
 export const IMPORT_OCCASIONS = ['Alltag', 'Büro', 'Date', 'Abend'] as const;
-export const IMPORT_CONCENTRATIONS = ['EdP', 'EdT', 'EdC', 'Extrait', 'Cologne', 'Spray'] as const;
+export const IMPORT_CONCENTRATIONS = ['EdP', 'EdT', 'EdC', 'Parfum', 'Extrait', 'Cologne', 'Spray'] as const;
 // Codes wie im Admin ("18-25" ist der bestehende Datenbank-Code für die Gruppe 16–25).
 export const IMPORT_AGE_GROUPS = ['18-25', '25-35', '35-40', 'all'] as const;
 export const IMPORT_LIFESTYLES = ['student', 'professional', 'party', 'casual', 'sporty'] as const;

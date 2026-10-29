@@ -3,6 +3,14 @@
 // Versionen enthalten (Liste). Unbekannte oder ungültige Werte werden nicht
 // übernommen, sondern als Hinweis angezeigt – es wird nichts geraten.
 
+import {
+  alternativesToText,
+  cleanAlternatives,
+  cleanSizes,
+  parseSimilarNames,
+  sizesToText
+} from './perfume-extras';
+
 export const IMPORT_FAMILIES = ['clean', 'gourmand', 'woody', 'floral'] as const;
 export const IMPORT_GENDERS = ['Women', 'Men', 'Unisex'] as const;
 export const IMPORT_SEASONS = ['Frühling', 'Sommer', 'Herbst/Winter', 'Winter', 'Ganzjährig'] as const;
@@ -40,6 +48,11 @@ export type ImportedFields = Partial<{
   lifestyle: string;
   trend_vibe: string;
   gender_nuance: string;
+  flacon_description: string;
+  flacon_designer: string;
+  similar_perfumes: string;
+  sizes: string;
+  alternative_to: string;
 }>;
 
 export type ImportEntry = { label: string; fields: ImportedFields; warnings: string[] };
@@ -102,7 +115,7 @@ function parseEntry(input: Record<string, unknown>, index: number): ImportEntry 
     else if (v != null) fields[key] = v;
   };
 
-  for (const key of ['perfume_name', 'brand', 'perfumer', 'inspiration', 'image_url', 'affiliate_url'] as const) setText(key);
+  for (const key of ['perfume_name', 'brand', 'perfumer', 'inspiration', 'image_url', 'affiliate_url', 'flacon_description', 'flacon_designer'] as const) setText(key);
   setChoice('gender', IMPORT_GENDERS, 'Geschlecht');
   setChoice('fragrance_family', IMPORT_FAMILIES, 'Duftfamilie');
   setChoice('concentration', IMPORT_CONCENTRATIONS, 'Konzentration');
@@ -126,6 +139,30 @@ function parseEntry(input: Record<string, unknown>, index: number): ImportEntry 
   }
   const facts = list(raw.good_to_know, '\n');
   if (facts != null) fields.good_to_know = facts;
+
+  // Ähnliche Düfte: „Name – Marke" oder {"name": …, "brand": …}.
+  if (Array.isArray(raw.similar_perfumes)) {
+    const similar = parseSimilarNames(
+      raw.similar_perfumes
+        .map((s) => (s && typeof s === 'object' ? [(s as any).name, (s as any).brand].filter(Boolean).join(' – ') : String(s)))
+        .join('\n')
+    );
+    if (similar.length) fields.similar_perfumes = similar.join('\n');
+  } else if (raw.similar_perfumes != null) {
+    warnings.push('Ähnliche Düfte bitte als Liste angeben – nicht übernommen.');
+  }
+  // Grössen & Preise: [{"ml": 40, "price_chf": 14.99}, …]
+  if (raw.sizes != null) {
+    const sizes = cleanSizes(raw.sizes);
+    if (sizes.length) fields.sizes = sizesToText(sizes);
+    else warnings.push('Grössen & Preise sind ungültig – nicht übernommen.');
+  }
+  // Alternative zu: [{"name": …, "brand": …, "price_chf": …, "note": …}]
+  if (raw.alternative_to != null) {
+    const alternatives = cleanAlternatives(Array.isArray(raw.alternative_to) ? raw.alternative_to : [raw.alternative_to]);
+    if (alternatives.length) fields.alternative_to = alternativesToText(alternatives);
+    else warnings.push('„Alternative zu" ist ungültig – nicht übernommen.');
+  }
 
   if (!fields.perfume_name) warnings.push('Duftname fehlt.');
   for (const [key, label] of EXPECTED) {

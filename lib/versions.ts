@@ -8,6 +8,10 @@ import { concentrationLabel, type Perfume } from './perfumes';
 // Zusätze am Namensende, die nur die Version bezeichnen (längste zuerst).
 const VERSION_SUFFIXES = [
   'eau de parfum intense',
+  // Bekannte Varianten-Namen (Flanker) einer Duftlinie, z. B. Terre d'Hermès Eau Givrée.
+  'eau intense vetiver',
+  'eau tres fraiche',
+  'eau givree',
   'extrait de parfum',
   'eau de parfum',
   'eau de toilette',
@@ -25,7 +29,7 @@ const VERSION_SUFFIXES = [
 ];
 
 // Reihenfolge von leicht nach stark – so stehen die Versionen im Umschalter.
-const CONCENTRATION_ORDER: Record<string, number> = { Cologne: 0, EdC: 0, EdT: 1, EdP: 2, Extrait: 3 };
+const CONCENTRATION_ORDER: Record<string, number> = { Cologne: 0, EdC: 0, EdT: 1, EdP: 2, Parfum: 3, Extrait: 3 };
 
 function norm(value: string | null | undefined): string {
   return (value || '')
@@ -77,7 +81,16 @@ export function findVersions(perfume: Perfume, pool: Perfume[]): Perfume[] {
 // („Eau Intense") oder sonst die Konzentration („Eau de Toilette").
 export function versionLabel(p: Perfume): string {
   const words = p.perfume_name.trim().split(/\s+/);
-  const baseWords = baseName(p.perfume_name).split(' ').filter(Boolean).length;
+  const base = baseName(p.perfume_name);
+  // Wörter des Originalnamens zählen, bis sie den Grundnamen ergeben – so stimmt es
+  // auch bei Apostrophen („Terre d'Hermès" = 2 Wörter, normalisiert aber 3).
+  let baseWords = words.length;
+  for (let i = 1; i <= words.length; i++) {
+    if (norm(words.slice(0, i).join(' ')) === base) {
+      baseWords = i;
+      break;
+    }
+  }
   const suffix = words.slice(baseWords).join(' ');
   if (suffix && norm(suffix) !== norm(concentrationLabel(p.concentration))) {
     return suffix;

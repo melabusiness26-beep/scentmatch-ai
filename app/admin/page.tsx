@@ -19,7 +19,7 @@ const FAMILIES = [['clean', 'Clean / Frisch'], ['gourmand', 'Gourmand / Süss'],
 const GENDERS = ['Women', 'Men', 'Unisex'] as const;
 const SEASONS = ['Frühling', 'Sommer', 'Herbst/Winter', 'Winter', 'Ganzjährig'] as const;
 const OCCASIONS = ['Alltag', 'Büro', 'Date', 'Abend'] as const;
-const CONCENTRATIONS = ['EdP', 'EdT', 'EdC', 'Extrait', 'Cologne', 'Spray'] as const;
+const CONCENTRATIONS = ['EdP', 'EdT', 'EdC', 'Parfum', 'Extrait', 'Cologne', 'Spray'] as const;
 const INTENSITIES = ['Zart', 'Ausgewogen', 'Kräftig'] as const;
 const AGE_GROUPS = ['18-25', '25-35', '35-40', 'all'] as const;
 // Anzeige im Admin; „18-25" ist der bestehende Datenbank-Code für die Gruppe 16–25.
@@ -132,6 +132,7 @@ const CONCENTRATION_SLUG: Record<string, string> = {
   EdP: 'eau de parfum',
   EdT: 'eau de toilette',
   EdC: 'eau de cologne',
+  Parfum: 'parfum',
   Extrait: 'extrait de parfum',
   Cologne: 'cologne',
   Spray: 'spray'

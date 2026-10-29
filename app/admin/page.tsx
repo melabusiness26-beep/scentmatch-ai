@@ -5,6 +5,15 @@ import Link from 'next/link';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { isAdminUser } from '@/lib/admin-role';
 import { parseImport, type ImportEntry } from '@/lib/admin-import';
+import {
+  alternativesToText,
+  cleanAlternatives,
+  cleanSizes,
+  parseAlternatives,
+  parseSimilarNames,
+  parseSizes,
+  sizesToText
+} from '@/lib/perfume-extras';
 
 const FAMILIES = [['clean', 'Clean / Frisch'], ['gourmand', 'Gourmand / Süss'], ['woody', 'Woody / Holzig'], ['floral', 'Floral / Blumig']] as const;
 const GENDERS = ['Women', 'Men', 'Unisex'] as const;
@@ -57,6 +66,7 @@ type AdminPerfume = {
 };
 
 type Brand = { id: string; name: string };
+type ExtraRow = { id: string; sizes: unknown; alternative_to: unknown; flacon_designer: string | null };
 
 const emptyForm = {
   perfume_name: '',
@@ -80,6 +90,9 @@ const emptyForm = {
   rating: '',
   flacon_description: '',
   similar_perfumes: '',
+  sizes: '',
+  alternative_to: '',
+  flacon_designer: '',
   age_group: 'all' as const,
   lifestyle: 'casual' as const,
   trend_vibe: 'classic' as const,
@@ -156,6 +169,9 @@ export default function AdminPage() {
   const [perfumes, setPerfumes] = useState<AdminPerfume[]>([]);
   const [hasBackground, setHasBackground] = useState(true);
   const [hasGoodToKnow, setHasGoodToKnow] = useState(true);
+  // Grössen, „Alternative zu" und Flakon-Design gibt es erst nach SQL 62.
+  const [hasExtras, setHasExtras] = useState(true);
+  const [extrasById, setExtrasById] = useState<Record<string, ExtraRow>>({});
   // Wann ein Duft zuletzt gespeichert wurde (Spalte gibt es erst nach SQL 61).
   const [savedAt, setSavedAt] = useState<Record<string, string>>({});
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -205,8 +221,21 @@ export default function AdminPage() {
     setSavedAt(map);
   }
 
+  async function loadExtras() {
+    const { data, error } = await supabase.from('perfumes').select('id, sizes, alternative_to, flacon_designer');
+    if (error || !data) {
+      setHasExtras(false);
+      return;
+    }
+    setHasExtras(true);
+    const map: Record<string, ExtraRow> = {};
+    for (const row of data as ExtraRow[]) map[row.id] = row;
+    setExtrasById(map);
+  }
+
   async function loadPerfumes() {
     loadSavedAt();
+    loadExtras();
     // Parfümeur/Inspiration gibt es erst nach SQL 58, „Gut zu wissen" nach SQL 60 –
     // fehlen Spalten noch, ohne diese Felder laden.
     const all = await supabase.from('perfumes').select(`${PERFUME_EDIT_FIELDS}, perfumer, inspiration, good_to_know`).order('perfume_name');
@@ -310,7 +339,10 @@ export default function AdminPage() {
       volume_ml: p.volume_ml?.toString() ?? '',
       rating: p.rating?.toString() ?? '',
       flacon_description: p.flacon_description || '',
-      similar_perfumes: (p.similar_perfumes || []).join(', '),
+      similar_perfumes: (p.similar_perfumes || []).join('\n'),
+      sizes: sizesToText(cleanSizes(extrasById[p.id]?.sizes)),
+      alternative_to: alternativesToText(cleanAlternatives(extrasById[p.id]?.alternative_to)),
+      flacon_designer: extrasById[p.id]?.flacon_designer || '',
       age_group: (p.age_group || 'all') as any,
       lifestyle: (p.lifestyle || 'casual') as any,
       trend_vibe: (p.trend_vibe || 'classic') as any,
@@ -588,7 +620,7 @@ export default function AdminPage() {
         volume_ml: toNumber(form.volume_ml),
         rating: toNumber(form.rating),
         flacon_description: form.flacon_description.trim() || null,
-        similar_perfumes: toArray(form.similar_perfumes),
+        similar_perfumes: parseSimilarNames(form.similar_perfumes),
         age_group: form.age_group,
         lifestyle: form.lifestyle,
         trend_vibe: form.trend_vibe,
@@ -597,7 +629,14 @@ export default function AdminPage() {
         ...(hasBackground
           ? { perfumer: form.perfumer.trim() || null, inspiration: form.inspiration.trim() || null }
           : {}),
-        ...(hasGoodToKnow ? { good_to_know: form.good_to_know.trim() || null } : {})
+        ...(hasGoodToKnow ? { good_to_know: form.good_to_know.trim() || null } : {}),
+        ...(hasExtras
+          ? {
+              sizes: parseSizes(form.sizes),
+              alternative_to: parseAlternatives(form.alternative_to),
+              flacon_designer: form.flacon_designer.trim() || null
+            }
+          : {})
       };
 
       let savedSlug: string | null = null;
@@ -982,8 +1021,25 @@ export default function AdminPage() {
                   <div className="field"><label>Lifestyle</label><select value={form.lifestyle} onChange={e => setField('lifestyle', e.target.value)}>{LIFESTYLES.map(l => <option value={l} key={l}>{l}</option>)}</select></div>
                   <div className="field"><label>Trend-Vibe</label><select value={form.trend_vibe} onChange={e => setField('trend_vibe', e.target.value)}>{TREND_VIBES.map(t => <option value={t} key={t}>{t}</option>)}</select></div>
                   <div className="field"><label>Gender-Nuance</label><input value={form.gender_nuance} onChange={e => setField('gender_nuance', e.target.value)} placeholder="masculine, feminine, androgynous" /></div>
-                  <div style={{ gridColumn: '1 / -1' }} className="field"><label>Flakon-Beschreibung</label><textarea value={form.flacon_description} onChange={e => setField('flacon_description', e.target.value)} placeholder="Beschreibung des Flakons..." style={{ width: '100%', minHeight: 80 }} /></div>
-                  <div style={{ gridColumn: '1 / -1' }} className="field"><label>Ähnliche Düfte</label><input value={form.similar_perfumes} onChange={e => setField('similar_perfumes', e.target.value)} placeholder="Aventus, Sauvage, Bleu de Chanel" /></div>
+                  <div style={{ gridColumn: '1 / -1' }} className="field"><label>Flakon-Beschreibung</label><textarea value={form.flacon_description} onChange={e => setField('flacon_description', e.target.value)} placeholder="Wie sieht die Flasche aus? (Form, Farbe, Deckel)" style={{ width: '100%', minHeight: 80 }} /></div>
+                  <div style={{ gridColumn: '1 / -1' }} className="field"><label>Flakon-Design (wer hat die Flasche gestaltet?)</label><input value={form.flacon_designer} onChange={e => setField('flacon_designer', e.target.value)} placeholder="Nur mit Quelle, sonst leer lassen" disabled={!hasExtras} /></div>
+                  <div style={{ gridColumn: '1 / -1' }} className="field">
+                    <label>Riecht ähnlich wie (bekannte Düfte, ein Duft pro Zeile: Name – Marke)</label>
+                    <textarea value={form.similar_perfumes} onChange={e => setField('similar_perfumes', e.target.value)} placeholder={'Green Irish Tweed – Creed\nAspen for Men – Coty'} style={{ width: '100%', minHeight: 90 }} />
+                  </div>
+                  <div style={{ gridColumn: '1 / -1' }} className="field">
+                    <label>Grössen &amp; Preise (eine Grösse pro Zeile: ml: CHF)</label>
+                    <textarea value={form.sizes} onChange={e => setField('sizes', e.target.value)} placeholder={'40 ml: 14.99\n75 ml: 23.99\n125 ml: 24.99'} style={{ width: '100%', minHeight: 90 }} disabled={!hasExtras} />
+                  </div>
+                  <div style={{ gridColumn: '1 / -1' }} className="field">
+                    <label>Bekannte günstige Alternative zu (Name | Marke | Preis CHF | Hinweis)</label>
+                    <textarea value={form.alternative_to} onChange={e => setField('alternative_to', e.target.value)} placeholder="Green Irish Tweed | Creed | | Gleicher Parfümeur (Pierre Bourdon)" style={{ width: '100%', minHeight: 70 }} disabled={!hasExtras} />
+                  </div>
+                  {!hasExtras && (
+                    <p className="small" style={{ gridColumn: '1 / -1', color: '#8a5a00' }}>
+                      ⚠️ Für Grössen, Alternative und Flakon-Design bitte zuerst SQL 62 in Supabase ausführen.
+                    </p>
+                  )}
                 </div>
               )}
 

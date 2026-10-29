@@ -1,5 +1,6 @@
 import { supabase, isSupabaseConfigured } from './supabase';
 import { computeAuressaScore } from './score';
+import { cleanAlternatives, cleanSizes, type PerfumeExtras } from './perfume-extras';
 
 export type PerfumeBrand = {
   name: string | null;
@@ -275,6 +276,30 @@ export async function getPerfumeBackground(id: string): Promise<PerfumeBackgroun
   ]) {
     const { data, error } = await supabase.from('perfumes').select(fields).eq('id', id).maybeSingle();
     if (!error) return (data as PerfumeBackground) || {};
+  }
+  return {};
+}
+
+// Zusatzangaben (Grössen, Alternative zu, ähnliche Düfte, Flakon). Die neuen Spalten
+// gibt es erst nach SQL 62 – fehlen sie noch, werden nur die älteren geladen.
+export async function getPerfumeExtras(id: string): Promise<PerfumeExtras> {
+  if (!isSupabaseConfigured) return {};
+  for (const fields of [
+    'sizes, alternative_to, similar_perfumes, flacon_description, flacon_designer',
+    'similar_perfumes, flacon_description'
+  ]) {
+    const { data, error } = await supabase.from('perfumes').select(fields).eq('id', id).maybeSingle();
+    if (error) continue;
+    const row = (data || {}) as Record<string, unknown>;
+    return {
+      sizes: cleanSizes(row.sizes),
+      alternative_to: cleanAlternatives(row.alternative_to),
+      similar_perfumes: Array.isArray(row.similar_perfumes)
+        ? (row.similar_perfumes as unknown[]).map((s) => String(s).trim()).filter(Boolean)
+        : [],
+      flacon_description: typeof row.flacon_description === 'string' ? row.flacon_description.trim() || null : null,
+      flacon_designer: typeof row.flacon_designer === 'string' ? row.flacon_designer.trim() || null : null
+    };
   }
   return {};
 }

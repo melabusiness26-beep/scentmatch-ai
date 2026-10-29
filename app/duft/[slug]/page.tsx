@@ -7,6 +7,7 @@ import {
   getAllPerfumeSlugs,
   getPerfumes,
   getPerfumeBackground,
+  getPerfumeExtras,
   describePerfume,
   concentrationLabel,
   type Perfume
@@ -28,6 +29,21 @@ import { findVersions, versionLabel, compareVersion, findCounterpart } from '@/l
 import { wearTips } from '@/lib/wear';
 import { perfumeSeasons, seasonPicks } from '@/lib/season-fit';
 import { SeasonFit } from '@/app/components/SeasonFit';
+import { bestValueSize, pricePer100ml, splitSimilar } from '@/lib/perfume-extras';
+
+// Vergleichsschlüssel für Namen aus dem Chat-Import („Tres Nuit" ↔ „Très Nuit").
+function nameKey(value: string): string {
+  return value
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9]+/g, '');
+}
+
+function chf(value: number): string {
+  return Number.isInteger(value) ? String(value) : value.toFixed(2);
+}
 
 // Kurzes Geschlechts-Label + Symbol für die Badge (passend zu den Duft-Kacheln).
 const genderBadge: Record<string, string> = {
@@ -361,6 +377,22 @@ export default async function PerfumeDetailPage({
     .filter(Boolean)
     // Bis zu 5 Fakten – mehr würde den Kasten auf dem Handy zu lang machen.
     .slice(0, 5);
+  const extras = await getPerfumeExtras(perfume.id);
+  // Katalog-Duft zu einem Namen (+ Marke) aus dem Import – für einen Link, falls vorhanden.
+  const findInCatalog = (name: string, brand?: string | null) =>
+    pool.find(
+      (p) =>
+        p.id !== perfume.id &&
+        nameKey(p.perfume_name) === nameKey(name) &&
+        (!brand || nameKey(p.brands?.name || '') === nameKey(brand))
+    );
+  const alternatives = (extras.alternative_to || []).map((a) => ({ ...a, match: findInCatalog(a.name, a.brand) }));
+  const knownSimilar = (extras.similar_perfumes || []).map((entry) => {
+    const { name, brand } = splitSimilar(entry);
+    return { name, brand, match: findInCatalog(name, brand) };
+  });
+  const sizes = extras.sizes || [];
+  const bestSize = bestValueSize(sizes);
   const otherVersions = versions.filter((v) => v.id !== perfume.id).map(versionLabel);
   const description =
     perfume.description ||
@@ -537,6 +569,29 @@ export default async function PerfumeDetailPage({
 
         <SeasonFit seasons={seasons} picks={picks} />
 
+        {/* ── BEKANNTE ALTERNATIVE ZU … ────────────────────────── */}
+        {alternatives.length > 0 && (
+          <Reveal as="section" className="dp-alt">
+            <p className="dp-kicker">Günstige Alternative</p>
+            {alternatives.map((a) => (
+              <div className="dp-alt-item" key={`${a.name}-${a.brand || ''}`}>
+                <h2>
+                  {perfume.perfume_name} gilt als bekannte Alternative zu{' '}
+                  {a.match?.slug ? <Link href={`/duft/${a.match.slug}`}>{a.name}</Link> : a.name}
+                  {a.brand ? ` von ${a.brand}` : ''}
+                </h2>
+                {perfume.price_chf != null && a.price_chf != null && a.price_chf > perfume.price_chf && (
+                  <p className="dp-alt-price">
+                    ca. CHF {chf(perfume.price_chf)} <span>statt ca. CHF {chf(a.price_chf)}</span>
+                  </p>
+                )}
+                {a.note && <p className="dp-alt-note">{a.note}</p>}
+              </div>
+            ))}
+            <p className="dp-alt-foot">Riecht ähnlich, ist aber nicht identisch – Haltbarkeit und Ausstrahlung können abweichen.</p>
+          </Reveal>
+        )}
+
         {/* ── VERSIONEN IM VERGLEICH ───────────────────────────── */}
         {versions.length > 1 && (
           <Reveal as="section" className="dp-card dp-compare">
@@ -589,6 +644,38 @@ export default async function PerfumeDetailPage({
                   </li>
                 ))}
             </ul>
+          </Reveal>
+        )}
+
+        {/* ── GRÖSSEN & PREISE ─────────────────────────────────── */}
+        {sizes.length >= 2 && (
+          <Reveal as="section" className="dp-card dp-sizes">
+            <p className="dp-kicker">Grössen &amp; Preise</p>
+            <h2>Welche Grösse lohnt sich?</h2>
+            <div className="dp-compare-scroll">
+              <table className="dp-compare-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Grösse</th>
+                    <th scope="col">Richtpreis</th>
+                    <th scope="col">Pro 100 ml</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sizes.map((s) => (
+                    <tr key={s.ml} className={bestSize?.ml === s.ml ? 'is-current' : ''}>
+                      <th scope="row">
+                        {s.ml} ml
+                        {bestSize?.ml === s.ml && <span className="dp-size-best">Bester Preis</span>}
+                      </th>
+                      <td>ca. CHF {chf(s.price_chf)}</td>
+                      <td>CHF {pricePer100ml(s).toFixed(2)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="dp-footnote">Richtpreise zum Zeitpunkt der Recherche – im Shop können sie abweichen.</p>
           </Reveal>
         )}
 
@@ -735,6 +822,20 @@ export default async function PerfumeDetailPage({
           )}
         </Reveal>
 
+        {/* ── DER FLAKON ───────────────────────────────────────── */}
+        {(extras.flacon_description || extras.flacon_designer) && (
+          <Reveal as="section" className="dp-card dp-flacon">
+            <p className="dp-kicker">Der Flakon</p>
+            <h2>So sieht {perfume.perfume_name} aus</h2>
+            {extras.flacon_description && <p className="dp-story-text">{extras.flacon_description}</p>}
+            {extras.flacon_designer && (
+              <p className="dp-flacon-designer">
+                <span className="dp-fact-label">Design</span> {extras.flacon_designer}
+              </p>
+            )}
+          </Reveal>
+        )}
+
         {/* ── KURATIERTER QUERVERWEIS ──────────────────────────── */}
         {curated && curatedPartner && (
           <Reveal as="section" className="dp-section">
@@ -798,15 +899,40 @@ export default async function PerfumeDetailPage({
         )}
 
         {/* ── RIECHT ÄHNLICH WIE ───────────────────────────────── */}
-        {similar.length > 0 && (
+        {(similar.length > 0 || knownSimilar.length > 0) && (
           <Reveal as="section" className="dp-section">
             <p className="dp-kicker">Entdecke mehr</p>
             <h2>Riecht ähnlich wie {perfume.perfume_name}</h2>
-            <div className="perfume-list">
-              {similar.map(({ perfume: s }) => (
-                <PerfumeTile perfume={s} key={s.id} />
-              ))}
-            </div>
+            {knownSimilar.length > 0 && (
+              <div className="dp-known">
+                <p className="small">Diese Düfte werden in der Duft-Community oft als ähnlich genannt:</p>
+                <div className="dp-chips">
+                  {knownSimilar.map(({ name, brand, match }) =>
+                    match?.slug ? (
+                      <Link className="note-chip" href={`/duft/${match.slug}`} key={`${name}-${brand || ''}`}>
+                        {name}
+                        {brand ? <span className="dp-known-brand"> · {brand}</span> : null}
+                      </Link>
+                    ) : (
+                      <span className="note-chip" key={`${name}-${brand || ''}`}>
+                        {name}
+                        {brand ? <span className="dp-known-brand"> · {brand}</span> : null}
+                      </span>
+                    )
+                  )}
+                </div>
+              </div>
+            )}
+            {similar.length > 0 && (
+              <>
+                {knownSimilar.length > 0 && <p className="small dp-known-sub">Ähnliche Düfte aus unserem Katalog:</p>}
+                <div className="perfume-list">
+                  {similar.map(({ perfume: s }) => (
+                    <PerfumeTile perfume={s} key={s.id} />
+                  ))}
+                </div>
+              </>
+            )}
           </Reveal>
         )}
 

@@ -5,18 +5,94 @@ import Breadcrumb from '@/app/Breadcrumb';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Günstige Duft-Alternativen & Klone: Teuer-Düfte billiger',
+  title: 'Günstige Duft-Alternativen: Dupes, Klone & clever sparen',
   description:
-    'Finde günstige Alternativen zu teuren Düften – legale Klone, Budget-Marken & ähnliche Düfte. Spare bis zu 80% ohne Qualitätsverlust.',
+    'Was ist ein Dupe, was ist eine Fälschung – und wie zahlst du für deinen Lieblingsduft weniger? Ehrliche Tipps ohne Wunderversprechen.',
   alternates: { canonical: '/guenstige-alternativen' },
   openGraph: {
     title: 'Günstige Duft-Alternativen | Auressa',
     description:
-      'Hochwertige Düfte für weniger Geld: Duft-Klone, Budget-Marken und ähnliche Alternativen zu Premium-Parfums.',
+      'Dupes, leichtere Versionen, grössere Flaschen, Proben: ehrliche Wege, für einen guten Duft weniger zu zahlen.',
     type: 'website',
     url: `${SITE_URL}/guenstige-alternativen`
   }
 };
+
+const box: React.CSSProperties = {
+  background: 'linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.04))',
+  border: '1px solid rgba(212,175,55,0.15)',
+  borderRadius: '12px',
+  padding: '1.5rem',
+  marginBottom: '2rem'
+};
+
+const card: React.CSSProperties = {
+  background: 'linear-gradient(135deg, rgba(212,175,55,0.05), rgba(212,175,55,0.02))',
+  border: '1px solid rgba(212,175,55,0.1)',
+  borderRadius: '8px',
+  padding: '1.25rem'
+};
+
+const link: React.CSSProperties = { color: '#d4af37', fontWeight: 600, textDecoration: 'none' };
+
+// Nur allgemein gültige Hinweise und breit belegte Beispiele – keine erfundenen
+// Prozentzahlen, Marken oder Preise.
+const WAYS = [
+  {
+    titel: '1. Dupes von günstigeren Marken',
+    text:
+      'Manche Marken bieten Düfte an, die bekannten Luxus-Düften ähneln – unter eigenem Namen und zu einem deutlich tieferen Preis. Bekannt dafür sind zum Beispiel Armaf und Lattafa. Das bekannteste Beispiel: Armaf Club de Nuit Intense Man wird in der Duft-Community seit Jahren als Alternative zu Creed Aventus genannt.',
+    hinweis: 'Ein Dupe riecht ähnlich, aber nie identisch. Haltbarkeit, Ausstrahlung und einzelne Noten können abweichen.'
+  },
+  {
+    titel: '2. Eine leichtere Version desselben Dufts',
+    text:
+      'Viele Düfte gibt es als Eau de Toilette und als Eau de Parfum. Das Eau de Toilette ist meist günstiger und leichter. Oft unterscheidet sich nur die Konzentration, manchmal aber auch die Rezeptur – die beiden Versionen können also etwas anders riechen.',
+    hinweis: 'Beide Versionen vorher testen. Auf unseren Duft-Seiten siehst du die Versionen im Vergleich.'
+  },
+  {
+    titel: '3. Die grössere Flasche',
+    text:
+      'Grosse Flaschen sind pro Milliliter oft deutlich günstiger als kleine. Wenn du einen Duft schon kennst und liebst, lohnt sich ein Blick auf den Preis pro 100 ml.',
+    hinweis: 'Auf unseren Duft-Seiten zeigt die Tabelle „Grössen & Preise" die günstigste Grösse an, wenn wir die Preise erfasst haben.'
+  },
+  {
+    titel: '4. Proben und Aktionen',
+    text:
+      'Mit einer Probe oder Abfüllung findest du heraus, ob dir ein Duft auf deiner Haut gefällt, bevor du eine ganze Flasche kaufst. Und bei bekannten Shops gibt es regelmässig Aktionen – wer nicht sofort kaufen muss, spart mit etwas Geduld.',
+    hinweis: 'Ein Fehlkauf ist am teuersten. Zuerst testen spart oft mehr als jeder Rabatt.'
+  }
+];
+
+const FAKE_SIGNS = [
+  'Original-Name und Logo einer Luxusmarke zu einem Preis, der viel zu tief ist',
+  'Unbekannter Verkäufer ohne Impressum, Adresse oder Bewertungen',
+  'Rechtschreibfehler, schiefe Etiketten oder fehlende Angaben auf der Verpackung',
+  'Keine Inhaltsstoffliste auf der Packung'
+];
+
+const FAQ = [
+  {
+    frage: 'Ist ein Dupe eine Fälschung?',
+    antwort:
+      'Nein. Ein Dupe ist ein eigener Duft unter eigenem Namen, der einem bekannten Duft ähnlich riecht. Eine Fälschung dagegen trägt unerlaubt den Namen oder das Logo der Originalmarke – das ist verboten.'
+  },
+  {
+    frage: 'Darf ein Dupe mit dem Namen des Originals werben?',
+    antwort:
+      'Hier ist Vorsicht geboten. In der EU hat der Europäische Gerichtshof 2009 im Fall L\'Oréal gegen Bellure entschieden, dass Listen nach dem Muster „riecht wie …" mit fremden Markennamen gegen das Markenrecht verstossen können. Seriöse Anbieter verkaufen ihre Düfte deshalb meist unter eigenem Namen, ohne direkten Bezug auf das Original.'
+  },
+  {
+    frage: 'Hält ein Dupe genauso lange wie das Original?',
+    antwort:
+      'Das ist sehr unterschiedlich – manche halten kürzer, manche erstaunlich lang. Eine allgemeine Regel gibt es nicht. Am besten testest du den Duft auf deiner eigenen Haut.'
+  },
+  {
+    frage: 'Woher weiss Auressa, welche Düfte ähnlich riechen?',
+    antwort:
+      'Auf unseren Duft-Seiten vergleichen wir Duftfamilie, Noten und Intensität der Düfte in unserem Katalog. Bekannte Alternativen nennen wir nur, wenn mehrere unabhängige Quellen sie bestätigen.'
+  }
+];
 
 export default function GuenstigeAlternativenPage() {
   return (
@@ -25,456 +101,82 @@ export default function GuenstigeAlternativenPage() {
       <div className="container">
         <section className="section">
           <p className="eyebrow">Wissen</p>
-          <h1 className="detail-title">Günstige Duft-Alternativen & Klone</h1>
+          <h1 className="detail-title">Günstige Duft-Alternativen &amp; Dupes</h1>
           <p className="lead">
-            Du liebst Chanel No. 5, Dior Sauvage oder Tom Ford Black Orchid – magst aber nicht CHF 150+ dafür zahlen?
-            Gute Nachricht: Es gibt legale, qualitativ hochwertige Alternativen, die 70–80% günstiger sind
-            und fast genauso riechen.
-          </p>
-          <p className="lead">
-            Dieser Guide erklärt dir, wie du legitime Duft-Klone erkennst, wo du sie kaufst und wie du
-            grossartige Düfte für ein Drittel des Preises bekommst – ohne Qualität oder Gewissen zu opfern.
+            Du liebst einen teuren Duft, willst aber nicht so viel dafür zahlen? Es gibt mehrere ehrliche Wege,
+            ähnlich gut zu riechen und weniger auszugeben. Hier erklären wir sie – ohne Wunderversprechen.
           </p>
 
-          <h2>Was ist ein Duft-Klon? Und ist das legal?</h2>
-
-          <p style={{ marginBottom: '1.5rem' }}>
-            Ein <strong>Duft-Klon</strong> (oder „Inspired by"-Duft) ist ein Parfum, das dem Duft eines bekannten,
-            teuren Marken-Parfums sehr ähnlich riecht – aber es ist eine separate Kreation mit eigenem Namen und anderer Zusammensetzung.
-          </p>
-
-          <div style={{
-            background: 'linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.04))',
-            border: '1px solid rgba(212,175,55,0.15)',
-            borderRadius: '12px',
-            padding: '1.5rem',
-            marginBottom: '2rem'
-          }}>
-            <p style={{ margin: '0 0 0.75rem 0', fontWeight: 600, color: '#2a1d12' }}>
-              ✅ <strong>Das ist LEGAL und ok:</strong>
+          <h2>Dupe oder Fälschung – was ist der Unterschied?</h2>
+          <div style={box}>
+            <p style={{ margin: '0 0 0.75rem 0', fontWeight: 600, color: '#2a1d12' }}>✅ Dupe</p>
+            <p style={{ margin: '0 0 1.25rem 0', fontSize: '0.9rem', color: '#5b4d40', lineHeight: 1.6 }}>
+              Ein eigener Duft unter eigenem Namen und mit eigener Verpackung, der einem bekannten Duft ähnlich riecht.
+              Dupes werden ganz normal im Handel verkauft.
             </p>
-            <ul style={{ margin: '0 0 1rem 0', fontSize: '0.9rem', color: '#5b4d40' }}>
-              <li>Duftstoffe können nicht patentiert werden (nur Zusammensetzung, nicht einzelne Komponenten)</li>
-              <li>Marken schützen Namen, Logo, Flakon – nicht den Duftcharakter selbst</li>
-              <li>Budget-Marken dürfen „ähnlich wie X riechen" machen – solange sie nicht sagen „Das IST X" oder X's Logo kopieren</li>
-              <li>Es ist wie: Generika-Medikamente vs. Brand-Medikamente – gleiche Wirkung, anderer Name, günstig</li>
-            </ul>
-            <p style={{ margin: '0 0 0.75rem 0', fontWeight: 600, color: '#2a1d12' }}>
-              ❌ <strong>Das ist NICHT ok:</strong>
+            <p style={{ margin: '0 0 0.75rem 0', fontWeight: 600, color: '#2a1d12' }}>❌ Fälschung</p>
+            <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40', lineHeight: 1.6 }}>
+              Ein Produkt, das unerlaubt den Namen, das Logo oder den Flakon der Originalmarke kopiert und so tut, als wäre es
+              das Original. Das ist verboten – und du weisst nie, was wirklich in der Flasche ist.
             </p>
-            <ul style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
-              <li>Fälschungen (Fake-Chanel mit Chanel-Logo) – das ist Betrug</li>
-              <li>Düfte, die sagen „Dies ist ein Chanel No. 5 Clone" (Namensmissbrauch)</li>
-              <li>Schnäppchen-Websites, die „Original Chanel für CHF 20" verkaufen – das sind 100% Fakes</li>
-            </ul>
           </div>
 
-          <h2>Die 4 Arten von günstigen Duft-Alternativen</h2>
-
-          <div style={{
-            display: 'grid',
-            gap: '1.5rem',
-            marginBottom: '2rem'
-          }}>
-            {[
-              {
-                titel: '1. Legitime Budget-Klone (die besten)',
-                beschreibung: 'Marken wie Armaf, Lattafa, Fragrance du Bois kreieren Düfte, die bekannten Luxus-Düften ähneln – aber unter ihrem eigenen Namen und mit guter Qualität.',
-                beispiele: 'Armaf Club de Nuit Intense (wie Creed Aventus), Lattafa Intense Dream (wie Tom Ford Black Orchid), Maison Anthony Marwood (wie Dior Sauvage)',
-                preis: 'CHF 15–35',
-                haltbarkeit: '4–8 Stunden',
-                qualitaet: '80–90% des Original, dafür 70–80% günstiger',
-                tipp: 'Das ist dein Sweet Spot. Legitim, günstig, gut. Kaufe hier zuerst.'
-              },
-              {
-                titel: '2. Nische-Brands mit ähnlicher DNA',
-                beschreibung: 'Unabhängige Parfümeure & Nische-Marken, die nicht versuchen, einen bekannten Duft zu klonen – aber die ähnliche Noten & Charaktere haben.',
-                beispiele: 'Wenn du Creed Aventus liebst (Pfirsich, Zeder) → probiere Heeley Sel Marin (maritime Zeder). Wenn du Tom Ford Black Orchid magst (würzig, warm) → probiere Miu Miu L\'Eau Rosée (würzig, floral)',
-                preis: 'CHF 40–80',
-                haltbarkeit: '5–8 Stunden',
-                qualitaet: '85–95% (oft unterschätzte Marken)',
-                tipp: 'Weniger bekannt, oft bessere Qualität. Probiere diese für Entdeckungen.'
-              },
-              {
-                titel: '3. EdT-Versionen von Luxus-Düften',
-                beschreibung: 'Der gleiche Duft vom Original-Hersteller – aber in EdT (eau de toilette) statt EdP. Gleiche Zusammensetzung, aber leichter & billiger.',
-                beispiele: 'Chanel No. 5 EdP (CHF 90) vs. Chanel No. 5 EdT (CHF 65). Dior Sauvage EdP (CHF 110) vs. Dior Sauvage EdT (CHF 75)',
-                preis: 'CHF 40–80',
-                haltbarkeit: '4–6 Stunden',
-                qualitaet: '100% (es ist das echte Ding, nur leichter)',
-                tipp: 'Bester Kompromiss: Original-Qualität, niedrigerer Preis, etwas kürzere Haltbarkeit.'
-              },
-              {
-                titel: '4. Outlet & Sale-Düfte (Glücksspiel)',
-                beschreibung: 'Originalmarken-Düfte auf Sale, aus früheren Serien, oder in Outlet-Stores massiv reduziert.',
-                beispiele: 'Notino.ch, Flaconi, Breuninger – regelmässig 30–60% Rabatt auf Premium-Marken.',
-                preis: 'CHF 30–70 (je nach Sale)',
-                haltbarkeit: '6–10+ Stunden',
-                qualitaet: '100% authentisch',
-                tipp: 'Black Friday, Summer Sales – hier lohnt es sich, zu warten. Aber weniger vorhersehbar.'
-              }
-            ].map((item, i) => (
-              <div key={i} style={{
-                background: 'linear-gradient(135deg, rgba(212,175,55,0.05), rgba(212,175,55,0.02))',
-                border: '1px solid rgba(212,175,55,0.1)',
-                borderRadius: '8px',
-                padding: '1.5rem'
-              }}>
-                <h3 style={{ margin: '0 0 0.75rem 0', fontSize: '0.95rem' }}>{item.titel}</h3>
-                <p style={{ margin: '0 0 0.75rem 0', fontSize: '0.9rem', color: '#6b5344' }}>
-                  {item.beschreibung}
-                </p>
-                <div style={{ fontSize: '0.85rem', color: '#5b4d40', marginBottom: '0.75rem' }}>
-                  <p style={{ margin: '0 0 0.5rem 0' }}><strong>Beispiele:</strong> {item.beispiele}</p>
-                  <p style={{ margin: '0 0 0.5rem 0' }}><strong>💰 Preis:</strong> {item.preis}</p>
-                  <p style={{ margin: '0 0 0.5rem 0' }}><strong>⏱ Haltbarkeit:</strong> {item.haltbarkeit}</p>
-                  <p style={{ margin: '0 0 0.5rem 0' }}><strong>⭐ Qualität:</strong> {item.qualitaet}</p>
-                </div>
+          <h2>4 Wege, für einen guten Duft weniger zu zahlen</h2>
+          <div style={{ display: 'grid', gap: '1.2rem', marginBottom: '2rem' }}>
+            {WAYS.map((w) => (
+              <div key={w.titel} style={card}>
+                <h3 style={{ margin: '0 0 0.75rem 0', fontSize: '0.95rem' }}>{w.titel}</h3>
+                <p style={{ margin: '0 0 0.75rem 0', fontSize: '0.9rem', color: '#5b4d40', lineHeight: 1.6 }}>{w.text}</p>
                 <p style={{ margin: 0, padding: '0.75rem', background: 'rgba(212,175,55,0.05)', borderRadius: '4px', fontSize: '0.85rem', color: '#5b4d40', fontStyle: 'italic' }}>
-                  💡 {item.tipp}
+                  💡 {w.hinweis}
                 </p>
               </div>
             ))}
           </div>
 
-          <h2>Die besten Budget-Marken: Wer macht die besten Klone?</h2>
-
-          <div style={{
-            display: 'grid',
-            gap: '1.2rem',
-            marginBottom: '2rem'
-          }}>
-            {[
-              {
-                marke: 'Armaf (Dubai)',
-                spezialisierung: 'Orientalische & würzige Düfte; sehr beliebte Creed-Aventus-Klone',
-                populaer: 'Club de Nuit Intense, Club de Nuit Milestone, Craze Pour Homme',
-                preis: 'CHF 15–25',
-                qualitaet: '⭐⭐⭐⭐⭐ (sehr hochwertig, viele schwören drauf statt Creed)'
-              },
-              {
-                marke: 'Lattafa (Kuwait)',
-                spezialisierung: 'Oud, Blüten, orientalisch; bekannt für Tom Ford & Dior Klone',
-                populaer: 'Intense Dream, Qaa\'eed, Salaam',
-                preis: 'CHF 12–28',
-                qualitaet: '⭐⭐⭐⭐ (günstig + gut, weniger „exact" als Armaf, aber nah dran)'
-              },
-              {
-                marke: 'Maison Anthony Marwood (Frankreich)',
-                spezialisierung: 'Klassiker & zeitlose Düfte; sehr Dior Sauvage & Bleu de Chanel Nähe',
-                populaer: 'Dior Sauvage Inspired, Bleu de Chanel Inspired',
-                preis: 'CHF 20–35',
-                qualitaet: '⭐⭐⭐⭐ (französische Qualität, etwas teurer aber auch besser)'
-              },
-              {
-                marke: 'Fragrance Oil House (Unabhängig)',
-                spezialisierung: 'Inspirierende Düfte in mini-Grössen; gut zum Testen vor grossem Kauf',
-                populaer: '5ml Minis von populären Klonen, Natur-Düfte',
-                preis: 'CHF 2–5 pro Sample',
-                qualitaet: '⭐⭐⭐ (okay für Tests, nicht für Alltag)'
-              },
-              {
-                marke: 'Jasamalı (Türkei)',
-                spezialisierung: 'Oud & orientalische Düfte; bekannt für Niche-Düfte',
-                populaer: 'Oud-Kreationen, TOM FORD Black Orchid Inspired',
-                preis: 'CHF 8–20',
-                qualitaet: '⭐⭐⭐⭐ (überraschend gut für den Preis)'
-              },
-              {
-                marke: 'MFK (Parfum König – verschiedene Länder)',
-                spezialisierung: 'Vielfalt; bekannt für „Inspired by" Versionen von allem',
-                populaer: 'Mehrere hundert Klone & Inspirationen',
-                preis: 'CHF 10–30',
-                qualitaet: '⭐⭐⭐ (sehr variabel, manche Hits, manche Misses)'
-              }
-            ].map((item, i) => (
-              <div key={i} style={{
-                background: 'linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.04))',
-                border: '1px solid rgba(212,175,55,0.15)',
-                borderRadius: '8px',
-                padding: '1.25rem'
-              }}>
-                <p style={{ margin: '0 0 0.5rem 0', fontWeight: 600, fontSize: '0.95rem' }}>
-                  {item.marke}
-                </p>
-                <p style={{ margin: '0 0 0.75rem 0', fontSize: '0.85rem', color: '#6b5344' }}>
-                  <strong>Spezialisierung:</strong> {item.spezialisierung}
-                </p>
-                <p style={{ margin: '0 0 0.5rem 0', fontSize: '0.85rem', color: '#6b5344' }}>
-                  <strong>Populäre Düfte:</strong> {item.populaer}
-                </p>
-                <p style={{ margin: '0 0 0.5rem 0', fontSize: '0.85rem', color: '#6b5344' }}>
-                  <strong>💰 Preisklasse:</strong> {item.preis}
-                </p>
-                <p style={{ margin: 0, fontSize: '0.85rem', color: '#5b4d40' }}>
-                  <strong>⭐ Qualität:</strong> {item.qualitaet}
-                </p>
-              </div>
-            ))}
+          <h2>So erkennst du eine Fälschung</h2>
+          <div style={box}>
+            <ul style={{ margin: '0 0 1rem 0', fontSize: '0.9rem', color: '#5b4d40', lineHeight: 1.7 }}>
+              {FAKE_SIGNS.map((s) => (
+                <li key={s}>{s}</li>
+              ))}
+            </ul>
+            <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40', lineHeight: 1.6 }}>
+              Am sichersten kaufst du Originale bei bekannten Parfümerien und grossen Online-Shops.
+            </p>
           </div>
 
-          <h2>Wo kaufe ich günstige Duft-Alternativen?</h2>
-
-          <div style={{
-            display: 'grid',
-            gap: '1.2rem',
-            marginBottom: '2rem'
-          }}>
-            {[
-              {
-                shop: 'FragranceBuy.de / FragranceBuy.com',
-                schwerpunkt: 'Spezialist für Budget-Marken (Armaf, Lattafa) in der Schweiz/EU',
-                vorteile: 'Grosse Auswahl, günstig, oft Bundles',
-                nachteil: 'Versand kann teuer sein',
-                tipp: 'Beste Wahl für Schweizer'
-              },
-              {
-                shop: 'eBay.de / eBay.ch',
-                schwerpunkt: 'Verkäufer aus Mittlerer Osten (wo Klone populär sind)',
-                vorteile: 'Sehr günstig, Käuferschutz bei eBay',
-                nachteil: 'Manchmal Fakes, lange Versandzeit',
-                tipp: 'Nur bei verifiziertem Seller kaufen'
-              },
-              {
-                shop: 'Amazon.de / Amazon.ch',
-                schwerpunkt: 'Budget-Marken, aber teuer überkauft',
-                vorteile: 'Versand schnell, Rückgaberecht klar',
-                nachteil: 'Oft teurer als spezialisierte Shops',
-                tipp: 'Nutze Preis-Vergleich'
-              },
-              {
-                shop: 'Notino.ch (Sales)',
-                schwerpunkt: 'Original-Luxus-Düfte in EdT, oft im Sale',
-                vorteile: 'Authentisch, schneller Versand',
-                nachteil: 'Nicht günstiger als Budget-Klone',
-                tipp: 'Nutze für Sales & Outlet'
-              },
-              {
-                shop: 'ArabicPerfumes.ch (wenn verfügbar)',
-                schwerpunkt: 'Arabische Budget-Marken direkt',
-                vorteile: 'Sehr günstig, Original',
-                nachteil: 'Kleine Auswahl, teils unzuverlässig',
-                tipp: 'Riskiert, aber möglich'
-              }
-            ].map((item, i) => (
-              <div key={i} style={{
-                background: 'linear-gradient(135deg, rgba(212,175,55,0.05), rgba(212,175,55,0.02))',
-                border: '1px solid rgba(212,175,55,0.1)',
-                borderRadius: '8px',
-                padding: '1.25rem'
-              }}>
-                <p style={{ margin: '0 0 0.5rem 0', fontWeight: 600 }}>
-                  {item.shop}
-                </p>
-                <p style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', color: '#6b5344' }}>
-                  <strong>Schwerpunkt:</strong> {item.schwerpunkt}
-                </p>
-                <p style={{ margin: '0 0 0.25rem 0', fontSize: '0.85rem', color: '#5b4d40' }}>
-                  <strong>✅ Vorteile:</strong> {item.vorteile}
-                </p>
-                <p style={{ margin: '0 0 0.75rem 0', fontSize: '0.85rem', color: '#5b4d40' }}>
-                  <strong>❌ Nachteile:</strong> {item.nachteil}
-                </p>
-                <p style={{ margin: 0, padding: '0.5rem', background: 'rgba(212,175,55,0.05)', borderRadius: '4px', fontSize: '0.85rem', color: '#5b4d40' }}>
-                  💡 {item.tipp}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <h2>5 beliebte Teuer-Düfte & ihre günstigen Alternativen</h2>
-
-          <div style={{
-            display: 'grid',
-            gap: '1.2rem',
-            marginBottom: '2rem'
-          }}>
-            {[
-              {
-                original: 'Creed Aventus (CHF 300–450)',
-                charaktere: 'Pfirsich, Zeder, würzig, maskulin',
-                klon: 'Armaf Club de Nuit Intense (CHF 20)',
-                kostet: 'CHF 280 Ersparnis',
-                aendigkeit: '85–90% gleich – viele schwören darauf',
-              },
-              {
-                original: 'Tom Ford Black Orchid (CHF 150–200)',
-                charaktere: 'Würzig, dunkle Orchidee, warm, sinnlich',
-                klon: 'Lattafa Intense Dream (CHF 18)',
-                kostet: 'CHF 132 Ersparnis',
-                aendigkeit: '80–85% ähnlich – sehr populärer Klon',
-              },
-              {
-                original: 'Dior Sauvage (CHF 110–130)',
-                charaktere: 'Ambroxan, Pepper, sauber, frisch',
-                klon: 'Maison Anthony Marwood Sauvage Inspired (CHF 28)',
-                kostet: 'CHF 82 Ersparnis',
-                aendigkeit: '80–88% ähnlich – gut zum Testen',
-              },
-              {
-                original: 'Bleu de Chanel (CHF 100–140)',
-                charaktere: 'Zitrus, Zedernholz, muskulin, zeitlos',
-                klon: 'Lattafa Blue Uranos (CHF 15)',
-                kostet: 'CHF 85 Ersparnis',
-                aendigkeit: '75–80% ähnlich – etwas leichter',
-              },
-              {
-                original: 'Chanel No. 5 (CHF 80–120)',
-                charaktere: 'Klassisch, blumig, aldehydisch, zeitlos',
-                klon: 'Armaf Aristocrat (CHF 22)',
-                kostet: 'CHF 58 Ersparnis',
-                aendigkeit: '70–75% ähnlich – charakteristisch anders, aber gut',
-              }
-            ].map((item, i) => (
-              <div key={i} style={{
-                background: 'linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.04))',
-                border: '1px solid rgba(212,175,55,0.15)',
-                borderRadius: '8px',
-                padding: '1.25rem'
-              }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '0.75rem' }}>
-                  <div>
-                    <p style={{ margin: '0 0 0.25rem 0', fontSize: '0.85rem', fontWeight: 600, color: '#8b7d74' }}>ORIGINAL</p>
-                    <p style={{ margin: 0, fontSize: '0.95rem', fontWeight: 600 }}>{item.original}</p>
-                    <p style={{ margin: '0.25rem 0 0 0', fontSize: '0.85rem', color: '#6b5344' }}>
-                      {item.charaktere}
-                    </p>
-                  </div>
-                  <div>
-                    <p style={{ margin: '0 0 0.25rem 0', fontSize: '0.85rem', fontWeight: 600, color: '#d4af37' }}>KLON</p>
-                    <p style={{ margin: 0, fontSize: '0.95rem', fontWeight: 600, color: '#d4af37' }}>{item.klon}</p>
-                    <p style={{ margin: '0.25rem 0 0 0', fontSize: '0.85rem', color: '#6b5344' }}>
-                      <strong>Spart:</strong> {item.kostet}
-                    </p>
-                  </div>
-                </div>
-                <p style={{ margin: 0, padding: '0.75rem', background: 'rgba(212,175,55,0.05)', borderRadius: '4px', fontSize: '0.9rem', color: '#5b4d40', fontStyle: 'italic' }}>
-                  ✅ {item.aendigkeit}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <h2>5 Tipps zum Smart-Kaufen von günstigen Alternativen</h2>
-
-          <div style={{
-            background: 'linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.04))',
-            border: '1px solid rgba(212,175,55,0.15)',
-            borderRadius: '12px',
-            padding: '1.5rem',
-            marginBottom: '2rem'
-          }}>
-            <ol style={{ marginBottom: 0 }}>
-              <li style={{ marginBottom: '1.2rem' }}>
-                <strong>Teste IMMER zuerst mit einer kleinen Grösse.</strong>
-                Wenn dir ein Klon mit 50 ml (CHF 20) nicht passt, verlierst du CHF 20.
-                Wenn das Original (CHF 150) dir nicht passt, verlierst du CHF 150. Die Risikominderung lohnt sich.
-              </li>
-              <li style={{ marginBottom: '1.2rem' }}>
-                <strong>Kauf nicht die „exakteste" Kopie – kauf die, die DIR am meisten gefällt.</strong>
-                Vielleicht magst du den Klon sogar besser als das Original. Das ist ok! Deine Nase entscheidet, nicht die Ähnlichkeitsquote.
-              </li>
-              <li style={{ marginBottom: '1.2rem' }}>
-                <strong>Erkenne Fakes: Preise unter CHF 5, unglaubliche Namen, Schreibfehler = FAKE.</strong>
-                Ein legitimer Klon kostet CHF 12–30. Alles darunter ist wahrscheinlich gefälscht.
-              </li>
-              <li style={{ marginBottom: '1.2rem' }}>
-                <strong>Vergleiche nicht bloss Preis – vergleiche auch Haltbarkeit & Sillage.</strong>
-                Ein 4-Stunden-Klon ist nicht das gleiche wie ein 8-Stunden-Original. Manchmal ist es ok, manchmal brauchst du den Original.
-              </li>
-              <li style={{ marginBottom: 0 }}>
-                <strong>Mixe: Kauf zwei gute Klone + einen Original-Favoriten.</strong>
-                Du bekommst Vielfalt & Qualität ohne riesiges Budget. 2× CHF 20 + 1× CHF 100 = grosse Sammlung für weniger Geld.
-              </li>
-            </ol>
-          </div>
-
-          <h2>FAQ: Günstige Duft-Alternativen</h2>
-
-          <div style={{
-            display: 'grid',
-            gap: '1rem',
-            marginBottom: '2rem'
-          }}>
-            {[
-              {
-                frage: 'Sind Duft-Klone illegal?',
-                antwort: 'Nein. Duftöle können nicht patentiert werden. Legale Klone (unter eigenem Namen) sind ok. Fälschungen (mit gefälschtem Original-Logo/Namen) sind illegal.'
-              },
-              {
-                frage: 'Halten günstige Klone genauso lange?',
-                antwort: 'Meist 4–6 Stunden statt 8+. Manche Klone halten überraschend lang. Haltbarkeit variiert. Teste selbst.'
-              },
-              {
-                frage: 'Sind alle Klone gleich gut?',
-                antwort: 'Nein. Armaf ist meist besser als Lattafa, die sind beide besser als random eBay-Verkäufer. Marke & Seller zählen.'
-              },
-              {
-                frage: 'Kann ich Fakes erkennen?',
-                antwort: 'Ja: Preis unter CHF 5 = Fake. Seller aus unglaubwürdiger Quelle = Fake. Schlechte Verpackung/Schreibfehler = wahrscheinlich Fake. Legitime Budget-Marken haben professionelle Verpackung.'
-              },
-              {
-                frage: 'Warum sollte ich nicht immer einen Klon kaufen?',
-                antwort: 'Manche Düfte sind es wert, original zu kaufen: wenn Haltbarkeit kritisch ist, wenn du einen absoluten Favoriten hast, oder wenn die EdT-Version des Originals günstiger ist als ein Klon.'
-              },
-              {
-                frage: 'Ist es moralisch ok, Klone zu kaufen?',
-                antwort: 'Ja, sofern es legale Klone sind (nicht Fälschungen). Generika-Medikamente sind auch ok – das ist das gleiche Prinzip. Marken-Häuser könnten günstiger anbieten, tun es aber nicht.'
-              }
-            ].map((qa, i) => (
-              <div key={i}>
-                <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.95rem' }}>{qa.frage}</h4>
+          <h2>Häufige Fragen</h2>
+          <div style={{ display: 'grid', gap: '1rem', marginBottom: '2rem' }}>
+            {FAQ.map((qa) => (
+              <div key={qa.frage}>
+                <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '0.95rem' }}>{qa.frage}</h3>
                 <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40', lineHeight: 1.6 }}>{qa.antwort}</p>
               </div>
             ))}
           </div>
 
-          <div style={{
-            background: 'linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.04))',
-            border: '1px solid rgba(212,175,55,0.15)',
-            borderRadius: '12px',
-            padding: '1.5rem',
-            marginBottom: '2rem',
-            marginTop: '2rem'
-          }}>
-            <p style={{ margin: '0 0 0.75rem 0', color: '#2a1d12', fontWeight: 600 }}>
-              🎯 <strong>Zusammenfassung: Smart mit günstigen Alternativen kaufen</strong>
-            </p>
-            <p style={{ margin: 0, color: '#6b5344', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              Düfte zu finden, die dir gefallen, ist wichtiger als Geld auszugeben. Legale Budget-Klone (Armaf, Lattafa) sind
-              intelligente Wahl: Sie halten was sie versprechen, kosten 80% weniger, und du kannst experimentieren, ohne dein
-              Budget zu sprengen. Starte mit einem 20-Franken-Klon, nicht mit einem 150-Franken-Original. Wenn der Duft dir passt, kaufe
-              dann vielleicht später den Original – oder bleib beim Klon. Beide sind ok.
-            </p>
-          </div>
-
-          <div style={{
-            background: '#f0e6d2',
-            borderLeft: '4px solid #d4af37',
-            padding: '1.5rem',
-            borderRadius: '0 8px 8px 0',
-            marginBottom: '2rem'
-          }}>
+          <div style={{ background: '#f0e6d2', borderLeft: '4px solid #d4af37', padding: '1.5rem', borderRadius: '0 8px 8px 0', marginBottom: '2rem' }}>
             <p style={{ margin: '0 0 1rem 0', fontSize: '0.95rem', fontWeight: 600, color: '#2a1d12' }}>
-              💰 Budget aufbauen mit günstigen Alternativen
+              💰 Günstige Alternativen in unserem Katalog finden
             </p>
-            <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
-              Du willst eine Sammlung mit kleinerem Budget aufbauen? Lese unseren <Link href="/duftsammlung" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>Duftsammlung-Ratgeber</Link> –
-              dort lernst du Strategien, wie du für CHF 200–300 eine grossartige Sammlung bekommst.
-              Oder nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link>, um Düfte zu finden, die zu dir passen – wir zeigen dir auch günstige Alternativen an.
+            <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40', lineHeight: 1.6 }}>
+              Im <Link href="/dupes" style={link}>Dupe-Finder</Link> gibst du deinen Lieblingsduft ein und siehst ähnlich
+              riechende Düfte aus unserem Katalog, die weniger kosten. Oder mach{' '}
+              <Link href="/quiz" style={link}>das Auressa-Quiz</Link>, um Düfte zu finden, die zu dir passen.
             </p>
           </div>
 
           <hr style={{ border: 'none', borderTop: '1px solid rgba(212,175,55,0.2)', margin: '3rem 0' }} />
 
           <div style={{ marginTop: '2rem' }}>
-            <h3 style={{ marginTop: 0 }}>Weitere Ratgeber zum Budget & Auswahl</h3>
+            <h3 style={{ marginTop: 0 }}>Weitere Ratgeber zum Budget &amp; Auswahl</h3>
             <ul style={{ fontSize: '0.95rem', lineHeight: 1.8 }}>
-              <li><Link href="/duftsammlung" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Duftsammlung aufbauen</Link> – Strategien zum günstigen Aufbau einer grossen Sammlung</li>
-              <li><Link href="/duft-waehlen" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Duft wählen – Anleitung</Link> – Schritt-für-Schritt zum perfekten Duft</li>
-              <li><Link href="/duftarten" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Duftarten erklärt</Link> – EdP, EdT, Cologne: Was kostet was und warum</li>
-              <li><Link href="/koerperchemie-duft" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Körperchemie & Duft</Link> – Warum ein Duft auf dir anders riecht</li>
-              <li><Link href="/duftnoten-guide" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Duftnoten verstehen</Link> – Die Noten-Pyramide erklärt</li>
+              <li><Link href="/ratgeber/parfum-proben-abfuellungen-schweiz" style={link}>Parfum-Proben &amp; Abfüllungen</Link> – zuerst testen, dann kaufen</li>
+              <li><Link href="/duftsammlung" style={link}>Duftsammlung aufbauen</Link> – Strategien für eine Sammlung mit kleinerem Budget</li>
+              <li><Link href="/duftarten" style={link}>Duftarten erklärt</Link> – EdP, EdT, Cologne: worin sie sich unterscheiden</li>
+              <li><Link href="/koerperchemie-duft" style={link}>Körperchemie &amp; Duft</Link> – warum ein Duft auf dir anders riecht</li>
+              <li><Link href="/duftnoten-guide" style={link}>Duftnoten verstehen</Link> – die Duftpyramide erklärt</li>
             </ul>
           </div>
         </section>

@@ -92,7 +92,7 @@ export default function FragranceGiftPage() {
               {
                 q: 'Wer erhält das Geschenk?',
                 answer: [
-                  '👩 Frau/Feminin: Klassisch floraler oder süsser Dufte. Sie tragen auch Unisex-Düfte.',
+                  '👩 Frau/Feminin: Klassisch florale oder süsse Düfte. Sie tragen auch Unisex-Düfte.',
                   '👨 Mann/Maskulin: Klassisch holzig oder würzig. Sie tragen auch Unisex-Düfte.',
                   '🌈 Unisex/Keine Annahme: Unisex-Düfte sind die sicherste Wahl – sie funktionieren für alle.',
                   '👵 Alter: Älter → klassisch und konservativ. Jung → experimentell und trendy.'

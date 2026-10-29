@@ -64,12 +64,12 @@ export default function GuenstigeAlternativenPage() {
             </p>
             <ul style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
               <li>Fälschungen (Fake-Chanel mit Chanel-Logo) – das ist Betrug</li>
-              <li>Dufte, die sagen „Dies ist ein Chanel No. 5 Clone" (Namensmissbrauch)</li>
+              <li>Düfte, die sagen „Dies ist ein Chanel No. 5 Clone" (Namensmissbrauch)</li>
               <li>Schnäppchen-Websites, die „Original Chanel für CHF 20" verkaufen – das sind 100% Fakes</li>
             </ul>
           </div>
 
-          <h2>Die 4 Arten von günstigen Duff-Alternativen</h2>
+          <h2>Die 4 Arten von günstigen Duft-Alternativen</h2>
 
           <div style={{
             display: 'grid',

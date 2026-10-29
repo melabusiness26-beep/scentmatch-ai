@@ -99,7 +99,7 @@ export default function GuideTile({ guide, emoji }: { guide: Guide; emoji?: stri
         opacity: isHovered ? 1 : 0.8,
         transform: isHovered ? 'translateX(4px)' : 'translateX(0)',
       }}>
-        <span>Lesen mehr</span>
+        <span>Weiterlesen</span>
         <span style={{
           fontSize: '1.2rem',
           lineHeight: 1,

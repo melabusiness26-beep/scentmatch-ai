@@ -11,7 +11,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 export const metadata: Metadata = {
   title: 'Dupe-Finder: die günstige Alternative zu deinem Lieblingsduft',
   description:
-    'Gib den teuren Duft ein, den du liebst – von Creed Aventus bis Baccarat Rouge 540 – und finde sofort ähnlich riechende Alternativen, die deutlich weniger kosten. Mit Preisen in CHF.',
+    'Gib den Duft ein, den du liebst, und finde ähnlich riechende Alternativen aus unserem Katalog, die weniger kosten. Mit Preisen in CHF.',
   alternates: { canonical: '/dupes' },
   openGraph: {
     title: 'Der Dupe-Finder | Auressa',
@@ -67,7 +67,7 @@ export default async function DupesPage() {
             <h1 className="detail-title">Der Dupe-Finder</h1>
             <p className="lead">
               Du liebst einen Duft, aber nicht seinen Preis? Gib ihn ein. Wir zeigen
-              dir sofort ähnlich riechende Alternativen, die oft CHF 50–200 weniger
+              dir ähnlich riechende Alternativen aus unserem Katalog, die weniger
               kosten. Nach Duftfamilie & Preis sortiert – mit Duftprofil zu jedem Treffer.
             </p>
           </div>

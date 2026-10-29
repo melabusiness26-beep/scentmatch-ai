@@ -106,7 +106,7 @@ export default function HerrenParfuemePage() {
                 </p>
                 <div style={{ fontSize: '0.85rem', color: '#5b4d40', marginTop: '0.75rem' }}>
                   <p style={{ margin: '0.5rem 0' }}><strong>Charaktere:</strong> {item.charaktere}</p>
-                  <p style={{ margin: '0.5rem 0' }}><strong>Best for:</strong> {item.occasions}</p>
+                  <p style={{ margin: '0.5rem 0' }}><strong>Passt zu:</strong> {item.occasions}</p>
                   <p style={{ margin: '0.5rem 0' }}><strong>Klassische Beispiele:</strong> {item.beispiele}</p>
                   <p style={{ margin: '0.5rem 0' }}><strong>Intensität:</strong> {item.intensitaet}</p>
                   <p style={{ margin: '0.5rem 0' }}><strong>Haltbarkeit:</strong> {item.haltbarkeit}</p>

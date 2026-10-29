@@ -53,12 +53,12 @@ export default async function MoodPage({ params }: { params: Promise<{ mood: str
   const others = MOODS.filter((m) => m.code !== code);
 
   // Häufige Fragen – liefern einzigartigen Text (gut für Google) und echten Mehrwert.
-  const dnaText = dna.length ? dna.map((d) => d.label.toLowerCase()).join(', ') : 'verschiedene Noten';
+  const dnaText = dna.length ? dna.map((d) => d.label.toLowerCase()).join(', ') : null;
   const faq = [
     { q: `Welche Düfte passen, ${mood.phrase}?`, a: mood.intro },
     {
       q: 'Woran erkenne ich solche Düfte?',
-      a: `Typisch sind ${dnaText}. Auressa wertet die Noten jedes Dufts aus und ordnet ihn automatisch dieser Stimmung zu – ganz ohne Raten.`
+      a: `${dnaText ? `Typisch sind ${dnaText}.` : mood.result} Auressa wertet die Noten jedes Dufts aus und ordnet ihn automatisch dieser Stimmung zu – ganz ohne Raten.`
     },
     {
       q: 'Sind die Empfehlungen für Damen oder Herren?',

@@ -269,7 +269,7 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
         <section className="section">
           <p className="eyebrow">Neu · Der Dupe-Finder</p>
           <h2>Teuren Lieblingsduft eingeben, günstigen Zwilling finden.</h2>
-          <p className="small">Von Creed Aventus bis Baccarat Rouge 540: Gib den Duft ein, den du liebst – wir zeigen dir sofort ähnlich riechende Alternativen, die oft hunderte Franken weniger kosten.</p>
+          <p className="small">Gib den Duft ein, den du liebst – wir zeigen dir ähnlich riechende Alternativen aus unserem Katalog, die weniger kosten.</p>
           <div className="cta">
             <Link className="button" href="/dupes">Dupe-Finder starten</Link>
           </div>

@@ -8,6 +8,11 @@ export const IMPORT_GENDERS = ['Women', 'Men', 'Unisex'] as const;
 export const IMPORT_SEASONS = ['Frühling', 'Sommer', 'Herbst/Winter', 'Winter', 'Ganzjährig'] as const;
 export const IMPORT_OCCASIONS = ['Alltag', 'Büro', 'Date', 'Abend'] as const;
 export const IMPORT_CONCENTRATIONS = ['EdP', 'EdT', 'EdC', 'Extrait', 'Cologne', 'Spray'] as const;
+// Codes wie im Admin ("18-25" ist der bestehende Datenbank-Code für die Gruppe 16–25).
+export const IMPORT_AGE_GROUPS = ['18-25', '25-35', '35-40', 'all'] as const;
+export const IMPORT_LIFESTYLES = ['student', 'professional', 'party', 'casual', 'sporty'] as const;
+export const IMPORT_TREND_VIBES = ['trendy', 'classic', 'niche', 'popular'] as const;
+export const IMPORT_GENDER_NUANCES = ['masculine', 'feminine', 'androgynous'] as const;
 
 // Formularfelder, die der Import setzen darf (alle als Text, wie im Formular).
 export type ImportedFields = Partial<{
@@ -31,6 +36,10 @@ export type ImportedFields = Partial<{
   good_to_know: string;
   image_url: string;
   affiliate_url: string;
+  age_group: string;
+  lifestyle: string;
+  trend_vibe: string;
+  gender_nuance: string;
 }>;
 
 export type ImportEntry = { label: string; fields: ImportedFields; warnings: string[] };
@@ -73,7 +82,8 @@ function oneOf(value: unknown, allowed: readonly string[]): string | null | unde
   return allowed.find((a) => a.toLowerCase() === s.toLowerCase()) ?? undefined;
 }
 
-function parseEntry(raw: Record<string, unknown>, index: number): ImportEntry {
+function parseEntry(input: Record<string, unknown>, index: number): ImportEntry {
+  let raw = input;
   const fields: ImportedFields = {};
   const warnings: string[] = [];
 
@@ -98,6 +108,12 @@ function parseEntry(raw: Record<string, unknown>, index: number): ImportEntry {
   setChoice('concentration', IMPORT_CONCENTRATIONS, 'Konzentration');
   setChoice('season', IMPORT_SEASONS, 'Saison');
   setChoice('occasion', IMPORT_OCCASIONS, 'Anlass');
+  // „16-25" ist die Anzeige im Admin, gespeichert wird der Code „18-25".
+  if (text(raw.age_group) === '16-25') raw = { ...raw, age_group: '18-25' };
+  setChoice('age_group', IMPORT_AGE_GROUPS, 'Altersgruppe');
+  setChoice('lifestyle', IMPORT_LIFESTYLES, 'Lifestyle');
+  setChoice('trend_vibe', IMPORT_TREND_VIBES, 'Trend-Vibe');
+  setChoice('gender_nuance', IMPORT_GENDER_NUANCES, 'Gender-Nuance');
   setNumber('volume_ml', 1, 500, 'Volumen');
   setNumber('price_chf', 0, 5000, 'Preis');
   setNumber('longevity', 0, 10, 'Haltbarkeit');

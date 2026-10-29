@@ -390,7 +390,7 @@ export default function AdminPage() {
     setImportError(result.error || '');
     setImportEntries(result.entries);
     setImportLoaded([]);
-    if (result.entries.length === 1) loadImportEntry(result.entries[0]);
+    if (result.entries.length === 1 && !(result.entries[0].partial && !editingId)) loadImportEntry(result.entries[0]);
   }
 
   // Füllt das Formular mit einem Eintrag. Beim Bearbeiten werden nur die Felder aus
@@ -931,12 +931,12 @@ export default function AdminPage() {
                     return (
                       <div key={entry.label} style={{ borderTop: '1px solid rgba(31,23,18,.08)', padding: '8px 0' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-                          {importEntries.length > 1 && (
+                          {importEntries.length > 1 && !(entry.partial && !editingId) && (
                             <button className="button secondary" type="button" onClick={() => loadImportEntry(entry)} style={{ padding: '5px 12px', fontSize: 13 }}>
                               {loaded ? '✓ Geladen' : 'Laden'}
                             </button>
                           )}
-                          <strong>{entry.label}</strong>
+                          <strong>{entry.partial && editingId ? `Korrektur für ${form.perfume_name || 'diesen Duft'}` : entry.label}</strong>
                           {importEntries.length === 1 && loaded && <span className="small" style={{ color: '#1b7a3d' }}>✓ ins Formular übernommen</span>}
                         </div>
                         {existing && !editingId && (
@@ -945,7 +945,14 @@ export default function AdminPage() {
                             <button type="button" className="link-button" onClick={() => startEdit(existing.id)}>den bestehenden bearbeiten</button>.
                           </p>
                         )}
-                        {entry.warnings.map(w => (
+                        {entry.partial && !editingId && (
+                          <p className="small" style={{ color: '#b3261e', margin: '6px 0 0' }}>
+                            ⚠️ Das ist ein Korrektur-Block für einen bestehenden Duft – nichts wurde übernommen.
+                            Bitte zuerst unter „Verwalten“ beim richtigen Duft auf ✏️ Edit klicken und den Block dann dort einfügen.
+                          </p>
+                        )}
+                        {/* Fehlende Pflichtangaben nur bei einem neuen Duft melden – beim Bearbeiten bleiben die bisherigen Werte. */}
+                        {[...entry.warnings, ...(editingId || entry.partial ? [] : entry.missing)].map(w => (
                           <p key={w} className="small" style={{ color: '#8a5a00', margin: '4px 0 0' }}>• {w}</p>
                         ))}
                       </div>

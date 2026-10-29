@@ -55,7 +55,10 @@ export type ImportedFields = Partial<{
   alternative_to: string;
 }>;
 
-export type ImportEntry = { label: string; fields: ImportedFields; warnings: string[] };
+// warnings: ungültige Werte (immer anzeigen). missing: fehlende Pflichtangaben – nur
+// wichtig bei einem neuen Duft. partial: Block ohne Duftnamen = Korrektur für einen
+// bestehenden Duft, darf nur beim Bearbeiten übernommen werden.
+export type ImportEntry = { label: string; fields: ImportedFields; warnings: string[]; missing: string[]; partial: boolean };
 export type ImportResult = { entries: ImportEntry[]; error?: string };
 
 // Diese Felder sollte jeder Import enthalten – sonst bliebe der Standardwert des
@@ -164,18 +167,20 @@ function parseEntry(input: Record<string, unknown>, index: number): ImportEntry 
     else warnings.push('„Alternative zu" ist ungültig – nicht übernommen.');
   }
 
-  if (!fields.perfume_name) warnings.push('Duftname fehlt.');
+  const missing: string[] = [];
+  if (!fields.perfume_name) missing.push('Duftname fehlt.');
   for (const [key, label] of EXPECTED) {
     if (!fields[key] && !warnings.some((w) => w.startsWith(label))) {
-      warnings.push(`${label} fehlt im Import – bitte im Formular selbst wählen.`);
+      missing.push(`${label} fehlt im Import – bitte im Formular selbst wählen.`);
     }
   }
 
+  const partial = !fields.perfume_name;
   const label =
-    [fields.perfume_name || `Duft ${index + 1}`, fields.concentration, fields.volume_ml ? `${fields.volume_ml} ml` : null]
+    [fields.perfume_name || (partial ? 'Korrektur' : `Duft ${index + 1}`), fields.concentration, fields.volume_ml ? `${fields.volume_ml} ml` : null]
       .filter(Boolean)
       .join(' · ');
-  return { label, fields, warnings };
+  return { label, fields, warnings, missing, partial };
 }
 
 // Akzeptiert einen einzelnen Duft ({…}) oder mehrere Versionen ([{…}, {…}]).

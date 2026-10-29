@@ -64,7 +64,7 @@ export default function ImpressumPage() {
 
             <h3>Externe Links</h3>
             <p>
-              Auressa verlinkt zu <strong>Notino.ch</strong>, <strong>Flaconi.de</strong> und anderen Duft-Shops. Wir sind nicht verantwortlich für:
+              Auressa verlinkt zu Duft-Shops wie <strong>Amazon</strong> und zu Suchergebnissen bei Google. Wir sind nicht verantwortlich für:
             </p>
             <ul>
               <li>Die Inhalte dieser externen Websites</li>
@@ -92,14 +92,15 @@ export default function ImpressumPage() {
           <section>
             <h2>Affiliate-Offenlegung</h2>
             <p>
-              Auressa ist Partner von:
+              <strong>Als Amazon-Partnerin verdiene ich an qualifizierten Verkäufen.</strong> Auressa nimmt am Partnerprogramm von
+              Amazon (amazon.de) teil. Die Knöpfe „Bei Amazon kaufen“ sind solche Partner-Links.
             </p>
-            <ul>
-              <li><strong>Notino.ch</strong> über <strong>CJ Affiliate (Commission Junction)</strong></li>
-              <li><strong>Flaconi.de / Flaconi.ch</strong> über <strong>Awin</strong></li>
-            </ul>
             <p>
-              Das bedeutet: Wenn du über Auressa-Links einkaufst, erhalten wir eine kleine Provision vom Shop. <strong>Dir entstehen keine zusätzlichen Kosten</strong> – du zahlst denselben Preis wie direkt.
+              Zudem ist Auressa bei den Partnernetzwerken <strong>CJ Affiliate</strong> und <strong>Awin</strong> angemeldet. Sobald
+              Partner-Links zu Shops aus diesen Netzwerken auf der Website stehen, sind sie ebenfalls als Partner-Links gekennzeichnet.
+            </p>
+            <p>
+              Das bedeutet: Wenn du über einen Partner-Link einkaufst, erhalten wir eine kleine Provision vom Shop. <strong>Dir entstehen keine zusätzlichen Kosten</strong> – du zahlst denselben Preis wie direkt.
             </p>
             <p>
               Diese Provisionen finanzieren die Website und ermöglichen es uns, unabhängige Duft-Beratung anzubieten.
@@ -120,20 +121,24 @@ export default function ImpressumPage() {
 
             <h3>Duftinformationen</h3>
             <p>
-              Duftdaten (Namen, Noten, Preise) stammen von:
+              Duftdaten (Noten, Erscheinungsjahr, Parfümeur, Richtpreise) recherchieren wir aus:
             </p>
             <ul>
-              <li>Duft-Herstellern (offizielle Websites)</li>
-              <li>Duft-Datenbanken (FragranceBuy, Fragrantica, etc.)</li>
-              <li>Retail-Websites (Notino, Flaconi, etc.)</li>
+              <li>offiziellen Angaben der Hersteller</li>
+              <li>Duft-Datenbanken und Community-Seiten (z. B. Parfumo)</li>
+              <li>Fachpresse und Online-Shops</li>
             </ul>
             <p>
-              Diese Informationen werden zu Informationszwecken zusammengefasst. Wir beanspruchen kein Urheberrecht auf Duftbeschreibungen.
+              Wir übernehmen eine Angabe nur, wenn mehrere Quellen übereinstimmen – sonst lassen wir sie weg. Die Texte auf Auressa
+              schreiben wir selbst. Richtpreise sind Momentaufnahmen und können im Shop abweichen.
             </p>
 
             <h3>Bilder</h3>
             <p>
-              Duftflacon-Bilder stammen von Herstellern und Retail-Partnern. Wir nutzen sie unter dem Recht des Fair Use / der angemessenen Nutzung.
+              Die Flakons auf den Duft-Seiten sind von Auressa gezeichnete Darstellungen, keine Produktfotos der Hersteller. Die
+              Fotos der Duftnoten hat Auressa selbst mit KI erstellt. Einige Titelbilder der Ratgeber stammen
+              von <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a> und werden gemäss der
+              Unsplash-Lizenz verwendet. Marken- und Produktnamen gehören ihren jeweiligen Inhabern.
             </p>
           </section>
 
@@ -143,7 +148,7 @@ export default function ImpressumPage() {
               <li><strong>Website-Betreiber:</strong> Auressa (Melanie Viele)</li>
               <li><strong>Hosting:</strong> Vercel (USA)</li>
               <li><strong>Datenbank:</strong> Supabase (EU)</li>
-              <li><strong>Zahlungspartner:</strong> Notino / CJ Affiliate, Flaconi / Awin</li>
+              <li><strong>Partnerprogramme:</strong> Amazon (amazon.de); angemeldet bei CJ Affiliate und Awin</li>
             </ul>
           </section>
 

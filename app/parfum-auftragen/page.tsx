@@ -95,7 +95,7 @@ export default function PerfumeApplicationPage() {
               {
                 icon: '💨',
                 title: 'Sprühen, nicht reiben',
-                desc: 'Immer sprühen! Reiben beschädigt die Top-Noten. 15–20 cm Abstand zur Haut halten.'
+                desc: 'Immer sprühen! Reiben lässt die Top-Noten schneller verfliegen. 15–20 cm Abstand zur Haut halten.'
               },
               {
                 icon: '🌡️',
@@ -231,12 +231,12 @@ export default function PerfumeApplicationPage() {
               {
                 step: 1,
                 title: 'Vorbereitung der Haut',
-                desc: 'Trage deinen Duft direkt nach dem Duschen auf. Deine feuchte Haut wirkt wie ein Duftmagnet – die Feuchtigkeit verlängert die Haltbarkeit um 20–30 %.'
+                desc: 'Trage deinen Duft direkt nach dem Duschen auf. Auf sauberer, gepflegter Haut hält der Duft besser.'
               },
               {
                 step: 2,
                 title: 'Flaschenentfernung',
-                desc: 'Entferne den Verschluss. Schüttel die Flasche NICHT (das erzeugt Blasen, die den Duft oxidieren). Kurze sanfte Drehbewegungen reichen.'
+                desc: 'Entferne den Verschluss.'
               },
               {
                 step: 3,
@@ -251,7 +251,7 @@ export default function PerfumeApplicationPage() {
               {
                 step: 5,
                 title: 'Warten & nicht reiben',
-                desc: 'Warte 30 Sekunden. NICHT reiben! Das würde die Duftmoleküle mechanisch abbauen. Lass die Feuchtigkeit verdunssten.'
+                desc: 'Warte 30 Sekunden. NICHT reiben! Reiben erwärmt die Haut, dadurch verfliegen die Top-Noten schneller. Lass den Duft einfach trocknen.'
               },
               {
                 step: 6,
@@ -315,7 +315,7 @@ export default function PerfumeApplicationPage() {
             {[
               {
                 title: 'Feuchtigkeitscreme + Duft',
-                tip: 'Trage vor dem Duft eine neutrale, ungeschmierte Feuchtigkeitscreme auf die Auftragsplätze. Das verstärkt die Duftmoleküle-Bindung und verlängert die Haltbarkeit um bis zu 40 %.'
+                tip: 'Trage vor dem Duft eine neutrale, ungeschmierte Feuchtigkeitscreme auf die Auftragsplätze. Auf gepflegter Haut hält der Duft meist besser als auf trockener.'
               },
               {
                 title: 'Duftschicht-Technik',
@@ -326,12 +326,8 @@ export default function PerfumeApplicationPage() {
                 tip: 'Haare sind ideal für schwache Düfte. Ein leichter Sprüh ins Haar hilft dem Duft, den ganzen Tag zu „diffundieren". Aber nur 1 Sprühstoss – zu viel wirkt aufdringlich.'
               },
               {
-                title: 'Warmes Licht nutzen',
-                tip: 'Vor einem warmen Badezimmerspiegel auftragen. Die Wärmestrahlung hilft dem Duft, schneller zu aktivieren.'
-              },
-              {
                 title: 'Nicht-Pulvis-Düfte richtig aufbewahren',
-                tip: 'Lagere deinen Duft kühl und dunkel. Ein zu warmer Schrank oder Sonnenlicht beschädigt die Duftmoleküle und verkürzt die Wirksamkeit drastisch.'
+                tip: 'Lagere deinen Duft kühl, dunkel und ohne Temperaturschwankungen – ein Kühlschrank ist nicht nötig. Wärme und Sonnenlicht können den Duft mit der Zeit verändern.'
               },
               {
                 title: 'Übertragungs-Trick',
@@ -387,7 +383,7 @@ export default function PerfumeApplicationPage() {
               },
               {
                 q: 'Was ist besser: EdP, EdT oder Parfum?',
-                a: 'Parfum (Extrait) ist am intensivsten und haltbarsten (8–24h). EdP (Eau de Parfum) ist ein gutes Mittelding (6–12h). EdT (Eau de Toilette) ist leichter, haltbarer für warme Tage (3–6h). Je konzentrierter, desto sparsamer auftragen.'
+                a: 'Parfum (Extrait) ist am intensivsten und haltbarsten (8–24h). EdP (Eau de Parfum) ist ein gutes Mittelding (6–12h). EdT (Eau de Toilette) ist leichter und angenehmer an warmen Tagen (3–6h). Je konzentrierter, desto sparsamer auftragen.'
               }
             ].map((faq, idx) => (
               <div
@@ -426,7 +422,7 @@ export default function PerfumeApplicationPage() {
             Finde deinen Signature-Duft
           </h2>
           <p style={{ color: 'rgba(250,247,242,0.75)', marginBottom: '1.5rem', fontSize: '0.95rem' }}>
-            Mit der richtigen Anwendungstechnik wirkst du optimal. Aber erst mit dem richtigen Duft – für dein Geschlecht, deine Persönlichkeit und deine Stimmung.
+            Mit der richtigen Anwendungstechnik wirkst du optimal. Aber erst mit dem richtigen Duft – passend zu deinen Lieblingsnoten, dem Anlass, der Jahreszeit und deinem Budget.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/quiz" style={{

@@ -39,17 +39,11 @@ export default function KoerperchemieDuftPage() {
 
           <h3>1. pH-Wert deiner Haut</h3>
           <p>
-            Der pH-Wert deiner Haut ist wie ein „Verstärker" für die Duftmoleküle. Hautoberflächen sind unterschiedlich sauer
-            oder alkalisch – das beinflusst, wie schnell die Duftstoffe verdunsten und welche Noten stärker hervortreten.
+            Gesunde Haut ist leicht sauer – ihr pH-Wert liegt meist etwa zwischen 4,5 und 6. Kleine Unterschiede von Mensch
+            zu Mensch können mit beeinflussen, wie ein Duft auf der Haut wirkt.
           </p>
-          <ul style={{ marginBottom: '1.5rem' }}>
-            <li><strong>Saure Haut (pH 4,5–5,5)</strong> – typisch für Frauen, südliche Ethnien – verstärkt meist die Bassnoten (Holz, Moschus, Vanille)</li>
-            <li><strong>Neutrale Haut (pH ~7)</strong> – der Duft riecht am „ausgewogensten"</li>
-            <li><strong>Alkalische Haut (pH 7,5+)</strong> – verstärkt oft die oberen/mittleren Noten (Zitrus, Blüten)</li>
-          </ul>
           <p style={{ fontSize: '0.9rem', color: '#6b5344', marginBottom: '1.5rem' }}>
-            💡 <strong>Praktisch:</strong> Wenn dir ein Duft zu schwer vorkommt, könnte deine Haut zu sauer sein.
-            Teste ihn nach einer feuchtigkeitscreme – das kann den Eindruck verändern.
+            💡 <strong>Praktisch:</strong> Teste einen Duft auch einmal nach einer Feuchtigkeitscreme – das kann den Eindruck verändern.
           </p>
 
           <h3>2. Hauttyp (trocken, normal, ölig)</h3>
@@ -59,7 +53,7 @@ export default function KoerperchemieDuftPage() {
           <ul style={{ marginBottom: '1.5rem' }}>
             <li><strong>Trockene Haut</strong> – Düfte halten kürzer und wirken schneller intensiv (weil der Duft schneller verdunstet). Schwere, cremige Düfte fühlen sich besser an.</li>
             <li><strong>Normale Haut</strong> – Düfte entfalten sich vorhersehbar und halten gut</li>
-            <li><strong>Ölige Haut</strong> – Düfte halten länger (bis zu 8+ Stunden) und wirken intensiver. Schwere Düfte können überwältigend wirken.</li>
+            <li><strong>Ölige Haut</strong> – Düfte halten oft länger und wirken intensiver. Schwere Düfte können überwältigend wirken.</li>
           </ul>
           <p style={{ fontSize: '0.9rem', color: '#6b5344', marginBottom: '1.5rem' }}>
             💡 <strong>Praktisch:</strong> Trockenhaut-Träger sollten stärkere Konzentrationen (EdP/Eau de Parfum) wählen;
@@ -71,7 +65,7 @@ export default function KoerperchemieDuftPage() {
             Deine Körpertemperatur und Hormonfluktuationen beeinflussen ständig, wie Düfte auf dir wirken:
           </p>
           <ul style={{ marginBottom: '1.5rem' }}>
-            <li><strong>Höhere Körpertemperatur</strong> (z. B. nach Sport, in der Sonne, oder bei hohem Östrogen-Level) → Duft wird schneller frei und riecht intensiver</li>
+            <li><strong>Höhere Körpertemperatur</strong> (z. B. nach Sport oder in der Sonne) → Duft wird schneller frei und riecht intensiver</li>
             <li><strong>Menstruationszyklus</strong> (bei Frauen) – In der Follikelphase (ca. 5–14 Tage nach Menstruationsbeginn) riechst du schärfer; in der Lutealphase (nach Eisprung) nimmt die Riechschärfe ab. Manche Düfte gefallen dir deshalb in manchen Phasen besser als in anderen.</li>
             <li><strong>Schwangerschaft</strong> – Der Hormonfluss kann Duftpräferenzen komplett verändern. Ein Lieblingduft kann plötzlich übel riechen.</li>
           </ul>
@@ -86,26 +80,10 @@ export default function KoerperchemieDuftPage() {
           </p>
           <ul style={{ marginBottom: '1.5rem' }}>
             <li>Stark gewürzte Speisen (Knoblauch, Zwiebel, Curry) und Alkohol ändern temporär deinen Körpergeruch → Düfte riechen anders</li>
-            <li>Vitamin B12-Mangel und bestimmte Diäten können einen „süsslicheren" oder „saueren" Gesamteindruck erzeugen</li>
-            <li>Niedriger Blutdruck/Stresslevel ändert Körpertemperatur und damit die Duftentwicklung</li>
           </ul>
           <p style={{ fontSize: '0.9rem', color: '#6b5344', marginBottom: '1.5rem' }}>
             💡 <strong>Praktisch:</strong> Wenn ein Duft dir heute nicht gefällt, probiere ihn in ein paar Tagen noch mal.
             Deine innere Chemie ändert sich ständig.
-          </p>
-
-          <h3>5. Genetik & ethnische Herkunft</h3>
-          <p>
-            Deine genetische Abstammung beeinflusst deinen Hauttyp und pH-Wert:
-          </p>
-          <ul style={{ marginBottom: '1.5rem' }}>
-            <li><strong>Südeuropäer / Afrikanische Abstammung</strong> – typisch saurere Haut → stärkere Basisnoten, schwerer wirkende Düfte</li>
-            <li><strong>Nordeuropäer</strong> – tendenziell etwas alkalischere Haut → obere Noten bleiben länger präsent</li>
-            <li><strong>Menschen mit Apokriner Schweissdrüsen-Aktivität</strong> (höher in tropischen Gegenden) – intensivere Körperchemie-Reaktion auf Duftmoleküle</li>
-          </ul>
-          <p style={{ fontSize: '0.9rem', color: '#6b5344', marginBottom: '1.5rem' }}>
-            💡 <strong>Praktisch:</strong> Das bedeutet nicht „dieser Duft ist nicht für dich da". Es bedeutet nur:
-            Teste ihn länger und merke dir, wie ER speziell auf DEINER Körperchemie wirkt.
           </p>
 
           <h2>Warum riecht der gleiche Duft auf dir anders als auf Instagram?</h2>
@@ -148,11 +126,11 @@ export default function KoerperchemieDuftPage() {
               </li>
               <li style={{ marginBottom: '1.2rem' }}>
                 <strong>Trage eine gute, duftfreie Feuchtigkeitscreme auf, bevor du Parfüm aufträgst.</strong>
-                Feuchtigkeitscreme beeinflusst die pH-Balance minimal und kann helfen, dass schwerere Düfte nicht so überwältigend wirken.
+                Feuchtigkeitscreme kann helfen, dass schwerere Düfte nicht so überwältigend wirken.
               </li>
               <li style={{ marginBottom: 0 }}>
                 <strong>Gib einem Duft eine echte Chance – mindestens 1–2 Wochen Tragezeit.</strong>
-                In den ersten Tagen duftet deine Nase nicht genau (Duftgewöhnung). Nach einer Woche merkst du, wie der Duft wirklich auf dir ist.
+                An mehreren Tagen getragen merkst du besser, wie der Duft wirklich auf dir ist.
               </li>
             </ol>
           </div>
@@ -167,12 +145,12 @@ export default function KoerperchemieDuftPage() {
             {[
               {
                 problem: 'Der Duft riecht auf mir viel schwerer als auf YouTube',
-                grund: 'Deine Haut hat wahrscheinlich einen niedrigeren pH-Wert (sauer) → verstärkt die Bassnoten',
+                grund: 'Haut, Menge und Umgebung sind anders als im Video – das kann die schweren Basisnoten stärker hervortreten lassen.',
                 lösung: 'Versuche leichtere Konzentrationen (EdT), oder wähle Düfte mit leichteren Bassnoten (z. B. Moschus statt Sandelholz). Test: Trage den Duft auf die Kleidung statt die Haut – das abschwächt die Reaktion.'
               },
               {
                 problem: 'Der Duft verfliegt viel zu schnell bei mir',
-                grund: 'Trockene Haut oder sehr aktives Apokrin-System. Der Duft verdunstet schneller.',
+                grund: 'Oft trockene Haut – der Duft verdunstet schneller.',
                 lösung: 'Wähle stärkere Konzentrationen (EdP oder Eau de Parfum). Feuchte deine Haut vor dem Auftragen leicht an (mit Feuchtigkeitscreme). Trage Duft auf die Haare oder Kleidung auf – das hält länger.'
               },
               {
@@ -192,7 +170,7 @@ export default function KoerperchemieDuftPage() {
               },
               {
                 problem: 'Teuer-Düfte riechen auf mir nicht besser als günstige',
-                grund: 'Der Preis ändert nichts an deiner Körperchemie. Manche teureren Düfte sind für andere Hauttypen optimiert.',
+                grund: 'Der Preis ändert nichts an deiner Körperchemie.',
                 lösung: 'Vertrau deiner Nase, nicht dem Preis. Wenn dir ein günstiger Duft auf deiner Haut besser gefällt, ist das die richtige Wahl. Qualität ist, wie es AUF DIR riecht – nicht auf jeder Haut gleich.'
               }
             ].map((item, i) => (
@@ -225,7 +203,7 @@ export default function KoerperchemieDuftPage() {
             {[
               {
                 frage: 'Kann ich meinen pH-Wert ändern?',
-                antwort: 'Kurzfristig: Ja – durch Feuchtigkeitscreme, richtige Körperpflege und Ernährung. Langfristig: Dein natürlicher pH-Wert ist genetisch bedingt. Aber du kannst lernen, welche Düfte auf DEINEM pH-Wert am besten wirken.'
+                antwort: 'Kaum – Pflegeprodukte wie Seife können ihn kurzzeitig verschieben, aber bei gesunder Haut bleibt er im leicht sauren Bereich. Du kannst aber lernen, welche Düfte auf DEINER Haut am besten wirken.'
               },
               {
                 frage: 'Warum riecht mein Partner den Duft anders?',
@@ -263,9 +241,9 @@ export default function KoerperchemieDuftPage() {
               🔑 <strong>Kurzfassung: Warum riecht mein Duft auf mir anders?</strong>
             </p>
             <p style={{ margin: 0, color: '#6b5344', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              Deine Körperchemie – dein pH-Wert, Hauttyp, Hormonhaushalt, Temperatur und Genetik – ist wie ein persönlicher
+              Deine Körperchemie – dein Hauttyp, Hormonhaushalt, Temperatur und auch dein pH-Wert – ist wie ein persönlicher
               „Übersetzer" für jeden Duft. Der gleiche Duft wird auf jeder Haut anders „übersetzt". Das ist nicht schlecht – es ist einzigartig.
-              Lerne, wie DEINE Körperchemie mit Düften spricht, und finde Düfte, die speziell für deine Chemie gemacht sind. Das ist der Weg zu deinem Signature-Duft.
+              Lerne, wie DEINE Körperchemie mit Düften spricht, und finde Düfte, die dir auf deiner Haut gefallen. Das ist der Weg zu deinem Signature-Duft.
             </p>
           </div>
 
@@ -277,12 +255,12 @@ export default function KoerperchemieDuftPage() {
             marginBottom: '2rem'
           }}>
             <p style={{ margin: '0 0 1rem 0', fontSize: '0.95rem', fontWeight: 600, color: '#2a1d12' }}>
-              🎯 Nächster Schritt: Finde den perfekten Duft für DEINE Körperchemie
+              🎯 Nächster Schritt: Finde den passenden Duft für dich
             </p>
             <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
-              Du kennst jetzt deine Körperchemie besser. Der nächste Schritt ist, Düfte zu finden, die speziell auf deinem pH-Wert und deinem Hauttyp grossartig wirken.
+              Du kennst jetzt deine Körperchemie besser. Der nächste Schritt ist, Düfte zu finden, die zu deinen Vorlieben passen – und sie dann auf deiner Haut zu testen.
               Nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> – es berücksichtigt deine
-              Duftpräferenzen und findet Matches, die speziell für dich funktionieren. Oder <Link href="/duefte" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>durchsuche unseren Katalog</Link> nach Düften,
+              Duftvorlieben und schlägt Düfte vor, die zu deinen Vorlieben passen. Oder <Link href="/duefte" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>durchsuche unseren Katalog</Link> nach Düften,
               die du testen kannst.
             </p>
           </div>

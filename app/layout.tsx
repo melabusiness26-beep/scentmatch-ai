@@ -164,11 +164,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </nav>
                 </div>
 
-                {/* Spalte 3: Admin & Legal */}
+                {/* Spalte 3: Über Auressa & Rechtliches (Admin bewusst nicht verlinkt, erreichbar über /admin) */}
                 <div>
                   <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Über Auressa</h4>
                   <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                    <Link href="/admin" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Admin</Link>
                     <Link href="/testing-und-transparenz" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Transparenz</Link>
                     <Link href="/impressum" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Impressum</Link>
                     <Link href="/datenschutz" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Datenschutz</Link>

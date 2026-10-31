@@ -1562,6 +1562,11 @@ a.note-pill:hover { background: var(--color-primary-light); border-color: var(--
 .tile-occasion { margin: 0; font-family: var(--font-sans), Arial, sans-serif; font-size: 12.5px; color: var(--gold-500); }
 .tile-footer { margin-top: auto; padding-top: 10px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(31,23,18,.06); }
 .tile-price { font-family: var(--font-sans), Arial, sans-serif; font-weight: 700; font-size: 15px; color: var(--ink-900); }
+.tile-volume { font-weight: 500; font-size: 13px; color: var(--ink-500); }
+/* „Alle Düfte": Einleitung über die volle Breite, Suche direkt darunter statt 120px tiefer. */
+.catalog-hero { grid-template-columns: 1fr; }
+.catalog-hero .lead { max-width: 720px; }
+.section.catalog-section { margin-top: 32px; }
 .tile-price-open { font-weight: 500; color: var(--ink-500); font-size: 13px; }
 .tile-arrow { width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: var(--paper-2); color: var(--ink-900); transition: transform .3s var(--ease-out), background .3s; }
 .tile-v2:hover .tile-arrow { transform: translateX(3px); background: var(--gold-300); }

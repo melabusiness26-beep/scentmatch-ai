@@ -145,6 +145,8 @@ function parseEntry(input: Record<string, unknown>, index: number): ImportEntry 
   }
   const facts = list(raw.good_to_know, '\n');
   if (facts != null) fields.good_to_know = facts;
+  // Leere Liste [] oder "" = „Gut zu wissen“ bewusst leeren (z. B. wenn alles schon im Text steht).
+  else if (Array.isArray(raw.good_to_know) || raw.good_to_know === '') fields.good_to_know = '';
 
   // Ähnliche Düfte: „Name – Marke" oder {"name": …, "brand": …}.
   if (Array.isArray(raw.similar_perfumes)) {

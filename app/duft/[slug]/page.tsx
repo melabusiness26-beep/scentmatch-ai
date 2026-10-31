@@ -238,25 +238,34 @@ function seasonAnswer(name: string, season: string): string {
   return `${name} passt besonders gut ${joinAnd(list.map((s) => `im ${s}`))}.`;
 }
 
+const OCCASION_IN: Record<string, string> = {
+  alltag: 'im Alltag',
+  'büro': 'im Büro',
+  date: 'bei einem Date',
+  abend: 'am Abend'
+};
+
 function occasionAnswer(name: string, occasion: string): string {
   const list = splitList(occasion);
+  const phrases = list.map((o) => OCCASION_IN[o.toLowerCase()]);
+  if (phrases.every(Boolean)) return `${name} passt besonders gut ${joinAnd(phrases as string[])}.`;
   return `${name} passt besonders gut zu ${list.length > 1 ? 'diesen Anlässen' : 'diesem Anlass'}: ${joinAnd(list)}.`;
 }
 
 // Baut FAQ-Einträge ausschliesslich aus echten, vorhandenen Feldern – keine erfundenen Werte.
-function buildFaqs(perfume: Perfume): Faq[] {
-  const name = perfume.perfume_name;
+// name: bei mehreren Versionen mit Version (z. B. „Light Blue Eau de Parfum“), damit klar ist, welche gemeint ist.
+function buildFaqs(perfume: Perfume, name: string = perfume.perfume_name): Faq[] {
   const faqs: Faq[] = [];
   if (perfume.longevity != null) {
     faqs.push({
       q: `Wie lange hält ${name}?`,
-      a: `Nach unserer Einschätzung hält ${name} ${longevityHint(perfume.longevity)} (Haltbarkeit ${perfume.longevity}/10).`
+      a: `Laut den Bewertungen der Duft-Community hält ${name} ${longevityHint(perfume.longevity)} (Haltbarkeit ${perfume.longevity}/10).`
     });
   }
   if (perfume.sillage != null) {
     faqs.push({
       q: `Wie stark ist die Ausstrahlung von ${name}?`,
-      a: `Die Ausstrahlung (Sillage) von ${name} liegt nach unserer Einschätzung bei ${perfume.sillage}/10, also ${sillageHint(perfume.sillage)}.`
+      a: `Die Ausstrahlung (Sillage) von ${name} liegt laut den Bewertungen der Duft-Community bei ${perfume.sillage}/10, also ${sillageHint(perfume.sillage)}.`
     });
   }
   if (perfume.season) {
@@ -365,7 +374,12 @@ export default async function PerfumeDetailPage({
     )
     .slice(0, 4);
 
-  const faqs = buildFaqs(perfume);
+  const ownLabel = versionLabel(perfume);
+  const faqName =
+    versions.length > 0 && ownLabel && !perfume.perfume_name.toLowerCase().includes(ownLabel.toLowerCase())
+      ? `${perfume.perfume_name} ${ownLabel}`
+      : perfume.perfume_name;
+  const faqs = buildFaqs(perfume, faqName);
 
   // Zusatzangaben zuerst laden: Ist die Duftrichtung (laut Parfumo) gespeichert,
   // nutzen Balken, Kurzbeschreibung, „Passt zu dir" und Text diese statt der Berechnung.

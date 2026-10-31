@@ -1,6 +1,7 @@
 import { supabase, isSupabaseConfigured } from './supabase';
 import { computeAuressaScore } from './score';
 import { cleanAlternatives, cleanSizes, type PerfumeExtras } from './perfume-extras';
+import { cleanStoredAccords } from './accords';
 
 export type PerfumeBrand = {
   name: string | null;
@@ -50,6 +51,8 @@ export type Perfume = {
   rating?: number | null;
   confidence_level?: string | null;
   data_sources?: Record<string, boolean> | null;
+  // Duftrichtung laut Parfumo (siehe lib/accords.ts) – nur auf der Detailseite geladen.
+  accords?: unknown;
 };
 
 // ─── Preisgrenze ────────────────────────────────────────────────────────────
@@ -286,6 +289,7 @@ export async function getPerfumeBackground(id: string): Promise<PerfumeBackgroun
 export async function getPerfumeExtras(id: string): Promise<PerfumeExtras> {
   if (!isSupabaseConfigured) return {};
   for (const fields of [
+    'sizes, alternative_to, similar_perfumes, flacon_description, flacon_designer, accords',
     'sizes, alternative_to, similar_perfumes, flacon_description, flacon_designer',
     'similar_perfumes, flacon_description'
   ]) {
@@ -299,7 +303,8 @@ export async function getPerfumeExtras(id: string): Promise<PerfumeExtras> {
         ? (row.similar_perfumes as unknown[]).map((s) => String(s).trim()).filter(Boolean)
         : [],
       flacon_description: typeof row.flacon_description === 'string' ? row.flacon_description.trim() || null : null,
-      flacon_designer: typeof row.flacon_designer === 'string' ? row.flacon_designer.trim() || null : null
+      flacon_designer: typeof row.flacon_designer === 'string' ? row.flacon_designer.trim() || null : null,
+      accords: cleanStoredAccords(row.accords)
     };
   }
   return {};

@@ -115,6 +115,11 @@ export async function generateMetadata({
   const title = `${nameWithVersion}${brand} – Duftprofil & Bewertung`;
   // Abwechslungsreiche Beschreibung aus echten Duftdaten (statt gleicher Schablone
   // auf hunderten Seiten) – gut gegen „dünnen/doppelten Inhalt".
+  // Gespeicherte Duftrichtung (Parfumo) hat Vorrang vor der Berechnung aus den Noten.
+  if (!perfume.description) {
+    const stored = (await getPerfumeExtras(perfume.id)).accords;
+    if (stored?.length) perfume.accords = stored;
+  }
   const description = metaTrim(perfume.description || describePerfume(perfume));
 
   return {
@@ -362,6 +367,11 @@ export default async function PerfumeDetailPage({
 
   const faqs = buildFaqs(perfume);
 
+  // Zusatzangaben zuerst laden: Ist die Duftrichtung (laut Parfumo) gespeichert,
+  // nutzen Balken, Kurzbeschreibung, „Passt zu dir" und Text diese statt der Berechnung.
+  const extras = await getPerfumeExtras(perfume.id);
+  const accordsStored = Boolean(extras.accords?.length);
+  if (accordsStored) perfume.accords = extras.accords;
   const accords = computeAccords(perfume);
   const score = computeAuressaScore(perfume);
   const fit = fitAdvice(perfume);
@@ -377,7 +387,6 @@ export default async function PerfumeDetailPage({
     .filter(Boolean)
     // Bis zu 5 Fakten – mehr würde den Kasten auf dem Handy zu lang machen.
     .slice(0, 5);
-  const extras = await getPerfumeExtras(perfume.id);
   // Katalog-Duft zu einem Namen (+ Marke) aus dem Import – für einen Link, falls vorhanden.
   const findInCatalog = (name: string, brand?: string | null) =>
     pool.find(
@@ -698,7 +707,11 @@ export default async function PerfumeDetailPage({
                   </li>
                 ))}
               </ul>
-              <p className="dp-footnote">Von Auressa aus den Duftnoten berechnet.</p>
+              <p className="dp-footnote">
+                {accordsStored
+                  ? 'Duftrichtung laut Parfumo-Community, nach Stärke geordnet.'
+                  : 'Von Auressa aus den Duftnoten berechnet.'}
+              </p>
               {profile.length > 0 && (
                 <>
                   <p className="dp-kicker dp-profile-kicker">Auf einen Blick</p>

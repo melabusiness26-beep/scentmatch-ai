@@ -1,3 +1,4 @@
+import type { StoredAccord } from './accords.ts';
 // Zusatzangaben pro Duft, die im Chat recherchiert und über den Admin eingetragen
 // werden: Grössen & Preise, „bekannte Alternative zu …", ähnliche Düfte und der Flakon.
 // Im Admin werden sie als einfache Textzeilen gepflegt; hier wird zwischen Text und
@@ -13,6 +14,7 @@ export type PerfumeExtras = {
   similar_perfumes?: string[] | null;
   flacon_description?: string | null;
   flacon_designer?: string | null;
+  accords?: StoredAccord[] | null;
 };
 
 function toNumber(value: unknown): number | null {

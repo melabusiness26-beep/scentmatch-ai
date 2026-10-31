@@ -9,6 +9,7 @@
 
 import { parseImport, type ImportedFields } from './admin-import.ts';
 import { parseAlternatives, parseSimilarNames, parseSizes } from './perfume-extras.ts';
+import { parseAccordText } from './accords.ts';
 
 // lowercase, Umlaute → ae/oe/ue/ss, übrige Akzente weg (Hermès → hermes), Rest → „-".
 export function slugify(value: string): string {
@@ -108,6 +109,8 @@ export function toPerfumeRow(f: ImportedFields, brandId: string, slug: string): 
     flacon_designer: toText(f.flacon_designer),
     similar_perfumes: parseSimilarNames(f.similar_perfumes || ''),
     sizes: parseSizes(f.sizes || ''),
-    alternative_to: parseAlternatives(f.alternative_to || '')
+    alternative_to: parseAlternatives(f.alternative_to || ''),
+    // Nur mitschicken, wenn vorhanden – so klappt das Eintragen auch ohne die Spalte.
+    ...(f.accords ? { accords: parseAccordText(f.accords).accords } : {})
   };
 }

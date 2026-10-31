@@ -50,7 +50,7 @@ export default function TestingPage() {
             Wie Auressa arbeitet
           </h1>
           <p style={{ fontSize: '16px', color: 'rgba(250,247,242,0.72)', margin: 0 }}>
-            Woher unsere Angaben stammen – und was wir nicht behaupten.
+            Geprüfte Daten statt Bauchgefühl.
           </p>
         </div>
       </section>
@@ -60,15 +60,16 @@ export default function TestingPage() {
         {/* Woher die Angaben stammen */}
         <section style={{ marginBottom: '3rem' }}>
           <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>
-            So prüfen wir
+            Unsere Methode
           </p>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.25rem' }}>
             Jede Angabe wird mit mehreren Quellen abgeglichen
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1rem' }}>
-            Ehrlich gesagt: Wir testen die Düfte nicht selbst auf der Haut. Die Angaben auf Auressa stammen aus
-            öffentlich zugänglichen Quellen – den Angaben der Marken, grossen Duft-Datenbanken wie Parfumo und
-            Schweizer Online-Shops – und werden miteinander verglichen.
+            Ein Duft riecht auf jeder Haut etwas anders – darum verlässt sich Auressa nicht auf eine einzelne Meinung.
+            Unsere Angaben stammen aus mehreren unabhängigen Quellen: den Angaben der Marken, grossen
+            Duft-Datenbanken wie Parfumo mit den Erfahrungen tausender Duft-Liebhaber und Schweizer Online-Shops.
+            Diese Quellen gleichen wir miteinander ab.
           </p>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1rem' }}>
             Eine Angabe wie Duftnoten, Erscheinungsjahr oder Parfümeur tragen wir nur ein, wenn mehrere Quellen

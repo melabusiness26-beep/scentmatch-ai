@@ -579,7 +579,7 @@ export function fitAdvice(p: Perfume): FitAdvice {
   }
 
   // 3) Ausstrahlung, Haltbarkeit, Preis.
-  if (p.sillage != null && p.sillage >= 8) notFits.push('du im Büro oder im Zug dezent bleiben willst');
+  if (p.sillage != null && p.sillage >= 9) notFits.push('du im Büro oder im Zug dezent bleiben willst');
   else if (p.sillage != null && p.sillage <= 4) notFits.push('der Duft den ganzen Raum füllen soll');
   if (p.longevity != null && p.longevity <= 5 && notFits.length < 3) notFits.push('er ohne Nachsprühen den ganzen Tag halten soll');
   if (p.price_chf != null && p.price_chf > MAX_PRICE && notFits.length < 3) notFits.push(`dein Budget unter CHF ${MAX_PRICE} liegt`);

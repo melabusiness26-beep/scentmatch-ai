@@ -161,7 +161,9 @@ function longevityHint(v: number): string {
 }
 
 function sillageHint(v: number): string {
-  if (v >= 8) return 'füllt den Raum';
+  // „Füllt den Raum“ nur bei sehr starker Ausstrahlung – 8/10 ist deutlich, aber nicht raumfüllend.
+  if (v >= 9) return 'füllt den Raum';
+  if (v >= 8) return 'stark wahrnehmbar';
   if (v >= 6) return 'gut wahrnehmbar';
   if (v >= 4) return 'ausgewogen';
   return 'hautnah';

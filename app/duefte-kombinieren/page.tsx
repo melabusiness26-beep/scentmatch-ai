@@ -94,7 +94,7 @@ export default function FragranceLayeringPage() {
               {
                 icon: '⏰',
                 title: 'Längere Haltbarkeit',
-                desc: 'Mehrere Duftmoleküle-Schichten verdunsten langsamer – bis zu 50 % längere Haltbarkeit.'
+                desc: 'Mehrere Duftschichten können dafür sorgen, dass der Duft länger wahrnehmbar bleibt.'
               },
               {
                 icon: '🎨',
@@ -454,7 +454,7 @@ export default function FragranceLayeringPage() {
               },
               {
                 q: 'Wie lange hält eine gelayerte Duftkombination?',
-                a: 'Länger als ein einzelner Duft. Basis-Haltbarkeit + Akzent-Haltbarkeit = oft +50 %. Ein 8-Stunden-Duft wird mit Layering zu 10–12 Stunden.'
+                a: 'Oft etwas länger als ein einzelner Duft – vor allem, wenn die Basis ein kräftiger, langanhaltender Duft ist. Wie lange genau, hängt von den Düften und deiner Haut ab.'
               },
               {
                 q: 'Kann ich Layering auch mit Body Lotion oder Öl machen?',

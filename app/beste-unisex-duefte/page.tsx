@@ -274,7 +274,7 @@ export default async function BesteUnisexDuefte() {
             Finde deinen perfekten Duft
           </h2>
           <p style={{ color: 'rgba(250,247,242,0.7)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
-            Unser Quiz findet in 2 Minuten den Duft, der wirklich zu dir passt.
+            Unser Quiz findet in wenigen Minuten den Duft, der wirklich zu dir passt.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <Link href="/quiz" style={{

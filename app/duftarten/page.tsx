@@ -100,7 +100,7 @@ export default function FragranceTypesPage() {
               </thead>
               <tbody>
                 {[
-                  ['Extrait / Parfum', '20–40%', '8–24h', '⭐⭐⭐⭐⭐', '💰💰💰💰💰'],
+                  ['Extrait / Parfum', '20–30%', '8–24h', '⭐⭐⭐⭐⭐', '💰💰💰💰💰'],
                   ['Eau de Parfum (EdP)', '15–20%', '6–12h', '⭐⭐⭐⭐', '💰💰💰'],
                   ['Eau de Toilette (EdT)', '5–15%', '3–6h', '⭐⭐⭐', '💰💰'],
                   ['Eau de Cologne', '2–5%', '1–2h', '⭐⭐', '💰'],
@@ -140,7 +140,7 @@ export default function FragranceTypesPage() {
             {[
               {
                 name: 'Extrait de Parfum (Parfum) – Das Königreich',
-                conc: '20–40% Duftöl-Konzentration',
+                conc: 'meist 20–30% Duftöl-Konzentration',
                 icon: '👑',
                 desc: 'Dies ist das teuerste und intensivste Format. Ein Tropfen Extrait ist oft genug für den ganzen Tag. Die Haltbarkeit ist legendär – 8–24 Stunden oder sogar mehr.',
                 haltbar: '8–24 Stunden',
@@ -148,7 +148,7 @@ export default function FragranceTypesPage() {
                 preis: '💰💰💰💰💰 (oft CHF 150+)',
                 wann: 'Für spezielle Anlässe, abends, formale Events. Ideal für Liebhaber, die nicht regelmässig nachsprühen wollen.',
                 achtung: '⚠️ Vorsicht: Wegen der hohen Konzentration genügen 1–2 Sprühstösse. Zu viel wirkt schnell überwältigend. Auch teuer – man möchte es nicht verschwenden.',
-                beispiele: 'Creed Royal Oud, Heeley Sel Marin, Jo Malone Extrait-Serie'
+                beispiele: 'Chanel N°5 Parfum, Maison Francis Kurkdjian Baccarat Rouge 540 Extrait de Parfum'
               },
               {
                 name: 'Eau de Parfum (EdP) – Das Gleichgewicht',
@@ -159,8 +159,8 @@ export default function FragranceTypesPage() {
                 intensität: 'Stark – deutlich spürbar',
                 preis: '💰💰💰 (CHF 60–150)',
                 wann: 'Der Allrounder. Ideal für täglich, spezielle Events, längere Ereignisse (Arbeitstag, Abend).',
-                achtung: '✅ Das beliebteste Format für Qualitäts-Düfte. Gutes Preis-Leistungs-Verhältnis. Meist nach 4–5 Stunden ein Retouch empfohlen.',
-                beispiele: 'Creed Aventus, Tom Ford Black Opium, Dior Sauvage'
+                achtung: '✅ Das beliebteste Format für Qualitäts-Düfte. Gutes Preis-Leistungs-Verhältnis.',
+                beispiele: 'Creed Aventus, YSL Black Opium, Dior Sauvage'
               },
               {
                 name: 'Eau de Toilette (EdT) – Der Leichte',
@@ -172,7 +172,7 @@ export default function FragranceTypesPage() {
                 preis: '💰💰 (CHF 20–80)',
                 wann: 'Sommer, warme Tage, Büro/subtile Umgebung, leichte tägliche Anwendung. Wenn du nicht intensiv riechen möchtest.',
                 achtung: '💡 EdT verdampft schneller – es ist die häufigste Kaufoption. Nach 3–4 Stunden ist oft ein Retouch nötig.',
-                beispiele: 'Acqua di Parma Blu Mediterraneo, Hermès Eau de Gentiane Blanche, Issey Miyake L\'Eau d\'Issey'
+                beispiele: 'Acqua di Parma Blu Mediterraneo, Issey Miyake L\'Eau d\'Issey'
               },
               {
                 name: 'Eau de Cologne – Der Klassiker',

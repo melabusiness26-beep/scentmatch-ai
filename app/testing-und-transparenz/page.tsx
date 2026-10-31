@@ -7,11 +7,11 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 export const metadata: Metadata = {
   title: 'Testing & Transparenz – So arbeitet Auressa',
   description:
-    'Melanie testet jeden Duft persönlich. Lerne, wie Auressa arbeitet, welche Düfte wirklich getestet sind und wie wir absolut ehrlich bleiben – ohne Kompromisse.',
+    'Woher die Duft-Angaben auf Auressa stammen, wie der Auressa-Score berechnet wird und wie wir mit Partner-Links umgehen.',
   alternates: { canonical: `${SITE_URL}/testing-und-transparenz` },
   openGraph: {
     title: 'Testing & Transparenz | Auressa',
-    description: 'Wie Auressa testet, bewertet und absolut ehrlich bleibt.',
+    description: 'Woher die Angaben stammen und wie der Auressa-Score berechnet wird.',
     url: `${SITE_URL}/testing-und-transparenz`,
     type: 'website',
   },
@@ -47,40 +47,39 @@ export default function TestingPage() {
             lineHeight: 1.15,
             color: '#faf7f2',
           }}>
-            Wie Auressa testet und urteilt
+            Wie Auressa arbeitet
           </h1>
           <p style={{ fontSize: '16px', color: 'rgba(250,247,242,0.72)', margin: 0 }}>
-            Absolut ehrlich, persönlich getestet, ohne versteckte Agenden.
+            Geprüfte Daten statt Bauchgefühl.
           </p>
         </div>
       </section>
 
       <div style={{ maxWidth: '760px', margin: '0 auto', padding: '3rem 1.25rem' }}>
 
-        {/* Melanie's Approach */}
+        {/* Woher die Angaben stammen */}
         <section style={{ marginBottom: '3rem' }}>
           <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>
-            Wie ich teste
+            Unsere Methode
           </p>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.25rem' }}>
-            Jeder Duft wird persönlich auf der Haut getestet
+            Jede Angabe wird mit mehreren Quellen abgeglichen
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1rem' }}>
-            Ich trage keinen Duft in die Auressa-Datenbank ein, den ich nicht selbst getestet habe. Punkt.
-            Das bedeutet: Ich sprühe ihn auf, trage ihn mindestens eine Stunde, beobachte, wie er sich entwickelt,
-            wie er auf meiner Haut riecht, und was anderen Menschen davon sagen.
+            Ein Duft riecht auf jeder Haut etwas anders – darum verlässt sich Auressa nicht auf eine einzelne Meinung.
+            Unsere Angaben stammen aus mehreren unabhängigen Quellen: den Angaben der Marken, grossen
+            Duft-Datenbanken wie Parfumo mit den Erfahrungen tausender Duft-Liebhaber und Schweizer Online-Shops.
+            Diese Quellen gleichen wir miteinander ab.
           </p>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1rem' }}>
-            Ein Duft ist nicht einfach ein Duft. Ein Duft ist ein Erlebnis:
-            Wie riecht er in den ersten 5 Minuten? Wie verändert er sich nach 30 Minuten?
-            Hält er bis zum Abend, oder verfliegt er nach zwei Stunden?
-            Wie reagiert meine Haut auf ihn – angenehm warm oder aufdringlich?
-            Passt er zum Büro, zum Date oder nur zum Abend?
+            Eine Angabe wie Duftnoten, Erscheinungsjahr oder Parfümeur tragen wir nur ein, wenn mehrere Quellen
+            übereinstimmen. Widersprechen sich die Quellen, lassen wir das Feld lieber leer, als etwas zu raten.
           </p>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728' }}>
-            Ich mache keine „schnelle Noten-Recherche" und gebe dann ein Score ab. Ich teste wirklich.
-            Das ist zeitaufwändig. Das ist auch der Grund, warum der Katalog von Auressa Schritt für Schritt wächst
-            und nicht zehntausende Düfte hat wie kommerzielle Plattformen. Qualität vor Quantität.
+            Haltbarkeit und Ausstrahlung richten sich nach den Bewertungen der Parfumo-Community. Wo die Duftrichtung
+            (z. B. „Frisch, Zitrisch, Aquatisch“) von Parfumo stammt, steht das auf der Duft-Seite dabei; sonst wird sie
+            aus den Duftnoten berechnet. Darum wächst der
+            Katalog Schritt für Schritt: lieber weniger Düfte mit stimmenden Angaben.
           </p>
         </section>
 
@@ -93,8 +92,8 @@ export default function TestingPage() {
             0 bis 100 – was das wirklich bedeutet
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>
-            Der Auressa-Score ist <strong>nicht</strong> ein Nutzer-Rating und auch <strong>nicht</strong> eine Bewertung
-            danach, ob mir der Duft persönlich gefällt. Es ist eine <strong>redaktionelle Gesamteinschätzung</strong>:
+            Der Auressa-Score ist <strong>kein</strong> Nutzer-Rating und <strong>keine</strong> persönliche Meinung.
+            Er wird für jeden Duft nach denselben Regeln automatisch aus den erfassten Daten berechnet:
           </p>
           <div style={{
             background: '#fff',
@@ -103,32 +102,22 @@ export default function TestingPage() {
             padding: '1.5rem',
             marginBottom: '1.5rem',
           }}>
-            <div style={{ marginBottom: '1rem' }}>
-              <p style={{ fontSize: '0.9rem', color: '#6b5344', margin: '0 0 0.4rem 0' }}>
-                <strong style={{ color: '#d4af37' }}>80–100:</strong> Herausragende Düfte mit hoher Qualität, starkem Charakter und/oder exzellentem Preis-Leistungs-Verhältnis.
-              </p>
-            </div>
-            <div style={{ marginBottom: '1rem' }}>
-              <p style={{ fontSize: '0.9rem', color: '#6b5344', margin: '0 0 0.4rem 0' }}>
-                <strong style={{ color: '#d4af37' }}>60–79:</strong> Gute Düfte mit erkennbarem Charakter, guter Haltbarkeit und solider Komposition. Standard für den Katalog.
-              </p>
-            </div>
-            <div style={{ marginBottom: '1rem' }}>
-              <p style={{ fontSize: '0.9rem', color: '#6b5344', margin: '0 0 0.4rem 0' }}>
-                <strong style={{ color: '#d4af37' }}>40–59:</strong> Interessante Düfte mit besonderen Merkmalen, aber mit Schwächen (zu kurz haltbar, zu eintönig, teureres Preisschild für weniger Qualität).
-              </p>
-            </div>
-            <div>
-              <p style={{ fontSize: '0.9rem', color: '#6b5344', margin: '0' }}>
-                <strong style={{ color: '#d4af37' }}>Unter 40:</strong> Düfte, die ich nicht empfehle. Entweder schlechte Komposition, zu kurze Haltbarkeit oder ungerechtes Preis-Leistungs-Verhältnis.
-              </p>
-            </div>
+            <p style={{ fontSize: '0.9rem', color: '#6b5344', margin: '0 0 0.6rem 0' }}>
+              <strong style={{ color: '#d4af37' }}>Preis-Leistung – 40 %:</strong> Preis und Haltbarkeit zusammen – wie viel Duft du fürs Geld bekommst.
+            </p>
+            <p style={{ fontSize: '0.9rem', color: '#6b5344', margin: '0 0 0.6rem 0' }}>
+              <strong style={{ color: '#d4af37' }}>Haltbarkeit – 25 %:</strong> wie lange der Duft laut Community-Bewertungen hält.
+            </p>
+            <p style={{ fontSize: '0.9rem', color: '#6b5344', margin: '0 0 0.6rem 0' }}>
+              <strong style={{ color: '#d4af37' }}>Vielseitigkeit – 20 %:</strong> zu wie vielen Jahreszeiten und Anlässen er passt.
+            </p>
+            <p style={{ fontSize: '0.9rem', color: '#6b5344', margin: 0 }}>
+              <strong style={{ color: '#d4af37' }}>Ausstrahlung – 15 %:</strong> eine ausgewogene Ausstrahlung zählt am meisten, sehr leise oder sehr laute Düfte etwas weniger.
+            </p>
           </div>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728' }}>
-            <em>Wichtig:</em> Ein hoher Score heisst nicht, dass dir der Duft automatisch gefällt.
-            Ein Duft mit Score 50 kann dir persönlich besser gefallen als einer mit 85 – das ist vollkommen normal.
-            Der Score ist ein objektives Qualitäts-Werkzeug, nicht dein persönlicher Geschmack.
-            Für deinen persönlichen Geschmack nutze das Quiz – das ist dafür da.
+            <em>Wichtig:</em> Der Score sagt nichts darüber, ob dir ein Duft gefällt. Ein Duft mit Score 50 kann dir
+            besser gefallen als einer mit 85. Welche Düfte zu deinem Geschmack passen, zeigt dir das Quiz.
           </p>
         </section>
 
@@ -152,26 +141,26 @@ export default function TestingPage() {
                 ✓ Affiliate-Links sind deutlich gekennzeichnet
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6 }}>
-                Wenn ein „Jetzt ansehen"-Button eine Provision bringt, steht das dabei.
-                Immer. Manchmal in Worten, immer im HTML-Code (rel=&quot;sponsored&quot;).
+                Wenn ein Knopf zu einem Shop eine Provision bringen kann, steht ein Hinweis dabei, und der Link ist
+                im HTML-Code als Werbung gekennzeichnet (rel=&quot;sponsored&quot;).
               </p>
             </div>
             <div style={{ marginBottom: '1.5rem' }}>
               <p style={{ fontSize: '0.9rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.4rem' }}>
-                ✓ Ein hoher Score ist nicht automatisch ein Affiliate-Duft
+                ✓ Partner-Links beeinflussen den Score nicht
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6 }}>
-                Ich vergebe hohe Scores für Qualität, nicht weil ein Affiliate-Programm dahinter steckt.
-                Im Gegenteil: Einige meiner liebsten High-Score-Düfte haben gar keine Affiliate-Links.
+                Der Score wird für alle Düfte gleich berechnet – ob es einen Partner-Link gibt oder nicht,
+                spielt dafür keine Rolle.
               </p>
             </div>
             <div style={{ marginBottom: '1.5rem' }}>
               <p style={{ fontSize: '0.9rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.4rem' }}>
-                ✓ Keine versteckten Marketing-Claims
+                ✓ Keine erfundenen Angaben
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6 }}>
-                Wenn ich schreibe „dieser Duft hält lange", habe ich das persönlich getestet und kann es belegen.
-                Keine ungefundenen Behauptungen aus Marketing-Texten.
+                Keine erfundenen Bewertungen, Tester-Zahlen oder Verfügbarkeiten. Was wir nicht belegen können,
+                schreiben wir nicht hin.
               </p>
             </div>
             <div>
@@ -179,36 +168,25 @@ export default function TestingPage() {
                 ✓ Preise sind Richtpreise – die gültige Version im Shop entscheidet
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6 }}>
-                Ich aktualisiere Preise regelmässig, aber der letzte gültige Preis im Schweizer Shop ist entscheidend.
-                Ich habe keinen Einfluss auf Shop-Preise.
+                Die Preise stammen aus Schweizer Online-Shops zum Zeitpunkt der Recherche. Massgebend ist immer der
+                aktuelle Preis im Shop – darauf haben wir keinen Einfluss. Auressa verkauft selbst keine Düfte.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Personal Voice */}
+        {/* Texte */}
         <section style={{ marginBottom: '3rem' }}>
           <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>
-            Meine Stimme
+            Unsere Texte
           </p>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.25rem' }}>
-            Du liest meine echten Gedanken, nicht KI-Text
+            Wie die Duft-Texte entstehen
           </h2>
-          <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1rem' }}>
-            Ich schreibe persönlich. Das heisst: Das sind meine Meinungen, meine Perspektive, meine Art zu sprechen.
-            Du findest auf Auressa gelegentlich Gedankenstrich – die mögen Sprachmodelle nicht besonders.
-            Du findest Klammern (für Nebensätze), Umgangssprache und echte Persönlichkeit.
-            Du findest <strong>nicht</strong> jeden Satz mit einem Keywords-Trigger optimiert.
-          </p>
-          <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1rem' }}>
-            Die Ratgeber-Artikel, die Reviews, die Quiz-Texte – das schreibe ich alle selbst.
-            Dass eine Website mit KI geschrieben wurde, sieht man daran, dass alle Sätze gleich strukturiert sind,
-            dass jeder Absatz genau 3–4 Sätze hat, und dass die Sprache überoptimiert wirkt.
-            Das ist hier nicht der Fall.
-          </p>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728' }}>
-            Wenn ich einen Fehler mache – ein Wort falsch schreibe oder eine Grammatik-Schnitzer habe – dann ist das menschlich.
-            Das ist Teil von authentischer Kommunikation. Ich korrigiere es später, wenn es mir auffällt, aber ich schreibe nicht wie ein Bot.
+            Die Beschreibungen auf den Duft-Seiten werden aus den geprüften Daten erstellt – teils automatisch, teils
+            mit Unterstützung von KI-Werkzeugen. Die Angaben, auf denen sie beruhen, werden vorher mit den Quellen
+            abgeglichen. Bewertungen von Kundinnen und Kunden oder Testberichte gibt es auf Auressa nicht.
           </p>
         </section>
 
@@ -229,10 +207,11 @@ export default function TestingPage() {
           }}>
             <div style={{ marginBottom: '1rem' }}>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', fontWeight: 600, marginBottom: '0.3rem' }}>
-                🧪 Persönliche Tests
+                🧪 Duft-Datenbanken
               </p>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>
-                Mein eigenes Testen auf der Haut. Das ist die Primärquelle für alles in Auressa.
+                Vor allem Parfumo: Duftnoten, Erscheinungsjahr, Parfümeur sowie die Community-Bewertungen zu
+                Haltbarkeit, Ausstrahlung und Duftrichtung.
               </p>
             </div>
             <div style={{ marginBottom: '1rem' }}>
@@ -240,25 +219,24 @@ export default function TestingPage() {
                 📖 Offizielle Markenangaben
               </p>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>
-                Noten, Haltbarkeit und Beschreibungen von Chanel, Dior, Lattafa & Co. – direkt von der Website.
+                Duftnoten und Beschreibungen direkt von den Websites der Marken, wo vorhanden.
               </p>
             </div>
             <div style={{ marginBottom: '1rem' }}>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', fontWeight: 600, marginBottom: '0.3rem' }}>
-                💬 Feedback von echten Nutzern
+                🛍️ Schweizer Online-Shops
               </p>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>
-                Wenn Nutzer mir sagen „für mich hat dieser Duft überhaupt nicht funktioniert", dann ist das auch wertvoll.
-                Ich erwähne solche Perspektiven, wenn sie häufig vorkommen.
+                Für Grössen und Richtpreise in Franken.
               </p>
             </div>
             <div>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', fontWeight: 600, marginBottom: '0.3rem' }}>
-                🚫 Was ich NICHT nutze
+                🚫 Was wir nicht tun
               </p>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>
-                Gescrapte Review-Plattformen, KI-generierte Vergleiche, Affiliate-Produktbeschreibungen von Amazon oder ebay.
-                Das wäre Manipulation statt Recherche.
+                Bewertungen erfinden, ganze Datensätze oder Rezensionen von anderen Seiten kopieren oder
+                Werbetexte von Shops übernehmen.
               </p>
             </div>
           </div>
@@ -276,14 +254,13 @@ export default function TestingPage() {
             Fragen?
           </p>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.75rem' }}>
-            Ich beantworte gern Fragen
+            Fehler gefunden oder eine Frage?
           </h2>
           <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', marginBottom: '1rem' }}>
-            Wenn du Fragen zur Methodik hast, zu einem Duft, zu den Daten – oder wenn du einen Fehler gefunden hast:
-            Schreib mir.
+            Wenn dir eine Angabe falsch vorkommt oder du eine Frage zu den Daten hast: Schreib uns, wir prüfen es.
           </p>
           <p style={{ fontSize: '0.9rem', color: '#d4af37', margin: 0 }}>
-            <strong>E-Mail:</strong> <a href="mailto:melanie@auressa.ch" style={{ color: '#d4af37', textDecoration: 'none', borderBottom: '1px solid #d4af37' }}>melanie@auressa.ch</a>
+            <strong>E-Mail:</strong> <a href="mailto:mela.business26@gmail.com" style={{ color: '#d4af37', textDecoration: 'none', borderBottom: '1px solid #d4af37' }}>mela.business26@gmail.com</a>
           </p>
         </section>
 

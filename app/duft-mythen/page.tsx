@@ -72,17 +72,17 @@ export default function FragranceMythsPage() {
             {[
               {
                 myth: '💰 Mythos: Teure Düfte sind immer besser als günstige',
-                fact: 'FALSCH. Der Preis hängt von Marketing, Verpackung und Marke ab – nicht von der Duftqualität. Ein 20-Franken-Duft von Lattafa kann genauso gut riechen wie ein CHF 150 Designer-Duft. Blind getestet können Menschen teure und günstige Düfte oft nicht unterscheiden.',
+                fact: 'FALSCH. Der Preis hängt von Marketing, Verpackung und Marke ab – nicht von der Duftqualität. Ein 20-Franken-Duft von Lattafa kann genauso gut riechen wie ein CHF 150 Designer-Duft.',
                 praktisch: 'Kaufe nach Duftprofil und Haltbarkeit, nicht nach Preis. Viele günstige Dufthäuser machen hervorragende Qualität.'
               },
               {
                 myth: '👃 Mythos: Du wirst „abhängig" von deinem Lieblingsduft',
                 fact: 'FALSCH (aber verständlich). Das, was du erlebst, heisst Duftgewöhnung (Fachwort: olfaktorische Adaptation) – deine Nase gewöhnt sich an konstante Reize. Das ist biologisch normal, nicht Abhängigkeit. Andere riechen deinen Duft weiterhin deutlich.',
-                praktisch: 'Wechsle gelegentlich deine Düfte oder mache Duft-Pausen. Nach 2–3 Tagen ohne Duft wird deine Nase wieder empfindlich.'
+                praktisch: 'Wechsle gelegentlich deine Düfte oder mache Duft-Pausen. Schon nach kurzer Zeit an frischer Luft oder ohne den Duft riechst du ihn wieder deutlicher.'
               },
               {
                 myth: '🔬 Mythos: Alle Düfte enthalten schädliche Chemikalien',
-                fact: 'FALSCH. Düfte bestehen aus (natürlichen und synthetischen) Duftölen – viele davon sind identisch mit Naturölen. Synthetische Düfte sind oft reiner und haltbarer. Dosierte Mengen auf Haut sind völlig sicher. Die Menge macht das Gift – bei Düften ist die Menge niedrig.',
+                fact: 'FALSCH. Düfte bestehen aus natürlichen und synthetischen Duftstoffen – manche synthetischen Duftstoffe sind naturidentisch. In üblichen Mengen sind Düfte für die meisten gut verträglich. Bekannte allergene Duftstoffe müssen in der EU ab bestimmten Mengen auf der Verpackung angegeben werden.',
                 praktisch: 'Natürliche Düfte sind nicht automatisch besser oder sicherer als synthetische. Vermeide jedoch Düfte mit reizenden Zusätzen – teste auf Allergien.'
               },
               {
@@ -97,8 +97,8 @@ export default function FragranceMythsPage() {
               },
               {
                 myth: '🚿 Mythos: Duft vor dem Duschen auftragen ist besser',
-                fact: 'FALSCH. Duft NACH dem Duschen auftragen ist besser. Deine feuchte, warme Haut ist ideal – sie hilft, den Duft zu fixieren und die Haltbarkeit um 20–30 % zu verlängern. Vor dem Duschen aufgetragen wird er einfach abgewaschen.',
-                praktisch: 'Immer nach dem Duschen auftragen. Deine feuchte Haut ist dein bester Verbündeter.'
+                fact: 'FALSCH. Duft NACH dem Duschen auftragen ist besser. Saubere, gut gepflegte Haut ist ideal – sie hilft, dass der Duft besser hält. Vor dem Duschen aufgetragen wird er einfach abgewaschen.',
+                praktisch: 'Immer nach dem Duschen auftragen – auf saubere, eingecremte Haut.'
               },
               {
                 myth: '🧴 Mythos: Duft in den Haaren auftragen ist schlecht',
@@ -107,27 +107,27 @@ export default function FragranceMythsPage() {
               },
               {
                 myth: '❄️ Mythos: Duftlagerung im Kühlschrank ist besser',
-                fact: 'FALSCH. Der Kühlschrank ist zu feucht und kühl-Wärme-Schwankungen sind schlecht. Ideal: kühl, dunkel, stabil. Raumtemperatur (15–20°C) in einem dunklen Schrank ist perfekt. Zu kalt und Schwankungen degradieren den Duft.',
-                praktisch: 'Lagere Düfte an einem dunklen, kühlen Ort mit stabiler Temperatur – nicht im Kühlschrank, nicht auf der sonnigen Fensterbank.'
+                fact: 'FALSCH. Wichtig ist: kühl, dunkel und ohne Temperaturschwankungen lagern. Ein dunkler Schrank reicht – der Kühlschrank ist nicht nötig.',
+                praktisch: 'Lagere Düfte an einem dunklen, kühlen Ort ohne Temperaturschwankungen – der Kühlschrank ist nicht nötig, die sonnige Fensterbank aber tabu.'
               },
               {
                 myth: '🔄 Mythos: Du solltest einen Duft reiben, nachdem du ihn aufgetragen hast',
-                fact: 'FALSCH. Reiben ZERSTÖRT die oberen Duftschichten (Top-Noten). Dadurch wird der Duft flacher und kurzlebiger. Sanftes Übereinander-Legen der Unterarme ist ok – aber NICHT reiben.',
+                fact: 'FALSCH. Reiben erwärmt die Haut, dadurch verfliegen die Top-Noten schneller. Sanftes Übereinander-Legen der Unterarme ist ok – aber NICHT reiben.',
                 praktisch: 'Nach dem Auftragen: Hände weg. Lass den Duft verdunsten. Höchstens sanft die inneren Unterarme zusammenbringen.'
               },
               {
                 myth: '🌡️ Mythos: Körpertemperatur und Körperchemie spielen keine Rolle',
-                fact: 'FALSCH. Deine Körpertemperatur (normal 36,5°C+) verstärkt Duftmoleküle. Menschen mit höherer Temperatur riechen intensiver. Auch Körperchemie (pH, Schweiss, Hormone) beeinflusst, wie ein Duft an dir riecht. Zwei Menschen riechen den gleichen Duft unterschiedlich.',
+                fact: 'FALSCH. Wärme lässt Duftstoffe schneller verdunsten – auf warmer Haut wirkt ein Duft oft intensiver. Auch Körperchemie (pH, Schweiss, Hormone) beeinflusst, wie ein Duft an dir riecht. Zwei Menschen riechen den gleichen Duft unterschiedlich.',
                 praktisch: 'Teste Düfte immer an deiner Haut, nicht aus dem Tester im Geschäft. Deine Körperwärme ändert alles.'
               },
               {
                 myth: '👗 Mythos: Duft auf die Kleidung sprühen ist besser als auf die Haut',
-                fact: 'FALSCH (aber optional). Auf der Haut wirkt der Duft mit deiner Körperwärme und Körperchemie – das ist die beste Art. Auf Kleidung verdampft der Duft schneller und vermischt sich nicht mit dir. Nur für Stoff-Liebhaber: leicht auf Kleidung sprühen als ZUSATZ, nicht Ersatz.',
+                fact: 'FALSCH (aber optional). Auf der Haut wirkt der Duft mit deiner Körperwärme und Körperchemie – das ist die beste Art. Auf Kleidung hält der Duft oft sogar länger, vermischt sich aber nicht mit dir – und kann empfindliche Stoffe verfärben. Nur für Stoff-Liebhaber: leicht auf Kleidung sprühen als ZUSATZ, nicht Ersatz.',
                 praktisch: 'Immer zuerst auf der Haut auftragen. Nur leicht auf Kleidung, wenn du einen Hauch-Effekt magst.'
               },
               {
                 myth: '🚭 Mythos: Starke Raucher riechen Düfte schlechter',
-                fact: 'WAHR. Starker Raucher-Konsum beeinträchtigt den Geruchssinn. Raucher brauchen oft stärkere Düfte, um sie selbst zu riechen – aber andere riechen tatsächlich weniger intensiv. Das ist eine objektive chemische Folge.',
+                fact: 'WAHR. Starker Raucher-Konsum beeinträchtigt den Geruchssinn. Raucher nehmen Düfte deshalb oft schwächer wahr als andere.',
                 praktisch: 'Starke Raucher: teste Düfte mit jemandem, der nicht raucht – deine Wahrnehmung ist verzerrt.'
               },
               {
@@ -147,12 +147,12 @@ export default function FragranceMythsPage() {
               },
               {
                 myth: '⏳ Mythos: Düfte verfallen nach einem Jahr',
-                fact: 'FALSCH. Richtig gelagerte Düfte halten 3–5 Jahre oder länger. Auch offene Flaschen halten 2–3 Jahre. Verfärbung oder Geruchsveränderung ist langsam. Das Verfallsdatum ist eher eine Marketing-Sache als Realität.',
+                fact: 'FALSCH. Richtig gelagerte Düfte halten oft mehrere Jahre. Verfärbung oder Geruchsveränderung geschieht langsam. Das Symbol mit dem offenen Tiegel (z. B. „36M“) ist für die meisten Kosmetika in der EU vorgeschrieben und gibt an, wie lange ein Produkt nach dem Öffnen verwendet werden kann – ein Richtwert, der bei guter Lagerung oft übertroffen wird.',
                 praktisch: 'Fühl dich nicht pressured, Düfte schnell aufzubrauchen. Mit guter Lagerung hast du Jahre Zeit.'
               },
               {
                 myth: '🧪 Mythos: Synthetische Duftöle riechen „künstlich" und schlecht',
-                fact: 'FALSCH. Moderne synthetische Duftöle sind oft IDENTISCH mit natürlichen Ölen – chemisch das gleiche Molekül. Viele riechen ununterscheidbar von Natur. Synthetische sind oft purer und haltbarer. Die Qualität liegt im Duftdesign, nicht im Ursprung.',
+                fact: 'FALSCH. Manche synthetischen Duftstoffe sind naturidentisch – also das gleiche Molekül wie in der Natur. Die Qualität liegt im Duftdesign, nicht im Ursprung.',
                 praktisch: 'Konzentriere dich auf die Duftqualität und Haltbarkeit, nicht darauf, ob sie natürlich oder synthetisch sind.'
               },
               {
@@ -229,7 +229,7 @@ export default function FragranceMythsPage() {
               },
               {
                 num: 3,
-                point: 'Richtige Lagerung und Anwendung verstärken jeden Duft um bis zu 50 %. Technik spielt eine riesige Rolle.',
+                point: 'Richtige Lagerung und Anwendung helfen jedem Duft. Technik spielt eine grosse Rolle.',
               },
               {
                 num: 4,
@@ -237,7 +237,7 @@ export default function FragranceMythsPage() {
               },
               {
                 num: 5,
-                point: 'Der beste Duft ist nicht der teuerste – es ist der, der an DIR am besten riecht. Finde IHN mit wissenschaftlichem Matching.',
+                point: 'Der beste Duft ist nicht der teuerste – es ist der, der an DIR am besten riecht. Finde IHN mit dem Auressa-Quiz.',
               }
             ].map((item) => (
               <div key={item.num} style={{ display: 'flex', gap: '1rem' }}>

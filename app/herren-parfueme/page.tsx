@@ -135,7 +135,7 @@ export default function HerrenParfuemePage() {
                 typ: 'Der Modern Man',
                 beschreibung: 'Trendy, charaktervoll, modern. Du magst aktuelle, interessante Düfte.',
                 ideal: 'Woody, moderne Aromatic oder frische Orientalisch. Neuere Kreationen.',
-                empfehlung: 'Tom Ford Ombré Leather, Maison Margiela Replica, Byredo Gypsy Floral',
+                empfehlung: 'Tom Ford Ombré Leather, Maison Margiela Replica',
                 vermeiden: 'Zu klassisch, zu konservativ, Mainstream-Everyman-Düfte'
               },
               {

@@ -104,7 +104,7 @@ export default function FragranceNotesGuidePage() {
                   ✨ TOP-NOTEN (Kopfnoten)
                 </h3>
                 <p style={{ color: '#8a6a20', fontWeight: 600, margin: '0 0 1rem 0', fontSize: '0.95rem' }}>
-                  Dauer: 5–15 Minuten | Intensität: Sehr frisch & lebhaft
+                  Dauer: die ersten Minuten bis ca. 15–30 Minuten | Intensität: Sehr frisch & lebhaft
                 </p>
                 <p style={{ color: '#6b5344', margin: 0, lineHeight: 1.6, fontSize: '0.95rem' }}>
                   Die ersten Eindrücke, die deine Nase nach dem Auftragen riecht. Top-Noten sind flüchtig und verdampfen schnell – aber sie sind der „Hook", der dich sofort anzieht oder abstosst.
@@ -126,7 +126,7 @@ export default function FragranceNotesGuidePage() {
                   Dauer: 30 Minuten–4 Stunden | Intensität: Die „Persönlichkeit" des Dufts
                 </p>
                 <p style={{ color: '#6b5344', margin: 0, lineHeight: 1.6, fontSize: '0.95rem' }}>
-                  Das Herz eines Dufts. Hier entwickelt sich dein Lieblingsduft zu seiner vollständigen Persönlichkeit. Die Heart-Noten sind das, wofür du den Duft wirklich kaufst – und sie halten am längsten.
+                  Das Herz eines Dufts. Hier entwickelt sich dein Lieblingsduft zu seiner vollständigen Persönlichkeit. Die Heart-Noten sind das, wofür du den Duft wirklich kaufst. Am längsten halten danach die Base-Noten.
                 </p>
               </div>
 
@@ -181,31 +181,31 @@ export default function FragranceNotesGuidePage() {
               {
                 time: '8:00 AM - Gerade aufgetragen',
                 notes: 'Top-Noten',
-                desc: 'Coffee & Almond – frisch, belebend, leicht süss. Das erste, was du und andere riechen.',
+                desc: 'Orangenblüte & rosa Pfeffer – hell, blumig, leicht pfeffrig. Das erste, was du und andere riechen.',
                 intensity: '⭐⭐⭐⭐⭐'
               },
               {
                 time: '8:15 AM - Nach 15 Minuten',
                 notes: 'Top-Noten verabschieden sich',
-                desc: 'Der Coffee-Punch verschwindet. Der süsse, warme Kern tritt hervor.',
+                desc: 'Die helle Frische tritt zurück. Der Kaffee im Herzen kommt zum Vorschein.',
                 intensity: '⭐⭐⭐⭐'
               },
               {
                 time: '8:30 AM–1:00 PM - 30 Min – 5 Stunden',
                 notes: 'Heart-Noten (die beste Stunde)',
-                desc: 'Vanilla, Licorice & Bourbon – warm, süss, sinnlich. Das ist der Peak – warum du den Duft liebst.',
+                desc: 'Kaffee & Jasmin – dunkel, blumig, sinnlich. Das ist der Peak – warum du den Duft liebst.',
                 intensity: '⭐⭐⭐⭐⭐'
               },
               {
                 time: '1:00 PM–4:00 PM - 5–8 Stunden',
                 notes: 'Heart-Noten langsam verdunkelnd',
-                desc: 'Die Süsse wird subtiler. Holz- und Moschus-Noten treten auf. Der Duft wird älter, erwachsener.',
+                desc: 'Kaffee und Jasmin werden leiser. Vanille und Holz treten in den Vordergrund.',
                 intensity: '⭐⭐⭐⭐'
               },
               {
                 time: '4:00 PM–8:00 PM - 8–12 Stunden',
                 notes: 'Base-Noten dominieren',
-                desc: 'Cedar & Tonka Bean – warm, dunkel, würzig. Ein unterschwelliger Duft, aber deutlich spürbar.',
+                desc: 'Vanille, Patchouli & Zeder – warm, süss, holzig. Ein unterschwelliger Duft, aber deutlich spürbar.',
                 intensity: '⭐⭐⭐'
               },
               {
@@ -268,9 +268,9 @@ export default function FragranceNotesGuidePage() {
                 desc: 'Blumig, elegant, weiblich/neutral. Der Kern des Dufts. Halten 1–4 Stunden.'
               },
               {
-                category: 'HEART-NOTEN (Gewürz)',
-                examples: ['Zimt', 'Vanille', 'Amber', 'Karamell', 'Kakao'],
-                desc: 'Warm, süss, würzig. Geben Weichheit und Wärme. Halten lange.'
+                category: 'BASE-NOTEN (Süss & warm)',
+                examples: ['Vanille', 'Amber', 'Karamell', 'Kakao'],
+                desc: 'Warm, süss, weich. Geben Weichheit und Wärme. Halten lange.'
               },
               {
                 category: 'BASE-NOTEN (Holz)',

@@ -101,7 +101,7 @@ export default function DuftchemieGrundlagen() {
               🌬️ Kopfnoten (Top Notes)
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#6b5344', marginBottom: '1rem', fontStyle: 'italic' }}>
-              Flüchtig, frisch, schnell vorbei (5–15 Minuten)
+              Flüchtig, frisch, schnell vorbei (die ersten Minuten bis ca. 15–30 Minuten)
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
               Die ersten Sekunden nach dem Sprühen – das ist, was dich anzieht oder abstosst. Kopfnoten sind die leichtesten, flüchtigsten Moleküle: Zitrus (Bergamotte, Zitrone), Minze, Grapefruit, Ananas. Sie verdampfen schnell, weil ihre Moleküle klein sind und niedrige Siedepunkte haben.
@@ -110,7 +110,7 @@ export default function DuftchemieGrundlagen() {
               <strong>Die Chemie:</strong> Kleine Moleküle mit hoher Flüchtigkeit. Der Dampfdruck ist hoch – die Moleküle wollen verdampfen. In wenigen Minuten sind sie in der Luft, und dein Duft riecht anders.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#6b5344' }}>
-              <strong>Warum das wichtig ist:</strong> Kopfnoten sind oft „Köder". Eine grossartige Top-Note zieht dich an, aber sie ist nicht das echte Aroma des Dufts. Nach 10 Minuten verschwindet sie, und der Duft entfaltet sich vollständig. Das ist völlig normal – nicht jeder Duft muss in den ersten Sekunden gut riechen.
+              <strong>Warum das wichtig ist:</strong> Kopfnoten sind oft „Köder". Eine grossartige Top-Note zieht dich an, aber sie ist nicht das echte Aroma des Dufts. Nach ca. 15–30 Minuten ist sie meist verflogen, und der Duft entfaltet sich vollständig. Das ist völlig normal – nicht jeder Duft muss in den ersten Sekunden gut riechen.
             </p>
           </div>
 
@@ -190,7 +190,7 @@ export default function DuftchemieGrundlagen() {
                 Eau de Toilette (EDT) – 5–15% Duftkonzentration
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: 0 }}>
-                Die leichteste Version. Der Rest ist hauptsächlich Alkohol und Wasser. Holt sich schnell weg, hält 3–4 Stunden. Das ist die „schnelle, frische" Option. Preis: ~CHF 50–80.
+                Die leichteste Version. Der Rest ist hauptsächlich Alkohol und Wasser. Holt sich schnell weg, hält etwa 3–6 Stunden. Das ist die „schnelle, frische" Option.
               </p>
             </div>
             <div style={{ marginBottom: '1.5rem' }}>
@@ -198,12 +198,12 @@ export default function DuftchemieGrundlagen() {
                 Eau de Parfum (EDP) – 15–20% Duftkonzentration
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: 0 }}>
-                Der Standard für „gute Düfte". Mittlere Konzentration, bessere Haftung, hält 6–8 Stunden. Das ist, was die meisten Luxus-Düfte sind. Preis: ~CHF 120–180.
+                Der Standard für „gute Düfte". Mittlere Konzentration, bessere Haftung, hält etwa 6–12 Stunden. Das ist, was die meisten Luxus-Düfte sind.
               </p>
             </div>
             <div style={{ marginBottom: '1.5rem' }}>
               <p style={{ fontSize: '0.95rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.3rem' }}>
-                Eau de Cologne (EDC) – 3–5% Duftkonzentration
+                Eau de Cologne (EDC) – 2–5% Duftkonzentration
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: 0 }}>
                 Super leicht, fast nur Alkohol. Sehr erfrischend, aber kurz. Hält 1–2 Stunden. Für den schnellen „Frische-Kick" nach dem Duschen.
@@ -211,16 +211,16 @@ export default function DuftchemieGrundlagen() {
             </div>
             <div>
               <p style={{ fontSize: '0.95rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.3rem' }}>
-                Parfum (Pure Fragrance/Extrait) – 20–40%+ Duftkonzentration
+                Parfum (Pure Fragrance/Extrait) – meist 20–30% Duftkonzentration
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: 0 }}>
-                Das stärkste Zeug. Reines Duftkaufen, minimal verdünnt. Hält 12–24 Stunden mit nur 1–2 Sprühstösse. Das ist Luxus mit hohem Preis: ~CHF 200+.
+                Das stärkste Zeug. Reines Duftkaufen, minimal verdünnt. Hält etwa 8–24 Stunden mit nur 1–2 Sprühstössen. Meist die teuerste Variante.
               </p>
             </div>
           </div>
 
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3728', marginBottom: '1.2rem' }}>
-            <strong>Die Chemie dahinter:</strong> Die Duftmoleküle werden mit Alkohol (normalerweise 85–90% Alkohol im Duftstoff selbst) verdünnt. Je weniger Alkohol, desto höher die Konzentration. Ein Duft mit höherer Konzentration hält länger, weil mehr „echte" Duftmoleküle vorhanden sind, um zu verdampfen.
+            <strong>Die Chemie dahinter:</strong> Die Duftmoleküle werden mit Alkohol verdünnt. Je weniger Alkohol, desto höher die Konzentration. Ein Duft mit höherer Konzentration hält länger, weil mehr „echte" Duftmoleküle vorhanden sind, um zu verdampfen.
           </p>
 
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3728' }}>
@@ -267,12 +267,12 @@ export default function DuftchemieGrundlagen() {
               Sandelholz (Basisnote)
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              Grosse, schwere Moleküle (Santol, Alpha-Santalol). Niedriger Dampfdruck. Wollen nicht verdampfen. Bleiben an deiner Haut, in deinen Haaren – 12+ Stunden später ist immer noch da. Das ist, warum holzige Düfte so „klebrig" sind. Die Chemie zwingt diese Noten, zu bleiben.
+              Grosse, schwere Moleküle (z. B. Santalol aus Sandelholz). Niedriger Dampfdruck. Wollen nicht verdampfen. Bleiben an deiner Haut, in deinen Haaren – 12+ Stunden später ist immer noch da. Das ist, warum holzige Düfte so „klebrig" sind. Die Chemie zwingt diese Noten, zu bleiben.
             </p>
           </div>
 
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3728', marginBottom: '1.2rem' }}>
-            <strong>Praktischer Hinweis:</strong> Ein grossartiger Duft braucht Balance. Nur Kopfnoten = 10 Minuten Spass und dann weg. Nur Basisnoten = ein schwerer Duft, der dich stundenlang verfolgst. Ein gutes Gleichgewicht = mehrere Stunden angenehmes Riechen.
+            <strong>Praktischer Hinweis:</strong> Ein grossartiger Duft braucht Balance. Nur Kopfnoten = kurzer Spass und dann weg. Nur Basisnoten = ein schwerer Duft, der dich stundenlang verfolgst. Ein gutes Gleichgewicht = mehrere Stunden angenehmes Riechen.
           </p>
         </section>
 
@@ -303,7 +303,7 @@ export default function DuftchemieGrundlagen() {
               Nach 15–30 Minuten „riechst" du deinen eigenen Duft nicht mehr. Deine Nase ist daran gewöhnt. Der Duft ist immer noch da – biochemisch verdampft – aber psychologisch hast du ihn nicht mehr wahrgenommen. Das ist, warum Freunde dir sagen können „hey, du riechst grossartig", aber du selbst es nicht merkst. Deine Nase hat sich daran gewöhnt.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#6b5344' }}>
-              <strong>Tipp:</strong> Das ist völlig normal und ein Zeichen, dass der Duft gut dosiert ist. Ein zu starker Duft kann dieser Gewöhnung nicht unterliegen – du bleibst geruchlich überfordert.
+              <strong>Tipp:</strong> Das ist völlig normal. Sprüh deshalb nicht nach, nur weil du ihn selbst nicht mehr riechst.
             </p>
           </div>
 
@@ -432,7 +432,7 @@ export default function DuftchemieGrundlagen() {
               Haftung spricht Bände
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', margin: 0 }}>
-              Ein Duft, der nach 2 Stunden weg ist, hat wahrscheinlich keine hochwertige Basis. Gute Düfte halten 6–8 Stunden oder mehr. Die Basis ist teuer – es braucht echte Sandelholz, echte Ambra, echte Moschus, um einen Duft zu verankern. Billige Düfte sparen an der Basis.
+              Ein Duft, der nach 2 Stunden weg ist, hat wahrscheinlich keine hochwertige Basis. Gute Düfte halten 6–8 Stunden oder mehr.
             </p>
           </div>
 
@@ -465,7 +465,7 @@ export default function DuftchemieGrundlagen() {
               Ist natürlicher Duft besser als synthetischer?
             </summary>
             <p style={{ fontSize: '0.9rem', color: '#4a3728', lineHeight: 1.7, marginTop: '0.8rem', margin: '0.8rem 0 0 0' }}>
-              Chemisch? Nein. Ein synthetisches Duftmolekül ist identisch mit einem natürlichen – gleiche Struktur, gleiche Funktion. Der Unterschied ist der Preis und die Nachhaltigkeit. Natürliche Düfte sind teurer und schwächer. Synthetische sind konsistent und stärker. Beide können grossartig sein.
+              Nicht automatisch. Manche synthetischen Duftstoffe sind naturidentisch – also das gleiche Molekül wie in der Natur. Natürliche Öle sind dagegen Gemische aus vielen Stoffen und können je nach Ernte schwanken. Beide können grossartig sein.
             </p>
           </details>
 

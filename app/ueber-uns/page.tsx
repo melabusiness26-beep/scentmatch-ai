@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/ueber-uns` },
   openGraph: {
     title: 'Über Auressa | Auressa',
-    description: 'Die Geschichte hinter der ehrlichsten Duft-Plattform der Schweiz.',
+    description: 'Die Geschichte hinter einer ehrlichen Duft-Plattform aus der Schweiz.',
     url: `${SITE_URL}/ueber-uns`,
     type: 'website',
   },
@@ -24,7 +24,7 @@ const aboutJsonLd = {
   name: 'Über Auressa',
   url: `${SITE_URL}/ueber-uns`,
   description:
-    'Auressa ist eine unabhängige Duft-Findungs-Plattform aus der Schweiz – gegründet von Melanie Viele, mit Duft-Quiz, KI-Scanner und ehrlichen Ratgebern.',
+    'Auressa ist eine unabhängige Duft-Findungs-Plattform aus der Schweiz – gegründet von Melanie Viele, mit Duft-Quiz und ehrlichen Ratgebern.',
 };
 
 export default function UeberUnsPage() {
@@ -101,16 +101,16 @@ export default function UeberUnsPage() {
             Was wir bieten
           </p>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.5rem' }}>
-            Mehr als ein Parfüm-Shop
+            Mehr als eine Duftliste
           </h2>
           <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
             {[
               { icon: '🎯', title: 'Duft-Quiz', text: 'Beantworte 10 Fragen – wir berechnen deinen persönlichen Match-Score für jeden Duft im Katalog.' },
               { icon: '🕵️', title: 'Duft-Detektiv', text: '12 tiefe Fragen zu Persönlichkeit, Stil und Anlass. Für Menschen, die ihren Signature Duft noch nicht kennen.' },
-              { icon: '📸', title: 'Duft-Scanner', text: 'Foto hochladen, Parfüm erkennen lassen – KI identifiziert Flakon, Noten und Charakter in Sekunden.' },
+              { icon: '📸', title: 'Duft-Scanner (bald verfügbar)', text: 'Foto hochladen, Parfüm erkennen lassen – die KI soll Flakon, Noten und Charakter erkennen.' },
               { icon: '💸', title: 'Günstige Dupes', text: 'Keine Lust auf 200-Franken-Flakons? Wir zeigen dir Alternativen, die ähnlich riechen – für einen Bruchteil des Preises.' },
               { icon: '📖', title: 'Ehrliche Ratgeber', text: 'Kein Fachjargon. Klare Erklärungen zu Duftnoten, Ausstrahlung, Haltbarkeit und saisonalen Empfehlungen.' },
-              { icon: '🇨🇭', title: 'Schweizer Perspektive', text: 'Alle Preise in CHF, Bezugsquellen in der Schweiz, Verfügbarkeit bei Schweizer Shops.' },
+              { icon: '🇨🇭', title: 'Schweizer Perspektive', text: 'Alle Preise in CHF, Texte in Schweizer Schreibweise.' },
             ].map(item => (
               <div key={item.title} style={{
                 background: '#fff',
@@ -139,7 +139,6 @@ export default function UeberUnsPage() {
               { label: 'Ehrlichkeit', text: 'Kein Duft bekommt eine bessere Bewertung weil ein Affiliate-Programm dahintersteckt. Punkt.' },
               { label: 'Transparenz', text: 'Wenn ein Link Provision bringt, steht das dabei. Immer. Die Preise im Shop gelten, nicht meine.' },
               { label: 'Kein Fachjargon', text: 'Akkorde, Chypre, Animalisch – ich erkläre was das bedeutet, statt damit zu imponieren.' },
-              { label: 'Kein unnötiger Aufwand', text: 'Du musst kein Konto erstellen, keine App installieren, nichts kaufen. Einfach finden.' },
             ].map(v => (
               <div key={v.label} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
                 <span style={{ color: '#d4af37', fontWeight: 700, fontSize: '1rem', flexShrink: 0, marginTop: '2px' }}>→</span>
@@ -210,7 +209,7 @@ export default function UeberUnsPage() {
             Bereit, deinen Duft zu finden?
           </h2>
           <p style={{ color: '#6b5344', marginBottom: '1.5rem', fontSize: '0.95rem' }}>
-            In weniger als 3 Minuten weisst du, welcher Duft wirklich zu dir passt.
+            In wenigen Minuten weisst du, welcher Duft wirklich zu dir passt.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <Link

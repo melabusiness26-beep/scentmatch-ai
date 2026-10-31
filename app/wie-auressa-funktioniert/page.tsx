@@ -77,7 +77,7 @@ export default function WieAuressaFunktioniert() {
           </p>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728' }}>
             Das Quiz ist nicht Psychologie – es ist mathematisch. Ich sammle Daten über deine Vorlieben
-            und gleiche sie gegen hunderte von Düften ab. Das funktioniert überraschend gut.
+            und gleiche sie mit allen Düften im Katalog ab. Das funktioniert überraschend gut.
           </p>
         </section>
 
@@ -104,7 +104,7 @@ export default function WieAuressaFunktioniert() {
                 1. Geschlecht (Damen, Herren, Unisex)
               </p>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>
-                So filtern wir nicht-relevante Düfte heraus. Ein Herren-Duft ist nicht schlecht, wenn du Damen suchst – es ist nur nicht dein Fokus.
+                So filtern wir nicht-relevante Düfte heraus (Unisex-Düfte bleiben immer dabei). Ein Herren-Duft ist nicht schlecht, wenn du Damen suchst – es ist nur nicht dein Fokus.
               </p>
             </div>
             <div style={{ marginBottom: '1rem' }}>
@@ -144,7 +144,7 @@ export default function WieAuressaFunktioniert() {
                 6. Anlass (Alltag, Date, Abend)
               </p>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>
-                Düfte werden je nach Intensität/Charakter bewertet. Ein Abend-Duft ist nicht für Büro gemacht.
+                Düfte, die für deinen Anlass gedacht sind, bekommen mehr Punkte. Ein Abend-Duft ist nicht fürs Büro gemacht.
               </p>
             </div>
             <div style={{ marginBottom: '1rem' }}>
@@ -206,7 +206,7 @@ export default function WieAuressaFunktioniert() {
                 Duftfamilie: 30%
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: 0 }}>
-                Das ist der Hauptfaktor. Wenn der Duft in deiner Lieblings-Familie ist, bekommen wir das richtig.
+                Das ist der Hauptfaktor. Gehört der Duft zu deiner gewählten Familie, gibt es die vollen 30 Punkte.
               </p>
             </div>
             <div style={{ marginBottom: '1.2rem' }}>
@@ -214,7 +214,7 @@ export default function WieAuressaFunktioniert() {
                 Lieblingsnote: 20%
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: 0 }}>
-                Wenn deine Lieblingsnote drin ist: +20 Punkte. Wenn nicht, aber eine ähnliche Note: +4 Punkte.
+                Wenn deine Lieblingsnote drin ist: 20 Punkte. Wenn nicht: 4 Punkte. Ohne Angabe: 12 Punkte.
               </p>
             </div>
             <div style={{ marginBottom: '1.2rem' }}>
@@ -222,7 +222,7 @@ export default function WieAuressaFunktioniert() {
                 Budget: 15%
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: 0 }}>
-                Passt der Preis? Im Budget? +15. Bis +30%: +7. Über Budget: 0.
+                Passt der Preis? Im Budget: 15 Punkte. Bis 30% darüber: 7. Noch teurer: 0. Budget egal: 15.
               </p>
             </div>
             <div style={{ marginBottom: '1.2rem' }}>
@@ -230,7 +230,7 @@ export default function WieAuressaFunktioniert() {
                 Anlass: 13%
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: 0 }}>
-                Ist der Duft für deinen Anlass passend? (Alltag = dezent, Abend = intensiv).
+                Ist der Duft für deinen Anlass gedacht: 13 Punkte. Date und Abend liegen nah beieinander: 8. Sonst: 4. Ohne Angabe: 10.
               </p>
             </div>
             <div style={{ marginBottom: '1.2rem' }}>
@@ -238,7 +238,7 @@ export default function WieAuressaFunktioniert() {
                 Jahreszeit: 12%
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: 0 }}>
-                Sommer und Winter Düfte – das System kennt da Unterschiede.
+                Passt die Jahreszeit genau: 12 Punkte. Winterduft bei „Herbst/Winter“: 10. Ganzjährige Düfte: 9. Sonst: 3.
               </p>
             </div>
             <div style={{ marginBottom: '1.2rem' }}>
@@ -246,7 +246,7 @@ export default function WieAuressaFunktioniert() {
                 Sillage/Intensität: 10%
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: 0 }}>
-                Möchtest du dezent oder präsent? Das wird gewichtet.
+                Möchtest du dezent oder präsent? Je näher die Ausstrahlung des Dufts an deinem Wunsch liegt, desto mehr der 10 Punkte gibt es.
               </p>
             </div>
             <div>
@@ -254,13 +254,19 @@ export default function WieAuressaFunktioniert() {
                 No-Go-Note: −25
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: 0 }}>
-                Wenn der Duft deine No-Go-Note enthält: grosser Abzug.
+                Wenn der Duft deine No-Go-Note enthält: 25 Punkte Abzug.
               </p>
             </div>
           </div>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728' }}>
+            Dazu kommt ein kleiner Bonus von bis zu 8 Punkten, wenn die Haltbarkeit zu deinem Wunsch passt.
+            Das Geschlecht ist kein Punktwert, sondern ein Filter. Empfohlen werden nur Düfte bis CHF 180.
+            Der Score wird auf 0–100 begrenzt. Hast du einen Anker-Duft genannt, zählt zusätzlich die Ähnlichkeit
+            zu diesem Duft (55% Ähnlichkeit, 45% Match-Score).
+          </p>
+          <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728' }}>
             <strong>Wichtig:</strong> Das ist mathematisch – keine Zauberei, kein KI-Hokuspokus.
-            Die Ergebnisse funktionieren überraschend gut, weil diese Faktoren echte Geschmack-Prädiktoren sind.
+            Die Gewichte hat Auressa festgelegt.
           </p>
         </section>
 
@@ -273,7 +279,7 @@ export default function WieAuressaFunktioniert() {
             Warum manche Düfte höher stehen als andere
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1rem' }}>
-            Nach dem Quiz berechnen wir für <strong>jeden</strong> Duft in unserem Katalog einen Match-Score.
+            Nach dem Quiz berechnen wir für <strong>jeden</strong> passenden Duft in unserem Katalog einen Match-Score.
             Die Düfte werden dann absteigend von höchster zu niedrigster Match sortiert.
             Der Duft ganz oben ist nicht automatisch „der beste Duft der Welt" – er ist der beste für <strong>dich</strong>.
           </p>
@@ -295,11 +301,11 @@ export default function WieAuressaFunktioniert() {
             Warum es funktioniert
           </p>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.25rem' }}>
-            Die Wissenschaft hinter dem Match
+            Die Idee hinter dem Match
           </h2>
           <ul style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', margin: 0, paddingLeft: '1.5rem' }}>
             <li style={{ marginBottom: '0.75rem' }}>
-              <strong>Familie ist der stärkste Prädiktor.</strong> Ein Mensch, der „Woody" liebt, wird ein Floral-Duft selten lieben. Das ist psychologisch validiert.
+              <strong>Die Familie zählt am meisten.</strong> Deshalb hat die Duftfamilie bei uns das grösste Gewicht.
             </li>
             <li style={{ marginBottom: '0.75rem' }}>
               <strong>Lieblingsnoten funktionieren.</strong> Wenn dir Vanille nicht gefällt, brauchst du keinen reinen Vanille-Duft.
@@ -308,7 +314,7 @@ export default function WieAuressaFunktioniert() {
               <strong>Kontext ist entscheidend.</strong> Ein Duft im Büro vs. beim Date funktioniert völlig anders.
             </li>
             <li style={{ marginBottom: '0.75rem' }}>
-              <strong>Die Gewichte sind empirisch.</strong> Diese Prozentsätze (30% Familie, 20% Noten) kommen nicht aus der Luft – das sind reale Beobachtungen darüber, was Geschmack vorhersagt.
+              <strong>Die Gewichte hat Auressa festgelegt.</strong> Diese Prozentsätze (30% Familie, 20% Lieblingsnote) sind eine bewusste Entscheidung darüber, was uns beim Matching am wichtigsten ist.
             </li>
           </ul>
         </section>
@@ -328,7 +334,7 @@ export default function WieAuressaFunktioniert() {
             Mach das Quiz und finde deinen Match
           </h2>
           <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', marginBottom: '1.5rem' }}>
-            10 Fragen, 2 Minuten. Dein persönlicher Match wartet.
+            10 Fragen, wenige Minuten. Dein persönlicher Match wartet.
           </p>
           <Link href="/quiz" style={{
             display: 'inline-block',

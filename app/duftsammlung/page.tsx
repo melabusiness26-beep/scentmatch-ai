@@ -55,8 +55,8 @@ export default function DuftsammlungPage() {
               Hormonzyklus oder was du gegessen hast. Mit mehreren hast du eine Alternative.
             </li>
             <li>
-              <strong>Abwechslung ist gut für die Nase:</strong> Die menschliche Nase braucht Vielfalt, um aufmerksam
-              zu bleiben. Das ist auch der Grund, warum Parfümeure mehrere Düfte in einer Serie machen.
+              <strong>Abwechslung ist gut für die Nase:</strong> Wenn du immer denselben Duft trägst, gewöhnt
+              sich deine Nase daran. Mit Abwechslung nimmst du deine Düfte wieder bewusster wahr.
             </li>
           </ul>
 
@@ -167,7 +167,7 @@ export default function DuftsammlungPage() {
               {
                 strategie: 'Die „Anker + Variationen" Methode',
                 warum: 'Du hast einen Lieblingduft gefunden – kaufe jetzt verschiedene Versionen und ähnliche Düfte der gleichen Familie. Das ist sicherer als wild rumzutesten.',
-                wie: 'Beispiel: Du liebst Chanel No. 5. Kaufe: 1) No. 5 EdP (Original), 2) No. 5 L\'Eau EdT (leichter), 3) Einen ähnlichen günstigen Klon, 4) Einen anderen Floral-Klassiker (Dior J\'adore).',
+                wie: 'Beispiel: Du liebst Chanel No. 5. Kaufe: 1) No. 5 EdP, 2) No. 5 L\'Eau EdT (leichter), 3) Einen ähnlichen günstigen Klon, 4) Einen anderen Floral-Klassiker (Dior J\'adore).',
                 best_for: 'Wer einen Lieblingduft hat und darauf aufbauen will'
               },
               {
@@ -225,7 +225,7 @@ export default function DuftsammlungPage() {
               {
                 fehler: 'Falsch lagern',
                 warum: 'Sonnenlicht, Hitze und Feuchtigkeit zerstören Düfte. Nach einem Jahr riechen deine schönen Flakons nach Chemie.',
-                lösung: 'Lagere kühl, dunkel, vertikal (nicht liegend). Kühlschrank oder kühle Ecke im Schlafzimmer. Nicht im Badezimmer (zu warm & feucht).'
+                lösung: 'Lagere kühl, dunkel, ohne Temperaturschwankungen und vertikal (nicht liegend) – z. B. in einem Schrank im Schlafzimmer. Ein Kühlschrank ist nicht nötig. Nicht im Badezimmer (zu warm & feucht).'
               }
             ].map((item, i) => (
               <div key={i} style={{
@@ -259,19 +259,19 @@ export default function DuftsammlungPage() {
               <strong>Kauf Samples & Tester</strong> – CHF 2–5 für eine kleine Flasche. So testest du 10 Düfte für CHF 30 statt 10 × CHF 80.
             </li>
             <li style={{ marginBottom: '1rem' }}>
-              <strong>Nutze günstige Klone</strong> – Brands wie Armaf, Lattafa (CHF 20–30) duplizieren teure Düfte zu 75% der Qualität. Legale Alternative.
+              <strong>Nutze günstige Klone</strong> – Brands wie Armaf, Lattafa (CHF 20–30) bieten Alternativen, die bekannten Düften ähnlich riechen. Legale Alternative.
             </li>
             <li style={{ marginBottom: '1rem' }}>
-              <strong>Kauf EdT statt EdP</strong> – Gleicher Duft, aber EdT kostet 40–60% weniger. Haltbarkeit ist 4–6 Stunden statt 8+ – für den Job völlig ok.
+              <strong>Kauf EdT statt EdP</strong> – Ähnlicher Duft, aber EdT ist meist etwas günstiger. Hält dafür kürzer – für den Job oft völlig ok.
             </li>
             <li style={{ marginBottom: '1rem' }}>
-              <strong>Warte auf Sales</strong> – Notino.ch, Flaconi, Breuninger haben regelmässig 30–50% Rabatt. Black Friday ist goldwert.
+              <strong>Warte auf Sales</strong> – Notino.ch, Flaconi, Breuninger haben regelmässig Aktionen. Black Friday ist goldwert.
             </li>
             <li style={{ marginBottom: '1rem' }}>
               <strong>Mixe Preisklassen</strong> – 1–2 teurer Lieblingsdüfte + 3–4 Budget-Düfte = vielfalt mit kleinerem Budget.
             </li>
             <li>
-              <strong>Kauf Unisex/Niche-Düfte</strong> – Diese sind oft günstiger als Luxus-Düfte und überraschend gut.
+              <strong>Schau dir Unisex-Düfte an</strong> – Viele sind überraschend gut und erweitern deine Auswahl.
             </li>
           </ol>
 
@@ -303,7 +303,7 @@ export default function DuftsammlungPage() {
             <li>Nach Jahreszeit (separate Boxen)</li>
             <li>Nach Familie (Floral zusammen, Zitrus zusammen)</li>
             <li>Nach Grösse (grosse Flakons unten, Samples oben)</li>
-            <li>Im <strong>Kühlschrank</strong> (für Langzeitlagerung)</li>
+            <li>An einem <strong>kühlen, dunklen Ort ohne Temperaturschwankungen</strong> – ein Kühlschrank ist nicht nötig</li>
             <li>Mit <strong>Etiketten</strong> – Kaufdatum, damit du weisst, wann es anfängt zu altern</li>
           </ul>
 
@@ -339,7 +339,7 @@ export default function DuftsammlungPage() {
               },
               {
                 frage: 'Wie lange hält ein Duft im Schrank?',
-                antwort: 'Bei richtiger Lagerung (kühl, dunkel, vertikal): 3–5 Jahre. Mit OK-Lagerung: 1–2 Jahre. Im heissen Badezimmer: 6 Monate. Lagere richtig und deine Sammlung hält lange.'
+                antwort: 'Bei richtiger Lagerung (kühl, dunkel, ohne Temperaturschwankungen, vertikal) oft mehrere Jahre. Im warmen, feuchten Badezimmer altert er deutlich schneller. Lagere richtig und deine Sammlung hält lange.'
               },
               {
                 frage: 'Sollte ich teure oder günstige Düfte kaufen?',
@@ -388,7 +388,7 @@ export default function DuftsammlungPage() {
             </p>
             <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
               Du weisst jetzt, wie eine gute Sammlung aussieht. Brauchst du Hilfe bei der Auswahl? Nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> –
-              es hilft dir, Düfte zu finden, die zusammenpassen und auf deiner Körperchemie funktionieren.
+              es hilft dir, Düfte zu finden, die zu deinen Vorlieben passen.
               Oder <Link href="/duft-waehlen" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>lies unseren Ratgeber zur Duftwahl</Link> für einen systematischen Ansatz zum perfekten Duft.
             </p>
           </div>

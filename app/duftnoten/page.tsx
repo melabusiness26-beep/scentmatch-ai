@@ -50,7 +50,7 @@ export default function DuftnotenPage() {
             </p>
             <p style={{ margin: 0, color: '#6b5344', fontSize: '0.9rem', lineHeight: 1.6 }}>
               Lerne, wie die Duftnoten-Pyramide funktioniert und warum ein Duft sich über den Tag verändert.
-              Lies unseren <Link href="/duftnoten-guide" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>umfassenden Duftnoten-Guide</Link>.
+              Lies unseren <Link href="/duftnoten-guide" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>Duftnoten-Guide</Link>.
             </p>
           </div>
 

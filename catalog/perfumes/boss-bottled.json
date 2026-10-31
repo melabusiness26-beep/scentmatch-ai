@@ -1,0 +1,40 @@
+{
+  "slug": "boss-bottled",
+  "perfume_name": "Boss Bottled",
+  "brand": "Hugo Boss",
+  "gender": "Men",
+  "fragrance_family": "woody",
+  "concentration": "EdT",
+  "volume_ml": 100,
+  "price_chf": 53,
+  "longevity": 6,
+  "sillage": 6,
+  "season": "Ganzjährig",
+  "occasion": "Alltag",
+  "release_year": 1998,
+  "perfumer": "Annick Ménardo",
+  "top_notes": ["Apfel", "Bergamotte", "Zitrone", "Zitrusfrüchte", "Pflaume"],
+  "heart_notes": ["Zimt", "Gewürznelke", "Geranie", "Mahagoni"],
+  "base_notes": ["Vanille", "Zedernholz", "Sandelholz", "Olivenbaum", "Vetiver"],
+  "accords": ["Frisch", "Fruchtig", "Süss", "Holzig", "Würzig"],
+  "age_group": "all",
+  "lifestyle": "casual",
+  "trend_vibe": "classic",
+  "gender_nuance": "masculine",
+  "sizes": [
+    {"ml": 30, "price_chf": 26.99},
+    {"ml": 50, "price_chf": 34.99},
+    {"ml": 100, "price_chf": 52.99},
+    {"ml": 200, "price_chf": 68.99}
+  ],
+  "similar_perfumes": [
+    "X-Bolt – G. Bellini",
+    "Grey Point – La Rive",
+    "UDV Elixir – Ulric de Varens"
+  ],
+  "flacon_designer": "Peter Schmidt",
+  "good_to_know": [
+    "Bis 2016 wurde Boss Bottled von Procter & Gamble hergestellt, heute vertreibt ihn Coty."
+  ],
+  "description": "Boss Bottled von Hugo Boss ist 1998 erschienen und stammt von der Parfümeurin Annick Ménardo. Er gilt als Signatur-Duft von Hugo Boss, inzwischen gibt es ihn in vielen Varianten.\n\nDen Auftakt machen Apfel, Bergamotte, Zitrone, Zitrusfrüchte und Pflaume. Im Herzen folgen Zimt, Gewürznelke, Geranie und Mahagoni, in der Basis bleiben Vanille, Zedernholz, Sandelholz, Olivenbaum und Vetiver.\n\nIn der Parfumo-Community gilt er als frisch-fruchtiger Duft mit süsser, holziger und würziger Note. Haltbarkeit und Ausstrahlung werden dort als solide bewertet. Den Flakon gestaltete der Designer Peter Schmidt."
+}

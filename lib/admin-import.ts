@@ -10,6 +10,7 @@ import {
   parseSimilarNames,
   sizesToText
 } from './perfume-extras.ts';
+import { accordsToText, parseAccordText } from './accords.ts';
 
 export const IMPORT_FAMILIES = ['clean', 'gourmand', 'woody', 'floral'] as const;
 export const IMPORT_GENDERS = ['Women', 'Men', 'Unisex'] as const;
@@ -53,6 +54,7 @@ export type ImportedFields = Partial<{
   similar_perfumes: string;
   sizes: string;
   alternative_to: string;
+  accords: string;
   description: string;
 }>;
 
@@ -166,6 +168,22 @@ function parseEntry(input: Record<string, unknown>, index: number): ImportEntry 
     const alternatives = cleanAlternatives(Array.isArray(raw.alternative_to) ? raw.alternative_to : [raw.alternative_to]);
     if (alternatives.length) fields.alternative_to = alternativesToText(alternatives);
     else warnings.push('„Alternative zu" ist ungültig – nicht übernommen.');
+  }
+  // Duftrichtung laut Parfumo, nach Stärke geordnet: ["Holzig", "Erdig", …],
+  // mit Prozent ["Frisch 22", …] oder [{"name": "Frisch", "value": 22}, …].
+  if (raw.accords != null) {
+    const items = Array.isArray(raw.accords) ? raw.accords : [raw.accords];
+    const text = items
+      .map((a) =>
+        a && typeof a === 'object'
+          ? [(a as any).name, (a as any).value].filter((x) => x != null && x !== '').join(' ')
+          : String(a)
+      )
+      .join(', ');
+    const { accords, unknown } = parseAccordText(text);
+    if (unknown.length) warnings.push(`Duftrichtung „${unknown.join(', ')}" ist unbekannt – nicht übernommen.`);
+    if (accords.length) fields.accords = accordsToText(accords);
+    else if (!unknown.length) warnings.push('Duftrichtung ist ungültig – nicht übernommen.');
   }
 
   const missing: string[] = [];

@@ -15,6 +15,7 @@ import {
   parseSizes,
   sizesToText
 } from '@/lib/perfume-extras';
+import { accordsToText, cleanStoredAccords, parseAccordText } from '@/lib/accords';
 
 const FAMILIES = [['clean', 'Clean / Frisch'], ['gourmand', 'Gourmand / Süss'], ['woody', 'Woody / Holzig'], ['floral', 'Floral / Blumig']] as const;
 const GENDERS = ['Women', 'Men', 'Unisex'] as const;
@@ -94,6 +95,7 @@ const emptyForm = {
   sizes: '',
   alternative_to: '',
   flacon_designer: '',
+  accords: '',
   age_group: 'all' as const,
   lifestyle: 'casual' as const,
   trend_vibe: 'classic' as const,
@@ -167,6 +169,9 @@ export default function AdminPage() {
   // Grössen, „Alternative zu" und Flakon-Design gibt es erst nach SQL 62.
   const [hasExtras, setHasExtras] = useState(true);
   const [extrasById, setExtrasById] = useState<Record<string, ExtraRow>>({});
+  // Duftrichtung (laut Parfumo) gibt es erst nach SQL 64.
+  const [hasAccords, setHasAccords] = useState(true);
+  const [accordsById, setAccordsById] = useState<Record<string, string>>({});
   // Wann ein Duft zuletzt gespeichert wurde (Spalte gibt es erst nach SQL 61).
   const [savedAt, setSavedAt] = useState<Record<string, string>>({});
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -228,9 +233,22 @@ export default function AdminPage() {
     setExtrasById(map);
   }
 
+  async function loadAccords() {
+    const { data, error } = await supabase.from('perfumes').select('id, accords');
+    if (error || !data) {
+      setHasAccords(false);
+      return;
+    }
+    setHasAccords(true);
+    const map: Record<string, string> = {};
+    for (const row of data as { id: string; accords: unknown }[]) map[row.id] = accordsToText(cleanStoredAccords(row.accords));
+    setAccordsById(map);
+  }
+
   async function loadPerfumes() {
     loadSavedAt();
     loadExtras();
+    loadAccords();
     // Parfümeur/Inspiration gibt es erst nach SQL 58, „Gut zu wissen" nach SQL 60 –
     // fehlen Spalten noch, ohne diese Felder laden.
     const all = await supabase.from('perfumes').select(`${PERFUME_EDIT_FIELDS}, perfumer, inspiration, good_to_know`).order('perfume_name');
@@ -338,6 +356,7 @@ export default function AdminPage() {
       sizes: sizesToText(cleanSizes(extrasById[p.id]?.sizes)),
       alternative_to: alternativesToText(cleanAlternatives(extrasById[p.id]?.alternative_to)),
       flacon_designer: extrasById[p.id]?.flacon_designer || '',
+      accords: accordsById[p.id] || '',
       age_group: (p.age_group || 'all') as any,
       lifestyle: (p.lifestyle || 'casual') as any,
       trend_vibe: (p.trend_vibe || 'classic') as any,
@@ -556,6 +575,12 @@ export default function AdminPage() {
         setSaving(false);
         return;
       }
+      const accordCheck = parseAccordText(form.accords);
+      if (accordCheck.unknown.length) {
+        setMessage(`❌ Duftrichtung unbekannt: ${accordCheck.unknown.join(', ')}`);
+        setSaving(false);
+        return;
+      }
 
       // Duplikat-Check: gleicher Name, gleiche Marke und gleiche Konzentration.
       // Andere Konzentrationen (z. B. Light Blue als EdT und EdP) sind eigene Versionen.
@@ -631,7 +656,8 @@ export default function AdminPage() {
               alternative_to: parseAlternatives(form.alternative_to),
               flacon_designer: form.flacon_designer.trim() || null
             }
-          : {})
+          : {}),
+        ...(hasAccords ? { accords: accordCheck.accords.length ? accordCheck.accords : null } : {})
       };
 
       let savedSlug: string | null = null;
@@ -1037,6 +1063,16 @@ export default function AdminPage() {
                     <label>Bekannte günstige Alternative zu (Name | Marke | Preis CHF | Hinweis)</label>
                     <textarea value={form.alternative_to} onChange={e => setField('alternative_to', e.target.value)} placeholder="Green Irish Tweed | Creed | | Gleicher Parfümeur (Pierre Bourdon)" style={{ width: '100%', minHeight: 70 }} disabled={!hasExtras} />
                   </div>
+                  <div style={{ gridColumn: '1 / -1' }} className="field">
+                    <label>Duftrichtung laut Parfumo (nach Stärke geordnet, mit Komma getrennt)</label>
+                    <input value={form.accords} onChange={e => setField('accords', e.target.value)} placeholder="Holzig, Erdig, Zitrus, Würzig, Frisch" disabled={!hasAccords} />
+                    <p className="small" style={{ margin: '4px 0 0' }}>Leer lassen = Duftcharakter wird aus den Noten berechnet.</p>
+                  </div>
+                  {!hasAccords && (
+                    <p className="small" style={{ gridColumn: '1 / -1', color: '#8a5a00' }}>
+                      ⚠️ Für die Duftrichtung bitte zuerst SQL 64 in Supabase ausführen.
+                    </p>
+                  )}
                   {!hasExtras && (
                     <p className="small" style={{ gridColumn: '1 / -1', color: '#8a5a00' }}>
                       ⚠️ Für Grössen, Alternative und Flakon-Design bitte zuerst SQL 62 in Supabase ausführen.

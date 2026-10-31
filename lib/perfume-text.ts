@@ -51,7 +51,19 @@ const ACCORD_ADJ: Record<string, string> = {
   suess: 'süsser',
   wuerzig: 'würziger',
   holzig: 'holziger',
-  warm: 'warmer'
+  warm: 'warmer',
+  // Aus der gespeicherten Duftrichtung. Ohne Eintrag (z. B. „synthetisch") wird
+  // die Richtung im Satz einfach weggelassen.
+  erdig: 'erdiger',
+  aquatisch: 'aquatischer',
+  gruen: 'grüner',
+  rauchig: 'rauchiger',
+  ledrig: 'lederiger',
+  orientalisch: 'orientalischer',
+  cremig: 'cremiger',
+  gourmand: 'süsser',
+  harzig: 'harziger',
+  seifig: 'seifiger'
 };
 
 // Stimmungsbilder: passend zum stärksten Duftcharakter innerhalb der Familie,
@@ -469,7 +481,22 @@ const ACCORD_GROUP: Record<AccordCode, string> = {
   suess: 'süsse Noten',
   wuerzig: 'würzige Noten',
   holzig: 'holzige Noten',
-  warm: 'warme Noten'
+  warm: 'warme Noten',
+  erdig: 'erdige Noten',
+  aquatisch: 'aquatische Noten',
+  gruen: 'grüne Noten',
+  rauchig: 'rauchige Noten',
+  ledrig: 'Ledernoten',
+  orientalisch: 'orientalische Noten',
+  synthetisch: 'synthetische Noten',
+  cremig: 'cremige Noten',
+  gourmand: 'Gourmand-Noten',
+  harzig: 'harzige Noten',
+  animalisch: 'animalische Noten',
+  seifig: 'seifige Noten',
+  chypre: 'Chypre-Noten',
+  fougere: 'Fougère-Noten',
+  alkoholisch: 'alkoholische Noten'
 };
 
 // Akkorde, die manche Menschen bewusst meiden – geeignet für „Eher nicht, wenn …".

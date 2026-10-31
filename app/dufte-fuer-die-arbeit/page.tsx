@@ -62,7 +62,7 @@ export default function DuefteFuerDieArbeitPage() {
                 <strong>Langlebig (aber nicht zu lange):</strong> 4–6 Stunden ist ideal. Nicht 10+ Stunden – danach riechst du falsch.
               </li>
               <li>
-                <strong>Universell akzeptiert:</strong> Ein Duft, dem 90% der Menschen positive bis neutrale Reaktion haben.
+                <strong>Universell akzeptiert:</strong> Ein Duft, auf den die meisten Menschen positiv bis neutral reagieren.
                 Nicht zu provokativ oder nischig.
               </li>
             </ol>
@@ -89,7 +89,7 @@ export default function DuefteFuerDieArbeitPage() {
                 typ: 'Kreatives / Modernes Büro',
                 beschreibung: 'Agenturen, Tech-Firmen, Startups, Design-Studios – eher innovativ, locker, modern.',
                 ideal: 'Moderncere, charaktervolle Düfte sind ok. Etwas mehr Persönlichkeit ist willkommen.',
-                beispiele: 'Diptyque L\'Eau Rose, Byredo Gypsy Floral, Heeley Sel Marin, Maison Francis Kurkdjian A la Rose',
+                beispiele: 'Diptyque Eau Rose, Heeley Sel Marin, Maison Francis Kurkdjian A la Rose',
                 intensitaet: 'EdT oder moderate EdP (2–3 Sprüher)',
                 noten: 'Frische Blüten, grüne Noten, würzig-floral, marine Noten',
                 vermeiden: 'Sehr schwere Orientalisch, sehr Nischig (die Kollegen kennen die Marke nicht), sehr süss'
@@ -138,7 +138,7 @@ export default function DuefteFuerDieArbeitPage() {
           <ul style={{ marginBottom: '2rem' }}>
             <li><strong>Chanel No. 5</strong> – DER Klassiker. Über 100 Jahre, jede:r kennt ihn. Für formale Büros perfekt.</li>
             <li><strong>Dior J'adore</strong> – Modern-klassisch, zeitlos floral, nicht schwer. Super sicher.</li>
-            <li><strong>Bleu de Chanel</strong> – Männer-Klassiker, aber jeder trägt ihn. Universell, unauffällig, zuverlässig.</li>
+            <li><strong>Bleu de Chanel</strong> – Männer-Klassiker. Universell, unauffällig, zuverlässig.</li>
           </ul>
 
           <h3>2. Der Subtile – Frisch & Zurückhaltend</h3>
@@ -147,7 +147,7 @@ export default function DuefteFuerDieArbeitPage() {
           </p>
           <ul style={{ marginBottom: '2rem' }}>
             <li><strong>Hermès Eau de Gentiane Blanche</strong> – Frisch, würzig, leicht bitter. Sehr professionell, bemerkt fast niemand.</li>
-            <li><strong>L'Artisan Parfumeur Nuit de Tubérose</strong> – Blumig, aber leicht. Elegant, ohne aufdringlich zu sein.</li>
+            <li><strong>L'Artisan Parfumeur Nuit de Tubéreuse</strong> – Blumig, aber leicht. Elegant, ohne aufdringlich zu sein.</li>
             <li><strong>Jo Malone Wood Sage & Sea Salt</strong> – Minimal, frisch, ätherisch. Perfekt für sensible Büros.</li>
           </ul>
 
@@ -156,9 +156,8 @@ export default function DuefteFuerDieArbeitPage() {
             Düfte mit Noten, die Konzentration steigern. Zitrus, Minze, grüne Noten wirken mental belebend.
           </p>
           <ul style={{ marginBottom: '2rem' }}>
-            <li><strong>Neroli & Petrichor</strong> – Zitrus mit Erde-Noten. Weckt dich auf, hält dich wach.</li>
-            <li><strong>Diptyque Eau Rose</strong> – Leicht & frisch mit Minz-Touch. Belebend ohne aufdringlich.</li>
-            <li><strong>Acqua di Parma Blu Mediterraneo Mandarin</strong> – Zitrus pur, energisierend, arbeitsgerecht.</li>
+            <li><strong>Diptyque Eau Rose</strong> – Leicht & frisch, rosig. Belebend ohne aufdringlich.</li>
+            <li><strong>Acqua di Parma Blu Mediterraneo Mandarino di Amalfi</strong> – Zitrus pur, energisierend, arbeitsgerecht.</li>
           </ul>
 
           <h3>4. Der Vertrauens-Duft – Sicherheit & Selbstbewusstsein</h3>
@@ -176,7 +175,6 @@ export default function DuefteFuerDieArbeitPage() {
             Düfte so leicht, dass Kolleg:innen sie kaum bemerken. Für sehr dicht besiedelte oder sensible Büros.
           </p>
           <ul style={{ marginBottom: '2rem' }}>
-            <li><strong>Diptyque Do Son Light</strong> – Wie No. 5, aber halb so stark. Eleganz mit Unsichtbarkeit.</li>
             <li><strong>L'Occitane Eau de Lavande</strong> – Lavendel, beruhigend, subtil. Auch sensible Kolleg:innen mögen es.</li>
             <li><strong>Un Jardin sur le Toit (Hermès)</strong> – Grünlich, leicht, alles ruhig.</li>
           </ul>

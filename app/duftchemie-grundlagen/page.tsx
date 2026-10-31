@@ -101,7 +101,7 @@ export default function DuftchemieGrundlagen() {
               🌬️ Kopfnoten (Top Notes)
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#6b5344', marginBottom: '1rem', fontStyle: 'italic' }}>
-              Flüchtig, frisch, schnell vorbei (5–15 Minuten)
+              Flüchtig, frisch, schnell vorbei (die ersten Minuten bis ca. 15–30 Minuten)
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
               Die ersten Sekunden nach dem Sprühen – das ist, was dich anzieht oder abstosst. Kopfnoten sind die leichtesten, flüchtigsten Moleküle: Zitrus (Bergamotte, Zitrone), Minze, Grapefruit, Ananas. Sie verdampfen schnell, weil ihre Moleküle klein sind und niedrige Siedepunkte haben.
@@ -110,7 +110,7 @@ export default function DuftchemieGrundlagen() {
               <strong>Die Chemie:</strong> Kleine Moleküle mit hoher Flüchtigkeit. Der Dampfdruck ist hoch – die Moleküle wollen verdampfen. In wenigen Minuten sind sie in der Luft, und dein Duft riecht anders.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#6b5344' }}>
-              <strong>Warum das wichtig ist:</strong> Kopfnoten sind oft „Köder". Eine grossartige Top-Note zieht dich an, aber sie ist nicht das echte Aroma des Dufts. Nach 10 Minuten verschwindet sie, und der Duft entfaltet sich vollständig. Das ist völlig normal – nicht jeder Duft muss in den ersten Sekunden gut riechen.
+              <strong>Warum das wichtig ist:</strong> Kopfnoten sind oft „Köder". Eine grossartige Top-Note zieht dich an, aber sie ist nicht das echte Aroma des Dufts. Nach ca. 15–30 Minuten ist sie meist verflogen, und der Duft entfaltet sich vollständig. Das ist völlig normal – nicht jeder Duft muss in den ersten Sekunden gut riechen.
             </p>
           </div>
 
@@ -272,7 +272,7 @@ export default function DuftchemieGrundlagen() {
           </div>
 
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3728', marginBottom: '1.2rem' }}>
-            <strong>Praktischer Hinweis:</strong> Ein grossartiger Duft braucht Balance. Nur Kopfnoten = 10 Minuten Spass und dann weg. Nur Basisnoten = ein schwerer Duft, der dich stundenlang verfolgst. Ein gutes Gleichgewicht = mehrere Stunden angenehmes Riechen.
+            <strong>Praktischer Hinweis:</strong> Ein grossartiger Duft braucht Balance. Nur Kopfnoten = kurzer Spass und dann weg. Nur Basisnoten = ein schwerer Duft, der dich stundenlang verfolgst. Ein gutes Gleichgewicht = mehrere Stunden angenehmes Riechen.
           </p>
         </section>
 

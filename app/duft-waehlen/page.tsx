@@ -119,7 +119,7 @@ export default function FragranceSelectionPage() {
                 questions: [
                   'EdP (15–20%): Der Standard. 6–12 Stunden Haltbarkeit. Beste Wahl für Anfänger.',
                   'EdT (5–15%): Leichter, günstiger. 3–6 Stunden. Ideal für Sommer.',
-                  'Extrait (20–40%): Am teuersten, länger haltbar. Für Duft-Liebhaber.'
+                  'Extrait (meist 20–30%): Am teuersten, länger haltbar. Für Duft-Liebhaber.'
                 ],
                 action: 'Für die erste Wahl: EdP. Es ist das beste Gleichgewicht.',
                 link: 'Duftarten im Detail →'
@@ -151,7 +151,7 @@ export default function FragranceSelectionPage() {
                 step: 6,
                 title: 'Lagerung & Anwendung optimieren',
                 questions: [
-                  '🌡️ Lagerung: Kühl, dunkel, stabil (nicht im Kühlschrank, nicht auf der Fensterbank)',
+                  '🌡️ Lagerung: Kühl, dunkel, ohne Temperaturschwankungen (Kühlschrank ist nicht nötig, nicht auf der Fensterbank)',
                   '🎯 Anwendung: Nach dem Duschen auftragen. 2–3 Sprühstösse auf Puls-Punkte.',
                   '⏰ Retouch: Nach 4–5 Stunden wenn nötig (der Duft hält länger mit richtigem Auftrag)',
                   '🧴 Sorge für: Richtige Lagerung verdoppelt die Duft-Lebensdauer'

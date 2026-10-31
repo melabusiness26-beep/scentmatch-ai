@@ -63,7 +63,7 @@ export default function AnleitungPage() {
             Schritt 1: Lerne die vier Duftfamilien
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>
-            Alle Düfte lassen sich in vier Kategorien einteilen. Wenn du weisst, welche dir gefällt, sparst du 80% der Auswahl:
+            Alle Düfte lassen sich in vier Kategorien einteilen. Wenn du weisst, welche dir gefällt, wird die Auswahl viel kleiner:
           </p>
           <div style={{ display: 'grid', gap: '1rem' }}>
             {[
@@ -107,7 +107,7 @@ export default function AnleitungPage() {
             Schritt 2: Teste in einem Geschäft – oder nutze unseren Quiz
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728' }}>
-            Wenn möglich, teste den Duft an deiner Haut. Alle Haut ist unterschiedlich – ein Duft kann bei dir ganz anders riechen als bei der Verkäuferin. Sprüh ein wenig auf dein Handgelenk, warte 10 Minuten (bis die Top-Noten verfliegen), und rieche dann nochmal. Hier entsteht die echte Duftsignatur.
+            Wenn möglich, teste den Duft an deiner Haut. Alle Haut ist unterschiedlich – ein Duft kann bei dir ganz anders riechen als bei der Verkäuferin. Sprüh ein wenig auf dein Handgelenk, warte ca. 15–30 Minuten (bis die Top-Noten verflogen sind), und rieche dann nochmal. Hier entsteht die echte Duftsignatur.
           </p>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginTop: '1rem' }}>
             Keine Zeit? Nutze unser <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>Duft-Quiz</Link> – es berücksichtigt Duftfamilie, Budget, Anlass und persönliche Vorlieben.
@@ -184,7 +184,7 @@ export default function AnleitungPage() {
           </h2>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
             {[
-              'Sich sofort in den Top-Noten verlieben – die verschwinden nach 5 Minuten!',
+              'Sich sofort in den Top-Noten verlieben – die verfliegen oft schon nach ca. 15–30 Minuten!',
               'Zu viel auftragen – weniger ist mehr. Ein bis zwei Sprühstösse reichen.',
               'Den Duft aufs Klopapier sprühen – sprüh ihn auf deine Haut!',
               'Mehrere Düfte hintereinander testen – warte zwischen den Tests 5–10 Min.',

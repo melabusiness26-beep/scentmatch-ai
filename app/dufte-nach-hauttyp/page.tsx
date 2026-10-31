@@ -138,7 +138,7 @@ export default function DufteNachHauttypPage() {
           <h4>💡 Pro-Tipps für ölige Haut:</h4>
           <ul style={{ marginBottom: '1.5rem' }}>
             <li><strong>Nutze deine Superkraft – Haltbarkeit:</strong> Bei dir halten 4-Stunden-Düfte den ganzen Tag. Auch günstige Düfte wirken bei dir hochwertig.</li>
-            <li><strong>Experimentiere mit EdT/EdC:</strong> Das sind deine Freunde. EdT auf ölige Haut = EdP auf normaler Haut. Spare 50% ohne Qualitätsverlust.</li>
+            <li><strong>Experimentiere mit EdT/EdC:</strong> Das sind deine Freunde. Auf öliger Haut hält oft schon ein EdT gut – und EdT ist meist etwas günstiger.</li>
             <li><strong>Weniger ist mehr:</strong> Du brauchst weniger Sprüher. 1–2 Sprüher auf ölige Haut = 3–4 auf normaler Haut.</li>
             <li><strong>Probiere Unisex & male Düfte:</strong> Sie sind oft frischer, zitroniger, würziger. Bei ölige Haut sind die grossartig.</li>
           </ul>
@@ -234,23 +234,22 @@ export default function DufteNachHauttypPage() {
             <li><strong>Chanel No. 5</strong> – Der Klassiker, funktioniert überall.</li>
             <li><strong>Dior J'adore</strong> – Zeitlos, nicht zu schwer, nicht zu leicht.</li>
             <li><strong>Creed Aventus</strong> – Modern, frisch, elegant. Auf normaler Haut optimal.</li>
-            <li><strong>Bleu de Chanel</strong> – Unisex, zeitlos, funktioniert jeden Tag.</li>
+            <li><strong>Bleu de Chanel</strong> – Herrenduft, zeitlos, funktioniert jeden Tag.</li>
           </ul>
 
           <h3>Für ölige Haut – Die besten Düfte:</h3>
           <ul style={{ marginBottom: '2rem', fontSize: '0.95rem' }}>
             <li><strong>Hermès Eau de Gentiane Blanche</strong> – Frisch, würzig, leicht. Ideal für ölige Haut.</li>
-            <li><strong>Acqua di Gioia (Giorgio Armani)</strong> – Marine, frisch, leicht. 100% für ölige Haut designed.</li>
-            <li><strong>L'Artisan Parfumeur Nuit de Tubérose</strong> – Blumig, nicht süss, frisch. Wunderbar auf ölige Haut.</li>
-            <li><strong>Heeley Sel Marin (Niche)</strong> – Meerwasser, zedernholz, frisch. Ideal für ölige Haut, günstiger Preis.</li>
+            <li><strong>Acqua di Gioia (Giorgio Armani)</strong> – Marine, frisch, leicht.</li>
+            <li><strong>L'Artisan Parfumeur Nuit de Tubéreuse</strong> – Blumig, nicht süss, frisch. Wunderbar auf ölige Haut.</li>
+            <li><strong>Heeley Sel Marin (Niche)</strong> – Meerwasser, Zedernholz, frisch. Ideal für ölige Haut.</li>
           </ul>
 
-          <h3>Für sensible Haut – Die sichersten Düfte:</h3>
+          <h3>Für sensible Haut – Düfte zum vorsichtigen Testen:</h3>
           <ul style={{ marginBottom: '2rem', fontSize: '0.95rem' }}>
-            <li><strong>Aveeno Pure Renewal (Niche)</strong> – Hypoallergene Linie, extra getestet für sensible Haut.</li>
-            <li><strong>L'Occitane Eau de Lavande</strong> – Natürliche Lavender, beruhigend, hypoallergen.</li>
-            <li><strong>Clarins Eau Ressourçante</strong> – Light, frisch, speziell für sensible Haut formuliert.</li>
-            <li><strong>Diptyque L'Eau Trois</strong> – Niche, hochwertig, leicht, auf sensitiver Haut getestet.</li>
+            <li><strong>L'Occitane Eau de Lavande</strong> – Lavendel, beruhigend, schlicht.</li>
+            <li><strong>Clarins Eau Ressourçante</strong> – Leicht, frisch, aromatisch.</li>
+            <li><strong>Diptyque L'Eau Trois</strong> – Niche, hochwertig.</li>
           </ul>
 
           <h2>FAQ: Hauttyp & Duftauswahl</h2>

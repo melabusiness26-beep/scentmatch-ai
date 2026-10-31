@@ -166,7 +166,7 @@ export default function DamenParfuemePage() {
                 typ: 'Die Minimaliste',
                 beschreibung: 'Einfach, clean, subtil. Du magst leichte, elegante Düfte.',
                 ideal: 'Chypré, leichte Floral oder frische Citrus. Subtil & raffiniert.',
-                empfehlung: 'Jo Malone, Hermès Eau de Gentiane, L\'Artisan Parfumeur Nuit de Tubérose, Acqua di Parma',
+                empfehlung: 'Jo Malone, Hermès Eau de Gentiane, L\'Artisan Parfumeur Nuit de Tubéreuse, Acqua di Parma',
                 vermeiden: 'Zu schwer, zu süss, zu intensiv'
               }
             ].map((item, i) => (

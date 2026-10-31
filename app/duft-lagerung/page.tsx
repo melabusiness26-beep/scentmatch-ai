@@ -198,7 +198,7 @@ export default function DuftLagerungPage() {
             {[
               {
                 q: 'Kann ich meinen Duft im Kühlschrank lagern?',
-                a: 'Ja, wenn es trocken ist und du ihn in einem luftdichten Behälter aufbewahrst. Der Kühlschrank ist konstant kühl, was gut ist – aber Feuchtigkeit ist dein Feind. Nicht neben Lebensmitteln lagern.'
+                a: 'Das ist nicht nötig. Wichtig ist: kühl, dunkel und ohne Temperaturschwankungen lagern – ein dunkler Schrank reicht. Wenn du es trotzdem tust: in einem luftdichten Behälter und nicht neben Lebensmitteln, denn Feuchtigkeit ist dein Feind.'
               },
               {
                 q: 'Wie lang hält ein Duft, wenn ich ihn richtig lagere?',

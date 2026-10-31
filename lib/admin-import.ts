@@ -9,7 +9,7 @@ import {
   cleanSizes,
   parseSimilarNames,
   sizesToText
-} from './perfume-extras';
+} from './perfume-extras.ts';
 
 export const IMPORT_FAMILIES = ['clean', 'gourmand', 'woody', 'floral'] as const;
 export const IMPORT_GENDERS = ['Women', 'Men', 'Unisex'] as const;
@@ -53,6 +53,7 @@ export type ImportedFields = Partial<{
   similar_perfumes: string;
   sizes: string;
   alternative_to: string;
+  description: string;
 }>;
 
 // warnings: ungültige Werte (immer anzeigen). missing: fehlende Pflichtangaben – nur
@@ -118,7 +119,7 @@ function parseEntry(input: Record<string, unknown>, index: number): ImportEntry 
     else if (v != null) fields[key] = v;
   };
 
-  for (const key of ['perfume_name', 'brand', 'perfumer', 'inspiration', 'image_url', 'affiliate_url', 'flacon_description', 'flacon_designer'] as const) setText(key);
+  for (const key of ['perfume_name', 'brand', 'perfumer', 'inspiration', 'image_url', 'affiliate_url', 'flacon_description', 'flacon_designer', 'description'] as const) setText(key);
   setChoice('gender', IMPORT_GENDERS, 'Geschlecht');
   setChoice('fragrance_family', IMPORT_FAMILIES, 'Duftfamilie');
   setChoice('concentration', IMPORT_CONCENTRATIONS, 'Konzentration');

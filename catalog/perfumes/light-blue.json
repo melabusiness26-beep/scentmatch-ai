@@ -1,0 +1,63 @@
+{
+  "slug": "light-blue",
+  "perfume_name": "Light Blue",
+  "brand": "Dolce & Gabbana",
+  "gender": "Women",
+  "fragrance_family": "clean",
+  "concentration": "EdT",
+  "volume_ml": 50,
+  "price_chf": 35,
+  "longevity": 6,
+  "sillage": 6,
+  "season": "Sommer",
+  "occasion": "Alltag",
+  "release_year": 2001,
+  "perfumer": "Olivier Cresp",
+  "inspiration": "inspiriert vom Sommer am Mittelmeer",
+  "top_notes": [
+    "Sizilianische Zitrone",
+    "Apfel",
+    "Zedernholz",
+    "Glockenblume"
+  ],
+  "heart_notes": [
+    "Bambus",
+    "Jasmin",
+    "Weisse Rose"
+  ],
+  "base_notes": [
+    "Zedernholz",
+    "Moschus",
+    "Amber"
+  ],
+  "age_group": "all",
+  "lifestyle": "casual",
+  "trend_vibe": "classic",
+  "good_to_know": [
+    "Light Blue gibt es auch nachfüllbar.",
+    "Die berühmte Werbekampagne fotografierte Mario Testino vor den Faraglioni-Felsen auf Capri.",
+    "Das Model David Gandy war mehrmals das Gesicht der Light-Blue-Werbung."
+  ],
+  "similar_perfumes": [
+    "Cheap & Chic I Love Love – Moschino"
+  ],
+  "flacon_description": "Flakon aus mattiertem Glas mit geschwungenen Linien und silbernen Details. Der blaue Deckel ist von der traditionellen Keramik der Amalfiküste inspiriert und trägt das DG-Monogramm.",
+  "sizes": [
+    {
+      "ml": 30,
+      "price_chf": 31.99
+    },
+    {
+      "ml": 50,
+      "price_chf": 34.99
+    },
+    {
+      "ml": 100,
+      "price_chf": 59.99
+    },
+    {
+      "ml": 200,
+      "price_chf": 71.99
+    }
+  ]
+}

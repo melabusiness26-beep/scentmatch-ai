@@ -1,0 +1,47 @@
+{
+  "slug": "light-blue-pour-homme-eau-intense",
+  "perfume_name": "Light Blue Pour Homme Eau Intense",
+  "brand": "Dolce & Gabbana",
+  "gender": "Men",
+  "fragrance_family": "clean",
+  "concentration": "EdP",
+  "volume_ml": 100,
+  "price_chf": 75,
+  "longevity": 7,
+  "sillage": 7,
+  "season": "Sommer",
+  "occasion": "Alltag",
+  "release_year": 2017,
+  "perfumer": "Alberto Morillas",
+  "top_notes": [
+    "Mandarine",
+    "Grapefruit"
+  ],
+  "heart_notes": [
+    "Wacholder",
+    "Meersalz"
+  ],
+  "base_notes": [
+    "Amberholz",
+    "Moschus"
+  ],
+  "age_group": "all",
+  "lifestyle": "casual",
+  "trend_vibe": "popular",
+  "gender_nuance": "masculine",
+  "good_to_know": [
+    "Komponiert hat ihn Alberto Morillas – wie das Original von 2007.",
+    "Die Werbung von 2017 zeigt David Gandy und Bianca Balti auf Capri, fotografiert von Mario Testino."
+  ],
+  "flacon_description": "Flakon aus mattiertem Glas in einem Blau, das an das Mittelmeer erinnert, mit blauem Deckel.",
+  "sizes": [
+    {
+      "ml": 100,
+      "price_chf": 74.99
+    },
+    {
+      "ml": 200,
+      "price_chf": 102.99
+    }
+  ]
+}

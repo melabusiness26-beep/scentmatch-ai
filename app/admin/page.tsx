@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { isAdminUser } from '@/lib/admin-role';
 import { parseImport, type ImportEntry } from '@/lib/admin-import';
+import { slugify } from '@/lib/catalog';
 import {
   alternativesToText,
   cleanAlternatives,
@@ -118,15 +119,6 @@ function formatSavedAt(iso: string | null | undefined): string | null {
   });
 }
 
-function slugify(value: string): string {
-  return value
-    .toLowerCase()
-    .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
-    // Übrige Akzente entfernen (Hermès → hermes, Ménardo → menardo), statt sie zu „-" zu machen.
-    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
 
 const CONCENTRATION_SLUG: Record<string, string> = {
   EdP: 'eau de parfum',

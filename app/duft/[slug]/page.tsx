@@ -826,7 +826,8 @@ export default async function PerfumeDetailPage({
         {(extras.flacon_description || extras.flacon_designer) && (
           <Reveal as="section" className="dp-card dp-flacon">
             <p className="dp-kicker">Der Flakon</p>
-            <h2>So sieht {perfume.perfume_name} aus</h2>
+            {/* Ohne Beschreibung keine Überschrift „So sieht … aus" – sonst stünde darunter nur der Designer. */}
+            <h2>{extras.flacon_description ? `So sieht ${perfume.perfume_name} aus` : `Wer den Flakon gestaltet hat`}</h2>
             {extras.flacon_description && <p className="dp-story-text">{extras.flacon_description}</p>}
             {extras.flacon_designer && (
               <p className="dp-flacon-designer">

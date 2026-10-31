@@ -351,7 +351,7 @@ export default function RatgeberIndex() {
             Kein Ratgeber passend?
           </p>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.4rem', fontWeight: 700, color: '#faf7f2', marginBottom: '0.75rem' }}>
-            Lass dich persönlich beraten
+            Finde deinen Duft mit Quiz &amp; Duft-Detektiv
           </h2>
           <p style={{ color: 'rgba(250,247,242,0.7)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
             Unser Duft-Quiz und der Duft-Detektiv finden deinen persönlichen Match – in wenigen Minuten.

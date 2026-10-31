@@ -29,8 +29,8 @@ export const guides: Guide[] = [
       'Ein grossartiger Duft muss nicht teuer sein. Ein Dupe riecht ähnlich wie ein Luxus-Original, kostet aber nur einen Bruchteil. Creed Aventus, Dior Sauvage, Baccarat Rouge – für alle gibt es grossartige Alternativen. Hier unsere ehrlichsten Empfehlungen.',
     heroImage: 'https://images.unsplash.com/photo-1541643600914-78b084683702?w=1200&q=80&fit=crop',
     intro: [
-      'Ein „Dupe" ist nicht ein billiger Klon, sondern eine intelligente Alternative. Ein Duft in ähnlicher Richtung, von einer seriösen Marke, zu einem Bruchteil des Preises. Die Geschichte der Dupes ist eine Geschichte von Demokratisierung. Vor 15 Jahren war Creed Aventus ein Duft nur für diejenigen mit echtem Geld. Heute kannst du in ähnliche Richtung für CHF 25 statt CHF 250 sprühen. Das hat die arabischen Duft-Häuser wie Lattafa, Armaf und Al Haramain möglich gemacht. Sie haben verstanden, dass es möglich ist, grossartige Düfte zu machen, ohne Marken-Luxe-Preismarke zu haben.',
-      'Ein wichtiger Punkt: Ein Dupe ist nicht 100 Prozent identisch mit dem Original, und es muss auch nicht sein. Ein Dupe ist ein Respekt-Tribut, nicht ein Betrug. Es sagt: Ich mag die Richtung dieses Duftes, ich mag die Geschichte, aber ich spare gerne 200 Franken. Ein Dupe hält manchmal etwas kürzer, es hat eine leicht andere Haltbarkeit oder Projektion, aber als eigenständiger Duft ist es oft grossartig. Die Qualität der arabischen Marken ist exponentiell besser geworden. Das sind keine minderwertigen Imitate mehr, sondern Düfte mit eigenem Charakter und echter Qualität.',
+      'Ein „Dupe" ist nicht ein billiger Klon, sondern eine intelligente Alternative. Ein Duft in ähnlicher Richtung, von einer seriösen Marke, zu einem Bruchteil des Preises. Die Geschichte der Dupes ist eine Geschichte von Demokratisierung. Vor 15 Jahren war Creed Aventus ein Duft nur für diejenigen mit echtem Geld. Heute bekommst du eine ähnliche Richtung für einen Bruchteil des Preises. Das hat die arabischen Duft-Häuser wie Lattafa, Armaf und Al Haramain möglich gemacht. Sie haben verstanden, dass es möglich ist, grossartige Düfte zu machen, ohne Marken-Luxe-Preismarke zu haben.',
+      'Ein wichtiger Punkt: Ein Dupe ist nicht 100 Prozent identisch mit dem Original, und es muss auch nicht sein. Ein Dupe ist ein Respekt-Tribut, nicht ein Betrug. Es sagt: Ich mag die Richtung dieses Duftes, ich mag die Geschichte, aber ich spare gerne viel Geld. Ein Dupe hält manchmal etwas kürzer, es hat eine leicht andere Haltbarkeit oder Projektion, aber als eigenständiger Duft ist es oft grossartig. Die Qualität der arabischen Marken ist exponentiell besser geworden. Das sind keine minderwertigen Imitate mehr, sondern Düfte mit eigenem Charakter und echter Qualität.',
       'Hier sind unsere liebsten Dupe-Paare und die Strategie, wie du Dupes intelligent nutzt, ohne dich selbst zu belügen.'
     ],
     sections: [
@@ -43,32 +43,32 @@ export const guides: Guide[] = [
           {
             expensive: 'creed-aventus',
             cheap: 'club-de-nuit-intense',
-            note: 'Creed Aventus ist die Legende. Club de Nuit Intense von Armaf wird oft als der beste Aventus-Dupe genannt, und zu Recht: fruchtig, mit Ananas und Birke, rauchig, würzig, langlebig. Es ist nicht identisch, aber es lebt in der gleichen Welt. Preisgefälle: CHF 250 vs. CHF 35.'
+            note: 'Creed Aventus ist die Legende. Club de Nuit Intense von Armaf wird oft als der beste Aventus-Dupe genannt, und zu Recht: fruchtig, mit Ananas und Birke, rauchig, würzig, langlebig. Es ist nicht identisch, aber es lebt in der gleichen Welt.'
           },
           {
             expensive: 'dior-sauvage',
             cheap: 'lattafa-asad',
-            note: 'Dior Sauvage ist der meistverkaufte Duft der Welt. Lattafa Asad ist die arabische Antwort: würzig, amber-warm, schwarzer Pfeffer, ähnliche Basis. Es ist nicht identisch (wärmer und würziger), aber es funktioniert eigenständig wunderbar. Preisgefälle: CHF 120 vs. CHF 30.'
+            note: 'Dior Sauvage ist einer der bekanntesten Herrendüfte. Lattafa Asad ist die arabische Antwort: würzig, amber-warm, schwarzer Pfeffer, ähnliche Basis. Es ist nicht identisch (wärmer und würziger), aber es funktioniert eigenständig wunderbar.'
           },
           {
             expensive: 'armani-acqua-di-gio-homme',
             cheap: 'davidoff-cool-water',
-            note: 'Eine bekannte Alternative ist Davidoff Cool Water, die lange vor Dupes ein Klassiker war. Nicht identisch, aber gleiche frisch-aquatische Familie. Interessanterweise ist Cool Water jetzt sogar als eigenständiger Klassiker bekannt. Preisgefälle: CHF 100 vs. CHF 25.'
+            note: 'Eine bekannte Alternative ist Davidoff Cool Water, die lange vor Dupes ein Klassiker war. Nicht identisch, aber gleiche frisch-aquatische Familie. Interessanterweise ist Cool Water jetzt sogar als eigenständiger Klassiker bekannt.'
           },
           {
             expensive: 'ysl-black-opium',
             cheap: 'ariana-cloud',
-            note: 'YSL Black Opium ist ein süsser Kaffee-Vanille-Gourmand für Damen. Ariana Grande Cloud geht nicht in exakt die gleiche Richtung, aber es ist ein grossartiger süss-cremiger Gourmand für weniger Geld. Als eigenständiger Duft ist es fantastisch. Preisgefälle: CHF 130 vs. CHF 40.'
+            note: 'YSL Black Opium ist ein süsser Kaffee-Vanille-Gourmand für Damen. Ariana Grande Cloud geht nicht in exakt die gleiche Richtung, aber es ist ein grossartiger süss-cremiger Gourmand für weniger Geld. Als eigenständiger Duft ist es fantastisch.'
           },
           {
             expensive: 'tobacco-vanille',
             cheap: 'khamrah',
-            note: 'Tom Ford Tobacco Vanille ist intensiv, würzig, teuer und männlich kodiert. Lattafa Khamrah ist die arabische Variante: Dattel, Zimt, orientalische Wärme, wunderbar. Nicht identisch, aber gleiche würzig-süsse Energie. Preisgefälle: CHF 180 vs. CHF 30.'
+            note: 'Tom Ford Tobacco Vanille ist intensiv, würzig, teuer und unisex. Lattafa Khamrah ist die arabische Variante: Dattel, Zimt, orientalische Wärme, wunderbar. Nicht identisch, aber gleiche würzig-süsse Energie.'
           },
           {
             expensive: 'baccarat-rouge-540',
             cheap: 'lattafa-ana-abiyedh',
-            note: 'Baccarat Rouge 540 ist eines der meistgesuchten Luxus-Düfte. Lattafa Ana Abiyedh Rouge ist die Antwort: warme Amber, Safran, Amberholz. Es ist nicht identisch, aber für den zehntel Preis ist es erstaunlich edel. Preisgefälle: CHF 400 vs. CHF 40.'
+            note: 'Baccarat Rouge 540 ist eines der meistgesuchten Luxus-Düfte. Lattafa Ana Abiyedh Rouge ist die Antwort: warme Amber, Safran, Amberholz. Es ist nicht identisch, aber für einen Bruchteil des Preises ist es erstaunlich edel.'
           }
         ]
       },
@@ -85,23 +85,22 @@ export const guides: Guide[] = [
         body: [
           'Teste immer auf der Haut vor dem Kauf. Ein Duft riecht auf dem Papierstreifen komplett anders als nach 20 Minuten auf deiner Haut. Gib dem Duft Zeit, sich auf deiner Körperwärme zu entwickeln. Das erste Urteil ist nicht das Endurteil.',
           'Vergleiche nicht nach einem Sprühstoss. Manche Dupes riechen beim ersten Sprühstoss anders als nach einer Stunde, wenn sich die mittleren Noten entwickeln. Trag den Duft einen ganzen Tag, bevor du entscheidest, ob er dir gefällt.',
-          'Haltbarkeit und Projektion sind echte Parameter, nicht Fehler. Ein Dupe hält manchmal zwei Stunden weniger als das Original. Das ist ok, weil du für den zehnten Preis bezahlst. Wenn du Langlebigkeit brauchst, achte darauf, aber akzeptiere, dass Kompromisse normal sind.',
+          'Haltbarkeit und Projektion sind echte Parameter, nicht Fehler. Ein Dupe hält manchmal etwas weniger lang als das Original. Das ist ok, weil du deutlich weniger bezahlst. Wenn du Langlebigkeit brauchst, achte darauf, aber akzeptiere, dass Kompromisse normal sind.',
           'Qualität: Seriöse Dupe-Marken wie Lattafa, Armaf und Al Haramain machen keine minderwertigen Produkte. Die Flakons sind solide, der Duft riecht grossartig, die Verpackung ist respektvoll. Das sind echte Alternativen, nicht billige Fälschungen.'
         ]
       },
       {
         heading: 'Wo du Dupes in der Schweiz kaufst',
         body: [
-          'Die besten arabischen Dupes sind online bei Notino.ch, Parfumino oder Douglas erhältlich. Die Schweizer Preise sind oft noch attraktiver als die deutschen Preise, weil diese Marken auf den Schweizer Markt optimiert haben.',
-          'Achte auf Authentizität. Kaufe nur bei etablierten, vertrauenswürdigen Online-Shops. Lattafa, Armaf und Al Haramain sind alle legitime, registrierte Marken mit echten Düften.',
-          'Versand und Lieferzeit: Diese Shops bieten schnellen Versand in die Schweiz. Du wartest normalerweise nicht länger als eine Woche, manchmal sogar nur Tage.'
+          'Arabische Marken wie Lattafa oder Armaf findest du online bei etablierten Shops wie Notino.ch.',
+          'Achte auf Authentizität. Kaufe nur bei etablierten, vertrauenswürdigen Online-Shops. Lattafa, Armaf und Al Haramain sind alle legitime, registrierte Marken mit echten Düften.'
         ]
       },
       {
         heading: 'Der intelligente Weg: Dupes als Einstieg',
         body: [
-          'Hier ist ein Geheimnis der Duft-Community: Viele Dupe-Nutzer sind nicht arme Menschen, die sich das Original nicht leisten können. Sie sind intelligente Menschen, die verstanden haben, dass Duft-Qualität von der Komposition kommt, nicht vom Namen. Sie vergleichen ein Club de Nuit Intense mit Creed Aventus und sagen: Der Dupe ist grossartig für den Preis, und ich spare CHF 200 für weitere Experimente.',
-          'Ein Dupe ist auch ein perfekter Einstieg. Du magst die Idee von Creed Aventus, aber du willst nicht CHF 250 für einen Blindkauf riskieren. Club de Nuit Intense ist CHF 35 und du wirst wissen, ob dir diese Duft-Familie gefällt. Das ist klug.',
+          'Hier ist ein Geheimnis der Duft-Community: Viele Dupe-Nutzer sind nicht arme Menschen, die sich das Original nicht leisten können. Sie sind intelligente Menschen, die verstanden haben, dass Duft-Qualität von der Komposition kommt, nicht vom Namen. Sie vergleichen ein Club de Nuit Intense mit Creed Aventus und sagen: Der Dupe ist grossartig für den Preis, und ich spare Geld für weitere Experimente.',
+          'Ein Dupe ist auch ein perfekter Einstieg. Du magst die Idee von Creed Aventus, aber du willst nicht so viel Geld für einen Blindkauf riskieren. Mit dem deutlich günstigeren Club de Nuit Intense wirst du wissen, ob dir diese Duft-Familie gefällt. Das ist klug.',
           'Unser Tipp: Mach zuerst unser Duft-Quiz, um deine Richtung herauszufinden. Danach nutze Dupes, um diese Richtung günstig zu erkunden. Wenn dir eine Familie gefällt, investiere in das Original später, wenn du wirklich sicher bist. Das ist die intelligenteste Dupe-Strategie.'
         ]
       }
@@ -122,7 +121,7 @@ export const guides: Guide[] = [
       {
         heading: 'Die besten Sommerdüfte für alle – von klassisch bis nischiert',
         body: [
-          'Ein grossartiger Sommerduft funktioniert unabhängig vom Geschlecht. Manche der populärsten Sommer-Klassiker wurden ursprünglich für Männer konzipiert, werden aber gleich häufig von Frauen getragen. Das liegt daran, dass echte Frische universell ist. Die folgenden Düfte haben eines gemeinsam: Sie wirken erfrischend, elegant und nie aufdringlich, egal wie heiss es draussen ist.'
+          'Ein grossartiger Sommerduft funktioniert unabhängig vom Geschlecht. Manche der populärsten Sommer-Klassiker wurden ursprünglich für Männer konzipiert, werden aber auch gern von Frauen getragen. Das liegt daran, dass echte Frische universell ist. Die folgenden Düfte haben eines gemeinsam: Sie wirken erfrischend, elegant und nie aufdringlich, egal wie heiss es draussen ist.'
         ],
         perfumes: [
           'davidoff-cool-water',
@@ -156,7 +155,7 @@ export const guides: Guide[] = [
         heading: 'Sommerdüfte richtig wählen: Kontext und Haltbarkeit',
         body: [
           'Beim Sport und im Alltag brauchst du einen Duft, der mit Schweiss nicht seltsam reagiert. Reine, aquatische und frische Düfte sind hier die sicherste Wahl – sie wirken frisch, wenn du Bewegung hast, und werden nicht unangenehm. Zitrus funktioniert auch gut, solange es nicht zu süss ist. Schwere, warme Noten mit Oud oder intensiver Amber werden mit Schweiss seltsam.',
-          'Am Strand ist das erste Problem Haltbarkeit – Sonne, Wasser und Sonnencreme machen alles kompliziert. Ein sehr leichter, aquatischer Duft ist praktisch, weil der eh schnell verfliegt und du nicht fragen musst, ob es noch da ist. Vermeide zu intensive oder zu süsse Düfte, weil sie mit Sonnencreme-Chemikalien seltsam reagieren können.',
+          'Am Strand ist das erste Problem Haltbarkeit – Sonne, Wasser und Sonnencreme machen alles kompliziert. Ein sehr leichter, aquatischer Duft ist praktisch, weil der eh schnell verfliegt und du nicht fragen musst, ob es noch da ist. Vermeide zu intensive oder zu süsse Düfte, weil sie sich mit dem Geruch der Sonnencreme schwer vertragen.',
           'Beim Date oder abends darfst du mutiger sein und etwas mit Charakter wählen. Ein frisch-blumiger Duft mit etwas Moschus oder subtiler Vanille wirkt elegant und sinnlich zugleich – immer noch leicht für den Sommer, aber mit mehr Präsenz. Das Wichtigste: nicht erdrückend wirken, sondern attraktiv.',
           'Bei Hochzeiten und eleganten Abend-Events: Hier darfst du zu etwas Strukturierterem greifen – ein frischer Duft mit grünen oder aromatischen Noten, der etwas Charakter hat. Aber nicht schwer: Keine intensiven Amber- oder Oud-Basis-Noten, die bei Hitze erdrückend wirken. Eleganz statt Intensität ist hier die Regel.'
         ]
@@ -178,7 +177,7 @@ export const guides: Guide[] = [
     intro: [
       'Dein Duft ist eine stille Sprache. Er sagt etwas über dich aus – nicht mit Worten, sondern durch den Eindruck, den du auf andere machst. Seit Jahrtausenden wissen Menschen: Ein Duft ändert die Wahrnehmung. Im Büro soll dein Duft professionelle Ruhe und Genauigkeit ausstrahlen – beim Date etwas Verführung, beim festlichen Abend volle Eleganz. Die gleiche Flasche im Grossraumbüro und beim Date wirkt völlig unterschiedlich, weil der Kontext deine Ausstrahlung formt. Dieser Ratgeber zeigt dir, wie du diese Psychologie bewusst nutzt – nicht, um andere zu manipulieren, sondern um dein authentisches Selbst elegant einzurahmen.',
       'Die Intelligenz der Anlass-Wahl liegt in der Subtilität. Es geht nicht um Regeln, sondern um ein Verständnis dafür, wie Düfte in verschiedenen Räumen, bei verschiedenen Temperaturen und in verschiedenen Nähe-Verhältnissen wirken. Ein würziger, warmer Duft, der beim Date wunderbar funktioniert, kann im Büro (besonders in der Nähe) zu intim wirken. Ein intensiver Abendduft mit Oud und Amber sieht tagsüber fehl am Platz aus. Aber die richtige Wahl – und die richtige Dosierung – gibt dir Selbstvertrauen und ein Gefühl von Eleganz, das man spürt.',
-      'Hier findest du nicht nur Duftem­pfehlungen, sondern ein praktisches Regelwerk: Wie dosierst du intelligent? Welche Familien funktionieren wann? Wie navigierst du hybrid-Tage, an denen du vom Büro direkt zum Date gehst? Unser Katalog ist voll von perfekten Düften für jeden Anlass – hier zeigen wir dir, welche wirklich glänzen.'
+      'Hier findest du nicht nur Duftem­pfehlungen, sondern ein praktisches Regelwerk: Wie dosierst du intelligent? Welche Familien funktionieren wann? Wie navigierst du hybrid-Tage, an denen du vom Büro direkt zum Date gehst? Hier zeigen wir dir Düfte, die zu den einzelnen Anlässen gut passen.'
     ],
     sections: [
       {
@@ -187,7 +186,7 @@ export const guides: Guide[] = [
           'Ein Büro-Duft ist ein subtiles Statement. Er soll präsent sein – nicht unsichtbar – aber nie dominant. Die Psychologie ist klar: Kolleginnen und Kollegen sollen dich als professionell, sauber und kultiviert wahrnehmen, nicht von einer Duft-Wolke überrascht werden. Im Büro ist „weniger ist mehr" keine Metapher, sondern die Regel.',
           'Ideal sind frische bis holzige Familien mit leichten Konzentrationen (Eau de Toilette) oder sanften Eau de Parfums, die sich nicht sofort ins Raumklima drängen. Zitrus, aquatische Noten, grüne Aromen und edle Hölzer (Sandelholz, Zeder) funktionieren perfekt, weil sie wirken, ohne zu dominieren. Vermeide schwere Amber, intensive Oud, dominante Vanilla oder süsse Gourmands – diese brauchen mehr Platz und Dunkelheit um zu glänzen.',
           'Die Dosierung ist entscheidend: Im Büro reicht meist ein einzelner, gezielter Sprühstoss (etwa auf den Hals oder die Innenseiten der Unterarme, nicht mehrfach auf den ganzen Körper). Bei einer Präsentation oder einem wichtigen Termin spürt man, dass der Duft dich begleitet, ohne dich zu überwältigen. Nachmittags, wenn dein erstes Auftragen nachlässt, kannst du eine kleine Auffrischung machen – ein kleiner Sprühstoss genügt meist.',
-          'Subtyp-Büro: Willst du bei Zoom-Calls oder in deinem eigenen Büro etwas intensiver wirken, darfst du zu einer volleren EdP greifen. In offenen Räumen oder Grossraumbüros: lieber EdT oder sparing mit EdP dosieren.'
+          'Subtyp-Büro: Willst du im Homeoffice oder in deinem eigenen Büro etwas intensiver wirken, darfst du zu einer volleren EdP greifen. In offenen Räumen oder Grossraumbüros: lieber EdT oder sparing mit EdP dosieren.'
         ],
         perfumes: ['chanel-bleu-de-chanel', 'terre-dhermes', 'boss-bottled', 'ysl-y-edp', 'le-labo-santal-33']
       },
@@ -206,7 +205,7 @@ export const guides: Guide[] = [
         body: [
           'Abends bist du frei. Keine Büro-Etikette, keine Flächenrücksicht, keine „zu viel"-Sorgen. Ein Abendduft ist deine Gelegenheit, die grossen, tiefen, charaktervollen Düfte zu tragen – die, die du tagsüber nicht brauchen kannst, aber abends glänzen lassen wollen. Hier darf ein Duft mutig, dunkel, intensiv oder opulent sein.',
           'Ideal sind orientalische Düfte mit intensiven Basisnoten (Oud, Amber, Sandelholz, Musk), warme Gourmands mit Tiefe (Tobacco, Vanilla, würzige Gewürze) oder nischierte Kompositionen mit Charakter und Projektion. Eine gute Faustregel: Wenn es am Morgen im Büro zu schwer wäre, ist es abends genau richtig. Intensität ist nicht Fehler, sondern Feature.',
-          'Dosierung am Abend: Hier kannst du grosszügiger sein. Zwei bis drei Sprühstösse sind völlig in Ordnung, besonders wenn du in geschlossenen Räumen (Restaurant, Club) bist, wo die Akustik den Duft in einem angenehmen Radius um dich verteilt. Die Körperwärme nach wenigen Minuten verstärkt intensive Abendduft noch – das ist beabsichtigt und schön. Behalte nur im Blick: In sehr engen Räumen oder bei sehr vielen Menschen genügen zwei Sprühstösse auch hier.',
+          'Dosierung am Abend: Hier kannst du grosszügiger sein. Zwei bis drei Sprühstösse sind völlig in Ordnung, besonders wenn du in geschlossenen Räumen (Restaurant, Club) bist, wo sich der Duft in einem angenehmen Radius um dich verteilt. Die Körperwärme nach wenigen Minuten verstärkt intensive Abendduft noch – das ist beabsichtigt und schön. Behalte nur im Blick: In sehr engen Räumen oder bei sehr vielen Menschen genügen zwei Sprühstösse auch hier.',
           'Hybrid-Abende: Gehst du vom Büro direkt aus zum Abend, kannst du entweder deinen Büro-Duft behalten (er wird sich mit deiner Körperwärme bis dahin verändert haben, wird intensiver und wärmer) oder du macht eine komplette Wechsel und tauschst ihn gegen einen echten Abendduft. Ein kleines Duft-Tüchchen, das du im Büro sprühst und später wieder drüber wischst, oder ein komplett anderer Duft ist auch ok – abends darf es laut sein.'
         ],
         perfumes: ['club-de-nuit-intense', 'khamrah', 'mugler-angel', 'lattafa-yara', 'lattafa-ana-abiyedh']
@@ -235,7 +234,7 @@ export const guides: Guide[] = [
     intro: [
       'Ein grossartiger süsser Duft ist eines der vergnüglichsten Dinge, die du auf der Haut tragen kannst. Gourmand-Düfte, wie sie richtig heissen, riechen nach den besten Dingen des Lebens: Vanille aus Madagascar, dunkle Schokolade, Karamell-Salzigkeit, Tonkabohne, Kaffee, Dattel und manchmal sogar Praline. Sie wirken warm, einladend, nahbar und bleiben lange in Erinnerung. Historisch sind Gourmands eine relativ junge Erfindung in der Duft-Welt, aber sie haben sich schnell zu einer der beliebtesten Kategorien entwickelt, gerade weil sie universell funktionieren. Ein süsser Duft macht dich nicht nur riechen, sondern auch fühlen.',
       'Die Intelligenz eines Gourmand-Dufts liegt in seinem Gleichgewicht. Das Gegenteil eines guten süssen Dufts ist nicht „zu süss", sondern „billig süss" – ein unausgewogenes, eintöniges Zucker-Monolith. Ein wirklich grossartiger süsser Duft hat Tiefe, Struktur und manchmal sogar eine würzige oder bittere Ecke, die die Süsse anspruchsvoll macht. Vanille mit einer Note schwarzem Pfeffer, Schokolade mit Tabak, Karamell mit einer Prise Salz – diese Kontraste machen Gourmands zu Kunstform. Sie funktionieren am wunderschönsten im Herbst und Winter, wenn die Kälte sie zu ihrer vollen Tiefe entfaltet. Aber auch im Sommer gibt es leichte, cremig-pudrige Varianten, die nicht aufdringlich wirken.',
-      'Hier findest du unsere liebsten Gourmand-Düfte aus dem Katalog, von erschwinglichen Schätzen bis zu Nischen-Juwelen, für jeden, der Süsse liebt. Manche sind für alltägliche Momente, andere für spezielle Anlässe. Alle haben eines gemeinsam: Sie sind unvergessen.'
+      'Hier findest du unsere liebsten Gourmand-Düfte, von erschwinglichen Schätzen bis zu Nischen-Juwelen, für jeden, der Süsse liebt. Manche sind für alltägliche Momente, andere für spezielle Anlässe. Alle haben eines gemeinsam: Sie sind unvergessen.'
     ],
     sections: [
       {
@@ -268,14 +267,14 @@ export const guides: Guide[] = [
         body: [
           'Im Winter sind süsse Düfte dein Freund. Die Kälte macht sie nicht überwältigend, sondern elegant. Ein süsser Duft bei 15 Grad Aussentemperatur wirkt tröstlich, nicht erdrückend. In geheizten Innenräumen entfaltet sich die Süsse langsam und angenehm. Das ist, warum Gourmands so beliebt in der kalten Jahreszeit sind.',
           'Im Sommer brauchen süsse Düfte intelligente Dosierung. Ein Duft, der im Winter wunderschön ist, kann im Juli in geschlossenen Räumen schnell zu intensiv wirken. Das heisst nicht, dass du Gourmands im Sommer nicht tragen darfst, aber wähle leichtere Varianten oder starte mit einem Sprühstoss statt zwei. Auf der Haut, anstatt auf mehreren Stellen, reduziert auch die Intensität.',
-          'Trockene Haut und Gourmands: Süsse Düfte wirken auf trockener Haut intensiver und halten gleichzeitig kürzer. Eine gute Feuchtigkeitspflege vorher verdoppelt die Haltbarkeit und macht den Duft angenehmer. Das ist besonders im Winter wichtig, wenn die Heizungsluft deine Haut austrocknet.'
+          'Trockene Haut und Gourmands: Auf trockener Haut halten Düfte oft kürzer. Eine gute Feuchtigkeitspflege vorher kann die Haltbarkeit verlängern und macht den Duft angenehmer. Das ist besonders im Winter wichtig, wenn die Heizungsluft deine Haut austrocknet.'
         ]
       },
       {
         heading: 'Dosierung, Länge und Alltags-Tauglichkeit',
         body: [
           'Gourmand-Düfte sind präsent. Beginne mit nur einem Sprühstoss, besonders wenn du zum ersten Mal einen Gourmand trägst. Nach 15 Minuten wirst du sehen, wie präsent der Duft ist. Ein bis zwei Sprühstösse reichen für die meisten Kontexte völlig aus. Mehr brauchst du nicht, es sei denn, du bist draussen bei sehr kaltem Wetter.',
-          'Längeres Tragen ist kein Problem – Gourmands halten lange. Ein guter Vanille-Duft bleibt sechs bis acht Stunden auf der Haut, manchmal länger. Das macht sie perfekt für den Alltag: einmal morgens auftragen und dich den ganzen Tag von diesem angenehmen, warmen Duft begleitet fühlen.',
+          'Längeres Tragen ist kein Problem – Gourmands halten lange. Ein guter Vanille-Duft bleibt oft viele Stunden auf der Haut. Das macht sie perfekt für den Alltag: einmal morgens auftragen und dich den ganzen Tag von diesem angenehmen, warmen Duft begleitet fühlen.',
           'Für alltags-Tauglichkeit: Wenn du Gourmands auch im Büro tragen möchtest, wähle eine Variante mit etwas Frische oder Holz, das die Süsse ausgleicht. Ein reiner Schoko-Karamell-Duft könnte im geschlossenen Büroraum zu intensiv sein. Eine leichte, cremig-pudrige Variante oder ein würziger Gourmand funktioniert besser.'
         ]
       },
@@ -285,7 +284,7 @@ export const guides: Guide[] = [
           'Morgens und im Alltag: Wähle eine leichtere oder cremig-pudrige Variante. Ein Duft mit etwas Frische oder Moschus wirkt weniger erdrückend in den Morgenstunden. Kayali Vanilla oder Burberry Goddess sind wunderbar für den Start in den Tag.',
           'Beim Date oder abends zum Ausgehen: Das ist deine Gelegenheit, zu deinem liebsten Gourmand zu greifen. Ein tiefes, würziges oder dunkles süsses Duft wirkt verführerisch und elegant. Tobacco Vanille oder Khamrah sind perfekt für diese Momente.',
           'Zu Hause, beim Entspannen: Ein cremiger, pudrig-süsser Duft ist wie eine Umarmung. Montale Intense Café oder Lattafa Yara schaffen eine Wohlfühl-Atmosphäre, die dich entspannen lässt.',
-          'Bei festlichen Anlässen: Ein intensiver, komplexer Gourmand zeigt Sicherheit und Geschmack. Kilian Angels Share, mit seiner Rum-Vanille-Komponente, wirkt festlich und elegant.'
+          'Bei festlichen Anlässen: Ein intensiver, komplexer Gourmand zeigt Sicherheit und Geschmack. Kilian Angels Share, mit seiner Cognac-Vanille-Komponente, wirkt festlich und elegant.'
         ]
       }
     ]
@@ -331,7 +330,7 @@ export const guides: Guide[] = [
         heading: 'Warum Winterdüfte anders funktionieren',
         body: [
           'Kälte verändert alles. Die leichten Kopfnoten verdampfen langsamer, deshalb dominieren die mittleren und Basis-Noten länger. Ein intensiver Duft, der im Juli unerträglich wäre, wird im Januar zur reinen Eleganz, weil die Kälte ihn verteilt. Die Heizungsluft in Innenräumen hilft auch: Warme Räume lassen den Duft sich langsam und angenehm entfalten, nicht aggressiv.',
-          'Deine Haut ist im Winter trockener. Das bedeutet, dass Düfte schneller verdampfen können, aber auch, dass dein Körper nicht so viel Wärme hat, um den Duft zu intensivieren. Das ist aber nicht problematisch – intensive Winterdüfte brauchen das nicht. Eine gute Feuchtigkeitscreme vor dem Auftragen verdoppelt aber die Haltbarkeit und macht den Duft schöner. Trockene Haut ist der echte Feind.',
+          'Deine Haut ist im Winter trockener. Das bedeutet, dass Düfte schneller verdampfen können, aber auch, dass dein Körper nicht so viel Wärme hat, um den Duft zu intensivieren. Das ist aber nicht problematisch – intensive Winterdüfte brauchen das nicht. Eine gute Feuchtigkeitscreme vor dem Auftragen kann aber die Haltbarkeit verlängern und macht den Duft schöner. Trockene Haut ist der echte Feind.',
           'Drinnen oder draussen? Das ändert die Wahrnehmung. In einem geheizten Restaurant wirkt ein Winterduft anders als draussen bei Minusgraden. Wenn du viel unterwegs bist, wähle etwas mit echter Langlebigkeit. Wenn du viel drinnen bist, darfst du mutigere, intensivere Düfte wählen.'
         ]
       },
@@ -340,7 +339,7 @@ export const guides: Guide[] = [
         body: [
           'Im Winter brauchst du nicht mehr Sprühstösse, aber höhere Konzentrationen. Ein bis zwei Sprühstösse einer Eau de Parfum ist das Standard-Spiel. Wenn du eine intensivere Konzentration wie Extrait nutzt, genügt ein einzelner Sprühstoss am Hals völlig – du wirst überrascht sein, wie lange das hält.',
           'Der beste Auftrag-Ort ist der Hals: Die warme Stelle dort gibt dem Duft einen kontinuierlichen Ausstoff. Der innere Unterarm und der Nacken funktionieren auch. Wenn du draussen bist, braucht der Duft einen Moment, um sich zu entfalten – das ist normal. Aber drinnen wird er wunderbar. Das ist beabsichtigt.',
-          'Eine Feuchtigkeitscreme vor dem Auftrag verdoppelt die Haltbarkeit. Heizungsluft trocknet deine Haut aus, was Düfte schneller verdampfen lässt. Mit kurzer Körperpflege bekommst du deutlich mehr aus deinem Duft heraus.',
+          'Eine Feuchtigkeitscreme vor dem Auftrag kann die Haltbarkeit verlängern. Heizungsluft trocknet deine Haut aus, was Düfte schneller verdampfen lässt. Mit kurzer Körperpflege bekommst du deutlich mehr aus deinem Duft heraus.',
           'Am Nachmittag, wenn der Duft nachlässt? Ein einzelner zusätzlicher Sprühstoss reicht aus. Du musst nicht neu anfangen – ein Schuss hält oft bis zum Abend.'
         ]
       },
@@ -361,8 +360,8 @@ export const guides: Guide[] = [
       'Düfte ohne Geschlechts-Etiketten: vielseitig, charaktervoll und zeitlos. Von Sandelholz bis Gypsy Water – unsere liebsten Kompositionen, die Grenzen sprengen und zu jedem passen, unabhängig vom Geschlecht.',
     heroImage: '/ratgeber/unisex-duefte-hero.png',
     intro: [
-      'Die beste Duft-Logik ist die einfachste: Riecht es auf deiner Haut schön? Punkt. Für Hunderte von Jahren wurde Duft nach Geschlecht sortiert, männlich oder weiblich. Aber die Realität ist komplexer und viel schöner: Ein grossartiger Duft kennt keine Geschlechts-Grenzen. Er funktioniert auf jeder Haut anders, je nach Körperchemie, Persönlichkeit und Lebenskontext. Die beste Duft-Philosophie ist die radikale Einfachheit: Du bist du, und dein Duft sollte das ausdrücken, nicht irgendwelche veralteten Marketing-Kategorien.',
-      'Die Kultur der Unisex-Düfte ist eine Revolution der letzten 15 Jahre. Nischenhäuser wie Le Labo, Byredo und Maison Francis Kurkdjian haben das erkannt und bauen bewusst Düfte ohne Gender-Kodierung. Das heisst nicht „neutral" oder „langweilig", sondern das Gegenteil: Es ermöglicht Kompositionen, die komplexer, persönlicher und ehrlicher sind. Ein Duft, der nicht für „Damen" oder „Herren" gemacht werden muss, kann sich einfach auf das konzentrieren, was zählt: handwerkliche Qualität, Charakter und emotionale Resonanz.',
+      'Die beste Duft-Logik ist die einfachste: Riecht es auf deiner Haut schön? Punkt. Lange Zeit wurde Duft nach Geschlecht sortiert, männlich oder weiblich. Aber die Realität ist komplexer und viel schöner: Ein grossartiger Duft kennt keine Geschlechts-Grenzen. Er funktioniert auf jeder Haut anders, je nach Körperchemie, Persönlichkeit und Lebenskontext. Die beste Duft-Philosophie ist die radikale Einfachheit: Du bist du, und dein Duft sollte das ausdrücken, nicht irgendwelche veralteten Marketing-Kategorien.',
+      'Die Kultur der Unisex-Düfte ist eine Entwicklung der letzten Jahrzehnte. Nischenhäuser wie Le Labo, Byredo und Maison Francis Kurkdjian haben das erkannt und bauen bewusst Düfte ohne Gender-Kodierung. Das heisst nicht „neutral" oder „langweilig", sondern das Gegenteil: Es ermöglicht Kompositionen, die komplexer, persönlicher und ehrlicher sind. Ein Duft, der nicht für „Damen" oder „Herren" gemacht werden muss, kann sich einfach auf das konzentrieren, was zählt: handwerkliche Qualität, Charakter und emotionale Resonanz.',
       'Hier findest du unsere liebsten Unisex-Düfte: Düfte, die Grenzen sprengen, die zu dir gehören, egal wer du bist. Manche sind warm und würzig, andere frisch und minimalistisch. Was sie alle teilen, ist dass sie absolute Individuen sind, keine Klischees. Sie laden dich ein, dein eigenes Abenteuer zu schreiben.'
     ],
     sections: [
@@ -389,8 +388,8 @@ export const guides: Guide[] = [
       {
         heading: 'Worauf du bei Unisex-Düften achten solltest',
         body: [
-          'Ignoriere die Etikettierungen bewusst. Die „Damen-" und „Herren-"-Schilder sind oft willkürlich gesetzt (manchmal auch politisch motiviert). Entscheidend ist allein: Riecht es auf deiner Haut schön? Passt es zu deinem Leben?',
-          'Teste auf deiner eigenen Haut. Durch die fehlende Geschlechts-Codierung entfalten sich Unisex-Düfte besonders individuell. Auf mancher Haut wirken sie holziger, auf anderer blumiger, auf einer dritten aromatischer. Das ist die Schönheit.',
+          'Ignoriere die Etikettierungen bewusst. Die „Damen-" und „Herren-"-Schilder sind oft willkürlich gesetzt. Entscheidend ist allein: Riecht es auf deiner Haut schön? Passt es zu deinem Leben?',
+          'Teste auf deiner eigenen Haut. Jeder Duft entfaltet sich auf jeder Haut etwas anders. Auf mancher Haut wirken sie holziger, auf anderer blumiger, auf einer dritten aromatischer. Das ist die Schönheit.',
           'Viele Unisex-Düfte sind intensiver als klassische Mainstream-Düfte. Starte mit einem Sprühstoss und beobachte, wie weit die Projektion reicht, bevor du nachdosierst. Qualität braucht oft weniger.',
           'Denk an Layering: Unisex-Düfte eignen sich wunderbar zum Schichten mit anderen Düften oder Body-Produkten. Sie sind neutrale, grossartige Basis-Partner für Duft-Experimente.'
         ]
@@ -401,7 +400,7 @@ export const guides: Guide[] = [
           'Alltag & Büro: Unisex-Düfte sind perfekt für professionelle Umgebungen, weil sie sich niemandem aufdrängen und universal angenehm wirken. Sie sagen nichts über dein Geschlecht – nur über deinen Geschmack.',
           'Abends & Abenteuer: Viele Unisex-Düfte (wie Baccarat Rouge 540) sind intensive, tiefe Düfte für besondere Momente. Sie funktionieren hervorragend für Dates, Partys, Momente, wo du leuchten möchtest.',
           'Jahreszeiten: Von frischen Unisex-Düften im Sommer (Gypsy Water) bis zu wärmeren im Winter (Santal 33, Tobacco Vanille) – diese Kategorie hat für jede Jahreszeit etwas.',
-          'Sharing & Pairing: Das beste Merkmal: Teilen! Ein Duft für zwei Menschen funktioniert nur, wenn die Geschlechts-Codierung weg ist. Genau das ist der Punkt von Unisex.'
+          'Sharing & Pairing: Das beste Merkmal: Teilen! Ohne Geschlechts-Codierung fällt das Teilen eines Dufts besonders leicht. Genau das ist der Punkt von Unisex.'
         ]
       }
     ]
@@ -474,7 +473,7 @@ export const guides: Guide[] = [
     heroImage: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=1200&q=80&fit=crop',
     intro: [
       'Ein toller Duft muss nicht 150 Franken kosten. Gerade von Marken wie Lattafa, Armaf oder Davidoff gibt es erstaunlich gute Parfüms für kleines Geld. Mit ordentlicher Haltbarkeit, schöner Projektion und einer Zusammensetzung, die sich nicht nach „billig" anfühlt.',
-      'In der Schweiz ist die Auswahl an günstigen Düften grösser als viele denken. Notino.ch, Douglas und Parfümerien haben arabische Marken wie Lattafa inzwischen fest im Sortiment. Wer weiss, wo man schaut, findet echte Geheimtipps für 20–40 CHF, die sich neben 200-Franken-Flakons nicht zu verstecken brauchen.',
+      'In der Schweiz ist die Auswahl an günstigen Düften grösser als viele denken. Online-Shops wie Notino.ch haben arabische Marken wie Lattafa inzwischen fest im Sortiment. Wer weiss, wo man schaut, findet echte Geheimtipps für 20–40 CHF, die sich neben 200-Franken-Flakons nicht zu verstecken brauchen.',
       'Hier unsere Favoriten unter CHF 50, perfekt zum Ausprobieren, Verschenken oder für jeden Tag.'
     ],
     sections: [
@@ -544,7 +543,7 @@ export const guides: Guide[] = [
         heading: 'So hält dein Duft den ganzen Tag',
         body: [
           'Trag Parfum auf frisch geduschte, leicht eingecremte Haut auf. Auf trockener Haut verfliegt ein Duft schneller. Eine geruchsneutrale Bodylotion oder Vaseline an den Pulspunkten gibt dem Duft „Halt".',
-          'Der beste Zeitpunkt ist direkt nach dem Duschen, wenn die Poren noch leicht geöffnet sind.',
+          'Der beste Zeitpunkt ist direkt nach dem Duschen und Eincremen, wenn die Haut noch leicht feucht ist.',
           'Sprüh aus rund 15–20 cm Abstand, damit sich der Duft fein verteilt statt in einem nassen Fleck zu landen.',
           'Für unterwegs lohnt sich ein kleiner Reisezerstäuber: So kannst du am Nachmittag dezent auffrischen, ohne das grosse Fläschchen mitzuschleppen.'
         ]
@@ -561,7 +560,7 @@ export const guides: Guide[] = [
         heading: 'Welche Düfte halten von Natur aus am längsten?',
         body: [
           'Als Faustregel halten warme, schwere Duftfamilien länger als leichte, frische:',
-          'Gourmand (Vanille, Karamell, Tonkabohne) und orientalische Düfte: sehr langlebig, oft 8–12 Stunden.',
+          'Gourmand (Vanille, Karamell, Tonkabohne) und orientalische Düfte: meist sehr langlebig.',
           'Holzige Düfte (Sandelholz, Oud, Patchouli): ebenfalls sehr ausdauernd.',
           'Florale Düfte: mittlere Haltbarkeit, je nach Aufbau.',
           'Frische und zitrische Düfte (Clean): am flüchtigsten, dafür herrlich leicht im Sommer. Hier lohnt sich ein zweiter Sprühstoss am Mittag.'
@@ -598,7 +597,7 @@ export const guides: Guide[] = [
       },
       {
         body: [
-          'Du kennst jetzt die Tricks fürs Auftragen und die Haltbarkeit. Fehlt nur noch der passende Duft? Mach unser Duft-Quiz und finde in unter einer Minute heraus, welche Richtung wirklich zu dir passt.'
+          'Du kennst jetzt die Tricks fürs Auftragen und die Haltbarkeit. Fehlt nur noch der passende Duft? Mach unser Duft-Quiz und finde in wenigen Minuten heraus, welche Richtung wirklich zu dir passt.'
         ]
       }
     ]
@@ -607,12 +606,12 @@ export const guides: Guide[] = [
     slug: 'parfum-geschenk-die-besten-duefte-zum-verschenken',
     title: 'Parfum als Geschenk: Der Weg zum perfekten Duft – Elegant, persönlich und unvergessen',
     description:
-      'Parfum ist eines der wertvollsten Geschenke überhaupt – wenn es stimmt. Erfahre, wie du Sicherheit und Eleganz kombinierst und garantiert die richtige Wahl triffst. Unsere liebsten Geschenk-Klassiker für jeden Geschmack und jeden Anlass.',
+      'Parfum ist eines der wertvollsten Geschenke überhaupt – wenn es stimmt. Erfahre, wie du Sicherheit und Eleganz kombinierst und die Chance auf die richtige Wahl erhöhst. Unsere liebsten Geschenk-Klassiker für jeden Geschmack und jeden Anlass.',
     heroImage: '/ratgeber/parfum-geschenk-hero.jpg',
     intro: [
       'Ein Duft ist eines der persönlichsten Geschenke überhaupt – aber auch eines der riskantesten. Ein durchdachter Duft zeigt: Ich kenne dich, ich respektiere dich, ich habe bedacht, was zu dir passt. Ein falscher Duft endet in der Schublade und signalisiert das Gegenteil.',
       'Das Geheimnis liegt bei Klassikern: Ein eleganter Chanel, Dior oder Lancôme funktioniert fast immer, weil diese Marken über Jahrzehnte gelernt haben, Düfte zu schaffen, die verführen, ohne zu polarisieren. Ein durchdachtes Geschenk mit einem zeitlosen Klassiker schlägt ein spekulatives Nischen-Abenteuer jedes Mal.',
-      'Hier findest du unsere liebsten Duft-Geschenke und praktische Tricks, um sicher die richtige Wahl zu treffen – sortiert nach Geschmack und Budget, mit Tipps, die garantiert funktionieren.'
+      'Hier findest du unsere liebsten Duft-Geschenke und praktische Tricks, um sicher die richtige Wahl zu treffen – sortiert nach Geschmack und Budget, mit praktischen Tipps.'
     ],
     sections: [
       {
@@ -620,7 +619,7 @@ export const guides: Guide[] = [
         body: [
           'Diese Düfte sind zeitlos elegant und funktionieren auf den meisten Frauen wunderbar. Sie sind nicht zu experimentell, aber auch nicht langweilig. Das ist die goldene Mitte des Duft-Schenkens: Eine Frau, die einen dieser Düfte trägt, wirkt gepflegt, kultiviert und elegant, ohne dass sie dich unter Druck setzt, genau ihren speziellen Nischen-Geschmack zu treffen.'
         ],
-        perfumes: ['coco-mademoiselle', 'la-vie-est-belle-guerlain', 'black-opium-ysl', 'good-girl-ch']
+        perfumes: ['coco-mademoiselle', 'lancome-la-vie-est-belle', 'ysl-black-opium', 'ch-good-girl']
       },
       {
         heading: 'Für Männer: zeitlose Favoriten',
@@ -640,7 +639,7 @@ export const guides: Guide[] = [
       {
         heading: 'Praktische Tipps für das perfekte Duft-Geschenk',
         body: [
-          'Eau de Parfum statt Eau de Toilette: Wirkt automatisch edler, hält länger, kostet oft nur 10–20 CHF mehr. Als Geschenk macht dieser kleine Unterschied grossen optischen und emotionalen Eindruck.',
+          'Eau de Parfum statt Eau de Toilette: Wirkt automatisch edler, hält länger, kostet meist nur etwas mehr. Als Geschenk macht dieser kleine Unterschied grossen optischen und emotionalen Eindruck.',
           'Die Verpackung zählt: Ein schöner Duft in hochwertiger Verpackung + eine kleine persönliche Karte ist der Unterschied zwischen „Ich habe etwas gekauft" und „Ich habe an dich gedacht".',
           'Schreib eine kurze Notiz, warum du diesen Duft gewählt hast: „Dieser Duft erinnert mich an dich: elegant, warm, unvergessen." Kurz, persönlich, wirkungsvoll.',
           'Fallback für totale Unsicherheit: Wähle einen edlen Duft-Gutschein statt eines Ratschusses. Besser als ein Duft, der ungetragen in der Schublade landet.'
@@ -670,9 +669,9 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        heading: 'Die Klassiker, die garantiert funktionieren',
+        heading: 'Beliebte Klassiker',
         body: [
-          'Diese Düfte sind nicht neu, nicht trendig, aber zeitlos erfolgreich. Sie funktionieren bei fast jeder Frau, weil sie Charakter mit Eleganz verbinden. Sie wirken nicht aufdringlich, sondern einladend.'
+          'Diese Düfte sind nicht neu, nicht trendig, aber zeitlos erfolgreich. Sie gefallen vielen Menschen, weil sie Charakter mit Eleganz verbinden. Sie wirken nicht aufdringlich, sondern einladend.'
         ],
         perfumes: [
           'dior-sauvage',
@@ -724,7 +723,7 @@ export const guides: Guide[] = [
       'Vanille ist die universelle Sprache der Behaglichkeit. Entdecke reine cremige Vanille-Düfte bis zu würzigen Varianten mit Tabak und Gewürzen. Von kuschelWeich bis elegant-trocken: Dein perfekter Vanille-Signature.',
     heroImage: '/ratgeber/vanille-duefte-hero.jpg',
     intro: [
-      'Vanille ist nicht einfach nur eine Note, sie ist eine Emotion. Die beste Vanille in der Parfümwelt kommt aus Madagascar, ist kostbar und wird seit Jahrhunderten in Luxus-Kompositionen genutzt. Ein grossartiger Vanille-Duft riecht warm, umhüllend, einladend – wie ein Zuhause auf der Haut. Vanille hat die Kraft, Menschen sofort zu beruhigen und glücklich zu machen. Das ist kein Zufall: Vanille wurde lange Zeit in der Medizin verwendet, weil sie tatsächlich entspannend wirkt.',
+      'Vanille ist nicht einfach nur eine Note, sie ist eine Emotion. Besonders geschätzt ist Bourbon-Vanille aus Madagaskar; sie ist kostbar und wird seit Jahrhunderten in Luxus-Kompositionen genutzt. Ein grossartiger Vanille-Duft riecht warm, umhüllend, einladend – wie ein Zuhause auf der Haut.',
       'Die Intelligenz eines Vanille-Dufts liegt nicht in der reinen Vanille, sondern in ihrer Begleitung. Ein Vanille-Duft, der pur ist, wirkt schnell eintönig und eine-dimensional. Die besten Vanille-Kompositionen paaren Vanille mit Komplizen: Holz für Eleganz und Trockenheit, Gewürzen für Würze und Tiefe, Kaffeenoten für Sophistication oder Blumigen für romantische Weiblichkeit. Das schafft Tiefe und macht den Duft unvergessen.',
       'Hier findest du unsere liebsten Vanille-Düfte: von dessertartig-kuschelig bis würzig-edel. Alle sind langlebig, alle sind tröstlich, alle sind auf ihre Weise wunderschön.'
     ],
@@ -765,9 +764,9 @@ export const guides: Guide[] = [
       {
         heading: 'Vanille-Düfte richtig dosieren und tragen',
         body: [
-          'Vanille wirkt intensiv, besonders auf trockener Haut. Eine gute Feuchtigkeitspflege vorher verdoppelt die Haltbarkeit und macht den Duft angenehmer. Im Winter, wenn die Heizungsluft austrocknet, ist Hautpflege essentiell.',
+          'Vanille wirkt intensiv, besonders auf trockener Haut. Eine gute Feuchtigkeitspflege vorher kann die Haltbarkeit verlängern und macht den Duft angenehmer. Im Winter, wenn die Heizungsluft austrocknet, ist Hautpflege essentiell.',
           'Ein bis zwei Sprühstösse sind normalerweise ideal. Vanille braucht nicht viel, um präsent zu sein. Ein Sprühstoss am Hals, evtl. einen auf den Unterarm – mehr ist selten nötig.',
-          'Vanille-Düfte halten lange. Das ist einer ihrer grossen Vorteile. Ein qualitativ hochwertiger Vanille-Duft hält oft acht bis zehn Stunden auf der Haut, manchmal sogar länger. Das ist, weil Vanille eine Basis-Note ist, nicht flüchtig, sondern haftend.'
+          'Vanille-Düfte halten lange. Das ist einer ihrer grossen Vorteile. Ein qualitativ hochwertiger Vanille-Duft hält oft viele Stunden auf der Haut. Das ist, weil Vanille eine Basis-Note ist, nicht flüchtig, sondern haftend.'
         ]
       }
     ]
@@ -779,7 +778,7 @@ export const guides: Guide[] = [
       'Oud ist das Herz orientalischer Eleganz: warm, zeitlos, langanhaltend und faszinierend. Entdecke die besten Oud-Kompositionen von günstigen Schätzen bis zu exklusiven Meisterwerken – wann und wie du Oud richtig trägst.',
     heroImage: '/ratgeber/oud-duefte-hero.png',
     intro: [
-      'Oud ist das flüssige Gold der Parfümerie. Es ist das Harz des indischen Adlerholzbaums, und echtes, gereiftes Oud kostet mehr als sein Gewicht in Gold. Aber es ist nicht nur teuer, weil es selten ist, sondern weil es magisch wirkt. Ein Duft mit echtem Oud riecht warm, tiefgründig, leicht rauchig und unglaublich langanhaltend. Oud hinterlässt ein Aroma auf der Haut, das 12 bis 24 Stunden dauert, manchmal noch länger. Es ist eines der wenigen Düfte, die sich noch Tage später im Gedächtnis befinden.',
+      'Oud ist das flüssige Gold der Parfümerie. Es entsteht als Harz im Kernholz von Adlerholzbäumen (Aquilaria) aus Süd- und Südostasien, und echtes Oud gehört zu den teuersten Rohstoffen der Parfümerie. Aber es ist nicht nur teuer, weil es selten ist, sondern weil es magisch wirkt. Ein Duft mit echtem Oud riecht warm, tiefgründig, leicht rauchig und unglaublich langanhaltend. Oud gehört zu den langlebigsten Duftnoten überhaupt.',
       'Die gute Nachricht: Echtes, natürliches Oud ist für die meisten Menschen unerschwinglich, aber gute synthetische Oud-Akkorde sind kostengünstig und arbeiten perfekt. Moderne Oud-Düfte verwenden Moleküle wie Iso E Super und spezielle Oud-Synthesen, die das Original täuschend echt nachbilden. Das ist nicht eine Täuschung, sondern eine Lösung. Ein synthetisches Oud in einem guten Duft ist oft sogar prägnanter und angenehmer zu tragen als echtes, weil es balancierter ist. Die Duft-Industrie hat verstanden, dass Qualität nicht nur davon kommt, ob etwas echt ist, sondern wie es komponiert wird.',
       'Hier findest du unsere liebsten Oud-Düfte: einsteigerfreundlich, warm, meisterlich komponiert. Vom erschwinglichen Schatz bis zum Luxus-Extrait, für jeden Weg in die Welt des Ouds.'
     ],
@@ -804,7 +803,7 @@ export const guides: Guide[] = [
         body: [
           'Der erste Oud ist ein Abenteuer. Reines, rauchig-medizinisches Oud kann anfangs intensiv wirken, fast antiseptisch oder kampferartig. Das ist normal und kein Fehler – deine Nase gewöhnt sich daran und nach 15 bis 30 Minuten wird der Duft weicher und runder. Gib ihm Zeit. Viele Oud-Liebhaber sagen: Der erste Eindruck war Schock, aber nach einer Minute war es Liebe.',
           'Wenn du Oud zum ersten Mal erlebst, wähle eine süsslich-warme Variante: Oud mit Rose, Safran, Vanille oder Amber. Diese sind zugänglicher, weil die süssen Begleiter die intensive Rauchigkeit des Ouds balancieren. Lattafa Badee Amethyst oder Montale Arabians Tonka sind perfekt für den Anfang – sie zeigen dir Oud in seiner wärmsten, verführendsten Form.',
-          'Günstige Oud-Düfte von Lattafa, Montale oder Mancera sind perfekt zum Ausprobieren. So lernst du, ob dir die Richtung überhaupt gefällt, bevor du 200 Franken für einen Tom Ford investierst. Ein Oud-Duft, der 30 Franken kostet, kann derselben psychologischen Effekt haben wie einer für 300 Franken, wenn er gut komponiert ist.'
+          'Günstige Oud-Düfte etwa von Lattafa sind perfekt zum Ausprobieren. So lernst du, ob dir die Richtung überhaupt gefällt, bevor du viel Geld für einen Tom Ford investierst. Ein günstiger Oud-Duft kann eine ähnliche Wirkung haben wie ein teurer, wenn er gut komponiert ist.'
         ]
       },
       {
@@ -813,7 +812,7 @@ export const guides: Guide[] = [
           'Süsslich-warmer Oud mit Vanille und Amber: Das ist der einladendste Oud. Er wirkt warm, tröstet wie eine Umarmung, und ist perfekt für Anfänger. Der Oud ist präsent, aber nicht aggressiv. Lattafa Badee Amethyst ist ein Klassiker in dieser Kategorie.',
           'Würziger Oud mit Tabak und Gewürzen: Das ist reifer, männlich kodiert, und hat mehr Charakter. Ein rauchiger Oud mit schwarzem Pfeffer oder Zimt wirkt geheimnisvoll und intellektuell. Mancera Red Tobacco geht in diese Richtung.',
           'Blumiger Oud mit Rose und Safran: Das ist einer der elegantesten Ouds. Rose und Oud kombiniert wirken orientalisch-romantisch. Shaghaf Oud hat diese Kombination perfekt gemacht. Für alle, die Oud wollen, aber nicht auf Eleganz verzichten mögen.',
-          'Reiner, intensiver Oud: Das ist für Sammler und Oud-Liebhaber. Ein Duft wie Tom Ford Oud Wood oder Initio Oud Greatness ist tiefe Rauchigkeit, fast medizinisch, sehr langlebig. Das ist nicht zum Anfangen, sondern zum Verstehen.'
+          'Reiner, intensiver Oud: Das ist für Sammler und Oud-Liebhaber. Ein Duft wie Initio Oud for Greatness zeigt Oud kräftig und rauchig, sehr langlebig. Das ist nicht zum Anfangen, sondern zum Verstehen.'
         ]
       },
       {
@@ -830,8 +829,8 @@ export const guides: Guide[] = [
         body: [
           'Oud ist kostbar und empfindlich gegenüber Hitze, Licht und Luft. Lagere deine Flasche immer dunkel und kühl, idealerweise in der Originalverpackung. Im Badezimmer ist der schlechteste Ort – Temperaturwechsel und Feuchtigkeit lassen Oud schneller kippen. Ein Schrank im kühlen Schlafzimmer ist ideal.',
           'Echte Oud-Liebhaber sagen: Oud wird mit der Zeit besser. Wenn du einen neuen Oud kaufst, gib ihm ein paar Wochen, um sich zu settlen. Der Duft kann sich auf der Haut mit der Zeit verändern, wird manchmal runder, manchmal intensiver. Das ist nicht gut oder schlecht, sondern Tiefe.',
-          'Wenn du in echte Oud-Extraits investierst (Tom Ford, Initio, Penhaligons), wissen Sie, dass echte Oud-Düfte extrem langlebig sind. Ein Duft, den du 2-3 Mal pro Woche trägst, hält dir Monate bis Jahre. Das ist eine langfristige Investition, aber eine, die sich lohnt.',
-          'Wichtig: Der Unterschied zwischen günstigen und teuren Oud-Düften liegt nicht immer darin, wie viel echter Oud drin ist, sondern in der Komposition. Ein 30-Franken-Oud von Lattafa kann derselbe psychologische Effekt haben wie ein 300-Franken-Tom Ford, wenn er gut gestaltet ist. Teste immer zuerst.'
+          'Wenn du in teurere Oud-Düfte investierst (z. B. Tom Ford, Initio, Penhaligon’s), weisst du: Oud-Düfte sind sehr langlebig. Ein Duft, den du 2-3 Mal pro Woche trägst, hält dir Monate bis Jahre. Das ist eine langfristige Investition, aber eine, die sich lohnt.',
+          'Wichtig: Der Unterschied zwischen günstigen und teuren Oud-Düften liegt nicht immer darin, wie viel echter Oud drin ist, sondern in der Komposition. Ein günstiger Oud von Lattafa kann eine ähnliche Wirkung haben wie ein teurer Tom Ford, wenn er gut gestaltet ist. Teste immer zuerst.'
         ]
       }
     ]
@@ -840,7 +839,7 @@ export const guides: Guide[] = [
     slug: 'die-besten-zitrus-duefte',
     title: 'Die besten Zitrus-Düfte: frisch, spritzig und voller Energie',
     description:
-      'Zitrus-Düfte mit Bergamotte, Zitrone, Grapefruit und Orange: frisch, leicht und gut gelaunt. Perfekt für Sommer, Büro und heisse Tage – garantiert gute Laune.',
+      'Zitrus-Düfte mit Bergamotte, Zitrone, Grapefruit und Orange: frisch, leicht und gut gelaunt. Perfekt für Sommer, Büro und heisse Tage ',
     heroImage: '/ratgeber/zitrus-duefte-hero.jpg',
     intro: [
       'Zitrus-Düfte sind das Gegenmittel gegen schwere, dunkle Momente. Zitrone, Bergamotte, Grapefruit und Orange riechen sauber, unbeschwert und strahlend – jeder Sprühstoss hebt die Stimmung. Sie sind leicht, luftig und wirken sofort erfrischend, perfekt für alle, die es unkompliziert und energiegeladen mögen.',
@@ -894,7 +893,7 @@ export const guides: Guide[] = [
     intro: [
       'Manche Frauendüfte bleiben im Gedächtnis. Stunden nach einer Begegnung erinnert sich ein Mann noch an den Duft, und er wirkt unbewusst attraktiv. Das ist nicht Manipulation oder Tricks, sondern das Ergebnis von guter Parfümerie. Die Düfte, die bei Männern wirklich funktionieren, teilen ein bestimmtes Muster: Sie balancieren zwischen Eleganz und Sinnlichkeit, zwischen Nähe und Mysterium. Sie riechen nicht nach „Mädchen", sondern nach einer Frau, die sich selbst kennt.',
       'Was diese Düfte gemeinsam haben: Sie starten mit etwas Leichtem – Fruchtig oder Blüte – damit der Duft nicht sofort erdrückend wirkt. In der Mitte entwickelt sich etwas Wärmeres, Sinnlicheres: Rose, Orchidee, exotische Fruchtnoten. Und am Ende liegt ein warmer, subtil süsslich-sinnlicher Grund: Vanille, Moschus, Amber. Diese Architektur funktioniert, weil sie den Trick versteht: nicht zu viel Lärm, aber präsent. Nicht aufdringlich, aber unvergesslich.',
-      'Hier sind die Düfte, die wir immer wieder bei Männern erfolgreich sehen. Das ist keine Geheimwaffe, sondern eine Beobachtung dessen, was tatsächlich funktioniert.'
+      'Hier sind Düfte, die oft als besonders beliebt genannt werden. Das ist keine Geheimwaffe, sondern eine Orientierung.'
     ],
     sections: [
       {
@@ -918,7 +917,7 @@ export const guides: Guide[] = [
         body: [
           'Vanille, Tonka, Karamell: Diese Noten wirken nicht wegen irgendwelcher psychologischen Tricks, sondern weil sie natürlicherweise warm und nahbar riechen. Ein Mann riecht diese Noten und assoziiert sie mit Gemütlichkeit, Nähe, Sicherheit. Das ist echt, nicht konstruiert. Deshalb haben traditionelle Verführungs-Düfte solche Basis-Noten.',
           'Rosen und Jasmin funktionieren, weil sie elegant riechen. Sie wirken nicht kitschig oder übertrieben – sie wirken reif und kultiviert. Eine Rose mit etwas Vanille ist eine zeitlose Kombination, nicht weil sie „Verführung erzeugt", sondern weil sie einfach schön riecht.',
-          'Moschus und Amber riechen nach warmer Haut. Sie sind subtil, nicht chemisch. Das ist auch, warum eine Frau, die einen moschusartigen Duft trägt, näher zu wirken scheint – der Duft wirkt wie eine natürliche Duftentwicklung ihres Körpers, nicht wie etwas, das von aussen aufgebracht wurde.',
+          'Moschus und Amber riechen nach warmer Haut. Das ist auch, warum eine Frau, die einen moschusartigen Duft trägt, näher zu wirken scheint – der Duft wirkt wie eine natürliche Duftentwicklung ihres Körpers, nicht wie etwas, das von aussen aufgebracht wurde.',
           'Die wichtigste Regel: weniger ist mehr. Ein Frauenduft, der zu intensiv ist, wird erdrückend. Die Düfte auf dieser Liste sind solche, die nur aus der Nähe richtig zu riechen sind, aber dann langanhaltend wirken. Das ist Balance. In Räumen wirkt ein intensiver Duft schnell erdrückend. Aber wenn ein Mann dich umarmt und deinen Duft entdeckt – das ist stark.',
           'Reife statt Niedlichkeit: Ein guter Frauenduft ist intelligent. Er ist nicht „niedlich" oder „verspielt", sondern reif und sinnlich. Das ist der Unterschied zwischen einer Frau, die „süss riechen möchte" und einer Frau, die „sexy und kultiviert riechen möchte". Die Düfte hier sind in der zweiten Kategorie.'
         ]
@@ -926,7 +925,7 @@ export const guides: Guide[] = [
       {
         heading: 'Der wichtigste Punkt',
         body: [
-          'Die erfolgreichsten Frauendüfte – und das ist ehrlich – sind nicht die mit der „besten Formel", sondern die, in denen sich eine Frau selbstbewusst fühlt. Ein Duft kann alle psychologischen Zutaten haben, aber wenn du dich darin unwohl fühlst, wird das ein Mann riechen. Die authentische Selbstsicherheit ist immer attraktiver als der perfekteste Duft ohne Überzeugung.',
+          'Die erfolgreichsten Frauendüfte – und das ist ehrlich – sind nicht die mit der „besten Formel", sondern die, in denen sich eine Frau selbstbewusst fühlt. Ein Duft kann alle psychologischen Zutaten haben, aber wenn du dich darin unwohl fühlst, merkt man das an deiner Ausstrahlung. Die authentische Selbstsicherheit ist immer attraktiver als der perfekteste Duft ohne Überzeugung.',
           'Dosierung ist ein praktisches Thema. Einige dieser Düfte – wie Black Opium – sind konzentriert. Eine Sprühung reicht oft. Bei extremem Selbstvertrauen und intimem Kontext kannst du mehr nehmen. Aber für den Alltag, besonders im Büro oder in öffentlichen Räumen, weniger ist eleganter. Männer mögen, dass sie einen Duft entdecken müssen, wenn sie dich näher kommen – das wirkt rätselhafter.',
           'Im Endeffekt ist die Wahrheit simpel: Trag einen dieser Düfte, der dir selbst gefällt, in dem du dich gut fühlst. Das ist alles, was du brauchst.'
         ]
@@ -957,7 +956,7 @@ export const guides: Guide[] = [
         heading: '♉ Stier (21. April – 20. Mai)',
         body: [
           'Stiere geniessen mit allen Sinnen: Beständigkeit, Wärme und etwas Süsse. Ein gourmandiger, behaglicher Duft trifft ihren Geschmack perfekt.',
-          'Luxus-Pick: Tom Ford Tobacco Vanille. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Khamrah. Warme Vanille, Tabak und Dattel wirken sinnlich und genussvoll.'
+          'Luxus-Pick: Tom Ford Tobacco Vanille. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Khamrah. Warme Vanille und Gewürze wirken sinnlich und genussvoll, beim Original mit Tabak, bei Khamrah mit Dattel.'
         ],
         perfumes: ['khamrah', 'lattafa-asad']
       },
@@ -965,7 +964,7 @@ export const guides: Guide[] = [
         heading: '♊ Zwillinge (21. Mai – 21. Juni)',
         body: [
           'Zwillinge sind neugierig, leicht und kommunikativ. Ein verspielter, frischer Duft mit einem Hauch Süsse passt zu ihrer Wandelbarkeit.',
-          'Luxus-Pick: Dolce & Gabbana Light Blue. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Yara. Leicht, fröhlich und unkompliziert, ideal für spontane Tage.'
+          'Luxus-Pick: Dolce & Gabbana Light Blue. Süssere, cremigere Alternative mit eigenem Charakter: Lattafa Yara. Fröhlich und unkompliziert, ideal für spontane Tage.'
         ],
         perfumes: ['dolce-gabbana-light-blue', 'lattafa-yara']
       },
@@ -981,7 +980,7 @@ export const guides: Guide[] = [
         heading: '♌ Löwe (23. Juli – 23. August)',
         body: [
           'Löwen strahlen, sind grosszügig und wollen gesehen werden. Ein opulenter Signature-Duft mit guter Strahlkraft ist ihre Bühne.',
-          'Luxus-Pick: Maison Francis Kurkdjian Baccarat Rouge 540. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Ana Abiyedh Rouge. Edel, strahlend und unverwechselbar – mit derselben Amber-Opulenz wie das Original, aber für ein Bruchteil des Preises.'
+          'Luxus-Pick: Maison Francis Kurkdjian Baccarat Rouge 540. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Ana Abiyedh Rouge. Edel, strahlend und unverwechselbar – mit ähnlicher Amber-Opulenz wie das Original, aber für einen Bruchteil des Preises.'
         ],
         perfumes: ['baccarat-rouge-540', 'lattafa-ana-abiyedh']
       },
@@ -989,7 +988,7 @@ export const guides: Guide[] = [
         heading: '♍ Jungfrau (24. August – 23. September)',
         body: [
           'Jungfrauen lieben Klarheit, Pflege und Natürlichkeit. Ein cleaner, frisch-mineralischer Duft wirkt an ihnen mühelos elegant.',
-          'Luxus-Pick: Jo Malone Wood Sage & Sea Salt. Günstigere Alternative in ähnlicher Duftrichtung: Lattafa Mayar. Saubere, unaufdringliche Noten unterstreichen ihre natürliche Eleganz.'
+          'Luxus-Pick: Jo Malone Wood Sage & Sea Salt. Günstigere, eher fruchtig-blumige Alternative: Lattafa Mayar. Saubere, unaufdringliche Noten unterstreichen ihre natürliche Eleganz.'
         ],
         perfumes: ['jo-malone-wood-sage-sea-salt', 'lattafa-mayar']
       },
@@ -1029,7 +1028,7 @@ export const guides: Guide[] = [
         heading: '♒ Wassermann (21. Januar – 19. Februar)',
         body: [
           'Wassermänner sind eigenständig, modern und unkonventionell. Ein minimalistischer, holzig-cleaner Duft passt zu ihrem individuellen Stil.',
-          'Luxus-Pick: Le Labo Santal 33. Günstigere Alternative in ähnlich holzig-moderner Richtung: Mancera Cedrat Boisé. Klare Zitrus- und Holznoten wirken modern und eigenständig.'
+          'Luxus-Pick: Le Labo Santal 33. Günstigere Alternative in ähnlich holzig-moderner Richtung: Mancera Cedrat Boisé. Holzige Noten, beim Mancera mit klarer Zitrusfrische, wirken modern und eigenständig.'
         ],
         perfumes: ['le-labo-santal-33', 'mancera-cedrat-boise']
       },
@@ -1037,13 +1036,13 @@ export const guides: Guide[] = [
         heading: '♓ Fische (20. Februar – 20. März)',
         body: [
           'Fische sind träumerisch, sensibel und romantisch. Ein aquatisch-frischer, weicher Duft spiegelt ihre sanfte, verträumte Art.',
-          'Luxus-Pick: Giorgio Armani Acqua di Gioia. Günstigere Alternative in ähnlicher, aquatisch-frischer Richtung: Davidoff Cool Water. Klare Wasser- und Zitrusnoten wirken sanft, frisch und verträumt.'
+          'Luxus-Pick: Giorgio Armani Acqua di Gioia. Günstigere Alternative in ähnlicher, aquatisch-frischer Richtung: Davidoff Cool Water Woman. Klare Wasser- und Zitrusnoten wirken sanft, frisch und verträumt.'
         ],
-        perfumes: ['armani-acqua-di-gioia', 'davidoff-cool-water']
+        perfumes: ['armani-acqua-di-gioia']
       },
       {
         body: [
-          'Sternzeichen sind ein schöner, spielerischer Einstieg, aber dein echter Lieblingsduft hängt von deinem persönlichen Geschmack ab, nicht vom Kalender. Unser Duft-Quiz findet ihn in unter einer Minute, abgestimmt auf Duftrichtung, Anlass, Saison und Budget.'
+          'Sternzeichen sind ein schöner, spielerischer Einstieg, aber dein echter Lieblingsduft hängt von deinem persönlichen Geschmack ab, nicht vom Kalender. Unser Duft-Quiz hilft dir, ihn einzugrenzen, abgestimmt auf Duftrichtung, Anlass, Saison und Budget.'
         ]
       }
     ]
@@ -1063,7 +1062,7 @@ export const guides: Guide[] = [
         heading: 'Schritt 1: Finde deine Duftrichtung',
         body: [
           'Düfte teilen sich grob in vier Familien: frisch/clean (Zitrus, Meer, sauberer Moschus), süss/gourmand (Vanille, Karamell, Amber), holzig/woody (Sandelholz, Leder, Oud) und blumig/floral (Rose, Jasmin, Pfirsich).',
-          'Überleg dir, welche dieser Beschreibungen dich sofort anspricht. Das ist deine Startrichtung. Unser Duft-Quiz nimmt dir diese Einordnung in unter einer Minute ab.'
+          'Überleg dir, welche dieser Beschreibungen dich sofort anspricht. Das ist deine Startrichtung. Unser Duft-Quiz hilft dir bei dieser Einordnung.'
         ]
       },
       {
@@ -1108,8 +1107,8 @@ export const guides: Guide[] = [
       'Der Frühling braucht Leichtigkeit. Entdecke blumig-frische Düfte mit grünen Noten, zarten Blüten und Zitrus. Von zart bis mutig, für Alltag und besondere Momente. Deine Frühlings-Signatur wartet.',
     heroImage: '/ratgeber/die-besten-fruehlingsduefte.jpg',
     intro: [
-      'Der Frühling ist ein Neuanfang, und dein Duft sollte das spiegeln. Die schweren, dunklen Winterdüfte kommen jetzt in den Schrank. Der Frühling ruft nach Leichtigkeit, nach Düften, die wie eine Brise riechen, wie die erste grüne Knospe, wie Zitrus und Blüten in der Sonne. Ein grossartiger Frühlingsduft macht dich nicht nur riechen, sondern fühlen: energetisch, erwacht, hoffnungsvoll. Die Psychologie ist klar: Im Frühling sehnen wir uns nach Helligkeit und Bewegung, und ein frischer, lebendiger Duft unterstützt diesen mentalen Übergang.',
-      'Die Intelligenz eines Frühlingsduft liegt in seiner Balance zwischen Frische und Struktur. Es reicht nicht, einfach nur Zitrus zu nehmen. Ein wirklich grossartiger Frühlingsduft hat Tiefe: vielleicht grüne aromatische Noten, ein Hauch Blüte im Herz, und eine dezente, wärmende Basis, die den Duft zusammenhält, wenn die Sonne untergeht. Der Frühling ist die Jahreszeit, in der Düfte am schnellsten verflogen, aber auch wo sie am schönsten funktionieren, weil deine Nase frischer ist.',
+      'Der Frühling ist ein Neuanfang, und dein Duft sollte das spiegeln. Die schweren, dunklen Winterdüfte kommen jetzt in den Schrank. Der Frühling ruft nach Leichtigkeit, nach Düften, die wie eine Brise riechen, wie die erste grüne Knospe, wie Zitrus und Blüten in der Sonne. Ein grossartiger Frühlingsduft macht dich nicht nur riechen, sondern fühlen: energetisch, erwacht, hoffnungsvoll.',
+      'Die Intelligenz eines Frühlingsduft liegt in seiner Balance zwischen Frische und Struktur. Es reicht nicht, einfach nur Zitrus zu nehmen. Ein wirklich grossartiger Frühlingsduft hat Tiefe: vielleicht grüne aromatische Noten, ein Hauch Blüte im Herz, und eine dezente, wärmende Basis, die den Duft zusammenhält, wenn die Sonne untergeht.',
       'Hier findest du unsere liebsten Frühlingsdüfte: blumig, grün, zart, manchmal mit einem Hauch Frucht. Manche sind zeitlose Klassiker, andere sind moderne Entdeckungen. Alle funktionieren wunderbar in dieser magischen Jahreszeit.'
     ],
     sections: [
@@ -1140,7 +1139,7 @@ export const guides: Guide[] = [
       {
         heading: 'Frühlingsdüfte für verschiedene Kontexte',
         body: [
-          'Alltag & Büro: Eine zarte oder grüne Frühlingskomposition ist ideal. Sie wirkt frisch, ohne dich zu dominieren. Ein bis zwei Sprühstösse reichen, weil der Frühling auch der Jahreszeit ist, wo Düfte schneller evaporieren.',
+          'Alltag & Büro: Eine zarte oder grüne Frühlingskomposition ist ideal. Sie wirkt frisch, ohne dich zu dominieren. Ein bis zwei Sprühstösse reichen.',
           'Date im Freien: Ein fruchtig-blumiger Duft mit ein bisschen mehr Charakter funktioniert hervorragend. Die frische Luft, die Sonne, deine erwachte Haut nach dem Winter – alles spielt zusammen. Vermeide schwere oder warme Düfte, die wirken im Frühling fehl am Platz.',
           'Abends & bei Kühle: Wenn es nach Sonnenuntergang noch kühl wird, ein Hauch wärmere Basis (subtiles Moschus oder sanftes Holz) gibt dem Frühlingsduft Halt. Das ist die Schönheit des Übergangssasons: Das gleiche Duft funktioniert vom Tag ins Abend.',
           'Sport & Outdoor: Aquatische oder grüne Frühjahrs-Düfte sind hier ideal. Sauber, leicht, präsent, aber nicht aufdringlich. Dein Körper wird warm, der Duft wird sich mit der Aktivität verändern – das ist Teil des Erlebnisses.'
@@ -1149,8 +1148,8 @@ export const guides: Guide[] = [
       {
         heading: 'Haltbarkeit und Dosierung im Frühling',
         body: [
-          'Frühjahrs-Düfte halten oft nicht ganz so lange wie Winter- oder sogar Sommerdüfte. Das ist ok, weil sie für diese Jahreszeit dimensioniert sind. Ein Frühlingsduft, der vier bis fünf Stunden hält, ist perfekt. Die leichte, frische Formel evaporiert schneller.',
-          'Dosierung: Der Frühling verlangt nach weniger als der Sommer. Ein Sprühstoss am Hals und vielleicht eine kleine Auffrischung am Nachmittag. Die milde Temperatur und deine regenerierte Haut (nach dem Winter) verstärken den Duft natürlich.',
+          'Leichte Frühlingsdüfte halten oft weniger lange als schwere Winterdüfte. Das ist ok, weil sie für diese Jahreszeit dimensioniert sind. Die leichte, frische Formel verfliegt schneller.',
+          'Dosierung: Im Frühling genügt wenig. Ein Sprühstoss am Hals und vielleicht eine kleine Auffrischung am Nachmittag.',
           'Praktischer Tipp: Ein tragbarer Zerstäuber mit deinem Frühjahrs-Liebling ist ideal. Nach dem Training, nach dem Lunch, wenn dich die Nase ruft – ein schneller Sprühstoss holt dich ins Jetzt zurück.'
         ]
       },
@@ -1159,7 +1158,7 @@ export const guides: Guide[] = [
         body: [
           'Konzentration: Eau de Toilette (EdT) ist für den Frühling meist die beste Wahl, leichter, luftiger und günstiger als Eau de Parfum. Bei milderen Frühlingstagen kann ein EdP jedoch angenehm sein.',
           'Dosierung: Im Frühling reichen 1–2 Sprühstösse. Mit steigenden Temperaturen wirkt ein Duft intensiver als gewohnt.',
-          'Noten im Fokus: Achte auf Kopfnoten wie Bergamotte, Zitrone, grünen Tee, Maiglöckchen oder Iris. Diese Noten wirken im Frühling besonders lebendig.',
+          'Noten im Fokus: Achte auf Kopfnoten wie Bergamotte, Zitrone oder grünen Tee und Herznoten wie Maiglöckchen oder Iris. Diese Noten wirken im Frühling besonders lebendig.',
           'Was du vermeiden solltest: Sehr schwere Basis-Noten wie Oud, Tabak oder dicke Vanille passen eher in den Herbst und Winter.',
           'Probiere zuerst: Bestelle wenn möglich eine Probe, bevor du einen ganzen Flakon kaufst. Auf der Haut riecht ein Duft immer anders als im Laden.'
         ]
@@ -1182,7 +1181,7 @@ export const guides: Guide[] = [
     heroImage: '/images/guides/bueroduefte-hero.jpg',
     intro: [
       'Ein Büro-Duft ist nicht weniger wichtig als ein Abendduft, nur anders. Im Büro ist ein Duft ein subtiles Statement über deine Kultur und Aufmerksamkeit. Es ist eine Form der Eleganz, einen Duft zu tragen, der nicht dominiert. Ein grossartiger Büro-Duft begleitet dich den ganzen Tag, ist für andere wahrnehmbar, wenn sie näher kommen, aber drängt sich nicht in den Vordergrund. Das ist schwieriger zu componieren als man denkt, weil Subtilität auch Charakter erfordert. Ein langweiliger Duft ist nicht subtil, er ist einfach schwach.',
-      'Die Psychologie ist clear: Im Grossraumbüro teilst du einen kleinen Luftraum mit vielen Menschen, manche mit empfindlicheren Nasen, manche mit Allergiefaktoren. Ein intensiver, schwerer oder sehr süsser Duft kann schnell zum Thema werden, nicht zum positiven. Ein kluger Büro-Duft hingegen sagt: Ich bin hier, ich habe Geschmack, ich respektiere deine Nähe. Das schafft Vertrauen und Eleganz.',
+      'Im Grossraumbüro teilst du einen kleinen Luftraum mit vielen Menschen, manche mit empfindlicheren Nasen, manche mit Allergiefaktoren. Ein intensiver, schwerer oder sehr süsser Duft kann schnell zum Thema werden, nicht zum positiven. Ein kluger Büro-Duft hingegen sagt: Ich bin hier, ich habe Geschmack, ich respektiere deine Nähe. Das schafft Vertrauen und Eleganz.',
       'Hier findest du unsere besten Büro-Düfte, sorgfältig ausgewählt für ihre Balance zwischen Präsenz und Subtilität. Sie sind für Menschen, die verstehen, dass manchmal weniger wirklich mehr ist.'
     ],
     sections: [
@@ -1239,12 +1238,12 @@ export const guides: Guide[] = [
     heroImage: 'https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=1200&q=80&fit=crop',
     intro: [
       'Manche Düfte sind echte Ausdauer-Wunder: Einmal aufgesprüht, begleiten sie dich oft den ganzen Tag und sind auch für andere deutlich wahrnehmbar, noch nach Stunden, ohne nachzulegen. Die Duft-Community nennt das „Beast Mode".',
-      'Was Beast-Mode-Düfte ausmacht, sind vor allem zwei Faktoren: hohe Konzentration des Duftöls und eine Kombination von Inhaltsstoffen mit starkem Haftungsvermögen. Ambroxan, Iso E Super, Calone, warme Ambernoten und schwere Moschus-Verbindungen sind typische Vertreter. Sie lagern sich auf Haut und Kleidung fest und projizieren weithin.',
+      'Was Beast-Mode-Düfte ausmacht, sind vor allem zwei Faktoren: hohe Konzentration des Duftöls und eine Kombination von Inhaltsstoffen mit starkem Haftungsvermögen. Ambroxan, Iso E Super, warme Ambernoten und schwere Moschus-Verbindungen sind typische Vertreter. Sie lagern sich auf Haut und Kleidung fest und projizieren weithin.',
       'Hier unsere langlebigsten, projektionsstärksten Düfte. Sparsam dosieren ist hier Pflicht, ein Sprühstoss zu viel, und du bist das Thema des Tages.'
     ],
     sections: [
       {
-        perfumes: ['lattafa-ana-abiyedh', 'khamrah', 'lattafa-yara', 'mugler-angel', 'ysl-black-opium', 'club-de-nuit-intense', 'jpg-ultra-male', 'lattafa-asad']
+        perfumes: ['lattafa-ana-abiyedh', 'khamrah', 'mugler-angel', 'ysl-black-opium', 'club-de-nuit-intense', 'jpg-ultra-male', 'lattafa-asad']
       },
       {
         heading: 'So dosierst du Beast-Mode-Düfte richtig',
@@ -1344,12 +1343,12 @@ export const guides: Guide[] = [
     ],
     sections: [
       {
-        perfumes: ['coco-mademoiselle', 'chloe-edp', 'gucci-bloom', 'ysl-libre', 'dior-miss-dior', 'chanel-no-5', 'lancome-idole', 'mugler-angel']
+        perfumes: ['coco-mademoiselle', 'chloe-edp', 'gucci-bloom', 'ysl-libre', 'dior-miss-dior', 'chanel-no-5', 'lancome-idole']
       },
       {
         heading: 'Die verschiedenen floralen Charaktere',
         body: [
-          'Rose ist die Klassikerin und die vielseitigste Blüte. Sie kann sehr klassisch und opulent wirken – Chanel No. 5 ist ein Paradebeispiel. Oder modern und frisch, kombiniert mit Frucht oder Moschus. Rose ist die Königin der Blüten, weil sie mit allem funktioniert.',
+          'Rose ist die Klassikerin und die vielseitigste Blüte. Sie kann sehr klassisch und opulent wirken – Chanel No. 5 zeigt, mit Rose, Jasmin und Aldehyden, die klassische Seite. Oder modern und frisch, kombiniert mit Frucht oder Moschus. Rose ist die Königin der Blüten, weil sie mit allem funktioniert.',
           'Jasmin und Orangenblüte sind sinnlich und betörend. Sie wirken warm und intim – nicht zart, sondern intensiv. Diese Blüten sind perfekt für Abende oder die kühle Jahreszeit, wenn du etwas mit echtem Charakter tragen möchtest.',
           'Pfingstrose und Maiglöckchen sind das Gegenteil: zart, frisch und leicht – das ist Frühling im Glas. Perfekt für diejenigen, die Romantik ohne Schwere mögen, tagsüber und im Alltag.',
           'Iris und Veilchen sind subtiler und pudrig-elegant. Sie wirken nicht so sofort erkennbar „blumig", sondern eleganter und feiner. Für diejenigen, die Blüten lieben, aber sie lieber unterschwellig haben.'
@@ -1360,7 +1359,7 @@ export const guides: Guide[] = [
         body: [
           'Moderne Florals sind nicht altmodisch. Sie kombinieren Blüten mit Frucht, Moschus, Holz oder Vanille und wirken dadurch aktuell und vielseitig. Ein floraler Duft von heute kann würzig, grün, frisch oder sogar süsslich sein – nicht einfach nur „Blumenvase".',
           'Der Unterschied zwischen zarten und opulenten Florals ist jahreszeit- und anlass-abhängig. Ein frischer, grüner Floral funktioniert tagsüber. Ein opulenter, süsser Floral ist wunderschön am Abend oder im Winter. Eine holzige Komponente macht Florals erwachsener. Eine Moschus-Basis macht sie eleganter und langlebiger.',
-          'Qualität zeigt sich am Preis. Echte Blütenöle – besonders Rose und Jasmin – sind teuer. Ein hochwertiger Floral mit echten Ölen hat eine Tiefe und Komplexität, die synthetische Versionen nicht erreichen. Das ist kein Snobbismus, sondern Handwerk.'
+          'Echte Blütenöle – besonders Rose und Jasmin – gehören zu den teuersten Rohstoffen der Parfümerie. Moderne Florals kombinieren sie meist mit synthetischen Bausteinen, die für Haltbarkeit und Ausdruck sorgen.'
         ]
       }
     ]
@@ -1372,9 +1371,9 @@ export const guides: Guide[] = [
       'Aquatische Düfte mit Meeresbrise, Zitrus und salziger Frische: erfrischend, elegant und universell. Von Sommer & Sport bis zum Alltag – unsere liebsten frischen Meisterwerke für Damen, Herren und Unisex.',
     heroImage: '/ratgeber/aquatische-duefte-hero.jpg',
     intro: [
-      'Aquatische Düfte sind das Gegenmittel gegen Hitze, Schwere und Unbehagen. Sie riechen nach frischer Luft, Meeresbrise und sauberer Energie – wie ein Sprung ins Wasser an einem klaren Sommertag. Diese Duftkategorie wurde in den 1990ern revolutioniert (Davidoff Cool Water, Armani Acqua di Gioia) und ist seitdem nie weggegangen, aus gutem Grund: Die Kombination aus aquatischen Noten, Zitrus und sauberer Haut-Wärme wirkt universell angenehm – fast niemand verweigert sich dieser Frische.',
+      'Aquatische Düfte sind das Gegenmittel gegen Hitze, Schwere und Unbehagen. Sie riechen nach frischer Luft, Meeresbrise und sauberer Energie – wie ein Sprung ins Wasser an einem klaren Sommertag. Diese Duftkategorie wurde Ende der 1980er und in den 1990ern populär (etwa Davidoff Cool Water 1988 oder Issey Miyake L’Eau d’Issey 1992) und ist seitdem nie weggegangen, aus gutem Grund: Die Kombination aus aquatischen Noten, Zitrus und sauberer Haut-Wärme wirkt universell angenehm.',
       'Das Faszinierende an aquatischen Düften ist ihre Ehrlichkeit und Klarheit. Sie versprechen keine Romantik, keine Verführung, keine tiefe Sinnlichkeit – sie versprechen Klarheit, Erleichterung und pure Lebensenergie. Im Gegensatz zu schweren, orientalischen Düften mit Oud oder Amber sind Aquatische unendlich leicht und präsent zugleich. Sie sind der perfekte Duft für alle, die sich nicht „verkleiden", sondern eine verbesserte Version ihrer selbst sein möchten.',
-      'Hier unsere liebsten aquatischen Düfte aus dem Katalog – von günstigen, alltäglichen Klassikern bis zu edlen, zeitlosen Meisterwerken, für Damen, Herren und alle dazwischen.'
+      'Hier unsere liebsten aquatischen Düfte – von günstigen, alltäglichen Klassikern bis zu edlen, zeitlosen Meisterwerken, für Damen, Herren und alle dazwischen.'
     ],
     sections: [
       {
@@ -1383,7 +1382,7 @@ export const guides: Guide[] = [
       {
         heading: 'Die Frische-Familien: welche passt zu dir?',
         body: [
-          'Aquatisch: riechen nach Meer, Wasser und Salz. Es ist eine Illusion von Frische (chemisch-synthetisch), nicht das echte Meer – aber die Illusion ist wunderschön und das ist der Punkt. Meeresbrise-Düfte wie Luna Rossa Ocean oder Creed Silver Mountain Water sind intensiv, salzig und lebensfreudlich.',
+          'Aquatisch: riechen nach Meer, Wasser und Salz. Es ist eine Illusion von Frische (chemisch-synthetisch), nicht das echte Meer – aber die Illusion ist wunderschön und das ist der Punkt. Frische Düfte wie Luna Rossa Ocean oder Creed Silver Mountain Water wirken klar, kühl und lebendig.',
           'Zitrisch: die Klassiker mit Zitrone, Bergamotte, Grapefruit und Orange. Sie sind spritzig, hell und sofort erfrischend, aber auch am flüchtigsten. Perfekt für Morgens und für heisse Tage.',
           'Grün & Herbaceous: riechen nach frisch geschnittenem Gras, grünen Blättern, Galbanum und Kräutern. Sie sind natürlicher, fast ländlich – nicht salzig, aber intensiv frisch. Jo Malone Wood Sage & Sea Salt verbindet Grün mit salziger Komponente wunderbar.',
           'Clean-Moschus: die modernen „Wäsche-Düfte" mit sauberm Moschus und leichtem Holz. Sie riechen wie frisch gewaschene Haut, gepflegt und minimal. Diese Kategorie wächst und ist perfekt für alle, die „weniger ist mehr" mögen.'
@@ -1394,7 +1393,7 @@ export const guides: Guide[] = [
         body: [
           'Haltbarkeit: Aquatische und zitrische Noten verfliegen schneller als schwere Düfte. Das ist normal. Ein zweiter, leichter Sprühstoss am Mittag hält die Frische den ganzen Tag.',
           'Basis-Note ist entscheidend: Eine holzige, moschusartige oder musky-warme Basis macht aquatische Düfte langlebiger. Schau auf die Basis-Noten: Moschus, Sandelholz oder Zedernholz = länger anhaltend.',
-          'Dosierung: Frische Düfte können bei sparsamer Dosierung präsenter wirken als schwere Düfte. Ein bis zwei Sprühstösse auf Hals und Handgelenk genügen meist völlig.',
+          'Dosierung: Ein bis zwei Sprühstösse auf Hals und Handgelenk genügen meist völlig.',
           'Jahreszeit: Im Sommer, nach dem Sport, im Büro oder zur Erfrischung am Nachmittag unschlagbar. Im Winter können aquatische Düfte manchmal zu luftig wirken – hier braucht es eine moschusartige oder süsse Basis.'
         ]
       },
@@ -1403,7 +1402,7 @@ export const guides: Guide[] = [
         body: [
           'Sommer & Hitze: Das klassische Anwendungsgebiet. Schwere Düfte wirken erdrückend, aber Aquatische sind pure Erleichterung. Sie kühlen nicht physikalisch, aber psychologisch – eine willkommene mentale Frische.',
           'Sport & Bewegung: Nach dem Fitness, auf der Radtour oder beim Joggen: Aquatische Düfte unterstreichen das Gefühl von Aktivität und Energie. Sie riechen wie „Ich bin in Bewegung, ich bin am Leben".',
-          'Alltag & Büro: Weil Aquatische nie schwer oder aufdringlich wirken und fast keine Kopfschmerzen verursachen, sind sie perfekt für lange Arbeitstage und Meetings. Niemand wird von deinem Duft gestört.',
+          'Alltag & Büro: Weil Aquatische meist leicht wirken, eignen sie sich gut für lange Arbeitstage und Meetings – sparsam dosiert.',
           'Winter & Abend: Im Winter funktionieren Aquatische mit einer warmen, moschusartigen oder fruchtigen Basis wunderbar. Luna Rossa Ocean mit ihrer tieferen Basis oder eine aquatische Duft-Schicht über einem warmen Pullover – elegant und unerwartet.'
         ]
       }
@@ -1416,8 +1415,8 @@ export const guides: Guide[] = [
       'Pudrige & Moschus-Düfte mit Iris, Veilchen und sauberer Haut-Wärme: elegant, sinnlich und universell. Von klassisch bis modern – unsere liebsten weichen Meisterwerke für Damen, Herren und Unisex.',
     heroImage: '/ratgeber/pudrige-moschus-duefte-hero.png',
     intro: [
-      'Pudrige und moschusartige Düfte sind das Gegenteil von lauter Präsenz – sie sind die Kunst der Subtilität. Sie riechen nach gepflegter Eleganz, nach frisch geduschter Haut, nach Iris und Veilchen, die dich sanft umhüllen wie eine Seide-Handschuhe. Diese Düfte haben eine lange Geschichte: Pudernoten existieren seit der Renaissance, als Puder und Parfüm noch Luxus-Privilegien waren. Heute sind sie moderner denn je – nicht altmodisch, sondern zeitlos elegant.',
-      'Moderne pudrige Düfte sind nicht die süsslich-schweren Fruchtbomben von früher. Sie kombinieren Iris- und Veilchennoten (die klassischen „Puder-Noten") mit sauberem Moschus, leichtem Holz oder sogar frischen Zitrus-Akzenten. Das Ergebnis ist eine wunderbare Balance: elegant aus der Nähe, dezent aus der Ferne, und nirgendwo aufdringlich. Sie passen zu jedem Moment, von der Büroarbeit bis zum Dinner.',
+      'Pudrige und moschusartige Düfte sind das Gegenteil von lauter Präsenz – sie sind die Kunst der Subtilität. Sie riechen nach gepflegter Eleganz, nach frisch geduschter Haut, nach Iris und Veilchen, die dich sanft umhüllen wie eine Seide-Handschuhe. Heute sind sie moderner denn je – nicht altmodisch, sondern zeitlos elegant.',
+      'Sie kombinieren Iris- und Veilchennoten (die klassischen „Puder-Noten") mit sauberem Moschus, leichtem Holz oder sogar frischen Zitrus-Akzenten. Das Ergebnis ist eine wunderbare Balance: elegant aus der Nähe, dezent aus der Ferne, und nirgendwo aufdringlich. Sie passen zu jedem Moment, von der Büroarbeit bis zum Dinner.',
       'Hier unsere liebsten pudrigen und Moschus-Düfte – eine Auswahl für alle, die Eleganz, Subtilität und zeitlose Schönheit schätzen, mit Klassikern und modernen Entdeckungen.'
     ],
     sections: [
@@ -1445,8 +1444,8 @@ export const guides: Guide[] = [
         heading: 'Pudrig & Moschus für jeden Moment',
         body: [
           'Büro & Alltag: Diese Düfte sind perfekt für lange Arbeitstage. Sie sind nie zu intensiv, nie störend. Sie wirken gepflegt und elegant ohne Anstrengung.',
-          'Date & Abend: Ein pudrig-moschusartiger Duft ist einladend und verführerisch ohne aggressiv zu sein. Die Nähe ist das Point – wenn jemand dich umarmt, wird er verliebt.',
-          'Jahreszeiten: Pudrige Düfte funktionieren überall. Im Sommer wirken sie erfrischend (wegen der leichten Moschus-Note), im Winter warm und einladend.',
+          'Date & Abend: Ein pudrig-moschusartiger Duft ist einladend und verführerisch ohne aggressiv zu sein. Die Nähe ist der Punkt – man nimmt ihn vor allem bei einer Umarmung wahr.',
+          'Jahreszeiten: Pudrige Düfte funktionieren überall. Im Sommer wirken sie dezent, im Winter warm und einladend.',
           'Schichtenspiel: Pudrig-Moschus-Düfte sind wunderbar zum Layering. Kombinier sie mit einem frischen oder würzigen Duft – die Pudernote macht alles weicher und eleganter.'
         ]
       }
@@ -1460,8 +1459,8 @@ export const guides: Guide[] = [
     heroImage: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=1200&q=80&fit=crop',
     intro: [
       'Beim Layering trägst du zwei Düfte übereinander und erschaffst so eine ganz persönliche Note, die niemand sonst genau so hat. Das klingt nach Profi-Kunst, ist aber einfacher als gedacht und macht grossen Spass beim Experimentieren.',
-      'Viele Nischenmarken empfehlen das Layering sogar ausdrücklich: Le Labo, Byredo oder Maison Margiela verkaufen bewusst unisexe, „neutrale" Düfte, die als Schicht für andere funktionieren. Du brauchst kein teures Arsenal – manchmal reicht ein einfacher Body-Splash als Basis unter deinem Lieblingsduft.',
-      'Klingt kompliziert, ist es aber nicht. Mit ein paar einfachen Regeln gelingt es dir sofort und du entdeckst Kombinationen, die kein Parfümeur je so gebaut hat.'
+      'Manche Marken empfehlen das Kombinieren sogar ausdrücklich, etwa Jo Malone London. Du brauchst kein teures Arsenal – manchmal reicht ein einfacher Body-Splash als Basis unter deinem Lieblingsduft.',
+      'Klingt kompliziert, ist es aber nicht. Mit ein paar einfachen Regeln gelingt es dir sofort.'
     ],
     sections: [
       {
@@ -1503,10 +1502,10 @@ export const guides: Guide[] = [
       {
         heading: 'Die wichtigsten Konzentrationen',
         body: [
-          'Eau de Cologne (EdC): sehr leicht und frisch, hält nur wenige Stunden.',
-          'Eau de Toilette (EdT): leicht und frisch, ideal für Sommer und Tag, hält meist 3 bis 5 Stunden.',
-          'Eau de Parfum (EdP): höhere Konzentration, intensiver und langlebiger. Der häufigste Typ, hält oft 6 bis 8 Stunden.',
-          'Parfum / Extrait: die intensivste und teuerste Variante, hält am längsten. Schon wenig genügt.'
+          'Eau de Cologne (EdC): sehr leicht und frisch (ca. 2–5 % Duftöl), hält am kürzesten.',
+          'Eau de Toilette (EdT): leicht und frisch, ideal für Sommer und Tag (ca. 5–15 % Duftöl).',
+          'Eau de Parfum (EdP): höhere Konzentration, intensiver und langlebiger. Hält in der Regel länger als ein EdT (ca. 15–20 % Duftöl).',
+          'Parfum / Extrait: die intensivste und teuerste Variante (ca. 20–30 % Duftöl), hält meist am längsten. Schon wenig genügt.'
         ]
       },
       {
@@ -1527,12 +1526,12 @@ export const guides: Guide[] = [
     heroImage: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1200&q=80&fit=crop',
     intro: [
       'Beim Umgang mit Parfum schleichen sich schnell kleine Fehler ein, die Haltbarkeit und Duftbild verschlechtern, oft ohne, dass man es merkt. Viele dieser Fehler macht fast jeder, einfach weil sie niemand erklärt hat.',
-      'Die gute Nachricht: Sie sind leicht zu beheben. Hier die fünf häufigsten Parfum-Fehler und wie du sie ganz einfach vermeidest. Ab sofort riecht dein Duft länger, schöner und intensiver.'
+      'Die gute Nachricht: Sie sind leicht zu beheben. Hier die fünf häufigsten Parfum-Fehler und wie du sie ganz einfach vermeidest.'
     ],
     sections: [
       {
         heading: '1. Die Handgelenke aneinander reiben',
-        body: ['Das „bricht" die Duftmoleküle und lässt den Duft schneller verfliegen. Einfach aufsprühen und trocknen lassen.']
+        body: ['Die Reibungswärme lässt besonders die Kopfnoten schneller verfliegen und verändert den Duftverlauf. Einfach aufsprühen und trocknen lassen.']
       },
       {
         heading: '2. Parfum im Badezimmer lagern',
@@ -1571,16 +1570,16 @@ export const guides: Guide[] = [
         heading: 'Marken mit Schweizer Wurzeln',
         body: [
           'Chopard: Das Luxushaus aus Genf ist vor allem für Schmuck und Uhren bekannt, macht aber auch elegante Düfte wie Happy Chopard.',
-          'Davidoff: Die Marke geht auf Zino Davidoff aus Genf zurück. Cool Water gehört zu den meistverkauften frischen Herrendüften überhaupt.',
+          'Davidoff: Die Marke geht auf Zino Davidoff zurück, der sein Geschäft in Genf gründete. Cool Water (1988) gilt als einer der prägenden aquatischen Herrendüfte.',
           'Gisada: Ein Schweizer Dufthaus mit modernen, eleganten Kompositionen wie Ambassador und Ambassadora.'
         ]
       },
       {
         heading: 'Warum lokal Sinn macht',
         body: [
-          'Wir achten bewusst auf Schweizer Preise (CHF) und Verfügbarkeit. Damit du weisst, was wirklich relevant ist.',
+          'Wir geben Preise bewusst in Schweizer Franken (CHF) an. Damit du weisst, was wirklich relevant ist.',
           'Düfte mit Schweizer Bezug sind ein schönes, lokales Geschenk, etwa zum Geburtstag oder als Mitbringsel.',
-          'Du suchst nicht nach einer bestimmten Marke, sondern nach deinem Duft? Dann mach unser Quiz, das deine Richtung in unter einer Minute findet.'
+          'Du suchst nicht nach einer bestimmten Marke, sondern nach deinem Duft? Dann mach unser Quiz, das dir hilft, deine Richtung zu finden.'
         ]
       }
     ]
@@ -1593,8 +1592,8 @@ export const guides: Guide[] = [
     heroImage: 'https://images.unsplash.com/photo-1540202404-a2f29016b523?w=1200&q=80&fit=crop',
     intro: [
       'Die Marke Lattafa hat in kurzer Zeit viele Fans gewonnen – in der Duft-Community und zunehmend auch bei Mainstream-Käufern. Tolle Haltbarkeit, warme Kompositionen und das alles zu erstaunlich kleinen Preisen: Lattafa hat gezeigt, dass guter Duft keine 150 Franken kosten muss.',
-      'Die Marke stammt aus Dubai und produziert seit den 2000ern. Bekannt wurden sie zuerst als Hersteller von Duft-Dupes für teure Originale , aber inzwischen stehen viele ihrer Düfte als eigenständige Favoriten in vielen Sammlungen, neben den teuren Flakons.',
-      'Hier unsere liebsten Lattafa-Düfte aus dem Katalog und was jeweils dahintersteckt.'
+      'Die Marke stammt aus den Vereinigten Arabischen Emiraten. Bekannt ist sie heute vor allem für Düfte in der Richtung teurer Originale, aber inzwischen stehen viele ihrer Düfte als eigenständige Favoriten in vielen Sammlungen, neben den teuren Flakons.',
+      'Hier unsere liebsten Lattafa-Düfte und was jeweils dahintersteckt.'
     ],
     sections: [
       {
@@ -1604,9 +1603,9 @@ export const guides: Guide[] = [
         heading: 'Welcher Lattafa-Duft passt zu dir?',
         body: [
           'Süss & würzig: Khamrah mit Dattel, Zimt und Vanille, kuschelig und winterlich.',
-          'Fruchtig & rauchig: Asad in der Richtung von Creed Aventus, ideal für selbstbewusste Auftritte.',
+          'Würzig & warm: Asad, oft mit Dior Sauvage Elixir verglichen, ideal für selbstbewusste Auftritte.',
           'Cremig & feminin: Yara und Yara Tous, beliebte, leicht süsse Damenlieblinge.',
-          'Frisch & blumig: Mayar für alle, die es dezenter und alltagstauglich mögen.'
+          'Fruchtig & blumig: Mayar für alle, die es dezenter und alltagstauglich mögen.'
         ]
       },
       {
@@ -1626,9 +1625,9 @@ export const guides: Guide[] = [
       'Armaf ist bekannt für preiswerte Düfte mit toller Haltbarkeit, allen voran Club de Nuit. Unsere Armaf-Favoriten für Damen und Herren.',
     heroImage: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=1200&q=80&fit=crop',
     intro: [
-      'Armaf hat sich mit der Club-de-Nuit-Reihe einen Namen gemacht: charaktervolle Düfte mit toller Haltbarkeit zu kleinen Preisen. In der Duft-Community ist die Marke aus Dubai seit Jahren ein fester Begriff, besonders Club de Nuit Intense Man ist einer der meistdiskutierten Spar-Düfte überhaupt.',
+      'Armaf hat sich mit der Club-de-Nuit-Reihe einen Namen gemacht: charaktervolle Düfte mit toller Haltbarkeit zu kleinen Preisen. In der Duft-Community ist die Marke aus Dubai seit Jahren ein fester Begriff, besonders Club de Nuit Intense Man ist dort sehr bekannt.',
       'Was Armaf besonders macht: Sie machen keine Geheimnis daraus, dass ihre Düfte von bekannten Originalen inspiriert sind, aber sie pflegen auch einen eigenständigen Stil. Die Qualität ist für den Preis erstaunlich gut, die Haltbarkeit oft beeindruckend.',
-      'Hier unsere liebsten Armaf-Düfte aus dem Katalog, mit einem kurzen Überblick, was die einzelnen Varianten ausmacht.'
+      'Hier unsere liebsten Armaf-Düfte, mit einem kurzen Überblick, was die einzelnen Varianten ausmacht.'
     ],
     sections: [
       {
@@ -1637,9 +1636,9 @@ export const guides: Guide[] = [
       {
         heading: 'Die Club-de-Nuit-Reihe im Überblick',
         body: [
-          'Intense Man: der Bestseller, fruchtig-rauchig und die bekannteste günstige Aventus-Alternative.',
+          'Intense Man: fruchtig-rauchig und die bekannteste günstige Aventus-Alternative.',
           'Sillage: frischer und etwas grüner, ideal für wärmere Tage.',
-          'Milestone und Untold: modern und vielseitig, mit fruchtigen und süssen Akzenten.',
+          'Milestone: frisch-fruchtig mit maritimer Note. Untold: süss-ambrig und warm.',
           'Club de Nuit Woman: die feminine, blumig-fruchtige Variante der Reihe.'
         ]
       },
@@ -1661,7 +1660,7 @@ export const guides: Guide[] = [
     heroImage: '/ratgeber/herbstduefte-hero.jpg',
     intro: [
       'Der Herbst ist die schönste Zeit für etwas wärmere Düfte: Wenn die Tage kühler und die Blätter golden werden, dürfen würzige, holzige und leicht süsse Noten ran. Sie wirken gemütlich und einhüllend, ohne schon so schwer zu sein wie ein tiefer Winterduft.',
-      'Hier unsere liebsten Herbstdüfte aus dem Katalog, von erschwinglich bis edel, für jeden Geschmack.'
+      'Hier unsere liebsten Herbstdüfte, von erschwinglich bis edel, für jeden Geschmack.'
     ],
     sections: [
       {
@@ -1687,7 +1686,7 @@ export const guides: Guide[] = [
       },
       {
         body: [
-          'Du bist unsicher, welche Richtung dir steht? Mach unser Duft-Quiz. Es findet deine Lieblingsrichtung in unter einer Minute, abgestimmt auf Duftrichtung, Anlass, Saison und Budget.'
+          'Du bist unsicher, welche Richtung dir steht? Mach unser Duft-Quiz. Es findet deine Lieblingsrichtung in wenigen Minuten, abgestimmt auf Duftrichtung, Anlass, Saison und Budget.'
         ]
       }
     ]
@@ -1696,24 +1695,20 @@ export const guides: Guide[] = [
     slug: 'die-besten-nischenduefte',
     title: 'Die besten Nischendüfte: besonders & aussergewöhnlich',
     description:
-      'Nischendüfte heben sich vom Mainstream ab: eigenständig, hochwertig und aussergewöhnlich. Was Nischenparfums ausmacht und unseree Favoriten aus dem Katalog.',
+      'Nischendüfte heben sich vom Mainstream ab: eigenständig, hochwertig und aussergewöhnlich. Was Nischenparfums ausmacht und unsere Favoriten.',
     heroImage: 'https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=1200&q=80&fit=crop',
     intro: [
       'Nischendüfte sind die Gegenwelt zu den grossen Mainstream-Parfums: Statt für den Massengeschmack gemacht, setzen sie auf Eigenständigkeit, hochwertige Rohstoffe und einen unverwechselbaren Charakter. Wer etwas Besonderes sucht, das nicht jeder trägt, wird hier fündig.',
-      'Der Begriff „Nische" sagt nichts über den Preis – er beschreibt den Ansatz. Nischenmarken wie Le Labo, Byredo oder Xerjoff haben sich bewusst aus dem Massenmarkt herausgehalten, arbeiten oft mit selteneren Rohstoffen und bieten mehr Persönlichkeit als ein Mainstream-Bestseller. Das geht oft mit einem höheren Preis einher, aber nicht immer.',
-      'Hier unsere schönsten Nischendüfte aus dem Katalog, von strahlend und modern bis dunkel-holzig und orientalisch.'
+      'Der Begriff „Nische" sagt nichts über den Preis – er beschreibt den Ansatz. Nischenmarken wie Le Labo, Byredo oder Xerjoff positionieren sich bewusst abseits des Massenmarkts, arbeiten oft mit selteneren Rohstoffen und bieten mehr Persönlichkeit als ein Mainstream-Bestseller. Das geht oft mit einem höheren Preis einher, aber nicht immer.',
+      'Hier unsere schönsten Nischendüfte, von strahlend und modern bis dunkel-holzig und orientalisch.'
     ],
     sections: [
       {
         perfumes: [
-          'lattafa-ana-abiyedh',
           'le-labo-santal-33',
           'nishane-hacivat',
-          'lattafa-badee-amethyst',
-          'lattafa-oud-for-glory',
           'orto-megamare',
-          'byredo-gypsy-water',
-          'club-de-nuit-intense'
+          'byredo-gypsy-water'
         ]
       },
       {
@@ -1721,7 +1716,7 @@ export const guides: Guide[] = [
         body: [
           'Nischendüfte stammen meist von kleineren, spezialisierten Häusern, die sich auf Duftkunst statt auf Massenproduktion konzentrieren. Oft stecken hochwertigere oder ungewöhnlichere Rohstoffe drin.',
           'Sie sind in der Regel eigenständiger und „mutiger" als Designer-Düfte, dafür manchmal polarisierender. Genau das macht ihren Reiz aus: Du riechst nach dir, nicht nach dem Mainstream.',
-          'Nischendüfte sind häufig teurer, halten dafür aber oft sehr lange und überzeugen mit Tiefe und Charakter. Schon ein Sprühstoss genügt meist.'
+          'Nischendüfte sind häufig teurer, überzeugen dafür oft mit Tiefe und Charakter. Die Haltbarkeit ist je nach Duft sehr unterschiedlich.'
         ]
       },
       {
@@ -1743,7 +1738,7 @@ export const guides: Guide[] = [
     intro: [
       'Im Sommer funktionieren leichte, fruchtige Damendüfte am besten: ein Hauch Zitrus, sonnige Blüten oder cremige Kokos-Vanille wirken bei Wärme am schönsten. Schwere Düfte mit intensivem Oud oder dicker Vanille wirken bei 30 Grad schnell erdrückend, besonders in der Nähe anderer Menschen.',
       'Ein guter Sommerduft kombiniert Frische mit etwas Substanz: leichte Frucht- oder Blütennoten zu Beginn, ergänzt durch eine cremige oder holzige Basis. Bei Hitze wirken Düfte intensiver als in der kälteren Jahreszeit. Deshalb gilt hier: weniger ist mehr.',
-      'Hier sind unsere liebsten Sommerdüfte für Frauen aus dem Katalog – von günstigen Alternativen bis zu edlen Klassikern, von erfrischenden Klassikern bis zu kuschelig-cremigen Stranddüften.'
+      'Hier sind unsere liebsten Sommerdüfte für Frauen – von günstigen Alternativen bis zu edlen Klassikern, von erfrischenden Klassikern bis zu kuschelig-cremigen Stranddüften.'
     ],
     sections: [
       {
@@ -1776,7 +1771,7 @@ export const guides: Guide[] = [
       },
       {
         body: [
-          'Du weisst noch nicht, welche Richtung dir steht? Mach unser Duft-Quiz. Es findet deinen Sommerduft in unter einer Minute, abgestimmt auf Duftrichtung, Anlass und Budget.'
+          'Du weisst noch nicht, welche Richtung dir steht? Mach unser Duft-Quiz. Es findet deinen Sommerduft in wenigen Minuten, abgestimmt auf Duftrichtung, Anlass und Budget.'
         ]
       }
     ]
@@ -1785,10 +1780,10 @@ export const guides: Guide[] = [
     slug: 'creed-aventus-guenstige-alternativen',
     title: 'Creed Aventus: die besten günstigen Alternativen',
     description:
-      'Creed Aventus ist legendär, aber teuer. Diese günstigen Alternativen gehen in die gleiche fruchtig-rauchige Richtung. Unsere Spar-Tipps aus dem Katalog.',
+      'Creed Aventus ist legendär, aber teuer. Diese günstigen Alternativen gehen in die gleiche fruchtig-rauchige Richtung. Unsere Spar-Tipps.',
     heroImage: 'https://images.unsplash.com/photo-1541643600914-78b084683702?w=1200&q=80&fit=crop',
     intro: [
-      'Creed Aventus gilt als einer der berühmtesten Herrendüfte überhaupt: fruchtige Ananas, rauchige Birke und edles Moschus-Holz. Er ist seit 2010 ein Klassiker und hat eine fast mythische Stellung in der Duft-Community . Aber der Preis von über 400 CHF für einen Flakon ist happig.',
+      'Creed Aventus gilt als einer der berühmtesten Herrendüfte überhaupt: fruchtige Ananas, rauchige Birke und edles Moschus-Holz. Er ist seit 2010 ein Klassiker und hat eine fast mythische Stellung in der Duft-Community. Aber der Preis ist happig.',
       'Die gute Nachricht: Es gibt Düfte, die in eine sehr ähnliche fruchtig-rauchige Richtung gehen, zu einem Bruchteil des Preises. Wichtig ehrlich gesagt: Keiner ist eine exakte Kopie. Aventus hat einen ganz eigenen Charakter, den kein Dupe vollständig reproduziert. Für den Alltag sind die Alternativen verblüffend nah dran.',
       'Hier die besten günstigen Alternativen zu Creed Aventus, mit ehrlichem Vergleich.'
     ],
@@ -1799,17 +1794,7 @@ export const guides: Guide[] = [
           {
             expensive: 'creed-aventus',
             cheap: 'club-de-nuit-intense',
-            note: 'Armaf Club de Nuit Intense Man ist die bekannteste Aventus-Alternative überhaupt: fruchtige Ananas, rauchige Birke und Moschus, erstaunlich nah am Original und extrem günstig.'
-          },
-          {
-            expensive: 'creed-aventus',
-            cheap: 'lattafa-asad',
-            note: 'Lattafa Asad geht in dieselbe fruchtig-rauchige Richtung, etwas wärmer und süsser abgestimmt, ein langlebiger, projektionsstarker Sparpick.'
-          },
-          {
-            expensive: 'creed-aventus',
-            cheap: 'armaf-cdn-milestone',
-            note: 'Armaf Club de Nuit Milestone geht in eine ähnliche fruchtige Richtung mit Ananas und warmem Ambroxan, moderner und süsser als Aventus, aber klar verwandt.'
+            note: 'Armaf Club de Nuit Intense Man gilt als eine der bekanntesten Aventus-Alternativen: fruchtige Ananas, rauchige Birke und Moschus, erstaunlich nah am Original und extrem günstig.'
           }
         ]
       },
@@ -1835,8 +1820,8 @@ export const guides: Guide[] = [
       'Lattafa ist bekannt für günstige Düfte, die teuren Originalen ähneln. Wir zeigen dir, welcher Luxus-Duft hinter den beliebtesten Lattafa-Parfüms steckt.',
     heroImage: 'https://images.unsplash.com/photo-1541643600914-78b084683702?w=1200&q=80&fit=crop',
     intro: [
-      'Die Marke Lattafa hat sich einen Namen gemacht mit warmen, langlebigen Düften zu kleinen Preisen. Viele davon erinnern stark an teure Originale. Das ist kein Zufall, sondern Strategie: Lattafa arbeitet bewusst mit ähnlichen Akkorden wie bekannte Luxusdüfte.',
-      'Wichtig zu wissen: Lattafa nennt ihre Düfte keine „Dupes". Sie sind eigenständige Produkte in ähnlicher Duftrichtung. Rechtlich ist das in Ordnung: Eine Duftrichtung lässt sich nicht schützen, nur Name, Logo und Flakon. So darf jeder Parfümeur in eine ähnliche Richtung komponieren.',
+      'Die Marke Lattafa hat sich einen Namen gemacht mit warmen, langlebigen Düften zu kleinen Preisen. Viele davon erinnern stark an teure Originale. Viele Lattafa-Düfte werden deshalb mit bekannten Luxusdüften verglichen.',
+      'Wichtig zu wissen: Lattafa nennt ihre Düfte keine „Dupes". Sie sind eigenständige Produkte in ähnlicher Duftrichtung. Ein Duft selbst ist in den meisten Ländern kaum rechtlich geschützt, sehr wohl aber Name, Logo und Flakon.',
       'Hier zeigen wir dir die beliebtesten Lattafa-Düfte und in welche edle Richtung sie gehen. Ehrlich gesagt: Es sind keine exakten Kopien, aber oft verblüffend nah dran und für den Preis eine echte Empfehlung.'
     ],
     sections: [
@@ -1847,11 +1832,6 @@ export const guides: Guide[] = [
             expensive: 'kilian-angels-share',
             cheap: 'khamrah',
             note: 'Lattafa Khamrah geht in die warme, süss-würzige Richtung von Kilian Angels Share: Dattel, Zimt und Vanille, kuschelig und langlebig, zum Sparpreis.'
-          },
-          {
-            expensive: 'creed-aventus',
-            cheap: 'lattafa-asad',
-            note: 'Lattafa Asad trifft die fruchtig-rauchige Aura von Creed Aventus, mit Ananas, Pfeffer und Moschus-Holz.'
           },
           {
             expensive: 'initio-oud-greatness',
@@ -1867,7 +1847,7 @@ export const guides: Guide[] = [
       {
         heading: 'Lohnt sich ein Lattafa-Duft?',
         body: [
-          'Für den Preis bieten Lattafa-Düfte erstaunliche Haltbarkeit und Projektion. Oft halten sie 8 Stunden und länger.',
+          'Für den Preis bieten Lattafa-Düfte erstaunliche Haltbarkeit und Projektion.',
           'Sie sind ideal, um eine Duftrichtung auszuprobieren, bevor du viel Geld für ein teures Original ausgibst.',
           'Sparsam dosieren: Viele Lattafa-Düfte sind kräftig. Ein bis zwei Sprühstösse reichen meist völlig.'
         ]
@@ -1886,7 +1866,7 @@ export const guides: Guide[] = [
       'Gut riechen muss nicht teuer sein: alltagstaugliche, beliebte Düfte unter CHF 60 für junge Leute und Einsteiger, frisch, süss und unkompliziert.',
     heroImage: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=1200&q=80&fit=crop',
     intro: [
-      'Der erste eigene Duft soll gut riechen, vielseitig sein und nicht das halbe Taschengeld kosten. Zum Glück gibt es viele beliebte Düfte für kleines Geld. Gerade arabische Marken wie Lattafa oder Armaf bieten erstaunliche Qualität für 20–40 CHF.',
+      'Der erste eigene Duft soll gut riechen, vielseitig sein und nicht das halbe Taschengeld kosten. Zum Glück gibt es viele beliebte Düfte für kleines Geld. Gerade arabische Marken wie Lattafa oder Armaf bieten erstaunliche Qualität zu kleinen Preisen.',
       'Für junge Leute und Einsteiger gilt: lieber zu frisch und unkompliziert greifen als gleich zum teuren Nischenduft. Ein vielseitiger Duft, der in der Schule, an der Uni und im Ausgang passt, ist wertvoller als ein spezieller Duft, den man nur an bestimmten Abenden tragen kann.',
       'Hier unsere Favoriten unter CHF 60, unkompliziert, alltagstauglich und bei jungen Leuten besonders beliebt.'
     ],
@@ -1915,14 +1895,14 @@ export const guides: Guide[] = [
       {
         heading: 'Frisch oder süss: was passt zu dir?',
         body: [
-          'Frisch & sauber: Davidoff Cool Water und Club de Nuit Intense Man wirken gepflegt und kommen breit gut an.',
+          'Frisch & sauber: Davidoff Cool Water wirkt gepflegt und kommt breit gut an. Club de Nuit Intense Man ist fruchtig-rauchig und kräftiger.',
           'Süss & kuschelig: Lattafa Yara, Khamrah und Ariana Grande Cloud sind warme Lieblinge für alle, die es gemütlich mögen.',
           'Sonnig & verspielt: Sol de Janeiro Cheirosa 62 mit Pistazie und Karamell ist ein echter Komplimente-Magnet.'
         ]
       },
       {
         body: [
-          'Unsicher, was zu dir passt? Mach unser Duft-Quiz. In unter einer Minute findest du deine Richtung, abgestimmt auf Geschmack und Budget.'
+          'Unsicher, was zu dir passt? Mach unser Duft-Quiz. In wenigen Minuten findest du deine Richtung, abgestimmt auf Geschmack und Budget.'
         ]
       }
     ]
@@ -1951,14 +1931,14 @@ export const guides: Guide[] = [
         heading: 'Tipps für den richtigen Date-Duft im Sommer',
         body: [
           'Frische mit Seele: Düfte mit warmem Kern fühlen sich nicht nur sauber und verlässlich an – sie schaffen auch eine intime Nähe, ohne zu ersticken. Das ist es, was beim Date zählt.',
-          'Das Geheimnis der richtigen Menge: Grosszügig dosieren ist das grösste Fehler beim Date. Der beste Moment ist, wenn jemand seinen Kopf deinem Nacken nähert – und dann deinen Duft entdeckt. Ein bis zwei Sprühstösse, zentral auf Brust oder Nacken, genügt vollkommen.',
+          'Das Geheimnis der richtigen Menge: Grosszügig dosieren ist der grösste Fehler beim Date. Der beste Moment ist, wenn jemand seinen Kopf deinem Nacken nähert – und dann deinen Duft entdeckt. Ein bis zwei Sprühstösse, zentral auf Brust oder Nacken, genügen vollkommen.',
           'Der richtige Zeitpunkt: Trag deinen Duft 10–15 Minuten vor dem Losfahren auf. So legt sich die spritzige Kopfnote und der volle, weichere Kern kommt zum Vorschein – das ist dein bester Eindruck.',
           'Im Sommer weniger ist mehr: Schwere, zuckersüsse Abenddüfte fühlen sich in der Hitze schnell klebrig und erdrückend an. Dein Date wird eher fragen „Was ist das?" als sich unwohl fühlen wollen.'
         ]
       },
       {
         body: [
-          'Du willst genau deinen Typ treffen? Mach unser Duft-Quiz. Es findet deine Lieblingsrichtung in unter einer Minute.'
+          'Du willst genau deinen Typ treffen? Mach unser Duft-Quiz. Es findet deine Lieblingsrichtung in wenigen Minuten.'
         ]
       }
     ]
@@ -1971,14 +1951,14 @@ export const guides: Guide[] = [
     heroImage: 'https://images.unsplash.com/photo-1541643600914-78b084683702?w=1200&q=80&fit=crop',
     intro: [
       'Zara ist bekannt für überraschend gute Düfte zum kleinen Preis. Viele davon erinnern stark an teure Designer-Parfums. Kein Wunder: Ein Teil der bekanntesten Zara-Düfte (die Kollektion „Zara Emotions", 2019) wurde von der renommierten britischen Parfümeurin Jo Malone persönlich komponiert.',
-      'Ehrlich gesagt: Ein Dupe ist nie zu 100 % identisch und hält oft etwas kürzer. Aber für den Alltag und zum Ausprobieren einer Duftrichtung sind die Zara-Düfte erstaunlich gut und kosten meist unter 20 Franken.',
+      'Ehrlich gesagt: Ein Dupe ist nie zu 100 % identisch und hält oft etwas kürzer. Aber für den Alltag und zum Ausprobieren einer Duftrichtung sind die Zara-Düfte erstaunlich gut und kosten nur einen Bruchteil.',
       'Hier die bekanntesten Zara-Dupes und ihre teuren „Vorbilder". Die genaue Verfügbarkeit wechselt bei Zara saisonal.'
     ],
     sections: [
       {
         heading: 'Die bekanntesten Zara-Dupes und ihr Original',
         body: [
-          'Zara Red Vanilla → erinnert an YSL Black Opium: süss-kaffeeartig mit Vanille, ein beliebter Damen-Abendduft.',
+          'Zara Red Vanilla → wird oft mit Lancôme La Vie est Belle verglichen: süss mit Praline und Vanille, ein beliebter Damen-Abendduft.',
           'Zara Vibrant Leather → geht in die Richtung von Creed Aventus: fruchtig-rauchig, der Klassiker unter den „Komplimente-Düften".',
           'Zara Tobacco Collection (Rich Warm Addictive) → erinnert an Tom Ford Tobacco Vanille: würzig-süss, warm, perfekt für den Winter.',
           'Zara Gardenia → wird oft mit edlen Tuberose-/Gardenia-Düften verglichen: cremig-blumig und feminin.',
@@ -2010,7 +1990,7 @@ export const guides: Guide[] = [
     intro: [
       'Im Sommer brauchen Herrendüfte vor allem eines: Frische. Schwere, süsse Düfte wirken bei Hitze schnell aufdringlich, während aquatische, zitrische und leicht würzige Düfte sauber und anziehend bleiben.',
       'Dazu kommt ein praktischer Grund: Bei Wärme verdunstet Alkohol schneller, der Duft öffnet sich stärker und trägt weiter. Was im Winter dezent wirkt, kann im Sommer den ganzen Raum füllen. Weniger sprühen ist oft die bessere Wahl.',
-      'Die besten Sommerdüfte für Männer kombinieren Frische mit einem Hauch Charakter. Tagsüber reicht ein leichter Spritzer – für den Abend darf es eine Spur wärmer und würziger sein. Hier unsere Favoriten aus dem Katalog.'
+      'Die besten Sommerdüfte für Männer kombinieren Frische mit einem Hauch Charakter. Tagsüber reicht ein leichter Spritzer – für den Abend darf es eine Spur wärmer und würziger sein. Hier unsere Favoriten.'
     ],
     sections: [
       {
@@ -2032,7 +2012,7 @@ export const guides: Guide[] = [
       },
       {
         body: [
-          'Unsicher, welche Richtung zu dir passt? Mach unser Duft-Quiz. Es findet deinen Sommer-Typ in unter einer Minute.'
+          'Unsicher, welche Richtung zu dir passt? Mach unser Duft-Quiz. Es findet deinen Sommer-Typ in wenigen Minuten.'
         ]
       }
     ]
@@ -2063,9 +2043,9 @@ export const guides: Guide[] = [
         ]
       },
       {
-        heading: '3. Günstige Nischen- & Klon-Marken boomen',
+        heading: '3. Günstige Alternativ-Marken boomen',
         body: [
-          'Marken wie Lattafa und Armaf haben gezeigt, dass guter Duft nicht teuer sein muss. 2026 greifen immer mehr Menschen bewusst zu günstigen Alternativen statt zum Designer-Original.',
+          'Marken wie Lattafa und Armaf haben gezeigt, dass guter Duft nicht teuer sein muss. Viele Menschen greifen bewusst zu günstigen Alternativen statt zum Designer-Original.',
           'Auch „Dupe-Kultur" ist längst kein Geheimnis mehr. Ähnlich riechen für einen Bruchteil des Preises ist Mainstream geworden.'
         ]
       },
@@ -2090,7 +2070,7 @@ export const guides: Guide[] = [
       'Flüssigkeiten im Handgepäck: Was gilt für Parfüm? Die 100-ml-Regel einfach erklärt, plus die besten kompakten Reisedüfte für unterwegs.',
     heroImage: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=80&fit=crop',
     intro: [
-      'Du willst deinen Lieblingsduft auf Reisen mitnehmen? Dann gilt die EU-Flüssigkeitsregel auch für Parfüm: Alles über 100 ml muss ins aufgegebene Gepäck. Hier was du wissen musst, und welche kompakten Düfte sich für Reisen besonders eignen.',
+      'Du willst deinen Lieblingsduft auf Reisen mitnehmen? Dann gilt die EU-Flüssigkeitsregel auch für Parfüm: Behälter über 100 ml müssen ins aufgegebene Gepäck. Hier was du wissen musst, und welche kompakten Düfte sich für Reisen besonders eignen.',
       'Wichtig: Die Regeln können sich ändern, und es gibt Unterschiede je nach Flughafen und Airline. Prüfe immer vorab die aktuellen Bestimmungen deiner Fluggesellschaft.'
     ],
     sections: [
@@ -2099,7 +2079,7 @@ export const guides: Guide[] = [
         body: [
           'Im Handgepäck dürfen Flüssigkeiten (auch Parfüm) nur in Behältern bis maximal 100 ml mitgenommen werden. Alle Behälter müssen zusammen in einen transparenten, wiederverschliessbaren Zip-Beutel passen (Fassungsvermögen 1 Liter, ein Beutel pro Person).',
           'Ein 200-ml-Flakon, der nur halbvoll ist, zählt als 200-ml-Behälter und ist nicht erlaubt. Massgeblich ist die Beschriftung des Behälters, nicht der Inhalt.',
-          'Im aufgegebenen Gepäck gibt es keine Mengenbeschränkung. Dort darf auch der grosse Lieblingsflakon mit.',
+          'Im aufgegebenen Gepäck sind grössere Flakons erlaubt (Toilettenartikel laut IATA-Regeln bis insgesamt 2 Liter pro Person, max. 0,5 Liter pro Behälter). Dort darf auch der grosse Lieblingsflakon mit.',
           'Viele Marken bieten 30-ml- und 50-ml-Flakons an, die perfekt für Reisen geeignet sind. Reisezerstäuber (Atomizer) lassen sich zudem mit deinem Lieblingsduft befüllen, platzsparend und regelkonform.'
         ]
       },
@@ -2112,7 +2092,7 @@ export const guides: Guide[] = [
         body: [
           'Reisezerstäuber: Leere Flakon-Füller aus dem Drogeriemarkt oder von Muji lassen sich mit deinem Duft befüllen und passen bequem in die Tasche.',
           'Feste Parfüms (Solid Perfume): Als Stift oder Tiegel gibt es Düfte ohne Flüssigkeit. Von der 100-ml-Regel sind sie nicht betroffen. Das Angebot ist aber noch begrenzt.',
-          'Tipp: Kaufe am Flughafen im Duty-Free erst nach dem Sicherheitscheck, dort gibt es auch grosse Flakons, die du im Handgepäck mitnehmen darfst.',
+          'Tipp: Kaufe am Flughafen im Duty-Free erst nach dem Sicherheitscheck, dort gekaufte grosse Flakons darfst du im versiegelten Duty-Free-Beutel mitnehmen. Bei Umsteigeflügen können aber andere Regeln gelten.',
           'Trag den Duft lieber auf die Haut als auf die Kleidung: Im Flugzeug lüften sich Kleider kaum, auf der Haut ist der Duft zurückhaltender.'
         ]
       }
@@ -2125,14 +2105,14 @@ export const guides: Guide[] = [
       'Warum riecht dasselbe Parfüm bei dir anders als bei Freunden? Dein Hauttyp, pH-Wert und Pflegeroutine beeinflussen, wie ein Duft auf dir wirkt. Das steckt dahinter.',
     heroImage: 'https://images.unsplash.com/photo-1616401784845-180882ba9ba8?w=1200&q=80&fit=crop',
     intro: [
-      'Ein und dasselbe Parfüm kann auf verschiedenen Menschen völlig unterschiedlich riechen. Das liegt nicht an Einbildung, sondern an echten chemischen Prozessen auf der Haut.',
+      'Ein und dasselbe Parfüm kann auf verschiedenen Menschen völlig unterschiedlich riechen. Dafür gibt es mehrere mögliche Gründe, auch wenn nicht alle wissenschaftlich gleich gut belegt sind.',
       'Hier die wichtigsten Faktoren und was du daraus für die Duft-Wahl mitnehmen kannst.'
     ],
     sections: [
       {
         heading: 'Warum riecht Parfüm bei jedem anders?',
         body: [
-          'pH-Wert der Haut: Jeder Mensch hat einen leicht unterschiedlichen Haut-pH. Saure Haut (niedriger pH) kann frische, zitrische Noten schneller verflüchtigen lassen; alkalischere Haut hebt sie hervor.',
+          'pH-Wert der Haut: Jeder Mensch hat einen leicht unterschiedlichen Haut-pH. pH-Wert der Haut: Er wird oft als Faktor genannt, wissenschaftlich ist sein Einfluss auf den Duft aber kaum belegt.',
           'Hautfeuchtigkeit: Trockene Haut hält Düfte kürzer. Gut eingecremte Haut bietet den Duftstoffen eine bessere Oberfläche. Der Duft hält länger und entfaltet sich voller.',
           'Körperwärme: Wärmere Körperzonen (Handgelenk, Hals) verstärken die Projektion eines Dufts. Die natürliche Körpertemperatur beeinflusst, welche Noten sich in den Vordergrund schieben.',
           'Ernährung & Hormone: In kleinerem Ausmass beeinflusst auch das, was du isst, sowie Hormonschwankungen, wie ein Duft auf deiner Haut riecht. Dieser Effekt ist aber wissenschaftlich schwer messbar und individuell sehr verschieden.'
@@ -2143,7 +2123,7 @@ export const guides: Guide[] = [
         body: [
           'Trockene Haut: Creme oder Körperlotion vor dem Parfüm auftragen. Das gibt den Duftstoffen Halt. Reichere, wärmere Düfte (z. B. Vanille, Holz, Moschus) halten tendenziell besser als sehr frische Düfte.',
           'Fettige Haut: Düfte halten in der Regel besser und können intensiver wirken. Weniger auftragen und lieber leichtere Konzentrationen wählen.',
-          'Empfindliche Haut: Auf Alkohol und Aldehyde kann empfindliche Haut reagieren. Parfüms mit Naturextrakten oder ohne aggressive Duftstoffe wählen; vor dem Kauf testen.'
+          'Empfindliche Haut: Sie kann auf Alkohol oder einzelne Duftstoffe reagieren (deklarierte Allergene wie Linalool oder Citral). Naturextrakte sind dabei nicht automatisch verträglicher. Lieber auf die Kleidung sprühen und vorher an einer kleinen Stelle testen.'
         ]
       },
       {
@@ -2169,8 +2149,8 @@ export const guides: Guide[] = [
       {
         heading: 'Tierische Inhaltsstoffe in Parfüms',
         body: [
-          'Klassische Parfümerie nutzte früher Rohstoffe wie Moschus (aus Moschustieren), Ambra (aus Pottwalen), Zibet (aus der Zibetkatze) und Castoreum (aus Bibern). Heute sind die meisten davon in der EU verboten oder nicht mehr zeitgemäss.',
-          'Echter tierischer Moschus ist in Europa verboten. Was wir heute als „Moschus" in Parfüms kennen, sind synthetische Muskusverbindungen, also keine echten Tierstoffe.',
+          'Klassische Parfümerie nutzte früher Rohstoffe wie Moschus (aus Moschustieren), Ambra (aus Pottwalen), Zibet (aus der Zibetkatze) und Castoreum (aus Bibern). Heute werden sie kaum noch verwendet und meist durch synthetische Stoffe ersetzt.',
+          'Echter tierischer Moschus ist durch Artenschutzregeln (CITES) streng beschränkt und praktisch nicht mehr im Einsatz. Was wir heute als „Moschus" in Parfüms kennen, sind synthetische Moschusverbindungen, also keine echten Tierstoffe.',
           'Ambra (Ambergris) ist legal, sehr selten und teuer. In günstigen Massenparfüms ist es praktisch nie enthalten. Synthetische Alternativen (z. B. Ambroxan) sind heute der Standard.',
           'Andere mögliche tierische Inhaltsstoffe: Lanolin (Wollfett), Honig oder Bienenwachs. Diese stecken eher in Körperpflegeprodukten als in reinen Parfüms, können aber vorkommen.'
         ]
@@ -2179,7 +2159,7 @@ export const guides: Guide[] = [
         heading: 'Tierversuche: „Cruelty Free" im Parfümbereich',
         body: [
           'In der EU sind Tierversuche für Kosmetik und deren Inhaltsstoffe verboten. Das bedeutet aber nicht, dass ein in der EU verkauftes Parfüm automatisch weltweit ohne Tierversuche hergestellt wird.',
-          'Für den Verkauf in China waren bis vor kurzem Tierversuche teils Pflicht (für importierte Kosmetik). Das hat sich für einige Produktkategorien geändert, aber die Situation ist im Wandel.',
+          'Für importierte Kosmetik in China waren Tierversuche bis 2021 meist Pflicht. Seither gibt es für sogenannte allgemeine Kosmetik Ausnahmen, wenn bestimmte Nachweise vorliegen.',
           'Zertifizierungen wie PETA „Beauty Without Bunnies" oder „Leaping Bunny" geben Orientierung, sind aber freiwillig. Nicht zertifiziert heisst nicht zwingend, dass Tierversuche stattfinden.',
           'Die grossen Luxushäuser (Chanel, Dior, etc.) verkaufen in China und sind daher oft nicht „Leaping Bunny"-zertifiziert, aber das muss nicht bedeuten, dass sie aktiv Tierversuche in Auftrag geben.'
         ]
@@ -2208,7 +2188,7 @@ export const guides: Guide[] = [
       {
         heading: 'In der Parfümerie & Drogerie',
         body: [
-          'Müller, Manor Beauty, Douglas und Marionnaud geben in der Regel kostenlose Probenstreifen aus Testdisplays mit. Beim Kauf anderer Produkte gibt es manchmal auch kleine Proben-Fläschchen, einfach nachfragen.',
+          'Müller, Manor Beauty und Marionnaud haben in der Regel Testdisplays mit Duftstreifen. Beim Kauf anderer Produkte gibt es manchmal auch kleine Proben-Fläschchen, einfach nachfragen.',
           'In gehobenen Parfümerien (z. B. Osswald Zürich) kannst du Düfte auf der Haut testen und hast Zeit, sie zu beurteilen. Gutes Personal lässt dir Raum dafür.',
           'Empfehlung: Beschränke dich auf 2–3 Düfte pro Besuch. Zu viele Düfte gleichzeitig erschnuppern, überfordert die Nase schnell.'
         ]
@@ -2216,7 +2196,7 @@ export const guides: Guide[] = [
       {
         heading: 'Online: Abfüllungen kaufen',
         body: [
-          'Über Plattformen wie Decant X (decantx.com), Parfumerie.ch oder spezialisierten Foren/Communities (Reddit r/fragrance) kannst du kleine Abfüllungen (2–10 ml) von bekannten und Nischendüften kaufen.',
+          'Über Abfüllungs-Shops (z. B. DecantX aus den USA, Zoll beachten) oder Communities wie Parfumo kannst du kleine Abfüllungen (2–10 ml) von bekannten und Nischendüften kaufen.',
           'Auf ebay.ch und ricardo.ch werden ebenfalls Proben und Abfüllungen angeboten. Qualität und Echtheit variieren, achte auf bewertete Verkäufer.',
           'Notino.ch bietet bei einigen Düften kleine Travelsize-Flakons (10–30 ml) zu günstigerem Preis als der grosse Flakon an, ein guter Einstieg ohne grossen Aufwand.'
         ]
@@ -2224,7 +2204,7 @@ export const guides: Guide[] = [
       {
         heading: 'Discovery Sets der Hersteller',
         body: [
-          'Viele Nischenmarken bieten offizielle „Discovery Sets" an: 5–8 kleine Proben ihrer Kollektion in einem Set für rund 30–60 CHF. Der Betrag wird manchmal beim späteren Kauf angerechnet.',
+          'Viele Nischenmarken bieten offizielle „Discovery Sets" an: mehrere kleine Proben ihrer Kollektion in einem Set. Der Betrag wird manchmal beim späteren Kauf angerechnet.',
           'Beispiele: Le Labo, Byredo, Maison Margiela Replica: diese Marken verkaufen ihre Discovery Sets direkt auf ihrer Website oder bei spezialisierten Parfümerien.',
           'Für günstigere Marken wie Lattafa oder Armaf gibt es oft keine offiziellen Kits. Hier helfen Abfüllungs-Plattformen oder die kleinen Flakons direkt kaufen.'
         ]
@@ -2243,16 +2223,15 @@ export const guides: Guide[] = [
       'Parfüms, die herrlich nach reifen Erdbeeren duften: süss, fruchtig und sommerlich. Unsere besten Erdbeer-Düfte von günstig bis edel.',
     heroImage: '/ratgeber/erdbeer-duefte-hero.png',
     intro: [
-      'Erdbeer-Düfte sind fruchtig, süss und sorgen sofort für gute Laune. Sie wirken jung und verspielt, mal frisch-spritzig, mal kombiniert mit Sahne, Vanille oder weissen Blüten. Sie gehören zu den beliebtesten und zugänglichsten Duftrichtungen überhaupt – perfekt für alle, die es unkompliziert und fröhlich mögen.',
+      'Erdbeer-Düfte sind fruchtig, süss und sorgen sofort für gute Laune. Sie wirken jung und verspielt, mal frisch-spritzig, mal kombiniert mit Sahne, Vanille oder weissen Blüten. Sie gelten als besonders zugänglich – perfekt für alle, die es unkompliziert und fröhlich mögen.',
       'In der Parfümwelt ist Erdbeere fast immer eine Kombination aus verschiedenen synthetischen Fruchtmolekülen. Echter Erdbeerextrakt ist zu flüchtig und schwierig zu verarbeiten. Das Ergebnis riecht aber verblüffend echt – oft sogar schöner und runder als die echte Frucht selbst. Die besten Erdbeer-Kompositionen verbinden die Süsse mit einer stabilen Basis, damit der Duft nicht sofort verfliegt.',
-      'Hier unsere liebsten Erdbeer-Düfte aus dem Katalog – von frisch und leicht bis warm und cremig. Für Sommer, Dates und alle Momente, in denen du es fruchtig-süss und beschwingt magst.'
+      'Hier unsere liebsten Erdbeer-Düfte – von frisch und leicht bis warm und cremig. Für Sommer, Dates und alle Momente, in denen du es fruchtig-süss und beschwingt magst.'
     ],
     sections: [
       {
         perfumes: [
           'burberry-her',
           'ysl-mon-paris',
-          'lattafa-eclaire',
           'vs-bombshell'
         ]
       },
@@ -2260,13 +2239,13 @@ export const guides: Guide[] = [
         heading: 'Worauf du bei Erdbeer-Düften achten solltest',
         body: [
           'Fruchtige Erdbeer-Noten wirken jung, verspielt und sommerlich – ideal für den Alltag, Dates und warme Tage. Sie sind einsteigerfreundlich und brauchen keine grosse Gewöhnung.',
-          'Achte auf die Basis: Erdbeere mit Vanille, Karamell oder Moschus (z. B. Lattafa Eclaire) wird wärmer und haltbarer, behält aber ihre Süsse. Erdbeere mit Blüten (z. B. YSL Mon Paris) bleibt eleganter und frischer – ideal für Büro und Alltag.',
+          'Achte auf die Basis: Erdbeere mit Vanille, Karamell oder Moschus wird wärmer und haltbarer, behält aber ihre Süsse. Erdbeere mit Blüten (z. B. YSL Mon Paris) bleibt eleganter und frischer – ideal für Büro und Alltag.',
           'Erdbeer-Noten sind präsent und intensiv. Ein bis zwei Sprühstösse reichen völlig aus. Wer es dezenter mag, dosiert sparsam – Erdbeere entfaltet sich schnell und gleichmässig auf der Haut.'
         ]
       },
       {
         body: [
-          'Nicht sicher, ob fruchtig-süss wirklich dein Typ ist? Mach unser Duft-Quiz. Es findet deine Lieblingsrichtung in unter einer Minute.'
+          'Nicht sicher, ob fruchtig-süss wirklich dein Typ ist? Mach unser Duft-Quiz. Es findet deine Lieblingsrichtung in wenigen Minuten.'
         ]
       }
     ]

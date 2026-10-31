@@ -1,0 +1,34 @@
+{
+  "slug": "terre-d-hermes-parfum",
+  "perfume_name": "Terre d'Hermès Parfum",
+  "brand": "Hermès",
+  "gender": "Men",
+  "fragrance_family": "woody",
+  "concentration": "Parfum",
+  "volume_ml": 200,
+  "price_chf": 118,
+  "longevity": 8,
+  "sillage": 8,
+  "season": "Ganzjährig",
+  "occasion": "Büro",
+  "release_year": 2009,
+  "perfumer": "Jean-Claude Ellena",
+  "top_notes": ["Grapefruit"],
+  "heart_notes": ["Shiso"],
+  "base_notes": ["Zedernholz", "Benzoe"],
+  "age_group": "all",
+  "lifestyle": "professional",
+  "trend_vibe": "classic",
+  "gender_nuance": "masculine",
+  "good_to_know": [
+    "Jean-Claude Ellena schuf diese Parfum-Version 2009, drei Jahre nach dem Eau de Toilette, als dichtere Neuinterpretation des Originals."
+  ],
+  "similar_perfumes": [
+    "Red Vetiver – Montale",
+    "Basso – Sospiro",
+    "Fattan pour Homme – Rasasi",
+    "Art of Wood – Lattafa Pride",
+    "Oriental Essence – Oasis Verte – Rituals"
+  ],
+  "flacon_designer": "Philippe Mouquet"
+}

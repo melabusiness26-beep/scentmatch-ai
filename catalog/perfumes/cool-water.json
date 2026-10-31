@@ -1,0 +1,81 @@
+{
+  "slug": "cool-water",
+  "perfume_name": "Cool Water",
+  "brand": "Davidoff",
+  "gender": "Men",
+  "fragrance_family": "clean",
+  "concentration": "EdT",
+  "volume_ml": 40,
+  "price_chf": 15,
+  "longevity": 6,
+  "sillage": 6,
+  "season": "Sommer",
+  "occasion": "Alltag",
+  "release_year": 1988,
+  "perfumer": "Pierre Bourdon",
+  "top_notes": [
+    "Lavendel",
+    "Minze",
+    "Rosmarin",
+    "Koriander",
+    "Grüne Noten"
+  ],
+  "heart_notes": [
+    "Jasmin",
+    "Neroli",
+    "Rosengeranie",
+    "Sandelholz"
+  ],
+  "base_notes": [
+    "Eichenmoos",
+    "Moschus",
+    "Amber",
+    "Tabak",
+    "Zedernholz"
+  ],
+  "age_group": "all",
+  "lifestyle": "casual",
+  "trend_vibe": "popular",
+  "gender_nuance": "masculine",
+  "good_to_know": [
+    "Komponiert hat ihn Pierre Bourdon, den blauen Flakon entwarf Peter Schmidt.",
+    "1992 gewann er einen FiFi Award als Herrenduft des Jahres.",
+    "Er wird oft mit Green Irish Tweed von Creed verglichen – beide Düfte werden Pierre Bourdon zugeschrieben.",
+    "1996 folgte das Gegenstück für Damen: Cool Water Woman.",
+    "Gesichter der Werbung waren unter anderem die Schauspieler Paul Walker (ab 2011) und Scott Eastwood (ab 2015)."
+  ],
+  "similar_perfumes": [
+    "Green Irish Tweed – Creed",
+    "Aspen for Men – Coty",
+    "Tres Nuit – Armaf",
+    "JF – Floris"
+  ],
+  "alternative_to": [
+    {
+      "name": "Green Irish Tweed",
+      "note": "Wird in der Duft-Community seit Jahren als günstige Alternative genannt.",
+      "brand": "Creed",
+      "price_chf": null
+    }
+  ],
+  "flacon_description": "Klare Flasche aus blauem Glas, auf der Vorderseite steht der Schriftzug in schwarzer Schrift. Gestaltet hat sie der Hamburger Designer Peter Schmidt (1937–2025), einer der bekanntesten deutschen Flakon-Gestalter. Von ihm stammen auch die Flakons für Jil Sander, Hugo Boss und das klassische 4711 Echt Kölnisch Wasser.",
+  "flacon_designer": "Peter Schmidt",
+  "sizes": [
+    {
+      "ml": 40,
+      "price_chf": 14.99
+    },
+    {
+      "ml": 75,
+      "price_chf": 23.99
+    },
+    {
+      "ml": 125,
+      "price_chf": 24.99
+    },
+    {
+      "ml": 200,
+      "price_chf": 33.99
+    }
+  ]
+}

@@ -7,8 +7,10 @@
   },
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/sync-catalog.mts",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "catalog:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/sync-catalog.mts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.131.0",

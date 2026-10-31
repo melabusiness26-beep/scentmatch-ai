@@ -1,0 +1,50 @@
+{
+  "slug": "light-blue-eau-intense",
+  "perfume_name": "Light Blue Eau Intense",
+  "brand": "Dolce & Gabbana",
+  "gender": "Women",
+  "fragrance_family": "clean",
+  "concentration": "EdP",
+  "volume_ml": 50,
+  "price_chf": 36,
+  "longevity": 7,
+  "sillage": 7,
+  "season": "Sommer",
+  "occasion": "Alltag",
+  "release_year": 2017,
+  "perfumer": "Olivier Cresp",
+  "top_notes": [
+    "Sizilianische Zitrone",
+    "Grüner Apfel"
+  ],
+  "heart_notes": [
+    "Ringelblume",
+    "Jasmin"
+  ],
+  "base_notes": [
+    "Moschus",
+    "Amberholz"
+  ],
+  "age_group": "all",
+  "lifestyle": "casual",
+  "trend_vibe": "popular",
+  "gender_nuance": "feminine",
+  "good_to_know": [
+    "Komponiert hat ihn Olivier Cresp – derselbe Parfümeur wie beim Original von 2001."
+  ],
+  "flacon_description": "Flakon aus mattiertem Glas in einem dunkleren Blau als beim Original Light Blue, das an das Mittelmeer erinnert.",
+  "sizes": [
+    {
+      "ml": 25,
+      "price_chf": 25.99
+    },
+    {
+      "ml": 50,
+      "price_chf": 35.99
+    },
+    {
+      "ml": 100,
+      "price_chf": 79.99
+    }
+  ]
+}

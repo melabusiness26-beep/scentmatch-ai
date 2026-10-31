@@ -1,0 +1,53 @@
+{
+  "slug": "cool-water-intense",
+  "perfume_name": "Cool Water Intense",
+  "brand": "Davidoff",
+  "gender": "Men",
+  "fragrance_family": "clean",
+  "concentration": "EdP",
+  "volume_ml": 40,
+  "price_chf": 21,
+  "longevity": 8,
+  "sillage": 7,
+  "season": "Sommer",
+  "occasion": "Alltag",
+  "release_year": 2019,
+  "perfumer": "Annick Ménardo",
+  "top_notes": [
+    "Grüne Mandarine"
+  ],
+  "heart_notes": [
+    "Kokoswasser"
+  ],
+  "base_notes": [
+    "Amber"
+  ],
+  "age_group": "18-25",
+  "lifestyle": "casual",
+  "trend_vibe": "popular",
+  "gender_nuance": "masculine",
+  "good_to_know": [
+    "Gesicht der Werbekampagne 2019 war das Model Christian Hogue.",
+    "Gleichzeitig kam eine Damen-Version heraus, Cool Water Intense for Her, mit dem Model Vanessa Moody in der Kampagne."
+  ],
+  "description": "Cool Water Intense ist 2019 erschienen und stammt von der Parfümeurin Annick Ménardo. Anders als der Name vermuten lässt, ist er keine stärkere Version des Originals, sondern ein eigener Duft: frisch und süss zugleich, mit einem leicht aquatischen Charakter.\n\nDen Auftakt macht grüne Mandarine, im Herzen sitzt Kokoswasser, und in der Basis bleibt warmes Amber. Gerade das Kokoswasser macht ihn weicher und süsser als das klassische Cool Water.\n\nIn der Parfumo-Community gilt er als Duft für Frühling und Sommer, für den Alltag und die Freizeit. Haltbarkeit und Ausstrahlung werden dort gut bewertet, beim Preis-Leistungs-Verhältnis schneidet er besonders stark ab.",
+  "similar_perfumes": [
+    "L'Homme – Rochas",
+    "Eros EdT – Versace",
+    "Roma Uomo EdT – Laura Biagiotti",
+    "Fusion d'Issey – Issey Miyake",
+    "Deziro – Nishane",
+    "Eternity Aromatic Essence – Calvin Klein"
+  ],
+  "flacon_description": "Gleiche Form wie das Original Cool Water, aber aus tiefdunkelblauem Glas mit schwarzem, zylinderförmigem Deckel.",
+  "sizes": [
+    {
+      "ml": 40,
+      "price_chf": 20.99
+    },
+    {
+      "ml": 75,
+      "price_chf": 32.99
+    }
+  ]
+}

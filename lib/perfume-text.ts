@@ -109,6 +109,10 @@ const MOOD: Record<string, string[]> = {
     'Die Blüten liegen auf einer warmen, leicht süssen Basis, sonnig statt kühl.',
     'Blumig und warm zugleich, wie Blüten in der Abendsonne.'
   ],
+  citrusFloral: [
+    'Spritzige Zitrusnoten öffnen den Duft, darunter liegen weiche Blüten.',
+    'Hell und blumig zugleich, wie Blüten an einem sonnigen Morgen.'
+  ],
   floral: [
     'Die Blumen wirken dabei modern und leicht, nicht altmodisch.',
     'Er riecht nach einem frischen Strauss, nicht nach Grossmutters Kommode.'
@@ -133,6 +137,7 @@ function moodKey(p: Perfume): string | null {
       return has('warm') || has('suess') ? 'warmWood' : 'dryWood';
     case 'floral':
       if (has('fruchtig')) return 'fruityFloral';
+      if (has('zitrisch')) return 'citrusFloral';
       if (has('pudrig')) return 'powderyFloral';
       if (has('warm') || has('suess')) return 'warmFloral';
       return 'floral';
@@ -153,7 +158,8 @@ const TAGLINE: Record<string, string> = {
   fruityFloral: 'Blumig, fruchtig und fröhlich.',
   powderyFloral: 'Blumig, pudrig und elegant.',
   warmFloral: 'Blumig, warm und sonnig.',
-  floral: 'Blumig, elegant und zeitlos.'
+  citrusFloral: 'Blumig, spritzig und hell.',
+  floral: 'Blumig, sanft und elegant.'
 };
 
 export function perfumeTagline(p: Perfume): string | null {

@@ -64,13 +64,13 @@ export default async function DueftePage() {
       />
       <Breadcrumb items={[{ label: 'Düfte', href: '/duefte' }]} />
       <div className="container">
-        <section className="detail-hero">
+        <section className="detail-hero catalog-hero">
           <div>
             <p className="eyebrow">Die Kollektion</p>
             <h1 className="detail-title">Alle Düfte</h1>
             <p className="lead">
               {approx ? `${approx.replace('über', 'Über')} kuratierte Düfte – von Bestsellern bis zu seltenen Nischenperlen.` : 'Sorgfältig geprüfte Düfte – unser Katalog wächst laufend.'} Suche nach Name,
-              Marke, Note (z. B. „Schokolade"), Geschlecht oder Anlass und klicke einen Duft für sein volles Profil.
+              Marke, Note (z. B. „Schokolade“), Geschlecht oder Anlass und klicke einen Duft für sein volles Profil.
             </p>
           </div>
         </section>

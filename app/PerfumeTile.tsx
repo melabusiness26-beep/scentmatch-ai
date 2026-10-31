@@ -81,7 +81,11 @@ export function PerfumeTile({ perfume, matchPercent, showOccasionDescription }: 
         )}
         <div className="tile-footer">
           {perfume.price_chf != null ? (
-            <span className="tile-price">CHF {perfume.price_chf.toFixed(0)}</span>
+            <span className="tile-price">
+              CHF {perfume.price_chf.toFixed(0)}
+              {/* Grösse dazu, sonst wirkt eine grosse Flasche teurer als eine kleine. */}
+              {perfume.volume_ml ? <span className="tile-volume"> · {perfume.volume_ml} ml</span> : null}
+            </span>
           ) : (
             <span className="tile-price tile-price-open">Preis offen</span>
           )}

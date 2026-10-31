@@ -124,7 +124,7 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
   };
 
   return (
-    <section className="section">
+    <section className="section catalog-section">
       <input
         className="search"
         type="search"

@@ -93,6 +93,10 @@ const MOOD: Record<string, string[]> = {
     'Warm und umhüllend, wie ein Kaschmirschal an einem kühlen Abend.',
     'Die Hölzer wirken hier weich und warm statt trocken.'
   ],
+  freshWood: [
+    'Frisch und fruchtig im Auftakt, mit einer holzigen Basis darunter.',
+    'Er wirkt lebendig und unkompliziert, die Hölzer geben ihm Halt.'
+  ],
   dryWood: [
     'Er wirkt ruhig und selbstsicher, ohne laut zu werden.',
     'Er hat diese trockene, edle Tiefe, die man von guten Hölzern kennt.'
@@ -134,7 +138,10 @@ function moodKey(p: Perfume): string | null {
     case 'gourmand':
       return has('wuerzig') ? 'spicedSweet' : 'dessert';
     case 'woody':
-      return has('warm') || has('suess') ? 'warmWood' : 'dryWood';
+      if (has('warm') || has('suess')) return 'warmWood';
+      // Holzige Düfte, die laut Duftrichtung vor allem frisch/fruchtig wirken (z. B. Boss Bottled).
+      if (has('frisch') && (has('fruchtig') || has('zitrisch'))) return 'freshWood';
+      return 'dryWood';
     case 'floral':
       if (has('fruchtig')) return 'fruityFloral';
       if (has('zitrisch')) return 'citrusFloral';
@@ -154,6 +161,7 @@ const TAGLINE: Record<string, string> = {
   spicedSweet: 'Warm, süss und würzig.',
   dessert: 'Warm, süss und gemütlich.',
   warmWood: 'Weich, warm und holzig.',
+  freshWood: 'Frisch, fruchtig und holzig.',
   dryWood: 'Ruhig, edel und holzig.',
   fruityFloral: 'Blumig, fruchtig und fröhlich.',
   powderyFloral: 'Blumig, pudrig und elegant.',

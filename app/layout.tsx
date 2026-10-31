@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-import { Playfair_Display, Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import Link from 'next/link';
 import SiteHeader from '@/app/SiteHeader';
 import ConsentedAnalytics from '@/app/ConsentedAnalytics';
@@ -15,15 +15,18 @@ export const viewport: Viewport = {
 };
 
 // Edle Schriftarten: Playfair Display (Serife) für Überschriften,
-// Inter (klar, modern) für Texte.
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['500', '600', '700'],
+// Inter (klar, modern) für Texte. Die Schriftdateien liegen in app/fonts
+// (Open Font License) – so muss der Build nichts bei Google herunterladen
+// und kann daran nicht scheitern.
+const playfair = localFont({
+  src: './fonts/playfair-display-latin-wght-normal.woff2',
+  weight: '400 900',
   variable: '--font-display',
   display: 'swap'
 });
-const inter = Inter({
-  subsets: ['latin'],
+const inter = localFont({
+  src: './fonts/inter-latin-wght-normal.woff2',
+  weight: '100 900',
   variable: '--font-sans',
   display: 'swap'
 });

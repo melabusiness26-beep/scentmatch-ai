@@ -14,7 +14,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Sind Dupes legal?',
-      a: 'Ja. Eine Duftrichtung lässt sich nicht schützen – nur Name, Flakon und Marke dürfen nicht kopiert werden. Seriöse Dupes sind eigenständige Düfte in ähnlicher Richtung.'
+      a: 'Ja, solange es ein eigenständiger Duft ist: Ein Duft selbst ist rechtlich kaum geschützt – Name, Marke und Flakon-Design dagegen schon. Seriöse Dupes werben nicht mit fremden Markennamen.'
     },
     {
       q: 'Halten Dupes genauso lange wie das Original?',
@@ -22,11 +22,11 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Wo kaufe ich Dupes in der Schweiz?',
-      a: 'Notino.ch, Douglas und Parfumino führen Marken wie Lattafa und Armaf. Die Preise in CHF sind oft günstiger als beim deutschen Anbieter wegen tieferer Versandkosten.'
+      a: 'Lattafa und Armaf findest du in der Schweiz vor allem bei Online-Händlern wie Notino.ch. Preise und Versandkosten lohnt es sich zu vergleichen.'
     },
     {
       q: 'Was ist der beste Dupe für Dior Sauvage?',
-      a: 'Lattafa Asad gilt als eine der besten Alternativen: ähnlich würzig-ambriert mit schwarzem Pfeffer. Für eine noch direktere Richtung eignet sich Al Haramain Amber Oud.'
+      a: 'Lattafa Asad wird oft mit Dior Sauvage Elixir verglichen: würzig-ambriert mit schwarzem Pfeffer. Eine exakte Kopie ist es nicht.'
     }
   ],
   'die-besten-sommerduefte': [
@@ -48,7 +48,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Gibt es gute günstige Sommerdüfte?',
-      a: 'Ja. Davidoff Cool Water und Armani Acqua di Gio (Herren), Dolce & Gabbana Light Blue und Lattafa Yara (Damen) sind top und kosten unter 40–50 CHF.'
+      a: 'Ja. Davidoff Cool Water und Armani Acqua di Giò (Herren), Dolce & Gabbana Light Blue und Lattafa Yara (Damen) sind beliebte Sommer-Klassiker; Cool Water und Yara gehören zu den preiswerteren Optionen.'
     }
   ],
   'welcher-duft-zu-welchem-anlass': [
@@ -88,7 +88,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Sind süsse Düfte nur für Frauen?',
-      a: 'Nein. Viele beliebte Herrendüfte wie Kilian Angels Share oder Lattafa Khamrah sind warm-süss. Gonrmand ist keine Frage des Geschlechts.'
+      a: 'Nein. Viele beliebte warm-süsse Düfte wie Kilian Angels’ Share oder Lattafa Khamrah sind unisex. Gourmand ist keine Frage des Geschlechts.'
     },
     {
       q: 'Welcher süsse Duft passt für den Winter?',
@@ -114,7 +114,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Gibt es günstige Winterdüfte?',
-      a: 'Ja. Lattafa Khamrah und Lattafa Asad bieten erstaunliche warme Tiefe für unter 40 CHF. Auch Armaf Club de Nuit Intense Man ist günstig und projektionsstark.'
+      a: 'Ja. Lattafa Khamrah und Lattafa Asad bieten warme Tiefe zu vergleichsweise kleinen Preisen. Auch Armaf Club de Nuit Intense Man ist günstig und projektionsstark.'
     }
   ],
   'die-besten-unisex-duefte': [
@@ -132,11 +132,11 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Sind Unisex-Düfte teurer?',
-      a: 'Nicht unbedingt. Es gibt günstige Unisex-Optionen (Lattafa, Mancera) genauso wie teure Nischenklassiker (Le Labo, Byredo). Das Sortiment ist breit.'
+      a: 'Nicht unbedingt. Es gibt günstige Unisex-Optionen (Lattafa, Armaf) genauso wie teure Nischenklassiker (Le Labo, Byredo). Das Sortiment ist breit.'
     },
     {
       q: 'Welcher Unisex-Duft ist besonders beliebt?',
-      a: 'Baccarat Rouge 540, Le Labo Santal 33 und Tom Ford Tobacco Vanille gehören zu den meistdiskutierten Unisex-Düften in der Community.'
+      a: 'Baccarat Rouge 540, Le Labo Santal 33 und Tom Ford Tobacco Vanille gehören zu den bekanntesten Unisex-Düften.'
     }
   ],
   'parfum-inhaltsstoffe-allergene': [
@@ -150,7 +150,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Was sind deklarationspflichtige Duftallergene?',
-      a: 'Natürliche Duftbestandteile wie Limonene oder Linalool, die ab einer gewissen Menge einzeln genannt werden müssen – damit Allergikerinnen und Allergiker sie erkennen. Lange waren es 26 solcher Stoffe; die EU hat die Liste inzwischen auf über 80 erweitert.'
+      a: 'Duftstoffe wie Limonene oder Linalool (natürlich vorkommend oder synthetisch), die ab einer gewissen Menge einzeln genannt werden müssen – damit Allergikerinnen und Allergiker sie erkennen. Lange waren es 26 solcher Stoffe; mit der EU-Verordnung 2023/1545 wird die Liste auf über 80 erweitert (mit Übergangsfristen).'
     },
     {
       q: 'Kann ich allergisch auf ein Parfum reagieren?',
@@ -176,11 +176,11 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Wo kaufe ich günstige Düfte in der Schweiz?',
-      a: 'Notino.ch bietet die grösste Auswahl an günstigen Düften mit CHF-Preisen. Douglas und parfumino.ch führen ebenfalls viele Marken unter 50 CHF.'
+      a: 'Zum Beispiel online bei Notino.ch oder in Parfümerien und Warenhäusern – ein Preisvergleich lohnt sich.'
     },
     {
       q: 'Lohnt sich eine Probe vor dem Kauf?',
-      a: 'Unbedingt. Viele Anbieter (Notino, Douglas) geben Proben zum Kauf. Bei günstigen Düften unter 30–40 CHF kannst du auch direkt den kleinen Flakon zum Testen kaufen.'
+      a: 'Unbedingt. Manche Händler bieten Proben oder kleine Flakons an – bei günstigen Düften ist die kleinste Grösse oft der einfachste Test.'
     }
   ],
   'wie-lange-haelt-parfum-haltbarkeit': [
@@ -194,7 +194,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Wie lange ist ein Parfum haltbar?',
-      a: 'Ungeöffnet und kühl gelagert oft viele Jahre. Nach dem Öffnen entfaltet es sich am schönsten innerhalb der ersten ein bis drei Jahre.'
+      a: 'Ungeöffnet und kühl gelagert oft viele Jahre. Nach dem Öffnen gibt das PAO-Symbol auf der Verpackung (z. B. „36M“) einen Richtwert.'
     },
     {
       q: 'Wie erkenne ich, dass ein Parfum „umgekippt" ist?',
@@ -202,7 +202,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Soll ich Parfum schütteln?',
-      a: 'Nein. Durch Schütteln gelangt Luft in den Flakon, was die Oxidation beschleunigt. Einfach den Sprüher benutzen und gut verschlossen aufbewahren.'
+      a: 'Nicht nötig. Parfum ist eine stabile Lösung und muss nicht gemischt werden. Einfach den Sprüher benutzen und gut verschlossen aufbewahren.'
     }
   ],
   'parfum-geschenk-die-besten-duefte-zum-verschenken': [
@@ -224,7 +224,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Was ist eine gute Preisspanne für ein Parfum-Geschenk?',
-      a: 'Für CHF 40–80 bekommst du sehr gute, bekannte Düfte (z. B. Hugo Boss, Davidoff EdP). Ab CHF 100 gibt es Klassiker von Dior, Chanel oder Lancôme. Unter CHF 40 sind arabische Marken wie Lattafa oder Sol de Janeiro eine schöne, originelle Option.'
+      a: 'Das hängt vom Budget ab. Bekannte Designer-Klassiker gibt es in vielen Preisklassen; günstige Marken wie Lattafa oder Armaf sind eine originelle Option.'
     }
   ],
   'maennerduefte-die-frauen-moegen': [
@@ -278,7 +278,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Ist in günstigen Düften echtes Oud?',
-      a: 'Meist kommen hochwertige Oud-Akkorde zum Einsatz – das ist völlig normal und riecht trotzdem edel.'
+      a: 'Meist nicht – günstige Düfte verwenden in der Regel synthetische Oud-Akkorde. Das ist üblich und kann trotzdem gut riechen.'
     },
     {
       q: 'Wann trägt man Oud am besten?',
@@ -290,7 +290,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Gibt es günstige Oud-Düfte?',
-      a: 'Ja. Lattafa bietet mehrere erschwingliche Oud-Düfte wie Badee al Oud Amethyst und Oud for Glory. Sie liegen oft unter 35 CHF und bieten erstaunliche Qualität.'
+      a: 'Ja. Lattafa bietet mehrere erschwingliche Oud-Düfte wie Badee al Oud Amethyst und Oud for Glory. Sie gehören zu den günstigeren Oud-Optionen.'
     }
   ],
   'die-besten-zitrus-duefte': [
@@ -312,7 +312,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Gibt es Zitrus-Düfte für den Abend?',
-      a: 'Ja, Zitrus mit Vetiver, Cedern oder Amber wird tiefer und abendtauglicher. Acqua di Gio oder Mancera Cedrat Boisé sind Beispiele dafür.'
+      a: 'Ja, Zitrus mit Vetiver, Zedernholz oder Amber wird tiefer und abendtauglicher. Acqua di Giò oder Mancera Cedrat Boisé sind Beispiele dafür.'
     }
   ],
   'damenduefte-die-maenner-lieben': [
@@ -330,7 +330,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Was sind klassische „Kompliment-Düfte" für Frauen?',
-      a: 'YSL Black Opium, Lancôme La Vie est Belle, Carolina Herrera Good Girl und Coco Mademoiselle gelten als beliebteste Kompliment-Düfte für Damen.'
+      a: 'YSL Black Opium, Lancôme La Vie est Belle, Carolina Herrera Good Girl und Coco Mademoiselle gelten als beliebte Kompliment-Düfte für Damen.'
     },
     {
       q: 'Sollte ich meinen Duft nach dem wählen, was anderen gefällt?',
@@ -374,7 +374,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Welche Düfte empfehlen sich für Einsteiger?',
-      a: 'Vielseitige, leicht zugängliche Klassiker: Dior Sauvage oder Chanel Bleu für Männer, Armani Acqua di Gioia oder Lancôme La Vie est Belle für Frauen. Sie sind beliebt, weil sie auf breiten Geschmack abgestimmt sind.'
+      a: 'Vielseitige, leicht zugängliche Klassiker: Dior Sauvage oder Bleu de Chanel für Männer, Armani Acqua di Gioia oder Lancôme La Vie est Belle für Frauen. Sie sind beliebt, weil sie auf breiten Geschmack abgestimmt sind.'
     },
     {
       q: 'Was ist ein „Signature-Duft"?',
@@ -388,7 +388,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Ab wann sollte ich auf Frühlingsdüfte wechseln?',
-      a: 'Ab etwa März/April, wenn die Temperaturen über 12–15 Grad steigen. Schwere Winterdüfte mit Oud, Tabak oder dicker Vanille wirken bei Wärme schnell aufdringlich – der Wechsel lohnt sich früh.'
+      a: 'Ab etwa März/April, wenn es spürbar wärmer wird. Schwere Winterdüfte mit Oud, Tabak oder dicker Vanille wirken bei Wärme schnell aufdringlich – der Wechsel lohnt sich früh.'
     },
     {
       q: 'EdT oder EdP im Frühling?',
@@ -400,10 +400,10 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Gibt es gute günstige Frühlingsdüfte?',
-      a: 'Ja! Davidoff Cool Water (Herren), DKNY Be Delicious und Lattafa Yara (Damen) sind tolle Frühlingsdüfte unter 40 CHF. Sie riechen frisch, lebendig und sind alltagstauglich.'
+      a: 'Ja! Davidoff Cool Water (Herren), DKNY Be Delicious und Lattafa Yara (Damen) sind preiswerte Frühlingsdüfte. Sie riechen frisch, lebendig und sind alltagstauglich.'
     },
     {
-      q: 'Was ist der Unterschied zwischen einem Frühlings- und einem Sommerdüft?',
+      q: 'Was ist der Unterschied zwischen einem Frühlings- und einem Sommerduft?',
       a: 'Frühlingsdüfte sind oft blumiger und grüner, Sommerdüfte eher aquatischer und zitrischer. Im Frühling darf noch etwas mehr Wärme im Basisakkord stecken – der Sommer verlangt maximale Leichtigkeit.'
     }
   ],
@@ -426,7 +426,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Gibt es günstige Bürodüfte?',
-      a: 'Ja. Davidoff Cool Water, Lacoste Essential und Armani Acqua di Gio EdT sind klassische, unauffällige Bürodüfte für unter 50 CHF. Auch frisch-holzige Varianten von Lattafa und Armaf funktionieren gut.'
+      a: 'Ja. Davidoff Cool Water und Armani Acqua di Giò sind klassische, unauffällige Bürodüfte; Cool Water ist besonders preiswert. Auch frisch-holzige Varianten von Lattafa und Armaf funktionieren gut.'
     }
   ],
   'parfum-das-lange-haelt-beast-mode': [
@@ -444,7 +444,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Welche Marken sind besonders bekannt für Langlebigkeit?',
-      a: 'Arabische Marken wie Lattafa, Armaf und Al Haramain sind bekannt für starke Projektionen und Haltbarkeit. Auch Thierry Mugler und Kilian haben langlebige Klassiker.'
+      a: 'Arabische Marken wie Lattafa, Armaf und Al Haramain sind bekannt für starke Projektion und Haltbarkeit. Auch Mugler und Kilian haben langlebige Klassiker.'
     },
     {
       q: 'Wie erkenne ich, ob ein Duft „Beast-Mode" hat?',
@@ -466,11 +466,11 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Kann ich einen Duft speziell für die Hochzeitsnacht wählen?',
-      a: 'Ja – für den Abend darf der Duft ruhig intensiver und sinnlicher sein. Viele Bräute wechseln nach der Zeremonie zu einem zweiten, wärmeren Duft.'
+      a: 'Ja – für den Abend darf der Duft ruhig intensiver und sinnlicher sein. Wer möchte, wählt für den Abend einen zweiten, wärmeren Duft.'
     },
     {
       q: 'Welche Düfte gelten als klassische Brautdüfte?',
-      a: 'Chanel Coco Mademoiselle, Dior Miss Dior Blooming Bouquet, Jo Malone Peony & Blush Suede und Lancôme La Nuit Trésor gehören zu den beliebtesten Hochzeitsdüften.'
+      a: 'Chanel Coco Mademoiselle, Dior Miss Dior Blooming Bouquet, Jo Malone Peony & Blush Suede und Lancôme La Nuit Trésor sind elegante Düfte, die oft für Hochzeiten gewählt werden.'
     }
   ],
   'die-besten-holzigen-duefte': [
@@ -532,11 +532,11 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Was ist der Unterschied zwischen einem aquatischen und einem Zitrus-Duft?',
-      a: 'Aquatische Düfte riechen nach Wasser, Meersalz und Ozeon – frisch, aber ohne viel Säure. Zitrus-Düfte sind heller und spritziger, mit klarer Zitronen-, Bergamott- oder Grapefruit-Note.'
+      a: 'Aquatische Düfte riechen nach Wasser, Meersalz und Ozon – frisch, aber ohne viel Säure. Zitrus-Düfte sind heller und spritziger, mit klarer Zitronen-, Bergamott- oder Grapefruit-Note.'
     },
     {
       q: 'Gibt es aquatische Düfte für Frauen?',
-      a: 'Ja. Dolce & Gabbana Light Blue, Issey Miyake L\'Eau d\'Issey und Davidoff Cool Water Women sind klassische aquatische Damendüfte. Sie klingen frisch, leicht und modern.'
+      a: 'Ja. Issey Miyake L’Eau d’Issey und Davidoff Cool Water Woman sind klassische aquatische Damendüfte; Dolce & Gabbana Light Blue ist eher frisch-zitrisch. Sie wirken frisch, leicht und modern.'
     }
   ],
   'die-besten-moschus-pudrigen-duefte': [
@@ -554,11 +554,11 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Was ist der Unterschied zwischen weissem Moschus und animalischem Moschus?',
-      a: 'Weisser Moschus ist synthetisch, sauber und leicht – der häufigste Moschus in heutigen Parfums. Animalischer Moschus ist sinnlicher, intensiver und wärmer – er kommt dem natürlichen Ursprung näher.'
+      a: 'Weisser Moschus ist synthetisch, sauber und leicht – der häufigste Moschus in heutigen Parfums. Animalisch wirkende Moschusnoten sind wärmer und sinnlicher; sie erinnern an den ursprünglichen Tier-Moschus, werden heute aber ebenfalls synthetisch hergestellt.'
     },
     {
       q: 'Welche pudrigen Düfte sind beliebt?',
-      a: 'Chanel Chance Eau Tendre, Guerlain Mon Guerlain, Prada Candy und Narciso Rodriguez For Her gehören zu den beliebtesten pudrig-moschusartigen Düften. Als günstige Variante ist Lattafa Mayar empfehlenswert.'
+      a: 'Chanel Chance Eau Tendre, Guerlain Mon Guerlain, Prada Candy und Narciso Rodriguez For Her sind bekannte pudrig-moschusartige Düfte.'
     }
   ],
   'parfum-layering-duefte-kombinieren': [
@@ -580,7 +580,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Gibt es Marken, die Layering besonders empfehlen?',
-      a: 'Jo Malone ist für ihr Cologne Combining Konzept bekannt. Auch Zara und Mancera bieten Düfte, die sich explizit zum Layern eignen. Grundsätzlich kann fast jede Marke fürs Layering genutzt werden.'
+      a: 'Jo Malone London ist für das Konzept „Fragrance Combining“ bekannt. Grundsätzlich kann fast jede Marke fürs Layering genutzt werden.'
     }
   ],
   'edt-edp-parfum-unterschied': [
@@ -608,7 +608,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
   'haeufige-parfum-fehler': [
     {
       q: 'Soll ich die Handgelenke nach dem Sprühen aneinander reiben?',
-      a: 'Nein. Das „bricht" die Duftmoleküle und lässt den Duft schneller verfliegen. Einfach auftragen und trocknen lassen.'
+      a: 'Nein. Das Reiben erwärmt die Haut und kann die Kopfnoten schneller verfliegen lassen. Einfach auftragen und trocknen lassen.'
     },
     {
       q: 'Wo lagere ich Parfum am besten?',
@@ -634,19 +634,19 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Warum achtet Auressa auf Schweizer Bezug?',
-      a: 'Wir kuratieren in der Schweiz und achten bewusst auf CHF-Preise und Verfügbarkeit – damit du weisst, was wirklich relevant ist.'
+      a: 'Auressa wird in der Schweiz betrieben und zeigt Preise in CHF – deshalb stellen wir auch Marken mit Schweizer Bezug vor.'
     },
     {
       q: 'Wie finde ich meinen Duft, nicht nur eine Marke?',
-      a: 'Mit unserem Duft-Quiz – es findet deine Richtung in unter einer Minute.'
+      a: 'Mit unserem Duft-Quiz – es hilft dir in wenigen Minuten, deine Richtung zu finden.'
     },
     {
       q: 'Hat Givaudan etwas mit Parfum zu tun?',
-      a: 'Ja! Givaudan ist eines der grössten Duftunternehmen der Welt – und hat seinen Sitz in Genf. Das Unternehmen kreiert Düfte für viele bekannte Parfumhäuser, bleibt dabei aber selbst im Hintergrund.'
+      a: 'Ja! Givaudan ist eines der grössten Duftunternehmen der Welt – mit Sitz in Vernier im Kanton Genf. Das Unternehmen kreiert Düfte für viele bekannte Parfumhäuser, bleibt dabei aber selbst im Hintergrund.'
     },
     {
       q: 'Wo kann ich in der Schweiz Düfte kaufen?',
-      a: 'Online auf Notino.ch, Douglas.ch oder Manor.ch. In grossen Städten bieten Perfumeria Splendens, Marionnaud und Douglas Filialen mit ausgewählten Düften an. Notino hat oft die besten CHF-Preise.'
+      a: 'Online zum Beispiel bei Notino.ch oder Manor.ch. In vielen Städten gibt es Filialen von Marionnaud, Import Parfumerie oder Manor. Preise zu vergleichen lohnt sich.'
     }
   ],
   'die-besten-lattafa-duefte': [
@@ -668,7 +668,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Wo kaufe ich Lattafa in der Schweiz?',
-      a: 'Notino.ch und Parfumino.ch führen das grösste Lattafa-Sortiment in CHF. Auch auf Amazon.de ist viel verfügbar, aber CHF-Portale sind für Schweizerinnen und Schweizer oft günstiger im Gesamtpreis.'
+      a: 'Zum Beispiel online bei Notino.ch. Achte bei Bestellungen aus dem Ausland auf Versand- und Zollkosten.'
     }
   ],
   'die-besten-armaf-duefte': [
@@ -686,11 +686,11 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Hat Armaf auch Damendüfte?',
-      a: 'Ja. Club de Nuit Milestone, Armaf Perfume 23 und Armaf Tres Nuit pour Femme sind beliebte Optionen – vielseitig, langlebig und deutlich günstiger als Designer-Äquivalente.'
+      a: 'Ja. Bekannt ist vor allem Club de Nuit Woman; Club de Nuit Milestone wird oft als Damen- oder Unisex-Duft geführt. Beide sind deutlich günstiger als Designer-Düfte.'
     },
     {
       q: 'Wo kaufe ich Armaf in der Schweiz?',
-      a: 'Notino.ch hat das grösste Armaf-Sortiment in der Schweiz. Douglas.ch und Parfumino.ch führen ebenfalls ausgewählte Armaf-Düfte. Für günstige Preise in CHF lohnt sich ein Vergleich.'
+      a: 'Zum Beispiel online bei Notino.ch. Für günstige Preise in CHF lohnt sich ein Vergleich.'
     }
   ],
   'die-besten-herbstduefte': [
@@ -708,11 +708,11 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Ab wann wechsle ich auf Herbstdüfte?',
-      a: 'Sobald die Temperaturen unter 15 Grad fallen und der erste Regen kommt – das ist die klassische Umstiegszeit. Schwere Sommerdüfte wirken dann flach, Herbstdüfte kommen erst richtig zur Geltung.'
+      a: 'Sobald es spürbar kühler wird. Leichte Sommerdüfte wirken dann oft flach, Herbstdüfte kommen erst richtig zur Geltung.'
     },
     {
       q: 'Gibt es günstige Herbstdüfte?',
-      a: 'Ja. Lattafa Khamrah, Armaf Club de Nuit Intense Man und Davidoff Zino sind starke, günstige Optionen. Auch Zara Tobacco Collection ist für unter 20 CHF ein tolles Herbst-Statement.'
+      a: 'Ja. Lattafa Khamrah, Armaf Club de Nuit Intense Man und Davidoff Zino sind starke, günstige Optionen. Auch die Zara Tobacco Collection ist eine preiswerte Herbst-Option.'
     }
   ],
   'die-besten-nischenduefte': [
@@ -734,7 +734,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Wo kaufe ich Nischendüfte in der Schweiz?',
-      a: 'Onlineshops wie Notino.ch, Flaconi.de und direkt bei den Marken. In Zürich bieten Perfulandia und ausgewählte Manor-Filialen Nischenparfums an. Proben sind hier wichtiger als sonst – bestell lieber erst eine Probe.'
+      a: 'Onlineshops wie Notino.ch, Flaconi.ch und direkt bei den Marken. Auch ausgewählte Parfümerien und Warenhäuser führen Nischenmarken. Proben sind hier wichtiger als sonst – bestell lieber erst eine Probe.'
     }
   ],
   'die-besten-sommerduefte-frauen': [
@@ -744,19 +744,19 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Welcher Sommerduft passt ins Büro?',
-      a: 'Frisch-saubere, aquatische Düfte wie Dolce & Gabbana Light Blue oder Acqua di Gioia – dezent und nie aufdringlich.'
+      a: 'Frisch-saubere Düfte wie Dolce & Gabbana Light Blue oder Acqua di Gioia – dezent und nie aufdringlich.'
     },
     {
       q: 'Welches Parfum riecht nach Sommer und Sonne?',
-      a: 'Sonnig-cremige Düfte mit Kokos, Pistazie oder Orangenblüte, etwa Sol de Janeiro Cheirosa 62 oder Lattafa Mayar.'
+      a: 'Sonnig-cremige Düfte mit Kokos, Pistazie oder Orangenblüte, etwa Sol de Janeiro Cheirosa 62.'
     },
     {
       q: 'Wie viel Parfum im Sommer auftragen?',
       a: 'Weniger als sonst – bei Hitze entfaltet sich ein Duft auf der Haut intensiver. Ein bis zwei Sprühstösse reichen. Lieber nachsprühen als zu viel auf einmal.'
     },
     {
-      q: 'Gibt es günstige Sommerdüfte für Frauen unter 40 CHF?',
-      a: 'Ja. Lattafa Yara, Sol de Janeiro Cheirosa 62 (Body Mist Version) und DKNY Be Delicious sind tolle Sommerdüfte für kleines Geld. Auch Zara Fruity Collection bietet für unter 20 CHF sommerliche Frische.'
+      q: 'Gibt es günstige Sommerdüfte für Frauen?',
+      a: 'Ja. Lattafa Yara, Sol de Janeiro Cheirosa 62 (Body Mist Version) und DKNY Be Delicious sind tolle Sommerdüfte für kleines Geld.'
     }
   ],
   'creed-aventus-guenstige-alternativen': [
@@ -770,7 +770,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Halten die Aventus-Alternativen lange?',
-      a: 'Ja, oft sogar sehr lange. Club de Nuit Intense Man und Lattafa Asad sind für ihre starke Projektion und Haltbarkeit bekannt.'
+      a: 'Ja, oft sogar sehr lange. Club de Nuit Intense Man ist für seine starke Projektion und Haltbarkeit bekannt.'
     },
     {
       q: 'Ist Creed Aventus sein hoher Preis wert?',
@@ -778,7 +778,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Gibt es auch weibliche Aventus-Alternativen?',
-      a: 'Creed Aventus for Her ist das weibliche Pendant des Originals – fruchtig, flokal und elegant. Eine günstige Alternative ist Armaf Club de Nuit Milestone oder Lattafa Ana Abiyedh.'
+      a: 'Creed Aventus for Her ist das weibliche Pendant des Originals – fruchtig, floral und elegant.'
     }
   ],
   'lattafa-dupes-welches-original': [
@@ -788,11 +788,11 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Welcher Lattafa-Duft ist am beliebtesten?',
-      a: 'Khamrah (süss-würzig), Asad (fruchtig-rauchig) und Yara (cremig-süss) gehören zu den meistgekauften Lattafa-Düften.'
+      a: 'Khamrah (süss-würzig), Asad (würzig-ambriert) und Yara (cremig-süss) gehören zu den bekanntesten Lattafa-Düften.'
     },
     {
       q: 'Warum sind Lattafa-Düfte so günstig?',
-      a: 'Die Marke produziert in grossen Mengen und setzt auf bewährte Duftrichtungen statt teurer Marketingkampagnen – daher der kleine Preis bei guter Haltbarkeit.'
+      a: 'Die Marke setzt auf bewährte Duftrichtungen und verzichtet auf teure Designer-Lizenzen – das hält den Preis tief.'
     },
     {
       q: 'Wie nah sind Lattafa-Dupes am Original?',
@@ -800,7 +800,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Welcher Lattafa-Duft passt zu welchem Original?',
-      a: 'Asad geht Richtung Creed Aventus, Khamrah Richtung Kilian Angels Share, Yara Richtung Baccarat Rouge oder Ariana Grande Cloud, und Ana Abiyedh geht in Richtung Molecule 01 von Escentric Molecules.'
+      a: 'Asad wird oft mit Dior Sauvage Elixir verglichen, Khamrah mit Kilian Angels’ Share. Yara gilt eher als eigenständiger cremig-süsser Duft.'
     }
   ],
   'parfum-fuer-junge-leute-unter-60-franken': [
@@ -818,7 +818,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Welche Düfte sind unter Gleichaltrigen beliebt?',
-      a: 'Versace Eros, Dior Sauvage EdT und Lattafa Yara sind in der Altersgruppe 16–25 besonders oft gehört. Sie sind vielseitig, frisch und kommen gut an.'
+      a: 'Versace Eros, Dior Sauvage EdT und Lattafa Yara werden häufig als Einsteiger-Klassiker genannt. Sie sind vielseitig, frisch und kommen gut an.'
     },
     {
       q: 'Lohnt sich ein Parfum-Abo oder ein Discovery Set?',
@@ -840,7 +840,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Was ist ein guter günstiger Date-Duft?',
-      a: 'DKNY Be Delicious für Frauen und Versace Eros oder Dior Sauvage für Männer. Alle drei kommen bei anderen gut an und sind erschwinglich.'
+      a: 'DKNY Be Delicious für Frauen und Versace Eros für Männer sind beliebte, vergleichsweise preiswerte Optionen.'
     },
     {
       q: 'Wann soll ich den Duft für ein Date auftragen?',
@@ -850,7 +850,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
   'die-besten-erdbeer-duefte': [
     {
       q: 'Welche Parfüms riechen nach Erdbeere?',
-      a: 'Bekannte Beispiele sind Burberry Her, YSL Mon Paris und die günstige Lattafa Eclaire – sie alle tragen eine deutliche Erdbeer- bzw. rote-Beeren-Note.'
+      a: 'Bekannte Beispiele sind Burberry Her und YSL Mon Paris – beide mit deutlicher Erdbeer- bzw. Rote-Beeren-Note.'
     },
     {
       q: 'Sind Erdbeer-Düfte nur für den Sommer?',
@@ -858,7 +858,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Gibt es günstige Erdbeer-Düfte?',
-      a: 'Ja. Lattafa Eclaire duftet fruchtig nach Erdbeere mit Karamell und Vanille und ist bereits für rund 35 Franken zu haben.'
+      a: 'Günstige Marken haben oft fruchtig-süsse Düfte mit roten Beeren – am besten die Duftnoten vor dem Kauf prüfen.'
     },
     {
       q: 'Kann ein Erdbeer-Duft auch maskulin sein?',
@@ -872,15 +872,15 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
   'die-besten-sommerduefte-maenner': [
     {
       q: 'Welche Sommerdüfte für Männer sind besonders beliebt?',
-      a: 'Acqua di Gio von Giorgio Armani gilt seit Jahren als einer der meistverkauften Sommerdüfte für Männer. Daneben sind Davidoff Cool Water, Versace Pour Homme und Hugo Boss Bottled Infinite sehr beliebt.'
+      a: 'Acqua di Gio von Giorgio Armani gilt seit Jahren als einer der bekanntesten Sommerdüfte für Männer. Daneben sind Davidoff Cool Water, Versace Pour Homme und Hugo Boss Bottled Infinite sehr beliebt.'
     },
     {
       q: 'Wie lange hält ein frischer Männerduft im Sommer?',
-      a: 'Frische Düfte halten meist 4–6 Stunden auf der Haut. Auf warmer Haut verdunstet der Duft schneller – ein zweiter Sprühstoss am Mittag ist völlig normal.'
+      a: 'Frische Düfte halten meist kürzer als warme. Auf warmer Haut verdunstet der Duft schneller – ein zweiter Sprühstoss am Mittag ist völlig normal.'
     },
     {
       q: 'Gibt es günstige Sommerdüfte für Männer?',
-      a: 'Ja. Davidoff Cool Water EdT, Adidas Team Force und Armaf Voyage sind starke Sommerdüfte für unter 30–40 CHF. Auch Lattafa Asad hat eine frisch-würzige Variante, die für den Sommer funktioniert.'
+      a: 'Ja. Davidoff Cool Water EdT ist ein preiswerter Klassiker; auch Armaf und Lattafa haben frische, günstige Herrendüfte.'
     },
     {
       q: 'EdT oder EdP für den Herrensommer-Duft?',
@@ -894,7 +894,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
   'parfum-trends-2026': [
     {
       q: 'Was sind die grössten Parfum-Trends 2026?',
-      a: 'Cleaner, skintight Musks (Düfte, die nah an der Haut bleiben und wie eine zweite Haut wirken), grüne Noten (Farn, Tee, Efeu), und gender-neutrale Kompositionen dominieren 2026 die Parfümerie.'
+      a: 'Cleane, hautnahe Moschusdüfte (Düfte, die nah an der Haut bleiben und wie eine zweite Haut wirken), grüne Noten (Farn, Tee, Efeu) und gender-neutrale Kompositionen werden oft als Trends genannt.'
     },
     {
       q: 'Sind Old-School-Düfte zurück?',
@@ -902,7 +902,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Welche Noten sind 2026 besonders angesagt?',
-      a: 'Weisser Moschus, Cashmeran (weiches Holz-Kaschmir), Veilchen (auch Iris), saubere Aquanoten und grüne Accords. Schwere Patchouli-Lastigkeit ist weniger im Trend.'
+      a: 'Weisser Moschus, Cashmeran (weiches Holz-Kaschmir), Veilchen und Iris, saubere Aquanoten und grüne Accords. Schwere Patchouli-Lastigkeit ist weniger im Trend.'
     },
     {
       q: 'Sind nachhaltige Düfte ein Trend 2026?',
@@ -916,7 +916,7 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
   'parfum-im-handgepaeck-reise-tipps': [
     {
       q: 'Wie viel Parfum darf ich im Handgepäck mitnehmen?',
-      a: 'Die EU-Regelung (100 ml pro Flakon, alle Flüssigkeiten in einem 1-Liter-Zip-Beutel) gilt für alle Flüge aus europäischen Flughäfen. In anderen Ländern können abweichende Regeln gelten.'
+      a: 'Die Regel (100 ml pro Behälter, alle Flüssigkeiten in einem 1-Liter-Beutel) gilt grundsätzlich in der EU und der Schweiz; einzelne Flughäfen mit neuen Scannern weichen ab – vorher beim Flughafen prüfen.'
     },
     {
       q: 'Wie reise ich am besten mit einem grossen Parfum-Flakon?',
@@ -932,13 +932,13 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Muss ich Parfum im Koffer deklarieren?',
-      a: 'Alkohol-Parfums gelten als entzündlich und haben entsprechende Transport-Regeln. Im Handgepäck gelten die üblichen Flüssigkeitsbeschränkungen. Im aufgegebenen Gepäck gibt es in der Regel keine Mengenbeschränkung für privaten Gebrauch.'
+      a: 'Alkohol-Parfums gelten als entzündlich und haben entsprechende Transport-Regeln. Im Handgepäck gelten die üblichen Flüssigkeitsbeschränkungen. Nach IATA-Regeln gilt für Toilettenartikel wie Parfum: höchstens 0,5 l pro Behälter und insgesamt 2 l pro Person.'
     }
   ],
   'parfum-und-hauttyp-was-passt-zu-meiner-haut': [
     {
       q: 'Warum riecht Parfum auf meiner Haut anders als im Laden?',
-      a: 'Jede Haut ist einzigartig – pH-Wert, Temperatur, Körperchemie und Feuchtigkeitsgehalt beeinflussen, wie ein Duft riecht und hält. Daher ist testen auf der eigenen Haut unverzichtbar.'
+      a: 'Jede Haut ist einzigartig – Hauttemperatur, Fettgehalt und Feuchtigkeit beeinflussen, wie ein Duft riecht und hält. Daher ist testen auf der eigenen Haut unverzichtbar.'
     },
     {
       q: 'Hält Parfum auf trockener Haut kürzer?',
@@ -972,21 +972,21 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
     },
     {
       q: 'Welche Marken sind bekannt für vegane Parfums?',
-      a: 'Brands wie Clean Beauty Collective, Maison Margiela Replica (viele Linien), Commodity Fragrances und Ellis Brooklyn setzen auf vegane Formeln. Auch Sol de Janeiro und Zara Fragrances verzichten auf Tierbestandteile.'
+      a: 'Marken wie Ellis Brooklyn oder CLEAN Beauty Collective werben mit veganen Formeln. Prüfe die Angaben je Duft auf der Markenwebsite.'
     },
     {
       q: 'Riecht ein veganes Parfum anders als ein klassisches?',
-      a: 'Nein – die meisten Konsument:innen können keinen Unterschied riechen. Synthetische Moschus- und Ambra-Varianten sind heute sehr hochwertig und oft stabiler als natürliche Tierderivate.'
+      a: 'Nicht unbedingt – tierische Rohstoffe werden in der modernen Parfümerie ohnehin fast immer durch synthetische ersetzt. Synthetische Moschus- und Ambra-Varianten sind oft stabiler als natürliche Tierderivate.'
     }
   ],
   'parfum-proben-abfuellungen-schweiz': [
     {
       q: 'Wo kann ich Parfum-Proben in der Schweiz kaufen?',
-      a: 'Notino.ch bietet zu vielen Düften offizielle Proben an. Alternativ gibt es Abfüllungen auf Kleinanzeigen-Plattformen wie Ricardo oder in Parfum-Communities. Einige Parfumerien geben Proben auch direkt ab.'
+      a: 'Manche Online-Händler und Parfümerien bieten Proben an. Alternativ gibt es Abfüllungen auf Kleinanzeigen-Plattformen wie Ricardo oder in Parfum-Communities.'
     },
     {
       q: 'Was ist der Unterschied zwischen einer Probe und einer Abfüllung?',
-      a: 'Eine Probe ist oft ein offizielles Marken-Sample (1–2 ml). Eine Abfüllung ist eine private Teilmenge (5–10 ml) aus einem Flakon, oft von Privatpersonen oder Community-Händlern. Beides ist legal.'
+      a: 'Eine Probe ist oft ein offizielles Marken-Sample (1–2 ml). Eine Abfüllung ist eine private Teilmenge (5–10 ml) aus einem Flakon, oft von Privatpersonen oder Community-Händlern.'
     },
     {
       q: 'Warum sollte ich zuerst eine Probe kaufen?',
@@ -1004,15 +1004,15 @@ export const guideFaqs: Record<string, GuideFaq[]> = {
   'zara-parfum-dupes-welches-original': [
     {
       q: 'Sind Zara-Parfums echte Dupes?',
-      a: 'Viele Zara-Düfte sind stark von bekannten Originals inspiriert – sie gehen in eine ähnliche Richtung, sind aber eigenständige Düfte. Sie kosten oft nur 15–20 CHF und sind überraschend gut.'
+      a: 'Viele Zara-Düfte werden mit bekannten Originalen verglichen – sie gehen in eine ähnliche Richtung, sind aber eigenständige Düfte und deutlich günstiger.'
     },
     {
       q: 'Welcher Zara-Duft ist der bekannteste Dupe?',
-      a: 'Zara Gardenia ist bekannt als Alternative zu MFK Baccarat Rouge 540. Zara Red Temptation geht Richtung YSL Black Opium. Beide kosten einen Bruchteil der Originale.'
+      a: 'Zara Red Temptation wird oft mit MFK Baccarat Rouge 540 verglichen, Zara Gardenia mit YSL Black Opium. Beide kosten einen Bruchteil der Originale.'
     },
     {
       q: 'Halten Zara-Parfums lange?',
-      a: 'Weniger als teure Originale, aber für den Preis erstaunlich gut. Viele Zara-Düfte halten 3–5 Stunden auf der Haut, was für Alltagsdüfte völlig ausreicht.'
+      a: 'Weniger als teure Originale, aber für den Preis erstaunlich gut. Für Alltagsdüfte reicht die Haltbarkeit oft aus.'
     },
     {
       q: 'Wo kaufe ich Zara-Parfums in der Schweiz?',

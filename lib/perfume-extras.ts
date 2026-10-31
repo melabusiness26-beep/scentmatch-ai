@@ -120,8 +120,10 @@ export function parseSimilarNames(text: string): string[] {
   return out;
 }
 
+// Getrennt wird am LETZTEN Gedankenstrich: Duftnamen können selbst einen enthalten
+// („Oriental Essence - Oasis Verte – Rituals"), Markennamen praktisch nie.
 export function splitSimilar(entry: string): SimilarName {
-  const m = entry.match(/^(.+?)\s+(?:[–—|]|-)\s+(.+)$/);
+  const m = entry.match(/^(.+)\s+(?:[–—|]|-)\s+(.+)$/);
   if (m) return { name: m[1].trim(), brand: m[2].trim() };
   const pipe = entry.split('|');
   if (pipe.length === 2 && pipe[0].trim() && pipe[1].trim()) return { name: pipe[0].trim(), brand: pipe[1].trim() };

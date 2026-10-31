@@ -98,7 +98,7 @@ const faqGroups: {
     faqs: [
       {
         q: 'Was ist ein Parfüm-Dupe?',
-        a: 'Ein Dupe (kurz für „Duplikat") ist ein Parfüm, das einem teureren Duft riecht oder von ihm inspiriert ist – aber zu einem Bruchteil des Preises. Kein Dupe ist 100 % identisch, weil Originalformeln geschützt sind. Gute Dupes fangen aber Charakter und Noten so gut ein, dass sie für den Alltag kaum zu unterscheiden sind.'
+        a: 'Ein Dupe (kurz für „Duplikat") ist ein Parfüm, das einem teureren Duft ähnlich riecht oder von ihm inspiriert ist – aber zu einem Bruchteil des Preises. Kein Dupe ist 100 % identisch, weil Originalformeln geschützt sind. Gute Dupes fangen aber Charakter und Noten so gut ein, dass sie für den Alltag kaum zu unterscheiden sind.'
       },
       {
         q: 'Sind günstige Dupes wirklich gut?',

@@ -222,7 +222,7 @@ export default async function MarkenIndex() {
             Lass dich persönlich beraten
           </h2>
           <p style={{ color: 'rgba(250,247,242,0.7)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
-            Unser Duft-Quiz findet deinen perfekten Signature-Duft in unter 3 Minuten.
+            Unser Duft-Quiz findet deinen perfekten Signature-Duft in wenigen Minuten.
           </p>
           <Link href="/quiz" style={{
             background: '#d4af37',

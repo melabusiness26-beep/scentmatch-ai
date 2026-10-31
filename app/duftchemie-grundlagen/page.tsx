@@ -203,7 +203,7 @@ export default function DuftchemieGrundlagen() {
             </div>
             <div style={{ marginBottom: '1.5rem' }}>
               <p style={{ fontSize: '0.95rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.3rem' }}>
-                Eau de Cologne (EDC) – 3–5% Duftkonzentration
+                Eau de Cologne (EDC) – 2–5% Duftkonzentration
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: 0 }}>
                 Super leicht, fast nur Alkohol. Sehr erfrischend, aber kurz. Hält 1–2 Stunden. Für den schnellen „Frische-Kick" nach dem Duschen.

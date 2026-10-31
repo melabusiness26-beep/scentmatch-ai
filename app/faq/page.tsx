@@ -31,8 +31,8 @@ const faqGroups: {
         a: 'Auressa ist eine unabhängige Duft-Findungs-Plattform aus der Schweiz. Mit unserem Quiz (10 kurze Fragen zu Duftvorlieben, Anlass, Saison und Budget) berechnen wir einen persönlichen Match-Score für jeden Duft im Katalog – von 0 bis 100. So findest du Düfte, die wirklich zu dir passen, ohne stundenlang in Parfümerien zu suchen.'
       },
       {
-        q: 'Brauche ich ein Konto, um Auressa zu nutzen?',
-        a: 'Nein. Das Quiz, der Dupe-Finder, der Duft-Scanner, alle Ratgeber und der gesamte Duft-Katalog sind ohne Konto oder App zugänglich. Einige Links zu Shops sind Affiliate-Links (erkennbar an „Jetzt ansehen"-Buttons); wenn du darüber kaufst, erhalten wir eine kleine Provision, ohne dass du mehr bezahlst.'
+        q: 'Was kann ich bei Auressa alles nutzen?',
+        a: 'Das Quiz, den Dupe-Finder, alle Ratgeber und den gesamten Duft-Katalog – direkt im Browser. Der Duft-Scanner ist bald verfügbar. Einige Links zu Shops sind Affiliate-Links (erkennbar an „Jetzt ansehen"-Buttons); wenn du darüber kaufst, erhalten wir eine kleine Provision, ohne dass du mehr bezahlst.'
       },
       {
         q: 'Wer steht hinter Auressa?',
@@ -50,19 +50,19 @@ const faqGroups: {
     faqs: [
       {
         q: 'Was sind Duftnoten – Kopf-, Herz- und Basisnoten?',
-        a: 'Ein Parfüm entfaltet sich in drei Phasen: Kopfnoten (die ersten 15–30 Minuten nach dem Auftragen), Herznoten (das Herzstück des Dufts, 2–4 Stunden) und Basisnoten (der Langzeit-Eindruck, oft viele Stunden oder sogar Tage). Was du im Laden erschnupperst, sind meist nur die Kopfnoten – darum lohnt es sich, einen Duft mindestens 30 Minuten zu tragen, bevor du kaufst.'
+        a: 'Ein Parfüm entfaltet sich in drei Phasen: Kopfnoten (die ersten Minuten bis ca. 15–30 Minuten nach dem Auftragen), Herznoten (das Herzstück des Dufts, 2–4 Stunden) und Basisnoten (der Langzeit-Eindruck, oft viele Stunden oder sogar Tage). Was du im Laden erschnupperst, sind meist nur die Kopfnoten – darum lohnt es sich, einen Duft mindestens 30 Minuten zu tragen, bevor du kaufst.'
       },
       {
         q: 'Was ist der Unterschied zwischen Eau de Parfum (EdP), Eau de Toilette (EdT) und Parfum?',
-        a: 'Es geht um die Konzentration des Duftöls im Alkohol: Parfum / Extrait (20–30 %) ist am intensivsten und hält am längsten; Eau de Parfum (15–20 %) ist der häufigste Standard; Eau de Toilette (8–12 %) ist leichter und kürzer haltbar; Eau de Cologne (2–5 %) ist frisch und sparsam. Mehr EdP bedeutet nicht immer „besser" – es kommt auf den Stil und Anlass an.'
+        a: 'Es geht um die Konzentration des Duftöls im Alkohol: Parfum / Extrait (20–30 %) ist am intensivsten und hält am längsten; Eau de Parfum (15–20 %) ist der häufigste Standard; Eau de Toilette (5–15 %) ist leichter und kürzer haltbar; Eau de Cologne (2–5 %) ist frisch und sparsam. Mehr EdP bedeutet nicht immer „besser" – es kommt auf den Stil und Anlass an.'
       },
       {
         q: 'Was bedeutet Sillage bei Parfüm?',
-        a: 'Sillage (franz. „Kielwasser") ist die Projektion eines Dufts – wie weit er um dich herum riechbar ist. Hohe Sillage = der Duft ist im ganzen Raum wahrnehmbar. Niedrige Sillage = hautnaher, intimer Duft, den nur Leute in deiner Nähe riechen. Im Büro ist niedrige Sillage meist angenehmer; für eine Party darf es mehr sein.'
+        a: 'Sillage (franz. „Kielwasser") ist die Duftspur, die ein Duft hinterlässt – wie deutlich er um dich herum und hinter dir riechbar bleibt. Hohe Sillage = der Duft ist im ganzen Raum wahrnehmbar. Niedrige Sillage = hautnaher, intimer Duft, den nur Leute in deiner Nähe riechen. Im Büro ist niedrige Sillage meist angenehmer; für eine Party darf es mehr sein.'
       },
       {
         q: 'Wie lange hält ein Parfüm wirklich?',
-        a: 'Das hängt von der Konzentration, dem Typ der Duftstoffe und deiner Haut ab. Trockene Haut verliert Düfte schneller – eincremen hilft. Als Faustregel: EdT 3–5 Stunden, EdP 6–9 Stunden, Parfum/Extrait 10+ Stunden. Orientalische und holzige Düfte halten generell länger als frische oder Zitrusdüfte. Auf unserem Auressa-Score siehst du eine Einschätzung der Haltbarkeit pro Duft.'
+        a: 'Das hängt von der Konzentration, dem Typ der Duftstoffe und deiner Haut ab. Trockene Haut verliert Düfte schneller – eincremen hilft. Als Faustregel: EdT etwa 3–6 Stunden, EdP 6–12 Stunden, Parfum/Extrait oft 8 Stunden und mehr. Orientalische und holzige Düfte halten generell länger als frische oder Zitrusdüfte. Auf unserem Auressa-Score siehst du eine Einschätzung der Haltbarkeit pro Duft.'
       },
       {
         q: 'Was sind Duftfamilien?',
@@ -76,11 +76,11 @@ const faqGroups: {
     faqs: [
       {
         q: 'Was bedeutet der Auressa-Score?',
-        a: 'Der Auressa-Score (0–100) ist unsere redaktionelle Gesamteinschätzung eines Dufts – basierend auf Qualität, Vielseitigkeit, Preis-Leistung und Originalität. Er ist KEIN Nutzer-Rating und KEIN Match-Score. Für deinen persönlichen Match (wie gut passt der Duft zu deinen Quiz-Antworten) berechnen wir separat einen Match-Prozentsatz.'
+        a: 'Der Auressa-Score (0–100) wird aus den Duftdaten berechnet: Preis-Leistung 40 %, Haltbarkeit 25 %, Vielseitigkeit (Jahreszeiten und Anlässe) 20 % und Ausstrahlung 15 %. Er ist KEIN Nutzer-Rating und KEIN Match-Score. Für deinen persönlichen Match (wie gut passt der Duft zu deinen Quiz-Antworten) berechnen wir separat einen Match-Prozentsatz.'
       },
       {
         q: 'Wie berechnet das Quiz meinen Match-Prozentsatz?',
-        a: 'Nach dem Quiz vergleichen wir deine Antworten (Duftfamilie, Lieblingsnoten, Budget, Anlass, Saison, Intensität, Geschlecht) mit jedem Duft im Katalog und berechnen einen Match-Score von 0–100 %. Duftfamilie zählt 30 %, Lieblingsnoten 20 %, Budget 15 %, Anlass 13 %, Saison 12 %, Intensität 10 %. Wenn du eine Note explizit ausschliessen willst, zieht das stark ab.'
+        a: 'Nach dem Quiz vergleichen wir deine Antworten (Duftfamilie, Lieblingsnote, Budget, Anlass, Saison, Intensität) mit jedem passenden Duft im Katalog und berechnen einen Match-Score von 0–100 %. Duftfamilie zählt 30 %, Lieblingsnote 20 %, Budget 15 %, Anlass 13 %, Saison 12 %, Intensität 10 %; die gewünschte Haltbarkeit gibt einen kleinen Bonus. Das Geschlecht ist ein Filter, kein Punktwert. Eine ausgeschlossene Note zieht 25 Punkte ab.'
       },
       {
         q: 'Ist das Quiz wirklich besser als eine Duftberatung im Laden?',
@@ -329,7 +329,7 @@ export default function FaqPage() {
             Probier das Quiz oder schreib uns
           </h2>
           <p style={{ color: 'rgba(250,247,242,0.7)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
-            Das Duft-Quiz findet in unter 1 Minute deinen persönlichen Match. Oder schreib uns direkt – wir antworten gern.
+            Das Duft-Quiz findet in wenigen Minuten deinen persönlichen Match. Oder schreib uns direkt – wir antworten gern.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <Link href="/quiz" style={{

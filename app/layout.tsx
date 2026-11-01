@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import Link from 'next/link';
+import LineIcon from './LineIcon';
 import SiteHeader from '@/app/SiteHeader';
 import ConsentedAnalytics from '@/app/ConsentedAnalytics';
 import CookieBanner from '@/app/CookieBanner';
@@ -92,8 +93,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd).replace(/</g, "\\u003c") }}
         />
         <FavoritesProvider>
+          <a href="#inhalt" className="skip-link">Zum Inhalt springen</a>
           <SiteHeader />
-          {children}
+          <div id="inhalt" tabIndex={-1}>{children}</div>
           {/* Trust-Bar: Vertrauens-Signale vor dem Footer */}
         <div style={{
           backgroundColor: '#1F1410',
@@ -110,13 +112,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             textAlign: 'center',
           }}>
             {[
-              { icon: '🇨🇭', label: 'Aus der Schweiz', sub: 'Ehrlich & unabhängig' },
-              { icon: '🎯', label: 'Echter Match-Score', sub: '0–100, kein Zufall' },
-              { icon: '💸', label: 'Günstige Dupes', sub: 'Ähnlich riechend, weniger teuer' },
-              { icon: '✓', label: 'Geprüfte Daten', sub: 'Mehrere Quellen pro Duft' },
+              { icon: 'swiss', label: 'Aus der Schweiz', sub: 'Ehrlich & unabhängig' },
+              { icon: 'target', label: 'Echter Match-Score', sub: '0–100, kein Zufall' },
+              { icon: 'bottles', label: 'Clevere Alternativen', sub: 'Ähnlich riechend, weniger teuer' },
+              { icon: 'check', label: 'Geprüfte Daten', sub: 'Mehrere Quellen pro Duft' },
             ].map((item) => (
               <div key={item.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.35rem' }}>
-                <span style={{ fontSize: '1.6rem', lineHeight: 1, marginBottom: '0.2rem', color: '#D4AF37' }}>{item.icon}</span>
+                <span style={{ lineHeight: 1, marginBottom: '0.2rem', color: '#D4AF37' }}><LineIcon name={item.icon} size={30} /></span>
                 <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#D4AF37', letterSpacing: '0.01em' }}>{item.label}</span>
                 <span style={{ fontSize: '0.75rem', color: 'rgba(237,229,220,0.60)', lineHeight: 1.5 }}>{item.sub}</span>
               </div>

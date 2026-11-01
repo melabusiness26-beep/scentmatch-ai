@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import LineIcon, { guideIcon } from '@/app/LineIcon';
 import { useState } from 'react';
 import type { Guide } from '@/lib/guides';
 import { trackGuideView } from '@/lib/tracking';
@@ -49,17 +50,8 @@ export default function GuideTile({ guide, emoji }: { guide: Guide; emoji?: stri
         />
       )}
 
-      <span
-        style={{
-          fontSize: '2.2rem',
-          lineHeight: 1,
-          transition: 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
-          transform: isHovered ? 'scale(1.15) rotate(5deg)' : 'scale(1) rotate(0deg)',
-          display: 'inline-block',
-          width: 'fit-content',
-        }}
-      >
-        {emoji ?? '📖'}
+      <span className="guide-tile-icon">
+        <LineIcon name={guideIcon(guide.slug)} size={24} />
       </span>
 
       <h3 style={{
@@ -70,7 +62,7 @@ export default function GuideTile({ guide, emoji }: { guide: Guide; emoji?: stri
         lineHeight: 1.35,
         letterSpacing: '-0.01em',
         transition: 'color 0.3s ease',
-        color: isHovered ? '#D4AF37' : '#1F1410',
+        color: isHovered ? '#8A6D1A' : '#1F1410',
       }}>
         {guide.title}
       </h3>

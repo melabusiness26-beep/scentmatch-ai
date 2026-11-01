@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import LineIcon from '@/app/LineIcon';
 
 export default function NotFound() {
   return (
@@ -18,9 +19,9 @@ export default function NotFound() {
           pointerEvents: 'none',
         }} />
         <div style={{ position: 'relative', maxWidth: '580px', margin: '0 auto' }}>
-          {/* Flakon-Emoji als visueller Anker */}
-          <div style={{ fontSize: 'clamp(3rem,10vw,5rem)', lineHeight: 1, marginBottom: '1rem' }}
-               aria-hidden="true">🫙</div>
+          {/* Flakon-Symbol als visueller Anker */}
+          <div style={{ lineHeight: 1, marginBottom: '1rem', color: '#C9A24A', display: 'flex', justifyContent: 'center' }}
+               aria-hidden="true"><LineIcon name="bottle" size={64} /></div>
           <p style={{
             fontFamily: 'var(--font-sans)',
             fontSize: '0.75rem',
@@ -100,12 +101,12 @@ export default function NotFound() {
           gap: '1rem',
         }}>
           {[
-            { href: '/quiz',          icon: '🎯', label: 'Duft-Quiz',       sub: 'In 2 Minuten zum Match' },
-            { href: '/duft-detektiv',  icon: '🔍', label: 'Duft-Detektiv',   sub: 'Duft identifizieren' },
-            { href: '/ratgeber',       icon: '📖', label: 'Ratgeber',         sub: '50+ Duft-Artikel' },
-            { href: '/marke',          icon: '✦',  label: 'Marken',           sub: 'Alle Marken A–Z' },
-            { href: '/dupes',          icon: '💸', label: 'Dupes',            sub: 'Günstige Alternativen' },
-            { href: '/geschenk-finder',icon: '🎁', label: 'Geschenk-Finder',  sub: 'Das perfekte Duft-Geschenk' },
+            { href: '/quiz',          icon: 'compass', label: 'Duft-Quiz',       sub: 'In 2 Minuten zum Match' },
+            { href: '/duft-detektiv',  icon: 'search', label: 'Duft-Detektiv',   sub: 'Duft identifizieren' },
+            { href: '/ratgeber',       icon: 'book', label: 'Ratgeber',         sub: 'Wissen rund um Düfte' },
+            { href: '/marke',          icon: 'sparkle', label: 'Marken',           sub: 'Alle Marken A–Z' },
+            { href: '/dupes',          icon: 'tag', label: 'Dupes',            sub: 'Günstige Alternativen' },
+            { href: '/geschenk-finder',icon: 'gift', label: 'Geschenk-Finder',  sub: 'Das perfekte Duft-Geschenk' },
           ].map((item) => (
             <Link
               key={item.href}
@@ -113,7 +114,7 @@ export default function NotFound() {
               className="guide-tile"
               style={{ padding: '1.1rem 1.25rem' }}
             >
-              <span style={{ fontSize: '1.5rem', lineHeight: 1 }}>{item.icon}</span>
+              <span className="guide-tile-icon"><LineIcon name={item.icon} size={22} /></span>
               <span style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: '0.95rem',

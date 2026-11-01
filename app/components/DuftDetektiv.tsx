@@ -19,7 +19,6 @@ import Question12Description from './duft-detektiv-questions/Question12Descripti
 import LoadingAnimation from './LoadingAnimation';
 import ResultsView from './ResultsView';
 import SaveShareButtons from './SaveShareButtons';
-import NewsletterForm from '@/app/NewsletterForm';
 import ImageAnalyzer from './ImageAnalyzer';
 
 interface DuftDetektivProps {
@@ -145,9 +144,6 @@ export default function DuftDetektiv({ allPerfumes, prefilledAnswers }: DuftDete
           >
             Neue Suche
           </button>
-        </div>
-        <div style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid #e8dcc8' }}>
-          <NewsletterForm source="detektiv" />
         </div>
       </div>
     );

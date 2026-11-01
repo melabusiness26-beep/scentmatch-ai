@@ -93,7 +93,7 @@ export default function ImpressumPage() {
             <h2>Affiliate-Offenlegung</h2>
             <p>
               <strong>Als Amazon-Partnerin verdiene ich an qualifizierten Verkäufen.</strong> Auressa nimmt am Partnerprogramm von
-              Amazon (amazon.de) teil. Die Knöpfe „Bei Amazon kaufen“ sind solche Partner-Links.
+              Amazon (amazon.de) teil. Die Knöpfe „Bei Amazon ansehen“ sind solche Partner-Links.
             </p>
             <p>
               Zudem ist Auressa bei den Partnernetzwerken <strong>CJ Affiliate</strong> und <strong>Awin</strong> angemeldet. Sobald

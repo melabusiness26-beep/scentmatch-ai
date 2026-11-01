@@ -13,17 +13,17 @@ const FAMILY_TILES: { code: string; label: string }[] = [
 ];
 
 const GENDER_OPTIONS = [
-  { code: 'Women', label: '♀ Damen' },
-  { code: 'Men', label: '♂ Herren' },
-  { code: 'Unisex', label: '⚥ Unisex' }
+  { code: 'Women', label: 'Damen' },
+  { code: 'Men', label: 'Herren' },
+  { code: 'Unisex', label: 'Unisex' }
 ];
 
 const SEASON_OPTIONS = [
-  { code: 'Frühling', label: '🌸 Frühling' },
-  { code: 'Sommer', label: '☀️ Sommer' },
-  { code: 'Herbst', label: '🍂 Herbst' },
-  { code: 'Winter', label: '❄️ Winter' },
-  { code: 'Ganzjährig', label: '⭐ Ganzjährig' }
+  { code: 'Frühling', label: 'Frühling' },
+  { code: 'Sommer', label: 'Sommer' },
+  { code: 'Herbst', label: 'Herbst' },
+  { code: 'Winter', label: 'Winter' },
+  { code: 'Ganzjährig', label: 'Ganzjährig' }
 ];
 
 const OCCASION_OPTIONS = [
@@ -42,11 +42,11 @@ const AGE_GROUP_OPTIONS = [
 ];
 
 const LIFESTYLE_OPTIONS = [
-  { code: 'student', label: '👤 Student*in' },
-  { code: 'professional', label: '👔 Berufstätig' },
-  { code: 'party', label: '🎉 Party/Social' },
-  { code: 'casual', label: '😌 Casual' },
-  { code: 'sporty', label: '⚽ Sportlich' }
+  { code: 'student', label: 'Student*in' },
+  { code: 'professional', label: 'Berufstätig' },
+  { code: 'party', label: 'Party/Social' },
+  { code: 'casual', label: 'Casual' },
+  { code: 'sporty', label: 'Sportlich' }
 ];
 
 const PAGE_SIZE = 24;
@@ -172,6 +172,7 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
             border: 'none',
             borderRadius: '20px',
             padding: '0.4rem 0.9rem',
+                    minHeight: '44px',
             fontSize: '0.8rem',
             fontWeight: 600,
             cursor: 'pointer',
@@ -179,7 +180,7 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
           }}
           onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
         >
-          ⚙️ Erweiterte Filter {activeFilterCount > 0 && `(${activeFilterCount})`}
+          Erweiterte Filter {activeFilterCount > 0 && `(${activeFilterCount})`}
         </button>
       </div>
 
@@ -263,6 +264,7 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
                   }}
                   style={{
                     padding: '0.5rem 0.8rem',
+                    minHeight: '44px',
                     background: genderFilters.includes(opt.code) ? '#D4AF37' : 'white',
                     color: genderFilters.includes(opt.code) ? '#1F1410' : '#6B5344',
                     border: '1px solid rgba(212,175,55,0.2)',
@@ -293,6 +295,7 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
                   )}
                   style={{
                     padding: '0.5rem 0.8rem',
+                    minHeight: '44px',
                     background: seasonFilters.includes(opt.code) ? '#D4AF37' : 'white',
                     color: seasonFilters.includes(opt.code) ? '#1F1410' : '#6B5344',
                     border: '1px solid rgba(212,175,55,0.2)',
@@ -323,6 +326,7 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
                   )}
                   style={{
                     padding: '0.5rem 0.8rem',
+                    minHeight: '44px',
                     background: occasionFilters.includes(opt.code) ? '#D4AF37' : 'white',
                     color: occasionFilters.includes(opt.code) ? '#1F1410' : '#6B5344',
                     border: '1px solid rgba(212,175,55,0.2)',

@@ -321,7 +321,7 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                           e.currentTarget.style.backgroundColor = 'transparent';
                         }}
                       >
-                        Produkt suchen
+                        Online suchen
                       </a>
                     </div>
                   </div>

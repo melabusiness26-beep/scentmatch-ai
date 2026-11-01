@@ -118,7 +118,7 @@ export default async function Page() {
                 marginBottom: '1rem',
                 margin: '0 0 1rem 0'
               }}>
-                ✨ Duft-Expertise ✨
+                Duft-Expertise
               </p>
               <h2 style={{
                 fontFamily: "var(--font-display), Georgia, serif",
@@ -171,7 +171,7 @@ export default async function Page() {
                 border: 'none',
                 cursor: 'pointer',
               }}>
-                Alle {guides.length} Premium-Ratgeber →
+                Alle Ratgeber ansehen →
               </Link>
             </div>
           </div>

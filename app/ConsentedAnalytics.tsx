@@ -6,7 +6,7 @@ import { Analytics } from '@vercel/analytics/react';
 const STORAGE_KEY = 'auressa-cookie-consent';
 
 // Lädt die anonyme Besucher-Statistik (Vercel Analytics) NUR, wenn die Besucherin
-// im Cookie-Banner ausdrücklich „Alle akzeptieren" gewählt hat. So hält die Seite
+// im Cookie-Banner ausdrücklich „Statistik erlauben" gewählt hat. So hält die Seite
 // das Versprechen aus dem Banner und der Datenschutzerklärung ein (revDSG / DSGVO).
 // Der CookieBanner sendet beim Klick das Ereignis „auressa-consent-changed", damit
 // die Statistik direkt nach der Zustimmung startet – ohne Neuladen der Seite.

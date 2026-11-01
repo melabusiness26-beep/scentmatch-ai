@@ -1,7 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import LineIcon, { guideIcon } from '@/app/LineIcon';
 import Breadcrumb from '@/app/Breadcrumb';
 import { guides, guideCategories, getGuide, type Guide } from '@/lib/guides';
+
+// Täglich neu erzeugen, damit die Jahreszeiten-Reihenfolge stimmt.
+export const revalidate = 86400;
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
@@ -19,82 +23,16 @@ export const metadata: Metadata = {
   }
 };
 
-// Emoji-Icon pro Kategorie
+// Linien-Symbol pro Kategorie
 const CATEGORY_ICONS: Record<string, string> = {
-  'Nach Jahreszeit': '🌸',
-  'Nach Duftart': '🌹',
-  'Für Anlass & Typ': '🎯',
-  'Günstig & Dupes': '💸',
-  'Marken & Besonderes': '✨',
-  'Wissen & Tipps': '📖',
-  'Weitere Ratgeber': '📚',
+  'Nach Jahreszeit': 'leaf',
+  'Nach Duftart': 'flower',
+  'Für Anlass & Typ': 'target',
+  'Günstig & Dupes': 'tag',
+  'Marken & Besonderes': 'sparkle',
+  'Wissen & Tipps': 'book',
+  'Weitere Ratgeber': 'book',
 };
-
-// Pro Guide-Slug ein passendes Emoji vergeben
-const GUIDE_EMOJIS: Record<string, string> = {
-  'guenstige-alternativen-zu-teuren-dueften': '💸',
-  'die-besten-sommerduefte': '☀️',
-  'die-besten-sommerduefte-frauen': '👗',
-  'die-besten-sommerduefte-maenner': '👔',
-  'die-besten-winterduefte': '❄️',
-  'die-besten-herbstduefte': '🍂',
-  'die-besten-fruehlingsduefte': '🌸',
-  'welcher-duft-zu-welchem-anlass': '🎯',
-  'suesse-duefte-vanille-schokolade-karamell': '🍫',
-  'die-besten-unisex-duefte': '⚖️',
-  'parfum-inhaltsstoffe-allergene': '🔬',
-  'die-besten-duefte-unter-50-franken': '💰',
-  'wie-lange-haelt-parfum-haltbarkeit': '⏱️',
-  'parfum-geschenk-die-besten-duefte-zum-verschenken': '🎁',
-  'maennerduefte-die-frauen-moegen': '💝',
-  'die-besten-vanille-duefte': '🍦',
-  'die-besten-oud-duefte': '🪵',
-  'die-besten-zitrus-duefte': '🍋',
-  'damenduefte-die-maenner-lieben': '💐',
-  'parfum-nach-sternzeichen': '⭐',
-  'parfum-fuer-einsteiger-erster-signature-duft': '🌟',
-  'die-besten-fruehlingsduefte-2024': '🌷',
-  'die-besten-bueroduefte': '💼',
-  'parfum-das-lange-haelt-beast-mode': '💪',
-  'die-besten-hochzeitsduefte-braut': '👰',
-  'die-besten-holzigen-duefte': '🌲',
-  'die-besten-blumigen-duefte': '🌺',
-  'die-besten-frischen-aquatischen-duefte': '🌊',
-  'die-besten-moschus-pudrigen-duefte': '☁️',
-  'parfum-layering-duefte-kombinieren': '🎨',
-  'edt-edp-parfum-unterschied': '📊',
-  'haeufige-parfum-fehler': '❌',
-  'parfums-mit-schweizer-bezug': '🇨🇭',
-  'die-besten-lattafa-duefte': '🏆',
-  'die-besten-armaf-duefte': '🥇',
-  'die-besten-herbstduefte-2024': '🍁',
-  'die-besten-nischenduefte': '💎',
-  'die-besten-sommerduefte-frauen-2026': '🌺',
-  'creed-aventus-guenstige-alternativen': '🔄',
-  'lattafa-dupes-welches-original': '🏷️',
-  'parfum-fuer-junge-leute-unter-60-franken': '🎓',
-  'date-duefte-sommer': '💞',
-  'zara-parfum-dupes-welches-original': '🛍️',
-  'die-besten-sommerduefte-maenner-2026': '🏄',
-  'parfum-trends-2026': '📈',
-  'die-besten-erdbeer-duefte': '🍓',
-  'parfum-im-handgepaeck-reise-tipps': '✈️',
-  'parfum-und-hauttyp-was-passt-zu-meiner-haut': '🧴',
-  'vegane-tierversuchsfreie-parfums': '🌿',
-  'parfum-proben-abfuellungen-schweiz': '🧪',
-  'nische-mainstream': '💎',
-  'duftpersoenlichkeit': '🎭',
-  'duftchemie-grundlagen': '🧪',
-  'duftkollektion-minimal': '📚',
-  'duftnoten-guide': '🔺',
-  'duftsammlung': '🗄️',
-  'duft-lagerung': '🌡️',
-  'duft-mythen': '🔎',
-};
-
-function getGuideEmoji(slug: string): string {
-  return GUIDE_EMOJIS[slug] || '📄';
-}
 
 interface ExternalGuide {
   slug: string;
@@ -116,7 +54,7 @@ function GuideTiles({ items }: { items: Guide[] }) {
           href={`/ratgeber/${guide.slug}`}
           className="guide-tile"
         >
-          <span style={{ fontSize: '1.75rem', lineHeight: 1 }}>{getGuideEmoji(guide.slug)}</span>
+          <span className="guide-tile-icon"><LineIcon name={guideIcon(guide.slug)} size={22} /></span>
           <h3 style={{
             fontFamily: "var(--font-display), Georgia, serif",
             fontSize: '1rem',
@@ -135,7 +73,7 @@ function GuideTiles({ items }: { items: Guide[] }) {
           <span style={{
             fontSize: '0.75rem',
             fontWeight: 700,
-            color: '#d4af37',
+            color: '#8A6D1A',
             letterSpacing: '0.04em',
             textTransform: 'uppercase',
             marginTop: 'auto',
@@ -159,7 +97,7 @@ function ExternalGuideTiles({ items }: { items: ExternalGuide[] }) {
           href={guide.href}
           className="guide-tile"
         >
-          <span style={{ fontSize: '1.75rem', lineHeight: 1 }}>{getGuideEmoji(guide.slug)}</span>
+          <span className="guide-tile-icon"><LineIcon name={guideIcon(guide.slug)} size={22} /></span>
           <h3 style={{
             fontFamily: "var(--font-display), Georgia, serif",
             fontSize: '1rem',
@@ -178,7 +116,7 @@ function ExternalGuideTiles({ items }: { items: ExternalGuide[] }) {
           <span style={{
             fontSize: '0.75rem',
             fontWeight: 700,
-            color: '#d4af37',
+            color: '#8A6D1A',
             letterSpacing: '0.04em',
             textTransform: 'uppercase',
             marginTop: 'auto',
@@ -243,12 +181,26 @@ export default function RatgeberIndex() {
   ];
 
   // Kategorien mit ihren Artikeln auflösen.
-  const categorized = guideCategories.map((cat) => ({
-    title: cat.title,
-    items: cat.slugs
-      .map((s) => getGuide(s))
-      .filter((g): g is Guide => Boolean(g))
-  }));
+  // Jahreszeiten-Ratgeber: die aktuelle (und die nächste) Saison zuerst – im November also
+  // Herbst und Winter statt Sommer. Reihenfolge nach Schweizer Zeit.
+  const month = Number(new Intl.DateTimeFormat('en', { month: 'numeric', timeZone: 'Europe/Zurich' }).format(new Date()));
+  const order = month >= 3 && month <= 5 ? ['fruehling', 'sommer', 'herbst', 'winter']
+    : month >= 6 && month <= 8 ? ['sommer', 'herbst', 'winter', 'fruehling']
+    : month >= 9 && month <= 11 ? ['herbst', 'winter', 'fruehling', 'sommer']
+    : ['winter', 'fruehling', 'sommer', 'herbst'];
+  const seasonRank = (slug: string) => {
+    const i = order.findIndex((k) => slug.includes(k));
+    return i === -1 ? order.length : i;
+  };
+  const categorized = guideCategories.map((cat) => {
+    const items = cat.slugs.map((s) => getGuide(s)).filter((g): g is Guide => Boolean(g));
+    return {
+      title: cat.title,
+      items: cat.title === 'Nach Jahreszeit'
+        ? [...items].sort((a, b) => seasonRank(a.slug) - seasonRank(b.slug))
+        : items
+    };
+  });
 
   // Artikel, die in keiner Kategorie stehen, sammeln (Sicherheitsnetz).
   const inCategory = new Set(guideCategories.flatMap((c) => c.slugs));
@@ -323,7 +275,7 @@ export default function RatgeberIndex() {
           cat.items.length > 0 ? (
             <section key={cat.title} style={{ marginBottom: '3rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
-                <span style={{ fontSize: '1.25rem' }}>{CATEGORY_ICONS[cat.title] ?? '📚'}</span>
+                <span style={{ color: 'var(--gold-text)', display: 'inline-flex' }}><LineIcon name={CATEGORY_ICONS[cat.title] ?? 'book'} size={22} /></span>
                 <h2 style={{
                   fontFamily: "var(--font-display), Georgia, serif",
                   fontSize: '1.4rem',
@@ -340,7 +292,7 @@ export default function RatgeberIndex() {
         {weitere.length > 0 && (
           <section style={{ marginBottom: '3rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
-              <span style={{ fontSize: '1.25rem' }}>📚</span>
+              <span style={{ color: 'var(--gold-text)', display: 'inline-flex' }}><LineIcon name="book" size={22} /></span>
               <h2 style={{
                 fontFamily: "var(--font-display), Georgia, serif",
                 fontSize: '1.4rem',
@@ -356,7 +308,7 @@ export default function RatgeberIndex() {
         {/* Externe Guides */}
         <section style={{ marginBottom: '3rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
-            <span style={{ fontSize: '1.25rem' }}>🧠</span>
+            <span style={{ color: 'var(--gold-text)', display: 'inline-flex' }}><LineIcon name="check" size={22} /></span>
             <h2 style={{
               fontFamily: "var(--font-display), Georgia, serif",
               fontSize: '1.4rem',

@@ -40,7 +40,7 @@ export default function MoodResults({ items, mood }: { items: Item[]; mood: Mood
     }
     try {
       await navigator.clipboard.writeText(url);
-      setShareMsg('Link kopiert! 📋 Du kannst ihn jetzt einfügen.');
+      setShareMsg('Link kopiert! Du kannst ihn jetzt einfügen.');
     } catch {
       setShareMsg(url);
     }
@@ -122,7 +122,7 @@ export default function MoodResults({ items, mood }: { items: Item[]; mood: Mood
       )}
 
       <div className="cta">
-        <button type="button" className="button" onClick={share}>🔗 Diese Stimmung teilen</button>
+        <button type="button" className="button" onClick={share}>Diese Stimmung teilen</button>
         <Link className="button secondary" href="/quiz">Noch genauer? Mach das Quiz</Link>
         <Link className="button secondary" href="/duefte">Alle Düfte ansehen</Link>
       </div>

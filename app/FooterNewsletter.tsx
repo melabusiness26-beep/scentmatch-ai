@@ -31,7 +31,7 @@ export default function FooterNewsletter() {
             letterSpacing: '0.16em',
             margin: '0 0 12px 0',
           }}>
-            ✨ Bleib informiert ✨
+            Bleib informiert
           </p>
 
           <NewsletterForm

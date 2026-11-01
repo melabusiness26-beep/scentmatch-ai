@@ -3,8 +3,9 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import type { Season, SeasonPick } from '@/lib/season-fit';
+import LineIcon from '@/app/LineIcon';
 
-const ICON: Record<Season, string> = { Frühling: '🌸', Sommer: '☀️', Herbst: '🍂', Winter: '❄️' };
+const ICON: Record<Season, string> = { Frühling: 'flower', Sommer: 'sun', Herbst: 'leaf', Winter: 'snow' };
 const IM: Record<Season, string> = { Frühling: 'im Frühling', Sommer: 'im Sommer', Herbst: 'im Herbst', Winter: 'im Winter' };
 
 // Jahreszeit in der Schweiz (meteorologisch): März–Mai Frühling usw.
@@ -32,7 +33,7 @@ export function SeasonFit({ seasons, picks }: { seasons: Season[]; picks: Record
   if (seasons.includes(now)) {
     return (
       <div className="season-fit season-fit-yes">
-        <span className="season-fit-icon" aria-hidden="true">{ICON[now]}</span>
+        <span className="season-fit-icon" aria-hidden="true"><LineIcon name={ICON[now]} size={22} /></span>
         <p>
           <strong>Passt jetzt.</strong> {seasons.length === 4 ? 'Ein Duft fürs ganze Jahr, also auch' : 'Eine gute Wahl'} {IM[now]}.
         </p>
@@ -43,7 +44,7 @@ export function SeasonFit({ seasons, picks }: { seasons: Season[]; picks: Record
   const alternatives = picks[now] || [];
   return (
     <div className="season-fit season-fit-no">
-      <span className="season-fit-icon" aria-hidden="true">{ICON[seasons[0]]}</span>
+      <span className="season-fit-icon" aria-hidden="true"><LineIcon name={ICON[seasons[0]]} size={22} /></span>
       <div>
         <p>
           {alternatives.length > 0 ? (

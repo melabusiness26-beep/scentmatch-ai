@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getPerfumes, getPerfumeCount } from '@/lib/perfumes';
 import DuftFinder from '@/app/components/DuftFinder';
 import Breadcrumb from '@/app/Breadcrumb';
+import ToolExplainer, { TOOL_TEXTS } from '@/app/ToolExplainer';
 
 // Stündlich neu erzeugen, damit neue Düfte ohne neues Deployment erscheinen.
 export const revalidate = 3600;
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   title: 'Duft-Finder – Parfüm suchen und finden',
   description: 'Beschreib den Duft, den du suchst, und durchsuche den Auressa-Katalog nach Name, Note oder Beschreibung.',
   alternates: { canonical: `${SITE_URL}/duft-finder` },
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Duft-Finder | Auressa',
     description: 'Parfüm nach Name, Note oder Beschreibung suchen – aus unserem kuratierten Katalog.',
@@ -64,6 +65,7 @@ export default async function DuftFinderPage() {
       <div style={{ padding: '2rem 1.25rem', maxWidth: '1200px', margin: '0 auto' }}>
         <DuftFinder allPerfumes={perfumes} />
       </div>
+      <ToolExplainer text={TOOL_TEXTS.finder} />
     </main>
   );
 }

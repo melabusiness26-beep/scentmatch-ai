@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     robots: { index: false, follow: true },
     description: tagDescription(slug),
     alternates: { canonical: `/tag/${slug}` },
-    openGraph: {
+    openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
       title: `${label} Düfte | Auressa`,
       description: tagDescription(slug),

@@ -44,7 +44,7 @@ export async function generateMetadata({
     description,
     ...(!enough ? { robots: { index: false, follow: true } } : {}),
     alternates: { canonical: `/reiseduefte/${slug}` },
-    openGraph: {
+    openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
       title: `${title} | Auressa`,
       description,

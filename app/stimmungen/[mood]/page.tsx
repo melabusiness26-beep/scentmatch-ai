@@ -36,7 +36,7 @@ export async function generateMetadata({
     description,
     ...(!enough ? { robots: { index: false, follow: true } } : {}),
     alternates: { canonical: `/stimmungen/${code}` },
-    openGraph: {
+    openGraph: { locale: 'de_CH', siteName: 'Auressa',
       title: `${title} | Auressa`,
       description,
       type: 'website',

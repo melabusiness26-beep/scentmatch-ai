@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     'Alle Parfum-Marken im Auressa-Katalog: Entdecke die Düfte jeder Marke mit Preisen, Noten und Duftprofilen.',
   alternates: { canonical: `${SITE_URL}/marke` },
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Parfum-Marken | Auressa',
     description: 'Alle Parfum-Marken im Auressa-Katalog – mit Preisen, Noten und Duftprofilen.',

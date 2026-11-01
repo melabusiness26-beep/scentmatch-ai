@@ -4,7 +4,7 @@ import { GUIDE_DATES, formatGuideDate } from '@/lib/guide-dates';
 import { metaDescription } from '@/lib/meta';
 import { notFound } from 'next/navigation';
 import { cache } from 'react';
-import { getGuide, guides, relatedGuides, type Guide } from '@/lib/guides';
+import { getGuide, guideCategories, guides, relatedGuides, type Guide } from '@/lib/guides';
 import { getGuideFaqs, type GuideFaq } from '@/lib/guide-faqs';
 import { getPerfumes, type Perfume } from '@/lib/perfumes';
 import { AffiliateButton } from '@/app/AffiliateButton';
@@ -33,7 +33,7 @@ export async function generateMetadata({
     title: guide.seoTitle || guide.title,
     description: metaDescription(guide.description),
     alternates: { canonical: `/ratgeber/${slug}` },
-    openGraph: {
+    openGraph: { locale: 'de_CH', siteName: 'Auressa',
       title: guide.title,
       description: metaDescription(guide.description),
       type: 'article',
@@ -122,6 +122,12 @@ export default async function GuidePage({
 
   const faqs = getGuideFaqs(slug);
   const related = relatedGuides(slug, 3);
+  const category = guideCategories.find((c) => c.slugs.includes(slug));
+  const relatedSlugs = new Set(related.map((g) => g.slug));
+  const sameCategory = (category?.slugs || [])
+    .filter((s) => s !== slug && !relatedSlugs.has(s))
+    .map((s) => getGuide(s))
+    .filter((g): g is Guide => Boolean(g));
 
   // Alle Düfte einmal laden und nach slug nachschlagbar machen.
   const all = await getCachedPerfumes();
@@ -272,6 +278,21 @@ export default async function GuidePage({
                   </Link>
                 ))}
               </div>
+            </section>
+          )}
+
+          {/* Alle Artikel derselben Kategorie verlinken – so ist jeder Ratgeber von mehreren
+              Seiten aus erreichbar (wichtig für Google). */}
+          {sameCategory.length > 0 && (
+            <section className="section">
+              <h2>Mehr aus „{category?.title}“</h2>
+              <ul className="link-list">
+                {sameCategory.map((g) => (
+                  <li key={g.slug}>
+                    <Link href={`/ratgeber/${g.slug}`}>{g.title}</Link>
+                  </li>
+                ))}
+              </ul>
             </section>
           )}
 

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     'Woher die Duft-Angaben auf Auressa stammen, wie der Auressa-Score berechnet wird und wie wir mit Partner-Links umgehen.',
   alternates: { canonical: `${SITE_URL}/testing-und-transparenz` },
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Testing & Transparenz | Auressa',
     description: 'Woher die Angaben stammen und wie der Auressa-Score berechnet wird.',

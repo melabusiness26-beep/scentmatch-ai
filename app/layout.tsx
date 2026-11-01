@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     template: '%s | Auressa'
   },
   description:
-    'Auressa hilft dir, mit einem eleganten Duft-Quiz und einer intelligenten Empfehlungslogik das perfekte Parfum zu finden – Duftfamilie, Anlass, Saison und Stil inklusive.',
+    'Finde dein perfektes Parfum: Duft-Quiz, günstige Dupes und ehrliche Ratgeber aus der Schweiz – mit geprüften Daten zu Noten, Preisen und Haltbarkeit.',
   keywords: ['Parfum finden', 'Duft Quiz', 'Signature Duft', 'Duftberatung', 'Auressa'],
   verification: {
     google: 'hTy76EREclc_v_vWftD88u4tZ8VhsT630KvxJRRLdaw'
@@ -67,6 +67,9 @@ const organizationJsonLd = {
   '@type': 'Organization',
   name: 'Auressa',
   url: SITE_URL,
+  logo: `${SITE_URL}/icon`,
+  founder: { '@type': 'Person', name: 'Melanie', url: `${SITE_URL}/ueber-uns` },
+  areaServed: 'CH',
   description:
     'Auressa ist die moderne Duft-Findungs-Plattform aus der Schweiz – mit Duft-Quiz, Match-Engine und Ratgebern.'
 };

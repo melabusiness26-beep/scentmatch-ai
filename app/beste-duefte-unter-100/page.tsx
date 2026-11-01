@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     'Parfums unter CHF 100 aus dem Auressa-Katalog, sortiert nach dem berechneten Auressa-Score. Mit Duftprofil und Noten.',
   alternates: { canonical: `${SITE_URL}/beste-duefte-unter-100` },
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Beste Parfums unter CHF 100 | Auressa',
     description: 'Düfte unter CHF 100, sortiert nach Auressa-Score – mit Duftprofil und Noten.',

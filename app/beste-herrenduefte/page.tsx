@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     'Herren- und Unisex-Parfums aus dem Auressa-Katalog, sortiert nach dem berechneten Auressa-Score. Mit Duftprofil, Noten und Preisen.',
   alternates: { canonical: `${SITE_URL}/beste-herrenduefte` },
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Die besten Herrendüfte | Auressa',
     description: 'Herren-Parfums nach Auressa-Score sortiert – mit Duftprofil, Noten und Preisen.',

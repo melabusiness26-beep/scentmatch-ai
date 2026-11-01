@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Breadcrumb from '@/app/Breadcrumb';
+import MoreKnowledge from '@/app/MoreKnowledge';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   description:
     'So baust du Schritt für Schritt eine Duftsammlung auf – vom ersten Duft bis zur kleinen Kollektion, passend zu deinem Budget und jedem Anlass.',
   alternates: { canonical: '/duftsammlung' },
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Duftsammlung aufbauen | Auressa',
     description:
@@ -409,6 +410,7 @@ export default function DuftsammlungPage() {
           </div>
         </section>
       </div>
+      <MoreKnowledge current="/duftsammlung" />
     </main>
   );
 }

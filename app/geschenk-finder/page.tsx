@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { getPerfumes } from '@/lib/perfumes';
 import GiftFinder from '@/app/components/GiftFinder';
 import Breadcrumb from '@/app/Breadcrumb';
+import ToolExplainer, { TOOL_TEXTS } from '@/app/ToolExplainer';
 
 export const revalidate = 3600; // ISR: revalidate hourly
 
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   description:
     'Den passenden Duft als Geschenk finden: Unser Quiz zeigt dir in 4 Fragen Parfüm-Empfehlungen aus unserem Katalog. Für Frauen, Männer und verschiedene Budgets.',
   alternates: { canonical: `${SITE_URL}/geschenk-finder` },
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Parfum Geschenk finden | Auressa',
     description: 'Den passenden Duft als Geschenk entdecken – schnell, einfach und für verschiedene Budgets.',
@@ -40,6 +41,7 @@ export default async function GiftFinderPage() {
       <section className="section-content">
         <GiftFinder allPerfumes={perfumes} />
       </section>
+      <ToolExplainer text={TOOL_TEXTS.geschenk} />
     </main>
   );
 }

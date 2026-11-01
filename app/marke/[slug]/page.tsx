@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { computeAuressaScore } from '@/lib/score';
+import { pairTitle, versionPairs } from '@/lib/version-compare';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import {
+  concentrationLabel,
   getBrandBySlug,
   getAllBrandSlugs,
   getPerfumesByBrand,
@@ -37,7 +40,7 @@ export async function generateMetadata({
     title,
     description,
     alternates: { canonical: `${SITE_URL}/marke/${slug}` },
-    openGraph: {
+    openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
       title: `${brand.name} Parfums | Auressa`,
       description,
@@ -181,6 +184,53 @@ export default async function BrandPage({
       )
     : null;
 
+  // ── Fakten aus dem Katalog (für den Abschnitt „auf einen Blick") ──────
+  const FAMILY_NAME: Record<string, string> = { clean: '„frisch“', gourmand: '„süss“', woody: '„holzig“', floral: '„blumig“' };
+  // Name mit Konzentration, ohne Doppelung („Terre d'Hermès Parfum" bleibt so).
+  const withConc = (p: Perfume) => {
+    const c = concentrationLabel(p.concentration);
+    return c && !p.perfume_name.toLowerCase().includes(c.toLowerCase()) ? `${p.perfume_name} (${c})` : p.perfume_name;
+  };
+  const listDe = (xs: string[]) => (xs.length <= 1 ? xs.join('') : `${xs.slice(0, -1).join(', ')} und ${xs[xs.length - 1]}`);
+  const brandFacts: string[] = [];
+  if (perfumes.length > 0) {
+    const genderParts = [
+      damen ? `${damen} für Damen` : '',
+      herren ? `${herren} für Herren` : '',
+      unisex ? `${unisex} für alle (Unisex)` : ''
+    ].filter(Boolean);
+    brandFacts.push(
+      `Im Auressa-Katalog findest du ${perfumes.length} ${perfumes.length === 1 ? 'Duft' : 'Düfte'} von ${brand.name}${genderParts.length ? `: ${listDe(genderParts)}` : ''}. Jeder Eintrag ist mit mehreren Quellen geprüft.`
+    );
+    const famCount: Record<string, number> = {};
+    for (const p of perfumes) if (p.fragrance_family) famCount[p.fragrance_family] = (famCount[p.fragrance_family] || 0) + 1;
+    const fams = Object.entries(famCount).sort((x, y) => y[1] - x[1]);
+    if (fams.length) {
+      brandFacts.push(
+        fams.length === 1
+          ? `Alle erfassten ${brand.name}-Düfte sind ${FAMILY_NAME[fams[0][0]] || fams[0][0]}.`
+          : `Die häufigste Duftrichtung ist ${FAMILY_NAME[fams[0][0]] || fams[0][0]} (${fams[0][1]} von ${perfumes.length}), daneben ${listDe(fams.slice(1).map(([f]) => FAMILY_NAME[f] || f))}.`
+      );
+    }
+    const priced = perfumes.filter((p) => p.price_chf != null);
+    if (priced.length) {
+      const min = Math.round(Math.min(...priced.map((p) => p.price_chf as number)));
+      const max = Math.round(Math.max(...priced.map((p) => p.price_chf as number)));
+      const per100 = priced.filter((p) => p.volume_ml).map((p) => ({ p, v: Math.round(((p.price_chf as number) / (p.volume_ml as number)) * 100) }));
+      const cheapest = per100.sort((x, y) => x.v - y.v)[0];
+      brandFacts.push(
+        `Die Richtpreise liegen ${min === max ? `bei ca. CHF ${min}` : `zwischen ca. CHF ${min} und CHF ${max}`}${cheapest ? `; am günstigsten pro 100 ml ist ${withConc(cheapest.p)} mit ca. CHF ${cheapest.v}` : ''}.`
+      );
+    }
+    const best = [...perfumes].sort((x, y) => computeAuressaScore(y).total - computeAuressaScore(x).total)[0];
+    if (best) {
+      brandFacts.push(
+        `Den höchsten Auressa-Score hat ${withConc(best)} mit ${computeAuressaScore(best).total}/100 – berechnet aus Preis pro 100 ml, Haltbarkeit, Vielseitigkeit und Ausstrahlung.`
+      );
+    }
+  }
+  const brandPairs = versionPairs(perfumes);
+
   // Beschreibung generieren, falls keine vorhanden
   const description =
     brand.description ||
@@ -300,6 +350,28 @@ export default async function BrandPage({
               ))}
             </div>
           </>
+        )}
+
+        {/* Marke auf einen Blick – nur aus den geprüften Katalogdaten berechnet (keine Annahmen). */}
+        {perfumes.length > 0 && (
+          <section className="section card brand-facts">
+            <h2>{brand.name} bei Auressa auf einen Blick</h2>
+            {brandFacts.map((f) => (
+              <p key={f.slice(0, 30)}>{f}</p>
+            ))}
+            {brandPairs.length > 0 && (
+              <>
+                <h3>Versionen im Vergleich</h3>
+                <ul className="link-list">
+                  {brandPairs.map((pr) => (
+                    <li key={pr.slug}>
+                      <Link href={`/unterschied/${pr.slug}`}>{pairTitle(pr)}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </section>
         )}
 
         {/* CTA */}

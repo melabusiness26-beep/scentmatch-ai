@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Breadcrumb from '@/app/Breadcrumb';
+import MoreKnowledge from '@/app/MoreKnowledge';
 
 export const revalidate = 3600;
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   description:
     'Wir prüfen die 20 häufigsten Duft-Mythen: Warum teure Düfte nicht automatisch besser sind, ob du abhängig wirst, wie deine Nase funktioniert und mehr.',
   alternates: { canonical: `${SITE_URL}/duft-mythen` },
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Duft-Mythen und Fakten | Auressa',
     description: 'Die Wahrheit über Parfums: Teure Düfte, Duft-Abhängigkeit, Haltbarkeit und mehr – wissenschaftlich erklärt.',
@@ -312,6 +313,7 @@ export default function FragranceMythsPage() {
           </div>
         </section>
       </div>
+      <MoreKnowledge current="/duft-mythen" />
     </main>
   );
 }

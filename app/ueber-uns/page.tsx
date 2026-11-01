@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     'Wie Auressa entstand: Melanie aus der Schweiz hat zu viele unpassende Parfüms gekauft – und eine ehrliche Duft-Plattform auf Deutsch gegründet.',
   alternates: { canonical: `${SITE_URL}/ueber-uns` },
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Über Auressa | Auressa',
     description: 'Die Geschichte hinter einer ehrlichen Duft-Plattform aus der Schweiz.',

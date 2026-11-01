@@ -13,7 +13,7 @@ const baseMetadata: Metadata = {
   description:
     'Unisex-Parfums aus dem Auressa-Katalog, sortiert nach dem berechneten Auressa-Score. Mit Duftprofil, Noten und Preisen.',
   alternates: { canonical: `${SITE_URL}/beste-unisex-duefte` },
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Die besten Unisex-Düfte | Auressa',
     description: 'Unisex-Parfums nach Auressa-Score sortiert – mit Duftprofil, Noten und Preisen.',

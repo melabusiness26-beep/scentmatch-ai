@@ -11,8 +11,22 @@ import { guides } from '@/lib/guides';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
+// Startseite: Titel mit Suchbegriffen („Parfum finden", „Duft-Quiz", „Dupes"). Das sichtbare
+// Startbild bleibt unverändert – das hier ist nur der Titel in Google und im Browser-Tab.
 export const metadata: Metadata = {
-  alternates: { canonical: SITE_URL }
+  title: { absolute: 'Parfum finden mit Duft-Quiz & Dupes | Auressa' },
+  description:
+    'Finde dein perfektes Parfum: Duft-Quiz, günstige Dupes und ehrliche Ratgeber aus der Schweiz – mit geprüften Daten zu Noten, Preisen und Haltbarkeit.',
+  alternates: { canonical: SITE_URL },
+  openGraph: {
+    type: 'website',
+    locale: 'de_CH',
+    siteName: 'Auressa',
+    url: SITE_URL,
+    title: 'Parfum finden mit Duft-Quiz & Dupes | Auressa',
+    description: 'Duft-Quiz, günstige Dupes und ehrliche Ratgeber aus der Schweiz – finde dein perfektes Parfum.',
+    images: ['/opengraph-image']
+  }
 };
 
 // Alle 10 Minuten neu erzeugen statt bei jedem Aufruf – die Startseite lädt so

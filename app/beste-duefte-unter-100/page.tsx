@@ -178,7 +178,7 @@ export default async function BesteDuefteUnter100() {
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
-      <Breadcrumb items={[{ label: 'Beste Düfte unter 100 CHF', href: '/beste-duefte-unter-100' }]} />
+      <Breadcrumb withSchema={false} items={[{ label: 'Beste Düfte unter 100 CHF', href: '/beste-duefte-unter-100' }]} />
 
       <section style={{
         background: 'linear-gradient(145deg, #1a2612 0%, #2d3d1e 50%, #3d5528 100%)',

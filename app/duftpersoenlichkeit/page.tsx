@@ -5,7 +5,7 @@ import Breadcrumb from '@/app/Breadcrumb';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Duftpersönlichkeit: Welcher Duft passt zu deinem Charakter?',
+  title: 'Duftpersönlichkeit: welcher Duft passt zu dir?',
   description:
     'Spielerische Orientierung: acht Duft-Typen von klassisch bis modern – finde heraus, welche Duftfamilien zu dir passen könnten.',
   alternates: { canonical: `${SITE_URL}/duftpersoenlichkeit` },

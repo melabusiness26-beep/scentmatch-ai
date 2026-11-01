@@ -1,3 +1,4 @@
+import { hasEnoughVariety } from '@/lib/versions';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -27,13 +28,13 @@ export async function generateMetadata({
   // Haupttitel ohne „| Auressa" – das globale Titel-Template haengt die Marke an.
   const title = `Welcher Duft, ${mood.phrase}?`;
   const description = mood.intro;
-  // Solange weniger als 3 passende Düfte im Katalog sind: nicht indexieren (siehe Reisedüfte).
-  const matches = rankByMood(await getPerfumes(2000), mood, '', 30).length;
+  // Erst bei genug verschiedenen passenden Düften in Google aufnehmen (siehe lib/versions.ts).
+  const enough = hasEnoughVariety(rankByMood(await getPerfumes(2000), mood, '', 30));
 
   return {
     title,
     description,
-    ...(matches < 3 ? { robots: { index: false, follow: true } } : {}),
+    ...(!enough ? { robots: { index: false, follow: true } } : {}),
     alternates: { canonical: `/stimmungen/${code}` },
     openGraph: {
       title: `${title} | Auressa`,

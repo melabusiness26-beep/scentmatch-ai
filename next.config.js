@@ -28,6 +28,73 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Ältere Einzelseiten, deren Thema ein Ratgeber-Artikel bereits behandelt:
+      // zusammengeführt, damit Google nicht zwei Seiten zum gleichen Thema sieht.
+      {
+        source: '/parfum-auftragen',
+        destination: '/ratgeber/wie-lange-haelt-parfum-haltbarkeit',
+        permanent: true
+      },
+      {
+        source: '/duftlaenge',
+        destination: '/ratgeber/wie-lange-haelt-parfum-haltbarkeit',
+        permanent: true
+      },
+      {
+        source: '/duftarten',
+        destination: '/ratgeber/edt-edp-parfum-unterschied',
+        permanent: true
+      },
+      {
+        source: '/duefte-kombinieren',
+        destination: '/ratgeber/parfum-layering-duefte-kombinieren',
+        permanent: true
+      },
+      {
+        source: '/dufte-nach-hauttyp',
+        destination: '/ratgeber/parfum-und-hauttyp-was-passt-zu-meiner-haut',
+        permanent: true
+      },
+      {
+        source: '/koerperchemie-duft',
+        destination: '/ratgeber/parfum-und-hauttyp-was-passt-zu-meiner-haut',
+        permanent: true
+      },
+      {
+        source: '/dufte-fuer-die-arbeit',
+        destination: '/ratgeber/die-besten-bueroduefte',
+        permanent: true
+      },
+      {
+        source: '/duft-geschenk',
+        destination: '/ratgeber/parfum-geschenk-die-besten-duefte-zum-verschenken',
+        permanent: true
+      },
+      {
+        source: '/guenstige-alternativen',
+        destination: '/ratgeber/guenstige-alternativen-zu-teuren-dueften',
+        permanent: true
+      },
+      {
+        source: '/damen-parfueme',
+        destination: '/beste-damenduefte',
+        permanent: true
+      },
+      {
+        source: '/herren-parfueme',
+        destination: '/beste-herrenduefte',
+        permanent: true
+      },
+      {
+        source: '/anleitung',
+        destination: '/ratgeber/parfum-fuer-einsteiger-erster-signature-duft',
+        permanent: true
+      },
+      {
+        source: '/duft-waehlen',
+        destination: '/ratgeber/parfum-fuer-einsteiger-erster-signature-duft',
+        permanent: true
+      },
       {
         // Der frühere eigene Ratgeber „Parfum richtig auftragen" wurde mit dem
         // Haltbarkeits-Artikel zusammengeführt. Alte URL dauerhaft weiterleiten,

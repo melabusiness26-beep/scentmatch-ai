@@ -165,7 +165,7 @@ export default async function BesteHerrenduefte() {
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
-      <Breadcrumb items={[{ label: 'Die besten Herrendüfte', href: '/beste-herrenduefte' }]} />
+      <Breadcrumb withSchema={false} items={[{ label: 'Die besten Herrendüfte', href: '/beste-herrenduefte' }]} />
 
       <section style={{
         background: 'linear-gradient(145deg, #12181e 0%, #1e2d3d 50%, #2d4157 100%)',

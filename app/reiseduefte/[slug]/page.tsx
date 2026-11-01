@@ -1,3 +1,4 @@
+import { hasEnoughVariety } from '@/lib/versions';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -35,12 +36,12 @@ export async function generateMetadata({
   const description = dest.intro;
   // Solange weniger als 3 passende Düfte im Katalog sind, ist die Seite für Google
   // zu dünn: nicht indexieren (Links folgen). Mit wachsendem Katalog schaltet sie sich frei.
-  const matches = rankByDestination(await getPerfumes(2000), dest, '', 30).length;
+  const enough = hasEnoughVariety(rankByDestination(await getPerfumes(2000), dest, '', 30));
 
   return {
     title,
     description,
-    ...(matches < 3 ? { robots: { index: false, follow: true } } : {}),
+    ...(!enough ? { robots: { index: false, follow: true } } : {}),
     alternates: { canonical: `/reiseduefte/${slug}` },
     openGraph: {
       images: ['/opengraph-image'],

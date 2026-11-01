@@ -9,7 +9,7 @@ export const revalidate = 3600;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Dupe-Finder: die günstige Alternative zu deinem Lieblingsduft',
+  title: 'Parfum-Dupes finden: günstige Alternativen',
   description:
     'Gib den Duft ein, den du liebst, und finde Alternativen mit ähnlichen Duftnoten aus unserem Katalog, die weniger kosten. Mit Preisen in CHF.',
   alternates: { canonical: '/dupes' },
@@ -60,7 +60,7 @@ export default async function DupesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }}
       />
-      <Breadcrumb items={[{ label: 'Dupe-Finder', href: '/dupes' }]} />
+      <Breadcrumb withSchema={false} items={[{ label: 'Dupe-Finder', href: '/dupes' }]} />
       <div className="container">
         <section className="detail-hero">
           <div>

@@ -1,0 +1,56 @@
+// Echte Daten je Ratgeber-Artikel, aus der Versionsgeschichte (git) ermittelt:
+// published = erste Veröffentlichung, updated = letzte inhaltliche Änderung.
+// Bei einer inhaltlichen Überarbeitung eines Artikels hier `updated` anpassen.
+export const GUIDE_DATES: Record<string, { published: string; updated: string }> = {
+  'creed-aventus-guenstige-alternativen': { published: '2026-06-28', updated: '2026-10-31' },
+  'damenduefte-die-maenner-lieben': { published: '2026-06-22', updated: '2026-11-01' },
+  'date-duefte-sommer': { published: '2026-06-28', updated: '2026-10-31' },
+  'die-besten-armaf-duefte': { published: '2026-06-24', updated: '2026-10-31' },
+  'die-besten-blumigen-duefte': { published: '2026-06-24', updated: '2026-11-01' },
+  'die-besten-bueroduefte': { published: '2026-06-24', updated: '2026-11-01' },
+  'die-besten-duefte-unter-50-franken': { published: '2026-06-22', updated: '2026-10-31' },
+  'die-besten-erdbeer-duefte': { published: '2026-07-01', updated: '2026-11-01' },
+  'die-besten-frischen-aquatischen-duefte': { published: '2026-06-24', updated: '2026-11-01' },
+  'die-besten-fruehlingsduefte': { published: '2026-06-24', updated: '2026-11-01' },
+  'die-besten-herbstduefte': { published: '2026-06-24', updated: '2026-10-31' },
+  'die-besten-hochzeitsduefte-braut': { published: '2026-06-24', updated: '2026-10-21' },
+  'die-besten-holzigen-duefte': { published: '2026-06-24', updated: '2026-11-01' },
+  'die-besten-lattafa-duefte': { published: '2026-06-24', updated: '2026-10-31' },
+  'die-besten-moschus-pudrigen-duefte': { published: '2026-06-24', updated: '2026-11-01' },
+  'die-besten-nischenduefte': { published: '2026-06-24', updated: '2026-11-01' },
+  'die-besten-oud-duefte': { published: '2026-06-22', updated: '2026-11-01' },
+  'die-besten-sommerduefte': { published: '2026-06-21', updated: '2026-11-01' },
+  'die-besten-sommerduefte-frauen': { published: '2026-06-28', updated: '2026-10-31' },
+  'die-besten-sommerduefte-maenner': { published: '2026-06-30', updated: '2026-10-31' },
+  'die-besten-unisex-duefte': { published: '2026-06-21', updated: '2026-11-01' },
+  'die-besten-vanille-duefte': { published: '2026-06-22', updated: '2026-11-01' },
+  'die-besten-winterduefte': { published: '2026-06-21', updated: '2026-11-01' },
+  'die-besten-zitrus-duefte': { published: '2026-06-22', updated: '2026-11-01' },
+  'edt-edp-parfum-unterschied': { published: '2026-06-24', updated: '2026-11-01' },
+  'guenstige-alternativen-zu-teuren-dueften': { published: '2026-06-21', updated: '2026-11-01' },
+  'haeufige-parfum-fehler': { published: '2026-06-24', updated: '2026-10-31' },
+  'lattafa-dupes-welches-original': { published: '2026-06-28', updated: '2026-11-01' },
+  'maennerduefte-die-frauen-moegen': { published: '2026-06-22', updated: '2026-11-01' },
+  'parfum-das-lange-haelt-beast-mode': { published: '2026-06-24', updated: '2026-10-31' },
+  'parfum-fuer-einsteiger-erster-signature-duft': { published: '2026-06-24', updated: '2026-11-01' },
+  'parfum-fuer-junge-leute-unter-60-franken': { published: '2026-06-28', updated: '2026-10-31' },
+  'parfum-geschenk-die-besten-duefte-zum-verschenken': { published: '2026-06-22', updated: '2026-11-01' },
+  'parfum-im-handgepaeck-reise-tipps': { published: '2026-10-11', updated: '2026-10-31' },
+  'parfum-inhaltsstoffe-allergene': { published: '2026-06-22', updated: '2026-10-12' },
+  'parfum-layering-duefte-kombinieren': { published: '2026-06-24', updated: '2026-10-31' },
+  'parfum-nach-sternzeichen': { published: '2026-06-23', updated: '2026-11-01' },
+  'parfum-proben-abfuellungen-schweiz': { published: '2026-10-11', updated: '2026-11-01' },
+  'parfum-trends-2026': { published: '2026-06-30', updated: '2026-10-31' },
+  'parfum-und-hauttyp-was-passt-zu-meiner-haut': { published: '2026-10-11', updated: '2026-11-01' },
+  'parfums-mit-schweizer-bezug': { published: '2026-06-24', updated: '2026-10-31' },
+  'suesse-duefte-vanille-schokolade-karamell': { published: '2026-06-21', updated: '2026-11-01' },
+  'vegane-tierversuchsfreie-parfums': { published: '2026-10-11', updated: '2026-10-31' },
+  'welcher-duft-zu-welchem-anlass': { published: '2026-06-21', updated: '2026-11-01' },
+  'wie-lange-haelt-parfum-haltbarkeit': { published: '2026-06-22', updated: '2026-11-01' },
+  'zara-parfum-dupes-welches-original': { published: '2026-06-30', updated: '2026-10-31' },
+};
+
+// Datum im Schweizer Format, z. B. „1. November 2026".
+export function formatGuideDate(iso: string): string {
+  return new Intl.DateTimeFormat('de-CH', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Zurich' }).format(new Date(`${iso}T12:00:00Z`));
+}

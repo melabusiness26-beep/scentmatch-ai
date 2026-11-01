@@ -8,7 +8,7 @@ export const revalidate = 3600; // ISR: revalidate hourly
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Parfum Geschenk finden: der Geschenk-Finder für Weihnachten',
+  title: 'Parfum-Geschenk finden: der Geschenk-Finder',
   description:
     'Den passenden Duft als Geschenk finden: Unser Quiz zeigt dir in 4 Fragen Parfüm-Empfehlungen aus unserem Katalog. Für Frauen, Männer und verschiedene Budgets.',
   alternates: { canonical: `${SITE_URL}/geschenk-finder` },

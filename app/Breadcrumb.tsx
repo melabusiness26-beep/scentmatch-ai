@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 
 export interface BreadcrumbItem {
@@ -9,26 +7,33 @@ export interface BreadcrumbItem {
 
 interface BreadcrumbProps {
   items: BreadcrumbItem[];
+  // false, wenn die Seite ihre eigene (ausführlichere) BreadcrumbList für Google ausgibt.
+  withSchema?: boolean;
 }
 
-export default function Breadcrumb({ items }: BreadcrumbProps) {
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
+
+export default function Breadcrumb({ items, withSchema = true }: BreadcrumbProps) {
+  // Wie die sichtbare Navigation: immer mit „Startseite" als erstem Schritt.
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: items.map((item, index) => ({
+    itemListElement: [{ label: 'Startseite', href: '' }, ...items].map((item, index) => ({
       '@type': 'ListItem',
       position: index + 1,
       name: item.label,
-      item: `${typeof window !== 'undefined' ? window.location.origin : 'https://auressa.ch'}${item.href}`
+      item: `${SITE_URL}${item.href}`
     }))
   };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
-      />
+      {withSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+        />
+      )}
       <nav
         aria-label="Breadcrumb"
         style={{

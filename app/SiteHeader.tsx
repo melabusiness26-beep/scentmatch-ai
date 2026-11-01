@@ -89,8 +89,9 @@ export default function SiteHeader() {
               }}>▼</span>
             </button>
 
-            {dropOpen && (
-              <div style={{
+            {/* Immer im HTML (für Google und Screenreader), nur optisch ausgeblendet, solange zu. */}
+            {(
+              <div hidden={!dropOpen} style={{
                 position: 'absolute',
                 top: 'calc(100% + 0.5rem)',
                 left: '50%',

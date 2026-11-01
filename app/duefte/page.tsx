@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'Parfüm-Datenbank: alle Düfte durchsuchen (Schweiz)',
     description:
-      `Die Parfüm-Datenbank aus der Schweiz: ${approx ? `${approx} Düfte` : 'geprüfte Düfte'} von Bestsellern bis zu seltenen Nischenperlen – suchbar nach Name, Marke, Note, Geschlecht und Anlass.`,
+      `Die Parfüm-Datenbank aus der Schweiz: ${approx ? `${approx} Düfte von Bestsellern bis zu seltenen Nischenperlen` : 'sorgfältig geprüfte Düfte, laufend erweitert'} – suchbar nach Name, Marke, Note, Geschlecht und Anlass.`,
     alternates: { canonical: '/duefte' },
     openGraph: {
       images: ['/opengraph-image'],
@@ -63,7 +63,7 @@ export default async function DueftePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd).replace(/</g, "\\u003c") }}
       />
-      <Breadcrumb items={[{ label: 'Düfte', href: '/duefte' }]} />
+      <Breadcrumb withSchema={false} items={[{ label: 'Düfte', href: '/duefte' }]} />
       <div className="container">
         <section className="detail-hero catalog-hero">
           <div>

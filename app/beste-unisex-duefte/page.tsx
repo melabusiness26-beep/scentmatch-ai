@@ -146,7 +146,7 @@ export default async function BesteUnisexDuefte() {
   if (top.length === 0) {
     return (
       <main style={{ backgroundColor: '#faf7f2' }}>
-        <Breadcrumb items={[{ label: 'Die besten Unisex-Düfte', href: '/beste-unisex-duefte' }]} />
+        <Breadcrumb withSchema={false} items={[{ label: 'Die besten Unisex-Düfte', href: '/beste-unisex-duefte' }]} />
         <section style={{ maxWidth: '640px', margin: '0 auto', padding: '3rem 1.25rem', textAlign: 'center' }}>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.8rem, 5vw, 2.4rem)', color: '#2a1d12', margin: '0 0 1rem' }}>
             Die besten Unisex-Düfte
@@ -190,7 +190,7 @@ export default async function BesteUnisexDuefte() {
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
-      <Breadcrumb items={[{ label: 'Die besten Unisex-Düfte', href: '/beste-unisex-duefte' }]} />
+      <Breadcrumb withSchema={false} items={[{ label: 'Die besten Unisex-Düfte', href: '/beste-unisex-duefte' }]} />
 
       <section style={{
         background: 'linear-gradient(145deg, #1a1226 0%, #2d1f3d 50%, #4a3057 100%)',

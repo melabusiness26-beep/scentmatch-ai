@@ -1927,3 +1927,15 @@ a.dp-version:hover { border-color: var(--gold-500); background: #FFFBF1; color: 
 .guide-pending { display: grid; gap: 10px; padding: 18px 20px; background: #FBF8F3; border: 1px solid #EAE2D6; }
 .guide-pending p { margin: 0; }
 .guide-pending a { color: #8A6D1A; font-weight: 600; }
+
+/* Footer-Spalten */
+.footer-col-title { font-family: var(--font-sans), Arial, sans-serif; font-size: 0.9rem; font-weight: 700; color: #D4AF37; margin: 0 0 0.6rem 0; text-transform: uppercase; letter-spacing: 0.05em; }
+.footer-col-links { display: flex; flex-direction: column; }
+.footer-col-links a { font-size: 0.9rem; color: rgba(237,229,220,0.75); text-decoration: none; padding: 0.45rem 0; min-height: 44px; display: flex; align-items: center; }
+.footer-col-links a:hover { color: #F3E9DA; text-decoration: underline; }
+@media (min-width: 720px) { .footer-col-links a { min-height: 0; padding: 0.3rem 0; } }
+
+/* Ratgeber: Autorin & Datum */
+.guide-byline { font-size: 0.85rem; color: #6b5d50; margin: 1rem auto 0; }
+.guide-byline a { color: #8A6D1A; font-weight: 600; text-decoration: none; }
+.guide-byline a:hover { text-decoration: underline; }

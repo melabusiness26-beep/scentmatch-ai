@@ -168,7 +168,7 @@ export default async function BesteDamenduefte() {
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
-      <Breadcrumb items={[{ label: 'Die besten Damendüfte', href: '/beste-damenduefte' }]} />
+      <Breadcrumb withSchema={false} items={[{ label: 'Die besten Damendüfte', href: '/beste-damenduefte' }]} />
 
       {/* Hero */}
       <section style={{

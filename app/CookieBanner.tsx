@@ -16,14 +16,16 @@ type Consent = { choice: 'all' | 'necessary'; ts: number };
  * later to conditionally enable analytics once it is added.
  */
 export default function CookieBanner() {
-  const [visible, setVisible] = useState(false);
+  // Standardmässig sichtbar (wird mit der Seite ausgeliefert). Wer schon entschieden hat,
+  // sieht ihn dank der Klasse „consent-set" (siehe layout.tsx) gar nicht; hier wird er dann
+  // auch aus der Seite entfernt.
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     try {
-      if (!localStorage.getItem(STORAGE_KEY)) setVisible(true);
+      if (localStorage.getItem(STORAGE_KEY)) setVisible(false);
     } catch {
-      // localStorage blocked (e.g. private mode) – show banner, store nothing.
-      setVisible(true);
+      // localStorage gesperrt (z. B. privater Modus) – Hinweis bleibt sichtbar, nichts wird gespeichert.
     }
   }, []);
 
@@ -43,6 +45,11 @@ export default function CookieBanner() {
       // Seitenaufruf wird die Zustimmung ohnehin aus localStorage gelesen.
     }
     setVisible(false);
+    try {
+      document.documentElement.classList.add('consent-set');
+    } catch {
+      // ignorieren
+    }
   }
 
   if (!visible) return null;

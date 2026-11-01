@@ -82,8 +82,17 @@ const websiteJsonLd = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const year = new Date().getFullYear();
   return (
-    <html lang="de-CH" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="de-CH" className={`${playfair.variable} ${inter.variable}`} suppressHydrationWarning>
       <body>
+        {/* Vor dem ersten Zeichnen: Wer im Cookie-Hinweis schon entschieden hat, bekommt ihn
+            gar nicht erst zu sehen (kein Flackern). Der Hinweis selbst wird sofort mit der Seite
+            ausgeliefert – das macht die Seite für Google schneller (kein spätes grösstes Element). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(localStorage.getItem('auressa-cookie-consent'))document.documentElement.classList.add('consent-set')}catch(e){}"
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c") }}

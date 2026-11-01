@@ -2010,3 +2010,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visib
 .dp-actions-amazon-first .buy-button { background: #fff; color: var(--ink); border: 1px solid rgba(31,23,18,.18); }
 .dp-actions-amazon-first .buy-button:hover { background: #FFFBF1; border-color: var(--gold); box-shadow: none; }
 .dp-brand, .dp-kicker { color: var(--gold-text); }
+
+/* Cookie-Hinweis ausblenden, wenn schon entschieden (Klasse wird vor dem ersten Zeichnen gesetzt) */
+.consent-set .cookie-banner { display: none; }

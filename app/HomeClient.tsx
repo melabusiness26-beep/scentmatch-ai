@@ -11,6 +11,7 @@ import { PerfumeTile, familyDisplay } from '@/app/PerfumeTile';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import NewsletterForm from '@/app/NewsletterForm';
 import { BottleIllustration } from '@/app/FragranceBottles';
+import LineIcon from '@/app/LineIcon';
 
 
 // Anklickbare Familien-Kacheln (führen zur gefilterten Duftdatenbank).
@@ -187,7 +188,7 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
       {showGiftBanner && (
         <div className="gift-banner">
           <div className="container">
-            <p className="gift-banner-text">🎁 Suchst du noch das perfekte Weihnachtsgeschenk? Unser <strong>Geschenk-Finder</strong> zeigt dir in 4 Fragen die besten Parfüm-Empfehlungen.</p>
+            <p className="gift-banner-text">Suchst du noch das perfekte Weihnachtsgeschenk? Unser <strong>Geschenk-Finder</strong> zeigt dir in 4 Fragen die besten Parfüm-Empfehlungen.</p>
             <Link href="/geschenk-finder" className="gift-banner-cta">Zum Geschenk-Finder →</Link>
           </div>
         </div>
@@ -205,24 +206,24 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
         <section className="section trust-section">
           <div className="trust-grid">
             <div className="trust-item">
-              <div className="trust-icon">✅</div>
+              <div className="trust-icon"><LineIcon name="check" size={28} /></div>
               <div className="trust-text">
                 <p className="trust-stat"><strong>{countLabel ? `${countLabel.replace('über', 'Über')} Düfte` : 'Geprüfte Düfte'}</strong></p>
                 <p className="small">durchsuche unseren Katalog</p>
               </div>
             </div>
             <div className="trust-item">
-              <div className="trust-icon">⭐</div>
+              <div className="trust-icon"><LineIcon name="sparkle" size={28} /></div>
               <div className="trust-text">
                 <p className="trust-stat"><strong>Quiz in 2 Min</strong></p>
                 <p className="small">finde deinen perfekten Duft blitzschnell</p>
               </div>
             </div>
             <div className="trust-item">
-              <div className="trust-icon">🎯</div>
+              <div className="trust-icon"><LineIcon name="target" size={28} /></div>
               <div className="trust-text">
                 <p className="trust-stat"><strong>Sofort entdecken</strong></p>
-                <p className="small">keine Anmeldung zum Starten nötig</p>
+                <p className="small">direkt loslegen, in jedem Browser</p>
               </div>
             </div>
           </div>

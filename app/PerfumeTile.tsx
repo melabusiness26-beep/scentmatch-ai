@@ -23,16 +23,16 @@ export const genderSearchTerms: Record<string, string> = {
 
 // Herzliche Descriptions für Gelegenheiten (Saison-Empfehlungen).
 export const occasionDescriptions: Record<string, string> = {
-  'Alltag': '☀️ Perfekt für jeden Tag – frisch & zuverlässig',
-  'Büro': '👔 Ideal für die Arbeit – elegant & diskret',
-  'Date': '💕 Für romantische Momente – verführerisch & charmant',
-  'Abend': '✨ Für spezielle Anlässe – intensiv & unvergesslich'
+  'Alltag': 'Perfekt für jeden Tag – frisch & zuverlässig',
+  'Büro': 'Ideal für die Arbeit – elegant & diskret',
+  'Date': 'Für romantische Momente – verführerisch & charmant',
+  'Abend': 'Für spezielle Anlässe – intensiv & unvergesslich'
 };
 
 // Deutsche Anzeige-Labels für das Geschlecht (Werte sind englisch gespeichert).
 export const genderDisplay: Record<string, string> = {
-  Women: 'Weiblich',
-  Men: 'Männlich',
+  Women: 'Damen',
+  Men: 'Herren',
   Unisex: 'Unisex'
 };
 
@@ -71,7 +71,7 @@ export function PerfumeTile({ perfume, matchPercent, showOccasionDescription }: 
           )}
           {perfume.gender && (
             <span className="chip" aria-label={genderDisplay[perfume.gender] || perfume.gender}>
-              <span aria-hidden="true">{genderSymbol[perfume.gender] || ''}</span> {genderDisplay[perfume.gender] || perfume.gender}
+              {genderDisplay[perfume.gender] || perfume.gender}
             </span>
           )}
         </div>

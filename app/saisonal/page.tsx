@@ -4,6 +4,7 @@ import Breadcrumb from '@/app/Breadcrumb';
 import { getPerfumes, isWithinPriceCap } from '@/lib/perfumes';
 import { PerfumeTile } from '@/app/PerfumeTile';
 import { computeAuressaScore } from '@/lib/score';
+import LineIcon from '@/app/LineIcon';
 
 // Stündlich neu erzeugen: neue Düfte und die aktuelle Jahreszeit erscheinen automatisch.
 export const revalidate = 3600;
@@ -30,8 +31,8 @@ export default async function SaisonalPage() {
   const seasons = [
     {
       name: 'Frühling',
-      emoji: '🌸',
-      icon: '🌸',
+      emoji: 'flower',
+      icon: 'flower',
       description: 'Blumig, leicht und erfrischend – wie der Duft eines Blumenmarkts',
       colors: ['#F8E8D8', '#F0D4B8'],
       characteristics: ['Blumig', 'Frisch', 'Leicht'],
@@ -39,8 +40,8 @@ export default async function SaisonalPage() {
     },
     {
       name: 'Sommer',
-      emoji: '☀️',
-      icon: '☀️',
+      emoji: 'sun',
+      icon: 'sun',
       description: 'Zitrus und Aquatisch – perfekt für warme Tage und Strandtage',
       colors: ['#E8F4F8', '#C8E6F0'],
       characteristics: ['Zitrus', 'Aquatisch', 'Frisch'],
@@ -48,8 +49,8 @@ export default async function SaisonalPage() {
     },
     {
       name: 'Herbst',
-      emoji: '🍂',
-      icon: '🍂',
+      emoji: 'leaf',
+      icon: 'leaf',
       description: 'Warm, würzig und gemütlich – wie Blätter und geröstete Noten',
       colors: ['#E8D8C8', '#D4B894'],
       characteristics: ['Würzig', 'Warm', 'Woody'],
@@ -57,8 +58,8 @@ export default async function SaisonalPage() {
     },
     {
       name: 'Winter',
-      emoji: '❄️',
-      icon: '❄️',
+      emoji: 'snow',
+      icon: 'snow',
       description: 'Intensive, warme und tröstende Düfte – für Gemütlichkeit und Eleganz',
       colors: ['#E8D8E8', '#D4C0D4'],
       characteristics: ['Warm', 'Intensiv', 'Animalisch'],
@@ -66,8 +67,8 @@ export default async function SaisonalPage() {
     },
     {
       name: 'Das ganze Jahr',
-      emoji: '🌍',
-      icon: '🌍',
+      emoji: 'globe',
+      icon: 'globe',
       description: 'Vielseitige Düfte, die in jeder Jahreszeit gut funktionieren',
       colors: ['#EFE7DA', '#E0D2BC'],
       characteristics: ['Vielseitig', 'Ausgewogen', 'Ganzjährig'],
@@ -165,14 +166,14 @@ export default async function SaisonalPage() {
               }}>
                 <div style={{ marginBottom: '1.5rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                    <span style={{ fontSize: '2rem' }}>{season.emoji}</span>
+                    <span className="guide-tile-icon" style={{ width: 52, height: 52 }}><LineIcon name={season.icon} size={26} /></span>
                     <div>
                       <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', margin: 0 }}>
                         {season.name}
                       </h2>
                       {season.seasonKey === currentSeason && (
                         <p style={{ fontSize: '0.85rem', color: '#8A6D1A', fontWeight: 600, margin: '0.25rem 0 0 0' }}>
-                          🎯 Jetzt Saison
+                          Jetzt Saison
                         </p>
                       )}
                     </div>
@@ -225,7 +226,7 @@ export default async function SaisonalPage() {
           marginBottom: '3rem'
         }}>
           <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: '1.25rem', marginTop: 0 }}>
-            💡 Tipps für saisonale Duftpflege
+            Tipps für saisonale Duftpflege
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem' }}>
             {[

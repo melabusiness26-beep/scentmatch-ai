@@ -243,11 +243,11 @@ export default async function BrandPage({
           {/* Statistik-Chips */}
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             {[
-              { label: `${perfumes.length} ${perfumes.length === 1 ? 'Duft' : 'Düfte'}`, icon: '✦' },
-              ...(damen > 0 ? [{ label: `${damen} Damen`, icon: '♀' }] : []),
-              ...(herren > 0 ? [{ label: `${herren} Herren`, icon: '♂' }] : []),
-              ...(unisex > 0 ? [{ label: `${unisex} Unisex`, icon: '⚥' }] : []),
-              ...(avgPrice ? [{ label: `Ø CHF ${avgPrice}`, icon: '💰' }] : []),
+              { label: `${perfumes.length} ${perfumes.length === 1 ? 'Duft' : 'Düfte'}`, icon: '' },
+              ...(damen > 0 ? [{ label: `${damen} Damen`, icon: '' }] : []),
+              ...(herren > 0 ? [{ label: `${herren} Herren`, icon: '' }] : []),
+              ...(unisex > 0 ? [{ label: `${unisex} Unisex`, icon: '' }] : []),
+              ...(avgPrice ? [{ label: `Ø CHF ${avgPrice}`, icon: '' }] : []),
             ].map((chip) => (
               <span key={chip.label} style={{
                 background: 'rgba(212,175,55,0.12)',
@@ -258,7 +258,7 @@ export default async function BrandPage({
                 fontSize: '0.8rem',
                 fontWeight: 600,
               }}>
-                {chip.icon} {chip.label}
+                {chip.label}
               </span>
             ))}
           </div>

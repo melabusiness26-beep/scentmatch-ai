@@ -47,8 +47,8 @@ function chf(value: number): string {
 
 // Kurzes Geschlechts-Label + Symbol für die Badge (passend zu den Duft-Kacheln).
 const genderBadge: Record<string, string> = {
-  Women: 'Weiblich',
-  Men: 'Männlich',
+  Women: 'Damen',
+  Men: 'Herren',
   Unisex: 'Unisex'
 };
 const genderSymbol: Record<string, string> = {
@@ -176,21 +176,10 @@ function sillageHint(v: number): string {
   return 'hautnah';
 }
 
-const seasonIcon: Record<string, string> = {
-  'Frühling': '🌸',
-  Sommer: '☀️',
-  Herbst: '🍂',
-  Winter: '❄️',
-  'Ganzjährig': '🗓️'
-};
 
 function seasonDisplay(season: string): string {
-  const icons = season
-    .split(/[\/,]/)
-    .map((s) => seasonIcon[s.trim()])
-    .filter(Boolean)
-    .join(' ');
-  return icons ? `${icons} ${season}` : season;
+  // Bewusst ohne Emojis (ruhiger, edler Auftritt).
+  return season;
 }
 
 const LAYERS: { key: 'top_notes' | 'heart_notes' | 'base_notes'; title: string; time: string }[] = [
@@ -490,7 +479,7 @@ export default async function PerfumeDetailPage({
                 <span className={`chip chip-family chip-${perfume.fragrance_family}`}>{familyLabel(perfume.fragrance_family)}</span>
               )}
               {perfume.gender && (
-                <span className="chip">{genderSymbol[perfume.gender] || ''} {genderBadge[perfume.gender] || perfume.gender}</span>
+                <span className="chip">{genderBadge[perfume.gender] || perfume.gender}</span>
               )}
               {versions.length <= 1 && concentrationLabel(perfume.concentration) && (
                 <span className="chip">{concentrationLabel(perfume.concentration)}</span>
@@ -574,10 +563,19 @@ export default async function PerfumeDetailPage({
               </p>
             </details>
 
-            <div className="dp-actions" id="dp-actions">
-              <AffiliateButton perfume={perfume} />
-              <AmazonButton perfume={perfume} />
-            </div>
+            {/* Mit eigenem Partner-Shop-Link: der zuerst. Sonst Amazon (Partnerprogramm) als
+                Hauptknopf und die allgemeine Online-Suche dezent darunter. */}
+            {perfume.affiliate_url && /^https:\/\//i.test(perfume.affiliate_url) ? (
+              <div className="dp-actions" id="dp-actions">
+                <AffiliateButton perfume={perfume} />
+                <AmazonButton perfume={perfume} />
+              </div>
+            ) : (
+              <div className="dp-actions dp-actions-amazon-first" id="dp-actions">
+                <AmazonButton perfume={perfume} />
+                <AffiliateButton perfume={perfume} />
+              </div>
+            )}
 
             <div className="dp-share">
               <SocialShareButtons perfume={perfume} url={`${SITE_URL}/duft/${slug}`} />
@@ -849,7 +847,7 @@ export default async function PerfumeDetailPage({
           {perfume.bottle_description && <p className="dp-story-text dp-story-bottle">{perfume.bottle_description}</p>}
           {facts.length > 0 && (
             <aside className="dp-know" aria-label="Gut zu wissen">
-              <p className="dp-know-title">💡 Gut zu wissen</p>
+              <p className="dp-know-title">Gut zu wissen</p>
               <ul>
                 {facts.map((f) => (
                   <li key={f}>{f}</li>

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 // Beschreibt, was die Website tatsächlich tut (Stand des Codes). Bei neuen Diensten
 // – z. B. wenn der Duft-Scanner startet – diese Seite zuerst anpassen.
 export default function DatenschutzPage() {
-  const lastUpdated = '29. Oktober 2026';
+  const lastUpdated = '1. November 2026';
 
   return (
     <main>
@@ -78,10 +78,10 @@ export default function DatenschutzPage() {
 
             <h3>3.4 Besucher-Statistik (nur mit deiner Einwilligung)</h3>
             <p>
-              Nur wenn du im Cookie-Hinweis <strong>„Alle akzeptieren“</strong> wählst, nutzen wir <strong>Vercel Web
+              Nur wenn du im Cookie-Hinweis <strong>„Statistik erlauben“</strong> wählst, nutzen wir <strong>Vercel Web
               Analytics</strong>. Damit sehen wir in zusammengefasster Form, welche Seiten aufgerufen werden, von welcher Seite
               Besucher kommen, welche Gerätetypen sie nutzen und aus welchem Land. Vercel Web Analytics setzt keine Cookies.
-              Wählst du „Nur notwendige“, wird die Statistik nicht geladen.
+              Wählst du „Ablehnen“, wird die Statistik nicht geladen.
             </p>
 
             <h3>3.5 Bilder von Unsplash</h3>

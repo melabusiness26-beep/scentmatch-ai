@@ -9,7 +9,7 @@ export function AmazonButton({ perfume }: { perfume: Perfume }) {
   return (
     <>
       <a className="button amazon-button" href={amazonUrl} target="_blank" rel="sponsored nofollow noopener noreferrer">
-        Bei Amazon kaufen →
+        Bei Amazon ansehen →
       </a>
       <p className="small buy-note amazon-note">
         <span className="affiliate-note-icon" aria-hidden="true">ⓘ</span>

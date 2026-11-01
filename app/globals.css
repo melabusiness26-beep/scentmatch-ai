@@ -228,9 +228,9 @@ button:focus, .button:focus { outline: 2px solid var(--color-primary); outline-o
 .tile h3 { margin: 0 0 8px; color: var(--color-text-primary); }
 .quiz { margin-top: 28px; }
 .section.quiz-hero {
-  background: linear-gradient(135deg, #D4AF37 0%, #E5C158 50%, #D4AF37 100%) !important;
-  border-radius: 0 !important;
-  padding: clamp(80px, 12vw, 140px) clamp(24px, 6vw, 40px) !important;
+  background: var(--ink) !important;
+  border-radius: 24px !important;
+  padding: clamp(56px, 9vw, 96px) clamp(24px, 6vw, 48px) !important;
   text-align: center;
   margin: 0 0 clamp(40px, 8vw, 60px) 0 !important;
   position: relative;
@@ -812,16 +812,16 @@ a.note-pill:hover { background: var(--color-primary-light); border-color: var(--
 .footer-affiliate { color: rgba(255,255,255,.66); max-width: 760px; margin-top: 26px; line-height: 1.55; }
 
 /* Cookie consent banner (opt-in) */
-.cookie-banner { position: fixed; left: 0; right: 0; bottom: 0; z-index: 100; padding: 16px; display: flex; justify-content: center; pointer-events: none; }
-.cookie-inner { pointer-events: auto; width: 100%; max-width: 1040px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; background: rgba(17,24,39,.96); color: #f3e9da; border: 1px solid rgba(212,175,55,.4); border-radius: 20px; padding: 18px 22px; box-shadow: 0 24px 60px rgba(17,24,39,.45); backdrop-filter: blur(6px); }
-.cookie-text { margin: 0; font-family: var(--font-sans), Arial, sans-serif; font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.9); flex: 1 1 320px; }
-.cookie-text a { color: var(--gold); text-decoration: underline; }
-.cookie-actions { display: flex; gap: 10px; flex-wrap: wrap; flex: none; }
-.cookie-btn { padding: 11px 20px; font-size: 14px; }
-.cookie-banner .button.secondary { color: #f3e9da; border: 1px solid rgba(255,255,255,.4); background: rgba(255,255,255,.05); }
-.cookie-banner .button.secondary:hover { border-color: var(--gold); color: #fff; }
-.cookie-banner .button:not(.secondary) { background: linear-gradient(180deg, #d8b277, #b1894f); color: #2a1d12; }
-@media (max-width: 560px) { .cookie-inner { flex-direction: column; align-items: stretch; } .cookie-text { flex: 0 0 auto; } .cookie-actions { justify-content: stretch; } .cookie-btn { flex: 1; } }
+.cookie-banner { position: fixed; left: 0; right: 0; bottom: 0; z-index: 100; padding: 12px; display: flex; justify-content: center; pointer-events: none; }
+.cookie-inner { pointer-events: auto; width: 100%; max-width: 860px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; background: rgba(31,22,18,.97); color: #F3E9DA; border: 1px solid rgba(201,162,74,.45); border-radius: 16px; padding: 14px 16px; box-shadow: 0 18px 48px rgba(31,22,18,.35); }
+.cookie-text { margin: 0; font-family: var(--font-sans), Arial, sans-serif; font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.9); flex: 1 1 300px; }
+.cookie-text a { color: #E8D4A0; text-decoration: underline; }
+.cookie-actions { display: flex; gap: 8px; flex: 1 1 auto; justify-content: flex-end; }
+/* Zwei gleichwertige Knöpfe (faire Wahl nach revDSG) */
+.cookie-btn { flex: 1 1 0; min-height: 44px; padding: 10px 16px; border-radius: 999px; font: 600 14px/1.2 var(--font-sans), Arial, sans-serif; color: #F3E9DA; background: transparent; border: 1px solid rgba(232,212,160,.6); cursor: pointer; white-space: nowrap; }
+.cookie-btn:hover { background: rgba(232,212,160,.12); border-color: #E8D4A0; }
+.cookie-btn:focus-visible { outline: 2px solid #E8D4A0; outline-offset: 2px; }
+@media (min-width: 640px) { .cookie-actions { flex: none; } .cookie-btn { flex: none; } }
 
 /* Newsletter-Anmeldefeld (Quiz-Ende + Footer) */
 .newsletter { margin: 0; padding: 0; }
@@ -1064,7 +1064,7 @@ a.note-pill:hover { background: var(--color-primary-light); border-color: var(--
 .gift-banner { background: linear-gradient(135deg, rgba(212,175,55,.12), rgba(212,175,55,.08)); border-bottom: 1px solid rgba(212,175,55,.25); padding: 16px 0; }
 .gift-banner .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
 .gift-banner-text { margin: 0; color: var(--text); font-size: 15px; line-height: 1.5; }
-.gift-banner-cta { display: inline-block; color: var(--gold); font-weight: 600; text-decoration: none; white-space: nowrap; transition: color .15s ease; }
+.gift-banner-cta { display: inline-block; color: var(--gold-text); font-weight: 600; text-decoration: none; white-space: nowrap; transition: color .15s ease; }
 .gift-banner-cta:hover { color: #d8b277; text-decoration: underline; }
 
 /* Gift Finder Quiz Komponente */
@@ -1939,3 +1939,79 @@ a.dp-version:hover { border-color: var(--gold-500); background: #FFFBF1; color: 
 .guide-byline { font-size: 0.85rem; color: #6b5d50; margin: 1rem auto 0; }
 .guide-byline a { color: #8A6D1A; font-weight: 600; text-decoration: none; }
 .guide-byline a:hover { text-decoration: underline; }
+
+/* ── Design-System (Paket 3): eine Palette für die ganze Seite ───────────── */
+:root {
+  --ink: #1F1612;          /* Espresso: dunkle Flächen, Text, Primär-Knöpfe */
+  --ink-soft: #5C4A3D;     /* Fliesstext gedämpft */
+  --gold: #C9A24A;         /* Gold für Linien, Ringe, Symbole */
+  --gold-text: #8A6D1A;    /* Gold für Text auf hellem Grund (gut lesbar) */
+  --ivory: #FBF8F3;        /* Karten */
+  --line: #EAE2D6;         /* feine Rahmen */
+}
+
+/* Startseite: 3 Wege */
+.ways { background: #FFFFFF; padding: clamp(4rem, 9vw, 6rem) 1.25rem; border-bottom: 1px solid var(--line); }
+.ways-inner { max-width: 1100px; margin: 0 auto; }
+.ways-head { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+.ways-kicker { font-size: 12px; color: var(--gold-text); font-weight: 700; text-transform: uppercase; letter-spacing: .2em; margin: 0 0 1rem; }
+.ways-title { font-size: clamp(32px, 6vw, 46px); color: var(--ink); margin: 0 0 1rem; letter-spacing: -0.01em; }
+.ways-lead { font-size: clamp(15px, 2.2vw, 17px); color: var(--ink-soft); line-height: 1.7; max-width: 620px; margin: 0 auto; }
+.ways-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(1.25rem, 3vw, 2rem); }
+.ways-card { display: flex; flex-direction: column; align-items: flex-start; gap: .75rem; background: var(--ivory); border: 1px solid var(--line); border-radius: 16px; padding: clamp(1.75rem, 4vw, 2.25rem); color: var(--ink); text-decoration: none; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.ways-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(31,22,18,.08); border-color: var(--gold); }
+.ways-card:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.ways-icon { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--gold); color: var(--gold-text); background: #fff; }
+.ways-card-title { font-size: clamp(21px, 3vw, 25px); color: var(--ink); margin: .25rem 0 0; }
+.ways-card-text { font-size: 16px; line-height: 1.65; color: var(--ink-soft); margin: 0; flex: 1; }
+.ways-card-cta { font-size: 15px; font-weight: 600; color: var(--gold-text); margin-top: .25rem; }
+@media (prefers-reduced-motion: reduce) { .ways-card { transition: none; } .ways-card:hover { transform: none; } }
+
+/* Quiz-Ergebnis: grosser, ruhiger Flakon ohne überlappende Noten-Etiketten */
+.top-pick-cover { width: clamp(200px, 55vw, 260px); height: auto; aspect-ratio: 4 / 5; background: none; box-shadow: none; }
+.top-pick-cover .pv-note { display: none; }
+@media (max-width: 480px) { .top-pick-cover { width: 200px; height: auto; } }
+details.score-breakdown summary { cursor: pointer; list-style: none; min-height: 44px; display: flex; align-items: center; color: var(--gold-text); margin: 0; }
+details.score-breakdown summary::-webkit-details-marker { display: none; }
+details.score-breakdown summary::after { content: '+'; margin-left: auto; font-size: 18px; }
+details.score-breakdown[open] summary::after { content: '–'; }
+details.score-breakdown:not([open]) { padding-top: 4px; padding-bottom: 4px; }
+.guide-tile-icon { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--gold); color: var(--gold-text); background: #fff; }
+
+/* Quiz: Familien-Antworten im gleichen ruhigen Stil wie alle Antworten, Farbpunkt je Familie */
+.family-card, .family-card[data-family] { background: var(--ivory); border: 1px solid var(--line); border-radius: 14px; min-height: 96px; color: var(--ink); }
+.family-card:hover, .family-card[data-family]:hover { background: #FBF5E6; border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(31,22,18,.06); }
+.family-card:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.family-card::before { content: ''; width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(31,22,18,.12); }
+.family-card[data-family="clean"]::before { background: linear-gradient(160deg, #F2F8FA, #BFDCE7); }
+.family-card[data-family="gourmand"]::before { background: linear-gradient(160deg, #FBF3EC, #E6C3A6); }
+.family-card[data-family="woody"]::before { background: linear-gradient(160deg, #F6F0E7, #D2BC9D); }
+.family-card[data-family="floral"]::before { background: linear-gradient(160deg, #FCF3F6, #E7C4D6); }
+
+/* Startseite: Quiz-Block in Espresso statt Senfgelb (lesbar, edler) */
+.quiz-hero { background: var(--ink); color: #F3E9DA; border-radius: 24px; border: 1px solid rgba(201,162,74,.35); padding: clamp(56px, 9vw, 96px) clamp(24px, 6vw, 48px); }
+.quiz-hero::before { background: radial-gradient(circle at 85% 15%, rgba(201,162,74,.18) 0%, transparent 55%); }
+.quiz-hero .eyebrow { color: #E8D4A0; }
+.quiz-hero h2 { color: #FFFFFF; }
+.quiz-hero .lead { color: rgba(243,233,218,.85); }
+.quiz-hero .button { background: #F3E9DA; color: var(--ink); border: none; }
+.quiz-hero .button:hover { background: #FFFFFF; }
+
+/* Sichtbarer Tastatur-Fokus überall (gut für Barrierefreiheit) */
+a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.site-footer a:focus-visible, .quiz-hero a:focus-visible, .cookie-banner button:focus-visible { outline-color: #E8D4A0; }
+
+/* „Zum Inhalt springen" – nur bei Tastatur-Bedienung sichtbar */
+.skip-link { position: absolute; left: 12px; top: -60px; z-index: 1000; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 8px; font-weight: 600; text-decoration: none; }
+.skip-link:focus { top: 12px; }
+
+/* Quiz-Ergebnis: eine klare Hauptaktion (Espresso), Shop-Suche dezent */
+.result .cta .button, .result .cta-winner .button { background: var(--ink); color: #FFFFFF; border: 1px solid var(--ink); box-shadow: none; }
+.result .cta .button:hover, .result .cta-winner .button:hover { background: #3A2A20; transform: none; box-shadow: none; }
+.result .cta .buy-button, .result .cta-winner .buy-button { background: transparent; color: var(--ink); border: 1px solid var(--line); box-shadow: none; }
+.result .cta .buy-button:hover, .result .cta-winner .buy-button:hover { border-color: var(--gold); background: var(--ivory); box-shadow: none; }
+.dp-actions-amazon-first .amazon-button { background: var(--ink); color: #fff; border: 1px solid var(--ink); margin-top: 0; }
+.dp-actions-amazon-first .amazon-button:hover { background: #3A2A20; border-color: #3A2A20; }
+.dp-actions-amazon-first .buy-button { background: #fff; color: var(--ink); border: 1px solid rgba(31,23,18,.18); }
+.dp-actions-amazon-first .buy-button:hover { background: #FFFBF1; border-color: var(--gold); box-shadow: none; }
+.dp-brand, .dp-kicker { color: var(--gold-text); }

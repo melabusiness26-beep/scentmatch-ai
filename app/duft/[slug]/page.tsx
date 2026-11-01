@@ -45,6 +45,17 @@ function nameKey(value: string): string {
     .replace(/[^a-z0-9]+/g, '');
 }
 
+// Passt ein Name aus „Alternative zu" / „Ähnliche Düfte" zu diesem Katalog-Duft?
+// „Light Blue" passt zu allen Versionen, „Light Blue Eau de Toilette" (oder „… EdT") nur zur EdT.
+function namesMatch(p: Perfume, name: string, brand?: string | null): boolean {
+  const n = nameKey(name);
+  const conc = concentrationLabel(p.concentration);
+  const nameOk =
+    n === nameKey(p.perfume_name) ||
+    (conc != null && (n === nameKey(`${p.perfume_name} ${conc}`) || n === nameKey(`${p.perfume_name} ${p.concentration}`)));
+  return nameOk && (!brand || nameKey(p.brands?.name || '') === nameKey(brand));
+}
+
 function chf(value: number): string {
   return Number.isInteger(value) ? String(value) : value.toFixed(2);
 }
@@ -379,15 +390,13 @@ export default async function PerfumeDetailPage({
 
   // Geprüfte Dupes: Düfte im Katalog, die als bekannte Alternative zu DIESEM Duft
   // eingetragen sind (Feld „Alternative zu" beim Dupe). Nur empfehlbare (bis CHF 180, erhältlich).
-  const ownName = nameKey(perfume.perfume_name);
-  const ownBrand = nameKey(perfume.brands?.name || '');
   const dupeLinks = (await getAlternativeLinks()).filter((link) =>
-    link.alternative_to.some((a) => nameKey(a.name) === ownName && (!a.brand || nameKey(a.brand) === ownBrand))
+    link.alternative_to.some((a) => namesMatch(perfume, a.name, a.brand))
   );
   const knownDupes = dupeLinks
     .map((link) => {
       const match = pool.find((p) => p.slug === link.slug);
-      const entry = link.alternative_to.find((a) => nameKey(a.name) === ownName);
+      const entry = link.alternative_to.find((a) => namesMatch(perfume, a.name, a.brand));
       return match && match.id !== perfume.id && !versionIds.has(match.id) && isWithinPriceCap(match)
         ? { perfume: match, note: entry?.note || null }
         : null;
@@ -446,12 +455,7 @@ export default async function PerfumeDetailPage({
     .slice(0, 5);
   // Katalog-Duft zu einem Namen (+ Marke) aus dem Import – für einen Link, falls vorhanden.
   const findInCatalog = (name: string, brand?: string | null) =>
-    pool.find(
-      (p) =>
-        p.id !== perfume.id &&
-        nameKey(p.perfume_name) === nameKey(name) &&
-        (!brand || nameKey(p.brands?.name || '') === nameKey(brand))
-    );
+    pool.find((p) => p.id !== perfume.id && namesMatch(p, name, brand));
   const alternatives = (extras.alternative_to || []).map((a) => ({ ...a, match: findInCatalog(a.name, a.brand) }));
   const knownSimilar = (extras.similar_perfumes || []).map((entry) => {
     const { name, brand } = splitSimilar(entry);

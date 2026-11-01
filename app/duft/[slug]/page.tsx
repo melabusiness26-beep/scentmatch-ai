@@ -26,6 +26,7 @@ import { computeAccords } from '@/lib/accords';
 import { computeAuressaScore } from '@/lib/score';
 import { fitAdvice, perfumeTagline } from '@/lib/perfume-text';
 import { findVersions, versionLabel, compareVersion, findCounterpart } from '@/lib/versions';
+import { pairsFor } from '@/lib/version-compare';
 import { wearTips } from '@/lib/wear';
 import { perfumeSeasons, seasonPicks } from '@/lib/season-fit';
 import { SeasonFit } from '@/app/components/SeasonFit';
@@ -682,6 +683,18 @@ export default async function PerfumeDetailPage({
                   </li>
                 ))}
             </ul>
+            {/* Ausführliche Vergleichsseiten (automatisch aus den Versionen) */}
+            {pairsFor(perfume, pool).length > 0 && (
+              <ul className="dp-compare-more">
+                {pairsFor(perfume, pool).map((pr) => (
+                  <li key={pr.slug}>
+                    <Link href={`/unterschied/${pr.slug}`}>
+                      Ausführlicher Vergleich: {versionLabel(pr.a)} vs. {versionLabel(pr.b)} →
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
           </Reveal>
         )}
 

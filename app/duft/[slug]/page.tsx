@@ -509,7 +509,6 @@ export default async function PerfumeDetailPage({
 
             {counterpart && (
               <Link href={`/duft/${counterpart.slug}`} className="dp-counterpart">
-                <span aria-hidden="true">{counterpart.gender === 'Men' ? '♂' : '♀'}</span>
                 <span>
                   Das Gegenstück für {counterpart.gender === 'Men' ? 'Herren' : 'Damen'}: <strong>{counterpart.perfume_name}</strong>
                 </span>

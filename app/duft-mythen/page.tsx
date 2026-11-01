@@ -113,7 +113,7 @@ export default function FragranceMythsPage() {
               },
               {
                 myth: '🔄 Mythos: Du solltest einen Duft reiben, nachdem du ihn aufgetragen hast',
-                fact: 'FALSCH. Reiben erwärmt die Haut, dadurch verfliegen die Top-Noten schneller. Sanftes Übereinander-Legen der Unterarme ist ok – aber NICHT reiben.',
+                fact: 'FALSCH. Reiben erwärmt die Haut, dadurch verfliegen die Kopfnoten schneller. Sanftes Übereinander-Legen der Unterarme ist ok – aber NICHT reiben.',
                 praktisch: 'Nach dem Auftragen: Hände weg. Lass den Duft verdunsten. Höchstens sanft die inneren Unterarme zusammenbringen.'
               },
               {
@@ -187,7 +187,7 @@ export default function FragranceMythsPage() {
                 </h3>
                 <div style={{ display: 'grid', gap: '0.75rem', fontSize: '0.95rem', color: '#6b5344', lineHeight: 1.6 }}>
                   <p style={{ margin: 0, paddingBottom: '0.75rem', borderBottom: '1px solid rgba(212,175,55,0.1)' }}>
-                    <strong style={{ color: '#d4af37' }}>Die Wahrheit:</strong> {item.fact}
+                    <strong style={{ color: '#8A6D1A' }}>Die Wahrheit:</strong> {item.fact}
                   </p>
                   <p style={{ margin: 0, color: '#8a6a20', fontWeight: 600 }}>
                     <strong>Praktisch für dich:</strong> {item.praktisch}

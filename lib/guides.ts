@@ -736,7 +736,7 @@ export const guides: Guide[] = [
     heroImage: '/ratgeber/vanille-duefte-hero.jpg',
     intro: [
       'Vanille ist nicht einfach nur eine Note, sie ist eine Emotion. Besonders geschätzt ist Bourbon-Vanille aus Madagaskar; sie ist kostbar und wird seit Jahrhunderten in Luxus-Kompositionen genutzt. Ein grossartiger Vanille-Duft riecht warm, umhüllend, einladend – wie ein Zuhause auf der Haut.',
-      'Die Intelligenz eines Vanille-Dufts liegt nicht in der reinen Vanille, sondern in ihrer Begleitung. Ein Vanille-Duft, der pur ist, wirkt schnell eintönig und eine-dimensional. Die besten Vanille-Kompositionen paaren Vanille mit Komplizen: Holz für Eleganz und Trockenheit, Gewürzen für Würze und Tiefe, Kaffeenoten für Sophistication oder Blumigen für romantische Weiblichkeit. Das schafft Tiefe und macht den Duft unvergessen.',
+      'Die Intelligenz eines Vanille-Dufts liegt nicht in der reinen Vanille, sondern in ihrer Begleitung. Ein Vanille-Duft, der pur ist, wirkt schnell eintönig und eindimensional. Die besten Vanille-Kompositionen paaren Vanille mit Komplizen: Holz für Eleganz und Trockenheit, Gewürzen für Würze und Tiefe, Kaffeenoten für Raffinesse oder Blumigen für romantische Weiblichkeit. Das schafft Tiefe und macht den Duft unvergesslich.',
       'Hier findest du unsere liebsten Vanille-Düfte: von dessertartig-kuschelig bis würzig-edel. Alle sind langlebig, alle sind tröstlich, alle sind auf ihre Weise wunderschön.'
     ],
     sections: [

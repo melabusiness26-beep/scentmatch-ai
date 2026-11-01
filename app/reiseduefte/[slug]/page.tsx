@@ -11,6 +11,7 @@ import {
   CATEGORY_LABELS
 } from '@/lib/destinations';
 import DestinationResults from './DestinationResults';
+import LineIcon, { destinationIcon } from '@/app/LineIcon';
 
 // Stündlich neu generieren – frische Daten, schnelle Auslieferung (wie die Duftseiten).
 export const revalidate = 3600;
@@ -138,7 +139,7 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
               className="mood-icon mood-icon-lg dest-emoji"
               style={{ background: `${dest.tone}22`, borderColor: `${dest.tone}55` }}
             >
-              {dest.emoji}
+              <LineIcon name={destinationIcon(dest.slug)} size={34} />
             </span>
             {dest.name}
           </h1>
@@ -191,7 +192,7 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
                     className="mood-icon dest-emoji"
                     style={{ background: `${d.tone}22`, borderColor: `${d.tone}55` }}
                   >
-                    {d.emoji}
+                    <LineIcon name={destinationIcon(d.slug)} size={26} />
                   </span>
                   <span className="mood-title">{d.name}</span>
                   <span className="small">{d.tagline}</span>

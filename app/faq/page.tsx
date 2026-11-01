@@ -25,7 +25,7 @@ const faqGroups: {
 }[] = [
   {
     title: 'Über Auressa',
-    icon: '✦',
+    icon: 'sparkle',
     faqs: [
       {
         q: 'Was ist Auressa und wie funktioniert die Plattform?',
@@ -47,7 +47,7 @@ const faqGroups: {
   },
   {
     title: 'Parfüm-Grundlagen',
-    icon: '🌸',
+    icon: 'flower',
     faqs: [
       {
         q: 'Was sind Duftnoten – Kopf-, Herz- und Basisnoten?',
@@ -73,7 +73,7 @@ const faqGroups: {
   },
   {
     title: 'Auressa-Score & Quiz',
-    icon: '🎯',
+    icon: 'target',
     faqs: [
       {
         q: 'Was bedeutet der Auressa-Score?',
@@ -95,7 +95,7 @@ const faqGroups: {
   },
   {
     title: 'Dupes & Alternativen',
-    icon: '💸',
+    icon: 'tag',
     faqs: [
       {
         q: 'Was ist ein Parfüm-Dupe?',
@@ -113,7 +113,7 @@ const faqGroups: {
   },
   {
     title: 'Kauf & Preise',
-    icon: '🛍️',
+    icon: 'bottle',
     faqs: [
       {
         q: 'Wo kaufe ich Parfüm in der Schweiz?',
@@ -131,7 +131,7 @@ const faqGroups: {
   },
   {
     title: 'Pflege & Lagerung',
-    icon: '🧴',
+    icon: 'check',
     faqs: [
       {
         q: 'Wie lagere ich Parfüm richtig?',
@@ -167,6 +167,7 @@ function faqJsonLd() {
 
 // Wir brauchen React nur für die JSX-Typannotation im Schema
 import type React from 'react';
+import LineIcon from '@/app/LineIcon';
 
 export default function FaqPage() {
   return (
@@ -237,7 +238,7 @@ export default function FaqPage() {
                 textDecoration: 'none',
               }}
             >
-              <span>{g.icon}</span>
+              <LineIcon name={g.icon} size={16} />
               {g.title}
             </a>
           ))}
@@ -253,7 +254,7 @@ export default function FaqPage() {
             style={{ marginBottom: '3.5rem', scrollMarginTop: '5rem' }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.5rem' }}>
-              <span style={{ fontSize: '1.3rem' }}>{group.icon}</span>
+              <span style={{ color: 'var(--gold-text)', display: 'inline-flex' }}><LineIcon name={group.icon} size={22} /></span>
               <h2 style={{
                 fontFamily: "var(--font-display), Georgia, serif",
                 fontSize: 'clamp(20px, 4vw, 26px)',

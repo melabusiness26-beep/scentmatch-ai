@@ -188,7 +188,7 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
       {showGiftBanner && (
         <div className="gift-banner">
           <div className="container">
-            <p className="gift-banner-text">Suchst du noch das perfekte Weihnachtsgeschenk? Unser <strong>Geschenk-Finder</strong> zeigt dir in 4 Fragen die besten Parfüm-Empfehlungen.</p>
+            <p className="gift-banner-text">🎁 Suchst du noch das perfekte Weihnachtsgeschenk? Unser <strong>Geschenk-Finder</strong> zeigt dir in 4 Fragen die besten Parfüm-Empfehlungen.</p>
             <Link href="/geschenk-finder" className="gift-banner-cta">Zum Geschenk-Finder →</Link>
           </div>
         </div>

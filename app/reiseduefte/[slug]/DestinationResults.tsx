@@ -40,7 +40,7 @@ export default function DestinationResults({ items, dest }: { items: Item[]; des
     }
     try {
       await navigator.clipboard.writeText(url);
-      setShareMsg('Link kopiert! Du kannst ihn jetzt einfügen.');
+      setShareMsg('Link kopiert! 📋 Du kannst ihn jetzt einfügen.');
     } catch {
       setShareMsg(url);
     }
@@ -55,7 +55,7 @@ export default function DestinationResults({ items, dest }: { items: Item[]; des
 
   return (
     <section className="section" id="ergebnis">
-      <p className="eyebrow">{dest.emoji} {dest.name}</p>
+      <p className="eyebrow">{dest.name}</p>
       <h2>Diese Düfte passen zu {dest.name}</h2>
       <p className="small">{dest.result}</p>
 
@@ -122,7 +122,7 @@ export default function DestinationResults({ items, dest }: { items: Item[]; des
       )}
 
       <div className="cta">
-        <button type="button" className="button" onClick={share}>Dieses Reiseziel teilen</button>
+        <button type="button" className="button" onClick={share}>🔗 Dieses Reiseziel teilen</button>
         <Link className="button secondary" href="/reiseduefte">Andere Reiseziele</Link>
         <Link className="button secondary" href="/quiz">Noch genauer? Mach das Quiz</Link>
       </div>

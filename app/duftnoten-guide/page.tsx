@@ -7,13 +7,13 @@ export const revalidate = 3600;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Duftnoten verstehen: Top, Heart und Base-Notes erklärt',
+  title: 'Duftnoten verstehen: Kopf-, Herz- und Basisnoten erklärt',
   description:
-    'Lerne, wie Duftnoten funktionieren: Was sind Top-Noten, Heart-Noten und Base-Noten? Wie du Duftkombinationen verstehst und deine Duft-Vorlieben findest.',
+    'Lerne, wie Duftnoten funktionieren: Was sind Kopf-, Herz- und Basisnoten? Wie du Duftkombinationen verstehst und deine Duft-Vorlieben findest.',
   alternates: { canonical: `${SITE_URL}/duftnoten-guide` },
   openGraph: {
       images: ['/opengraph-image'],
-    title: 'Duftnoten: Top, Heart & Base-Notes | Auressa',
+    title: 'Duftnoten: Kopf-, Herz- & Basisnoten | Auressa',
     description: 'Verstehe die Pyramide von Duftnoten und warum ein Duft sich über den Tag verändert.',
     type: 'website',
     url: `${SITE_URL}/duftnoten-guide`,
@@ -102,13 +102,13 @@ export default function FragranceNotesGuidePage() {
                 textAlign: 'center',
               }}>
                 <h3 style={{ color: '#d4af37', fontWeight: 700, margin: '0 0 0.5rem 0', fontSize: '1.3rem' }}>
-                  ✨ TOP-NOTEN (Kopfnoten)
+                  ✨ Kopfnoten
                 </h3>
                 <p style={{ color: '#8a6a20', fontWeight: 600, margin: '0 0 1rem 0', fontSize: '0.95rem' }}>
                   Dauer: die ersten Minuten bis ca. 15–30 Minuten | Intensität: Sehr frisch & lebhaft
                 </p>
                 <p style={{ color: '#6b5344', margin: 0, lineHeight: 1.6, fontSize: '0.95rem' }}>
-                  Die ersten Eindrücke, die deine Nase nach dem Auftragen riecht. Top-Noten sind flüchtig und verdampfen schnell – aber sie sind der „Hook", der dich sofort anzieht oder abstosst.
+                  Die ersten Eindrücke, die deine Nase nach dem Auftragen riecht. Kopfnoten sind flüchtig und verdampfen schnell – aber sie sind der erste Eindruck, der dich sofort anzieht oder abstosst.
                 </p>
               </div>
 
@@ -121,13 +121,13 @@ export default function FragranceNotesGuidePage() {
                 textAlign: 'center',
               }}>
                 <h3 style={{ color: '#d4af37', fontWeight: 700, margin: '0 0 0.5rem 0', fontSize: '1.3rem' }}>
-                  💖 HEART-NOTEN (Herznoten)
+                  💖 Herznoten
                 </h3>
                 <p style={{ color: '#8a6a20', fontWeight: 600, margin: '0 0 1rem 0', fontSize: '0.95rem' }}>
                   Dauer: 30 Minuten–4 Stunden | Intensität: Die „Persönlichkeit" des Dufts
                 </p>
                 <p style={{ color: '#6b5344', margin: 0, lineHeight: 1.6, fontSize: '0.95rem' }}>
-                  Das Herz eines Dufts. Hier entwickelt sich dein Lieblingsduft zu seiner vollständigen Persönlichkeit. Die Heart-Noten sind das, wofür du den Duft wirklich kaufst. Am längsten halten danach die Base-Noten.
+                  Das Herz eines Dufts. Hier entwickelt sich dein Lieblingsduft zu seiner vollständigen Persönlichkeit. Die Herznoten sind das, wofür du den Duft wirklich kaufst. Am längsten halten danach die Basisnoten.
                 </p>
               </div>
 
@@ -140,13 +140,13 @@ export default function FragranceNotesGuidePage() {
                 textAlign: 'center',
               }}>
                 <h3 style={{ color: '#d4af37', fontWeight: 700, margin: '0 0 0.5rem 0', fontSize: '1.3rem' }}>
-                  🌳 BASE-NOTEN (Basisnoten)
+                  🌳 Basisnoten
                 </h3>
                 <p style={{ color: '#8a6a20', fontWeight: 600, margin: '0 0 1rem 0', fontSize: '0.95rem' }}>
                   Dauer: 3–24+ Stunden | Intensität: Tief, warm, persistent
                 </p>
                 <p style={{ color: '#6b5344', margin: 0, lineHeight: 1.6, fontSize: '0.95rem' }}>
-                  Das Fundament deines Dufts – warm, tief und langlebig. Base-Noten sind schwere, langsam verdampfende Aromen wie Holz, Moschus und Amber. Sie halten den ganzen Tag und bestimmen die Dauer.
+                  Das Fundament deines Dufts – warm, tief und langlebig. Basisnoten sind schwere, langsam verdampfende Aromen wie Holz, Moschus und Amber. Sie halten den ganzen Tag und bestimmen die Dauer.
                 </p>
               </div>
             </div>
@@ -181,37 +181,37 @@ export default function FragranceNotesGuidePage() {
             {[
               {
                 time: '8:00 AM - Gerade aufgetragen',
-                notes: 'Top-Noten',
+                notes: 'Kopfnoten',
                 desc: 'Orangenblüte & rosa Pfeffer – hell, blumig, leicht pfeffrig. Das erste, was du und andere riechen.',
                 intensity: '⭐⭐⭐⭐⭐'
               },
               {
                 time: '8:15 AM - Nach 15 Minuten',
-                notes: 'Top-Noten verabschieden sich',
+                notes: 'Kopfnoten verabschieden sich',
                 desc: 'Die helle Frische tritt zurück. Der Kaffee im Herzen kommt zum Vorschein.',
                 intensity: '⭐⭐⭐⭐'
               },
               {
                 time: '8:30 AM–1:00 PM - 30 Min – 5 Stunden',
-                notes: 'Heart-Noten (die beste Stunde)',
+                notes: 'Herznoten (die beste Stunde)',
                 desc: 'Kaffee & Jasmin – dunkel, blumig, sinnlich. Das ist der Peak – warum du den Duft liebst.',
                 intensity: '⭐⭐⭐⭐⭐'
               },
               {
                 time: '1:00 PM–4:00 PM - 5–8 Stunden',
-                notes: 'Heart-Noten langsam verdunkelnd',
+                notes: 'Herznoten langsam verdunkelnd',
                 desc: 'Kaffee und Jasmin werden leiser. Vanille und Holz treten in den Vordergrund.',
                 intensity: '⭐⭐⭐⭐'
               },
               {
                 time: '4:00 PM–8:00 PM - 8–12 Stunden',
-                notes: 'Base-Noten dominieren',
+                notes: 'Basisnoten dominieren',
                 desc: 'Vanille, Patchouli & Zeder – warm, süss, holzig. Ein unterschwelliger Duft, aber deutlich spürbar.',
                 intensity: '⭐⭐⭐'
               },
               {
                 time: '8:00 PM onwards',
-                notes: 'Letzte Reste der Base-Noten',
+                notes: 'Letzte Reste der Basisnoten',
                 desc: 'Ein warmer, pudrig-holziger Hauch. Andere riechen ihn noch, du selbst nicht mehr.',
                 intensity: '⭐⭐'
               }
@@ -259,27 +259,27 @@ export default function FragranceNotesGuidePage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
             {[
               {
-                category: 'TOP-NOTEN (Frische)',
-                examples: ['Bergamotte', 'Zitrone', 'Grapefruit', 'Minz', 'Ginger'],
+                category: 'Kopfnoten (Frische)',
+                examples: ['Bergamotte', 'Zitrone', 'Grapefruit', 'Minze', 'Ingwer'],
                 desc: 'Frisch, lebhaft, zitrusartig. Geben dem Duft einen schnellen Kick. Verdunsten in Minuten.'
               },
               {
-                category: 'HEART-NOTEN (Blüten)',
+                category: 'Herznoten (Blüten)',
                 examples: ['Rose', 'Jasmin', 'Gardenie', 'Nelke', 'Veilchen'],
                 desc: 'Blumig, elegant, weiblich/neutral. Der Kern des Dufts. Halten 1–4 Stunden.'
               },
               {
-                category: 'BASE-NOTEN (Süss & warm)',
+                category: 'Basisnoten (süss & warm)',
                 examples: ['Vanille', 'Amber', 'Karamell', 'Kakao'],
                 desc: 'Warm, süss, weich. Geben Weichheit und Wärme. Halten lange.'
               },
               {
-                category: 'BASE-NOTEN (Holz)',
+                category: 'Basisnoten (Holz)',
                 examples: ['Sandelholz', 'Zedernholz', 'Oud', 'Vetiver', 'Moschus'],
                 desc: 'Tief, warm, natürlich. Das Fundament. Halten 8+ Stunden.'
               },
               {
-                category: 'BASE-NOTEN (Kräuter)',
+                category: 'Basisnoten (Kräuter)',
                 examples: ['Labdanum', 'Benzoe', 'Tonka', 'Patchouli', 'Räucherwerk'],
                 desc: 'Dunkel, würzig, harzig. Verleihen Tiefe und Langlebigkeit.'
               },
@@ -336,7 +336,7 @@ export default function FragranceNotesGuidePage() {
             {[
               {
                 question: 'Du magst einen Duft – wie findest du Ähnliches?',
-                answer: 'Achte auf die Duftnoten deines Lieblings. Magst du die Kopfnoten (Frische)? Suche andere Düfte mit ähnlichen Top-Noten. Magst du die Wärme (Heart/Base)? Suche nach ähnlichen Holz- oder Gewürz-Basen. Ähnliche Noten = ähnliche Wirkung.'
+                answer: 'Achte auf die Duftnoten deines Lieblings. Magst du die Kopfnoten (Frische)? Suche andere Düfte mit ähnlichen Kopfnoten. Magst du die Wärme (Heart/Base)? Suche nach ähnlichen Holz- oder Gewürz-Basen. Ähnliche Noten = ähnliche Wirkung.'
               },
               {
                 question: 'Du kennst deinen liebsten „Duft-Typ", aber nicht den Namen?',
@@ -344,7 +344,7 @@ export default function FragranceNotesGuidePage() {
               },
               {
                 question: 'Du möchtest einen Duft, der sich tagsüber verändert?',
-                answer: 'Wähle einen Duft mit unterschiedlichen Noten-Schichten. Ein Duft mit starken Top-, Heart- und Base-Noten bietet eine „Reise" über den Tag – nicht monoton. Ideal zum Entdecken: Düfte mit kontrastreichen Noten (z. B. Zitrus-Top + süsser Heart + würziger Base).'
+                answer: 'Wähle einen Duft mit unterschiedlichen Noten-Schichten. Ein Duft mit starken Top-, Heart- und Basisnoten bietet eine „Reise" über den Tag – nicht monoton. Ideal zum Entdecken: Düfte mit kontrastreichen Noten (z. B. Zitrus-Top + süsser Heart + würziger Base).'
               },
               {
                 question: 'Du willst immer den gleichen Duft, ohne Veränderung?',
@@ -383,19 +383,19 @@ export default function FragranceNotesGuidePage() {
             {[
               {
                 title: 'Der Retouch-Trick',
-                tip: 'Nach 3–4 Stunden sprühst du den gleichen Duft erneut. Dies „resettet" die Top-Noten – du riechst die frischen Kopfnoten erneut, ohne aufdringlich zu wirken. Ein kleiner Spray-Rucksack ist Gold wert.'
+                tip: 'Nach 3–4 Stunden sprühst du den gleichen Duft erneut. Dies „resettet" die Kopfnoten – du riechst die frischen Kopfnoten erneut, ohne aufdringlich zu wirken. Ein kleiner Spray-Rucksack ist Gold wert.'
               },
               {
-                title: 'Top-Noten überspringen?',
-                tip: 'Manche Düfte haben nicht-grossartige Top-Noten. Tipp: Frag im Geschäft, ob du eine Probe nehmen kannst und diese 15 Min zu Hause probierst – so erlebst du direkt die Heart-Noten und sparst Zeit.'
+                title: 'Kopfnoten überspringen?',
+                tip: 'Manche Düfte haben nicht-grossartige Kopfnoten. Tipp: Frag im Geschäft, ob du eine Probe nehmen kannst und diese 15 Min zu Hause probierst – so erlebst du direkt die Herznoten und sparst Zeit.'
               },
               {
                 title: 'Duftnoten-Jahreszeiten',
-                tip: 'Sommer: Top-Noten-fokussiert (frische Kopfnoten, leichte Hearts). Winter: Base-Noten-fokussiert (warme, schwere Basen). So harmoniert dein Duft mit der Jahreszeit.'
+                tip: 'Sommer: Kopfnoten-fokussiert (frische Kopfnoten, leichte Hearts). Winter: Basisnoten-fokussiert (warme, schwere Basen). So harmoniert dein Duft mit der Jahreszeit.'
               },
               {
                 title: 'Die 30-Minuten-Regel',
-                tip: 'Kaufe einen Duft NICHT, wenn du ihn direkt im Geschäft riechst. Warte 15–30 Min und rieche ihn erneut. Jetzt hast du die Heart-Noten erlebt – das ist, was zählt.'
+                tip: 'Kaufe einen Duft NICHT, wenn du ihn direkt im Geschäft riechst. Warte 15–30 Min und rieche ihn erneut. Jetzt hast du die Herznoten erlebt – das ist, was zählt.'
               },
               {
                 title: 'Noten vergleichen',

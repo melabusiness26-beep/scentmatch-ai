@@ -145,3 +145,12 @@ export function guideIcon(slug: string): string {
   if (/kombin|layering|sammlung|kollektion|proben/.test(s)) return 'bottles';
   return 'bottle';
 }
+
+// Symbol für ein Reiseziel (statt Flaggen/Emojis): Strand → Sonne, Schnee/Berge → Schneeflocke,
+// Wald/Fjord → Blatt, Städte → Globus.
+export function destinationIcon(slug: string): string {
+  if (/karibik|kueste|griechenland|malediven|amalfi|tahiti|brasilien|thailand|bali|dubai|marrakesch|havanna/.test(slug)) return 'sun';
+  if (/alpen|chalet|dolomiten/.test(slug)) return 'snow';
+  if (/wald|fjorde/.test(slug)) return 'leaf';
+  return 'globe';
+}

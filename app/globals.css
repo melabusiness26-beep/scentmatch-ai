@@ -2045,3 +2045,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visib
 .brand-facts { margin-top: 2.5rem; }
 .brand-facts h2 { margin-top: 0; }
 .brand-facts p { line-height: 1.7; color: var(--ink-soft); }
+.brand-story { margin-top: 2.5rem; }
+.brand-story h2 { margin-top: 0; }
+.brand-story p { line-height: 1.75; color: var(--ink-soft); }
+.brand-sources summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; color: var(--gold-text); font-weight: 600; font-size: 14px; }
+.brand-sources ul { margin: 0; padding-left: 1.1rem; font-size: 14px; }
+.brand-sources a { color: var(--ink-soft); }

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { BRAND_STORIES } from '@/lib/brand-stories';
+import { metaDescription } from '@/lib/meta';
 import { computeAuressaScore } from '@/lib/score';
 import { pairTitle, versionPairs } from '@/lib/version-compare';
 import { AffiliateButton } from '@/app/AffiliateButton';
@@ -34,7 +36,9 @@ export async function generateMetadata({
   const title = `${brand.name} Parfums – alle Düfte im Überblick`;
   const description =
     brand.description ||
-    `Alle ${brand.name} Düfte bei Auressa: Preise, Duftprofile, Noten und – wo vorhanden – günstigere Alternativen.`;
+    (BRAND_STORIES[slug]
+      ? metaDescription(`${BRAND_STORIES[slug].intro} Alle ${brand.name}-Düfte mit Duftprofil, Noten und Preisen.`)
+      : `Alle ${brand.name} Düfte bei Auressa: Preise, Duftprofile, Noten und – wo vorhanden – günstigere Alternativen.`);
 
   return {
     title,
@@ -232,8 +236,10 @@ export default async function BrandPage({
   const brandPairs = versionPairs(perfumes);
 
   // Beschreibung generieren, falls keine vorhanden
+  const story = BRAND_STORIES[brand.slug];
   const description =
     brand.description ||
+    story?.intro ||
     `${brand.name}${brand.country ? ` (${brand.country})` : ''} im Auressa-Katalog. ` +
     `Hier findest du ${perfumes.length} ${brand.name}-${perfumes.length === 1 ? 'Duft' : 'Düfte'} mit Duftprofil, Noten und Preisangaben.`;
 
@@ -350,6 +356,29 @@ export default async function BrandPage({
               ))}
             </div>
           </>
+        )}
+
+        {/* Markengeschichte – nur mit mehreren Quellen belegte Fakten (lib/brand-stories.ts). */}
+        {story && (
+          <section className="section card brand-story">
+            <p className="eyebrow">Die Marke</p>
+            <h2>Über {brand.name}</h2>
+            {story.paragraphs.map((t) => (
+              <p key={t.slice(0, 30)}>{t}</p>
+            ))}
+            <details className="brand-sources">
+              <summary>Quellen</summary>
+              <ul>
+                {story.sources.map((src) => (
+                  <li key={src.url}>
+                    <a href={src.url} target="_blank" rel="nofollow noopener noreferrer">
+                      {src.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          </section>
         )}
 
         {/* Marke auf einen Blick – nur aus den geprüften Katalogdaten berechnet (keine Annahmen). */}

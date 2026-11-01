@@ -21,6 +21,80 @@ export function slugify(value: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
+// ── Quellenpflicht („felsenfest") ─────────────────────────────────────────────
+// Jede belegpflichtige Angabe eines NEUEN Duftes braucht Quellen-Links im Feld
+// "sources" der Katalog-Datei – sonst schlägt die Prüfung fehl (PR wird rot, nichts
+// geht live). Wo zwei Quellen nötig sind, müssen sie von zwei verschiedenen
+// Websites stammen. Die Links bleiben in der Datei als Nachweis (gelangen nicht in
+// die Datenbank).
+// Beispiel:
+//   "sources": {
+//     "identity": ["https://www.parfumo.com/…", "https://www.notino.ch/…"],
+//     "release_year": ["https://www.parfumo.com/…", "https://www.nstperfume.com/…"],
+//     "price": ["https://www.easycosmetic.ch/…"]
+//   }
+type RawPerfume = Record<string, unknown>;
+const filled = (v: unknown) =>
+  v != null && v !== '' && v !== false && !(Array.isArray(v) && v.length === 0);
+
+export const SOURCE_RULES: { key: string; label: string; min: number; applies: (raw: RawPerfume) => boolean }[] = [
+  { key: 'identity', label: 'Name, Marke und Konzentration', min: 2, applies: () => true },
+  { key: 'release_year', label: 'Erscheinungsjahr', min: 2, applies: (r) => filled(r.release_year) },
+  { key: 'perfumer', label: 'Parfümeur', min: 2, applies: (r) => filled(r.perfumer) },
+  { key: 'notes', label: 'Duftnoten', min: 2, applies: (r) => filled(r.top_notes) || filled(r.heart_notes) || filled(r.base_notes) },
+  { key: 'diagram', label: 'Duftrichtung, Jahreszeit und Anlass (Diagramm)', min: 1, applies: (r) => filled(r.accords) || filled(r.season) || filled(r.occasion) },
+  { key: 'ratings', label: 'Haltbarkeit und Ausstrahlung', min: 1, applies: (r) => filled(r.longevity) || filled(r.sillage) },
+  { key: 'price', label: 'Preis und Grössen', min: 1, applies: (r) => filled(r.price_chf) || filled(r.sizes) },
+  { key: 'alternative_to', label: '„Alternative zu" (Dupe von …)', min: 2, applies: (r) => filled(r.alternative_to) },
+  { key: 'similar_perfumes', label: 'Ähnliche Düfte', min: 1, applies: (r) => filled(r.similar_perfumes) },
+  { key: 'discontinued', label: '„Nicht mehr erhältlich"', min: 2, applies: (r) => r.discontinued === true || r.discontinued === 'true' },
+  { key: 'flacon', label: 'Flakon (Beschreibung/Designer)', min: 2, applies: (r) => filled(r.flacon_description) || filled(r.flacon_designer) },
+  { key: 'good_to_know', label: '„Gut zu wissen"', min: 2, applies: (r) => filled(r.good_to_know) },
+  { key: 'inspiration', label: 'Inspiration', min: 2, applies: (r) => filled(r.inspiration) }
+];
+
+// Düfte, die vor der Quellenpflicht (1. November 2026) eingetragen wurden. Ihre Quellen
+// stehen in den Chat-Protokollen; sie werden nach und nach nachgetragen. NEUE Düfte
+// dürfen hier nie ergänzt werden.
+export const LEGACY_WITHOUT_SOURCES = new Set([
+  'boss-bottled', 'boss-bottled-absolu', 'boss-bottled-eau-de-parfum', 'boss-bottled-elixir', 'boss-bottled-parfum',
+  'cool-water', 'cool-water-intense', 'la-rive-donna', 'light-blue', 'light-blue-eau-de-parfum',
+  'light-blue-eau-intense', 'light-blue-pour-homme', 'light-blue-pour-homme-eau-intense',
+  'terre-d-hermes', 'terre-d-hermes-parfum'
+]);
+
+function hostOf(url: string): string | null {
+  try {
+    const u = new URL(url);
+    return u.protocol === 'https:' ? u.hostname.replace(/^www\./, '').toLowerCase() : null;
+  } catch {
+    return null;
+  }
+}
+
+// Gibt die fehlenden/ungültigen Quellen eines Duftes zurück (leer = alles belegt).
+export function checkSources(raw: RawPerfume): string[] {
+  const problems: string[] = [];
+  const sources = (raw.sources && typeof raw.sources === 'object' && !Array.isArray(raw.sources)
+    ? raw.sources
+    : {}) as Record<string, unknown>;
+  for (const rule of SOURCE_RULES) {
+    if (!rule.applies(raw)) continue;
+    const list = Array.isArray(sources[rule.key]) ? (sources[rule.key] as unknown[]).map((x) => String(x).trim()) : [];
+    const bad = list.filter((u) => !hostOf(u));
+    const hosts = new Set(list.map(hostOf).filter((h): h is string => Boolean(h)));
+    if (bad.length) problems.push(`Quelle für ${rule.label} ist kein https-Link: ${bad.join(', ')}.`);
+    if (hosts.size < rule.min) {
+      problems.push(
+        rule.min > 1
+          ? `${rule.label}: ${rule.min} Quellen von verschiedenen Websites nötig (sources.${rule.key}), vorhanden: ${hosts.size}.`
+          : `${rule.label}: Quelle fehlt (sources.${rule.key}).`
+      );
+    }
+  }
+  return problems;
+}
+
 export type CatalogEntry = {
   file: string;
   slug: string;
@@ -61,6 +135,7 @@ export function checkCatalog(files: { name: string; text: string }[]): CatalogCh
     else if (slug !== slugify(slug)) problems.push(`slug „${slug}" ist nicht sauber (erwartet „${slugify(slug)}").`);
     else if (`${slug}.json` !== name) problems.push(`Dateiname muss „${slug}.json" heissen.`);
     else if (slugs.has(slug)) problems.push(`slug „${slug}" kommt doppelt vor.`);
+    if (slug && !LEGACY_WITHOUT_SOURCES.has(slug)) problems.push(...checkSources(raw));
     if (problems.length) {
       errors.push(`${name}: ${problems.join(' ')}`);
       continue;

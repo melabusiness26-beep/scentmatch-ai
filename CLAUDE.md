@@ -335,3 +335,8 @@ Parfumo-Diagramm, (3) Foto vom Preis** (easyCOSMETIC, sonst Makeup.ch/Notino). A
 - Zweite Quelle per Websuche für Jahr, Parfümeur, Noten, Dupe-Beziehungen; nur Übereinstimmendes übernehmen.
 - Katalog-Datei schreiben, prüfen (catalog:check), PR erstellen, nach dem Mergen live kontrollieren.
 - Gesperrt/blockiert für den Assistenten: easyCOSMETIC (Bot-Schutz – nicht umgehen), makeup.ch (Proxy).
+- **Quellenpflicht im Code** (`checkSources` in `lib/catalog.ts`): Jede neue Katalog-Datei braucht ein Feld
+  `"sources"` mit https-Links pro Angabe (identity, release_year, perfumer, notes, alternative_to, discontinued,
+  flacon, good_to_know, inspiration: je 2 Links von 2 verschiedenen Websites; diagram, ratings, price,
+  similar_perfumes: je 1). Fehlt etwas, wird der PR rot und nichts geht live. Die 15 Düfte von vorher stehen in
+  `LEGACY_WITHOUT_SOURCES` (Quellen nachtragen, Liste nie erweitern).

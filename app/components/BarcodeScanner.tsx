@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface BarcodeScannerProps {
   onBarcodeDetected: (barcode: string) => void;
@@ -51,9 +51,11 @@ export default function BarcodeScanner({
             }
           }, 500);
         } else {
-          // Fallback: jsQR (QR-Codes nur)
-          setError('Native Barcode-Erkennung nicht verfügbar. Verwende QR-Code-Fallback.');
-          console.warn('[BarcodeScanner] BarcodeDetector nicht verfügbar');
+          // Ohne BarcodeDetector (z. B. iPhone/Safari) gibt es keine Erkennung –
+          // Kamera sofort wieder ausschalten und ehrlich Bescheid geben.
+          stream.getTracks().forEach((track) => track.stop());
+          setIsScanning(false);
+          setError('Dein Browser kann Barcodes leider nicht erkennen. Gib den Duftnamen bitte von Hand ein.');
         }
       }
     } catch (err) {
@@ -73,6 +75,16 @@ export default function BarcodeScanner({
     }
     setIsScanning(false);
   };
+
+  // Verlässt man die Seite während des Scannens: Kamera und Intervall sicher beenden.
+  useEffect(() => {
+    const video = videoRef.current;
+    return () => {
+      if (scanIntervalRef.current) clearInterval(scanIntervalRef.current);
+      const stream = video?.srcObject as MediaStream | null;
+      stream?.getTracks().forEach((track) => track.stop());
+    };
+  }, []);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', width: '100%' }}>

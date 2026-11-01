@@ -19,7 +19,9 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
     try {
       const saved = localStorage.getItem('auressa-favorites');
       if (saved) {
-        setFavorites(JSON.parse(saved));
+        // Nur eine Liste von Texten übernehmen – beschädigte Daten führen sonst zum Absturz.
+        const parsed: unknown = JSON.parse(saved);
+        if (Array.isArray(parsed)) setFavorites(parsed.filter((x): x is string => typeof x === 'string'));
       }
     } catch (error) {
       console.error('Failed to load favorites:', error);

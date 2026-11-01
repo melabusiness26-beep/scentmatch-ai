@@ -1982,11 +1982,6 @@ details.score-breakdown:not([open]) { padding-top: 4px; padding-bottom: 4px; }
 .family-card, .family-card[data-family] { background: var(--ivory); border: 1px solid var(--line); border-radius: 14px; min-height: 96px; color: var(--ink); }
 .family-card:hover, .family-card[data-family]:hover { background: #FBF5E6; border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(31,22,18,.06); }
 .family-card:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-.family-card::before { content: ''; width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(31,22,18,.12); }
-.family-card[data-family="clean"]::before { background: linear-gradient(160deg, #F2F8FA, #BFDCE7); }
-.family-card[data-family="gourmand"]::before { background: linear-gradient(160deg, #FBF3EC, #E6C3A6); }
-.family-card[data-family="woody"]::before { background: linear-gradient(160deg, #F6F0E7, #D2BC9D); }
-.family-card[data-family="floral"]::before { background: linear-gradient(160deg, #FCF3F6, #E7C4D6); }
 
 /* Startseite: Quiz-Block in Espresso statt Senfgelb (lesbar, edler) */
 .quiz-hero { background: var(--ink); color: #F3E9DA; border-radius: 24px; border: 1px solid rgba(201,162,74,.35); padding: clamp(56px, 9vw, 96px) clamp(24px, 6vw, 48px); }

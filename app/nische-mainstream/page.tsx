@@ -50,7 +50,7 @@ export default function NischeMainstreamPage() {
               borderRadius: '8px',
               padding: '1.5rem'
             }}>
-              <h3 style={{ margin: '0 0 1rem 0', fontSize: '0.95rem' }}>MAINSTREAM</h3>
+              <h3 style={{ margin: '0 0 1rem 0', fontSize: '0.95rem' }}>📊 MAINSTREAM</h3>
               <p style={{ margin: '0 0 0.75rem 0', fontSize: '0.9rem', fontWeight: 600, color: '#2a1d12' }}>
                 Grosse, bekannte Designer- und Modemarken
               </p>
@@ -69,7 +69,7 @@ export default function NischeMainstreamPage() {
               borderRadius: '8px',
               padding: '1.5rem'
             }}>
-              <h3 style={{ margin: '0 0 1rem 0', fontSize: '0.95rem' }}>NISCHE</h3>
+              <h3 style={{ margin: '0 0 1rem 0', fontSize: '0.95rem' }}>🎨 NISCHE</h3>
               <p style={{ margin: '0 0 0.75rem 0', fontSize: '0.9rem', fontWeight: 600, color: '#2a1d12' }}>
                 Spezialisierte Parfumhäuser – teils unabhängig, teils im Besitz grösserer Konzerne
               </p>
@@ -152,13 +152,13 @@ export default function NischeMainstreamPage() {
                 </h4>
                 <div style={{ fontSize: '0.85rem', color: '#5b4d40' }}>
                   <p style={{ margin: '0.5rem 0' }}>
-                    <strong>Mainstream:</strong> {item.mainstream}
+                    <strong>📊 Mainstream:</strong> {item.mainstream}
                   </p>
                   <p style={{ margin: '0.5rem 0', paddingBottom: '0.75rem', borderBottom: '1px solid rgba(212,175,55,0.1)' }}>
-                    <strong>Nische:</strong> {item.nische}
+                    <strong>🎨 Nische:</strong> {item.nische}
                   </p>
                   <p style={{ margin: '0.5rem 0 0 0', fontStyle: 'italic', color: '#d4af37', fontWeight: 600 }}>
-                    {item.urteil}
+                    👉 {item.urteil}
                   </p>
                 </div>
               </div>
@@ -254,7 +254,7 @@ export default function NischeMainstreamPage() {
             marginBottom: '2rem'
           }}>
             <p style={{ margin: '0 0 0.75rem 0', color: '#2a1d12', fontWeight: 600 }}>
-              <strong>Unser Tipp: Mix</strong>
+              🎯 <strong>Unser Tipp: Mix</strong>
             </p>
             <p style={{ margin: 0, color: '#6b5344', fontSize: '0.9rem', lineHeight: 1.6 }}>
               Eine mögliche Sammlung: 1–2 Mainstream-Klassiker (z. B. Bleu de Chanel, Dior Sauvage) als sichere Wahl + 1–2 Nischendüfte
@@ -307,7 +307,7 @@ export default function NischeMainstreamPage() {
             marginBottom: '2rem'
           }}>
             <p style={{ margin: '0 0 1rem 0', fontSize: '0.95rem', fontWeight: 600, color: '#2a1d12' }}>
-              Finde deinen idealen Duft: Mainstream oder Nische?
+              🔍 Finde deinen idealen Duft: Mainstream oder Nische?
             </p>
             <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
               Nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> als

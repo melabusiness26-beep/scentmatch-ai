@@ -40,9 +40,9 @@ export default function ImpressumPage() {
               Auressa ist eine <strong>Duft-Beratungsplattform</strong>. Die Informationen auf dieser Website werden bereitgestellt:
             </p>
             <ul>
-              <li>Zum Informationszweck</li>
-              <li>Um dir bei der Duftauswahl zu helfen</li>
-              <li>Basierend auf veröffentlichten Duftinformationen (Hersteller, Duftdatenbanken)</li>
+              <li>✅ Zum Informationszweck</li>
+              <li>✅ Um dir bei der Duftauswahl zu helfen</li>
+              <li>✅ Basierend auf veröffentlichten Duftinformationen (Hersteller, Duftdatenbanken)</li>
             </ul>
             <p>
               <strong>Die Auressa-Bewertungen und Empfehlungen sind subjektiv</strong> und basieren auf unserem Matching-Algorithmus, nicht auf

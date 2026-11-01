@@ -38,7 +38,8 @@ export default function DuftkolektionMinimal() {
       >
         <div style={{ textAlign: 'center', maxWidth: '620px' }}>
           <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>
-            Weniger ist Mehr </p>
+            ✨ Weniger ist Mehr ✨
+          </p>
           <h1 style={{
             fontSize: 'clamp(28px, 6vw, 44px)',
             fontFamily: "var(--font-display), Georgia, serif",
@@ -314,7 +315,7 @@ export default function DuftkolektionMinimal() {
             marginBottom: '1.5rem',
           }}>
             <h3 style={{ fontSize: '1.1rem', color: '#2a1d12', fontWeight: 700, marginBottom: '0.8rem' }}>
-              Alle drei sind ähnlich
+              ❌ Alle drei sind ähnlich
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', margin: 0 }}>
               Drei süsse Blumendüfte = Redundanz. Oft trägst du dann nur einen und vergisst die anderen zwei. Eine gute 3er-Kollektion hat Kontrast.
@@ -329,7 +330,7 @@ export default function DuftkolektionMinimal() {
             marginBottom: '1.5rem',
           }}>
             <h3 style={{ fontSize: '1.1rem', color: '#2a1d12', fontWeight: 700, marginBottom: '0.8rem' }}>
-              Die Alltags-Wahl ist zu intensiv
+              ❌ Die Alltags-Wahl ist zu intensiv
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', margin: 0 }}>
               Ein intensiver, sinnlicher Duft ist für den Büroalltag oft zu viel. Der Alltags-Duft sollte dezent und universell angenehm sein.
@@ -344,7 +345,7 @@ export default function DuftkolektionMinimal() {
             marginBottom: '1.5rem',
           }}>
             <h3 style={{ fontSize: '1.1rem', color: '#2a1d12', fontWeight: 700, marginBottom: '0.8rem' }}>
-              Du wählst basierend auf Trend, nicht Vorliebe
+              ❌ Du wählst basierend auf Trend, nicht Vorliebe
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', margin: 0 }}>
               Der Duft, den dein Freund liebt, könnte für dich falsch sein. Deine 3er-Kollektion sollte DICH repräsentieren, nicht den Internet-Trend.
@@ -358,7 +359,7 @@ export default function DuftkolektionMinimal() {
             padding: '1.8rem',
           }}>
             <h3 style={{ fontSize: '1.1rem', color: '#2a1d12', fontWeight: 700, marginBottom: '0.8rem' }}>
-              Du fragst nicht nach deinem Typ
+              ❌ Du fragst nicht nach deinem Typ
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', margin: 0 }}>
               Männlich, weiblich, unisex sind vor allem Marketing-Kategorien. Ein Duft kann zu dir passen, unabhängig davon, wie er vermarktet wird. Ignoriere das Geschlecht und wähle nach Charakter.

@@ -255,7 +255,7 @@ export default function QuizContainer() {
     }
     try {
       await navigator.clipboard.writeText(url);
-      setShareMsg('Link kopiert! Du kannst ihn jetzt einfügen.');
+      setShareMsg('Link kopiert! 📋 Du kannst ihn jetzt einfügen.');
     } catch {
       setShareMsg(url);
     }
@@ -407,6 +407,7 @@ export default function QuizContainer() {
                       {breakdown.family > 0 && (
                         <div className="breakdown-factor family">
                           <div className="factor-header">
+                            <span className="factor-icon">👃</span>
                             <span className="factor-label">Duftfamilie</span>
                             <span className="factor-points">{Math.round(breakdown.family)}/30</span>
                           </div>
@@ -416,6 +417,7 @@ export default function QuizContainer() {
                       {breakdown.lovedNote > 0 && (
                         <div className="breakdown-factor lovedNote">
                           <div className="factor-header">
+                            <span className="factor-icon">🎵</span>
                             <span className="factor-label">Lieblingsnote</span>
                             <span className="factor-points">{Math.round(breakdown.lovedNote)}/20</span>
                           </div>
@@ -425,6 +427,7 @@ export default function QuizContainer() {
                       {breakdown.budget > 0 && (
                         <div className="breakdown-factor budget">
                           <div className="factor-header">
+                            <span className="factor-icon">💰</span>
                             <span className="factor-label">Budget</span>
                             <span className="factor-points">{Math.round(breakdown.budget)}/15</span>
                           </div>
@@ -434,6 +437,7 @@ export default function QuizContainer() {
                       {breakdown.occasion > 0 && (
                         <div className="breakdown-factor occasion">
                           <div className="factor-header">
+                            <span className="factor-icon">🎭</span>
                             <span className="factor-label">Anlass</span>
                             <span className="factor-points">{Math.round(breakdown.occasion)}/13</span>
                           </div>
@@ -443,6 +447,7 @@ export default function QuizContainer() {
                       {breakdown.season > 0 && (
                         <div className="breakdown-factor season">
                           <div className="factor-header">
+                            <span className="factor-icon">🌍</span>
                             <span className="factor-label">Saison</span>
                             <span className="factor-points">{Math.round(breakdown.season)}/12</span>
                           </div>
@@ -452,6 +457,7 @@ export default function QuizContainer() {
                       {breakdown.sillage > 0 && (
                         <div className="breakdown-factor sillage">
                           <div className="factor-header">
+                            <span className="factor-icon">✨</span>
                             <span className="factor-label">Intensität</span>
                             <span className="factor-points">{Math.round(breakdown.sillage)}/10</span>
                           </div>
@@ -461,6 +467,7 @@ export default function QuizContainer() {
                       {breakdown.longevity > 0 && (
                         <div className="breakdown-factor longevity">
                           <div className="factor-header">
+                            <span className="factor-icon">⏱️</span>
                             <span className="factor-label">Haltbarkeit</span>
                             <span className="factor-points">{Math.round(breakdown.longevity)}/8</span>
                           </div>
@@ -479,7 +486,7 @@ export default function QuizContainer() {
 
                   {cheaperAlt && (
                     <div className="cheaper-alternative">
-                      <p className="small"><strong>Günstigere Alternative:</strong></p>
+                      <p className="small"><strong>💡 Günstigere Alternative:</strong></p>
                       <p className="smaller"><strong>{cheaperAlt.perfume_name}</strong> · {cheaperAlt.brands?.name}</p>
                       <p className="smaller" style={{ color: 'var(--color-primary)', fontWeight: 600 }}>CHF {cheaperAlt.price_chf?.toFixed(0)} (statt CHF {p.price_chf?.toFixed(0)})</p>
                       {cheaperAlt.slug && (
@@ -512,7 +519,7 @@ export default function QuizContainer() {
             <div className="share-box">
               <p className="small">Möchtest du dein Ergebnis speichern oder einer Freundin schicken?</p>
               <div className="cta">
-                <button type="button" className="button" onClick={shareResult}>Ergebnis teilen / speichern</button>
+                <button type="button" className="button" onClick={shareResult}>🔗 Ergebnis teilen / speichern</button>
                 <button type="button" className="secondary" onClick={restartQuiz}>Quiz neu starten</button>
               </div>
               {shareMsg && <p className="small share-msg">{shareMsg}</p>}

@@ -79,7 +79,7 @@ export default function FragranceNotesGuidePage() {
             paddingBottom: '0.5rem',
             borderBottom: '2px solid rgba(212,175,55,0.3)',
           }}>
-            Die Duftnoten-Pyramide
+            🔺 Die Duftnoten-Pyramide
           </h2>
           <div style={{
             background: '#fff',
@@ -102,7 +102,7 @@ export default function FragranceNotesGuidePage() {
                 textAlign: 'center',
               }}>
                 <h3 style={{ color: '#d4af37', fontWeight: 700, margin: '0 0 0.5rem 0', fontSize: '1.3rem' }}>
-                  Kopfnoten
+                  ✨ Kopfnoten
                 </h3>
                 <p style={{ color: '#8a6a20', fontWeight: 600, margin: '0 0 1rem 0', fontSize: '0.95rem' }}>
                   Dauer: die ersten Minuten bis ca. 15–30 Minuten | Intensität: Sehr frisch & lebhaft
@@ -121,7 +121,7 @@ export default function FragranceNotesGuidePage() {
                 textAlign: 'center',
               }}>
                 <h3 style={{ color: '#d4af37', fontWeight: 700, margin: '0 0 0.5rem 0', fontSize: '1.3rem' }}>
-                  Herznoten
+                  💖 Herznoten
                 </h3>
                 <p style={{ color: '#8a6a20', fontWeight: 600, margin: '0 0 1rem 0', fontSize: '0.95rem' }}>
                   Dauer: 30 Minuten–4 Stunden | Intensität: Die „Persönlichkeit" des Dufts
@@ -140,7 +140,7 @@ export default function FragranceNotesGuidePage() {
                 textAlign: 'center',
               }}>
                 <h3 style={{ color: '#d4af37', fontWeight: 700, margin: '0 0 0.5rem 0', fontSize: '1.3rem' }}>
-                  Basisnoten
+                  🌳 Basisnoten
                 </h3>
                 <p style={{ color: '#8a6a20', fontWeight: 600, margin: '0 0 1rem 0', fontSize: '0.95rem' }}>
                   Dauer: 3–24+ Stunden | Intensität: Tief, warm, persistent
@@ -183,37 +183,37 @@ export default function FragranceNotesGuidePage() {
                 time: '8:00 AM - Gerade aufgetragen',
                 notes: 'Kopfnoten',
                 desc: 'Orangenblüte & rosa Pfeffer – hell, blumig, leicht pfeffrig. Das erste, was du und andere riechen.',
-                intensity: '★★★★★'
+                intensity: '⭐⭐⭐⭐⭐'
               },
               {
                 time: '8:15 AM - Nach 15 Minuten',
                 notes: 'Kopfnoten verabschieden sich',
                 desc: 'Die helle Frische tritt zurück. Der Kaffee im Herzen kommt zum Vorschein.',
-                intensity: '★★★★'
+                intensity: '⭐⭐⭐⭐'
               },
               {
                 time: '8:30 AM–1:00 PM - 30 Min – 5 Stunden',
                 notes: 'Herznoten (die beste Stunde)',
                 desc: 'Kaffee & Jasmin – dunkel, blumig, sinnlich. Das ist der Peak – warum du den Duft liebst.',
-                intensity: '★★★★★'
+                intensity: '⭐⭐⭐⭐⭐'
               },
               {
                 time: '1:00 PM–4:00 PM - 5–8 Stunden',
                 notes: 'Herznoten langsam verdunkelnd',
                 desc: 'Kaffee und Jasmin werden leiser. Vanille und Holz treten in den Vordergrund.',
-                intensity: '★★★★'
+                intensity: '⭐⭐⭐⭐'
               },
               {
                 time: '4:00 PM–8:00 PM - 8–12 Stunden',
                 notes: 'Basisnoten dominieren',
                 desc: 'Vanille, Patchouli & Zeder – warm, süss, holzig. Ein unterschwelliger Duft, aber deutlich spürbar.',
-                intensity: '★★★'
+                intensity: '⭐⭐⭐'
               },
               {
                 time: '8:00 PM onwards',
                 notes: 'Letzte Reste der Basisnoten',
                 desc: 'Ein warmer, pudrig-holziger Hauch. Andere riechen ihn noch, du selbst nicht mehr.',
-                intensity: '★★'
+                intensity: '⭐⭐'
               }
             ].map((stage, idx) => (
               <div
@@ -254,7 +254,7 @@ export default function FragranceNotesGuidePage() {
             paddingBottom: '0.5rem',
             borderBottom: '2px solid rgba(212,175,55,0.3)',
           }}>
-            Häufige Duft-Noten erklärt
+            🎨 Häufige Duft-Noten erklärt
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
             {[
@@ -323,7 +323,7 @@ export default function FragranceNotesGuidePage() {
             paddingBottom: '0.5rem',
             borderBottom: '2px solid rgba(212,175,55,0.3)',
           }}>
-            Nutze Duftnoten, um Düfte zu finden, die dir gefallen
+            🎯 Nutze Duftnoten, um Düfte zu finden, die dir gefallen
           </h2>
           <div style={{
             background: 'linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.04))',
@@ -353,7 +353,7 @@ export default function FragranceNotesGuidePage() {
             ].map((item, idx) => (
               <div key={idx}>
                 <h3 style={{ color: '#2a1d12', fontWeight: 700, marginBottom: '0.75rem', fontSize: '1.05rem' }}>
-                  {item.question}
+                  ❓ {item.question}
                 </h3>
                 <p style={{ fontSize: '0.95rem', color: '#6b5344', margin: 0, lineHeight: 1.6 }}>
                   {item.answer}
@@ -374,7 +374,7 @@ export default function FragranceNotesGuidePage() {
             paddingBottom: '0.5rem',
             borderBottom: '2px solid rgba(212,175,55,0.3)',
           }}>
-            Professionelle Tipps mit Duftnoten
+            💡 Professionelle Tipps mit Duftnoten
           </h2>
           <div style={{
             display: 'grid',

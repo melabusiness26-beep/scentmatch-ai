@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Perfume } from '@/lib/perfumes';
+import { Perfume, isWithinPriceCap } from '@/lib/perfumes';
 import { GIFT_FINDER_STYLES } from '@/lib/gift-finder-styles';
 import { consolidateNotes, findSimilarPerfumesV2, findCheaperAlternativesV2 } from '@/lib/similarity';
 import { listName } from '@/lib/versions';
@@ -66,6 +66,8 @@ export default function GiftFinder({ allPerfumes }: { allPerfumes: Perfume[] }) 
   // Get filtered pool based on gender & budget
   const getFilteredPool = (): Perfume[] => {
     return allPerfumes.filter((p) => {
+      // Empfehlungen nur bis CHF 180 (Grundsatz von Auressa, siehe isWithinPriceCap)
+      if (!isWithinPriceCap(p)) return false;
       // Gender filter
       if (state.gender === 'female' && !['Women', 'Unisex'].includes(p.gender)) return false;
       if (state.gender === 'male' && !['Men', 'Unisex'].includes(p.gender)) return false;
@@ -131,6 +133,7 @@ export default function GiftFinder({ allPerfumes }: { allPerfumes: Perfume[] }) 
 
     // Full pool for cheaper alternatives (gender-filtered only, no budget/style restriction)
     const fullPoolForCheaper = allPerfumes.filter((p) => {
+      if (!isWithinPriceCap(p)) return false;
       if (state.gender === 'female' && !['Women', 'Unisex'].includes(p.gender)) return false;
       if (state.gender === 'male' && !['Men', 'Unisex'].includes(p.gender)) return false;
       return true;

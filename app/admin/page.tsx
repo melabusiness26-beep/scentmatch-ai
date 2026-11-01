@@ -96,6 +96,8 @@ const emptyForm = {
   alternative_to: '',
   flacon_designer: '',
   accords: '',
+  // „true" = wird nicht mehr hergestellt (SQL 65).
+  discontinued: 'false',
   age_group: 'all' as const,
   lifestyle: 'casual' as const,
   trend_vibe: 'classic' as const,
@@ -172,6 +174,9 @@ export default function AdminPage() {
   // Duftrichtung (laut Parfumo) gibt es erst nach SQL 64.
   const [hasAccords, setHasAccords] = useState(true);
   const [accordsById, setAccordsById] = useState<Record<string, string>>({});
+  // „Nicht mehr erhältlich" gibt es erst nach SQL 65.
+  const [hasDiscontinued, setHasDiscontinued] = useState(true);
+  const [discontinuedById, setDiscontinuedById] = useState<Record<string, boolean>>({});
   // Wann ein Duft zuletzt gespeichert wurde (Spalte gibt es erst nach SQL 61).
   const [savedAt, setSavedAt] = useState<Record<string, string>>({});
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -233,6 +238,18 @@ export default function AdminPage() {
     setExtrasById(map);
   }
 
+  async function loadDiscontinued() {
+    const { data, error } = await supabase.from('perfumes').select('id, discontinued');
+    if (error || !data) {
+      setHasDiscontinued(false);
+      return;
+    }
+    setHasDiscontinued(true);
+    const map: Record<string, boolean> = {};
+    for (const row of data as { id: string; discontinued: boolean | null }[]) map[row.id] = Boolean(row.discontinued);
+    setDiscontinuedById(map);
+  }
+
   async function loadAccords() {
     const { data, error } = await supabase.from('perfumes').select('id, accords');
     if (error || !data) {
@@ -249,6 +266,7 @@ export default function AdminPage() {
     loadSavedAt();
     loadExtras();
     loadAccords();
+    loadDiscontinued();
     // Parfümeur/Inspiration gibt es erst nach SQL 58, „Gut zu wissen" nach SQL 60 –
     // fehlen Spalten noch, ohne diese Felder laden.
     const all = await supabase.from('perfumes').select(`${PERFUME_EDIT_FIELDS}, perfumer, inspiration, good_to_know`).order('perfume_name');
@@ -357,6 +375,7 @@ export default function AdminPage() {
       alternative_to: alternativesToText(cleanAlternatives(extrasById[p.id]?.alternative_to)),
       flacon_designer: extrasById[p.id]?.flacon_designer || '',
       accords: accordsById[p.id] || '',
+      discontinued: discontinuedById[p.id] ? 'true' : 'false',
       age_group: (p.age_group || 'all') as any,
       lifestyle: (p.lifestyle || 'casual') as any,
       trend_vibe: (p.trend_vibe || 'classic') as any,
@@ -657,7 +676,8 @@ export default function AdminPage() {
               flacon_designer: form.flacon_designer.trim() || null
             }
           : {}),
-        ...(hasAccords ? { accords: accordCheck.accords.length ? accordCheck.accords : null } : {})
+        ...(hasAccords ? { accords: accordCheck.accords.length ? accordCheck.accords : null } : {}),
+        ...(hasDiscontinued ? { discontinued: form.discontinued === 'true' } : {})
       };
 
       let savedSlug: string | null = null;
@@ -1062,6 +1082,21 @@ export default function AdminPage() {
                   <div style={{ gridColumn: '1 / -1' }} className="field">
                     <label>Bekannte günstige Alternative zu (Name | Marke | Preis CHF | Hinweis)</label>
                     <textarea value={form.alternative_to} onChange={e => setField('alternative_to', e.target.value)} placeholder="Green Irish Tweed | Creed | | Gleicher Parfümeur (Pierre Bourdon)" style={{ width: '100%', minHeight: 70 }} disabled={!hasExtras} />
+                  </div>
+                  <div style={{ gridColumn: '1 / -1' }} className="field">
+                    <label style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                      <input
+                        type="checkbox"
+                        checked={form.discontinued === 'true'}
+                        onChange={e => setField('discontinued', e.target.checked ? 'true' : 'false')}
+                        disabled={!hasDiscontinued}
+                      />
+                      Nicht mehr erhältlich (wird nicht mehr hergestellt)
+                    </label>
+                    <p className="small" style={{ margin: '4px 0 0' }}>
+                      Die Duft-Seite zeigt dann keinen Kauf-Knopf, sondern Alternativen. Der Duft wird nirgends empfohlen.
+                      {!hasDiscontinued ? ' ⚠️ Dafür bitte zuerst SQL 65 in Supabase ausführen.' : ''}
+                    </p>
                   </div>
                   <div style={{ gridColumn: '1 / -1' }} className="field">
                     <label>Duftrichtung laut Parfumo (nach Stärke geordnet, mit Komma getrennt)</label>

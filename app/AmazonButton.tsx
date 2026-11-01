@@ -1,6 +1,8 @@
 import { type Perfume } from '@/lib/perfumes';
 
 export function AmazonButton({ perfume }: { perfume: Perfume }) {
+  // Eingestellte Düfte kann man nicht mehr kaufen – kein Kauf-Knopf.
+  if (perfume.discontinued) return null;
   const brand = perfume.brands?.name || '';
   const name = perfume.perfume_name || '';
   const searchQuery = `${brand} ${name}`.trim();

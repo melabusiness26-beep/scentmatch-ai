@@ -7,7 +7,7 @@ async function getSupabase(): Promise<SupabaseClient> {
   return (await import('./supabase')).supabase;
 }
 import { computeAuressaScore } from './score';
-import { cleanAlternatives, cleanSizes, type PerfumeExtras } from './perfume-extras';
+import { cleanAlternatives, cleanSizes, type AlternativeTo, type PerfumeExtras } from './perfume-extras';
 import { cleanStoredAccords } from './accords';
 
 export type PerfumeBrand = {
@@ -38,6 +38,8 @@ export type Perfume = {
   description: string | null;
   image_url: string | null;
   affiliate_url: string | null;
+  /** Wird nicht mehr hergestellt (SQL 65). Bleibt als Referenz im Katalog, wird aber nie empfohlen. */
+  discontinued?: boolean | null;
   is_featured?: boolean | null;
   top_notes: string[] | null;
   heart_notes: string[] | null;
@@ -68,10 +70,12 @@ export type Perfume = {
 // "riecht ähnlich wie …") –, tauchen aber nie als Empfehlung auf.
 // Düfte ohne Preisangabe werden nicht empfohlen, weil die Grenze für sie
 // nicht garantiert werden kann.
+// Eingestellte Düfte („Nicht mehr erhältlich") werden ebenfalls nie empfohlen – sie
+// bleiben nur als Ausgangsduft für Alternativen im Katalog.
 export const MAX_PRICE_CHF = 180;
 
-export function isWithinPriceCap(p: Pick<Perfume, 'price_chf'>): boolean {
-  return p.price_chf != null && p.price_chf > 0 && p.price_chf <= MAX_PRICE_CHF;
+export function isWithinPriceCap(p: Pick<Perfume, 'price_chf' | 'discontinued'>): boolean {
+  return !p.discontinued && p.price_chf != null && p.price_chf > 0 && p.price_chf <= MAX_PRICE_CHF;
 }
 
 // Ausgeschriebene Konzentration (im Admin als Kürzel gespeichert).
@@ -91,8 +95,21 @@ export function concentrationLabel(code: string | null | undefined): string | nu
 
 // Felder, die wir aus Supabase laden. Zentral definiert, damit Startseite und
 // Detailseite garantiert dieselbe Struktur verwenden.
-const PERFUME_FIELDS =
+const PERFUME_FIELDS_BASE =
   'id, perfume_name, slug, gender, fragrance_family, price_chf, volume_ml, longevity, sillage, scentmatch_score, season, occasion, description, image_url, affiliate_url, concentration, top_notes, heart_notes, base_notes, age_group, lifestyle, trend_vibe, gender_nuance, brands(name, slug, country)';
+const PERFUME_FIELDS = PERFUME_FIELDS_BASE.replace(', brands(', ', discontinued, brands(');
+
+// Die Spalte „discontinued" gibt es erst nach SQL 65. Fehlt sie noch, wird ohne sie
+// geladen – die Seite funktioniert dann wie bisher (alle Düfte gelten als erhältlich).
+type QueryResult = { data: unknown; error: { code?: string; message?: string } | null };
+async function selectPerfumes<T extends QueryResult>(run: (fields: string) => PromiseLike<T>): Promise<T> {
+  const result = await run(PERFUME_FIELDS);
+  const err = result.error;
+  if (err && (err.code === '42703' || /discontinued/i.test(err.message || ''))) {
+    return run(PERFUME_FIELDS_BASE);
+  }
+  return result;
+}
 
 // Redaktionelle Duftbeschreibung – siehe lib/perfume-text.ts.
 export { describePerfume } from './perfume-text';
@@ -177,13 +194,15 @@ function failOnServer(error: { message?: string } | null): void {
 export async function getPerfumes(limit = 60): Promise<Perfume[]> {
   const supabase = await getSupabase();
   if (!isSupabaseConfigured) return [];
-  const { data, error } = await supabase
-    .from('perfumes')
-    .select(PERFUME_FIELDS)
-    // Der Auressa-Score wird erst unten berechnet (Spalte in der DB ist leer) –
-    // deshalb stabil nach Name laden und danach nach Score sortieren.
-    .order('perfume_name', { ascending: true })
-    .limit(limit);
+  const { data, error } = await selectPerfumes((fields) =>
+    supabase
+      .from('perfumes')
+      .select(fields)
+      // Der Auressa-Score wird erst unten berechnet (Spalte in der DB ist leer) –
+      // deshalb stabil nach Name laden und danach nach Score sortieren.
+      .order('perfume_name', { ascending: true })
+      .limit(limit)
+  );
   failOnServer(error);
   if (error) return [];
   return withScores(dedupePerfumes((data as unknown as Perfume[]) || []));
@@ -258,12 +277,14 @@ export async function getBrandBySlug(slug: string): Promise<Brand | null> {
 export async function getPerfumesByBrand(brandSlug: string): Promise<Perfume[]> {
   const supabase = await getSupabase();
   if (!isSupabaseConfigured) return [];
-  const { data, error } = await supabase
-    .from('perfumes')
-    // !inner: nur Düfte dieser Marke laden (ohne !inner liefert Supabase alle Düfte).
-    .select(PERFUME_FIELDS.replace('brands(name, slug, country)', 'brands!inner(name, slug, country)'))
-    .eq('brands.slug', brandSlug)
-    .order('perfume_name', { ascending: true });
+  const { data, error } = await selectPerfumes((fields) =>
+    supabase
+      .from('perfumes')
+      // !inner: nur Düfte dieser Marke laden (ohne !inner liefert Supabase alle Düfte).
+      .select(fields.replace('brands(name, slug, country)', 'brands!inner(name, slug, country)'))
+      .eq('brands.slug', brandSlug)
+      .order('perfume_name', { ascending: true })
+  );
   failOnServer(error);
   if (error || !data) return [];
   // Zur Sicherheit zusätzlich prüfen
@@ -288,11 +309,9 @@ export async function getBrandCount(): Promise<number> {
 export async function getPerfumeBySlug(slug: string): Promise<Perfume | null> {
   const supabase = await getSupabase();
   if (!isSupabaseConfigured) return null;
-  const { data, error } = await supabase
-    .from('perfumes')
-    .select(PERFUME_FIELDS)
-    .eq('slug', slug)
-    .maybeSingle();
+  const { data, error } = await selectPerfumes((fields) =>
+    supabase.from('perfumes').select(fields).eq('slug', slug).maybeSingle()
+  );
   failOnServer(error);
   if (error) return null;
   return data ? withAuressaScore(data as unknown as Perfume) : null;
@@ -315,6 +334,23 @@ export async function getPerfumeBackground(id: string): Promise<PerfumeBackgroun
     if (!error) return (data as PerfumeBackground) || {};
   }
   return {};
+}
+
+// Alle Düfte, die als bekannte Alternative zu einem anderen Duft eingetragen sind
+// (Feld „Alternative zu"). So zeigt auch die Seite des ORIGINALS seine geprüften Dupes.
+export type AlternativeLink = { slug: string; alternative_to: AlternativeTo[] };
+
+export async function getAlternativeLinks(): Promise<AlternativeLink[]> {
+  const supabase = await getSupabase();
+  if (!isSupabaseConfigured) return [];
+  const { data, error } = await supabase
+    .from('perfumes')
+    .select('slug, alternative_to')
+    .not('alternative_to', 'is', null);
+  if (error || !data) return [];
+  return (data as { slug: string | null; alternative_to: unknown }[])
+    .map((row) => ({ slug: row.slug || '', alternative_to: cleanAlternatives(row.alternative_to) }))
+    .filter((row) => row.slug && row.alternative_to.length > 0);
 }
 
 // Zusatzangaben (Grössen, Alternative zu, ähnliche Düfte, Flakon). Die neuen Spalten
@@ -416,12 +452,14 @@ export async function getPerfumesByTag(tag: string, limit = 40): Promise<Perfume
   // PostgreSQL-Syntax: top_notes.cs.{term} funktioniert nur bei exaktem Match.
   // Daher: description enthält oft die Noten als Text → reicht für die meisten Fälle.
   // Zusätzlich suchen wir die Noten als Text über eine separate Abfrage und mergen.
-  const { data: textData, error: textError } = await supabase
-    .from('perfumes')
-    .select(PERFUME_FIELDS)
-    .or(textParts.join(','))
-    .order('perfume_name', { ascending: true })
-    .limit(limit);
+  const { data: textData, error: textError } = await selectPerfumes((fields) =>
+    supabase
+      .from('perfumes')
+      .select(fields)
+      .or(textParts.join(','))
+      .order('perfume_name', { ascending: true })
+      .limit(limit)
+  );
 
   // Parallel: Array-Felder mit cs (contains) – jeder Begriff in Varianten (klein + Grossschreibung)
   // cs ist case-sensitive → wir suchen sowohl 'bergamotte' als auch 'Bergamotte'
@@ -431,12 +469,14 @@ export async function getPerfumesByTag(tag: string, limit = 40): Promise<Perfume
   ]);
   const arrayResults = await Promise.all(
     arrayTermVariants.map((t) =>
-      supabase
-        .from('perfumes')
-        .select(PERFUME_FIELDS)
-        .or(`top_notes.cs.{${t}},heart_notes.cs.{${t}},base_notes.cs.{${t}}`)
-        .order('perfume_name', { ascending: true })
-        .limit(20)
+      selectPerfumes((fields) =>
+        supabase
+          .from('perfumes')
+          .select(fields)
+          .or(`top_notes.cs.{${t}},heart_notes.cs.{${t}},base_notes.cs.{${t}}`)
+          .order('perfume_name', { ascending: true })
+          .limit(20)
+      )
     )
   );
 

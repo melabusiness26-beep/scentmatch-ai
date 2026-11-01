@@ -22,6 +22,8 @@ export function AffiliateButton({
   label?: string;
   showNote?: boolean;
 }) {
+  // Eingestellte Düfte kann man nicht mehr kaufen – kein Kauf-Knopf.
+  if (perfume.discontinued) return null;
   // Nur echte https-Partnerlinks gelten als Partner-Shop (sonst nutzt buyUrl die Suche).
   const isPartnerLink = Boolean(perfume.affiliate_url && /^https:\/\//i.test(perfume.affiliate_url));
   const text = label ?? (isPartnerLink ? 'Im Partner-Shop ansehen →' : 'Online suchen →');

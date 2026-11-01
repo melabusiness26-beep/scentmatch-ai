@@ -7,7 +7,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 export const metadata: Metadata = {
   title: 'Duftsammlung aufbauen: Schritt für Schritt',
   description:
-    'Wie du eine kuratierte Duftsammlung aufbaust – von der ersten Wahl über die Ergänzung bis zur 5, 10 oder 20+ Duft-Kollektion. Mit Strategien für jeden Budget und jede Gelegenheit.',
+    'So baust du Schritt für Schritt eine Duftsammlung auf – vom ersten Duft bis zur kleinen Kollektion, passend zu deinem Budget und jedem Anlass.',
   alternates: { canonical: '/duftsammlung' },
   openGraph: {
       images: ['/opengraph-image'],

@@ -7,7 +7,7 @@ export const revalidate = 3600;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Duftnoten verstehen: Kopf-, Herz- und Basisnoten erklärt',
+  title: 'Duftnoten verstehen: Kopf-, Herz- und Basisnoten',
   description:
     'Lerne, wie Duftnoten funktionieren: Was sind Kopf-, Herz- und Basisnoten? Wie du Duftkombinationen verstehst und deine Duft-Vorlieben findest.',
   alternates: { canonical: `${SITE_URL}/duftnoten-guide` },

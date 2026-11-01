@@ -7,7 +7,7 @@ import LineIcon, { destinationIcon } from '@/app/LineIcon';
 export const metadata: Metadata = {
   title: 'Welcher Duft passt zu deinem Reiseziel?',
   description:
-    'Rom, Karibik oder Schweizer Alpen? Finde den Duft, der zu deinem Traumziel passt. Passende Parfüms für Städtereisen, Berge und Strände – wahrheitsgemäss nach echten Duftnoten.',
+    'Rom, Karibik oder Schweizer Alpen? Finde Düfte, die zu deinem Reiseziel passen – für Städtereisen, Berge und Strand, ausgewählt nach echten Duftnoten.',
   alternates: { canonical: 'https://auressa.ch/reiseduefte' },
   openGraph: {
       images: ['/opengraph-image'],

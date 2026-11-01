@@ -7,7 +7,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 export const metadata: Metadata = {
   title: 'Häufige Fragen (FAQ) zu Parfüm & Auressa',
   description:
-    'Antworten auf die häufigsten Fragen rund um Parfüm, Duft-Findung und Auressa: Was ist ein Auressa-Score? Wie funktioniert das Quiz? Was sind Dupes? Ehrliche Antworten, kein Fachjargon.',
+    'Antworten auf häufige Fragen zu Parfüm und Auressa: Wie funktionieren Quiz und Auressa-Score? Was sind Dupes? Ehrlich und ohne Fachjargon.',
   alternates: { canonical: `${SITE_URL}/faq` },
   openGraph: {
       images: ['/opengraph-image'],

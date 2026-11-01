@@ -9,7 +9,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 export const metadata: Metadata = {
   title: 'Über Auressa – Die Geschichte hinter der Plattform',
   description:
-    'Auressa entstand aus einer persönlichen Frustration: Zu viele Parfüms gekauft, die nicht gepasst haben. Melanie aus der Schweiz hat das geändert – ehrlich, auf Deutsch, mit echten Empfehlungen.',
+    'Wie Auressa entstand: Melanie aus der Schweiz hat zu viele unpassende Parfüms gekauft – und eine ehrliche Duft-Plattform auf Deutsch gegründet.',
   alternates: { canonical: `${SITE_URL}/ueber-uns` },
   openGraph: {
       images: ['/opengraph-image'],

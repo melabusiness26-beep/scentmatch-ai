@@ -120,7 +120,9 @@ export async function generateMetadata({
       ? `${core} – Duftprofil & Bewertung`
       : core.length + ' – Duftnoten & Preis | Auressa'.length <= 62
         ? `${core} – Duftnoten & Preis`
-        : core;
+        : core.length + ' | Auressa'.length <= 62
+          ? core
+          : core.replace('Eau de Toilette', 'EdT').replace('Eau de Parfum', 'EdP');
   // Abwechslungsreiche Beschreibung aus echten Duftdaten (statt gleicher Schablone
   // auf hunderten Seiten) – gut gegen „dünnen/doppelten Inhalt".
   // Gespeicherte Duftrichtung (Parfumo) hat Vorrang vor der Berechnung aus den Noten.

@@ -114,7 +114,7 @@ export const guides: Guide[] = [
     title: 'Die besten Sommerdüfte: Leichtigkeit, Frische & Eleganz für heisse Tage',
     seoTitle: 'Die besten Sommerdüfte: frisch & leicht',
     description:
-      'Der richtige Sommerduft ändert alles. Entdecke Düfte, die dich erfrischt, elegant und unbeschwert durch warme Tage bringen. Von frischen Klassikern über moderne Nischen-Favoriten bis zu überraschenden Geheimtipps: für Alltag, Strand, Date und festliche Aperitifs. Dein Sommer-Signature wartet.',
+      'Der richtige Sommerduft ändert alles. Entdecke Düfte, die dich frisch, elegant und unbeschwert durch warme Tage bringen. Von frischen Klassikern über moderne Nischen-Favoriten bis zu überraschenden Geheimtipps: für Alltag, Strand, Date und festliche Aperitifs. Deine Sommer-Signatur wartet.',
     heroImage: '/ratgeber/sommerduefte-hero.jpg',
     intro: [
       'Ein schwerer Duft mit Oud im Juli ist eine Tortur. 30 Grad Hitze verstärkt jede Note, und das Resultat ist erdrückend – für dich selbst, für deine Umgebung, für alle. Ein guter Sommerduft ist nicht „weniger Duft", sondern eine andere Art von Duft. Es geht nicht darum, auf Qualität zu verzichten, sondern Leichtigkeit bewusst zu komponieren. Ein wirklich grossartiger Sommerduft erfrischt dich, wirkt elegant, und bleibt präsent ohne aufdringlich zu sein, egal ob du gerade aus dem Wasser kommst oder im Büro sitzt.',

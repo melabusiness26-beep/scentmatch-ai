@@ -274,7 +274,7 @@ export default function DuftchemieGrundlagen() {
           </div>
 
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3728', marginBottom: '1.2rem' }}>
-            <strong>Praktischer Hinweis:</strong> Ein grossartiger Duft braucht Balance. Nur Kopfnoten = kurzer Spass und dann weg. Nur Basisnoten = ein schwerer Duft, der dich stundenlang verfolgst. Ein gutes Gleichgewicht = mehrere Stunden angenehmes Riechen.
+            <strong>Praktischer Hinweis:</strong> Ein grossartiger Duft braucht Balance. Nur Kopfnoten = kurzer Spass und dann weg. Nur Basisnoten = ein schwerer Duft, der dich stundenlang verfolgt. Ein gutes Gleichgewicht = mehrere Stunden angenehmes Riechen.
           </p>
         </section>
 

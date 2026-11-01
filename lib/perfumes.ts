@@ -1,4 +1,11 @@
-import { supabase, isSupabaseConfigured } from './supabase';
+import { isSupabaseConfigured } from './supabase-config';
+
+// Die Datenbank-Bibliothek (supabase-js, ~230 KB) erst bei Bedarf laden. So bekommen Seiten,
+// die im Browser nur Hilfsfunktionen (Score, Texte, Filter) nutzen, diesen Code gar nicht.
+type SupabaseClient = (typeof import('./supabase'))['supabase'];
+async function getSupabase(): Promise<SupabaseClient> {
+  return (await import('./supabase')).supabase;
+}
 import { computeAuressaScore } from './score';
 import { cleanAlternatives, cleanSizes, type PerfumeExtras } from './perfume-extras';
 import { cleanStoredAccords } from './accords';
@@ -168,6 +175,7 @@ function failOnServer(error: { message?: string } | null): void {
 
 // Liste der Düfte, nach Auressa-Score sortiert (beste zuerst).
 export async function getPerfumes(limit = 60): Promise<Perfume[]> {
+  const supabase = await getSupabase();
   if (!isSupabaseConfigured) return [];
   const { data, error } = await supabase
     .from('perfumes')
@@ -189,6 +197,7 @@ export function catalogCountLabel(count: number | null | undefined): string | nu
 }
 
 export async function getPerfumeCount(): Promise<number> {
+  const supabase = await getSupabase();
   if (!isSupabaseConfigured) return 0;
   const { count, error } = await supabase
     .from('perfumes')
@@ -209,6 +218,7 @@ export type Brand = {
 
 // Alle Marken alphabetisch – für den Marken-Index.
 export async function getAllBrands(): Promise<Brand[]> {
+  const supabase = await getSupabase();
   if (!isSupabaseConfigured) return [];
   const { data, error } = await supabase
     .from('brands')
@@ -220,6 +230,7 @@ export async function getAllBrands(): Promise<Brand[]> {
 
 // Alle Brand-Slugs – für generateStaticParams.
 export async function getAllBrandSlugs(): Promise<string[]> {
+  const supabase = await getSupabase();
   if (!isSupabaseConfigured) return [];
   const { data, error } = await supabase
     .from('brands')
@@ -232,6 +243,7 @@ export async function getAllBrandSlugs(): Promise<string[]> {
 
 // Einzelne Marke per Slug.
 export async function getBrandBySlug(slug: string): Promise<Brand | null> {
+  const supabase = await getSupabase();
   if (!isSupabaseConfigured) return null;
   const { data, error } = await supabase
     .from('brands')
@@ -244,6 +256,7 @@ export async function getBrandBySlug(slug: string): Promise<Brand | null> {
 
 // Alle Düfte einer bestimmten Marke.
 export async function getPerfumesByBrand(brandSlug: string): Promise<Perfume[]> {
+  const supabase = await getSupabase();
   if (!isSupabaseConfigured) return [];
   const { data, error } = await supabase
     .from('perfumes')
@@ -262,6 +275,7 @@ export async function getPerfumesByBrand(brandSlug: string): Promise<Perfume[]> 
 
 // Echte Anzahl der Marken im Katalog – aus der brands-Tabelle, nicht aus geladenen Düften.
 export async function getBrandCount(): Promise<number> {
+  const supabase = await getSupabase();
   if (!isSupabaseConfigured) return 0;
   const { count, error } = await supabase
     .from('brands')
@@ -272,6 +286,7 @@ export async function getBrandCount(): Promise<number> {
 
 // Einzelnen Duft anhand seines slug laden (für die Detailseite).
 export async function getPerfumeBySlug(slug: string): Promise<Perfume | null> {
+  const supabase = await getSupabase();
   if (!isSupabaseConfigured) return null;
   const { data, error } = await supabase
     .from('perfumes')
@@ -289,6 +304,7 @@ export async function getPerfumeBySlug(slug: string): Promise<Perfume | null> {
 export type PerfumeBackground = Pick<Perfume, 'release_year' | 'perfumer' | 'inspiration' | 'good_to_know'>;
 
 export async function getPerfumeBackground(id: string): Promise<PerfumeBackground> {
+  const supabase = await getSupabase();
   if (!isSupabaseConfigured) return {};
   for (const fields of [
     'release_year, perfumer, inspiration, good_to_know',
@@ -304,6 +320,7 @@ export async function getPerfumeBackground(id: string): Promise<PerfumeBackgroun
 // Zusatzangaben (Grössen, Alternative zu, ähnliche Düfte, Flakon). Die neuen Spalten
 // gibt es erst nach SQL 62 – fehlen sie noch, werden nur die älteren geladen.
 export async function getPerfumeExtras(id: string): Promise<PerfumeExtras> {
+  const supabase = await getSupabase();
   if (!isSupabaseConfigured) return {};
   for (const fields of [
     'sizes, alternative_to, similar_perfumes, flacon_description, flacon_designer, accords',
@@ -329,6 +346,7 @@ export async function getPerfumeExtras(id: string): Promise<PerfumeExtras> {
 
 // Alle slugs – für die Sitemap und das Vorab-Generieren der Detailseiten.
 export async function getAllPerfumeSlugs(): Promise<string[]> {
+  const supabase = await getSupabase();
   if (!isSupabaseConfigured) return [];
   const { data, error } = await supabase.from('perfumes').select('slug');
   failOnServer(error);
@@ -374,6 +392,7 @@ const TAG_KEYWORD_MAP: Record<string, string[]> = {
 };
 
 export async function getPerfumesByTag(tag: string, limit = 40): Promise<Perfume[]> {
+  const supabase = await getSupabase();
   if (!isSupabaseConfigured) return [];
   const tagLower = tag.toLowerCase();
 
@@ -469,6 +488,7 @@ export type QuizQuestionDB = {
 
 // Lädt alle Quiz-Fragen mit ihren Antworten von Supabase.
 export async function getQuizQuestions(): Promise<QuizQuestionDB[]> {
+  const supabase = await getSupabase();
   if (!isSupabaseConfigured) return [];
   const { data, error } = await supabase
     .from('quiz_questions')
@@ -1113,6 +1133,7 @@ export async function autoTagAllPerfumes(): Promise<{
   success: number;
   failed: number;
 }> {
+  const supabase = await getSupabase();
   if (!isSupabaseConfigured) {
     return { success: 0, failed: 0 };
   }

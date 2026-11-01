@@ -202,7 +202,7 @@ export default function DuftDetektiv({ allPerfumes, prefilledAnswers }: DuftDete
         }}>
           <h2 style={{
             fontSize: 'clamp(32px, 7vw, 48px)',
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontWeight: 700,
             marginBottom: '1rem',
             lineHeight: 1.1,

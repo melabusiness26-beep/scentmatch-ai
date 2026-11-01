@@ -1,11 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { getPerfumesByTag } from '@/lib/perfumes';
 import { PerfumeTile } from '@/app/PerfumeTile';
 
 export const revalidate = 300;
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
+
+// Nur einfache Schlagworte zulassen (Buchstaben, Zahlen, Bindestrich) – alles andere ist 404.
+function isValidTag(slug: string): boolean {
+  return /^[a-z0-9äöüé-]{2,40}$/.test(decodeURIComponent(slug).toLowerCase());
+}
 
 // Slug → lesbares Label
 function tagLabel(slug: string): string {
@@ -22,7 +28,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const label = tagLabel(slug);
   return {
-    title: `${label} Düfte – Parfüm-Empfehlungen | Auressa`,
+    // Marke hängt das globale Titel-Template an.
+    title: `${label} Düfte – Parfüm-Empfehlungen`,
+    // Schlagwort-Seiten sind Hilfsseiten mit wechselndem Inhalt: nicht in Google aufnehmen.
+    robots: { index: false, follow: true },
     description: tagDescription(slug),
     alternates: { canonical: `/tag/${slug}` },
     openGraph: {
@@ -37,8 +46,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function TagPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  if (!isValidTag(slug)) notFound();
   const label = tagLabel(slug);
   const perfumes = await getPerfumesByTag(slug);
+  // Keine passenden Düfte → echte 404 statt leerer Seite.
+  if (perfumes.length === 0) notFound();
 
   return (
     <>
@@ -72,7 +84,7 @@ export default async function TagPage({ params }: { params: Promise<{ slug: stri
           </div>
           <h1 style={{
             fontSize: 'clamp(1.8rem, 6vw, 2.8rem)',
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             color: '#2a1d12',
             margin: '0 0 0.5rem',
             lineHeight: 1.2,

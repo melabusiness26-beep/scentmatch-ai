@@ -56,7 +56,7 @@ export default function UeberUnsPage() {
           </p>
           <h1 style={{
             fontSize: 'clamp(28px, 7vw, 44px)',
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontWeight: 700,
             marginBottom: '1rem',
             lineHeight: 1.15,
@@ -77,7 +77,7 @@ export default function UeberUnsPage() {
           <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>
             Die Geschichte
           </p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.25rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.25rem' }}>
             Warum ich Auressa gegründet habe
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1rem' }}>
@@ -101,7 +101,7 @@ export default function UeberUnsPage() {
           <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>
             Was wir bieten
           </p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.5rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.5rem' }}>
             Mehr als eine Duftliste
           </h2>
           <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
@@ -120,7 +120,7 @@ export default function UeberUnsPage() {
                 padding: '1.25rem',
               }}>
                 <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>{item.icon}</div>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1rem', fontWeight: 700, color: '#2a1d12', marginBottom: '0.4rem' }}>{item.title}</h3>
+                <h3 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1rem', fontWeight: 700, color: '#2a1d12', marginBottom: '0.4rem' }}>{item.title}</h3>
                 <p style={{ fontSize: '0.875rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>{item.text}</p>
               </div>
             ))}
@@ -132,7 +132,7 @@ export default function UeberUnsPage() {
           <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>
             Meine Grundsätze
           </p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, color: '#faf7f2', marginBottom: '1.25rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, color: '#faf7f2', marginBottom: '1.25rem' }}>
             Worauf ich bei Auressa bestehe
           </h2>
           <div style={{ display: 'grid', gap: '0.75rem' }}>
@@ -157,7 +157,7 @@ export default function UeberUnsPage() {
           <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>
             Methode
           </p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
             Wie die Match-Engine funktioniert
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1rem' }}>
@@ -173,7 +173,7 @@ export default function UeberUnsPage() {
 
         {/* Kontakt */}
         <section style={{ marginBottom: '3rem', borderTop: '1px solid rgba(212,175,55,0.2)', paddingTop: '2rem' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '0.75rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '0.75rem' }}>
             Schreib mir
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1rem' }}>
@@ -206,7 +206,7 @@ export default function UeberUnsPage() {
           padding: '2rem',
           textAlign: 'center',
         }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '0.75rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '0.75rem' }}>
             Bereit, deinen Duft zu finden?
           </h2>
           <p style={{ color: '#6b5344', marginBottom: '1.5rem', fontSize: '0.95rem' }}>

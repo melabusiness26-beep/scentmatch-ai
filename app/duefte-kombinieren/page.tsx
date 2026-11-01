@@ -42,7 +42,7 @@ export default function FragranceLayeringPage() {
           </p>
           <h1 style={{
             fontSize: 'clamp(28px, 6vw, 48px)',
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontWeight: 700,
             marginBottom: '1.5rem',
             lineHeight: 1.15,
@@ -71,7 +71,7 @@ export default function FragranceLayeringPage() {
         {/* Warum Layering */}
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontSize: '1.8rem',
             fontWeight: 700,
             color: '#d4af37',
@@ -133,7 +133,7 @@ export default function FragranceLayeringPage() {
         {/* Layering-Strategien */}
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontSize: '1.8rem',
             fontWeight: 700,
             color: '#d4af37',
@@ -207,7 +207,7 @@ export default function FragranceLayeringPage() {
         {/* Praktische Anleitung */}
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontSize: '1.8rem',
             fontWeight: 700,
             color: '#d4af37',
@@ -292,7 +292,7 @@ export default function FragranceLayeringPage() {
         {/* Häufige Kombinationen */}
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontSize: '1.8rem',
             fontWeight: 700,
             color: '#d4af37',
@@ -366,7 +366,7 @@ export default function FragranceLayeringPage() {
         {/* Pro-Tipps */}
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontSize: '1.8rem',
             fontWeight: 700,
             color: '#d4af37',
@@ -425,7 +425,7 @@ export default function FragranceLayeringPage() {
         {/* FAQ */}
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontSize: '1.8rem',
             fontWeight: 700,
             color: '#d4af37',
@@ -494,7 +494,7 @@ export default function FragranceLayeringPage() {
           <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.75rem' }}>
             Bereit zum Experimentieren?
           </p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.6rem', fontWeight: 700, color: '#faf7f2', marginBottom: '1rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.6rem', fontWeight: 700, color: '#faf7f2', marginBottom: '1rem' }}>
             Baue deine Layering-Kollektion
           </h2>
           <p style={{ color: 'rgba(250,247,242,0.75)', marginBottom: '1.5rem', fontSize: '0.95rem' }}>

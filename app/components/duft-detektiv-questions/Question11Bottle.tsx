@@ -21,7 +21,7 @@ export default function Question11Bottle({ answers, handleAnswer }: QuestionProp
     <div style={{ marginBottom: '3rem' }}>
       <h2 style={{
         fontSize: 'clamp(20px, 4vw, 28px)',
-        fontFamily: "'Playfair Display', serif",
+        fontFamily: "var(--font-display), Georgia, serif",
         fontWeight: 700,
         color: '#2a1d12',
         marginBottom: '2.5rem', lineHeight: 1.3,

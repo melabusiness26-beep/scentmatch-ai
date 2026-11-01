@@ -156,14 +156,27 @@ function withScores(perfumes: Perfume[]): Perfume[] {
   return perfumes.map(withAuressaScore).sort((a, b) => (b.scentmatch_score ?? 0) - (a.scentmatch_score ?? 0));
 }
 
+// Datenbankfehler auf dem Server nicht verschlucken: Sonst würde eine kurze Supabase-Störung
+// eine leere Seite erzeugen, die dann bis zur nächsten Aktualisierung zwischengespeichert bleibt.
+// Wirft der Server, behält Next.js einfach die letzte gute Version. Im Browser bleibt es bei
+// einer leeren Liste, damit die Seite nicht abstürzt.
+function failOnServer(error: { message?: string } | null): void {
+  if (error && typeof window === 'undefined') {
+    throw new Error(`Supabase-Abfrage fehlgeschlagen: ${error.message || 'unbekannt'}`);
+  }
+}
+
 // Liste der Düfte, nach Auressa-Score sortiert (beste zuerst).
 export async function getPerfumes(limit = 60): Promise<Perfume[]> {
   if (!isSupabaseConfigured) return [];
   const { data, error } = await supabase
     .from('perfumes')
     .select(PERFUME_FIELDS)
-    .order('scentmatch_score', { ascending: false })
+    // Der Auressa-Score wird erst unten berechnet (Spalte in der DB ist leer) –
+    // deshalb stabil nach Name laden und danach nach Score sortieren.
+    .order('perfume_name', { ascending: true })
     .limit(limit);
+  failOnServer(error);
   if (error) return [];
   return withScores(dedupePerfumes((data as unknown as Perfume[]) || []));
 }
@@ -234,11 +247,13 @@ export async function getPerfumesByBrand(brandSlug: string): Promise<Perfume[]> 
   if (!isSupabaseConfigured) return [];
   const { data, error } = await supabase
     .from('perfumes')
-    .select(PERFUME_FIELDS)
+    // !inner: nur Düfte dieser Marke laden (ohne !inner liefert Supabase alle Düfte).
+    .select(PERFUME_FIELDS.replace('brands(name, slug, country)', 'brands!inner(name, slug, country)'))
     .eq('brands.slug', brandSlug)
-    .order('scentmatch_score', { ascending: false });
+    .order('perfume_name', { ascending: true });
+  failOnServer(error);
   if (error || !data) return [];
-  // Filter client-side, weil Supabase den Join-Filter nicht immer korrekt umsetzt
+  // Zur Sicherheit zusätzlich prüfen
   const all = (data as unknown as Perfume[]);
   return withScores(dedupePerfumes(all.filter((p) => p.brands?.slug === brandSlug)));
 }
@@ -263,6 +278,7 @@ export async function getPerfumeBySlug(slug: string): Promise<Perfume | null> {
     .select(PERFUME_FIELDS)
     .eq('slug', slug)
     .maybeSingle();
+  failOnServer(error);
   if (error) return null;
   return data ? withAuressaScore(data as unknown as Perfume) : null;
 }
@@ -315,6 +331,7 @@ export async function getPerfumeExtras(id: string): Promise<PerfumeExtras> {
 export async function getAllPerfumeSlugs(): Promise<string[]> {
   if (!isSupabaseConfigured) return [];
   const { data, error } = await supabase.from('perfumes').select('slug');
+  failOnServer(error);
   if (error || !data) return [];
   return (data as { slug: string | null }[])
     .map((row) => row.slug)
@@ -384,7 +401,7 @@ export async function getPerfumesByTag(tag: string, limit = 40): Promise<Perfume
     .from('perfumes')
     .select(PERFUME_FIELDS)
     .or(textParts.join(','))
-    .order('scentmatch_score', { ascending: false })
+    .order('perfume_name', { ascending: true })
     .limit(limit);
 
   // Parallel: Array-Felder mit cs (contains) – jeder Begriff in Varianten (klein + Grossschreibung)
@@ -399,7 +416,7 @@ export async function getPerfumesByTag(tag: string, limit = 40): Promise<Perfume
         .from('perfumes')
         .select(PERFUME_FIELDS)
         .or(`top_notes.cs.{${t}},heart_notes.cs.{${t}},base_notes.cs.{${t}}`)
-        .order('scentmatch_score', { ascending: false })
+        .order('perfume_name', { ascending: true })
         .limit(20)
     )
   );

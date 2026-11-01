@@ -42,7 +42,7 @@ export default function DuftlaengePage() {
           </p>
           <h1 style={{
             fontSize: 'clamp(24px, 6vw, 40px)',
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontWeight: 700,
             marginBottom: '1rem',
             lineHeight: 1.15,
@@ -60,7 +60,7 @@ export default function DuftlaengePage() {
 
         {/* Longevity */}
         <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.5rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.5rem' }}>
             ⏱️ Haltbarkeit: Wie lange hält der Duft?
           </h2>
 
@@ -123,7 +123,7 @@ export default function DuftlaengePage() {
 
         {/* Sillage */}
         <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.5rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.5rem' }}>
             👃 Sillage: Wie weit trägt der Duft?
           </h2>
 
@@ -186,7 +186,7 @@ export default function DuftlaengePage() {
 
         {/* Matrix */}
         <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.5rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.5rem' }}>
             Die perfekte Kombination finden
           </h2>
 
@@ -231,7 +231,7 @@ export default function DuftlaengePage() {
 
         {/* FAQ */}
         <section style={{ marginBottom: '3rem', background: 'linear-gradient(135deg, #2a1d12 0%, #3d2b1a 100%)', borderRadius: '16px', padding: '2rem 1.5rem', color: '#faf7f2' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: '1.25rem', marginTop: 0 }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: '1.25rem', marginTop: 0 }}>
             ❓ Häufige Fragen
           </h2>
 
@@ -266,7 +266,7 @@ export default function DuftlaengePage() {
 
         {/* CTA */}
         <section style={{ textAlign: 'center', paddingTop: '2rem', borderTop: '1px solid rgba(212,175,55,0.2)' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.25rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.25rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
             Die richtigen Düfte für dich finden
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>

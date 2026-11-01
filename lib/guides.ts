@@ -1335,7 +1335,7 @@ export const guides: Guide[] = [
         heading: 'Die verschiedenen Holz-Charaktere',
         body: [
           'Sandelholz ist cremig, weich und leicht süsslich – der warme Klassiker. Es ist fast universell tragefreundlich. Ein Sandelholz-Duft wirkt tagsüber angenehm und einladend, abends sinnlich. Das ist der Einstiegs-Holzduft für viele Menschen.',
-          'Zedernholz ist trocken, klar und elegant – es gibt Struktur und einen gepflegten Charakter. Häufig in frisch-holzigen Düften, wirkt es im Büro absolut perfekt. Es signal Kompetenz und Kontrolle, ohne aufdringlich zu wirken.',
+          'Zedernholz ist trocken, klar und elegant – es gibt Struktur und einen gepflegten Charakter. Häufig in frisch-holzigen Düften, wirkt es im Büro absolut perfekt. Es signalisiert Kompetenz und Kontrolle, ohne aufdringlich zu wirken.',
           'Vetiver ist erdig-grün und rauchig – es gibt Frische und sofort erkennbaren Charakter. Vetiver-Düfte sind unglaublich vielseitig: von sportlich-frisch bis herb-elegant. Für diejenigen, die Holz mit Tiefe und Persönlichkeit wollen.',
           'Oud und Leder sind dunkel, intensiv und edel – die Luxus-Varianten. Diese Düfte sind am schönsten am Abend, im Winter und bei besonderen Anlässen. Sie sind ein Statement: Reife, Raffinesse, Kontrolle.'
         ]

@@ -29,7 +29,7 @@ export function OlfactoryPyramide({ perfume }: { perfume: Perfume }) {
       <h2 style={{
         fontSize: 'clamp(28px, 4.5vw, 40px)',
         fontWeight: 700,
-        fontFamily: "'Playfair Display', serif",
+        fontFamily: "var(--font-display), Georgia, serif",
         color: '#1F1410',
         margin: '0 0 48px 0',
         letterSpacing: '-0.015em',

@@ -197,7 +197,7 @@ export default function FaqPage() {
           </p>
           <h1 style={{
             fontSize: 'clamp(24px, 6vw, 40px)',
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontWeight: 700,
             marginBottom: '1rem',
             lineHeight: 1.15,
@@ -255,7 +255,7 @@ export default function FaqPage() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.5rem' }}>
               <span style={{ fontSize: '1.3rem' }}>{group.icon}</span>
               <h2 style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "var(--font-display), Georgia, serif",
                 fontSize: 'clamp(20px, 4vw, 26px)',
                 fontWeight: 700,
                 color: '#2a1d12',
@@ -326,7 +326,7 @@ export default function FaqPage() {
           <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>
             Noch Fragen?
           </p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.4rem', fontWeight: 700, color: '#faf7f2', marginBottom: '0.75rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.4rem', fontWeight: 700, color: '#faf7f2', marginBottom: '0.75rem' }}>
             Probier das Quiz oder schreib uns
           </h2>
           <p style={{ color: 'rgba(250,247,242,0.7)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>

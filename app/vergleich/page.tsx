@@ -63,7 +63,7 @@ export default function PerfumeComparePage() {
         <section style={{ marginBottom: '3rem' }}>
           <h1 style={{
             fontSize: 'clamp(32px, 5vw, 56px)',
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontWeight: 700,
             marginBottom: '1rem',
             color: '#1F1410',
@@ -93,7 +93,7 @@ export default function PerfumeComparePage() {
             }}>
               <h2 style={{
                 fontSize: '1.3rem',
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "var(--font-display), Georgia, serif",
                 marginBottom: '1.5rem',
                 color: '#1F1410',
               }}>
@@ -237,7 +237,7 @@ export default function PerfumeComparePage() {
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{
             fontSize: '1.3rem',
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             marginBottom: '1rem',
             color: '#1F1410',
           }}>

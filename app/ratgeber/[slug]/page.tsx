@@ -121,6 +121,12 @@ export default async function GuidePage({
   // Alle Düfte einmal laden und nach slug nachschlagbar machen.
   const all = await getCachedPerfumes();
   const bySlug = new Map(all.filter((p) => p.slug).map((p) => [p.slug as string, p]));
+  // Abschnitt mit Duft-Liste, deren Düfte (noch) nicht im Katalog sind → Hinweis statt Lücke.
+  const listIsEmpty = (section: (typeof guide.sections)[number]) => {
+    if (section.pairings) return !section.pairings.some((p) => bySlug.has(p.expensive) && bySlug.has(p.cheap));
+    if (section.perfumes) return !section.perfumes.some((x) => bySlug.has(x));
+    return false;
+  };
 
   return (
     <main>
@@ -183,7 +189,20 @@ export default async function GuidePage({
                 </p>
               ))}
 
-              {section.pairings && (
+              {listIsEmpty(section) && (
+                <div className="card guide-pending">
+                  {section.pairings?.map((pair, k) => (
+                    <p className="small" key={k}>{pair.note}</p>
+                  ))}
+                  <p className="small">
+                    Die passenden Düfte zu diesem Abschnitt prüfen wir gerade mit mehreren Quellen für unseren
+                    Katalog. Sobald sie geprüft sind, erscheinen sie hier automatisch.
+                  </p>
+                  <Link href="/duefte" className="small">Alle geprüften Düfte ansehen →</Link>
+                </div>
+              )}
+
+              {section.pairings && !listIsEmpty(section) && (
                 <div className="pairing-list">
                   {section.pairings.map((pair, k) => {
                     const exp = bySlug.get(pair.expensive);
@@ -202,7 +221,7 @@ export default async function GuidePage({
                 </div>
               )}
 
-              {section.perfumes && (
+              {section.perfumes && !listIsEmpty(section) && (
                 <div className="perfume-list">
                   {section.perfumes
                     .map((s) => bySlug.get(s))

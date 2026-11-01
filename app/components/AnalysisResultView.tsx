@@ -50,7 +50,7 @@ type Tab = 'profil' | 'noten' | 'erlebnis' | 'kaufen';
 const SectionHeading = ({ children, isMajor = false }: { children: React.ReactNode; isMajor?: boolean }) => (
   <h2 style={{
     fontSize: isMajor ? '2.2rem' : '1.5rem',
-    fontFamily: "'Playfair Display', serif",
+    fontFamily: "var(--font-display), Georgia, serif",
     fontWeight: 700,
     color: C.darkText,
     marginBottom: isMajor ? '2rem' : '1.5rem',
@@ -220,7 +220,7 @@ const TabNav = ({ active, onChange }: { active: Tab; onChange: (t: Tab) => void 
             fontWeight: active === t.id ? '700' : '600',
             fontSize: '0.85rem',
             cursor: 'pointer',
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "var(--font-sans), sans-serif",
             transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
             display: 'flex',
             flexDirection: 'column',
@@ -280,7 +280,7 @@ const ShareButtons = ({ name, brand }: { name: string; brand: string }) => {
         border: `1px solid ${copied ? C.gold : C.sand}`,
         color: copied ? C.dark : C.textMuted,
         fontWeight: '600', fontSize: '0.82rem', cursor: 'pointer',
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: "var(--font-sans), sans-serif",
         transition: 'all 0.2s ease',
       }}>
         {copied ? '✓ Kopiert!' : '🔗 Link kopieren'}
@@ -432,7 +432,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
 
           <h1 style={{
             fontSize: 'clamp(2rem, 8vw, 3rem)',
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontWeight: 700,
             margin: '0 0 0.3rem',
             lineHeight: 1.1,
@@ -1157,7 +1157,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
             padding: '13px 36px', borderRadius: '8px',
             border: `2px solid ${C.gold}`, backgroundColor: C.gold,
             color: C.dark, fontSize: '1rem', fontWeight: '700',
-            cursor: 'pointer', fontFamily: "'Inter', sans-serif",
+            cursor: 'pointer', fontFamily: "var(--font-sans), sans-serif",
           }}
         >
           🔍 Neuen Duft analysieren
@@ -1203,7 +1203,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
             backgroundColor: 'transparent',
             color: C.cream,
             fontWeight: '600', fontSize: '0.9rem', cursor: 'pointer',
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "var(--font-sans), sans-serif",
           }}
         >
           🔍 Neuer Scan

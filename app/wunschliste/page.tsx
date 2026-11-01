@@ -37,7 +37,7 @@ export default function WishlistPage() {
         <section style={{ marginBottom: '3rem' }}>
           <h1 style={{
             fontSize: 'clamp(32px, 5vw, 56px)',
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontWeight: 700,
             marginBottom: '1rem',
             color: '#1F1410',

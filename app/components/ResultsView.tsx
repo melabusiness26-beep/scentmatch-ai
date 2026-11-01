@@ -40,7 +40,7 @@ export default function ResultsView({ results }: ResultsViewProps) {
         marginBottom: '3rem',
         color: '#2a1d12',
         fontWeight: 700,
-        fontFamily: "'Playfair Display', serif",
+        fontFamily: "var(--font-display), Georgia, serif",
         lineHeight: 1.2,
       }}>
         Dein Duft-Profil
@@ -103,7 +103,7 @@ export default function ResultsView({ results }: ResultsViewProps) {
 
               <h3 style={{
                 fontSize: 'clamp(20px, 4vw, 28px)',
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "var(--font-display), Georgia, serif",
                 fontWeight: 700,
                 color: '#2a1d12',
                 marginBottom: '0.5rem',
@@ -255,7 +255,7 @@ export default function ResultsView({ results }: ResultsViewProps) {
                 <h3
                   style={{
                     fontSize: '18px',
-                    fontFamily: "'Playfair Display', serif",
+                    fontFamily: "var(--font-display), Georgia, serif",
                     fontWeight: 700,
                     color: '#2a1d12',
                     marginBottom: '0.25rem',

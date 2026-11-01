@@ -3,6 +3,9 @@ import { getPerfumes } from '@/lib/perfumes';
 import DuftScannerClient from './client';
 import Breadcrumb from '@/app/Breadcrumb';
 
+// Stündlich neu erzeugen, damit neue Düfte ohne neues Deployment erscheinen.
+export const revalidate = 3600;
+
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
@@ -23,12 +26,7 @@ export const metadata: Metadata = {
 
 export default async function DuftScannerPage() {
   let perfumes: Awaited<ReturnType<typeof getPerfumes>> = [];
-
-  try {
-    perfumes = await getPerfumes(2000);
-  } catch (error) {
-    console.error('[DuftScanner Page] Failed to load perfumes:', error);
-  }
+  perfumes = await getPerfumes(2000);
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
@@ -51,7 +49,7 @@ export default async function DuftScannerPage() {
           </p>
           <h1 style={{
             fontSize: 'clamp(32px, 8vw, 48px)',
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontWeight: 700,
             marginBottom: '1rem',
             lineHeight: 1.1,

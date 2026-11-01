@@ -42,7 +42,7 @@ export default function WieAuressaFunktioniert() {
           </p>
           <h1 style={{
             fontSize: 'clamp(24px, 6vw, 40px)',
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontWeight: 700,
             marginBottom: '1rem',
             lineHeight: 1.15,
@@ -63,7 +63,7 @@ export default function WieAuressaFunktioniert() {
           <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>
             Die Grundidee
           </p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.25rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.25rem' }}>
             Was Auressa anders macht
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1rem' }}>
@@ -87,7 +87,7 @@ export default function WieAuressaFunktioniert() {
           <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>
             Das Quiz
           </p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.25rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.25rem' }}>
             10 Fragen, 10 Kriterien
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>
@@ -188,7 +188,7 @@ export default function WieAuressaFunktioniert() {
           <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>
             Der Match-Score
           </p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.25rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.25rem' }}>
             Wie wir berechnen, wie gut ein Duft zu dir passt
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>
@@ -276,7 +276,7 @@ export default function WieAuressaFunktioniert() {
           <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>
             Das Ranking
           </p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.25rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.25rem' }}>
             Warum manche Düfte höher stehen als andere
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1rem' }}>
@@ -301,7 +301,7 @@ export default function WieAuressaFunktioniert() {
           <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>
             Warum es funktioniert
           </p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.25rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.25rem' }}>
             Die Idee hinter dem Match
           </h2>
           <ul style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', margin: 0, paddingLeft: '1.5rem' }}>
@@ -331,7 +331,7 @@ export default function WieAuressaFunktioniert() {
           <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>
             Bereit?
           </p>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.75rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.75rem' }}>
             Mach das Quiz und finde deinen Match
           </h2>
           <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', marginBottom: '1.5rem' }}>

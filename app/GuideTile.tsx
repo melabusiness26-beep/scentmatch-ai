@@ -63,7 +63,7 @@ export default function GuideTile({ guide, emoji }: { guide: Guide; emoji?: stri
       </span>
 
       <h3 style={{
-        fontFamily: "'Playfair Display', serif",
+        fontFamily: "var(--font-display), Georgia, serif",
         fontSize: '1.1rem',
         fontWeight: 700,
         margin: 0,

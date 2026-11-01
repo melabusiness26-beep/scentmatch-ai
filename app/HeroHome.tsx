@@ -72,7 +72,7 @@ export default function HeroHome() {
 
         {/* Heading */}
         <h1 style={{
-          fontFamily: "'Playfair Display', serif",
+          fontFamily: "var(--font-display), Georgia, serif",
           fontSize: 'clamp(44px, 8vw, 64px)',
           fontWeight: 700,
           color: '#FFFFFF',

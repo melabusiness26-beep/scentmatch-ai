@@ -10,7 +10,7 @@
   --dt-accent-soft: #e8d5a8;
   --dt-border: rgba(212, 175, 55, 0.2);
   --dt-card-bg: rgba(255, 255, 255, 0.08);
-  --dt-font-heading: 'Playfair Display', Georgia, serif;
+  --dt-font-heading: var(--font-display), Georgia, serif;
   --dt-font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 

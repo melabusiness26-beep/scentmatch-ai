@@ -169,7 +169,7 @@ export default function SavedPerfumes({ allPerfumes }: SavedPerfumesProps) {
                 <h3
                   style={{
                     fontSize: '18px',
-                    fontFamily: "'Playfair Display', serif",
+                    fontFamily: "var(--font-display), Georgia, serif",
                     fontWeight: 700,
                     color: '#2a1d12',
                     marginBottom: '0.25rem',

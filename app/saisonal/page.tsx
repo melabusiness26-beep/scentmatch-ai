@@ -3,6 +3,10 @@ import Link from 'next/link';
 import Breadcrumb from '@/app/Breadcrumb';
 import { getPerfumes, isWithinPriceCap } from '@/lib/perfumes';
 import { PerfumeTile } from '@/app/PerfumeTile';
+import { computeAuressaScore } from '@/lib/score';
+
+// Stündlich neu erzeugen: neue Düfte und die aktuelle Jahreszeit erscheinen automatisch.
+export const revalidate = 3600;
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
@@ -59,20 +63,38 @@ export default async function SaisonalPage() {
       colors: ['#E8D8E8', '#D4C0D4'],
       characteristics: ['Warm', 'Intensiv', 'Animalisch'],
       seasonKey: 'Winter'
+    },
+    {
+      name: 'Das ganze Jahr',
+      emoji: '🌍',
+      icon: '🌍',
+      description: 'Vielseitige Düfte, die in jeder Jahreszeit gut funktionieren',
+      colors: ['#EFE7DA', '#E0D2BC'],
+      characteristics: ['Vielseitig', 'Ausgewogen', 'Ganzjährig'],
+      seasonKey: 'Ganzjährig'
     }
   ];
 
+  // Im Katalog gibt es die Werte Frühling, Sommer, Herbst/Winter, Winter und Ganzjährig.
+  // „Herbst/Winter" gehört in beide Abschnitte; ganzjährige Düfte haben einen eigenen Abschnitt.
+  const matchesSeason = (season: string | null | undefined, key: string) => {
+    if (!season) return false;
+    if (key === 'Herbst') return season === 'Herbst' || season === 'Herbst/Winter';
+    if (key === 'Winter') return season === 'Winter' || season === 'Herbst/Winter';
+    return season === key;
+  };
+
   const getSeasonalPerfumes = (seasonKey: string) => {
     return perfumes
-      .filter(p => p.season === seasonKey && p.slug)
+      .filter(p => matchesSeason(p.season, seasonKey) && p.slug)
       .filter(isWithinPriceCap)
-      .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
+      .sort((a, b) => computeAuressaScore(b).total - computeAuressaScore(a).total)
       .slice(0, 8);
   };
 
-  // Helper to get season key from date (rough approximation)
+  // Aktuelle Jahreszeit nach Schweizer Zeit (nicht UTC).
   const getCurrentSeasonKey = () => {
-    const month = new Date().getMonth();
+    const month = Number(new Intl.DateTimeFormat('en', { month: 'numeric', timeZone: 'Europe/Zurich' }).format(new Date())) - 1;
     if (month >= 2 && month <= 4) return 'Frühling';
     if (month >= 5 && month <= 7) return 'Sommer';
     if (month >= 8 && month <= 10) return 'Herbst';
@@ -104,7 +126,7 @@ export default async function SaisonalPage() {
           </p>
           <h1 style={{
             fontSize: 'clamp(24px, 6vw, 40px)',
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontWeight: 700,
             marginBottom: '1rem',
             lineHeight: 1.15,
@@ -113,7 +135,7 @@ export default async function SaisonalPage() {
             Düfte für jede Jahreszeit
           </h1>
           <p style={{ fontSize: '16px', color: 'rgba(250,247,242,0.7)', margin: 0 }}>
-            Der richtige Duft zur richtigen Zeit – hier findest du die Düfte aus unserem Katalog, die für Frühling, Sommer, Herbst oder Winter eingetragen sind, sortiert nach dem Auressa-Score.
+            Der richtige Duft zur richtigen Zeit – hier findest du die Düfte aus unserem Katalog, die für Frühling, Sommer, Herbst, Winter oder das ganze Jahr eingetragen sind, sortiert nach dem Auressa-Score.
           </p>
         </div>
       </section>
@@ -122,7 +144,7 @@ export default async function SaisonalPage() {
 
         {/* Intro */}
         <section style={{ marginBottom: '3rem', textAlign: 'center' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
             Warum die Jahreszeit wichtig ist
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', maxWidth: '600px', margin: '0 auto' }}>
@@ -145,11 +167,11 @@ export default async function SaisonalPage() {
                   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
                     <span style={{ fontSize: '2rem' }}>{season.emoji}</span>
                     <div>
-                      <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', margin: 0 }}>
+                      <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.75rem', fontWeight: 700, color: '#2a1d12', margin: 0 }}>
                         {season.name}
                       </h2>
                       {season.seasonKey === currentSeason && (
-                        <p style={{ fontSize: '0.85rem', color: '#d4af37', fontWeight: 600, margin: '0.25rem 0 0 0' }}>
+                        <p style={{ fontSize: '0.85rem', color: '#8A6D1A', fontWeight: 600, margin: '0.25rem 0 0 0' }}>
                           🎯 Jetzt Saison
                         </p>
                       )}
@@ -165,7 +187,7 @@ export default async function SaisonalPage() {
                         style={{
                           display: 'inline-block',
                           background: 'rgba(212,175,55,0.1)',
-                          color: '#d4af37',
+                          color: '#8A6D1A',
                           padding: '0.4rem 0.8rem',
                           borderRadius: '6px',
                           fontSize: '0.85rem',
@@ -186,7 +208,7 @@ export default async function SaisonalPage() {
                   </div>
                 ) : (
                   <div style={{ padding: '2rem 1rem', textAlign: 'center', color: '#8B7355' }}>
-                    <p>Keine Düfte für diese Jahreszeit im Katalog.</p>
+                    <p>Für diese Jahreszeit ist noch kein geprüfter Duft im Katalog – wir erweitern ihn laufend. Bis dahin passen die ganzjährigen Düfte weiter unten auch jetzt.</p>
                   </div>
                 )}
               </div>
@@ -202,7 +224,7 @@ export default async function SaisonalPage() {
           color: '#faf7f2',
           marginBottom: '3rem'
         }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: '1.25rem', marginTop: 0 }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: '1.25rem', marginTop: 0 }}>
             💡 Tipps für saisonale Duftpflege
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem' }}>
@@ -234,7 +256,7 @@ export default async function SaisonalPage() {
 
         {/* CTA */}
         <section style={{ textAlign: 'center', paddingTop: '2rem', borderTop: '1px solid rgba(212,175,55,0.2)' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.25rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.25rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
             Deinen perfekten saisonalen Duft finden
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>

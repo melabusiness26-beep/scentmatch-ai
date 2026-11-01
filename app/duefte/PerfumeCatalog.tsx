@@ -88,7 +88,12 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
     if (!matchesQuery(p, query)) return false;
     if (familyFilter && p.fragrance_family !== familyFilter) return false;
     if (genderFilters.length > 0 && !genderFilters.includes(p.gender || '')) return false;
-    if (seasonFilters.length > 0 && !seasonFilters.includes(p.season || '')) return false;
+    // „Herbst/Winter" im Katalog zählt für die Chips Herbst und Winter.
+    if (seasonFilters.length > 0) {
+      const ps = p.season || '';
+      const hit = seasonFilters.some(f => f === ps || (ps === 'Herbst/Winter' && (f === 'Herbst' || f === 'Winter')));
+      if (!hit) return false;
+    }
     if (occasionFilters.length > 0 && !occasionFilters.includes(p.occasion || '')) return false;
     // Only filter if field is not 'all' and not in the filter list
     if (ageGroupFilters.length > 0) {

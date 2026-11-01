@@ -113,7 +113,7 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
         <div style={{ backgroundColor: C.cream, borderRadius: '12px', padding: '3rem 2rem', border: `1px solid ${C.sand}` }}>
           <h2 style={{
             fontSize: '28px',
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontWeight: 700,
             color: C.dark,
             marginBottom: '1rem',
@@ -158,7 +158,7 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
       <div style={{ backgroundColor: C.cream, borderRadius: '14px', padding: '2rem', border: `1px solid ${C.sand}`, marginBottom: '1.5rem' }}>
         <h2 style={{
           fontSize: '24px',
-          fontFamily: "'Playfair Display', serif",
+          fontFamily: "var(--font-display), Georgia, serif",
           fontWeight: 700,
           color: C.dark,
           marginBottom: '0.5rem',

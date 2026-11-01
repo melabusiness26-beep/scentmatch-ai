@@ -42,7 +42,7 @@ export default function DuftLagerungPage() {
           </p>
           <h1 style={{
             fontSize: 'clamp(24px, 6vw, 40px)',
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontWeight: 700,
             marginBottom: '1rem',
             lineHeight: 1.15,
@@ -60,7 +60,7 @@ export default function DuftLagerungPage() {
 
         {/* Intro */}
         <section style={{ marginBottom: '3rem', textAlign: 'center' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
             Warum die Lagerung so wichtig ist
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', maxWidth: '600px', margin: '0 auto' }}>
@@ -70,7 +70,7 @@ export default function DuftLagerungPage() {
 
         {/* Lagerungsfaktoren */}
         <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.5rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.5rem' }}>
             Die vier Feinde deines Dufts
           </h2>
           <div style={{ display: 'grid', gap: '1.5rem' }}>
@@ -120,7 +120,7 @@ export default function DuftLagerungPage() {
 
         {/* Die optimale Lagerung */}
         <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.5rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.5rem' }}>
             So lagerst du Parfum perfekt
           </h2>
           <div style={{
@@ -192,7 +192,7 @@ export default function DuftLagerungPage() {
 
         {/* FAQ */}
         <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.5rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1.5rem' }}>
             Häufige Fragen zur Lagerung
           </h2>
           <div style={{ display: 'grid', gap: '1.5rem' }}>
@@ -237,7 +237,7 @@ export default function DuftLagerungPage() {
 
         {/* Praktische Lagerungslösungen */}
         <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
             Praktische Lagerungslösungen
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>
@@ -301,7 +301,7 @@ export default function DuftLagerungPage() {
           color: '#faf7f2',
           marginBottom: '3rem'
         }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: '1.25rem', marginTop: 0 }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: '1.25rem', marginTop: 0 }}>
             💡 Die Kurz-Fassung
           </h2>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
@@ -321,7 +321,7 @@ export default function DuftLagerungPage() {
 
         {/* CTA */}
         <section style={{ textAlign: 'center', paddingTop: '2rem', borderTop: '1px solid rgba(212,175,55,0.2)' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.25rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.25rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
             Du hast deinen Duft – jetzt lagere ihn richtig
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>

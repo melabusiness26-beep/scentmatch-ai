@@ -84,7 +84,7 @@ export default function LoadingAnimation() {
       <div style={{ textAlign: 'center', maxWidth: '320px' }}>
         <h3 style={{
           fontSize: '20px',
-          fontFamily: "'Playfair Display', serif",
+          fontFamily: "var(--font-display), Georgia, serif",
           fontWeight: 700,
           color: '#2a1d12',
           marginBottom: '0.6rem',

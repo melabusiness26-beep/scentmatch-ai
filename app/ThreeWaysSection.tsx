@@ -87,7 +87,7 @@ export default function ThreeWaysSection({ catalogCount }: { catalogCount?: numb
             3 WEGE ZUR ENTDECKUNG
           </p>
           <h2 style={{
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontSize: 'clamp(32px, 6vw, 48px)',
             fontWeight: 700,
             color: '#1F1410',
@@ -143,7 +143,7 @@ export default function ThreeWaysSection({ catalogCount }: { catalogCount?: numb
                 {card.icon}
               </div>
               <h3 style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "var(--font-display), Georgia, serif",
                 fontSize: 'clamp(20px, 3.5vw, 26px)',
                 fontWeight: 700,
                 color: card.textColor,

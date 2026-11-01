@@ -34,7 +34,7 @@ export function FeaturedPerfumes({ perfumes, title, description, viewMoreLink }:
             Highlights
           </p>
           <h2 style={{
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontSize: 'clamp(24px, 5vw, 32px)',
             fontWeight: 700,
             color: '#2a1d12',

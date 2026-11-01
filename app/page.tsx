@@ -121,7 +121,7 @@ export default async function Page() {
                 ✨ Duft-Expertise ✨
               </p>
               <h2 style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "var(--font-display), Georgia, serif",
                 fontSize: 'clamp(32px, 5vw, 44px)',
                 fontWeight: 700,
                 color: '#1F1410',

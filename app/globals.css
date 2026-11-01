@@ -597,7 +597,7 @@ img.cover { display:block; width:100%; object-fit:cover; height:100%; }
   .guide-hero-simple { margin: 24px 0 22px; }
 }
 
-.detail-title { font-size: clamp(42px, 7vw, 72px); line-height: 1; margin: 20px 0 24px; letter-spacing: -0.02em; color: #1F1410; font-weight: 800; font-family: 'Playfair Display', serif; }
+.detail-title { font-size: clamp(42px, 7vw, 72px); line-height: 1; margin: 20px 0 24px; letter-spacing: -0.02em; color: #1F1410; font-weight: 800; font-family: var(--font-display), Georgia, serif; }
 .badge-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
 .detail-stats { background: linear-gradient(135deg, #FBF7F2 0%, #F5EEE8 100%); padding: 48px; border: 2px solid #E8DDCE; border-radius: 20px; position: sticky; top: 100px; }
 .detail-stats h2 { margin-top: 0; margin-bottom: 32px; font-size: clamp(24px, 4vw, 28px); color: #1F1410; }
@@ -1922,3 +1922,8 @@ a.dp-version:hover { border-color: var(--gold-500); background: #FFFBF1; color: 
 .dp-known { margin-bottom: 22px; }
 .dp-known-brand { color: var(--ink-500); }
 .dp-known-sub { margin-bottom: 12px; }
+
+/* Ratgeber: Hinweis, solange die Düfte eines Abschnitts noch nicht im Katalog sind */
+.guide-pending { display: grid; gap: 10px; padding: 18px 20px; background: #FBF8F3; border: 1px solid #EAE2D6; }
+.guide-pending p { margin: 0; }
+.guide-pending a { color: #8A6D1A; font-weight: 600; }

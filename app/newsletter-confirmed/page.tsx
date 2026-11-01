@@ -32,7 +32,7 @@ export default function NewsletterConfirmedPage() {
 
         {/* Heading */}
         <h1 style={{
-          fontFamily: "'Playfair Display', serif",
+          fontFamily: "var(--font-display), Georgia, serif",
           fontSize: 'clamp(28px, 5vw, 36px)',
           fontWeight: 700,
           color: '#1F1410',

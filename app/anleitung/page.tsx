@@ -42,7 +42,7 @@ export default function AnleitungPage() {
           </p>
           <h1 style={{
             fontSize: 'clamp(24px, 6vw, 40px)',
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "var(--font-display), Georgia, serif",
             fontWeight: 700,
             marginBottom: '1rem',
             lineHeight: 1.15,
@@ -60,7 +60,7 @@ export default function AnleitungPage() {
 
         {/* Schritt 1 */}
         <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
             Schritt 1: Lerne die vier Duftfamilien
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>
@@ -104,7 +104,7 @@ export default function AnleitungPage() {
 
         {/* Schritt 2 */}
         <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
             Schritt 2: Teste in einem Geschäft – oder nutze unseren Quiz
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728' }}>
@@ -117,7 +117,7 @@ export default function AnleitungPage() {
 
         {/* Schritt 3 */}
         <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
             Schritt 3: Achte auf Ausstrahlung (Sillage) und Haltbarkeit
           </h2>
           <div style={{ background: 'linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.03))', borderRadius: '12px', padding: '1.5rem', marginBottom: '1.5rem' }}>
@@ -142,7 +142,7 @@ export default function AnleitungPage() {
 
         {/* Schritt 4 */}
         <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
             Schritt 4: Wähle dein Budget weise
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>
@@ -180,7 +180,7 @@ export default function AnleitungPage() {
 
         {/* Schritt 5 */}
         <section style={{ marginBottom: '3rem', background: 'linear-gradient(135deg, #2a1d12 0%, #3d2b1a 100%)', borderRadius: '16px', padding: '2rem 1.5rem', color: '#faf7f2' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: '1.25rem', marginTop: 0 }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: '1.25rem', marginTop: 0 }}>
             ⚠️ Häufige Anfängerfehler
           </h2>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
@@ -202,7 +202,7 @@ export default function AnleitungPage() {
 
         {/* Schritt 6 */}
         <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
             Schritt 6: Lagerung – damit dein Duft lange hält
           </h2>
           <div style={{ display: 'grid', gap: '1rem' }}>
@@ -236,7 +236,7 @@ export default function AnleitungPage() {
 
         {/* CTA */}
         <section style={{ textAlign: 'center', paddingTop: '2rem', borderTop: '1px solid rgba(212,175,55,0.2)' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.25rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
+          <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.25rem', fontWeight: 700, color: '#2a1d12', marginBottom: '1rem' }}>
             Bereit, deinen Signature-Duft zu finden?
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>

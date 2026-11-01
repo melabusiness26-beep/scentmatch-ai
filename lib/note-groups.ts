@@ -29,6 +29,17 @@ export const NOTE_GROUPS: NoteGroup[] = [
   { terms: ['apfel', 'äpfel', 'apple'], notes: ['apfel'] },
   { terms: ['rose', 'rosen'], notes: ['rose'] },
   { terms: ['zimt', 'cinnamon'], notes: ['zimt'] },
+  { terms: ['banana', 'bananen'], notes: ['banane'] },
+  { terms: ['pineapple'], notes: ['ananas'] },
+  { terms: ['melon', 'melonen', 'wassermelone', 'watermelon'], notes: ['melone'] },
+  { terms: ['plum', 'pflaumen'], notes: ['pflaume'] },
+  { terms: ['lychee', 'litchi'], notes: ['litschi', 'lychee', 'litchi'] },
+  { terms: ['apricot', 'aprikosen'], notes: ['aprikose'] },
+  { terms: ['pear', 'birnen'], notes: ['birne'] },
+  { terms: ['mangos'], notes: ['mango'] },
+  { terms: ['tea', 'tee'], notes: ['tee', 'matcha'] },
+  { terms: ['musk'], notes: ['moschus'] },
+  { terms: ['cupcake', 'cupcakes', 'kuchen', 'cake', 'frosting'], notes: ['cupcake', 'kuchen', 'torte', 'frosting', 'zuckerguss', 'glasur'] },
   { terms: ['keks', 'kekse', 'plätzchen', 'gebäck', 'cookie', 'cookies', 'biscuit'], notes: ['keks', 'biscuit', 'cookie', 'gebäck', 'kuchen', 'plätzchen', 'brioche'] },
   { terms: ['butter', 'sahne', 'rahm', 'milch', 'milk', 'cream'], notes: ['butter', 'sahne', 'rahm', 'milch'] }
 ];

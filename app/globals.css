@@ -2072,3 +2072,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visib
 .flavor-match { margin: 6px 4px 0; color: #6b5d50; }
 .flavor-chips { display: flex; flex-wrap: wrap; gap: 8px; }
 @media (max-width: 520px) { .flavor-hero { grid-template-columns: 96px 1fr; } }
+.flavor-jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.flavor-section { margin-top: 30px; scroll-margin-top: 90px; }
+.flavor-section h2 { scroll-margin-top: 90px; }

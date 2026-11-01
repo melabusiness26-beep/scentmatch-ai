@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Breadcrumb from '@/app/Breadcrumb';
 import { getPerfumes } from '@/lib/perfumes';
-import { FLAVORS, perfumesForFlavor } from '@/lib/flavors';
+import { FLAVORS, FLAVOR_GROUPS, perfumesForFlavor } from '@/lib/flavors';
 import { distinctFragranceCount } from '@/lib/versions';
 
 export const revalidate = 3600;
@@ -10,9 +10,9 @@ export const revalidate = 3600;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Duft nach Geschmack finden – Vanille, Honig, Beeren & mehr',
+  title: 'Duft nach Geschmack finden – Vanille, Honig, Früchte & mehr',
   description:
-    'Du willst nach Vanille, Honig, Erdbeere, Keksen oder Karamell riechen? Tipp auf deinen Lieblingsgeschmack und entdecke passende Düfte.',
+    'Du willst nach Vanille, Honig, Erdbeere, Cupcake, Mango oder Kaffee riechen? Tipp auf deinen Lieblingsgeschmack oder deine Lieblingsnote und entdecke passende Düfte.',
   alternates: { canonical: '/geschmack' },
   openGraph: {
     locale: 'de_CH',
@@ -35,20 +35,36 @@ export default async function GeschmackPage() {
           <p className="eyebrow">Duft nach Geschmack</p>
           <h1>Wonach willst du duften?</h1>
           <p className="lead">
-            Vanille, Honig, Erdbeere oder frische Kekse? Tipp auf deinen Lieblingsgeschmack – Auressa zeigt dir Düfte,
-            in denen diese Note steckt.
+            Vanille, Erdbeere, Cupcake, Mango oder Kaffee? Tipp auf deinen Lieblingsgeschmack oder deine Lieblingsnote –
+            Auressa zeigt dir Düfte, in denen sie steckt.
           </p>
-          <div className="flavor-grid">
-            {tiles.map(({ flavor: f, count }) => (
-              <Link key={f.slug} href={`/geschmack/${f.slug}`} className="flavor-tile">
-                <span className="flavor-img" style={{ background: f.color }}>
-                  {f.image && <img src={f.image} alt="" loading="lazy" />}
-                </span>
-                <span className="flavor-title">{f.title}</span>
-                <span className="flavor-count">{count > 0 ? `${count} ${count === 1 ? 'Duft' : 'Düfte'}` : 'bald mehr'}</span>
-              </Link>
+          <nav className="flavor-jump" aria-label="Gruppen">
+            {FLAVOR_GROUPS.map((g, i) => (
+              <a key={g} href={`#gruppe-${i}`} className="note-chip">
+                {g}
+              </a>
             ))}
-          </div>
+          </nav>
+          {FLAVOR_GROUPS.map((group, i) => (
+            <section key={group} className="flavor-section" aria-labelledby={`gruppe-${i}`}>
+              <h2 id={`gruppe-${i}`}>{group}</h2>
+              <div className="flavor-grid">
+                {tiles
+                  .filter(({ flavor }) => flavor.group === group)
+                  .map(({ flavor: f, count }) => (
+                    <Link key={f.slug} href={`/geschmack/${f.slug}`} className="flavor-tile">
+                      <span className="flavor-img" style={{ background: f.color }}>
+                        {f.image && <img src={f.image} alt="" loading="lazy" />}
+                      </span>
+                      <span className="flavor-title">{f.title}</span>
+                      <span className="flavor-count">
+                        {count > 0 ? `${count} ${count === 1 ? 'Duft' : 'Düfte'}` : 'bald mehr'}
+                      </span>
+                    </Link>
+                  ))}
+              </div>
+            </section>
+          ))}
           <p className="small flavor-note">
             Gezeigt werden Düfte, in deren Duftnoten der Geschmack vorkommt. Ein Duft riecht nie nur nach einer Note – teste
             am besten eine Probe.

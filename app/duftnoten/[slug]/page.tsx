@@ -93,7 +93,7 @@ export default async function ScentNotePage({
     <main>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }}
       />
       <div className="container">
         <nav className="breadcrumb small" aria-label="Brotkrümel-Navigation">
@@ -168,7 +168,7 @@ export default async function ScentNotePage({
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(note)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(note)).replace(/</g, "\\u003c") }}
       />
     </main>
   );

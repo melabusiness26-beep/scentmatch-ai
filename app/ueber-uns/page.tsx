@@ -33,7 +33,7 @@ export default function UeberUnsPage() {
       <Breadcrumb items={[{ label: 'Über Auressa', href: '/ueber-uns' }]} />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd).replace(/</g, "\\u003c") }}
       />
 
       {/* Hero */}

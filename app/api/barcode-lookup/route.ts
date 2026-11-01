@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { barcode } = body;
 
-    if (!barcode || typeof barcode !== 'string') {
+    if (!barcode || typeof barcode !== 'string' || !/^\d{8,14}$/.test(barcode.trim())) {
       return NextResponse.json(
         { success: false, error: 'Ungültige Barcode-Anfrage' },
         { status: 400 }
@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
 
     const match = allPerfumes.find((p) => {
       const ean = (p as any).ean_code || '';
-      return ean && (ean === barcode || ean.includes(barcode.slice(-8)));
+      return ean && ean === barcode.trim();
     });
 
     if (!match) {

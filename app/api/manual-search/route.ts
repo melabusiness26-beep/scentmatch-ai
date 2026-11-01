@@ -7,7 +7,10 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { perfumeName, brandName } = body;
 
-    if (!perfumeName || !brandName) {
+    if (
+      typeof perfumeName !== 'string' || typeof brandName !== 'string' ||
+      !perfumeName.trim() || !brandName.trim() || perfumeName.length > 100 || brandName.length > 100
+    ) {
       return NextResponse.json(
         { success: false, error: 'Marke und Name erforderlich' },
         { status: 400 }

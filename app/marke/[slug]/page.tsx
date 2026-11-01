@@ -345,11 +345,11 @@ export default async function BrandPage({
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(brandJsonLd(brand, perfumes)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(brandJsonLd(brand, perfumes)).replace(/</g, "\\u003c") }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(brand)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(brand)).replace(/</g, "\\u003c") }}
       />
     </main>
   );

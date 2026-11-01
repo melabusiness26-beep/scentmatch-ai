@@ -10,6 +10,22 @@ const nextConfig = {
       { protocol: 'https', hostname: '*.flaconi.ch' },
     ],
   },
+  // Grundlegende Sicherheits-Header für alle Seiten: kein Einbetten in fremde
+  // Seiten (Schutz vor Clickjacking, v. a. für /admin), kein MIME-Raten,
+  // sparsamer Referrer, keine Kamera/Mikrofon/Standort-Rechte.
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Permissions-Policy', value: 'camera=(self), microphone=(), geolocation=()' }
+        ]
+      }
+    ];
+  },
   async redirects() {
     return [
       {

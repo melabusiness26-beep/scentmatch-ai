@@ -6,7 +6,7 @@
   "fragrance_family": "floral",
   "concentration": "EdP",
   "volume_ml": 50,
-  "price_chf": 61,
+  "price_chf": 61.0,
   "longevity": 7,
   "sillage": 7,
   "season": "Sommer",
@@ -31,10 +31,6 @@
   "lifestyle": "casual",
   "trend_vibe": "popular",
   "gender_nuance": "feminine",
-  "good_to_know": [
-    "Komponiert hat ihn Olivier Cresp – derselbe Parfümeur wie beim Original von 2001.",
-    "Er erschien 2026 zum 25-jährigen Jubiläum von Light Blue."
-  ],
   "flacon_description": "Flakon aus mattiertem Glas mit geschwungenen Linien und silbernen Details. Der blaue Deckel ist von der traditionellen Keramik der Amalfiküste inspiriert und trägt das DG-Monogramm.",
   "sizes": [
     {
@@ -53,5 +49,13 @@
       "ml": 200,
       "price_chf": 124.99
     }
+  ],
+  "description": "Light Blue Eau de Parfum von Dolce & Gabbana ist 2026 zum 25-jährigen Jubiläum von Light Blue erschienen. Komponiert hat ihn Olivier Cresp, derselbe Parfümeur wie beim Original von 2001.\n\nDen Auftakt machen sizilianische Zitrone, kalabrische Bergamotte und rosa Pfeffer. Im Herzen folgen Frangipani, Zimtrinde und Ringelblume, in der Basis bleiben Amberholz und Benzoe. Damit ist er blumiger und wärmer als das klassische Eau de Toilette.\n\nIn der Parfumo-Community gilt er als zitrisch-frischer Duft mit blumiger, holziger und leicht süsser Note. Haltbarkeit und Ausstrahlung werden dort als gut bewertet.",
+  "accords": [
+    "Zitrisch 23",
+    "Frisch 20",
+    "Blumig 16",
+    "Holzig 13",
+    "Süss 11"
   ]
 }

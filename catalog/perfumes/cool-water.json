@@ -6,7 +6,7 @@
   "fragrance_family": "clean",
   "concentration": "EdT",
   "volume_ml": 40,
-  "price_chf": 15,
+  "price_chf": 15.0,
   "longevity": 6,
   "sillage": 6,
   "season": "Sommer",
@@ -23,7 +23,7 @@
   "heart_notes": [
     "Jasmin",
     "Neroli",
-    "Rosengeranie",
+    "Geranie",
     "Sandelholz"
   ],
   "base_notes": [
@@ -35,12 +35,10 @@
   ],
   "age_group": "all",
   "lifestyle": "casual",
-  "trend_vibe": "popular",
+  "trend_vibe": "classic",
   "gender_nuance": "masculine",
   "good_to_know": [
-    "Komponiert hat ihn Pierre Bourdon, den blauen Flakon entwarf Peter Schmidt.",
     "1992 gewann er einen FiFi Award als Herrenduft des Jahres.",
-    "Er wird oft mit Green Irish Tweed von Creed verglichen – beide Düfte werden Pierre Bourdon zugeschrieben.",
     "1996 folgte das Gegenstück für Damen: Cool Water Woman.",
     "Gesichter der Werbung waren unter anderem die Schauspieler Paul Walker (ab 2011) und Scott Eastwood (ab 2015)."
   ],
@@ -77,5 +75,13 @@
       "ml": 200,
       "price_chf": 33.99
     }
+  ],
+  "description": "Cool Water von Davidoff ist 1988 erschienen und stammt von Pierre Bourdon. Er gilt als einer der Düfte, die die frische, aquatische Richtung bei Herrendüften geprägt haben, und wird bis heute oft mit Green Irish Tweed von Creed verglichen.\n\nZu Beginn sind Lavendel, Minze, Rosmarin, Koriander und grüne Noten zu riechen. Im Herzen folgen Jasmin, Neroli, Geranie und Sandelholz, in der Basis bleiben Eichenmoos, Moschus, Amber, Tabak und Zedernholz.\n\nIn der Parfumo-Community gilt er als frisch-aquatischer Duft mit grünen Akzenten. Haltbarkeit und Ausstrahlung werden dort als solide bewertet. Den blauen Flakon gestaltete der Designer Peter Schmidt.",
+  "accords": [
+    "Frisch 27",
+    "Aquatisch 27",
+    "Grün 13",
+    "Synthetisch 11",
+    "Würzig 8"
   ]
 }

@@ -1,0 +1,50 @@
+{
+  "slug": "la-rive-donna",
+  "perfume_name": "Donna",
+  "brand": "La Rive",
+  "gender": "Women",
+  "fragrance_family": "clean",
+  "concentration": "EdP",
+  "volume_ml": 90,
+  "price_chf": 11.29,
+  "longevity": 6,
+  "sillage": 6,
+  "season": "Sommer",
+  "occasion": "Alltag",
+  "top_notes": [
+    "Zitrone",
+    "Apfel"
+  ],
+  "heart_notes": [
+    "Jasmin",
+    "Hyazinthe"
+  ],
+  "base_notes": [
+    "Zedernholz"
+  ],
+  "accords": [
+    "Frisch 25",
+    "Zitrisch 20",
+    "Aquatisch 11",
+    "Fruchtig 11",
+    "Blumig 10"
+  ],
+  "age_group": "all",
+  "lifestyle": "casual",
+  "trend_vibe": "popular",
+  "gender_nuance": "feminine",
+  "sizes": [
+    {
+      "ml": 90,
+      "price_chf": 11.29
+    }
+  ],
+  "alternative_to": [
+    {
+      "name": "Light Blue",
+      "brand": "Dolce & Gabbana",
+      "note": "In der Duft-Community oft als günstige Alternative zu Light Blue (Eau de Toilette) genannt. Er hält aber deutlich kürzer als das Original."
+    }
+  ],
+  "description": "Donna von La Rive ist ein frisch-zitrischer Damenduft der Marke La Rive, die für günstige Düfte bekannt ist. Er wird oft als Alternative zu Light Blue von Dolce & Gabbana genannt.\n\nDen Auftakt machen Zitrone und Apfel. Im Herzen folgen Jasmin und Hyazinthe, in der Basis bleibt Zedernholz.\n\nIn der Parfumo-Community gilt er als frischer, zitrischer Duft mit aquatischen, fruchtigen und blumigen Facetten – vor allem für Sommer und Frühling, im Alltag, in der Freizeit und bei der Arbeit. Haltbarkeit und Ausstrahlung werden dort als eher schwach bewertet: Wer ihn den ganzen Tag riechen will, sprüht besser nach."
+}

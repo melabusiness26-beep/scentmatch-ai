@@ -28,7 +28,9 @@ export const NOTE_GROUPS: NoteGroup[] = [
   { terms: ['pfirsich', 'peach'], notes: ['pfirsich'] },
   { terms: ['apfel', 'äpfel', 'apple'], notes: ['apfel'] },
   { terms: ['rose', 'rosen'], notes: ['rose'] },
-  { terms: ['zimt', 'cinnamon'], notes: ['zimt'] }
+  { terms: ['zimt', 'cinnamon'], notes: ['zimt'] },
+  { terms: ['keks', 'kekse', 'plätzchen', 'gebäck', 'cookie', 'cookies', 'biscuit'], notes: ['keks', 'biscuit', 'cookie', 'gebäck', 'kuchen', 'plätzchen', 'brioche'] },
+  { terms: ['butter', 'sahne', 'rahm', 'milch', 'milk', 'cream'], notes: ['butter', 'sahne', 'rahm', 'milch'] }
 ];
 
 // Notenteile, nach denen ein Suchbegriff zusätzlich sucht (leer = keine Gruppe).

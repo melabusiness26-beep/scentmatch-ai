@@ -136,9 +136,8 @@ export default function ImpressumPage() {
             <h3>Bilder</h3>
             <p>
               Die Flakons auf den Duft-Seiten sind von Auressa gezeichnete Darstellungen, keine Produktfotos der Hersteller. Die
-              Fotos der Duftnoten hat Auressa selbst mit KI erstellt. Einige Titelbilder der Ratgeber stammen
-              von <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a> und werden gemäss der
-              Unsplash-Lizenz verwendet. Marken- und Produktnamen gehören ihren jeweiligen Inhabern.
+              Fotos der Duftnoten hat Auressa selbst mit KI erstellt. Viele Titelbilder der Ratgeber
+              sind von Auressa gezeichnete Illustrationen. Marken- und Produktnamen gehören ihren jeweiligen Inhabern.
             </p>
           </section>
 

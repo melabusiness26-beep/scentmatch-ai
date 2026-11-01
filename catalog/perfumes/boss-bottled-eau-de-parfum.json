@@ -1,0 +1,54 @@
+{
+  "slug": "boss-bottled-eau-de-parfum",
+  "perfume_name": "Boss Bottled",
+  "brand": "Hugo Boss",
+  "gender": "Men",
+  "fragrance_family": "woody",
+  "concentration": "EdP",
+  "volume_ml": 200,
+  "price_chf": 78.99,
+  "longevity": 7,
+  "sillage": 7,
+  "season": "Ganzjährig",
+  "occasion": "Alltag",
+  "release_year": 2020,
+  "perfumer": "Honorine Blanc",
+  "top_notes": [
+    "Apfel",
+    "Bergamotte",
+    "Pfeffer",
+    "Muskatellersalbei"
+  ],
+  "heart_notes": [
+    "Kardamom",
+    "Kastanie",
+    "Muskat",
+    "Salbei",
+    "Zimt"
+  ],
+  "base_notes": [
+    "Zedernholz",
+    "Sandelholz",
+    "Vetiver",
+    "Leder",
+    "Moschus"
+  ],
+  "accords": [
+    "Würzig 21",
+    "Holzig 21",
+    "Süss 17",
+    "Frisch 14",
+    "Fruchtig 13"
+  ],
+  "age_group": "all",
+  "lifestyle": "professional",
+  "trend_vibe": "popular",
+  "gender_nuance": "masculine",
+  "sizes": [
+    {
+      "ml": 200,
+      "price_chf": 78.99
+    }
+  ],
+  "description": "Boss Bottled Eau de Parfum von Hugo Boss ist 2020 erschienen und stammt von der Parfümeurin Honorine Blanc. Er ist keine stärkere Fassung des Eau de Toilette, sondern eine eigene, würzigere Interpretation von Boss Bottled.\n\nDen Auftakt machen Apfel, Bergamotte, Pfeffer und Muskatellersalbei. Im Herzen folgen Kardamom, Kastanie, Muskat, Salbei und Zimt, in der Basis bleiben Zedernholz, Sandelholz, Vetiver, Leder und Moschus.\n\nIn der Parfumo-Community gilt er als würzig-holziger Duft mit süssen, frischen und fruchtigen Facetten. Getragen wird er vor allem im Alltag, in der Freizeit und bei der Arbeit – und das das ganze Jahr über."
+}

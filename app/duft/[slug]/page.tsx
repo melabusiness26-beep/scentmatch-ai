@@ -112,7 +112,14 @@ export async function generateMetadata({
       : perfume.perfume_name;
   // Haupttitel ohne „| Auressa" – die Marke haengt das globale Titel-Template
   // (%s | Auressa) automatisch an. So entsteht kein doppeltes „| Auressa".
-  const title = `${nameWithVersion}${brand} – Duftprofil & Bewertung`;
+  // Google zeigt ca. 60 Zeichen: Zusatz nur, solange der Titel (inkl. „ | Auressa") kurz genug bleibt.
+  const core = `${nameWithVersion}${brand}`;
+  const title =
+    core.length + ' – Duftprofil & Bewertung | Auressa'.length <= 62
+      ? `${core} – Duftprofil & Bewertung`
+      : core.length + ' – Duftnoten & Preis | Auressa'.length <= 62
+        ? `${core} – Duftnoten & Preis`
+        : core;
   // Abwechslungsreiche Beschreibung aus echten Duftdaten (statt gleicher Schablone
   // auf hunderten Seiten) – gut gegen „dünnen/doppelten Inhalt".
   // Gespeicherte Duftrichtung (Parfumo) hat Vorrang vor der Berechnung aus den Noten.
@@ -192,25 +199,34 @@ const LAYERS: { key: 'top_notes' | 'heart_notes' | 'base_notes'; title: string; 
   { key: 'base_notes', title: 'Basisnoten', time: 'bleibt stundenlang' }
 ];
 
+function schemaName(p: Perfume): string {
+  const name = p.perfume_name || '';
+  const conc = concentrationLabel(p.concentration);
+  return conc && !name.toLowerCase().includes(conc.toLowerCase()) ? `${name} ${conc}` : name;
+}
+
 function jsonLd(perfume: Perfume) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    name: perfume.perfume_name,
+    // Mit Konzentration, damit EdT und EdP für Google unterscheidbar sind.
+    name: schemaName(perfume),
     brand: perfume.brands?.name
       ? { '@type': 'Brand', name: perfume.brands.name }
       : undefined,
     category: familyLabel(perfume.fragrance_family),
     description: metaTrim(perfume.description || describePerfume(perfume), 300),
-    image: perfume.image_url || undefined,
+    image: perfume.image_url || `${SITE_URL}/duft/${perfume.slug}/opengraph-image`,
     // Berechneter Auressa-Score (lib/score.ts) – kein vorgetäuschtes Nutzer-Rating.
+    // Gleiche Skala wie auf der Seite (0–100), damit die Angabe für Google übereinstimmt.
     review: {
       '@type': 'Review',
       author: { '@type': 'Organization', name: 'Auressa' },
       reviewRating: {
         '@type': 'Rating',
-        ratingValue: (computeAuressaScore(perfume).total / 20).toFixed(1),
-        bestRating: '5'
+        ratingValue: String(computeAuressaScore(perfume).total),
+        bestRating: '100',
+        worstRating: '0'
       }
     }
     // Kein „offers": Auressa verkauft (noch) nicht selbst. Ein Angebot mit Preis würde

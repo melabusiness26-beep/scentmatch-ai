@@ -9,6 +9,8 @@ export const revalidate = 3600;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
+  // Scanner ist noch nicht fertig („bald") – erst nach dem Start in Google aufnehmen.
+  robots: { index: false, follow: true },
   title: 'Duft-Scanner – Parfüm per Foto erkennen',
   description: 'Bald verfügbar: Fotografiere einen Parfümflakon und lass dir den Duft per KI erkennen – mit Noten, Charakter und ähnlichen Düften aus dem Auressa-Katalog.',
   keywords: ['Parfüm erkennen', 'Duft Scanner', 'Parfüm Foto', 'Duft identifizieren', 'KI Parfüm', 'Parfüm App'],

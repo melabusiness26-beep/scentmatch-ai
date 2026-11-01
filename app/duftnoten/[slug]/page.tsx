@@ -53,7 +53,7 @@ function jsonLd(note: ScentNote) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: note.metaTitle,
+    headline: note.metaTitle.replace(/\s*\|\s*Auressa\s*$/, ''),
     description: note.metaDescription,
     about: { '@type': 'Thing', name: `${note.name} (Duftnote)` },
     mainEntityOfPage: `${SITE_URL}/duftnoten/${note.slug}`,

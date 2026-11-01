@@ -5,7 +5,7 @@ import Breadcrumb from '@/app/Breadcrumb';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Duftsammlung aufbauen: Vom ersten bis zum perfekten Duft-Schrank',
+  title: 'Duftsammlung aufbauen: Schritt für Schritt',
   description:
     'Wie du eine kuratierte Duftsammlung aufbaust – von der ersten Wahl über die Ergänzung bis zur 5, 10 oder 20+ Duft-Kollektion. Mit Strategien für jeden Budget und jede Gelegenheit.',
   alternates: { canonical: '/duftsammlung' },
@@ -390,7 +390,7 @@ export default function DuftsammlungPage() {
             <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
               Du weisst jetzt, wie eine gute Sammlung aussieht. Brauchst du Hilfe bei der Auswahl? Nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> –
               es hilft dir, Düfte zu finden, die zu deinen Vorlieben passen.
-              Oder <Link href="/duft-waehlen" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>lies unseren Ratgeber zur Duftwahl</Link> für einen systematischen Ansatz zum perfekten Duft.
+              Oder <Link href="/ratgeber/parfum-fuer-einsteiger-erster-signature-duft" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>lies unseren Ratgeber zur Duftwahl</Link> für einen systematischen Ansatz zum perfekten Duft.
             </p>
           </div>
 
@@ -399,12 +399,12 @@ export default function DuftsammlungPage() {
           <div style={{ marginTop: '2rem' }}>
             <h3 style={{ marginTop: 0 }}>Ratgeber zum Thema: Duftsammlung & Auswahl</h3>
             <ul style={{ fontSize: '0.95rem', lineHeight: 1.8 }}>
-              <li><Link href="/duft-waehlen" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Duft wählen – Anleitung</Link> – Systematischer Leitfaden zum Finden des perfekten Duftes</li>
-              <li><Link href="/duftarten" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Duftarten erklärt</Link> – EdP, EdT, Cologne: Welche Konzentration für welche Sammlung</li>
-              <li><Link href="/koerperchemie-duft" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Körperchemie & Duft</Link> – Warum Düfte auf verschiedenen Menschen unterschiedlich riechen</li>
+              <li><Link href="/ratgeber/parfum-fuer-einsteiger-erster-signature-duft" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Duft wählen – Anleitung</Link> – Systematischer Leitfaden zum Finden des perfekten Duftes</li>
+              <li><Link href="/ratgeber/edt-edp-parfum-unterschied" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Duftarten erklärt</Link> – EdP, EdT, Cologne: Welche Konzentration für welche Sammlung</li>
+              <li><Link href="/ratgeber/parfum-und-hauttyp-was-passt-zu-meiner-haut" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Körperchemie & Duft</Link> – Warum Düfte auf verschiedenen Menschen unterschiedlich riechen</li>
               <li><Link href="/duftnoten-guide" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Duftnoten verstehen</Link> – Die Noten-Pyramide und wie Düfte sich entwickeln</li>
               <li><Link href="/duft-lagerung" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Duft-Lagerung</Link> – Wie du deine Sammlung richtig pflegst und lagert</li>
-              <li><Link href="/duefte-kombinieren" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Duftkombinationen</Link> – Wie du Düfte kombinierst für noch mehr Möglichkeiten</li>
+              <li><Link href="/ratgeber/parfum-layering-duefte-kombinieren" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Duftkombinationen</Link> – Wie du Düfte kombinierst für noch mehr Möglichkeiten</li>
             </ul>
           </div>
         </section>

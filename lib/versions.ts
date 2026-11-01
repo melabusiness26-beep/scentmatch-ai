@@ -193,3 +193,15 @@ export function findCounterpart(perfume: Perfume, pool: Perfume[]): Perfume | nu
 function versionSuffix(name: string): string {
   return norm(name).slice(baseName(name).length).trim();
 }
+
+// Wie viele verschiedene Düfte eine Liste enthält – Versionen (EdT/EdP/Intense) zählen als einer.
+export function distinctFragranceCount(list: Perfume[]): number {
+  return new Set(list.map((p) => `${(p.brands?.name || '').toLowerCase()}|${baseName(p.perfume_name || '')}`)).size;
+}
+
+// Programmatische Listen-Seiten (Stimmungen, Reiseziele) erst bei genug Auswahl in Google aufnehmen.
+// Sonst zeigen viele Seiten dieselben paar Düfte – für Google „dünner", doppelter Inhalt.
+export const MIN_DISTINCT_FOR_INDEX = 6;
+export function hasEnoughVariety(list: Perfume[]): boolean {
+  return distinctFragranceCount(list) >= MIN_DISTINCT_FOR_INDEX;
+}

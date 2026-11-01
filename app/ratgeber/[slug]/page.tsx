@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { GUIDE_DATES, formatGuideDate } from '@/lib/guide-dates';
 import { notFound } from 'next/navigation';
 import { cache } from 'react';
 import { getGuide, guides, relatedGuides, type Guide } from '@/lib/guides';
@@ -68,7 +69,10 @@ function jsonLd(guide: Guide) {
     description: guide.description,
     mainEntityOfPage: `${SITE_URL}/ratgeber/${guide.slug}`,
     image: `${SITE_URL}/ratgeber/${guide.slug}/opengraph-image`,
-    author: { '@type': 'Organization', name: 'Auressa', url: SITE_URL },
+    ...(GUIDE_DATES[guide.slug]
+      ? { datePublished: GUIDE_DATES[guide.slug].published, dateModified: GUIDE_DATES[guide.slug].updated }
+      : {}),
+    author: { '@type': 'Person', name: 'Melanie', jobTitle: 'Gründerin von Auressa', url: `${SITE_URL}/ueber-uns` },
     publisher: {
       '@type': 'Organization',
       name: 'Auressa',
@@ -148,6 +152,16 @@ export default async function GuidePage({
         <p style={{ fontSize: '1rem', color: '#555', maxWidth: '600px',
                     margin: '0 auto', lineHeight: 1.6 }}>
           {guide.description}
+        </p>
+        {/* Autorin und echte Daten (aus der Versionsgeschichte, siehe lib/guide-dates.ts) */}
+        <p className="guide-byline">
+          Von <Link href="/ueber-uns">Melanie</Link>, Gründerin von Auressa
+          {GUIDE_DATES[guide.slug] && (
+            <>
+              {' · '}Aktualisiert am{' '}
+              <time dateTime={GUIDE_DATES[guide.slug].updated}>{formatGuideDate(GUIDE_DATES[guide.slug].updated)}</time>
+            </>
+          )}
         </p>
       </div>
 

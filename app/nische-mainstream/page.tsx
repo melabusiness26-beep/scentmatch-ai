@@ -321,11 +321,11 @@ export default function NischeMainstreamPage() {
           <div style={{ marginTop: '2rem' }}>
             <h3 style={{ marginTop: 0 }}>Weitere Ratgeber zum Thema Duftauswahl</h3>
             <ul style={{ fontSize: '0.95rem', lineHeight: 1.8 }}>
-              <li><Link href="/duft-waehlen" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Duft wählen – Anleitung</Link> – Systematischer Leitfaden für die perfekte Duftauswahl</li>
+              <li><Link href="/ratgeber/parfum-fuer-einsteiger-erster-signature-duft" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Duft wählen – Anleitung</Link> – Systematischer Leitfaden für die perfekte Duftauswahl</li>
               <li><Link href="/duftsammlung" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Duftsammlung aufbauen</Link> – Strategien zum Aufbau einer Sammlung (Mix aus Mainstream & Nische)</li>
-              <li><Link href="/guenstige-alternativen" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Günstige Duft-Alternativen</Link> – Budget-Optionen bei Mainstream-Düften</li>
-              <li><Link href="/herren-parfueme" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Herren-Parfüme</Link> – Männer-Klassiker (oft Mainstream)</li>
-              <li><Link href="/damen-parfueme" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Damen-Parfüme</Link> – Frauen-Klassiker mit Mix aus Mainstream & Niche</li>
+              <li><Link href="/ratgeber/guenstige-alternativen-zu-teuren-dueften" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Günstige Duft-Alternativen</Link> – Budget-Optionen bei Mainstream-Düften</li>
+              <li><Link href="/beste-herrenduefte" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Herren-Parfüme</Link> – Männer-Klassiker (oft Mainstream)</li>
+              <li><Link href="/beste-damenduefte" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 500 }}>Damen-Parfüme</Link> – Frauen-Klassiker mit Mix aus Mainstream & Niche</li>
             </ul>
           </div>
         </section>

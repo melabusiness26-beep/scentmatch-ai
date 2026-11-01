@@ -86,6 +86,10 @@ const GUIDE_EMOJIS: Record<string, string> = {
   'duftpersoenlichkeit': '🎭',
   'duftchemie-grundlagen': '🧪',
   'duftkollektion-minimal': '📚',
+  'duftnoten-guide': '🔺',
+  'duftsammlung': '🗄️',
+  'duft-lagerung': '🌡️',
+  'duft-mythen': '🔎',
 };
 
 function getGuideEmoji(slug: string): string {
@@ -211,6 +215,30 @@ export default function RatgeberIndex() {
       title: 'Minimalistische Duftkollektion: Die intelligente 3er-Sammlung',
       description: 'Baue dir eine perfekte Kollektion mit nur 3 Düften: Alltags-Duft, Abend-Duft, Saison-Duft. Strategisch, flexibel, skalierbar.',
       href: '/duftkollektion-minimal'
+    },
+    {
+      slug: 'duftnoten-guide',
+      title: 'Duftnoten verstehen: Kopf-, Herz- und Basisnoten',
+      description: 'Wie die Duftpyramide aufgebaut ist und warum sich ein Parfum über den Tag verändert.',
+      href: '/duftnoten-guide'
+    },
+    {
+      slug: 'duftsammlung',
+      title: 'Duftsammlung aufbauen: vom ersten bis zum perfekten Duft-Schrank',
+      description: 'Schritt für Schritt zur eigenen Sammlung – welche Düfte sich ergänzen und worauf du achten kannst.',
+      href: '/duftsammlung'
+    },
+    {
+      slug: 'duft-lagerung',
+      title: 'Parfum richtig lagern',
+      description: 'Licht, Wärme und Luft: So bleibt dein Parfum möglichst lange so, wie es sein soll.',
+      href: '/duft-lagerung'
+    },
+    {
+      slug: 'duft-mythen',
+      title: 'Duft-Mythen und Fakten: Was stimmt wirklich?',
+      description: 'Teuer gleich besser? Handgelenke reiben? Die häufigsten Parfum-Irrtümer im Faktencheck.',
+      href: '/duft-mythen'
     }
   ];
 

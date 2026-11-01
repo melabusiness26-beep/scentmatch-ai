@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     template: '%s | Auressa'
   },
   description:
-    'Auressa hilft dir, mit einem eleganten Duft-Quiz und einer intelligenten Empfehlungslogik den perfekten Parfum zu finden – Duftfamilie, Anlass, Saison und Stil inklusive.',
+    'Auressa hilft dir, mit einem eleganten Duft-Quiz und einer intelligenten Empfehlungslogik das perfekte Parfum zu finden – Duftfamilie, Anlass, Saison und Stil inklusive.',
   keywords: ['Parfum finden', 'Duft Quiz', 'Signature Duft', 'Duftberatung', 'Auressa'],
   verification: {
     google: 'hTy76EREclc_v_vWftD88u4tZ8VhsT630KvxJRRLdaw'
@@ -54,11 +54,9 @@ export const metadata: Metadata = {
     description:
       'Finde mit Auressa deinen perfekten Duft – per Quiz und intelligenter Empfehlungslogik.'
   },
+  // Ohne festen Titel/Text: X/Twitter übernimmt dann Titel und Beschreibung der jeweiligen Seite (og:*).
   twitter: {
-    card: 'summary_large_image',
-    title: 'Auressa – Finde deinen Signature-Duft',
-    description:
-      'Finde mit Auressa deinen perfekten Duft – per Quiz und intelligenter Empfehlungslogik.'
+    card: 'summary_large_image'
   }
 };
 
@@ -140,37 +138,51 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {/* Sauberer Footer: Nur echte Links */}
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
                 gap: '2rem',
                 marginBottom: '2rem',
               }}>
-                {/* Spalte 1: Tools */}
+                {/* Footer-Spalten: alle wichtigen Seiten, damit Besucher und Google sie finden. Admin bewusst nicht verlinkt. */}
                 <div>
-                  <h2 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block' }}>Tools</h2>
-                  <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                    <Link href="/quiz" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Quiz</Link>
-                    <Link href="/duefte" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Düfte durchsuchen</Link>
-                    <Link href="/wunschliste" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Meine Wunschliste</Link>
+                  <h2 className="footer-col-title">Duft finden</h2>
+                  <nav className="footer-col-links" aria-label="Duft finden">
+                    <Link href="/quiz">Duft-Quiz</Link>
+                    <Link href="/duefte">Alle Düfte</Link>
+                    <Link href="/dupes">Dupes & Alternativen</Link>
+                    <Link href="/geschenk-finder">Geschenk-Finder</Link>
+                    <Link href="/duft-finder">Duft-Finder</Link>
+                    <Link href="/wunschliste">Meine Wunschliste</Link>
                   </nav>
                 </div>
-
-                {/* Spalte 2: Content */}
                 <div>
-                  <h2 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Content</h2>
-                  <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                    <Link href="/ratgeber" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Ratgeber & Guides</Link>
-                    <Link href="/reiseduefte" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Reisedüfte</Link>
-                    <Link href="/duftchemie-grundlagen" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Duftchemie</Link>
+                  <h2 className="footer-col-title">Top-Listen</h2>
+                  <nav className="footer-col-links" aria-label="Top-Listen">
+                    <Link href="/beste-damenduefte">Beste Damendüfte</Link>
+                    <Link href="/beste-herrenduefte">Beste Herrendüfte</Link>
+                    <Link href="/beste-duefte-unter-100">Düfte unter CHF 100</Link>
+                    <Link href="/saisonal">Düfte nach Jahreszeit</Link>
+                    <Link href="/marke">Marken</Link>
                   </nav>
                 </div>
-
-                {/* Spalte 3: Über Auressa & Rechtliches (Admin bewusst nicht verlinkt, erreichbar über /admin) */}
                 <div>
-                  <h2 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Über Auressa</h2>
-                  <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                    <Link href="/testing-und-transparenz" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Transparenz</Link>
-                    <Link href="/impressum" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Impressum</Link>
-                    <Link href="/datenschutz" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Datenschutz</Link>
+                  <h2 className="footer-col-title">Wissen</h2>
+                  <nav className="footer-col-links" aria-label="Wissen">
+                    <Link href="/ratgeber">Ratgeber</Link>
+                    <Link href="/duftnoten">Duftnoten-Lexikon</Link>
+                    <Link href="/stimmungen">Düfte nach Stimmung</Link>
+                    <Link href="/reiseduefte">Reisedüfte</Link>
+                    <Link href="/duftchemie-grundlagen">Duftchemie</Link>
+                    <Link href="/faq">Häufige Fragen</Link>
+                  </nav>
+                </div>
+                <div>
+                  <h2 className="footer-col-title">Über Auressa</h2>
+                  <nav className="footer-col-links" aria-label="Über Auressa">
+                    <Link href="/ueber-uns">Über uns</Link>
+                    <Link href="/wie-auressa-funktioniert">So funktioniert Auressa</Link>
+                    <Link href="/testing-und-transparenz">Transparenz</Link>
+                    <Link href="/impressum">Impressum</Link>
+                    <Link href="/datenschutz">Datenschutz</Link>
                   </nav>
                 </div>
               </div>

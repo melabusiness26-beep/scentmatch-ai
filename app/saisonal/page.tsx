@@ -11,7 +11,7 @@ export const revalidate = 3600;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Saisonale Duft-Empfehlungen: Frühling, Sommer, Herbst, Winter',
+  title: 'Düfte nach Jahreszeit: Frühling bis Winter',
   description:
     'Düfte, die zu jeder Jahreszeit passen: frische Sommerdüfte, warme Winterdüfte, blumige Frühlingsdüfte und gemütliche Herbstdüfte – aus dem Auressa-Katalog, sortiert nach Auressa-Score.',
   alternates: { canonical: `${SITE_URL}/saisonal` },

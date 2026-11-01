@@ -1,0 +1,54 @@
+{
+  "slug": "boss-bottled-parfum",
+  "perfume_name": "Boss Bottled Parfum",
+  "brand": "Hugo Boss",
+  "gender": "Men",
+  "fragrance_family": "woody",
+  "concentration": "Parfum",
+  "volume_ml": 100,
+  "price_chf": 50.99,
+  "longevity": 7,
+  "sillage": 7,
+  "season": "Herbst/Winter",
+  "occasion": "Alltag",
+  "release_year": 2022,
+  "perfumer": "Annick Ménardo, Suzy Le Helley",
+  "top_notes": [
+    "Mandarine",
+    "Weihrauch"
+  ],
+  "heart_notes": [
+    "Feigenbaumwurzel",
+    "Iris"
+  ],
+  "base_notes": [
+    "Zedernholz",
+    "Ledernoten"
+  ],
+  "accords": [
+    "Holzig 23",
+    "Würzig 21",
+    "Süss 15",
+    "Frisch 12",
+    "Ledrig 11"
+  ],
+  "age_group": "all",
+  "lifestyle": "professional",
+  "trend_vibe": "popular",
+  "gender_nuance": "masculine",
+  "sizes": [
+    {
+      "ml": 50,
+      "price_chf": 50.99
+    },
+    {
+      "ml": 100,
+      "price_chf": 50.99
+    },
+    {
+      "ml": 200,
+      "price_chf": 91.99
+    }
+  ],
+  "description": "Boss Bottled Parfum von Hugo Boss ist 2022 erschienen. Komponiert haben ihn Annick Ménardo, von der schon das Original Boss Bottled stammt, und Suzy Le Helley.\n\nDen Auftakt machen Mandarine und Weihrauch. Im Herzen folgen Feigenbaumwurzel und Iris, in der Basis bleiben Zedernholz und Ledernoten.\n\nIn der Parfumo-Community gilt er als holzig-würziger Duft mit süssen, frischen und ledrigen Facetten. Er wird dort als vielseitig eingeordnet: für den Alltag, die Arbeit und die Freizeit genauso wie für den Abend, am liebsten im Herbst und Winter, aber auch im Frühling."
+}

@@ -4,6 +4,7 @@ import { DESTINATIONS, rankByDestination } from '@/lib/destinations';
 import { guides } from '@/lib/guides';
 import { hasEnoughVariety } from '@/lib/versions';
 import { GUIDE_DATES } from '@/lib/guide-dates';
+import { versionPairs } from '@/lib/version-compare';
 import { scentNotes } from '@/lib/notes-glossary';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
@@ -241,6 +242,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...guideUrls,
     ...noteUrls,
     ...brandUrls,
+    // Vergleichsseiten „X vs. Y" (automatisch aus den Versionen im Katalog)
+    ...versionPairs(perfumes).map((p) => ({
+      url: `${SITE_URL}/unterschied/${p.slug}`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7
+    })),
     ...perfumeUrls
   ];
 }

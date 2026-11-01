@@ -19,7 +19,8 @@ export function wearTips(p: Perfume): string[] {
 
   if (lo != null) {
     if (lo >= 8) tips.push('Er hält bis in den Abend, nachsprühen ist kaum nötig.');
-    else if (lo >= 6) tips.push('Er hält gut durch den Tag, für den Abend kannst du kurz nachsprühen.');
+    else if (lo >= 7) tips.push('Er hält gut durch den Tag, für den Abend kannst du kurz nachsprühen.');
+    else if (lo >= 6) tips.push('Er hält mehrere Stunden – für den Abend hilft eine kleine Reisegrösse zum Nachsprühen.');
     else tips.push('Für den ganzen Tag am Nachmittag nachsprühen, eine kleine Reisegrösse in der Tasche hilft.');
   }
 

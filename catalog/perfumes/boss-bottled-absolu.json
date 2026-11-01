@@ -1,0 +1,46 @@
+{
+  "slug": "boss-bottled-absolu",
+  "perfume_name": "Boss Bottled Absolu",
+  "brand": "Hugo Boss",
+  "gender": "Men",
+  "fragrance_family": "woody",
+  "concentration": "Parfum",
+  "volume_ml": 50,
+  "price_chf": 60.99,
+  "longevity": 9,
+  "sillage": 8,
+  "season": "Herbst/Winter",
+  "occasion": "Abend",
+  "release_year": 2024,
+  "perfumer": "Annick Ménardo, Suzy Le Helley",
+  "top_notes": [
+    "Leder",
+    "Weihrauch"
+  ],
+  "heart_notes": [
+    "Patchouli",
+    "Myrrhe"
+  ],
+  "base_notes": [
+    "Davana",
+    "Zedernholz"
+  ],
+  "accords": [
+    "Würzig 19",
+    "Süss 18",
+    "Holzig 16",
+    "Ledrig 16",
+    "Harzig 13"
+  ],
+  "age_group": "all",
+  "lifestyle": "party",
+  "trend_vibe": "popular",
+  "gender_nuance": "masculine",
+  "sizes": [
+    {
+      "ml": 50,
+      "price_chf": 60.99
+    }
+  ],
+  "description": "Boss Bottled Absolu von Hugo Boss ist 2024 als Parfum Intense erschienen. Komponiert haben ihn Annick Ménardo, von der schon das Original Boss Bottled stammt, und Suzy Le Helley.\n\nDen Auftakt machen Leder und Weihrauch. Im Herzen folgen Patchouli und Myrrhe, in der Basis bleiben Davana und Zedernholz.\n\nIn der Parfumo-Community gilt er als würzig-süsser Duft mit holzigen, ledrigen und harzigen Facetten. Haltbarkeit und Ausstrahlung werden dort als überdurchschnittlich bewertet. Getragen wird er vor allem am Abend und beim Ausgehen, am liebsten im Herbst und Winter."
+}

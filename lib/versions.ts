@@ -22,6 +22,7 @@ const VERSION_SUFFIXES = [
   'intense',
   'extrait',
   'elixir',
+  'absolu',
   'parfum',
   'cologne',
   'edp',

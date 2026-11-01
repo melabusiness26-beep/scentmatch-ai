@@ -58,10 +58,12 @@ const ROWS: Row[] = [
   ['macaron', 'Macaron', 'nach Macaron', 'Süsses & Desserts', null, '#F3C1CF', ['macaron'], [], 'Zart, mandelig und süss – wie ein Macaron aus der Pâtisserie.'],
   ['popcorn', 'Popcorn', 'nach Popcorn', 'Süsses & Desserts', null, '#F4E2A8', ['popcorn'], [], 'Buttrig, süss-salzig und verspielt – wie im Kino.'],
   ['zuckerwatte', 'Zuckerwatte', 'nach Zuckerwatte', 'Süsses & Desserts', null, '#F7C6DA', ['zuckerwatte', 'candy floss', 'cotton candy'], [], 'Luftig, zuckrig und verspielt – wie auf dem Jahrmarkt.'],
-  ['bonbon', 'Bonbon & Kaugummi', 'nach Bonbon und Kaugummi', 'Süsses & Desserts', null, '#F59CC0', ['bonbon', 'kaugummi', 'bubblegum', 'lutscher', 'candy'], ['candy floss', 'cotton candy'], 'Bunt, süss und frech – Düfte für gute Laune.'],
+  ['bonbon', 'Bonbon', 'nach Bonbon', 'Süsses & Desserts', null, '#F59CC0', ['bonbon', 'lutscher', 'candy'], ['candy floss', 'cotton candy'], 'Bunt, süss und frech – Düfte für gute Laune.'],
+  ['kaugummi', 'Kaugummi', 'nach Kaugummi', 'Süsses & Desserts', null, '#F7A8D0', ['kaugummi', 'bubblegum', 'bubble gum'], [], 'Rosa, süss und verspielt – der Duft von Bubblegum.'],
   ['lakritz', 'Lakritz', 'nach Lakritz', 'Süsses & Desserts', null, '#2F2A2A', ['lakritz', 'süssholz', 'süßholz'], [], 'Süss, würzig und ungewöhnlich – Lakritz polarisiert und macht Düfte spannend.'],
   ['ahornsirup', 'Ahornsirup', 'nach Ahornsirup', 'Süsses & Desserts', null, '#B5722E', ['ahorn', 'maple'], [], 'Warm, karamellig und leicht rauchig – wie Pancakes mit Sirup.'],
   ['marroni', 'Marroni', 'nach Marroni', 'Süsses & Desserts', null, '#7B4A2E', ['kastanie', 'marron'], ['rosskastanie'], 'Geröstet, süss und wintrig – wie heisse Marroni am Stand.'],
+  ['gipfeli', 'Gipfeli & Croissant', 'nach Gipfeli', 'Süsses & Desserts', null, '#E2B36E', ['croissant', 'gipfel', 'brioche'], [], 'Buttrig, goldbraun und frisch gebacken – wie ein Gipfeli am Sonntagmorgen.'],
   // Dessert-Kombis & Spezialitäten (passen nur, wenn ALLE Bestandteile vorkommen)
   ['erdbeershake', 'Erdbeershake', 'nach Erdbeershake', 'Dessert-Kombis & Spezialitäten', null, '#F4A7B9', [], [], 'Erdbeere trifft Milch oder Sahne – fruchtig, cremig und verspielt.'],
   ['vanilleshake', 'Vanilleshake', 'nach Vanilleshake', 'Dessert-Kombis & Spezialitäten', null, '#F3E4C4', [], [], 'Vanille mit Milch oder Sahne – weich, süss und gemütlich.'],
@@ -76,10 +78,15 @@ const ROWS: Row[] = [
   ['salted-caramel', 'Salted Caramel', 'nach Salted Caramel', 'Dessert-Kombis & Spezialitäten', null, '#C08A4A', [], [], 'Karamell mit einer Prise Salz – süss, salzig und süchtig machend.'],
   ['pina-colada', 'Piña Colada', 'nach Piña Colada', 'Dessert-Kombis & Spezialitäten', null, '#F4E3A1', [], [], 'Kokos und Ananas – Ferien im Glas.'],
   ['chai-latte', 'Chai Latte', 'nach Chai Latte', 'Dessert-Kombis & Spezialitäten', null, '#B98A62', [], [], 'Tee mit Zimt, Kardamom oder Ingwer – würzig, warm und cremig.'],
+  ['panna-cotta', 'Panna Cotta', 'nach Panna Cotta', 'Dessert-Kombis & Spezialitäten', null, '#F5EBDD', [], [], 'Sahne und Vanille – zart, cremig und elegant.'],
+  ['pistaziengipfel', 'Pistaziengipfel', 'nach Pistaziengipfel', 'Dessert-Kombis & Spezialitäten', null, '#B7C98A', [], [], 'Pistazie trifft buttriges Gebäck – nussig, cremig und frisch gebacken.'],
+  ['zimtschnecke', 'Zimtschnecke', 'nach Zimtschnecke', 'Dessert-Kombis & Spezialitäten', null, '#C58B5A', [], [], 'Zimt mit Gebäck, Butter oder Karamell – warm und süss wie aus der Bäckerei.'],
+  ['caramel-latte', 'Kaffee mit Karamell', 'nach Kaffee mit Karamell', 'Dessert-Kombis & Spezialitäten', null, '#A9744A', [], [], 'Kaffee trifft Karamell – wie ein Caramel Latte to go.'],
   // Früchte
   ['erdbeere', 'Erdbeere', 'nach Erdbeere', 'Früchte', null, '#E36A6A', ['erdbeer'], [], 'Saftig, süss und verspielt – Erdbeere wirkt fröhlich und jung.'],
   ['himbeere', 'Himbeere', 'nach Himbeere', 'Früchte', N + 'himbeere.jpg', '#C2415E', ['himbeer'], [], 'Fruchtig, leicht säuerlich und frech – Himbeere bringt Farbe in einen Duft.'],
   ['beeren', 'Beeren', 'nach Beeren', 'Früchte', N + 'cassis.jpg', '#6B2D4F', ['erdbeer', 'himbeer', 'brombeer', 'heidelbeer', 'blaubeer', 'johannisbeer', 'cassis', 'preiselbeer', 'cranberry', 'maulbeer', 'beere'], ['pfefferbeere', 'wacholderbeere'], 'Himbeere, Cassis, Brombeere & Co. – fruchtig, frisch und ein bisschen frech.'],
+  ['blaubeere', 'Blaubeere', 'nach Blaubeere', 'Früchte', null, '#4D5FA3', ['heidelbeer', 'blaubeer', 'blueberry'], [], 'Fruchtig, leicht säuerlich und frisch – Blaubeere wirkt verspielt.'],
   ['kirsche', 'Kirsche', 'nach Kirsche', 'Früchte', null, '#9E1F35', ['kirsch'], [], 'Dunkel, saftig und verführerisch – Kirsche ist ein Liebling der süssen Düfte.'],
   ['pfirsich', 'Pfirsich', 'nach Pfirsich', 'Früchte', N + 'pfirsich.jpg', '#F4B183', ['pfirsich'], [], 'Samtig, saftig und sanft süss – Pfirsich wirkt weich und freundlich.'],
   ['aprikose', 'Aprikose', 'nach Aprikose', 'Früchte', null, '#F2A65A', ['aprikose'], [], 'Sonnig, samtig und süss – Aprikose wirkt warm und fröhlich.'],
@@ -97,7 +104,8 @@ const ROWS: Row[] = [
   ['granatapfel', 'Granatapfel', 'nach Granatapfel', 'Früchte', null, '#B8323F', ['granatapfel'], [], 'Saftig, herb und leuchtend – Granatapfel wirkt edel und frisch.'],
   ['rhabarber', 'Rhabarber', 'nach Rhabarber', 'Früchte', null, '#D96C7B', ['rhabarber'], [], 'Säuerlich, grün und frisch – eine überraschende Note.'],
   // Zitrus
-  ['zitrone', 'Zitrone', 'nach Zitrone', 'Zitrus', N + 'zitrone.jpg', '#F2D64B', ['zitrone', 'limette', 'yuzu'], ['zitronengras', 'zitronenmelisse'], 'Spritzig, hell und frisch – Zitrone ist der Klassiker für warme Tage.'],
+  ['zitrone', 'Zitrone', 'nach Zitrone', 'Zitrus', N + 'zitrone.jpg', '#F2D64B', ['zitrone', 'yuzu'], ['zitronengras', 'zitronenmelisse'], 'Spritzig, hell und frisch – Zitrone ist der Klassiker für warme Tage.'],
+  ['limette', 'Limette', 'nach Limette', 'Zitrus', null, '#9CCB4F', ['limette', 'lime'], ['limettenblüte'], 'Grün, spritzig und erfrischend – wie ein Mojito an einem heissen Tag.'],
   ['orange', 'Orange', 'nach Orange', 'Zitrus', N + 'orange.jpg', '#F28C28', ['orange'], ['orangenblüte'], 'Saftig, sonnig und gut gelaunt – Orange macht Düfte fröhlich.'],
   ['mandarine', 'Mandarine', 'nach Mandarine', 'Zitrus', N + 'mandarine.jpg', '#F49A3A', ['mandarine'], [], 'Süss-zitrisch und weich – Mandarine ist die freundliche Zitrusfrucht.'],
   ['grapefruit', 'Grapefruit', 'nach Grapefruit', 'Zitrus', N + 'grapefruit.jpg', '#F07C6C', ['grapefruit', 'pampelmuse'], [], 'Herb, spritzig und frisch – Grapefruit weckt auf.'],
@@ -159,7 +167,11 @@ const COMBOS: Record<string, string[][]> = {
   lebkuchen: [SPICE, ['honig', 'mandel', 'lebkuchen']],
   'salted-caramel': [['karamel', 'toffee'], ['salz']],
   'pina-colada': [['kokos'], ['ananas']],
-  'chai-latte': [['tee', 'chai'], ['zimt', 'kardamom', 'ingwer']]
+  'chai-latte': [['tee', 'chai'], ['zimt', 'kardamom', 'ingwer']],
+  'panna-cotta': [CREAM, ['vanille']],
+  pistaziengipfel: [['pistazie'], ['croissant', 'gipfel', 'brioche', 'gebäck', 'butter', 'teig']],
+  zimtschnecke: [['zimt'], ['gebäck', 'brioche', 'teig', 'butter', 'frosting', 'zuckerguss', 'karamel', 'sahne']],
+  'caramel-latte': [['kaffee', 'espresso', 'mokka'], ['karamel', 'toffee']]
 };
 const COMBO_EXCLUDE = ['apfelblüte', 'granatapfel', 'muskatnuss', 'teer', 'tomate'];
 

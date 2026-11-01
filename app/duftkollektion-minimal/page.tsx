@@ -7,12 +7,12 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 export const metadata: Metadata = {
   title: 'Minimalistische Duftkollektion: Das 3er-Framework',
   description:
-    'Wie viele Düfte brauchst du wirklich? Das 3er-Framework: ein Alltags-Duft, ein Abend-Duft, ein Sommer-Duft. Das ist genug.',
+    'Wie viele Düfte brauchst du wirklich? Das 3er-Framework: ein Alltags-Duft, ein Abend-Duft, ein Saison-Duft. Für viele reicht das.',
   alternates: { canonical: `${SITE_URL}/duftkollektion-minimal` },
   openGraph: {
       images: ['/opengraph-image'],
     title: 'Minimalistische Duftkollektion | Auressa',
-    description: 'Weniger ist mehr: Wie du mit nur 3 Düften alles abdeckst.',
+    description: 'Weniger ist mehr: Wie du mit nur 3 Düften die meisten Situationen abdeckst.',
     url: `${SITE_URL}/duftkollektion-minimal`,
     type: 'website',
   },
@@ -51,7 +51,7 @@ export default function DuftkolektionMinimal() {
             Minimalistische Duftkollektion
           </h1>
           <p style={{ fontSize: '16px', color: 'rgba(250,247,242,0.75)', margin: 0, lineHeight: 1.6 }}>
-            Du brauchst nicht 50 Düfte, um gut zu riechen. Drei grossartige Düfte reichen aus – wenn du weisst, welche drei. Das 3er-Framework.
+            Du brauchst nicht 50 Düfte, um gut zu riechen. Drei gut gewählte Düfte können ausreichen – wenn du weisst, welche drei. Das 3er-Framework.
           </p>
         </div>
       </section>
@@ -67,10 +67,10 @@ export default function DuftkolektionMinimal() {
             Warum weniger besser ist
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3728', marginBottom: '1.2rem' }}>
-            Es gibt zwei Arten von Duft-Sammlern: Minimalisten und Enthusiasten. Ein Enthusiast hat 20+ Düfte – eine für jede Stimmung, jeden Tag, jede Jahreszeit. Ein Minimalist hat 3. Beide sind vollkommen valide. Aber der Minimalist hat einen grossen Vorteil: Er kennt seine Düfte wirklich. Er weiss, wann welcher Duft passt. Er hat nicht zu viele, um sie regelmässig zu tragen.
+            Es gibt zwei Arten von Duft-Sammlern: Minimalisten und Enthusiasten. Ein Enthusiast hat oft 20 oder mehr Düfte – einen für jede Stimmung, jeden Tag, jede Jahreszeit. Ein Minimalist hat vielleicht 3. Beides ist vollkommen in Ordnung. Der Minimalist hat aber einen Vorteil: Er kennt seine Düfte gut. Er weiss, wann welcher Duft passt, und trägt jeden davon regelmässig.
           </p>
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3728', marginBottom: '1.2rem' }}>
-            Die Realität: Die meisten Menschen haben zu viele Düfte und tragen sie nicht. Du kaufst einen neuen Duft, bist begeistert, trägst ihn zwei Wochen lang, dann kommt eine neue Obsession, und der erste Duft sitzt in der Ecke. Nach zwei Jahren hast du 20 Flakons, von denen du vielleicht 3 regelmässig trägst.
+            Viele Duft-Fans kennen das: Du kaufst einen neuen Duft, bist begeistert, trägst ihn zwei Wochen lang, dann kommt eine neue Obsession, und der erste Duft steht in der Ecke. Irgendwann stehen viele Flakons im Regal, von denen du nur wenige regelmässig trägst.
           </p>
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3728' }}>
             Ein minimalistisches 3er-Framework bedeutet: Du hast genug für jeden Kontext, aber nicht so viel, dass es überwältigend wird. Du brauchst nicht mehr auszuwählen. Du weisst einfach: Montag im Büro = Duft #1. Freitagabend = Duft #2. Juli = Duft #3. Das ist Klarheit.
@@ -98,19 +98,19 @@ export default function DuftkolektionMinimal() {
               1. Der Alltags-Duft (Daily Driver)
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#6b5344', marginBottom: '1rem', fontStyle: 'italic' }}>
-              Büro, Einkaufen, Alltag – 80% deines Lebens
+              Büro, Einkaufen, Alltag – der grösste Teil deiner Tage
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              Das ist der Duft, den du am häufigsten trägst. Der sollte dezent, angenehm und nicht zu auffällig sein. Er sollte 6-8 Stunden halten und in jedem Kontext funktionieren: Büro, Coffee-Shop, Supermarkt. Nicht zu süss, nicht zu würzig – einfach immer richtig.
+              Das ist der Duft, den du am häufigsten trägst. Der sollte dezent, angenehm und nicht zu auffällig sein. Er sollte möglichst mehrere Stunden halten und in vielen Situationen passen: Büro, Coffee-Shop, Supermarkt. Nicht zu süss, nicht zu würzig – einfach unkompliziert.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              <strong>Frauen-Beispiele:</strong> Allure von Chanel, Dolce Gabbana Light Blue, Jo Malone Wood Sage Sea Salt.
+              <strong>Frauen-Beispiele:</strong> Chanel Allure, Dolce&amp;Gabbana Light Blue, Jo Malone Wood Sage &amp; Sea Salt.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              <strong>Männer-Beispiele:</strong> Bleu de Chanel, Acqua di Gio, Heeley Sel Marin.
+              <strong>Männer-Beispiele:</strong> Bleu de Chanel, Giorgio Armani Acqua di Giò, Heeley Sel Marin.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#6b5344' }}>
-              <strong>Das Budget:</strong> CHF 100–150 für einen guten Alltags-Duft ist realistisch. Das ist die beste Investition, weil du ihn jeden Tag trägst.
+              <strong>Das Budget:</strong> CHF 100–150 für einen guten Alltags-Duft ist realistisch. Hier lohnt sich die Investition am ehesten, weil du ihn am häufigsten trägst.
             </p>
           </div>
 
@@ -126,19 +126,19 @@ export default function DuftkolektionMinimal() {
               2. Der Abend-Duft (Special Occasion)
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#6b5344', marginBottom: '1rem', fontStyle: 'italic' }}>
-              Dates, Party, wichtige Momente – 15% deines Lebens
+              Dates, Party, wichtige Momente – die besonderen Gelegenheiten
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              Das ist dein „Wow"-Duft. Intensiver, sensueller, unvergesslicher. Ein Duft, der im Büro zu viel wäre, aber beim Date perfekt. Das kann gourmand, orientalisch, intensiv-holzig sein – etwas mit Präsenz und Charakter. Der sollte 8+ Stunden halten.
+              Das ist dein „Wow"-Duft. Intensiver, sinnlicher, präsenter. Ein Duft, der im Büro zu viel wäre, aber beim Date perfekt. Das kann gourmand, orientalisch, intensiv-holzig sein – etwas mit Präsenz und Charakter. Er darf gern lange halten.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              <strong>Frauen-Beispiele:</strong> Black Opium, Hypnotic Poison, Chloe, Yves Saint Laurent Mon Paris.
+              <strong>Frauen-Beispiele:</strong> Yves Saint Laurent Black Opium, Dior Hypnotic Poison, Yves Saint Laurent Mon Paris.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              <strong>Männer-Beispiele:</strong> Tobacco Vanille, Creed Aventus, Tom Ford Ombré Leather, Dior Homme Intense.
+              <strong>Männer-Beispiele:</strong> Tom Ford Ombré Leather, Dior Homme Intense, Yves Saint Laurent La Nuit de L’Homme.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#6b5344' }}>
-              <strong>Das Budget:</strong> CHF 80–200. Dieser Duft wird weniger häufig getragen, also kannst du hier splurgen – aber nicht zu viel.
+              <strong>Das Budget:</strong> CHF 80–200. Dieser Duft wird weniger häufig getragen, also darfst du hier etwas mehr ausgeben – aber nicht zu viel.
             </p>
           </div>
 
@@ -160,13 +160,13 @@ export default function DuftkolektionMinimal() {
               Im Sommer brauchst du etwas Frisches, Leichtes. Im Winter etwas Wärmeres, Schwereres. Statt zwei verschiedene „Alltags-Düfte" für Sommer und Winter zu haben, könntest du auch einfach deinen Alltags-Duft im Sommer leichter auftragen und im Winter ein bisschen intensiver. Aber die praktische Lösung ist: Ein leichter Sommer-Duft, der völlig anders ist als dein Winter-Alltags-Duft.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              <strong>Sommer-Beispiele:</strong> Davidoff Cool Water, Jo Malone Grapefruit, Acqua di Gio, Diptyque L'Eau Rose.
+              <strong>Sommer-Beispiele:</strong> Davidoff Cool Water, Jo Malone Grapefruit, Giorgio Armani Acqua di Giò, Diptyque Eau Rose.
             </p>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', marginBottom: '0.8rem' }}>
-              <strong>Winter-Beispiele:</strong> Amber Solaire, Cinnamon Spice, Tobacco Vanille (warmer), Dior Hypnotic Poison (reichhaltiger).
+              <strong>Winter-Beispiele:</strong> Viktor&amp;Rolf Spicebomb, Lancôme La Nuit Trésor, Dior Hypnotic Poison (reichhaltiger).
             </p>
             <p style={{ fontSize: '0.95rem', color: '#6b5344' }}>
-              <strong>Das Budget:</strong> CHF 60–120. Dieser Duft wird saisonal getragen – nicht den ganzen Jahr über.
+              <strong>Das Budget:</strong> CHF 60–120. Dieser Duft wird saisonal getragen – nicht das ganze Jahr über.
             </p>
           </div>
         </section>
@@ -181,7 +181,7 @@ export default function DuftkolektionMinimal() {
           </h2>
 
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3728', marginBottom: '1.5rem' }}>
-            Hier ist das Schöne am 3er-Framework: Die Düfte sind völlig unterschiedlich in Charakter, aber zusammen decken sie dein ganzes Leben ab. Die drei sollten NOT ähnlich sein – sie sollten verschiedene Rollen erfüllen.
+            Hier ist das Schöne am 3er-Framework: Die Düfte sind völlig unterschiedlich in Charakter, aber zusammen decken sie die meisten Situationen ab. Die drei sollten NICHT ähnlich sein – sie sollten verschiedene Rollen erfüllen.
           </p>
 
           <div style={{
@@ -196,7 +196,7 @@ export default function DuftkolektionMinimal() {
             </p>
             <div style={{ marginBottom: '1rem' }}>
               <p style={{ fontSize: '0.9rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.2rem' }}>
-                Alltag: Allure Sensuelle (klassisch, süss, zeitlos)
+                Alltag: Chanel Allure (klassisch, blumig, zeitlos)
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: '0.2rem 0 0 0' }}>
                 Warum: Dezent, angenehm, funktioniert überall. Tägliches Rückgrat.
@@ -207,7 +207,7 @@ export default function DuftkolektionMinimal() {
                 Abend: Black Opium (intensiv, gourmand, mutig)
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: '0.2rem 0 0 0' }}>
-                Warum: Völlig anders – würzig, kaffeeig, sinnlich. Perfekt für den Abend. Keine Überlappung mit Allure.
+                Warum: Ganz anders – kaffeeig, süss, sinnlich. Gut für den Abend. Kaum Überlappung mit Allure.
               </p>
             </div>
             <div>
@@ -215,17 +215,17 @@ export default function DuftkolektionMinimal() {
                 Sommer: Jo Malone Grapefruit (frisch, minimal, erfrischend)
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: '0.2rem 0 0 0' }}>
-                Warum: Völlig leicht, komplett anders. Im Juli brauchst du das. Keine Überlappung.
+                Warum: Ganz leicht, komplett anders. Ideal für heisse Tage. Kaum Überlappung.
               </p>
             </div>
           </div>
 
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3728', marginBottom: '1.2rem' }}>
-            Die Magie hier ist: Diese drei Düfte teilen nichts. Sie fühlen sich wie drei völlig unterschiedliche Wahlen an. Aber zusammen decken sie alle deine Bedürfnisse ab.
+            Das Schöne hier: Diese drei Düfte haben kaum etwas gemeinsam. Sie fühlen sich wie drei völlig unterschiedliche Wahlen an. Aber zusammen decken sie viele Bedürfnisse ab.
           </p>
 
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3728' }}>
-            Die Alternative wäre: Alle drei sind ähnlich (z.B. drei verschiedene florals). Das ist langweilig und redundant. Die beste 3er-Kollektion hat Vielfalt, aber strategisch.
+            Die Alternative wäre: Alle drei sind ähnlich (z. B. drei verschiedene Blumendüfte). Das ist eher redundant. Eine gute 3er-Kollektion hat Vielfalt – mit Plan.
           </p>
         </section>
 
@@ -249,7 +249,7 @@ export default function DuftkolektionMinimal() {
               Schritt 1: Erkenne, wer du bist
             </h3>
             <p style={{ fontSize: '0.95rem', lineHeight: 1.7, color: '#4a3728', margin: 0 }}>
-              Bist du ein Klassiker (zeitlos), Romantiker (emotional), Abenteurer (experimentell)? Nutze das Auressa-Quiz und die Duftpersönlichkeit-Seite, um dich selbst zu verstehen. Dieser Schritt ist wichtig – deine 3er-Kollektion sollte deine echte Persönlichkeit widerspiegeln.
+              Bist du ein Klassiker (zeitlos), Romantiker (emotional), Abenteurer (experimentell)? Das Auressa-Quiz und die Duftpersönlichkeit-Seite können dir dabei als spielerische Orientierung helfen. Deine 3er-Kollektion sollte zu deinem Geschmack passen.
             </p>
           </div>
 
@@ -264,7 +264,7 @@ export default function DuftkolektionMinimal() {
               Schritt 2: Wähle deine Lieblingsduft-Familie
             </h3>
             <p style={{ fontSize: '0.95rem', lineHeight: 1.7, color: '#4a3728', margin: 0 }}>
-              Magst du Florals, Woody, Clean, oder Gourmand? Dein Alltags-Duft sollte in deiner Lieblingsfamilie sein – dann trägst du ihn gerne. Die anderen zwei können variabler sein, aber mindestens einer sollte dich resonieren.
+              Magst du Florals, Woody, Clean, oder Gourmand? Dein Alltags-Duft sollte in deiner Lieblingsfamilie sein – dann trägst du ihn gerne. Die anderen zwei können variabler sein, aber auch sie sollten dir wirklich gefallen.
             </p>
           </div>
 
@@ -279,7 +279,7 @@ export default function DuftkolektionMinimal() {
               Schritt 3: Teste vor dem Kauf
             </h3>
             <p style={{ fontSize: '0.95rem', lineHeight: 1.7, color: '#4a3728', margin: 0 }}>
-              Besuche einen Parfümerie und teste alle drei, bevor du kaufst. Trag sie 20-30 Minuten auf verschiedenen Körperstellen. Der erste Eindruck ist nicht die Wahrheit – du brauchst die Herznoten zu spüren. Und kaufe immer Proben/Samples zuerst, wenn möglich.
+              Besuche eine Parfümerie und teste alle drei, bevor du kaufst. Trag sie auf der Haut und warte mindestens 20–30 Minuten, besser einige Stunden. Der erste Eindruck täuscht oft – du willst auch Herz- und Basisnoten kennenlernen. Und kaufe immer Proben/Samples zuerst, wenn möglich.
             </p>
           </div>
 
@@ -290,10 +290,10 @@ export default function DuftkolektionMinimal() {
             padding: '1.8rem',
           }}>
             <h3 style={{ fontSize: '1.1rem', color: '#2a1d12', fontWeight: 700, marginBottom: '1rem' }}>
-              Schritt 4: Kaufe Eau de Parfum, nicht Eau de Toilette
+              Schritt 4: Beim Alltags-Duft ruhig zum Eau de Parfum greifen
             </h3>
             <p style={{ fontSize: '0.95rem', lineHeight: 1.7, color: '#4a3728', margin: 0 }}>
-              Der Alltags-Duft wird am häufigsten getragen, also lohnt sich die Investition in Eau de Parfum (bessere Haftung). Die anderen zwei können EDL sein, wenn du sparen möchtest. Aber: Lieber 3 gute EDPs als 5 billige EDLs.
+              Der Alltags-Duft wird am häufigsten getragen, also kann sich ein Eau de Parfum lohnen (höhere Konzentration, hält oft länger). Die anderen zwei können Eau de Toilette sein, wenn du sparen möchtest. Und: Lieber 3 Düfte, die du wirklich trägst, als 5, die nur im Regal stehen.
             </p>
           </div>
         </section>
@@ -318,7 +318,7 @@ export default function DuftkolektionMinimal() {
               ❌ Alle drei sind ähnlich
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', margin: 0 }}>
-              Drei süsse Florals = Redundanz. Du trägst den ersten und vergisst die anderen zwei. Die beste 3er-Kollektion hat Kontrast.
+              Drei süsse Blumendüfte = Redundanz. Oft trägst du dann nur einen und vergisst die anderen zwei. Eine gute 3er-Kollektion hat Kontrast.
             </p>
           </div>
 
@@ -333,7 +333,7 @@ export default function DuftkolektionMinimal() {
               ❌ Die Alltags-Wahl ist zu intensiv
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', margin: 0 }}>
-              Ein intensiver, sinnlicher Duft funktioniert nicht für jeden Tag im Büro. Der Alltags-Duft sollte dezent und universell angenehm sein.
+              Ein intensiver, sinnlicher Duft ist für den Büroalltag oft zu viel. Der Alltags-Duft sollte dezent und universell angenehm sein.
             </p>
           </div>
 
@@ -362,7 +362,7 @@ export default function DuftkolektionMinimal() {
               ❌ Du fragst nicht nach deinem Typ
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#4a3728', margin: 0 }}>
-              Männlich, weiblich, unisex sind Marketing-Kategorien. Ein grossartiger Duft funktioniert für dich, unabhängig davon, wie er vermarktet wird. Ignoriere das Geschlecht und wähle nach Charakter.
+              Männlich, weiblich, unisex sind vor allem Marketing-Kategorien. Ein Duft kann zu dir passen, unabhängig davon, wie er vermarktet wird. Ignoriere das Geschlecht und wähle nach Charakter.
             </p>
           </div>
         </section>
@@ -381,7 +381,7 @@ export default function DuftkolektionMinimal() {
               Reichen 3 Düfte wirklich aus?
             </summary>
             <p style={{ fontSize: '0.9rem', color: '#4a3728', lineHeight: 1.7, marginTop: '0.8rem', margin: '0.8rem 0 0 0' }}>
-              Für die meisten Menschen: ja. Wenn du gerne experimentierst und Düfte kennst, möchtest du vielleicht mehr. Aber 3 gut gewählte Düfte (Alltag, Abend, Saison) decken 100% deiner praktischen Bedürfnisse ab.
+              Für viele: ja. Wenn du gerne experimentierst, möchtest du vielleicht mehr. Aber 3 gut gewählte Düfte (Alltag, Abend, Saison) decken die meisten Alltagssituationen ab.
             </p>
           </details>
 
@@ -390,7 +390,7 @@ export default function DuftkolektionMinimal() {
               Kann der Alltags-Duft auch der Abend-Duft sein?
             </summary>
             <p style={{ fontSize: '0.9rem', color: '#4a3728', lineHeight: 1.7, marginTop: '0.8rem', margin: '0.8rem 0 0 0' }}>
-              Technisch ja, aber nicht ideal. Ein grossartiger Alltags-Duft ist dezent. Im Abend möchtest du oft präsenter sein. Wenn du sparen möchtest, könnte der Alltags-Duft in Eau de Parfum (intensiver dosiert) auch abends funktionieren. Aber ideal ist, sie zu separieren.
+              Ja, das geht – ist aber nicht immer ideal. Ein guter Alltags-Duft ist eher dezent. Am Abend möchtest du oft präsenter sein. Wenn du sparen möchtest, könnte der Alltags-Duft in Eau de Parfum (intensiver dosiert) auch abends funktionieren. Wer mag, trennt die beiden.
             </p>
           </details>
 
@@ -399,7 +399,7 @@ export default function DuftkolektionMinimal() {
               Sollte ich Winter UND Sommer haben oder nur Sommer?
             </summary>
             <p style={{ fontSize: '0.9rem', color: '#4a3728', lineHeight: 1.7, marginTop: '0.8rem', margin: '0.8rem 0 0 0' }}>
-              Das 3er-Framework bietet Flexibilität. Wenn du in einem Klima mit echten Jahreszeiten lebst (Schweiz), könnten 4 Düfte sinnvoll sein: Alltag+Abend+Sommer+Winter. Aber die meisten Menschen können mit 3 ausgehen, wenn sie ihr Alltags-Duft richtig wählen.
+              Das 3er-Framework bietet Flexibilität. Wenn du in einem Klima mit echten Jahreszeiten lebst (Schweiz), könnten 4 Düfte sinnvoll sein: Alltag+Abend+Sommer+Winter. Viele kommen aber mit 3 aus, wenn sie ihren Alltags-Duft gut wählen.
             </p>
           </details>
 
@@ -417,7 +417,7 @@ export default function DuftkolektionMinimal() {
               Wie viel sollte ich insgesamt ausgeben?
             </summary>
             <p style={{ fontSize: '0.9rem', color: '#4a3728', lineHeight: 1.7, marginTop: '0.8rem', margin: '0.8rem 0 0 0' }}>
-              Das Budget hängt von deiner Priorität ab. Ein bescheidenes 3er-Set: CHF 150–250 (ein Alltags-Duft + zwei billigere). Ein mittleres Set: CHF 250–500. Ein Premium-Set: CHF 400+. Es muss kein teures Geld sein – es geht um Qualität über Quantität.
+              Das Budget hängt von deiner Priorität ab. Als grobe Orientierung: Ein bescheidenes 3er-Set: CHF 150–250 (ein Alltags-Duft + zwei günstigere). Ein mittleres Set: CHF 250–500. Ein Premium-Set: über CHF 400. Es muss nicht teuer sein – es geht um Qualität statt Quantität.
             </p>
           </details>
         </section>
@@ -439,7 +439,7 @@ export default function DuftkolektionMinimal() {
             border: 'none',
             cursor: 'pointer',
           }}>
-            Finde deine 3 perfekten Düfte →
+            Finde passende Düfte im Quiz →
           </Link>
         </section>
       </div>

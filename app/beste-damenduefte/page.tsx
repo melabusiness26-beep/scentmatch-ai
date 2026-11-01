@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Breadcrumb from '@/app/Breadcrumb';
 import { AffiliateButton } from '@/app/AffiliateButton';
-import { getPerfumes, type Perfume } from '@/lib/perfumes';
+import { getPerfumes, type Perfume, isWithinPriceCap } from '@/lib/perfumes';
 
 export const revalidate = 3600;
 
@@ -12,12 +12,12 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 export const metadata: Metadata = {
   title: 'Die besten Damendüfte – Parfum-Empfehlungen',
   description:
-    'Die besten Damen-Parfums im Überblick: Von klassisch-floral bis modern-holzig. Mit Duftprofil, Noten, Preisen und günstigen Alternativen.',
+    'Damen- und Unisex-Parfums aus dem Auressa-Katalog, sortiert nach dem berechneten Auressa-Score. Mit Duftprofil, Noten und Preisen.',
   alternates: { canonical: `${SITE_URL}/beste-damenduefte` },
   openGraph: {
       images: ['/opengraph-image'],
     title: 'Die besten Damendüfte | Auressa',
-    description: 'Unsere Top-Empfehlungen für Damen-Parfums – mit Duftprofil, Noten und Preisen.',
+    description: 'Damen-Parfums nach Auressa-Score sortiert – mit Duftprofil, Noten und Preisen.',
     type: 'website',
     url: `${SITE_URL}/beste-damenduefte`,
   },
@@ -132,6 +132,7 @@ export default async function BesteDamenduefte() {
   // Damendüfte + Unisex, sortiert nach Score desc, dann Preis asc als Tiebreaker
   const top = all
     .filter((p) => (p.gender === 'Women' || p.gender === 'Unisex') && p.scentmatch_score != null)
+    .filter(isWithinPriceCap)
     .sort((a, b) => {
       const scoreDiff = (b.scentmatch_score ?? 0) - (a.scentmatch_score ?? 0);
       if (scoreDiff !== 0) return scoreDiff;
@@ -211,8 +212,8 @@ export default async function BesteDamenduefte() {
             margin: '0 auto 1.5rem',
             lineHeight: 1.6,
           }}>
-            Unsere Top-Empfehlungen für Damen-Parfums – kuratiert nach Duftprofil,
-            Langlebigkeit und Preis-Leistung. Von blumig-romantisch bis modern-holzig.
+            Damen- und Unisex-Parfums aus unserem Katalog – sortiert nach dem
+            Auressa-Score aus Preis-Leistung, Haltbarkeit, Vielseitigkeit und Ausstrahlung.
           </p>
           <Link href="/quiz" style={{
             display: 'inline-block',
@@ -251,7 +252,7 @@ export default async function BesteDamenduefte() {
           <p style={{ color: '#6b5344', lineHeight: 1.7, fontSize: '0.95rem' }}>
             Unsere Rangliste basiert auf dem <strong>Auressa-Score</strong> — einem berechneten Wert
             aus Preis-Leistung, Haltbarkeit, Vielseitigkeit und Ausstrahlung.
-            Damen- und Unisex-Düfte werden gemeinsam bewertet. Für deinen persönlichen
+            Damen- und Unisex-Düfte werden gemeinsam gelistet; bei gleichem Score steht der günstigere Duft vorne. Für deinen persönlichen
             Top-Duft empfehlen wir zusätzlich das{' '}
             <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>
               Duft-Quiz
@@ -282,7 +283,7 @@ export default async function BesteDamenduefte() {
             Finde deinen perfekten Duft
           </h2>
           <p style={{ color: 'rgba(250,247,242,0.7)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
-            Unser Quiz berücksichtigt deinen Stil, deine Lieblingsmomente und dein Budget.
+            Das Quiz fragt nach Duftrichtung, Lieblingsnoten, Anlass, Jahreszeit, Intensität und Budget.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <Link href="/quiz" style={{

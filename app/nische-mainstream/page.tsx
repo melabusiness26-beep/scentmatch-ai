@@ -7,13 +7,13 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 export const metadata: Metadata = {
   title: 'Nische vs. Mainstream Düfte: Unterschiede erklärt',
   description:
-    'Verstehe den Unterschied zwischen Niche-Parfümen und Mainstream-Düften – Qualität, Einzigartigkeit, Preis und Verfügbarkeit.',
+    'Verstehe den Unterschied zwischen Nischen-Parfums und Mainstream-Düften – Qualität, Einzigartigkeit, Preis und Verfügbarkeit.',
   alternates: { canonical: '/nische-mainstream' },
   openGraph: {
       images: ['/opengraph-image'],
     title: 'Nische vs. Mainstream Düfte | Auressa',
     description:
-      'Lerne, wann Niche-Parfüme lohnen und wann Mainstream-Klassiker reichen – ein fairer Vergleich.',
+      'Lerne, wann Nischen-Parfums lohnen und wann Mainstream-Klassiker reichen – ein fairer Vergleich.',
     type: 'website',
     url: `${SITE_URL}/nische-mainstream`
   }
@@ -28,12 +28,12 @@ export default function NischeMainstreamPage() {
           <p className="eyebrow">Wissen</p>
           <h1 className="detail-title">Nische vs. Mainstream Düfte</h1>
           <p className="lead">
-            Der Duft-Markt ist aufgeteilt: Es gibt die grossen Mainstream-Marken (Chanel, Dior, Guerlain)
-            und die kleineren Nische-Perfumiers (Heeley, Maison Margiela, L'Artisan). Welcher ist besser?
+            Grob gesagt gibt es die grossen Mainstream-Marken (Chanel, Dior, Guerlain)
+            und die spezialisierten Nischen-Parfumhäuser (Heeley, L'Artisan Parfumeur, Diptyque). Welche sind besser?
             Das ist nicht einfach zu beantworten – es kommt darauf an, was du willst.
           </p>
           <p className="lead">
-            Dieser Guide erklärt die Unterschiede, damit du eine informierte Wahl treffst.
+            Dieser Guide erklärt die Unterschiede, damit du eine informierte Wahl triffst.
           </p>
 
           <h2>Was ist Mainstream? Was ist Nische?</h2>
@@ -52,15 +52,15 @@ export default function NischeMainstreamPage() {
             }}>
               <h3 style={{ margin: '0 0 1rem 0', fontSize: '0.95rem' }}>📊 MAINSTREAM</h3>
               <p style={{ margin: '0 0 0.75rem 0', fontSize: '0.9rem', fontWeight: 600, color: '#2a1d12' }}>
-                Grosse, bekannte Luxus-Marken
+                Grosse, bekannte Designer- und Modemarken
               </p>
               <ul style={{ margin: 0, fontSize: '0.85rem', color: '#5b4d40' }}>
                 <li><strong>Marken:</strong> Chanel, Dior, Guerlain, Tom Ford, YSL, Calvin Klein, Prada</li>
                 <li><strong>Distribution:</strong> Überall (Kaufhäuser, Flughafen, Online)</li>
                 <li><strong>Marketing:</strong> Massive Ad-Kampagnen, Influencer, TV</li>
-                <li><strong>Produktion:</strong> In Massenmengen, oft mit kleineren Labs</li>
-                <li><strong>Preis:</strong> CHF 60–200 (Standard)</li>
-                <li><strong>Charaktere:</strong> Breit designt, mainstream Appeal</li>
+                <li><strong>Produktion:</strong> In grossen Stückzahlen</li>
+                <li><strong>Preis:</strong> häufig ca. CHF 60–200</li>
+                <li><strong>Charaktere:</strong> Auf breiten Geschmack ausgelegt</li>
               </ul>
             </div>
             <div style={{
@@ -71,20 +71,20 @@ export default function NischeMainstreamPage() {
             }}>
               <h3 style={{ margin: '0 0 1rem 0', fontSize: '0.95rem' }}>🎨 NISCHE</h3>
               <p style={{ margin: '0 0 0.75rem 0', fontSize: '0.9rem', fontWeight: 600, color: '#2a1d12' }}>
-                Kleine, unabhängige Perfumeries
+                Spezialisierte Parfumhäuser – teils unabhängig, teils im Besitz grösserer Konzerne
               </p>
               <ul style={{ margin: 0, fontSize: '0.85rem', color: '#5b4d40' }}>
-                <li><strong>Marken:</strong> Heeley, Maison Margiela, L'Artisan Parfumeur, Diptyque, Byredo</li>
+                <li><strong>Marken:</strong> Heeley, L'Artisan Parfumeur, Diptyque, Byredo</li>
                 <li><strong>Distribution:</strong> Spezialisierte Shops, Online, begrenzt</li>
-                <li><strong>Marketing:</strong> Wenig oder gar nicht, Niche-Community</li>
-                <li><strong>Produktion:</strong> In kleinen Mengen, oft von Hand</li>
-                <li><strong>Preis:</strong> CHF 80–250 (oft höher, aber qualitätsberechtigt)</li>
-                <li><strong>Charaktere:</strong> Experimentell, künstlerisch, unkonventionell</li>
+                <li><strong>Marketing:</strong> Meist kleinere Budgets, viel über Fachhandel & Mundpropaganda</li>
+                <li><strong>Produktion:</strong> Meist in kleineren Stückzahlen</li>
+                <li><strong>Preis:</strong> oft über CHF 150, nicht selten über CHF 200</li>
+                <li><strong>Charaktere:</strong> Oft experimenteller und ungewöhnlicher</li>
               </ul>
             </div>
           </div>
 
-          <h2>Direkt Vergleich: 8 wichtige Unterschiede</h2>
+          <h2>Direkter Vergleich: 8 wichtige Unterschiede</h2>
 
           <div style={{
             display: 'grid',
@@ -94,51 +94,51 @@ export default function NischeMainstreamPage() {
             {[
               {
                 kriterium: 'Qualität der Duftstoffe',
-                mainstream: 'Gut. Aber oft mit synthetischen Füllstoffen & Alkohol gestreckt, um Kosten zu sparen.',
-                nische: 'Oft besser. Kleinere Marken nutzen hochwertigere ätherische Öle & natürliche Ingredienzien. Weniger Alkohol.',
-                urteil: 'Vorteil: Nische'
+                mainstream: 'Solide. Fast alle modernen Parfums kombinieren natürliche und synthetische Duftstoffe – Synthetik ist Standard, kein Qualitätsmangel. Alkohol ist das übliche Lösungsmittel.',
+                nische: 'Teils mit seltenen Rohstoffen oder höherer Konzentration – aber nicht automatisch. Der Preis allein sagt wenig über die Qualität.',
+                urteil: 'Unentschieden – kommt auf den einzelnen Duft an'
               },
               {
                 kriterium: 'Einzigartigkeit',
-                mainstream: 'Weniger. Mainstream-Düfte sind designt, um grossen Appeal zu haben. Daher sind sie ähnlicher untereinander.',
-                nische: 'Höher. Nische-Marken experimentieren & trauen sich unkonventionell zu sein. Jeder Duft ist eigenwillig.',
+                mainstream: 'Weniger. Mainstream-Düfte sollen möglichst vielen gefallen. Daher ähneln sich viele untereinander.',
+                nische: 'Höher. Nischen-Marken experimentieren öfter & trauen sich, unkonventionell zu sein.',
                 urteil: 'Vorteil: Nische'
               },
               {
                 kriterium: 'Haltbarkeit & Sillage',
-                mainstream: 'Exzellent. Diese Düfte sind designt, um 8+ Stunden zu halten & deutlich zu riechen.',
-                nische: 'Variabel. Manche halten 8+ Stunden, manche nur 4–6. Dafür sind sie subtiler & eleganter.',
-                urteil: 'Vorteil: Mainstream'
+                mainstream: 'Meist solide und gut wahrnehmbar – je nach Konzentration (EdT, EdP, Parfum).',
+                nische: 'Sehr unterschiedlich – von hautnah und leise bis sehr kräftig.',
+                urteil: 'Kommt auf den einzelnen Duft an'
               },
               {
                 kriterium: 'Verfügbarkeit',
                 mainstream: 'Sehr einfach. Überall verfügbar, einfach zu kaufen, breite Distribution.',
-                nische: 'Schwierig. Nur in spezialiserten Shops, oft online. Begrenzte Verfügbarkeit.',
+                nische: 'Eingeschränkter. Oft nur in Boutiquen, spezialisierten Shops oder online.',
                 urteil: 'Vorteil: Mainstream'
               },
               {
                 kriterium: 'Preis',
-                mainstream: 'CHF 60–200 (meist CHF 80–150). Massenprodukte, daher günstiger trotz grosser Marken.',
-                nische: 'Oft CHF 100–250+. Kleinere Mengen, hochwertigere Zutaten, höhere Kosten.',
+                mainstream: 'Häufig ca. CHF 60–200, je nach Grösse und Konzentration. Grosse Stückzahlen halten die Kosten pro Flasche tiefer.',
+                nische: 'Oft deutlich teurer, nicht selten über CHF 200. Kleinere Stückzahlen und Luxus-Positionierung treiben den Preis.',
                 urteil: 'Vorteil: Mainstream (günstiger)'
               },
               {
                 kriterium: 'Marketing & Hype',
-                mainstream: 'Masiv. Ads überall, Celebrity-Endorsements, Social Media Kampagnen. Das Hype ist Teil des Kaufs.',
-                nische: 'Minimal. Oft kaum Marketing, Wachstum durch Mundpropaganda & Nischen-Community.',
-                urteil: 'Vorteil: Nische (authentischer)'
+                mainstream: 'Gross. Werbung, Promi-Gesichter, Social-Media-Kampagnen. Der Hype ist oft Teil des Kaufs.',
+                nische: 'Meist zurückhaltender. Vieles läuft über Boutiquen, Fachhandel und Mundpropaganda.',
+                urteil: 'Geschmackssache'
               },
               {
                 kriterium: 'Auf verschiedenen Menschen unterschiedlich',
-                mainstream: 'Weniger. Diese Düfte sind designt, auf den meisten Menschen „gut" zu riechen. Wenig Überraschungen.',
-                nische: 'Mehr. Niche-Düfte können auf verschiedenen Menschen SEHR unterschiedlich wirken. Das ist Part des Charakters.',
+                mainstream: 'Jeder Duft riecht auf jeder Haut etwas anders. Mainstream-Düfte sind aber auf breiten Geschmack ausgelegt und gelten als „sichere" Wahl.',
+                nische: 'Ungewöhnliche Duftprofile polarisieren eher – manche lieben sie, andere gar nicht.',
                 urteil: 'Vorteil: Mainstream (vorhersehbarer)'
               },
               {
                 kriterium: 'Langzeitwert',
-                mainstream: 'Gut. Der Duft bleibt beliebt, ist leicht zu resell, altert nicht.',
-                nische: 'Variabel. Manche niche Düfte werden Klassiker (Heeley), andere verschwinden.',
-                urteil: 'Vorteil: Mainstream'
+                mainstream: 'Bekannte Klassiker bleiben oft lange im Sortiment, werden aber gelegentlich neu formuliert.',
+                nische: 'Variabel. Manche Nischendüfte bleiben lange erhältlich, andere werden eingestellt.',
+                urteil: 'Eher Mainstream'
               }
             ].map((item, i) => (
               <div key={i} style={{
@@ -176,22 +176,22 @@ export default function NischeMainstreamPage() {
               {
                 duft: 'Bleu de Chanel',
                 typ: 'Mainstream',
-                beschreibung: 'Der Klassiker. Auf jeder Haut grossartig. 8+ Stunden. Überall verfügbar. CHF 120.'
+                beschreibung: 'Holzig-aromatischer Herrenduft von Chanel (2010). Sehr bekannt und fast überall erhältlich.'
               },
               {
                 duft: 'Heeley Sel Marin',
                 typ: 'Nische',
-                beschreibung: 'Marine, subtil, artistisch. Auf mancher Haut grandios, auf anderen ok. 5–6 Stunden. Schwer zu finden. CHF 150. Aber einzigartig.'
+                beschreibung: 'Salzig-maritimer Duft des Nischenhauses Heeley. Eher leise und eigenwillig, vor allem im Fachhandel oder online erhältlich.'
               },
               {
                 duft: 'Tom Ford Black Orchid',
                 typ: 'Mainstream Luxury',
-                beschreibung: 'Maskulin-sinnlich. 9+ Stunden. Überall verfügbar. CHF 180. Jeder kennt ihn.'
+                beschreibung: 'Dunkel, blumig und süss-würzig (2006), heute oft unisex getragen. Breit im Handel erhältlich, eher in der oberen Preisklasse.'
               },
               {
-                duft: 'Maison Margiela Replica Beach Walk',
+                duft: 'Diptyque Philosykos',
                 typ: 'Nische',
-                beschreibung: 'Unkonventionell, wie ein Strandspaziergang. Auf dir anders. 5–7 Stunden. Spezialisierte Shops. CHF 120. Einzigartig.'
+                beschreibung: 'Grüner Feigen-Duft mit Feigenblatt und Holz. Ungewöhnlich und eher leise, vor allem in Boutiquen und spezialisierten Shops erhältlich.'
               }
             ].map((item, i) => (
               <div key={i} style={{
@@ -229,20 +229,20 @@ export default function NischeMainstreamPage() {
           <h3>Wähle MAINSTREAM, wenn du...</h3>
           <ul style={{ marginBottom: '2rem' }}>
             <li>Einen zuverlässigen, vielseitigen Duft willst, der auf dir gut wirkt</li>
-            <li>Maximale Haltbarkeit & Sillage möchtest (8+ Stunden)</li>
-            <li>Einfache Verfügbarkeit brauchst (kaufen überall)</li>
-            <li>Ein Budget hast & Qualität für Geld willst</li>
+            <li>Einen gut wahrnehmbaren Duft ohne grosses Risiko möchtest</li>
+            <li>Einfache Verfügbarkeit brauchst (fast überall erhältlich)</li>
+            <li>Ein begrenztes Budget hast</li>
             <li>Einen Klassiker magst, der zeitlos bleibt</li>
-            <li>Nicht experimentierfreudest bist</li>
+            <li>Nicht so experimentierfreudig bist</li>
           </ul>
 
           <h3>Wähle NISCHE, wenn du...</h3>
           <ul style={{ marginBottom: '2rem' }}>
-            <li>Ein einzigartiges, nicht-mainstream Duft willst</li>
-            <li>Bereit bist, für höhere Qualität mehr zu zahlen</li>
-            <li>Experimentierfreudest & abenteuerlustig bist</li>
-            <li>Die Nische-Community & Artists unterstützen willst</li>
-            <li>Weniger Hype & mehr Authentizität magst</li>
+            <li>Einen ungewöhnlichen Duft abseits des Mainstreams willst</li>
+            <li>Bereit bist, für Seltenheit und ungewöhnliche Ideen mehr zu zahlen</li>
+            <li>Experimentierfreudig & abenteuerlustig bist</li>
+            <li>Kleinere Parfumhäuser unterstützen willst</li>
+            <li>Weniger Massen-Marketing magst</li>
             <li>Akzeptierst, dass Verfügbarkeit begrenzt ist</li>
           </ul>
 
@@ -254,11 +254,11 @@ export default function NischeMainstreamPage() {
             marginBottom: '2rem'
           }}>
             <p style={{ margin: '0 0 0.75rem 0', color: '#2a1d12', fontWeight: 600 }}>
-              🎯 <strong>Die beste Strategie: Mix</strong>
+              🎯 <strong>Unser Tipp: Mix</strong>
             </p>
             <p style={{ margin: 0, color: '#6b5344', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              Ideale Sammlung: 1–2 Mainstream-Klassiker (Bleu de Chanel, Dior Sauvage) für Zuverlässigkeit + 1–2 Niche-Düfte
-              (Heeley, Maison Margiela) für Abenteuer. So hast du Sicherheit & Einzigartigkeit. Der beste Duft ist nicht unbedingt
+              Eine mögliche Sammlung: 1–2 Mainstream-Klassiker (z. B. Bleu de Chanel, Dior Sauvage) als sichere Wahl + 1–2 Nischendüfte
+              (z. B. von Heeley oder Diptyque) für Abenteuer. So hast du Sicherheit & Einzigartigkeit. Der beste Duft ist nicht unbedingt
               der teuerste oder der einzigartigste – es ist der, den du liebst.
             </p>
           </div>
@@ -273,23 +273,23 @@ export default function NischeMainstreamPage() {
             {[
               {
                 frage: 'Sind Niche-Düfte immer besser?',
-                antwort: 'Nein. Besser ist subjektiv. Niche-Düfte haben andere Qualitäten (Einzigartigkeit, Künstlerischer), aber nicht unbedingt bessere Qualität. Ein grossartiger Mainstream-Duft kann besser für DICH sein.'
+                antwort: 'Nein. Besser ist subjektiv. Nischendüfte haben andere Stärken (Eigenständigkeit, ungewöhnliche Ideen), aber nicht automatisch bessere Qualität. Ein Mainstream-Duft kann besser zu DIR passen.'
               },
               {
                 frage: 'Sind Mainstream-Düfte immer schlechter?',
-                antwort: 'Nein. Mainstream-Klassiker wie Bleu de Chanel oder Dior Sauvage sind grossartig. Grosse Marken haben perfektionierte ihre Formulierungen über Jahrzehnte. Das ist keine schlechte Sache.'
+                antwort: 'Nein. Mainstream-Klassiker wie Bleu de Chanel oder Dior Sauvage sind sehr beliebt und für viele eine sichere Wahl. Grosse Häuser arbeiten mit erfahrenen Parfümeur:innen – das ist keine schlechte Sache.'
               },
               {
                 frage: 'Warum sind Niche-Düfte so teuer?',
-                antwort: 'Weil: kleinere Produktion, höherer Overhead, keine Massenproduktion, hochwertigere Zutaten, kein grosses Marketing-Budget. Die Kosten sind real, nicht nur Hype.'
+                antwort: 'Kleinere Stückzahlen bedeuten höhere Kosten pro Flasche; dazu kommen teils seltene Rohstoffe, eigene Boutiquen und die Positionierung als Luxusprodukt. Ein Teil des Preises sind echte Kosten, ein Teil ist Marke.'
               },
               {
                 frage: 'Sollte ich einen Niche-Duft kaufen, wenn ich ein Budget habe?',
-                antwort: 'Nein. Mainstream-EdT-Versionen sind günstiger & auf den meisten Haut bessere Wahl. Niche ist für wenn du: experimentieren, einzigartig sein, oder LIEBE Parfümerie-Kunst willst.'
+                antwort: 'Nicht unbedingt. Mainstream-Düfte (oft als EdT) sind meist günstiger und eine sichere Wahl. Wenn dich Nische reizt, teste zuerst eine Probe, bevor du eine ganze Flasche kaufst.'
               },
               {
                 frage: 'Sind beliebte Mainstream-Düfte besser, nur weil alle sie tragen?',
-                antwort: 'Nicht unbedingt. Mainstream-Düfte sind beliebt, WEIL sie gut funktionieren & vielen gefallen. Aber beliebt ≠ beste. Dein idealer Duft kann ein unbekannter sein.'
+                antwort: 'Nicht unbedingt. Mainstream-Düfte sind oft beliebt, weil sie vielen gefallen. Aber beliebt ≠ beste für dich. Dein idealer Duft kann ein unbekannter sein.'
               }
             ].map((qa, i) => (
               <div key={i}>
@@ -310,9 +310,9 @@ export default function NischeMainstreamPage() {
               🔍 Finde deinen idealen Duft: Mainstream oder Nische?
             </p>
             <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
-              Nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> und
-              teste BEIDE Kategorien. Manchmal liebt man einen Mainstream-Klassiker, manchmal einen unbekannten Niche-Duft.
-              Die beste Strategie ist zu experimentieren & zu entdecken, nicht zu urteilen.
+              Nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> als
+              Startpunkt und probiere dann BEIDE Kategorien selbst aus. Manchmal liebt man einen Mainstream-Klassiker, manchmal einen unbekannten Nischenduft.
+              Am meisten lernst du durch Ausprobieren.
             </p>
           </div>
 

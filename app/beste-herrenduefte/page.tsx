@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Breadcrumb from '@/app/Breadcrumb';
 import { AffiliateButton } from '@/app/AffiliateButton';
-import { getPerfumes, type Perfume } from '@/lib/perfumes';
+import { getPerfumes, type Perfume, isWithinPriceCap } from '@/lib/perfumes';
 
 export const revalidate = 3600;
 
@@ -12,12 +12,12 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 export const metadata: Metadata = {
   title: 'Die besten Herrendüfte – Parfum-Empfehlungen',
   description:
-    'Die besten Herren-Parfums im Überblick: Von frisch-aquatisch bis dunkel-holzig. Mit Duftprofil, Noten, Preisen und günstigen Alternativen.',
+    'Herren- und Unisex-Parfums aus dem Auressa-Katalog, sortiert nach dem berechneten Auressa-Score. Mit Duftprofil, Noten und Preisen.',
   alternates: { canonical: `${SITE_URL}/beste-herrenduefte` },
   openGraph: {
       images: ['/opengraph-image'],
     title: 'Die besten Herrendüfte | Auressa',
-    description: 'Unsere Top-Empfehlungen für Herren-Parfums – mit Duftprofil, Noten und Preisen.',
+    description: 'Herren-Parfums nach Auressa-Score sortiert – mit Duftprofil, Noten und Preisen.',
     type: 'website',
     url: `${SITE_URL}/beste-herrenduefte`,
   },
@@ -129,6 +129,7 @@ export default async function BesteHerrenduefte() {
 
   const top = all
     .filter((p) => (p.gender === 'Men' || p.gender === 'Unisex') && p.scentmatch_score != null)
+    .filter(isWithinPriceCap)
     .sort((a, b) => {
       const scoreDiff = (b.scentmatch_score ?? 0) - (a.scentmatch_score ?? 0);
       if (scoreDiff !== 0) return scoreDiff;
@@ -207,7 +208,7 @@ export default async function BesteHerrenduefte() {
             margin: '0 auto 1.5rem',
             lineHeight: 1.6,
           }}>
-            Top-Parfums für Herren — von frisch-aquatisch bis dunkel-holzig.
+            Herren- und Unisex-Parfums aus unserem Katalog — von frisch-aquatisch bis holzig.
             Sortiert nach dem Auressa-Score.
           </p>
           <Link href="/quiz" style={{
@@ -245,7 +246,7 @@ export default async function BesteHerrenduefte() {
           <p style={{ color: '#6b5344', lineHeight: 1.7, fontSize: '0.95rem' }}>
             Die Rangliste basiert auf dem <strong>Auressa-Score</strong> — einem berechneten Wert
             aus Preis-Leistung, Haltbarkeit, Vielseitigkeit und Ausstrahlung.
-            Herren- und Unisex-Düfte werden gemeinsam bewertet. Für deinen persönlichen
+            Herren- und Unisex-Düfte werden gemeinsam gelistet; bei gleichem Score steht der günstigere Duft vorne. Für deinen persönlichen
             Top-Duft empfehlen wir das{' '}
             <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>
               Duft-Quiz
@@ -274,7 +275,7 @@ export default async function BesteHerrenduefte() {
             Finde deinen perfekten Duft
           </h2>
           <p style={{ color: 'rgba(250,247,242,0.7)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
-            Unser Quiz berücksichtigt deinen Stil, deine Lieblingsmomente und dein Budget.
+            Das Quiz fragt nach Duftrichtung, Lieblingsnoten, Anlass, Jahreszeit, Intensität und Budget.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <Link href="/quiz" style={{

@@ -7,9 +7,9 @@ export const revalidate = 3600;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
-  title: 'Duft als Geschenk: Der ultimative Guide für das perfekte Parfum-Geschenk',
+  title: 'Duft als Geschenk: Der Guide für das passende Parfum-Geschenk',
   description:
-    'Wie wählst du ein Duft-Geschenk richtig? Guide für alle Gelegenheiten: Budget, Geschlecht, Alter, Dufttyp und was Duft-Empfänger wirklich wollen.',
+    'Wie wählst du ein Duft-Geschenk richtig? Guide für viele Gelegenheiten: Budget, Geschlecht, Alter, Dufttyp und worauf es beim Verschenken ankommt.',
   alternates: { canonical: `${SITE_URL}/duft-geschenk` },
   openGraph: {
       images: ['/opengraph-image'],
@@ -61,10 +61,10 @@ export default function FragranceGiftPage() {
         {/* Intro */}
         <section style={{ marginBottom: '3rem' }}>
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4a3020', marginBottom: '1.5rem' }}>
-            Ein Duft-Geschenk ist eines der besten Geschenke, die du machen kannst – wenn du es richtig machst.
-            Es ist persönlich, sinnlich, praktisch und zeigt, dass du dir Zeit genommen hast zu verstehen,
-            wer diese Person ist. Diese Anleitung führt dich durch alle Entscheidungen, damit du ein Geschenk
-            machst, das wirklich begeistert.
+            Ein Duft-Geschenk kann ein wunderbares Geschenk sein – wenn du es gut auswählst.
+            Es ist persönlich, sinnlich, praktisch und zeigt, dass du dir Gedanken darüber gemacht hast,
+            wer diese Person ist. Diese Anleitung führt dich durch die wichtigsten Entscheidungen, damit du ein Geschenk
+            findest, das gut ankommt.
           </p>
         </section>
 
@@ -95,8 +95,8 @@ export default function FragranceGiftPage() {
                 answer: [
                   '👩 Frau/Feminin: Klassisch florale oder süsse Düfte. Sie tragen auch Unisex-Düfte.',
                   '👨 Mann/Maskulin: Klassisch holzig oder würzig. Sie tragen auch Unisex-Düfte.',
-                  '🌈 Unisex/Keine Annahme: Unisex-Düfte sind die sicherste Wahl – sie funktionieren für alle.',
-                  '👵 Alter: Älter → klassisch und konservativ. Jung → experimentell und trendy.'
+                  '🌈 Unisex/Keine Annahme: Unisex-Düfte sind oft eine sichere Wahl – sie sind nicht auf ein Geschlecht ausgerichtet.',
+                  '👵 Alter: Nur als grobe Orientierung – manche Ältere mögen Klassiker, manche Jüngere Trends. Geschmack ist individuell.'
                 ]
               },
               {
@@ -104,16 +104,16 @@ export default function FragranceGiftPage() {
                 answer: [
                   '💰 CHF 20–40: Günstige, aber gute Marken (Lattafa, Armaf, Zara). Klein aber durchdacht.',
                   '💰💰 CHF 40–80: Solides Mittelfeld. Designer-Düfte mit guter Qualität.',
-                  '💰💰💰 CHF 80–150: Premium-Düfte. Shows, dass dir die Person wichtig ist.',
+                  '💰💰💰 CHF 80–150: Premium-Düfte bekannter Marken.',
                   '💰💰💰💰 CHF 150+: Luxus-Nischendüfte. Für echte Duft-Liebhaber oder spezielle Anlässe.'
                 ]
               },
               {
                 q: 'Kenne ich die Duft-Vorlieben der Person?',
                 answer: [
-                  '✅ Ja, sie trägt schon einen Lieblingsduft → Finde einen ähnlichen oder die gleiche Marke in günstiger (EdT statt EdP).',
-                  '❓ Halbwegs → Finde einen universell beliebten Duft (Creed Aventus, Dior Sauvage, Black Opium).',
-                  '❌ Nein → Wähle einen sicheren, universellen Duft. Oder beschenke mit einem Duft-Set mit mehreren Noten.'
+                  '✅ Ja, sie trägt schon einen Lieblingsduft → Finde einen ähnlichen oder denselben Duft in einer günstigeren Version (z. B. EdT statt EdP, falls es eine gibt).',
+                  '❓ Halbwegs → Wähle einen weit verbreiteten Klassiker (z. B. Dior Sauvage, Dolce&Gabbana Light Blue, YSL Black Opium).',
+                  '❌ Nein → Wähle einen vielseitigen, eher dezenten Duft. Oder verschenke ein Discovery-Set mit mehreren Proben.'
                 ]
               },
               {
@@ -129,9 +129,9 @@ export default function FragranceGiftPage() {
                 q: 'Will ich noch Rat geben oder nur Duft?',
                 answer: [
                   '💌 Duft + Guide: Packe eine Notiz bei, die erklärt, warum du diesen Duft gewählt hast.',
-                  '📦 Duft + Set: Kauf ein Duft-Set mit Körperpflege (Deo, Lotion). Zeigt extra Gedanken.',
+                  '📦 Duft + Set: Kauf ein Duft-Set mit Körperpflege (Deo, Lotion), sofern es eines gibt.',
                   '🎁 Duft allein: Klassisch. Verpacke es schön – die Präsentation zählt.',
-                  '❓ Unsicher: Verschenk einen Gutschein + Auressa Quiz-Link. Lass sie selbst wählen.'
+                  '❓ Unsicher: Verschenk einen Gutschein einer Parfümerie + den Link zum Auressa-Quiz. Lass sie selbst wählen.'
                 ]
               }
             ].map((item, idx) => (
@@ -170,41 +170,41 @@ export default function FragranceGiftPage() {
                 person: 'Für die Freundin / Ehefrau',
                 top: 'Floral, Süss oder Würzig',
                 popular: 'Dior Miss Dior, Yves Saint Laurent Black Opium, Lancôme La Vie Est Belle',
-                preis: '💰💰–💰💰💰💰 (CHF 60–150)',
+                preis: '💰💰–💰💰💰 (CHF 60–150)',
                 extra: 'Körpercreme oder Dusch-Set dazu machen es persönlicher.'
               },
               {
                 person: 'Für den Freund / Ehemann',
                 top: 'Woody, Würzig oder Frisch',
-                popular: 'Creed Aventus, Dior Sauvage, Tom Ford Black Opium Men',
+                popular: 'Dior Sauvage, Bleu de Chanel, Versace Eros',
                 preis: '💰💰–💰💰💰 (CHF 60–120)',
-                extra: 'Ein klassischer, zeitloser Duft is eine sichere Wahl.'
+                extra: 'Ein klassischer, zeitloser Duft ist oft eine sichere Wahl.'
               },
               {
                 person: 'Für die beste Freundin',
                 top: 'Was sie mag – Frage nach, wenn du nicht weisst',
-                popular: 'Ihr Lieblingsduft in EdT-Form (günstiger), oder ein ähnlicher von günstiger Marke',
+                popular: 'Ihr Lieblingsduft als EdT (falls vorhanden, meist günstiger) oder ein ähnlicher Duft einer günstigeren Marke',
                 preis: '💰–💰💰 (CHF 20–60)',
                 extra: 'Persönliche Note: "Ich weiss, du liebst X – hier ist etwas Ähnliches"'
               },
               {
                 person: 'Für die Mutter / Grossmutter',
                 top: 'Klassisch, elegant, zeitlos',
-                popular: 'Chanel No. 5, Dior J\'adore, Lancôme Trésor',
-                preis: '💰💰–💰💰💰 (CHF 60–120)',
-                extra: 'Klassische Düfte sind zeitlos – sie werden geliebt und lange getragen.'
+                popular: 'Chanel No. 5, Dior J’adore, Lancôme Trésor',
+                preis: '💰💰–💰💰💰💰 (CHF 80–180)',
+                extra: 'Klassiker wie diese gibt es seit Jahrzehnten – viele tragen sie über lange Zeit.'
               },
               {
                 person: 'Für einen jungen Partner (16–25)',
                 top: 'Trendy, modern, Social-Media-kompatibel',
-                popular: 'Billie Eilish Eau de Parfum, Celine Dion Colour Me, Urban Decay All Nighter',
+                popular: 'Billie Eilish Eilish, Ariana Grande Cloud, Paco Rabanne Phantom',
                 preis: '💰💰–💰💰💰 (CHF 40–100)',
-                extra: 'Der Duft sollte cool und Instagram-würdig sein.'
+                extra: 'Hier dürfen Duft und Flakon gern modern und auffällig sein.'
               },
               {
                 person: 'Für einen Duft-Sammler (schwierig!)',
                 top: 'Ein seltener oder Nischen-Duft, den er/sie noch nicht hat',
-                popular: 'Heeley, Frapin, Penhaligons – Nischendüfte mit Geschichte',
+                popular: 'Nischenmarken wie Heeley, Frapin oder Penhaligon’s',
                 preis: '💰💰💰–💰💰💰💰 (CHF 100–200+)',
                 extra: 'Recherchiere, welche Marken und Noten sie mögen. Ein Fehler ist teuer.'
               }
@@ -257,28 +257,28 @@ export default function FragranceGiftPage() {
             {[
               {
                 fehler: 'Einen Duft kaufen, den die Person nie getestet hat',
-                resultat: 'Risiko: Der Duft gefällt nicht. Es ist teuer und peinlich.',
-                lösung: 'Frage nach Vorlieben oder wähle einen universell beliebten Duft (Creed Aventus, Dior Sauvage).'
+                resultat: 'Risiko: Der Duft gefällt nicht. Das ist schade ums Geld und kann unangenehm sein.',
+                lösung: 'Frage nach Vorlieben oder wähle einen weit verbreiteten Klassiker (z. B. Dior Sauvage, Dolce&Gabbana Light Blue).'
               },
               {
                 fehler: 'Einen sehr teuren Duft ohne zu wissen, ob die Person ihn mag',
                 resultat: 'Budget vergeudet. Dankbarkeit trotz Missmatch ist unangenehm.',
-                lösung: 'Kauf günstiger und teste zuerst. Oder beschenk mit einem Set aus mehreren Mini-Düften.'
+                lösung: 'Kauf günstiger oder teste zuerst. Oder verschenke ein Set aus mehreren Mini-Düften.'
               },
               {
                 fehler: 'Annahmen über Geschlecht treffen (\"Männer mögen Holz\", \"Frauen mögen Blüten\")',
-                resultat: 'Der Duft passt nicht. Schaut nach Stereotyp-Gift aus.',
-                lösung: 'Frag die Person oder wähle einen Unisex-Duft (funktioniert für alle).'
+                resultat: 'Der Duft passt womöglich nicht und wirkt wie ein Klischee-Geschenk.',
+                lösung: 'Frag die Person oder wähle einen Unisex-Duft.'
               },
               {
-                fehler: 'Die leere Flasche als \"grosszügig\" verpacken',
+                fehler: 'Den Duft ohne Verpackung und ohne ein Wort überreichen',
                 resultat: 'Wirkt billig und gedankenlos – auch wenn das nicht so gemeint ist.',
                 lösung: 'Verpacke schön, oder erkläre in einer Notiz, warum du diesen Duft wählst.'
               },
               {
                 fehler: 'Einen Online-Duft kaufen, ohne die Grösse zu prüfen',
                 resultat: 'Zu kleine Flasche → wirkt nicht wie ein echtes Geschenk. Zu grosse → kann nicht verwendet werden.',
-                lösung: 'Kaufe 30–50ml für ein \"echtes\" Geschenk. 5–10ml ist zu klein.'
+                lösung: 'Für ein Geschenk eignen sich oft 30–50 ml. 5–10 ml sind eher eine Probe.'
               }
             ].map((item, idx) => (
               <div
@@ -333,19 +333,19 @@ export default function FragranceGiftPage() {
               },
               {
                 title: 'EdT statt EdP sparen',
-                tip: 'Wenn du das Budget sparen möchtest: Kauf die EdT-Version statt EdP. Sie ist günstiger, hält immer noch gut, und die meisten lieben EdT in warmen Jahreszeiten sowieso.'
+                tip: 'Wenn du Budget sparen möchtest: Kauf die EdT-Version statt EdP, falls es eine gibt. Sie ist meist günstiger und oft etwas leichter – was viele in warmen Jahreszeiten schätzen. Dafür hält sie häufig weniger lang.'
               },
               {
                 title: 'Das Duft-Set-Geschenk',
-                tip: 'Kauf ein Duft-Set mit Körpercreme oder Dusch-Gel dazu. Zeigt extra Gedanken, ist kompletter und wirkt hochwertiger – ohne teurer zu sein.'
+                tip: 'Kauf ein Duft-Set mit Körpercreme oder Dusch-Gel dazu. Das wirkt kompletter – und ist oft nur wenig teurer als die Flasche allein.'
               },
               {
                 title: 'Der Gutschein-Smart-Move',
-                tip: 'Unsicher? Gib einen Gutschein mit einem Link zu unserem Quiz (Auressa). Personalisiert, praktisch, und die Person wählt selbst. Keine Risiken.'
+                tip: 'Unsicher? Gib einen Gutschein einer Parfümerie mit einem Link zu unserem Quiz (Auressa). Praktisch, und die Person wählt selbst. So ist das Risiko klein.'
               },
               {
                 title: 'Zeitpunkt: Nicht zu spät kaufen',
-                tip: 'Duft-Geschenke brauchen Zeit zum Verschenken. Kauf nicht einen Tag vor dem Termin – versandprobleme, keine Zeit zum Verpacken.'
+                tip: 'Duft-Geschenke brauchen Zeit zum Verschenken. Kauf nicht einen Tag vor dem Termin – sonst drohen Versandverzögerungen und es bleibt keine Zeit zum Verpacken.'
               },
               {
                 title: 'Die Probe-Strategie',
@@ -374,13 +374,13 @@ export default function FragranceGiftPage() {
           marginTop: '3rem',
         }}>
           <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.75rem' }}>
-            Bereit zum schenken?
+            Bereit zum Schenken?
           </p>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.6rem', fontWeight: 700, color: '#faf7f2', marginBottom: '1rem' }}>
-            Finde das perfekte Duft-Geschenk
+            Finde ein passendes Duft-Geschenk
           </h2>
           <p style={{ color: 'rgba(250,247,242,0.75)', marginBottom: '1.5rem', fontSize: '0.95rem' }}>
-            Mit deinem neuen Wissen wirst du ein Duft-Geschenk auswählen, das begeistert.
+            Mit diesem Wissen findest du leichter ein Duft-Geschenk, das gut ankommt.
             Nutze unser Quiz oder stöbere durch unseren Katalog.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>

@@ -65,7 +65,7 @@ export default function DuftlaengePage() {
           </h2>
 
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>
-            Die Haltbarkeit ist die wichtigste Frage beim Duftkauf. Es ist frustrierend, wenn ein CHF 100-Duft nach 2 Stunden weg ist. Hier erfährst du, wie lange verschiedene Dufttypen halten.
+            Die Haltbarkeit ist eine der häufigsten Fragen beim Duftkauf. Es ist frustrierend, wenn ein CHF 100-Duft nach 2 Stunden weg ist. Die Zeiten unten sind grobe Richtwerte: Haut, Wetter, Menge und Zusammensetzung machen viel aus – Basisnoten wie Hölzer, Harze oder Moschus halten am längsten. Die Konzentration allein sagt nicht alles.
           </p>
 
           {/* Longevity Scale */}
@@ -75,11 +75,11 @@ export default function DuftlaengePage() {
             </h3>
             <div style={{ display: 'grid', gap: '0.75rem' }}>
               {[
-                { range: '1–2h', score: '1–2', title: 'Eau de Cologne', desc: 'Sehr kurz. Angenehm für zwischendurch, aber schnell weg.' },
-                { range: '2–4h', score: '3–4', title: 'Eau de Toilette', desc: 'Kurz. Beliebte Einsteiger-Option. Brauchst mehrmals täglich auftragen.' },
-                { range: '4–8h', score: '5–6', title: 'Eau de Parfum / EdP', desc: 'Mittel bis lang. Der Standard. Hält den ganzen Tag mit 1–2 Anwendungen.' },
-                { range: '8–12h+', score: '7–8', title: 'Extrait / Parfum', desc: 'Sehr lange. Premium-Option. Ein Sprühstoss am Morgen, oft noch am Abend.' },
-                { range: '12h+', score: '9–10', title: 'Beast-Mode', desc: 'Extremes Monster. Duftköpfe lieben es. Kann erdrückend wirken.' }
+                { range: 'unter ca. 2 h', score: '1–2', title: 'Sehr kurz', desc: 'Typisch für viele Eau de Cologne (ca. 2–5 % Duftöl). Angenehm für zwischendurch, verfliegt aber schnell.' },
+                { range: 'ca. 2–4 h', score: '3–4', title: 'Kurz', desc: 'Häufig bei leichten Eau de Toilette (ca. 5–15 % Duftöl). Für einen ganzen Tag musst du oft nachsprühen.' },
+                { range: 'ca. 4–6 h', score: '5–6', title: 'Mittel', desc: 'Hier liegen viele Eau de Toilette und Eau de Parfum (ca. 15–20 % Duftöl). Reicht oft für einen halben bis ganzen Arbeitstag.' },
+                { range: 'ca. 6–10 h', score: '7–8', title: 'Lang', desc: 'Häufig bei intensiven Eau de Parfum und Extrait/Parfum (ca. 20–30 % Duftöl). Morgens aufgetragen, oft am Abend noch wahrnehmbar.' },
+                { range: 'über ca. 10 h', score: '9–10', title: 'Sehr lang', desc: 'Sehr ausdauernde Düfte, oft mit schweren Basisnoten wie Harzen, Hölzern oder Amber. Sparsam dosieren, sonst wirkt es schnell erdrückend.' }
               ].map((item) => (
                 <div key={item.title} style={{
                   background: '#fff',
@@ -128,7 +128,7 @@ export default function DuftlaengePage() {
           </h2>
 
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>
-            Sillage (französisch: „Kielwasser") beschreibt, wie weit dein Duft trägt. Ist er nur auf deiner Haut zu riechen, oder füllt er den ganzen Raum?
+            Sillage (französisch für „Kielwasser") beschreibt die Duftspur, die du hinterlässt – also wie deutlich dein Duft um dich herum und hinter dir wahrnehmbar ist. Eng verwandt, aber nicht dasselbe ist die Projektion: wie weit der Duft von deiner Haut abstrahlt.
           </p>
 
           {/* Sillage Scale */}
@@ -138,11 +138,11 @@ export default function DuftlaengePage() {
             </h3>
             <div style={{ display: 'grid', gap: '0.75rem' }}>
               {[
-                { score: '1–2', title: 'Kaum Projektion', desc: 'Nur du selbst riechst ihn. Perfekt für Büro oder enge Kontakte. Verbrauchst viel.' },
-                { score: '3–4', title: 'Leise / Hautnah', desc: 'Leute in unmittelbarer Nähe riechen ihn. Standard für die meisten.' },
+                { score: '1–2', title: 'Hautnah', desc: 'Fast nur du selbst riechst ihn. Gut für Büro oder enge Kontakte.' },
+                { score: '3–4', title: 'Leise', desc: 'Leute in unmittelbarer Nähe riechen ihn.' },
                 { score: '5–6', title: 'Moderat', desc: 'Der Raum riecht leicht nach dir. Für soziale Ereignisse gut, nicht erdrückend.' },
                 { score: '7–8', title: 'Stark', desc: 'Menschen im Raum riechen dich deutlich. Kann zu viel sein für Büro. Gut für Parties.' },
-                { score: '9–10', title: 'Projektil-Modus', desc: 'Dein Duft erfüllt den Raum. Alle riechen ihn. Brauchst nur wenig. Kann dominant wirken.' }
+                { score: '9–10', title: 'Sehr stark', desc: 'Dein Duft erfüllt den Raum und hinterlässt eine deutliche Spur. Wenige Sprühstösse reichen. Kann dominant wirken.' }
               ].map((item) => (
                 <div key={item.score} style={{
                   background: '#fff',
@@ -180,7 +180,7 @@ export default function DuftlaengePage() {
           </div>
 
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', background: 'linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.03))', borderRadius: '12px', padding: '1rem', marginBottom: '1.5rem' }}>
-            💡 <strong>Praktischer Tipp:</strong> Für Büro: 3–5. Für Alltag: 4–6. Für Abends: 6–8. Brauchst nicht mehr Sillage, um einen teuren Duft zu rechtfertigen.
+            💡 <strong>Praktischer Tipp:</strong> Für Büro: 3–5. Für Alltag: 4–6. Für Abends: 6–8. Mehr Ausstrahlung heisst nicht automatisch besser.
           </p>
         </section>
 
@@ -191,7 +191,7 @@ export default function DuftlaengePage() {
           </h2>
 
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>
-            Der beste Duft kombiniert die richtige Haltbarkeit UND Ausstrahlung für deine Situation:
+            Ein passender Duft kombiniert die richtige Haltbarkeit UND Ausstrahlung für deine Situation – unsere Richtwerte:
           </p>
 
           <div style={{ display: 'grid', gap: '1rem' }}>
@@ -200,7 +200,7 @@ export default function DuftlaengePage() {
               { situation: 'Reisen/Mobile', longevity: '7–8', sillage: '5–6', warum: 'Must-have: Lange Haltbarkeit, damit du nicht mehrmals täglich auftragen musst.' },
               { situation: 'Abendparty', longevity: '6–8', sillage: '6–8', warum: 'Hier darfst du stärker sein. Lust auf Projektion.' },
               { situation: 'Heimwerkertag', longevity: '3–4', sillage: '3–4', warum: 'Kurz und leise. Du wäschst dich sowieso am Ende des Tages ab.' },
-              { situation: 'Sporttag', longevity: '4–5', sillage: '3–4', warum: 'Nicht zu lang, weil Schweiss den Duft verändert. Leise ist besser.' }
+              { situation: 'Sporttag', longevity: '4–5', sillage: '3–4', warum: 'Beim Sport wirken starke Düfte schnell aufdringlich. Leise ist besser.' }
             ].map((combo) => (
               <div key={combo.situation} style={{
                 background: '#fff',
@@ -238,19 +238,19 @@ export default function DuftlaengePage() {
           {[
             {
               q: 'Kann ich Ausstrahlung und Haltbarkeit erhöhen?',
-              a: 'Ja! Mehr auftragen (aber nicht zu viel – zu viel wirkt schnell billig). Auf feuchte Haut sprühen. Die Ausstrahlung lässt mit der Zeit nach. Nach 4–5 Stunden ist die Ausstrahlung meist nur noch halb so stark.'
+              a: 'Etwas, ja. Auf eingecremte, unparfümierte Haut sprühen – auf sehr trockener Haut verfliegt Duft oft schneller. Ein Sprühstoss mehr hilft (aber nicht zu viel – das wirkt schnell aufdringlich). Die Ausstrahlung ist meist in den ersten Stunden am stärksten und lässt danach nach.'
             },
             {
               q: 'Warum hält mein teurer Duft nur kurz?',
-              a: 'Teuer heisst nicht automatisch länger haltbar. Manche High-End-Düfte sind bewusst leise und kurz (typisch für Nischendüfte). Schau auf die Haltbarkeit, nicht auf den Preis.'
+              a: 'Teuer heisst nicht automatisch länger haltbar. Manche Düfte sind bewusst leicht komponiert, etwa viele Zitrus-Düfte. Oft riechst du ihn auch selbst nicht mehr: Die Nase gewöhnt sich innerhalb von Minuten an einen Duft, andere nehmen ihn dann noch wahr. Schau auf die Haltbarkeit, nicht auf den Preis.'
             },
             {
               q: 'Ist ein Duft mit hoher Sillage immer besser?',
-              a: 'Nein! Im Büro kann hohes Sillage störend wirken. Im Schlafzimmer? Auch nicht. Hohe Sillage ist cool auf Partys, aber nicht überall.'
+              a: 'Nein. Im Büro kann eine starke Sillage störend wirken. Auf Partys passt sie eher, aber nicht überall.'
             },
             {
               q: 'Manche Menschen sagen, sie riechen meine Duft-Wolke. Ist das schlecht?',
-              a: 'Nein, das ist normal bei hohem Sillage. Wenn es zu viel ist, kannst du weniger auftragen oder auf einen mit moderaterem Sillage wechseln.'
+              a: 'Nein, das ist normal bei starker Sillage. Wenn es zu viel ist, kannst du weniger auftragen oder auf einen Duft mit moderater Sillage wechseln.'
             }
           ].map((faq) => (
             <div key={faq.q} style={{ marginBottom: '1.5rem', paddingBottom: '1.5rem', borderBottom: '1px solid rgba(212,175,55,0.2)' }}>

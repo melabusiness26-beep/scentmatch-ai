@@ -12,12 +12,12 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 export const metadata: Metadata = {
   title: 'Die besten Parfums unter CHF 100 – Top-Liste',
   description:
-    'Die besten Parfums unter CHF 100: Günstige Düfte mit grosser Wirkung. Mit Duftprofil, Noten und dem Auressa-Qualitätsscore.',
+    'Parfums unter CHF 100 aus dem Auressa-Katalog, sortiert nach dem berechneten Auressa-Score. Mit Duftprofil und Noten.',
   alternates: { canonical: `${SITE_URL}/beste-duefte-unter-100` },
   openGraph: {
       images: ['/opengraph-image'],
     title: 'Beste Parfums unter CHF 100 | Auressa',
-    description: 'Top-Düfte unter CHF 100 – günstig, langlebig, überzeugend. Mit Duftprofil und Noten.',
+    description: 'Düfte unter CHF 100, sortiert nach Auressa-Score – mit Duftprofil und Noten.',
     type: 'website',
     url: `${SITE_URL}/beste-duefte-unter-100`,
   },
@@ -156,7 +156,7 @@ export default async function BesteDuefteUnter100() {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Die besten Parfums unter CHF 100',
-    description: 'Top-Düfte unter CHF 100 nach Auressa-Score: günstig, langlebig, überzeugend.',
+    description: 'Düfte unter CHF 100, sortiert nach Auressa-Score.',
     url: `${SITE_URL}/beste-duefte-unter-100`,
     numberOfItems: top.length,
     itemListElement: top.map((p, i) => ({
@@ -221,8 +221,8 @@ export default async function BesteDuefteUnter100() {
             margin: '0 auto 1.5rem',
             lineHeight: 1.6,
           }}>
-            Günstig muss nicht billig sein. Diese {top.length} Düfte überzeugen mit
-            gutem Auressa-Score und klarem Duftprofil — für unter 100 Franken.
+            Günstig muss nicht billig sein. Diese {top.length} Düfte aus unserem Katalog
+            kosten unter 100 Franken — sortiert nach dem Auressa-Score.
           </p>
           <Link href="/dupes" style={{
             display: 'inline-block',
@@ -257,9 +257,9 @@ export default async function BesteDuefteUnter100() {
             Günstig und gut — geht das?
           </h2>
           <p style={{ color: '#6b5344', lineHeight: 1.7, fontSize: '0.95rem' }}>
-            Ja. Viele Düfte unter CHF 100 stammen von etablierten Häusern wie Armaf, Lattafa
-            oder Davidoff. Unsere Rangliste sortiert nach
-            dem <strong>Auressa-Score</strong> (Preis-Leistung, Haltbarkeit, Vielseitigkeit, Ausstrahlung). Für günstige Alternativen zu Luxusdüften:
+            Oft ja. Viele Düfte unter CHF 100 stammen von Marken wie Davidoff, Armaf
+            oder Lattafa. Unsere Rangliste sortiert nach
+            dem <strong>Auressa-Score</strong> (Preis-Leistung, Haltbarkeit, Vielseitigkeit, Ausstrahlung); bei gleichem Score steht der günstigere Duft vorne. Für günstige Alternativen zu Luxusdüften:
             {' '}
             <Link href="/dupes" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>
               Dupes-Übersicht
@@ -288,7 +288,7 @@ export default async function BesteDuefteUnter100() {
             Günstige Dupes teurer Düfte
           </h2>
           <p style={{ color: 'rgba(250,247,242,0.7)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
-            Rieche wie Chanel oder Dior — für einen Bruchteil des Preises.
+            Düfte mit ähnlichem Duftprofil wie bekannte Designer-Düfte — oft deutlich günstiger.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <Link href="/dupes" style={{

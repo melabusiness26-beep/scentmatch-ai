@@ -78,7 +78,7 @@ export default function PerfumeComparePage() {
             maxWidth: '600px',
             marginBottom: '2rem',
           }}>
-            Vergleiche bis zu 3 Düfte direkt nebeneinander. Schau alle Eigenschaften, Noten und Scores im Detail an – so findest du deinen perfekten Duft.
+            Vergleiche bis zu 3 Düfte direkt nebeneinander. Schau dir Eigenschaften, Noten und den berechneten Auressa-Score im Detail an – so fällt die Wahl leichter.
           </p>
 
           {/* Vergleichstabelle */}
@@ -182,7 +182,7 @@ export default function PerfumeComparePage() {
                         </span>
                       </div>
                       <div>
-                        <span style={{ fontWeight: 600, color: '#D4AF37' }}>Score:</span>
+                        <span style={{ fontWeight: 600, color: '#D4AF37' }}>Auressa-Score:</span>
                         <span style={{ marginLeft: '8px', color: '#5d4b40' }}>
                           {p.scentmatch_score ?? '–'}/100
                         </span>
@@ -338,7 +338,7 @@ export default function PerfumeComparePage() {
               Wähle bis zu 3 Düfte aus, um sie zu vergleichen.
             </p>
             <p style={{ fontSize: '0.95rem' }}>
-              Schau dir alle Details nebeneinander an und finde deinen perfekten Match.
+              Schau dir alle Details nebeneinander an und finde heraus, welcher Duft besser zu dir passt.
             </p>
           </div>
         )}

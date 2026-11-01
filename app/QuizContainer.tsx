@@ -247,10 +247,12 @@ export default function QuizContainer() {
     if (imageBusy) return;
     setImageBusy(true);
     try {
+      // Aufs Bild nur überzeugende Treffer (ab 60 %) – der beste Duft erscheint immer.
+      const shown = top3.filter((r, i) => i === 0 || r.score >= 60).filter((r) => r.perfume.slug);
       const params = new URLSearchParams({
         p: winner,
-        m: top3.map((r) => r.perfume.slug).filter(Boolean).join(','),
-        s: top3.map((r) => String(r.score)).join(',')
+        m: shown.map((r) => r.perfume.slug).join(','),
+        s: shown.map((r) => String(r.score)).join(',')
       });
       const res = await fetch(`/api/teilen-bild?${params.toString()}`);
       if (!res.ok) throw new Error('Bild konnte nicht erstellt werden');

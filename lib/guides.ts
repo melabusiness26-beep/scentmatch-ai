@@ -173,7 +173,7 @@ export const guides: Guide[] = [
     title: 'Der richtige Duft für jeden Moment: Büro, Date, Abend – die Kunst der eleganten Wahl',
     description:
       'Der richtige Duft für den richtigen Moment ist kein Zufall – es ist eine bewusste Kunst. Entdecke, wie intelligente Anlass-Wahl deine Ausstrahlung sicher stärkt: vom dezenten Büro über sichere Dates bis zum intensiven Abend. Unser Ratgeber zeigt dir die psychologischen Regeln, praktischen Tipps und perfekten Düfte für Selbstvertrauen & zeitlose Eleganz.',
-    heroImage: '/ratgeber/welcher-duft-zu-welchem-anlass-hero.png',
+    heroImage: '/ratgeber/welcher-duft-zu-welchem-anlass-hero.jpg',
     intro: [
       'Dein Duft ist eine stille Sprache. Er sagt etwas über dich aus – nicht mit Worten, sondern durch den Eindruck, den du auf andere machst. Seit Jahrtausenden wissen Menschen: Ein Duft ändert die Wahrnehmung. Im Büro soll dein Duft professionelle Ruhe und Genauigkeit ausstrahlen – beim Date etwas Verführung, beim festlichen Abend volle Eleganz. Die gleiche Flasche im Grossraumbüro und beim Date wirkt völlig unterschiedlich, weil der Kontext deine Ausstrahlung formt. Dieser Ratgeber zeigt dir, wie du diese Psychologie bewusst nutzt – nicht, um andere zu manipulieren, sondern um dein authentisches Selbst elegant einzurahmen.',
       'Die Intelligenz der Anlass-Wahl liegt in der Subtilität. Es geht nicht um Regeln, sondern um ein Verständnis dafür, wie Düfte in verschiedenen Räumen, bei verschiedenen Temperaturen und in verschiedenen Nähe-Verhältnissen wirken. Ein würziger, warmer Duft, der beim Date wunderbar funktioniert, kann im Büro (besonders in der Nähe) zu intim wirken. Ein intensiver Abendduft mit Oud und Amber sieht tagsüber fehl am Platz aus. Aber die richtige Wahl – und die richtige Dosierung – gibt dir Selbstvertrauen und ein Gefühl von Eleganz, das man spürt.',
@@ -358,7 +358,7 @@ export const guides: Guide[] = [
     title: 'Unisex-Düfte: Keine Grenzen – Für deine Individualität, nicht für dein Geschlecht',
     description:
       'Düfte ohne Geschlechts-Etiketten: vielseitig, charaktervoll und zeitlos. Von Sandelholz bis Gypsy Water – unsere liebsten Kompositionen, die Grenzen sprengen und zu jedem passen, unabhängig vom Geschlecht.',
-    heroImage: '/ratgeber/unisex-duefte-hero.png',
+    heroImage: '/ratgeber/unisex-duefte-hero.jpg',
     intro: [
       'Die beste Duft-Logik ist die einfachste: Riecht es auf deiner Haut schön? Punkt. Lange Zeit wurde Duft nach Geschlecht sortiert, männlich oder weiblich. Aber die Realität ist komplexer und viel schöner: Ein grossartiger Duft kennt keine Geschlechts-Grenzen. Er funktioniert auf jeder Haut anders, je nach Körperchemie, Persönlichkeit und Lebenskontext. Die beste Duft-Philosophie ist die radikale Einfachheit: Du bist du, und dein Duft sollte das ausdrücken, nicht irgendwelche veralteten Marketing-Kategorien.',
       'Die Kultur der Unisex-Düfte ist eine Entwicklung der letzten Jahrzehnte. Nischenhäuser wie Le Labo, Byredo und Maison Francis Kurkdjian haben das erkannt und bauen bewusst Düfte ohne Gender-Kodierung. Das heisst nicht „neutral" oder „langweilig", sondern das Gegenteil: Es ermöglicht Kompositionen, die komplexer, persönlicher und ehrlicher sind. Ein Duft, der nicht für „Damen" oder „Herren" gemacht werden muss, kann sich einfach auf das konzentrieren, was zählt: handwerkliche Qualität, Charakter und emotionale Resonanz.',
@@ -776,7 +776,7 @@ export const guides: Guide[] = [
     title: 'Oud-Düfte: Das flüssige Gold der Parfümerie – Von Einsteigerfreundlich bis Luxus-Extrait',
     description:
       'Oud ist das Herz orientalischer Eleganz: warm, zeitlos, langanhaltend und faszinierend. Entdecke die besten Oud-Kompositionen von günstigen Schätzen bis zu exklusiven Meisterwerken – wann und wie du Oud richtig trägst.',
-    heroImage: '/ratgeber/oud-duefte-hero.png',
+    heroImage: '/ratgeber/oud-duefte-hero.jpg',
     intro: [
       'Oud ist das flüssige Gold der Parfümerie. Es entsteht als Harz im Kernholz von Adlerholzbäumen (Aquilaria) aus Süd- und Südostasien, und echtes Oud gehört zu den teuersten Rohstoffen der Parfümerie. Aber es ist nicht nur teuer, weil es selten ist, sondern weil es magisch wirkt. Ein Duft mit echtem Oud riecht warm, tiefgründig, leicht rauchig und unglaublich langanhaltend. Oud gehört zu den langlebigsten Duftnoten überhaupt.',
       'Die gute Nachricht: Echtes, natürliches Oud ist für die meisten Menschen unerschwinglich, aber gute synthetische Oud-Akkorde sind kostengünstig und arbeiten perfekt. Moderne Oud-Düfte verwenden Moleküle wie Iso E Super und spezielle Oud-Synthesen, die das Original täuschend echt nachbilden. Das ist nicht eine Täuschung, sondern eine Lösung. Ein synthetisches Oud in einem guten Duft ist oft sogar prägnanter und angenehmer zu tragen als echtes, weil es balancierter ist. Die Duft-Industrie hat verstanden, dass Qualität nicht nur davon kommt, ob etwas echt ist, sondern wie es komponiert wird.',
@@ -1301,7 +1301,7 @@ export const guides: Guide[] = [
     title: 'Die besten holzigen Düfte: edel, warm & zeitlos – seit Jahrhunderten der Klassiker',
     description:
       'Holzige Düfte mit Sandelholz, Zedernholz, Oud und Vetiver: edel, warm, langanhaltend. Von frisch-holzig bis dunkel-cremig – unsere liebsten Holz-Kompositionen für Damen, Herren und Unisex.',
-    heroImage: '/ratgeber/holzige-duefte-hero.png',
+    heroImage: '/ratgeber/holzige-duefte-hero.jpg',
     intro: [
       'Holzige Düfte funktionieren, weil Holz warm, edel und extrem tragefreundlich wirkt. Sandelholz, Zedernholz, Vetiver, Oud – diese Materialien sind die Basis grossartiger Düfte. Sie arbeiten im Hintergrund, aber ihre Präsenz ist absolut. Ein guter holziger Duft wirkt reif, selbstsicher und zeitlos.',
       'Das Schöne an holzigen Düften: Sie sind unglaublich vielseitig. Sandelholz wirkt cremig und süsslich. Zedernholz wirkt klar und elegant. Vetiver wirkt erdig und grün. Oud wirkt dunkel und intensiv. Je nachdem, mit welchen Noten Holz kombiniert wird, kann der gleiche Holz-Duft völlig unterschiedlich wirken. Das macht Holz zu einer der faszinierendsten Duft-Grundlagen.',
@@ -1335,7 +1335,7 @@ export const guides: Guide[] = [
     title: 'Die besten blumigen Düfte: feminin, elegant & zeitlos – seit Jahrtausenden die Klassiker',
     description:
       'Blumige Düfte mit Rose, Jasmin, Pfingstrose und Orangenblüte: romantisch, elegant und zeitlos. Von zart-frisch bis opulent-sinnlich – unsere liebsten floralen Meisterwerke für Damen, Herren und Unisex.',
-    heroImage: '/ratgeber/blumige-duefte-hero-neu.png',
+    heroImage: '/ratgeber/blumige-duefte-hero-neu.jpg',
     intro: [
       'Blumige Düfte wirken zeitlos feminin und elegant. Rose, Jasmin, Pfingstrose, Orangenblüte – diese Blüten funktionieren, weil sie wirklich wunderschön riechen. Echte Blütenöle sind teuer – Rose aus Bulgarien, Jasmin aus Grasse – und das hat einen Grund: Ihre Komplexität ist unerreicht. Ein grossartiger floraler Duft riecht nicht nach „Blumenvase", sondern nach echtem Anbau, Tiefe, Struktur.',
       'Das Schöne an modernen floralen Düften: Sie sind nicht simpel. Die besten kombinieren zarte Blüten mit Frucht, Moschus, Holz oder sogar Vanille. Das macht sie vielseitiger und moderner, ohne dass sie ihre Eleganz verlieren. Ein floraler Duft von heute kann würzig, frisch oder sinnlich sein – die Blüte ist nur der Anfang.',
@@ -1413,7 +1413,7 @@ export const guides: Guide[] = [
     title: 'Die besten pudrigen & Moschus-Düfte: elegant, hautnah & zeitlos – seit Jahrhunderten beliebt',
     description:
       'Pudrige & Moschus-Düfte mit Iris, Veilchen und sauberer Haut-Wärme: elegant, sinnlich und universell. Von klassisch bis modern – unsere liebsten weichen Meisterwerke für Damen, Herren und Unisex.',
-    heroImage: '/ratgeber/pudrige-moschus-duefte-hero.png',
+    heroImage: '/ratgeber/pudrige-moschus-duefte-hero.jpg',
     intro: [
       'Pudrige und moschusartige Düfte sind das Gegenteil von lauter Präsenz – sie sind die Kunst der Subtilität. Sie riechen nach gepflegter Eleganz, nach frisch geduschter Haut, nach Iris und Veilchen, die dich sanft umhüllen wie eine Seide-Handschuhe. Heute sind sie moderner denn je – nicht altmodisch, sondern zeitlos elegant.',
       'Sie kombinieren Iris- und Veilchennoten (die klassischen „Puder-Noten") mit sauberem Moschus, leichtem Holz oder sogar frischen Zitrus-Akzenten. Das Ergebnis ist eine wunderbare Balance: elegant aus der Nähe, dezent aus der Ferne, und nirgendwo aufdringlich. Sie passen zu jedem Moment, von der Büroarbeit bis zum Dinner.',
@@ -2221,7 +2221,7 @@ export const guides: Guide[] = [
     title: 'Die besten Erdbeer-Düfte: süss & fruchtig',
     description:
       'Parfüms, die herrlich nach reifen Erdbeeren duften: süss, fruchtig und sommerlich. Unsere besten Erdbeer-Düfte von günstig bis edel.',
-    heroImage: '/ratgeber/erdbeer-duefte-hero.png',
+    heroImage: '/ratgeber/erdbeer-duefte-hero.jpg',
     intro: [
       'Erdbeer-Düfte sind fruchtig, süss und sorgen sofort für gute Laune. Sie wirken jung und verspielt, mal frisch-spritzig, mal kombiniert mit Sahne, Vanille oder weissen Blüten. Sie gelten als besonders zugänglich – perfekt für alle, die es unkompliziert und fröhlich mögen.',
       'In der Parfümwelt ist Erdbeere fast immer eine Kombination aus verschiedenen synthetischen Fruchtmolekülen. Echter Erdbeerextrakt ist zu flüchtig und schwierig zu verarbeiten. Das Ergebnis riecht aber verblüffend echt – oft sogar schöner und runder als die echte Frucht selbst. Die besten Erdbeer-Kompositionen verbinden die Süsse mit einer stabilen Basis, damit der Duft nicht sofort verfliegt.',

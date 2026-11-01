@@ -257,7 +257,7 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
                 href={`/duefte?family=${t.code}`}
               >
                 <div className="bottle-container">
-                  <img src={`/bottles/${t.code}.png`} alt={`${t.label} Duftflasche`} style={{ width: '100%', height: 'auto', maxWidth: '140px' }} />
+                  <img src={`/bottles/${t.code}.jpg`} loading="lazy" width={140} height={140} alt={`${t.label} Duftflasche`} style={{ width: '100%', height: 'auto', maxWidth: '140px' }} />
                 </div>
                 <h3>{t.label}</h3>
                 <p className="small">{t.desc}</p>

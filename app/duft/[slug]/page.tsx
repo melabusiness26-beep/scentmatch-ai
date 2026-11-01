@@ -17,6 +17,7 @@ import { noteHref, noteImage } from '@/lib/notes-glossary';
 import { getCuratedLink } from '@/lib/curated-links';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import { AmazonButton } from '@/app/AmazonButton';
+import { FavoriteButton } from '@/app/FavoriteButton';
 import { SocialShareButtons } from '@/app/SocialShareButtons';
 import { PerfumeTile } from '@/app/PerfumeTile';
 import { PerfumeVisual } from '@/app/components/PerfumeVisual';
@@ -465,8 +466,10 @@ export default async function PerfumeDetailPage({
 
         {/* ── HERO ─────────────────────────────────────────────── */}
         <section className={`dp-hero dp-hero-${perfume.fragrance_family || 'none'}`}>
-          <div className="dp-hero-visual">
+          <div className="dp-hero-visual" style={{ position: 'relative' }}>
             <PerfumeVisual perfume={perfume} size="hero" noteImages={noteImageMap} />
+            {/* Merken direkt auf der Duft-Seite (vorher nur auf den Kacheln möglich) */}
+            <FavoriteButton slug={perfume.slug} />
           </div>
 
           <div className="dp-hero-info">

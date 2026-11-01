@@ -72,7 +72,7 @@ export const TOOL_TEXTS: Record<'quiz' | 'dupes' | 'geschenk' | 'finder' | 'dete
     ],
     faq: [
       { q: 'Was, wenn ich den Lieblingsduft nicht kenne?', a: 'Kein Problem – der letzte Schritt ist freiwillig. Die Empfehlung richtet sich dann nach Person, Budget und Duft-Typ.' },
-      { q: 'Welches Budget ist sinnvoll?', a: 'Gute Düfte gibt es in jeder Preisklasse. Im Geschenk-Finder wählst du dein Budget selbst – die Vorschläge richten sich danach.' }
+      { q: 'Welches Budget ist sinnvoll?', a: 'Gute Düfte gibt es in jeder Preisklasse. Im Geschenk-Finder wählst du dein Budget selbst; empfohlen werden Düfte bis CHF 180.' }
     ]
   },
   finder: {

@@ -323,3 +323,15 @@ gender → anchor (optional, Dropdown) → 3× family → lovedNote → disliked
   Seite des ORIGINALS den Abschnitt „Bekannte Dupes von …". Nischendüfte über CHF 180 dürfen als Original
   rein. Nie „1:1" versprechen – nur „sehr ähnlich", mit 2 Quellen.
 - Merkliste für später: Rochas Macassar (eingestellt) mit geprüften Alternativen.
+
+### Ablauf „Foto → Duft eintragen" (ab 1. November 2026)
+Die Gründerin schickt pro Duft nur noch: **(1) Foto vom Flakon/Karton oder den Namen, (2) Foto vom
+Parfumo-Diagramm, (3) Foto vom Preis** (easyCOSMETIC, sonst Makeup.ch/Notino). Alles andere macht der Assistent:
+- Duft eindeutig bestimmen (Marke, genauer Name, Konzentration, Jahr – Verwechslungen ausschliessen).
+- Parfumo-Seite selbst lesen (www.parfumo.com, normaler Seitenabruf): Noten, Duftrichtung, Bewertungen,
+  Parfümeur, Jahr, „Duftet ähnlich". Das Diagramm (Jahreszeit/Anlass/Zielgruppe) lädt Parfumo nur per
+  Skript nach – NICHT über interne Schnittstellen abgreifen (automatisiertes Sammeln, rechtlich riskant),
+  sondern Foto der Gründerin nutzen.
+- Zweite Quelle per Websuche für Jahr, Parfümeur, Noten, Dupe-Beziehungen; nur Übereinstimmendes übernehmen.
+- Katalog-Datei schreiben, prüfen (catalog:check), PR erstellen, nach dem Mergen live kontrollieren.
+- Gesperrt/blockiert für den Assistenten: easyCOSMETIC (Bot-Schutz – nicht umgehen), makeup.ch (Proxy).

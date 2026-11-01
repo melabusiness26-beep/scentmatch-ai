@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Breadcrumb from '@/app/Breadcrumb';
 import { destinationsByCategory, CATEGORY_LABELS, CATEGORY_INTRO } from '@/lib/destinations';
+import LineIcon, { destinationIcon } from '@/app/LineIcon';
 
 export const metadata: Metadata = {
   title: 'Welcher Duft passt zu deinem Reiseziel?',
@@ -27,7 +28,7 @@ export default function ReisedueftePage() {
       <div className="container">
         <section className="section">
           <p className="eyebrow">Reise & Duft</p>
-          <h1>Welcher Duft passt zu deinem Reiseziel? ✈️</h1>
+          <h1>Welcher Duft passt zu deinem Reiseziel?</h1>
           <p className="lead">
             Jeder Ort hat seinen eigenen Duft-Charakter: warm wie Rom, frisch wie die Alpen,
             tropisch wie die Karibik. Wähl dein Traumziel und finde die Düfte, die dazu passen.
@@ -53,7 +54,7 @@ export default function ReisedueftePage() {
                     className="mood-icon dest-emoji"
                     style={{ background: `${d.tone}22`, borderColor: `${d.tone}55` }}
                   >
-                    {d.emoji}
+                    <LineIcon name={destinationIcon(d.slug)} size={26} />
                   </span>
                   <span className="mood-title">{d.name}</span>
                   <span className="small">{d.tagline}</span>

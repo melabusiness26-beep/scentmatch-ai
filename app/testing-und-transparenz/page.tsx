@@ -208,7 +208,7 @@ export default function TestingPage() {
           }}>
             <div style={{ marginBottom: '1rem' }}>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', fontWeight: 600, marginBottom: '0.3rem' }}>
-                🧪 Duft-Datenbanken
+                Duft-Datenbanken
               </p>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>
                 Vor allem Parfumo: Duftnoten, Erscheinungsjahr, Parfümeur sowie die Community-Bewertungen zu
@@ -217,7 +217,7 @@ export default function TestingPage() {
             </div>
             <div style={{ marginBottom: '1rem' }}>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', fontWeight: 600, marginBottom: '0.3rem' }}>
-                📖 Offizielle Markenangaben
+                Offizielle Markenangaben
               </p>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>
                 Duftnoten und Beschreibungen direkt von den Websites der Marken, wo vorhanden.
@@ -225,7 +225,7 @@ export default function TestingPage() {
             </div>
             <div style={{ marginBottom: '1rem' }}>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', fontWeight: 600, marginBottom: '0.3rem' }}>
-                🛍️ Schweizer Online-Shops
+                Schweizer Online-Shops
               </p>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>
                 Für Grössen und Richtpreise in Franken.
@@ -233,7 +233,7 @@ export default function TestingPage() {
             </div>
             <div>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', fontWeight: 600, marginBottom: '0.3rem' }}>
-                🚫 Was wir nicht tun
+                Was wir nicht tun
               </p>
               <p style={{ fontSize: '0.9rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>
                 Bewertungen erfinden, ganze Datensätze oder Rezensionen von anderen Seiten kopieren oder

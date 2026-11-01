@@ -27,8 +27,7 @@ export default function NewsletterConfirmedPage() {
           marginBottom: '1.5rem',
           animation: 'bounce 0.6s ease-in-out',
         }}>
-          ✨
-        </div>
+          </div>
 
         {/* Heading */}
         <h1 style={{
@@ -39,8 +38,7 @@ export default function NewsletterConfirmedPage() {
           marginBottom: '1rem',
           letterSpacing: '-0.02em',
         }}>
-          Bestätigt! 🎉
-        </h1>
+          Bestätigt! </h1>
 
         {/* Subheading */}
         <p style={{

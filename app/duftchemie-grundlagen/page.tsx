@@ -38,7 +38,7 @@ export default function DuftchemieGrundlagen() {
       >
         <div style={{ textAlign: 'center', maxWidth: '620px' }}>
           <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>
-            🧪 Die Wissenschaft
+            Die Wissenschaft
           </p>
           <h1 style={{
             fontSize: 'clamp(28px, 6vw, 44px)',
@@ -99,7 +99,7 @@ export default function DuftchemieGrundlagen() {
             marginBottom: '1.5rem',
           }}>
             <h3 style={{ fontSize: '1.3rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.5rem' }}>
-              🌬️ Kopfnoten (Top Notes)
+              Kopfnoten (Top Notes)
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#6b5344', marginBottom: '1rem', fontStyle: 'italic' }}>
               Flüchtig, frisch, schnell vorbei (die ersten Minuten bis ca. 15–30 Minuten)
@@ -124,7 +124,7 @@ export default function DuftchemieGrundlagen() {
             marginBottom: '1.5rem',
           }}>
             <h3 style={{ fontSize: '1.3rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.5rem' }}>
-              💎 Herznoten (Heart/Middle Notes)
+              Herznoten (Heart/Middle Notes)
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#6b5344', marginBottom: '1rem', fontStyle: 'italic' }}>
               Der Kern, die „wahre" Essenz (20 Minuten bis 4 Stunden)
@@ -149,7 +149,7 @@ export default function DuftchemieGrundlagen() {
             marginBottom: '1.5rem',
           }}>
             <h3 style={{ fontSize: '1.3rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.5rem' }}>
-              ⚓ Basisnoten (Base Notes)
+              Basisnoten (Base Notes)
             </h3>
             <p style={{ fontSize: '0.95rem', color: '#6b5344', marginBottom: '1rem', fontStyle: 'italic' }}>
               Der Anker, der Duft, der bleibt (4–24+ Stunden)

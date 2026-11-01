@@ -38,8 +38,7 @@ export default function Duftpersoenlichkeit() {
       >
         <div style={{ textAlign: 'center', maxWidth: '620px' }}>
           <p style={{ fontSize: '12px', color: '#d4af37', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>
-            ✨ Selbstverständnis durch Duft ✨
-          </p>
+            Selbstverständnis durch Duft </p>
           <h1 style={{
             fontSize: 'clamp(28px, 6vw, 44px)',
             fontFamily: "var(--font-display), Georgia, serif",

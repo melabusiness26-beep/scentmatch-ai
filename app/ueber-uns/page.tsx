@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Breadcrumb from '@/app/Breadcrumb';
 import { OPERATOR } from '@/lib/operator';
+import LineIcon from '@/app/LineIcon';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
@@ -106,12 +107,12 @@ export default function UeberUnsPage() {
           </h2>
           <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
             {[
-              { icon: '🎯', title: 'Duft-Quiz', text: 'Beantworte 10 Fragen – wir berechnen deinen persönlichen Match-Score für jeden Duft im Katalog.' },
-              { icon: '🕵️', title: 'Duft-Detektiv', text: '12 tiefe Fragen zu Persönlichkeit, Stil und Anlass. Für Menschen, die ihren Signature Duft noch nicht kennen.' },
-              { icon: '📸', title: 'Duft-Scanner (bald verfügbar)', text: 'Foto hochladen, Parfüm erkennen lassen – die KI soll Flakon, Noten und Charakter erkennen.' },
-              { icon: '💸', title: 'Günstige Dupes', text: 'Keine Lust auf 200-Franken-Flakons? Wir zeigen dir Alternativen, die ähnlich riechen – für einen Bruchteil des Preises.' },
-              { icon: '📖', title: 'Ehrliche Ratgeber', text: 'Kein Fachjargon. Klare Erklärungen zu Duftnoten, Ausstrahlung, Haltbarkeit und saisonalen Empfehlungen.' },
-              { icon: '🇨🇭', title: 'Schweizer Perspektive', text: 'Alle Preise in CHF, Texte in Schweizer Schreibweise.' },
+              { icon: 'compass', title: 'Duft-Quiz', text: 'Beantworte 10 Fragen – wir berechnen deinen persönlichen Match-Score für jeden Duft im Katalog.' },
+              { icon: 'search', title: 'Duft-Detektiv', text: '12 tiefe Fragen zu Persönlichkeit, Stil und Anlass. Für Menschen, die ihren Signature Duft noch nicht kennen.' },
+              { icon: 'bottle', title: 'Duft-Scanner (bald verfügbar)', text: 'Foto hochladen, Parfüm erkennen lassen – die KI soll Flakon, Noten und Charakter erkennen.' },
+              { icon: 'tag', title: 'Günstige Dupes', text: 'Keine Lust auf 200-Franken-Flakons? Wir zeigen dir Alternativen, die ähnlich riechen – für einen Bruchteil des Preises.' },
+              { icon: 'book', title: 'Ehrliche Ratgeber', text: 'Kein Fachjargon. Klare Erklärungen zu Duftnoten, Ausstrahlung, Haltbarkeit und saisonalen Empfehlungen.' },
+              { icon: 'swiss', title: 'Schweizer Perspektive', text: 'Alle Preise in CHF, Texte in Schweizer Schreibweise.' },
             ].map(item => (
               <div key={item.title} style={{
                 background: '#fff',
@@ -119,7 +120,7 @@ export default function UeberUnsPage() {
                 borderRadius: '12px',
                 padding: '1.25rem',
               }}>
-                <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>{item.icon}</div>
+                <div style={{ marginBottom: '0.5rem', color: 'var(--gold-text)' }}><LineIcon name={item.icon} size={28} /></div>
                 <h3 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1rem', fontWeight: 700, color: '#2a1d12', marginBottom: '0.4rem' }}>{item.title}</h3>
                 <p style={{ fontSize: '0.875rem', color: '#6b5344', lineHeight: 1.6, margin: 0 }}>{item.text}</p>
               </div>

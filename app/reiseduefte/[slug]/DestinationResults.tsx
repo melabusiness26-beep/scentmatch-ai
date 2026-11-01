@@ -55,7 +55,7 @@ export default function DestinationResults({ items, dest }: { items: Item[]; des
 
   return (
     <section className="section" id="ergebnis">
-      <p className="eyebrow">{dest.emoji} {dest.name}</p>
+      <p className="eyebrow">{dest.name}</p>
       <h2>Diese Düfte passen zu {dest.name}</h2>
       <p className="small">{dest.result}</p>
 

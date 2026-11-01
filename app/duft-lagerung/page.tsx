@@ -104,7 +104,6 @@ export default function DuftLagerungPage() {
                 display: 'flex',
                 gap: '1rem'
               }}>
-                <div style={{ fontSize: '1.8rem', flexShrink: 0 }}>{factor.emoji}</div>
                 <div>
                   <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#2a1d12', marginBottom: '0.5rem', marginTop: 0 }}>
                     {factor.title}
@@ -279,7 +278,6 @@ export default function DuftLagerungPage() {
                 display: 'flex',
                 gap: '1rem'
               }}>
-                <div style={{ fontSize: '1.5rem' }}>{option.icon}</div>
                 <div>
                   <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#2a1d12', marginBottom: '0.25rem', marginTop: 0 }}>
                     {option.title}
@@ -302,7 +300,7 @@ export default function DuftLagerungPage() {
           marginBottom: '3rem'
         }}>
           <h2 style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: '1.25rem', marginTop: 0 }}>
-            💡 Die Kurz-Fassung
+            Die Kurz-Fassung
           </h2>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
             {[

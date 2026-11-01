@@ -121,7 +121,7 @@ export default function DuftsammlungPage() {
                   {item.beschreibung}
                 </p>
                 <p style={{ margin: '0.75rem 0 0 0', padding: '0.75rem', background: 'rgba(212,175,55,0.05)', borderRadius: '4px', fontSize: '0.9rem', color: '#5b4d40' }}>
-                  💡 {item.tipp}
+                  {item.tipp}
                 </p>
               </div>
             ))}
@@ -189,7 +189,7 @@ export default function DuftsammlungPage() {
                   <strong>Wie:</strong> {item.wie}
                 </p>
                 <p style={{ margin: 0, fontSize: '0.85rem', color: '#8b7d74', fontStyle: 'italic' }}>
-                  👥 <strong>Passt für:</strong> {item.best_for}
+                  <strong>Passt für:</strong> {item.best_for}
                 </p>
               </div>
             ))}
@@ -236,7 +236,7 @@ export default function DuftsammlungPage() {
                 padding: '1.25rem'
               }}>
                 <p style={{ margin: '0 0 0.5rem 0', fontWeight: 600, fontSize: '0.95rem' }}>
-                  🔴 {item.fehler}
+                  {item.fehler}
                 </p>
                 <p style={{ margin: '0 0 0.75rem 0', fontSize: '0.9rem', color: '#6b5344' }}>
                   <strong>Warum problematisch:</strong> {item.warum}
@@ -293,7 +293,7 @@ export default function DuftsammlungPage() {
             <li>Wann trägst du ihn? (Jahreszeit, Anlass, Tageszeit)</li>
             <li>Kaufdatum + Budget</li>
             <li>Haltbarkeit auf deiner Haut</li>
-            <li>Favorit? (⭐⭐⭐)</li>
+            <li>Favorit? (★★★)</li>
           </ul>
 
           <h3>Option 2: Physische Sammlung</h3>
@@ -367,7 +367,7 @@ export default function DuftsammlungPage() {
             marginTop: '2rem'
           }}>
             <p style={{ margin: '0 0 0.75rem 0', color: '#2a1d12', fontWeight: 600 }}>
-              🎯 <strong>Die perfekte Sammlung für dich</strong>
+              <strong>Die perfekte Sammlung für dich</strong>
             </p>
             <p style={{ margin: 0, color: '#6b5344', fontSize: '0.9rem', lineHeight: 1.6 }}>
               Es gibt keine universelle Antwort: Die richtige Sammlung ist die, die DU wirklich trägst. Drei grossartige Düfte
@@ -385,7 +385,7 @@ export default function DuftsammlungPage() {
             marginBottom: '2rem'
           }}>
             <p style={{ margin: '0 0 1rem 0', fontSize: '0.95rem', fontWeight: 600, color: '#2a1d12' }}>
-              💌 Nächster Schritt: Baue deine persönliche Sammlung auf
+              Nächster Schritt: Baue deine persönliche Sammlung auf
             </p>
             <p style={{ margin: 0, fontSize: '0.9rem', color: '#5b4d40' }}>
               Du weisst jetzt, wie eine gute Sammlung aussieht. Brauchst du Hilfe bei der Auswahl? Nutze <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>das Auressa-Quiz</Link> –

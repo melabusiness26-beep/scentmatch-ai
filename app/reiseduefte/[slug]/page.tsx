@@ -66,7 +66,7 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
     { q: `Welcher Duft passt zu ${dest.name}?`, a: dest.intro },
     {
       q: `Welche Noten passen zu ${dest.name}?`,
-      a: `Typisch für ${dest.name} sind Noten wie ${notesText}. Auressa wertet die Duftnoten jedes Parfüms aus und ordnet passende Düfte automatisch diesem Reiseziel zu – ganz ohne Raten.`
+      a: `Zur Stimmung von ${dest.name} passen aus unserer Sicht Noten wie ${notesText}. Auressa vergleicht die Duftnoten und Duftfamilien der Parfüms im Katalog damit und zeigt die passendsten Düfte zuerst.`
     },
     {
       q: 'Sind die Empfehlungen für Damen oder Herren?',
@@ -74,7 +74,7 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
     },
     {
       q: 'Gibt es auch günstige Alternativen?',
-      a: 'Ja – zu vielen teureren Düften gibt es ähnlich riechende, günstigere Varianten. Öffne ein Duftprofil und schau unter „Günstige Alternativen", oder stöbere in der Duftdatenbank.'
+      a: 'Je nach Duft: Wenn im Katalog ein ähnlich riechender, günstigerer Duft vorhanden ist, zeigt das Duftprofil ihn unter „Günstige Alternativen“. Du kannst auch in der Duftdatenbank stöbern.'
     }
   ];
 

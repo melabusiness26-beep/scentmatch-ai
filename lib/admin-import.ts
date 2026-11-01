@@ -56,6 +56,8 @@ export type ImportedFields = Partial<{
   alternative_to: string;
   accords: string;
   description: string;
+  /** "true" = wird nicht mehr hergestellt, "false" = erhältlich. */
+  discontinued: string;
 }>;
 
 // warnings: ungültige Werte (immer anzeigen). missing: fehlende Pflichtangaben – nur
@@ -186,6 +188,14 @@ function parseEntry(input: Record<string, unknown>, index: number): ImportEntry 
     if (unknown.length) warnings.push(`Duftrichtung „${unknown.join(', ')}" ist unbekannt – nicht übernommen.`);
     if (accords.length) fields.accords = accordsToText(accords);
     else if (!unknown.length) warnings.push('Duftrichtung ist ungültig – nicht übernommen.');
+  }
+
+  // Nicht mehr erhältlich: true/false (auch „ja"/„nein").
+  if (raw.discontinued != null && raw.discontinued !== '') {
+    const v = String(raw.discontinued).trim().toLowerCase();
+    if (['true', 'ja', 'yes', '1'].includes(v)) fields.discontinued = 'true';
+    else if (['false', 'nein', 'no', '0'].includes(v)) fields.discontinued = 'false';
+    else warnings.push('„Nicht mehr erhältlich" bitte als true oder false angeben – nicht übernommen.');
   }
 
   const missing: string[] = [];

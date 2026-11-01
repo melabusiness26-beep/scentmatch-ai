@@ -8,6 +8,8 @@ import {
   getPerfumes,
   getPerfumeBackground,
   getPerfumeExtras,
+  getAlternativeLinks,
+  isWithinPriceCap,
   describePerfume,
   concentrationLabel,
   type Perfume
@@ -26,7 +28,7 @@ import { StickyBuyBar } from '@/app/components/StickyBuyBar';
 import { computeAccords } from '@/lib/accords';
 import { computeAuressaScore } from '@/lib/score';
 import { fitAdvice, perfumeTagline } from '@/lib/perfume-text';
-import { findVersions, versionLabel, compareVersion, findCounterpart } from '@/lib/versions';
+import { baseName, findVersions, versionLabel, compareVersion, findCounterpart } from '@/lib/versions';
 import { pairsFor } from '@/lib/version-compare';
 import { wearTips } from '@/lib/wear';
 import { perfumeSeasons, seasonPicks } from '@/lib/season-fit';
@@ -116,8 +118,12 @@ export async function generateMetadata({
   // (%s | Auressa) automatisch an. So entsteht kein doppeltes „| Auressa".
   // Google zeigt ca. 60 Zeichen: Zusatz nur, solange der Titel (inkl. „ | Auressa") kurz genug bleibt.
   const core = `${nameWithVersion}${brand}`;
-  const title =
-    core.length + ' – Duftprofil & Bewertung | Auressa'.length <= 62
+  // Eingestellte Düfte: Wer danach sucht, will meist wissen, was er stattdessen kaufen kann.
+  const title = perfume.discontinued
+    ? core.length + ' – Alternativen | Auressa'.length <= 62
+      ? `${core} – Alternativen`
+      : core
+    : core.length + ' – Duftprofil & Bewertung | Auressa'.length <= 62
       ? `${core} – Duftprofil & Bewertung`
       : core.length + ' – Duftnoten & Preis | Auressa'.length <= 62
         ? `${core} – Duftnoten & Preis`
@@ -371,9 +377,30 @@ export default async function PerfumeDetailPage({
   const picks = seasonPicks(perfume, pool, versionIds);
   const tips = wearTips(perfume);
 
-  const cheaper = findCheaperAlternativesV2(perfume, altPool, 3).filter(
-    (c) => c.perfume.slug !== curatedSlug
+  // Geprüfte Dupes: Düfte im Katalog, die als bekannte Alternative zu DIESEM Duft
+  // eingetragen sind (Feld „Alternative zu" beim Dupe). Nur empfehlbare (bis CHF 180, erhältlich).
+  const ownName = nameKey(perfume.perfume_name);
+  const ownBrand = nameKey(perfume.brands?.name || '');
+  const dupeLinks = (await getAlternativeLinks()).filter((link) =>
+    link.alternative_to.some((a) => nameKey(a.name) === ownName && (!a.brand || nameKey(a.brand) === ownBrand))
   );
+  const knownDupes = dupeLinks
+    .map((link) => {
+      const match = pool.find((p) => p.slug === link.slug);
+      const entry = link.alternative_to.find((a) => nameKey(a.name) === ownName);
+      return match && match.id !== perfume.id && !versionIds.has(match.id) && isWithinPriceCap(match)
+        ? { perfume: match, note: entry?.note || null }
+        : null;
+    })
+    .filter((d): d is { perfume: Perfume; note: string | null } => d != null);
+  const knownDupeIds = new Set(knownDupes.map((d) => d.perfume.id));
+  const isDiscontinued = Boolean(perfume.discontinued);
+
+  const cheaper = isDiscontinued
+    ? []
+    : findCheaperAlternativesV2(perfume, altPool, 3).filter(
+        (c) => c.perfume.slug !== curatedSlug && !knownDupeIds.has(c.perfume.id)
+      );
   const cheaperIds = new Set(cheaper.map((c) => c.perfume.id));
   // In den allgemeinen "ähnlich"-Vorschlägen die guenstigen Alternativen nicht doppelt zeigen.
   // Zuerst grosszügig holen und filtern, DANN auf 4 kürzen – sonst würde das Kürzen auf 4
@@ -381,8 +408,13 @@ export default async function PerfumeDetailPage({
   // per Definition ähnlich und belegen sonst die Top-Plätze).
   const similar = findSimilarPerfumesV2(perfume, altPool)
     .filter(
-      (s) => !cheaperIds.has(s.perfume.id) && s.perfume.slug !== curatedSlug
+      (s) => !cheaperIds.has(s.perfume.id) && !knownDupeIds.has(s.perfume.id) && s.perfume.slug !== curatedSlug
     )
+    // Pro Duft nur eine Version zeigen (nicht viermal Boss Bottled in EdT, EdP, Parfum …).
+    .filter((s, i, list) => {
+      const key = (x: Perfume) => `${nameKey(x.brands?.name || '')}|${baseName(x.perfume_name)}`;
+      return list.findIndex((o) => key(o.perfume) === key(s.perfume)) === i;
+    })
     .slice(0, 4);
 
   const ownLabel = versionLabel(perfume);
@@ -524,7 +556,13 @@ export default async function PerfumeDetailPage({
 
             <div className="dp-buy">
               <div className="dp-price">
-                {perfume.price_chf != null ? (
+                {isDiscontinued ? (
+                  <>
+                    <span className="dp-price-label">Status</span>
+                    <span className="dp-price-value">Nicht mehr erhältlich</span>
+                    <span className="dp-price-note">wird nicht mehr hergestellt</span>
+                  </>
+                ) : perfume.price_chf != null ? (
                   <>
                     <span className="dp-price-label">Richtpreis</span>
                     <span className="dp-price-value">ca. CHF {perfume.price_chf}</span>
@@ -570,7 +608,19 @@ export default async function PerfumeDetailPage({
 
             {/* Mit eigenem Partner-Shop-Link: der zuerst. Sonst Amazon (Partnerprogramm) als
                 Hauptknopf und die allgemeine Online-Suche dezent darunter. */}
-            {perfume.affiliate_url && /^https:\/\//i.test(perfume.affiliate_url) ? (
+            {isDiscontinued ? (
+              <div className="dp-discontinued" role="note">
+                <p>
+                  <strong>{perfume.perfume_name} wird nicht mehr hergestellt.</strong> Restbestände gibt es manchmal noch
+                  bei Wiederverkäufern – oft zu hohen Preisen und ohne Garantie für Echtheit und Frische.
+                </p>
+                {(knownDupes.length > 0 || similar.length > 0) && (
+                  <a className="button" href="#ersatz">
+                    Das kannst du heute stattdessen kaufen ↓
+                  </a>
+                )}
+              </div>
+            ) : perfume.affiliate_url && /^https:\/\//i.test(perfume.affiliate_url) ? (
               <div className="dp-actions" id="dp-actions">
                 <AffiliateButton perfume={perfume} />
                 <AmazonButton perfume={perfume} />
@@ -612,6 +662,63 @@ export default async function PerfumeDetailPage({
         </Reveal>
 
         <SeasonFit seasons={seasons} picks={picks} />
+
+        {/* ── STATTDESSEN / BEKANNTE DUPES ──────────────────────── */}
+        {(knownDupes.length > 0 || (isDiscontinued && similar.length > 0)) && (
+          <Reveal as="section" className="dp-section dp-dupes">
+            <span id="ersatz" className="dp-anchor" aria-hidden="true" />
+            <p className="dp-kicker">{isDiscontinued ? 'Heute erhältlich' : 'Original vs. Dupe'}</p>
+            <h2>
+              {isDiscontinued
+                ? `Das kannst du statt ${perfume.perfume_name} kaufen`
+                : `Bekannte Dupes von ${perfume.perfume_name}`}
+            </h2>
+            {knownDupes.length > 0 && (
+              <div className="dupe-list">
+                {knownDupes.map(({ perfume: d, note }) => {
+                  const saving =
+                    !isDiscontinued && perfume.price_chf != null && d.price_chf != null
+                      ? Math.round((perfume.price_chf - d.price_chf) * 100) / 100
+                      : null;
+                  return (
+                    <article className="dupe-card" key={d.id}>
+                      <div className="dupe-visual">
+                        <PerfumeVisual perfume={d} />
+                      </div>
+                      <div className="dupe-body">
+                        <span className="dupe-level">Bekannte Alternative</span>
+                        <p className="tile-brand">{d.brands?.name || 'Marke offen'}</p>
+                        <h3 className="tile-name">{d.perfume_name}</h3>
+                        <div className="dupe-prices">
+                          {d.price_chf != null && <span className="dupe-price">ca. CHF {d.price_chf}</span>}
+                          {saving != null && saving > 0 && <span className="dupe-saving">du sparst ~CHF {chf(saving)}</span>}
+                        </div>
+                        {note && <p className="small dupe-note">{note}</p>}
+                        <div className="dupe-cta">
+                          {d.slug && <Link className="button secondary" href={`/duft/${d.slug}`}>Duftprofil</Link>}
+                          <AffiliateButton perfume={d} showNote={false} />
+                        </div>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            )}
+            {isDiscontinued && similar.length > 0 && (
+              <>
+                {knownDupes.length > 0 && <p className="small dp-known-sub">Weitere Düfte in eine ähnliche Richtung:</p>}
+                <div className="perfume-list">
+                  {similar.map(({ perfume: s }) => (
+                    <PerfumeTile perfume={s} key={s.id} />
+                  ))}
+                </div>
+              </>
+            )}
+            <p className="dp-footnote">
+              Ähnlich bedeutet nicht identisch – kein Duft riecht genau gleich wie ein anderer. Teste am besten eine Probe.
+            </p>
+          </Reveal>
+        )}
 
         {/* ── BEKANNTE ALTERNATIVE ZU … ────────────────────────── */}
         {alternatives.length > 0 && (
@@ -960,7 +1067,7 @@ export default async function PerfumeDetailPage({
         )}
 
         {/* ── RIECHT ÄHNLICH WIE ───────────────────────────────── */}
-        {(similar.length > 0 || knownSimilar.length > 0) && (
+        {((!isDiscontinued && similar.length > 0) || knownSimilar.length > 0) && (
           <Reveal as="section" className="dp-section">
             <p className="dp-kicker">Entdecke mehr</p>
             <h2>Riecht ähnlich wie {perfume.perfume_name}</h2>
@@ -984,7 +1091,7 @@ export default async function PerfumeDetailPage({
                 </div>
               </div>
             )}
-            {similar.length > 0 && (
+            {!isDiscontinued && similar.length > 0 && (
               <>
                 {knownSimilar.length > 0 && <p className="small dp-known-sub">Ähnliche Düfte aus unserem Katalog:</p>}
                 <div className="perfume-list">
@@ -1020,6 +1127,7 @@ export default async function PerfumeDetailPage({
       </div>
 
       {/* ── FIXIERTE KAUF-LEISTE (nur Handy) ─────────────────── */}
+      {!isDiscontinued && (
       <StickyBuyBar targetId="dp-actions">
         <div className="dp-sticky-info">
           <span className="dp-sticky-name">{perfume.perfume_name}</span>
@@ -1027,6 +1135,7 @@ export default async function PerfumeDetailPage({
         </div>
         <AffiliateButton perfume={perfume} showNote={false} label="Ansehen →" />
       </StickyBuyBar>
+      )}
 
       <script
         type="application/ld+json"

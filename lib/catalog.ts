@@ -111,6 +111,8 @@ export function toPerfumeRow(f: ImportedFields, brandId: string, slug: string): 
     sizes: parseSizes(f.sizes || ''),
     alternative_to: parseAlternatives(f.alternative_to || ''),
     // Nur mitschicken, wenn vorhanden – so klappt das Eintragen auch ohne die Spalte.
-    ...(f.accords ? { accords: parseAccordText(f.accords).accords } : {})
+    ...(f.accords ? { accords: parseAccordText(f.accords).accords } : {}),
+    // Nur bei eingestellten Düften mitschicken (Spalte gibt es erst nach SQL 65).
+    ...(f.discontinued === 'true' ? { discontinued: true } : {})
   };
 }

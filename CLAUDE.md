@@ -307,3 +307,19 @@ gender → anchor (optional, Dropdown) → 3× family → lovedNote → disliked
   Regeln). Altersfilter zeigt „16-25"; DB-Code bleibt `18-25` (kompatibel mit Backup).
 - **Offen** (Priorität): Newsletter-Bestätigung reparieren (Token fälschbar), Amazon-Tag bestätigen,
   Katalog aus Backup neu aufbauen (mit Texten), „Sillage" → „Ausstrahlung", Score pro 100 ml.
+
+## 14. Update (1. November 2026): Boss-Bottled-Familie, „Nicht mehr erhältlich", Original vs. Dupe
+
+- **Katalog** (Dateien in `catalog/perfumes/`, „Mergen = fertig"): Boss Bottled EdT, Eau de Parfum (2020,
+  Honorine Blanc), Parfum (2022), Elixir (2023), Absolu (2024) – alle mit Parfumo-Diagramm + 2. Quelle.
+  „Absolu" ist Versions-Zusatz in `lib/versions.ts`. Boss Bottled Intense (EdP 2016) bewusst NICHT
+  aufgenommen: eingestellt (~2020), Nachfolger ist der EdP 2020.
+- **Ablauf pro Duft** (Gründerin liefert): Parfumo-Seitentext + Foto vom Diagramm (Jahreszeit/Anlass/Typ)
+  + Preise easyCOSMETIC (Referenz-Shop für alle Preise). Auf Verwechslungen achten (EdT/EdP, Jahr, Flanker).
+- **Nicht mehr erhältlich** (`perfumes.discontinued`, SQL `65_discontinued.sql`): Seite zeigt „Nicht mehr
+  erhältlich", keinen Kauf-Knopf, dafür „Das kannst du statt … kaufen". Wird nirgends empfohlen
+  (`isWithinPriceCap` schliesst eingestellte Düfte aus). Admin: Häkchen; Import/Katalog: `"discontinued": true`.
+- **Original vs. Dupe**: Trägt man beim Dupe „Alternative zu" ein (`alternative_to`), zeigt jetzt auch die
+  Seite des ORIGINALS den Abschnitt „Bekannte Dupes von …". Nischendüfte über CHF 180 dürfen als Original
+  rein. Nie „1:1" versprechen – nur „sehr ähnlich", mit 2 Quellen.
+- Merkliste für später: Rochas Macassar (eingestellt) mit geprüften Alternativen.

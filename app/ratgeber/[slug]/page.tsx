@@ -28,7 +28,7 @@ export async function generateMetadata({
   if (!guide) return { title: 'Ratgeber nicht gefunden' };
 
   return {
-    title: guide.title,
+    title: guide.seoTitle || guide.title,
     description: guide.description,
     alternates: { canonical: `/ratgeber/${slug}` },
     openGraph: {
@@ -132,7 +132,7 @@ export default async function GuidePage({
         textAlign: 'center',
       }}>
         <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.75rem', letterSpacing: '0.18em',
-                    textTransform: 'uppercase', color: '#999', marginBottom: '0.6rem' }}>
+                    textTransform: 'uppercase', color: '#6b6b6b', marginBottom: '0.6rem' }}>
           Ratgeber
         </p>
         <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.6rem,5vw,2.4rem)',

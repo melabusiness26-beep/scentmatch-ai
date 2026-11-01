@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     'Wie lagert man Parfum richtig? Temperatur, Licht, Feuchtigkeit – alle Tipps für optimale Lagerung und maximal lange Haltbarkeit deines Lieblingsdufts.',
   alternates: { canonical: `${SITE_URL}/duft-lagerung` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Parfum richtig lagern | Auressa',
     description: 'Kompletter Guide: Korrekte Lagerung für maximale Duft-Haltbarkeit und Qualität.',
     url: `${SITE_URL}/duft-lagerung`,

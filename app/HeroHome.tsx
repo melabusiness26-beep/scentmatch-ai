@@ -10,6 +10,9 @@ export default function HeroHome() {
   }, []);
 
   return (
+    <>
+    {/* Hintergrundbild früh laden – es ist das grösste Element beim Öffnen der Startseite. */}
+    <link rel="preload" as="image" href="/hero-auressa-main.jpg" fetchPriority="high" />
     <section style={{
       position: 'relative',
       overflow: 'hidden',
@@ -91,7 +94,7 @@ export default function HeroHome() {
           animation: isLoaded ? 'fadeInUp 0.8s ease-out 0.5s both' : 'none',
           maxWidth: '500px',
         }}>
-          Mit Quiz, Duft-Scanner und unserer intelligenten Match-Engine. Ohne Konto, ohne Newsletter-Pflicht.
+          Mit Duft-Quiz, Duft-Detektiv und geprüften Daten zu jedem Duft.
         </p>
 
         {/* CTAs */}
@@ -154,5 +157,6 @@ export default function HeroHome() {
       {/* Hidden target for scanner button */}
       <div id="scanner-coming-soon" style={{ display: 'none' }} />
     </section>
+    </>
   );
 }

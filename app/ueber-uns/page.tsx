@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     'Auressa entstand aus einer persönlichen Frustration: Zu viele Parfüms gekauft, die nicht gepasst haben. Melanie aus der Schweiz hat das geändert – ehrlich, auf Deutsch, mit echten Empfehlungen.',
   alternates: { canonical: `${SITE_URL}/ueber-uns` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Über Auressa | Auressa',
     description: 'Die Geschichte hinter einer ehrlichen Duft-Plattform aus der Schweiz.',
     url: `${SITE_URL}/ueber-uns`,

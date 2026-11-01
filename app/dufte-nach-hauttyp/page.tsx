@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     'Finde die perfekten Düfte für deine Haut – Tipps für trockene, normale, ölige und sensible Hauttypen. Mit Duft-Empfehlungen für jede Haut.',
   alternates: { canonical: '/dufte-nach-hauttyp' },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Düfte für deinen Hauttyp | Auressa',
     description:
       'Die richtige Duft-Auswahl für trockene, normale, ölige und sensible Haut – damit der Duft auf dir perfekt wirkt.',

@@ -15,6 +15,8 @@ export type GuideSection = {
 export type Guide = {
   slug: string;
   title: string;
+  // Kürzerer Titel nur für Google (Titel über ~60 Zeichen werden abgeschnitten).
+  seoTitle?: string;
   description: string;
   heroImage?: string;
   intro: string[];
@@ -25,6 +27,7 @@ export const guides: Guide[] = [
   {
     slug: 'guenstige-alternativen-zu-teuren-dueften',
     title: 'Parfüm-Dupes: clevere Alternativen für die Schweiz – Luxus muss nicht teuer sein',
+    seoTitle: 'Parfüm-Dupes: clevere Alternativen in der Schweiz',
     description:
       'Ein grossartiger Duft muss nicht teuer sein. Ein Dupe riecht ähnlich wie ein Luxus-Original, kostet aber nur einen Bruchteil. Creed Aventus, Dior Sauvage, Baccarat Rouge – für alle gibt es grossartige Alternativen. Hier unsere ehrlichsten Empfehlungen.',
     heroImage: 'https://images.unsplash.com/photo-1541643600914-78b084683702?w=1200&q=80&fit=crop',
@@ -109,6 +112,7 @@ export const guides: Guide[] = [
   {
     slug: 'die-besten-sommerduefte',
     title: 'Die besten Sommerdüfte: Leichtigkeit, Frische & Eleganz für heisse Tage',
+    seoTitle: 'Die besten Sommerdüfte: frisch & leicht',
     description:
       'Der richtige Sommerduft ändert alles. Entdecke Düfte, die dich erfrischt, elegant und unbeschwert durch warme Tage bringen. Von frischen Klassikern über moderne Nischen-Favoriten bis zu überraschenden Geheimtipps: für Alltag, Strand, Date und festliche Aperitifs. Dein Sommer-Signature wartet.',
     heroImage: '/ratgeber/sommerduefte-hero.jpg',
@@ -171,6 +175,7 @@ export const guides: Guide[] = [
   {
     slug: 'welcher-duft-zu-welchem-anlass',
     title: 'Der richtige Duft für jeden Moment: Büro, Date, Abend – die Kunst der eleganten Wahl',
+    seoTitle: 'Der richtige Duft für Büro, Date & Abend',
     description:
       'Der richtige Duft für den richtigen Moment ist kein Zufall – es ist eine bewusste Kunst. Entdecke, wie intelligente Anlass-Wahl deine Ausstrahlung sicher stärkt: vom dezenten Büro über sichere Dates bis zum intensiven Abend. Unser Ratgeber zeigt dir die psychologischen Regeln, praktischen Tipps und perfekten Düfte für Selbstvertrauen & zeitlose Eleganz.',
     heroImage: '/ratgeber/welcher-duft-zu-welchem-anlass-hero.jpg',
@@ -228,6 +233,7 @@ export const guides: Guide[] = [
   {
     slug: 'suesse-duefte-vanille-schokolade-karamell',
     title: 'Süsse Düfte: Vanille, Schokolade & Karamell – Wärme, Sinnlichkeit & Komfort',
+    seoTitle: 'Süsse Düfte: Vanille, Schokolade & Karamell',
     description:
       'Die verführerischsten Gourmand-Düfte: Vanille, Schokolade, Karamell und Tonkabohne. Süsse Düfte sind Komfortkompositionen – kuschelig, sinnlich, unvergesslich. Von cremig-pudrig bis würzig-intensiv, perfekt für Herbst, Winter und für Momente, die nach Wärme rufen.',
     heroImage: '/ratgeber/suesse-duefte-hero.jpg',
@@ -292,6 +298,7 @@ export const guides: Guide[] = [
   {
     slug: 'die-besten-winterduefte',
     title: 'Die besten Winterdüfte: Tiefe, Wärme & Eleganz – für die dunkle Jahreszeit',
+    seoTitle: 'Die besten Winterdüfte: warm & tief',
     description:
       'Winter ist die Saison der opulenten Düfte. Entdecke Oud, Amber, Weihrauch und Gewürze, die bei Kälte ihre volle Tiefe entfalten. Von zeitlosen Klassikern bis zu intensiven Nischen-Favoriten: Düfte, die dich wärmen, begleiten und in der dunklen Jahreszeit leuchten.',
     heroImage: '/ratgeber/winterduefte-hero.jpg',
@@ -356,6 +363,7 @@ export const guides: Guide[] = [
   {
     slug: 'die-besten-unisex-duefte',
     title: 'Unisex-Düfte: Keine Grenzen – Für deine Individualität, nicht für dein Geschlecht',
+    seoTitle: 'Die besten Unisex-Düfte für alle',
     description:
       'Düfte ohne Geschlechts-Etiketten: vielseitig, charaktervoll und zeitlos. Von Sandelholz bis Gypsy Water – unsere liebsten Kompositionen, die Grenzen sprengen und zu jedem passen, unabhängig vom Geschlecht.',
     heroImage: '/ratgeber/unisex-duefte-hero.jpg',
@@ -508,6 +516,7 @@ export const guides: Guide[] = [
   {
     slug: 'wie-lange-haelt-parfum-haltbarkeit',
     title: 'Wie lange hält ein Parfum? Haltbarkeit & richtig auftragen',
+    seoTitle: 'Wie lange hält ein Parfum? Haltbarkeit-Tipps',
     description:
       'Wie du Parfum richtig aufträgst, damit es länger hält, plus warum Düfte verfliegen, welche am längsten halten und wie lange ein Parfum haltbar ist. Mit den langlebigsten Düften aus unserem Katalog.',
     heroImage: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=1200&q=80&fit=crop',
@@ -605,6 +614,7 @@ export const guides: Guide[] = [
   {
     slug: 'parfum-geschenk-die-besten-duefte-zum-verschenken',
     title: 'Parfum als Geschenk: Der Weg zum perfekten Duft – Elegant, persönlich und unvergessen',
+    seoTitle: 'Parfum als Geschenk: so findest du den Duft',
     description:
       'Parfum ist eines der wertvollsten Geschenke überhaupt – wenn es stimmt. Erfahre, wie du Sicherheit und Eleganz kombinierst und die Chance auf die richtige Wahl erhöhst. Unsere liebsten Geschenk-Klassiker für jeden Geschmack und jeden Anlass.',
     heroImage: '/ratgeber/parfum-geschenk-hero.jpg',
@@ -659,6 +669,7 @@ export const guides: Guide[] = [
   {
     slug: 'maennerduefte-die-frauen-moegen',
     title: 'Männerdüfte, die Frauen lieben: Eleganz, Wärme & echte Komplimente – nicht Lärm',
+    seoTitle: 'Männerdüfte, die Frauen mögen',
     description:
       'Welche Herrendüfte ziehen an? Unsere Liste der echten „Kompliment-Klassiker" für Männer: elegant, einladend und unvergessen. Die Düfte, die Frauen wirklich mag und lange erinnert.',
     heroImage: 'https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=1200&q=80&fit=crop',
@@ -719,6 +730,7 @@ export const guides: Guide[] = [
   {
     slug: 'die-besten-vanille-duefte',
     title: 'Vanille-Düfte: Wärme, Komfort & Sinnlichkeit – Das Herz der süssen Düfte',
+    seoTitle: 'Die besten Vanille-Düfte',
     description:
       'Vanille ist die universelle Sprache der Behaglichkeit. Entdecke reine cremige Vanille-Düfte bis zu würzigen Varianten mit Tabak und Gewürzen. Von kuschelWeich bis elegant-trocken: Dein perfekter Vanille-Signature.',
     heroImage: '/ratgeber/vanille-duefte-hero.jpg',
@@ -774,6 +786,7 @@ export const guides: Guide[] = [
   {
     slug: 'die-besten-oud-duefte',
     title: 'Oud-Düfte: Das flüssige Gold der Parfümerie – Von Einsteigerfreundlich bis Luxus-Extrait',
+    seoTitle: 'Oud-Düfte: von Einsteiger bis Luxus',
     description:
       'Oud ist das Herz orientalischer Eleganz: warm, zeitlos, langanhaltend und faszinierend. Entdecke die besten Oud-Kompositionen von günstigen Schätzen bis zu exklusiven Meisterwerken – wann und wie du Oud richtig trägst.',
     heroImage: '/ratgeber/oud-duefte-hero.jpg',
@@ -838,6 +851,7 @@ export const guides: Guide[] = [
   {
     slug: 'die-besten-zitrus-duefte',
     title: 'Die besten Zitrus-Düfte: frisch, spritzig und voller Energie',
+    seoTitle: 'Die besten Zitrus-Düfte: frisch & spritzig',
     description:
       'Zitrus-Düfte mit Bergamotte, Zitrone, Grapefruit und Orange: frisch, leicht und gut gelaunt. Perfekt für Sommer, Büro und heisse Tage ',
     heroImage: '/ratgeber/zitrus-duefte-hero.jpg',
@@ -887,6 +901,7 @@ export const guides: Guide[] = [
   {
     slug: 'damenduefte-die-maenner-lieben',
     title: 'Frauendüfte, die Männer lieben: Wärme, Verführung & Eleganz – Die Klassiker der Anziehung',
+    seoTitle: 'Damendüfte, die Männer mögen',
     description:
       'Welche Frauendüfte ziehen auf Männer an? Unsere Liste der echten „Anziehungs-Klassiker": süss, sinnlich und zeitlos. Düfte, die im Gedächtnis bleiben und echte Komplimente bringen.',
     heroImage: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1200&q=80&fit=crop',
@@ -935,6 +950,7 @@ export const guides: Guide[] = [
   {
     slug: 'parfum-nach-sternzeichen',
     title: 'Parfum nach Sternzeichen: Welcher Duft passt zu deinem Zeichen?',
+    seoTitle: 'Parfum nach Sternzeichen: welcher Duft passt?',
     description:
       'Welcher Duft passt zu deinem Sternzeichen? Vom Widder bis zu den Fischen, pro Zeichen ein Luxus-Duft und eine günstigere Alternative in ähnlicher Duftrichtung.',
     heroImage: 'https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=1200&q=80&fit=crop',
@@ -1050,6 +1066,7 @@ export const guides: Guide[] = [
   {
     slug: 'parfum-fuer-einsteiger-erster-signature-duft',
     title: 'Parfum für Einsteiger: so findest du deinen ersten Signature-Duft',
+    seoTitle: 'Parfum für Einsteiger: dein erster Signature-Duft',
     description:
       'Neu in der Welt der Düfte? So findest du Schritt für Schritt deinen ersten Signature-Duft, ohne teure Fehlkäufe. Mit einfachen Tipps und sicheren Einsteiger-Empfehlungen.',
     heroImage: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=1200&q=80&fit=crop',
@@ -1103,6 +1120,7 @@ export const guides: Guide[] = [
   {
     slug: 'die-besten-fruehlingsduefte',
     title: 'Die besten Frühlingsdüfte: Aufbruch, Grüne Noten & Blüten-Eleganz',
+    seoTitle: 'Die besten Frühlingsdüfte: grün & blumig',
     description:
       'Der Frühling braucht Leichtigkeit. Entdecke blumig-frische Düfte mit grünen Noten, zarten Blüten und Zitrus. Von zart bis mutig, für Alltag und besondere Momente. Deine Frühlings-Signatur wartet.',
     heroImage: '/ratgeber/die-besten-fruehlingsduefte.jpg',
@@ -1176,6 +1194,7 @@ export const guides: Guide[] = [
   {
     slug: 'die-besten-bueroduefte',
     title: 'Die besten Büro-Düfte: Subtilität, Eleganz & Respekt – Professionelle Ausstrahlung',
+    seoTitle: 'Die besten Bürodüfte: dezent & gepflegt',
     description:
       'Der perfekte Büro-Duft ist ein stilles Statement. Subtil, elegant und respektvoll – dein Duft sollte dich begleiten, nicht den Raum dominieren. Entdecke Düfte, die deine professionelle Ausstrahlung stärken, ohne zu aufdringlich zu wirken.',
     heroImage: '/images/guides/bueroduefte-hero.jpg',
@@ -1299,6 +1318,7 @@ export const guides: Guide[] = [
   {
     slug: 'die-besten-holzigen-duefte',
     title: 'Die besten holzigen Düfte: edel, warm & zeitlos – seit Jahrhunderten der Klassiker',
+    seoTitle: 'Die besten holzigen Düfte: edel & warm',
     description:
       'Holzige Düfte mit Sandelholz, Zedernholz, Oud und Vetiver: edel, warm, langanhaltend. Von frisch-holzig bis dunkel-cremig – unsere liebsten Holz-Kompositionen für Damen, Herren und Unisex.',
     heroImage: '/ratgeber/holzige-duefte-hero.jpg',
@@ -1333,6 +1353,7 @@ export const guides: Guide[] = [
   {
     slug: 'die-besten-blumigen-duefte',
     title: 'Die besten blumigen Düfte: feminin, elegant & zeitlos – seit Jahrtausenden die Klassiker',
+    seoTitle: 'Die besten blumigen Düfte: elegant & zeitlos',
     description:
       'Blumige Düfte mit Rose, Jasmin, Pfingstrose und Orangenblüte: romantisch, elegant und zeitlos. Von zart-frisch bis opulent-sinnlich – unsere liebsten floralen Meisterwerke für Damen, Herren und Unisex.',
     heroImage: '/ratgeber/blumige-duefte-hero-neu.jpg',
@@ -1367,6 +1388,7 @@ export const guides: Guide[] = [
   {
     slug: 'die-besten-frischen-aquatischen-duefte',
     title: 'Die besten aquatischen Düfte: frisch wie eine Meeresbrise – zeitlos & universell',
+    seoTitle: 'Die besten aquatischen Düfte: frisch & klar',
     description:
       'Aquatische Düfte mit Meeresbrise, Zitrus und salziger Frische: erfrischend, elegant und universell. Von Sommer & Sport bis zum Alltag – unsere liebsten frischen Meisterwerke für Damen, Herren und Unisex.',
     heroImage: '/ratgeber/aquatische-duefte-hero.jpg',
@@ -1411,6 +1433,7 @@ export const guides: Guide[] = [
   {
     slug: 'die-besten-moschus-pudrigen-duefte',
     title: 'Die besten pudrigen & Moschus-Düfte: elegant, hautnah & zeitlos – seit Jahrhunderten beliebt',
+    seoTitle: 'Die besten pudrigen & Moschus-Düfte',
     description:
       'Pudrige & Moschus-Düfte mit Iris, Veilchen und sauberer Haut-Wärme: elegant, sinnlich und universell. Von klassisch bis modern – unsere liebsten weichen Meisterwerke für Damen, Herren und Unisex.',
     heroImage: '/ratgeber/pudrige-moschus-duefte-hero.jpg',
@@ -1490,6 +1513,7 @@ export const guides: Guide[] = [
   {
     slug: 'edt-edp-parfum-unterschied',
     title: 'EdT, EdP oder Parfum? Die Unterschiede einfach erklärt',
+    seoTitle: 'EdT, EdP oder Parfum? Der Unterschied',
     description:
       'Eau de Toilette, Eau de Parfum oder Extrait: was ist der Unterschied? So erkennst du, welche Konzentration für dich die richtige ist.',
     heroImage: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=1200&q=80&fit=crop',
@@ -1694,6 +1718,7 @@ export const guides: Guide[] = [
   {
     slug: 'die-besten-nischenduefte',
     title: 'Die besten Nischendüfte: besonders & aussergewöhnlich',
+    seoTitle: 'Die besten Nischendüfte',
     description:
       'Nischendüfte heben sich vom Mainstream ab: eigenständig, hochwertig und aussergewöhnlich. Was Nischenparfums ausmacht und unsere Favoriten.',
     heroImage: 'https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=1200&q=80&fit=crop',
@@ -1816,6 +1841,7 @@ export const guides: Guide[] = [
   {
     slug: 'lattafa-dupes-welches-original',
     title: 'Die besten Lattafa-Dupes: welches Original steckt dahinter?',
+    seoTitle: 'Lattafa-Dupes: welches Original dahintersteckt',
     description:
       'Lattafa ist bekannt für günstige Düfte, die teuren Originalen ähneln. Wir zeigen dir, welcher Luxus-Duft hinter den beliebtesten Lattafa-Parfüms steckt.',
     heroImage: 'https://images.unsplash.com/photo-1541643600914-78b084683702?w=1200&q=80&fit=crop',
@@ -2101,6 +2127,7 @@ export const guides: Guide[] = [
   {
     slug: 'parfum-und-hauttyp-was-passt-zu-meiner-haut',
     title: 'Parfüm und Hauttyp: Wie deine Haut den Duft verändert',
+    seoTitle: 'Parfüm und Hauttyp: was passt zu deiner Haut?',
     description:
       'Warum riecht dasselbe Parfüm bei dir anders als bei Freunden? Dein Hauttyp, pH-Wert und Pflegeroutine beeinflussen, wie ein Duft auf dir wirkt. Das steckt dahinter.',
     heroImage: 'https://images.unsplash.com/photo-1616401784845-180882ba9ba8?w=1200&q=80&fit=crop',
@@ -2177,6 +2204,7 @@ export const guides: Guide[] = [
   {
     slug: 'parfum-proben-abfuellungen-schweiz',
     title: 'Wo bekomme ich Parfüm-Proben & Abfüllungen in der Schweiz?',
+    seoTitle: 'Parfüm-Proben & Abfüllungen in der Schweiz',
     description:
       'Bevor du 150 Franken ausgibst: So kommst du günstig an Proben und Abfüllungen, in Schweizer Parfümerien, online und per Versand.',
     heroImage: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=1200&q=80&fit=crop',

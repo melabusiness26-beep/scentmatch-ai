@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     'Rom, Karibik oder Schweizer Alpen? Finde den Duft, der zu deinem Traumziel passt. Passende Parfüms für Städtereisen, Berge und Strände – wahrheitsgemäss nach echten Duftnoten.',
   alternates: { canonical: 'https://auressa.ch/reiseduefte' },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Welcher Duft passt zu deinem Reiseziel? | Auressa',
     description:
       'Von Rom bis zur Karibik: Finde den Duft, der zu deinem Traumziel passt. Für Städtereisen, Berge und Strände.',

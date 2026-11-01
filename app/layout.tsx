@@ -115,7 +115,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               { icon: '🇨🇭', label: 'Aus der Schweiz', sub: 'Ehrlich & unabhängig' },
               { icon: '🎯', label: 'Echter Match-Score', sub: '0–100, kein Zufall' },
               { icon: '💸', label: 'Günstige Dupes', sub: 'Ähnlich riechend, weniger teuer' },
-              { icon: '🔒', label: 'Kein Konto nötig', sub: 'Kein Newsletter-Zwang' },
+              { icon: '✓', label: 'Geprüfte Daten', sub: 'Mehrere Quellen pro Duft' },
             ].map((item) => (
               <div key={item.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.35rem' }}>
                 <span style={{ fontSize: '1.6rem', lineHeight: 1, marginBottom: '0.2rem' }}>{item.icon}</span>
@@ -181,7 +181,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </p>
 
               {/* Bottom */}
-              <div style={{ fontSize: '0.8rem', color: 'rgba(237,229,220,0.5)', marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(212,175,55,0.08)' }}>
+              <div style={{ fontSize: '0.8rem', color: 'rgba(237,229,220,0.62)', marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(212,175,55,0.08)' }}>
                 {`© ${year} Auressa · Preise & Angaben ohne Gewähr.`}
               </div>
             </div>

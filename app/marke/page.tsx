@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     'Alle Parfum-Marken bei Auressa: Von Chanel und Dior bis Lattafa und Armaf. Entdecke die Düfte jeder Marke mit Preisen, Noten und Duftprofilen.',
   alternates: { canonical: `${SITE_URL}/marke` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Parfum-Marken | Auressa',
     description: 'Alle Parfum-Marken bei Auressa – vom Luxus-Original bis zum günstigen Dupe.',
     type: 'website',

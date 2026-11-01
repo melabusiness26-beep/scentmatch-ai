@@ -76,7 +76,7 @@ export default function NewsletterForm({
   if (status === 'done') {
     return (
       <div style={{ margin: 0, padding: 0 }}>
-        <h3 style={{ margin: '0 0 12px', fontFamily: 'var(--font-display), Georgia, serif', fontSize: 'clamp(28px, 5.5vw, 40px)', fontWeight: 700, letterSpacing: '-0.02em', color: '#1F1410', lineHeight: 1.2 }}>Danke! 🌸</h3>
+        <h2 style={{ margin: '0 0 12px', fontFamily: 'var(--font-display), Georgia, serif', fontSize: 'clamp(28px, 5.5vw, 40px)', fontWeight: 700, letterSpacing: '-0.02em', color: '#1F1410', lineHeight: 1.2 }}>Danke! 🌸</h2>
         <p style={{ fontSize: 'clamp(15px, 2.3vw, 17px)', lineHeight: 1.7, color: '#6B5344', margin: 0, fontWeight: 500 }}>Du bist auf der Liste. Wir melden uns mit Duft-Tipps, versprochen ohne Spam.</p>
       </div>
     );
@@ -84,7 +84,7 @@ export default function NewsletterForm({
 
   return (
     <form style={{ margin: 0, padding: 0 }} onSubmit={onSubmit}>
-      <h3 style={{ margin: '0 0 12px', fontFamily: 'var(--font-display), Georgia, serif', fontSize: 'clamp(24px, 5vw, 36px)', fontWeight: 700, letterSpacing: '-0.02em', color: '#1F1410', lineHeight: 1.2 }}>{title}</h3>
+      <h2 style={{ margin: '0 0 12px', fontFamily: 'var(--font-display), Georgia, serif', fontSize: 'clamp(24px, 5vw, 36px)', fontWeight: 700, letterSpacing: '-0.02em', color: '#1F1410', lineHeight: 1.2 }}>{title}</h2>
       <p style={{ fontSize: 'clamp(15px, 2.3vw, 17px)', lineHeight: 1.7, color: '#6B5344', margin: '0 0 20px', fontWeight: 500 }}>{text}</p>
 
       <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '20px', alignItems: 'flex-start' }}>
@@ -174,7 +174,7 @@ export default function NewsletterForm({
         <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} style={{ marginTop: '4px', flex: 'none', width: '18px', height: '18px', cursor: 'pointer', accentColor: '#D4AF37' }} />
         <span>
           Ich möchte den Auressa-Newsletter erhalten und stimme der{' '}
-          <Link href="/datenschutz" style={{ color: '#D4AF37', textDecoration: 'underline', fontWeight: 600 }}>Datenschutzerklärung</Link> zu. Abmeldung jederzeit möglich.
+          <Link href="/datenschutz" style={{ color: '#8A6D1A', textDecoration: 'underline', fontWeight: 600 }}>Datenschutzerklärung</Link> zu. Abmeldung jederzeit möglich.
         </span>
       </label>
       {error && <p style={{ color: '#EF4444', marginTop: '12px', fontSize: 'clamp(13px, 2.1vw, 14px)', fontWeight: 500 }}>{error}</p>}

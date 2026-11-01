@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     'Verstehe die Chemie hinter Düften: Noten, Konzentration, Pyramiden und Moleküle. Wissenschaft einfach erklärt für jeden Duft-Fan.',
   alternates: { canonical: `${SITE_URL}/duftchemie-grundlagen` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Duftchemie Grundlagen | Auressa',
     description: 'Die Wissenschaft hinter Düften – verständlich erklärt.',
     url: `${SITE_URL}/duftchemie-grundlagen`,

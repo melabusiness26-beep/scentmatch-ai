@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     'Finde den richtigen Duft für deine Arbeit – ob elegant, unauffällig oder fokussiert. Mit konkreten Empfehlungen für jeden Büro-Typ.',
   alternates: { canonical: '/dufte-fuer-die-arbeit' },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Düfte für die Arbeit | Auressa',
     description:
       'Der perfekte Office-Duft: unauffällig, professionell, fokussierend – ohne deine Kolleg:innen zu stören.',

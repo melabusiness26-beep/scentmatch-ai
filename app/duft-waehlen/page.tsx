@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     'Dein umfassender Guide zur Auswahl des perfekten Parfums: Budget, Dufttyp, Konzentration, Saison, Anlass und deine persönlichen Vorlieben – Schritt für Schritt.',
   alternates: { canonical: `${SITE_URL}/duft-waehlen` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Wie wählt man einen Parfum? | Auressa',
     description: 'Der komplette Guide zur Parfum-Auswahl: Finde deinen perfekten Duft mit System.',
     type: 'website',

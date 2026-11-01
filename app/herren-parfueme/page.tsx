@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     'Finde das perfekte Herren-Parfum – von klassisch bis modern. Mit Tipps zu Duftfamilien, Occasions und konkreten Empfehlungen.',
   alternates: { canonical: '/herren-parfueme' },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Herren-Parfüme | Auressa',
     description:
       'Der Komplette Guide zu Männer-Düften: Dufttypen, Occasions, Klassiker und moderne Alternativen.',

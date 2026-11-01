@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     'Wie wählst du ein Duft-Geschenk richtig? Guide für alle Gelegenheiten: Budget, Geschlecht, Alter, Dufttyp und was Duft-Empfänger wirklich wollen.',
   alternates: { canonical: `${SITE_URL}/duft-geschenk` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Duft als Geschenk: Perfekte Parfum-Geschenke | Auressa',
     description: 'Der komplette Guide für das perfekte Duft-Geschenk – wie du es richtig wählst und präsentierst.',
     type: 'website',

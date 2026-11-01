@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     'Lerne, wie du das richtige Parfum für dich wählst: Duftfamilien verstehen, Haltbarkeit beurteilen, dein Budget planen und Fehlkäufe vermeiden.',
   alternates: { canonical: `${SITE_URL}/anleitung` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Wie wählt man ein Parfum? | Auressa',
     description: 'Die komplette Anleitung: Von Duftfamilien bis zur richtigen Lagerung.',
     url: `${SITE_URL}/anleitung`,

@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     'Düfte, die zu jeder Jahreszeit passen: frische Sommerdüfte, warme Winterdüfte, blumige Frühlingsdüfte und gemütliche Herbstdüfte – alle kuratiert und getestet.',
   alternates: { canonical: `${SITE_URL}/saisonal` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Saisonale Duft-Empfehlungen | Auressa',
     description: 'Die perfekten Düfte für jede Jahreszeit – Frühling, Sommer, Herbst, Winter.',
     url: `${SITE_URL}/saisonal`,

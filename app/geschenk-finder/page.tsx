@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     'Den perfekten Duft als Geschenk finden: Unser Quiz zeigt dir in 4 Fragen die besten Parfüm-Empfehlungen. Für Frauen, Männer und jedes Budget.',
   alternates: { canonical: `${SITE_URL}/geschenk-finder` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Parfum Geschenk finden | Auressa',
     description: 'Den perfekten Duft als Geschenk entdecken – schnell, einfach und für jedes Budget.',
     url: `${SITE_URL}/geschenk-finder`,

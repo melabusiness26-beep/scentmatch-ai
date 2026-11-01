@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   description: 'Beschreib den Duft, den du suchst – wir finden ihn aus hunderten Parfüms. Nach Name, Note, Stimmung oder Beschreibung suchen.',
   alternates: { canonical: `${SITE_URL}/duft-finder` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Duft-Finder | Auressa',
     description: 'Parfüm nach Name, Note oder Beschreibung suchen – aus unserem kuratierten Katalog.',
     url: `${SITE_URL}/duft-finder`,

@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     'Lerne, wie Duftnoten funktionieren: Was sind Top-Noten, Heart-Noten und Base-Noten? Wie du Duftkombinationen verstehst und deine Duft-Vorlieben findest.',
   alternates: { canonical: `${SITE_URL}/duftnoten-guide` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Duftnoten: Top, Heart & Base-Notes | Auressa',
     description: 'Verstehe die Pyramide von Duftnoten und warum ein Duft sich über den Tag verändert.',
     type: 'website',

@@ -27,10 +27,13 @@ export async function generateMetadata({
   // Haupttitel ohne „| Auressa" – das globale Titel-Template haengt die Marke an.
   const title = `Welcher Duft, ${mood.phrase}?`;
   const description = mood.intro;
+  // Solange weniger als 3 passende Düfte im Katalog sind: nicht indexieren (siehe Reisedüfte).
+  const matches = rankByMood(await getPerfumes(2000), mood, '', 30).length;
 
   return {
     title,
     description,
+    ...(matches < 3 ? { robots: { index: false, follow: true } } : {}),
     alternates: { canonical: `/stimmungen/${code}` },
     openGraph: {
       title: `${title} | Auressa`,

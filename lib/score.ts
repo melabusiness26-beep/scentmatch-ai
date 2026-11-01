@@ -3,7 +3,8 @@ import type { Perfume } from './perfumes';
 // Auressa-Score (0–100): nachvollziehbar aus den Duftdaten berechnet –
 // passend zum Auressa-Grundsatz „guter Duft muss nicht teuer sein".
 //
-//   Preis-Leistung  40 %  halb Preis (CHF 30 = top, ab CHF 180 = 0),
+//   Preis-Leistung  40 %  halb Preis pro 100 ml (CHF 30 = top, ab CHF 180 = 0;
+//                         ohne Grösse: Flaschenpreis),
 //                         halb Haltbarkeit – viel Duft fürs Geld
 //   Haltbarkeit     25 %  Haltbarkeit 0–10
 //   Vielseitigkeit  20 %  wie viele Jahreszeiten und Anlässe passen
@@ -34,7 +35,10 @@ function countOccasions(occasion: string | null): number {
 export function computeAuressaScore(p: Perfume): AuressaScore {
   const estimated = p.longevity == null || p.sillage == null || p.price_chf == null;
   const longevity = clamp01((p.longevity ?? 5) / 10);
-  const price = p.price_chf ?? 105;
+  // Preis pro 100 ml, damit grosse und kleine Flaschen fair verglichen werden.
+  const per100 =
+    p.price_chf != null && p.volume_ml ? Math.round((p.price_chf / p.volume_ml) * 100) : null;
+  const price = per100 ?? p.price_chf ?? 105;
   const priceScore = clamp01((180 - price) / 150);
   const value = 0.5 * priceScore + 0.5 * longevity;
 
@@ -51,7 +55,12 @@ export function computeAuressaScore(p: Perfume): AuressaScore {
       label: 'Preis-Leistung',
       weight: 40,
       points: value * 40,
-      hint: p.price_chf != null ? `ca. CHF ${p.price_chf} bei Haltbarkeit ${p.longevity ?? '–'}/10` : 'Preis noch offen'
+      hint:
+        per100 != null
+          ? `ca. CHF ${per100} pro 100 ml bei Haltbarkeit ${p.longevity ?? '–'}/10`
+          : p.price_chf != null
+            ? `ca. CHF ${p.price_chf} bei Haltbarkeit ${p.longevity ?? '–'}/10`
+            : 'Preis noch offen'
     },
     { key: 'longevity', label: 'Haltbarkeit', weight: 25, points: longevity * 25, hint: `${p.longevity ?? '–'}/10` },
     {

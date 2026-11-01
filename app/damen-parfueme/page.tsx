@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     'Finde das perfekte Damen-Parfum – von elegant bis verspielt. Mit Tipps zu Duftfamilien, Occasions und konkreten Empfehlungen.',
   alternates: { canonical: '/damen-parfueme' },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Damen-Parfüme | Auressa',
     description:
       'Der komplette Guide zu Frauendüften: Dufttypen, Occasions, Klassiker und moderne Alternativen.',

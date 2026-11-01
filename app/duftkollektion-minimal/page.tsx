@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     'Wie viele Düfte brauchst du wirklich? Das 3er-Framework: ein Alltags-Duft, ein Abend-Duft, ein Sommer-Duft. Das ist genug.',
   alternates: { canonical: `${SITE_URL}/duftkollektion-minimal` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Minimalistische Duftkollektion | Auressa',
     description: 'Weniger ist mehr: Wie du mit nur 3 Düften alles abdeckst.',
     url: `${SITE_URL}/duftkollektion-minimal`,

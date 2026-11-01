@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     'Haltbarkeit und Ausstrahlung verstehen: Wie lange hält ein Duft, wie weit trägt er, und wie wählst du den richtigen für deine Situation.',
   alternates: { canonical: `${SITE_URL}/duftlaenge` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Haltbarkeit und Sillage erklärt | Auressa',
     description: 'Alles über Duft-Haltbarkeit, Projektion und wie du den richtigen Duft für deine Situation wählst.',
     url: `${SITE_URL}/duftlaenge`,

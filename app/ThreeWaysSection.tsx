@@ -11,8 +11,8 @@ export default function ThreeWaysSection({ catalogCount }: { catalogCount?: numb
     {
       id: 'scanner',
       icon: '📷',
-      title: 'Duft-Scanner',
-      description: 'Fotografiere einen Duft → wir identifizieren ihn und finden ähnliche',
+      title: 'Duft-Scanner (bald)',
+      description: 'Bald verfügbar: Fotografiere einen Duft → wir erkennen ihn und finden ähnliche',
       gradient: 'linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%)',
       borderColor: 'rgba(14, 165, 233, 0.3)',
       textColor: '#0EA5E9',

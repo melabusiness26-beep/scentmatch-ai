@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     'Die besten Herren-Parfums im Überblick: Von frisch-aquatisch bis dunkel-holzig. Mit Duftprofil, Noten, Preisen und günstigen Alternativen.',
   alternates: { canonical: `${SITE_URL}/beste-herrenduefte` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Die besten Herrendüfte | Auressa',
     description: 'Unsere Top-Empfehlungen für Herren-Parfums – mit Duftprofil, Noten und Preisen.',
     type: 'website',
@@ -207,7 +208,7 @@ export default async function BesteHerrenduefte() {
             lineHeight: 1.6,
           }}>
             Top-Parfums für Herren — von frisch-aquatisch bis dunkel-holzig.
-            Bewertet nach Langlebigkeit, Sillage und Preis-Leistung.
+            Sortiert nach dem Auressa-Score.
           </p>
           <Link href="/quiz" style={{
             display: 'inline-block',
@@ -242,8 +243,8 @@ export default async function BesteHerrenduefte() {
             Wie wählen wir aus?
           </h2>
           <p style={{ color: '#6b5344', lineHeight: 1.7, fontSize: '0.95rem' }}>
-            Die Rangliste basiert auf dem <strong>Auressa-Score</strong> — einem Qualitätswert,
-            der Langlebigkeit, Sillage, Vielseitigkeit und Preis-Leistung vereint.
+            Die Rangliste basiert auf dem <strong>Auressa-Score</strong> — einem berechneten Wert
+            aus Preis-Leistung, Haltbarkeit, Vielseitigkeit und Ausstrahlung.
             Herren- und Unisex-Düfte werden gemeinsam bewertet. Für deinen persönlichen
             Top-Duft empfehlen wir das{' '}
             <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>

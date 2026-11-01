@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     'Antworten auf die häufigsten Fragen rund um Parfüm, Duft-Findung und Auressa: Was ist ein Auressa-Score? Wie funktioniert das Quiz? Was sind Dupes? Ehrliche Antworten, kein Fachjargon.',
   alternates: { canonical: `${SITE_URL}/faq` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Häufige Fragen zu Parfüm | Auressa',
     description: 'Antworten auf die häufigsten Parfüm-Fragen: Duftnoten, Haltbarkeit, Dupes, Auressa-Score und mehr.',
     type: 'website',
@@ -76,7 +77,7 @@ const faqGroups: {
     faqs: [
       {
         q: 'Was bedeutet der Auressa-Score?',
-        a: 'Der Auressa-Score (0–100) wird aus den Duftdaten berechnet: Preis-Leistung 40 %, Haltbarkeit 25 %, Vielseitigkeit (Jahreszeiten und Anlässe) 20 % und Ausstrahlung 15 %. Er ist KEIN Nutzer-Rating und KEIN Match-Score. Für deinen persönlichen Match (wie gut passt der Duft zu deinen Quiz-Antworten) berechnen wir separat einen Match-Prozentsatz.'
+        a: 'Der Auressa-Score (0–100) wird aus den Duftdaten berechnet: Preis-Leistung 40 % (Preis pro 100 ml und Haltbarkeit), Haltbarkeit 25 %, Vielseitigkeit (Jahreszeiten und Anlässe) 20 % und Ausstrahlung 15 %. Er ist KEIN Nutzer-Rating und KEIN Match-Score. Für deinen persönlichen Match (wie gut passt der Duft zu deinen Quiz-Antworten) berechnen wir separat einen Match-Prozentsatz.'
       },
       {
         q: 'Wie berechnet das Quiz meinen Match-Prozentsatz?',

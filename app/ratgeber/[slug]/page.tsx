@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { GUIDE_DATES, formatGuideDate } from '@/lib/guide-dates';
+import { metaDescription } from '@/lib/meta';
 import { notFound } from 'next/navigation';
 import { cache } from 'react';
 import { getGuide, guides, relatedGuides, type Guide } from '@/lib/guides';
@@ -30,11 +31,11 @@ export async function generateMetadata({
 
   return {
     title: guide.seoTitle || guide.title,
-    description: guide.description,
+    description: metaDescription(guide.description),
     alternates: { canonical: `/ratgeber/${slug}` },
     openGraph: {
       title: guide.title,
-      description: guide.description,
+      description: metaDescription(guide.description),
       type: 'article',
       url: `${SITE_URL}/ratgeber/${slug}`
     }

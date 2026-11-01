@@ -14,6 +14,7 @@ import { computeAuressaScore } from '@/lib/score';
 import { versionLabel } from '@/lib/versions';
 import { compareNotes, findPair, pricePer100, versionPairs } from '@/lib/version-compare';
 import { AmazonButton } from '@/app/AmazonButton';
+import { metaDescription } from '@/lib/meta';
 
 // Stündlich neu erzeugen – neue Versionen im Katalog ergeben automatisch neue Vergleiche.
 export const revalidate = 3600;
@@ -64,7 +65,9 @@ export async function generateMetadata({ params }: { params: Promise<{ pair: str
     `${baseTitle(a)} ${short(label(a))} vs. ${short(label(b))}`
   ];
   const title = candidates.find((t) => t.length + ' | Auressa'.length <= 62) || candidates[candidates.length - 1];
-  const description = `${brand} ${baseTitle(a)} als ${label(a)} oder ${label(b)}? Noten, Haltbarkeit, Ausstrahlung und Preis pro 100 ml im direkten Vergleich – mit Empfehlung, welche Version zu dir passt.`;
+  const description = metaDescription(
+    `${brand} ${baseTitle(a)}: ${label(a)} oder ${label(b)}? Noten, Haltbarkeit, Ausstrahlung und Preis pro 100 ml im Vergleich – und welche Version zu dir passt.`
+  );
   return {
     title,
     description,

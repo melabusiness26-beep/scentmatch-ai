@@ -8,6 +8,7 @@ import {
   perfumeHasTheme,
   NOTE_THEMES,
   getScoreBreakdown,
+  concentrationLabel,
   type Perfume,
   type QuizAnswers,
   type RankedPerfume,
@@ -281,11 +282,15 @@ export default function QuizContainer() {
                       .sort((a, b) =>
                         (a.perfume_name || '').localeCompare(b.perfume_name || '', 'de', { sensitivity: 'base' })
                       )
-                      .map(p => (
-                        <option value={p.id} key={p.id}>
-                          {p.perfume_name}{p.brands?.name ? ` · ${p.brands.name}` : ''}
-                        </option>
-                      ))}
+                      .map((p, _i, all) => {
+                        // Gleicher Name + Marke mehrfach (z. B. EdT und EdP) → Konzentration anzeigen.
+                        const twin = all.some(o => o.id !== p.id && o.perfume_name === p.perfume_name && o.brands?.name === p.brands?.name);
+                        return (
+                          <option value={p.id} key={p.id}>
+                            {p.perfume_name}{twin && concentrationLabel(p.concentration) ? ` (${concentrationLabel(p.concentration)})` : ''}{p.brands?.name ? ` · ${p.brands.name}` : ''}
+                          </option>
+                        );
+                      })}
                   </select>
                   <p className="small">Optional – du kannst diese Frage auch einfach überspringen.</p>
                   <button className="answer" onClick={advanceAnchor}>{anchorId ? 'Weiter' : 'Überspringen'}</button>
@@ -383,10 +388,13 @@ export default function QuizContainer() {
                         const topFamilyKey = Object.keys(family).sort((a, b) => family[b as keyof typeof family] - family[a as keyof typeof family])[0];
                         const familyName = profileText[topFamilyKey as keyof typeof profileText]?.title || 'deine Wahl';
                         if (breakdown.family > 0) reasons.push(`Passt zu ${familyName}`);
-                        if (breakdown.lovedNote > 0) reasons.push(`Deine Lieblingsnote ist enthalten`);
-                        if (breakdown.budget > 0 && answers.budgetMax) reasons.push(`Im Budget von CHF ${answers.budgetMax}`);
-                        if (breakdown.occasion > 0 && answers.occasion) reasons.push(`Perfekt für ${answers.occasion}`);
-                        if (breakdown.season > 0 && answers.season) reasons.push(`Ideal für ${answers.season}`);
+                        // Nur echte Volltreffer als Begründung nennen (keine Teil- oder Neutralpunkte).
+                        if (answers.lovedNote && breakdown.lovedNote >= 20) reasons.push('Deine Lieblingsnote ist enthalten');
+                        if (answers.budgetMax && breakdown.budget >= 15) reasons.push(`Im Budget bis CHF ${answers.budgetMax}`);
+                        const occasionLabel: Record<string, string> = { daily: 'den Alltag & das Büro', date: 'Dates', evening: 'den Abend & zum Ausgehen' };
+                        if (answers.occasion && occasionLabel[answers.occasion] && breakdown.occasion >= 13) reasons.push(`Passt für ${occasionLabel[answers.occasion]}`);
+                        const seasonLabel: Record<string, string> = { 'Frühling': 'den Frühling', Sommer: 'den Sommer', 'Herbst/Winter': 'Herbst & Winter', 'Ganzjährig': 'das ganze Jahr' };
+                        if (answers.season && seasonLabel[answers.season] && breakdown.season >= 10) reasons.push(`Passt für ${seasonLabel[answers.season]}`);
                         return reasons.map((reason, idx) => <li key={idx}>{reason}</li>);
                       })()}
                     </ul>

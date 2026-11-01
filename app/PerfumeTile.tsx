@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { noteGroupFor } from '@/lib/note-groups';
 import { concentrationLabel, type Perfume } from '@/lib/perfumes';
 import { FavoriteButton } from '@/app/FavoriteButton';
 import { trackPerfumeView } from '@/lib/tracking';
@@ -123,5 +124,9 @@ export function matchesQuery(p: Perfume, query: string): boolean {
   // Jedes Suchwort muss vorkommen (Reihenfolge egal). So findet "Creed Aventus"
   // den Duft, obwohl Marke ("Creed") und Name ("Aventus") in getrennten Feldern
   // und in anderer Reihenfolge gespeichert sind.
-  return q.split(/\s+/).every((term) => haystack.includes(term));
+  // Geschmacksgruppen: „Beeren" findet Erdbeere, Himbeere, Cassis …; „honey" findet Honig.
+  const notesLower = notes.toLowerCase();
+  return q
+    .split(/\s+/)
+    .every((term) => haystack.includes(term) || noteGroupFor(term).some((n) => notesLower.includes(n)));
 }

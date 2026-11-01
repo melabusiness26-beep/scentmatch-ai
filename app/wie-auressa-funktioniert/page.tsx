@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     'Verstehe die Logik hinter Auressa: Wie das Quiz deine Vorlieben erkennt und wie der Match-Score berechnet wird – ohne Zauberei, mit echter Mathematik.',
   alternates: { canonical: `${SITE_URL}/wie-auressa-funktioniert` },
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Wie Auressa funktioniert | Auressa',
     description: 'Die Matching-Algorithmen und Philosophie hinter Auressa, einfach erklärt.',

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     'Damen- und Unisex-Parfums aus dem Auressa-Katalog, sortiert nach dem berechneten Auressa-Score. Mit Duftprofil, Noten und Preisen.',
   alternates: { canonical: `${SITE_URL}/beste-damenduefte` },
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Die besten Damendüfte | Auressa',
     description: 'Damen-Parfums nach Auressa-Score sortiert – mit Duftprofil, Noten und Preisen.',

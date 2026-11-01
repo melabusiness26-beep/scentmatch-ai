@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Breadcrumb from '@/app/Breadcrumb';
+import MoreKnowledge from '@/app/MoreKnowledge';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   description:
     'Wie viele Düfte brauchst du wirklich? Das 3er-Framework: ein Alltags-Duft, ein Abend-Duft, ein Saison-Duft. Für viele reicht das.',
   alternates: { canonical: `${SITE_URL}/duftkollektion-minimal` },
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Minimalistische Duftkollektion | Auressa',
     description: 'Weniger ist mehr: Wie du mit nur 3 Düften die meisten Situationen abdeckst.',
@@ -443,6 +444,7 @@ export default function DuftkolektionMinimal() {
           </Link>
         </section>
       </div>
+      <MoreKnowledge current="/duftkollektion-minimal" />
     </main>
   );
 }

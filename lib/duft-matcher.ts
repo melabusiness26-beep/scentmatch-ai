@@ -179,8 +179,39 @@ export function matchPerfumesByDescription(
 
   const results: MatchResult[] = [];
 
-  for (const perfume of perfumes.filter(isWithinPriceCap)) {
-    let score = 0;
+  // Name oder Marke im Suchtext (z. B. „Boss Bottled", „terre d hermes") – unabhängig von
+  // Akzenten, Apostrophen und Leerzeichen. Bei mehreren Treffern gewinnt der längste Name
+  // („Light Blue Eau Intense" vor „Light Blue").
+  const compact = (t: string) =>
+    t
+      .toLowerCase()
+      .replace(/ä/g, 'ae')
+      .replace(/ö/g, 'oe')
+      .replace(/ü/g, 'ue')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '');
+  const query = compact(description);
+  const nameHits = new Map<string, number>();
+  for (const p of perfumes) {
+    const name = compact(p.perfume_name || '');
+    if (name.length >= 4 && query.includes(name)) nameHits.set(p.id, name.length);
+  }
+  const longestHit = Math.max(0, ...nameHits.values());
+  const nameScore = (p: Perfume): number => {
+    let s = 0;
+    const len = nameHits.get(p.id);
+    if (len) s += len === longestHit ? 150 : 70;
+    const brand = compact(p.brands?.name || '');
+    if (brand.length >= 3 && query.includes(brand)) s += 40;
+    return s;
+  };
+
+  for (const perfume of perfumes) {
+    const byName = nameScore(perfume);
+    // Empfehlungen nur bis CHF 180 – wer einen Duft beim Namen sucht, findet ihn aber immer.
+    if (!byName && !isWithinPriceCap(perfume)) continue;
+    let score = byName;
     const { matched, score: noteScore } = matchNotesInPerfume(perfume, keywords, normalizedKws);
     score += noteScore;
 

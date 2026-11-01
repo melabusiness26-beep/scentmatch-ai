@@ -3,6 +3,7 @@ import Breadcrumb from '@/app/Breadcrumb';
 import DupeFinder, { type CuratedDupes } from './DupeFinder';
 import { getPerfumes } from '@/lib/perfumes';
 import { guides } from '@/lib/guides';
+import ToolExplainer, { TOOL_TEXTS } from '@/app/ToolExplainer';
 
 export const revalidate = 3600;
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   description:
     'Gib den Duft ein, den du liebst, und finde Alternativen mit ähnlichen Duftnoten aus unserem Katalog, die weniger kosten. Mit Preisen in CHF.',
   alternates: { canonical: '/dupes' },
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Der Dupe-Finder | Auressa',
     description:
@@ -75,6 +76,7 @@ export default async function DupesPage() {
         </section>
         <DupeFinder perfumes={perfumes} curated={curated} />
       </div>
+      <ToolExplainer text={TOOL_TEXTS.dupes} />
     </main>
   );
 }

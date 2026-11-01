@@ -28,7 +28,7 @@ export async function generateMetadata({
     title: { absolute: note.metaTitle },
     description: note.metaDescription,
     alternates: { canonical: `/duftnoten/${slug}` },
-    openGraph: {
+    openGraph: { locale: 'de_CH', siteName: 'Auressa',
       title: note.metaTitle,
       description: note.metaDescription,
       type: 'article',
@@ -157,6 +157,20 @@ export default async function ScentNotePage({
               <Link href="/quiz">Duft-Quiz</Link>.
             </p>
           )}
+        </section>
+
+        {/* Alle anderen Duftnoten verlinken – jede Noten-Seite ist so von allen anderen erreichbar. */}
+        <section className="section">
+          <h2>Weitere Duftnoten</h2>
+          <ul className="link-list link-list-inline">
+            {scentNotes
+              .filter((n) => n.slug !== note.slug)
+              .map((n) => (
+                <li key={n.slug}>
+                  <Link href={`/duftnoten/${n.slug}`}>{n.name}</Link>
+                </li>
+              ))}
+          </ul>
         </section>
 
         <section className="section">

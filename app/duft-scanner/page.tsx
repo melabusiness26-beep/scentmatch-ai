@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: 'Duft-Scanner – Parfüm per Foto erkennen',
   description: 'Bald verfügbar: Fotografiere einen Parfümflakon und lass dir den Duft per KI erkennen – mit Noten, Charakter und ähnlichen Düften aus dem Auressa-Katalog.',
   keywords: ['Parfüm erkennen', 'Duft Scanner', 'Parfüm Foto', 'Duft identifizieren', 'KI Parfüm', 'Parfüm App'],
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Duft-Scanner – Parfüm per Foto erkennen',
     description: 'Bald verfügbar: Parfümflakon fotografieren und Duftprofil mit Noten, Charakter und ähnlichen Düften erhalten.',

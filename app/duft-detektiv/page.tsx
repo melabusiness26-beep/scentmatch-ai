@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getPerfumes } from '@/lib/perfumes';
 import DuftDetektiv from '@/app/components/DuftDetektiv';
 import Breadcrumb from '@/app/Breadcrumb';
+import ToolExplainer, { TOOL_TEXTS } from '@/app/ToolExplainer';
 
 // Stündlich neu erzeugen, damit neue Düfte ohne neues Deployment erscheinen.
 export const revalidate = 3600;
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   title: 'Duft-Detektiv – Finde deinen Signature Duft',
   description: 'Beantworte 12 einfache Fragen und finde den passenden Duft aus unserem kuratierten Katalog. Dein persönlicher Duft-Detektiv.',
   alternates: { canonical: `${SITE_URL}/duft-detektiv` },
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Duft-Detektiv | Auressa',
     description: 'Beantworte 12 Fragen und finde passende Düfte aus unserem kuratierten Katalog.',
@@ -69,6 +70,7 @@ export default async function DuftDetektivPage() {
           <DuftDetektiv allPerfumes={perfumes} />
         </section>
       </div>
+      <ToolExplainer text={TOOL_TEXTS.detektiv} />
     </main>
   );
 }

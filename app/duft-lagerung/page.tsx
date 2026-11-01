@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Breadcrumb from '@/app/Breadcrumb';
+import MoreKnowledge from '@/app/MoreKnowledge';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   description:
     'Wie lagert man Parfum richtig? Temperatur, Licht, Feuchtigkeit – alle Tipps für optimale Lagerung und maximal lange Haltbarkeit deines Lieblingsdufts.',
   alternates: { canonical: `${SITE_URL}/duft-lagerung` },
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Parfum richtig lagern | Auressa',
     description: 'Kompletter Guide: Korrekte Lagerung für maximale Duft-Haltbarkeit und Qualität.',
@@ -365,6 +366,7 @@ export default function DuftLagerungPage() {
         </section>
 
       </div>
+      <MoreKnowledge current="/duft-lagerung" />
     </main>
   );
 }

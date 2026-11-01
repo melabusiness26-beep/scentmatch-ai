@@ -72,7 +72,7 @@ export async function generateMetadata({ params }: { params: Promise<{ pair: str
     title,
     description,
     alternates: { canonical: `/unterschied/${pair}` },
-    openGraph: {
+    openGraph: { locale: 'de_CH', siteName: 'Auressa',
       title: `${title} | Auressa`,
       description,
       type: 'article',

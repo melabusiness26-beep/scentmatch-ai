@@ -136,7 +136,7 @@ export async function generateMetadata({
     title,
     description,
     alternates: { canonical: `/duft/${slug}` },
-    openGraph: {
+    openGraph: { locale: 'de_CH', siteName: 'Auressa',
       title: `${title} | Auressa`,
       description,
       type: 'article',

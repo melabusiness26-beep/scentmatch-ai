@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Breadcrumb from '@/app/Breadcrumb';
+import MoreKnowledge from '@/app/MoreKnowledge';
 
 export const revalidate = 3600;
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   description:
     'Lerne, wie Duftnoten funktionieren: Was sind Kopf-, Herz- und Basisnoten? Wie du Duftkombinationen verstehst und deine Duft-Vorlieben findest.',
   alternates: { canonical: `${SITE_URL}/duftnoten-guide` },
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Duftnoten: Kopf-, Herz- & Basisnoten | Auressa',
     description: 'Verstehe die Pyramide von Duftnoten und warum ein Duft sich über den Tag verändert.',
@@ -466,6 +467,7 @@ export default function FragranceNotesGuidePage() {
           </div>
         </section>
       </div>
+      <MoreKnowledge current="/duftnoten-guide" />
     </main>
   );
 }

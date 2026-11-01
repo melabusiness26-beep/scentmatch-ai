@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Breadcrumb from '@/app/Breadcrumb';
+import MoreKnowledge from '@/app/MoreKnowledge';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   description:
     'Spielerische Orientierung: acht Duft-Typen von klassisch bis modern – finde heraus, welche Duftfamilien zu dir passen könnten.',
   alternates: { canonical: `${SITE_URL}/duftpersoenlichkeit` },
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Duftpersönlichkeit | Auressa',
     description: 'Spielerische Duft-Typen als Orientierung bei der Duftwahl.',
@@ -448,6 +449,7 @@ export default function Duftpersoenlichkeit() {
           </Link>
         </section>
       </div>
+      <MoreKnowledge current="/duftpersoenlichkeit" />
     </main>
   );
 }

@@ -1,5 +1,5 @@
 import { type Perfume } from './perfumes';
-import { findVersions } from './versions';
+import { findVersions, versionLabel } from './versions';
 
 // Vergleichsseiten „X vs. Y" für Versionen desselben Duftes (z. B. Light Blue EdT vs. EdP).
 // Die Paare entstehen automatisch aus dem Katalog: Kommt eine neue Version dazu, gibt es
@@ -66,4 +66,14 @@ export function compareNotes(a: Perfume, b: Perfume) {
 export function pricePer100(p: Perfume): number | null {
   if (p.price_chf == null || !p.volume_ml) return null;
   return Math.round((p.price_chf / p.volume_ml) * 100);
+}
+
+// Lesbarer Titel eines Paars, z. B. „Light Blue: Eau de Toilette vs. Eau de Parfum".
+export function pairTitle(pair: VersionPair): string {
+  const la = versionLabel(pair.a);
+  const lb = versionLabel(pair.b);
+  const base = pair.a.perfume_name.toLowerCase().endsWith(la.toLowerCase())
+    ? pair.a.perfume_name.slice(0, -la.length).trim() || pair.a.perfume_name
+    : pair.a.perfume_name;
+  return `${base}: ${la} vs. ${lb}`;
 }

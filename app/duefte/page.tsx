@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       `Die Parfüm-Datenbank aus der Schweiz: ${approx ? `${approx} Düfte von Bestsellern bis zu seltenen Nischenperlen` : 'sorgfältig geprüfte Düfte, laufend erweitert'} – suchbar nach Name, Marke, Note, Geschlecht und Anlass.`,
     alternates: { canonical: '/duefte' },
-    openGraph: {
+    openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
       title: 'Alle Düfte | Auressa',
       description: `Die kuratierte Duftdatenbank – ${approx ? `${approx} Düfte, ` : ''}suchbar und filterbar.`,

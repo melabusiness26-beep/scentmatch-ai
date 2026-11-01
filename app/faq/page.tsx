@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     'Antworten auf häufige Fragen zu Parfüm und Auressa: Wie funktionieren Quiz und Auressa-Score? Was sind Dupes? Ehrlich und ohne Fachjargon.',
   alternates: { canonical: `${SITE_URL}/faq` },
-  openGraph: {
+  openGraph: { locale: 'de_CH', siteName: 'Auressa',
       images: ['/opengraph-image'],
     title: 'Häufige Fragen zu Parfüm | Auressa',
     description: 'Antworten auf die häufigsten Parfüm-Fragen: Duftnoten, Haltbarkeit, Dupes, Auressa-Score und mehr.',

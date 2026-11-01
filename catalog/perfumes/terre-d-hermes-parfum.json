@@ -6,23 +6,27 @@
   "fragrance_family": "woody",
   "concentration": "Parfum",
   "volume_ml": 200,
-  "price_chf": 118,
+  "price_chf": 118.0,
   "longevity": 8,
   "sillage": 8,
   "season": "Ganzjährig",
-  "occasion": "Büro",
+  "occasion": "Alltag",
   "release_year": 2009,
   "perfumer": "Jean-Claude Ellena",
-  "top_notes": ["Grapefruit"],
-  "heart_notes": ["Shiso"],
-  "base_notes": ["Zedernholz", "Benzoe"],
+  "top_notes": [
+    "Grapefruit"
+  ],
+  "heart_notes": [
+    "Shiso"
+  ],
+  "base_notes": [
+    "Zedernholz",
+    "Benzoe"
+  ],
   "age_group": "all",
   "lifestyle": "professional",
   "trend_vibe": "classic",
   "gender_nuance": "masculine",
-  "good_to_know": [
-    "Jean-Claude Ellena schuf diese Parfum-Version 2009, drei Jahre nach dem Eau de Toilette, als dichtere Neuinterpretation des Originals."
-  ],
   "similar_perfumes": [
     "Red Vetiver – Montale",
     "Basso – Sospiro",
@@ -30,5 +34,23 @@
     "Art of Wood – Lattafa Pride",
     "Oriental Essence – Oasis Verte – Rituals"
   ],
-  "flacon_designer": "Philippe Mouquet"
+  "flacon_designer": "Philippe Mouquet",
+  "description": "Terre d'Hermès Parfum ist 2009 erschienen und stammt wie das Original von Jean-Claude Ellena. Hermès beschreibt ihn als dichtere Fassung des Eau de Toilette.\n\nGrapefruit öffnet den Duft frisch und klar, Shiso bringt eine grüne, leicht würzige Note, und Zedernholz und Benzoe geben ihm Tiefe.\n\nIn der Parfumo-Community gilt er als holzig-erdiger Duft mit zitrischer Frische, der lange hält und präsent ist, ohne aufdringlich zu werden. Viele beschreiben ihn als seriös und elegant – passend fürs Büro und das ganze Jahr tragbar.",
+  "sizes": [
+    {
+      "ml": 75,
+      "price_chf": 110.99
+    },
+    {
+      "ml": 200,
+      "price_chf": 117.99
+    }
+  ],
+  "accords": [
+    "Holzig 24",
+    "Erdig 20",
+    "Zitrisch 18",
+    "Würzig 17",
+    "Frisch 14"
+  ]
 }

@@ -6,7 +6,7 @@
   "fragrance_family": "clean",
   "concentration": "EdP",
   "volume_ml": 40,
-  "price_chf": 21,
+  "price_chf": 21.0,
   "longevity": 8,
   "sillage": 7,
   "season": "Sommer",
@@ -49,5 +49,12 @@
       "ml": 75,
       "price_chf": 32.99
     }
+  ],
+  "accords": [
+    "Frisch 22",
+    "Süss 19",
+    "Aquatisch 16",
+    "Fruchtig 15",
+    "Synthetisch 14"
   ]
 }

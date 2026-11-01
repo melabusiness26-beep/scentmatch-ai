@@ -6,7 +6,7 @@
   "fragrance_family": "clean",
   "concentration": "EdT",
   "volume_ml": 40,
-  "price_chf": 28,
+  "price_chf": 28.0,
   "longevity": 6,
   "sillage": 6,
   "season": "Sommer",
@@ -27,18 +27,13 @@
   "base_notes": [
     "Moschus",
     "Weihrauch",
-    "Eichenmoos"
+    "Eichenmoos",
+    "Patchouli"
   ],
   "age_group": "all",
   "lifestyle": "casual",
   "trend_vibe": "popular",
   "gender_nuance": "masculine",
-  "good_to_know": [
-    "Komponiert hat ihn Alberto Morillas.",
-    "2008 gewann er einen FiFi Award, einen der bekanntesten Preise der Duftbranche.",
-    "Die berühmte Werbung von 2007 zeigt David Gandy vor Capri, fotografiert von Mario Testino.",
-    "2025 entstand eine neue Light-Blue-Kampagne auf Capri, mit Schauspieler Theo James und Model Vittoria Ceretti."
-  ],
   "flacon_description": "Flakon aus mattiertem Glas mit silbernen Details. Der blaue, emaillierte Deckel ist von der traditionellen Keramik der Amalfiküste inspiriert und trägt das DG-Monogramm. Ältere Flaschen haben einen silbernen Deckel.",
   "sizes": [
     {
@@ -53,5 +48,16 @@
       "ml": 200,
       "price_chf": 73.99
     }
+  ],
+  "description": "Light Blue Pour Homme von Dolce & Gabbana ist 2007 erschienen und stammt von Alberto Morillas. 2008 gewann er einen FiFi Award. Die bekannte Werbung zeigt David Gandy vor Capri, fotografiert von Mario Testino.\n\nDen Auftakt machen sizilianische Mandarine, Wacholder, Grapefruit und Bergamotte. Im Herzen folgen Pfeffer, Rosmarin und Rosenholz, in der Basis bleiben Moschus, Weihrauch, Eichenmoos und Patchouli.\n\nIn der Parfumo-Community gilt er als frisch-zitrischer Duft mit aquatischer und holziger Note. Haltbarkeit und Ausstrahlung werden dort als mittel bewertet – ein leichter Duft für den Alltag.",
+  "similar_perfumes": [
+    "Versace pour Homme – Versace"
+  ],
+  "accords": [
+    "Frisch 26",
+    "Zitrisch 25",
+    "Aquatisch 19",
+    "Holzig 9",
+    "Synthetisch 8"
   ]
 }

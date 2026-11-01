@@ -6,7 +6,7 @@
   "fragrance_family": "clean",
   "concentration": "EdP",
   "volume_ml": 100,
-  "price_chf": 75,
+  "price_chf": 75.0,
   "longevity": 7,
   "sillage": 7,
   "season": "Sommer",
@@ -29,10 +29,6 @@
   "lifestyle": "casual",
   "trend_vibe": "popular",
   "gender_nuance": "masculine",
-  "good_to_know": [
-    "Komponiert hat ihn Alberto Morillas – wie das Original von 2007.",
-    "Die Werbung von 2017 zeigt David Gandy und Bianca Balti auf Capri, fotografiert von Mario Testino."
-  ],
   "flacon_description": "Flakon aus mattiertem Glas in einem Blau, das an das Mittelmeer erinnert, mit blauem Deckel.",
   "sizes": [
     {
@@ -43,5 +39,18 @@
       "ml": 200,
       "price_chf": 102.99
     }
+  ],
+  "description": "Light Blue Pour Homme Eau Intense von Dolce & Gabbana ist 2017 erschienen und stammt wie das Original von Alberto Morillas. Gesichter der Werbung waren David Gandy und Bianca Balti, fotografiert von Mario Testino.\n\nDen Auftakt machen Mandarine und Grapefruit. Im Herzen folgen Wacholder und Meersalz, in der Basis bleiben Amberholz und Moschus.\n\nIn der Parfumo-Community gilt er als frisch-aquatischer Duft mit zitrischer Note. Haltbarkeit und Ausstrahlung werden dort als gut bewertet – deutlich stärker als beim klassischen Light Blue Pour Homme.",
+  "similar_perfumes": [
+    "Acqua Essenziale – Salvatore Ferragamo",
+    "CR7 Play It Cool – Cristiano Ronaldo",
+    "Incredible – Khalis"
+  ],
+  "accords": [
+    "Frisch 29",
+    "Aquatisch 28",
+    "Zitrisch 25",
+    "Synthetisch 10",
+    "Fruchtig 8"
   ]
 }

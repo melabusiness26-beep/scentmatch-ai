@@ -6,7 +6,7 @@
   "fragrance_family": "woody",
   "concentration": "EdT",
   "volume_ml": 100,
-  "price_chf": 53,
+  "price_chf": 53.0,
   "longevity": 6,
   "sillage": 6,
   "season": "Ganzjährig",
@@ -34,15 +34,15 @@
     "Vetiver"
   ],
   "accords": [
-    "Frisch",
-    "Fruchtig",
-    "Süss",
-    "Holzig",
-    "Würzig"
+    "Frisch 21",
+    "Fruchtig 20",
+    "Süss 19",
+    "Holzig 13",
+    "Würzig 13"
   ],
   "age_group": "all",
   "lifestyle": "casual",
-  "trend_vibe": "classic",
+  "trend_vibe": "popular",
   "gender_nuance": "masculine",
   "sizes": [
     {

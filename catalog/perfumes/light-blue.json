@@ -6,7 +6,7 @@
   "fragrance_family": "clean",
   "concentration": "EdT",
   "volume_ml": 50,
-  "price_chf": 35,
+  "price_chf": 35.0,
   "longevity": 6,
   "sillage": 6,
   "season": "Sommer",
@@ -17,7 +17,6 @@
   "top_notes": [
     "Sizilianische Zitrone",
     "Apfel",
-    "Zedernholz",
     "Glockenblume"
   ],
   "heart_notes": [
@@ -32,14 +31,13 @@
   ],
   "age_group": "all",
   "lifestyle": "casual",
-  "trend_vibe": "classic",
-  "good_to_know": [
-    "Light Blue gibt es auch nachfüllbar.",
-    "Die berühmte Werbekampagne fotografierte Mario Testino vor den Faraglioni-Felsen auf Capri.",
-    "Das Model David Gandy war mehrmals das Gesicht der Light-Blue-Werbung."
-  ],
+  "trend_vibe": "popular",
   "similar_perfumes": [
-    "Cheap & Chic I Love Love – Moschino"
+    "Donna – La Rive",
+    "Cheap & Chic I Love Love – Moschino",
+    "Light Silver – Anna Biondi",
+    "Naturelle – Yves Rocher",
+    "Remix Cologne Edition 2023 – 4711"
   ],
   "flacon_description": "Flakon aus mattiertem Glas mit geschwungenen Linien und silbernen Details. Der blaue Deckel ist von der traditionellen Keramik der Amalfiküste inspiriert und trägt das DG-Monogramm.",
   "sizes": [
@@ -59,5 +57,14 @@
       "ml": 200,
       "price_chf": 71.99
     }
+  ],
+  "description": "Light Blue von Dolce & Gabbana ist 2001 erschienen und stammt von Olivier Cresp. Der Duft ist vom Sommer am Mittelmeer inspiriert und gehört zu den bekanntesten frischen Damendüften. 2016 nahm ihn die Fragrance Foundation in ihre „Hall of Fame“ auf.\n\nDen Auftakt machen sizilianische Zitrone, Apfel und Glockenblume. Im Herzen folgen Bambus, Jasmin und weisse Rose, in der Basis bleiben Zedernholz, Moschus und Amber.\n\nIn der Parfumo-Community gilt er als frisch-zitrischer Duft mit aquatischer und fruchtiger Note. Haltbarkeit und Ausstrahlung werden dort als mittel bewertet – ein leichter, unkomplizierter Duft für warme Tage.",
+  "flacon_designer": "Pierre Dinand (Original-Flakon von 2001)",
+  "accords": [
+    "Frisch 27",
+    "Zitrisch 25",
+    "Aquatisch 13",
+    "Fruchtig 10",
+    "Blumig 9"
   ]
 }

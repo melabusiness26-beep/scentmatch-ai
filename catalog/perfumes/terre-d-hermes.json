@@ -6,11 +6,11 @@
   "fragrance_family": "woody",
   "concentration": "EdT",
   "volume_ml": 100,
-  "price_chf": 63,
+  "price_chf": 63.0,
   "longevity": 8,
   "sillage": 7,
   "season": "Ganzjährig",
-  "occasion": "Büro",
+  "occasion": "Alltag",
   "release_year": 2006,
   "perfumer": "Jean-Claude Ellena",
   "top_notes": [
@@ -18,25 +18,21 @@
     "Grapefruit"
   ],
   "heart_notes": [
+    "Feuerstein",
     "Pfeffer",
     "Rosa Pfeffer",
-    "Rosengeranie",
-    "Feuerstein"
+    "Geranienblatt",
+    "Patchouli"
   ],
   "base_notes": [
-    "Vetiver",
     "Zedernholz",
-    "Patchouli",
+    "Vetiver",
     "Benzoe"
   ],
   "age_group": "all",
   "lifestyle": "professional",
   "trend_vibe": "classic",
   "gender_nuance": "masculine",
-  "good_to_know": [
-    "Jean-Claude Ellena liess sich von den Romanen des französischen Schriftstellers Jean Giono inspirieren, der die Natur liebte.",
-    "2009 folgte eine Parfum-Version mit stärkerer Konzentration."
-  ],
   "similar_perfumes": [
     "Fattan pour Homme – Rasasi",
     "Red Vetiver – Montale",
@@ -46,10 +42,6 @@
   "flacon_description": "Inspiriert von einer Flasche aus einem Reise-Necessaire im Émile-Hermès-Museum. Der klare Flakon steht auf einem orangen „H“ und wird oben von Schultern aus Metall eingefasst.",
   "flacon_designer": "Philippe Mouquet",
   "sizes": [
-    {
-      "ml": 30,
-      "price_chf": 41.99
-    },
     {
       "ml": 50,
       "price_chf": 49.99
@@ -62,5 +54,13 @@
       "ml": 200,
       "price_chf": 93.99
     }
+  ],
+  "description": "Terre d'Hermès ist 2006 erschienen und stammt von Jean-Claude Ellena. Inspiriert haben ihn die Romane des französischen Schriftstellers Jean Giono, der die Natur liebte. 2009 folgte eine Parfum-Version.\n\nDen Auftakt machen Orange und Grapefruit. Im Herzen folgen Feuerstein, Pfeffer, rosa Pfeffer, Geranienblatt und Patchouli, in der Basis bleiben Zedernholz, Vetiver und Benzoe.\n\nIn der Parfumo-Community gilt er als holzig-erdiger Duft mit zitrischer Frische und würzigen Akzenten. Haltbarkeit und Ausstrahlung werden dort als gut bewertet. Den Flakon gestaltete Philippe Mouquet.",
+  "accords": [
+    "Holzig 23",
+    "Erdig 20",
+    "Zitrisch 18",
+    "Würzig 17",
+    "Frisch 15"
   ]
 }

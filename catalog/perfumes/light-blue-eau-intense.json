@@ -6,7 +6,7 @@
   "fragrance_family": "clean",
   "concentration": "EdP",
   "volume_ml": 50,
-  "price_chf": 36,
+  "price_chf": 36.0,
   "longevity": 7,
   "sillage": 7,
   "season": "Sommer",
@@ -29,9 +29,6 @@
   "lifestyle": "casual",
   "trend_vibe": "popular",
   "gender_nuance": "feminine",
-  "good_to_know": [
-    "Komponiert hat ihn Olivier Cresp – derselbe Parfümeur wie beim Original von 2001."
-  ],
   "flacon_description": "Flakon aus mattiertem Glas in einem dunkleren Blau als beim Original Light Blue, das an das Mittelmeer erinnert.",
   "sizes": [
     {
@@ -46,5 +43,19 @@
       "ml": 100,
       "price_chf": 79.99
     }
+  ],
+  "description": "Light Blue Eau Intense von Dolce & Gabbana ist 2017 erschienen und stammt wie das Original von Olivier Cresp. Gesichter der Werbung waren Bianca Balti und David Gandy, fotografiert von Mario Testino.\n\nDen Auftakt machen sizilianische Zitrone und grüner Apfel. Im Herzen folgen Ringelblume und Jasmin, in der Basis bleiben Moschus und Amberholz.\n\nIn der Parfumo-Community gilt er als frisch-zitrischer Duft mit fruchtiger und aquatischer Note. Haltbarkeit und Ausstrahlung werden dort als gut bewertet – etwas stärker als beim klassischen Light Blue.",
+  "similar_perfumes": [
+    "Donna – La Rive",
+    "Cheap & Chic I Love Love – Moschino",
+    "Light Silver – Anna Biondi",
+    "Naturelle – Yves Rocher"
+  ],
+  "accords": [
+    "Frisch 26",
+    "Zitrisch 25",
+    "Fruchtig 15",
+    "Aquatisch 12",
+    "Holzig 9"
   ]
 }

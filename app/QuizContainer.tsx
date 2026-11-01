@@ -52,7 +52,7 @@ function getFamilyQuestionCount(questions: QuizQuestion[]): number {
   return questions.filter(q => q.kind === 'family').length;
 }
 
-export default function QuizContainer() {
+export default function QuizContainer({ initialPerfumes }: { initialPerfumes?: Perfume[] } = {}) {
   const [step, setStep] = useState(0);
   const [family, setFamily] = useState<Record<string, number>>({ ...emptyFamily });
   const [genderPref, setGenderPref] = useState<QuizAnswers['gender']>('');
@@ -69,19 +69,21 @@ export default function QuizContainer() {
   const [imageBusy, setImageBusy] = useState(false);
   const [history, setHistory] = useState<QuizSnapshot[]>([]);
   const [showResult, setShowResult] = useState(false);
-  const [perfumes, setPerfumes] = useState<Perfume[]>([]);
-  const [loaded, setLoaded] = useState(false);
+  const [perfumes, setPerfumes] = useState<Perfume[]>(initialPerfumes ?? []);
+  const [loaded, setLoaded] = useState(Boolean(initialPerfumes?.length));
   const [shareMsg, setShareMsg] = useState('');
   const [revealScore, setRevealScore] = useState(0);
   const [questions, setQuestions] = useState<QuizQuestion[]>(fallbackQuestions);
 
   useEffect(() => {
+    // Düfte kommen normalerweise schon vom Server mit (schneller, keine Datenbank-Bibliothek
+    // im Browser). Nur falls nicht, werden sie hier nachgeladen.
     async function loadData() {
       const perfumeData = await getPerfumes(2000);
       if (perfumeData.length > 0) setPerfumes(perfumeData);
       setLoaded(true);
     }
-    loadData();
+    if (!initialPerfumes?.length) loadData();
 
     const sp = new URLSearchParams(window.location.search);
     if (sp.has('f')) {

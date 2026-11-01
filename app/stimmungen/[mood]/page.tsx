@@ -75,7 +75,7 @@ export default async function MoodPage({ params }: { params: Promise<{ mood: str
     },
     {
       q: 'Gibt es auch günstige Alternativen?',
-      a: 'Ja – zu vielen teureren Düften gibt es ähnlich riechende, günstigere Varianten. Öffne ein Duftprofil und schau unter „Günstige Alternativen", oder stöbere in der Duftdatenbank.'
+      a: 'Je nach Duft: Wenn im Katalog ein ähnlich riechender, günstigerer Duft vorhanden ist, zeigt das Duftprofil ihn unter „Günstige Alternativen“. Du kannst auch in der Duftdatenbank stöbern.'
     }
   ];
 

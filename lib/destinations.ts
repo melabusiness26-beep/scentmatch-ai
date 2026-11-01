@@ -81,7 +81,7 @@ export const DESTINATIONS: Destination[] = [
     tagline: 'Edel, herb & souverän',
     character: 'edel, herb und souverän',
     intro:
-      'London ist edel und herb – Regen auf Kopfsteinpflaster, Vetiver und ein Hauch Leder. Diese Düfte wirken souverän und gepflegt wie ein englischer Gentleman.',
+      'London ist edel und herb – Regen auf Kopfsteinpflaster, Vetiver und ein Hauch Leder. Diese Düfte wirken souverän und gepflegt.',
     tone: '#6b7a6a',
     families: { woody: 36, clean: 12 },
     noteKeywords: ['Vetiver', 'Salbei', 'Iris', 'Leder', 'Grapefruit'],
@@ -96,7 +96,7 @@ export const DESTINATIONS: Destination[] = [
     tagline: 'Sinnlich & voller Lebenslust',
     character: 'warm, sinnlich und lebensfroh',
     intro:
-      'Madrid ist warm, lebendig und sinnlich – Orangenblüten in lauen Nächten. Diese Düfte fangen die spanische Lebenslust und Wärme ein.',
+      'Madrid ist warm, lebendig und sinnlich – lange, laue Sommerabende in der Stadt. Diese Düfte mit Orangenblüte, Jasmin und Amber fangen die spanische Lebenslust und Wärme ein.',
     tone: '#d97b52',
     families: { floral: 30, gourmand: 14 },
     noteKeywords: ['Orangenblüte', 'Jasmin', 'Safran', 'Vanille', 'Amber'],
@@ -126,7 +126,7 @@ export const DESTINATIONS: Destination[] = [
     tagline: 'Luxus, Oud & Gold',
     character: 'opulent, warm und luxuriös',
     intro:
-      'Dubai ist Luxus in Reinform – Oud, Safran und flüssiges Gold. Diese Düfte sind opulent, warm und unvergesslich.',
+      'Dubai steht für Luxus – und Oud, Safran und Weihrauch haben in der arabischen Duftkultur eine lange Tradition. Diese Düfte sind opulent, warm und intensiv.',
     tone: '#c9a24a',
     families: { gourmand: 26, woody: 18 },
     noteKeywords: ['Oud', 'Safran', 'Amber', 'Amberholz', 'Weihrauch'],
@@ -244,7 +244,7 @@ export const DESTINATIONS: Destination[] = [
     emoji: '⛰️',
     category: 'berg',
     name: 'Dolomiten',
-    region: 'Almwiesen',
+    region: 'Italien',
     tagline: 'Kräuterwiesen & Sonne',
     character: 'grün, aromatisch und leicht',
     intro:
@@ -374,10 +374,10 @@ export const DESTINATIONS: Destination[] = [
     category: 'meer',
     name: 'Brasilien & Rio',
     region: 'Copacabana',
-    tagline: 'Salzkaramell am Strand',
+    tagline: 'Sonne, Strand & Lebensfreude',
     character: 'süss, sonnig und einladend',
     intro:
-      'Rio ist warme Haut am Strand, Salzkaramell und pure Lebensfreude. Diese Düfte sind süss, sonnig und einladend.',
+      'Rio steht für warme Haut am Strand, Sonne und Lebensfreude. Diese Düfte mit Noten wie Salzkaramell, Pistazie und Vanille sind süss, sonnig und einladend.',
     tone: '#d98f6a',
     families: { gourmand: 34 },
     noteKeywords: ['Salzkaramell', 'Pistazie', 'Vanille', 'Kokosnuss', 'Amber'],

@@ -117,7 +117,7 @@ export default function DestinationResults({ items, dest }: { items: Item[]; des
         <p className="small">
           {gender && items.length > 0
             ? 'Für diese Auswahl gerade keine Treffer – probier „Für alle".'
-            : 'Passende Düfte dafür sind bald im Katalog – unser Katalog wächst laufend. Bis dahin findest du im Quiz deinen persönlichen Match.'}
+            : 'Für dieses Reiseziel gibt es im Katalog gerade noch keine passenden Düfte – der Katalog wird laufend ergänzt. Im Quiz findest du deinen persönlichen Match.'}
         </p>
       )}
 

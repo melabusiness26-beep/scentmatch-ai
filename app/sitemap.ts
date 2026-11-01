@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
-import { getAllPerfumeSlugs, getAllBrandSlugs, MOODS } from '@/lib/perfumes';
-import { DESTINATIONS } from '@/lib/destinations';
+import { getAllPerfumeSlugs, getAllBrandSlugs, getPerfumes, rankByMood, MOODS } from '@/lib/perfumes';
+import { DESTINATIONS, rankByDestination } from '@/lib/destinations';
 import { guides } from '@/lib/guides';
 import { scentNotes } from '@/lib/notes-glossary';
 
@@ -9,9 +9,10 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [slugs, brandSlugs] = await Promise.all([
+  const [slugs, brandSlugs, perfumes] = await Promise.all([
     getAllPerfumeSlugs(),
     getAllBrandSlugs(),
+    getPerfumes(2000),
   ]);
 
   const perfumeUrls: MetadataRoute.Sitemap = slugs.map((slug) => ({
@@ -35,14 +36,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6
   }));
 
-  const moodUrls: MetadataRoute.Sitemap = MOODS.map((mood) => ({
+  // Stimmungen und Reiseziele mit weniger als 3 passenden Düften sind (noch) auf
+  // noindex gesetzt und gehören deshalb nicht in die Sitemap.
+  const moodUrls: MetadataRoute.Sitemap = MOODS.filter((mood) => rankByMood(perfumes, mood, '', 30).length >= 3).map((mood) => ({
     url: `${SITE_URL}/stimmungen/${mood.code}`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: 0.7
   }));
 
-  const destinationUrls: MetadataRoute.Sitemap = DESTINATIONS.map((dest) => ({
+  const destinationUrls: MetadataRoute.Sitemap = DESTINATIONS.filter((dest) => rankByDestination(perfumes, dest, '', 30).length >= 3).map((dest) => ({
     url: `${SITE_URL}/reiseduefte/${dest.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly',

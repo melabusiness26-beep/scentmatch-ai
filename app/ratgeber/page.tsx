@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     'Ehrliche Duft-Ratgeber aus der Schweiz: günstige Alternativen zu teuren Parfüms, Saisonempfehlungen, Hauttyp-Tipps und welcher Duft zu welchem Anlass passt.',
   alternates: { canonical: `${SITE_URL}/ratgeber` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Duft-Ratgeber | Auressa',
     description: 'Günstige Dupes, Saisonempfehlungen, Hauttyp-Tipps und Duft-Wissen für jeden.',
     type: 'website',

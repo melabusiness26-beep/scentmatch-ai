@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     'Lerne, wie du Parfum richtig aufträgst, damit es länger hält und besser wirkt. Sprühtechniken, Auftrags-Punkte, Häufigkeit und Tipps für optimale Duftentwicklung.',
   alternates: { canonical: `${SITE_URL}/parfum-auftragen` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Parfum richtig auftragen | Auressa',
     description: 'Anleitung für die perfekte Parfum-Anwendung: Sprühtechniken, Körperstellen, Häufigkeit und Pro-Tipps.',
     type: 'website',

@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     'Was ist ein Dupe, was ist eine Fälschung – und wie zahlst du für deinen Lieblingsduft weniger? Ehrliche Tipps ohne Wunderversprechen.',
   alternates: { canonical: '/guenstige-alternativen' },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Günstige Duft-Alternativen | Auressa',
     description:
       'Dupes, leichtere Versionen, grössere Flaschen, Proben: ehrliche Wege, für einen guten Duft weniger zu zahlen.',

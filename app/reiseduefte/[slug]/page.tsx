@@ -33,12 +33,17 @@ export async function generateMetadata({
   // Haupttitel ohne „| Auressa" – das globale Titel-Template hängt die Marke an.
   const title = `Welcher Duft passt zu ${dest.name}?`;
   const description = dest.intro;
+  // Solange weniger als 3 passende Düfte im Katalog sind, ist die Seite für Google
+  // zu dünn: nicht indexieren (Links folgen). Mit wachsendem Katalog schaltet sie sich frei.
+  const matches = rankByDestination(await getPerfumes(2000), dest, '', 30).length;
 
   return {
     title,
     description,
+    ...(matches < 3 ? { robots: { index: false, follow: true } } : {}),
     alternates: { canonical: `/reiseduefte/${slug}` },
     openGraph: {
+      images: ['/opengraph-image'],
       title: `${title} | Auressa`,
       description,
       type: 'website',

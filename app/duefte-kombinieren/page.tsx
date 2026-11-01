@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     'Lerne, wie du mehrere Düfte layerst und kombinierst – für einen einzigartigen, längeren und intensiveren Duft. Regeln, Techniken und professionelle Tipps.',
   alternates: { canonical: `${SITE_URL}/duefte-kombinieren` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Duftkombinationen: Parfüme schichten & layern | Auressa',
     description: 'Schichte mehrere Düfte professionell zusammen – für Originalität, Intensität und längere Haltbarkeit.',
     type: 'website',

@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     'Das Auressa Duftnoten-Lexikon erklärt die wichtigsten Parfumnoten – von Bergamotte bis Oud: wie sie riechen, woher sie kommen und welche Düfte zu dir passen.',
   alternates: { canonical: '/duftnoten' },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Duftnoten-Lexikon | Auressa',
     description:
       'Die wichtigsten Parfumnoten verständlich erklärt – Duft, Herkunft, Wirkung und passende Düfte.',

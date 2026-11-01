@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     'Verstehe die Logik hinter Auressa: Wie das Quiz deine Vorlieben erkennt und wie der Match-Score berechnet wird – ohne Zauberei, mit echter Mathematik.',
   alternates: { canonical: `${SITE_URL}/wie-auressa-funktioniert` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Wie Auressa funktioniert | Auressa',
     description: 'Die Matching-Algorithmen und Philosophie hinter Auressa, einfach erklärt.',
     url: `${SITE_URL}/wie-auressa-funktioniert`,
@@ -243,7 +244,7 @@ export default function WieAuressaFunktioniert() {
             </div>
             <div style={{ marginBottom: '1.2rem' }}>
               <p style={{ fontSize: '0.9rem', color: '#d4af37', fontWeight: 700, marginBottom: '0.3rem' }}>
-                Sillage/Intensität: 10%
+                Ausstrahlung/Intensität: 10%
               </p>
               <p style={{ fontSize: '0.9rem', color: 'rgba(250,247,242,0.8)', lineHeight: 1.6, margin: 0 }}>
                 Möchtest du dezent oder präsent? Je näher die Ausstrahlung des Dufts an deinem Wunsch liegt, desto mehr der 10 Punkte gibt es.

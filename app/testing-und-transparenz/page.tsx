@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     'Woher die Duft-Angaben auf Auressa stammen, wie der Auressa-Score berechnet wird und wie wir mit Partner-Links umgehen.',
   alternates: { canonical: `${SITE_URL}/testing-und-transparenz` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Testing & Transparenz | Auressa',
     description: 'Woher die Angaben stammen und wie der Auressa-Score berechnet wird.',
     url: `${SITE_URL}/testing-und-transparenz`,
@@ -103,7 +104,7 @@ export default function TestingPage() {
             marginBottom: '1.5rem',
           }}>
             <p style={{ fontSize: '0.9rem', color: '#6b5344', margin: '0 0 0.6rem 0' }}>
-              <strong style={{ color: '#d4af37' }}>Preis-Leistung – 40 %:</strong> Preis und Haltbarkeit zusammen – wie viel Duft du fürs Geld bekommst.
+              <strong style={{ color: '#d4af37' }}>Preis-Leistung – 40 %:</strong> Preis pro 100 ml und Haltbarkeit zusammen – wie viel Duft du fürs Geld bekommst.
             </p>
             <p style={{ fontSize: '0.9rem', color: '#6b5344', margin: '0 0 0.6rem 0' }}>
               <strong style={{ color: '#d4af37' }}>Haltbarkeit – 25 %:</strong> wie lange der Duft laut Community-Bewertungen hält.

@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     'Die besten Parfums unter CHF 100: Günstige Düfte mit grosser Wirkung. Mit Duftprofil, Noten und dem Auressa-Qualitätsscore.',
   alternates: { canonical: `${SITE_URL}/beste-duefte-unter-100` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Beste Parfums unter CHF 100 | Auressa',
     description: 'Top-Düfte unter CHF 100 – günstig, langlebig, überzeugend. Mit Duftprofil und Noten.',
     type: 'website',
@@ -221,7 +222,7 @@ export default async function BesteDuefteUnter100() {
             lineHeight: 1.6,
           }}>
             Günstig muss nicht billig sein. Diese {top.length} Düfte überzeugen mit
-            langlebiger Sillage und starkem Duftprofil — für unter 100 Franken.
+            gutem Auressa-Score und klarem Duftprofil — für unter 100 Franken.
           </p>
           <Link href="/dupes" style={{
             display: 'inline-block',
@@ -257,9 +258,8 @@ export default async function BesteDuefteUnter100() {
           </h2>
           <p style={{ color: '#6b5344', lineHeight: 1.7, fontSize: '0.95rem' }}>
             Ja. Viele Düfte unter CHF 100 stammen von etablierten Häusern wie Armaf, Lattafa
-            oder Davidoff — und liefern erstaunliche Langlebigkeit. Unsere Rangliste sortiert nach
-            dem <strong>Auressa-Score</strong> (Langlebigkeit, Sillage, Vielseitigkeit),
-            mit Preis als Tiebreaker. Für günstige Alternativen zu Luxusdüften:
+            oder Davidoff. Unsere Rangliste sortiert nach
+            dem <strong>Auressa-Score</strong> (Preis-Leistung, Haltbarkeit, Vielseitigkeit, Ausstrahlung). Für günstige Alternativen zu Luxusdüften:
             {' '}
             <Link href="/dupes" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>
               Dupes-Übersicht

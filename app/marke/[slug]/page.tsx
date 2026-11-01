@@ -38,6 +38,7 @@ export async function generateMetadata({
     description,
     alternates: { canonical: `${SITE_URL}/marke/${slug}` },
     openGraph: {
+      images: ['/opengraph-image'],
       title: `${brand.name} Parfums | Auressa`,
       description,
       type: 'website',

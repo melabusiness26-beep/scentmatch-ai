@@ -411,6 +411,7 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
         {activeFilterCount > 0 && ` · ${activeFilterCount} Filter aktiv`}
       </p>
 
+      <h2 className="sr-only">Düfte</h2>
       <div className="perfume-list">
         {visible.length === 0 ? (
           <p className="small">Keine Düfte gefunden. Versuch einen anderen Suchbegriff oder entferne den Filter.</p>

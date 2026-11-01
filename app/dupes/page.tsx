@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     'Gib den Duft ein, den du liebst, und finde ähnlich riechende Alternativen aus unserem Katalog, die weniger kosten. Mit Preisen in CHF.',
   alternates: { canonical: '/dupes' },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Der Dupe-Finder | Auressa',
     description:
       'Teuren Lieblingsduft eingeben, günstigen Zwilling finden – ähnlich riechende Alternativen mit Preisen in CHF.',

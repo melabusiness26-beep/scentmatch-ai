@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     'Die besten Damen-Parfums im Überblick: Von klassisch-floral bis modern-holzig. Mit Duftprofil, Noten, Preisen und günstigen Alternativen.',
   alternates: { canonical: `${SITE_URL}/beste-damenduefte` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Die besten Damendüfte | Auressa',
     description: 'Unsere Top-Empfehlungen für Damen-Parfums – mit Duftprofil, Noten und Preisen.',
     type: 'website',
@@ -248,8 +249,8 @@ export default async function BesteDamenduefte() {
             Wie wählen wir aus?
           </h2>
           <p style={{ color: '#6b5344', lineHeight: 1.7, fontSize: '0.95rem' }}>
-            Unsere Rangliste basiert auf dem <strong>Auressa-Score</strong> — einem Qualitätswert,
-            der Langlebigkeit, Sillage, Vielseitigkeit und Preis-Leistung zusammenfasst.
+            Unsere Rangliste basiert auf dem <strong>Auressa-Score</strong> — einem berechneten Wert
+            aus Preis-Leistung, Haltbarkeit, Vielseitigkeit und Ausstrahlung.
             Damen- und Unisex-Düfte werden gemeinsam bewertet. Für deinen persönlichen
             Top-Duft empfehlen wir zusätzlich das{' '}
             <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>

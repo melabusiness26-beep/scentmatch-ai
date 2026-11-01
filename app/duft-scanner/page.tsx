@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   description: 'Fotografiere einen Parfümflakon und lass die KI den Duft sofort identifizieren: Noten, Sillage, Charakter, Geschichte und ähnliche Düfte – alles in Sekunden.',
   keywords: ['Parfüm erkennen', 'Duft Scanner', 'Parfüm Foto', 'Duft identifizieren', 'KI Parfüm', 'Parfüm App'],
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Duft-Scanner – Parfüm per Foto erkennen',
     description: 'Fotografiere einen Parfümflakon und erhalte sofort das komplette Duftprofil: Noten, Charakter, Geschichte und ähnliche Empfehlungen.',
     url: `${SITE_URL}/duft-scanner`,

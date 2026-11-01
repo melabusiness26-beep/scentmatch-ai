@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     'Die besten Unisex-Parfums: Geschlechtsneutrale Düfte für alle. Mit Duftprofil, Noten, Preisen und günstigen Alternativen.',
   alternates: { canonical: `${SITE_URL}/beste-unisex-duefte` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Die besten Unisex-Düfte | Auressa',
     description: 'Top-Unisex-Parfums für alle – mit Duftprofil, Noten und Preisen.',
     type: 'website',
@@ -244,8 +245,8 @@ export default async function BesteUnisexDuefte() {
           <p style={{ color: '#6b5344', lineHeight: 1.7, fontSize: '0.95rem' }}>
             Unisex-Düfte sind bewusst ohne Geschlechtszuordnung komponiert. Sie setzen
             auf neutrale Noten wie Holz, Moschus, Citrus oder Gewürze — und passen zu allen.
-            Unsere Rangliste basiert auf dem <strong>Auressa-Score</strong> (Langlebigkeit,
-            Sillage, Vielseitigkeit, Preis-Leistung). Für deine persönliche Empfehlung:
+            Unsere Rangliste basiert auf dem <strong>Auressa-Score</strong> (Preis-Leistung,
+            Haltbarkeit, Vielseitigkeit, Ausstrahlung). Für deine persönliche Empfehlung:
             {' '}
             <Link href="/quiz" style={{ color: '#d4af37', fontWeight: 600, textDecoration: 'none' }}>
               Duft-Quiz starten

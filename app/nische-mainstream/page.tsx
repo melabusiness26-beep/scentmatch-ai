@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     'Verstehe den Unterschied zwischen Niche-Parfümen und Mainstream-Düften – Qualität, Einzigartigkeit, Preis und Verfügbarkeit.',
   alternates: { canonical: '/nische-mainstream' },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Nische vs. Mainstream Düfte | Auressa',
     description:
       'Lerne, wann Niche-Parfüme lohnen und wann Mainstream-Klassiker reichen – ein fairer Vergleich.',

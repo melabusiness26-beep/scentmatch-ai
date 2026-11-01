@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     'Verstehe den Unterschied zwischen Eau de Parfum, Eau de Toilette, Extrait und Cologne: Konzentration, Haltbarkeit, Intensität und Preis im direkten Vergleich.',
   alternates: { canonical: `${SITE_URL}/duftarten` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Duftarten: EdP, EdT, Parfum & Cologne | Auressa',
     description: 'Kompletter Guide zu Duftkonzentrationen: Unterschiede, Haltbarkeit, Preise und wie du die richtige Duftart wählst.',
     type: 'website',

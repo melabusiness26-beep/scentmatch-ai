@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     'Wie du eine kuratierte Duftsammlung aufbaust – von der ersten Wahl über die Ergänzung bis zur 5, 10 oder 20+ Duft-Kollektion. Mit Strategien für jeden Budget und jede Gelegenheit.',
   alternates: { canonical: '/duftsammlung' },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Duftsammlung aufbauen | Auressa',
     description:
       'Strategie, um eine durchdachte Duftsammlung zu entwickeln – ohne Impulsräufe, mit System und Zielen.',

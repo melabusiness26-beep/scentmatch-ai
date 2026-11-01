@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     'Entdecke, wie deine Persönlichkeit deinen idealen Duft formt. Von klassischen bis modernen Typen – finde heraus, welche Duftfamilien zu dir passen.',
   alternates: { canonical: `${SITE_URL}/duftpersoenlichkeit` },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Duftpersönlichkeit | Auressa',
     description: 'Finde deinen Duft basierend auf deinem Persönlichkeitstyp.',
     url: `${SITE_URL}/duftpersoenlichkeit`,

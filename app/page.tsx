@@ -15,8 +15,9 @@ export const metadata: Metadata = {
   alternates: { canonical: SITE_URL }
 };
 
-// No cache - always fresh (revalidate = 0)
-export const revalidate = 0;
+// Alle 10 Minuten neu erzeugen statt bei jedem Aufruf – die Startseite lädt so
+// deutlich schneller; neue Düfte erscheinen trotzdem rasch.
+export const revalidate = 600;
 
 // Die 3 aktuellsten / interessantesten Ratgeber für die Startseite
 const FEATURED_GUIDE_SLUGS = [
@@ -78,8 +79,6 @@ export default async function Page() {
 
   return (
     <>
-      <link rel="preload" as="image" href="/hero-auressa-2.jpg" fetchPriority="high" />
-
       {/* Neuer Hero + 3-Wege-Grid */}
       <HeroHome />
       <ThreeWaysSection catalogCount={catalogCount} />

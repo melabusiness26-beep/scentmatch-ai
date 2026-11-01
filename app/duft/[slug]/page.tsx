@@ -142,7 +142,7 @@ function Meter({ label, value, hint, help }: { label: string; value: number | nu
   return (
     <div className="dp-fact">
       <span className="dp-fact-label">{label}</span>
-      <span className="dp-meter" aria-label={`${label}: ${value} von 10`}>
+      <span className="dp-meter" role="img" aria-label={`${label}: ${value} von 10`}>
         {[0, 1, 2, 3, 4].map((i) => (
           <span key={i} className={i < filled ? 'on' : ''} style={{ animationDelay: `${i * 90}ms` }} />
         ))}

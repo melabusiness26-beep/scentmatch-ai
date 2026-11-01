@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     'Verstehe, wie Körperchemie, pH-Wert, Hauttyp und Hormonzyklus beeinflussen, wie ein Duft auf dir riecht – und warum der gleiche Duft auf unterschiedlichen Menschen unterschiedlich wirkt.',
   alternates: { canonical: '/koerperchemie-duft' },
   openGraph: {
+      images: ['/opengraph-image'],
     title: 'Körperchemie & Duft | Auressa',
     description:
       'Wie Körperchemie und Hauttyp beeinflussen, wie Düfte auf dir riechen – mit praktischen Tipps für das perfekte Match.',

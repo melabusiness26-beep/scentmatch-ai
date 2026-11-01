@@ -146,7 +146,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               }}>
                 {/* Spalte 1: Tools */}
                 <div>
-                  <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block' }}>Tools</h4>
+                  <h2 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block' }}>Tools</h2>
                   <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                     <Link href="/quiz" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Quiz</Link>
                     <Link href="/duefte" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Düfte durchsuchen</Link>
@@ -156,7 +156,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
                 {/* Spalte 2: Content */}
                 <div>
-                  <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Content</h4>
+                  <h2 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Content</h2>
                   <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                     <Link href="/ratgeber" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Ratgeber & Guides</Link>
                     <Link href="/reiseduefte" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Reisedüfte</Link>
@@ -166,7 +166,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
                 {/* Spalte 3: Über Auressa & Rechtliches (Admin bewusst nicht verlinkt, erreichbar über /admin) */}
                 <div>
-                  <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Über Auressa</h4>
+                  <h2 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#D4AF37', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Über Auressa</h2>
                   <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                     <Link href="/testing-und-transparenz" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Transparenz</Link>
                     <Link href="/impressum" style={{ fontSize: '0.9rem', color: 'rgba(237,229,220,0.75)', textDecoration: 'none' }}>Impressum</Link>

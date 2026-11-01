@@ -25,7 +25,7 @@ export default function FooterNewsletter() {
         <div style={{ position: 'relative', zIndex: 1 }}>
           <p style={{
             fontSize: 'clamp(11px, 2vw, 13px)',
-            color: '#D4AF37',
+            color: '#8A6D1A',
             fontWeight: 700,
             textTransform: 'uppercase',
             letterSpacing: '0.16em',

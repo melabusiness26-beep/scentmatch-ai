@@ -676,8 +676,15 @@ export default async function PerfumeDetailPage({
             {knownDupes.length > 0 && (
               <div className="dupe-list">
                 {knownDupes.map(({ perfume: d, note }) => {
+                  // Bei verschiedenen Flaschengrössen fair pro 100 ml vergleichen.
+                  const per100 = (x: Perfume) =>
+                    x.price_chf != null && x.volume_ml ? Math.round((x.price_chf / x.volume_ml) * 100) : null;
+                  const dPer100 = per100(d);
+                  const oPer100 = per100(perfume);
+                  const comparePer100 =
+                    !isDiscontinued && dPer100 != null && oPer100 != null && d.volume_ml !== perfume.volume_ml && dPer100 < oPer100;
                   const saving =
-                    !isDiscontinued && perfume.price_chf != null && d.price_chf != null
+                    !isDiscontinued && !comparePer100 && d.volume_ml === perfume.volume_ml && perfume.price_chf != null && d.price_chf != null
                       ? Math.round((perfume.price_chf - d.price_chf) * 100) / 100
                       : null;
                   return (
@@ -690,7 +697,17 @@ export default async function PerfumeDetailPage({
                         <p className="tile-brand">{d.brands?.name || 'Marke offen'}</p>
                         <h3 className="tile-name">{d.perfume_name}</h3>
                         <div className="dupe-prices">
-                          {d.price_chf != null && <span className="dupe-price">ca. CHF {d.price_chf}</span>}
+                          {d.price_chf != null && (
+                            <span className="dupe-price">
+                              ca. CHF {chf(d.price_chf)}
+                              {d.volume_ml ? ` · ${d.volume_ml} ml` : ''}
+                            </span>
+                          )}
+                          {comparePer100 && (
+                            <span className="dupe-saving">
+                              pro 100 ml ~CHF {dPer100} statt ~CHF {oPer100}
+                            </span>
+                          )}
                           {saving != null && saving > 0 && <span className="dupe-saving">du sparst ~CHF {chf(saving)}</span>}
                         </div>
                         {note && <p className="small dupe-note">{note}</p>}

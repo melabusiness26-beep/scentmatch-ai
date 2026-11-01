@@ -251,16 +251,16 @@ export default async function GuidePage({
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(guide)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(guide)).replace(/</g, "\\u003c") }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(guide)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(guide)).replace(/</g, "\\u003c") }}
       />
       {faqs.length > 0 && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(faqs)) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(faqs)).replace(/</g, "\\u003c") }}
         />
       )}
     </main>

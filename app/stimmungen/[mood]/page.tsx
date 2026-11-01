@@ -114,7 +114,7 @@ export default async function MoodPage({ params }: { params: Promise<{ mood: str
 
   return (
     <main>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <div className="container">
         <nav className="breadcrumb small" aria-label="Brotkrümel-Navigation">
           <Link href="/">Startseite</Link>

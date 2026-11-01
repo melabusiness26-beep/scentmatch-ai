@@ -19,12 +19,15 @@ export async function POST(request: NextRequest) {
   try {
     const { email, name, interest, behavior, source = 'footer' } = await request.json();
 
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (typeof email !== 'string' || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400 });
     }
 
     const cleanEmail = normalizeEmail(email);
-    const cleanName = name ? name.trim() : null;
+    // Name nur als kurzer Text (er landet in der Bestätigungs-E-Mail) – keine Links.
+    const rawName = typeof name === 'string' ? name.trim().slice(0, 50) : '';
+    const cleanName = rawName && !/(https?:|www\.|\/\/|<|>)/i.test(rawName) ? rawName : null;
+    const cleanSource = typeof source === 'string' && /^[a-z0-9-]{1,30}$/.test(source) ? source : 'footer';
     const cleanInterest = interest && ['women', 'men', 'unisex'].includes(interest) ? interest : null;
 
     // 1. Speichere in Supabase (subscriber tracking)
@@ -34,14 +37,23 @@ export async function POST(request: NextRequest) {
         email: cleanEmail,
         name: cleanName,
         interest: cleanInterest,
-        source,
+        source: cleanSource,
         consent: true,
-        behavior: behavior ? JSON.stringify(behavior) : null,
+        // Interessen nur in vernünftiger Grösse speichern.
+        behavior: behavior && JSON.stringify(behavior).length <= 5000 ? JSON.stringify(behavior) : null,
       });
 
     if (dbError && dbError.code !== '23505') {
       console.error('Supabase error:', dbError);
       return NextResponse.json({ error: 'Database error' }, { status: 500 });
+    }
+
+    // Adresse ist schon eingetragen: keine weitere E-Mail und keine Änderung in Brevo.
+    // Sonst könnte jemand eine fremde Adresse mit Bestätigungs-Mails überfluten oder
+    // bestätigte Kontakte wieder auf „unbestätigt“ setzen. Gleiche Antwort wie sonst,
+    // damit niemand herausfinden kann, wer schon angemeldet ist.
+    if (dbError?.code === '23505') {
+      return NextResponse.json({ success: true, message: 'Successfully subscribed to newsletter' }, { status: 200 });
     }
 
     // 2. Generiere Confirmation-Link
@@ -81,7 +93,7 @@ export async function POST(request: NextRequest) {
       const brevoAttributes = generateBrevoAttributes({
         name: cleanName || undefined,
         interest: cleanInterest || undefined,
-        source,
+        source: cleanSource,
         viewedPerfumeIds: behavior?.viewedPerfumeIds?.slice(0, 10),
         viewedFamilies: behavior?.viewedFamilies?.slice(0, 5),
       });

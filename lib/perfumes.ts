@@ -93,7 +93,8 @@ export { describePerfume } from './perfume-text';
 // Ziel-Link für den „Jetzt ansehen"-Button. Liegt ein Affiliate-Link vor,
 // wird dieser genutzt; sonst eine neutrale Such-Verlinkung (nie ein toter Button).
 export function buyUrl(p: Perfume): string {
-  if (p.affiliate_url) return p.affiliate_url;
+  // Nur echte https-Links übernehmen (nie z. B. „javascript:“).
+  if (p.affiliate_url && /^https:\/\//i.test(p.affiliate_url.trim())) return p.affiliate_url.trim();
   const query = encodeURIComponent(`${p.perfume_name} ${p.brands?.name || ''} Parfum`.trim());
   return `https://www.google.com/search?q=${query}`;
 }

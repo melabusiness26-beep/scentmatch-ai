@@ -57,7 +57,7 @@ export default async function DupesPage() {
     <main>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }}
       />
       <Breadcrumb items={[{ label: 'Dupe-Finder', href: '/dupes' }]} />
       <div className="container">

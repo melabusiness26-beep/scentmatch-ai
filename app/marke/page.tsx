@@ -10,12 +10,12 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 export const metadata: Metadata = {
   title: 'Parfum-Marken von A bis Z',
   description:
-    'Alle Parfum-Marken bei Auressa: Von Chanel und Dior bis Lattafa und Armaf. Entdecke die Düfte jeder Marke mit Preisen, Noten und Duftprofilen.',
+    'Alle Parfum-Marken im Auressa-Katalog: Entdecke die Düfte jeder Marke mit Preisen, Noten und Duftprofilen.',
   alternates: { canonical: `${SITE_URL}/marke` },
   openGraph: {
       images: ['/opengraph-image'],
     title: 'Parfum-Marken | Auressa',
-    description: 'Alle Parfum-Marken bei Auressa – vom Luxus-Original bis zum günstigen Dupe.',
+    description: 'Alle Parfum-Marken im Auressa-Katalog – mit Preisen, Noten und Duftprofilen.',
     type: 'website',
     url: `${SITE_URL}/marke`,
   },
@@ -76,7 +76,7 @@ export default async function MarkenIndex() {
             Parfum-Marken von A bis Z
           </h1>
           <p style={{ fontSize: '16px', color: 'rgba(250,247,242,0.72)', margin: '0 0 1.5rem 0' }}>
-            {brandsWithPerfumes.length} Marken im Katalog. Vom Luxus-Original bis zum günstigen Dupe.
+            {brandsWithPerfumes.length} {brandsWithPerfumes.length === 1 ? 'Marke' : 'Marken'} im Katalog – mit Preisen, Noten und Duftprofilen.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <Link href="/quiz" style={{
@@ -220,10 +220,10 @@ export default async function MarkenIndex() {
             Keine Lieblingsmarke?
           </p>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.4rem', fontWeight: 700, color: '#faf7f2', marginBottom: '0.75rem' }}>
-            Lass dich persönlich beraten
+            Lass dich vom Quiz leiten
           </h2>
           <p style={{ color: 'rgba(250,247,242,0.7)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
-            Unser Duft-Quiz findet deinen perfekten Signature-Duft in wenigen Minuten.
+            Unser Duft-Quiz schlägt dir in wenigen Minuten passende Düfte aus unserem Katalog vor.
           </p>
           <Link href="/quiz" style={{
             background: '#d4af37',

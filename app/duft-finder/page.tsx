@@ -7,7 +7,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
   title: 'Duft-Finder – Parfüm suchen und finden',
-  description: 'Beschreib den Duft, den du suchst – wir finden ihn aus hunderten Parfüms. Nach Name, Note, Stimmung oder Beschreibung suchen.',
+  description: 'Beschreib den Duft, den du suchst, und durchsuche den Auressa-Katalog nach Name, Note oder Beschreibung.',
   alternates: { canonical: `${SITE_URL}/duft-finder` },
   openGraph: {
       images: ['/opengraph-image'],
@@ -27,8 +27,6 @@ export default async function DuftFinderPage() {
   } catch (error) {
     console.error('[DuftFinder] Failed to load perfumes:', error);
   }
-
-  const roundedCount = Math.floor(count / 50) * 50;
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
@@ -60,7 +58,7 @@ export default async function DuftFinderPage() {
             Welchen Duft suchst du?
           </h1>
           <p style={{ fontSize: '16px', color: 'rgba(250,247,242,0.65)', margin: 0 }}>
-            Name, Note oder Beschreibung eingeben, aus über {roundedCount || 400} kuratierten Parfüms.
+            Name, Note oder Beschreibung eingeben – {count > 0 ? `aus ${count} kuratierten Parfüms im Auressa-Katalog` : 'aus unserem kuratierten Katalog'}.
           </p>
         </div>
       </section>

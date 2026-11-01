@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Breadcrumb from '@/app/Breadcrumb';
-import { getPerfumes } from '@/lib/perfumes';
+import { getPerfumes, isWithinPriceCap } from '@/lib/perfumes';
 import { PerfumeTile } from '@/app/PerfumeTile';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
@@ -9,12 +9,12 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 export const metadata: Metadata = {
   title: 'Saisonale Duft-Empfehlungen: Frühling, Sommer, Herbst, Winter',
   description:
-    'Düfte, die zu jeder Jahreszeit passen: frische Sommerdüfte, warme Winterdüfte, blumige Frühlingsdüfte und gemütliche Herbstdüfte – alle kuratiert und getestet.',
+    'Düfte, die zu jeder Jahreszeit passen: frische Sommerdüfte, warme Winterdüfte, blumige Frühlingsdüfte und gemütliche Herbstdüfte – aus dem Auressa-Katalog, sortiert nach Auressa-Score.',
   alternates: { canonical: `${SITE_URL}/saisonal` },
   openGraph: {
       images: ['/opengraph-image'],
     title: 'Saisonale Duft-Empfehlungen | Auressa',
-    description: 'Die perfekten Düfte für jede Jahreszeit – Frühling, Sommer, Herbst, Winter.',
+    description: 'Passende Düfte für jede Jahreszeit – Frühling, Sommer, Herbst, Winter.',
     url: `${SITE_URL}/saisonal`,
     type: 'website'
   }
@@ -65,6 +65,7 @@ export default async function SaisonalPage() {
   const getSeasonalPerfumes = (seasonKey: string) => {
     return perfumes
       .filter(p => p.season === seasonKey && p.slug)
+      .filter(isWithinPriceCap)
       .sort((a, b) => (b.scentmatch_score || 0) - (a.scentmatch_score || 0))
       .slice(0, 8);
   };
@@ -112,7 +113,7 @@ export default async function SaisonalPage() {
             Düfte für jede Jahreszeit
           </h1>
           <p style={{ fontSize: '16px', color: 'rgba(250,247,242,0.7)', margin: 0 }}>
-            Der richtige Duft zur richtigen Zeit – wir zeigen dir, welche Düfte in Frühling, Sommer, Herbst und Winter am besten passen.
+            Der richtige Duft zur richtigen Zeit – hier findest du die Düfte aus unserem Katalog, die für Frühling, Sommer, Herbst oder Winter eingetragen sind, sortiert nach dem Auressa-Score.
           </p>
         </div>
       </section>
@@ -125,7 +126,7 @@ export default async function SaisonalPage() {
             Warum die Jahreszeit wichtig ist
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', maxWidth: '600px', margin: '0 auto' }}>
-            Ein warmer, intensiver Duft an heissen Sommertagen wirkt erdrückend. Ein frischer, leichter Duft im tiefsten Winter wirkt dünn. Die beste Strategie: Nimm mehrere Düfte, die zusammen die ganze Jahr passen.
+            Ein warmer, intensiver Duft kann an heissen Sommertagen erdrückend wirken. Ein frischer, leichter Duft kann im tiefsten Winter dünn wirken. Ein Tipp: Mit zwei, drei Düften, die sich ergänzen, bist du das ganze Jahr gut ausgestattet.
           </p>
         </section>
 
@@ -237,7 +238,7 @@ export default async function SaisonalPage() {
             Deinen perfekten saisonalen Duft finden
           </h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4a3728', marginBottom: '1.5rem' }}>
-            Nutze unser Quiz oder durchstöber den gesamten Katalog mit erweiterten Filtern.
+            Nutze unser Quiz oder durchstöbere den gesamten Katalog mit Filtern.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link

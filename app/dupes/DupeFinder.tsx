@@ -197,7 +197,7 @@ export default function DupeFinder({
         {/* Schnellauswahl nur, wenn mindestens einer der bekannten Düfte im Katalog ist. */}
         {!selected && quickPicks.length > 0 && (
           <>
-            <p className="small">Oder wähle eines der beliebten Beispiele:</p>
+            <p className="small">Oder wähle eines der bekannten Beispiele:</p>
             <div className="filter-row">
               {quickPicks.map((p) => (
                 <button
@@ -222,9 +222,9 @@ export default function DupeFinder({
             {selected.price_chf != null ? ` (ca. CHF ${selected.price_chf})` : ''}
           </h2>
           <p className="small">
-            Diese Düfte haben die gleiche Familie + Geschlecht und kosten weniger.
-            Keine Alternative ist eine exakte Kopie – sie teilen aber ähnliche Noten
-            und gehen in eine sehr ähnliche Richtung.
+            Diese Düfte kosten mindestens 30 % weniger und haben laut unserer Berechnung
+            eine ähnliche Notenpyramide (Kopf-, Herz- und Basisnoten, Basisnoten zählen am
+            meisten). Keine Alternative ist eine exakte Kopie – getestet haben wir sie nicht.
           </p>
 
           {(curatedResults.length > 0 || algoResults.length > 0) && (
@@ -252,10 +252,10 @@ export default function DupeFinder({
           {curatedResults.length === 0 && algoResults.length === 0 && (
             <>
               <p className="small">
-                Gute Nachricht: {selected.perfume_name}
-                {selected.price_chf != null ? ` (ca. CHF ${selected.price_chf})` : ''} ist
-                selbst schon günstig, hier brauchst du keinen Dupe.
-                {similarFallback.length > 0 ? ' Diese Düfte riechen ähnlich:' : ''}
+                Für {selected.perfume_name}
+                {selected.price_chf != null ? ` (ca. CHF ${selected.price_chf})` : ''} haben
+                wir im Katalog keine deutlich günstigere Alternative mit ähnlichen Noten gefunden.
+                {similarFallback.length > 0 ? ' Diese Düfte teilen laut unserer Berechnung Noten mit ihm:' : ''}
               </p>
               {similarFallback.length > 0 && (
                 <div className="perfume-list">

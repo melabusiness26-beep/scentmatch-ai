@@ -100,7 +100,7 @@ export const GIFT_FINDER_STYLES: GiftStyle[] = [
   {
     id: 'bold',
     label: 'Auffällig und sinnlich',
-    description: 'Intensiv, verführerisch, unvergesslich – für charismatische, mut­ige Menschen.',
+    description: 'Intensiv, verführerisch, präsent – für charismatische, mut­ige Menschen.',
     notes: [
       'Oud',
       'Tabak',

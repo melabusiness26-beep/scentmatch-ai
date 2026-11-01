@@ -50,7 +50,7 @@ export default function NewsletterConfirmedPage() {
           marginBottom: '2rem',
           fontWeight: 500,
         }}>
-          Dein Newsletter-Abo ist nun aktiviert. Wir senden dir schon bald personalisierte Duft-Empfehlungen basierend auf deinen Vorlieben.
+          Dein Newsletter-Abo ist nun bestätigt. Wir melden uns per E-Mail, sobald es Neuigkeiten von Auressa gibt.
         </p>
 
         {/* Content */}
@@ -69,14 +69,14 @@ export default function NewsletterConfirmedPage() {
             letterSpacing: '0.05em',
             marginBottom: '0.8rem',
           }}>
-            Was kommt als nächstes?
+            Was dich erwartet
           </h2>
           <ul style={{
             listStyle: 'none',
             padding: 0,
             margin: 0,
           }}>
-            {['Willkommens-Email mit deinen Top 3 Duft-Empfehlungen', 'Wöchentliche Newsletter mit neuen Düften', 'Personalisierte Angebote basierend auf deinen Vorlieben'].map((item, i) => (
+            {['Neue Düfte im Auressa-Katalog', 'Tipps und Ratgeber rund um Duft', 'Hinweise auf neue Funktionen'].map((item, i) => (
               <li key={i} style={{
                 color: '#6B5344',
                 marginBottom: '0.6rem',

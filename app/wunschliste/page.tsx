@@ -51,7 +51,7 @@ export default function WishlistPage() {
             lineHeight: 1.6,
             maxWidth: '600px',
           }}>
-            Düfte, die dich interessieren – einfach speichern und später wieder ansehen.
+            Düfte, die dich interessieren – einfach speichern und später wieder ansehen. Deine Wunschliste wird nur lokal in diesem Browser gespeichert.
           </p>
         </section>
 

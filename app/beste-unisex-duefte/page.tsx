@@ -1,27 +1,33 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
 import Breadcrumb from '@/app/Breadcrumb';
 import { AffiliateButton } from '@/app/AffiliateButton';
-import { getPerfumes, type Perfume } from '@/lib/perfumes';
+import { getPerfumes, type Perfume, isWithinPriceCap } from '@/lib/perfumes';
 
 export const revalidate = 3600;
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: 'Die besten Unisex-Düfte – Parfum-Empfehlungen',
   description:
-    'Die besten Unisex-Parfums: Geschlechtsneutrale Düfte für alle. Mit Duftprofil, Noten, Preisen und günstigen Alternativen.',
+    'Unisex-Parfums aus dem Auressa-Katalog, sortiert nach dem berechneten Auressa-Score. Mit Duftprofil, Noten und Preisen.',
   alternates: { canonical: `${SITE_URL}/beste-unisex-duefte` },
   openGraph: {
       images: ['/opengraph-image'],
     title: 'Die besten Unisex-Düfte | Auressa',
-    description: 'Top-Unisex-Parfums für alle – mit Duftprofil, Noten und Preisen.',
+    description: 'Unisex-Parfums nach Auressa-Score sortiert – mit Duftprofil, Noten und Preisen.',
     type: 'website',
     url: `${SITE_URL}/beste-unisex-duefte`,
   },
 };
+
+// Solange der Katalog noch keine Unisex-Düfte hat: Seite zeigen (das Menü verlinkt
+// sie), aber nicht von Google indexieren lassen.
+export async function generateMetadata(): Promise<Metadata> {
+  const hasUnisex = (await getPerfumes(2000)).some((p) => p.gender === 'Unisex');
+  return hasUnisex ? baseMetadata : { ...baseMetadata, robots: { index: false, follow: true } };
+}
 
 const FAMILY_COLORS: Record<string, { bg: string; color: string; label: string }> = {
   floral:   { bg: '#fce8f0', color: '#8b1a4a', label: 'Blumig' },
@@ -129,6 +135,7 @@ export default async function BesteUnisexDuefte() {
 
   const top = all
     .filter((p) => p.gender === 'Unisex' && p.scentmatch_score != null)
+    .filter(isWithinPriceCap)
     .sort((a, b) => {
       const scoreDiff = (b.scentmatch_score ?? 0) - (a.scentmatch_score ?? 0);
       if (scoreDiff !== 0) return scoreDiff;
@@ -136,7 +143,26 @@ export default async function BesteUnisexDuefte() {
     })
     .slice(0, 15);
 
-  if (top.length === 0) notFound();
+  if (top.length === 0) {
+    return (
+      <main style={{ backgroundColor: '#faf7f2' }}>
+        <Breadcrumb items={[{ label: 'Die besten Unisex-Düfte', href: '/beste-unisex-duefte' }]} />
+        <section style={{ maxWidth: '640px', margin: '0 auto', padding: '3rem 1.25rem', textAlign: 'center' }}>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.8rem, 5vw, 2.4rem)', color: '#2a1d12', margin: '0 0 1rem' }}>
+            Die besten Unisex-Düfte
+          </h1>
+          <p style={{ color: '#6b5344', lineHeight: 1.7, margin: '0 0 1.5rem' }}>
+            Im Auressa-Katalog sind gerade noch keine Unisex-Düfte eingetragen. Der Katalog wird laufend ergänzt –
+            bis dahin findest du alle Düfte in der Duftdatenbank oder deine Richtung mit dem Duft-Quiz.
+          </p>
+          <p style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link href="/duefte" className="button secondary">Alle Düfte</Link>
+            <Link href="/quiz" className="button">Duft-Quiz starten</Link>
+          </p>
+        </section>
+      </main>
+    );
+  }
 
   const listJsonLd = {
     '@context': 'https://schema.org',
@@ -207,8 +233,8 @@ export default async function BesteUnisexDuefte() {
             margin: '0 auto 1.5rem',
             lineHeight: 1.6,
           }}>
-            Geschlechtsneutrale Düfte für alle — von holzig-rauchig bis frisch-clean.
-            Perfekt zum Teilen oder als Signatur-Duft.
+            Düfte, die von den Marken als Unisex angeboten werden —
+            sortiert nach dem Auressa-Score.
           </p>
           <Link href="/quiz" style={{
             display: 'inline-block',
@@ -243,8 +269,8 @@ export default async function BesteUnisexDuefte() {
             Was sind Unisex-Düfte?
           </h2>
           <p style={{ color: '#6b5344', lineHeight: 1.7, fontSize: '0.95rem' }}>
-            Unisex-Düfte sind bewusst ohne Geschlechtszuordnung komponiert. Sie setzen
-            auf neutrale Noten wie Holz, Moschus, Citrus oder Gewürze — und passen zu allen.
+            Unisex-Düfte werden ohne Zuordnung zu einem Geschlecht angeboten. Häufig
+            enthalten sie Noten wie Holz, Moschus, Zitrus oder Gewürze — tragen kann sie jede und jeder.
             Unsere Rangliste basiert auf dem <strong>Auressa-Score</strong> (Preis-Leistung,
             Haltbarkeit, Vielseitigkeit, Ausstrahlung). Für deine persönliche Empfehlung:
             {' '}
@@ -275,7 +301,7 @@ export default async function BesteUnisexDuefte() {
             Finde deinen perfekten Duft
           </h2>
           <p style={{ color: 'rgba(250,247,242,0.7)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
-            Unser Quiz findet in wenigen Minuten den Duft, der wirklich zu dir passt.
+            Das Quiz fragt nach Duftrichtung, Lieblingsnoten, Anlass, Jahreszeit, Intensität und Budget.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <Link href="/quiz" style={{

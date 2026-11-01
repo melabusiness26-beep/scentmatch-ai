@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
       images: ['/opengraph-image'],
     title: 'Duft-Detektiv | Auressa',
-    description: 'Beantworte 12 Fragen und finde deinen Signature Duft – aus unserem kuratierten Katalog.',
+    description: 'Beantworte 12 Fragen und finde passende Düfte aus unserem kuratierten Katalog.',
     url: `${SITE_URL}/duft-detektiv`,
     type: 'website',
   },
@@ -61,7 +61,7 @@ export default async function DuftDetektivPage() {
             color: 'rgba(250,247,242,0.65)',
             margin: 0,
           }}>
-            Beantworte 12 einfache Fragen – wir finden deinen Signature Duft in unserem Katalog.
+            Beantworte 12 einfache Fragen – wir schlagen dir passende Düfte aus unserem Katalog vor.
           </p>
         </div>
       </section>

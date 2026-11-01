@@ -90,12 +90,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly',
       priority: 0.85
     },
-    {
-      url: `${SITE_URL}/beste-unisex-duefte`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8
-    },
+    // Nur aufnehmen, wenn es Unisex-Düfte im Katalog gibt (sonst ist die Seite noindex).
+    ...(perfumes.some((p) => p.gender === 'Unisex')
+      ? [{ url: `${SITE_URL}/beste-unisex-duefte`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 }]
+      : []),
     {
       url: `${SITE_URL}/beste-duefte-unter-100`,
       lastModified: new Date(),

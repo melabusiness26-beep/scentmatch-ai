@@ -10,12 +10,12 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 export const metadata: Metadata = {
   title: 'Parfum Geschenk finden: der Geschenk-Finder für Weihnachten',
   description:
-    'Den perfekten Duft als Geschenk finden: Unser Quiz zeigt dir in 4 Fragen die besten Parfüm-Empfehlungen. Für Frauen, Männer und jedes Budget.',
+    'Den passenden Duft als Geschenk finden: Unser Quiz zeigt dir in 4 Fragen Parfüm-Empfehlungen aus unserem Katalog. Für Frauen, Männer und verschiedene Budgets.',
   alternates: { canonical: `${SITE_URL}/geschenk-finder` },
   openGraph: {
       images: ['/opengraph-image'],
     title: 'Parfum Geschenk finden | Auressa',
-    description: 'Den perfekten Duft als Geschenk entdecken – schnell, einfach und für jedes Budget.',
+    description: 'Den passenden Duft als Geschenk entdecken – schnell, einfach und für verschiedene Budgets.',
     url: `${SITE_URL}/geschenk-finder`,
     type: 'website',
   },
@@ -31,8 +31,8 @@ export default async function GiftFinderPage() {
         <div className="hero-content">
           <h1>Parfum-Geschenk finden</h1>
           <p className="hero-subtitle">
-            Der richtige Duft für die richtige Person – in 4 Fragen. Unser Geschenk-Finder zeigt dir die
-            besten Empfehlungen für Frauen, Männer und jedes Budget.
+            Der richtige Duft für die richtige Person – in 4 Fragen. Unser Geschenk-Finder zeigt dir
+            passende Empfehlungen für Frauen, Männer und verschiedene Budgets (bis CHF 180).
           </p>
         </div>
       </section>

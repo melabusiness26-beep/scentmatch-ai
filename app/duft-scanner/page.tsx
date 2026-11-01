@@ -7,12 +7,12 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
 export const metadata: Metadata = {
   title: 'Duft-Scanner – Parfüm per Foto erkennen',
-  description: 'Fotografiere einen Parfümflakon und lass die KI den Duft sofort identifizieren: Noten, Sillage, Charakter, Geschichte und ähnliche Düfte – alles in Sekunden.',
+  description: 'Bald verfügbar: Fotografiere einen Parfümflakon und lass dir den Duft per KI erkennen – mit Noten, Charakter und ähnlichen Düften aus dem Auressa-Katalog.',
   keywords: ['Parfüm erkennen', 'Duft Scanner', 'Parfüm Foto', 'Duft identifizieren', 'KI Parfüm', 'Parfüm App'],
   openGraph: {
       images: ['/opengraph-image'],
     title: 'Duft-Scanner – Parfüm per Foto erkennen',
-    description: 'Fotografiere einen Parfümflakon und erhalte sofort das komplette Duftprofil: Noten, Charakter, Geschichte und ähnliche Empfehlungen.',
+    description: 'Bald verfügbar: Parfümflakon fotografieren und Duftprofil mit Noten, Charakter und ähnlichen Düften erhalten.',
     url: `${SITE_URL}/duft-scanner`,
     type: 'website',
   },
@@ -64,7 +64,7 @@ export default async function DuftScannerPage() {
             color: 'rgba(250,247,242,0.65)',
             margin: 0,
           }}>
-            Fotografiere einen Flakon – wir identifizieren den Duft.
+            Bald verfügbar: Fotografiere einen Flakon – der Scanner soll den Duft dann für dich erkennen. Bis dahin findest du deinen Duft über die Suche oder das Quiz.
           </p>
         </div>
       </section>

@@ -14,6 +14,7 @@ import {
   type RankedPerfume,
   type ScoreBreakdown
 } from '@/lib/perfumes';
+import { PROFILE_TEXT } from '@/lib/quiz-profiles';
 import { quizQuestions as newQuizQuestions, type QuizQuestion, type QuestionKind } from '@/lib/quizQuestions';
 import { PerfumeTile, familyDisplay, PerfumeCover } from '@/app/PerfumeTile';
 import { AffiliateButton } from '@/app/AffiliateButton';
@@ -21,12 +22,8 @@ import { AffiliateButton } from '@/app/AffiliateButton';
 const fallbackQuestions: QuizQuestion[] = newQuizQuestions;
 const FAMILY_ORDER = ['clean', 'gourmand', 'woody', 'floral'] as const;
 
-const profileText: Record<string, { title: string; text: string }> = {
-  clean: { title: 'Frisch & Klar', text: 'Du liebst frische, saubere Düfte. Deine Signatur wirkt gepflegt, leicht und modern.' },
-  gourmand: { title: 'Warm & Sinnlich', text: 'Du passt zu warmen, weichen und leicht süssen Düften. Deine Duftsignatur wirkt gemütlich und sinnlich.' },
-  woody: { title: 'Holzig & Elegant', text: 'Du magst elegante, holzige und würzige Düfte. Deine Signatur wirkt hochwertig und selbstbewusst.' },
-  floral: { title: 'Blumig & Romantisch', text: 'Du passt zu blumigen, fruchtigen und zarten Düften. Deine Signatur wirkt charmant und weich.' }
-};
+// Profiltexte zentral in lib/quiz-profiles.ts (auch für das Teilen-Bild).
+const profileText: Record<string, { title: string; text: string }> = PROFILE_TEXT;
 
 const genderLabels: Record<string, string> = { women: 'Damen', men: 'Herren', unisex: 'Unisex' };
 const emptyFamily = { clean: 0, gourmand: 0, woody: 0, floral: 0 };
@@ -69,6 +66,7 @@ export default function QuizContainer() {
   const [longevityPref, setLongevityPref] = useState<QuizAnswers['longevity']>('');
   const [sweetnessPref, setSweetnessPref] = useState<QuizAnswers['sweetness']>('');
   const [pricePref, setPricePref] = useState<QuizAnswers['pricePref']>('');
+  const [imageBusy, setImageBusy] = useState(false);
   const [history, setHistory] = useState<QuizSnapshot[]>([]);
   const [showResult, setShowResult] = useState(false);
   const [perfumes, setPerfumes] = useState<Perfume[]>([]);
@@ -241,6 +239,48 @@ export default function QuizContainer() {
     if (sweetnessPref) p.set('sw', sweetnessPref);
     if (pricePref) p.set('pp', pricePref);
     return `${window.location.origin}/quiz?${p.toString()}`;
+  }
+
+  // Teilen-Bild (Story-Format) erzeugen und teilen – auf dem Handy direkt ins Teilen-Menü
+  // (Instagram, WhatsApp, TikTok …), sonst als Download.
+  async function shareImage() {
+    if (imageBusy) return;
+    setImageBusy(true);
+    try {
+      const params = new URLSearchParams({
+        p: winner,
+        m: top3.map((r) => r.perfume.slug).filter(Boolean).join(','),
+        s: top3.map((r) => String(r.score)).join(',')
+      });
+      const res = await fetch(`/api/teilen-bild?${params.toString()}`);
+      if (!res.ok) throw new Error('Bild konnte nicht erstellt werden');
+      const blob = await res.blob();
+      const file = new File([blob], 'auressa-duftprofil.png', { type: 'image/png' });
+      const nav = navigator as Navigator & { canShare?: (data: ShareData) => boolean };
+      if (nav.share && nav.canShare?.({ files: [file] })) {
+        try {
+          await nav.share({ files: [file], title: `Mein Auressa-Duftprofil: ${profileText[winner].title}`, text: 'Finde deinen Signature-Duft auf auressa.ch' });
+        } catch {
+          // Teilen abgebrochen – kein Problem.
+        }
+      } else {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'auressa-duftprofil.png';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 5000);
+        setShareMsg('Bild gespeichert! 📸 Du kannst es jetzt in deiner Story posten.');
+        setTimeout(() => setShareMsg(''), 6000);
+      }
+    } catch {
+      setShareMsg('Das Bild konnte gerade nicht erstellt werden. Versuche es bitte nochmals.');
+      setTimeout(() => setShareMsg(''), 6000);
+    } finally {
+      setImageBusy(false);
+    }
   }
 
   async function shareResult() {
@@ -521,9 +561,12 @@ export default function QuizContainer() {
             ))}
 
             <div className="share-box">
-              <p className="small">Möchtest du dein Ergebnis speichern oder einer Freundin schicken?</p>
+              <p className="small">Teile dein Duftprofil als Story-Bild auf Instagram oder TikTok – oder schick den Link weiter.</p>
               <div className="cta">
-                <button type="button" className="button" onClick={shareResult}>🔗 Ergebnis teilen / speichern</button>
+                <button type="button" className="button" onClick={shareImage} disabled={imageBusy}>
+                  {imageBusy ? 'Bild wird erstellt …' : '📸 Als Bild teilen (Story)'}
+                </button>
+                <button type="button" className="button secondary" onClick={shareResult}>🔗 Link teilen</button>
                 <button type="button" className="secondary" onClick={restartQuiz}>Quiz neu starten</button>
               </div>
               {shareMsg && <p className="small share-msg">{shareMsg}</p>}

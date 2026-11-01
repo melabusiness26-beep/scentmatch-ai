@@ -15,11 +15,14 @@ export type Flavor = {
   color: string;
   notes: string[];
   exclude?: string[];
+  // Kombi (z. B. Erdbeershake): der Duft braucht aus JEDER Liste mindestens eine Note.
+  combo?: string[][];
   intro: string;
 };
 
 export const FLAVOR_GROUPS = [
   'Süsses & Desserts',
+  'Dessert-Kombis & Spezialitäten',
   'Früchte',
   'Zitrus',
   'Getränke',
@@ -45,6 +48,34 @@ const ROWS: Row[] = [
   ['pistazie', 'Pistazie', 'nach Pistazie', 'Süsses & Desserts', null, '#A9C27A', ['pistazie'], [], 'Nussig, cremig und leicht grün – Pistazie ist ein moderner Gourmand-Liebling.'],
   ['nuesse', 'Mandel & Nüsse', 'nach Mandel und Nüssen', 'Süsses & Desserts', null, '#B98B5E', ['mandel', 'haselnuss', 'walnuss', 'nuss'], ['muskatnuss', 'kokosnuss'], 'Geröstet und warm – Mandel und Haselnuss machen Düfte gemütlich.'],
   ['tonkabohne', 'Tonkabohne', 'nach Tonkabohne', 'Süsses & Desserts', N + 'tonkabohne.jpg', '#8B6B4A', ['tonka'], [], 'Mandelig, vanillig und ein Hauch Heu – Tonka macht Düfte warm und rund.'],
+  ['marzipan', 'Marzipan', 'nach Marzipan', 'Süsses & Desserts', null, '#EBD9B5', ['marzipan'], [], 'Süss, mandelig und weich – Marzipan riecht nach Confiserie und Feiertagen.'],
+  ['mandel', 'Mandel', 'nach Mandel', 'Süsses & Desserts', null, '#D8B48A', ['mandel'], ['mandelblüte'], 'Warm, weich und leicht süss – Mandel macht Düfte gemütlich.'],
+  ['haselnuss', 'Haselnuss', 'nach Haselnuss', 'Süsses & Desserts', null, '#A8743F', ['haselnuss', 'nougat'], [], 'Geröstet und cremig – wie Nougat oder Nuss-Schokolade.'],
+  ['walnuss', 'Walnuss', 'nach Walnuss', 'Süsses & Desserts', null, '#8C6A45', ['walnuss'], [], 'Herb, nussig und warm – eine seltene, gemütliche Note.'],
+  ['milch', 'Milch', 'nach Milch', 'Süsses & Desserts', null, '#F4EFE6', ['milch', 'milk'], [], 'Weich, cremig und beruhigend – Milchnoten wirken wie eine warme Umarmung.'],
+  ['praline', 'Praliné & Nougat', 'nach Praliné', 'Süsses & Desserts', null, '#9A6A44', ['praline', 'praliné', 'nougat', 'gianduja'], [], 'Nussig, süss und schmelzend – wie eine Praline aus der Schachtel.'],
+  ['creme', 'Crème brûlée & Pudding', 'nach Crème brûlée', 'Süsses & Desserts', null, '#EAC57E', ['brûlée', 'brulee', 'custard', 'pudding', 'vanillecreme', 'crème'], [], 'Cremig mit karamellisierter Kruste – ein klassisches Dessert im Flakon.'],
+  ['macaron', 'Macaron', 'nach Macaron', 'Süsses & Desserts', null, '#F3C1CF', ['macaron'], [], 'Zart, mandelig und süss – wie ein Macaron aus der Pâtisserie.'],
+  ['popcorn', 'Popcorn', 'nach Popcorn', 'Süsses & Desserts', null, '#F4E2A8', ['popcorn'], [], 'Buttrig, süss-salzig und verspielt – wie im Kino.'],
+  ['zuckerwatte', 'Zuckerwatte', 'nach Zuckerwatte', 'Süsses & Desserts', null, '#F7C6DA', ['zuckerwatte', 'candy floss', 'cotton candy'], [], 'Luftig, zuckrig und verspielt – wie auf dem Jahrmarkt.'],
+  ['bonbon', 'Bonbon & Kaugummi', 'nach Bonbon und Kaugummi', 'Süsses & Desserts', null, '#F59CC0', ['bonbon', 'kaugummi', 'bubblegum', 'lutscher', 'candy'], ['candy floss', 'cotton candy'], 'Bunt, süss und frech – Düfte für gute Laune.'],
+  ['lakritz', 'Lakritz', 'nach Lakritz', 'Süsses & Desserts', null, '#2F2A2A', ['lakritz', 'süssholz', 'süßholz'], [], 'Süss, würzig und ungewöhnlich – Lakritz polarisiert und macht Düfte spannend.'],
+  ['ahornsirup', 'Ahornsirup', 'nach Ahornsirup', 'Süsses & Desserts', null, '#B5722E', ['ahorn', 'maple'], [], 'Warm, karamellig und leicht rauchig – wie Pancakes mit Sirup.'],
+  ['marroni', 'Marroni', 'nach Marroni', 'Süsses & Desserts', null, '#7B4A2E', ['kastanie', 'marron'], ['rosskastanie'], 'Geröstet, süss und wintrig – wie heisse Marroni am Stand.'],
+  // Dessert-Kombis & Spezialitäten (passen nur, wenn ALLE Bestandteile vorkommen)
+  ['erdbeershake', 'Erdbeershake', 'nach Erdbeershake', 'Dessert-Kombis & Spezialitäten', null, '#F4A7B9', [], [], 'Erdbeere trifft Milch oder Sahne – fruchtig, cremig und verspielt.'],
+  ['vanilleshake', 'Vanilleshake', 'nach Vanilleshake', 'Dessert-Kombis & Spezialitäten', null, '#F3E4C4', [], [], 'Vanille mit Milch oder Sahne – weich, süss und gemütlich.'],
+  ['milchshake', 'Milchshake', 'nach Milchshake', 'Dessert-Kombis & Spezialitäten', null, '#F2D9E1', [], [], 'Milch oder Sahne mit etwas Süssem – wie ein Shake im Diner.'],
+  ['mousse-au-chocolat', 'Mousse au Chocolat', 'nach Mousse au Chocolat', 'Dessert-Kombis & Spezialitäten', null, '#6B4430', [], [], 'Schokolade mit Sahne oder Vanille – luftig, cremig und dekadent.'],
+  ['tiramisu', 'Tiramisu', 'nach Tiramisu', 'Dessert-Kombis & Spezialitäten', null, '#A57C5B', [], [], 'Kaffee mit Kakao oder Sahne – das italienische Dessert als Duft.'],
+  ['schwarzwaelder', 'Schwarzwälder Kirsch', 'nach Schwarzwälder Kirsch', 'Dessert-Kombis & Spezialitäten', null, '#5A1E24', [], [], 'Kirsche trifft Schokolade – dunkel, fruchtig und verführerisch.'],
+  ['apfelstrudel', 'Apfelstrudel', 'nach Apfelstrudel', 'Dessert-Kombis & Spezialitäten', null, '#C98B4E', [], [], 'Apfel und Zimt – warm, süss und gemütlich wie frisch aus dem Ofen.'],
+  ['zimtstern', 'Zimtstern', 'nach Zimtstern', 'Dessert-Kombis & Spezialitäten', null, '#C7955E', [], [], 'Zimt und Mandel – das Schweizer Weihnachtsgebäck als Duft.'],
+  ['magenbrot', 'Magenbrot', 'nach Magenbrot', 'Dessert-Kombis & Spezialitäten', null, '#6A3F2A', [], [], 'Würzige Gewürze mit Honig oder Schokolade – wie Magenbrot vom Herbstmarkt.'],
+  ['lebkuchen', 'Lebkuchen', 'nach Lebkuchen', 'Dessert-Kombis & Spezialitäten', null, '#8E5A34', [], [], 'Zimt, Nelke & Co. mit Honig oder Mandel – würzig-süss wie Weihnachten.'],
+  ['salted-caramel', 'Salted Caramel', 'nach Salted Caramel', 'Dessert-Kombis & Spezialitäten', null, '#C08A4A', [], [], 'Karamell mit einer Prise Salz – süss, salzig und süchtig machend.'],
+  ['pina-colada', 'Piña Colada', 'nach Piña Colada', 'Dessert-Kombis & Spezialitäten', null, '#F4E3A1', [], [], 'Kokos und Ananas – Ferien im Glas.'],
+  ['chai-latte', 'Chai Latte', 'nach Chai Latte', 'Dessert-Kombis & Spezialitäten', null, '#B98A62', [], [], 'Tee mit Zimt, Kardamom oder Ingwer – würzig, warm und cremig.'],
   // Früchte
   ['erdbeere', 'Erdbeere', 'nach Erdbeere', 'Früchte', null, '#E36A6A', ['erdbeer'], [], 'Saftig, süss und verspielt – Erdbeere wirkt fröhlich und jung.'],
   ['himbeere', 'Himbeere', 'nach Himbeere', 'Früchte', N + 'himbeere.jpg', '#C2415E', ['himbeer'], [], 'Fruchtig, leicht säuerlich und frech – Himbeere bringt Farbe in einen Duft.'],
@@ -62,6 +93,9 @@ const ROWS: Row[] = [
   ['litschi', 'Litschi', 'nach Litschi', 'Früchte', null, '#F0C9CF', ['litschi', 'lychee', 'litchi'], [], 'Blumig-fruchtig und zart – Litschi wirkt frisch und feminin.'],
   ['feige', 'Feige', 'nach Feige', 'Früchte', N + 'feige.jpg', '#7D5A7A', ['feige'], [], 'Grün, milchig und leicht süss – Feige riecht nach Sommer im Süden.'],
   ['kokos', 'Kokos', 'nach Kokos', 'Früchte', N + 'kokos.jpg', '#F1EBDD', ['kokos'], [], 'Cremig und sonnig – Kokos riecht nach Ferien und Strand.'],
+  ['passionsfrucht', 'Passionsfrucht', 'nach Passionsfrucht', 'Früchte', null, '#E5A33D', ['passionsfrucht', 'maracuja'], [], 'Exotisch, säuerlich-süss und saftig – tropische Frische.'],
+  ['granatapfel', 'Granatapfel', 'nach Granatapfel', 'Früchte', null, '#B8323F', ['granatapfel'], [], 'Saftig, herb und leuchtend – Granatapfel wirkt edel und frisch.'],
+  ['rhabarber', 'Rhabarber', 'nach Rhabarber', 'Früchte', null, '#D96C7B', ['rhabarber'], [], 'Säuerlich, grün und frisch – eine überraschende Note.'],
   // Zitrus
   ['zitrone', 'Zitrone', 'nach Zitrone', 'Zitrus', N + 'zitrone.jpg', '#F2D64B', ['zitrone', 'limette', 'yuzu'], ['zitronengras', 'zitronenmelisse'], 'Spritzig, hell und frisch – Zitrone ist der Klassiker für warme Tage.'],
   ['orange', 'Orange', 'nach Orange', 'Zitrus', N + 'orange.jpg', '#F28C28', ['orange'], ['orangenblüte'], 'Saftig, sonnig und gut gelaunt – Orange macht Düfte fröhlich.'],
@@ -71,6 +105,12 @@ const ROWS: Row[] = [
   // Getränke
   ['kaffee', 'Kaffee', 'nach Kaffee', 'Getränke', null, '#6F4E37', ['kaffee', 'espresso', 'mokka'], [], 'Geröstet, warm und wach – Kaffee gibt süssen Düften Tiefe.'],
   ['tee', 'Tee', 'nach Tee', 'Getränke', null, '#9DB07A', ['tee', 'matcha', 'mate'], ['teer', 'tomate'], 'Ruhig, klar und leicht herb – Tee wirkt elegant und entspannt.'],
+  ['matcha', 'Matcha', 'nach Matcha', 'Getränke', null, '#8DB255', ['matcha'], [], 'Grün, cremig und leicht herb – der Trend-Tee als Duft.'],
+  ['rum', 'Rum', 'nach Rum', 'Getränke', null, '#7A4B2A', ['rum'], ['rumänisch'], 'Warm, süss und berauschend – Rum macht Düfte sinnlich.'],
+  ['whisky', 'Whisky', 'nach Whisky', 'Getränke', null, '#A8682B', ['whisky', 'whiskey', 'bourbon'], [], 'Rauchig, warm und edel – für Abenddüfte mit Charakter.'],
+  ['cognac', 'Cognac', 'nach Cognac', 'Getränke', null, '#9B5A2B', ['cognac', 'brandy'], [], 'Weich, fruchtig und edel – Cognac gibt Düften Tiefe.'],
+  ['champagner', 'Champagner', 'nach Champagner', 'Getränke', null, '#EBDCA5', ['champagner', 'prosecco', 'sekt'], [], 'Prickelnd und festlich – ein Duft zum Anstossen.'],
+  ['wein', 'Wein', 'nach Wein', 'Getränke', null, '#7B1E3A', ['wein'], ['weinblatt', 'weintraube'], 'Fruchtig, dunkel und elegant – Wein-Noten wirken erwachsen.'],
   // Blumen
   ['rose', 'Rose', 'nach Rose', 'Blumen', N + 'rose.jpg', '#D96A86', ['rose'], ['rosenholz', 'rosengeranie'], 'Die Königin der Blumen – mal frisch, mal samtig und tief.'],
   ['jasmin', 'Jasmin', 'nach Jasmin', 'Blumen', N + 'jasmin.jpg', '#F3EBD3', ['jasmin'], [], 'Weiss, blumig und sinnlich – Jasmin ist das Herz vieler Damendüfte.'],
@@ -78,6 +118,10 @@ const ROWS: Row[] = [
   ['iris', 'Iris', 'nach Iris', 'Blumen', N + 'iris.jpg', '#A99BC7', ['iris', 'veilchenwurzel'], [], 'Pudrig, kühl und edel – Iris wirkt wie teurer Puder.'],
   ['orangenbluete', 'Orangenblüte & Neroli', 'nach Orangenblüte', 'Blumen', N + 'neroli.jpg', '#F6E7C1', ['orangenblüte', 'neroli'], [], 'Hell, sauber und strahlend – Orangenblüte wirkt wie Sonne auf der Haut.'],
   ['frangipani', 'Frangipani', 'nach Frangipani', 'Blumen', N + 'frangipani.jpg', '#F7D9A8', ['frangipani', 'plumeria'], [], 'Tropisch, cremig und blumig – Frangipani riecht nach Inselurlaub.'],
+  ['tuberose', 'Tuberose', 'nach Tuberose', 'Blumen', null, '#F6EFE3', ['tuberose'], [], 'Cremig, opulent und sinnlich – eine der kräftigsten weissen Blüten.'],
+  ['pfingstrose', 'Pfingstrose', 'nach Pfingstrose', 'Blumen', null, '#F1A7BF', ['pfingstrose'], [], 'Frisch, rosig und verspielt – zarter als die Rose.'],
+  ['veilchen', 'Veilchen', 'nach Veilchen', 'Blumen', null, '#8C6BB1', ['veilchen'], ['veilchenwurzel'], 'Pudrig, süss und ein bisschen nostalgisch.'],
+  ['maigloeckchen', 'Maiglöckchen', 'nach Maiglöckchen', 'Blumen', null, '#E6F0D8', ['maiglöckchen'], [], 'Grün, hell und sauber – der Duft des Frühlings.'],
   // Gewürze & Hölzer
   ['zimt', 'Zimt', 'nach Zimt', 'Gewürze & Hölzer', N + 'zimt.jpg', '#A0522D', ['zimt'], [], 'Würzig, warm und süss – Zimt erinnert an Herbst und Weihnachten.'],
   ['pfeffer', 'Pfeffer', 'nach Pfeffer', 'Gewürze & Hölzer', N + 'pfeffer.jpg', '#5E4B3C', ['pfeffer'], ['pfefferminz'], 'Prickelnd und lebendig – Pfeffer gibt Düften Spannung.'],
@@ -89,6 +133,10 @@ const ROWS: Row[] = [
   ['weihrauch', 'Weihrauch', 'nach Weihrauch', 'Gewürze & Hölzer', N + 'weihrauch.jpg', '#B7A88E', ['weihrauch', 'olibanum'], [], 'Harzig, rauchig und geheimnisvoll.'],
   ['patchouli', 'Patchouli', 'nach Patchouli', 'Gewürze & Hölzer', N + 'patchouli.jpg', '#5F5A3A', ['patchouli'], [], 'Erdig, dunkel und tief – Patchouli macht Düfte markant.'],
   ['vetiver', 'Vetiver', 'nach Vetiver', 'Gewürze & Hölzer', N + 'vetiver.jpg', '#7C7A4E', ['vetiver'], [], 'Erdig, grün und leicht rauchig – elegant und trocken.'],
+  ['kardamom', 'Kardamom', 'nach Kardamom', 'Gewürze & Hölzer', null, '#9AA86A', ['kardamom'], [], 'Frisch-würzig und warm – Kardamom macht Düfte lebendig.'],
+  ['ingwer', 'Ingwer', 'nach Ingwer', 'Gewürze & Hölzer', null, '#D9A54A', ['ingwer'], [], 'Scharf, frisch und prickelnd – Ingwer weckt auf.'],
+  ['safran', 'Safran', 'nach Safran', 'Gewürze & Hölzer', null, '#C8452E', ['safran'], [], 'Ledrig, warm und kostbar – Safran wirkt luxuriös.'],
+  ['nelke', 'Gewürznelke', 'nach Gewürznelke', 'Gewürze & Hölzer', null, '#6E3A2A', ['gewürznelke'], [], 'Warm, würzig und weihnachtlich.'],
   // Frisch & sauber
   ['moschus', 'Moschus', 'nach Moschus', 'Frisch & sauber', N + 'moschus.jpg', '#EDE3DA', ['moschus', 'musk'], [], 'Sauber, weich und hautnah – wie frisch gewaschene Haut.'],
   ['amber', 'Amber', 'nach Amber', 'Frisch & sauber', N + 'amber.jpg', '#D9A04A', ['amber', 'ambra'], ['amberholz'], 'Warm, harzig und leicht süss – Amber macht Düfte golden und rund.'],
@@ -96,9 +144,31 @@ const ROWS: Row[] = [
   ['meer', 'Meer & Salz', 'nach Meer und Salz', 'Frisch & sauber', N + 'meersalz.jpg', '#7FB8D6', ['meer', 'ozean', 'salz', 'aquatisch'], [], 'Salzig, luftig und frisch – wie eine Brise am Strand.']
 ];
 
-export const FLAVORS: Flavor[] = ROWS.map(([slug, title, phrase, group, image, color, notes, exclude, intro]) => ({
-  slug, title, phrase, group, image, color, notes, exclude, intro
-}));
+const CREAM = ['milch', 'sahne', 'rahm', 'joghurt', 'mascarpone', 'milk'];
+const SPICE = ['zimt', 'gewürznelke', 'kardamom', 'ingwer', 'anis', 'muskat'];
+const COMBOS: Record<string, string[][]> = {
+  erdbeershake: [['erdbeer'], CREAM],
+  vanilleshake: [['vanille'], CREAM],
+  milchshake: [CREAM, ['vanille', 'erdbeer', 'kakao', 'schokolade', 'karamel', 'banane']],
+  'mousse-au-chocolat': [['kakao', 'schokolade'], [...CREAM, 'vanille']],
+  tiramisu: [['kaffee', 'espresso', 'mokka'], ['kakao', 'schokolade', ...CREAM]],
+  schwarzwaelder: [['kirsch'], ['kakao', 'schokolade']],
+  apfelstrudel: [['apfel'], ['zimt']],
+  zimtstern: [['zimt'], ['mandel', 'marzipan']],
+  magenbrot: [SPICE, ['honig', 'kakao', 'schokolade']],
+  lebkuchen: [SPICE, ['honig', 'mandel', 'lebkuchen']],
+  'salted-caramel': [['karamel', 'toffee'], ['salz']],
+  'pina-colada': [['kokos'], ['ananas']],
+  'chai-latte': [['tee', 'chai'], ['zimt', 'kardamom', 'ingwer']]
+};
+const COMBO_EXCLUDE = ['apfelblüte', 'granatapfel', 'muskatnuss', 'teer', 'tomate'];
+
+export const FLAVORS: Flavor[] = ROWS.map(([slug, title, phrase, group, image, color, notes, exclude, intro]) => {
+  const combo = COMBOS[slug];
+  return combo
+    ? { slug, title, phrase, group, image, color, notes: combo.flat(), exclude: [...exclude, ...COMBO_EXCLUDE], combo, intro }
+    : { slug, title, phrase, group, image, color, notes, exclude, intro };
+});
 
 export function getFlavor(slug: string): Flavor | undefined {
   return FLAVORS.find((f) => f.slug === slug);
@@ -118,8 +188,20 @@ export function flavorNotes(p: Perfume, flavor: Flavor): string[] {
 }
 
 // Empfehlbare Düfte (bis CHF 180, erhältlich) mit diesem Geschmack, beste zuerst.
+function noteHits(note: string, parts: string[], exclude: string[] = []): boolean {
+  const l = note.toLowerCase();
+  return parts.some((x) => l.includes(x)) && !exclude.some((x) => l.includes(x));
+}
+
+export function matchesFlavor(p: Perfume, flavor: Flavor): boolean {
+  const all = notesOf(p);
+  if (!all.length) return false;
+  if (flavor.combo) return flavor.combo.every((parts) => all.some((n) => noteHits(n, parts, flavor.exclude)));
+  return all.some((n) => noteHits(n, flavor.notes, flavor.exclude));
+}
+
 export function perfumesForFlavor(perfumes: Perfume[], flavor: Flavor): Perfume[] {
-  return perfumes.filter((p) => p.slug && isWithinPriceCap(p) && notesOf(p).length > 0 && flavorNotes(p, flavor).length > 0);
+  return perfumes.filter((p) => p.slug && isWithinPriceCap(p) && matchesFlavor(p, flavor));
 }
 
 // In Google erst ab 3 verschiedenen Düften (sonst „dünne" Seite).

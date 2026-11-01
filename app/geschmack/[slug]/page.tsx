@@ -53,6 +53,12 @@ export default async function FlavorPage({ params }: { params: Promise<{ slug: s
             <p className="eyebrow">Duft nach Geschmack</p>
             <h1>Parfum, das {flavor.phrase} duftet</h1>
             <p className="lead">{flavor.intro}</p>
+            {flavor.combo && (
+              <p className="small">
+                So finden wir diese Düfte: Sie enthalten alle Bestandteile dieser Kombination in ihren Duftnoten. Kein Duft
+                riecht genau wie das Dessert – aber er geht in diese Richtung.
+              </p>
+            )}
           </div>
         </section>
 

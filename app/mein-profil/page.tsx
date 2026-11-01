@@ -124,7 +124,7 @@ export default function MyProfilePage() {
             color: '#6B5344',
             lineHeight: 1.6,
           }}>
-            Erstelle Profile für verschiedene Anlässe oder Stimmungen. Speichere deine Duft-Vorlieben lokal und nutze sie, um schnell Empfehlungen zu finden.
+            Erstelle Profile für verschiedene Anlässe oder Stimmungen und halte deine Duft-Vorlieben fest. Die Profile werden nur lokal in diesem Browser gespeichert.
           </p>
         </section>
 
@@ -272,7 +272,7 @@ export default function MyProfilePage() {
                 </label>
                 <input
                   type="text"
-                  placeholder="z. B. 'Büro-Dufte' oder 'Sommer'"
+                  placeholder="z. B. 'Büro-Düfte' oder 'Sommer'"
                   value={newProfile.name || ''}
                   onChange={(e) => setNewProfile({ ...newProfile, name: e.target.value })}
                   style={{

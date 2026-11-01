@@ -721,8 +721,8 @@ export const MOODS: Mood[] = [
     title: 'Ich will mich verwöhnen',
     phrase: 'wenn dir nach Trost und Wärme ist',
     subtitle: 'Vanille & Trost – wenn dir nach Kuscheln ist.',
-    result: 'Warme, süsse Düfte wie eine Umarmung – Vanille, Karamell, Tonka. Sie schaffen sofort Geborgenheit und Wärme.',
-    intro: 'Schwerer Tag? Ruhiger Moment? Dann holst du dir Comfort: Vanille (süss, beruhigend), Karamell (warm, einladend), Tonka (samtig, wärmend). Ein Parfüm löst keine Probleme – aber diese Noten sind wie Tee und Decke: Sie tun einfach gut.',
+    result: 'Warme, süsse Düfte wie eine Umarmung – Vanille, Karamell, Tonka. Viele empfinden sie als behaglich und wärmend.',
+    intro: 'Schwerer Tag? Ruhiger Moment? Dann holst du dir Comfort: Vanille (süss, weich), Karamell (warm, einladend), Tonka (samtig, wärmend). Ein Parfüm löst keine Probleme – aber für viele fühlen sich diese Noten an wie Tee und Decke.',
     tone: '#d8a48f',
     families: { gourmand: 40, floral: 10 },
     noteThemes: ['vanille', 'moschus'],
@@ -735,8 +735,8 @@ export const MOODS: Mood[] = [
     title: 'Ich will mich stark fühlen',
     phrase: 'wenn du dir den Rücken stärken willst',
     subtitle: 'Vetiver & Kraft – für deinen souveränen Auftritt.',
-    result: 'Holzige, tiefe Düfte wie ein fester Handschlag – Vetiver, Sandelholz, ein Hauch Leder. Sie strahlen Ruhe und Selbstvertrauen aus.',
-    intro: 'Vor einem wichtigen Gespräch oder wenn Unsicherheit klopft: ein holziger, eleganter Duft kann wie Rüstung wirken. Vetiver (erdig, kraftvoll), Sandelholz (warm, edel), Leder (präsent, souverän) – nicht um dich zu verändern, sondern um dir selbst näher zu stehen.',
+    result: 'Holzige, tiefe Düfte wie ein fester Handschlag – Vetiver, Sandelholz, ein Hauch Leder. Viele verbinden sie mit Ruhe und Selbstvertrauen.',
+    intro: 'Vor einem wichtigen Gespräch oder wenn Unsicherheit klopft: ein holziger, eleganter Duft kann sich anfühlen wie eine kleine Rüstung. Vetiver (erdig, kraftvoll), Sandelholz (warm, edel), Leder (präsent, souverän) – nicht um dich zu verändern, sondern um dir selbst näher zu stehen.',
     tone: '#7a6a55',
     families: { woody: 40 },
     noteThemes: ['holz', 'orient'],
@@ -749,8 +749,8 @@ export const MOODS: Mood[] = [
     title: 'Ich will runterkommen',
     phrase: 'wenn du zur Ruhe kommen willst',
     subtitle: 'Frisch & Grün – wenn du klare Gedanken brauchst.',
-    result: 'Frische, helle Düfte mit sauberen Noten und sanftem Moschus – sie klären den Kopf wie eine tiefe Atemzug.',
-    intro: 'Der Tag war zu viel? Frische Noten sind wie Reset für deine Gedanken: klare, saubere Noten (minzig, grün), Moschus (weich, beruhigend), vielleicht ein Hauch Kräuter. Sie lösen keine Probleme – aber sie machen den Kopf wieder leicht.',
+    result: 'Frische, helle Düfte mit sauberen Noten und sanftem Moschus – für viele wirken sie klar und leicht, wie ein tiefer Atemzug.',
+    intro: 'Der Tag war zu viel? Frische Noten können sich anfühlen wie ein kleiner Reset: klare, saubere Noten (minzig, grün), Moschus (weich, sauber), vielleicht ein Hauch Kräuter. Sie lösen keine Probleme – aber viele empfinden sie als befreiend.',
     tone: '#7fb6c4',
     families: { clean: 40, floral: 5 },
     noteThemes: ['moschus'],
@@ -763,8 +763,8 @@ export const MOODS: Mood[] = [
     title: 'Ich will durchstarten',
     phrase: 'wenn du Energie für den Tag brauchst',
     subtitle: 'Zitrus & Energie – dein Wach-Kick für morgens.',
-    result: 'Spritzig, frische Zitrusdüfte wie ein Energieschub – Zitrone, Bergamotte, Grapefruit. Sie machen sofort wach und gut gelaunt.',
-    intro: 'Du brauchst Schwung? Zitrusdüfte sind der beste Kick für den Morgen: Bergamotte (frisch, belebend), Zitrone (spritzig, klar), Grapefruit (sonnig, optimistisch). Sie wirken nicht wie Koffein – aber sie holen dich sofort aus der Müdigkeit.',
+    result: 'Spritzige, frische Zitrusdüfte wie ein Energieschub – Zitrone, Bergamotte, Grapefruit. Viele empfinden sie als belebend.',
+    intro: 'Du brauchst Schwung? Zitrusdüfte gelten als klassischer Frische-Kick für den Morgen: Bergamotte (frisch, belebend), Zitrone (spritzig, klar), Grapefruit (sonnig, optimistisch). Sie wirken nicht wie Koffein – aber viele empfinden sie als angenehm wach machend.',
     tone: '#e8b65a',
     families: { clean: 40 },
     noteThemes: ['zitrus'],
@@ -777,8 +777,8 @@ export const MOODS: Mood[] = [
     title: 'Ich fühl mich verliebt',
     phrase: 'wenn du dich beschwingt und verliebt fühlst',
     subtitle: 'Rose & Jasmin – wenn Schmetterlinge tanzen.',
-    result: 'Blumige, zarte Düfte die sanft und romantisch wirken – Rose, Jasmin, Veilchen. Sie tragen dein Glücksgefühl in die Welt.',
-    intro: 'Das Herz geht schneller? Blumige Düfte passen perfekt zu diesem Gefühl: Rose (romantisch, zeitlos), Jasmin (sinnlich, warm), Veilchen (zart, elegant). Sie verstärken nicht das Gefühl – sie machen es einfach sichtbar für dich selbst.',
+    result: 'Blumige, zarte Düfte, die sanft und romantisch wirken – Rose, Jasmin, Veilchen. Sie tragen dein Glücksgefühl in die Welt.',
+    intro: 'Das Herz geht schneller? Blumige Düfte passen gut zu diesem Gefühl: Rose (romantisch, zeitlos), Jasmin (sinnlich, warm), Veilchen (zart, elegant). Sie verstärken nicht das Gefühl – sie machen es einfach sichtbar für dich selbst.',
     tone: '#e0a6c0',
     families: { floral: 40, gourmand: 10 },
     noteThemes: ['blumig'],
@@ -791,8 +791,8 @@ export const MOODS: Mood[] = [
     title: 'Ich will strahlen',
     phrase: 'wenn du auffallen und in Erinnerung bleiben willst',
     subtitle: 'Amber & Oud – dein Glanz für besondere Nächte.',
-    result: 'Warme, intensive Düfte die Aufmerksamkeit erregen und hängen bleiben – Oud, Amber, Vanille. Sie machen dich unvergesslich.',
-    intro: 'Du möchtest im Gedächtnis bleiben? Dann brauchst du Kraft: Oud (exotisch, intensiv), Amber (warm, sinnlich), Vanille (süss, luxuriös). Ein bis zwei Sprüher reichen – diese Düfte brauchen keine Menge, um zu wirken.',
+    result: 'Warme, intensive Düfte mit viel Präsenz – Oud, Amber, Vanille. Sie werden oft als besonders auffällig wahrgenommen.',
+    intro: 'Du möchtest im Gedächtnis bleiben? Dann brauchst du Kraft: Oud (exotisch, intensiv), Amber (warm, sinnlich), Vanille (süss, luxuriös). Ein bis zwei Sprüher reichen – diese Düfte brauchen keine grosse Menge, um zu wirken.',
     tone: '#9b6a8f',
     families: { woody: 25, gourmand: 25 },
     noteThemes: ['orient', 'vanille'],
@@ -807,7 +807,7 @@ export const MOODS: Mood[] = [
     phrase: 'wenn du im Job einen guten Eindruck machen willst',
     subtitle: 'Frisch & Kompetenz – für den professionellen Eindruck.',
     result: 'Frische, klare Düfte mit einem Hauch Holz – diskret, kompetent, angenehm. Sie sprechen für dich, ohne abzulenken.',
-    intro: 'Im Meeting muss dein Duft unsichtbar arbeiten: er soll dich unterstützen, nicht ablenken. Frische Noten (Zitrus, klar) mit edlem Holz (Vetiver, Sandelholz) und Moschus (sauber, zurückhaltend) – ein Sprüher reicht völlig.',
+    intro: 'Im Meeting sollte dein Duft im Hintergrund bleiben: Er soll dich begleiten, nicht ablenken. Frische Noten (Zitrus, klar) mit edlem Holz (Vetiver, Sandelholz) und Moschus (sauber, zurückhaltend) – ein Sprüher reicht völlig.',
     tone: '#9aa8a0',
     families: { clean: 25, woody: 20 },
     noteThemes: ['zitrus', 'holz', 'moschus'],
@@ -822,7 +822,7 @@ export const MOODS: Mood[] = [
     phrase: 'wenn du dir Sommer und Urlaub wünschst',
     subtitle: 'Zitrus & Freiheit – dein Sommer im Flacon.',
     result: 'Leichte, sonnige Düfte wie Sonne auf der Haut – Zitrus, frische Blüten, Leichtigkeit. Sie riechen nach Urlaub.',
-    intro: 'Träumst du von Sommer? Leichte Zitrusdüfte holen die Urlaubsgefühle auf die Haut: Bergamotte (sonnig, frisch), Kokos oder tropische Noten (warm, weich), leichte Blüten (spielerisch). Sie sind dein Ticket zum Strand im Kopf.',
+    intro: 'Träumst du von Sommer? Leichte Zitrusdüfte holen die Urlaubsgefühle auf die Haut: Bergamotte (sonnig, frisch), Kokos oder tropische Noten (warm, weich), leichte Blüten (spielerisch). Sie sind wie ein kleiner Kurzurlaub im Kopf.',
     tone: '#3fb8c4',
     families: { clean: 25, floral: 20 },
     noteThemes: ['zitrus'],
@@ -850,9 +850,9 @@ export const MOODS: Mood[] = [
     icon: 'gift',
     title: 'Ich suche ein Geschenk',
     phrase: 'wenn du ein Parfüm verschenken möchtest',
-    subtitle: 'Die sichersten Favoriten – für jeden Geschmack.',
-    result: 'Vielseitige, beliebte Düfte mit hohem Auressa-Score – ganzjährig tragbar und universell geliebt. Sichere Geschenke.',
-    intro: 'Ein Parfüm zu schenken braucht nicht kompliziert zu sein: Zeige hier die beliebtesten, vielseitigsten Düfte – die, die wirklich fast jede und jeder gerne trägt. Ganzjährig passend, mittlere Intensität, kein Risiko – einfach sicher.',
+    subtitle: 'Vielseitige Düfte – für viele Geschmäcker.',
+    result: 'Vielseitige Düfte mit mittlerer Intensität, ganzjährig tragbar – eine eher sichere Wahl zum Verschenken.',
+    intro: 'Ein Parfüm zu schenken braucht nicht kompliziert zu sein: Hier siehst du vielseitige Düfte aus unserem Katalog – ganzjährig passend und mit mittlerer Intensität. So hältst du das Risiko klein.',
     tone: '#c9a24a',
     families: { clean: 10, gourmand: 10, woody: 10, floral: 10 },
     noteThemes: [],
@@ -867,23 +867,23 @@ export const MOOD_TIPS: Record<string, string> = {
   verwoehnen:
     'Achte auf Gourmand-Düfte mit Vanille, Tonka oder Karamell. Trag sie eher sparsam auf – warme, süsse Noten wirken schnell intensiv. Für tagsüber reicht ein Sprüher, abends darf es etwas mehr sein.',
   stark:
-    'Holzige Düfte mit Vetiver, Zedernholz oder einem Hauch Leder wirken souverän. Sie entfalten sich oft erst nach 10–15 Minuten – gib ihnen Zeit. Ein bis zwei Sprüher genügen, um präsent zu sein.',
+    'Holzige Düfte mit Vetiver, Zedernholz oder einem Hauch Leder wirken souverän. Sie entfalten sich oft erst nach einigen Minuten richtig – gib ihnen Zeit. Ein bis zwei Sprüher genügen, um präsent zu sein.',
   runterkommen:
-    'Greif zu klaren, frischen Düften mit Moschus oder leichten grünen Noten. Sie halten meist etwas kürzer – ein Nachsprühen am Abend ist völlig okay. Hier gilt: weniger ist mehr.',
+    'Greif zu klaren, frischen Düften mit Moschus oder leichten grünen Noten. Sie halten oft etwas kürzer – ein Nachsprühen am Abend ist völlig okay. Hier gilt: weniger ist mehr.',
   durchstarten:
-    'Zitrusdüfte mit Zitrone, Bergamotte oder Grapefruit machen sofort wach. Sie verfliegen schneller als andere – ideal als Frische-Kick am Morgen, bei Bedarf mittags auffrischen.',
+    'Zitrusdüfte mit Zitrone, Bergamotte oder Grapefruit wirken auf viele belebend. Sie verfliegen oft schneller als andere – ideal als Frische-Kick am Morgen, bei Bedarf mittags auffrischen.',
   verliebt:
-    'Blumige Düfte mit Rose, Jasmin oder Pfingstrose wirken zart und beschwingt. Auf warmer Haut (Handgelenk, Hals) entfalten sie sich am schönsten. Nicht verreiben – das bricht den Duft.',
+    'Blumige Düfte mit Rose, Jasmin oder Pfingstrose wirken zart und beschwingt. Auf warmer Haut (Handgelenk, Hals) entfalten sie sich gut. Viele raten, nicht zu verreiben – einfach aufsprühen und trocknen lassen.',
   strahlen:
-    'Für besondere Abende sind intensive Düfte mit Amber, Oud oder Vanille gemacht. Sie halten lang und tragen weit – ein, zwei Sprüher reichen völlig. Am besten ca. 20 Minuten vor dem Rausgehen auftragen.',
+    'Für besondere Abende sind intensive Düfte mit Amber, Oud oder Vanille gemacht. Sie halten oft lang und tragen weit – ein, zwei Sprüher reichen völlig. Am besten etwas vor dem Rausgehen auftragen.',
   job:
-    'Im Büro gilt: dezent auftragen – lieber ein Sprüher auf die Kleidung als mehrere auf die Haut. Frische, klare Düfte mit wenig Sillage stören niemanden im Meeting. Schwere, süsse Düfte hebst du dir besser für die Freizeit auf.',
+    'Im Büro gilt: dezent auftragen – lieber ein Sprüher auf die Kleidung als mehrere auf die Haut. Frische, klare Düfte mit wenig Ausstrahlung fallen im Meeting kaum auf. Schwere, süsse Düfte hebst du dir besser für die Freizeit auf.',
   urlaub:
-    'Leichte Zitrus- und Blütendüfte passen perfekt zu Hitze – schwere Düfte wirken in der Sonne schnell zu viel. Sie halten kürzer, also ruhig nachsprühen. Auf eingecremter Haut duften sie besonders lang.',
+    'Leichte Zitrus- und Blütendüfte passen gut zu Hitze – schwere Düfte wirken in der Sonne schnell zu viel. Sie halten oft kürzer, also ruhig nachsprühen. Auf eingecremter Haut halten sie oft etwas länger.',
   abend:
-    'Warme Düfte mit Vanille, Moschus und etwas Holz schaffen Gemütlichkeit. Sprüh sie eher nah an die Haut statt in den ganzen Raum. Nach einem warmen Bad hält der Duft besonders gut.',
+    'Warme Düfte mit Vanille, Moschus und etwas Holz schaffen Gemütlichkeit. Sprüh sie eher nah an die Haut statt in den ganzen Raum. Auf frisch eingecremter Haut hält der Duft oft etwas länger.',
   geschenk:
-    'Sicher schenkst du mit vielseitigen Düften: ganzjährig tragbar und mittlere Intensität passen den meisten. Kennst du den Geschmack nicht genau, ist ein Unisex-Duft eine gute Wahl. Ein bekannter, beliebter Duft kommt fast immer gut an.'
+    'Sicher schenkst du mit vielseitigen Düften: ganzjährig tragbar und mittlere Intensität passen den meisten. Kennst du den Geschmack nicht genau, ist ein Unisex-Duft eine gute Wahl. Ein bekannter Klassiker kommt oft gut an.'
 };
 
 // Eine einzelne Stimmung anhand ihres Codes finden (für die Detailseiten).
@@ -910,9 +910,9 @@ const MOOD_THEME_WORDS: Record<string, string> = {
 
 export function moodReason(p: Perfume, mood: Mood): string {
   const theme = mood.noteThemes.find((code) => perfumeHasTheme(p, code));
-  if (theme && MOOD_THEME_WORDS[theme]) return `${MOOD_THEME_WORDS[theme]} – genau das Richtige dafür.`;
+  if (theme && MOOD_THEME_WORDS[theme]) return `${MOOD_THEME_WORDS[theme]} – passen gut dazu.`;
   const fam = p.fragrance_family || '';
-  if (MOOD_FAMILY_WORDS[fam]) return `${MOOD_FAMILY_WORDS[fam]} – genau das Richtige dafür.`;
+  if (MOOD_FAMILY_WORDS[fam]) return `${MOOD_FAMILY_WORDS[fam]} – passen gut dazu.`;
   return 'Passt zu deinem Gefühl.';
 }
 

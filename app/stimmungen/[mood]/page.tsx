@@ -61,7 +61,7 @@ export default async function MoodPage({ params }: { params: Promise<{ mood: str
     { q: `Welche Düfte passen, ${mood.phrase}?`, a: mood.intro },
     {
       q: 'Woran erkenne ich solche Düfte?',
-      a: `${dnaText ? `Typisch sind ${dnaText}.` : mood.result} Auressa wertet die Noten jedes Dufts aus und ordnet ihn automatisch dieser Stimmung zu – ganz ohne Raten.`
+      a: `${dnaText ? `Typisch sind ${dnaText}.` : mood.result} Auressa ordnet die Düfte im Katalog automatisch anhand von Duftfamilie, Noten und Intensität dieser Stimmung zu.`
     },
     {
       q: 'Sind die Empfehlungen für Damen oder Herren?',

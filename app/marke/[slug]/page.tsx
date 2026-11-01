@@ -31,7 +31,7 @@ export async function generateMetadata({
   const title = `${brand.name} Parfums – alle Düfte im Überblick`;
   const description =
     brand.description ||
-    `Alle ${brand.name} Düfte bei Auressa: Preise, Duftprofile, Noten und günstige Alternativen. Finde deinen ${brand.name} Signature-Duft.`;
+    `Alle ${brand.name} Düfte bei Auressa: Preise, Duftprofile, Noten und – wo vorhanden – günstigere Alternativen.`;
 
   return {
     title,
@@ -184,8 +184,8 @@ export default async function BrandPage({
   // Beschreibung generieren, falls keine vorhanden
   const description =
     brand.description ||
-    `${brand.name} steht für hochwertige Parfums${brand.country ? ` aus ${brand.country}` : ''}. ` +
-    `Bei Auressa findest du ${perfumes.length} ${brand.name}-${perfumes.length === 1 ? 'Duft' : 'Düfte'} mit vollständigen Duftprofilen, Noten und Preisangaben.`;
+    `${brand.name}${brand.country ? ` (${brand.country})` : ''} im Auressa-Katalog. ` +
+    `Hier findest du ${perfumes.length} ${brand.name}-${perfumes.length === 1 ? 'Duft' : 'Düfte'} mit Duftprofil, Noten und Preisangaben.`;
 
   return (
     <main style={{ backgroundColor: '#faf7f2' }}>
@@ -315,10 +315,10 @@ export default async function BrandPage({
             Deinen Duft gefunden?
           </p>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.4rem', fontWeight: 700, color: '#faf7f2', marginBottom: '0.75rem' }}>
-            Finde deinen perfekten Match
+            Finde deinen Match
           </h2>
           <p style={{ color: 'rgba(250,247,242,0.7)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
-            Unser Duft-Quiz findet in wenigen Minuten den Duft, der wirklich zu dir passt.
+            Unser Duft-Quiz schlägt dir in wenigen Minuten Düfte vor, die zu deinen Angaben passen.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <Link href="/quiz" style={{

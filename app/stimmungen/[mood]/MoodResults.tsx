@@ -117,7 +117,7 @@ export default function MoodResults({ items, mood }: { items: Item[]; mood: Mood
         <p className="small">
           {gender && items.length > 0
             ? 'Für diese Auswahl gerade keine Treffer – probier „Für alle".'
-            : 'Passende Düfte dafür sind bald im Katalog – unser Katalog wächst laufend. Bis dahin findest du im Quiz deinen persönlichen Match.'}
+            : 'Für diese Stimmung haben wir noch keine passenden Düfte im Katalog – der Katalog wird laufend erweitert. Bis dahin findest du im Quiz deinen persönlichen Match.'}
         </p>
       )}
 

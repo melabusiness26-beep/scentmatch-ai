@@ -167,7 +167,7 @@ export default function DuftScannerClient({ allPerfumes }: DuftScannerClientProp
           Duft-Scanner
         </h2>
         <p style={{ fontSize: '14px', color: C.textMuted, textAlign: 'center', marginBottom: '2rem', lineHeight: 1.6 }}>
-          Fotografiere einen Parfüm-Flakon – wir analysieren ihn und zeigen dir ähnliche Düfte.
+          Bald verfügbar: Fotografiere einen Parfüm-Flakon – der Scanner soll ihn erkennen und dir ähnliche Düfte zeigen. Die KI-Erkennung kann sich auch irren.
         </p>
 
         <ImageAnalyzer onAnalysisComplete={handleAnalysisComplete} />

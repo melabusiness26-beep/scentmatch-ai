@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/duft-geschenk` },
   openGraph: {
       images: ['/opengraph-image'],
-    title: 'Duft als Geschenk: Perfekte Parfum-Geschenke | Auressa',
-    description: 'Der komplette Guide für das perfekte Duft-Geschenk – wie du es richtig wählst und präsentierst.',
+    title: 'Duft als Geschenk: Passende Parfum-Geschenke | Auressa',
+    description: 'Der Guide für ein passendes Duft-Geschenk – wie du es gut wählst und präsentierst.',
     type: 'website',
     url: `${SITE_URL}/duft-geschenk`,
   },
@@ -48,10 +48,10 @@ export default function FragranceGiftPage() {
             lineHeight: 1.15,
             color: '#faf7f2',
           }}>
-            Duft als Geschenk – Der perfekte Weg
+            Duft als Geschenk – so gelingt es
           </h1>
           <p style={{ fontSize: '16px', color: 'rgba(250,247,242,0.8)', margin: 0 }}>
-            Dein Leitfaden zum perfekten Duft-Geschenk – für jeden Menschen und jede Gelegenheit.
+            Dein Leitfaden zum passenden Duft-Geschenk – für viele Menschen und Gelegenheiten.
           </p>
         </div>
       </section>
@@ -316,7 +316,7 @@ export default function FragranceGiftPage() {
             paddingBottom: '0.5rem',
             borderBottom: '2px solid rgba(212,175,55,0.3)',
           }}>
-            💡 Pro-Tipps für das perfekte Duft-Geschenk
+            💡 Pro-Tipps für ein gelungenes Duft-Geschenk
           </h2>
           <div style={{
             background: 'linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.04))',

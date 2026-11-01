@@ -15,7 +15,7 @@ function tagLabel(slug: string): string {
 // Beschreibung je Tag für SEO
 function tagDescription(slug: string): string {
   const label = tagLabel(slug);
-  return `Entdecke Parfüms mit dem Charakter „${label}" – kuratierte Duftempfehlungen von Auressa, der Schweizer KI-Duftberatung.`;
+  return `Entdecke Parfüms mit dem Charakter „${label}" – Duftempfehlungen aus dem Auressa-Katalog.`;
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -128,7 +128,7 @@ export default async function TagPage({ params }: { params: Promise<{ slug: stri
         {perfumes.length > 0 && (
           <div style={{ textAlign: 'center', marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid #e8dcc8' }}>
             <p style={{ fontSize: '0.95rem', color: '#7a6a5e', marginBottom: '1rem' }}>
-              Den perfekten Duft für dich finden?
+              Den passenden Duft für dich finden?
             </p>
             <Link href="/quiz" style={{
               display: 'inline-block',
@@ -140,7 +140,7 @@ export default async function TagPage({ params }: { params: Promise<{ slug: stri
               fontWeight: '700',
               fontSize: '0.95rem',
             }}>
-              ✨ KI-Duftquiz starten
+              ✨ Duft-Quiz starten
             </Link>
           </div>
         )}

@@ -13,8 +13,8 @@ export default function NewsletterLinkInvalidPage() {
       <p className="eyebrow">Newsletter</p>
       <h1>Dieser Link ist nicht mehr gültig</h1>
       <p className="lead">
-        Bestätigungs-Links gelten 7 Tage. Melde dich einfach nochmals für den Newsletter an – du bekommst dann
-        sofort einen neuen Link per E-Mail.
+        Bestätigungs-Links gelten 7 Tage. Falls dein Link abgelaufen ist, melde dich bitte über die Kontaktangaben
+        im Impressum – wir helfen dir gern weiter.
       </p>
       <div className="cta" style={{ justifyContent: 'center' }}>
         <Link className="button" href="/">Zur Startseite</Link>

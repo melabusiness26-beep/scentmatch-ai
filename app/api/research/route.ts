@@ -136,7 +136,9 @@ REGELN (NICHT VERHANDELBAR - ABSOLUT KRITISCH FÜR QUALITÄT):
     let result_text = '';
     let stop_reason = '';
 
-    while (true) {
+    // Höchstens 8 Runden: schützt vor einer Endlosschleife (und unkontrollierten API-Kosten).
+    const MAX_ROUNDS = 8;
+    for (let round = 0; round < MAX_ROUNDS; round++) {
       const response = await client.messages.create({
         model: 'claude-opus-4-5',
         max_tokens: 4096,

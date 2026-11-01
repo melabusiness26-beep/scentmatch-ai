@@ -49,7 +49,11 @@ export default function MyProfilePage() {
 
   const saveProfiles = (updated: ScentProfile[]) => {
     setProfiles(updated);
-    localStorage.setItem('auressa-profiles', JSON.stringify(updated));
+    try {
+      localStorage.setItem('auressa-profiles', JSON.stringify(updated));
+    } catch {
+      // Speicher gesperrt (z. B. privater Modus in Safari) – Profile gelten dann nur für diesen Besuch.
+    }
   };
 
   const createProfile = () => {
@@ -202,12 +206,13 @@ export default function MyProfilePage() {
                     )}
                   </div>
 
-                  <button
+                  <Link
+                    href="/quiz"
                     style={{
                       marginTop: '1rem',
                       display: 'block',
                       width: '100%',
-                      padding: '10px',
+                      padding: '12px 10px',
                       background: '#D4AF37',
                       color: '#1F1410',
                       border: 'none',
@@ -215,10 +220,13 @@ export default function MyProfilePage() {
                       fontWeight: 600,
                       cursor: 'pointer',
                       fontSize: '0.9rem',
+                      textAlign: 'center',
+                      textDecoration: 'none',
+                      boxSizing: 'border-box',
                     }}
                   >
                     Mit diesem Profil zum Quiz →
-                  </button>
+                  </Link>
                 </div>
               ))}
             </div>

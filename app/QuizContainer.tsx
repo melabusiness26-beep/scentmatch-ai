@@ -152,7 +152,11 @@ export default function QuizContainer() {
     else if (kind === 'occasion') setOccasion(code as QuizAnswers['occasion']);
     else if (kind === 'season') setSeason(code as QuizAnswers['season']);
     else if (kind === 'sillage') setSillage(code as QuizAnswers['sillage']);
-    else if (kind === 'budget') setBudgetMax(code === '80' ? 80 : code === '150' ? 150 : null);
+    else if (kind === 'budget') {
+      setBudgetMax(code === '80' ? 80 : code === '150' ? 150 : null);
+      // „Premium (über CHF 150)": kein Budget-Limit, aber hochwertigere Düfte bekommen einen Bonus.
+      setPricePref(code === 'premium' ? 'original' : '');
+    }
     else if (kind === 'lovedNote') setLovedNote(code);
     else if (kind === 'dislikedNote') setDislikedNote(code);
     else if (kind === 'longevity') setLongevityPref(code as QuizAnswers['longevity']);

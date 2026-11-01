@@ -1,0 +1,35 @@
+# Automatische Prüfung bei jedem Pull Request und jedem Push auf main:
+# 1. Katalog-Dateien (catalog/perfumes/*.json) gültig?
+# 2. TypeScript ohne Fehler?
+# 3. Seite lässt sich bauen?
+# Es werden nur die öffentlichen Supabase-Werte genutzt (stehen ohnehin im Browser-Code),
+# keine geheimen Schlüssel. Im Pull Request wird nichts in die Datenbank geschrieben.
+name: Prüfung
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+      NEXT_PUBLIC_SUPABASE_URL: https://hxzgakxxqxdfewyymvyl.supabase.co
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: sb_publishable_YISYZId76xRLcz2-xpA_Ag_6Ok8yAsw
+      NEXT_PUBLIC_SITE_URL: https://auressa.ch
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Katalog prüfen
+        run: npm run catalog:check
+      - name: TypeScript prüfen
+        run: npm run typecheck
+      - name: Seite bauen
+        run: npm run build

@@ -17,6 +17,11 @@ export async function POST(request: NextRequest) {
 
   try {
     revalidatePath(path);
+    // Nach jeder Änderung an einem Duft auch Katalog, Startseite und Saison-Liste auffrischen,
+    // damit die Änderung dort sofort sichtbar ist (nicht erst nach dem Zwischenspeicher-Intervall).
+    if (typeof path === 'string' && path.startsWith('/duft/')) {
+      for (const p of ['/duefte', '/', '/saisonal']) revalidatePath(p);
+    }
     return NextResponse.json({
       success: true,
       message: `Cache cleared for ${path}`,

@@ -3,7 +3,8 @@ import Breadcrumb from '@/app/Breadcrumb';
 import PerfumeCatalog from './PerfumeCatalog';
 import { catalogCountLabel, getPerfumeCount, getPerfumes } from '@/lib/perfumes';
 
-export const revalidate = 0;
+// Alle 10 Minuten neu erzeugen: schnell aus dem Zwischenspeicher, neue Düfte erscheinen trotzdem rasch.
+export const revalidate = 600;
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 

@@ -30,7 +30,7 @@ export const guides: Guide[] = [
     seoTitle: 'Parfüm-Dupes: clevere Alternativen in der Schweiz',
     description:
       'Ein grossartiger Duft muss nicht teuer sein. Ein Dupe riecht ähnlich wie ein Luxus-Original, kostet aber nur einen Bruchteil. Creed Aventus, Dior Sauvage, Baccarat Rouge – für alle gibt es grossartige Alternativen. Hier unsere ehrlichsten Empfehlungen.',
-    heroImage: 'https://images.unsplash.com/photo-1541643600914-78b084683702?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/guenstige-alternativen-zu-teuren-dueften.svg',
     intro: [
       'Ein „Dupe" ist nicht ein billiger Klon, sondern eine intelligente Alternative. Ein Duft in ähnlicher Richtung, von einer seriösen Marke, zu einem Bruchteil des Preises. Die Geschichte der Dupes ist eine Geschichte von Demokratisierung. Vor 15 Jahren war Creed Aventus ein Duft nur für diejenigen mit echtem Geld. Heute bekommst du eine ähnliche Richtung für einen Bruchteil des Preises. Das hat die arabischen Duft-Häuser wie Lattafa, Armaf und Al Haramain möglich gemacht. Sie haben verstanden, dass es möglich ist, grossartige Düfte zu machen, ohne Marken-Luxe-Preismarke zu haben.',
       'Ein wichtiger Punkt: Ein Dupe ist nicht 100 Prozent identisch mit dem Original, und es muss auch nicht sein. Ein Dupe ist ein Respekt-Tribut, nicht ein Betrug. Es sagt: Ich mag die Richtung dieses Duftes, ich mag die Geschichte, aber ich spare gerne viel Geld. Ein Dupe hält manchmal etwas kürzer, es hat eine leicht andere Haltbarkeit oder Projektion, aber als eigenständiger Duft ist es oft grossartig. Die Qualität der arabischen Marken ist exponentiell besser geworden. Das sind keine minderwertigen Imitate mehr, sondern Düfte mit eigenem Charakter und echter Qualität.',
@@ -418,7 +418,7 @@ export const guides: Guide[] = [
     title: 'Parfum-Inhaltsstoffe & Allergene einfach erklärt',
     description:
       'Was steckt eigentlich in einem Parfum? Alkohol, Duftöl und die deklarationspflichtigen Duftallergene wie Limonene und Linalool, einfach und verständlich erklärt.',
-    heroImage: 'https://images.unsplash.com/photo-1616401784845-180882ba9ba8?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/parfum-inhaltsstoffe-allergene.svg',
     intro: [
       'Auf jeder Parfumverpackung steht eine Liste mit Inhaltsstoffen, oft mit lateinischen Namen, die etwas einschüchternd wirken. Dabei steckt dahinter kein Hexenwerk. Hier erklären wir dir einfach, was wirklich drin ist und worauf empfindliche Haut achten sollte.',
       'Wichtig vorweg: Die genaue Zusammensetzung ist von Duft zu Duft unterschiedlich und kann sich ändern. Die vollständige, gültige Liste findest du immer auf der Verpackung bzw. beim Hersteller. Dieser Artikel erklärt das Allgemeine.'
@@ -478,7 +478,7 @@ export const guides: Guide[] = [
     title: 'Die besten Düfte unter 50 Franken',
     description:
       'Gut riechen muss nicht teuer sein: Unsere Lieblingsdüfte für unter CHF 50, von frisch bis süss, für Damen, Herren und Unisex.',
-    heroImage: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/die-besten-duefte-unter-50-franken.svg',
     intro: [
       'Ein toller Duft muss nicht 150 Franken kosten. Gerade von Marken wie Lattafa, Armaf oder Davidoff gibt es erstaunlich gute Parfüms für kleines Geld. Mit ordentlicher Haltbarkeit, schöner Projektion und einer Zusammensetzung, die sich nicht nach „billig" anfühlt.',
       'In der Schweiz ist die Auswahl an günstigen Düften grösser als viele denken. Online-Shops wie Notino.ch haben arabische Marken wie Lattafa inzwischen fest im Sortiment. Wer weiss, wo man schaut, findet echte Geheimtipps für 20–40 CHF, die sich neben 200-Franken-Flakons nicht zu verstecken brauchen.',
@@ -519,7 +519,7 @@ export const guides: Guide[] = [
     seoTitle: 'Wie lange hält ein Parfum? Haltbarkeit-Tipps',
     description:
       'Wie du Parfum richtig aufträgst, damit es länger hält, plus warum Düfte verfliegen, welche am längsten halten und wie lange ein Parfum haltbar ist. Mit den langlebigsten Düften aus unserem Katalog.',
-    heroImage: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/wie-lange-haelt-parfum-haltbarkeit.svg',
     intro: [
       'Wie lange ein Duft hält, hängt von zwei Dingen ab: wie du ihn aufträgst und welcher Duft es ist. Beides erklären wir hier, verständlich und ganz ohne Fachwissen.',
       'Zuerst die besten Tipps zum richtigen Auftragen, danach alles zur Haltbarkeit: warum Düfte verfliegen, welche am längsten halten und wie lange ein Parfum überhaupt haltbar ist.'
@@ -672,7 +672,7 @@ export const guides: Guide[] = [
     seoTitle: 'Männerdüfte, die Frauen mögen',
     description:
       'Welche Herrendüfte ziehen an? Unsere Liste der echten „Kompliment-Klassiker" für Männer: elegant, einladend und unvergessen. Die Düfte, die Frauen wirklich mag und lange erinnert.',
-    heroImage: 'https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/maennerduefte-die-frauen-moegen.svg',
     intro: [
       'Manche Düfte sammeln Komplimente wie ein Magnet. Ein Mann trägt sie, und Stunden später fragen Frauen: Was ist das? Das sind nicht die lautesten oder intensivsten – paradoxerweise sind es gerade die Düfte, die von Nähe aus wirken, die echte Anziehung schaffen. Sie kommunizieren etwas Subtiles: Hier ist jemand, der auf sich achtet, nicht aufdringlich, sondern einladend.',
       'Was funktioniert, hat weniger mit Chemie als mit Balance zu tun. Düfte, auf die Frauen reagieren, kombinieren Wärme (Vanille, Amber, Moschus) mit Frische – sodass sie nicht erdrückend wirken, aber dennoch präsent sind. Ein reiner Oud-Duft kann elegant sein, wirkt aber oft zu dominant in Nähe. Ein reiner Zitrus zu unbeteiligt. Die besten liegen dazwischen.',
@@ -904,7 +904,7 @@ export const guides: Guide[] = [
     seoTitle: 'Damendüfte, die Männer mögen',
     description:
       'Welche Frauendüfte ziehen auf Männer an? Unsere Liste der echten „Anziehungs-Klassiker": süss, sinnlich und zeitlos. Düfte, die im Gedächtnis bleiben und echte Komplimente bringen.',
-    heroImage: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/damenduefte-die-maenner-lieben.svg',
     intro: [
       'Manche Frauendüfte bleiben im Gedächtnis. Stunden nach einer Begegnung erinnert sich ein Mann noch an den Duft, und er wirkt unbewusst attraktiv. Das ist nicht Manipulation oder Tricks, sondern das Ergebnis von guter Parfümerie. Die Düfte, die bei Männern wirklich funktionieren, teilen ein bestimmtes Muster: Sie balancieren zwischen Eleganz und Sinnlichkeit, zwischen Nähe und Mysterium. Sie riechen nicht nach „Mädchen", sondern nach einer Frau, die sich selbst kennt.',
       'Was diese Düfte gemeinsam haben: Sie starten mit etwas Leichtem – Fruchtig oder Blüte – damit der Duft nicht sofort erdrückend wirkt. In der Mitte entwickelt sich etwas Wärmeres, Sinnlicheres: Rose, Orchidee, exotische Fruchtnoten. Und am Ende liegt ein warmer, subtil süsslich-sinnlicher Grund: Vanille, Moschus, Amber. Diese Architektur funktioniert, weil sie den Trick versteht: nicht zu viel Lärm, aber präsent. Nicht aufdringlich, aber unvergesslich.',
@@ -953,7 +953,7 @@ export const guides: Guide[] = [
     seoTitle: 'Parfum nach Sternzeichen: welcher Duft passt?',
     description:
       'Welcher Duft passt zu deinem Sternzeichen? Vom Widder bis zu den Fischen, pro Zeichen ein Luxus-Duft und eine günstigere Alternative in ähnlicher Duftrichtung.',
-    heroImage: 'https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/parfum-nach-sternzeichen.svg',
     intro: [
       'Astrologie ist keine Wissenschaft, aber eine schöne, spielerische Inspiration. Dein Sternzeichen sagt nichts Verbindliches über deinen perfekten Duft, kann aber ein charmanter Startpunkt sein, um deinen Stil zu finden.',
       'Ein Hinweis zur Ehrlichkeit: Die genannten Spar-Picks sind eigenständige Düfte in ähnlicher Duftrichtung, keine identischen Kopien der Luxus-Düfte. Sie gehen in eine verwandte Richtung, riechen aber nicht exakt gleich.',
@@ -1069,7 +1069,7 @@ export const guides: Guide[] = [
     seoTitle: 'Parfum für Einsteiger: dein erster Signature-Duft',
     description:
       'Neu in der Welt der Düfte? So findest du Schritt für Schritt deinen ersten Signature-Duft, ohne teure Fehlkäufe. Mit einfachen Tipps und sicheren Einsteiger-Empfehlungen.',
-    heroImage: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/parfum-fuer-einsteiger-erster-signature-duft.svg',
     intro: [
       'Vor dem Parfumregal zu stehen kann überwältigend sein: hunderte Flakons, fremde Begriffe und stolze Preise. Aber mit ein paar einfachen Tricks findest du deinen Lieblingsduft schneller als du denkst.',
       'Hier bekommst du eine einfache Anleitung für deinen ersten eigenen Duft, ganz ohne Fachchinesisch.'
@@ -1254,7 +1254,7 @@ export const guides: Guide[] = [
     title: 'Düfte, die extrem lange halten („Beast-Mode")',
     description:
       'Parfums mit enormer Haltbarkeit und Projektion: Diese Düfte halten oft den ganzen Tag, von süss-warm bis dunkel-holzig.',
-    heroImage: 'https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/parfum-das-lange-haelt-beast-mode.svg',
     intro: [
       'Manche Düfte sind echte Ausdauer-Wunder: Einmal aufgesprüht, begleiten sie dich oft den ganzen Tag und sind auch für andere deutlich wahrnehmbar, noch nach Stunden, ohne nachzulegen. Die Duft-Community nennt das „Beast Mode".',
       'Was Beast-Mode-Düfte ausmacht, sind vor allem zwei Faktoren: hohe Konzentration des Duftöls und eine Kombination von Inhaltsstoffen mit starkem Haftungsvermögen. Ambroxan, Iso E Super, warme Ambernoten und schwere Moschus-Verbindungen sind typische Vertreter. Sie lagern sich auf Haut und Kleidung fest und projizieren weithin.',
@@ -1479,7 +1479,7 @@ export const guides: Guide[] = [
     title: 'Parfum-Layering: zwei Düfte richtig kombinieren',
     description:
       'Layering bedeutet, zwei Düfte zu schichten und so deine eigene Duftkreation zu erschaffen. So gelingt das Kombinieren, einfach erklärt.',
-    heroImage: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/parfum-layering-duefte-kombinieren.svg',
     intro: [
       'Beim Layering trägst du zwei Düfte übereinander und erschaffst so eine ganz persönliche Note, die niemand sonst genau so hat. Das klingt nach Profi-Kunst, ist aber einfacher als gedacht und macht grossen Spass beim Experimentieren.',
       'Manche Marken empfehlen das Kombinieren sogar ausdrücklich, etwa Jo Malone London. Du brauchst kein teures Arsenal – manchmal reicht ein einfacher Body-Splash als Basis unter deinem Lieblingsduft.',
@@ -1516,7 +1516,7 @@ export const guides: Guide[] = [
     seoTitle: 'EdT, EdP oder Parfum? Der Unterschied',
     description:
       'Eau de Toilette, Eau de Parfum oder Extrait: was ist der Unterschied? So erkennst du, welche Konzentration für dich die richtige ist.',
-    heroImage: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/edt-edp-parfum-unterschied.svg',
     intro: [
       'Auf Flakons steht „EdT", „EdP" oder „Parfum". Diese Kürzel sagen, wie stark ein Duft konzentriert ist und das beeinflusst direkt, wie lange er hält, wie weit er projiziert und wie teuer er ist. Der Unterschied liegt in der Konzentration des Duftöls im Trägeralkohol.',
       'Mehr Duftöl bedeutet: intensiver, langlebiger, teurer. Aber nicht immer besser. Ein frisches Eau de Toilette für den Sommer macht oft mehr Sinn als ein schweres Parfum. Es kommt auf den Duft und den Anlass an.',
@@ -1547,7 +1547,7 @@ export const guides: Guide[] = [
     title: '5 häufige Parfum-Fehler: und wie du sie vermeidest',
     description:
       'Verreiben, falsch lagern, zu viel sprühen: Die häufigsten Parfum-Fehler und wie du sie ganz einfach vermeidest.',
-    heroImage: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/haeufige-parfum-fehler.svg',
     intro: [
       'Beim Umgang mit Parfum schleichen sich schnell kleine Fehler ein, die Haltbarkeit und Duftbild verschlechtern, oft ohne, dass man es merkt. Viele dieser Fehler macht fast jeder, einfach weil sie niemand erklärt hat.',
       'Die gute Nachricht: Sie sind leicht zu beheben. Hier die fünf häufigsten Parfum-Fehler und wie du sie ganz einfach vermeidest.'
@@ -1580,7 +1580,7 @@ export const guides: Guide[] = [
     title: 'Düfte mit Schweizer Bezug',
     description:
       'Parfums von Marken mit Schweizer Wurzeln wie Chopard und Gisada, elegant und hochwertig. Kuratiert von Auressa, deiner Schweizer Duft-Plattform.',
-    heroImage: 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/parfums-mit-schweizer-bezug.svg',
     intro: [
       'Auressa wird in der Schweiz kuratiert und wir finden es schön, wenn Düfte auch einen lokalen Bezug haben. In der Duftwelt gibt es mehrere Marken mit echten Schweizer Wurzeln: von Genfer Luxushäusern bis zu modernen Schweizer Duftlabels.',
       'Schweizer Qualität hat in der Parfümerie einen guten Ruf: sauber, präzise, hochwertig. Das zeigt sich nicht nur in der Uhren- und Schmuckindustrie, sondern auch in der kleinen, feinen Duftwelt.',
@@ -1613,7 +1613,7 @@ export const guides: Guide[] = [
     title: 'Die besten Lattafa-Düfte',
     description:
       'Lattafa bietet erstaunlich gute Düfte für kleines Geld, warm, langlebig und oft eine günstige Alternative zu teuren Originalen. Unsere Favoriten.',
-    heroImage: 'https://images.unsplash.com/photo-1540202404-a2f29016b523?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/die-besten-lattafa-duefte.svg',
     intro: [
       'Die Marke Lattafa hat in kurzer Zeit viele Fans gewonnen – in der Duft-Community und zunehmend auch bei Mainstream-Käufern. Tolle Haltbarkeit, warme Kompositionen und das alles zu erstaunlich kleinen Preisen: Lattafa hat gezeigt, dass guter Duft keine 150 Franken kosten muss.',
       'Die Marke stammt aus den Vereinigten Arabischen Emiraten. Bekannt ist sie heute vor allem für Düfte in der Richtung teurer Originale, aber inzwischen stehen viele ihrer Düfte als eigenständige Favoriten in vielen Sammlungen, neben den teuren Flakons.',
@@ -1647,7 +1647,7 @@ export const guides: Guide[] = [
     title: 'Die besten Armaf-Düfte',
     description:
       'Armaf ist bekannt für preiswerte Düfte mit toller Haltbarkeit, allen voran Club de Nuit. Unsere Armaf-Favoriten für Damen und Herren.',
-    heroImage: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/die-besten-armaf-duefte.svg',
     intro: [
       'Armaf hat sich mit der Club-de-Nuit-Reihe einen Namen gemacht: charaktervolle Düfte mit toller Haltbarkeit zu kleinen Preisen. In der Duft-Community ist die Marke aus Dubai seit Jahren ein fester Begriff, besonders Club de Nuit Intense Man ist dort sehr bekannt.',
       'Was Armaf besonders macht: Sie machen keine Geheimnis daraus, dass ihre Düfte von bekannten Originalen inspiriert sind, aber sie pflegen auch einen eigenständigen Stil. Die Qualität ist für den Preis erstaunlich gut, die Haltbarkeit oft beeindruckend.',
@@ -1721,7 +1721,7 @@ export const guides: Guide[] = [
     seoTitle: 'Die besten Nischendüfte',
     description:
       'Nischendüfte heben sich vom Mainstream ab: eigenständig, hochwertig und aussergewöhnlich. Was Nischenparfums ausmacht und unsere Favoriten.',
-    heroImage: 'https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/die-besten-nischenduefte.svg',
     intro: [
       'Nischendüfte sind die Gegenwelt zu den grossen Mainstream-Parfums: Statt für den Massengeschmack gemacht, setzen sie auf Eigenständigkeit, hochwertige Rohstoffe und einen unverwechselbaren Charakter. Wer etwas Besonderes sucht, das nicht jeder trägt, wird hier fündig.',
       'Der Begriff „Nische" sagt nichts über den Preis – er beschreibt den Ansatz. Nischenmarken wie Le Labo, Byredo oder Xerjoff positionieren sich bewusst abseits des Massenmarkts, arbeiten oft mit selteneren Rohstoffen und bieten mehr Persönlichkeit als ein Mainstream-Bestseller. Das geht oft mit einem höheren Preis einher, aber nicht immer.',
@@ -1806,7 +1806,7 @@ export const guides: Guide[] = [
     title: 'Creed Aventus: die besten günstigen Alternativen',
     description:
       'Creed Aventus ist legendär, aber teuer. Diese günstigen Alternativen gehen in die gleiche fruchtig-rauchige Richtung. Unsere Spar-Tipps.',
-    heroImage: 'https://images.unsplash.com/photo-1541643600914-78b084683702?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/creed-aventus-guenstige-alternativen.svg',
     intro: [
       'Creed Aventus gilt als einer der berühmtesten Herrendüfte überhaupt: fruchtige Ananas, rauchige Birke und edles Moschus-Holz. Er ist seit 2010 ein Klassiker und hat eine fast mythische Stellung in der Duft-Community. Aber der Preis ist happig.',
       'Die gute Nachricht: Es gibt Düfte, die in eine sehr ähnliche fruchtig-rauchige Richtung gehen, zu einem Bruchteil des Preises. Wichtig ehrlich gesagt: Keiner ist eine exakte Kopie. Aventus hat einen ganz eigenen Charakter, den kein Dupe vollständig reproduziert. Für den Alltag sind die Alternativen verblüffend nah dran.',
@@ -1844,7 +1844,7 @@ export const guides: Guide[] = [
     seoTitle: 'Lattafa-Dupes: welches Original dahintersteckt',
     description:
       'Lattafa ist bekannt für günstige Düfte, die teuren Originalen ähneln. Wir zeigen dir, welcher Luxus-Duft hinter den beliebtesten Lattafa-Parfüms steckt.',
-    heroImage: 'https://images.unsplash.com/photo-1541643600914-78b084683702?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/lattafa-dupes-welches-original.svg',
     intro: [
       'Die Marke Lattafa hat sich einen Namen gemacht mit warmen, langlebigen Düften zu kleinen Preisen. Viele davon erinnern stark an teure Originale. Viele Lattafa-Düfte werden deshalb mit bekannten Luxusdüften verglichen.',
       'Wichtig zu wissen: Lattafa nennt ihre Düfte keine „Dupes". Sie sind eigenständige Produkte in ähnlicher Duftrichtung. Ein Duft selbst ist in den meisten Ländern kaum rechtlich geschützt, sehr wohl aber Name, Logo und Flakon.',
@@ -1890,7 +1890,7 @@ export const guides: Guide[] = [
     title: 'Parfum für junge Leute & Einsteiger unter CHF 60',
     description:
       'Gut riechen muss nicht teuer sein: alltagstaugliche, beliebte Düfte unter CHF 60 für junge Leute und Einsteiger, frisch, süss und unkompliziert.',
-    heroImage: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/parfum-fuer-junge-leute-unter-60-franken.svg',
     intro: [
       'Der erste eigene Duft soll gut riechen, vielseitig sein und nicht das halbe Taschengeld kosten. Zum Glück gibt es viele beliebte Düfte für kleines Geld. Gerade arabische Marken wie Lattafa oder Armaf bieten erstaunliche Qualität zu kleinen Preisen.',
       'Für junge Leute und Einsteiger gilt: lieber zu frisch und unkompliziert greifen als gleich zum teuren Nischenduft. Ein vielseitiger Duft, der in der Schule, an der Uni und im Ausgang passt, ist wertvoller als ein spezieller Duft, den man nur an bestimmten Abenden tragen kann.',
@@ -1974,7 +1974,7 @@ export const guides: Guide[] = [
     title: 'Zara Parfum Dupes: welches Original steckt dahinter?',
     description:
       'Viele Zara-Düfte erinnern stark an teure Designer-Parfums. Wir zeigen die bekanntesten Zara-Dupes und welches Original jeweils dahintersteckt.',
-    heroImage: 'https://images.unsplash.com/photo-1541643600914-78b084683702?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/zara-parfum-dupes-welches-original.svg',
     intro: [
       'Zara ist bekannt für überraschend gute Düfte zum kleinen Preis. Viele davon erinnern stark an teure Designer-Parfums. Kein Wunder: Ein Teil der bekanntesten Zara-Düfte (die Kollektion „Zara Emotions", 2019) wurde von der renommierten britischen Parfümeurin Jo Malone persönlich komponiert.',
       'Ehrlich gesagt: Ein Dupe ist nie zu 100 % identisch und hält oft etwas kürzer. Aber für den Alltag und zum Ausprobieren einer Duftrichtung sind die Zara-Düfte erstaunlich gut und kosten nur einen Bruchteil.',
@@ -2048,7 +2048,7 @@ export const guides: Guide[] = [
     title: 'Parfum-Trends 2026: diese Düfte sind jetzt angesagt',
     description:
       'Welche Duftrichtungen sind 2026 angesagt? Von gourmandigen Dessert-Düften über salzige Haut-Noten bis zum Aufstieg günstiger Nischen-Marken: die wichtigsten Trends.',
-    heroImage: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/parfum-trends-2026.svg',
     intro: [
       'Düfte folgen Trends wie Mode. Manche kommen über Social Media (vor allem TikTok), andere über neue Lieblingsnoten. Hier die wichtigsten Parfum-Trends für 2026, einfach erklärt.',
       'Wichtig: Trend heisst nicht „besser". Der schönste Duft ist immer der, der zu dir passt. Trends sind aber eine gute Inspiration, Neues auszuprobieren.'
@@ -2094,7 +2094,7 @@ export const guides: Guide[] = [
     title: 'Parfüm im Handgepäck: Was ist erlaubt? (Reise-Tipps)',
     description:
       'Flüssigkeiten im Handgepäck: Was gilt für Parfüm? Die 100-ml-Regel einfach erklärt, plus die besten kompakten Reisedüfte für unterwegs.',
-    heroImage: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/parfum-im-handgepaeck-reise-tipps.svg',
     intro: [
       'Du willst deinen Lieblingsduft auf Reisen mitnehmen? Dann gilt die EU-Flüssigkeitsregel auch für Parfüm: Behälter über 100 ml müssen ins aufgegebene Gepäck. Hier was du wissen musst, und welche kompakten Düfte sich für Reisen besonders eignen.',
       'Wichtig: Die Regeln können sich ändern, und es gibt Unterschiede je nach Flughafen und Airline. Prüfe immer vorab die aktuellen Bestimmungen deiner Fluggesellschaft.'
@@ -2130,7 +2130,7 @@ export const guides: Guide[] = [
     seoTitle: 'Parfüm und Hauttyp: was passt zu deiner Haut?',
     description:
       'Warum riecht dasselbe Parfüm bei dir anders als bei Freunden? Dein Hauttyp, pH-Wert und Pflegeroutine beeinflussen, wie ein Duft auf dir wirkt. Das steckt dahinter.',
-    heroImage: 'https://images.unsplash.com/photo-1616401784845-180882ba9ba8?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/parfum-und-hauttyp-was-passt-zu-meiner-haut.svg',
     intro: [
       'Ein und dasselbe Parfüm kann auf verschiedenen Menschen völlig unterschiedlich riechen. Dafür gibt es mehrere mögliche Gründe, auch wenn nicht alle wissenschaftlich gleich gut belegt sind.',
       'Hier die wichtigsten Faktoren und was du daraus für die Duft-Wahl mitnehmen kannst.'
@@ -2167,7 +2167,7 @@ export const guides: Guide[] = [
     title: 'Vegane & tierversuchsfreie Parfüms',
     description:
       'Welche Parfüms sind vegan und tierversuchsfrei? Was steckt hinter Begriffen wie „cruelty free" und welche Duftstoffe können tierischen Ursprungs sein. Klar erklärt.',
-    heroImage: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/vegane-tierversuchsfreie-parfums.svg',
     intro: [
       'Viele Parfümkäufer fragen sich: Stecken in Parfüms tierische Inhaltsstoffe? Werden sie an Tieren getestet? Die Antwort ist komplizierter als man denkt, und oft schwerer zu überprüfen als bei Kosmetik.',
       'Hier ein ehrlicher Überblick, was die Begriffe bedeuten und was du beim Kauf beachten kannst.'
@@ -2207,7 +2207,7 @@ export const guides: Guide[] = [
     seoTitle: 'Parfüm-Proben & Abfüllungen in der Schweiz',
     description:
       'Bevor du 150 Franken ausgibst: So kommst du günstig an Proben und Abfüllungen, in Schweizer Parfümerien, online und per Versand.',
-    heroImage: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=1200&q=80&fit=crop',
+    heroImage: '/ratgeber/illustrationen/parfum-proben-abfuellungen-schweiz.svg',
     intro: [
       'Ein Parfüm riecht auf dem Papierstreifen anders als auf deiner Haut. Und nach 2 Stunden nochmals anders. Deshalb macht es Sinn, bevor du einen Flakon für 100–200 Franken kaufst, zuerst eine Probe zu testen.',
       'Hier die besten Wege, um an Parfüm-Proben und Abfüllungen zu kommen, in der Schweiz und online.'

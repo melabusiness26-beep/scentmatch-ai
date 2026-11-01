@@ -1,0 +1,50 @@
+{
+  "slug": "boss-bottled-elixir",
+  "perfume_name": "Boss Bottled Elixir",
+  "brand": "Hugo Boss",
+  "gender": "Men",
+  "fragrance_family": "woody",
+  "concentration": "Parfum",
+  "volume_ml": 100,
+  "price_chf": 81.99,
+  "longevity": 8,
+  "sillage": 8,
+  "season": "Herbst/Winter",
+  "occasion": "Abend",
+  "release_year": 2023,
+  "perfumer": "Annick Ménardo, Suzy Le Helley",
+  "top_notes": [
+    "Weihrauch",
+    "Kardamom"
+  ],
+  "heart_notes": [
+    "Patchouli",
+    "Vetiver"
+  ],
+  "base_notes": [
+    "Labdanum",
+    "Zedernholz"
+  ],
+  "accords": [
+    "Würzig 21",
+    "Holzig 20",
+    "Rauchig 16",
+    "Harzig 16",
+    "Orientalisch 12"
+  ],
+  "age_group": "all",
+  "lifestyle": "party",
+  "trend_vibe": "classic",
+  "gender_nuance": "masculine",
+  "sizes": [
+    {
+      "ml": 50,
+      "price_chf": 62.99
+    },
+    {
+      "ml": 100,
+      "price_chf": 81.99
+    }
+  ],
+  "description": "Boss Bottled Elixir von Hugo Boss ist 2023 als Parfum Intense erschienen, 25 Jahre nach dem Original. Komponiert haben ihn Annick Ménardo, von der schon das Original Boss Bottled stammt, und Suzy Le Helley.\n\nDen Auftakt machen Weihrauch und Kardamom. Im Herzen folgen Patchouli und Vetiver, in der Basis bleiben Labdanum und Zedernholz.\n\nIn der Parfumo-Community gilt er als würzig-holziger Duft mit rauchigen, harzigen und orientalischen Facetten. Die Haltbarkeit wird dort als überdurchschnittlich bewertet. Getragen wird er vor allem am Abend und beim Ausgehen, am liebsten im Herbst und Winter."
+}

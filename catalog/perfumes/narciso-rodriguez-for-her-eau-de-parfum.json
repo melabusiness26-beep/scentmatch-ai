@@ -45,7 +45,7 @@
       "price_chf": 76.99
     }
   ],
-  "description": "For Her Eau de Parfum ist die rosa Schwester des Eau de Toilette von Narciso Rodriguez, ebenfalls komponiert von Christine Nagel und Francis Kurkdjian. Es ist keine stärkere Fassung des Eau de Toilette, sondern ein eigener, weicherer Duft.\n\nDen Auftakt machen Rose und Pfirsich. Im Herzen folgen Moschus und Amber, in der Basis bleiben Patchouli und Hölzer.\n\nIn der Parfumo-Community gilt er als blumig-pudriger Duft – sanfter und rosiger als das Eau de Toilette. Er wird das ganze Jahr getragen und passt laut den Stimmen besonders gut in den Alltag und ins Büro.",
+  "description": "Das ist die rosa Schwester des For Her Eau de Toilette, ebenfalls von Christine Nagel und Francis Kurkdjian. Sie ist keine stärkere Version, sondern ein eigener, weicherer Duft.\n\nRose und Pfirsich am Anfang, Moschus und Amber in der Mitte, Patchouli und Hölzer am Schluss.\n\nAuf Parfumo gilt er als blumig und pudrig, sanfter und rosiger als das Eau de Toilette. Man trägt ihn das ganze Jahr, und laut den Stimmen passt er besonders gut in den Alltag und ins Büro.",
   "sources": {
     "identity": [
       "https://www.parfumo.com/Perfumes/Narciso_Rodriguez/For_Her_Eau_de_Parfum",
@@ -68,6 +68,11 @@
     ],
     "price": [
       "https://www.easycosmetic.ch/narciso-rodriguez/for-her/narciso-rodriguez-for-her-edp-vapo.aspx"
+    ],
+    "flacon": [
+      "https://www.easycosmetic.ch/narciso-rodriguez/for-her/narciso-rodriguez-for-her-edp-vapo.aspx",
+      "https://cavac.at/cavacopedia/Narciso%20Rodriguez%20for%20Her"
     ]
-  }
+  },
+  "flacon_description": "Der gleiche schwere, rechteckige Flakon wie beim Eau de Toilette, aber in zartem Rosa. Auch Verschluss und Sprühkopf sind rosa."
 }

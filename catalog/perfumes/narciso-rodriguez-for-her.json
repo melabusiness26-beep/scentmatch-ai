@@ -46,7 +46,7 @@
       "price_chf": 84.99
     }
   ],
-  "description": "For Her von Narciso Rodriguez ist 2003 als Eau de Toilette erschienen – der erste Duft des Modedesigners. Komponiert haben ihn Christine Nagel und Francis Kurkdjian.\n\nIm Mittelpunkt stehen Orangenblüte und Osmanthus über einer Basis aus Moschus. Der Moschus ist das Markenzeichen der ganzen For-Her-Reihe.\n\nIn der Parfumo-Community gilt er als blumig-pudriger Duft mit süssen, holzigen und frischen Facetten und gehört dort zu den beliebtesten Damendüften. Haltbarkeit und Ausstrahlung werden als gut bewertet. Getragen wird er das ganze Jahr – im Alltag genauso wie am Abend.",
+  "description": "For Her kam 2003 heraus und war der erste Duft des Modedesigners Narciso Rodriguez. Gemacht haben ihn Christine Nagel und Francis Kurkdjian.\n\nOrangenblüte und Osmanthus stehen im Vordergrund, darunter liegt Moschus. Genau diesen Moschus erkennt man in der ganzen For-Her-Reihe wieder.\n\nAuf Parfumo gilt er als blumig und pudrig, mit etwas Süsse, Holz und Frische, und er gehört dort zu den beliebtesten Damendüften. Er hält gut und passt eigentlich immer, ob im Alltag oder am Abend, zu jeder Jahreszeit.",
   "sources": {
     "identity": [
       "https://www.parfumo.com/Perfumes/Narciso_Rodriguez/For_Her_Eau_de_Toilette",
@@ -72,6 +72,12 @@
     ],
     "price": [
       "https://www.easycosmetic.ch/narciso-rodriguez/for-her/narciso-rodriguez-for-her-edp-vapo.aspx"
+    ],
+    "flacon": [
+      "https://www.easycosmetic.ch/narciso-rodriguez/for-her/narciso-rodriguez-for-her-edp-vapo.aspx",
+      "https://rustans-thebeautysource.com/en/narciso-rodriguez",
+      "https://cavac.at/cavacopedia/Narciso%20Rodriguez%20for%20Her"
     ]
-  }
+  },
+  "flacon_description": "Ein schwerer, rechteckiger Flakon aus klarem Glas mit schwarzem Innenkern. Verschluss und Sprühkopf sind ebenfalls schwarz. Schlicht, kantig und ohne Verzierungen."
 }

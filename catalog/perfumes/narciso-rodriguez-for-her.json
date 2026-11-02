@@ -1,0 +1,77 @@
+{
+  "slug": "narciso-rodriguez-for-her",
+  "perfume_name": "For Her",
+  "brand": "Narciso Rodriguez",
+  "gender": "Women",
+  "fragrance_family": "floral",
+  "season": "Ganzjährig",
+  "occasion": "Alltag",
+  "age_group": "all",
+  "gender_nuance": "feminine",
+  "concentration": "EdT",
+  "volume_ml": 50,
+  "price_chf": 52.99,
+  "longevity": 8,
+  "sillage": 7,
+  "release_year": 2003,
+  "perfumer": "Christine Nagel, Francis Kurkdjian",
+  "top_notes": [
+    "Orangenblüte",
+    "Osmanthus"
+  ],
+  "heart_notes": [],
+  "base_notes": [
+    "Moschus"
+  ],
+  "accords": [
+    "Blumig 27",
+    "Pudrig 23",
+    "Süss 12",
+    "Holzig 11",
+    "Frisch 10"
+  ],
+  "lifestyle": "professional",
+  "trend_vibe": "classic",
+  "sizes": [
+    {
+      "ml": 30,
+      "price_chf": 33.99
+    },
+    {
+      "ml": 50,
+      "price_chf": 52.99
+    },
+    {
+      "ml": 150,
+      "price_chf": 84.99
+    }
+  ],
+  "description": "For Her von Narciso Rodriguez ist 2003 als Eau de Toilette erschienen – der erste Duft des Modedesigners. Komponiert haben ihn Christine Nagel und Francis Kurkdjian.\n\nIm Mittelpunkt stehen Orangenblüte und Osmanthus über einer Basis aus Moschus. Der Moschus ist das Markenzeichen der ganzen For-Her-Reihe.\n\nIn der Parfumo-Community gilt er als blumig-pudriger Duft mit süssen, holzigen und frischen Facetten und gehört dort zu den beliebtesten Damendüften. Haltbarkeit und Ausstrahlung werden als gut bewertet. Getragen wird er das ganze Jahr – im Alltag genauso wie am Abend.",
+  "sources": {
+    "identity": [
+      "https://www.parfumo.com/Perfumes/Narciso_Rodriguez/For_Her_Eau_de_Toilette",
+      "https://www.easycosmetic.ch/narciso-rodriguez/for-her/narciso-rodriguez-for-her-edp-vapo.aspx"
+    ],
+    "release_year": [
+      "https://www.parfumo.com/Perfumes/Narciso_Rodriguez/For_Her_Eau_de_Toilette",
+      "https://en.wikipedia.org/wiki/Narciso_Rodriguez_for_Her"
+    ],
+    "perfumer": [
+      "https://www.parfumo.com/Perfumes/Narciso_Rodriguez/For_Her_Eau_de_Toilette",
+      "https://www.easycosmetic.ch/narciso-rodriguez/for-her/narciso-rodriguez-for-her-edp-vapo.aspx"
+    ],
+    "notes": [
+      "https://www.parfumo.com/Perfumes/Narciso_Rodriguez/For_Her_Eau_de_Toilette",
+      "https://www.easycosmetic.ch/narciso-rodriguez/for-her/narciso-rodriguez-for-her-edp-vapo.aspx"
+    ],
+    "diagram": [
+      "https://www.parfumo.com/Perfumes/Narciso_Rodriguez/For_Her_Eau_de_Toilette"
+    ],
+    "ratings": [
+      "https://www.parfumo.com/Perfumes/Narciso_Rodriguez/For_Her_Eau_de_Toilette"
+    ],
+    "price": [
+      "https://www.easycosmetic.ch/narciso-rodriguez/for-her/narciso-rodriguez-for-her-edp-vapo.aspx"
+    ]
+  }
+}

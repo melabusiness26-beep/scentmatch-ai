@@ -24,10 +24,10 @@ export const genderSearchTerms: Record<string, string> = {
 
 // Herzliche Descriptions für Gelegenheiten (Saison-Empfehlungen).
 export const occasionDescriptions: Record<string, string> = {
-  'Alltag': 'Perfekt für jeden Tag – frisch & zuverlässig',
-  'Büro': 'Ideal für die Arbeit – elegant & diskret',
-  'Date': 'Für romantische Momente – verführerisch & charmant',
-  'Abend': 'Für spezielle Anlässe – intensiv & unvergesslich'
+  'Alltag': 'Für jeden Tag',
+  'Büro': 'Fürs Büro',
+  'Date': 'Für ein Date',
+  'Abend': 'Für den Abend'
 };
 
 // Deutsche Anzeige-Labels für das Geschlecht (Werte sind englisch gespeichert).

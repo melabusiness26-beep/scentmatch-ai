@@ -48,7 +48,7 @@ export const TOOL_TEXTS: Record<'quiz' | 'dupes' | 'geschenk' | 'finder' | 'dete
     ],
     faq: [
       { q: 'Wie lange dauert das Duft-Quiz?', a: 'Etwa zwei Minuten. Es sind 10 Fragen, einige davon kannst du überspringen.' },
-      { q: 'Wie genau ist das Ergebnis?', a: 'Der Match zeigt, wie gut ein Duft zu deinen Antworten passt – nach Duftrichtung, Noten, Budget, Anlass, Jahreszeit und Ausstrahlung. Wie ein Duft auf deiner Haut riecht, kann trotzdem abweichen. Teste deinen Favoriten am besten vor dem Kauf.' },
+      { q: 'Wie genau ist das Ergebnis?', a: 'Der Match zeigt, wie gut ein Duft zu deinen Antworten passt: nach Duftrichtung, Noten, Budget, Anlass, Jahreszeit und Ausstrahlung. Wie ein Duft auf deiner Haut riecht, kann trotzdem abweichen. Teste deinen Favoriten am besten vor dem Kauf.' },
       { q: 'Kann ich einen Duft angeben, den ich schon liebe?', a: 'Ja. Bei Frage 3 kannst du einen Lieblingsduft wählen. Dann werden Düfte bevorzugt, die ihm ähnlich sind; der Lieblingsduft selbst erscheint nicht im Ergebnis.' }
     ]
   },
@@ -60,25 +60,25 @@ export const TOOL_TEXTS: Record<'quiz' | 'dupes' | 'geschenk' | 'finder' | 'dete
       'Ehrlich gesagt: Keine Alternative riecht genau wie das Original. Teste am besten eine Probe auf der Haut, bevor du eine grosse Flasche kaufst.'
     ],
     faq: [
-      { q: 'Was ist ein Parfum-Dupe?', a: 'Ein Dupe ist ein Duft, der in eine ähnliche Richtung geht wie ein bekanntes, meist teureres Parfum – zu einem tieferen Preis. Er ist keine exakte Kopie.' },
-      { q: 'Warum finde ich zu meinem Duft keine Alternative?', a: 'Wir zeigen nur Düfte, die wirklich ähnlich sind und mindestens 30 % günstiger. Unser Katalog wächst laufend – schau später wieder vorbei oder stöbere in den Ratgebern zu Dupes.' }
+      { q: 'Was ist ein Parfum-Dupe?', a: 'Ein Dupe ist ein Duft, der in eine ähnliche Richtung geht wie ein bekanntes, meist teureres Parfum, aber günstiger ist. Er ist keine exakte Kopie.' },
+      { q: 'Warum finde ich zu meinem Duft keine Alternative?', a: 'Wir zeigen nur Düfte, die wirklich ähnlich sind und mindestens 30 % günstiger. Unser Katalog wächst laufend. Schau später wieder vorbei oder stöbere in den Ratgebern zu Dupes.' }
     ]
   },
   geschenk: {
     title: 'So funktioniert der Geschenk-Finder',
     paragraphs: [
-      'In vier Schritten zum passenden Duft-Geschenk: für wen das Geschenk ist, wie viel du ausgeben möchtest, welcher Duft-Typ die Person ist und – falls bekannt – ihr Lieblingsduft.',
-      'Daraus wählen wir passende Düfte aus dem Auressa-Katalog. Tipp: Wenn du unsicher bist, sind frische, vielseitige Düfte die sicherste Wahl – oder ein Probenset zum Ausprobieren.'
+      'In vier Schritten zum passenden Duft-Geschenk: für wen das Geschenk ist, wie viel du ausgeben möchtest, welcher Duft-Typ die Person ist und, falls du ihn kennst, ihr Lieblingsduft.',
+      'Daraus wählen wir passende Düfte aus dem Auressa-Katalog. Tipp: Wenn du unsicher bist, sind frische, vielseitige Düfte die sicherste Wahl. Oder du schenkst ein Probenset zum Ausprobieren.'
     ],
     faq: [
-      { q: 'Was, wenn ich den Lieblingsduft nicht kenne?', a: 'Kein Problem – der letzte Schritt ist freiwillig. Die Empfehlung richtet sich dann nach Person, Budget und Duft-Typ.' },
+      { q: 'Was, wenn ich den Lieblingsduft nicht kenne?', a: 'Kein Problem, der letzte Schritt ist freiwillig. Die Empfehlung richtet sich dann nach Person, Budget und Duft-Typ.' },
       { q: 'Welches Budget ist sinnvoll?', a: 'Gute Düfte gibt es in jeder Preisklasse. Im Geschenk-Finder wählst du dein Budget selbst; empfohlen werden Düfte bis CHF 180.' }
     ]
   },
   finder: {
     title: 'So suchst du mit dem Duft-Finder',
     paragraphs: [
-      'Tippe einen Duftnamen, eine Marke, eine Note oder eine Beschreibung ein – zum Beispiel „frisch holzig" oder „Vanille". Der Duft-Finder durchsucht den Auressa-Katalog und zeigt passende Düfte mit ihren wichtigsten Angaben.',
+      'Tippe einen Duftnamen, eine Marke, eine Note oder eine Beschreibung ein, zum Beispiel „frisch holzig" oder „Vanille". Der Duft-Finder durchsucht den Auressa-Katalog und zeigt passende Düfte mit ihren wichtigsten Angaben.',
       'Du weisst schon, wie dein Wunschduft riechen soll, aber nicht, wie er heisst? Dann probiere auch das Duft-Quiz oder den Duft-Detektiv.'
     ],
     faq: [
@@ -88,7 +88,7 @@ export const TOOL_TEXTS: Record<'quiz' | 'dupes' | 'geschenk' | 'finder' | 'dete
   detektiv: {
     title: 'So funktioniert der Duft-Detektiv',
     paragraphs: [
-      'Du hast einen Duft gerochen – bei jemandem, in einem Geschäft oder auf Reisen – und weisst nicht, wie er heisst? Der Duft-Detektiv stellt dir bis zu 12 Fragen: wo und wann du ihn gerochen hast, wie er gewirkt hat, wie stark er war, zu welchem Anlass er passte und was du über Marke oder Flakon noch weisst.',
+      'Du hast irgendwo einen Duft gerochen, bei jemandem, in einem Geschäft oder auf Reisen, und weisst nicht, wie er heisst? Der Duft-Detektiv stellt dir bis zu 12 Fragen: wo und wann du ihn gerochen hast, wie er gewirkt hat, wie stark er war, zu welchem Anlass er passte und was du über Marke oder Flakon noch weisst.',
       'Aus deinen Antworten sucht der Detektiv die wahrscheinlichsten Düfte im Auressa-Katalog. Je mehr Hinweise du gibst, desto treffsicherer wird das Ergebnis.'
     ],
     faq: [

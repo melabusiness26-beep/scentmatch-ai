@@ -15,7 +15,7 @@ export function AmazonButton({ perfume }: { perfume: Perfume }) {
       </a>
       <p className="small buy-note amazon-note">
         <span className="affiliate-note-icon" aria-hidden="true">ⓘ</span>
-        Partner-Link – für dich kein Mehrpreis.
+        Partner-Link, für dich ohne Mehrkosten.
       </p>
     </>
   );

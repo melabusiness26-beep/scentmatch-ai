@@ -1,0 +1,74 @@
+{
+  "slug": "guerlain-aqua-allegoria-nerolia-vetiver",
+  "perfume_name": "Aqua Allegoria Nerolia Vetiver",
+  "brand": "Guerlain",
+  "gender": "Women",
+  "fragrance_family": "clean",
+  "season": "Sommer",
+  "occasion": "Alltag",
+  "age_group": "all",
+  "gender_nuance": "androgynous",
+  "concentration": "EdT",
+  "volume_ml": 125,
+  "price_chf": 71.99,
+  "longevity": 7,
+  "sillage": 6,
+  "release_year": 2022,
+  "perfumer": "Delphine Jelk, Thierry Wasser",
+  "top_notes": [
+    "kalabrisches Neroli",
+    "Basilikum"
+  ],
+  "heart_notes": [
+    "Feige"
+  ],
+  "base_notes": [
+    "Vetiver"
+  ],
+  "accords": [
+    "Grün 23",
+    "Frisch 22",
+    "Zitrus 18",
+    "Blumig 12",
+    "Würzig 8",
+    "Fruchtig 6",
+    "Cremig 6",
+    "Süss 5"
+  ],
+  "lifestyle": "casual",
+  "trend_vibe": "classic",
+  "sizes": [
+    {
+      "ml": 125,
+      "price_chf": 71.99
+    }
+  ],
+  "description": "Nerolia Vetiver kam 2022 heraus und stammt von Delphine Jelk und Thierry Wasser. Er ist grüner und herber als die meisten Aqua-Allegoria-Düfte und erinnert an ein klassisches Kölnisch Wasser.\n\nKalabrisches Neroli und Basilikum, dazu Feige und Vetiver.\n\nAuf Parfumo gilt er als grün und frisch, mit zitrischen und leicht blumigen Seiten. Die Feige bringt etwas Weiches hinein. Viele finden ihn auch für Männer gut tragbar. Am besten passt er in den Sommer und Frühling, für jeden Tag, die Freizeit und das Büro.",
+  "sources": {
+    "identity": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-nerolia-vetiver",
+      "https://www.easycosmetic.ch/guerlain/guerlain-aqua-allegoria.aspx"
+    ],
+    "release_year": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-nerolia-vetiver",
+      "https://scentverdict.com/perfume/guerlain-aqua-allegoria-nerolia-vetiver-eau-de-toilette"
+    ],
+    "perfumer": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-nerolia-vetiver",
+      "https://scentverdict.com/perfume/guerlain-aqua-allegoria-nerolia-vetiver-eau-de-toilette"
+    ],
+    "notes": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-nerolia-vetiver",
+      "https://www.cosma-parfumeries.com/uk_en/guerlain-aqua-allegoria-nerolia-vetiver-eau-de-toilette.html"
+    ],
+    "diagram": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-nerolia-vetiver"
+    ],
+    "ratings": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-nerolia-vetiver"
+    ],
+    "price": [
+      "https://www.easycosmetic.ch/guerlain/guerlain-aqua-allegoria.aspx"
+    ]
+  }
+}

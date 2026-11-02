@@ -6,6 +6,7 @@ import { hasEnoughVariety } from '@/lib/versions';
 import { GUIDE_DATES } from '@/lib/guide-dates';
 import { versionPairs } from '@/lib/version-compare';
 import { scentNotes } from '@/lib/notes-glossary';
+import { FLAVORS, flavorIndexable, perfumesForFlavor } from '@/lib/flavors';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
@@ -48,6 +49,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const destinationUrls: MetadataRoute.Sitemap = DESTINATIONS.filter((dest) => hasEnoughVariety(rankByDestination(perfumes, dest, '', 30))).map((dest) => ({
     url: `${SITE_URL}/reiseduefte/${dest.slug}`,
+    changeFrequency: 'weekly',
+    priority: 0.7
+  }));
+
+  // Geschmacks-Seiten erst ab 3 verschiedenen Düften (sonst noindex, siehe lib/flavors.ts).
+  const flavorUrls: MetadataRoute.Sitemap = FLAVORS.filter((f) => flavorIndexable(perfumesForFlavor(perfumes, f))).map((f) => ({
+    url: `${SITE_URL}/geschmack/${f.slug}`,
     changeFrequency: 'weekly',
     priority: 0.7
   }));
@@ -100,6 +108,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${SITE_URL}/stimmungen`,
+      changeFrequency: 'weekly',
+      priority: 0.8
+    },
+    {
+      url: `${SITE_URL}/geschmack`,
       changeFrequency: 'weekly',
       priority: 0.8
     },
@@ -205,6 +218,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5
     },
     ...moodUrls,
+    ...flavorUrls,
     ...destinationUrls,
     ...guideUrls,
     ...noteUrls,

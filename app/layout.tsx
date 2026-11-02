@@ -184,6 +184,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <Link href="/ratgeber">Ratgeber</Link>
                     <Link href="/duftnoten">Duftnoten-Lexikon</Link>
                     <Link href="/stimmungen">Düfte nach Stimmung</Link>
+                    <Link href="/geschmack">Düfte nach Geschmack</Link>
                     <Link href="/reiseduefte">Reisedüfte</Link>
                     <Link href="/duftchemie-grundlagen">Duftchemie</Link>
                     <Link href="/faq">Häufige Fragen</Link>

@@ -323,3 +323,20 @@ gender → anchor (optional, Dropdown) → 3× family → lovedNote → disliked
   Seite des ORIGINALS den Abschnitt „Bekannte Dupes von …". Nischendüfte über CHF 180 dürfen als Original
   rein. Nie „1:1" versprechen – nur „sehr ähnlich", mit 2 Quellen.
 - Merkliste für später: Rochas Macassar (eingestellt) mit geprüften Alternativen.
+
+### Ablauf „Foto → Duft eintragen" (ab 1. November 2026)
+Die Gründerin schickt pro Duft nur noch: **(1) Foto vom Flakon/Karton oder den Namen, (2) Foto vom
+Parfumo-Diagramm, (3) Foto vom Preis** (easyCOSMETIC, sonst Makeup.ch/Notino). Alles andere macht der Assistent:
+- Duft eindeutig bestimmen (Marke, genauer Name, Konzentration, Jahr – Verwechslungen ausschliessen).
+- Parfumo-Seite selbst lesen (www.parfumo.com, normaler Seitenabruf): Noten, Duftrichtung, Bewertungen,
+  Parfümeur, Jahr, „Duftet ähnlich". Das Diagramm (Jahreszeit/Anlass/Zielgruppe) lädt Parfumo nur per
+  Skript nach – NICHT über interne Schnittstellen abgreifen (automatisiertes Sammeln, rechtlich riskant),
+  sondern Foto der Gründerin nutzen.
+- Zweite Quelle per Websuche für Jahr, Parfümeur, Noten, Dupe-Beziehungen; nur Übereinstimmendes übernehmen.
+- Katalog-Datei schreiben, prüfen (catalog:check), PR erstellen, nach dem Mergen live kontrollieren.
+- Gesperrt/blockiert für den Assistenten: easyCOSMETIC (Bot-Schutz – nicht umgehen), makeup.ch (Proxy).
+- **Quellenpflicht im Code** (`checkSources` in `lib/catalog.ts`): Jede neue Katalog-Datei braucht ein Feld
+  `"sources"` mit https-Links pro Angabe (identity, release_year, perfumer, notes, alternative_to, discontinued,
+  flacon, good_to_know, inspiration: je 2 Links von 2 verschiedenen Websites; diagram, ratings, price,
+  similar_perfumes: je 1). Fehlt etwas, wird der PR rot und nichts geht live. Die 15 Düfte von vorher stehen in
+  `LEGACY_WITHOUT_SOURCES` (Quellen nachtragen, Liste nie erweitern).

@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const title = `Parfum, das ${flavor.phrase} duftet`;
   return {
     title,
-    description: `${flavor.intro} Entdecke Düfte mit ${flavor.title} – mit Duftnoten, Preis und günstigen Alternativen.`,
+    description: `${flavor.intro} Entdecke Düfte mit ${flavor.title}, mit Duftnoten, Preis und günstigen Alternativen.`,
     ...(!flavorIndexable(list) ? { robots: { index: false, follow: true } } : {}),
     alternates: { canonical: `/geschmack/${slug}` },
     openGraph: { locale: 'de_CH', siteName: 'Auressa', title: `${title} | Auressa`, url: `${SITE_URL}/geschmack/${slug}`, type: 'website' }
@@ -56,7 +56,7 @@ export default async function FlavorPage({ params }: { params: Promise<{ slug: s
             {flavor.combo && (
               <p className="small">
                 So finden wir diese Düfte: Sie enthalten alle Bestandteile dieser Kombination in ihren Duftnoten. Kein Duft
-                riecht genau wie das Dessert – aber er geht in diese Richtung.
+                riecht genau wie das Dessert, aber er geht in diese Richtung.
               </p>
             )}
           </div>
@@ -81,7 +81,7 @@ export default async function FlavorPage({ params }: { params: Promise<{ slug: s
             <div className="card">
               <h2>Bald mehr Düfte {flavor.phrase}</h2>
               <p className="lead">
-                Unser Katalog wächst laufend – jeder Duft wird mit mehreren Quellen geprüft, bevor er hier erscheint.
+                Unser Katalog wächst laufend. Jeder Duft wird mit mehreren Quellen geprüft, bevor er hier erscheint.
                 Bis dahin findest du im Duft-Quiz Düfte, die zu deinem Geschmack passen.
               </p>
               <Link className="button" href="/quiz">

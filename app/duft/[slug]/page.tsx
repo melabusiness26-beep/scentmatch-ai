@@ -605,7 +605,7 @@ export default async function PerfumeDetailPage({
                 ))}
               </ul>
               <p>
-                Berechnet aus den Duftdaten – je günstiger, langlebiger und vielseitiger ein Duft, desto höher der Score.
+                Berechnet aus den Duftdaten: Je günstiger, langlebiger und vielseitiger ein Duft ist, desto höher der Score.
                 {score.estimated ? ' Einzelne Werte fehlen noch und sind geschätzt.' : ''}
               </p>
             </details>
@@ -616,7 +616,7 @@ export default async function PerfumeDetailPage({
               <div className="dp-discontinued" role="note">
                 <p>
                   <strong>{perfume.perfume_name} wird nicht mehr hergestellt.</strong> Restbestände gibt es manchmal noch
-                  bei Wiederverkäufern – oft zu hohen Preisen und ohne Garantie für Echtheit und Frische.
+                  bei Wiederverkäufern, oft aber teuer und ohne Garantie, dass sie echt und frisch sind.
                 </p>
                 {(knownDupes.length > 0 || similar.length > 0) && (
                   <a className="button" href="#ersatz">
@@ -736,7 +736,7 @@ export default async function PerfumeDetailPage({
               </>
             )}
             <p className="dp-footnote">
-              Ähnlich bedeutet nicht identisch – kein Duft riecht genau gleich wie ein anderer. Teste am besten eine Probe.
+              Ähnlich heisst nicht gleich. Kein Duft riecht genau wie ein anderer, darum am besten zuerst eine Probe testen.
             </p>
           </Reveal>
         )}
@@ -760,7 +760,7 @@ export default async function PerfumeDetailPage({
                 {a.note && <p className="dp-alt-note">{a.note}</p>}
               </div>
             ))}
-            <p className="dp-alt-foot">Riecht ähnlich, ist aber nicht identisch – Haltbarkeit und Ausstrahlung können abweichen.</p>
+            <p className="dp-alt-foot">Riecht ähnlich, aber nicht gleich. Haltbarkeit und Ausstrahlung können anders sein.</p>
           </Reveal>
         )}
 
@@ -859,7 +859,7 @@ export default async function PerfumeDetailPage({
                 </tbody>
               </table>
             </div>
-            <p className="dp-footnote">Richtpreise zum Zeitpunkt der Recherche – im Shop können sie abweichen.</p>
+            <p className="dp-footnote">Richtpreise zum Zeitpunkt unserer Recherche. Im Shop können sie anders sein.</p>
           </Reveal>
         )}
 
@@ -1083,7 +1083,7 @@ export default async function PerfumeDetailPage({
                 );
               })}
             </div>
-            <p className="dp-footnote">Ähnlich bedeutet nicht identisch – Haltbarkeit und Ausstrahlung können abweichen.</p>
+            <p className="dp-footnote">Ähnlich heisst nicht gleich. Haltbarkeit und Ausstrahlung können anders sein.</p>
           </Reveal>
         )}
 

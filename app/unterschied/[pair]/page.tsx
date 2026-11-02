@@ -66,7 +66,7 @@ export async function generateMetadata({ params }: { params: Promise<{ pair: str
   ];
   const title = candidates.find((t) => t.length + ' | Auressa'.length <= 62) || candidates[candidates.length - 1];
   const description = metaDescription(
-    `${brand} ${baseTitle(a)}: ${label(a)} oder ${label(b)}? Noten, Haltbarkeit, Ausstrahlung und Preis pro 100 ml im Vergleich – und welche Version zu dir passt.`
+    `${brand} ${baseTitle(a)}: ${label(a)} oder ${label(b)}? Noten, Haltbarkeit, Ausstrahlung und Preis pro 100 ml im Vergleich, und welche Version zu dir passt.`
   );
   return {
     title,
@@ -265,7 +265,7 @@ export default async function VersionComparePage({ params }: { params: Promise<{
           </div>
           <p className="small vc-source">
             Haltbarkeit und Ausstrahlung nach Einschätzung der Duft-Community, Duftrichtung laut Parfumo. Preise sind
-            Richtpreise – der aktuelle Preis im Shop kann abweichen.
+            Richtpreise. Der aktuelle Preis im Shop kann anders sein.
           </p>
         </section>
 
@@ -292,7 +292,7 @@ export default async function VersionComparePage({ params }: { params: Promise<{
               </p>
             )}
             {notes.onlyA.length === 0 && notes.onlyB.length === 0 && (
-              <p>Beide Versionen haben laut unseren Daten dieselben Noten – sie unterscheiden sich vor allem in der Konzentration.</p>
+              <p>Beide Versionen haben laut unseren Daten dieselben Noten. Sie unterscheiden sich vor allem in der Konzentration.</p>
             )}
           </section>
         )}

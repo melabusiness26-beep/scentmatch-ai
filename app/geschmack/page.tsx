@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     locale: 'de_CH',
     siteName: 'Auressa',
     title: 'Duft nach Geschmack finden | Auressa',
-    description: 'Vanille, Honig, Beeren, Kekse, Karamell … – finde Düfte nach deinem Lieblingsgeschmack.',
+    description: 'Vanille, Honig, Beeren, Kekse, Karamell … Finde Düfte nach deinem Lieblingsgeschmack.',
     url: `${SITE_URL}/geschmack`,
     type: 'website'
   }
@@ -68,7 +68,7 @@ export default async function GeschmackPage() {
             </section>
           ))}
           <p className="small flavor-note">
-            Gezeigt werden Düfte, in deren Duftnoten der Geschmack vorkommt. Ein Duft riecht nie nur nach einer Note – teste
+            Gezeigt werden Düfte, in deren Duftnoten der Geschmack vorkommt. Ein Duft riecht nie nur nach einer Note. Teste
             am besten eine Probe.
           </p>
         </section>

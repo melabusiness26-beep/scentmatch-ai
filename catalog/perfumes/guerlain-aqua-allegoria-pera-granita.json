@@ -1,0 +1,81 @@
+{
+  "slug": "guerlain-aqua-allegoria-pera-granita",
+  "perfume_name": "Aqua Allegoria Pera Granita",
+  "brand": "Guerlain",
+  "gender": "Women",
+  "fragrance_family": "clean",
+  "season": "Sommer",
+  "occasion": "Alltag",
+  "age_group": "all",
+  "gender_nuance": "feminine",
+  "concentration": "EdT",
+  "volume_ml": 75,
+  "price_chf": 71.99,
+  "longevity": 6,
+  "sillage": 6,
+  "release_year": 2016,
+  "perfumer": "Thierry Wasser",
+  "top_notes": [
+    "pinke Grapefruit",
+    "Bergamotte",
+    "Zitrone"
+  ],
+  "heart_notes": [
+    "Osmanthus",
+    "Birne",
+    "Orangenblüte"
+  ],
+  "base_notes": [
+    "weisser Moschus",
+    "Zeder",
+    "Moos"
+  ],
+  "accords": [
+    "Fruchtig 24",
+    "Zitrus 21",
+    "Frisch 20",
+    "Blumig 15",
+    "Süss 14",
+    "Synthetisch 6"
+  ],
+  "lifestyle": "casual",
+  "trend_vibe": "popular",
+  "sizes": [
+    {
+      "ml": 75,
+      "price_chf": 71.99
+    },
+    {
+      "ml": 125,
+      "price_chf": 76.99
+    }
+  ],
+  "description": "Pera Granita kam 2016 heraus und stammt von Thierry Wasser. Der Name heisst „Birnen-Granita“, und die saftige Birne steht auch im Mittelpunkt.\n\nPinke Grapefruit, Bergamotte und Zitrone am Anfang, dann Osmanthus, Birne und Orangenblüte, und am Schluss weisser Moschus, Zeder und Moos.\n\nAuf Parfumo gilt er als fruchtig, zitrisch und frisch, mit blumigen und süssen Seiten. Er ist leicht und eher kurz haltbar. Am besten passt er in den Sommer und Frühling, für die Freizeit und jeden Tag.",
+  "sources": {
+    "identity": [
+      "https://www.parfumo.com/Perfumes/Guerlain/Aqua_Allegoria_Pera_Granita",
+      "https://www.easycosmetic.ch/guerlain/guerlain-aqua-allegoria.aspx"
+    ],
+    "release_year": [
+      "https://www.parfumo.com/Perfumes/Guerlain/Aqua_Allegoria_Pera_Granita",
+      "https://scentverdict.com/perfume/guerlain-aqua-allegoria-pera-granita-eau-de-toilette"
+    ],
+    "perfumer": [
+      "https://www.parfumo.com/Perfumes/Guerlain/Aqua_Allegoria_Pera_Granita",
+      "https://scentverdict.com/perfume/guerlain-aqua-allegoria-pera-granita-eau-de-toilette"
+    ],
+    "notes": [
+      "https://www.parfumo.com/Perfumes/Guerlain/Aqua_Allegoria_Pera_Granita",
+      "https://m.johnlewis.com/guerlain-aqua-allegoria-pera-granita-eau-de-toilette-spray/p6090394"
+    ],
+    "diagram": [
+      "https://www.parfumo.com/Perfumes/Guerlain/Aqua_Allegoria_Pera_Granita"
+    ],
+    "ratings": [
+      "https://www.parfumo.com/Perfumes/Guerlain/Aqua_Allegoria_Pera_Granita"
+    ],
+    "price": [
+      "https://www.easycosmetic.ch/guerlain/guerlain-aqua-allegoria.aspx"
+    ]
+  }
+}

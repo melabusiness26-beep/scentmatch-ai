@@ -1,0 +1,83 @@
+{
+  "slug": "guerlain-aqua-allegoria-forte-bosca-vanilla",
+  "perfume_name": "Aqua Allegoria Bosca Vanilla Forte",
+  "brand": "Guerlain",
+  "gender": "Unisex",
+  "fragrance_family": "gourmand",
+  "season": "Ganzjährig",
+  "occasion": "Alltag",
+  "age_group": "all",
+  "gender_nuance": "androgynous",
+  "concentration": "EdP",
+  "volume_ml": 75,
+  "price_chf": 64.99,
+  "longevity": 7,
+  "sillage": 7,
+  "release_year": 2023,
+  "perfumer": "Delphine Jelk",
+  "top_notes": [
+    "Bitterorange",
+    "Eukalyptus"
+  ],
+  "heart_notes": [
+    "Vanille",
+    "Strohblume"
+  ],
+  "base_notes": [
+    "Treibholz",
+    "Zypresse"
+  ],
+  "accords": [
+    "Süss 23",
+    "Aquatisch 14",
+    "Frisch 10",
+    "Blumig 9",
+    "Gourmand 9",
+    "Cremig 8",
+    "Holzig 7",
+    "Zitrus 5",
+    "Pudrig 5",
+    "Grün 5",
+    "Würzig 4"
+  ],
+  "lifestyle": "casual",
+  "trend_vibe": "trendy",
+  "sizes": [
+    {
+      "ml": 75,
+      "price_chf": 64.99
+    },
+    {
+      "ml": 125,
+      "price_chf": 86.99
+    }
+  ],
+  "description": "Bosca Vanilla Forte kam 2023 heraus und stammt von Delphine Jelk. Es ist eine Vanille, die nicht klebrig süss ist, sondern frisch und leicht salzig, wie Meeresluft.\n\nBitterorange und Eukalyptus am Anfang, Vanille und Strohblume in der Mitte, Treibholz und Zypresse am Schluss.\n\nAuf Parfumo gilt er als süss und aquatisch, mit frischen und leicht gourmandigen Seiten. Viele beschreiben ihn als „salzige Vanille“. Er hält gut und passt das ganze Jahr, für jeden Tag und die Freizeit.",
+  "sources": {
+    "identity": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-bosca-vanilla",
+      "https://www.easycosmetic.ch/guerlain/guerlain-aqua-allegoria.aspx"
+    ],
+    "release_year": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-bosca-vanilla",
+      "https://nstperfume.com/2023/08/05/guerlain-aqua-allegoria-bosca-vanilla-forte-oud-yuzu-forte-rosa-palissandro-forte-new-fragrances"
+    ],
+    "perfumer": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-bosca-vanilla",
+      "https://www.dillards.com/p/guerlain-aqua-allegoria-bosca-vanilla-forte-eau-de-parfum/517339719"
+    ],
+    "notes": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-bosca-vanilla",
+      "https://www.dillards.com/p/guerlain-aqua-allegoria-bosca-vanilla-forte-eau-de-parfum/517339719"
+    ],
+    "diagram": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-bosca-vanilla"
+    ],
+    "ratings": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-bosca-vanilla"
+    ],
+    "price": [
+      "https://www.easycosmetic.ch/guerlain/guerlain-aqua-allegoria.aspx"
+    ]
+  }
+}

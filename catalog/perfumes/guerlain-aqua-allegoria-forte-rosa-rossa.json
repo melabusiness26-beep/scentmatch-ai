@@ -1,0 +1,79 @@
+{
+  "slug": "guerlain-aqua-allegoria-forte-rosa-rossa",
+  "perfume_name": "Aqua Allegoria Rosa Rossa Forte",
+  "brand": "Guerlain",
+  "gender": "Women",
+  "fragrance_family": "floral",
+  "season": "Frühling",
+  "occasion": "Alltag",
+  "age_group": "all",
+  "gender_nuance": "feminine",
+  "concentration": "EdP",
+  "volume_ml": 75,
+  "price_chf": 64.99,
+  "longevity": 7,
+  "sillage": 7,
+  "release_year": 2022,
+  "perfumer": "Delphine Jelk",
+  "top_notes": [
+    "Pfirsich",
+    "rosa Pfeffer",
+    "Schwarze Johannisbeere"
+  ],
+  "heart_notes": [
+    "bulgarische Rose",
+    "Damaszener-Rose"
+  ],
+  "base_notes": [
+    "Benzoe",
+    "Patchouli",
+    "Sandelholz"
+  ],
+  "accords": [
+    "Blumig 31",
+    "Fruchtig 22",
+    "Süss 21",
+    "Frisch 18",
+    "Cremig 7"
+  ],
+  "lifestyle": "casual",
+  "trend_vibe": "popular",
+  "sizes": [
+    {
+      "ml": 75,
+      "price_chf": 64.99
+    },
+    {
+      "ml": 125,
+      "price_chf": 87.99
+    }
+  ],
+  "description": "Rosa Rossa Forte kam 2022 heraus und stammt von Delphine Jelk. Es ist die Eau-de-Parfum-Version von Rosa Rossa: mehr Rose, süsser und mit einer wärmeren Basis.\n\nPfirsich, rosa Pfeffer und schwarze Johannisbeere am Anfang, bulgarische und Damaszener Rose in der Mitte, Benzoe, Patchouli und Sandelholz am Schluss.\n\nAuf Parfumo gilt er als blumig, fruchtig und süss. Er hält etwas länger als das Eau de Toilette. Am besten passt er in den Frühling und Sommer, für jeden Tag und die Freizeit.",
+  "sources": {
+    "identity": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-rosa-rossa",
+      "https://www.easycosmetic.ch/guerlain/guerlain-aqua-allegoria.aspx"
+    ],
+    "release_year": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-rosa-rossa",
+      "https://nstperfume.com/2022/06/17/guerlain-mandarine-basilic-forte-rosa-rossa-forte-new-fragrances"
+    ],
+    "perfumer": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-rosa-rossa",
+      "https://asset.sephora.co.uk/p/guerlain-aqua-allegoria-rosa-rossa-forte-eau-de-parfum"
+    ],
+    "notes": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-rosa-rossa",
+      "https://www.libertylondon.com/uk/aqua-allegoria-forte-rosa-rossa-eau-de-parfum-75ml-000811300.html"
+    ],
+    "diagram": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-rosa-rossa"
+    ],
+    "ratings": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-rosa-rossa"
+    ],
+    "price": [
+      "https://www.easycosmetic.ch/guerlain/guerlain-aqua-allegoria.aspx"
+    ]
+  }
+}

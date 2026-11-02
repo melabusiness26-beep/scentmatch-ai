@@ -1,0 +1,75 @@
+{
+  "slug": "guerlain-aqua-allegoria-forte-mandarine-basilic",
+  "perfume_name": "Aqua Allegoria Mandarine Basilic Forte",
+  "brand": "Guerlain",
+  "gender": "Women",
+  "fragrance_family": "clean",
+  "season": "Sommer",
+  "occasion": "Alltag",
+  "age_group": "all",
+  "gender_nuance": "feminine",
+  "concentration": "EdP",
+  "volume_ml": 75,
+  "price_chf": 62.99,
+  "longevity": 7,
+  "sillage": 7,
+  "release_year": 2022,
+  "perfumer": "Delphine Jelk",
+  "top_notes": [
+    "italienische Mandarine"
+  ],
+  "heart_notes": [
+    "Basilikum"
+  ],
+  "base_notes": [
+    "Sandelholz",
+    "Vanille"
+  ],
+  "accords": [
+    "Zitrus 25",
+    "Fruchtig 25",
+    "Frisch 23",
+    "Süss 18",
+    "Grün 10"
+  ],
+  "lifestyle": "casual",
+  "trend_vibe": "trendy",
+  "sizes": [
+    {
+      "ml": 75,
+      "price_chf": 62.99
+    },
+    {
+      "ml": 125,
+      "price_chf": 86.99
+    }
+  ],
+  "description": "Mandarine Basilic Forte kam 2022 heraus und stammt von Delphine Jelk. Es ist die Eau-de-Parfum-Version des bekannten Mandarine Basilic: gleiche Idee, aber süsser und etwas wärmer.\n\nItalienische Mandarine am Anfang, Basilikum in der Mitte, Sandelholz und Vanille am Schluss.\n\nAuf Parfumo gilt er als zitrisch und fruchtig, frisch und mit mehr Süsse als das Eau de Toilette. Er hält etwas länger als das Original. Am besten passt er in den Sommer und Frühling, für jeden Tag und die Freizeit.",
+  "sources": {
+    "identity": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-mandarine-basilic",
+      "https://www.easycosmetic.ch/guerlain/guerlain-aqua-allegoria.aspx"
+    ],
+    "release_year": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-mandarine-basilic",
+      "https://scentverdict.com/perfume/guerlain-aqua-allegoria-forte-mandarine-basilic-eau-de-parfum"
+    ],
+    "perfumer": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-mandarine-basilic",
+      "https://persolaise.com/2022/09/guerlain-aqua-allegoria-mandarin-basilic-forte-and-rosa-rossa-forte-review-delphine-jelk-2022.html"
+    ],
+    "notes": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-mandarine-basilic",
+      "https://scentverdict.com/perfume/guerlain-aqua-allegoria-forte-mandarine-basilic-eau-de-parfum"
+    ],
+    "diagram": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-mandarine-basilic"
+    ],
+    "ratings": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-mandarine-basilic"
+    ],
+    "price": [
+      "https://www.easycosmetic.ch/guerlain/guerlain-aqua-allegoria.aspx"
+    ]
+  }
+}

@@ -23,6 +23,8 @@ const VERSION_SUFFIXES = [
   'extrait',
   'elixir',
   'absolu',
+  // Guerlain Aqua Allegoria: „Forte" = Eau-de-Parfum-Version (z. B. Mandarine Basilic Forte).
+  'forte',
   'parfum',
   'cologne',
   'edp',

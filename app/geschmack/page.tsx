@@ -51,6 +51,8 @@ export default async function GeschmackPage() {
               <div className="flavor-grid">
                 {tiles
                   .filter(({ flavor }) => flavor.group === group)
+                  // Einzelne Noten zuerst, Kombis (z. B. Mojito) danach.
+                  .sort((a, b) => Number(Boolean(a.flavor.combo)) - Number(Boolean(b.flavor.combo)))
                   .map(({ flavor: f, count }) => (
                     <Link key={f.slug} href={`/geschmack/${f.slug}`} className="flavor-tile">
                       <span className="flavor-img" style={{ background: f.color }}>

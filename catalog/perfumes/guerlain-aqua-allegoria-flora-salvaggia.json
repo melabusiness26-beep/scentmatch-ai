@@ -1,0 +1,74 @@
+{
+  "slug": "guerlain-aqua-allegoria-flora-salvaggia",
+  "perfume_name": "Aqua Allegoria Flora Salvaggia",
+  "brand": "Guerlain",
+  "gender": "Women",
+  "fragrance_family": "floral",
+  "season": "Sommer",
+  "occasion": "Alltag",
+  "age_group": "all",
+  "gender_nuance": "feminine",
+  "concentration": "EdT",
+  "volume_ml": 75,
+  "price_chf": 65.99,
+  "longevity": 6,
+  "sillage": 6,
+  "release_year": 2021,
+  "perfumer": "Thierry Wasser, Delphine Jelk",
+  "top_notes": [
+    "Wildblumen"
+  ],
+  "heart_notes": [
+    "Veilchen",
+    "Iris",
+    "Jasmin-Sambac"
+  ],
+  "base_notes": [
+    "weisser Moschus"
+  ],
+  "accords": [
+    "Blumig 29",
+    "Frisch 25",
+    "Fruchtig 16",
+    "Süss 9",
+    "Grün 9",
+    "Aquatisch 8",
+    "Pudrig 5"
+  ],
+  "lifestyle": "casual",
+  "trend_vibe": "popular",
+  "sizes": [
+    {
+      "ml": 75,
+      "price_chf": 65.99
+    }
+  ],
+  "description": "Flora Salvaggia kam 2021 heraus und stammt von Thierry Wasser und Delphine Jelk. Der Name heisst „wilde Blumen“, und so riecht er auch: wie eine Blumenwiese im Sommer.\n\nWildblumen, Veilchen, Iris und Jasmin-Sambac, darunter weisser Moschus.\n\nAuf Parfumo gilt er als blumig und frisch, mit fruchtigen und leicht pudrigen Seiten. Viele nehmen dazu eine frische Melonennote wahr. Er ist leicht und passt am besten in den Sommer und Frühling, für jeden Tag, die Freizeit und das Büro.",
+  "sources": {
+    "identity": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-flora-salvaggia",
+      "https://www.easycosmetic.ch/guerlain/guerlain-aqua-allegoria.aspx"
+    ],
+    "release_year": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-flora-salvaggia",
+      "https://scentverdict.com/perfume/guerlain-aqua-allegoria-flora-salvaggia-eau-de-toilette"
+    ],
+    "perfumer": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-flora-salvaggia",
+      "https://www.decantx.com/products/guerlain-aqua-allegoria-flora-salvaggia-eau-de-parfum-for-women"
+    ],
+    "notes": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-flora-salvaggia",
+      "https://www.decantx.com/products/guerlain-aqua-allegoria-flora-salvaggia-eau-de-parfum-for-women"
+    ],
+    "diagram": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-flora-salvaggia"
+    ],
+    "ratings": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-flora-salvaggia"
+    ],
+    "price": [
+      "https://www.easycosmetic.ch/guerlain/guerlain-aqua-allegoria.aspx"
+    ]
+  }
+}

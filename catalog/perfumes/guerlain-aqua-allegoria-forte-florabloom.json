@@ -1,0 +1,84 @@
+{
+  "slug": "guerlain-aqua-allegoria-forte-florabloom",
+  "perfume_name": "Aqua Allegoria Florabloom Forte",
+  "brand": "Guerlain",
+  "gender": "Women",
+  "fragrance_family": "floral",
+  "season": "Frühling",
+  "occasion": "Alltag",
+  "age_group": "all",
+  "gender_nuance": "feminine",
+  "concentration": "EdP",
+  "volume_ml": 75,
+  "price_chf": 68.99,
+  "longevity": 8,
+  "sillage": 7,
+  "release_year": 2024,
+  "perfumer": "Delphine Jelk",
+  "top_notes": [
+    "Mango"
+  ],
+  "heart_notes": [
+    "indische Tuberose",
+    "Grasse-Rose",
+    "Veilchen",
+    "Iris"
+  ],
+  "base_notes": [
+    "Sandelholz",
+    "Moos"
+  ],
+  "accords": [
+    "Blumig 28",
+    "Süss 21",
+    "Fruchtig 20",
+    "Cremig 11",
+    "Frisch 8",
+    "Pudrig 6",
+    "Synthetisch 5"
+  ],
+  "lifestyle": "casual",
+  "trend_vibe": "trendy",
+  "sizes": [
+    {
+      "ml": 40,
+      "price_chf": 44.99
+    },
+    {
+      "ml": 75,
+      "price_chf": 68.99
+    },
+    {
+      "ml": 125,
+      "price_chf": 86.99
+    }
+  ],
+  "description": "Florabloom Forte kam 2024 zusammen mit dem Eau de Toilette heraus und stammt ebenfalls von Delphine Jelk. Als Eau de Parfum ist er süsser, voller und hält deutlich länger.\n\nMango, indische Tuberose, Grasse-Rose, Veilchen und Iris, darunter Sandelholz und Moos.\n\nAuf Parfumo gilt er als blumig und süss, mit fruchtigen und cremigen Seiten. Er hat eine gute Ausstrahlung, also lieber sparsam sprühen. Am besten passt er in den Frühling und Sommer, für jeden Tag und die Freizeit.",
+  "sources": {
+    "identity": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-florabloom",
+      "https://www.easycosmetic.ch/guerlain/guerlain-aqua-allegoria.aspx"
+    ],
+    "release_year": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-florabloom",
+      "https://nstperfume.com/2024/01/31/guerlain-aqua-allegoria-florabloom-new-fragrances"
+    ],
+    "perfumer": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-florabloom",
+      "https://www.bloomingdales.com/shop/product/guerlain-agua-allegoria-florabloom-forte-eau-de-parfum-4.2-oz.?ID=5040095"
+    ],
+    "notes": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-florabloom",
+      "https://www.liberty.co.uk/uk/aqua-allegoria-forte-florabloom-eau-de-parfum-125ml-000812808.html"
+    ],
+    "diagram": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-florabloom"
+    ],
+    "ratings": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-forte-florabloom"
+    ],
+    "price": [
+      "https://www.easycosmetic.ch/guerlain/guerlain-aqua-allegoria.aspx"
+    ]
+  }
+}

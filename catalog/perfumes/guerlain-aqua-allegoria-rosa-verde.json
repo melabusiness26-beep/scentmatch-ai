@@ -1,0 +1,77 @@
+{
+  "slug": "guerlain-aqua-allegoria-rosa-verde",
+  "perfume_name": "Aqua Allegoria Rosa Verde",
+  "brand": "Guerlain",
+  "gender": "Unisex",
+  "fragrance_family": "clean",
+  "season": "Sommer",
+  "occasion": "Alltag",
+  "age_group": "all",
+  "gender_nuance": "androgynous",
+  "concentration": "EdT",
+  "volume_ml": 75,
+  "price_chf": 56.99,
+  "longevity": 7,
+  "sillage": 6,
+  "release_year": 2025,
+  "perfumer": "Delphine Jelk",
+  "top_notes": [
+    "Gurke",
+    "Minze"
+  ],
+  "heart_notes": [
+    "Rose",
+    "Birne"
+  ],
+  "base_notes": [
+    "weisser Moschus"
+  ],
+  "accords": [
+    "Grün 28",
+    "Frisch 27",
+    "Blumig 26",
+    "Fruchtig 8",
+    "Zitrus 6",
+    "Aquatisch 5"
+  ],
+  "lifestyle": "casual",
+  "trend_vibe": "trendy",
+  "sizes": [
+    {
+      "ml": 75,
+      "price_chf": 56.99
+    },
+    {
+      "ml": 125,
+      "price_chf": 82.99
+    }
+  ],
+  "description": "Rosa Verde kam 2025 heraus und stammt von Delphine Jelk. Es ist eine grüne, kühle Rose, gedacht für Damen und Herren.\n\nGurke und Minze, dazu Rose, Birne und weisser Moschus.\n\nAuf Parfumo gilt er als grün und frisch, mit einer blumigen Seite. Die Minze macht ihn kühlend, die Gurke wässrig. Wer eine süsse, klassische Rose sucht, wird hier eher nicht fündig. Am besten passt er in den Sommer und Frühling, für jeden Tag, die Freizeit und das Büro.",
+  "sources": {
+    "identity": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-rosa-verde",
+      "https://www.easycosmetic.ch/guerlain/guerlain-aqua-allegoria.aspx"
+    ],
+    "release_year": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-rosa-verde",
+      "https://nstperfume.com/2025/02/04/guerlain-aqua-allegoria-rosa-verde-new-fragrance"
+    ],
+    "perfumer": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-rosa-verde",
+      "https://hype.my/guerlain-spritzes-the-world-with-its-new-aqua-allegoria-rosa-verde-collection/"
+    ],
+    "notes": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-rosa-verde",
+      "https://vivir.com/article/guerlain-aqua-allegoria-rosa-verde"
+    ],
+    "diagram": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-rosa-verde"
+    ],
+    "ratings": [
+      "https://www.parfumo.com/Perfumes/Guerlain/aqua-allegoria-rosa-verde"
+    ],
+    "price": [
+      "https://www.easycosmetic.ch/guerlain/guerlain-aqua-allegoria.aspx"
+    ]
+  }
+}

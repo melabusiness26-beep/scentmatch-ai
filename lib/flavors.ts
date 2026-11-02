@@ -30,6 +30,7 @@ export const FLAVOR_GROUPS = [
   'Zitrus',
   'Getränke',
   'Blumen',
+  'Kräuter & Aromatisches',
   'Gewürze',
   'Hölzer & Erdiges',
   'Harze, Leder & Tabak',
@@ -151,8 +152,8 @@ const ROWS: Row[] = [
   ['kaffee', 'Kaffee', 'nach Kaffee', 'Getränke', null, '#6F4E37', ['kaffee', 'espresso', 'mokka'], [], 'Geröstet, warm und wach – Kaffee gibt süssen Düften Tiefe.'],
   ['tee', 'Tee', 'nach Tee', 'Getränke', null, '#9DB07A', ['tee', 'matcha', 'mate'], ['teer', 'tomate'], 'Ruhig, klar und leicht herb – Tee wirkt elegant und entspannt.'],
   ['eistee', 'Eistee', 'nach Eistee', 'Getränke', null, '#D9A35A', ['eistee', 'ice tea', 'iced tea'], [], 'Kühl, fruchtig und leicht herb – wie ein Glas Eistee im Sommer.'],
-  ['cola', 'Cola', 'nach Cola', 'Getränke', null, '#5A2E1E', ['cola'], ['kolanuss'], 'Spritzig, würzig und süss – eine verspielte, ungewöhnliche Note.'],
-  ['limonade', 'Limonade', 'nach Limonade', 'Getränke', null, '#F2E27A', ['limonade', 'lemonade', 'limo'], [], 'Zitrus mit Zucker und Prickeln – erfrischend wie eine kalte Limo.'],
+  ['cola', 'Cola', 'nach Cola', 'Getränke', null, '#5A2E1E', ['cola'], ['kolanuss', 'chocolat'], 'Spritzig, würzig und süss – eine verspielte, ungewöhnliche Note.'],
+  ['limonade', 'Limonade', 'nach Limonade', 'Getränke', null, '#F2E27A', ['limonade', 'lemonade'], [], 'Zitrus mit Zucker und Prickeln – erfrischend wie eine kalte Limo.'],
   ['orangensaft', 'Orangensaft', 'nach Orangensaft', 'Getränke', null, '#F59B2C', ['orangensaft', 'orange juice'], [], 'Saftig, süss und sonnig – wie ein frisch gepresster Orangensaft.'],
   ['matcha', 'Matcha', 'nach Matcha', 'Getränke', null, '#8DB255', ['matcha'], [], 'Grün, cremig und leicht herb – der Trend-Tee als Duft.'],
   ['rum', 'Rum', 'nach Rum', 'Getränke', null, '#7A4B2A', ['rum'], ['rumänisch'], 'Warm, süss und berauschend – Rum macht Düfte sinnlich.'],
@@ -168,15 +169,28 @@ const ROWS: Row[] = [
   ['iris', 'Iris', 'nach Iris', 'Blumen', N + 'iris.jpg', '#A99BC7', ['iris', 'veilchenwurzel'], [], 'Pudrig, kühl und edel – Iris wirkt wie teurer Puder.'],
   ['orangenbluete', 'Orangenblüte & Neroli', 'nach Orangenblüte', 'Blumen', N + 'neroli.jpg', '#F6E7C1', ['orangenblüte', 'neroli'], [], 'Hell, sauber und strahlend – Orangenblüte wirkt wie Sonne auf der Haut.'],
   ['frangipani', 'Frangipani', 'nach Frangipani', 'Blumen', N + 'frangipani.jpg', '#F7D9A8', ['frangipani', 'plumeria'], [], 'Tropisch, cremig und blumig – Frangipani riecht nach Inselurlaub.'],
+  ['lilie', 'Lilie', 'nach Lilie', 'Blumen', null, '#F4EEE2', ['lilie', 'lily'], ['lily of the valley', 'maiglöckchen'], 'Weiss, edel und leicht würzig – eine grosse, strahlende Blüte.'],
+  ['nelke-bluete', 'Nelke (Blüte)', 'nach Nelkenblüte', 'Blumen', null, '#E46A7E', ['nelke', 'carnation'], ['gewürznelke', 'nelkenpfeffer'], 'Blumig mit würziger Note – die Blüte, nicht das Gewürz.'],
   ['tuberose', 'Tuberose', 'nach Tuberose', 'Blumen', null, '#F6EFE3', ['tuberose'], [], 'Cremig, opulent und sinnlich – eine der kräftigsten weissen Blüten.'],
   ['pfingstrose', 'Pfingstrose', 'nach Pfingstrose', 'Blumen', null, '#F1A7BF', ['pfingstrose'], [], 'Frisch, rosig und verspielt – zarter als die Rose.'],
   ['veilchen', 'Veilchen', 'nach Veilchen', 'Blumen', null, '#8C6BB1', ['veilchen'], ['veilchenwurzel'], 'Pudrig, süss und ein bisschen nostalgisch.'],
   ['maigloeckchen', 'Maiglöckchen', 'nach Maiglöckchen', 'Blumen', null, '#E6F0D8', ['maiglöckchen'], [], 'Grün, hell und sauber – der Duft des Frühlings.'],
+  // Kräuter & Aromatisches
+  ['salbei', 'Salbei', 'nach Salbei', 'Kräuter & Aromatisches', null, '#9AAE8C', ['salbei', 'sage'], [], 'Würzig, krautig und leicht herb – Salbei wirkt klar und erwachsen.'],
+  ['basilikum', 'Basilikum', 'nach Basilikum', 'Kräuter & Aromatisches', null, '#5E9B4A', ['basilikum', 'basil'], [], 'Grün, frisch und leicht pfeffrig – wie ein Kräutergarten im Sommer.'],
+  ['rosmarin', 'Rosmarin', 'nach Rosmarin', 'Kräuter & Aromatisches', N + 'rosmarin.jpg', '#6F8F5B', ['rosmarin', 'rosemary'], [], 'Harzig, frisch und kräftig – ein Klassiker der mediterranen Düfte.'],
+  ['thymian', 'Thymian', 'nach Thymian', 'Kräuter & Aromatisches', null, '#7E9467', ['thymian', 'thyme'], [], 'Warm, würzig und kräuterig – erinnert an Provence und Sonne.'],
+  ['estragon', 'Estragon', 'nach Estragon', 'Kräuter & Aromatisches', null, '#8FAF6A', ['estragon', 'tarragon'], [], 'Grün, leicht anisartig und frisch – eine seltene, elegante Note.'],
+  ['koriander', 'Koriander', 'nach Koriander', 'Kräuter & Aromatisches', N + 'koriander.jpg', '#A7B57A', ['koriander', 'coriander'], [], 'Würzig-frisch und leicht zitrisch – macht Düfte lebendig.'],
+  ['kuemmel', 'Kümmel & Kreuzkümmel', 'nach Kümmel', 'Kräuter & Aromatisches', null, '#9C7B4A', ['kümmel', 'cumin', 'caraway'], [], 'Würzig, warm und ungewöhnlich – eine mutige Note mit Charakter.'],
+  ['anis', 'Anis & Sternanis', 'nach Anis', 'Kräuter & Aromatisches', null, '#6B4A3A', ['anis', 'sternanis', 'star anise'], ['anisch'], 'Süsslich-würzig und lakritzartig – wie Sternanis im Glühwein.'],
+  ['wacholder', 'Wacholder', 'nach Wacholder', 'Kräuter & Aromatisches', N + 'wacholder.jpg', '#4F6B7A', ['wacholder', 'juniper'], [], 'Frisch, harzig und ein bisschen wie Gin – klar und belebend.'],
+  ['tanne', 'Tanne & Nadelholz', 'nach Tanne', 'Kräuter & Aromatisches', null, '#3F6A4E', ['tanne', 'fichte', 'kiefer', 'pinie', 'nadel', 'fir', 'pine'], ['pinienkern', 'pine nut', 'pineapple'], 'Harzig, grün und frisch – wie ein Spaziergang im Winterwald.'],
   // Gewürze & Hölzer
   ['zimt', 'Zimt', 'nach Zimt', 'Gewürze', N + 'zimt.jpg', '#A0522D', ['zimt'], [], 'Würzig, warm und süss – Zimt erinnert an Herbst und Weihnachten.'],
   ['pfeffer', 'Pfeffer', 'nach Pfeffer', 'Gewürze', N + 'pfeffer.jpg', '#5E4B3C', ['pfeffer'], ['pfefferminz'], 'Prickelnd und lebendig – Pfeffer gibt Düften Spannung.'],
-  ['muskatnuss', 'Muskatnuss', 'nach Muskatnuss', 'Gewürze', null, '#8A5A3B', ['muskat'], [], 'Warm, würzig und leicht süss – ein klassisches Wintergewürz.'],
-  ['gewuerze', 'Alle Gewürze', 'nach Gewürzen', 'Gewürze', null, '#9C4A2A', ['zimt', 'gewürz', 'pfeffer', 'kardamom', 'ingwer', 'safran', 'muskat', 'anis', 'kreuzkümmel', 'koriander', 'nelke'], ['pfefferminz'], 'Zimt, Pfeffer, Kardamom & Co. – würzige Düfte mit Wärme und Charakter.'],
+  ['muskatnuss', 'Muskatnuss', 'nach Muskatnuss', 'Gewürze', null, '#8A5A3B', ['muskat'], ['muskatell'], 'Warm, würzig und leicht süss – ein klassisches Wintergewürz.'],
+  ['gewuerze', 'Alle Gewürze', 'nach Gewürzen', 'Gewürze', null, '#9C4A2A', ['zimt', 'gewürz', 'pfeffer', 'kardamom', 'ingwer', 'safran', 'muskat', 'anis', 'kümmel', 'koriander', 'gewürznelke'], ['pfefferminz', 'anisch', 'muskatell'], 'Zimt, Pfeffer, Kardamom & Co. – würzige Düfte mit Wärme und Charakter.'],
   ['holz', 'Alle Hölzer', 'nach Holz', 'Gewürze', N + 'zedernholz.jpg', '#8A6744', ['holz', 'zeder', 'sandel', 'oud', 'guajak', 'kaschmeran', 'vetiver'], [], 'Zedernholz, Sandelholz, Oud & Co. – warm, ruhig und erdend.'],
   ['sandelholz', 'Sandelholz', 'nach Sandelholz', 'Gewürze', N + 'sandelholz.jpg', '#C9A27A', ['sandel'], [], 'Cremig, weich und warm – das sanfteste aller Hölzer.'],
   ['zedernholz', 'Zedernholz', 'nach Zedernholz', 'Gewürze', N + 'zedernholz.jpg', '#9C7A55', ['zeder'], [], 'Trocken, klar und holzig – Zeder gibt Düften Halt.'],
@@ -191,13 +205,13 @@ const ROWS: Row[] = [
   ['safran', 'Safran', 'nach Safran', 'Gewürze', null, '#C8452E', ['safran'], [], 'Ledrig, warm und kostbar – Safran wirkt luxuriös.'],
   ['nelke', 'Gewürznelke', 'nach Gewürznelke', 'Gewürze', null, '#6E3A2A', ['gewürznelke'], [], 'Warm, würzig und weihnachtlich.'],
   // Frisch & sauber
-  ['moschus', 'Moschus', 'nach Moschus', 'Frisch & sauber', N + 'moschus.jpg', '#EDE3DA', ['moschus', 'musk'], [], 'Sauber, weich und hautnah – wie frisch gewaschene Haut.'],
+  ['moschus', 'Moschus', 'nach Moschus', 'Frisch & sauber', N + 'moschus.jpg', '#EDE3DA', ['moschus', 'musk'], ['muskat'], 'Sauber, weich und hautnah – wie frisch gewaschene Haut.'],
   ['amber', 'Amber', 'nach Amber', 'Frisch & sauber', N + 'amber.jpg', '#D9A04A', ['amber', 'ambra'], ['amberholz'], 'Warm, harzig und leicht süss – Amber macht Düfte golden und rund.'],
   ['moos', 'Moos', 'nach Moos', 'Frisch & sauber', N + 'eichenmoos.jpg', '#6F7F4A', ['moos'], [], 'Erdig, grün und waldig – wie ein Spaziergang im Wald.'],
-  ['gruen', 'Grün', 'nach Grün', 'Frisch & sauber', N + 'gruene-noten.jpg', '#7FA65A', ['grüne note', 'gras', 'blätter', 'blatt', 'grün'], ['grasse'], 'Frisch geschnittenes Gras und grüne Blätter – natürlich und lebendig.'],
+  ['gruen', 'Grün', 'nach Grün', 'Frisch & sauber', N + 'gruene-noten.jpg', '#7FA65A', ['grüne note', 'gras', 'blätter', 'blatt', 'grün'], ['grasse', 'grüner apfel', 'grüne mandarine'], 'Frisch geschnittenes Gras und grüne Blätter – natürlich und lebendig.'],
   ['salz', 'Salz', 'nach Salz', 'Frisch & sauber', null, '#E6E8EA', ['salz', 'salt'], [], 'Salzig, hautnah und frisch – macht süsse und frische Düfte spannender.'],
   ['minze', 'Minze', 'nach Minze', 'Frisch & sauber', N + 'minze.jpg', '#8FD1B0', ['minze'], [], 'Kühl, klar und belebend – Minze ist pure Frische.'],
-  ['meer', 'Meer & Ozean', 'nach Meer und Ozean', 'Frisch & sauber', N + 'meersalz.jpg', '#7FB8D6', ['meer', 'ozean', 'aquatisch', 'marin'], ['marinade'], 'Salzig, luftig und frisch – wie eine Brise am Strand.']
+  ['meer', 'Meer & Ozean', 'nach Meer und Ozean', 'Frisch & sauber', N + 'meersalz.jpg', '#7FB8D6', ['meer', 'ozean', 'aquatisch', 'marin'], ['marinade', 'rosmarin'], 'Salzig, luftig und frisch – wie eine Brise am Strand.']
 ];
 
 const CREAM = ['milch', 'sahne', 'rahm', 'joghurt', 'mascarpone', 'milk'];
@@ -232,7 +246,7 @@ const COMBOS: Record<string, string[][]> = {
   mojito: [['limette'], ['minze']],
   sangria: [['wein', 'sangria'], ['orange', 'zitrone', 'beere', 'apfel', 'pfirsich', 'sangria']]
 };
-const COMBO_EXCLUDE = ['apfelblüte', 'granatapfel', 'muskatnuss', 'teer', 'tomate'];
+const COMBO_EXCLUDE = ['apfelblüte', 'granatapfel', 'muskatell', 'teer', 'tomate', 'anisch'];
 
 // Genaue Einordnung (wie in Duft-Datenbanken üblich): Nüsse sind „nussig", nicht süss;
 // Milchnoten sind cremig; Harze, Leder und Tabak sind weder Gewürz noch Holz.
@@ -245,6 +259,7 @@ const GROUP_OF: Record<string, FlavorGroup> = {
   muskatnuss: 'Gewürze', gewuerze: 'Gewürze',
   holz: 'Hölzer & Erdiges', sandelholz: 'Hölzer & Erdiges', zedernholz: 'Hölzer & Erdiges', oud: 'Hölzer & Erdiges',
   patchouli: 'Hölzer & Erdiges', vetiver: 'Hölzer & Erdiges', moos: 'Hölzer & Erdiges',
+  minze: 'Kräuter & Aromatisches',
   weihrauch: 'Harze, Leder & Tabak', amber: 'Harze, Leder & Tabak', leder: 'Harze, Leder & Tabak', tabak: 'Harze, Leder & Tabak'
 };
 

@@ -4,6 +4,8 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface FavoritesContextType {
   favorites: string[];
+  /** true, sobald die gespeicherte Liste aus dem Browser gelesen wurde. */
+  loaded: boolean;
   toggleFavorite: (slug: string) => void;
   isFavorite: (slug: string) => boolean;
 }
@@ -12,6 +14,7 @@ const FavoritesContext = createContext<FavoritesContextType | undefined>(undefin
 
 export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   const [favorites, setFavorites] = useState<string[]>([]);
+  const [loaded, setLoaded] = useState(false);
 
   // Gespeicherte Favoriten erst im Browser laden. Die Seite selbst wird trotzdem sofort
   // (auch auf dem Server) angezeigt – sonst sähe Google nur eine leere Seite.
@@ -26,6 +29,7 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
     } catch (error) {
       console.error('Failed to load favorites:', error);
     }
+    setLoaded(true);
   }, []);
 
   const toggleFavorite = (slug: string) => {
@@ -47,7 +51,7 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   const isFavorite = (slug: string) => favorites.includes(slug);
 
   return (
-    <FavoritesContext.Provider value={{ favorites, toggleFavorite, isFavorite }}>
+    <FavoritesContext.Provider value={{ favorites, loaded, toggleFavorite, isFavorite }}>
       {children}
     </FavoritesContext.Provider>
   );

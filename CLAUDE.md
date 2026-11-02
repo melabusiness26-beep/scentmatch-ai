@@ -340,3 +340,34 @@ Parfumo-Diagramm, (3) Foto vom Preis** (easyCOSMETIC, sonst Makeup.ch/Notino). A
   flacon, good_to_know, inspiration: je 2 Links von 2 verschiedenen Websites; diagram, ratings, price,
   similar_perfumes: je 1). Fehlt etwas, wird der PR rot und nichts geht live. Die 15 Düfte von vorher stehen in
   `LEGACY_WITHOUT_SOURCES` (Quellen nachtragen, Liste nie erweitern).
+
+## 15. Update (2. November 2026): Geschmacks-Seite, geprüfte Dupe-Paare, Netzwerk
+
+- **`/geschmack`** (`lib/flavors.ts`): 161 Kacheln in 14 Gruppen (Süsses, Gebäck, Milch, Nüsse & Kerne,
+  Dessert-Kombis, Früchte & Gemüse, Zitrus, Getränke, Blumen, Kräuter, Gewürze, Hölzer, Harze/Leder/Tabak,
+  Frisch). Kombis (z. B. Erdbeershake) brauchen ALLE Bestandteile. Nach jeder Erweiterung jede Kachel gegen
+  die Katalog-Noten prüfen (Fehltreffer wie „anis“ in „Sizilianische“ per `exclude`). Markennamen (Lotus,
+  Bueno, Toffifee, Fanta, Sprite) nur als neutrale Begriffe. Fotos: 39 vorhanden, Rest Farbfläche – die
+  Gründerin erstellt Bilder mit ChatGPT (Satin-Stil, ohne Schrift/Marken/Flakon).
+- **Dupe-Regel im Code**: „Alternative zu" braucht 2 Quellen von 2 Websites, eine davon Parfumo/Fragrantica.
+  Nie „1:1"/„Klon"/Prozentwerte.
+- **Geprüfte Paare (Parfumo „Duftet ähnlich" + 2. Quelle), noch nicht eingetragen:**
+  - La Rive: Queen of Life → La Vie est Belle; Cash Woman → Lady Million; Madame Isabelle → Coco Mademoiselle;
+    In Woman → Sì; Touch of Woman → Black Opium; Miss Dream → Good Girl; Sweet Hope → Hypnotic Poison.
+  - Zara (Parfumo-Top bestätigt): Red Temptation → Baccarat Rouge 540; Golden Decade → Libre; Gardenia →
+    Black Opium; Red Vanilla → La Vie est Belle; Rose Gourmand → Roses Vanille/Intense Café; Vibrant Caramel →
+    Paradoxe; Cherry Smoothie → Lost Cherry; Applejuice → Chance Eau Tendre; Nude Bouquet → Miss Dior Blooming
+    Bouquet; Sublime Époque → My Way; Violet Blossom → Alien; Femme → Hypnotic Poison; Orchid → Bombshell;
+    Rose → J'adore (schwach); Woman Gold → Lady Million; Go Fruity → Her; Fields at Nightfall → This is Her!;
+    Hypnotic Vanilla → Hypnotic Poison; Gourmand Addict → Olympéa; Sunrise on the Red Sand Dunes → Imagination;
+    Energetically New York → Santal 33; Vibrant Leather → Aventus. NICHT bestätigt: Oriental → Sì,
+    Ebony Wood → Oud Wood.
+  - Valentino Donna Born in Roma (2019, Amandine Clerc-Marie & Honorine Blanc): Câline Bouquet Pink und
+    Bath & Body Works Pink Obsessed bestätigt – Schweizer Verfügbarkeit offen (dm hat KEINE CH-Läden;
+    Rossmann schon: rossmannonline.ch). Zara Red Temptation ist KEIN Born-in-Roma-Dupe (Parfumo: BR540).
+  - ExtraTime/ComoTú (Mercadona): kein belegtes Original.
+- **Netzwerk**: Gründerin schaltet Shop- und Datenbank-Seiten frei (Notino, Makeup, Flaconi, Douglas, Sephora,
+  Marionnaud, Impo, Manor, Galaxus, Müller, Rossmann, Coop, Migros, Lidl, Zara, Fragrantica, Basenotes …).
+  easyCOSMETIC hat Bot-Schutz – nicht umgehen.
+- **Nächster Schritt**: La Vie est Belle + Zara Red Vanilla + La Rive Queen of Life eintragen (Diagramm-Fotos
+  von der Gründerin), danach süsse Düfte (Lattafa Yara, Khamrah, Mayar Cherry, Kayali Vanilla 28, Ariana Grande Cloud).

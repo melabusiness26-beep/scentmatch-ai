@@ -1,0 +1,37 @@
+{
+  "slug": "joop-homme-le-parfum",
+  "perfume_name": "Homme Le Parfum",
+  "brand": "Joop!",
+  "gender": "Men",
+  "fragrance_family": "gourmand",
+  "season": "Herbst/Winter",
+  "occasion": "Abend",
+  "age_group": "all",
+  "gender_nuance": "masculine",
+  "concentration": "Parfum",
+  "volume_ml": 125,
+  "price_chf": 61.99,
+  "longevity": 8,
+  "sillage": 8,
+  "release_year": 2022,
+  "perfumer": "Karine Dubreuil-Sereni",
+  "top_notes": ["Lavendel"],
+  "heart_notes": ["Iris"],
+  "base_notes": ["Praliné", "Tonkabohne", "Vanille"],
+  "accords": ["Süss 26", "Synthetisch 17", "Gourmand 14", "Pudrig 12", "Fruchtig 11", "Würzig 8", "Blumig 7", "Cremig 5"],
+  "lifestyle": "party",
+  "trend_vibe": "trendy",
+  "sizes": [
+    { "ml": 125, "price_chf": 61.99 }
+  ],
+  "description": "Joop! Homme Le Parfum kam 2022 heraus und stammt von Karine Dubreuil-Sereni. Er ist die süsseste Version der Reihe und hat mit dem pinken Eau de Toilette von 1989 nur noch wenig zu tun.\n\nLavendel am Anfang, Iris in der Mitte, Praliné, Tonkabohne und Vanille am Schluss.\n\nAuf Parfumo gilt er als süss und gourmandig, mit einer pudrigen und fruchtigen Seite. Er hält lange und ist gut zu riechen. Am besten passt er in den Herbst und Winter, zum Ausgehen und am Abend.",
+  "sources": {
+    "identity": ["https://www.parfumo.com/Perfumes/Joop/joop-homme-le-parfum", "https://www.easycosmetic.ch/joop/joop-homme.aspx"],
+    "release_year": ["https://www.parfumo.com/Perfumes/Joop/joop-homme-le-parfum", "https://scentverdict.com/perfume/joop-joop-homme-le-parfum-parfum"],
+    "perfumer": ["https://www.parfumo.com/Perfumes/Joop/joop-homme-le-parfum", "https://scentverdict.com/perfume/joop-joop-homme-le-parfum-parfum"],
+    "notes": ["https://www.parfumo.com/Perfumes/Joop/joop-homme-le-parfum", "https://en.parfumdreams.de/JOOP!/Mens-fragrances/Homme/Le-Parfum/index_110644.aspx"],
+    "diagram": ["https://www.parfumo.com/Perfumes/Joop/joop-homme-le-parfum"],
+    "ratings": ["https://www.parfumo.com/Perfumes/Joop/joop-homme-le-parfum"],
+    "price": ["https://www.easycosmetic.ch/joop/joop-homme.aspx"]
+  }
+}

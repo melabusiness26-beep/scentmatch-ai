@@ -371,3 +371,37 @@ Parfumo-Diagramm, (3) Foto vom Preis** (easyCOSMETIC, sonst Makeup.ch/Notino). A
   easyCOSMETIC hat Bot-Schutz – nicht umgehen.
 - **Nächster Schritt**: La Vie est Belle + Zara Red Vanilla + La Rive Queen of Life eintragen (Diagramm-Fotos
   von der Gründerin), danach süsse Düfte (Lattafa Yara, Khamrah, Mayar Cherry, Kayali Vanilla 28, Ariana Grande Cloud).
+
+## 16. Update (2. November 2026, Abend): Reihen komplett machen, Narciso/Joop fertig
+
+- **Neu live (Katalog 25 Düfte):** Narciso Rodriguez For Her Pure Musc (2019) + Pure Musc Blanc (EdP Intense,
+  Jahr fehlt – nur 1 Quelle); Joop! Homme EdT (1989), EdP (2021), EdP Intense (2025), Le Parfum (2022).
+  Joop! Homme **Neon Edition** bewusst NICHT aufgenommen (limitierte Pride-Flasche des EdT, kein eigener Duft).
+- **Code:** Preise überall mit `formatChf` (`lib/price.ts`) → „CHF 90.90" statt „90.9".
+- **Neuer Grundsatz der Gründerin:** Pro Duftreihe ALLE Düfte eintragen, die in der Schweiz erhältlich sind und
+  unter CHF 180 kosten (nicht nur einzelne). Referenz = easyCOSMETIC-Linienseite (Gründerin kopiert den Text).
+  Narciso for her / Pure Musc ✅ komplett, Joop! Homme ✅ komplett.
+- **Arbeitsweise pro Duft:** Assistent liest Parfumo-Text selbst (parfumo.com per curl geht; bei „Access Denied"
+  kurz warten – Rate-Limit). Gründerin schickt nur das **Diagramm-Foto** (mit Adresszeile). Preise aus ihrem
+  easyCOSMETIC-Text; ist ein Duft dort ausverkauft → Preis von Notino/Douglas (Foto der Gründerin).
+- **Dupes zu Pure Musc / Blanc / Joop! Homme:** noch NICHT belegt (Câline Nuit de Musc = bester Kandidat für Pure
+  Musc, aber nur Parfumo; Zara Woman in White → Blanc schwach; La Rive Blurry → Joop nur Shop-Blog). Später erneut prüfen.
+
+### Offen: Guerlain Aqua Allegoria (nächster Schritt)
+- Nur Düfte, die bei easyCOSMETIC aktuell verkauft werden (Preise im Chat vom 2.11. – Gründerin ggf. nochmal den
+  easyCOSMETIC-Text schicken lassen). 20 Stück, Parfumo-Seiten (parfumo.com/Perfumes/Guerlain/…):
+  Aqua_Allegoria_Mandarine_Basilic, aqua-allegoria-forte-mandarine-basilic, Aqua_Allegoria_Pamplelune,
+  Aqua_Allegoria_Herba_Fresca, aqua-allegoria-orange-soleia, Aqua_Allegoria_Bergamote_Calabria,
+  aqua-allegoria-nerolia-vetiver, aqua-allegoria-forte-nerolia-vetiver, aqua-allegoria-nettare-di-sole,
+  Aqua_Allegoria_Pera_Granita, aqua-allegoria-florabloom, aqua-allegoria-forte-florabloom,
+  aqua-allegoria-flora-salvaggia, aqua-allegoria-flora-cherrysia-limited-edition, aqua-allegoria-rosa-verde,
+  aqua-allegoria-rosa-rossa-limited-edition, aqua-allegoria-forte-rosa-rossa, aqua-allegoria-forte-bosca-vanilla,
+  aqua-allegoria-forte-rosa-palissandro, aqua-allegoria-forte-oud-yuzu.
+  Achtung: easyCOSMETIC „Florabloom EdP" vs. Parfumo „Florabloom Perle"/„Forte Florabloom" – vor dem Eintragen klären.
+- **Unsicher, ob in CH erhältlich – in neuer Sitzung direkt in den Shops prüfen:** Granada Salvia (bei easyCOSMETIC
+  ausverkauft; Marionnaud/Douglas listen ihn), Ginger Piccante (Impo/Manor?), Coconut Fizz (Notino: „Verkauf
+  beendet"), Teazzurra (nur Impo, Restposten?), Flora Rosa (nur Notino).
+- Gründerin hat am 2.11. notino.ch, douglas.ch, manor.ch, marionnaud.ch, impo.ch, galaxus.ch im Netzwerkzugriff
+  freigeschaltet – wirkt erst in einer NEUEN Sitzung. Bot-Schutz nie umgehen.
+- Danach: easyCOSMETIC-Linienseiten der älteren Reihen (Light Blue, Boss Bottled, Cool Water, Terre d'Hermès)
+  von der Gründerin holen und fehlende Versionen ergänzen. Später: La Vie est Belle + geprüfte Dupes.

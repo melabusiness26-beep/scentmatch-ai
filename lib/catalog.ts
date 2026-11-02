@@ -63,6 +63,9 @@ export const LEGACY_WITHOUT_SOURCES = new Set([
   'terre-d-hermes', 'terre-d-hermes-parfum'
 ]);
 
+// Duft-Datenbanken, in denen die Community abstimmt, welche Düfte ähnlich riechen.
+export const STRONG_DUPE_SOURCES = ['parfumo.com', 'parfumo.de', 'fragrantica.com', 'fragrantica.de', 'fragrantica.es', 'fragrantica.fr', 'fragrantica.it'];
+
 function hostOf(url: string): string | null {
   try {
     const u = new URL(url);
@@ -84,6 +87,10 @@ export function checkSources(raw: RawPerfume): string[] {
     const bad = list.filter((u) => !hostOf(u));
     const hosts = new Set(list.map(hostOf).filter((h): h is string => Boolean(h)));
     if (bad.length) problems.push(`Quelle für ${rule.label} ist kein https-Link: ${bad.join(', ')}.`);
+    // Dupe-Beziehungen nur mit einer Duft-Datenbank als Beleg (Community-Abstimmung „riecht ähnlich").
+    if (rule.key === 'alternative_to' && ![...hosts].some((h) => STRONG_DUPE_SOURCES.some((d) => h === d || h.endsWith(`.${d}`)))) {
+      problems.push(`${rule.label}: Eine Quelle muss eine Duft-Datenbank sein (${STRONG_DUPE_SOURCES.join(', ')}).`);
+    }
     if (hosts.size < rule.min) {
       problems.push(
         rule.min > 1

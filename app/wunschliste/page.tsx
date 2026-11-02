@@ -7,22 +7,31 @@ import { PerfumeTile } from '@/app/PerfumeTile';
 import { useFavorites } from '@/app/FavoritesContext';
 
 export default function WishlistPage() {
-  const { favorites } = useFavorites();
-  const [perfumes, setPerfumes] = useState<Perfume[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { favorites, loaded } = useFavorites();
+  const [all, setAll] = useState<Perfume[]>([]);
+  const [fetching, setFetching] = useState(true);
 
+  // Alle Düfte EINMAL laden und danach nur filtern. (Vorher wurde bei jeder Änderung der
+  // Favoriten neu geladen; kam eine ältere Antwort später an, zeigte die Liste fälschlich „leer".)
   useEffect(() => {
+    let active = true;
     (async () => {
       try {
-        const data = await getPerfumes(500);
-        setPerfumes(data.filter(p => p.slug && favorites.includes(p.slug)));
-        setIsLoading(false);
+        const data = await getPerfumes(2000);
+        if (active) setAll(data);
       } catch (error) {
         console.error('Failed to load perfumes:', error);
-        setIsLoading(false);
+      } finally {
+        if (active) setFetching(false);
       }
     })();
-  }, [favorites]);
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const perfumes = all.filter((p) => p.slug && favorites.includes(p.slug));
+  const isLoading = fetching || !loaded;
 
   return (
     <main style={{ background: '#FAF7F2' }}>

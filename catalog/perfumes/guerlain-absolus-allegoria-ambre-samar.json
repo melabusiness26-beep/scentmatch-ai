@@ -1,0 +1,74 @@
+{
+  "slug": "guerlain-absolus-allegoria-ambre-samar",
+  "perfume_name": "Absolus Allegoria Ambre Samar",
+  "brand": "Guerlain",
+  "gender": "Unisex",
+  "fragrance_family": "gourmand",
+  "season": "Herbst/Winter",
+  "occasion": "Abend",
+  "age_group": "all",
+  "gender_nuance": "androgynous",
+  "concentration": "EdP",
+  "volume_ml": 125,
+  "price_chf": 99.99,
+  "longevity": 8,
+  "sillage": 8,
+  "release_year": 2025,
+  "perfumer": "Delphine Jelk",
+  "top_notes": [
+    "Weihrauch"
+  ],
+  "heart_notes": [
+    "Honig",
+    "Amber"
+  ],
+  "base_notes": [
+    "Ambra",
+    "Vanille"
+  ],
+  "accords": [
+    "Würzig 23",
+    "Süss 23",
+    "Orientalisch 18",
+    "Harzig 13",
+    "Gourmand 12",
+    "Rauchig 7",
+    "Holzig 5"
+  ],
+  "lifestyle": "casual",
+  "trend_vibe": "trendy",
+  "sizes": [
+    {
+      "ml": 125,
+      "price_chf": 99.99
+    }
+  ],
+  "description": "Ambre Samar kam 2025 heraus und stammt von Delphine Jelk. Er ist warm, süss und würzig, viele beschreiben ihn als „Weihnachtsmarkt im Flakon“.\n\nWeihrauch, Honig und Amber, darunter Ambra und Vanille.\n\nAuf Parfumo gilt er als würzig und süss, orientalisch und harzig, mit einer Gourmand-Seite. Wer süsse Düfte nicht mag, sollte ihn zuerst testen. Er hält lange und ist gut zu riechen. Am besten passt er in den Herbst und Winter, zum Ausgehen und am Abend.",
+  "sources": {
+    "identity": [
+      "https://www.parfumo.com/Perfumes/Guerlain/ambre-samar",
+      "https://www.easycosmetic.ch/guerlain/guerlain-absolus-allegoria.aspx"
+    ],
+    "release_year": [
+      "https://www.parfumo.com/Perfumes/Guerlain/ambre-samar",
+      "https://nstperfume.com/2025/04/01/guerlain-ambre-samar-new-fragrance"
+    ],
+    "perfumer": [
+      "https://www.parfumo.com/Perfumes/Guerlain/ambre-samar",
+      "https://www.guerlain.com/uk/en-uk/p/absolus-allegoria-ambre-samar---eau-de-parfum-G062179.html"
+    ],
+    "notes": [
+      "https://www.parfumo.com/Perfumes/Guerlain/ambre-samar",
+      "https://www.guerlain.com/uk/en-uk/p/absolus-allegoria-ambre-samar---eau-de-parfum-G062179.html"
+    ],
+    "diagram": [
+      "https://www.parfumo.com/Perfumes/Guerlain/ambre-samar"
+    ],
+    "ratings": [
+      "https://www.parfumo.com/Perfumes/Guerlain/ambre-samar"
+    ],
+    "price": [
+      "https://www.easycosmetic.ch/guerlain/guerlain-absolus-allegoria.aspx"
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "slug": "guerlain-absolus-allegoria-oud-essentiel",
+  "perfume_name": "Absolus Allegoria Oud Essentiel",
+  "brand": "Guerlain",
+  "gender": "Unisex",
+  "fragrance_family": "woody",
+  "season": "Herbst/Winter",
+  "occasion": "Abend",
+  "age_group": "all",
+  "gender_nuance": "androgynous",
+  "concentration": "EdP",
+  "volume_ml": 125,
+  "price_chf": 98.99,
+  "longevity": 8,
+  "sillage": 8,
+  "release_year": 2017,
+  "perfumer": "Thierry Wasser",
+  "top_notes": [
+    "Safran",
+    "Rosengeranie"
+  ],
+  "heart_notes": [
+    "Oud",
+    "Rose",
+    "Atlaszeder"
+  ],
+  "base_notes": [
+    "Leder",
+    "Guajakholz",
+    "Weihrauch"
+  ],
+  "accords": [
+    "Holzig 19",
+    "Orientalisch 17",
+    "Würzig 15",
+    "Harzig 13",
+    "Ledrig 12",
+    "Rauchig 10",
+    "Blumig 8",
+    "Erdig 5"
+  ],
+  "lifestyle": "casual",
+  "trend_vibe": "niche",
+  "sizes": [
+    {
+      "ml": 125,
+      "price_chf": 98.99
+    }
+  ],
+  "description": "Oud Essentiel kam 2017 heraus und stammt von Thierry Wasser. Er gehörte zuerst zur Reihe „Les Absolus d’Orient“ und ist heute Teil von Absolus Allegoria.\n\nSafran und Rosengeranie am Anfang, dann Oud, Rose und Atlaszeder, und am Schluss Leder, Guajakholz und Weihrauch.\n\nAuf Parfumo gilt er als holzig und orientalisch, mit würzigen, harzigen und ledrigen Seiten. Der Start ist kräftig, zwei bis drei Sprühstösse reichen. Er hält sehr lange und strahlt stark aus. Am besten passt er in den Herbst und Winter, zum Ausgehen und am Abend.",
+  "sources": {
+    "identity": [
+      "https://www.parfumo.com/Perfumes/Guerlain/Oud_Essentiel",
+      "https://www.easycosmetic.ch/guerlain/guerlain-absolus-allegoria.aspx"
+    ],
+    "release_year": [
+      "https://www.parfumo.com/Perfumes/Guerlain/Oud_Essentiel",
+      "https://nstperfume.com/2017/04/11/guerlain-oud-essentiel-new-fragrance/"
+    ],
+    "perfumer": [
+      "https://www.parfumo.com/Perfumes/Guerlain/Oud_Essentiel",
+      "https://nstperfume.com/2017/04/11/guerlain-oud-essentiel-new-fragrance/"
+    ],
+    "notes": [
+      "https://www.parfumo.com/Perfumes/Guerlain/Oud_Essentiel",
+      "https://www.guerlain.com/be/fr-be/p/les-absolus-dorient-oud-essentiel---eau-de-parfum---flacon-abeilles-blanches-P013225.html"
+    ],
+    "diagram": [
+      "https://www.parfumo.com/Perfumes/Guerlain/Oud_Essentiel"
+    ],
+    "ratings": [
+      "https://www.parfumo.com/Perfumes/Guerlain/Oud_Essentiel"
+    ],
+    "price": [
+      "https://www.easycosmetic.ch/guerlain/guerlain-absolus-allegoria.aspx"
+    ]
+  }
+}

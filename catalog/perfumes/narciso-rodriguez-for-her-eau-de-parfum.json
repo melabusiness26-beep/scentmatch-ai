@@ -1,0 +1,73 @@
+{
+  "slug": "narciso-rodriguez-for-her-eau-de-parfum",
+  "perfume_name": "For Her",
+  "brand": "Narciso Rodriguez",
+  "gender": "Women",
+  "fragrance_family": "floral",
+  "season": "Ganzjährig",
+  "occasion": "Alltag",
+  "age_group": "all",
+  "gender_nuance": "feminine",
+  "concentration": "EdP",
+  "volume_ml": 100,
+  "price_chf": 58.99,
+  "longevity": 8,
+  "sillage": 7,
+  "perfumer": "Christine Nagel, Francis Kurkdjian",
+  "top_notes": [
+    "Rose",
+    "Pfirsich"
+  ],
+  "heart_notes": [
+    "Moschus",
+    "Amber"
+  ],
+  "base_notes": [
+    "Patchouli",
+    "Hölzer"
+  ],
+  "accords": [
+    "Blumig 25",
+    "Pudrig 22",
+    "Süss 13",
+    "Holzig 9",
+    "Frisch 8"
+  ],
+  "lifestyle": "professional",
+  "trend_vibe": "classic",
+  "sizes": [
+    {
+      "ml": 100,
+      "price_chf": 58.99
+    },
+    {
+      "ml": 150,
+      "price_chf": 76.99
+    }
+  ],
+  "description": "For Her Eau de Parfum ist die rosa Schwester des Eau de Toilette von Narciso Rodriguez, ebenfalls komponiert von Christine Nagel und Francis Kurkdjian. Es ist keine stärkere Fassung des Eau de Toilette, sondern ein eigener, weicherer Duft.\n\nDen Auftakt machen Rose und Pfirsich. Im Herzen folgen Moschus und Amber, in der Basis bleiben Patchouli und Hölzer.\n\nIn der Parfumo-Community gilt er als blumig-pudriger Duft – sanfter und rosiger als das Eau de Toilette. Er wird das ganze Jahr getragen und passt laut den Stimmen besonders gut in den Alltag und ins Büro.",
+  "sources": {
+    "identity": [
+      "https://www.parfumo.com/Perfumes/Narciso_Rodriguez/For_Her_Eau_de_Parfum",
+      "https://www.easycosmetic.ch/narciso-rodriguez/for-her/narciso-rodriguez-for-her-edp-vapo.aspx"
+    ],
+    "perfumer": [
+      "https://www.parfumo.com/Perfumes/Narciso_Rodriguez/For_Her_Eau_de_Parfum",
+      "https://bloomingdales.ae/narciso-rodriguez-for-her-eau-de-parfum-BEA204757675.html"
+    ],
+    "notes": [
+      "https://www.parfumo.com/Perfumes/Narciso_Rodriguez/For_Her_Eau_de_Parfum",
+      "https://www.easycosmetic.ch/narciso-rodriguez/for-her/narciso-rodriguez-for-her-edp-vapo.aspx",
+      "https://bloomingdales.ae/narciso-rodriguez-for-her-eau-de-parfum-BEA204757675.html"
+    ],
+    "diagram": [
+      "https://www.parfumo.com/Perfumes/Narciso_Rodriguez/For_Her_Eau_de_Parfum"
+    ],
+    "ratings": [
+      "https://www.parfumo.com/Perfumes/Narciso_Rodriguez/For_Her_Eau_de_Parfum"
+    ],
+    "price": [
+      "https://www.easycosmetic.ch/narciso-rodriguez/for-her/narciso-rodriguez-for-her-edp-vapo.aspx"
+    ]
+  }
+}

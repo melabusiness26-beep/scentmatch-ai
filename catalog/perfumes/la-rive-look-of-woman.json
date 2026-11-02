@@ -1,0 +1,79 @@
+{
+  "slug": "la-rive-look-of-woman",
+  "perfume_name": "Look of Woman",
+  "brand": "La Rive",
+  "gender": "Women",
+  "fragrance_family": "floral",
+  "concentration": "EdP",
+  "volume_ml": 75,
+  "price_chf": 11.95,
+  "longevity": 7,
+  "sillage": 6,
+  "season": "Ganzjährig",
+  "occasion": "Alltag",
+  "release_year": 2023,
+  "top_notes": [
+    "Pfirsich",
+    "Rose"
+  ],
+  "heart_notes": [
+    "Amber",
+    "Moschus"
+  ],
+  "base_notes": [
+    "Patchouli",
+    "Sandelholz"
+  ],
+  "accords": [
+    "Blumig 22",
+    "Pudrig 18",
+    "Süss 16",
+    "Cremig 15",
+    "Frisch 8"
+  ],
+  "age_group": "all",
+  "lifestyle": "casual",
+  "trend_vibe": "popular",
+  "gender_nuance": "feminine",
+  "sizes": [
+    {
+      "ml": 75,
+      "price_chf": 11.95
+    }
+  ],
+  "alternative_to": [
+    {
+      "name": "For Her Eau de Parfum",
+      "brand": "Narciso Rodriguez",
+      "note": "In der Duft-Community oft als günstige Alternative zu For Her Eau de Parfum genannt – auch der rosa Flakon erinnert daran. Er hält etwas kürzer und strahlt weniger aus als das Original."
+    }
+  ],
+  "description": "Look of Woman von La Rive ist 2023 erschienen und wird oft als günstige Alternative zu For Her Eau de Parfum von Narciso Rodriguez genannt – auch der rosa Flakon erinnert daran.\n\nDen Auftakt machen Pfirsich und Rose. Im Herzen folgen Amber und Moschus, in der Basis bleiben Patchouli und Sandelholz.\n\nIn der Parfumo-Community gilt er als blumig-pudriger, cremiger Duft mit sehr gutem Preis-Leistungs-Verhältnis. Haltbarkeit und Ausstrahlung sind etwas schwächer als beim Original. Getragen wird er das ganze Jahr, vor allem im Alltag.",
+  "sources": {
+    "identity": [
+      "https://www.parfumo.com/Perfumes/La_Rive/look-of-woman-2023",
+      "https://www.rossmann.de/de/pflege-und-duft-la-rive-look-of-woman-edp-75-ml/p/5903719642682"
+    ],
+    "release_year": [
+      "https://www.parfumo.com/Perfumes/La_Rive/look-of-woman-2023",
+      "https://www.etos.nl/producten/la-rive-look-of-woman-eau-de-parfum-75-ml-120762464.html"
+    ],
+    "notes": [
+      "https://www.parfumo.com/Perfumes/La_Rive/look-of-woman-2023",
+      "https://www.drogasil.com.br/perfume-look-of-woman-eau-de-parfum-75ml-la-rive-1198693.html"
+    ],
+    "diagram": [
+      "https://www.parfumo.com/Perfumes/La_Rive/look-of-woman-2023"
+    ],
+    "ratings": [
+      "https://www.parfumo.com/Perfumes/La_Rive/look-of-woman-2023"
+    ],
+    "price": [
+      "https://www.mueller.ch/"
+    ],
+    "alternative_to": [
+      "https://www.parfumo.com/Perfumes/La_Rive/look-of-woman-2023",
+      "https://munagorry.com/products/look-of-woman"
+    ]
+  }
+}

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Perfume } from '@/lib/perfumes';
 import { storage, SavedPerfume } from '@/lib/duft-detektiv-storage';
+import { formatChf } from '@/lib/price';
 
 interface SavedPerfumesProps {
   allPerfumes: Perfume[];
@@ -205,7 +206,7 @@ export default function SavedPerfumes({ allPerfumes }: SavedPerfumesProps) {
                   </span>
                   {perfume.price_chf && (
                     <span style={{ fontWeight: 600, color: '#2a1d12', fontSize: '16px' }}>
-                      CHF {perfume.price_chf}
+                      CHF {formatChf(perfume.price_chf)}
                     </span>
                   )}
                 </div>

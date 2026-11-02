@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { getPerfumes, type Perfume } from '@/lib/perfumes';
 import { PerfumeTile } from '@/app/PerfumeTile';
+import { formatChf } from '@/lib/price';
 
 export default function PerfumeComparePage() {
   const [perfumes, setPerfumes] = useState<Perfume[]>([]);
@@ -178,7 +179,7 @@ export default function PerfumeComparePage() {
                       <div>
                         <span style={{ fontWeight: 600, color: '#D4AF37' }}>Preis:</span>
                         <span style={{ marginLeft: '8px', color: '#5d4b40' }}>
-                          {p.price_chf ? `ca. CHF ${p.price_chf}` : '–'}
+                          {p.price_chf ? `ca. CHF ${formatChf(p.price_chf)}` : '–'}
                         </span>
                       </div>
                       <div>

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Breadcrumb from '@/app/Breadcrumb';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import { getPerfumes, type Perfume, isWithinPriceCap } from '@/lib/perfumes';
+import { formatChf } from '@/lib/price';
 
 export const revalidate = 3600;
 
@@ -96,7 +97,7 @@ function RankCard({ p, rank }: { p: Perfume; rank: number }) {
 
         {p.price_chf != null && (
           <p style={{ margin: 0, fontSize: '0.82rem', color: '#6b5344', fontWeight: 600 }}>
-            ca. CHF {p.price_chf}
+            ca. CHF {formatChf(p.price_chf)}
           </p>
         )}
 

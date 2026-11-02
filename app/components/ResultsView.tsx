@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Perfume } from '@/lib/perfumes';
+import { formatChf } from '@/lib/price';
 
 interface MatchResult {
   perfume: Perfume;
@@ -131,7 +132,7 @@ export default function ResultsView({ results }: ResultsViewProps) {
                 </span>
                 {topMatch.perfume.price_chf && (
                   <span style={{ fontWeight: 700, color: '#2a1d12' }}>
-                    CHF {topMatch.perfume.price_chf}
+                    CHF {formatChf(topMatch.perfume.price_chf)}
                   </span>
                 )}
               </div>
@@ -291,7 +292,7 @@ export default function ResultsView({ results }: ResultsViewProps) {
                   </span>
                   {perfume.price_chf && (
                     <span style={{ fontWeight: 600, color: '#2a1d12', fontSize: '16px' }}>
-                      CHF {perfume.price_chf}
+                      CHF {formatChf(perfume.price_chf)}
                     </span>
                   )}
                 </div>

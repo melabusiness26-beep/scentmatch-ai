@@ -7,6 +7,7 @@ import { Perfume, describePerfume } from '@/lib/perfumes';
 import { ImageAnalysisResult } from '@/types/image-analysis';
 import { type PerfumeMatch } from '@/lib/analysis-matcher';
 import ScanCorrectionBanner from './ScanCorrectionBanner';
+import { formatChf } from '@/lib/price';
 
 interface AnalysisResultViewProps {
   analysis: ImageAnalysisResult['data'];
@@ -544,7 +545,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                 currentAnalysis.origin        && { icon: '🌍', label: 'Herkunft',      value: currentAnalysis.origin },
                 currentAnalysis.year          && { icon: '📅', label: 'Jahr',          value: String(currentAnalysis.year) },
                 currentAnalysis.parfumeur     && { icon: '👃', label: 'Parfümeur',     value: currentAnalysis.parfumeur },
-                dbMatch?.price_chf            && { icon: '💰', label: 'Preis (CH)',    value: `CHF ${dbMatch.price_chf}` },
+                dbMatch?.price_chf            && { icon: '💰', label: 'Preis (CH)',    value: `CHF ${formatChf(dbMatch.price_chf)}` },
                 dbMatch?.season               && { icon: '🍂', label: 'Saison',        value: dbMatch.season },
                 currentAnalysis.bottleDescription && { icon: '🫙', label: 'Flakon',   value: currentAnalysis.bottleDescription },
                 intensityInfo                 && { icon: intensityInfo.emoji, label: 'Intensität', value: intensityInfo.label },
@@ -925,7 +926,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                     <div style={{ fontSize: '0.95rem', color: C.darkText, fontWeight: '600', marginBottom: '0.4rem', minHeight: '2.4rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       {perf.perfume_name}
                     </div>
-                    {perf.price_chf && <div style={{ fontSize: '0.85rem', color: C.gold, fontWeight: '700' }}>CHF {perf.price_chf}</div>}
+                    {perf.price_chf && <div style={{ fontSize: '0.85rem', color: C.gold, fontWeight: '700' }}>CHF {formatChf(perf.price_chf)}</div>}
                   </div>
                 ))}
               </div>
@@ -1114,7 +1115,7 @@ export default function AnalysisResultView({ analysis, similarPerfumes, onNewSea
                       <div style={{ fontSize: '0.75rem', color: C.textLight, marginBottom: '0.35rem' }}>{perfume.fragrance_family}</div>
                     )}
                     {perfume.price_chf && (
-                      <div style={{ fontSize: '0.88rem', fontWeight: '700', color: C.gold }}>CHF {perfume.price_chf}</div>
+                      <div style={{ fontSize: '0.88rem', fontWeight: '700', color: C.gold }}>CHF {formatChf(perfume.price_chf)}</div>
                     )}
                     <div style={{ marginTop: '0.6rem', fontSize: '0.75rem', color: C.goldMuted, fontWeight: '600' }}>
                       Mehr erfahren →

@@ -8,6 +8,7 @@ import { getGuide, guideCategories, guides, relatedGuides, type Guide } from '@/
 import { getGuideFaqs, type GuideFaq } from '@/lib/guide-faqs';
 import { getPerfumes, type Perfume } from '@/lib/perfumes';
 import { AffiliateButton } from '@/app/AffiliateButton';
+import { formatChf } from '@/lib/price';
 
 // Cache across all SSG renders during build – one Supabase call for all ~49 guide pages
 const getCachedPerfumes = cache(() => getPerfumes(2000));
@@ -48,7 +49,7 @@ function PerfumeCard({ perfume }: { perfume: Perfume }) {
       <h3>{perfume.perfume_name}</h3>
       <p className="small">
         {perfume.brands?.name || 'Marke offen'}
-        {perfume.price_chf != null ? ` · ca. CHF ${perfume.price_chf}` : ''}
+        {perfume.price_chf != null ? ` · ca. CHF ${formatChf(perfume.price_chf)}` : ''}
       </p>
       <div className="cta">
         {perfume.slug && (

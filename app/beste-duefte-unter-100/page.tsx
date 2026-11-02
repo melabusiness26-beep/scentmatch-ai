@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import Breadcrumb from '@/app/Breadcrumb';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import { getPerfumes, type Perfume } from '@/lib/perfumes';
+import { formatChf } from '@/lib/price';
 
 export const revalidate = 3600;
 
@@ -96,7 +97,7 @@ function RankCard({ p, rank }: { p: Perfume; rank: number }) {
                 padding: '0.15rem 0.5rem',
                 borderRadius: '20px',
               }}>
-                CHF {p.price_chf}
+                CHF {formatChf(p.price_chf)}
               </span>
             )}
           </div>

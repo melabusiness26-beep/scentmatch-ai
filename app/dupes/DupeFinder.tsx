@@ -8,6 +8,7 @@ import {
 import { findCheaperAlternativesV2, findSimilarPerfumesV2 } from '@/lib/similarity';
 import { AffiliateButton } from '@/app/AffiliateButton';
 import { PerfumeCover, familyDisplay, matchesQuery } from '@/app/PerfumeTile';
+import { formatChf } from '@/lib/price';
 
 // Kuratierte Duft-Paare aus den Ratgebern: teurer Duft (slug) -> günstige Partner.
 export type CuratedDupes = Record<string, { cheap: string; note: string }[]>;
@@ -55,7 +56,7 @@ function AlternativeTile({
     <div className="tile">
       <PerfumeCover perfume={perfume} />
       <div className="match-badge">
-        {perfume.price_chf != null ? `ca. CHF ${perfume.price_chf}` : 'Preis offen'}
+        {perfume.price_chf != null ? `ca. CHF ${formatChf(perfume.price_chf)}` : 'Preis offen'}
       </div>
       <h3>{perfume.perfume_name}</h3>
       <p className="small">
@@ -182,7 +183,7 @@ export default function DupeFinder({
               >
                 {p.brands?.name ? `${p.brands.name} ` : ''}
                 {p.perfume_name}
-                {p.price_chf != null ? ` · CHF ${p.price_chf}` : ''}
+                {p.price_chf != null ? ` · CHF ${formatChf(p.price_chf)}` : ''}
               </button>
             ))}
           </div>
@@ -219,7 +220,7 @@ export default function DupeFinder({
         <div className="section">
           <h2>
             Günstige Alternativen zu {selected.perfume_name}
-            {selected.price_chf != null ? ` (ca. CHF ${selected.price_chf})` : ''}
+            {selected.price_chf != null ? ` (ca. CHF ${formatChf(selected.price_chf)})` : ''}
           </h2>
           <p className="small">
             Diese Düfte kosten mindestens 30 % weniger und haben laut unserer Berechnung
@@ -253,7 +254,7 @@ export default function DupeFinder({
             <>
               <p className="small">
                 Für {selected.perfume_name}
-                {selected.price_chf != null ? ` (ca. CHF ${selected.price_chf})` : ''} haben
+                {selected.price_chf != null ? ` (ca. CHF ${formatChf(selected.price_chf)})` : ''} haben
                 wir im Katalog keine deutlich günstigere Alternative mit ähnlichen Noten gefunden.
                 {similarFallback.length > 0 ? ' Diese Düfte teilen laut unserer Berechnung Noten mit ihm:' : ''}
               </p>

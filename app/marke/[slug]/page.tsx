@@ -14,6 +14,7 @@ import {
   type Brand,
   type Perfume,
 } from '@/lib/perfumes';
+import { formatChf } from '@/lib/price';
 
 export const revalidate = 3600;
 
@@ -117,7 +118,7 @@ function PerfumeCard({ p }: { p: Perfume }) {
       {/* Preis + Geschlecht */}
       <p className="small" style={{ margin: 0, color: '#6b5344' }}>
         {p.gender === 'Women' ? 'Damen' : p.gender === 'Men' ? 'Herren' : 'Unisex'}
-        {p.price_chf != null ? ` · ca. CHF ${p.price_chf}` : ''}
+        {p.price_chf != null ? ` · ca. CHF ${formatChf(p.price_chf)}` : ''}
       </p>
 
       {/* Noten-Vorschau */}

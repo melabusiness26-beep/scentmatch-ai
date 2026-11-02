@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { concentrationLabel, getPerfumeBySlug } from '@/lib/perfumes';
 import { computeAuressaScore } from '@/lib/score';
+import { formatChf } from '@/lib/price';
 
 // Social-Vorschaubild pro Duft – erscheint, wenn jemand den Link teilt
 // (WhatsApp, Pinterest, Instagram, Facebook). Nur echte Duftdaten.
@@ -25,7 +26,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   const facts = [
     perfume?.fragrance_family ? FAMILY[perfume.fragrance_family] : null,
     concentrationLabel(perfume?.concentration),
-    perfume?.price_chf != null ? `ca. CHF ${perfume.price_chf}` : null
+    perfume?.price_chf != null ? `ca. CHF ${formatChf(perfume.price_chf)}` : null
   ].filter(Boolean) as string[];
   const notes = (perfume?.top_notes || []).slice(0, 4);
   const score = perfume ? computeAuressaScore(perfume).total : null;

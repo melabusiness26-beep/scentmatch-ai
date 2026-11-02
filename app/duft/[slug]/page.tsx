@@ -34,6 +34,7 @@ import { wearTips } from '@/lib/wear';
 import { perfumeSeasons, seasonPicks } from '@/lib/season-fit';
 import { SeasonFit } from '@/app/components/SeasonFit';
 import { bestValueSize, pricePer100ml, splitSimilar } from '@/lib/perfume-extras';
+import { formatChf } from '@/lib/price';
 
 // Vergleichsschlüssel für Namen aus dem Chat-Import („Tres Nuit" ↔ „Très Nuit").
 function nameKey(value: string): string {
@@ -311,7 +312,7 @@ function buildFaqs(perfume: Perfume, name: string = perfume.perfume_name): Faq[]
   if (perfume.price_chf != null) {
     faqs.push({
       q: `Was kostet ${name}?`,
-      a: `Der Richtpreis liegt bei ca. CHF ${perfume.price_chf}. Preise können je nach Shop abweichen.`
+      a: `Der Richtpreis liegt bei ca. CHF ${formatChf(perfume.price_chf)}. Preise können je nach Shop abweichen.`
     });
   }
   return faqs;
@@ -569,7 +570,7 @@ export default async function PerfumeDetailPage({
                 ) : perfume.price_chf != null ? (
                   <>
                     <span className="dp-price-label">Richtpreis</span>
-                    <span className="dp-price-value">ca. CHF {perfume.price_chf}</span>
+                    <span className="dp-price-value">ca. CHF {formatChf(perfume.price_chf)}</span>
                     <span className="dp-price-note">
                       {perfume.volume_ml ? `für ${perfume.volume_ml} ml · kann je nach Shop abweichen` : 'kann je nach Shop und Grösse abweichen'}
                     </span>
@@ -799,7 +800,7 @@ export default async function PerfumeDetailPage({
                         <td>{v.sillage != null ? `${v.sillage}/10` : <span className="dp-compare-open">noch offen</span>}</td>
                       )}
                       <td>
-                        {v.price_chf != null ? `CHF ${v.price_chf}` : '–'}
+                        {v.price_chf != null ? `CHF ${formatChf(v.price_chf)}` : '–'}
                         {v.price_chf != null && v.volume_ml ? <small className="dp-compare-ml">{v.volume_ml} ml</small> : null}
                       </td>
                     </tr>
@@ -1060,7 +1061,7 @@ export default async function PerfumeDetailPage({
                       <p className="tile-brand">{c.brands?.name || 'Marke offen'}</p>
                       <h3 className="tile-name">{c.perfume_name}</h3>
                       <div className="dupe-prices">
-                        {c.price_chf != null && <span className="dupe-price">ca. CHF {c.price_chf}</span>}
+                        {c.price_chf != null && <span className="dupe-price">ca. CHF {formatChf(c.price_chf)}</span>}
                         {saving != null && saving > 0 && (
                           <span className="dupe-saving">
                             du sparst ~CHF {saving}
@@ -1152,7 +1153,7 @@ export default async function PerfumeDetailPage({
       <StickyBuyBar targetId="dp-actions">
         <div className="dp-sticky-info">
           <span className="dp-sticky-name">{perfume.perfume_name}</span>
-          {perfume.price_chf != null && <span className="dp-sticky-price">ca. CHF {perfume.price_chf}</span>}
+          {perfume.price_chf != null && <span className="dp-sticky-price">ca. CHF {formatChf(perfume.price_chf)}</span>}
         </div>
         <AffiliateButton perfume={perfume} showNote={false} label="Ansehen →" />
       </StickyBuyBar>

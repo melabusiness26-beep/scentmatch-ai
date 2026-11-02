@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Perfume } from '@/lib/perfumes';
 import { matchPerfumesByDescription } from '@/lib/duft-matcher';
 import Link from 'next/link';
+import { formatChf } from '@/lib/price';
 
 interface DuftFinderProps {
   allPerfumes: Perfume[];
@@ -227,7 +228,7 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                           </span>
                           {perfume.price_chf && (
                             <span style={{ fontWeight: 600, color: '#2a1d12', fontSize: '16px' }}>
-                              CHF {perfume.price_chf}
+                              CHF {formatChf(perfume.price_chf)}
                             </span>
                           )}
                         </div>

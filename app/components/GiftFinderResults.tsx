@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Perfume } from '@/lib/perfumes';
 import { AffiliateButton } from '@/app/AffiliateButton';
+import { formatChf } from '@/lib/price';
 
 interface Result {
   perfume: Perfume;
@@ -87,7 +88,7 @@ export default function GiftFinderResults({
               <div key={result.perfume.id}>
                 <div className="tile">
                   <Cover perfume={result.perfume} />
-                  <div className="match-badge">{result.perfume.price_chf != null ? `ca. CHF ${result.perfume.price_chf}` : 'Preis offen'}</div>
+                  <div className="match-badge">{result.perfume.price_chf != null ? `ca. CHF ${formatChf(result.perfume.price_chf)}` : 'Preis offen'}</div>
                   <h3>{result.perfume.perfume_name}</h3>
                   <p className="small">
                     {result.perfume.brands?.name || 'Marke offen'} · {familyLabel(result.perfume.fragrance_family)}
@@ -104,7 +105,7 @@ export default function GiftFinderResults({
                 {result.cheaper && result.cheaperLevel && (
                   <div className="tile">
                     <Cover perfume={result.cheaper} />
-                    <div className="match-badge">{result.cheaper.price_chf != null ? `ca. CHF ${result.cheaper.price_chf}` : 'Preis offen'}</div>
+                    <div className="match-badge">{result.cheaper.price_chf != null ? `ca. CHF ${formatChf(result.cheaper.price_chf)}` : 'Preis offen'}</div>
                     <h3>{result.cheaper.perfume_name}</h3>
                     <p className="small">
                       {result.cheaper.brands?.name || 'Marke offen'} · {familyLabel(result.cheaper.fragrance_family)}

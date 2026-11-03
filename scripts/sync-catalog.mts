@@ -18,6 +18,7 @@ import { join } from 'node:path';
 import { createClient } from '@supabase/supabase-js';
 import { checkCatalog, slugify, toPerfumeRow } from '../lib/catalog.ts';
 import { cleanSizes, priceSource, type SizePrice } from '../lib/perfume-extras.ts';
+import { runPriceAlerts } from '../lib/price-alerts.ts';
 
 const DIR = join(process.cwd(), 'catalog', 'perfumes');
 
@@ -75,6 +76,7 @@ try {
 
   let added = 0;
   let updated = 0;
+  const updatedSlugs: string[] = [];
   for (const entry of entries) {
     const current = bySlug.get(entry.slug);
     if (current) {
@@ -95,6 +97,7 @@ try {
         const { error } = await db.from('perfumes').update(patch).eq('slug', entry.slug);
         if (error) throw error;
         updated++;
+        updatedSlugs.push(entry.slug);
         console.log(`[katalog] Preise aktualisiert: ${entry.slug} (${Object.keys(patch).join(', ')})`);
       } else if (!fileIsCurrent) {
         console.log(`[katalog] ${entry.slug}: Preise im Admin sind neuer (${dbDate}) – Datei (${fileDate || 'ohne Datum'}) nicht übernommen.`);
@@ -131,6 +134,15 @@ try {
     console.log(`[katalog] Neu eingetragen: ${entry.fields.perfume_name} (${entry.slug})`);
   }
   console.log(`[katalog] Fertig: ${added} neue(r) Duft/Düfte eingetragen, ${updated} mit neuen Preisen.`);
+  // Preis-Alarme: Wer einen Alarm für einen jetzt günstigeren Duft hat, bekommt eine E-Mail.
+  if (updatedSlugs.length) {
+    try {
+      const sent = await runPriceAlerts(db, updatedSlugs);
+      if (sent) console.log(`[katalog] Preis-Alarm: ${sent} E-Mail(s) verschickt.`);
+    } catch (err) {
+      console.error('[katalog] Preis-Alarm fehlgeschlagen (Website wird trotzdem veröffentlicht):', err);
+    }
+  }
 } catch (err) {
   console.error('[katalog] Eintragen fehlgeschlagen – Website wird trotzdem veröffentlicht:', err);
 }

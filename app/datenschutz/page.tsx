@@ -63,7 +63,7 @@ export default function DatenschutzPage() {
               an uns übertragen. Du kannst alles jederzeit löschen, indem du die Website-Daten in deinem Browser löschst.
             </p>
 
-            <h3>3.3 Newsletter</h3>
+            <h3>3.3 Newsletter und Preis-Alarm</h3>
             <p>
               Wenn du dich für den Newsletter anmeldest, speichern wir deine <strong>E-Mail-Adresse</strong>, freiwillig deinen
               <strong> Namen</strong> und deine <strong>Kategorie</strong> (Frauendüfte, Männerdüfte, Unisex), den Ort der
@@ -74,6 +74,13 @@ export default function DatenschutzPage() {
               Die Anmeldung gilt erst, wenn du den Link in der Bestätigungs-E-Mail anklickst (Double-Opt-in). Du kannst dich
               jederzeit abmelden – über den Link im Newsletter oder per E-Mail an uns. Gespeichert werden die Daten in unserer
               Datenbank bei Supabase; für den Versand nutzen wir den E-Mail-Dienst Brevo.
+            </p>
+            <p>
+              <strong>Preis-Alarm:</strong> Wenn du bei einem Duft einen Preis-Alarm einschaltest, speichern wir deine
+              <strong> E-Mail-Adresse</strong>, den Duft, seinen Preis zu diesem Zeitpunkt und wann du dich eingetragen, bestätigt
+              und zuletzt eine Meldung bekommen hast. Auch hier gilt der Alarm erst nach dem Klick auf den Bestätigungs-Link. Wir
+              nutzen die Adresse nur, um dir zu schreiben, wenn dieser Duft günstiger wird – nicht für den Newsletter. In jeder
+              E-Mail findest du einen Link, um den Alarm abzustellen.
             </p>
 
             <h3>3.4 Besucher-Statistik (nur mit deiner Einwilligung)</h3>
@@ -102,6 +109,7 @@ export default function DatenschutzPage() {
               <li>um die Website bereitzustellen und sicher zu betreiben</li>
               <li>um dir passende Düfte zu zeigen</li>
               <li>um dir den Newsletter zu schicken, wenn du ihn bestellt hast</li>
+              <li>um dir eine E-Mail zu schicken, wenn ein Duft mit Preis-Alarm günstiger wird</li>
               <li>um mit der Statistik die Website zu verbessern, wenn du eingewilligt hast</li>
             </ul>
             <p><strong>Wir verkaufen deine Daten nicht.</strong></p>
@@ -112,7 +120,7 @@ export default function DatenschutzPage() {
             <ul>
               <li><strong>Vercel</strong> (Hosting und Statistik) – Vercel Inc., USA</li>
               <li><strong>Supabase</strong> (Datenbank) – Server in der EU (Irland)</li>
-              <li><strong>Brevo</strong> (Newsletter-Versand) – Frankreich</li>
+              <li><strong>Brevo</strong> (Versand von Newsletter und Preis-Alarm) – Frankreich</li>
               <li><strong>Unsplash</strong> (einige Bilder) – Unsplash Inc., Kanada</li>
             </ul>
             <p>
@@ -139,6 +147,7 @@ export default function DatenschutzPage() {
             <h2>7. Aufbewahrung und Sicherheit</h2>
             <ul>
               <li>Newsletter-Daten speichern wir, bis du dich abmeldest.</li>
+              <li>Preis-Alarme speichern wir, bis du sie abstellst; nicht bestätigte Alarme werden nie benutzt.</li>
               <li>Angaben in deinem Browser bleiben, bis du sie löschst.</li>
               <li>Die Verbindung zur Website ist verschlüsselt (HTTPS).</li>
               <li>Auf die Datenbank hat nur die Betreiberin Zugriff.</li>

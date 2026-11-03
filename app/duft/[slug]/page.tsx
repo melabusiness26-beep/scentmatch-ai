@@ -36,6 +36,8 @@ import LineIcon from '@/app/LineIcon';
 import { SeasonFit } from '@/app/components/SeasonFit';
 import { formatCheckedDate, priceSource, splitSimilar } from '@/lib/perfume-extras';
 import { SizePicker } from './SizePicker';
+import { PriceAlert } from './PriceAlert';
+import { priceAlertsEnabled } from '@/lib/price-alerts';
 import { formatChf } from '@/lib/price';
 
 // Vergleichsschlüssel für Namen aus dem Chat-Import („Tres Nuit" ↔ „Très Nuit").
@@ -670,6 +672,14 @@ export default async function PerfumeDetailPage({
             <div className="dp-share">
               <SocialShareButtons perfume={perfume} url={`${SITE_URL}/duft/${slug}`} />
             </div>
+
+            {priceAlertsEnabled() && !isDiscontinued && perfume.price_chf != null && (
+              <PriceAlert
+                slug={slug}
+                name={perfume.perfume_name}
+                price={`CHF ${formatChf(perfume.price_chf)}${perfume.volume_ml ? ` für ${perfume.volume_ml} ml` : ''}${source.shop ? ` bei ${source.shop}` : ''}`}
+              />
+            )}
 
             <Link className="dp-compare-link" href={`/vergleich?d=${slug}`}>
               <LineIcon name="bottles" size={18} /> Mit einem anderen Duft vergleichen <span aria-hidden="true">→</span>

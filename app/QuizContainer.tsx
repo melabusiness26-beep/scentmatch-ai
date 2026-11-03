@@ -18,6 +18,7 @@ import { PROFILE_TEXT } from '@/lib/quiz-profiles';
 import { quizQuestions as newQuizQuestions, type QuizQuestion, type QuestionKind } from '@/lib/quizQuestions';
 import { PerfumeTile, familyDisplay, PerfumeCover } from '@/app/PerfumeTile';
 import { AffiliateButton } from '@/app/AffiliateButton';
+import { formatChf } from '@/lib/price';
 
 const fallbackQuestions: QuizQuestion[] = newQuizQuestions;
 const FAMILY_ORDER = ['clean', 'gourmand', 'woody', 'floral'] as const;
@@ -26,6 +27,21 @@ const FAMILY_ORDER = ['clean', 'gourmand', 'woody', 'floral'] as const;
 const profileText: Record<string, { title: string; text: string }> = PROFILE_TEXT;
 
 const genderLabels: Record<string, string> = { women: 'Damen', men: 'Herren', unisex: 'Unisex' };
+
+// Antwort-Text aufteilen: Emoji vorne → eigenes Symbol, „Titel: Beschreibung“ bzw.
+// „Titel – Beschreibung“ → zweizeilige Karte. Der Text selbst bleibt unverändert.
+const LEADING_EMOJI = /^((?:\p{Extended_Pictographic}|\p{Regional_Indicator})(?:\uFE0F|\u200D|\p{Extended_Pictographic})*)\s*/u;
+function splitAnswer(label: string, emoji?: string): { icon: string | null; title: string; sub: string | null } {
+  let text = label;
+  let icon = emoji || null;
+  const m = text.match(LEADING_EMOJI);
+  if (m) {
+    icon = icon || m[1];
+    text = text.slice(m[0].length);
+  }
+  const parts = text.split(/:\s+|\s+–\s+/);
+  return { icon, title: parts[0], sub: parts.length > 1 ? parts.slice(1).join(' – ') : null };
+}
 const emptyFamily = { clean: 0, gourmand: 0, woody: 0, floral: 0 };
 
 type QuizSnapshot = {
@@ -43,14 +59,6 @@ type QuizSnapshot = {
   sweetnessPref: QuizAnswers['sweetness'];
   pricePref: QuizAnswers['pricePref'];
 };
-
-function getQuestionCount(questions: QuizQuestion[]): number {
-  return questions.length;
-}
-
-function getFamilyQuestionCount(questions: QuizQuestion[]): number {
-  return questions.filter(q => q.kind === 'family').length;
-}
 
 export default function QuizContainer({ initialPerfumes }: { initialPerfumes?: Perfume[] } = {}) {
   const [step, setStep] = useState(0);
@@ -74,6 +82,8 @@ export default function QuizContainer({ initialPerfumes }: { initialPerfumes?: P
   const [shareMsg, setShareMsg] = useState('');
   const [revealScore, setRevealScore] = useState(0);
   const [questions, setQuestions] = useState<QuizQuestion[]>(fallbackQuestions);
+  // Kurz aufleuchten lassen, welche Antwort gewählt wurde, dann weiter (fühlt sich wie eine App an).
+  const [picked, setPicked] = useState<string | null>(null);
 
   useEffect(() => {
     // Düfte kommen normalerweise schon vom Server mit (schneller, keine Datenbank-Bibliothek
@@ -163,6 +173,37 @@ export default function QuizContainer({ initialPerfumes }: { initialPerfumes?: P
 
     advanceStep();
   }
+
+  function choose(kind: QuestionKind, code: string, label: string) {
+    if (picked !== null) return;
+    const reduce = typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      answer(kind, code);
+      return;
+    }
+    setPicked(label);
+    window.setTimeout(() => {
+      setPicked(null);
+      answer(kind, code);
+    }, 220);
+  }
+
+  // Tastatur: Ziffern 1–9 wählen die Antwort (praktisch am Computer).
+  useEffect(() => {
+    if (showResult) return;
+    const q = questions[step];
+    if (!q || q.kind === 'anchor') return;
+    function onKey(e: KeyboardEvent) {
+      const t = e.target as HTMLElement | null;
+      if (t && /input|select|textarea/i.test(t.tagName)) return;
+      const n = Number(e.key);
+      if (!Number.isInteger(n) || n < 1 || n > q.a.length) return;
+      const [label, code] = q.a[n - 1];
+      choose(q.kind, code, label);
+    }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  });
 
   function advanceAnchor() {
     pushHistory();
@@ -315,15 +356,32 @@ export default function QuizContainer({ initialPerfumes }: { initialPerfumes?: P
       <section className="section card quiz">
         <p className="eyebrow">Duft-Quiz</p>
         {!showResult ? (
-          <>
-            <p className="small">Frage {step + 1} von {questions.length}</p>
-            <div className="scorebar quiz-progress"><span style={{ width: `${((step + 1) / questions.length) * 100}%` }} /></div>
-            <div className="quiz-step" key={step}>
-              <div className="question">{questions[step].q}</div>
-              {questions[step].hint && <p className="small quiz-hint">{questions[step].hint}</p>}
+          <div className="qz">
+            <div className="qz-top">
+              <button type="button" className="qz-icon" onClick={goBack} disabled={history.length === 0} aria-label="Zurück zur letzten Frage">
+                ←
+              </button>
+              <span className="qz-count" aria-live="polite">
+                Frage {step + 1} <span>von {questions.length}</span>
+              </span>
+              {isOptionalQuestion() && questions[step]?.kind !== 'anchor' ? (
+                <button type="button" className="qz-skip" onClick={skipQuestion}>Überspringen</button>
+              ) : (
+                <span className="qz-top-spacer" aria-hidden="true" />
+              )}
+            </div>
+            <div className="qz-progress" aria-hidden="true">
+              {questions.map((_, i) => (
+                <span key={i} className={i < step ? 'is-done' : i === step ? 'is-now' : ''} />
+              ))}
+            </div>
+
+            <div className="qz-step" key={step}>
+              <h2 className="qz-question">{questions[step].q}</h2>
+              {questions[step].hint && <p className="qz-hint">{questions[step].hint}</p>}
               {questions[step].kind === 'anchor' ? (
-                <div className="answers">
-                  <select className="search" value={anchorId} onChange={e => setAnchorId(e.target.value)}>
+                <div className="qz-anchor">
+                  <select className="search qz-select" value={anchorId} onChange={e => setAnchorId(e.target.value)} aria-label="Duft auswählen">
                     <option value="">– Duft auswählen –</option>
                     {[...perfumes]
                       .sort((a, b) =>
@@ -339,52 +397,73 @@ export default function QuizContainer({ initialPerfumes }: { initialPerfumes?: P
                         );
                       })}
                   </select>
-                  <p className="small">Optional – du kannst diese Frage auch einfach überspringen.</p>
-                  <button className="answer" onClick={advanceAnchor}>{anchorId ? 'Weiter' : 'Überspringen'}</button>
-                </div>
-              ) : questions[step].kind === 'family' ? (
-                <div className="family-picker">
-                  {questions[step].a.map(([label, code, emoji]) => (
-                    <button
-                      key={code}
-                      className="family-card"
-                      onClick={() => answer(questions[step].kind, code)}
-                      data-family={code}
-                    >
-                      {emoji && <span className="family-emoji">{emoji}</span>}
-                      <span className="family-label">{label}</span>
-                    </button>
-                  ))}
+                  <button type="button" className="qz-next" onClick={advanceAnchor}>
+                    {anchorId ? 'Weiter →' : 'Überspringen →'}
+                  </button>
                 </div>
               ) : (
-                <div className="answers">
-                  {questions[step].a.map(([label, code, emoji]) => (
-                    <button
-                      className="answer"
-                      key={label}
-                      onClick={() => answer(questions[step].kind, code)}
-                    >
-                      {emoji && <span className="answer-emoji">{emoji}</span>}
-                      {label}
-                    </button>
-                  ))}
+                <div className={`qz-options${questions[step].a.length > 5 ? ' is-many' : ''}${questions[step].kind === 'family' ? ' is-family' : ''}`}>
+                  {questions[step].a.map(([label, code, emoji], i) => {
+                    const part = splitAnswer(label, emoji);
+                    return (
+                      <button
+                        type="button"
+                        key={label}
+                        className={`qz-option${picked === label ? ' is-picked' : ''}`}
+                        data-family={questions[step].kind === 'family' ? code : undefined}
+                        style={{ animationDelay: `${Math.min(i, 8) * 40}ms` }}
+                        onClick={() => choose(questions[step].kind, code, label)}
+                      >
+                        {part.icon && <span className="qz-option-icon" aria-hidden="true">{part.icon}</span>}
+                        <span className="qz-option-text">
+                          <span className="qz-option-title">{part.title}</span>
+                          {part.sub && <span className="qz-option-sub">{part.sub}</span>}
+                        </span>
+                        <span className="qz-option-check" aria-hidden="true">✓</span>
+                      </button>
+                    );
+                  })}
                 </div>
               )}
             </div>
-            <div className="quiz-controls">
-              {history.length > 0 && (
-                <button className="quiz-back" onClick={goBack}>← Zurück</button>
-              )}
-              {isOptionalQuestion() && questions[step]?.kind !== 'anchor' && (
-                <button className="quiz-skip" onClick={skipQuestion}>⊘ Überspringen</button>
-              )}
-            </div>
-          </>
+          </div>
         ) : (
           <div className="result">
-            <p className="small">Dein Duftprofil{genderPref ? ` · ${genderLabels[genderPref]}` : ''}{anchorId ? ` · ähnlich zu ${perfumes.find(p => p.id === anchorId)?.perfume_name || ''}` : ''}</p>
-            <h2>{profileText[winner].title}</h2>
-            <p className="lead">{profileText[winner].text}</p>
+            <div className={`qz-persona qz-persona-${winner}`}>
+              <p className="qz-persona-eyebrow">
+                Deine Duft-Persönlichkeit{genderPref ? ` · ${genderLabels[genderPref]}` : ''}
+                {anchorId ? ` · ähnlich zu ${perfumes.find(p => p.id === anchorId)?.perfume_name || ''}` : ''}
+              </p>
+              <h2 className="qz-persona-title">{profileText[winner].title}</h2>
+              <p className="qz-persona-text">{profileText[winner].text}</p>
+              {(() => {
+                const total = FAMILY_ORDER.reduce((sum, k) => sum + (family[k] || 0), 0);
+                if (!total) return null;
+                return (
+                  <div className="qz-mix">
+                    <div className="qz-mix-bar" role="img" aria-label={FAMILY_ORDER.map(k => `${profileText[k].title} ${Math.round(((family[k] || 0) / total) * 100)} %`).join(', ')}>
+                      {FAMILY_ORDER.filter(k => family[k]).map(k => (
+                        <span key={k} className={`qz-mix-seg qz-mix-${k}`} style={{ width: `${((family[k] || 0) / total) * 100}%` }} />
+                      ))}
+                    </div>
+                    <ul className="qz-mix-legend">
+                      {FAMILY_ORDER.filter(k => family[k]).map(k => (
+                        <li key={k}><span className={`qz-mix-dot qz-mix-${k}`} />{profileText[k].title} <strong>{Math.round(((family[k] || 0) / total) * 100)} %</strong></li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })()}
+              <div className="qz-persona-share">
+                <button type="button" className="qz-share-main" onClick={shareImage} disabled={imageBusy}>
+                  {imageBusy ? 'Bild wird erstellt …' : '📸 Als Story teilen'}
+                </button>
+                <button type="button" className="qz-share-alt" onClick={shareResult}>🔗 Link teilen</button>
+              </div>
+              {shareMsg && <p className="qz-share-msg" role="status">{shareMsg}</p>}
+            </div>
+
+            {top3.length > 0 && <h3 className="qz-section-title">Deine Top-Matches</h3>}
 
             {top3.map((r, i) => {
               const p = r.perfume;
@@ -425,7 +504,7 @@ export default function QuizContainer({ initialPerfumes }: { initialPerfumes?: P
                   )}
                   <h3>{p.perfume_name}{p.brands?.name ? ` · ${p.brands.name}` : ''}</h3>
                   <p className="small">{meta}</p>
-                  {p.price_chf && <p className="top-pick-price">CHF {p.price_chf.toFixed(0)}</p>}
+                  {p.price_chf && <p className="top-pick-price">CHF {formatChf(p.price_chf)}{p.volume_ml ? <span className="top-pick-ml"> · {p.volume_ml} ml</span> : null}</p>}
                   {/* Why this perfume */}
                   <div className="why-section">
                     <p className="small"><strong>Warum dieser Duft:</strong></p>
@@ -536,7 +615,7 @@ export default function QuizContainer({ initialPerfumes }: { initialPerfumes?: P
                     <div className="cheaper-alternative">
                       <p className="small"><strong>💡 Günstigere Alternative:</strong></p>
                       <p className="smaller"><strong>{cheaperAlt.perfume_name}</strong> · {cheaperAlt.brands?.name}</p>
-                      <p className="smaller" style={{ color: 'var(--color-primary)', fontWeight: 600 }}>CHF {cheaperAlt.price_chf?.toFixed(0)} (statt CHF {p.price_chf?.toFixed(0)})</p>
+                      <p className="smaller" style={{ color: 'var(--color-primary)', fontWeight: 600 }}>CHF {formatChf(cheaperAlt.price_chf)} (statt CHF {formatChf(p.price_chf)})</p>
                       {cheaperAlt.slug && (
                         <Link className="button-mini" href={`/duft/${cheaperAlt.slug}`}>Jetzt ansehen →</Link>
                       )}
@@ -556,24 +635,8 @@ export default function QuizContainer({ initialPerfumes }: { initialPerfumes?: P
               </div>
             )}
 
-            <p className="small" style={{ marginTop: 16 }}>Dein Duftprofil-Mix, so oft hast du welche Richtung gewählt:</p>
-            {Object.entries(family).map(([key, value]) => (
-              <div key={key} style={{ marginBottom: 12 }}>
-                <div className="small">{profileText[key].title}: {value}</div>
-                <div className="scorebar bar-reveal"><span style={{ width: `${Math.min(100, (value / getFamilyQuestionCount(questions)) * 100)}%` }} /></div>
-              </div>
-            ))}
-
-            <div className="share-box">
-              <p className="small">Teile dein Duftprofil als Story-Bild auf Instagram oder TikTok – oder schick den Link weiter.</p>
-              <div className="cta">
-                <button type="button" className="button" onClick={shareImage} disabled={imageBusy}>
-                  {imageBusy ? 'Bild wird erstellt …' : '📸 Als Bild teilen (Story)'}
-                </button>
-                <button type="button" className="button secondary" onClick={shareResult}>🔗 Link teilen</button>
-                <button type="button" className="secondary" onClick={restartQuiz}>Quiz neu starten</button>
-              </div>
-              {shareMsg && <p className="small share-msg">{shareMsg}</p>}
+            <div className="qz-restart">
+              <button type="button" className="qz-next qz-next-ghost" onClick={restartQuiz}>↺ Quiz neu starten</button>
             </div>
 
             {/* Newsletter steht im Footer jeder Seite – hier keine zweite Kopie. */}

@@ -2099,3 +2099,42 @@ a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visib
 /* Geschmacks-Kachel ohne Foto: weicher Satin-Schimmer statt flacher Farbe */
 .flavor-img { position: relative; }
 .flavor-img:not(:has(img))::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 28% 22%, rgba(255,255,255,.62), rgba(255,255,255,0) 52%), radial-gradient(circle at 80% 90%, rgba(0,0,0,.14), rgba(0,0,0,0) 55%), linear-gradient(160deg, rgba(255,255,255,.18), rgba(0,0,0,.08)); }
+
+/* Duft-Seite v3: Kauf-Knopf beim Preis, „Erst testen?", Steckbrief mit Symbolen */
+.dp-sizepick-try { order: 4; flex-basis: 100%; display: flex; align-items: center; gap: 8px; margin: 0; padding: 10px 12px; border: 1px dashed rgba(201,162,74,.55); border-radius: 12px; background: #FFFBF1; color: var(--ink-700); font-family: var(--font-sans), Arial, sans-serif; font-size: 13px; text-align: left; cursor: pointer; transition: background .2s, border-color .2s; }
+.dp-sizepick-try:hover { background: #FFF5DD; border-color: var(--gold-500); }
+.dp-sizepick-try span { color: var(--gold-500); }
+.dp-shop-button { order: 5; flex-basis: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; margin: 2px 0 0; padding: 16px 18px; border-radius: 14px; background: var(--ink-900); color: #fff; font-weight: 700; text-decoration: none; transition: transform .2s var(--ease-out, ease), box-shadow .2s, background .2s; }
+.dp-shop-button:hover { background: #000; transform: translateY(-1px); box-shadow: 0 12px 24px -10px rgba(0,0,0,.45); }
+.dp-shop-button span { transition: transform .2s; }
+.dp-shop-button:hover span { transform: translateX(3px); }
+.dp-buy.has-sizes .dp-sizepick-foot { order: 6; }
+.dp-actions-secondary .amazon-button-secondary { background: transparent; border: 1px solid rgba(31,23,18,.14); color: var(--ink-700); font-weight: 600; padding-top: 13px; padding-bottom: 13px; }
+.dp-fact-label { display: inline-flex; align-items: center; gap: 7px; }
+.dp-fact-icon { display: inline-flex; width: 26px; height: 26px; align-items: center; justify-content: center; border-radius: 50%; background: var(--paper-2); color: var(--gold-500); letter-spacing: 0; }
+.dp-seasons { list-style: none; margin: 2px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.dp-seasons li { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px 0 4px; border-radius: 10px; color: rgba(31,23,18,.25); font-family: var(--font-sans), Arial, sans-serif; font-size: 10.5px; }
+.dp-seasons li.on { color: var(--ink-900); background: #FFF7E3; }
+.dp-seasons li.on svg { color: var(--gold-500); }
+.dp-occasions { display: flex; flex-wrap: wrap; gap: 6px; }
+.dp-occasion { display: inline-block; padding: 5px 11px; border-radius: 999px; background: var(--paper); border: 1px solid rgba(31,23,18,.1); font-family: var(--font-sans), Arial, sans-serif; font-size: 13px; font-weight: 600; color: var(--ink-900); }
+
+/* Duftpyramide: Noten als runde Bilder (Foto aus dem Lexikon, sonst Anfangsbuchstabe) */
+.pyr-notes:has(.note-bubble) { gap: 14px 10px; }
+.note-bubble { display: inline-flex; flex-direction: column; align-items: center; gap: 6px; width: 84px; text-decoration: none; text-align: center; }
+.note-bubble-img { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; background: var(--paper-2); box-shadow: 0 0 0 3px #fff, 0 0 0 4px rgba(31,23,18,.08); transition: transform .3s var(--ease-out, ease), box-shadow .3s; }
+.note-bubble-img img { width: 100%; height: 100%; object-fit: cover; }
+.note-bubble-img.is-empty { font-family: var(--font-display), Georgia, serif; font-size: 26px; color: #fff; }
+.pyr-top_notes .note-bubble-img.is-empty { background: linear-gradient(135deg, #F2D27A, #E3B53C); }
+.pyr-heart_notes .note-bubble-img.is-empty { background: linear-gradient(135deg, #E3A5C1, #C77A9E); }
+.pyr-base_notes .note-bubble-img.is-empty { background: linear-gradient(135deg, #B48A62, #8A6744); }
+.note-bubble-name { font-family: var(--font-sans), Arial, sans-serif; font-size: 12.5px; line-height: 1.25; color: var(--ink-900); }
+.note-bubble:hover .note-bubble-img { transform: translateY(-3px) scale(1.04); box-shadow: 0 0 0 3px #fff, 0 0 0 4px var(--gold-500), 0 10px 18px rgba(31,23,18,.12); }
+.note-bubble:focus-visible { outline: 2px solid var(--gold-500); outline-offset: 4px; border-radius: 12px; }
+@media (max-width: 480px) {
+  .note-bubble { width: 74px; }
+  .note-bubble-img { width: 56px; height: 56px; }
+}
+.dp-sizepick-try { font-weight: 500; letter-spacing: 0; text-transform: none; }
+.dp-actions-secondary .amazon-button.amazon-button-secondary { background: #fff; border: 1px solid rgba(31,23,18,.14); color: var(--ink-700); }
+.dp-actions-secondary .amazon-button.amazon-button-secondary:hover { border-color: var(--gold-500); background: #FFFBF1; }

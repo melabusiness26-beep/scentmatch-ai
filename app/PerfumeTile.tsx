@@ -1,5 +1,6 @@
 'use client';
 
+import { formatChf } from '@/lib/price';
 import Link from 'next/link';
 import { noteGroupFor } from '@/lib/note-groups';
 import { concentrationLabel, type Perfume } from '@/lib/perfumes';
@@ -85,7 +86,7 @@ export function PerfumeTile({ perfume, matchPercent, showOccasionDescription }: 
             <span className="tile-price tile-price-open">Nicht mehr erhältlich</span>
           ) : perfume.price_chf != null ? (
             <span className="tile-price">
-              CHF {perfume.price_chf.toFixed(0)}
+              CHF {formatChf(perfume.price_chf)}
               {/* Grösse dazu, sonst wirkt eine grosse Flasche teurer als eine kleine. */}
               {perfume.volume_ml ? <span className="tile-volume"> · {perfume.volume_ml} ml</span> : null}
             </span>

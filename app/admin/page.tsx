@@ -99,6 +99,7 @@ const emptyForm = {
   // Woher die Preise stammen und wann sie geprüft wurden (wird bei den Grössen gespeichert).
   price_shop: '',
   price_checked: '',
+  price_url: '',
   alternative_to: '',
   flacon_designer: '',
   accords: '',
@@ -380,6 +381,7 @@ export default function AdminPage() {
       sizes: sizesToText(cleanSizes(extrasById[p.id]?.sizes)),
       price_shop: priceSource(cleanSizes(extrasById[p.id]?.sizes)).shop || '',
       price_checked: priceSource(cleanSizes(extrasById[p.id]?.sizes)).checked || '',
+      price_url: priceSource(cleanSizes(extrasById[p.id]?.sizes)).url || '',
       alternative_to: alternativesToText(cleanAlternatives(extrasById[p.id]?.alternative_to)),
       flacon_designer: extrasById[p.id]?.flacon_designer || '',
       accords: accordsById[p.id] || '',
@@ -461,7 +463,7 @@ export default function AdminPage() {
     const price = Number(form.price_chf) || null;
     const ml = Number(form.volume_ml) || null;
     if (!sizes.length && form.price_shop.trim() && price && ml) sizes = [{ ml, price_chf: price }];
-    return withPriceSource(sizes, form.price_shop, form.price_checked);
+    return withPriceSource(sizes, form.price_shop, form.price_checked, form.price_url);
   }
 
   // „Preise aus dem Shop übernehmen“ → Formular füllen.
@@ -474,6 +476,7 @@ export default function AdminPage() {
       volume_ml: String(main.ml),
       price_shop: result.shop,
       price_checked: result.checked,
+      ...(result.url ? { price_url: result.url } : {}),
       ...(result.identity
         ? {
             brand: prev.brand || result.identity.brand,
@@ -1124,6 +1127,7 @@ export default function AdminPage() {
                   </div>
                   <div className="field"><label>Preise von (Shop)</label><input value={form.price_shop} onChange={e => setField('price_shop', e.target.value)} placeholder="z. B. Notino" disabled={!hasExtras} /></div>
                   <div className="field"><label>Preise geprüft am</label><input type="date" value={form.price_checked} onChange={e => setField('price_checked', e.target.value)} disabled={!hasExtras} /></div>
+                  <div style={{ gridColumn: '1 / -1' }} className="field"><label>Link zur Duft-Seite im Shop (Kauf-Knopf führt dorthin)</label><input type="url" value={form.price_url} onChange={e => setField('price_url', e.target.value)} placeholder="https://www.notino.ch/…" disabled={!hasExtras} /></div>
                   <div style={{ gridColumn: '1 / -1' }} className="field">
                     <label>Bekannte günstige Alternative zu (Name | Marke | Preis CHF | Hinweis)</label>
                     <textarea value={form.alternative_to} onChange={e => setField('alternative_to', e.target.value)} placeholder="Green Irish Tweed | Creed | | Gleicher Parfümeur (Pierre Bourdon)" style={{ width: '100%', minHeight: 70 }} disabled={!hasExtras} />

@@ -7,7 +7,7 @@ async function getSupabase(): Promise<SupabaseClient> {
   return (await import('./supabase')).supabase;
 }
 import { computeAuressaScore } from './score';
-import { cleanAlternatives, cleanSizes, type AlternativeTo, type PerfumeExtras } from './perfume-extras';
+import { cleanAlternatives, cleanSizes, type AlternativeTo, type PerfumeExtras, type SizePrice } from './perfume-extras';
 import { cleanStoredAccords } from './accords';
 
 export type PerfumeBrand = {
@@ -351,6 +351,21 @@ export async function getAlternativeLinks(): Promise<AlternativeLink[]> {
   return (data as { slug: string | null; alternative_to: unknown }[])
     .map((row) => ({ slug: row.slug || '', alternative_to: cleanAlternatives(row.alternative_to) }))
     .filter((row) => row.slug && row.alternative_to.length > 0);
+}
+
+// Grössen & Preise (inkl. Shop) aller Düfte, nach id – für Listen wie den Duft-Vergleich.
+// Fehlt die Spalte noch (vor SQL 62), gibt es einfach keine Grössen.
+export async function getAllSizes(): Promise<Record<string, SizePrice[]>> {
+  const supabase = await getSupabase();
+  if (!isSupabaseConfigured) return {};
+  const { data, error } = await supabase.from('perfumes').select('id, sizes');
+  if (error || !data) return {};
+  const out: Record<string, SizePrice[]> = {};
+  for (const row of data as { id: string; sizes: unknown }[]) {
+    const sizes = cleanSizes(row.sizes);
+    if (sizes.length) out[row.id] = sizes;
+  }
+  return out;
 }
 
 // Zusatzangaben (Grössen, Alternative zu, ähnliche Düfte, Flakon). Die neuen Spalten

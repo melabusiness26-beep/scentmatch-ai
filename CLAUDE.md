@@ -487,3 +487,11 @@ Parfumo-Diagramm, (3) Foto vom Preis** (easyCOSMETIC, sonst Makeup.ch/Notino). A
   Modul-Ebene – sonst lädt sich die Duft-Seite in `next dev` endlos neu.
 - Teilen-Leiste: Pinterest bekommt das Hochformat-Bild (`media=`), auch auf dem Handy sichtbar; neuer Knopf
   „📸 Als Story“ (Handy: Teilen-Menü mit Bild, Computer: Download).
+
+### Duft-Vergleich v2 (3.11.2026)
+- `/vergleich` ist jetzt eine Server-Seite (`app/vergleich/page.tsx`, lädt Düfte + `getAllSizes()`) mit Client-Teil
+  `CompareClient.tsx`. Auswahl steht im Link (`/vergleich?d=duft-a,duft-b`) → teilbar; Duft-Seite verlinkt mit
+  „Mit einem anderen Duft vergleichen“ (`?d=<slug>`).
+- Vergleichstabelle: Preis (+ Shop, Preis/100 ml), Score, Duftrichtung, Haltbarkeit/Ausstrahlung (Balken), Jahreszeit-
+  Symbole, Anlass, Kopf/Herz/Basis – gemeinsame Noten golden; Schilder „Günstigster pro ml“, „Bester Score“,
+  „Hält am längsten“, „Am stärksten“ (nur bei eindeutigem Sieger). Handy: Tabelle seitlich wischbar, Spalte links fix.

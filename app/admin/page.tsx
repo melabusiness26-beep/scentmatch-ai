@@ -398,6 +398,18 @@ export default function AdminPage() {
     setActiveTab('basic');
   }
 
+  async function runPriceAlerts(slug: string) {
+    try {
+      await fetch('/api/preis-alarm/senden', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${session?.access_token ?? ''}` },
+        body: JSON.stringify({ slugs: [slug] })
+      });
+    } catch {
+      // Nicht schlimm: Beim nächsten Speichern oder Veröffentlichen wird erneut geprüft.
+    }
+  }
+
   async function refreshPage(path: string) {
     try {
       await fetch('/api/revalidate', {
@@ -740,6 +752,8 @@ export default function AdminPage() {
       }
       // Duft-Seite sofort neu erzeugen, statt bis zu einer Stunde auf den Zwischenspeicher zu warten.
       if (savedSlug) await refreshPage(`/duft/${savedSlug}`);
+      // Preis-Alarme: Ist der Duft jetzt günstiger, bekommen Abonnenten eine E-Mail.
+      if (savedSlug && editingId) await runPriceAlerts(savedSlug);
 
       setEditingId(null);
       setForm({ ...emptyForm });

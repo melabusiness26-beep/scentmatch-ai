@@ -495,3 +495,14 @@ Parfumo-Diagramm, (3) Foto vom Preis** (easyCOSMETIC, sonst Makeup.ch/Notino). A
 - Vergleichstabelle: Preis (+ Shop, Preis/100 ml), Score, Duftrichtung, Haltbarkeit/Ausstrahlung (Balken), Jahreszeit-
   Symbole, Anlass, Kopf/Herz/Basis – gemeinsame Noten golden; Schilder „Günstigster pro ml“, „Bester Score“,
   „Hält am längsten“, „Am stärksten“ (nur bei eindeutigem Sieger). Handy: Tabelle seitlich wischbar, Spalte links fix.
+
+### Preis-Alarm (3.11.2026)
+- Duft-Seite: „🔔 Preis-Alarm“ (`app/duft/[slug]/PriceAlert.tsx`) → E-Mail + Einwilligung → Bestätigungs-Mail
+  (Double-Opt-in) → Mail, wenn der Preis ≥ 3 % und ≥ CHF 1 unter Basis bzw. zuletzt gemeldetem Preis fällt. Jede Mail mit
+  Abmelde-Link. Logik in `lib/price-alerts.ts` (HMAC-Links wie beim Newsletter), Routen `app/api/preis-alarm/*`,
+  Status-Seite `/preis-alarm?status=…`.
+- Tabelle `price_alerts` (SQL `68_price_alerts.sql`) – für Besucher komplett gesperrt, nur Server-Schlüssel.
+- Geprüft/versendet wird: beim Production-Build nach Preis-Updates aus dem Katalog (`sync-catalog.mts`) und nach dem
+  Speichern eines Duftes im Admin (`/api/preis-alarm/senden`, nur Admin).
+- Formular erscheint nur, wenn in Vercel gesetzt: `BREVO_API_KEY`, `BREVO_SENDER_EMAIL` (in Brevo bestätigter Absender),
+  `SUPABASE_SERVICE_ROLE_KEY` (optional `BREVO_SENDER_NAME`, Standard „Auressa“). Datenschutzerklärung 3.3 ergänzt.

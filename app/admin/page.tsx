@@ -18,12 +18,11 @@ import {
   withPriceSource
 } from '@/lib/perfume-extras';
 import ShopPriceHelper, { type ShopPriceResult } from './ShopPriceHelper';
+import { OCCASION_NAMES, SEASON_NAMES, isAllYear, occasionsOf, occasionsToText, seasonsOf, seasonsToText } from '@/lib/multi-values';
 import { accordsToText, cleanStoredAccords, parseAccordText } from '@/lib/accords';
 
 const FAMILIES = [['clean', 'Clean / Frisch'], ['gourmand', 'Gourmand / Süss'], ['woody', 'Woody / Holzig'], ['floral', 'Floral / Blumig']] as const;
 const GENDERS = ['Women', 'Men', 'Unisex'] as const;
-const SEASONS = ['Frühling', 'Sommer', 'Herbst/Winter', 'Winter', 'Ganzjährig'] as const;
-const OCCASIONS = ['Alltag', 'Büro', 'Date', 'Abend'] as const;
 const CONCENTRATIONS = ['EdP', 'EdT', 'EdC', 'Parfum', 'Extrait', 'Cologne', 'Spray'] as const;
 const INTENSITIES = ['Zart', 'Ausgewogen', 'Kräftig'] as const;
 const AGE_GROUPS = ['18-25', '25-35', '35-40', 'all'] as const;
@@ -161,6 +160,42 @@ async function uniquePerfumeSlug(name: string, brand: string, concentration: str
     if (e) throw e;
     if (!hit) return `${last}-${i}`;
   }
+}
+
+// Jahreszeit an-/abwählen (ganzjährig → zuerst in die vier Jahreszeiten aufteilen).
+function toggleSeason(current: string, season: string): string {
+  const list: string[] = isAllYear(current) ? [...SEASON_NAMES] : seasonsOf(current);
+  return seasonsToText(list.includes(season) ? list.filter(s => s !== season) : [...list, season]);
+}
+
+function ChoiceChips({ options, selected, onToggle }: { options: string[]; selected: string[]; onToggle: (opt: string) => void }) {
+  return (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+      {options.map(opt => {
+        const on = selected.includes(opt);
+        return (
+          <button
+            type="button"
+            key={opt}
+            onClick={() => onToggle(opt)}
+            aria-pressed={on}
+            style={{
+              padding: '8px 14px',
+              borderRadius: 999,
+              border: on ? '2px solid #1F1712' : '1px solid rgba(31,23,18,.2)',
+              background: on ? '#FFF7E3' : '#fff',
+              color: '#1F1712',
+              fontWeight: on ? 700 : 500,
+              cursor: 'pointer'
+            }}
+          >
+            {on ? '✓ ' : ''}
+            {opt}
+          </button>
+        );
+      })}
+    </div>
+  );
 }
 
 export default function AdminPage() {
@@ -1086,8 +1121,25 @@ export default function AdminPage() {
                   <div className="field"><label>Auressa-Score (0-100)</label><input type="number" value={form.scentmatch_score} onChange={e => setField('scentmatch_score', e.target.value)} /></div>
                   <div className="field"><label>Haltbarkeit (0-10)</label><input type="number" min="0" max="10" value={form.longevity} onChange={e => setField('longevity', e.target.value)} /></div>
                   <div className="field"><label>Ausstrahlung / Sillage (0-10)</label><input type="number" min="0" max="10" value={form.sillage} onChange={e => setField('sillage', e.target.value)} /></div>
-                  <div className="field"><label>Saison</label><select value={form.season} onChange={e => setField('season', e.target.value)}>{SEASONS.map(s => <option value={s} key={s}>{s}</option>)}</select></div>
-                  <div className="field"><label>Anlass</label><select value={form.occasion} onChange={e => setField('occasion', e.target.value)}>{OCCASIONS.map(o => <option value={o} key={o}>{o}</option>)}</select></div>
+                  <div className="field" style={{ gridColumn: '1 / -1' }}>
+                    <label>Jahreszeit (mehrere möglich – laut Parfumo-Diagramm alle ab ca. 25 %)</label>
+                    <ChoiceChips
+                      options={[...SEASON_NAMES, 'Ganzjährig']}
+                      selected={isAllYear(form.season) ? ['Ganzjährig'] : seasonsOf(form.season)}
+                      onToggle={opt => setField('season', opt === 'Ganzjährig' ? 'Ganzjährig' : toggleSeason(form.season, opt))}
+                    />
+                  </div>
+                  <div className="field" style={{ gridColumn: '1 / -1' }}>
+                    <label>Anlass (mehrere möglich – laut Parfumo-Diagramm alle ab ca. 20 %)</label>
+                    <ChoiceChips
+                      options={[...OCCASION_NAMES]}
+                      selected={occasionsOf(form.occasion)}
+                      onToggle={opt => {
+                        const cur = occasionsOf(form.occasion);
+                        setField('occasion', occasionsToText(cur.includes(opt) ? cur.filter(o => o !== opt) : [...cur, opt]));
+                      }}
+                    />
+                  </div>
                 </div>
               )}
 

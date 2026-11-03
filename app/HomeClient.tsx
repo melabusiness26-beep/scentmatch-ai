@@ -12,6 +12,7 @@ import { AffiliateButton } from '@/app/AffiliateButton';
 import NewsletterForm from '@/app/NewsletterForm';
 import { BottleIllustration } from '@/app/FragranceBottles';
 import LineIcon from '@/app/LineIcon';
+import { occasionsOf } from '@/lib/multi-values';
 
 
 // Anklickbare Familien-Kacheln (führen zur gefilterten Duftdatenbank).
@@ -124,21 +125,21 @@ export default function Home({ initialCatalogCount, initialBrandCount, initialHi
     }
 
     // 2. Bestes Alltag/Büro-Duft
-    const bestDaily = byScore.find(p => (p.occasion === 'Alltag' || p.occasion === 'Büro') && !picked.has(p.id));
+    const bestDaily = byScore.find(p => occasionsOf(p.occasion).some(o => o === 'Alltag' || o === 'Büro') && !picked.has(p.id));
     if (bestDaily) {
       result.push(bestDaily);
       picked.add(bestDaily.id);
     }
 
     // 3. Bestes Date-Duft
-    const bestDate = byScore.find(p => p.occasion === 'Date' && !picked.has(p.id));
+    const bestDate = byScore.find(p => occasionsOf(p.occasion).includes('Date') && !picked.has(p.id));
     if (bestDate) {
       result.push(bestDate);
       picked.add(bestDate.id);
     }
 
     // 4. Bestes Abend-Duft
-    const bestEvening = byScore.find(p => p.occasion === 'Abend' && !picked.has(p.id));
+    const bestEvening = byScore.find(p => occasionsOf(p.occasion).includes('Abend') && !picked.has(p.id));
     if (bestEvening) {
       result.push(bestEvening);
       picked.add(bestEvening.id);

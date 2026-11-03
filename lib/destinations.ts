@@ -1,3 +1,4 @@
+import { isAllYear, seasonsOf } from './multi-values';
 import { type Perfume, type QuizAnswers, matchesGender, noteHasKeyword } from './perfumes';
 import { computeAuressaScore } from './score';
 
@@ -455,8 +456,8 @@ export function destinationScore(p: Perfume, dest: Destination): number {
   // Typische Noten des Ortes (bis 30)
   s += Math.min(30, noteHits(p, dest).length * 12);
   // Saison (bis 8)
-  if (dest.season && p.season === dest.season) s += 8;
-  else if (p.season === 'Ganzjährig') s += 4;
+  if (dest.season && !isAllYear(p.season) && seasonsOf(p.season).some((x) => seasonsOf(dest.season).includes(x))) s += 8;
+  else if (isAllYear(p.season)) s += 4;
   // Leichter Qualitäts-Tiebreaker über den Auressa-Score (bis 5)
   s += (computeAuressaScore(p).total / 100) * 5;
   return s;

@@ -670,6 +670,10 @@ export default async function PerfumeDetailPage({
             <div className="dp-share">
               <SocialShareButtons perfume={perfume} url={`${SITE_URL}/duft/${slug}`} />
             </div>
+
+            <Link className="dp-compare-link" href={`/vergleich?d=${slug}`}>
+              <LineIcon name="bottles" size={18} /> Mit einem anderen Duft vergleichen <span aria-hidden="true">→</span>
+            </Link>
           </div>
         </section>
 

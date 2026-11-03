@@ -1,0 +1,86 @@
+{
+  "slug": "boss-bottled-beyond-for-her",
+  "perfume_name": "Boss Bottled Beyond for Her",
+  "brand": "Hugo Boss",
+  "gender": "Women",
+  "fragrance_family": "floral",
+  "season": "Frühling",
+  "occasion": "Alltag",
+  "age_group": "all",
+  "gender_nuance": "feminine",
+  "concentration": "EdP",
+  "volume_ml": 50,
+  "price_chf": 75.9,
+  "longevity": 7,
+  "sillage": 7,
+  "release_year": 2026,
+  "perfumer": "Quentin Bisch, Benoist Lapouza, Louise Turner",
+  "top_notes": [
+    "Pfingstrose"
+  ],
+  "heart_notes": [
+    "Ahornsirup"
+  ],
+  "base_notes": [
+    "Amberholz"
+  ],
+  "accords": [
+    "Süss 31",
+    "Blumig 29",
+    "Synthetisch 15",
+    "Holzig 9",
+    "Pudrig 5",
+    "Fruchtig 5",
+    "Frisch 5"
+  ],
+  "lifestyle": "casual",
+  "trend_vibe": "trendy",
+  "sizes": [
+    {
+      "ml": 10,
+      "price_chf": 25.9
+    },
+    {
+      "ml": 30,
+      "price_chf": 53.5
+    },
+    {
+      "ml": 50,
+      "price_chf": 75.9
+    },
+    {
+      "ml": 100,
+      "price_chf": 104.0
+    }
+  ],
+  "price_shop": "Notino",
+  "price_checked": "2026-11-03",
+  "description": "Boss Bottled Beyond for Her kam 2026 heraus und ist das Damen-Gegenstück zu Boss Bottled Beyond für Herren. Kreiert haben ihn Quentin Bisch, Benoist Lapouza und Louise Turner. Der Flakon ist nachfüllbar.\n\nIm Mittelpunkt stehen Pfingstrose und Ahornsirup, darunter liegt eine warme Amber-Holz-Basis. Der Duft bleibt von Anfang bis Ende ziemlich gleich.\n\nAuf Parfumo gilt er als süss und blumig, mit holzigen, leicht pudrigen und fruchtigen Seiten. Er hält lange und ist gut wahrnehmbar, ohne aufdringlich zu sein. Am besten passt er im Frühling und Herbst, für jeden Tag, die Freizeit und das Büro.",
+  "sources": {
+    "identity": [
+      "https://www.parfumo.com/Perfumes/Hugo_Boss/boss-bottled-beyond-for-her",
+      "https://www.notino.ch/hugo-boss/boss-bottled-beyond-eau-de-parfum-fur-damen/p-16386477/"
+    ],
+    "release_year": [
+      "https://www.parfumo.com/Perfumes/Hugo_Boss/boss-bottled-beyond-for-her",
+      "https://www.trbusiness.com/regional-news/international/coty-marks-major-new-olfactive-chapter-with-fresh-takes-on-scent-icons/280456"
+    ],
+    "notes": [
+      "https://www.parfumo.com/Perfumes/Hugo_Boss/boss-bottled-beyond-for-her",
+      "https://www.scento.com/de/perfumes/boss-bottled-beyond-for-her-hugo-boss"
+    ],
+    "diagram": [
+      "https://www.parfumo.com/Perfumes/Hugo_Boss/boss-bottled-beyond-for-her"
+    ],
+    "ratings": [
+      "https://www.parfumo.com/Perfumes/Hugo_Boss/boss-bottled-beyond-for-her"
+    ],
+    "price": [
+      "https://www.notino.ch/hugo-boss/boss-bottled-beyond-eau-de-parfum-fur-damen/p-16386477/"
+    ],
+    "perfumer": [
+      "https://www.parfumo.com/Perfumes/Hugo_Boss/boss-bottled-beyond-for-her",
+      "https://www.trbusiness.com/regional-news/international/coty-marks-major-new-olfactive-chapter-with-fresh-takes-on-scent-icons/280456"
+    ]
+  }
+}

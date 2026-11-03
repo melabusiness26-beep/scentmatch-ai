@@ -6,8 +6,11 @@
 import {
   alternativesToText,
   cleanAlternatives,
+  cleanDate,
+  cleanShop,
   cleanSizes,
   parseSimilarNames,
+  priceSource,
   sizesToText
 } from './perfume-extras.ts';
 import { accordsToText, parseAccordText } from './accords.ts';
@@ -53,6 +56,10 @@ export type ImportedFields = Partial<{
   flacon_designer: string;
   similar_perfumes: string;
   sizes: string;
+  /** Shop, aus dem die Preise stammen (z. B. „Notino"). */
+  price_shop: string;
+  /** Datum der Preisprüfung, JJJJ-MM-TT. */
+  price_checked: string;
   alternative_to: string;
   accords: string;
   description: string;
@@ -164,8 +171,23 @@ function parseEntry(input: Record<string, unknown>, index: number): ImportEntry 
   // Grössen & Preise: [{"ml": 40, "price_chf": 14.99}, …]
   if (raw.sizes != null) {
     const sizes = cleanSizes(raw.sizes);
-    if (sizes.length) fields.sizes = sizesToText(sizes);
-    else warnings.push('Grössen & Preise sind ungültig – nicht übernommen.');
+    if (sizes.length) {
+      fields.sizes = sizesToText(sizes);
+      const source = priceSource(sizes);
+      if (source.shop) fields.price_shop = source.shop;
+      if (source.checked) fields.price_checked = source.checked;
+    } else warnings.push('Grössen & Preise sind ungültig – nicht übernommen.');
+  }
+  // Preisquelle: "price_shop": "Notino", "price_checked": "2026-11-03"
+  if (raw.price_shop != null && raw.price_shop !== '') {
+    const shop = cleanShop(raw.price_shop);
+    if (shop) fields.price_shop = shop;
+    else warnings.push(`Preis-Shop „${raw.price_shop}" ist ungültig – nicht übernommen.`);
+  }
+  if (raw.price_checked != null && raw.price_checked !== '') {
+    const checked = cleanDate(raw.price_checked);
+    if (checked) fields.price_checked = checked;
+    else warnings.push(`Preis-Datum „${raw.price_checked}" bitte als JJJJ-MM-TT angeben – nicht übernommen.`);
   }
   // Alternative zu: [{"name": …, "brand": …, "price_chf": …, "note": …}]
   if (raw.alternative_to != null) {

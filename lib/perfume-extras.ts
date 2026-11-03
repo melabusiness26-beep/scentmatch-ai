@@ -4,7 +4,9 @@ import type { StoredAccord } from './accords.ts';
 // Im Admin werden sie als einfache Textzeilen gepflegt; hier wird zwischen Text und
 // Datenbank-Format umgewandelt. Unvollständige Zeilen werden ignoriert, nicht geraten.
 
-export type SizePrice = { ml: number; price_chf: number };
+// shop/checked: woher der Preis stammt („Notino") und wann er geprüft wurde ("2026-11-03").
+// Beides ist freiwillig und steht bei allen Grössen eines Duftes gleich.
+export type SizePrice = { ml: number; price_chf: number; shop?: string; checked?: string };
 export type AlternativeTo = { name: string; brand?: string | null; price_chf?: number | null; note?: string | null };
 export type SimilarName = { name: string; brand: string | null };
 
@@ -56,9 +58,51 @@ export function cleanSizes(input: unknown): SizePrice[] {
     if (!item || typeof item !== 'object') continue;
     const ml = toNumber((item as Record<string, unknown>).ml);
     const price = toNumber((item as Record<string, unknown>).price_chf);
-    if (ml && ml > 0 && price != null && price > 0) byMl.set(ml, { ml, price_chf: price });
+    if (!(ml && ml > 0 && price != null && price > 0)) continue;
+    const entry: SizePrice = { ml, price_chf: price };
+    const shop = cleanShop((item as Record<string, unknown>).shop);
+    const checked = cleanDate((item as Record<string, unknown>).checked);
+    if (shop) entry.shop = shop;
+    if (checked) entry.checked = checked;
+    byMl.set(ml, entry);
   }
   return [...byMl.values()].sort((a, b) => a.ml - b.ml);
+}
+
+// ── Preisquelle ───────────────────────────────────────────────
+export type PriceSource = { shop: string | null; checked: string | null };
+
+export function cleanShop(value: unknown): string | null {
+  if (typeof value !== 'string') return null;
+  const v = value.trim();
+  return v && v.length <= 40 ? v : null;
+}
+
+// Nur echte Kalenderdaten im Format JJJJ-MM-TT.
+export function cleanDate(value: unknown): string | null {
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value.trim())) return null;
+  const v = value.trim();
+  const d = new Date(`${v}T12:00:00Z`);
+  return Number.isNaN(d.getTime()) || d.toISOString().slice(0, 10) !== v ? null : v;
+}
+
+export function priceSource(sizes: SizePrice[] | null | undefined): PriceSource {
+  const hit = (sizes || []).find((s) => s.shop || s.checked);
+  return { shop: hit?.shop || null, checked: hit?.checked || null };
+}
+
+// Setzt Shop und Prüfdatum bei allen Grössen (leere Werte werden entfernt).
+export function withPriceSource(sizes: SizePrice[], shop: unknown, checked: unknown): SizePrice[] {
+  const s = cleanShop(shop);
+  const c = cleanDate(checked);
+  return sizes.map(({ ml, price_chf }) => ({ ml, price_chf, ...(s ? { shop: s } : {}), ...(c ? { checked: c } : {}) }));
+}
+
+// „3. November 2026"
+export function formatCheckedDate(iso: string | null | undefined): string | null {
+  const v = cleanDate(iso);
+  if (!v) return null;
+  return new Date(`${v}T12:00:00Z`).toLocaleDateString('de-CH', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 }
 
 export function pricePer100ml(size: SizePrice): number {

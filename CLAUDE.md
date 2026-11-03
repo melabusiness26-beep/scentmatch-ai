@@ -455,3 +455,15 @@ Parfumo-Diagramm, (3) Foto vom Preis** (easyCOSMETIC, sonst Makeup.ch/Notino). A
   zurückholen, nur Preis/Grössen + `sources.price` auf Notino ändern.
 - Achtung: `LEGACY_WITHOUT_SOURCES` gilt nur für die alten 15 – beim Zurückholen dieser Düfte die Quellen vollständig
   ergänzen (Liste nie erweitern).
+
+### Preise mit Shop + Datum, Admin-Assistent, Grössen-Auswahl (3.11.2026)
+- **Katalog-Dateien** haben jetzt `"price_shop": "Notino"` und `"price_checked": "JJJJ-MM-TT"` (bei jedem neuen Duft
+  setzen). Gespeichert wird beides in `sizes` (jsonb, je Grösse `shop`/`checked`) – keine neue DB-Spalte nötig.
+- **Sync**: Preise aus der Datei überschreiben die DB nur, wenn `price_checked` der Datei nicht älter ist als das Datum
+  in der DB (Admin-Änderungen gewinnen, wenn sie neuer sind).
+- **Admin „🏷️ Preise aus dem Shop übernehmen“** (`app/admin/ShopPriceHelper.tsx`, Logik `lib/shop-text.ts`):
+  Gründerin kopiert die Notino-Seite (Strg+A/C/V) → Grössen/Preise werden erkannt, Nachfüllungen und verdächtige
+  Grössen (grösser, aber kaum teurer) sind abgewählt, Hauptpreis wählbar; bei neuem Duft auch Marke/Name/Geschlecht/
+  Konzentration. Shop + Datum gehen ins Formular („Preise von“, „geprüft am“ im Tab Erweitert).
+- **Duft-Seite**: `SizePicker` im Kaufbereich – „Preis bei Notino“, Grösse antippen → Preis + Preis/100 ml, Markierung
+  „Bester ml-Preis“, „Stand <Datum>“. Die alte Tabelle „Grössen & Preise“ ist dadurch ersetzt.

@@ -33,7 +33,8 @@ import { pairsFor } from '@/lib/version-compare';
 import { wearTips } from '@/lib/wear';
 import { perfumeSeasons, seasonPicks } from '@/lib/season-fit';
 import { SeasonFit } from '@/app/components/SeasonFit';
-import { bestValueSize, pricePer100ml, splitSimilar } from '@/lib/perfume-extras';
+import { formatCheckedDate, priceSource, splitSimilar } from '@/lib/perfume-extras';
+import { SizePicker } from './SizePicker';
 import { formatChf } from '@/lib/price';
 
 // Vergleichsschlüssel für Namen aus dem Chat-Import („Tres Nuit" ↔ „Très Nuit").
@@ -463,7 +464,7 @@ export default async function PerfumeDetailPage({
     return { name, brand, match: findInCatalog(name, brand) };
   });
   const sizes = extras.sizes || [];
-  const bestSize = bestValueSize(sizes);
+  const source = priceSource(sizes);
   const otherVersions = versions.filter((v) => v.id !== perfume.id).map(versionLabel);
   const description =
     perfume.description ||
@@ -559,26 +560,35 @@ export default async function PerfumeDetailPage({
               </Link>
             )}
 
-            <div className="dp-buy">
-              <div className="dp-price">
-                {isDiscontinued ? (
-                  <>
-                    <span className="dp-price-label">Status</span>
-                    <span className="dp-price-value">Nicht mehr erhältlich</span>
-                    <span className="dp-price-note">wird nicht mehr hergestellt</span>
-                  </>
-                ) : perfume.price_chf != null ? (
-                  <>
-                    <span className="dp-price-label">Richtpreis</span>
-                    <span className="dp-price-value">ca. CHF {formatChf(perfume.price_chf)}</span>
-                    <span className="dp-price-note">
-                      {perfume.volume_ml ? `für ${perfume.volume_ml} ml · kann je nach Shop abweichen` : 'kann je nach Shop und Grösse abweichen'}
-                    </span>
-                  </>
-                ) : (
-                  <span className="dp-price-label">Preis noch offen</span>
-                )}
-              </div>
+            <div className={`dp-buy${!isDiscontinued && sizes.length > 0 ? ' has-sizes' : ''}`}>
+              {!isDiscontinued && sizes.length > 0 ? (
+                <SizePicker
+                  sizes={sizes.map(({ ml, price_chf }) => ({ ml, price_chf }))}
+                  initialMl={perfume.volume_ml}
+                  shop={source.shop}
+                  checked={formatCheckedDate(source.checked)}
+                />
+              ) : (
+                <div className="dp-price">
+                  {isDiscontinued ? (
+                    <>
+                      <span className="dp-price-label">Status</span>
+                      <span className="dp-price-value">Nicht mehr erhältlich</span>
+                      <span className="dp-price-note">wird nicht mehr hergestellt</span>
+                    </>
+                  ) : perfume.price_chf != null ? (
+                    <>
+                      <span className="dp-price-label">Richtpreis</span>
+                      <span className="dp-price-value">ca. CHF {formatChf(perfume.price_chf)}</span>
+                      <span className="dp-price-note">
+                        {perfume.volume_ml ? `für ${perfume.volume_ml} ml · kann je nach Shop abweichen` : 'kann je nach Shop und Grösse abweichen'}
+                      </span>
+                    </>
+                  ) : (
+                    <span className="dp-price-label">Preis noch offen</span>
+                  )}
+                </div>
+              )}
               <div
                 className="dp-score"
                 title="Auressa-Score: aus Preis-Leistung, Haltbarkeit, Vielseitigkeit und Ausstrahlung berechnet"
@@ -829,38 +839,6 @@ export default async function PerfumeDetailPage({
                 ))}
               </ul>
             )}
-          </Reveal>
-        )}
-
-        {/* ── GRÖSSEN & PREISE ─────────────────────────────────── */}
-        {sizes.length >= 2 && (
-          <Reveal as="section" className="dp-card dp-sizes">
-            <p className="dp-kicker">Grössen &amp; Preise</p>
-            <h2>Welche Grösse lohnt sich?</h2>
-            <div className="dp-compare-scroll">
-              <table className="dp-compare-table">
-                <thead>
-                  <tr>
-                    <th scope="col">Grösse</th>
-                    <th scope="col">Richtpreis</th>
-                    <th scope="col">Pro 100 ml</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {sizes.map((s) => (
-                    <tr key={s.ml} className={bestSize?.ml === s.ml ? 'is-current' : ''}>
-                      <th scope="row">
-                        {s.ml} ml
-                        {bestSize?.ml === s.ml && <span className="dp-size-best">Bester Preis</span>}
-                      </th>
-                      <td>ca. CHF {chf(s.price_chf)}</td>
-                      <td>CHF {pricePer100ml(s).toFixed(2)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <p className="dp-footnote">Richtpreise zum Zeitpunkt unserer Recherche. Im Shop können sie anders sein.</p>
           </Reveal>
         )}
 

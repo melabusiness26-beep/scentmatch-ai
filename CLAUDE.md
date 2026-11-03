@@ -405,3 +405,36 @@ Parfumo-Diagramm, (3) Foto vom Preis** (easyCOSMETIC, sonst Makeup.ch/Notino). A
   freigeschaltet – wirkt erst in einer NEUEN Sitzung. Bot-Schutz nie umgehen.
 - Danach: easyCOSMETIC-Linienseiten der älteren Reihen (Light Blue, Boss Bottled, Cool Water, Terre d'Hermès)
   von der Gründerin holen und fehlende Versionen ergänzen. Später: La Vie est Belle + geprüfte Dupes.
+
+## 17. Update (3. November 2026): Reihen komplett, Preis-Referenz wechselt zu Notino
+
+- **Katalog 55 Düfte** (11 Reihen): Aqua Allegoria (20) und Absolus Allegoria (8) ✅ komplett; Light Blue Damen
+  (EdT, EdP, Eau Intense) + Herren (Pour Homme, Eau Intense) ✅; Boss Bottled ✅ komplett (EdT, Tonic 2017,
+  Bold Citrus 2025 limitiert, EdP, Parfum, Elixir, Absolu); Cool Water Herren ✅ (EdT, Intense – mehr gibt es bei
+  easyCOSMETIC nicht); Joop! Homme ✅; Narciso For Her ✅; La Rive (2).
+- Bewusst ausgelassen: D&G Light Blue Perfume Gel; Hugo Boss HUGO/Dark Blue/The Scent (eigene Reihen, später);
+  Cool Water Woman / Sea Rose (eigene Damen-Reihe, später). Bold Citrus ist limitiert → `discontinued` setzen,
+  sobald nicht mehr erhältlich.
+- easyCOSMETIC-Linienseiten haben oft falsche Parfümeur-/Jahresangaben (z. B. Cool Water Intense „Pierre
+  Bourdon“ statt Annick Ménardo) → immer Parfumo + 2. Quelle.
+
+### NEU: Preis-Referenz = Notino (Entscheid der Gründerin, 3.11.2026)
+- Ab jetzt Preise von **Notino.ch** (normaler Preis ohne Rabattcode); fehlt ein Duft dort → **Impo**, sonst
+  **Marionnaud**. easyCOSMETIC nicht mehr als Referenz (Gründerin will es später evtl. als eigene Einkaufsquelle).
+- **ALLE 55 bestehenden Düfte auf Notino-Preise umstellen** (Reihe für Reihe; gemischte Quellen verfälschen den
+  Auressa-Score). Reihenfolge: Terre d'Hermès (dabei fehlende Versionen ergänzen, z. B. Eau Givrée / Eau Intense
+  Vétiver) → Cool Water → Light Blue Damen → Light Blue Herren → Boss Bottled → Joop! Homme → Narciso → La Rive →
+  Absolus Allegoria → Aqua Allegoria. Bei der Umstellung `sources.price` auf den Notino-Link setzen.
+  Notino teurer → manche Düfte über CHF 180 (bleiben drin, werden nicht empfohlen – so gewollt).
+- Assistent liest Notino/Impo/Marionnaud **selbst** (einzelne Seiten wie ein Besucher), sofern die Domains in der
+  Umgebung freigeschaltet sind (neue Sitzung nötig). **Kein** automatisches Abgrasen ganzer Shops (AGB/rechtlich,
+  Bot-Schutz nie umgehen).
+- **Später (beste Lösung):** offizieller **Produkt-Feed** über CJ (Notino) bzw. Awin (Flaconi) → tägliche
+  automatische Preis-Aktualisierung + Affiliate-Links. Voraussetzung: Programm-Freigabe („Joined“).
+
+### Geschäftsidee der Gründerin (besprochen, noch nichts umgesetzt)
+- Später evtl. selbst Parfüm verkaufen. Empfehlung des Assistenten: Weiterverkauf ganzer Flaschen zu
+  Discounter-Preisen lohnt kaum (Marge, Versand/Gefahrgut, Kundschaft findet Tiefstpreis); besser
+  **Abfüllungen/Probiersets** passend zum Quiz. Vorher kostenlose Gründungsberatung (Standortförderung Aargau /
+  Ausgleichskasse; AHV-Anmeldung gratis, unter ~CHF 2'500 Nebenerwerb meist keine Beiträge). Gründerin will sich
+  vorerst NICHT anmelden.

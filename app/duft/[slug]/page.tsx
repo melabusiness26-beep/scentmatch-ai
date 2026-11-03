@@ -31,7 +31,8 @@ import { fitAdvice, perfumeTagline } from '@/lib/perfume-text';
 import { baseName, findVersions, versionLabel, compareVersion, findCounterpart } from '@/lib/versions';
 import { pairsFor } from '@/lib/version-compare';
 import { wearTips } from '@/lib/wear';
-import { perfumeSeasons, seasonPicks } from '@/lib/season-fit';
+import { SEASONS, perfumeSeasons, seasonPicks } from '@/lib/season-fit';
+import LineIcon from '@/app/LineIcon';
 import { SeasonFit } from '@/app/components/SeasonFit';
 import { formatCheckedDate, priceSource, splitSimilar } from '@/lib/perfume-extras';
 import { SizePicker } from './SizePicker';
@@ -166,12 +167,23 @@ export async function generateMetadata({
 }
 
 // Haltbarkeit/Sillage (0–10) als 5 Punkte – auf einen Blick lesbar.
-function Meter({ label, value, hint, help }: { label: string; value: number | null; hint: string; help?: string }) {
+function FactLabel({ icon, children }: { icon: string; children: React.ReactNode }) {
+  return (
+    <span className="dp-fact-label">
+      <span className="dp-fact-icon"><LineIcon name={icon} size={16} /></span>
+      {children}
+    </span>
+  );
+}
+
+const SEASON_ICONS: Record<string, string> = { Frühling: 'flower', Sommer: 'sun', Herbst: 'leaf', Winter: 'snow' };
+
+function Meter({ label, icon, value, hint, help }: { label: string; icon: string; value: number | null; hint: string; help?: string }) {
   if (value == null) return null;
   const filled = Math.max(0, Math.min(5, Math.round(value / 2)));
   return (
     <div className="dp-fact">
-      <span className="dp-fact-label">{label}</span>
+      <FactLabel icon={icon}>{label}</FactLabel>
       <span className="dp-meter" role="img" aria-label={`${label}: ${value} von 10`}>
         {[0, 1, 2, 3, 4].map((i) => (
           <span key={i} className={i < filled ? 'on' : ''} style={{ animationDelay: `${i * 90}ms` }} />
@@ -465,6 +477,7 @@ export default async function PerfumeDetailPage({
   });
   const sizes = extras.sizes || [];
   const source = priceSource(sizes);
+  const hasPartnerLink = Boolean(perfume.affiliate_url && /^https:\/\//i.test(perfume.affiliate_url));
   const otherVersions = versions.filter((v) => v.id !== perfume.id).map(versionLabel);
   const description =
     perfume.description ||
@@ -567,6 +580,7 @@ export default async function PerfumeDetailPage({
                   initialMl={perfume.volume_ml}
                   shop={source.shop}
                   checked={formatCheckedDate(source.checked)}
+                  url={hasPartnerLink ? null : source.url}
                 />
               ) : (
                 <div className="dp-price">
@@ -635,7 +649,13 @@ export default async function PerfumeDetailPage({
                   </a>
                 )}
               </div>
-            ) : perfume.affiliate_url && /^https:\/\//i.test(perfume.affiliate_url) ? (
+            ) : !hasPartnerLink && source.url && source.shop ? (
+              // Der Kauf-Knopf zum Shop sitzt beim Preis (passt zur gewählten Grösse);
+              // Amazon bleibt als zweite Möglichkeit.
+              <div className="dp-actions dp-actions-secondary" id="dp-actions">
+                <AmazonButton perfume={perfume} secondary />
+              </div>
+            ) : hasPartnerLink ? (
               <div className="dp-actions" id="dp-actions">
                 <AffiliateButton perfume={perfume} />
                 <AmazonButton perfume={perfume} />
@@ -655,23 +675,39 @@ export default async function PerfumeDetailPage({
 
         {/* ── STECKBRIEF ───────────────────────────────────────── */}
         <Reveal as="section" className="dp-facts">
-          <Meter label="Haltbarkeit" value={perfume.longevity} hint={perfume.longevity != null ? longevityHint(perfume.longevity) : ''} />
+          <Meter label="Haltbarkeit" icon="clock" value={perfume.longevity} hint={perfume.longevity != null ? longevityHint(perfume.longevity) : ''} />
           <Meter
             label="Ausstrahlung"
+            icon="waves"
             value={perfume.sillage}
             hint={perfume.sillage != null ? sillageHint(perfume.sillage) : ''}
             help="Wie stark man den Duft in deiner Nähe riecht (Fachwort: Sillage)."
           />
           {perfume.season && (
             <div className="dp-fact">
-              <span className="dp-fact-label">Saison</span>
-              <span className="dp-fact-value">{seasonDisplay(perfume.season)}</span>
+              <FactLabel icon="sparkle">Saison</FactLabel>
+              {seasons.length > 0 ? (
+                <ul className="dp-seasons" aria-label={`Passt zu: ${seasonDisplay(perfume.season)}`}>
+                  {SEASONS.map((s) => (
+                    <li key={s} className={seasons.includes(s) ? 'on' : ''} aria-hidden="true">
+                      <LineIcon name={SEASON_ICONS[s]} size={20} />
+                      <span>{s}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <span className="dp-fact-value">{seasonDisplay(perfume.season)}</span>
+              )}
             </div>
           )}
           {occasions.length > 0 && (
             <div className="dp-fact">
-              <span className="dp-fact-label">Anlass</span>
-              <span className="dp-fact-value">{occasions.join(' · ')}</span>
+              <FactLabel icon="calendar">Anlass</FactLabel>
+              <span className="dp-occasions">
+                {occasions.map((o) => (
+                  <span key={o} className="dp-occasion">{o}</span>
+                ))}
+              </span>
             </div>
           )}
         </Reveal>
@@ -900,12 +936,16 @@ export default async function PerfumeDetailPage({
                         {notes.map((note) => {
                           const img = noteImage(note);
                           return (
-                            <Link className={`note-chip${img ? ' has-photo' : ''}`} href={noteHref(note)} key={note}>
-                              {img && (
-                                // eslint-disable-next-line @next/next/no-img-element
-                                <img src={img} alt="" loading="lazy" />
-                              )}
-                              {note}
+                            <Link className="note-bubble" href={noteHref(note)} key={note}>
+                              <span className={`note-bubble-img${img ? '' : ' is-empty'}`} aria-hidden="true">
+                                {img ? (
+                                  // eslint-disable-next-line @next/next/no-img-element
+                                  <img src={img} alt="" loading="lazy" />
+                                ) : (
+                                  note.replace(/^[^A-Za-zÄÖÜäöü]+/, '').charAt(0).toUpperCase()
+                                )}
+                              </span>
+                              <span className="note-bubble-name">{note}</span>
                             </Link>
                           );
                         })}
@@ -1131,9 +1171,19 @@ export default async function PerfumeDetailPage({
       <StickyBuyBar targetId="dp-actions">
         <div className="dp-sticky-info">
           <span className="dp-sticky-name">{perfume.perfume_name}</span>
-          {perfume.price_chf != null && <span className="dp-sticky-price">ca. CHF {formatChf(perfume.price_chf)}</span>}
+          {perfume.price_chf != null && (
+            <span className="dp-sticky-price">
+              {source.shop ? `CHF ${formatChf(perfume.price_chf)} bei ${source.shop}` : `ca. CHF ${formatChf(perfume.price_chf)}`}
+            </span>
+          )}
         </div>
-        <AffiliateButton perfume={perfume} showNote={false} label="Ansehen →" />
+        {!hasPartnerLink && source.url ? (
+          <a className="button buy-button" href={source.url} target="_blank" rel="nofollow noopener noreferrer">
+            Ansehen →
+          </a>
+        ) : (
+          <AffiliateButton perfume={perfume} showNote={false} label="Ansehen →" />
+        )}
       </StickyBuyBar>
       )}
 

@@ -467,3 +467,13 @@ Parfumo-Diagramm, (3) Foto vom Preis** (easyCOSMETIC, sonst Makeup.ch/Notino). A
   Konzentration. Shop + Datum gehen ins Formular („Preise von“, „geprüft am“ im Tab Erweitert).
 - **Duft-Seite**: `SizePicker` im Kaufbereich – „Preis bei Notino“, Grösse antippen → Preis + Preis/100 ml, Markierung
   „Bester ml-Preis“, „Stand <Datum>“. Die alte Tabelle „Grössen & Preise“ ist dadurch ersetzt.
+
+### Duft-Seite v3 (3.11.2026)
+- `price_url` (Katalog) bzw. „Link zur Duft-Seite im Shop“ (Admin) = Produktseite im Shop, gespeichert in `sizes[].url`.
+  Ist er da (und kein echter Partner-Link in `affiliate_url`), zeigt die Preis-Karte den Knopf „50 ml bei Notino ansehen“
+  (Text folgt der gewählten Grösse); Amazon wird zweite Wahl („Auch bei Amazon ansehen“), „Online suchen“ entfällt.
+  Kein „Partner-Link“-Hinweis/`sponsored`, solange es kein echter Affiliate-Link ist. Kommt der CJ/Awin-Link, ins Feld
+  `affiliate_url` → dann wieder Partner-Knopf zuerst.
+- „Erst testen?“-Hinweis, wenn eine Reisegrösse (≤ 15 ml) existiert. Steckbrief mit Symbolen (Uhr, Wellen,
+  Jahreszeiten-Reihe, Anlass-Chips). Duftpyramide: Noten als runde Bilder (Foto aus `/public/notes`, sonst Initiale in
+  Schichtfarbe) – je mehr Noten-Fotos, desto schöner.

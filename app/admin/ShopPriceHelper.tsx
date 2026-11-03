@@ -8,6 +8,8 @@ export type ShopPriceResult = {
   mainMl: number;
   shop: string;
   checked: string;
+  /** Produktseite im Shop – nur wenn eingefügt. */
+  url: string | null;
   /** Nur bei einem neuen Duft gefüllt – beim Bearbeiten bleiben Name & Co. unberührt. */
   identity: { brand: string; name: string; gender: ShopReading['gender']; concentration: string | null } | null;
 };
@@ -28,6 +30,8 @@ export default function ShopPriceHelper({ isNew, onApply }: Props) {
   const [skip, setSkip] = useState<Record<number, boolean>>({});
   const [main, setMain] = useState<number | null>(null);
   const [done, setDone] = useState('');
+  const [link, setLink] = useState('');
+  const linkOk = /^https:\/\/\S+$/i.test(link.trim());
 
   const reading = useMemo(() => (text.trim().length > 20 ? readShopText(text) : null), [text]);
 
@@ -52,6 +56,7 @@ export default function ShopPriceHelper({ isNew, onApply }: Props) {
       mainMl,
       shop,
       checked: today(),
+      url: linkOk ? link.trim() : null,
       identity:
         isNew && reading.brand && reading.name
           ? { brand: reading.brand, name: reading.name, gender: reading.gender, concentration: reading.concentration }
@@ -151,6 +156,18 @@ export default function ShopPriceHelper({ isNew, onApply }: Props) {
                 })}
               </div>
 
+              <label className="small" style={{ display: 'block', margin: '12px 0 0', color: '#6B5344' }}>
+                Link zur Seite (aus der Adresszeile kopieren) – dann führt der Kauf-Knopf direkt zum Duft:
+                <input
+                  type="url"
+                  value={link}
+                  onChange={(e) => setLink(e.target.value)}
+                  placeholder="https://www.notino.ch/…"
+                  style={{ width: '100%', marginTop: 6, borderColor: link && !linkOk ? '#b3261e' : undefined }}
+                />
+                {link && !linkOk && <span style={{ color: '#b3261e' }}>Der Link muss mit https:// beginnen.</span>}
+              </label>
+
               {isNew && reading.brand && reading.name && (
                 <p className="small" style={{ margin: '10px 0 0', color: '#6B5344' }}>
                   Weil es ein neuer Duft ist, trage ich auch Marke, Name
@@ -163,7 +180,7 @@ export default function ShopPriceHelper({ isNew, onApply }: Props) {
                 <button className="button" type="button" onClick={apply} disabled={!canApply}>
                   ✓ {chosen.length ? `${chosen.length} ${chosen.length === 1 ? 'Grösse' : 'Grössen'} übernehmen` : 'Übernehmen'}
                 </button>
-                <button className="button secondary" type="button" onClick={() => { setText(''); setDone(''); }}>
+                <button className="button secondary" type="button" onClick={() => { setText(''); setDone(''); setLink(''); }}>
                   Leeren
                 </button>
               </div>

@@ -12,6 +12,8 @@ type Props = {
   shop: string | null;
   /** Bereits formatiert, z. B. „3. November 2026“. */
   checked: string | null;
+  /** Produktseite im Shop – dann gibt es den Knopf „50 ml bei Notino ansehen“. */
+  url?: string | null;
 };
 
 const per100 = (s: Size) => Math.round((s.price_chf / s.ml) * 10000) / 100;
@@ -19,7 +21,7 @@ const per100 = (s: Size) => Math.round((s.price_chf / s.ml) * 10000) / 100;
 // Preis mit Grössen-Auswahl im Kaufbereich der Duft-Seite: Grösse antippen,
 // Preis und Preis pro 100 ml passen sich an. Die Grösse mit dem besten Preis pro
 // 100 ml ist dezent markiert.
-export function SizePicker({ sizes, initialMl, shop, checked }: Props) {
+export function SizePicker({ sizes, initialMl, shop, checked, url }: Props) {
   const groupId = useId();
   const start = sizes.find((s) => s.ml === initialMl) || sizes[0];
   const [ml, setMl] = useState(start.ml);
@@ -28,6 +30,8 @@ export function SizePicker({ sizes, initialMl, shop, checked }: Props) {
   const cents = sizes.some((s) => Math.round(s.price_chf * 100) % 100 !== 0);
   const money = (n: number) => (cents ? n.toFixed(2) : formatChf(n));
   const best = sizes.length >= 2 ? sizes.reduce((a, b) => (per100(b) < per100(a) ? b : a)) : null;
+  // „Erst testen?": gibt es eine kleine Reisegrösse, wird sie angeboten (nicht, wenn sie schon gewählt ist).
+  const travel = sizes.find((s) => s.ml <= 15 && s.ml !== current.ml && sizes.length > 1);
 
   return (
     <>
@@ -66,6 +70,18 @@ export function SizePicker({ sizes, initialMl, shop, checked }: Props) {
             })}
           </div>
         </div>
+      )}
+
+      {travel && (
+        <button type="button" className="dp-sizepick-try" onClick={() => setMl(travel.ml)}>
+          <span aria-hidden="true">✦</span> Erst testen? Die Reisegrösse mit {travel.ml} ml gibt es für CHF {money(travel.price_chf)}.
+        </button>
+      )}
+
+      {url && shop && (
+        <a className="button dp-shop-button" href={url} target="_blank" rel="nofollow noopener noreferrer">
+          {sizes.length > 1 ? `${current.ml} ml bei ${shop} ansehen` : `Bei ${shop} ansehen`} <span aria-hidden="true">→</span>
+        </a>
       )}
 
       <p className="dp-sizepick-foot">

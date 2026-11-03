@@ -69,7 +69,7 @@ try {
     const x = cleanSizes(a);
     return (
       x.length === b.length &&
-      x.every((s, i) => s.ml === b[i].ml && s.price_chf === b[i].price_chf && s.shop === b[i].shop && s.checked === b[i].checked)
+      x.every((s, i) => s.ml === b[i].ml && s.price_chf === b[i].price_chf && s.shop === b[i].shop && s.checked === b[i].checked && s.url === b[i].url)
     );
   };
 

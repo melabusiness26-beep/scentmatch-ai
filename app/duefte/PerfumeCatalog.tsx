@@ -415,7 +415,7 @@ export default function PerfumeCatalog({ initialPerfumes }: { initialPerfumes: P
       )}
 
       <p className="small catalog-count">
-        {visible.length} Düfte
+        {visible.length} {visible.length === 1 ? 'Duft' : 'Düfte'}
         {familyFilter ? ` · ${familyDisplay[familyFilter]}` : ''}
         {activeFilterCount > 0 && ` · ${activeFilterCount} Filter aktiv`}
       </p>

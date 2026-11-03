@@ -164,7 +164,7 @@ function rowSizes(f: ImportedFields) {
   const price = toNumber(f.price_chf);
   const ml = toNumber(f.volume_ml);
   if (!sizes.length && f.price_shop && price && ml) sizes = [{ ml, price_chf: price }];
-  return withPriceSource(sizes, f.price_shop, f.price_checked);
+  return withPriceSource(sizes, f.price_shop, f.price_checked, f.price_url);
 }
 
 // Wandelt die (textförmigen) Felder in eine Datenbank-Zeile um – wie „Hinzufügen" im Admin.

@@ -9,6 +9,7 @@ import {
   cleanDate,
   cleanShop,
   cleanSizes,
+  cleanUrl,
   parseSimilarNames,
   priceSource,
   sizesToText
@@ -60,6 +61,8 @@ export type ImportedFields = Partial<{
   price_shop: string;
   /** Datum der Preisprüfung, JJJJ-MM-TT. */
   price_checked: string;
+  /** Produktseite im Shop (https). */
+  price_url: string;
   alternative_to: string;
   accords: string;
   description: string;
@@ -176,6 +179,7 @@ function parseEntry(input: Record<string, unknown>, index: number): ImportEntry 
       const source = priceSource(sizes);
       if (source.shop) fields.price_shop = source.shop;
       if (source.checked) fields.price_checked = source.checked;
+      if (source.url) fields.price_url = source.url;
     } else warnings.push('Grössen & Preise sind ungültig – nicht übernommen.');
   }
   // Preisquelle: "price_shop": "Notino", "price_checked": "2026-11-03"
@@ -183,6 +187,11 @@ function parseEntry(input: Record<string, unknown>, index: number): ImportEntry 
     const shop = cleanShop(raw.price_shop);
     if (shop) fields.price_shop = shop;
     else warnings.push(`Preis-Shop „${raw.price_shop}" ist ungültig – nicht übernommen.`);
+  }
+  if (raw.price_url != null && raw.price_url !== '') {
+    const url = cleanUrl(raw.price_url);
+    if (url) fields.price_url = url;
+    else warnings.push('Shop-Link muss mit https:// beginnen – nicht übernommen.');
   }
   if (raw.price_checked != null && raw.price_checked !== '') {
     const checked = cleanDate(raw.price_checked);

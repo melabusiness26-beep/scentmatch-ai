@@ -79,6 +79,26 @@ const PATHS: Record<string, ReactNode> = {
   ),
   // Funkeln (Hinweis/Highlight)
   sparkle: <path d="M12 3.5l1.8 6.7 6.7 1.8-6.7 1.8L12 20.5l-1.8-6.7L3.5 12l6.7-1.8L12 3.5z" />,
+  // Duft-Steckbrief: Haltbarkeit (Uhr), Ausstrahlung (Wellen), Anlass (Kalender)
+  clock: (
+    <>
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M12 7.5V12l3 2" />
+    </>
+  ),
+  waves: (
+    <>
+      <circle cx="12" cy="12" r="1.6" />
+      <path d="M8.2 8.2a5.4 5.4 0 0 0 0 7.6M15.8 8.2a5.4 5.4 0 0 1 0 7.6" />
+      <path d="M5.3 5.3a9.5 9.5 0 0 0 0 13.4M18.7 5.3a9.5 9.5 0 0 1 0 13.4" />
+    </>
+  ),
+  calendar: (
+    <>
+      <rect x="4" y="5.5" width="16" height="14.5" rx="2" />
+      <path d="M4 10h16M8.5 3.5v4M15.5 3.5v4" />
+    </>
+  ),
   // Jahreszeiten
   flower: (
     <>

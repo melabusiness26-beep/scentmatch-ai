@@ -1,14 +1,14 @@
 // Katalog-Dateien („Mergen = fertig"): Jeder Duft liegt als JSON-Datei in
 // catalog/perfumes/<slug>.json – im gleichen Format wie der Import-Block im Admin,
 // plus "slug". Beim Veröffentlichen (Production-Build) trägt scripts/sync-catalog.mts
-// NEUE Düfte in die Datenbank ein. Bestehende Düfte werden nie geändert oder gelöscht;
-// Korrekturen laufen weiter über den Admin.
+// NEUE Düfte in die Datenbank ein und übernimmt bei bestehenden nur neuere Preise
+// (siehe dort). Gelöscht wird nie etwas; Korrekturen laufen weiter über den Admin.
 //
 // Diese Datei ist reine Logik ohne Datenbank, damit Admin, Build-Skript und Tests
 // dieselbe Prüfung und Umwandlung nutzen.
 
 import { parseImport, type ImportedFields } from './admin-import.ts';
-import { parseAlternatives, parseSimilarNames, parseSizes } from './perfume-extras.ts';
+import { parseAlternatives, parseSimilarNames, parseSizes, withPriceSource } from './perfume-extras.ts';
 import { parseAccordText } from './accords.ts';
 
 // lowercase, Umlaute → ae/oe/ue/ss, übrige Akzente weg (Hermès → hermes), Rest → „-".
@@ -157,6 +157,16 @@ const toNumber = (s: string | undefined) => (s == null || s === '' ? null : Numb
 const toList = (s: string | undefined) => (s || '').split(',').map((x) => x.trim()).filter(Boolean);
 const toText = (s: string | undefined) => (s && s.trim() ? s.trim() : null);
 
+// Grössen mit Preisquelle. Ohne Grössen-Liste, aber mit Preis, Volumen und Shop wird
+// die eine Grösse als Liste gespeichert – sonst ginge die Angabe „Preis bei …" verloren.
+function rowSizes(f: ImportedFields) {
+  let sizes = parseSizes(f.sizes || '');
+  const price = toNumber(f.price_chf);
+  const ml = toNumber(f.volume_ml);
+  if (!sizes.length && f.price_shop && price && ml) sizes = [{ ml, price_chf: price }];
+  return withPriceSource(sizes, f.price_shop, f.price_checked);
+}
+
 // Wandelt die (textförmigen) Felder in eine Datenbank-Zeile um – wie „Hinzufügen" im Admin.
 // Felder, die im Katalog fehlen, bleiben leer (null) statt einen Standardwert zu raten.
 export function toPerfumeRow(f: ImportedFields, brandId: string, slug: string): Record<string, unknown> {
@@ -190,7 +200,7 @@ export function toPerfumeRow(f: ImportedFields, brandId: string, slug: string): 
     flacon_description: toText(f.flacon_description),
     flacon_designer: toText(f.flacon_designer),
     similar_perfumes: parseSimilarNames(f.similar_perfumes || ''),
-    sizes: parseSizes(f.sizes || ''),
+    sizes: rowSizes(f),
     alternative_to: parseAlternatives(f.alternative_to || ''),
     // Nur mitschicken, wenn vorhanden – so klappt das Eintragen auch ohne die Spalte.
     ...(f.accords ? { accords: parseAccordText(f.accords).accords } : {}),

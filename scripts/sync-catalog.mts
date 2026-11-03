@@ -5,8 +5,10 @@
 // 2. Nur beim Production-Build (VERCEL_ENV=production) mit Server-Schlüssel:
 //    trägt NEUE Düfte ein (fehlende Marken werden angelegt). Bei bestehenden Düften
 //    (gleicher slug) werden NUR die Preisfelder (price_chf, volume_ml, sizes) aus der
-//    Katalog-Datei übernommen, wenn sie sich unterscheiden – die Datei ist die Quelle
-//    für Preise. Alles andere bleibt unberührt; es wird nie etwas gelöscht.
+//    Katalog-Datei übernommen, wenn sie sich unterscheiden UND das Preis-Datum der Datei
+//    (price_checked) nicht älter ist als das in der Datenbank – so überschreibt eine alte
+//    Datei nie einen neueren Preis aus dem Admin. Alles andere bleibt unberührt; es wird
+//    nie etwas gelöscht.
 //
 // Ein Datenbank-Fehler beim Eintragen stoppt den Build nicht (die Website soll
 // trotzdem live gehen); er steht im Build-Log.
@@ -15,7 +17,7 @@ import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { createClient } from '@supabase/supabase-js';
 import { checkCatalog, slugify, toPerfumeRow } from '../lib/catalog.ts';
-import { cleanSizes, type SizePrice } from '../lib/perfume-extras.ts';
+import { cleanSizes, priceSource, type SizePrice } from '../lib/perfume-extras.ts';
 
 const DIR = join(process.cwd(), 'catalog', 'perfumes');
 
@@ -65,7 +67,10 @@ try {
   const bySlug = new Map((perfumes || []).map((p) => [p.slug, p]));
   const sameSizes = (a: unknown, b: SizePrice[]) => {
     const x = cleanSizes(a);
-    return x.length === b.length && x.every((s, i) => s.ml === b[i].ml && s.price_chf === b[i].price_chf);
+    return (
+      x.length === b.length &&
+      x.every((s, i) => s.ml === b[i].ml && s.price_chf === b[i].price_chf && s.shop === b[i].shop && s.checked === b[i].checked)
+    );
   };
 
   let added = 0;
@@ -73,18 +78,26 @@ try {
   for (const entry of entries) {
     const current = bySlug.get(entry.slug);
     if (current) {
-      // Preise aus der Katalog-Datei übernehmen (nur wenn dort angegeben und anders).
+      // Preise aus der Katalog-Datei übernehmen – aber nur, wenn sie nicht älter sind
+      // als die Preise in der Datenbank (die können im Admin neuer eingetragen sein).
       const row = toPerfumeRow(entry.fields, current.brand_id, entry.slug);
-      const patch: Record<string, unknown> = {};
-      if (row.price_chf != null && Number(current.price_chf) !== row.price_chf) patch.price_chf = row.price_chf;
-      if (row.volume_ml != null && Number(current.volume_ml) !== row.volume_ml) patch.volume_ml = row.volume_ml;
       const sizes = row.sizes as SizePrice[];
-      if (sizes.length && !sameSizes(current.sizes, sizes)) patch.sizes = sizes;
+      const fileDate = priceSource(sizes).checked;
+      const dbDate = priceSource(cleanSizes(current.sizes)).checked;
+      const fileIsCurrent = fileDate ? !dbDate || fileDate >= dbDate : !dbDate;
+      const patch: Record<string, unknown> = {};
+      if (fileIsCurrent) {
+        if (row.price_chf != null && Number(current.price_chf) !== row.price_chf) patch.price_chf = row.price_chf;
+        if (row.volume_ml != null && Number(current.volume_ml) !== row.volume_ml) patch.volume_ml = row.volume_ml;
+        if (sizes.length && !sameSizes(current.sizes, sizes)) patch.sizes = sizes;
+      }
       if (Object.keys(patch).length) {
         const { error } = await db.from('perfumes').update(patch).eq('slug', entry.slug);
         if (error) throw error;
         updated++;
         console.log(`[katalog] Preise aktualisiert: ${entry.slug} (${Object.keys(patch).join(', ')})`);
+      } else if (!fileIsCurrent) {
+        console.log(`[katalog] ${entry.slug}: Preise im Admin sind neuer (${dbDate}) – Datei (${fileDate || 'ohne Datum'}) nicht übernommen.`);
       }
       continue;
     }

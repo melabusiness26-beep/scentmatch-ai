@@ -13,8 +13,11 @@ import {
   parseAlternatives,
   parseSimilarNames,
   parseSizes,
-  sizesToText
+  priceSource,
+  sizesToText,
+  withPriceSource
 } from '@/lib/perfume-extras';
+import ShopPriceHelper, { type ShopPriceResult } from './ShopPriceHelper';
 import { accordsToText, cleanStoredAccords, parseAccordText } from '@/lib/accords';
 
 const FAMILIES = [['clean', 'Clean / Frisch'], ['gourmand', 'Gourmand / Süss'], ['woody', 'Woody / Holzig'], ['floral', 'Floral / Blumig']] as const;
@@ -93,6 +96,9 @@ const emptyForm = {
   flacon_description: '',
   similar_perfumes: '',
   sizes: '',
+  // Woher die Preise stammen und wann sie geprüft wurden (wird bei den Grössen gespeichert).
+  price_shop: '',
+  price_checked: '',
   alternative_to: '',
   flacon_designer: '',
   accords: '',
@@ -372,6 +378,8 @@ export default function AdminPage() {
       flacon_description: p.flacon_description || '',
       similar_perfumes: (p.similar_perfumes || []).join('\n'),
       sizes: sizesToText(cleanSizes(extrasById[p.id]?.sizes)),
+      price_shop: priceSource(cleanSizes(extrasById[p.id]?.sizes)).shop || '',
+      price_checked: priceSource(cleanSizes(extrasById[p.id]?.sizes)).checked || '',
       alternative_to: alternativesToText(cleanAlternatives(extrasById[p.id]?.alternative_to)),
       flacon_designer: extrasById[p.id]?.flacon_designer || '',
       accords: accordsById[p.id] || '',
@@ -444,6 +452,40 @@ export default function AdminPage() {
       slugify(brands.find(b => b.id === p.brand_id)?.name || '') === brand &&
       (p.concentration || '') === (entry.fields.concentration || '')
     );
+  }
+
+  // Grössen inkl. Preisquelle. Ohne Grössen-Liste, aber mit Preis, Volumen und Shop
+  // wird die eine Grösse gespeichert – sonst ginge „Preis bei …" verloren.
+  function sizesWithSource() {
+    let sizes = parseSizes(form.sizes);
+    const price = Number(form.price_chf) || null;
+    const ml = Number(form.volume_ml) || null;
+    if (!sizes.length && form.price_shop.trim() && price && ml) sizes = [{ ml, price_chf: price }];
+    return withPriceSource(sizes, form.price_shop, form.price_checked);
+  }
+
+  // „Preise aus dem Shop übernehmen“ → Formular füllen.
+  function applyShopPrices(result: ShopPriceResult) {
+    const main = result.sizes.find(s => s.ml === result.mainMl)!;
+    setForm(prev => ({
+      ...prev,
+      sizes: sizesToText(result.sizes),
+      price_chf: String(main.price_chf),
+      volume_ml: String(main.ml),
+      price_shop: result.shop,
+      price_checked: result.checked,
+      ...(result.identity
+        ? {
+            brand: prev.brand || result.identity.brand,
+            perfume_name: prev.perfume_name || result.identity.name,
+            ...(result.identity.gender ? { gender: result.identity.gender } : {}),
+            ...(result.identity.concentration && (CONCENTRATIONS as readonly string[]).includes(result.identity.concentration)
+              ? { concentration: result.identity.concentration }
+              : {})
+          }
+        : {})
+    }) as typeof prev);
+    setMessage('');
   }
 
   function cancelEdit() {
@@ -671,7 +713,7 @@ export default function AdminPage() {
         ...(hasGoodToKnow ? { good_to_know: form.good_to_know.trim() || null } : {}),
         ...(hasExtras
           ? {
-              sizes: parseSizes(form.sizes),
+              sizes: sizesWithSource(),
               alternative_to: parseAlternatives(form.alternative_to),
               flacon_designer: form.flacon_designer.trim() || null
             }
@@ -1002,6 +1044,7 @@ export default function AdminPage() {
                 </div>
               )}
             </details>
+            <ShopPriceHelper isNew={!editingId} onApply={applyShopPrices} />
             <form onSubmit={save}>
               {activeTab === 'basic' && (
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15 }}>
@@ -1079,6 +1122,8 @@ export default function AdminPage() {
                     <label>Grössen &amp; Preise (eine Grösse pro Zeile: ml: CHF)</label>
                     <textarea value={form.sizes} onChange={e => setField('sizes', e.target.value)} placeholder={'40 ml: 14.99\n75 ml: 23.99\n125 ml: 24.99'} style={{ width: '100%', minHeight: 90 }} disabled={!hasExtras} />
                   </div>
+                  <div className="field"><label>Preise von (Shop)</label><input value={form.price_shop} onChange={e => setField('price_shop', e.target.value)} placeholder="z. B. Notino" disabled={!hasExtras} /></div>
+                  <div className="field"><label>Preise geprüft am</label><input type="date" value={form.price_checked} onChange={e => setField('price_checked', e.target.value)} disabled={!hasExtras} /></div>
                   <div style={{ gridColumn: '1 / -1' }} className="field">
                     <label>Bekannte günstige Alternative zu (Name | Marke | Preis CHF | Hinweis)</label>
                     <textarea value={form.alternative_to} onChange={e => setField('alternative_to', e.target.value)} placeholder="Green Irish Tweed | Creed | | Gleicher Parfümeur (Pierre Bourdon)" style={{ width: '100%', minHeight: 70 }} disabled={!hasExtras} />

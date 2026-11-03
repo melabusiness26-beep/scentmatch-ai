@@ -516,3 +516,16 @@ Parfumo-Diagramm, (3) Foto vom Preis** (easyCOSMETIC, sonst Makeup.ch/Notino). A
 - Newsletter-Bestätigung: nutzt Brevo-Vorlage, wenn `BREVO_TEMPLATE_CONFIRM` gesetzt ist, sonst die eingebaute Mail.
 - Hinweis: Absender ist (noch) eine Gmail-Adresse → besser später `hallo@auressa.ch` (Hostpoint) in Brevo bestätigen
   und `BREVO_SENDER_EMAIL` ändern (weniger Spam).
+
+### Mehrere Jahreszeiten/Anlässe + Preis-Rechte (3.11.2026)
+- `season` und `occasion` dürfen mehrere Werte haben: „Frühling, Herbst“, „Alltag, Büro“ (Katalog: Text mit Komma
+  oder Liste). Eine Stelle für Lesen/Prüfen: `lib/multi-values.ts` (`seasonsOf`, `isAllYear`, `occasionsOf`, …). Quiz,
+  Stimmungen, Reiseziele, Saison-Seite, Geschenk-Finder, Duft-Detektiv und Texte nutzen sie. Admin: Auswahl-Chips.
+- Regel beim Eintragen: Jahreszeiten aus dem Parfumo-Diagramm ab ca. 25 %, Anlässe ab ca. 20 %.
+- SQL `69_catalog_price_updates.sql`: service_role darf `price_chf`, `volume_ml`, `sizes` ändern (vorher nur
+  SELECT/INSERT → Preis-Updates aus dem Katalog scheiterten still). Dazu einmalig Bottled Beyond = Frühling, Herbst ·
+  Alltag, Büro. Achtung: Saison/Anlass bestehender Düfte ändert der Sync NICHT → per Admin oder SQL.
+- Duft-Detektiv: Anlass-Frage verglich früher mit Jahreszeiten (zählte nie) – behoben.
+- **„Alle Preise vergleichen“** (Wunsch der Gründerin, 3.11.): Statt „Online suchen“ (Google-Suche) führt der Knopf zu
+  Google Shopping Schweiz (`priceCompareUrl` in `lib/perfumes.ts`: `tbm=shop&gl=ch&hl=de`, Marke + Name + Konzentration).
+  Auf der Duft-Seite neben „Bei Notino ansehen“ und „Auch bei Amazon ansehen“ immer sichtbar; auch im Duft-Finder.

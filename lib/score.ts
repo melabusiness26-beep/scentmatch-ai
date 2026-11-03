@@ -68,7 +68,7 @@ export function computeAuressaScore(p: Perfume): AuressaScore {
       label: 'Vielseitigkeit',
       weight: 20,
       points: versatility * 20,
-      hint: `${seasons === 4 ? 'ganzjährig' : `${seasons} Jahreszeit${seasons === 1 ? '' : 'en'}`}, ${occasions} Anlass${occasions === 1 ? '' : 'e'}`
+      hint: `${seasons === 4 ? 'ganzjährig' : `${seasons} Jahreszeit${seasons === 1 ? '' : 'en'}`}, ${occasions} ${occasions === 1 ? 'Anlass' : 'Anlässe'}`
     },
     { key: 'projection', label: 'Ausstrahlung', weight: 15, points: projection * 15, hint: `${p.sillage ?? '–'}/10` }
   ];

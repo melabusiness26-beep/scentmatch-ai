@@ -15,10 +15,11 @@ import {
   sizesToText
 } from './perfume-extras.ts';
 import { accordsToText, parseAccordText } from './accords.ts';
+import { parseOccasionValue, parseSeasonValue } from './multi-values.ts';
 
 export const IMPORT_FAMILIES = ['clean', 'gourmand', 'woody', 'floral'] as const;
 export const IMPORT_GENDERS = ['Women', 'Men', 'Unisex'] as const;
-export const IMPORT_SEASONS = ['Frühling', 'Sommer', 'Herbst/Winter', 'Winter', 'Ganzjährig'] as const;
+export const IMPORT_SEASONS = ['Frühling', 'Sommer', 'Herbst', 'Herbst/Winter', 'Winter', 'Ganzjährig'] as const;
 export const IMPORT_OCCASIONS = ['Alltag', 'Büro', 'Date', 'Abend'] as const;
 export const IMPORT_CONCENTRATIONS = ['EdP', 'EdT', 'EdC', 'Parfum', 'Extrait', 'Cologne', 'Spray'] as const;
 // Codes wie im Admin ("18-25" ist der bestehende Datenbank-Code für die Gruppe 16–25).
@@ -137,8 +138,13 @@ function parseEntry(input: Record<string, unknown>, index: number): ImportEntry 
   setChoice('gender', IMPORT_GENDERS, 'Geschlecht');
   setChoice('fragrance_family', IMPORT_FAMILIES, 'Duftfamilie');
   setChoice('concentration', IMPORT_CONCENTRATIONS, 'Konzentration');
-  setChoice('season', IMPORT_SEASONS, 'Saison');
-  setChoice('occasion', IMPORT_OCCASIONS, 'Anlass');
+  // Saison und Anlass: auch mehrere Werte („Frühling, Herbst“ bzw. „Alltag, Büro“ oder als Liste).
+  const seasonValue = parseSeasonValue(raw.season);
+  if (seasonValue === undefined) warnings.push(`Saison „${raw.season}" ist ungültig – nicht übernommen.`);
+  else if (seasonValue) fields.season = seasonValue;
+  const occasionValue = parseOccasionValue(raw.occasion);
+  if (occasionValue === undefined) warnings.push(`Anlass „${raw.occasion}" ist ungültig – nicht übernommen.`);
+  else if (occasionValue) fields.occasion = occasionValue;
   // „16-25" ist die Anzeige im Admin, gespeichert wird der Code „18-25".
   if (text(raw.age_group) === '16-25') raw = { ...raw, age_group: '18-25' };
   setChoice('age_group', IMPORT_AGE_GROUPS, 'Altersgruppe');

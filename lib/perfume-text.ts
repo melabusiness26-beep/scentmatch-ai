@@ -1,5 +1,6 @@
 import type { Perfume } from './perfumes';
 import { computeAccords, notesForAccord, type AccordCode } from './accords';
+import { isAllYear, seasonsOf } from './multi-values';
 
 // Redaktionelle Texte für Duftseiten – aus den Duftdaten zusammengesetzt.
 // Ziel: so klingen wie eine Duft-Redakteurin, nicht wie eine Vorlage.
@@ -183,19 +184,17 @@ const GENDER_PHRASE: Record<string, string[]> = {
 
 function seasonPhrase(season: string | null): string | null {
   if (!season) return null;
-  const s = season.toLowerCase();
-  if (s.includes('ganzj')) return 'das ganze Jahr über';
-  const hasW = s.includes('winter');
-  const hasH = s.includes('herbst');
-  const hasS = s.includes('sommer');
-  const hasF = s.includes('frühling') || s.includes('fruehling');
-  if (hasH && hasW) return 'in der kalten Jahreszeit';
-  if (hasF && hasS) return 'in den warmen Monaten';
-  if (hasW) return 'an kalten Wintertagen';
-  if (hasH) return 'im Herbst';
-  if (hasS) return 'an warmen Sommertagen';
-  if (hasF) return 'im Frühling';
-  return null;
+  const list = seasonsOf(season);
+  if (!list.length) return null;
+  if (isAllYear(season)) return 'das ganze Jahr über';
+  const has = (x: string) => list.includes(x as (typeof list)[number]);
+  if (list.length === 2 && has('Herbst') && has('Winter')) return 'in der kalten Jahreszeit';
+  if (list.length === 2 && has('Frühling') && has('Sommer')) return 'in den warmen Monaten';
+  if (list.length === 1) {
+    return { Frühling: 'im Frühling', Sommer: 'an warmen Sommertagen', Herbst: 'im Herbst', Winter: 'an kalten Wintertagen' }[list[0]];
+  }
+  // z. B. „im Frühling und Herbst“, „im Frühling, Sommer und Herbst“
+  return `im ${list.length === 2 ? list.join(' und ') : `${list.slice(0, -1).join(', ')} und ${list[list.length - 1]}`}`;
 }
 
 const OCCASION_PHRASE: Record<string, string> = {

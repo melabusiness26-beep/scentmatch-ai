@@ -9,6 +9,7 @@ async function getSupabase(): Promise<SupabaseClient> {
 import { computeAuressaScore } from './score';
 import { cleanAlternatives, cleanSizes, type AlternativeTo, type PerfumeExtras, type SizePrice } from './perfume-extras';
 import { cleanStoredAccords } from './accords';
+import { isAllYear, occasionsOf, seasonsOf, type SeasonName } from './multi-values';
 
 export type PerfumeBrand = {
   name: string | null;
@@ -119,8 +120,14 @@ export { describePerfume } from './perfume-text';
 export function buyUrl(p: Perfume): string {
   // Nur echte https-Links übernehmen (nie z. B. „javascript:“).
   if (p.affiliate_url && /^https:\/\//i.test(p.affiliate_url.trim())) return p.affiliate_url.trim();
-  const query = encodeURIComponent(`${p.perfume_name} ${p.brands?.name || ''} Parfum`.trim());
-  return `https://www.google.com/search?q=${query}`;
+  return priceCompareUrl(p);
+}
+
+// Preisvergleich: Google Shopping für die Schweiz (alle Shops mit Preisen auf einen Blick).
+export function priceCompareUrl(p: Perfume): string {
+  const conc = concentrationLabel(p.concentration);
+  const query = encodeURIComponent(`${p.brands?.name || ''} ${p.perfume_name}${conc ? ` ${conc}` : ''}`.trim());
+  return `https://www.google.com/search?tbm=shop&gl=ch&hl=de&q=${query}`;
 }
 
 // Entfernt doppelte Düfte aus einer Liste. Ein Duft gilt als Duplikat, wenn
@@ -633,20 +640,25 @@ function lovedNoteComponent(p: Perfume, a: QuizAnswers): number {
 
 function occasionComponent(p: Perfume, a: QuizAnswers): number {
   if (!a.occasion || a.occasion === 'any') return 10;
-  const occ = p.occasion || '';
-  if (a.occasion === 'daily') return DAILY_OCCASIONS.includes(occ) ? 13 : 4;
-  if (a.occasion === 'date') return occ === 'Date' ? 13 : occ === 'Abend' ? 8 : 4;
-  if (a.occasion === 'evening') return occ === 'Abend' ? 13 : occ === 'Date' ? 8 : 4;
+  // Ein Duft kann mehrere Anlässe haben („Alltag, Büro“) – der beste zählt.
+  const occ = occasionsOf(p.occasion);
+  if (a.occasion === 'daily') return occ.some((o) => DAILY_OCCASIONS.includes(o)) ? 13 : 4;
+  if (a.occasion === 'date') return occ.includes('Date') ? 13 : occ.includes('Abend') ? 8 : 4;
+  if (a.occasion === 'evening') return occ.includes('Abend') ? 13 : occ.includes('Date') ? 8 : 4;
   return 7;
 }
 
 function seasonComponent(p: Perfume, a: QuizAnswers): number {
-  const s = p.season || '';
-  if (!a.season || a.season === 'Ganzjährig') return s === 'Ganzjährig' ? 12 : 9;
-  if (s === a.season) return 12;
-  if (a.season === 'Herbst/Winter' && s === 'Winter') return 10;
-  if (s === 'Ganzjährig') return 9;
-  return 3;
+  // Ein Duft kann mehrere Jahreszeiten haben („Frühling, Herbst“).
+  const list = seasonsOf(p.season);
+  const allYear = isAllYear(p.season);
+  if (!a.season || a.season === 'Ganzjährig') return allYear ? 12 : list.length >= 2 ? 10 : 9;
+  if (allYear) return 9;
+  if (a.season === 'Herbst/Winter') {
+    const hits = (['Herbst', 'Winter'] as const).filter((x) => list.includes(x)).length;
+    return hits === 2 ? 12 : hits === 1 ? 10 : 3;
+  }
+  return list.includes(a.season as SeasonName) ? 12 : 3;
 }
 
 function sillageComponent(p: Perfume, a: QuizAnswers): number {
@@ -1035,9 +1047,9 @@ export function moodScore(p: Perfume, mood: Mood): number {
   // Passende Noten (bis 25)
   if (mood.noteThemes.some((code) => perfumeHasTheme(p, code))) s += 25;
   // Saison (bis 10)
-  if (mood.season && p.season && (p.season === mood.season || p.season === 'Ganzjährig')) s += 10;
+  if (mood.season && p.season && (isAllYear(p.season) || seasonsOf(p.season).some((x) => seasonsOf(mood.season).includes(x)))) s += 10;
   // Anlass (bis 10)
-  if (mood.occasions && p.occasion && mood.occasions.includes(p.occasion)) s += 10;
+  if (mood.occasions && p.occasion && occasionsOf(p.occasion).some((o) => mood.occasions!.includes(o))) s += 10;
   // Intensität (bis 10)
   if (mood.sillage) {
     const target = mood.sillage === 'low' ? 4 : mood.sillage === 'high' ? 9 : 6;

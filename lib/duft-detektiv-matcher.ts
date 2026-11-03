@@ -1,5 +1,6 @@
 import { Perfume, isWithinPriceCap } from './perfumes';
 import { DetektivAnswers } from './duft-detektiv-storage';
+import { occasionsOf } from './multi-values';
 
 interface MatchResult {
   perfume: Perfume;
@@ -38,15 +39,16 @@ function getFamilyFromFeeling(feeling: string): string[] {
 function getOccasionMatch(occasion: string | null, perfume: Perfume): number {
   if (!occasion || occasion === 'unknown') return 0;
 
-  const perfumeOccasion = perfume.occasion?.toLowerCase() || '';
-  const seasonMap: Record<string, string[]> = {
-    daily: ['Ganzjährig', 'Frühling'],
-    evening: ['Herbst', 'Winter'],
-    office: ['Ganzjährig', 'Frühling'],
-    special: ['Winter', 'Herbst'],
+  // Früher wurde hier der Anlass mit Jahreszeiten verglichen (passte nie). Jetzt: echte Anlässe.
+  const perfumeOccasions = occasionsOf(perfume.occasion);
+  const occasionMap: Record<string, string[]> = {
+    daily: ['Alltag', 'Büro'],
+    evening: ['Abend', 'Date'],
+    office: ['Büro', 'Alltag'],
+    special: ['Date', 'Abend'],
   };
 
-  return seasonMap[occasion]?.some(s => perfumeOccasion.includes(s)) ? 10 : 0;
+  return occasionMap[occasion]?.some(o => perfumeOccasions.includes(o)) ? 10 : 0;
 }
 
 function getPriceMatch(priceRange: string | null, perfume: Perfume): number {

@@ -6,6 +6,7 @@ import { GIFT_FINDER_STYLES } from '@/lib/gift-finder-styles';
 import { consolidateNotes, findSimilarPerfumesV2, findCheaperAlternativesV2 } from '@/lib/similarity';
 import { listName } from '@/lib/versions';
 import GiftFinderResults from './GiftFinderResults';
+import { isAllYear, seasonsOf } from '@/lib/multi-values';
 
 type Gender = 'female' | 'male' | 'any';
 type BudgetRange = 'under50' | '50to100' | 'over100';
@@ -111,10 +112,10 @@ export default function GiftFinder({ allPerfumes }: { allPerfumes: Perfume[] }) 
     }
 
     // Add season text only if season exists
-    if (perfume.season && perfume.season !== 'Ganzjährig') {
-      const seasonWithAnd = perfume.season.replace(/\s*\/\s*/g, ' und ');
+    if (perfume.season && !isAllYear(perfume.season)) {
+      const seasonWithAnd = seasonsOf(perfume.season).join(' und ');
       fullText += `. Am schönsten im ${seasonWithAnd}.`;
-    } else if (perfume.season === 'Ganzjährig') {
+    } else if (isAllYear(perfume.season)) {
       fullText += '. Das ganze Jahr tragbar.';
     } else {
       fullText += '.';

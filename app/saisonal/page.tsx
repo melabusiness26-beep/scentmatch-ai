@@ -5,6 +5,7 @@ import { getPerfumes, isWithinPriceCap } from '@/lib/perfumes';
 import { PerfumeTile } from '@/app/PerfumeTile';
 import { computeAuressaScore } from '@/lib/score';
 import LineIcon from '@/app/LineIcon';
+import { isAllYear, seasonsOf, type SeasonName } from '@/lib/multi-values';
 
 // Stündlich neu erzeugen: neue Düfte und die aktuelle Jahreszeit erscheinen automatisch.
 export const revalidate = 3600;
@@ -80,9 +81,10 @@ export default async function SaisonalPage() {
   // „Herbst/Winter" gehört in beide Abschnitte; ganzjährige Düfte haben einen eigenen Abschnitt.
   const matchesSeason = (season: string | null | undefined, key: string) => {
     if (!season) return false;
-    if (key === 'Herbst') return season === 'Herbst' || season === 'Herbst/Winter';
-    if (key === 'Winter') return season === 'Winter' || season === 'Herbst/Winter';
-    return season === key;
+    // Ganzjährige Düfte stehen im eigenen Abschnitt; sonst zählt jede genannte Jahreszeit
+    // („Frühling, Herbst“ erscheint in beiden Abschnitten).
+    if (key === 'Ganzjährig') return isAllYear(season);
+    return !isAllYear(season) && seasonsOf(season).includes(key as SeasonName);
   };
 
   const getSeasonalPerfumes = (seasonKey: string) => {

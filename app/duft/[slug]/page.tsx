@@ -12,6 +12,7 @@ import {
   isWithinPriceCap,
   describePerfume,
   concentrationLabel,
+  priceCompareUrl,
   type Perfume
 } from '@/lib/perfumes';
 import { findSimilarPerfumesV2, findCheaperAlternativesV2 } from '@/lib/similarity';
@@ -298,7 +299,7 @@ function occasionAnswer(name: string, occasion: string): string {
 
 // Baut FAQ-Einträge ausschliesslich aus echten, vorhandenen Feldern – keine erfundenen Werte.
 // name: bei mehreren Versionen mit Version (z. B. „Light Blue Eau de Parfum“), damit klar ist, welche gemeint ist.
-function buildFaqs(perfume: Perfume, name: string = perfume.perfume_name): Faq[] {
+function buildFaqs(perfume: Perfume, name: string = perfume.perfume_name, shop: string | null = null, checked: string | null = null): Faq[] {
   const faqs: Faq[] = [];
   if (perfume.longevity != null) {
     faqs.push({
@@ -327,7 +328,9 @@ function buildFaqs(perfume: Perfume, name: string = perfume.perfume_name): Faq[]
   if (perfume.price_chf != null) {
     faqs.push({
       q: `Was kostet ${name}?`,
-      a: `Der Richtpreis liegt bei ca. CHF ${formatChf(perfume.price_chf)}. Preise können je nach Shop abweichen.`
+      a: shop
+        ? `Bei ${shop} kostet ${name} CHF ${formatChf(perfume.price_chf)}${perfume.volume_ml ? ` für ${perfume.volume_ml} ml` : ''}${checked ? ` (Stand ${checked})` : ''}. Preise ändern sich – im Shop kann er inzwischen anders sein.`
+        : `Der Richtpreis liegt bei ca. CHF ${formatChf(perfume.price_chf)}. Preise können je nach Shop abweichen.`
     });
   }
   return faqs;
@@ -447,11 +450,12 @@ export default async function PerfumeDetailPage({
     versions.length > 0 && ownLabel && !perfume.perfume_name.toLowerCase().includes(ownLabel.toLowerCase())
       ? `${perfume.perfume_name} ${ownLabel}`
       : perfume.perfume_name;
-  const faqs = buildFaqs(perfume, faqName);
 
   // Zusatzangaben zuerst laden: Ist die Duftrichtung (laut Parfumo) gespeichert,
   // nutzen Balken, Kurzbeschreibung, „Passt zu dir" und Text diese statt der Berechnung.
   const extras = await getPerfumeExtras(perfume.id);
+  const faqSource = priceSource(extras.sizes || []);
+  const faqs = buildFaqs(perfume, faqName, faqSource.shop, formatCheckedDate(faqSource.checked));
   const accordsStored = Boolean(extras.accords?.length);
   if (accordsStored) perfume.accords = extras.accords;
   const accords = computeAccords(perfume);
@@ -655,6 +659,9 @@ export default async function PerfumeDetailPage({
               // Der Kauf-Knopf zum Shop sitzt beim Preis (passt zur gewählten Grösse);
               // Amazon bleibt als zweite Möglichkeit.
               <div className="dp-actions dp-actions-secondary" id="dp-actions">
+                <a className="button price-compare-button" href={priceCompareUrl(perfume)} target="_blank" rel="nofollow noopener noreferrer">
+                  Alle Preise vergleichen →
+                </a>
                 <AmazonButton perfume={perfume} secondary />
               </div>
             ) : hasPartnerLink ? (

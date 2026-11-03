@@ -477,3 +477,13 @@ Parfumo-Diagramm, (3) Foto vom Preis** (easyCOSMETIC, sonst Makeup.ch/Notino). A
 - „Erst testen?“-Hinweis, wenn eine Reisegrösse (≤ 15 ml) existiert. Steckbrief mit Symbolen (Uhr, Wellen,
   Jahreszeiten-Reihe, Anlass-Chips). Duftpyramide: Noten als runde Bilder (Foto aus `/public/notes`, sonst Initiale in
   Schichtfarbe) – je mehr Noten-Fotos, desto schöner.
+
+### Teilen-Bilder pro Duft (3.11.2026)
+- Gemeinsamer Baukasten `lib/share-card.tsx` (Farbwelt der Duftfamilie, gezeichneter Flakon, Marke, Name, Noten,
+  „CHF … bei Notino“, Score, auressa.ch) für drei Formate: Link-Vorschau (`app/duft/[slug]/opengraph-image.tsx`,
+  1200×630), Pinterest-Pin und Instagram-Story (`/api/duft-bild/<slug>?format=pin|story`, 1000×1500 / 1080×1920).
+  Nur echte Katalog-Düfte (slug geprüft). Schriften aus `app/api/teilen-bild/*.ttf`.
+- Achtung: Im opengraph-image die Schriften **in der Funktion** laden (`new URL(…, import.meta.url)`), nicht auf
+  Modul-Ebene – sonst lädt sich die Duft-Seite in `next dev` endlos neu.
+- Teilen-Leiste: Pinterest bekommt das Hochformat-Bild (`media=`), auch auf dem Handy sichtbar; neuer Knopf
+  „📸 Als Story“ (Handy: Teilen-Menü mit Bild, Computer: Download).

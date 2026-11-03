@@ -16,6 +16,16 @@ export function SocialShareButtons({ perfume, url }: SocialShareButtonsProps) {
   const text = `Schau dir „${title}" auf Auressa an:`;
   const [canNativeShare, setCanNativeShare] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [storyBusy, setStoryBusy] = useState(false);
+  const [storyMsg, setStoryMsg] = useState('');
+  const origin = (() => {
+    try {
+      return new URL(url).origin;
+    } catch {
+      return '';
+    }
+  })();
+  const imageBase = perfume.slug ? `/api/duft-bild/${perfume.slug}` : null;
 
   useEffect(() => {
     setCanNativeShare(typeof navigator !== 'undefined' && typeof navigator.share === 'function');
@@ -39,15 +49,65 @@ export function SocialShareButtons({ perfume, url }: SocialShareButtonsProps) {
     }
   }
 
+  // Story-Bild (9:16) erzeugen und teilen – auf dem Handy direkt ins Teilen-Menü
+  // (Instagram, WhatsApp, TikTok …), sonst wird es heruntergeladen.
+  async function shareStory() {
+    if (!imageBase || storyBusy) return;
+    setStoryBusy(true);
+    try {
+      const res = await fetch(`${imageBase}?format=story`);
+      if (!res.ok) throw new Error('Bild fehlt');
+      const blob = await res.blob();
+      const fileName = `auressa-${perfume.slug}.png`;
+      const file = new File([blob], fileName, { type: 'image/png' });
+      const nav = navigator as Navigator & { canShare?: (data: ShareData) => boolean };
+      if (nav.share && nav.canShare?.({ files: [file] })) {
+        try {
+          await nav.share({ files: [file], title, text: `${text} ${url}` });
+        } catch {
+          // Abgebrochen – kein Problem.
+        }
+      } else {
+        const href = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = href;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(href), 5000);
+        setStoryMsg('Bild gespeichert – du kannst es jetzt in deiner Story posten.');
+        setTimeout(() => setStoryMsg(''), 6000);
+      }
+    } catch {
+      setStoryMsg('Das Bild konnte gerade nicht erstellt werden. Bitte nochmals versuchen.');
+      setTimeout(() => setStoryMsg(''), 6000);
+    } finally {
+      setStoryBusy(false);
+    }
+  }
+
   const encodedUrl = encodeURIComponent(url);
+  // Pinterest bekommt ein eigenes Hochformat-Bild (2:3) – das wirkt dort viel besser.
+  const pinMedia = imageBase && origin ? `&media=${encodeURIComponent(`${origin}${imageBase}?format=pin`)}` : '';
   const encodedText = encodeURIComponent(`${text} ${url}`);
 
   return (
     <div className="share">
       {canNativeShare ? (
-        <button type="button" className="share-main" onClick={nativeShare}>
-          <ShareIcon /> Duft teilen
-        </button>
+        <>
+          <button type="button" className="share-main" onClick={nativeShare}>
+            <ShareIcon /> Duft teilen
+          </button>
+          <a
+            className="share-pill"
+            href={`https://pinterest.com/pin/create/button/?url=${encodedUrl}${pinMedia}&description=${encodeURIComponent(text)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Pinterest
+          </a>
+        </>
       ) : (
         <>
           <span className="share-label">Teilen:</span>
@@ -56,7 +116,7 @@ export function SocialShareButtons({ perfume, url }: SocialShareButtonsProps) {
           </a>
           <a
             className="share-pill"
-            href={`https://pinterest.com/pin/create/button/?url=${encodedUrl}&description=${encodeURIComponent(text)}`}
+            href={`https://pinterest.com/pin/create/button/?url=${encodedUrl}${pinMedia}&description=${encodeURIComponent(text)}`}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -67,9 +127,19 @@ export function SocialShareButtons({ perfume, url }: SocialShareButtonsProps) {
           </a>
         </>
       )}
+      {imageBase && (
+        <button type="button" className="share-pill share-story" onClick={shareStory} disabled={storyBusy}>
+          {storyBusy ? 'Bild wird erstellt …' : '📸 Als Story'}
+        </button>
+      )}
       <button type="button" className="share-pill share-copy" onClick={copyLink} aria-live="polite">
         {copied ? '✓ Link kopiert' : 'Link kopieren'}
       </button>
+      {storyMsg && (
+        <p className="share-story-msg" role="status">
+          {storyMsg}
+        </p>
+      )}
     </div>
   );
 }

@@ -120,8 +120,14 @@ export { describePerfume } from './perfume-text';
 export function buyUrl(p: Perfume): string {
   // Nur echte https-Links übernehmen (nie z. B. „javascript:“).
   if (p.affiliate_url && /^https:\/\//i.test(p.affiliate_url.trim())) return p.affiliate_url.trim();
-  const query = encodeURIComponent(`${p.perfume_name} ${p.brands?.name || ''} Parfum`.trim());
-  return `https://www.google.com/search?q=${query}`;
+  return priceCompareUrl(p);
+}
+
+// Preisvergleich: Google Shopping für die Schweiz (alle Shops mit Preisen auf einen Blick).
+export function priceCompareUrl(p: Perfume): string {
+  const conc = concentrationLabel(p.concentration);
+  const query = encodeURIComponent(`${p.brands?.name || ''} ${p.perfume_name}${conc ? ` ${conc}` : ''}`.trim());
+  return `https://www.google.com/search?tbm=shop&gl=ch&hl=de&q=${query}`;
 }
 
 // Entfernt doppelte Düfte aus einer Liste. Ein Duft gilt als Duplikat, wenn

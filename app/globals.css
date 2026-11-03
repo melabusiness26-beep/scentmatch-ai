@@ -2334,3 +2334,5 @@ a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visib
 .pa-consent input { margin-top: 2px; flex: none; }
 .pa-consent a { color: var(--ink-900); }
 .pa-error { margin: 8px 0 0; font-family: var(--font-sans), Arial, sans-serif; font-size: 13px; color: #b3261e; }
+.dp-actions-secondary .price-compare-button { background: #fff; border: 1px solid rgba(31,23,18,.22); color: var(--ink-900); font-weight: 700; }
+.dp-actions-secondary .price-compare-button:hover { border-color: var(--gold-500); background: #FFFBF1; }

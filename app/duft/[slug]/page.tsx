@@ -12,6 +12,7 @@ import {
   isWithinPriceCap,
   describePerfume,
   concentrationLabel,
+  priceCompareUrl,
   type Perfume
 } from '@/lib/perfumes';
 import { findSimilarPerfumesV2, findCheaperAlternativesV2 } from '@/lib/similarity';
@@ -658,6 +659,9 @@ export default async function PerfumeDetailPage({
               // Der Kauf-Knopf zum Shop sitzt beim Preis (passt zur gewählten Grösse);
               // Amazon bleibt als zweite Möglichkeit.
               <div className="dp-actions dp-actions-secondary" id="dp-actions">
+                <a className="button price-compare-button" href={priceCompareUrl(perfume)} target="_blank" rel="nofollow noopener noreferrer">
+                  Alle Preise vergleichen →
+                </a>
                 <AmazonButton perfume={perfume} secondary />
               </div>
             ) : hasPartnerLink ? (

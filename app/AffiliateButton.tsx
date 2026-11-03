@@ -8,7 +8,7 @@ import { buyUrl, type Perfume } from '@/lib/perfumes';
  *   partner shop, is labelled "Im Partner-Shop ansehen" and carries
  *   rel="sponsored nofollow" plus a short commission disclosure.
  * - Without a real link the button falls back to a neutral product search and is
- *   labelled "Online suchen" – it must never claim to be a partner link
+ *   labelled "Alle Preise vergleichen" – it must never claim to be a partner link
  *   or that we earn a commission.
  *
  * Uses the existing `affiliate_url` field – no extra URL field or schema changes.
@@ -26,7 +26,7 @@ export function AffiliateButton({
   if (perfume.discontinued) return null;
   // Nur echte https-Partnerlinks gelten als Partner-Shop (sonst nutzt buyUrl die Suche).
   const isPartnerLink = Boolean(perfume.affiliate_url && /^https:\/\//i.test(perfume.affiliate_url));
-  const text = label ?? (isPartnerLink ? 'Im Partner-Shop ansehen →' : 'Online suchen →');
+  const text = label ?? (isPartnerLink ? 'Im Partner-Shop ansehen →' : 'Alle Preise vergleichen →');
   // "sponsored" only applies to genuine affiliate links; the search fallback
   // is just a neutral outbound link.
   const rel = isPartnerLink

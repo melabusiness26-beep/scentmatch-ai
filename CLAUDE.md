@@ -526,3 +526,6 @@ Parfumo-Diagramm, (3) Foto vom Preis** (easyCOSMETIC, sonst Makeup.ch/Notino). A
   SELECT/INSERT → Preis-Updates aus dem Katalog scheiterten still). Dazu einmalig Bottled Beyond = Frühling, Herbst ·
   Alltag, Büro. Achtung: Saison/Anlass bestehender Düfte ändert der Sync NICHT → per Admin oder SQL.
 - Duft-Detektiv: Anlass-Frage verglich früher mit Jahreszeiten (zählte nie) – behoben.
+- **„Alle Preise vergleichen“** (Wunsch der Gründerin, 3.11.): Statt „Online suchen“ (Google-Suche) führt der Knopf zu
+  Google Shopping Schweiz (`priceCompareUrl` in `lib/perfumes.ts`: `tbm=shop&gl=ch&hl=de`, Marke + Name + Konzentration).
+  Auf der Duft-Seite neben „Bei Notino ansehen“ und „Auch bei Amazon ansehen“ immer sichtbar; auch im Duft-Finder.

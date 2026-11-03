@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Perfume } from '@/lib/perfumes';
+import { Perfume, priceCompareUrl } from '@/lib/perfumes';
 import { matchPerfumesByDescription } from '@/lib/duft-matcher';
 import Link from 'next/link';
 import { formatChf } from '@/lib/price';
@@ -295,7 +295,7 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                         Duftprofil
                       </Link>
                       <a
-                        href={`https://www.google.com/search?q=${encodeURIComponent(`${perfume.perfume_name} ${perfume.brands?.name || ''} Parfum`)}`}
+                        href={priceCompareUrl(perfume)}
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
@@ -322,7 +322,7 @@ export default function DuftFinder({ allPerfumes }: DuftFinderProps) {
                           e.currentTarget.style.backgroundColor = 'transparent';
                         }}
                       >
-                        Online suchen
+                        Preise vergleichen
                       </a>
                     </div>
                   </div>

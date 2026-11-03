@@ -3,9 +3,10 @@
 // 1. Prüft immer alle Dateien in catalog/perfumes/ – ein Fehler bricht den Build ab,
 //    damit die Vorschau im PR rot wird, bevor etwas live geht.
 // 2. Nur beim Production-Build (VERCEL_ENV=production) mit Server-Schlüssel:
-//    trägt NEUE Düfte ein (fehlende Marken werden angelegt). Bestehende Düfte
-//    (gleicher slug, oder gleiche Marke + Name + Konzentration) bleiben unberührt –
-//    es wird nie etwas geändert oder gelöscht.
+//    trägt NEUE Düfte ein (fehlende Marken werden angelegt). Bei bestehenden Düften
+//    (gleicher slug) werden NUR die Preisfelder (price_chf, volume_ml, sizes) aus der
+//    Katalog-Datei übernommen, wenn sie sich unterscheiden – die Datei ist die Quelle
+//    für Preise. Alles andere bleibt unberührt; es wird nie etwas gelöscht.
 //
 // Ein Datenbank-Fehler beim Eintragen stoppt den Build nicht (die Website soll
 // trotzdem live gehen); er steht im Build-Log.
@@ -14,6 +15,7 @@ import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { createClient } from '@supabase/supabase-js';
 import { checkCatalog, slugify, toPerfumeRow } from '../lib/catalog.ts';
+import { cleanSizes, type SizePrice } from '../lib/perfume-extras.ts';
 
 const DIR = join(process.cwd(), 'catalog', 'perfumes');
 
@@ -48,7 +50,7 @@ const db = createClient(url, key, { auth: { persistSession: false } });
 try {
   const { data: perfumes, error: pErr } = await db
     .from('perfumes')
-    .select('slug, perfume_name, concentration, brand_id');
+    .select('slug, perfume_name, concentration, brand_id, price_chf, volume_ml, sizes');
   if (pErr) throw pErr;
   const { data: brands, error: bErr } = await db.from('brands').select('id, name, slug');
   if (bErr) throw bErr;
@@ -60,8 +62,32 @@ try {
     (perfumes || []).map((p) => `${p.brand_id}|${slugify(p.perfume_name)}|${p.concentration || ''}`)
   );
 
+  const bySlug = new Map((perfumes || []).map((p) => [p.slug, p]));
+  const sameSizes = (a: unknown, b: SizePrice[]) => {
+    const x = cleanSizes(a);
+    return x.length === b.length && x.every((s, i) => s.ml === b[i].ml && s.price_chf === b[i].price_chf);
+  };
+
   let added = 0;
+  let updated = 0;
   for (const entry of entries) {
+    const current = bySlug.get(entry.slug);
+    if (current) {
+      // Preise aus der Katalog-Datei übernehmen (nur wenn dort angegeben und anders).
+      const row = toPerfumeRow(entry.fields, current.brand_id, entry.slug);
+      const patch: Record<string, unknown> = {};
+      if (row.price_chf != null && Number(current.price_chf) !== row.price_chf) patch.price_chf = row.price_chf;
+      if (row.volume_ml != null && Number(current.volume_ml) !== row.volume_ml) patch.volume_ml = row.volume_ml;
+      const sizes = row.sizes as SizePrice[];
+      if (sizes.length && !sameSizes(current.sizes, sizes)) patch.sizes = sizes;
+      if (Object.keys(patch).length) {
+        const { error } = await db.from('perfumes').update(patch).eq('slug', entry.slug);
+        if (error) throw error;
+        updated++;
+        console.log(`[katalog] Preise aktualisiert: ${entry.slug} (${Object.keys(patch).join(', ')})`);
+      }
+      continue;
+    }
     if (existingSlugs.has(entry.slug)) continue;
 
     const brandSlug = slugify(entry.brand);
@@ -91,7 +117,7 @@ try {
     added++;
     console.log(`[katalog] Neu eingetragen: ${entry.fields.perfume_name} (${entry.slug})`);
   }
-  console.log(`[katalog] Fertig: ${added} neue(r) Duft/Düfte eingetragen.`);
+  console.log(`[katalog] Fertig: ${added} neue(r) Duft/Düfte eingetragen, ${updated} mit neuen Preisen.`);
 } catch (err) {
   console.error('[katalog] Eintragen fehlgeschlagen – Website wird trotzdem veröffentlicht:', err);
 }

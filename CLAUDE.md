@@ -438,3 +438,10 @@ Parfumo-Diagramm, (3) Foto vom Preis** (easyCOSMETIC, sonst Makeup.ch/Notino). A
   **Abfüllungen/Probiersets** passend zum Quiz. Vorher kostenlose Gründungsberatung (Standortförderung Aargau /
   Ausgleichskasse; AHV-Anmeldung gratis, unter ~CHF 2'500 Nebenerwerb meist keine Beiträge). Gründerin will sich
   vorerst NICHT anmelden.
+
+### Preise im Katalog werden jetzt auch bei bestehenden Düften übernommen (3.11.2026)
+- Bisher trug `scripts/sync-catalog.mts` nur NEUE Düfte ein; geänderte Preise in bestehenden Katalog-Dateien
+  kamen nie live (z. B. Light Blue, Cool Water). Jetzt übernimmt der Production-Build bei gleichem slug die
+  Felder `price_chf`, `volume_ml`, `sizes` aus der Datei, wenn sie abweichen (Build-Log: „Preise aktualisiert“).
+- Folge: **Die Katalog-Datei ist die Quelle für Preise.** Preisänderungen im Admin bei Katalog-Düften werden beim
+  nächsten Deploy überschrieben → Preise immer in der Datei ändern.

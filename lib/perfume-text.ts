@@ -111,7 +111,7 @@ const MOOD: Record<string, string[]> = {
     'Elegant und sanft, mit einem pudrigen Schleier über den Blüten.'
   ],
   warmFloral: [
-    'Die Blüten liegen auf einer warmen, leicht süssen Basis, sonnig statt kühl.',
+    'Die Blüten liegen auf einer warmen, leicht süssen Basis, weich statt kühl.',
     'Blumig und warm zugleich, wie Blüten in der Abendsonne.'
   ],
   citrusFloral: [
@@ -166,7 +166,7 @@ const TAGLINE: Record<string, string> = {
   dryWood: 'Ruhig, edel und holzig.',
   fruityFloral: 'Blumig, fruchtig und fröhlich.',
   powderyFloral: 'Blumig, pudrig und elegant.',
-  warmFloral: 'Blumig, warm und sonnig.',
+  warmFloral: 'Blumig, süss und warm.',
   citrusFloral: 'Blumig, spritzig und hell.',
   floral: 'Blumig, sanft und elegant.'
 };

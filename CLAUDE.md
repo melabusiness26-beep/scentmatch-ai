@@ -438,3 +438,20 @@ Parfumo-Diagramm, (3) Foto vom Preis** (easyCOSMETIC, sonst Makeup.ch/Notino). A
   **Abfüllungen/Probiersets** passend zum Quiz. Vorher kostenlose Gründungsberatung (Standortförderung Aargau /
   Ausgleichskasse; AHV-Anmeldung gratis, unter ~CHF 2'500 Nebenerwerb meist keine Beiträge). Gründerin will sich
   vorerst NICHT anmelden.
+
+### Preise im Katalog werden jetzt auch bei bestehenden Düften übernommen (3.11.2026)
+- Bisher trug `scripts/sync-catalog.mts` nur NEUE Düfte ein; geänderte Preise in bestehenden Katalog-Dateien
+  kamen nie live (z. B. Light Blue, Cool Water). Jetzt übernimmt der Production-Build bei gleichem slug die
+  Felder `price_chf`, `volume_ml`, `sizes` aus der Datei, wenn sie abweichen (Build-Log: „Preise aktualisiert“).
+- Folge: **Die Katalog-Datei ist die Quelle für Preise.** Preisänderungen im Admin bei Katalog-Düften werden beim
+  nächsten Deploy überschrieben → Preise immer in der Datei ändern.
+
+### Neustart des Katalogs mit Notino (Entscheid der Gründerin, 3.11.2026)
+- Gründerin löscht ALLE Düfte in Supabase (Notino führt nicht dieselben Düfte) und baut den Katalog neu auf –
+  nur Düfte, die es bei **Notino.ch** gibt, mit Notino-Preisen. Alle 55 Katalog-Dateien wurden deshalb aus
+  `catalog/perfumes/` entfernt (sonst würde der Sync sie beim nächsten Deploy wieder eintragen).
+- **Die Recherche ist NICHT verloren:** Die alten Dateien (Noten, Parfümeur, Jahr, Diagramm, Texte, Quellen) liegen
+  in der Git-Historie (`git show 7a2e592:catalog/perfumes/<slug>.json`). Gibt es einen Duft bei Notino → alte Datei
+  zurückholen, nur Preis/Grössen + `sources.price` auf Notino ändern.
+- Achtung: `LEGACY_WITHOUT_SOURCES` gilt nur für die alten 15 – beim Zurückholen dieser Düfte die Quellen vollständig
+  ergänzen (Liste nie erweitern).

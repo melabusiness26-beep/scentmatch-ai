@@ -6,6 +6,7 @@ import {
   sendTransactionalEmail,
 } from '@/lib/brevo';
 import { createConfirmationToken, normalizeEmail } from '@/lib/newsletter-token';
+import { builtInEmailEnabled, emailButton, emailLayout, escapeHtml, sendHtmlEmail } from '@/lib/email';
 
 // Signierter Bestätigungs-Link (siehe lib/newsletter-token.ts). null ohne Server-Schlüssel.
 function generateConfirmationLink(email: string): string | null {
@@ -59,30 +60,39 @@ export async function POST(request: NextRequest) {
     // 2. Generiere Confirmation-Link
     const confirmationLink = generateConfirmationLink(cleanEmail);
 
-    // 3. Sende Confirmation-Email über Brevo (wenn API-Key + Template-ID gesetzt)
-    const templateId = process.env.BREVO_TEMPLATE_CONFIRM;
-
-    if (templateId && confirmationLink) {
+    // 3. Bestätigungs-Mail senden: mit eigener Brevo-Vorlage, wenn BREVO_TEMPLATE_CONFIRM
+    //    gesetzt ist – sonst die eingebaute Auressa-Mail (braucht nur BREVO_API_KEY und
+    //    BREVO_SENDER_EMAIL). So funktioniert der Newsletter auch ohne Vorlage.
+    const templateId = Number(process.env.BREVO_TEMPLATE_CONFIRM);
+    if (confirmationLink) {
       try {
-        const result = await sendTransactionalEmail(
-          cleanEmail,
-          parseInt(templateId, 10),
-          {
+        let sent = false;
+        if (Number.isInteger(templateId) && templateId > 0) {
+          const result = await sendTransactionalEmail(cleanEmail, templateId, {
             FIRSTNAME: cleanName || 'Duft-Liebhaber',
             CONFIRMATION_LINK: confirmationLink,
-          }
-        );
-
-        if (result.success) {
-          console.log(`Confirmation email sent to ${cleanEmail}, messageId: ${result.messageId}`);
-        } else {
-          console.error('Confirmation email send failed:', result.error);
+          });
+          sent = result.success;
+          if (!result.success) console.error('Confirmation email (template) failed:', result.error);
         }
+        if (!sent && builtInEmailEnabled()) {
+          sent = await sendHtmlEmail(
+            cleanEmail,
+            'Bitte bestätige deine Anmeldung bei Auressa',
+            emailLayout(
+              cleanName ? `Hallo ${escapeHtml(cleanName)}!` : 'Fast geschafft!',
+              `<p style="margin:0;font-size:15px;line-height:1.6;color:#4A3A2E">Schön, dass du dabei sein möchtest. Mit dem Auressa-Newsletter bekommst du ab und zu neue Düfte, Spar-Tipps und Empfehlungen – nie Spam. Bitte bestätige deine Anmeldung mit einem Klick:</p>
+${emailButton(confirmationLink, 'Anmeldung bestätigen')}
+<p style="margin:0;font-size:13px;line-height:1.6;color:#7A6A5C">Der Link ist 7 Tage gültig. Warst du das nicht? Dann ignoriere diese E-Mail einfach – ohne Bestätigung schicken wir dir nichts.</p>`
+            )
+          );
+        }
+        if (!sent) console.warn('Newsletter: Bestätigungs-Mail nicht verschickt (Brevo nicht eingerichtet?)');
       } catch (emailErr) {
         console.error('Email send error:', emailErr);
       }
     } else {
-      console.warn('BREVO_TEMPLATE_CONFIRM or confirmation secret not configured, confirmation email not sent');
+      console.warn('Newsletter: kein Server-Schlüssel für den Bestätigungs-Link – Mail nicht verschickt');
     }
 
     // 4. Kontakt in Brevo anlegen (mit Personalisierung) – aber noch NICHT in die

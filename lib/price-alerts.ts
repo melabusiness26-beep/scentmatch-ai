@@ -6,6 +6,7 @@ import { createHmac, timingSafeEqual } from 'crypto';
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { cleanSizes, priceSource, type SizePrice } from './perfume-extras.ts';
 import { formatChf } from './price.ts';
+import { emailButton, emailLayout, escapeHtml as esc, sendHtmlEmail as sendMail } from './email.ts';
 
 const SITE_URL = () => process.env.NEXT_PUBLIC_SITE_URL || 'https://auressa.ch';
 
@@ -52,48 +53,6 @@ export function priceAlertsEnabled(): boolean {
 }
 
 // ── E-Mail ────────────────────────────────────────────────────────────────
-
-const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c] as string);
-
-function layout(title: string, body: string, unsubscribe: string | null): string {
-  return `<!doctype html><html lang="de"><body style="margin:0;background:#FBF8F3;padding:24px 12px;font-family:Arial,Helvetica,sans-serif;color:#1F1712">
-<div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:18px;padding:28px 26px;border:1px solid #EFE6D8">
-<p style="margin:0 0 18px;font-family:Georgia,serif;font-size:22px;color:#1F1712">Auressa</p>
-<h1 style="margin:0 0 14px;font-family:Georgia,serif;font-size:26px;line-height:1.2;color:#1F1712">${title}</h1>
-${body}
-<p style="margin:26px 0 0;padding-top:16px;border-top:1px solid #EFE6D8;font-size:12px;line-height:1.5;color:#7A6A5C">
-Auressa · Duft-Findung aus der Schweiz · <a href="${SITE_URL()}" style="color:#7A6A5C">auressa.ch</a>${
-    unsubscribe ? `<br>Keine Preis-Alarme mehr für diesen Duft? <a href="${unsubscribe}" style="color:#7A6A5C">Hier abmelden</a>.` : ''
-  }
-</p></div></body></html>`;
-}
-
-function button(href: string, label: string): string {
-  return `<p style="margin:22px 0"><a href="${href}" style="display:inline-block;background:#1F1712;color:#ffffff;text-decoration:none;font-weight:bold;padding:14px 22px;border-radius:12px">${label}</a></p>`;
-}
-
-async function sendMail(to: string, subject: string, html: string): Promise<boolean> {
-  const apiKey = process.env.BREVO_API_KEY;
-  const sender = process.env.BREVO_SENDER_EMAIL;
-  if (!apiKey || !sender) return false;
-  try {
-    const res = await fetch('https://api.brevo.com/v3/smtp/email', {
-      method: 'POST',
-      headers: { 'api-key': apiKey, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        sender: { email: sender, name: process.env.BREVO_SENDER_NAME || 'Auressa' },
-        to: [{ email: to }],
-        subject,
-        htmlContent: html
-      })
-    });
-    if (!res.ok) console.error('[preis-alarm] Brevo:', res.status, await res.text());
-    return res.ok;
-  } catch (err) {
-    console.error('[preis-alarm] Versand fehlgeschlagen:', err);
-    return false;
-  }
-}
 
 // ── Eintragen ─────────────────────────────────────────────────────────────
 
@@ -155,12 +114,12 @@ export async function signupForAlert(emailRaw: unknown, slugRaw: unknown): Promi
   await sendMail(
     email,
     `Bitte bestätigen: Preis-Alarm für ${perfume.perfume_name}`,
-    layout(
+    emailLayout(
       'Fast geschafft!',
       `<p style="margin:0;font-size:15px;line-height:1.6;color:#4A3A2E">Du möchtest eine E-Mail bekommen, wenn <strong>${esc(name)}</strong> günstiger wird (aktuell CHF ${formatChf(perfume.price_chf)}${perfume.volume_ml ? ` für ${perfume.volume_ml} ml` : ''}). Bitte bestätige das mit einem Klick:</p>
-${button(confirm, 'Preis-Alarm bestätigen')}
+${emailButton(confirm, 'Preis-Alarm bestätigen')}
 <p style="margin:0;font-size:13px;line-height:1.6;color:#7A6A5C">Warst du das nicht? Dann ignoriere diese E-Mail einfach – ohne Bestätigung schicken wir dir nichts.</p>`,
-      null
+      ''
     )
   );
   return 'ok';
@@ -240,12 +199,12 @@ export async function runPriceAlerts(db: SupabaseClient, onlySlugs?: string[]): 
     const ok = await sendMail(
       a.email,
       `${p.perfume_name} ist jetzt günstiger: CHF ${formatChf(now)}`,
-      layout(
+      emailLayout(
         `${esc(p.perfume_name)} ist günstiger geworden`,
         `<p style="margin:0;font-size:15px;line-height:1.6;color:#4A3A2E"><strong>${esc(name)}</strong> kostet jetzt <strong>CHF ${formatChf(now)}</strong>${a.base_ml ? ` für ${a.base_ml} ml` : ''}${source.shop ? ` bei ${esc(source.shop)}` : ''} – vorher CHF ${formatChf(reference)}. Das sind CHF ${formatChf(Math.round(drop * 100) / 100)} weniger.</p>
-${button(page, 'Duft ansehen')}
+${emailButton(page, 'Duft ansehen')}
 <p style="margin:0;font-size:13px;line-height:1.6;color:#7A6A5C">Preise ändern sich schnell – im Shop kann der Preis inzwischen anders sein.</p>`,
-        off
+        off ? `Keine Preis-Alarme mehr für diesen Duft? <a href="${off}" style="color:#7A6A5C">Hier abmelden</a>.` : ''
       )
     );
     if (ok) {

@@ -506,3 +506,13 @@ Parfumo-Diagramm, (3) Foto vom Preis** (easyCOSMETIC, sonst Makeup.ch/Notino). A
   Speichern eines Duftes im Admin (`/api/preis-alarm/senden`, nur Admin).
 - Formular erscheint nur, wenn in Vercel gesetzt: `BREVO_API_KEY`, `BREVO_SENDER_EMAIL` (in Brevo bestätigter Absender),
   `SUPABASE_SERVICE_ROLE_KEY` (optional `BREVO_SENDER_NAME`, Standard „Auressa“). Datenschutzerklärung 3.3 ergänzt.
+
+### E-Mails ohne Brevo-Vorlage + Newsletter repariert (3.11.2026)
+- In Vercel gesetzt (3.11.): `BREVO_API_KEY` (neuer Schlüssel „Auressa Website“) und `BREVO_SENDER_EMAIL`. Vorher fehlte
+  der Brevo-Schlüssel ganz → Newsletter-Bestätigungen gingen nie raus. Keine IP-Sperre für API-Schlüssel in Brevo
+  aktivieren (Vercel hat wechselnde IPs).
+- `lib/email.ts`: eingebaute Mails im Auressa-Look (`emailLayout`, `emailButton`, `sendHtmlEmail`) – genutzt von
+  Preis-Alarm und Newsletter-Bestätigung.
+- Newsletter-Bestätigung: nutzt Brevo-Vorlage, wenn `BREVO_TEMPLATE_CONFIRM` gesetzt ist, sonst die eingebaute Mail.
+- Hinweis: Absender ist (noch) eine Gmail-Adresse → besser später `hallo@auressa.ch` (Hostpoint) in Brevo bestätigen
+  und `BREVO_SENDER_EMAIL` ändern (weniger Spam).

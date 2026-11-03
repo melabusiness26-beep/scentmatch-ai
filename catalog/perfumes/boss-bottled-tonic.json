@@ -1,0 +1,74 @@
+{
+  "slug": "boss-bottled-tonic",
+  "perfume_name": "Boss Bottled Tonic",
+  "brand": "Hugo Boss",
+  "gender": "Men",
+  "fragrance_family": "clean",
+  "season": "Sommer",
+  "occasion": "Alltag",
+  "age_group": "all",
+  "gender_nuance": "masculine",
+  "concentration": "EdT",
+  "volume_ml": 100,
+  "price_chf": 34.99,
+  "longevity": 5,
+  "sillage": 5,
+  "release_year": 2017,
+  "top_notes": [
+    "Apfel",
+    "Bitterorange",
+    "Grapefruit",
+    "Zitrone"
+  ],
+  "heart_notes": [
+    "Ingwer",
+    "Zimt",
+    "Gewürznelke",
+    "Rosengeranie"
+  ],
+  "base_notes": [
+    "Vetiver"
+  ],
+  "accords": [
+    "Frisch 24",
+    "Synthetisch 17",
+    "Zitrus 16",
+    "Fruchtig 12",
+    "Aquatisch 10",
+    "Holzig 8",
+    "Würzig 7",
+    "Süss 5"
+  ],
+  "lifestyle": "casual",
+  "trend_vibe": "classic",
+  "sizes": [
+    {
+      "ml": 100,
+      "price_chf": 34.99
+    }
+  ],
+  "description": "Boss Bottled Tonic kam 2017 heraus und ist die frischere, leichtere Tagesversion des klassischen Boss Bottled.\n\nApfel, Bitterorange, Grapefruit und Zitrone am Anfang, dann Ingwer, Zimt, Gewürznelke und Rosengeranie, und am Schluss Vetiver.\n\nAuf Parfumo gilt er als frisch und zitrisch, mit einer fruchtigen und leicht wässrigen Seite. Viele erkennen klar die Bottled-DNA, nur spritziger. Er ist leise und hält eher kurz, wer ihn den ganzen Tag riechen möchte, sprüht besser nach. Am besten passt er in den Sommer und Frühling, für jeden Tag, das Büro, die Freizeit und den Sport.",
+  "sources": {
+    "identity": [
+      "https://www.parfumo.com/Perfumes/Hugo_Boss/Boss_Bottled_Tonic",
+      "https://www.easycosmetic.ch/hugo-boss/hugo-boss-boss-bottled-tonic.aspx"
+    ],
+    "release_year": [
+      "https://www.parfumo.com/Perfumes/Hugo_Boss/Boss_Bottled_Tonic",
+      "https://scentverdict.com/perfume/hugo-boss-boss-bottled-tonic-eau-de-toilette"
+    ],
+    "notes": [
+      "https://www.parfumo.com/Perfumes/Hugo_Boss/Boss_Bottled_Tonic",
+      "https://scentverdict.com/perfume/hugo-boss-boss-bottled-tonic-eau-de-toilette"
+    ],
+    "diagram": [
+      "https://www.parfumo.com/Perfumes/Hugo_Boss/Boss_Bottled_Tonic"
+    ],
+    "ratings": [
+      "https://www.parfumo.com/Perfumes/Hugo_Boss/Boss_Bottled_Tonic"
+    ],
+    "price": [
+      "https://www.easycosmetic.ch/hugo-boss/hugo-boss-boss-bottled-tonic.aspx"
+    ]
+  }
+}

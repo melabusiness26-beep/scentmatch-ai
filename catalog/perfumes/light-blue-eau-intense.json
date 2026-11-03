@@ -6,7 +6,7 @@
   "fragrance_family": "clean",
   "concentration": "EdP",
   "volume_ml": 50,
-  "price_chf": 36.0,
+  "price_chf": 35.99,
   "longevity": 7,
   "sillage": 7,
   "season": "Sommer",
@@ -33,7 +33,7 @@
   "sizes": [
     {
       "ml": 25,
-      "price_chf": 25.99
+      "price_chf": 27.99
     },
     {
       "ml": 50,

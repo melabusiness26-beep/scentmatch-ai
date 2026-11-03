@@ -6,7 +6,7 @@
   "fragrance_family": "clean",
   "concentration": "EdT",
   "volume_ml": 50,
-  "price_chf": 35.0,
+  "price_chf": 32.99,
   "longevity": 6,
   "sillage": 6,
   "season": "Sommer",
@@ -42,12 +42,16 @@
   "flacon_description": "Flakon aus mattiertem Glas mit geschwungenen Linien und silbernen Details. Der blaue Deckel ist von der traditionellen Keramik der Amalfiküste inspiriert und trägt das DG-Monogramm.",
   "sizes": [
     {
+      "ml": 25,
+      "price_chf": 25.99
+    },
+    {
       "ml": 30,
-      "price_chf": 31.99
+      "price_chf": 34.99
     },
     {
       "ml": 50,
-      "price_chf": 34.99
+      "price_chf": 32.99
     },
     {
       "ml": 100,
@@ -55,7 +59,7 @@
     },
     {
       "ml": 200,
-      "price_chf": 71.99
+      "price_chf": 82.99
     }
   ],
   "description": "Light Blue von Dolce & Gabbana kam 2001 heraus und stammt von Olivier Cresp. Er soll nach Sommer am Mittelmeer riechen und gehört zu den bekanntesten frischen Damendüften überhaupt. 2016 kam er in die „Hall of Fame“ der Fragrance Foundation.\n\nAm Anfang stehen sizilianische Zitrone, Apfel und Glockenblume. Dann folgen Bambus, Jasmin und weisse Rose, und darunter Zedernholz, Moschus und Amber.\n\nAuf Parfumo gilt er als frisch und zitronig, mit einer wässrigen und fruchtigen Seite. Er hält mittel lang. Ein leichter, unkomplizierter Duft für warme Tage.",

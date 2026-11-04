@@ -86,6 +86,10 @@ const MOOD: Record<string, string[]> = {
     'Die Süsse wird von warmen Gewürzen getragen, ein bisschen wie Weihnachtsgebäck und Kaminfeuer.',
     'Süss, aber nicht zuckrig: Die Gewürze geben ihm Wärme und Tiefe.'
   ],
+  fruityGourmand: [
+    'Saftige Früchte auf einer cremigen, süssen Basis, ein bisschen wie Fruchtglace an einem warmen Tag.',
+    'Fruchtig und süss zugleich, verspielt und gut gelaunt.'
+  ],
   dessert: [
     'Er hat etwas Tröstliches, fast wie ein warmes Dessert an einem kalten Abend.',
     'Man denkt an Vanille, warme Haut und lange Abende.'
@@ -145,7 +149,10 @@ function moodKey(p: Perfume): string | null {
       if (citrus) return 'citrus';
       return summer ? 'summer' : 'cotton';
     case 'gourmand':
-      return has('wuerzig') ? 'spicedSweet' : 'dessert';
+      if (has('wuerzig')) return 'spicedSweet';
+      // Fruchtige Gourmands (z. B. Power of You: Maracuja + Vanille) wirken sommerlich, nicht „gemütlich“.
+      if (has('fruchtig')) return 'fruityGourmand';
+      return 'dessert';
     case 'woody':
       if (has('warm') || has('suess')) return 'warmWood';
       // Holzige Düfte, die laut Duftrichtung vor allem frisch/fruchtig wirken (z. B. Boss Bottled).
@@ -172,6 +179,7 @@ const TAGLINE: Record<string, string> = {
   cotton: 'Klar, frisch und unkompliziert.',
   spicedSweet: 'Warm, süss und würzig.',
   dessert: 'Warm, süss und gemütlich.',
+  fruityGourmand: 'Fruchtig, süss und cremig.',
   warmWood: 'Weich, warm und holzig.',
   freshWood: 'Frisch, fruchtig und holzig.',
   freshSpicyWood: 'Frisch, würzig und holzig.',

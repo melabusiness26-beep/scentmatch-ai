@@ -1,0 +1,96 @@
+{
+  "slug": "emporio-armani-power-of-you",
+  "perfume_name": "Emporio Armani Power of You",
+  "brand": "Giorgio Armani",
+  "gender": "Women",
+  "fragrance_family": "gourmand",
+  "season": "Frühling, Sommer",
+  "occasion": "Alltag, Abend",
+  "age_group": "all",
+  "gender_nuance": "feminine",
+  "concentration": "EdP",
+  "volume_ml": 50,
+  "price_chf": 51.1,
+  "longevity": 8,
+  "sillage": 7,
+  "release_year": 2026,
+  "perfumer": "Nisrine Grillié, Nadège Le Garlantezec",
+  "top_notes": [
+    "Maracuja",
+    "Bitterorange"
+  ],
+  "heart_notes": [
+    "Frangipani"
+  ],
+  "base_notes": [
+    "Bourbon-Vanille",
+    "Labdanum"
+  ],
+  "accords": [
+    "Fruchtig 28",
+    "Süss 26",
+    "Gourmand 17",
+    "Cremig 17",
+    "Synthetisch 6",
+    "Blumig 5"
+  ],
+  "lifestyle": "casual",
+  "trend_vibe": "trendy",
+  "sizes": [
+    {
+      "ml": 10,
+      "price_chf": 28.9
+    },
+    {
+      "ml": 30,
+      "price_chf": 36.0
+    },
+    {
+      "ml": 50,
+      "price_chf": 51.1
+    },
+    {
+      "ml": 90,
+      "price_chf": 68.5
+    }
+  ],
+  "price_shop": "Notino",
+  "price_checked": "2026-11-04",
+  "price_url": "https://www.notino.ch/armani/power-of-you-eau-de-parfum-fur-damen/p-16345396/",
+  "description": "Emporio Armani Power of You kam im Januar 2026 heraus. Kreiert haben ihn Nisrine Grillié und Nadège Le Garlantezec, das Gesicht der Kampagne ist Kendall Jenner.\n\nOben leuchten Maracuja und Bitterorange, in der Mitte liegt Frangipani, am Schluss bleiben Bourbon-Vanille und Labdanum.\n\nAuf Parfumo gilt er als fruchtig und süss, mit cremigen Gourmand-Seiten. Viele beschreiben ihn wie Maracuja-Glace oder einen Pornstar Martini. Er polarisiert aber: Einigen riecht er nach einer Weile zu reif. Am besten vorher testen. Er hält lange und ist gut wahrnehmbar. Am schönsten passt er im Frühling und Sommer, für jeden Tag, die Freizeit und den Ausgang.",
+  "sources": {
+    "identity": [
+      "https://www.parfumo.com/Perfumes/Giorgio_Armani/emporio-armani-power-of-you",
+      "https://www.notino.ch/armani/power-of-you-eau-de-parfum-fur-damen/p-16345396/",
+      "https://www.perfumestars.com/?p=36586"
+    ],
+    "release_year": [
+      "https://www.parfumo.com/Perfumes/Giorgio_Armani/emporio-armani-power-of-you",
+      "https://www.perfumestars.com/?p=36586"
+    ],
+    "notes": [
+      "https://www.parfumo.com/Perfumes/Giorgio_Armani/emporio-armani-power-of-you",
+      "https://www.maxaroma.com/fragrance/women/giorgio-armani-emporio-armani-power-of-you/pid/39854/5"
+    ],
+    "diagram": [
+      "https://www.parfumo.com/Perfumes/Giorgio_Armani/emporio-armani-power-of-you"
+    ],
+    "ratings": [
+      "https://www.parfumo.com/Perfumes/Giorgio_Armani/emporio-armani-power-of-you"
+    ],
+    "price": [
+      "https://www.notino.ch/armani/power-of-you-eau-de-parfum-fur-damen/p-16345396/"
+    ],
+    "perfumer": [
+      "https://www.parfumo.com/Perfumes/Giorgio_Armani/emporio-armani-power-of-you",
+      "https://www.perfumestars.com/?p=36586"
+    ],
+    "good_to_know": [
+      "https://www.parfumo.com/Perfumes/Giorgio_Armani/emporio-armani-power-of-you",
+      "https://www.perfumestars.com/?p=36586"
+    ]
+  },
+  "good_to_know": [
+    "Das Gesicht der Kampagne ist Model Kendall Jenner."
+  ]
+}

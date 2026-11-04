@@ -455,6 +455,8 @@ export default async function PerfumeDetailPage({
   // nutzen Balken, Kurzbeschreibung, „Passt zu dir" und Text diese statt der Berechnung.
   const extras = await getPerfumeExtras(perfume.id);
   const faqSource = priceSource(extras.sizes || []);
+  // Nur Kopfnoten eingetragen = linearer Duft (z. B. Parfumo listet nur „Duftnoten“ ohne Pyramide).
+  const linearNotes = Boolean(perfume.top_notes?.length) && !perfume.heart_notes?.length && !perfume.base_notes?.length;
   const faqs = buildFaqs(perfume, faqName, faqSource.shop, formatCheckedDate(faqSource.checked));
   const accordsStored = Boolean(extras.accords?.length);
   if (accordsStored) perfume.accords = extras.accords;
@@ -941,10 +943,13 @@ export default async function PerfumeDetailPage({
 
           {hasNotes && (
             <Reveal as="section" className="dp-card dp-pyramid">
-              <p className="dp-kicker">Duftpyramide</p>
-              <h2>Wie sich der Duft entfaltet</h2>
+              <p className="dp-kicker">{linearNotes ? 'Duftnoten' : 'Duftpyramide'}</p>
+              <h2>{linearNotes ? 'Was du riechst' : 'Wie sich der Duft entfaltet'}</h2>
               <ol className="pyr">
-                {LAYERS.map(({ key, title, time }) => {
+                {LAYERS.map(({ key, title: layerTitle, time: layerTime }) => {
+                  // Lineare Düfte (nur „Duftnoten“, keine Herz-/Basisnoten): eine Schicht, die bleibt.
+                  const title = linearNotes ? 'Duftnoten' : layerTitle;
+                  const time = linearNotes ? 'von Anfang bis Ende' : layerTime;
                   const notes = perfume[key];
                   if (!notes || notes.length === 0) return null;
                   return (

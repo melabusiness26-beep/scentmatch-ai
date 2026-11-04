@@ -118,6 +118,10 @@ const MOOD: Record<string, string[]> = {
     'Die Blüten liegen auf einer warmen, leicht süssen Basis, weich statt kühl.',
     'Blumig und warm zugleich, wie Blüten in der Abendsonne.'
   ],
+  freshFloral: [
+    'Die Blüten wirken frisch und klar, ohne schwer zu werden.',
+    'Blumig, aber luftig, wie ein offenes Fenster im Frühling.'
+  ],
   citrusFloral: [
     'Spritzige Zitrusnoten öffnen den Duft, darunter liegen weiche Blüten.',
     'Hell und blumig zugleich, wie Blüten an einem sonnigen Morgen.'
@@ -153,6 +157,7 @@ function moodKey(p: Perfume): string | null {
       if (has('fruchtig')) return 'fruityFloral';
       if (has('zitrisch')) return 'citrusFloral';
       if (has('pudrig')) return 'powderyFloral';
+      if (has('frisch')) return 'freshFloral';
       if (has('warm') || has('suess')) return 'warmFloral';
       return 'floral';
     default:
@@ -175,6 +180,7 @@ const TAGLINE: Record<string, string> = {
   powderyFloral: 'Blumig, pudrig und elegant.',
   warmFloral: 'Blumig, süss und warm.',
   citrusFloral: 'Blumig, spritzig und hell.',
+  freshFloral: 'Blumig, frisch und klar.',
   floral: 'Blumig, sanft und elegant.'
 };
 

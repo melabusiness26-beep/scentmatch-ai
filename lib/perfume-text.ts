@@ -98,6 +98,10 @@ const MOOD: Record<string, string[]> = {
     'Frisch und fruchtig im Auftakt, mit einer holzigen Basis darunter.',
     'Er wirkt lebendig und unkompliziert, die Hölzer geben ihm Halt.'
   ],
+  freshSpicyWood: [
+    'Frisch und würzig im Auftakt, darunter liegen trockene Hölzer.',
+    'Er wirkt klar und gepflegt, die Gewürze geben ihm etwas Kantiges.'
+  ],
   dryWood: [
     'Er wirkt ruhig und selbstsicher, ohne laut zu werden.',
     'Er hat diese trockene, edle Tiefe, die man von guten Hölzern kennt.'
@@ -142,6 +146,8 @@ function moodKey(p: Perfume): string | null {
       if (has('warm') || has('suess')) return 'warmWood';
       // Holzige Düfte, die laut Duftrichtung vor allem frisch/fruchtig wirken (z. B. Boss Bottled).
       if (has('frisch') && (has('fruchtig') || has('zitrisch'))) return 'freshWood';
+      // Frisch-würzige Holzdüfte (z. B. Boss Bottled Beyond: Ingwer, Leder, Zeder).
+      if (has('frisch') && has('wuerzig')) return 'freshSpicyWood';
       return 'dryWood';
     case 'floral':
       if (has('fruchtig')) return 'fruityFloral';
@@ -163,6 +169,7 @@ const TAGLINE: Record<string, string> = {
   dessert: 'Warm, süss und gemütlich.',
   warmWood: 'Weich, warm und holzig.',
   freshWood: 'Frisch, fruchtig und holzig.',
+  freshSpicyWood: 'Frisch, würzig und holzig.',
   dryWood: 'Ruhig, edel und holzig.',
   fruityFloral: 'Blumig, fruchtig und fröhlich.',
   powderyFloral: 'Blumig, pudrig und elegant.',
@@ -564,7 +571,9 @@ export function fitAdvice(p: Perfume): FitAdvice {
   if (p.longevity != null && p.longevity >= 8) fits.push('er den ganzen Tag halten soll');
   else if (p.sillage != null && p.sillage <= 4) fits.push('du es dezent magst');
   else if (p.sillage != null && p.sillage >= 8) fits.push('man dich ruhig bemerken darf');
-  if (p.price_chf != null && p.price_chf <= 60 && fits.length < 3) fits.push('du nicht viel ausgeben möchtest');
+  // Preis pro 100 ml – sonst wirkt eine kleine (teure) Flasche günstig.
+  const per100 = p.price_chf != null && p.volume_ml ? (p.price_chf / p.volume_ml) * 100 : null;
+  if (per100 != null && per100 <= 80 && fits.length < 3) fits.push('du nicht viel ausgeben möchtest');
 
   // 1) Welche seiner Noten jemanden stören könnten – nie dieselben Noten wie oben,
   //    sonst widerspräche sich die Einschätzung.

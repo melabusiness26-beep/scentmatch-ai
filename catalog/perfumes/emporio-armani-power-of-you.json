@@ -38,6 +38,10 @@
   "trend_vibe": "trendy",
   "sizes": [
     {
+      "ml": 10,
+      "price_chf": 28.9
+    },
+    {
       "ml": 30,
       "price_chf": 36.0
     },

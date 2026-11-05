@@ -17,14 +17,20 @@
   "perfumer": "Cécile Matton",
   "top_notes": [
     "Rosa Pfeffer",
-    "Kastanie"
+    "Wacholder"
   ],
   "heart_notes": [
+    "Toffee",
+    "Zimt",
     "Lavendel",
     "Salbei"
   ],
   "base_notes": [
-    "Vanille"
+    "Vanille",
+    "Tonkabohne",
+    "Amberholz",
+    "Wildleder",
+    "Kastanie"
   ],
   "accords": [
     "Süss 30",
@@ -57,7 +63,7 @@
   "price_shop": "Notino",
   "price_checked": "2026-11-05",
   "price_url": "https://www.notino.ch/armani/emporio-stronger-with-you-intensely-eau-de-parfum-fur-herren/p-15802388/",
-  "description": "Emporio Armani Stronger With You Intensely kam 2019 heraus und ist die intensivere Version von Stronger With You. Kreiert hat ihn Cécile Matton.\n\nZu Beginn treffen rosa Pfeffer und Kastanie aufeinander, in der Mitte kommen Lavendel und Salbei dazu, am Schluss bleibt eine warme Vanille.\n\nAuf Parfumo gehört er zu den beliebtesten Herrendüften: süss und gourmand, mit würzigen und holzigen Seiten. Er hält sehr lange und ist deutlich wahrnehmbar. Am besten passt er im Herbst und Winter, vor allem am Abend und beim Ausgehen. Für heisse Tage oder das Büro ist er eher zu süss und zu stark.",
+  "description": "Emporio Armani Stronger With You Intensely kam 2019 heraus und ist die intensivere Version von Stronger With You. Kreiert hat ihn Cécile Matton.\n\nEr beginnt mit rosa Pfeffer und Wacholder. In der Mitte treffen Toffee und Zimt auf Lavendel und Salbei, am Schluss bleiben Vanille, Tonkabohne, Amberholz, Wildleder und Kastanie.\n\nAuf Parfumo gehört er zu den beliebtesten Herrendüften: süss und gourmand, mit würzigen und holzigen Seiten. Er hält sehr lange und ist deutlich wahrnehmbar. Am besten passt er im Herbst und Winter, vor allem am Abend und beim Ausgehen. Für heisse Tage oder das Büro ist er eher zu süss und zu stark.",
   "sources": {
     "identity": [
       "https://www.parfumo.com/Perfumes/Giorgio_Armani/emporio-armani-stronger-with-you-intensely-1",
@@ -70,7 +76,9 @@
     ],
     "notes": [
       "https://www.parfumo.com/Perfumes/Giorgio_Armani/emporio-armani-stronger-with-you-intensely-1",
-      "https://www.notino.ch/armani/emporio-stronger-with-you-intensely-eau-de-parfum-fur-herren/p-15802388/"
+      "https://www.notino.ch/armani/emporio-stronger-with-you-intensely-eau-de-parfum-fur-herren/p-15802388/",
+      "https://www.giorgioarmanibeauty-usa.com/fragrances/stronger-with-you-intensely-eau-de-parfum/ww-00180-arm.html",
+      "https://beautyhouse.com/products/giorgio-armani-emporio-stronger-with-you-intensely-eau-de-parfum-for-men"
     ],
     "diagram": [
       "https://www.parfumo.com/Perfumes/Giorgio_Armani/emporio-armani-stronger-with-you-intensely-1"

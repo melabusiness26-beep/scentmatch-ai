@@ -529,3 +529,12 @@ Parfumo-Diagramm, (3) Foto vom Preis** (easyCOSMETIC, sonst Makeup.ch/Notino). A
 - **„Alle Preise vergleichen“** (Wunsch der Gründerin, 3.11.): Statt „Online suchen“ (Google-Suche) führt der Knopf zu
   Google Shopping Schweiz (`priceCompareUrl` in `lib/perfumes.ts`: `tbm=shop&gl=ch&hl=de`, Marke + Name + Konzentration).
   Auf der Duft-Seite neben „Bei Notino ansehen“ und „Auch bei Amazon ansehen“ immer sichtbar; auch im Duft-Finder.
+
+## 18. Update (5. November 2026): Stronger With You, Vercel-Neubau
+
+- **Neu im Katalog:** Emporio Armani Stronger With You Intensely (EdP 2019) und Powerfully (EdP 2026, Parfümeur
+  nicht bekannt → kein Name eingetragen), beide Notino-Preise. `lib/versions.ts` kennt „Intensely“/„Powerfully“ als
+  Versions-Zusätze → Umschalter auf der Duft-Seite.
+- **Vercel startet manchmal keinen Neubau nach dem Mergen** (kein Eintrag in Deployments, auch kein Fehler – die
+  Meldung von GitHub kam nicht an). „Redeploy“ eines alten Eintrags hilft NICHT (baut den alten Commit). Lösung: einen
+  neuen PR mit einer kleinen echten Änderung mergen, oder im Projekt (nicht Team-Ansicht) „Create Deployment“ mit `main`.

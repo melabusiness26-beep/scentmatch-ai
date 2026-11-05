@@ -23,6 +23,9 @@ const VERSION_SUFFIXES = [
   'extrait',
   'elixir',
   'absolu',
+  // Emporio Armani Stronger With You: Intensely / Powerfully sind Versionen derselben Reihe.
+  'intensely',
+  'powerfully',
   // Guerlain Aqua Allegoria: „Forte" = Eau-de-Parfum-Version (z. B. Mandarine Basilic Forte).
   'forte',
   'parfum',
